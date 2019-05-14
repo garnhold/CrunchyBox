@@ -15,12 +15,12 @@ namespace CrunchyCart
 {
     public partial class Syncronizer
     {
-        public class TypeLiaisonProp
+        public class TypeSerializerDataTypeProp
         {
             private PropInfoEX target_prop;
             private FieldInfo liaison_field;
 
-            public TypeLiaisonProp(TypeBuilder type_builder, PropInfoEX p)
+            public TypeSerializerDataTypeProp(TypeBuilder type_builder, PropInfoEX p)
             {
                 target_prop = p;
 
@@ -35,7 +35,7 @@ namespace CrunchyCart
             {
                 return new ILAssign(
                     method.GetILField(liaison_field),
-                    typeof(TypeLiaison).GetILInvoke("InstanceLiaison", type)
+                    typeof(TypeSerializer).GetILInvoke("InstanceLiaison", type)
                 );
             }
 

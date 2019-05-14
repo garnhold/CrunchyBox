@@ -31,6 +31,7 @@ namespace CrunchyCart
             {
                 id = i;
                 target = t;
+                liaison = TypeSerializer.InstanceLiaison(target.GetTypeEX());
 
                 constructor = c;
                 constructor_arguments = ca.ToArray();

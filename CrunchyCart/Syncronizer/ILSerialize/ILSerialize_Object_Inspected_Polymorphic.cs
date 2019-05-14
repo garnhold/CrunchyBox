@@ -15,7 +15,7 @@ namespace CrunchyCart
         {
             static private ILValue GenerateInspectedObjectRead_Polymorphic(Type type, ILValue buffer)
             {
-                return typeof(TypeLiaison).GetILInvoke("ReadLiaison",
+                return typeof(TypeSerializer).GetILInvoke("ReadObject",
                     buffer.GetILInvoke("ReadType"),
                     buffer
                 );
@@ -30,7 +30,7 @@ namespace CrunchyCart
                 block.AddStatement(
                     new ILIf(
                         type.GetILIsNotNull(),
-                        typeof(TypeLiaison).GetILInvoke("WriteLiaison", value)
+                        typeof(TypeSerializer).GetILInvoke("WriteObject", value)
                     )
                 );
 

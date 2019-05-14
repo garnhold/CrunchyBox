@@ -66,6 +66,7 @@ namespace CrunchyCart
                     case MessageType.UpdateConstant: constant_manager.ReadUpdate(buffer); break;
                     case MessageType.FullUpdateConstant: constant_manager.ReadFullUpdate(buffer); break;
 
+                    case MessageType.InvokeEntityConstructor: entity_manager.ReadConstructorInvoke(buffer); break;
                     case MessageType.InvokeEntityMethod: entity_manager.ReadMethodInvoke(buffer); break;
                     case MessageType.ChangeEntityAuthority: entity_manager.ReadAuthority(buffer); break;
                     case MessageType.DestroyEntity: entity_manager.ReadDestroy(buffer); break;

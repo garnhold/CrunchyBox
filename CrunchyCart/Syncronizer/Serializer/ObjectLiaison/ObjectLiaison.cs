@@ -16,7 +16,7 @@ namespace CrunchyCart
         public abstract class ObjectLiaison
         {
             public abstract object GetTarget();
-            public abstract TypeLiaison GetLiaison();
+            public abstract TypeSerializer GetLiaison();
 
             public abstract int GetDeliveryChannel();
 

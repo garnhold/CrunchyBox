@@ -16,7 +16,7 @@ namespace CrunchyCart
     public partial class Syncronizer
     {
         [AttributeUsage(AttributeTargets.Class)]
-        public class UseLiaisonAttribute : Attribute
+        public class DataTypeAttribute : Attribute
         {
         }
     }

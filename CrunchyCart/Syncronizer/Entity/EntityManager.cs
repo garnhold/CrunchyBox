@@ -53,6 +53,11 @@ namespace CrunchyCart
                 entitys_by_target.Remove(entity.GetTarget());
             }
 
+            public void ReadConstructorInvoke(Buffer buffer)
+            {
+                buffer.ReadEntityConstructor().ReadConstructorInvoke(GetSyncronizer(), buffer);
+            }
+
             public void ReadMethodInvoke(Buffer buffer)
             {
                 buffer.ReadEntityReference().ReadMethodInvoke(buffer);

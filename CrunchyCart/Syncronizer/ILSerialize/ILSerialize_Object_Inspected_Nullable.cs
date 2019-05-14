@@ -17,7 +17,7 @@ namespace CrunchyCart
             {
                 return new ILIfValue(
                     buffer.GetILInvoke("ReadBoolean"),
-                    TypeLiaison.GetObjectLiaison(type).GenerateRead(buffer),
+                    TypeSerializer.GetTypeSerializer(type).GenerateRead(buffer),
                     null
                 );
             }
@@ -28,7 +28,7 @@ namespace CrunchyCart
                     value.GetILIsNotNull(),
                     new ILBlock(
                         buffer.GetILInvoke("WriteBoolean", true),
-                        TypeLiaison.GetObjectLiaison(value.GetValueType()).GenerateWrite(value, buffer)
+                        TypeSerializer.GetTypeSerializer(value.GetValueType()).GenerateWrite(value, buffer)
                     ),
                     new ILBlock(
                         buffer.GetILInvoke("WriteBoolean", false)

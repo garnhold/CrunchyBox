@@ -19,6 +19,11 @@ namespace CrunchyCart
         {
             private int delivery_channel;
 
+            public Constructor_NormalAttribute(int dc)
+            {
+                delivery_channel = dc;
+            }
+
             public override EntityConstructor CreateEntityConstructor(MethodInfo method)
             {
                 return new EntityConstructor_Normal(method, delivery_channel);

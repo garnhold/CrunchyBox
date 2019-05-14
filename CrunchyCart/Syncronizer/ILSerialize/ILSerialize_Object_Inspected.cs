@@ -21,7 +21,7 @@ namespace CrunchyCart
                 if (type.IsNullable())
                     return GenerateInspectedObjectRead_Nullable(type, buffer);
 
-                return TypeLiaison.GetObjectLiaison(type).GenerateRead(buffer);
+                return TypeSerializer.GetTypeSerializer(type).GenerateRead(buffer);
             }
 
             static public ILStatement GenerateInspectedObjectWrite(ILValue src, ILValue buffer)
@@ -32,7 +32,7 @@ namespace CrunchyCart
                 if (src.GetValueType().IsNullable())
                     return GenerateInspectedObjectWrite_Nullable(src, buffer);
 
-                return TypeLiaison.GetObjectLiaison(src.GetValueType()).GenerateWrite(src, buffer);
+                return TypeSerializer.GetTypeSerializer(src.GetValueType()).GenerateWrite(src, buffer);
             }
         }
     }
