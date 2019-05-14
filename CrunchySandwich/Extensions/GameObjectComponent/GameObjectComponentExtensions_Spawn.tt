@@ -1,0 +1,46 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+string[] function_suffixes = new string[]{"", "AtSelf"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Spawn
+    {
+<# foreach(string type_name in type_names){#>
+	<# foreach(string function_suffix in function_suffixes){#>
+		static public GameObject SpawnChild<#=function_suffix#>(this <#=type_name#> item, GameObject prefab)
+        {
+            return item.AddChild<#=function_suffix#>(prefab.SpawnInstance());
+        }
+
+		static public T SpawnChild<#=function_suffix#><T>(this <#=type_name#> item, T prefab) where T : Component
+		{
+			return item.AddChild<#=function_suffix#>(prefab.SpawnInstance());
+		}
+
+		static public GameObject SpawnEmptyChild<#=function_suffix#>(this <#=type_name#> item)
+		{
+			return item.AddChild<#=function_suffix#>(new GameObject());
+		}
+
+		static public T SpawnSingleComponentChild<#=function_suffix#><T>(this <#=type_name#> item) where T : Component
+		{
+			return item.SpawnEmptyChild<#=function_suffix#>().AddComponent<T>();
+		}
+	<# } #>
+<# } #>
+	}
+}

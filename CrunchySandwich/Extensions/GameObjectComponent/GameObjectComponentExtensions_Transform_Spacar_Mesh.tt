@@ -1,0 +1,44 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Spacar_Mesh
+    {
+<# foreach(string type_name in type_names){#>
+		static public void SetSpacarMeshSize(this <#=type_name#> item, Vector3 size)
+		{
+			item.transform.SetSpacarMeshSize(size);
+		}
+
+		static public void SetSpacarMeshBounds(this <#=type_name#> item, Bounds bounds)
+		{
+			item.transform.SetSpacarMeshBounds(bounds);
+		}
+
+		static public Vector3 GetSpacarMeshSize(this <#=type_name#> item)
+		{
+			return item.transform.GetSpacarMeshSize();
+		}
+
+		static public Bounds GetSpacarMeshBounds(this <#=type_name#> item)
+		{
+			return item.transform.GetSpacarMeshBounds();
+		}
+
+<# } #>
+	}
+}

@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] flavors = new string[]{"Weak", "Strong"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+using CrunchySalt;
+
+namespace CrunchyNoodle
+{
+<#foreach(string flavor in flavors){#>
+	static public class ObjectExtensions_MemberInstance_VariableInstance_<#=flavor#>
+    {
+        static public VariableInstance Get<#=flavor#>VariableInstanceByComponent(this object item, string component)
+        {
+			return item.Get<#=flavor#>Target().GetVariableInstanceByComponent(component);
+        }
+
+        static public VariableInstance Get<#=flavor#>VariableInstanceByPathAndComponent(this object item, string path, string component)
+        {
+            return item.Get<#=flavor#>Target().GetVariableInstanceByPathAndComponent(path, component);
+        }
+
+        static public VariableInstance Get<#=flavor#>VariableInstanceByPath(this object item, string full_path)
+        {
+            return item.Get<#=flavor#>Target().GetVariableInstanceByPath(full_path);
+        }
+
+        static public VariableInstance Get<#=flavor#>VariableInstanceByParentablePath(this object item, object parent, string full_path)
+        {
+            if(full_path.TryTrimPrefix("parent.", out full_path))
+                return parent.Get<#=flavor#>VariableInstanceByPath(full_path);
+
+            return item.Get<#=flavor#>VariableInstanceByPath(full_path);
+        }
+    }
+
+<#}#>
+}

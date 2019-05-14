@@ -1,0 +1,39 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_arguments = 10;
+string[] pattern_types = new string[]{
+	"Regex",
+	"string",
+	"CachedRegex"
+};
+#>
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+    static public class StringExtensions_Regex_PartOut
+    {
+	<#for(int number_arguments = 1; number_arguments <= max_number_arguments; number_arguments++){#>
+		<#foreach(string pattern_type in pattern_types){#>
+
+			static public int RegexPartOut(this string item, <#=pattern_type#> pattern<#for(int i = 1; i <= number_arguments; i++){#>, out string output<#=i#><#}#>)
+			{
+				return item.RegexMatch(pattern)
+					.Groups.Bridge<Group>()
+					.Offset(1)
+					.Convert(g => g.Value)
+					.PartOut(<#for(int i = 1; i <= number_arguments; i++){#><#if(i>1){#>, <#}#>out output<#=i#><#}#>);
+			}
+		<#}#>
+	<#}#>
+	}
+}

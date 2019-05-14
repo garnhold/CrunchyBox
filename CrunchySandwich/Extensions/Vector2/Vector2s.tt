@@ -1,0 +1,64 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] angle_types = new string[]{
+	"Radians",
+	"Degrees",
+	"Percent"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+
+namespace CrunchySandwich
+{
+    static public class Vector2s
+	{
+	<#foreach(string angle_type in angle_types){#>
+
+		static public IEnumerable<Vector2> RadialFrom<#=angle_type#>(IEnumerable<float> angles)
+        {
+            return angles.Convert(a => Vector2Extensions.CreateDirectionFrom<#=angle_type#>(a));
+        }
+
+		static public IEnumerable<Vector2> RadialFrom<#=angle_type#>(IEnumerable<float> angles, float magnitude)
+        {
+			return RadialFrom<#=angle_type#>(angles).Convert(v => v * magnitude);
+        }
+
+		static public IEnumerable<Vector2> RadialFrom<#=angle_type#>(float angle, IEnumerable<float> magnitudes)
+		{
+			Vector2 direction = Vector2Extensions.CreateDirectionFrom<#=angle_type#>(angle);
+
+			return magnitudes.Convert(m => direction * m);
+		}
+
+		static public IEnumerable<Vector2> RadialFrom<#=angle_type#>(IEnumerable<float> angles, IEnumerable<float> magnitudes)
+        {
+			return angles.Convert(a => RadialFrom<#=angle_type#>(a, magnitudes));
+        }
+	<#}#>
+
+	}
+}
+
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public NumericInfo(string t, string c)
+	{
+		type_name = t;
+		class_name = c;
+	}
+}
+#>

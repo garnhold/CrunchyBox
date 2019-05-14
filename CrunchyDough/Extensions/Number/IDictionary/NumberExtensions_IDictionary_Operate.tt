@@ -1,0 +1,122 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] numeric_infos = new NumericInfo[]{
+	new NumericInfo("Int", "int", "1", "0"),
+	new NumericInfo("Long", "long", "1", "0"),
+	new NumericInfo("Float", "float", "1.0f", "0.0f"),
+	new NumericInfo("Double", "double", "1.0", "0.0"),
+	new NumericInfo("Decimal", "decimal", "1.0m", "0.0m")
+};
+OperationInfo[] operations_type1 = new OperationInfo[]{
+	new OperationInfo("Add", "Added", "+"),
+	new OperationInfo("Subtract", "Subtracted", "-")
+};
+OperationInfo[] operations_type2 = new OperationInfo[]{
+	new OperationInfo("Multiply", "Multiplied", "*")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_IDictionary_Operate
+    {
+<# foreach(NumericInfo info in numeric_infos){#>
+	<#foreach(OperationInfo operation in operations_type1){#>
+
+		static public void <#=operation.name#>Values<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+		{
+			foreach(KeyValuePair<KEY_TYPE, <#=info.type#>> pair in other)
+				item[pair.Key] = item.GetValue(pair.Key, <#=info.zero#>) <#=operation.symbol#> pair.Value;
+		}
+		static public Dictionary<KEY_TYPE, <#=info.type#>> Get<#=operation.name_past#>Values<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+		{
+			Dictionary<KEY_TYPE, <#=info.type#>> result = new Dictionary<KEY_TYPE, <#=info.type#>>(item);
+
+			result.<#=operation.name#>Values(other);
+			return result;
+		}
+	<#}#>
+	<#foreach(OperationInfo operation in operations_type2){#>
+
+		static public Dictionary<KEY_TYPE, <#=info.type#>> Get<#=operation.name_past#>Values<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+		{
+			Dictionary<KEY_TYPE, <#=info.type#>> result = new Dictionary<KEY_TYPE, <#=info.type#>>();
+
+			foreach(KeyValuePair<KEY_TYPE, <#=info.type#>> pair in other)
+			{
+				<#=info.type#> item_value;
+
+				if(item.TryGetValue(pair.Key, out item_value))
+					result[pair.Key] = item_value <#=operation.symbol#> pair.Value;
+			}
+
+			return result;
+		}
+	<#}#>
+
+	static public <#=info.type#> GetSumOfSquaredValueDifferences<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+	{
+		<#=info.type#> sum_of_squared_differences = <#=info.zero#>;
+
+		foreach(KeyValuePair<KEY_TYPE, <#=info.type#>> pair in item)
+		{
+			<#=info.type#> other_value;
+
+			if(other.TryGetValue(pair.Key, out other_value))
+				sum_of_squared_differences += (pair.Value - other_value).GetSquared();
+			else
+				sum_of_squared_differences += pair.Value.GetSquared();
+		}
+
+		foreach(KeyValuePair<KEY_TYPE, <#=info.type#>> pair in other)
+		{
+			if(item.ContainsKey(pair.Key) == false)
+				sum_of_squared_differences += pair.Value.GetSquared();
+		}
+
+		return sum_of_squared_differences;
+	}
+<# } #>
+	}
+}
+<#+
+public class NumericInfo
+{
+	public readonly string name;
+	public readonly string type;
+
+	public readonly string one;
+	public readonly string zero;
+
+	public NumericInfo(string n, string t, string o, string z)
+	{
+		name = n;
+		type = t;
+
+		one = o;
+		zero = z;
+	}
+}
+
+public class OperationInfo
+{
+	public readonly string name;
+	public readonly string name_past;
+
+	public readonly string symbol;
+
+	public OperationInfo(string n, string p, string s)
+	{
+		name = n;
+		name_past = p;
+
+		symbol = s;
+	}
+}
+#>

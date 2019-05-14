@@ -1,0 +1,46 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+string[] function_suffixes = new string[]{"", "AtSelf"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Child_Remove
+    {
+<# foreach(string type_name in type_names){#>
+	<# foreach(string function_suffix in function_suffixes){#>
+		static public bool RemoveChild<#=function_suffix#>(this <#=type_name#> item, GameObject child)
+        {
+            return item.transform.RemoveChild<#=function_suffix#>(child.transform);
+        }
+
+        static public bool RemoveChild<#=function_suffix#><T>(this <#=type_name#> item, T child) where T : Component
+        {
+            return item.RemoveChild<#=function_suffix#>(child.gameObject);
+        }
+
+		static public int RemoveChildren<#=function_suffix#>(this <#=type_name#> item, IEnumerable<GameObject> children)
+		{
+			return children.Count(c => item.RemoveChild<#=function_suffix#>(c));
+		}
+
+		static public int RemoveChildren<#=function_suffix#><T>(this <#=type_name#> item, IEnumerable<T> children) where T : Component
+		{
+			return children.Count(c => item.RemoveChild<#=function_suffix#>(c));
+		}
+	<# } #>
+<# } #>
+	}
+}

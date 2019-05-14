@@ -1,0 +1,38 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberRealExtensions_Components
+    {
+<# foreach(string type_name in type_names){#>
+		static public void GetComponents(this <#=type_name#> item, out int whole, out <#=type_name#> fractional)
+		{
+			whole = item.GetWholeComponent();
+            fractional = item - whole;
+		}
+
+		static public int GetWholeComponent(this <#=type_name#> item)
+		{
+			return (int)item;
+		}
+
+		static public <#=type_name#> GetFractionalComponent(this <#=type_name#> item)
+		{
+			return item - item.GetWholeComponent();
+		}
+<# } #>
+	}
+}

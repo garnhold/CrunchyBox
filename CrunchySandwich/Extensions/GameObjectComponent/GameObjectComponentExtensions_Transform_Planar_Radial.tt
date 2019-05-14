@@ -1,0 +1,50 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Planar_Radial
+    {
+<# foreach(string type_name in type_names){#>
+		static public void SetLocalPlanarPositionAndRotation(this <#=type_name#> item, Vector2 position, float angle_offset = 0.0f)
+        {
+            item.transform.SetLocalPlanarPositionAndRotation(position, angle_offset);
+        }
+        static public void SetLocalRadialPlanarPosition(this <#=type_name#> item, float angle, float magnitude)
+        {
+            item.transform.SetLocalRadialPlanarPosition(angle, magnitude);
+        }
+        static public void SetLocalRadialPlanarPositionAndRotation(this <#=type_name#> item, float angle, float magnitude, float angle_offset = 0.0f)
+        {
+            item.transform.SetLocalRadialPlanarPositionAndRotation(angle, magnitude, angle_offset);
+        }
+
+		static public void SetOffsetPlanarPositionAndRotation(this <#=type_name#> item, Vector2 position, float angle_offset = 0.0f)
+        {
+            item.transform.SetOffsetPlanarPositionAndRotation(position, angle_offset);
+        }
+        static public void SetOffsetRadialPlanarPosition(this <#=type_name#> item, float angle, float magnitude)
+        {
+            item.transform.SetOffsetRadialPlanarPosition(angle, magnitude);
+        }
+        static public void SetOffsetRadialPlanarPositionAndRotation(this <#=type_name#> item, float angle, float magnitude, float angle_offset = 0.0f)
+        {
+            item.transform.SetOffsetRadialPlanarPositionAndRotation(angle, magnitude, angle_offset);
+        }
+
+<# } #>
+	}
+}

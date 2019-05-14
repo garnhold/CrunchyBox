@@ -1,0 +1,87 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"byte",
+	"short",
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_MinMax
+    {
+<# foreach(string type_name in type_names){#>
+		static public void Order(this <#=type_name#> item, <#=type_name#> input, out <#=type_name#> lower, out <#=type_name#> upper)
+        {
+            if (item < input)
+            {
+                lower = item;
+                upper = input;
+            }
+            else
+            {
+                lower = input;
+                upper = item;
+            }
+        }
+
+		static public void OrderPairByFirst(this <#=type_name#> x1, <#=type_name#> y1, <#=type_name#> x2, <#=type_name#> y2, out <#=type_name#> low_x, out <#=type_name#> low_y, out <#=type_name#> high_x, out <#=type_name#> high_y)
+		{
+			if (x1 < x2)
+            {
+                low_x = x1;
+				low_y = y1;
+
+				high_x = x2;
+				high_y = y2;
+            }
+            else
+            {
+                low_x = x2;
+				low_y = y2;
+
+				high_x = x1;
+				high_y = y1;
+            }
+		}
+		static public void OrderPairBySecond(this <#=type_name#> x1, <#=type_name#> y1, <#=type_name#> x2, <#=type_name#> y2, out <#=type_name#> low_x, out <#=type_name#> low_y, out <#=type_name#> high_x, out <#=type_name#> high_y)
+		{
+			y1.OrderPairByFirst(x1, y2, x2, out low_y, out low_x, out high_y, out high_x);
+		}
+
+		static public void Order(this <#=type_name#> input1, <#=type_name#> input2, <#=type_name#> input3, out <#=type_name#> low, out <#=type_name#> mid, out <#=type_name#> high)
+        {
+			Order(input1, input2, out low, out high);
+            Order(low, input3, out low, out mid);
+            Order(mid, high, out mid, out high);
+        }
+
+        static public <#=type_name#> Min(this <#=type_name#> item, <#=type_name#> input)
+        {
+            if (item < input)
+                return item;
+
+            return input;
+        }
+
+        static public <#=type_name#> Max(this <#=type_name#> item, <#=type_name#> input)
+        {
+            if (item > input)
+                return item;
+
+            return input;
+        }
+<# } #>
+	}
+}

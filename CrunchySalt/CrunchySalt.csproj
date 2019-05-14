@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14716796-281F-4F48-9D47-B392EE94CB5D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchySalt</RootNamespace>
+    <AssemblyName>CrunchySalt</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrunchyDough, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyCreator\AssemblyCreator_Builder.cs" />
+    <Compile Include="AssemblyCreator\AssemblyCreator_Builder_External.cs" />
+    <Compile Include="AssemblyCreator\AssemblyCreator_Builder_Internal.cs" />
+    <Compile Include="AssemblyCreator\AssemblyCreator.cs" />
+    <Compile Include="ConstructorInfoEX\ConstructorInfoEX.cs" />
+    <Compile Include="EmitDebugger\EmitDebugger.cs" />
+    <Compile Include="EventDeregister\EventDeregister.cs" />
+    <Compile Include="EventRegister\EventRegister.cs" />
+    <Compile Include="EvtInfoEX\EvtInfoEX_MethodPair.cs" />
+    <Compile Include="EvtInfoEX\EvtInfoEX.cs" />
+    <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_DefaultFilename.cs" />
+    <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_Save.cs" />
+    <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_Module.cs" />
+    <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions.cs" />
+    <Compile Include="Extensions\Builder\BuilderExtensions_Attribute.cs">
+      <DependentUpon>BuilderExtensions_Attribute.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions.cs" />
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions_Caller.cs" />
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions_EX.cs" />
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions_ConstructorInvoker.cs" />
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions_Foreign.cs" />
+    <Compile Include="Extensions\DynamicMethod\DynamicMethodExtensions_Delegate.cs" />
+    <Compile Include="Extensions\DynamicMethod\DynamicMethodExtensions.cs" />
+    <Compile Include="Extensions\FieldAttributesExtensions\FieldAttributesExtensions.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Prop.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Type.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_IL.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Foreign.cs" />
+    <Compile Include="Extensions\MethodAttributesExtensions\MethodAttributesExtensions.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL_EffectiveParameters.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL_TechnicalParameters.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Type.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Compare.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_IL.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Foreign.cs" />
+    <Compile Include="Extensions\ModuleBuilder\ModuleBuilderExtensions_TypeBuilder.cs" />
+    <Compile Include="Extensions\ModuleBuilder\ModuleBuilderExtensions_Type.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Detect_Evt.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Detect_Prop.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Event.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Property.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Create.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Detect.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Compare.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_StyleForDisplay.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Style.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingKeyword.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Extract.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Style.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Inject_Implicit.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Save.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Inject_Explicit.cs">
+      <DependentUpon>StringExtensions_Inject_Explicit.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\TypeAttributesExtensions\TypeAttributesExtensions.cs" />
+    <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_Constructor.cs" />
+    <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_Field.cs" />
+    <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_ConstructorBuilder.cs" />
+    <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_MethodBuilder.cs" />
+    <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_Method.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Delegate.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Treatment.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Conversion.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_IL.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo.cs">
+      <DependentUpon>TypeExtensions_FieldInfo.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Type\TypeExtensions_ConstructorInfo.cs">
+      <DependentUpon>TypeExtensions_ConstructorInfo.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Type\TypeExtensions_MethodInfo.cs">
+      <DependentUpon>TypeExtensions_MethodInfo.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FieldInfoEX\FieldInfoEX.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_EX.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Value.cs" />
+    <Compile Include="ForeignConstructorInfo\ForeignConstructorInfo.cs" />
+    <Compile Include="ForeignFieldInfo\ForeignFieldInfo.cs" />
+    <Compile Include="ForeignMethodInfo\ForeignMethodInfo.cs" />
+    <Compile Include="IL\ILAddressable\ILAddressable.cs" />
+    <Compile Include="IL\ILCanvas\Extensions\ILCanvasExtensions_Address.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvasLabel\ILCanvasLabel_ILTextCanvas.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvasLabel\ILCanvasLabel_ILGenerator.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvasLocal\ILCanvasLocal_ILTextCanvas.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvasLocal\ILCanvasLocal_ILGenerator.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvasLocal\ILCanvasLocal.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvas_ILTextCanvas.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvas_ILGenerator.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvasLabel\ILCanvasLabel.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfos.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_I8.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_R8.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_R4.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_I4.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_I2.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_MakePointer.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_I1.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_UnmakePointer.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_LoadDefault.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Nothing.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_UnboxPointer.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_UnboxCopyPointer.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_UnboxCopy.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_CastClass.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_ConversionMethod.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Box.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILNop.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILNothing.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILGoTo.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILInjectCave.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILLabel.cs" />
+    <Compile Include="IL\ILStatement\Extensions\IEnumerable\ILStatementExtensions_IEnumerable_Block.cs" />
+    <Compile Include="IL\ILStatement\Extensions\IEnumerable\ILStatementExtensions_IEnumerable.cs" />
+    <Compile Include="IL\ILStatement\Extensions\ILStatementExtensions.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILUnaryOperatorInvokation.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILIfValue.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILNullCoalesce.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILCast.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILLoadStatement.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILLoad.cs" />
+    <Compile Include="IL\ILCase\ILCase.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILIndexed.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILAs.cs" />
+    <Compile Include="IL\ILBody\ILBody.cs" />
+    <Compile Include="IL\ILCanvas\Extensions\ILCanvasExtensions_Use.cs" />
+    <Compile Include="IL\ILCanvas\Extensions\ILCanvasExtensions.cs" />
+    <Compile Include="IL\ILCanvas\ILCanvas.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILDefault.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILLiterals.cs">
+      <DependentUpon>ILLiterals.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="IL\ILValue\Derivations\ILNull.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILIteratorSlew.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILField.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILIs.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILLocal.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILMethodInvokation.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILNewArray.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILNewPopulatedArray.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILNew.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILBinaryOperatorInvokation.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILParameter.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILVirtualParameter.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILProp.cs" />
+    <Compile Include="IL\ILStatement\ILStatement.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILAssignArray.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILSwitch.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILInitializeLocal.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILCalculate.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILAssign.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILBlock.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILIf.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILReturn.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILWhile.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILStringExpression.cs" />
+    <Compile Include="IL\ILTextCanvas\ILTextCanvas.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Address.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions.cs" />
+    <Compile Include="IL\ILValue\Extensions\IEnumerable\ILValueExtensions_IEnumerable_Text.cs" />
+    <Compile Include="IL\ILValue\Extensions\IEnumerable\ILValueExtensions_IEnumerable.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Params.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_UnaryOperators.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_MethodInvokation.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Boolean.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Null.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Statement.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Props.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Fields.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_BinaryOperators.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Indexs.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_BasicType.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Cast.cs" />
+    <Compile Include="IL\ILValue\ILValue.cs" />
+    <Compile Include="IndexerInfoEX\IndexerInfoEXSystem.cs" />
+    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Class.cs" />
+    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Struct.cs" />
+    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array.cs" />
+    <Compile Include="IndexerInfoEX\IndexerInfoEX.cs" />
+    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEx_Array_Simple.cs">
+      <DependentUpon>IndexerInfoEx_Array_Simple.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="IndexerInfoEX\IndexerInfoEX_MethodPair\IndexerInfoEX_MethodPair.cs" />
+    <Compile Include="IteratorGetter\IteratorGetter.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_MethodCaller.cs" />
+    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEX.cs" />
+    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEX_Internal\BinaryOperatorInfoEX_Internal.cs" />
+    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEXSystem.cs">
+      <DependentUpon>BinaryOperatorInfoEXSystem.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEX_Method\BinaryOperatorInfoEX_Method.cs" />
+    <Compile Include="PropInfoEX\Extensions\PropInfoEXExtensions_Compare.cs" />
+    <Compile Include="PropInfoEX\Extensions\PropInfoEXExtensions.cs" />
+    <Compile Include="PropInfoEX\PropInfoEX_MethodPair.cs" />
+    <Compile Include="PropInfoEX\PropInfoEX_Field.cs" />
+    <Compile Include="PropInfoEX\PropInfoEX.cs" />
+    <Compile Include="MethodInvoker\MethodInvoker.cs" />
+    <Compile Include="MethodInfoEX\MethodInfoEX.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_EX.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_MethodInvoker.cs" />
+    <Compile Include="MethodInvoker\Extensions\MethodInvokerExtensions_Deferred.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_DynamicMethod.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Initilization.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Iterator.cs" />
+    <Compile Include="TypeCreator\TypeCreator.cs" />
+    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEX_Method\UnaryOperatorInfoEX_Method.cs" />
+    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEX_Internal\UnaryOperatorInfoEX_Internal.cs" />
+    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEX.cs" />
+    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEXSystem.cs">
+      <DependentUpon>UnaryOperatorInfoEXSystem.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ValueSetter\ValueSetter.cs" />
+    <Compile Include="ValueGetter\ValueGetter.cs" />
+    <Compile Include="ConstructorInvoker\ConstructorInvoker.cs" />
+    <Compile Include="ProgrammingEntityName\ProgrammingEntityName.cs" />
+    <Compile Include="ThisAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BuilderExtensions_Attribute.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\String\StringExtensions_Inject_Explicit.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StringExtensions_Inject_Explicit.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Type\TypeExtensions_FieldInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_FieldInfo.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Type\TypeExtensions_ConstructorInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_ConstructorInfo.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Type\TypeExtensions_MethodInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_MethodInfo.cs</LastGenOutput>
+    </Content>
+    <Content Include="IL\ILValue\Derivations\ILLiterals.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ILLiterals.cs</LastGenOutput>
+    </Content>
+    <Content Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEx_Array_Simple.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IndexerInfoEx_Array_Simple.cs</LastGenOutput>
+    </Content>
+    <Content Include="BinaryOperatorInfoEX\BinaryOperatorInfoEXSystem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BinaryOperatorInfoEXSystem.cs</LastGenOutput>
+    </Content>
+    <Content Include="UnaryOperatorInfoEX\UnaryOperatorInfoEXSystem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UnaryOperatorInfoEXSystem.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

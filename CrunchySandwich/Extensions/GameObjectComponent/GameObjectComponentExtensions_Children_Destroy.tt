@@ -1,0 +1,39 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Children_Destroy
+    {
+<# foreach(string type_name in type_names){#>
+		static public void DestroyChildren(this <#=type_name#> item)
+        {
+			item.GetChildren().Destroy();
+        }
+
+        static public void DestroyChildrenImmediate(this <#=type_name#> item, bool is_asset = false)
+        {
+			item.GetChildren().DestroyImmediate(is_asset);
+        }
+
+        static public void DestroyChildrenAdvisory(this <#=type_name#> item, bool is_asset = false)
+        {
+			item.GetChildren().DestroyAdvisory(is_asset);
+        }
+
+<# } #>
+	}
+}

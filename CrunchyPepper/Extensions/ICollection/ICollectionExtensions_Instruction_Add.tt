@@ -1,0 +1,51 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"byte",
+	"CallSite",
+	"double",
+	"FieldReference",
+	"float",
+	"Instruction",
+	"Instruction[]",
+	"int",
+	"long",
+	"MethodReference",
+	"ParameterDefinition",
+	"sbyte",
+	"string",
+	"TypeReference",
+	"VariableDefinition"
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using Mono.Cecil;
+using Mono.Cecil.Cil;
+
+using CrunchyDough;
+
+namespace CrunchyPepper
+{
+	static public class ICollectionExtensions_Instruction_Add
+    {
+		static public Instruction Add(this ICollection<Instruction> item, OpCode opcode)
+		{
+			return item.AddAndGet(Instruction.Create(opcode));
+		}
+
+<#foreach(string type_name in type_names){#>
+		static public Instruction Add(this ICollection<Instruction> item, OpCode opcode, <#=type_name#> value)
+		{
+			return item.AddAndGet(Instruction.Create(opcode, value));
+		}
+
+<#}#>
+	}
+}

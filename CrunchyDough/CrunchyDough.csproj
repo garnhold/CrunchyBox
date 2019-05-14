@@ -1,0 +1,1247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyDough</RootNamespace>
+    <AssemblyName>CrunchyDough</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttachedObjectField\AttachedObjectField.cs" />
+    <Compile Include="Attempter\Attempter.cs" />
+    <Compile Include="AttemptResult\Extensions\AttemptResultExtensions_Absorb.cs" />
+    <Compile Include="AttemptResult\Extensions\AttemptResultExtensions_Compare.cs" />
+    <Compile Include="AttemptResult\Extensions\AttemptResultExtensions.cs" />
+    <Compile Include="BasicType\BasicType.cs" />
+    <Compile Include="BasicType\Extensions\BasicTypeExtensions_Treatment.cs" />
+    <Compile Include="BasicType\Extensions\BasicTypeExtensions.cs" />
+    <Compile Include="BufferedTextWriter\BufferedTextWriter.cs" />
+    <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions.cs" />
+    <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions_String.cs" />
+    <Compile Include="ByteSequence\ByteSequence.cs" />
+    <Compile Include="Extensions\Delegate\DelegateExtensions_Combine.cs" />
+    <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
+    <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
+    <Compile Include="Worker\Worker_SimpleAmortize.cs" />
+    <Compile Include="Worker\Worker.cs" />
+    <Compile Include="WorkCollection\WorkCollection.cs" />
+    <Compile Include="Extensions\BinaryReaderWriter\BinaryReaderWriterExtensions_StretchedHash.cs" />
+    <Compile Include="Extensions\BinaryReaderWriter\BinaryReaderWriterExtensions_ByteSequence.cs" />
+    <Compile Include="Extensions\BinaryReaderWriter\BinaryReaderWriterExtensions_ByteHeader.cs" />
+    <Compile Include="Extensions\BinaryReaderWriter\BinaryReaderWriterExtensions_ShortExpansion.cs" />
+    <Compile Include="Extensions\BinaryReaderWriter\BinaryReaderWriterExtensions_ByteExpansion.cs" />
+    <Compile Include="Extensions\BinaryReaderWriter\BinaryReaderWriterExtensions.cs" />
+    <Compile Include="Extensions\Bool\BoolExtensions_Assert.cs" />
+    <Compile Include="Extensions\Bool\BoolExtensions_If.cs" />
+    <Compile Include="Extensions\Bool\BoolExtensions_Flip.cs" />
+    <Compile Include="Extensions\Bool\BoolExtensions_Convert.cs" />
+    <Compile Include="Extensions\Char\CharExtensions_Value.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions_Long.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Has.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Reduce.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_HashSet.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_SetRange.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Force.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Has_IEnumerable.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Island_Section.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Island_Remove.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Island_Morph.cs" />
+    <Compile Include="Extensions\List\ListExtensions_Reduce.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Return.cs" />
+    <Compile Include="Extensions\NumberFit\NumberFitExtensions.cs">
+      <DependentUpon>NumberFitExtensions.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\ResourceManager\ResourceManagerExtensions_Keys.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Contains.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Bytes.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Ensured.cs" />
+    <Compile Include="Extensions\String\StringExtensions_EscapeSequence.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Id.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_HexInt.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Suffix.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Prefix.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Trim_PrefixAndSuffix.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Trim_Suffix.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Trim_Whitespace.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Trim_Prefix.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_BasicType.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Current.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Exists.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Move.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Create.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Copy.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Delete.cs" />
+    <Compile Include="Files\Partials\FileAndDirectory\Files_FileAndDirectory_Copy.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Exists.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Move.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Delete.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Copy.cs" />
+    <Compile Include="Files\Partials\File\Files_File.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Stream.cs" />
+    <Compile Include="HashType\Extensions\HashTypeExtensions_String.cs" />
+    <Compile Include="HashType\Extensions\HashTypeExtensions.cs" />
+    <Compile Include="HashType\HashTypes.cs" />
+    <Compile Include="HashType\HashType_MD5.cs" />
+    <Compile Include="HashType\HashType_SHA1.cs" />
+    <Compile Include="HashType\HashType.cs" />
+    <Compile Include="HuskReader\HuskReader.cs" />
+    <Compile Include="HuskWriter\HuskWriter.cs" />
+    <Compile Include="BoundType\BoundType.cs" />
+    <Compile Include="BoundType\Extensions\BoundTypeExtensions_Convert.cs" />
+    <Compile Include="BoundType\Extensions\BoundTypeExtensions.cs" />
+    <Compile Include="Cache\CacheManager.cs" />
+    <Compile Include="Cache\Cache.cs" />
+    <Compile Include="Cache\Extensions\CacheManagerExtensions_Add.cs" />
+    <Compile Include="Cache\Extensions\CacheManagerExtensions.cs" />
+    <Compile Include="DetailDirection\DetailDirection.cs" />
+    <Compile Include="CircularFixedLengthCollection\CircularFixedLengthCollection.cs" />
+    <Compile Include="CircularFixedLengthCollection\CircularStack.cs" />
+    <Compile Include="DetailDirection\Extensions\DetailDirectionExtensions_Modify.cs" />
+    <Compile Include="DetailDirection\Extensions\DetailDirectionExtensions.cs" />
+    <Compile Include="EmbeddedResources\EmbeddedResources.cs" />
+    <Compile Include="Empty\EmptyDictionary.cs" />
+    <Compile Include="Enablable\Enablable.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Declared.cs" />
+    <Compile Include="Extensions\ByteArray\ByteArrayExtensions_Stream.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Declaration.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_TryConvert.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Declaration.cs" />
+    <Compile Include="Extensions\ResourceManager\ResourceManagerExtensions.cs" />
+    <Compile Include="Extensions\ResourceManager\ResourceManagerExtensions_Exists.cs" />
+    <Compile Include="Extensions\ResourceManager\ResourceManagerExtensions_Get.cs" />
+    <Compile Include="Extensions\ResourceManager\ResourceManagerExtensions_StreamSystem.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions_Bytes.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Stream.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Consume.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Declared.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_Assert.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_StreamSystem.cs" />
+    <Compile Include="Extensions\Char\CharExtensions_Number.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Skip_Extended.cs" />
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Binding.cs">
+      <DependentUpon>NumberRealExtensions_Binding.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\String\StringExtensions_Parse_Measurement.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Peruse.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Convert.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_PartOut.cs">
+      <DependentUpon>StringExtensions_Regex_PartOut.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\String\StringExtensions_Regex_GetGroup.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Extract.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Remove.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Replace.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Match.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Escape.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Pattern.cs" />
+    <Compile Include="Extensions\WeakReference\WeakReferenceExtensions_Get.cs" />
+    <Compile Include="Extensions\WeakReference\WeakReferenceExtensions_State.cs" />
+    <Compile Include="Files\Partials\Files_StreamSystem.cs" />
+    <Compile Include="GCNotifier\GCNotifier_Process.cs" />
+    <Compile Include="GCNotifier\GCNotifierGarbage.cs" />
+    <Compile Include="GCNotifier\GCNotifier.cs" />
+    <Compile Include="Husker\Common\HuskerCommon.cs">
+      <DependentUpon>HuskerCommon.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Husker\Husker.cs" />
+    <Compile Include="Husker\List\ListHusker.cs" />
+    <Compile Include="Identifiable\Enumerable\IdentifiableEnumerable.cs" />
+    <Compile Include="Identifiable\Extensions\IdentifiableExtensions.cs" />
+    <Compile Include="Identifiable\Extensions\IEnumerable\IEnumerableExtensions_Identity.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Treatment_IEnumerable.cs" />
+    <Compile Include="Identifiable\Identifiable.cs" />
+    <Compile Include="Identifiable\Tuple\IdentifiableTuple.cs" />
+    <Compile Include="Identifiable\Tuple\IdentifiableTuple_New.cs" />
+    <Compile Include="Identifiable\Common\IdentifiableCommon.cs">
+      <DependentUpon>IdentifiableCommon.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="IdentityTable\IdentityTable.cs" />
+    <Compile Include="IslandInfo\IslandInfo.cs" />
+    <Compile Include="IslandMorphInfo\IslandMorphInfo.cs" />
+    <Compile Include="LinkedPeriodicProcessManager\LinkedPeriodicProcessManager.cs" />
+    <Compile Include="Numeric\Numeric.cs" />
+    <Compile Include="ObjectTable\Extensions\ObjectTableExtensions_Process.cs" />
+    <Compile Include="ObjectTable\Extensions\ObjectTableExtensions_Add.cs" />
+    <Compile Include="ObjectTable\Extensions\ObjectTableExtensions.cs" />
+    <Compile Include="ProgramInfo\ProgramInfoAttribute.cs" />
+    <Compile Include="ProgramInfo\ProgramInfo.cs" />
+    <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions_SimpleName.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_SimpleName.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions_EnumInfo.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions_Index.cs" />
+    <Compile Include="Extensions\HashSet\HashSetExtensions_Contains.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Count.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_CopyTo.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Pop.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\IDynamicCustomAttributeProviderExtensions.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_ForTypeAttribute.cs">
+      <DependentUpon>ICustomAttributeProviderExtensions_ForTypeAttribute.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Search.cs">
+      <DependentUpon>ICustomAttributeProviderExtensions_Search.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_LabeledAttribute.cs">
+      <DependentUpon>ICustomAttributeProviderExtensions_LabeledAttribute.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Has.cs">
+      <DependentUpon>ICustomAttributeProviderExtensions_Has.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Get.cs">
+      <DependentUpon>ICustomAttributeProviderExtensions_Get.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Composite.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_CopyTo.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertCombinations.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertWithIndex.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Meld.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Percent.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessWithIndex.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Same.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Count.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Segment.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_PartOut.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IEnumerableExtensions_PartOut.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Stutter.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Index_Relations.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_LoopedInterpolate.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Squish.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Relations.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Remove.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Extract_Section.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Swap.cs" />
+    <Compile Include="Extensions\Int\IntExtensions_Enum.cs" />
+    <Compile Include="Extensions\LinkedList\LinkedListExtensions_Nodes_Search.cs" />
+    <Compile Include="Extensions\LinkedList\LinkedListExtensions_Nodes.cs" />
+    <Compile Include="Extensions\LinkedList\LinkedListExtensions_Insert.cs" />
+    <Compile Include="Extensions\LinkedList\LinkedListExtensions.cs" />
+    <Compile Include="Extensions\NumberConvert\NumberConvertExtensions.cs">
+      <DependentUpon>NumberConvertExtensions.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\IDictionary\NumberExtensions_IDictionary_Operate.cs">
+      <DependentUpon>NumberExtensions_IDictionary_Operate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\IDictionary\NumberExtensions_IDictionary.cs">
+      <DependentUpon>NumberExtensions_IDictionary.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Operate.cs">
+      <DependentUpon>NumberExtensions_IEnumerable_Operate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_DiminishingTotal.cs">
+      <DependentUpon>NumberExtensions_IEnumerable_DiminishingTotal.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Length.cs">
+      <DependentUpon>NumberExtensions_Length.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Interpolate.cs">
+      <DependentUpon>NumberRealExtensions_Interpolate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Style.cs">
+      <DependentUpon>NumberRealExtensions_Style.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Components.cs">
+      <DependentUpon>NumberRealExtensions_Components.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions.cs">
+      <DependentUpon>NumberRealExtensions.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Object\IEnumerable\ObjectExtensions_IEnumerable_Append.cs" />
+    <Compile Include="Extensions\Object\IEnumerable\ObjectExtensions_IEnumerable_Types.cs" />
+    <Compile Include="Extensions\Object\IEnumerable\ObjectExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\SortedList\SortedListExtensions_Get.cs" />
+    <Compile Include="Extensions\String\IEnumerable\StringExtensions_IEnumerable_Append.cs" />
+    <Compile Include="Extensions\String\IEnumerable\StringExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Decimal.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Enum_Generic.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_DateTime.cs" />
+    <Compile Include="Extensions\String\StringExtensions_SplitOnSuccessive.cs" />
+    <Compile Include="Extensions\Type\IEnumerable\TypeExtensionsIEnumerable.cs" />
+    <Compile Include="Extensions\Type\IEnumerable\TypeExtensionsIEnumerable_AncestorType.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_AncestorType.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_BaseType.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Instancing_Forced.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Interface.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Treatment_Basic.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Default.cs" />
+    <Compile Include="Filename\Filename_MakeData.cs" />
+    <Compile Include="Graph\GraphNodeTraverser.cs" />
+    <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorGoal\GraphNodeNavigatorGoal_MinimumDistance.cs" />
+    <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorGoal\GraphNodeNavigatorGoal_GraphNode.cs" />
+    <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorGoal\GraphNodeNavigatorGoal.cs" />
+    <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigator.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Looped.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Looped.cs" />
+    <Compile Include="IDynamicCustomAttributeProvider\IDynamicCustomAttributeProvider.cs" />
+    <Compile Include="LazySchedule\Extensions\LazyScheduleExtensions_Add.cs" />
+    <Compile Include="LazySchedule\Extensions\LazyScheduleExtensions.cs" />
+    <Compile Include="OperationCache\Extensions\CacheManagerExtensions_OperationCache.cs" />
+    <Compile Include="OrderedCollection\OrderedList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderedList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderedCollection\StaticOrderList.cs" />
+    <Compile Include="OrderedCollection\DynamicOrderList.cs" />
+    <Compile Include="PeriodicProcess\Extensions\PeriodicProcessExtensions_Restart.cs" />
+    <Compile Include="PeriodicProcess\Extensions\PeriodicProcessExtensions.cs" />
+    <Compile Include="ReflectionCache\ReflectionCache.cs" />
+    <Compile Include="Scheduler\Extensions\SchedulerExtensions_Work.cs" />
+    <Compile Include="Scheduler\Extensions\SchedulerExtensions_Add.cs" />
+    <Compile Include="Scheduler\Extensions\SchedulerExtensions.cs" />
+    <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions_File.cs" />
+    <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions_Directory.cs" />
+    <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions.cs" />
+    <Compile Include="StreamDirectory\StreamDirectory_Root.cs" />
+    <Compile Include="StreamDirectory\StreamDirectory.cs" />
+    <Compile Include="StreamMonitor\StreamMonitor_Combo.cs" />
+    <Compile Include="StreamMonitor\StreamMonitor_IdentityAndHash.cs" />
+    <Compile Include="StreamMonitor\StreamMonitor_Identity.cs" />
+    <Compile Include="StreamMonitor\StreamMonitor_Value.cs" />
+    <Compile Include="StreamMonitor\StreamMonitor_Value_Hash.cs" />
+    <Compile Include="StreamMonitor\StreamMonitor_Value_Timestamp.cs" />
+    <Compile Include="StreamMonitor\StreamMonitor.cs" />
+    <Compile Include="StreamSystemDirectory\Extensions\StreamSystemDirectoryExtensions_StreamSystem.cs" />
+    <Compile Include="StreamSystemDirectory\Extensions\StreamSystemDirectoryExtensions_Delete.cs" />
+    <Compile Include="StreamSystemDirectory\Extensions\StreamSystemDirectoryExtensions.cs" />
+    <Compile Include="StreamSystemDirectory\Extensions\StreamSystemDirectoryExtensions_Create.cs" />
+    <Compile Include="StreamSystemDirectory\Extensions\StreamSystemDirectoryExtensions_Exists.cs" />
+    <Compile Include="StreamSystemDirectory\StreamSystemDirectory.cs" />
+    <Compile Include="StreamSystemRelatedStream\StreamSystemRelatedStream_ForeignStreamSystem.cs" />
+    <Compile Include="StreamSystemRelatedStream\StreamSystemRelatedStream.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Delete.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Copy.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Local.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Byte.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Timestamp.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Exists.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Hash.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Open.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Monitor.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Object.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Read.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Stream.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Text.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_WriteEmpty.cs" />
+    <Compile Include="StreamSystemStream\Extensions\StreamSystemStreamExtensions_Write.cs" />
+    <Compile Include="StreamFile\StreamFile.cs" />
+    <Compile Include="StreamItem\StreamItem.cs" />
+    <Compile Include="StreamSystemStream\StreamSystemStream.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Auto_Exists.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Auto_Rename.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_DirectorySystem.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Bytes.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Lines.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_WriteEmpty.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Auto_Delete.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_General.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Auto.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Auto_Copy.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Auto_Move.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_General_Move.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_General_Copy.cs" />
+    <Compile Include="StreamSystem\Base\Partials\StreamSystem_DefaultImplementations_Name.cs" />
+    <Compile Include="StreamSystem\Base\Partials\StreamSystem_DefaultImplementations_Rename.cs" />
+    <Compile Include="StreamSystem\Base\Partials\StreamSystem_DefaultImplementations_CopyForeign.cs" />
+    <Compile Include="StreamSystem\Base\Partials\StreamSystem_DefaultImplementations_MoveForeign.cs" />
+    <Compile Include="StreamSystem\Base\Partials\StreamSystem_DefaultImplementations_Hash.cs" />
+    <Compile Include="StreamSystem\Base\Partials\StreamSystem_DefaultImplementations.cs" />
+    <Compile Include="StreamSystem\StreamSystem_PathModifier.cs" />
+    <Compile Include="StreamSystem\StreamSystem_PathModifier_Prefix.cs" />
+    <Compile Include="StreamSystem\StreamSystem_PathModifier_Directory.cs" />
+    <Compile Include="StreamSystem\StreamSystem_ReadOnly.cs" />
+    <Compile Include="StretchedHash\Extensions\StretchedHashExtensions_Verify.cs" />
+    <Compile Include="StretchedHash\Extensions\StretchedHashExtensions.cs" />
+    <Compile Include="StretchedHash\StretchedHash.cs" />
+    <Compile Include="UnexpectedSignatureException\UnexpectedSignatureException.cs" />
+    <Compile Include="WrappedStream\WrappedStream.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Stream.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Object.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Text.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Read.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Write.cs" />
+    <Compile Include="StreamSystem\StreamSystem_Assembly.cs" />
+    <Compile Include="StreamSystem\StreamSystem_FileStream.cs" />
+    <Compile Include="StreamSystem\Base\StreamSystem.cs" />
+    <Compile Include="StreamSystem\StreamSystem_ResourceManager.cs" />
+    <Compile Include="SyntheticDictionary\SyntheticDictionary.cs" />
+    <Compile Include="TextParsingCache\TextParsingCache.cs" />
+    <Compile Include="WeakKey\WeakKeyComparer.cs" />
+    <Compile Include="ObjectTable\ObjectTable.cs" />
+    <Compile Include="WeakKey\WeakKey.cs" />
+    <Compile Include="WeakReference\WeakReference.cs" />
+    <Compile Include="Schedule\Extensions\ScheduleExtensions_Add.cs" />
+    <Compile Include="Schedule\Extensions\ScheduleExtensions.cs" />
+    <Compile Include="LazySchedule\LazySchedule.cs" />
+    <Compile Include="Schedule\Schedule.cs" />
+    <Compile Include="Pool\ArrayPool.cs" />
+    <Compile Include="Pool\ContainerPool.cs" />
+    <Compile Include="Pool\Extensions\ArrayPool\ArrayPoolExtensions_UseEnumerate.cs" />
+    <Compile Include="Pool\Extensions\ArrayPool\ArrayPoolExtensions.cs" />
+    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions_Use.cs" />
+    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions_UseEnumerate.cs" />
+    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions.cs" />
+    <Compile Include="Pool\ListPool.cs" />
+    <Compile Include="Pool\Pooled.cs" />
+    <Compile Include="Scheduler\SchedulerItem.cs" />
+    <Compile Include="Scheduler\Scheduler.cs" />
+    <Compile Include="Time\StepTimer\Extensions\StepTimerExtensions_Duration.cs" />
+    <Compile Include="Time\StepTimer\Extensions\StepTimerExtensions_Seconds.cs" />
+    <Compile Include="Time\StepTimer\StepTimer.cs" />
+    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_General.cs" />
+    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Duration.cs" />
+    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Milliseconds.cs" />
+    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Seconds.cs" />
+    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions.cs" />
+    <Compile Include="Time\TimePiece\TimePiece.cs" />
+    <Compile Include="Time\Timer\Extensions\TimerExtensions_Restart.cs" />
+    <Compile Include="Time\Timer\Extensions\TimerExtensions_Start.cs" />
+    <Compile Include="Time\Timer\Extensions\TimerExtensions.cs" />
+    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Restart.cs" />
+    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Start.cs" />
+    <Compile Include="TTCS\TTCS_Function.cs" />
+    <Compile Include="TTCS\TTCS_Utility.cs" />
+    <Compile Include="TTCS\TTCS_Arguments.cs" />
+    <Compile Include="TTCS\TTCS_Parameters.cs" />
+    <Compile Include="TTCS\TTCS.cs" />
+    <Compile Include="BackupFile\Extensions\BackupFileExtensions.cs" />
+    <Compile Include="BidirectionalDictionary\Extensions\BidirectionalDictionaryExtensions_Pivot.cs" />
+    <Compile Include="Bits\Bits.cs">
+      <DependentUpon>Bits.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AttemptResult\AttemptResult.cs" />
+    <Compile Include="BidirectionalDictionary\BidirectionalDictionary.cs" />
+    <Compile Include="BidirectionalDictionary\Extensions\BidirectionalDictionaryExtensions_Get.cs" />
+    <Compile Include="BidirectionalDictionary\Extensions\BidirectionalDictionaryExtensions.cs" />
+    <Compile Include="Blackhole\BlackholeList.cs" />
+    <Compile Include="Blackhole\Blackhole.cs" />
+    <Compile Include="Block\Block.cs" />
+    <Compile Include="CompareResult\CompareResult.cs" />
+    <Compile Include="CompareResult\Extensions\CompareResultExtensions_Equality.cs" />
+    <Compile Include="CompareResult\Extensions\CompareResultExtensions.cs" />
+    <Compile Include="Delay\Delay.cs" />
+    <Compile Include="Empty\Empty.cs" />
+    <Compile Include="Empty\EmptyList.cs" />
+    <Compile Include="EquivolenceDictionary\EquivolenceDictionary.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy_Resize.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_CopyClear.cs" />
+    <Compile Include="Extensions\IComparable\IComparableExtensions_Equality.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Convert_KeyValuePair.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To_SortedList.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Validate.cs" />
+    <Compile Include="Extensions\SortedList\SortedListExtensions_Nearest.cs" />
+    <Compile Include="Extensions\SortedList\SortedListExtensions_String_Narrow.cs" />
+    <Compile Include="Extensions\SortedList\SortedListExtensions_String.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Symbol_Style.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Symbol_Compare.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_Validate.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_TraverseLoop.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_TraverseWeb.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_GetOrCreate.cs" />
+    <Compile Include="MipMask\MipMask.cs" />
+    <Compile Include="OperationProcess\Extensions\MultiProcessExtensions.cs" />
+    <Compile Include="OperationProcess\MultiProcess.cs" />
+    <Compile Include="OperationProcess\Operation.cs" />
+    <Compile Include="Palette\Extensions\PaletteExtensions_Add.cs" />
+    <Compile Include="Palette\Extensions\PaletteExtensions_AtIndexs.cs" />
+    <Compile Include="Duration\Duration.cs" />
+    <Compile Include="DurationUnit\DurationUnit.cs" />
+    <Compile Include="DurationUnit\Extensions\DurationUnitExtensions.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Stowaway.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_ExtensionMethods.cs" />
+    <Compile Include="BinaryRepresentationType\BinaryRepresentationType.cs" />
+    <Compile Include="Extensions\ByteArray\ByteArrayExtensions_To.cs" />
+    <Compile Include="Extensions\ByteArray\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\Byte\ByteExtensions_String.cs" />
+    <Compile Include="Extensions\Char\CharExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\DateTime\DateTimeExtensions_To.cs" />
+    <Compile Include="Extensions\DateTime\DateTimeExtensions_TimeZone.cs" />
+    <Compile Include="Extensions\DateTime\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions_Int.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_List.cs" />
+    <Compile Include="Extensions\HashSet\HashSetExtensions_CalculateRelations.cs" />
+    <Compile Include="Extensions\HashSet\HashSetExtensions.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Ensure.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Alter.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_To.cs" />
+    <Compile Include="Extensions\IComparable\IComparableExtensions_Is.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_CalculateKeyRelations.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_FollowInferences_Same.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_FollowInferences.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Perform.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Apply.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertConnections.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessWithInterleaving.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessConnections.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_OnlyHas.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Has.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Index.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Find.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Are.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rolling.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Compare.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Exchange.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipEvery.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To_Dictionary.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To_OfType.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Ensure.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Insert_Marker.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Insert.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_AtIndexs.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Dropped.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Fill.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Capped.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Interpolate.cs" />
+    <Compile Include="Extensions\Int\IntExtensions_Repeat.cs" />
+    <Compile Include="Extensions\List\ListExtensions_Add.cs" />
+    <Compile Include="Extensions\List\ListExtensions_Reserve.cs" />
+    <Compile Include="Extensions\List\ListExtensions.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_GenericParameter.cs" />
+    <Compile Include="Extensions\NullableValue\NullableValueExtensions_Solidify.cs" />
+    <Compile Include="Extensions\NullableValue\NullableValueExtensions.cs" />
+    <Compile Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Transform.cs">
+      <DependentUpon>NumberExtensions_IEnumerable_Transform.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Running.cs">
+      <DependentUpon>NumberExtensions_IEnumerable_Running.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Total.cs">
+      <DependentUpon>NumberExtensions_IEnumerable_Total.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable.cs">
+      <DependentUpon>NumberExtensions_IEnumerable.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Quantized.cs">
+      <DependentUpon>NumberExtensions_Quantized.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Operations.cs">
+      <DependentUpon>NumberExtensions_Operations.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Looped.cs">
+      <DependentUpon>NumberExtensions_Looped.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions.cs">
+      <DependentUpon>NumberExtensions.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Binding.cs">
+      <DependentUpon>NumberExtensions_Binding.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_MinMax.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NumberExtensions_MinMax.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Object\ObjectExtensions_Convert_ToType.cs" />
+    <Compile Include="Extensions\Predicate\PredicateExtensions_Combine.cs" />
+    <Compile Include="Extensions\SortedList\SortedListExtensions_Index.cs" />
+    <Compile Include="Extensions\SortedList\SortedListExtensions.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions_SpoolAndRelease.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions_Stream.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions_Array.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions_Text.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions_Object.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Surround.cs" />
+    <Compile Include="Extensions\String\StringExtensions_To.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Overlay.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Layout.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Islands.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Lines.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Number.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_BasicName.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_CleanName.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Stowaway.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_GenericParameter.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Instancing_Array.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Treatment_Primitive.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_Chain.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_TraverseTree.cs" />
+    <Compile Include="Filename\Filename_Combine.cs" />
+    <Compile Include="Filename\Filename_Compare.cs" />
+    <Compile Include="Filename\Filename_Random.cs" />
+    <Compile Include="Filename\Filename_Absolute.cs" />
+    <Compile Include="Filename\Filename_Relative.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Timestamp.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Contents.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Directory.cs" />
+    <Compile Include="Files\Partials\FileAndDirectory\Files_FileAndDirectory.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Rename.cs" />
+    <Compile Include="Grid\Extensions\Special\GridExtensions_TraverseEdges.cs" />
+    <Compile Include="ForTypeAttribute\ForTypeAttribute.cs" />
+    <Compile Include="Latch\Latch.cs" />
+    <Compile Include="NeverCatchException\NeverCatchException.cs" />
+    <Compile Include="Document\DocumentNodeContainer\DocumentNodeContainer.cs" />
+    <Compile Include="Document\DocumentNodeContainer\Extensions\DocumentNodeContainerExtensions_Children.cs" />
+    <Compile Include="Document\DocumentNodeContainer\Extensions\DocumentNodeContainerExtensions_Add.cs" />
+    <Compile Include="Document\DocumentNodeContainer\Extensions\DocumentNodeContainerExtensions.cs" />
+    <Compile Include="Document\DocumentNode\Extensions\DocumentNodeExtensions.cs" />
+    <Compile Include="Empty\EmptyArray.cs" />
+    <Compile Include="Enumerable\Enumerable.cs" />
+    <Compile Include="EnumInfo\EnumInfo.cs" />
+    <Compile Include="EnumInfo\Extensions\EnumInfoExtensions.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions_Flags.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_GetOrCreateValue.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_AppendIf.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Expand.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_InnerConvert.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_InnerExpand.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_InnerUnique.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_InnerNarrow.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_InnerUnwrap.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Exhaust.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Unwrap.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessTandem.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Reverse.cs" />
+    <Compile Include="Extensions\IList\IListReverse.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Constructor.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_Traverse.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Enum_Internal.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Enum.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Enum.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_Conditional.cs" />
+    <Compile Include="HasInfo\Extensions\HasInfoExtensions.cs" />
+    <Compile Include="HasInfo\HasInfo.cs" />
+    <Compile Include="KeyValuePair\KeyValuePair_New.cs" />
+    <Compile Include="Numeric\Numerics.cs">
+      <DependentUpon>Numerics.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="OperationProcess\Process.cs" />
+    <Compile Include="PeriodicProcess\PeriodicProcess_Timer.cs" />
+    <Compile Include="Pinned\Pinned.cs" />
+    <Compile Include="Pinned\Pin.cs" />
+    <Compile Include="PixelMeasurer\PixelMeasurer.cs" />
+    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions.cs" />
+    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions_Hertz.cs" />
+    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions_Seconds.cs" />
+    <Compile Include="RateLimiter\RateLimiter.cs" />
+    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions.cs" />
+    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions_Hertz.cs" />
+    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions_Seconds.cs" />
+    <Compile Include="RefreshingValue\RefreshingValue.cs" />
+    <Compile Include="ResolveState\Extensions\IEnumerableExtensions_Resolve.cs" />
+    <Compile Include="ResolveState\ResolveState.cs" />
+    <Compile Include="SanityCheckException\SanityCheckException.cs" />
+    <Compile Include="StowawayFile\Extensions\StowawayFileExtensions.cs" />
+    <Compile Include="StowawayFile\StowawayFile.cs" />
+    <Compile Include="RollingCriteria\RollingCriteriaTarget.cs" />
+    <Compile Include="RollingCriteria\RollingCriteria.cs" />
+    <Compile Include="Swap\Swap.cs" />
+    <Compile Include="Strings\Strings_Random.cs" />
+    <Compile Include="Strings\Strings_Gauge.cs" />
+    <Compile Include="Strings\Strings.cs" />
+    <Compile Include="Table\LabeledTable.cs" />
+    <Compile Include="Table\IndexedTable.cs" />
+    <Compile Include="BackupFile\BackupFile.cs" />
+    <Compile Include="TextDocument\TextDocument.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Container\TextDocumentNode_Container.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNodeType.cs" />
+    <Compile Include="Extensions\Array2D\Array2DExtensions_Get.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Info.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Filename.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions.cs" />
+    <Compile Include="Extensions\Char\CharExtensions_Case.cs" />
+    <Compile Include="Extensions\Char\CharExtensions_Category.cs" />
+    <Compile Include="Extensions\Char\CharExtensions_Repeat.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Copy.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Get.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_List.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ReprocessTill.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Reverse.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Pop.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_ProcessRotated.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Process.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Rotate.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Invoke.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_IsNot.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_ToIEnumerable.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Process.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Is.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Case.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Match.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Group.cs" />
+    <Compile Include="Extensions\String\StringExtensions_SplitOn.cs" />
+    <Compile Include="Extensions\TextReader\TextReaderExtensions.cs" />
+    <Compile Include="Extensions\TextWriter\TextWriterExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Filename.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Generic.cs" />
+    <Compile Include="Extensions\WeakReference\WeakReferenceExtensions.cs" />
+    <Compile Include="Extensions\WeakReference\WeakReferenceExtensions_ICollection.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Array2D.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Iterators_Extended.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Extended.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByArray2D.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByArray2D.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByGrid.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByGrid.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByIEnumerable.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByIEnumerable.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByOperation.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByOperation.cs" />
+    <Compile Include="LabeledItemSet\IndexedItemSet\IndexedItem.cs" />
+    <Compile Include="LabeledItemSet\IndexedItemSet\IndexedItemSet.cs" />
+    <Compile Include="LabeledItemSet\NamedItemSet\NamedItem.cs" />
+    <Compile Include="LabeledItemSet\NamedItemSet\NamedItemSet.cs" />
+    <Compile Include="LookupSet\EnumerableLookupSet.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_Convert.cs" />
+    <Compile Include="LookupSet\Extensions\TupleKeyAnyValue\LookupSetExtensions_TupleKeyAnyValue.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_NarrowSet.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_ConvertSet.cs" />
+    <Compile Include="LookupSet\LookupSetValueTypeConverter.cs" />
+    <Compile Include="LookupSet\LookupSetValueNarrower.cs" />
+    <Compile Include="LookupSet\LookupSetValueConverter.cs" />
+    <Compile Include="LookupSet\Extensions\AnyKeyStringValue\LookupSetExtensions_AnyKeyStringValue.cs" />
+    <Compile Include="LookupSet\Extensions\AnyKeyStringValue\LookupSetExtensions_AnyKeyStringValue_Bool.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_Compare.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_IEnumerable.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_Lookup.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions.cs" />
+    <Compile Include="LabeledItemSet\Extensions\LabeledItemSetExtensions.cs" />
+    <Compile Include="LookupSet\LookupBackedSet\Extensions\LookupBackedSetExtensions_Compare.cs" />
+    <Compile Include="LookupSet\LookupBackedSet\Extensions\LookupBackedSetExtensions_Convert.cs" />
+    <Compile Include="LookupSet\LookupBackedSet\LookupBackedSet.cs" />
+    <Compile Include="LookupSet\LookupSet.cs" />
+    <Compile Include="Instance\Instance.cs" />
+    <Compile Include="PeriodicProcess\PeriodicProcess.cs" />
+    <Compile Include="Filename\Filename_Filename.cs" />
+    <Compile Include="Filename\Filename_Extension.cs" />
+    <Compile Include="Filename\Filename_Directory.cs" />
+    <Compile Include="Filename\Filename_Make.cs" />
+    <Compile Include="Filename\Filename_Type.cs" />
+    <Compile Include="Filename\Filename.cs" />
+    <Compile Include="Filename\Filename_Clean.cs" />
+    <Compile Include="Files\Files.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="Extensions\Array2D\Array2DExtensions_Convert.cs" />
+    <Compile Include="Extensions\Array2D\Array2DExtensions_Dimensions.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Append.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy.cs" />
+    <Compile Include="Extensions\Byte\ByteExtensions.cs" />
+    <Compile Include="Extensions\Array2D\Array2DExtensions.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_ProcessAndCull.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_GetAtKeys.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_GetValue.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Add.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessTill.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Array2D.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessCopy.cs" />
+    <Compile Include="Grid\Extensions\GridExtensions_Convert.cs" />
+    <Compile Include="Palette\Extensions\PaletteExtensions.cs" />
+    <Compile Include="Palette\Palette.cs" />
+    <Compile Include="Pedia\Pedia.cs" />
+    <Compile Include="StringOption\StringOption.cs" />
+    <Compile Include="StringOption\StringOption_Basic_Any.cs" />
+    <Compile Include="StringOption\StringOption_Basic_IsId.cs" />
+    <Compile Include="StringOption\StringOption_Baisc_Regex.cs" />
+    <Compile Include="StringOption\StringOption_Basic_IsVisible.cs" />
+    <Compile Include="TextDocument\TextDocumentBuilder.cs" />
+    <Compile Include="TextDocument\TextDocumentWriter.cs" />
+    <Compile Include="Document\DocumentBuilder.cs" />
+    <Compile Include="TextDocument\TextDocumentCanvas.cs" />
+    <Compile Include="Document\DocumentNode\DocumentNode.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Block\TextDocumentNode_Block_BlankLine.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Block\TextDocumentNode_Block_BlockText.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Block\TextDocumentNode_Block_LineText.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Block\TextDocumentNode_Block_Section.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Block\TextDocumentNode_Block_Line.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Block\TextDocumentNode_Block_Section_Indented.cs" />
+    <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Inline\TextDocumentNode_Inline_Text.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Chunk.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Split.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Rotate.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Index.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Length.cs" />
+    <Compile Include="CircularFixedLengthCollection\CircularQueue.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_All.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_All.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Block.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Iterators.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Iterators_Neighbors.cs" />
+    <Compile Include="Grid\Extensions\Derive\GridExtensions_Derive.cs" />
+    <Compile Include="Grid\Extensions\Derive\GridExtensions_Derive_Solid.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Neighbors.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_SequenceRating.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Sequence.cs" />
+    <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_MoveNext.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Get.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Looped.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Rotate.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Section.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Value.cs" />
+    <Compile Include="Extensions\IList\IListSubSection.cs" />
+    <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions.cs" />
+    <Compile Include="Extensions\Bool\BoolExtensions.cs" />
+    <Compile Include="Extensions\Char\CharExtensions.cs" />
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions.cs" />
+    <Compile Include="Grid\Grid.cs" />
+    <Compile Include="Grid\GridCell.cs" />
+    <Compile Include="Grid\Extensions\GridExtensions.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Block.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get.cs" />
+    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set.cs" />
+    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Spiral.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_CloseLoop.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Add.cs" />
+    <Compile Include="Extensions\IComparable\IComparableExtensions.cs" />
+    <Compile Include="Extensions\IComparable\IComparableExtensions_Binding.cs" />
+    <Compile Include="Extensions\IComparable\IComparableExtensions_MinMax.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Combinations.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_End.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_End_Extended.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating_Highest.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating_Lowest.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Start.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ToString.cs" />
+    <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Bridge.cs" />
+    <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Int\IntExtensions.cs" />
+    <Compile Include="Extensions\Int\IntExtensions_POT.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Access.cs" />
+    <Compile Include="Pit\Pit.cs" />
+    <Compile Include="CachedRegex\CachedRegex.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Bridge.cs" />
+    <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Count.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Remove.cs" />
+    <Compile Include="IndexSituation\IndexSituation.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Narrow.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Type.cs" />
+    <Compile Include="Pool\Pool.cs" />
+    <Compile Include="Predicates\Predicates.cs" />
+    <Compile Include="CachedRegex\CachedRegexReplaceMatch.cs" />
+    <Compile Include="CachedRegex\CachedRegexReplaceMatchCollection.cs" />
+    <Compile Include="Circular\CircularList.cs" />
+    <Compile Include="SignalingContainer\SignalingLabeledItemSet.cs" />
+    <Compile Include="SignalingContainer\SignalingLabeledItemSet_Basic.cs" />
+    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions.cs" />
+    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Duration.cs" />
+    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Percent.cs" />
+    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Seconds.cs" />
+    <Compile Include="LogTimer\LogTimer.cs" />
+    <Compile Include="Extensions\String\StringExtensions_EndsWith.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Escape.cs" />
+    <Compile Include="Extensions\String\StringExtensions_CoalesceBlank.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Make.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_String.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Repeat.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Replace_CaseInsensitive.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Save.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Search_Any.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Search_CaseInsensitive.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Search_None.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Search_Regex.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Space.cs" />
+    <Compile Include="Extensions\String\StringExtensions_StartsWith.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Word.cs" />
+    <Compile Include="StringIndentation\StringIndentation.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Bool.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Byte.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Double.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Float.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Int.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Long.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Short.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Word.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Remove.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Replace.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Word_Style.cs" />
+    <Compile Include="StringIndentation\StringIndentation_Space.cs" />
+    <Compile Include="StringIndentation\StringIndentation_Tab.cs" />
+    <Compile Include="StringIndentation\StringIndentation_TabAndSpace.cs" />
+    <Compile Include="StringOption\StringOptionException.cs" />
+    <Compile Include="StringOption\StringOption_Basic.cs" />
+    <Compile Include="LookupSet\LookupBackedSet\Extensions\LookupBackedSetExtensions.cs" />
+    <Compile Include="LookupSet\LookupBackedSet\Extensions\LookupBackedSetExtensions_Create.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_MultiKey.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_BackedSet.cs" />
+    <Compile Include="LookupSet\Extensions\LookupSetExtensions_Fallback.cs" />
+    <Compile Include="LookupSet\LookupBackedSet\BackedSet.cs" />
+    <Compile Include="Table\CmdSettingTable.cs" />
+    <Compile Include="Table\ConversionTable.cs" />
+    <Compile Include="Empty\EmptyEnumerable.cs" />
+    <Compile Include="Empty\EmptyEnumerator.cs" />
+    <Compile Include="ComparisonComparer\ComparisonComparer.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Compare.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Name.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Treatment.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Internal.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Convert.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Flatten.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Get.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_PairConsecutive.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_PairTandem.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Extended.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Skip.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Sort.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Unique.cs" />
+    <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions.cs" />
+    <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Consecutive.cs" />
+    <Compile Include="Extensions\IList\IListExtensions.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Count.cs" />
+    <Compile Include="LabeledAttribute\LabeledAttribute.cs" />
+    <Compile Include="LabeledItemSet\LabeledItem.cs" />
+    <Compile Include="LabeledItemSet\LabeledItemSet.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Compare.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_EffectiveParameter.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Name.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_TechnicalParameter.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Shadow.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Type.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Compare.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_String.cs" />
+    <Compile Include="OperationProcess\Extensions\OperationExtensions.cs" />
+    <Compile Include="Extensions\ParameterInfo\ParameterInfoExtensions_Treatment.cs" />
+    <Compile Include="Extensions\Predicate\PredicateExtensions.cs" />
+    <Compile Include="Extensions\Queue\QueueExtensions_Count.cs" />
+    <Compile Include="Relation\Relation.cs" />
+    <Compile Include="SignalingContainer\SignalingContainer_Collection_LabeledItemSet_Basic.cs" />
+    <Compile Include="Extensions\Stack\StackExtensions.cs" />
+    <Compile Include="Extensions\Stack\StackExtensions_Count.cs" />
+    <Compile Include="Extensions\Stack\StackExtensions_PushPop.cs" />
+    <Compile Include="Extensions\StringBuilder\StringBuilderExtensions.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Append.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Index.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Length.cs" />
+    <Compile Include="Extensions\String\StringExtensions_SplitAt.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Word_Compare.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Append.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Compare.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Count.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Extract.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Process.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search.cs" />
+    <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Tandem.cs" />
+    <Compile Include="OperationCache\OperationCacheItem.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Join.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions.cs" />
+    <Compile Include="OperationCache\OperationCache.cs" />
+    <Compile Include="Extensions\ParameterInfo\ParameterInfoExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalingContainer\SignalingContainer.cs" />
+    <Compile Include="SignalingContainer\SignalingContainer_Collection.cs" />
+    <Compile Include="SignalingContainer\SignalingContainer_Collection_List.cs" />
+    <Compile Include="SignalingContainer\SignalingContainer_Collection_LabeledItemSet.cs" />
+    <Compile Include="SignalingContainer\SignalingContainer_Single.cs" />
+    <Compile Include="SignalingContainer\SignalingList.cs" />
+    <Compile Include="SignalingContainer\SignalingSingle.cs" />
+    <Compile Include="Identifiable\IdentifiableObject.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Block.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Combine.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Compare.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Count.cs" />
+    <Compile Include="Extensions\String\StringExtensions.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Extraction.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Intersection.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Search.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Trim.cs" />
+    <Compile Include="Table\Table.cs" />
+    <Compile Include="Table\OptionTable.cs" />
+    <Compile Include="Table\SettingTable.cs" />
+    <Compile Include="Table\StringTable.cs" />
+    <Compile Include="Time\Timer\Timer.cs" />
+    <Compile Include="Time\Timer\Timer_Duration\Timer_Duration.cs" />
+    <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions.cs" />
+    <Compile Include="Time\TimeSource\TimeSource.cs" />
+    <Compile Include="Time\TimeSource\TimeSource_Stopwatch.cs" />
+    <Compile Include="Transfer\Transfer.cs" />
+    <Compile Include="Tuple\Extensions\TupleExtensions.cs" />
+    <Compile Include="Tuple\Tuple_New.cs" />
+    <Compile Include="Tuple\Tuple.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Enumerable\ContentsEnumerable.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Compare.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Instancing.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Name.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Relation.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Shadow.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Treatment.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_Compare.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Convert.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_PseudoStack.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Treatment.cs" />
+    <Compile Include="UnaccountedBranchException\UnaccountedBranchException.cs" />
+    <Compile Include="UnitSystem\UnitDefinition\UnitDefinition_Constant.cs" />
+    <Compile Include="UnitSystem\UnitDefinition\UnitDefinition_ThatIsNThis.cs" />
+    <Compile Include="UnitSystem\UnitDefinition\UnitDefinition_ThisIsNThat.cs" />
+    <Compile Include="UnitSystem\UnitDefinition\UnitDefinition_Ratio.cs" />
+    <Compile Include="UnitSystem\UnitDefinition\UnitDefinition_Internal.cs" />
+    <Compile Include="UnitSystem\UnitDefinition\UnitDefinition.cs" />
+    <Compile Include="UnitSystem\UnitSystem.cs" />
+    <Compile Include="Unknown\Unknown.cs" />
+    <Compile Include="ValueChangeInfo\ValueChangeInfo.cs" />
+    <Compile Include="WeakObject\Extensions\WeakObjectExtensions.cs" />
+    <Compile Include="WeakObject\Extensions\WeakObjectExtensions_ICollection.cs" />
+    <Compile Include="WeakObject\WeakObject.cs" />
+    <Compile Include="Graph\GraphNode\Extensions\GraphNodeExtensions_Path.cs" />
+    <Compile Include="Graph\GraphNode\Extensions\GraphNodeExtensions_DeepConnected.cs" />
+    <Compile Include="Graph\GraphNode\Extensions\GraphNodeExtensions.cs" />
+    <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorVisit\GraphNodeNavigatorVisit.cs" />
+    <Compile Include="Graph\GraphNode\GraphNode.cs" />
+    <Compile Include="Graph\Graph.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bits\Bits.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Bits.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_ForTypeAttribute.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ICustomAttributeProviderExtensions_ForTypeAttribute.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Search.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ICustomAttributeProviderExtensions_Search.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_LabeledAttribute.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ICustomAttributeProviderExtensions_LabeledAttribute.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Has.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ICustomAttributeProviderExtensions_Has.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Get.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ICustomAttributeProviderExtensions_Get.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\IEnumerable\IEnumerableExtensions_PartOut.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IEnumerableExtensions_PartOut.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\NumberFit\NumberFitExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberFitExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IDictionary\NumberExtensions_IDictionary_Operate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IDictionary_Operate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IDictionary\NumberExtensions_IDictionary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IDictionary.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Operate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IEnumerable_Operate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_DiminishingTotal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IEnumerable_DiminishingTotal.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Transform.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IEnumerable_Transform.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Running.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IEnumerable_Running.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable_Total.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IEnumerable_Total.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_IEnumerable.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Length.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Length.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Quantized.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Quantized.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Operations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Operations.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Looped.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Looped.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Binding.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Binding.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_MinMax.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_MinMax.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\NumberConvert\NumberConvertExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberConvertExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number_Real\NumberRealExtensions_Binding.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_Binding.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number_Real\NumberRealExtensions_Interpolate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_Interpolate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number_Real\NumberRealExtensions_Style.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_Style.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number_Real\NumberRealExtensions_Components.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_Components.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number_Real\NumberRealExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\String\StringExtensions_Regex_PartOut.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StringExtensions_Regex_PartOut.cs</LastGenOutput>
+    </Content>
+    <Content Include="Husker\Common\HuskerCommon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HuskerCommon.cs</LastGenOutput>
+    </Content>
+    <Content Include="Identifiable\Common\IdentifiableCommon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IdentifiableCommon.cs</LastGenOutput>
+    </Content>
+    <Content Include="Numeric\Numerics.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Numerics.cs</LastGenOutput>
+    </Content>
+    <Content Include="OrderedCollection\OrderedList.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OrderedList.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

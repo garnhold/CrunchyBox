@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E2B2475-732C-41E1-A746-552A07B2F283}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyRecipe</RootNamespace>
+    <AssemblyName>CrunchyRecipe</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\..\..\..\..\..\..\C#\AntlrRuntime4.5.1\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="Tyon\antlr4\TyonBaseVisitor.cs" />
+    <Compile Include="Tyon\antlr4\TyonLexer.cs" />
+    <Compile Include="Tyon\antlr4\TyonParser.cs" />
+    <Compile Include="Tyon\antlr4\TyonVisitor.cs" />
+    <Compile Include="Tyon\TyonAddress.cs" />
+    <Compile Include="Tyon\TyonAddress_Identifier.cs" />
+    <Compile Include="Tyon\TyonAddress_Int.cs" />
+    <Compile Include="Tyon\TyonAddress_Object.cs" />
+    <Compile Include="Tyon\TyonAddress_String.cs" />
+    <Compile Include="Tyon\TyonBridge.cs" />
+    <Compile Include="Tyon\TyonBridge_CalculateExternal_Type_Operation.cs" />
+    <Compile Include="Tyon\TyonBridge_CalculateExternal_Type.cs" />
+    <Compile Include="Tyon\TyonBridge_CalculateExternal.cs" />
+    <Compile Include="Tyon\TyonBridge_RegisterExternal_Type.cs" />
+    <Compile Include="Tyon\TyonBridge_RegisterExternal.cs" />
+    <Compile Include="Tyon\TyonBridge_Default.cs" />
+    <Compile Include="Tyon\Tyon.cs" />
+    <Compile Include="Tyon\TyonArray.cs" />
+    <Compile Include="Tyon\TyonContext.cs" />
+    <Compile Include="Tyon\TyonSurrogate.cs" />
+    <Compile Include="Tyon\TyonAddressable.cs" />
+    <Compile Include="Tyon\TyonDesignatedVariableProvider_Fields.cs" />
+    <Compile Include="Tyon\TyonDesignatedVariableProvider_Fields_Public.cs" />
+    <Compile Include="Tyon\TyonDOMinator.cs" />
+    <Compile Include="Tyon\TyonElement.cs" />
+    <Compile Include="Tyon\TyonContext_Dehydration.cs" />
+    <Compile Include="Tyon\TyonContext_Hydration.cs" />
+    <Compile Include="Tyon\TyonObject.cs" />
+    <Compile Include="Tyon\TyonResolver.cs" />
+    <Compile Include="Tyon\TyonDesignatedVariableProvider_Manual.cs" />
+    <Compile Include="Tyon\TyonDesignatedVariableProvider_Fields_Marked.cs" />
+    <Compile Include="Tyon\TyonDesignatedVariableProvider.cs" />
+    <Compile Include="Tyon\TyonSerializationComponent.cs" />
+    <Compile Include="Tyon\TyonSerializationSettings.cs" />
+    <Compile Include="Tyon\TyonSyntaxException.cs" />
+    <Compile Include="Tyon\TyonType.cs" />
+    <Compile Include="Tyon\TyonType_Normal.cs" />
+    <Compile Include="Tyon\TyonType_Templated.cs" />
+    <Compile Include="Tyon\TyonValue.cs" />
+    <Compile Include="Tyon\TyonValue_Array.cs" />
+    <Compile Include="Tyon\TyonValue_ExternalAddress.cs" />
+    <Compile Include="Tyon\TyonValue_InternalAddress.cs" />
+    <Compile Include="Tyon\TyonValue_Null.cs" />
+    <Compile Include="Tyon\TyonValue_Number.cs" />
+    <Compile Include="Tyon\TyonValue_Object.cs" />
+    <Compile Include="Tyon\TyonValue_String.cs" />
+    <Compile Include="Tyon\TyonValue_Surrogate.cs" />
+    <Compile Include="Tyon\TyonVariable.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

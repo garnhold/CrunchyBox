@@ -1,0 +1,48 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_HasComponent
+    {
+<# foreach(string type_name in type_names){#>
+		static public bool HasComponent(this <#=type_name#> item, Type type)
+        {
+            if (item.GetComponent(type).IsNotNull())
+                return true;
+
+            return false;
+        }
+        static public bool HasComponent<T>(this <#=type_name#> item)
+        {
+            return item.HasComponent(typeof(T));
+        }
+
+		static public bool HasComponentUpward(this <#=type_name#> item, Type type)
+		{
+			if (item.GetComponentInParent(type).IsNotNull())
+				return true;
+
+			return false;
+		}
+		static public bool HasComponentUpward<T>(this <#=type_name#> item)
+		{
+			return item.HasComponentUpward(typeof(T));
+		}
+
+<# } #>
+	}
+}

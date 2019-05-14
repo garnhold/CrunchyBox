@@ -1,0 +1,150 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+
+ConstantType[] constant_types = new ConstantType[]{
+	new ConstantType("Bool", "bool", "canvas.Emit_Ldc_I4(constant.ConvertBool(1, 0));", "constant.ToStringEX()"),
+
+	new ConstantType("Byte", "byte", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),
+	new ConstantType("Short", "short", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),
+	new ConstantType("Int", "int", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),
+
+	new ConstantType("Long", "long", "canvas.Emit_Ldc_I8(constant);", "constant.ToStringEX()"),
+	new ConstantType("Float", "float", "canvas.Emit_Ldc_R4(constant);", "constant.ToStringEX()"),
+	new ConstantType("Double", "double", "canvas.Emit_Ldc_R8(constant);", "constant.ToStringEX()"),
+
+	new ConstantType("String", "string", "canvas.Emit_Ldstr(constant);", "constant.StyleAsLiteralString()"),
+
+	new ConstantType("TypeOf", "Type", "canvas.Emit_Ldtoken(constant); canvas.Emit_Call(typeof(Type).GetStaticMethod<RuntimeTypeHandle>(\"GetTypeFromHandle\"));", "\"typeof(\" + constant.ToStringEX() + \")\"")
+};
+
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using System.Reflection;
+using System.Reflection.Emit;
+
+using System.Globalization;
+
+using CrunchyDough;
+
+namespace CrunchySalt
+{
+	public abstract partial class ILLiteral : ILValue
+	{
+		public abstract object GetLiteralValue();
+
+		static public ILLiteral New(Type type, object value)
+		{
+			if(value == null)
+				return ILNull.INSTANCE;
+
+		<#foreach(ConstantType constant_type in constant_types){#>
+
+			if(type == typeof(<#=constant_type.type_name#>))
+				return new IL<#=constant_type.class_name#>((<#=constant_type.type_name#>)value);
+		<#}#>
+
+			throw new UnaccountedBranchException("type", type);
+		}
+		static public ILLiteral New(object value)
+		{
+			return New(value.GetTypeEX(), value);
+		}
+
+		public override void RenderIL_Store(ILCanvas canvas, ILValue value)
+        {
+            throw new InvalidOperationException(GetType() + " doesn't support storing.");
+        }
+
+		public override bool IsILCostTrivial()
+		{
+			return true;
+		}
+
+		public override bool CanLoad()
+		{
+			return true;
+		}
+
+		public override bool CanStore()
+		{
+			return false;
+		}
+	}
+
+<#foreach(ConstantType constant_type in constant_types){#>
+
+	public class IL<#=constant_type.class_name#> : ILLiteral
+	{
+		private <#=constant_type.type_name#> constant;
+
+		public IL<#=constant_type.class_name#>(<#=constant_type.type_name#> c)
+		{
+			constant = c;
+		}
+
+		public override void RenderIL_Load(ILCanvas canvas)
+		{
+			<#=constant_type.load_code#>
+		}
+
+		public override void RenderText_Value(ILTextCanvas canvas)
+		{
+			canvas.AppendToLine(<#=constant_type.to_string_code#>);
+		}
+
+		public override Type GetValueType()
+		{
+			return typeof(<#=constant_type.type_name#>);
+		}
+
+		public override object GetLiteralValue()
+		{
+			return constant;
+		}
+	}
+	public abstract partial class ILValue
+	{
+		static public implicit operator ILValue(<#=constant_type.type_name#> item)
+		{
+			return new IL<#=constant_type.class_name#>(item);
+		}
+	}
+	public abstract partial class ILLiteral
+	{
+		static public implicit operator ILLiteral(<#=constant_type.type_name#> item)
+		{
+			return new IL<#=constant_type.class_name#>(item);
+		}
+	}
+<#}#>
+}
+<#+
+public class ConstantType
+{
+	public readonly string class_name;
+	public readonly string type_name;
+
+	public readonly string load_code;
+	public readonly string to_string_code;
+
+	public ConstantType(string c, string t, string lc, string tsc)
+	{
+		class_name = c;
+		type_name = t;
+
+		load_code = lc;
+		to_string_code = tsc;
+	}
+}
+
+#>

@@ -1,0 +1,78 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_IEnumerable_Total
+    {
+<# foreach(string type_name in type_names){#>
+		static public <#=type_name#> Sum(this IEnumerable<<#=type_name#>> item)
+		{
+			<#=type_name#> total = 0;
+
+			foreach(<#=type_name#> sub_item in item)
+				total += sub_item;
+
+			return total;
+		}
+
+		static public <#=type_name#> Product(this IEnumerable<<#=type_name#>> item)
+		{
+			<#=type_name#> total = 1;
+
+			foreach(<#=type_name#> sub_item in item)
+				total *= sub_item;
+
+			return total;
+		}
+
+		static public <#=type_name#> Average(this IEnumerable<<#=type_name#>> item)
+		{
+			int count = 0;
+			<#=type_name#> total = 0;
+
+			foreach(<#=type_name#> sub_item in item)
+			{
+				total += sub_item;
+				count++;
+			}
+
+			return total / count;
+		}
+
+		static public <#=type_name#> Min(this IEnumerable<<#=type_name#>> item)
+		{
+			<#=type_name#> min = item.GetFirst();
+
+			foreach(<#=type_name#> sub_item in item)
+				min = min.Min(sub_item);
+
+			return min;
+		}
+
+		static public <#=type_name#> Max(this IEnumerable<<#=type_name#>> item)
+		{
+			<#=type_name#> max = item.GetFirst();
+
+			foreach(<#=type_name#> sub_item in item)
+				max = max.Max(sub_item);
+
+			return max;
+		}
+<# } #>
+	}
+}

@@ -1,0 +1,39 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Child_Sequence
+    {
+<# foreach(string type_name in type_names){#>
+		static public IEnumerable<GameObject> GetChildSequence(this <#=type_name#> item, GameObject child)
+        {
+            return child.GetSelfAndParents().EndBefore(item.gameObject).Reverse();
+        }
+
+        static public IEnumerable<string> GetChildNameSequence(this <#=type_name#> item, GameObject child)
+        {
+            return item.GetChildSequence(child).Convert(c => c.name);
+        }
+
+        static public string GetChildPath(this <#=type_name#> item, GameObject child)
+        {
+            return item.GetChildNameSequence(child).Join("->");
+        }
+
+<# } #>
+	}
+}

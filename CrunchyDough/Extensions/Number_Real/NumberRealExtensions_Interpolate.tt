@@ -1,0 +1,55 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] type_info = new NumericInfo[]{
+	new NumericInfo("float", "Float", "1.0f", "0.0f"),
+	new NumericInfo("double", "Double", "1.0", "0.0"),
+	new NumericInfo("decimal", "Decimal", "1.0m", "0.0m")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberRealExtensions_Interpolate
+    {
+<# foreach(NumericInfo type in type_info){#>
+
+		static public <#=type.type_name#> GetInterpolate(this <#=type.type_name#> item, <#=type.type_name#> target, <#=type.type_name#> amount)
+        {
+            amount = amount.BindBetween(<#=type.zero#>, <#=type.one#>);
+
+            return item * (<#=type.one#> - amount) + target * amount;
+        }
+
+		static public <#=type.type_name#> InterpolateWith(this <#=type.type_name#> item, <#=type.type_name#> source, <#=type.type_name#> target)
+		{
+			return source.GetInterpolate(target, item);
+		}
+<# } #>
+	}
+}
+
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public readonly string one;
+	public readonly string zero;
+
+	public NumericInfo(string t, string c, string o, string z)
+	{
+		type_name = t;
+		class_name = c;
+
+		one = o;
+		zero = z;
+	}
+}
+#>

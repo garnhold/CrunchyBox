@@ -1,0 +1,100 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_parameters = 10;
+
+Style[] styles = new Style[]{
+	new Style("TechnicalMember", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly"),
+	new Style("TechnicalInstance", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly"),
+	new Style("Static", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly")
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+
+namespace CrunchySalt
+{
+	static public class TypeExtensions_MethodInfo
+	{
+	<#foreach(Style style in styles){#>
+
+		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_<#=style.name#>_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetMethods(<#=style.binding_flags#>)
+				.Convert(m => m.GetMethodInfoEX())
+				.ToList();
+		});
+		static public IEnumerable<MethodInfoEX> GetImmediate<#=style.name#>Methods(this Type item)
+		{
+			return GET_IMMEDIATE_<#=style.name#>_METHODS.Fetch(item);
+		}
+
+		static private OperationCache<List<MethodInfoEX>, Type> GET_<#=style.name#>_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediate<#=style.name#>Methods())
+				.ToList();
+		});
+		static public IEnumerable<MethodInfoEX> Get<#=style.name#>Methods(this Type item)
+		{
+			return GET_<#=style.name#>_METHODS.Fetch(item);
+		}
+
+		static private OperationCache<MethodInfoEX, Type, string, ContentsEnumerable<Type>> GET_IMMEDIATE_<#=style.name#>_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name, ContentsEnumerable<Type> parameter_types){
+			return item.GetMethod(name, <#=style.binding_flags#>, null, parameter_types.ToArray(), null)
+				.GetMethodInfoEX();
+		});
+		static public MethodInfoEX GetImmediate<#=style.name#>Method(this Type item, string name, IEnumerable<Type> parameter_types)
+		{
+			return GET_IMMEDIATE_<#=style.name#>_METHOD.Fetch(item, name, new ContentsEnumerable<Type>(parameter_types));
+		}
+
+		<#for(int i = 0; i < max_number_parameters; i++){#>
+
+			static public MethodInfoEX GetImmediate<#=style.name#>Method<#=TTCS.ArgumentsForGeneric("P#", i)#>(this Type item, string name)
+			{
+				return item.GetImmediate<#=style.name#>Method(name, new Type[]{<#=TTCS.Arguments("typeof(P#)", i)#>});
+			}
+		<#}#>
+
+		static private OperationCache<MethodInfoEX, Type, string, ContentsEnumerable<Type>> GET_<#=style.name#>_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name, ContentsEnumerable<Type> parameter_types){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediate<#=style.name#>Method(name, parameter_types))
+				.GetFirstNonNull();
+		});
+		static public MethodInfoEX Get<#=style.name#>Method(this Type item, string name, IEnumerable<Type> parameter_types)
+		{
+			return GET_<#=style.name#>_METHOD.Fetch(item, name, new ContentsEnumerable<Type>(parameter_types));
+		}
+
+		<#for(int i = 0; i < max_number_parameters; i++){#>
+
+			static public MethodInfoEX Get<#=style.name#>Method<#=TTCS.ArgumentsForGeneric("P#", i)#>(this Type item, string name)
+			{
+				return item.Get<#=style.name#>Method(name, new Type[]{<#=TTCS.Arguments("typeof(P#)", i)#>});
+			}
+		<#}#>
+	<#}#>
+	}
+}
+<#+
+public class Style
+{
+	public readonly string name;
+	public readonly string binding_flags;
+
+	public Style(string n, string b)
+	{
+		name = n;
+		binding_flags = b;
+	}
+}
+#>

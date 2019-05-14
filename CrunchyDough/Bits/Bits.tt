@@ -1,0 +1,294 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] types = new NumericInfo[]{
+	new NumericInfo("byte", "Byte", "1", "0", "BYTE0", 8),
+	new NumericInfo("int", "Int", "1", "0", "BYTE0_BYTE1_BYTE2_BYTE3", 32),
+	new NumericInfo("long", "Long", "1L", "0L", "BYTE0_BYTE1_BYTE2_BYTE3 | BYTE4_BYTE5_BYTE6_BYTE7", 64)
+};
+
+BitwiseOperationInfo[] operations = new BitwiseOperationInfo[]{
+	new BitwiseOperationInfo("OR", "|"),
+	new BitwiseOperationInfo("AND", "&"),
+	new BitwiseOperationInfo("XOR", "^")
+};
+
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<# foreach(NumericInfo type in types){#>
+    static public class <#=type.class_name#>Bits
+	{
+		public const int NUMBER_BITS = <#=type.number_bits#>;
+		public const int NUMBER_BYTES = <#=type.number_bytes#>;
+
+	<# for(int i = 0; i < type.number_bits; i++){#>
+		public const <#=type.type_name#> BIT<#=i#> = <#=type.one#> << <#=i#>;
+	<#}#>
+
+	<# for(int i = 0; i < type.number_bytes; i++){#>
+		public const <#=type.type_name#> BYTE<#=i#>_NIBBLE0_HALF0 = BIT<#=i*8#> | BIT<#=i*8 + 1#>;
+        public const <#=type.type_name#> BYTE<#=i#>_NIBBLE0_HALF1 = BIT<#=i*8 + 2#> | BIT<#=i*8 + 3#>;
+        public const <#=type.type_name#> BYTE<#=i#>_NIBBLE0 = BYTE<#=i#>_NIBBLE0_HALF0 | BYTE<#=i#>_NIBBLE0_HALF1;
+
+        public const <#=type.type_name#> BYTE<#=i#>_NIBBLE1_HALF0 = BIT<#=i*8 + 4#> | BIT<#=i*8 + 5#>;
+        public const <#=type.type_name#> BYTE<#=i#>_NIBBLE1_HALF1 = BIT<#=i*8 + 6#> | BIT<#=i*8 + 7#>;
+        public const <#=type.type_name#> BYTE<#=i#>_NIBBLE1 = BYTE<#=i#>_NIBBLE1_HALF0 | BYTE<#=i#>_NIBBLE1_HALF1;
+
+        public const <#=type.type_name#> BYTE<#=i#> = BYTE<#=i#>_NIBBLE0 | BYTE<#=i#>_NIBBLE1;
+	<#}#>
+
+	<# for(int i = 0; i < type.number_bytes / 2; i++){#>
+		public const <#=type.type_name#> BYTE<#=i*2#>_BYTE<#=i*2 + 1#> = BYTE<#=i*2#> | BYTE<#=i*2 + 1#>;
+	<#}#>
+
+	<# for(int i = 0; i < type.number_bytes / 4; i++){#>
+		public const <#=type.type_name#> BYTE<#=i*4#>_BYTE<#=i*4 + 1#>_BYTE<#=i*4 + 2#>_BYTE<#=i*4 + 3#> = BYTE<#=i*4#> | BYTE<#=i*4 + 1#> | BYTE<#=i*4 + 2#> | BYTE<#=i*4 + 3#>;
+	<#}#>
+
+		public const <#=type.type_name#> NO_BITS = <#=type.zero#>;
+		public const <#=type.type_name#> ALL_BITS = <#=type.all#>;
+
+		static public <#=type.type_name#> Get(<# for(int i = 0; i < type.number_bits; i++){#>bool bit<#=i#><#=(i != type.number_bits - 1)? ", " : ""#><#}#>)
+		{
+			<#=type.type_name#> value = <#=type.zero#>;
+
+	<#for(int i = 0; i < type.number_bits; i++){#>
+			if(bit<#=i#>)value |= BIT<#=i#>;
+	<#}#>
+
+			return value;
+		}
+
+        static public <#=type.type_name#> GetNthBitValue(int n)
+        {
+            return (<#=type.type_name#>)(<#=type.one#> << n);
+        }
+	}
+
+	static public class <#=type.class_name#>BitsExtensions
+	{
+		static public <#=type.type_name#> GetBitUnion(this <#=type.type_name#> item, <#=type.type_name#> other)
+		{
+			return (<#=type.type_name#>)(item | other);
+		}
+
+		static public <#=type.type_name#> GetBitIntersection(this <#=type.type_name#> item, <#=type.type_name#> other)
+		{
+			return (<#=type.type_name#>)(item & other);
+		}
+
+		static public <#=type.type_name#> GetBitExclusion(this <#=type.type_name#> item, <#=type.type_name#> other)
+		{
+			return (<#=type.type_name#>)(item & (~other));
+		}
+
+		static public bool HasAnyBits(this <#=type.type_name#> item, <#=type.type_name#> bits)
+        {
+            if ((item & bits) != 0)
+                return true;
+
+            return false;
+        }
+
+        static public bool HasAllBits(this <#=type.type_name#> item, <#=type.type_name#> bits)
+        {
+            if ((item & bits) == bits)
+                return true;
+
+            return false;
+        }
+
+        static public bool HasNoBits(this <#=type.type_name#> item, <#=type.type_name#> bits)
+        {
+            if ((item & bits) == 0)
+                return true;
+
+            return false;
+        }
+
+		static public byte GetLowestBitIndex(this <#=type.type_name#> item)
+		{
+			unchecked
+			{
+				<#=type.GenerateGetLowestBitIndexCode("item")#>
+			}
+		}
+		static public <#=type.type_name#> GetLowestBitValue(this <#=type.type_name#> item)
+        {
+            return <#=type.class_name#>Bits.GetNthBitValue(item.GetLowestBitIndex());
+        }
+
+		static public byte GetHighestBitIndex(this <#=type.type_name#> item)
+		{
+			unchecked
+			{
+				<#=type.GenerateGetHighestBitIndexCode("item")#>
+			}
+		}
+		static public <#=type.type_name#> GetHighestBitValue(this <#=type.type_name#> item)
+        {
+            return <#=type.class_name#>Bits.GetNthBitValue(item.GetHighestBitIndex());
+        }
+
+		static public IEnumerable<byte> GetBitIndexs(this <#=type.type_name#> item)
+		{
+			unchecked
+			{
+				<#=type.GenerateGetBitIndexsCode("item")#>
+			}
+		}
+
+	<#if(type.type_name != "byte"){#>
+		static public byte GetNthByte(this <#=type.type_name#> item, int n)
+		{
+			return (byte)(item >> (n * 8));
+		}
+	<#}#>
+
+	<# foreach(BitwiseOperationInfo operation in operations){#>
+		static public <#=type.type_name#> Bitwise<#=operation.name#>(this IEnumerable<<#=type.type_name#>> item)
+		{
+			return item.PerformIteratedBinaryOperation((v1, v2) => (<#=type.type_name#>)(v1 <#=operation.operand#> v2));
+		}
+	<#}#>
+	}
+<# } #>
+}
+
+<#+
+public class BitwiseOperationInfo
+{
+	public readonly string name;
+	public readonly string operand;
+	
+	public BitwiseOperationInfo(string n, string o)
+	{
+		name = n;
+		operand = o;
+	}
+}
+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public readonly string one;
+	public readonly string zero;
+
+	public readonly string all;
+
+	public readonly int number_bits;
+	public readonly int number_bytes;
+
+	public NumericInfo(string t, string c, string o, string z, string a, int n)
+	{
+		type_name = t;
+		class_name = c;
+
+		one = o;
+		zero = z;
+
+		all = a;
+
+		number_bits = n;
+		number_bytes = number_bits / 8;
+	}
+
+	public string GenerateGetLowestBitIndexCode(string variable, int index, int size)
+	{
+		int half_size = size / 2;
+
+		if(half_size > 0)
+		{
+			int low_index = index;
+			int high_index = index + half_size;
+
+			return 
+			"if(" + variable + ".HasAnyBits(" + GetBlockMask(low_index, half_size) + "))\n" +
+			"{\n" +
+				GenerateGetLowestBitIndexCode(variable, low_index, half_size) +
+			"}\n" +
+			"else\n" +
+			"{\n" +
+				GenerateGetLowestBitIndexCode(variable, high_index, half_size) +
+			"}\n";
+		}
+
+		return "return " + index + ";";
+	}
+	public string GenerateGetLowestBitIndexCode(string variable)
+	{
+		return GenerateGetLowestBitIndexCode(variable, 0, number_bits);
+	}
+
+	public string GenerateGetHighestBitIndexCode(string variable, int index, int size)
+	{
+		int half_size = size / 2;
+
+		if(half_size > 0)
+		{
+			int low_index = index;
+			int high_index = index + half_size;
+
+			return 
+			"if(" + variable + ".HasAnyBits(" + GetBlockMask(high_index, half_size) + "))\n" +
+			"{\n" +
+				GenerateGetHighestBitIndexCode(variable, high_index, half_size) +
+			"}\n" +
+			"else\n" +
+			"{\n" +
+				GenerateGetHighestBitIndexCode(variable, low_index, half_size) +
+			"}\n";
+		}
+
+		return "return " + index + ";";
+	}
+	public string GenerateGetHighestBitIndexCode(string variable)
+	{
+		return GenerateGetHighestBitIndexCode(variable, 0, number_bits);
+	}
+
+	public string GenerateGetBitIndexsCode(string variable, int index, int size)
+	{
+		int half_size = size / 2;
+
+		if(half_size > 0)
+		{
+			int low_index = index;
+			int high_index = index + half_size;
+
+			return 
+			"if(" + variable + ".HasAnyBits(" + GetBlockMask(low_index, half_size) + "))\n" +
+			"{\n" +
+				GenerateGetBitIndexsCode(variable, low_index, half_size) +
+			"}\n" +
+
+			"if(" + variable + ".HasAnyBits(" + GetBlockMask(high_index, half_size) + "))\n" +
+			"{\n" +
+				GenerateGetBitIndexsCode(variable, high_index, half_size) +
+			"}\n";
+		}
+
+		return "yield return " + index + ";";
+	}
+	public string GenerateGetBitIndexsCode(string variable)
+	{
+		return GenerateGetBitIndexsCode(variable, 0, number_bits);
+	}
+
+	public string GetBlockMask(int index, int size)
+	{
+		long block = (1L << (size)) - 1L;
+
+		return "(" + type_name + ")0x" + (block << index).ToString("X" + (number_bytes * 2));
+	}
+}
+#>

@@ -1,0 +1,25 @@
+﻿using System;
+using System.IO;
+using System.Reflection;
+using System.Reflection.Emit;
+
+using UnityEngine;
+using UnityEditor;
+
+using CrunchyDough;
+using CrunchySalt;
+using CrunchyNoodle;
+using CrunchyBun;
+using CrunchySauce;
+using CrunchySandwich;
+
+namespace CrunchySandwichBag
+{
+    public class PainterBrush_Circle : PainterBrush
+    {
+        public override Brush<Color> CreateBrush(float size)
+        {
+            return new Brush_Stamp<Color>(Stamps.Circle<float>(size * 0.5f, 1.0f));
+        }
+    }
+}

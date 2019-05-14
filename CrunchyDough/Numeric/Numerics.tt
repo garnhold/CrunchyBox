@@ -1,0 +1,86 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] types = new NumericInfo[]{
+	new NumericInfo("int", "Ints"),
+	new NumericInfo("long", "Longs"),
+	new NumericInfo("float", "Floats"),
+	new NumericInfo("double", "Doubles"),
+	new NumericInfo("decimal", "Decimals")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<# foreach(NumericInfo type in types){#>	
+    static public class <#=type.class_name#>
+	{
+		static public IEnumerable<<#=type.type_name#>> Ray(<#=type.type_name#> start, <#=type.type_name#> step, int divisions)
+		{
+			for(int i = 0; i < divisions; i++)
+				yield return start + i * step;
+		}
+
+		static public IEnumerable<<#=type.type_name#>> Line(<#=type.type_name#> start, <#=type.type_name#> end, int divisions, bool include_end)
+		{
+			<#=type.type_name#> step;
+
+			if(include_end)
+				step = (end - start) / (divisions - 1);
+			else
+				step = (end - start) / divisions;
+
+			return Ray(start, step, divisions);
+		}
+
+		static public IEnumerable<<#=type.type_name#>> Range(<#=type.type_name#> start, <#=type.type_name#> end, <#=type.type_name#> step, bool include_end)
+		{
+			int divisions = (int)((end - start) / step).GetAbs();
+
+			if(include_end)
+				divisions++;
+
+			if(start < end)
+				return Ray(start, step.GetPositive(), divisions);
+
+			return Ray(start, step.GetNegative(), divisions);
+		}
+		static public IEnumerable<<#=type.type_name#>> Range(<#=type.type_name#> start, <#=type.type_name#> end, bool include_end)
+		{
+			return Range(start, end, 1, include_end);
+		}
+	}
+	static public class <#=type.class_name#>Extensions_Process
+	{
+		static public void ProcessWith<#=type.class_name#>Ray<T>(this ICollection<T> item, <#=type.type_name#> start, <#=type.type_name#> step, Process<<#=type.type_name#>, T> process)
+		{
+			<#=type.class_name#>.Ray(start, step, item.Count).ProcessTandemStrict(item, process);
+		}
+
+		static public void ProcessWith<#=type.class_name#>Line<T>(this ICollection<T> item, <#=type.type_name#> start, <#=type.type_name#> end, bool include_end, Process<<#=type.type_name#>, T> process)
+		{
+			<#=type.class_name#>.Line(start, end, item.Count, include_end).ProcessTandemStrict(item, process);
+		}
+	}
+
+<# } #>
+}
+
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public NumericInfo(string t, string c)
+	{
+		type_name = t;
+		class_name = c;
+	}
+}
+#>

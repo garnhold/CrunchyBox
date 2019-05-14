@@ -1,0 +1,60 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_arguments = 10;
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+using CrunchyNoodle;
+
+namespace CrunchySack
+{
+<#for(int number_arguments = 0; number_arguments <= max_number_arguments; number_arguments++){#>
+	<#
+	string basic_class_type = "RepresentationConstructor_Simple_Operation";
+	string generic_arguments = TTCS.ArgumentsForGeneric("P#", number_arguments, "T");
+
+	string class_type = basic_class_type + generic_arguments;
+	string operation_type = "Operation" + generic_arguments;
+	#>
+
+    public class <#=class_type#> : RepresentationConstructor_Simple
+	{
+		private <#=operation_type#> operation;
+
+		protected override object Instance(CmlExecution execution, IEnumerable<object> arguments)
+        {
+			<#for(int i = 1; i <= number_arguments; i++){#>
+				object obj<#=i#>;
+			<#}#>
+
+			<#if(number_arguments > 0){#>
+				arguments.PartOut(<#=TTCS.Arguments("out obj#", number_arguments)#>);
+			<#}#>
+
+			return operation(<#=TTCS.Arguments("obj#.ConvertEX<P\#>()", number_arguments)#>);
+        }
+
+        public <#=basic_class_type#>(string n, <#=operation_type#> o) : base(n, <#=number_arguments#>)
+		{
+			operation = o;
+		}
+    }
+	public partial class RepresentationConstructors
+	{
+		static public RepresentationConstructor Simple<#=generic_arguments#>(string n, <#=operation_type#> o)
+		{
+			return new <#=class_type#>(n, o);
+		}
+	}
+<#}#>
+}

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13FFB0C3-4EA9-41A6-9AD6-2EFF364B2B48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchySack_Android</RootNamespace>
+    <AssemblyName>CrunchySack_Android</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\..\..\..\..\..\..\C#\AntlrRuntime4.5.1\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyBun">
+      <HintPath>..\CrunchyBun\bin\Release\CrunchyBun.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySack">
+      <HintPath>..\CrunchySack\bin\Release\CrunchySack.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySodium, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrunchySodium\bin\Release\CrunchySodium.dll</HintPath>
+    </Reference>
+    <Reference Include="Java.Interop">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Java.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v6.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AndroidAssets\AndroidAssets.cs" />
+    <Compile Include="AndroidInfos\AndroidInfos.cs" />
+    <Compile Include="AndroidConstructors\AndroidConstructors.cs" />
+    <Compile Include="AndroidModifiers\AndroidModifiers.cs" />
+    <Compile Include="AndroidEngineActivity\AndroidEngineActivity.cs" />
+    <Compile Include="AndroidMeasurer\AndroidMeasurer.cs" />
+    <Compile Include="AndroidInstancers\AndroidInstancers.cs" />
+    <Compile Include="AndroidEngine\AndroidEngine.cs" />
+    <Compile Include="Basic\BasicAndroidEngine.cs" />
+    <Compile Include="Basic\BasicAndroidEngineInitilizer\BasicAndroidEngineInitilizerAttribute.cs" />
+    <Compile Include="Basic\BasicAndroidEngineInitilizer\BasicAndroidEngineInitilizer_Button.cs" />
+    <Compile Include="Basic\BasicAndroidEngineInitilizer\BasicAndroidEngineInitilizer_Container.cs" />
+    <Compile Include="Basic\BasicAndroidEngineInitilizer\BasicAndroidEngineInitilizer_Field.cs" />
+    <Compile Include="Basic\BasicAndroidEngineInitilizer\BasicAndroidEngineInitilizer_General.cs" />
+    <Compile Include="Basic\BasicAndroidEngineInitilizer\BasicAndroidEngineInitilizer_Layouts.cs" />
+    <Compile Include="Basic\BasicAndroidEngineInitilizer\BasicAndroidEngineInitilizer_Text.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_EventHandler.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions.cs" />
+    <Compile Include="Extensions\Activity\ActivityExtensions_Measurement.cs" />
+    <Compile Include="Extensions\Activity\ActivityExtensions.cs" />
+    <Compile Include="Extensions\Android\AndroidExtensions.cs" />
+    <Compile Include="Extensions\AssetManager\AssetManagerExtensions_File.cs" />
+    <Compile Include="Extensions\AssetManager\AssetManagerExtensions_Directory.cs" />
+    <Compile Include="Extensions\AssetManager\AssetManagerExtensions_StreamSystem.cs" />
+    <Compile Include="Extensions\AssetManager\AssetManagerExtensions.cs" />
+    <Compile Include="Extensions\Bitmap\BitmapExtensions_Rect.cs" />
+    <Compile Include="Extensions\Bitmap\BitmapExtensions_RectF.cs" />
+    <Compile Include="Extensions\Bitmap\BitmapExtensions_Size.cs" />
+    <Compile Include="Extensions\Bitmap\BitmapExtensions.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Bitmap.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Square.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Transform_Extended.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Transform.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Arc.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Rect.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Circle.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2_Line.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions_VectorF2.cs" />
+    <Compile Include="Extensions\Canvas\CanvasExtensions.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_Float.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_Float_GetWith.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_GetWith.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions.cs" />
+    <Compile Include="Extensions\Context\ContextExtensions_Share.cs" />
+    <Compile Include="Extensions\Context\ContextExtensions_Theme.cs" />
+    <Compile Include="Extensions\Context\ContextExtensions_Attribute.cs" />
+    <Compile Include="Extensions\Context\ContextExtensions.cs" />
+    <Compile Include="Extensions\Context\ContextExtensions_Paint.cs" />
+    <Compile Include="Extensions\DisplayMetrics\DisplayMetricsExtensions_Measurement.cs" />
+    <Compile Include="Extensions\DisplayMetrics\DisplayMetricsExtensions.cs" />
+    <Compile Include="Extensions\MeasureSpecMode\MeasureSpecModeExtensions.cs" />
+    <Compile Include="Extensions\MeasureSpec\MeasureSpecExtensions.cs" />
+    <Compile Include="Extensions\MotionEvent\MotionEventExtensions_VectorF2.cs" />
+    <Compile Include="Extensions\MotionEvent\MotionEventExtensions.cs" />
+    <Compile Include="Extensions\Paint\PaintExtensions_Text.cs" />
+    <Compile Include="Extensions\Paint\PaintExtensions.cs" />
+    <Compile Include="Extensions\Path\PathExtensions_VectorF2_Loop.cs" />
+    <Compile Include="Extensions\Path\PathExtensions_VectorF2_MoveTo.cs" />
+    <Compile Include="Extensions\Path\PathExtensions_VectorF2_RLineTo.cs" />
+    <Compile Include="Extensions\Path\PathExtensions_VectorF2_LineTo.cs" />
+    <Compile Include="Extensions\Path\PathExtensions_VectorF2.cs" />
+    <Compile Include="Extensions\Path\PathExtensions.cs" />
+    <Compile Include="Extensions\RectF\RectFExtensions_Rect.cs" />
+    <Compile Include="Extensions\RectF\RectFExtensions_VectorF2.cs" />
+    <Compile Include="Extensions\RectF\RectFExtensions.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_RectF.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions.cs" />
+    <Compile Include="Extensions\StreamSystemStream\StreamSystemStreamExtensions.cs" />
+    <Compile Include="Extensions\StreamSystemStream\StreamSystemStreamExtensions_Bitmap.cs" />
+    <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_Bitmap.cs" />
+    <Compile Include="Extensions\StreamSystem\StreamSystemExtensions.cs" />
+    <Compile Include="Extensions\View\ViewExtensions_Paint.cs" />
+    <Compile Include="Extensions\View\ViewExtensions_AnimatedFloat.cs" />
+    <Compile Include="Extensions\View\ViewExtensions_Measurement.cs" />
+    <Compile Include="Extensions\View\ViewExtensions.cs" />
+    <Compile Include="PeriodicProcess_Android\PeriodicProcess_Android.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Basic\BasicAndroidEngineActivity.cs" />
+    <Compile Include="SimpleView\SimpleView.cs" />
+    <Compile Include="StreamSystem_AssetManager\StreamSystem_AssetManager.cs" />
+    <Compile Include="ThisAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

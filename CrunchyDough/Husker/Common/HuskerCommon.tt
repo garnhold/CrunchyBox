@@ -1,0 +1,67 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+	new TypeInfo("Bool", "bool"),
+	new TypeInfo("Byte", "byte"),
+	new TypeInfo("Short", "short"),
+	new TypeInfo("Int", "int"),
+	new TypeInfo("Long", "long"),
+	new TypeInfo("Float", "float"),
+	new TypeInfo("Double", "double"),
+	new TypeInfo("Decimal", "decimal"),
+	new TypeInfo("String", "string")
+};
+#>
+using System;
+using System.IO;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<#foreach(TypeInfo type in types){#>
+
+	public class <#=type.class_name#>Husker : Husker<<#=type.type_name#>>
+	{
+		static public readonly <#=type.class_name#>Husker INSTANCE = new <#=type.class_name#>Husker();
+
+		private <#=type.class_name#>Husker() { }
+
+		public override void Dehydrate(HuskWriter writer, <#=type.type_name#> to_dehydrate)
+		{
+			writer.Write<#=type.class_name#>(to_dehydrate);
+		}
+
+        public override <#=type.type_name#> Hydrate(HuskReader reader)
+		{
+			return reader.Read<#=type.class_name#>();
+		}
+	}
+	public class <#=type.class_name#>ListHusker : ListHusker<<#=type.type_name#>>
+	{
+		static public readonly <#=type.class_name#>ListHusker INSTANCE = new <#=type.class_name#>ListHusker();
+
+		private <#=type.class_name#>ListHusker() : base(<#=type.class_name#>Husker.INSTANCE) { }
+	}
+<#}#>
+}
+
+<#+
+public class TypeInfo
+{
+	public readonly string class_name;
+	public readonly string type_name;
+
+	public TypeInfo(string c, string t)
+	{
+		class_name = c;
+		type_name = t;
+	}
+}
+#>

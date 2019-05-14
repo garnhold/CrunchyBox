@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{922C960D-F9BC-4E6C-92CC-DB980C4BC21B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchySack</RootNamespace>
+    <AssemblyName>CrunchySack</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\..\..\..\..\..\..\C#\AntlrRuntime4.5.1\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySodium">
+      <HintPath>..\CrunchySodium\bin\Release\CrunchySodium.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClassLibrary\ClassProvider\ClassProvider_Attribute\CmlClassProviderAttribute.cs" />
+    <Compile Include="ClassLibrary\ClassProvider\ClassProvider_Attribute\ClassProvider_Attribute.cs" />
+    <Compile Include="ClassLibrary\Extensions\ClassLibraryExtensions.cs" />
+    <Compile Include="ClassLibrary\Extensions\ClassLibraryExtensions_Add.cs" />
+    <Compile Include="Cml\CmlComponentSource\CmlComponentSource.cs" />
+    <Compile Include="Cml\CmlTargetInfo.cs" />
+    <Compile Include="Cml\CmlPrimitive\CmlPrimitive_Null.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptBinaryOperator\CmlScriptBinaryOperators.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptBinaryOperator\CmlScriptBinaryOperator.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpression_BinaryOperation.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpression_Parenthetical.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant_Null.cs" />
+    <Compile Include="Cml\CmlComponentSource\CmlComponentSourceList.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptInsertRepresentation\CmlScriptInsertRepresentation_This.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptInsertRepresentation\CmlScriptInsertRepresentation_Normal.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptStatement_While.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptStatement_If.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptSyntheticString\CmlScriptSyntheticString.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptValueReference\CmlScriptValueReference_ParentOfType.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptValueReference\CmlScriptValueReference_Parent.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptValueReference\CmlScriptValueReference_This.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptValueReference\CmlScriptValueReference_Normal.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument_Single_FunctionInstance.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument_Single_Operation.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Basic\CmlScriptValue_Basic.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_StaticClass\CmlScriptValue_StaticClass.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSource.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSourceList.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_AttributeCollection.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_ChildrenCollection.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_SystemValueProcess.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClass.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_TypeSupportException.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_ComponentSourceList.cs" />
+    <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions.cs" />
+    <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_Add.cs" />
+    <Compile Include="GlobalLibrary\Extensions\GlobalLibraryExtensions_Add.cs" />
+    <Compile Include="GlobalLibrary\Extensions\GlobalLibraryExtensions.cs" />
+    <Compile Include="GlobalLibrary\Global\Global_StaticClass.cs" />
+    <Compile Include="GlobalLibrary\Global\Global_Direct_Operation.cs" />
+    <Compile Include="GlobalLibrary\Global\Global_Direct.cs" />
+    <Compile Include="Link\EffigyLink\EffigyDestination\EffigyDestination_Collection.cs" />
+    <Compile Include="Link\EffigyLink\EffigyDestination\EffigyDestination_Single.cs" />
+    <Compile Include="Link\EffigyLink\EffigyDestination\EffigyDestination.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_IList.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_Process.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Overwrite_Process.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Overwrite.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
+    <Compile Include="Link\EffigyLink\EffigyLink_Collection.cs" />
+    <Compile Include="Link\EffigyLink\EffigySource\EffigySource_Collection.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Children.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Function_Process.cs" />
+    <Compile Include="Syncro\FunctionSyncro\FunctionSyncro.cs" />
+    <Compile Include="Syncro\SyncroManager.cs" />
+    <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem_Inject.cs" />
+    <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem_Operation.cs" />
+    <Compile Include="Cml\antlr4\CmlBaseVisitor.cs" />
+    <Compile Include="Cml\Execution\Entry\CmlEntry.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptFunctionParameter\CmlScriptFunctionParameters.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptFunctionParameter\CmlScriptFunctionParameter.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptInsertRepresentation\CmlScriptInsertRepresentation.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptEntry\CmlScriptEntry_Function.cs" />
+    <Compile Include="Cml\CmlFunctionSource\CmlFunctionSource.cs" />
+    <Compile Include="Cml\CmlFunctionSource\CmlFunctionSource_InsertParameter.cs" />
+    <Compile Include="Cml\CmlFunctionSource\CmlFunctionSource_Normal.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptEntry\CmlScriptEntry_Link.cs" />
+    <Compile Include="Cml\CmlLinkSource\CmlLinkSourceWithEntitySource.cs" />
+    <Compile Include="Cml\CmlPrimitive\CmlPrimitive_Double.cs" />
+    <Compile Include="Cml\CmlPrimitive\CmlPrimitive_Float.cs" />
+    <Compile Include="Cml\CmlPrimitive\CmlPrimitive_Int.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpression_Direct.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_InsertRepresentation.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_SyntheticString.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpression.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpressionList.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant_Bool.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant_Double.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant_Float.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_FunctionCall.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_InsertParameter.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant_Int.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant_String.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_ValueReference.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpression_Indirect.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptFunctionCall\CmlScriptFunctionCall.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptLambda\CmlScriptLambda.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptLambda\CmlScriptLambda_Block.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptLambda\CmlScriptLambda_Single.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptSingleStatement\CmlScriptSingleStatement_IndirectAssign.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptStatementBlock.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptStatement_Block.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptStatement_Single.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptStatement.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptSingleStatement\CmlScriptSingleStatement.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptSingleStatement\CmlScriptSingleStatement_Assign.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptSingleStatement\CmlScriptSingleStatement_FunctionCall.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptSingleStatement\CmlScriptSingleStatement_IndirectFunctionCall.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptValueReference\CmlScriptValueReference.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptDefinition\CmlScriptDefinition_Link.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument_Single_Placeholder.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument_Single_VariableInstance.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptParameter\CmlScriptParameter_Host.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptParameter\CmlScriptParameter_Single.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptSignature.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptRequest.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptDefinition\CmlScriptDefinition_Function.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument_Single_Constant.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument_Host.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_Argument\CmlScriptValue_Argument_Single.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_IndirectGlobal\CmlScriptValue_IndirectGlobal.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSource_FunctionSource.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSource_LinkSource.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSource_LinkSourceWithEntitySource.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_ClassDefinition.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_Entity.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class.cs" />
+    <Compile Include="Cml\CmlClassDefinition\CmlClassDefinition.cs" />
+    <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren.cs" />
+    <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Dynamic.cs" />
+    <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_DynamicInline.cs" />
+    <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Static.cs" />
+    <Compile Include="Cml\CmlFragmentDefinition\CmlFragmentDefinition.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_PiggyBack.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_Process.cs" />
+    <Compile Include="Cml\Execution\Container\Extensions\CmlContainerExtensions_PiggyBack.cs" />
+    <Compile Include="Cml\Execution\Container\Extensions\CmlContainerExtensions_Force.cs" />
+    <Compile Include="Cml\Execution\Container\Extensions\CmlContainerExtensions.cs" />
+    <Compile Include="Cml\Execution\Entity\CmlEntityInstance_Fragment.cs" />
+    <Compile Include="Cml\Execution\Entity\CmlEntityInstance_Normal.cs" />
+    <Compile Include="Cml\Execution\Entity\CmlEntityInstance.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Fragment\CmlEntry_Fragment_FragmentDefinition.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Fragment\CmlEntry_Fragment.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_Values.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_Value.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_Attribute.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_Children.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer.cs" />
+    <Compile Include="Cml\Execution\DeferredValue\CmlDeferredValue.cs" />
+    <Compile Include="Cml\Execution\Representation\CmlRepresentationSpace.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_ContainerSupportException.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_AttributeSupportException.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidFunctionIndirectionException.cs" />
+    <Compile Include="Cml\Execution\CmlExecution.cs" />
+    <Compile Include="Cml\Execution\Return\CmlReturnSpace.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_LinkWithEntity.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptDefinition\CmlScriptDefinition.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptElement\CmlScriptElement.cs" />
+    <Compile Include="Cml\CmlScript\Request\CmlScriptParameter\CmlScriptParameter.cs" />
+    <Compile Include="Cml\CmlScript\CmlScriptEntry\CmlScriptEntry.cs" />
+    <Compile Include="Extensions\StreamSystemStream\StreamSystemStreamExtensions.cs" />
+    <Compile Include="Extensions\StreamSystemStream\StreamSystemStreamExtensions_Cml.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Fragment\Entry_Fragment_BuiltIn\CmlEntry_Fragment_BuiltIn.cs" />
+    <Compile Include="Cml\CmlInsertParameter\CmlInsertParameter.cs" />
+    <Compile Include="Cml\CmlDOMinator.cs" />
+    <Compile Include="Cml\CmlElement.cs" />
+    <Compile Include="Cml\CmlEntity\CmlEntity.cs" />
+    <Compile Include="Cml\CmlEntity\CmlEntityAttribute\CmlEntityAttribute.cs" />
+    <Compile Include="Cml\antlr4\CmlLexer.cs" />
+    <Compile Include="Cml\antlr4\CmlParser.cs" />
+    <Compile Include="Cml\antlr4\CmlVisitor.cs" />
+    <Compile Include="Cml\CmlInfo\CmlInfo.cs" />
+    <Compile Include="Cml\CmlInfo\CmlInfoSetting.cs" />
+    <Compile Include="Cml\CmlLinkSource\CmlLinkSource.cs" />
+    <Compile Include="Cml\CmlLinkSource\CmlLinkSource_InsertParameter.cs" />
+    <Compile Include="Cml\CmlLinkSource\CmlLinkSource_Normal.cs" />
+    <Compile Include="Cml\CmlConstructor\CmlConstructor.cs" />
+    <Compile Include="Cml\CmlPrimitive\CmlPrimitive.cs" />
+    <Compile Include="Cml\CmlPrimitive\CmlPrimitive_Bool.cs" />
+    <Compile Include="Cml\CmlPrimitive\CmlPrimitive_String.cs" />
+    <Compile Include="Cml\CmlResolver.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidTypeException.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidIdForTypeException.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidIdException.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeErrorException.cs" />
+    <Compile Include="Cml\CmlSyntaxException.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSource.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSourceList.cs" />
+    <Compile Include="Cml\CmlComponentSource\CmlComponentSource_Entity.cs" />
+    <Compile Include="Cml\CmlComponentSource\CmlComponentSource_InsertParameter.cs" />
+    <Compile Include="Cml\CmlComponentSource\CmlComponentSource_Constructor.cs" />
+    <Compile Include="Cml\CmlComponentSource\CmlComponentSource_Primitive.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_Function.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_SystemValue.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_Link.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Fragment\Entry_Fragment_BuiltIn\CmlEntry_Fragment_BuiltIn_Base.cs" />
+    <Compile Include="Cml\Execution\CmlCallContext.cs" />
+    <Compile Include="Cml\Execution\Parameter\CmlParameterSpace.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Fragment\Entry_Fragment_BuiltIn\CmlEntry_Fragment_BuiltIn_Layout.cs" />
+    <Compile Include="Cml\Execution\Parameter\CmlParameter.cs" />
+    <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem.cs" />
+    <Compile Include="ClassLibrary\ClassProvider\ClassProvider.cs" />
+    <Compile Include="ClassLibrary\ClassLibrary.cs" />
+    <Compile Include="GlobalLibrary\Global\Global_Indirect.cs" />
+    <Compile Include="Link\LinkManager.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Function.cs" />
+    <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions.cs" />
+    <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Create.cs" />
+    <Compile Include="FragmentLibrary\FragmentProvider\FragmentProvider.cs" />
+    <Compile Include="FragmentLibrary\FragmentProvider\FragmentProvider_StreamSystem\FragmentProvider_StreamSystem.cs" />
+    <Compile Include="FragmentLibrary\FragmentProvider\FragmentProvider_StreamSystem\FragmentProvider_StreamSystem_Inject.cs" />
+    <Compile Include="FragmentLibrary\FragmentProvider\FragmentProvider_StreamSystem\FragmentProvider_StreamSystem_Operation.cs" />
+    <Compile Include="FragmentLibrary\FragmentLibrary.cs" />
+    <Compile Include="GlobalLibrary\GlobalLibrary.cs" />
+    <Compile Include="GlobalLibrary\Global\Global_Direct_Value.cs" />
+    <Compile Include="GlobalLibrary\Global\Global_Direct_VariableInstance.cs" />
+    <Compile Include="GlobalLibrary\Global\Global_Indirect_ResourceManager.cs" />
+    <Compile Include="GlobalLibrary\Global\Global.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Simple.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructors.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepresentationConstructor_Operation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfos.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link_Process.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link_Path.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Path.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Variable.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifiers.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier_General\RepresentationModifier_General.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier_General\RepresentationModifier_General_Process.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Process.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancers.cs" />
+    <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_Cml.cs" />
+    <Compile Include="Extensions\StreamSystem\StreamSystemExtensions.cs" />
+    <Compile Include="Representation\RepresentationResult\Extensions\RepresentationResultExtensions_Get.cs" />
+    <Compile Include="Representation\RepresentationResult\Extensions\RepresentationResultExtensions_LinkSyncroDaemon.cs" />
+    <Compile Include="Representation\RepresentationResult\Extensions\RepresentationResultExtensions.cs" />
+    <Compile Include="Representation\RepresentationResult\RepresentationResult.cs" />
+    <Compile Include="LinkSyncroDaemon\LinkSyncroDaemon.cs" />
+    <Compile Include="Link\VariableLink\VariableLinkState\VariableLinkState.cs" />
+    <Compile Include="Link\VariableLink\VariableLink.cs" />
+    <Compile Include="Link\EffigyLink\EffigySource\EffigySource.cs" />
+    <Compile Include="Link\EffigyLink\EffigySource\EffigySource_Single.cs" />
+    <Compile Include="Link\EffigyLink\EffigyLink.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite.cs" />
+    <Compile Include="Link\EffigyLink\EffigyLink_Single.cs" />
+    <Compile Include="Link\EffigyLink\EffigyClassInfo\EffigyClassInfo_Dynamic.cs" />
+    <Compile Include="Link\EffigyLink\EffigyClassInfo\EffigyClassInfo_Static.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single.cs" />
+    <Compile Include="Link\EffigyLink\EffigyClassInfo\EffigyClassInfo.cs" />
+    <Compile Include="Link\VariableLink\VariableNode\VariableNode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="Representation\RepresentationEngine\RepresentationEngine.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationEngineComponent.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancer_Variation.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancer_Operation.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancer.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancer_Variation_Process.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepresentationConstructor_Operation.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{795D8C4B-31FA-4BC1-9F03-F4E48EBFB07B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchySack_WPF</RootNamespace>
+    <AssemblyName>CrunchySack_WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\..\..\..\..\..\..\C#\AntlrRuntime4.5.1\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySack">
+      <HintPath>..\CrunchySack\bin\Release\CrunchySack.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySodium, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrunchySodium\bin\Release\CrunchySodium.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySystem">
+      <HintPath>..\CrunchySystem\bin\Release\CrunchySystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Basic\BasicWPFEngine.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_ComboBox.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_DragDrop.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_UIElement.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_InputBinding.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Auto.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Selector.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Window.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_HeaderedItemsControl.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_HeaderedContentControl.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_ContentControl.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_TreeView.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_TabControl.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_ScrollViewer.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Menu.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_ItemsControl.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_FrameworkElement.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Layouts_DockPanel.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Layouts_Grid.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Layouts.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Button.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Fields.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Border.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Decorator.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Image.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Text.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Layouts_Panel.cs" />
+    <Compile Include="Basic\BasicWPFEngineWindow.cs" />
+    <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizerAttribute.cs" />
+    <Compile Include="DragHandler\DragHandler_Internal_Value.cs" />
+    <Compile Include="DragHandler\DragHandler_Internal.cs" />
+    <Compile Include="DropHandler\DropHandler_Internal_FunctionSyncro.cs" />
+    <Compile Include="DropHandler\DropHandler_Internal.cs" />
+    <Compile Include="DropHandler\DropHandler.cs" />
+    <Compile Include="DragHandler\DragHandler.cs" />
+    <Compile Include="EmptyCommand\EmptyCommand.cs" />
+    <Compile Include="EmptyInputGesture\EmptyInputGesture.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_Command.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_MouseEventHandler.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_MouseButtonEventHandler.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_EventHandler.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_RoutedEventHandler.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions.cs" />
+    <Compile Include="Extensions\DependencyObject\DependencyObjectExtensions_Window.cs" />
+    <Compile Include="Extensions\DependencyObject\DependencyObjectExtensions.cs" />
+    <Compile Include="Extensions\ImageSource\ImageSourceExtensions.cs" />
+    <Compile Include="Extensions\ColumnDefinition\ColumnDefinitionExtensions.cs" />
+    <Compile Include="Extensions\FrameworkElement\FrameworkElementExtensions_InputBindings.cs" />
+    <Compile Include="Extensions\FrameworkElement\FrameworkElementExtensions.cs" />
+    <Compile Include="Extensions\GridLength\GridLengthExtensions.cs" />
+    <Compile Include="Extensions\GridUnitType\GridUnitTypeExtensions.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_Rows.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_Columns.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions.cs" />
+    <Compile Include="Extensions\Image\ImageExtensions_Transform.cs" />
+    <Compile Include="Extensions\Image\ImageExtensions.cs" />
+    <Compile Include="Extensions\MouseEventArgs\MouseEventArgsExtensions_Compare.cs" />
+    <Compile Include="Extensions\MouseEventArgs\MouseEventArgsExtensions.cs" />
+    <Compile Include="Extensions\RowDefinition\RowDefinitionExtensions.cs" />
+    <Compile Include="Extensions\Size\SizeExtensions_GetWith.cs" />
+    <Compile Include="Extensions\Size\SizeExtensions.cs" />
+    <Compile Include="Extensions\Thickness\ThicknessExtensions.cs" />
+    <Compile Include="Extensions\UIElement\UIElementExtensions_Drag.cs" />
+    <Compile Include="Extensions\UIElement\UIElementExtensions_Drop.cs" />
+    <Compile Include="Extensions\UIElement\UIElementExtensions.cs" />
+    <Compile Include="Extensions\Window\WindowExtensions_LinkSyncroDaemon.cs" />
+    <Compile Include="Extensions\Window\WindowExtensions_MinMax.cs" />
+    <Compile Include="Extensions\Window\WindowExtensions_Dialog.cs" />
+    <Compile Include="Extensions\Window\WindowExtensions.cs" />
+    <Compile Include="PeriodicProcess_WPF\PeriodicProcess_WPF.cs" />
+    <Compile Include="ProcessCommand\ProcessCommand.cs" />
+    <Compile Include="WPFEngineWindow\WPFEngineWindow.cs" />
+    <Compile Include="WPFEngine\WPFEngine_Window.cs" />
+    <Compile Include="WPFEngine\WPFEngine_Application.cs" />
+    <Compile Include="WPFEngine\WPFEngine_Auto.cs" />
+    <Compile Include="WPFInfos\WPFInfos.cs" />
+    <Compile Include="WPFConstructors\WPFConstructors.cs" />
+    <Compile Include="WPFModifiers\WPFModifiers.cs" />
+    <Compile Include="WPFInstancers\WPFInstancers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="WPFEngine\WPFEngine.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC145D9E-9D52-48FB-ADCA-1138F38D4D7A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyPantry_GoogleDrive</RootNamespace>
+    <AssemblyName>CrunchyPantry_GoogleDrive</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\File\FileExtensions.cs" />
+    <Compile Include="Extensions\RequestError\RequestErrorExtensions.cs" />
+    <Compile Include="GoogleEX\Credential.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType_Bool.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType_Enum.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clauses.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType_Date.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType_Number.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType_FullText.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType_InCollection.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType_String.cs" />
+    <Compile Include="GoogleEX\Storage\ClauseType\ClauseType.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clause_All.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clause_Invert.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clause_Any.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clause_Operation\Clause_Operation.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clause_Operation\Clause_Operation_Unary.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Extensions\DriveExtensions_Get.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Extensions\DriveExtensions_Clauses.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Extensions\DriveExtensions_Files.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Extensions\DriveExtensions_SubFolders.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Extensions\DriveExtensions_Folders_Fetch.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Extensions\DriveExtensions_Folders.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Extensions\DriveExtensions.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clause_Operation\Clause_Operation_Compound.cs" />
+    <Compile Include="GoogleEX\Storage\Clause\Clause.cs" />
+    <Compile Include="GoogleEX\Storage\Drive\Drive.cs" />
+    <Compile Include="NookSystem\NookSystem_GoogleDrive.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyPantry">
+      <HintPath>..\CrunchyPantry\bin\Release\CrunchyPantry.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\..\..\..\..\..\..\C#\Google.Apis.1.30.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth">
+      <HintPath>..\..\..\..\..\..\..\C#\Google.Apis.Auth.1.30.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices">
+      <HintPath>..\..\..\..\..\..\..\C#\Google.Apis.Auth.1.30.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\..\..\..\..\..\..\C#\Google.Apis.Core.1.30.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v3">
+      <HintPath>..\..\..\..\..\..\..\C#\Google.Apis.Drive.v3.1.30.0.1037\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices">
+      <HintPath>..\..\..\..\..\..\..\C#\Google.Apis.1.30.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\C#\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

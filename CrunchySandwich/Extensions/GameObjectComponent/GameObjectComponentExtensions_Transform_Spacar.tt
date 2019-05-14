@@ -1,0 +1,104 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Spacar
+    {
+<# foreach(string type_name in type_names){#>
+		static public void SetSpacarPosition(this <#=type_name#> item, Vector3 position)
+		{
+			item.transform.SetSpacarPosition(position);
+		}
+		static public void SetLocalSpacarPosition(this <#=type_name#> item, Vector3 position)
+		{
+			item.transform.SetLocalSpacarPosition(position);
+		}
+
+		static public void SetSpacarRotation(this <#=type_name#> item, Vector3 angles)
+		{
+			item.transform.SetSpacarRotation(angles);
+		}
+		static public void SetLocalSpacarRotation(this <#=type_name#> item, Vector3 angles)
+		{
+			item.transform.SetLocalSpacarRotation(angles);
+		}
+
+		static public void SetSpacarQuaternion(this <#=type_name#> item, Quaternion quaternion)
+		{
+			item.transform.SetSpacarQuaternion(quaternion);
+		}
+		static public void SetLocalSpacarQuaternion(this <#=type_name#> item, Quaternion quaternion)
+		{
+			item.transform.SetLocalSpacarQuaternion(quaternion);
+		}
+
+        static public void SetSpacarScale(this <#=type_name#> item, Vector3 scale)
+		{
+			item.transform.SetSpacarScale(scale);
+		}
+		static public void SetSpacarScale(this <#=type_name#> item, float scale)
+		{
+			item.transform.SetSpacarScale(scale);
+		}
+		static public void SetLocalSpacarScale(this <#=type_name#> item, Vector3 scale)
+		{
+			item.transform.SetLocalSpacarScale(scale);
+		}
+		static public void SetLocalSpacarScale(this <#=type_name#> item, float scale)
+		{
+			item.transform.SetLocalSpacarScale(scale);
+		}
+
+		static public Vector3 GetSpacarPosition(this <#=type_name#> item)
+		{
+			return item.transform.GetSpacarPosition();
+		}
+		static public Vector3 GetLocalSpacarPosition(this <#=type_name#> item)
+		{
+			return item.transform.GetLocalSpacarPosition();
+		}
+
+		static public Vector3 GetSpacarRotation(this <#=type_name#> item)
+		{
+			return item.transform.GetSpacarRotation();
+		}
+		static public Vector3 GetLocalSpacarRotation(this <#=type_name#> item)
+		{
+			return item.transform.GetLocalSpacarRotation();
+		}
+
+		static public Quaternion GetSpacarQuaternion(this <#=type_name#> item)
+		{
+			return item.transform.GetSpacarQuaternion();
+		}
+		static public Quaternion GetLocalSpacarQuaternion(this <#=type_name#> item)
+		{
+			return item.transform.GetLocalSpacarQuaternion();
+		}
+
+        static public Vector3 GetSpacarScale(this <#=type_name#> item)
+		{
+			return item.transform.GetSpacarScale();
+		}
+		static public Vector3 GetLocalSpacarScale(this <#=type_name#> item)
+		{
+			return item.transform.GetLocalSpacarScale();
+		}
+
+<# } #>
+	}
+}

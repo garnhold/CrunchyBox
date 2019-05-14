@@ -1,0 +1,42 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] flavors = new string[]{
+	"",
+	"Dynamic"
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<# foreach(string flavor in flavors){#>
+	static public class I<#=flavor#>CustomAttributeProviderExtensions_Search
+    {
+		static public Attribute FindCustomAttribute(this I<#=flavor#>CustomAttributeProvider item, bool inherit, Predicate<Attribute> predicate)
+        {
+            return item.GetAllCustomAttributes(inherit).FindFirst(predicate);
+        }
+
+        static public Attribute FindCustomAttributeOfType(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit, Predicate<Attribute> predicate)
+        {
+            return item.GetAllCustomAttributesOfType(attribute_type, inherit).FindFirst(predicate);
+        }
+
+        static public T FindCustomAttributeOfType<T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit, Predicate<T> predicate) where T : Attribute
+        {
+            return item.GetAllCustomAttributesOfType<T>(inherit).FindFirst(predicate);
+        }
+
+        static public T FindCustomAttributeOfSubType<T>(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit, Predicate<T> predicate) where T : Attribute
+        {
+            return item.GetAllCustomAttributesOfSubType<T>(attribute_type, inherit).FindFirst(predicate);
+        }
+	}
+<# } #>
+}
