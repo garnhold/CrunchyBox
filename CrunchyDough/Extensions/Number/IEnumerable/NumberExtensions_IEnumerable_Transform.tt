@@ -1,0 +1,36 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_IEnumerable_Transform
+    {
+<# foreach(string type_name in type_names){#>
+		static public IEnumerable<<#=type_name#>> Shift(this IEnumerable<<#=type_name#>> item, <#=type_name#> amount)
+		{
+			foreach(<#=type_name#> sub_item in item)
+				yield return sub_item + amount;
+		}
+
+		static public IEnumerable<<#=type_name#>> Stretch(this IEnumerable<<#=type_name#>> item, <#=type_name#> amount)
+		{
+			foreach(<#=type_name#> sub_item in item)
+				yield return sub_item * amount;
+		}
+<# } #>
+	}
+}

@@ -1,0 +1,67 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_arguments = 10;
+#>
+using System;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+    static public class IEnumerableExtensions_PartOut
+    {
+	<#for(int number_arguments = 1; number_arguments <= max_number_arguments; number_arguments++){#>	
+        static public int PartOut<T>(this IEnumerable<T> item<#for(int i = 1; i <= number_arguments; i++){#>, out T output<#=i#><#}#>)
+        {
+		<#for(int i = 1; i <= number_arguments; i++){#>
+			output<#=i#> = default(T);
+		<#}#>
+
+            using (IEnumerator<T> iterator = item.GetEnumerator())
+            {
+			<#for(int i = 1; i <= number_arguments; i++){#>
+				if (iterator.MoveNext())
+				{
+					output<#=i#> = iterator.Current;
+			<#}#>
+			<#for(int i = number_arguments; i >= 1; i--){#>
+					return <#=i#>;
+				}
+			<#}#>
+            }
+
+            return 0;
+        }
+	<#}#>
+
+	<#for(int number_arguments = 1; number_arguments <= max_number_arguments; number_arguments++){#>	
+        static public int PartOut<T>(this IEnumerable<IEnumerable<T>> item<#for(int i = 1; i <= number_arguments; i++){#>, ICollection<T> output<#=i#><#}#>)
+        {
+			<#for(int i = 1; i <= number_arguments; i++){#>
+				output<#=i#>.Clear();
+			<#}#>
+
+            using (IEnumerator<IEnumerable<T>> iterator = item.GetEnumerator())
+            {
+			<#for(int i = 1; i <= number_arguments; i++){#>
+				if (iterator.MoveNext())
+				{
+					output<#=i#>.AddRange(iterator.Current);
+			<#}#>
+			<#for(int i = number_arguments; i >= 1; i--){#>
+					return <#=i#>;
+				}
+			<#}#>
+            }
+
+            return 0;
+        }
+	<#}#>
+	}
+}

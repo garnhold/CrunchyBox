@@ -1,0 +1,41 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"int",
+	"long",
+	"float",
+	"double"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_IEnumerable_DiminishingTotal
+    {
+<# foreach(string type_name in type_names){#>
+		static public <#=type_name#> DiminishingAverage(this IEnumerable<<#=type_name#>> item, double ratio)
+		{
+			double current_weight = 1.0;
+
+			double total = 0.0;
+			double total_weight = 0.0;
+
+			foreach(<#=type_name#> sub_item in item)
+			{
+				total += sub_item * current_weight;
+				total_weight += current_weight;
+
+				current_weight *= ratio;
+			}
+
+			return (<#=type_name#>)(total / total_weight);
+		}
+<# } #>
+	}
+}

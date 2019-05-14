@@ -1,0 +1,66 @@
+﻿using System;
+using System.Text;
+using System.Reflection;
+using System.Reflection.Emit;
+
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+using CrunchySalt;
+
+namespace CrunchySalt
+{
+    public class ILNewArray : ILValue
+    {
+        private Type element_type;
+        private ILValue size;
+
+        public ILNewArray(Type e, ILValue s)
+        {
+            element_type = e;
+            size = s;
+        }
+
+        public override void RenderIL_Load(ILCanvas canvas)
+        {
+            size.RenderIL_Load(canvas);
+
+            canvas.Emit_Newarr(element_type);
+        }
+
+        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
+        {
+            throw new InvalidOperationException(GetType() + " doesn't support storing.");
+        }
+
+        public override void RenderText_Value(ILTextCanvas canvas)
+        {
+            canvas.AppendToLine("new ");
+            canvas.AppendToLine(element_type.Name);
+            canvas.AppendToLine("[");
+                size.RenderText_Value(canvas);
+            canvas.AppendToLine("]");
+        }
+
+        public override Type GetValueType()
+        {
+            return element_type.MakeArrayType();
+        }
+
+        public override bool IsILCostTrivial()
+        {
+            return false;
+        }
+
+        public override bool CanLoad()
+        {
+            return true;
+        }
+
+        public override bool CanStore()
+        {
+            return false;
+        }
+    }
+}

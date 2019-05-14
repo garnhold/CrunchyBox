@@ -1,0 +1,60 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"byte",
+	"short",
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_Binding
+    {
+<# foreach(string type_name in type_names){#>
+		static public <#=type_name#> BindAbove(this <#=type_name#> item, <#=type_name#> lower)
+        {
+            if (item > lower)
+                return item;
+
+            return lower;
+        }
+
+        static public <#=type_name#> BindBelow(this <#=type_name#> item, <#=type_name#> upper)
+        {
+            if (item < upper)
+                return item;
+
+            return upper;
+        }
+
+        static public <#=type_name#> BindBetween(this <#=type_name#> item, <#=type_name#> value1, <#=type_name#> value2)
+        {
+            <#=type_name#> lower;
+            <#=type_name#> upper;
+
+            value1.Order(value2, out lower, out upper);
+
+            if (item > lower)
+            {
+                if (item < upper)
+                    return item;
+
+                return upper;
+            }
+
+            return lower;
+        }
+<# } #>
+	}
+}

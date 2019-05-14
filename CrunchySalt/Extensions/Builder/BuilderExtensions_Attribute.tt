@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_parameters = 10;
+string[] types = new string[]{
+	"AssemblyBuilder",
+	"ModuleBuilder",
+	"MethodBuilder",
+	"TypeBuilder"
+};
+#>
+using System;
+using System.Reflection;
+using System.Reflection.Emit;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+
+namespace CrunchySalt
+{
+	static public class BuilderExtensions_Attribute
+	{
+	<#foreach(string type in types){#>
+		static public void AddCustomAttribute(this <#=type#> item, ConstructorInfo constructor_info, params object[] arguments)
+        {
+            item.SetCustomAttribute(new CustomAttributeBuilder(constructor_info.GetNativeConstructorInfo(), arguments));
+        }
+
+		<#for(int i = 0; i < max_number_parameters; i++){#>
+
+			static public void AddCustomAttribute<#=TTCS.ArgumentsForGeneric("P#", i, "T")#>(<#=TTCS.Parameters("P#", "p#", i, "this " + type + " item")#>)
+			{
+				item.AddCustomAttribute(<#=TTCS.Arguments("p#", i, "typeof(T).GetInstanceConstructor" + TTCS.ArgumentsForGeneric("P#", i) + "()")#>);
+			}
+		<#}#>
+	<#}#>
+	}
+}

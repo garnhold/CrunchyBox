@@ -1,0 +1,52 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+string file_text = Files.GetStreamSystem().ReadText(Host.ResolvePath("mime_types.txt"));
+
+string pruned_text = file_text.RegexRemove("(^|[\n\r])#.*?[\n\r]");
+
+List<KeyValuePair<string, string>> pairs = pruned_text
+	.GetLines()
+	.Skip(s => s.IsVisible() == false)
+	.Convert(l => l.RegexMatch("(\\S+)\\s+(.*)"))
+	.Convert(m => 
+		m.Groups[2].Value.SplitOn(" ")
+			.Convert(e => new KeyValuePair<string, string>(e, m.Groups[1].Value))
+	)
+	.ToList();
+
+List<string> values = pairs
+	.Convert(p => "KeyValuePair.New(\"" + p.Key + "\", \"" + p.Value + "\")")
+	.ToList();
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+
+namespace CrunchyNoodle
+{
+	static public class MIMEType
+	{
+		static private OperationCache<OptionTable<string>> MIME_TYPE_DICTIONARY = ReflectionCache.Get().NewOperationCache(delegate(){
+			return new OptionTable<string>(
+<#=values.Join(",\n")#>
+			);
+		});
+		static public string GetMIMETypeFromExtension(string extension)
+		{
+			return MIME_TYPE_DICTIONARY.Fetch().Lookup(extension, "application/octet-stream");
+		}
+
+		static public string GetMIMETypeFromFilename(string filename)
+		{
+			return GetMIMETypeFromExtension(Filename.GetExtension(filename));
+		}
+	}
+}

@@ -1,0 +1,28 @@
+﻿using System;
+using UnityEngine;
+
+namespace CrunchySandwich
+{
+    static public class ColorExtensions_With
+    {
+        static public Color GetWithRed(this Color color, float r)
+        {
+            return new Color(r, color.g, color.b, color.a);
+        }
+
+        static public Color GetWithGreen(this Color color, float g)
+        {
+            return new Color(color.r, g, color.b, color.a);
+        }
+
+        static public Color GetWithBlue(this Color color, float b)
+        {
+            return new Color(color.r, color.g, b, color.a);
+        }
+
+        static public Color GetWithAlpha(this Color color, float a)
+        {
+            return new Color(color.r, color.g, color.b, a);
+        }
+    }
+}

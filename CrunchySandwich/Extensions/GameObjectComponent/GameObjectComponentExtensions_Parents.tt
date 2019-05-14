@@ -1,0 +1,62 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Parents
+    {
+<# foreach(string type_name in type_names){#>
+		static public void ClearParent(this <#=type_name#> item)
+		{
+			item.SetParent(null);
+		}
+
+		static public bool HasParent(this <#=type_name#> item)
+        {
+            if (item.GetParent().IsNotNull())
+                return true;
+
+            return false;
+        }
+
+		static public void SetParent(this <#=type_name#> item, GameObject parent)
+		{
+			item.transform.parent = parent.IfNotNull(p => p.transform);
+		}
+
+        static public GameObject GetParent(this <#=type_name#> item)
+        {
+            Transform parent = item.transform.parent;
+
+            if (parent.IsNotNull())
+                return parent.gameObject;
+
+            return null;
+        }
+
+		static public IEnumerable<GameObject> GetParents(this <#=type_name#> item)
+        {
+            return item.gameObject.Traverse(i => i.GetParent());
+        }
+
+		static public IEnumerable<GameObject> GetSelfAndParents(this <#=type_name#> item)
+		{
+			return item.GetParents().Prepend(item.gameObject);
+		}
+
+<# } #>
+	}
+}

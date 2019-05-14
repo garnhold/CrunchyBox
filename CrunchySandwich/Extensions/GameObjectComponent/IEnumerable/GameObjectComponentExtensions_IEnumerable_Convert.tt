@@ -1,0 +1,49 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_IEnumerable_Convert
+    {
+		static public IEnumerable<T> ConvertComponent<J, T>(this IEnumerable<J> item) where J : Component where T : Component
+        {
+            return item.Convert(c => c.GetComponent<T>()).SkipNull();
+        }
+
+		static public IEnumerable<T> ConvertComponentUpward<J, T>(this IEnumerable<J> item) where J : Component where T : Component
+		{
+			return item.Convert(c => c.GetComponentUpward<T>()).SkipNull();
+		}
+
+<# foreach(string type_name in type_names){#>
+		static public IEnumerable<T> ConvertComponent<T>(this IEnumerable<<#=type_name#>> item)
+        {
+            return item.Convert(c => c.GetComponent<T>()).SkipNull();
+        }
+
+		static public IEnumerable<T> ConvertComponentUpward<T>(this IEnumerable<<#=type_name#>> item)
+		{
+			return item.Convert(c => c.GetComponentUpward<T>()).SkipNull();
+		}
+
+		static public T GetFirstComponent<T>(this IEnumerable<<#=type_name#>> item)
+        {
+            return item.ConvertComponent<T>().GetFirst();
+        }
+
+<# } #>
+	}
+}

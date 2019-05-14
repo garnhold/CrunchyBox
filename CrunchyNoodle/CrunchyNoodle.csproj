@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3BABED19-B5BC-4120-8015-39793473BA87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyNoodle</RootNamespace>
+    <AssemblyName>CrunchyNoodle</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrunchyDough, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assemblys\Assemblys_Filtered.cs" />
+    <Compile Include="Assemblys\Assemblys_Inspected.cs" />
+    <Compile Include="CompileTimeCache\CompileTimeCache.cs" />
+    <Compile Include="CompileTimeCache\Extensions\CacheManagerExtensions_CompileTimeCache.cs" />
+    <Compile Include="ConversionMethods\Common\ConversionMethods_DateTime.cs" />
+    <Compile Include="ConversionMethods\ConversionAttribute.cs" />
+    <Compile Include="ConversionMethods\General\GeneralConversionMethods_String.cs" />
+    <Compile Include="ConversionMethods\General\GeneralConversionMethods_Enum.cs" />
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Decimal.cs" />
+    <Compile Include="DistributedInitilizationInstance\DistributedInitilizationInstance.cs" />
+    <Compile Include="ExtensionMethods\ExtensionMethods.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Info.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Treatment.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Visibility.cs" />
+    <Compile Include="Extensions\Delegate\DelegateExtensions_FingerPrint.cs" />
+    <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
+    <Compile Include="Extensions\FieldInfoEX\FieldInfoEXExtensions.cs" />
+    <Compile Include="Extensions\FieldInfoEX\FieldInfoEXExtensions_Variable.cs" />
+    <Compile Include="Extensions\ForTypeAttribute\ForTypeAttributeExtensions.cs" />
+    <Compile Include="Extensions\HuskReaderWriter\HuskReaderWriterExtensions_VersionHeader.cs" />
+    <Compile Include="Extensions\HuskReaderWriter\HuskReaderWriterExtensions.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_ForTypeAttribute.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectCount.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectGetFirst.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectRemoveAt.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectInsert.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectSet.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectGet.cs" />
+    <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Action.cs" />
+    <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions.cs" />
+    <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Function.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_ActionInstance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjectExtensions_MemberInstance_ActionInstance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_VariableInstance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjectExtensions_MemberInstance_VariableInstance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Object\ObjectExtensions_TargetInstance.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Finger.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance_ByPath.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance.cs" />
+    <Compile Include="Extensions\PropInfoEX\PropInfoEXExtensions_Variable.cs" />
+    <Compile Include="Extensions\PropInfoEX\PropInfoEXExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_EvtInfo_Event.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_EvtInfo_Method.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_All.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MemberAttributes_Method.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MemberAttributes_Field.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MemberAttributes.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MethodInfo_All.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_EvtInfo.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropInfo_Field.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropInfo.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Generation.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MethodInfo_Specific.cs">
+      <DependentUpon>TypeExtensions_MethodInfo_Specific.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Type\TypeExtensions_MethodInfo_Specialization.cs">
+      <DependentUpon>TypeExtensions_MethodInfo_Specialization.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Type\TypeExtensions_IEnumerableType.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Member.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Member_Function.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Member_VariablePath.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Member_PathResolver.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Member_Action.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MethodInfo_Static.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Finger_Get.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Finger_Create.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Distance.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropInfo_Method.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropInfo_Property.cs" />
+    <Compile Include="Filterer\Assembly\AssemblyFilters.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_DoesReferenceAssembly.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_IsAssemblyVisibleToType.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_ContainsExtensionTypes.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_IsTypeDeclaredWithin.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_IsTypeVisible.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_IsReferencedByAssembly.cs" />
+    <Compile Include="Filterer\ConstructorInfo\ConstructorInfoFilters.cs" />
+    <Compile Include="Filterer\ConstructorInfo\Filterer_ConstructorInfo_CanEffectiveParametersHold_Generic.cs">
+      <DependentUpon>Filterer_ConstructorInfo_CanEffectiveParametersHold_Generic.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Filterer\FieldInfo\FieldInfoFilters.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsDeclaredWithin.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPrivateField.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPublicField.cs" />
+    <Compile Include="Filterer\Filterer_General.cs" />
+    <Compile Include="Filterer\Filterer_Simple.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropCompatible.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropOfTypeCompatible.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsDeclaredWithin.cs" />
+    <Compile Include="Filterer\MethodInfo\MethodInfoFilters.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNEffectiveParameters.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanNthEffectiveParameterHold.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanGenericParametersHold_Generic.cs">
+      <DependentUpon>Filterer_MethodInfo_CanGenericParametersHold_Generic.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanEffectiveParametersHold_Generic.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Filterer_MethodInfo_CanEffectiveParametersHold_Generic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanGenericParametersHold.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CouldMaybeReturnInto.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsAnyExtensionMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNonGenericMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsGenericMethod.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsSetAndGetPublic.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsSetPublic.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsGetPublic.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_CanSetAndGet.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_CanGet.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_CanSet.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_HasCustomLabeledAttributeOfType.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_HasCustomAttributeOfType.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_CanBeTreatedAs.cs" />
+    <Compile Include="Filterer\PropInfo\PropInfoFilters.cs" />
+    <Compile Include="Filterer\PropInfo\Filterer_PropInfo.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_CanGenericParametersHold.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_HasChildTypes.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_HasCustomForTypeAttributeOfType.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsBasicNamed.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNonGenericClass.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsGenericClass.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsCleanNamed.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_CanHaveChildTypes.cs" />
+    <Compile Include="Filterer\Type\TypeFilters.cs" />
+    <Compile Include="Filterer\Utility\Filterer_UnaryOperation.cs" />
+    <Compile Include="Filterer\Utility\Filterer_BinaryOperation.cs" />
+    <Compile Include="Finger\Finger.cs" />
+    <Compile Include="ForTypes\ForTypes.cs" />
+    <Compile Include="Holding\Extensions\HoldableExtensions_Get.cs" />
+    <Compile Include="Holding\Extensions\HoldableExtensions_Orphan.cs" />
+    <Compile Include="Holding\Extensions\HoldableExtensions_Field.cs" />
+    <Compile Include="Holding\Extensions\HoldingContainerExtensions_Predicate.cs" />
+    <Compile Include="Holding\Extensions\HoldingContainerExtensions.cs" />
+    <Compile Include="MemberInstance\ActionInstance\ActionInstance.cs" />
+    <Compile Include="MemberInstance\FunctionInstance\FunctionInstance.cs" />
+    <Compile Include="MemberInstance\MemberInstance.cs" />
+    <Compile Include="MemberInstance\TargetInstance\Extensions\TargetInstanceExtensions_Type.cs" />
+    <Compile Include="MemberInstance\TargetInstance\Extensions\TargetInstanceExtensions_Action.cs" />
+    <Compile Include="MemberInstance\TargetInstance\Extensions\TargetInstanceExtensions_Variable.cs" />
+    <Compile Include="MemberInstance\TargetInstance\Extensions\TargetInstanceExtensions.cs" />
+    <Compile Include="MemberInstance\TargetInstance\TargetInstance_Static.cs" />
+    <Compile Include="MemberInstance\TargetInstance\TargetInstance_Strong.cs" />
+    <Compile Include="MemberInstance\TargetInstance\TargetInstance_Weak.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_RelativeAction.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_RelativeFunction.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Relative.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_GetContents.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions.cs" />
+    <Compile Include="MemberInstance\VariableInstance\VariableInstance.cs" />
+    <Compile Include="MemberInstance\TargetInstance\TargetInstance.cs" />
+    <Compile Include="Member\Action\Action_Process.cs" />
+    <Compile Include="Member\Action\Action_Function.cs" />
+    <Compile Include="Member\Function\Extensions\FunctionExtensions_Parameters.cs" />
+    <Compile Include="Member\Function\Extensions\FunctionExtensions.cs" />
+    <Compile Include="Member\Variable\Variable_Prop\Variable_Prop.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions_Instance.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions.cs" />
+    <Compile Include="MIMEType\MIMEType.cs">
+      <DependentUpon>MIMEType.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReflectionTypeHuskers\PropInfoEXHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\ModuleHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\MethodInfoEXHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\FieldInfoEXHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\TypeHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\BasicReflectionTypeHusker.cs">
+      <DependentUpon>BasicReflectionTypeHusker.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MarkedMethods\MarkedMethods.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationVariable_Create_FactoryAttribute.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Member_Variable.cs" />
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Byte.cs" />
+    <Compile Include="ConversionMethods\Primitive\ConversionMethods_Bool.cs" />
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Short.cs" />
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Int.cs" />
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Long.cs" />
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Float.cs" />
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Double.cs" />
+    <Compile Include="Factory\Factory.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_CanHold.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasReturn.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsStaticClass.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsSealedClass.cs" />
+    <Compile Include="Member\Action\Action.cs" />
+    <Compile Include="Member\Action\Extensions\ActionExtensions_Instance.cs" />
+    <Compile Include="Member\Function\Extensions\FunctionExtensions_Instance.cs" />
+    <Compile Include="Member\Function\Function_Relative.cs" />
+    <Compile Include="Member\PathResolver.cs" />
+    <Compile Include="Member\Function\Function_Path.cs" />
+    <Compile Include="Member\Function\Function.cs" />
+    <Compile Include="Member\Function\Function_Operation\Function_Operation.cs" />
+    <Compile Include="Member\Function\Function_MethodInfo\Function_MethodInfo.cs" />
+    <Compile Include="Member\Member.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_GetContents.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Instance.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_RelativeAction.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_RelativeFunction.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Relative.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions.cs" />
+    <Compile Include="Member\Variable\Variable_Blockable\Variable_Blockable.cs" />
+    <Compile Include="Member\Variable\Variable_Element\Variable_Element.cs" />
+    <Compile Include="Member\Variable\Variable_IndexedLog\Variable_IndexedLog.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Variable_Static_Readonly_Value.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Variable_Static_Readonly_Operation.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Variable_Static_Value.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Variable_Static_Readonly.cs" />
+    <Compile Include="Member\Variable\Variable_Relative.cs" />
+    <Compile Include="Member\Variable\Variable_Path.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Variable_Static.cs" />
+    <Compile Include="Member\Variable\Variable_This\Variable_This.cs" />
+    <Compile Include="ReflectionTypeHuskers\AssemblyHusker.cs" />
+    <Compile Include="VersionInfo\VersionInfo.cs" />
+    <Compile Include="ReflectionSystem\ReflectionSystem.cs" />
+    <Compile Include="Relatable\Extensions\RelatableExtensions_Ancestor.cs" />
+    <Compile Include="Relatable\Extensions\RelatableExtensions_Relation.cs" />
+    <Compile Include="Relatable\Extensions\RelatableExtensions_Children_Internal.cs" />
+    <Compile Include="Holding\Extensions\HoldableExtensions.cs" />
+    <Compile Include="Relatable\Extensions\RelatableExtensions_Parent_Internal.cs" />
+    <Compile Include="Scope\Attributes\ScopeMapAttribute.cs" />
+    <Compile Include="Scope\Attributes\SidewaysScopeAttribute.cs" />
+    <Compile Include="Scope\Extensions\ScopeExtensions.cs" />
+    <Compile Include="Scope\Referenceable\Referenceable.cs" />
+    <Compile Include="Scope\Scope.cs" />
+    <Compile Include="Scope\ScopeAccessLevel.cs" />
+    <Compile Include="Scope\ScopeAccess.cs" />
+    <Compile Include="Scope\ScopeAccessExtensions.cs" />
+    <Compile Include="Scope\ScopeElement\Extensions\ScopeElementExtensions.cs" />
+    <Compile Include="Scope\ScopeElement\ScopeElement.cs" />
+    <Compile Include="ReferenceInstances\ReferenceInstances.cs" />
+    <Compile Include="TypeDictionary\TypeDictionary.cs" />
+    <Compile Include="Types\Types_FromAssemblys.cs" />
+    <Compile Include="Types\Types_Primitive.cs" />
+    <Compile Include="InspectedAssemblyAttribute\InspectAssemblys_ByTypeAttribute.cs" />
+    <Compile Include="InspectedAssemblyAttribute\InspectedAssemblyAttribute.cs" />
+    <Compile Include="InspectedAssemblyAttribute\InspectAssemblysAttribute.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_HasCustomAttributeOfType.cs" />
+    <Compile Include="Filterer\Assembly\Filterer_Assembly_HasCustomLabeledAttributeOfType.cs" />
+    <Compile Include="Assemblys\Assemblys.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_ReferencedAssemblys.cs" />
+    <Compile Include="Extensions\Assembly\AssemblyExtensions_Type.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationValueAttribute.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationValue_RegexAttribute.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationValue_BasicAttribute.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationVariable_CreateAttribute.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationVariable_LookupAttribute.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationVariable_InterpretAttribute.cs" />
+    <Compile Include="ConfigurationVariable\ConfigurationVariableAttribute.cs" />
+    <Compile Include="ConversionMethods\Primitive\ConversionMethods_String.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsConcreteClass.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsAbstractClass.cs" />
+    <Compile Include="Fields\Fields.cs" />
+    <Compile Include="Filterer\ConstructorInfo\Filterer_ConstructorInfo.cs" />
+    <Compile Include="Filterer\ConstructorInfo\Filterer_ConstructorInfo_CanEffectiveParametersHold.cs" />
+    <Compile Include="Filterer\ConstructorInfo\Filterer_ConstructorInfo_HasCustomAttributeOfType.cs" />
+    <Compile Include="Filterer\ConstructorInfo\Filterer_ConstructorInfo_HasCustomLabeledAttributeOfType.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsStaticField.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPrivateMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPublicMethod.cs" />
+    <Compile Include="Filterer\Utility\Filterer_Combination.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNamed.cs" />
+    <Compile Include="Filterer\Utility\Filterer_Utility.cs" />
+    <Compile Include="Holding\HoldingLabeledItemSet.cs" />
+    <Compile Include="Holding\HoldingLabeledItemSet_Basic.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Convert.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Convert_Generic.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Convert_Generic_Internal.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance_OfType.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Values_Instance_Retrieve.cs" />
+    <Compile Include="Extensions\LookupSet\LookupSetExtensions_Configuration.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_ConstructorInfo.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Convert_Generic.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Convert.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Convert_Generic_Internal.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_Instance_OfType.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_Instance_OfType_Internal.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_Static.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_Static_OfType.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_Static_OfType_Internal.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_Static_OfType_GetValue.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Values_Instance_OfType_Marked.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Values_Instance_OfType_Marked_Internal.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Values_Instance_OfTypeOrIEnumerable_Marked.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Values_Instance_OfTypeOrIEnumerable_Marked_Internal.cs" />
+    <Compile Include="Types\Types.cs" />
+    <Compile Include="Filterer\Filterer.cs" />
+    <Compile Include="Filterer\Extensions\FiltererExtensions.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_CanBeTreatedAs.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_DoesNameContain.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_DoesNameStartWith.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_HasCustomAttributeOfType.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_HasCustomLabeledAttributeOfType.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsInstanceField.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsNamed.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanEffectiveParametersHold.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanReturnInto.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_DoesNameContain.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_DoesNameStartWith.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasCustomAttributeOfType.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasCustomLabeledAttributeOfType.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNoReturn.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsExtensionMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNamed.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsEffectivelyStaticMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsEffectivelyInstanceMethod.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_CanBeTreatedAs.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_HasCustomAttributeOfType.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_HasCustomLabeledAttributeOfType.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsExtensionClass.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsImmediateChildOf.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsImmediateParentOf.cs" />
+    <Compile Include="Holding\Holdable.cs" />
+    <Compile Include="Holding\HoldingContainer.cs" />
+    <Compile Include="Holding\HoldingContainerAttribute.cs" />
+    <Compile Include="Holding\HoldingList.cs" />
+    <Compile Include="Holding\HoldingSingle.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Filterer.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance_GetValue.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MethodInfo.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MethodInfo_Instance.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Values_Instance_OfType_Marked.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Values_Instance_OfTypeOrIEnumerable_Marked.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relatable\Relatable.cs" />
+    <Compile Include="Relatable\RelatableChildAttribute.cs" />
+    <Compile Include="Relatable\Extensions\RelatableExtensions.cs" />
+    <Compile Include="Relatable\Extensions\RelatableExtensions_Children.cs" />
+    <Compile Include="Relatable\Extensions\RelatableExtensions_Parent.cs" />
+    <Compile Include="Relatable\RelatableParentAttribute.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_ChildType.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_Instance.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MethodInfo_Instance.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_FieldInfo.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Interface.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_MethodInfo.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Relation.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="Member\Variable\Variable.cs" />
+    <Compile Include="Member\Variable\Variable_Operation\Variable_Operation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Extensions\Object\ObjectExtensions_MemberInstance_ActionInstance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ObjectExtensions_MemberInstance_ActionInstance.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Object\ObjectExtensions_MemberInstance_VariableInstance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ObjectExtensions_MemberInstance_VariableInstance.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Type\TypeExtensions_MethodInfo_Specific.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_MethodInfo_Specific.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Type\TypeExtensions_MethodInfo_Specialization.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_MethodInfo_Specialization.cs</LastGenOutput>
+    </Content>
+    <Content Include="Filterer\ConstructorInfo\Filterer_ConstructorInfo_CanEffectiveParametersHold_Generic.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Filterer_ConstructorInfo_CanEffectiveParametersHold_Generic.cs</LastGenOutput>
+    </Content>
+    <Content Include="Filterer\MethodInfo\Filterer_MethodInfo_CanGenericParametersHold_Generic.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Filterer_MethodInfo_CanGenericParametersHold_Generic.cs</LastGenOutput>
+    </Content>
+    <Content Include="Filterer\MethodInfo\Filterer_MethodInfo_CanEffectiveParametersHold_Generic.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Filterer_MethodInfo_CanEffectiveParametersHold_Generic.cs</LastGenOutput>
+    </Content>
+    <Content Include="MIMEType\MIMEType.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MIMEType.cs</LastGenOutput>
+    </Content>
+    <Content Include="MIMEType\mime_types.txt" />
+    <Content Include="MIMEType\source.txt" />
+    <Content Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\BasicReflectionTypeHusker.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BasicReflectionTypeHusker.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

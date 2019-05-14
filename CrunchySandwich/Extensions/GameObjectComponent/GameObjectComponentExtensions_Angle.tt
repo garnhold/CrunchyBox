@@ -1,0 +1,34 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+string[] angle_type_names = new string[]{"Degrees", "Radians", "Percent"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Angle
+    {
+<# foreach(string type_name in type_names){#>
+	<# foreach(string target_type_name in type_names){#>
+		<# foreach(string angle_type in angle_type_names){#>
+
+			static public float GetPlanarAngleIn<#=angle_type#>Between(this <#=type_name#> item, <#=target_type_name#> target)
+			{
+				return (target.GetPlanarPosition() - item.GetPlanarPosition()).GetAngleIn<#=angle_type#>();
+			}
+		<#}#>
+	<#}#>
+<#}#>
+	}
+}

@@ -1,0 +1,98 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] flavors = new string[]{
+	"Static",
+	"Dynamic"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<# foreach(string flavor in flavors){#>
+	public partial class <#=flavor#>OrderList<T> : IList<T>
+    {
+        private IComparer<T> comparer;
+        private List<T> list;
+
+        public int Count { get { return list.Count; } }
+        public bool IsReadOnly { get { return false; } }
+
+		public T this[int index]
+		{
+			get
+			{
+				Sort();
+
+				return list[index];
+			}
+			
+			set
+			{
+				throw new InvalidOperationException("OrderedLists do not support directly setting items.");
+			}
+		}
+
+        public <#=flavor#>OrderList(IComparer<T> c, IEnumerable<T> i)
+        {
+            comparer = c;
+            list = i.ToList();
+        }
+
+        public <#=flavor#>OrderList(IEnumerable<T> i) : this(Comparer<T>.Default, i) { }
+
+        public <#=flavor#>OrderList(IComparer<T> c, params T[] i) : this(c, (IEnumerable<T>)i) { }
+        public <#=flavor#>OrderList(params T[] i) : this(Comparer<T>.Default, i) { }
+
+        public <#=flavor#>OrderList(Comparison<T> c, IEnumerable<T> i) : this(new ComparisonComparer<T>(c), i) { }
+        public <#=flavor#>OrderList(Comparison<T> c, params T[] i) : this(c, (IEnumerable<T>)i) { }
+
+		public void Insert(int index, T item)
+		{
+			throw new InvalidOperationException("OrderedLists do not support inserting items.");
+		}
+
+		public void RemoveAt(int index)
+		{
+			Sort();
+
+			list.RemoveAt(index);
+		}
+
+        public bool Contains(T item)
+        {
+            return list.Contains(item);
+        }
+
+		public int IndexOf(T item)
+		{
+			Sort();
+
+			return list.IndexOf(item);
+		}
+
+        public void CopyTo(T[] array, int index)
+        {
+            Sort();
+
+            list.CopyTo(array, index);
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            Sort();
+
+            return list.GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+<# } #>
+}

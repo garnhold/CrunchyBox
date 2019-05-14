@@ -1,0 +1,48 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+string[] function_suffixes = new string[]{"", "AtSelf"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Child_Add
+    {
+<# foreach(string type_name in type_names){#>
+	<# foreach(string function_suffix in function_suffixes){#>
+		static public GameObject AddChild<#=function_suffix#>(this <#=type_name#> item, GameObject child)
+        {
+            item.transform.AddChild<#=function_suffix#>(child.transform);
+            return child;
+        }
+
+        static public T AddChild<#=function_suffix#><T>(this <#=type_name#> item, T child) where T : Component
+        {
+            item.AddChild<#=function_suffix#>(child.gameObject);
+            return child;
+        }
+
+		static public void AddChildren<#=function_suffix#>(this <#=type_name#> item, IEnumerable<GameObject> children)
+		{
+			children.Process(c => item.AddChild<#=function_suffix#>(c));
+		}
+
+		static public void AddChildren<#=function_suffix#><T>(this <#=type_name#> item, IEnumerable<T> children) where T : Component
+		{
+			children.Process(c => item.AddChild<#=function_suffix#>(c));
+		}
+	<# } #>
+<# } #>
+	}
+}

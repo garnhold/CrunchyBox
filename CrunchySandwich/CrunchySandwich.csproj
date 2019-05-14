@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6ACC1D31-48D0-43E6-8A3A-E439B7EAD68C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchySandwich</RootNamespace>
+    <AssemblyName>CrunchySandwich</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrunchyBun">
+      <HintPath>..\CrunchyBun\bin\Release\CrunchyBun.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyRecipe">
+      <HintPath>..\CrunchyRecipe\bin\Release\CrunchyRecipe.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySauce">
+      <HintPath>..\CrunchySauce\bin\Release\CrunchySauce.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveGameRateLimiter\ActiveGameRateLimiter.cs" />
+    <Compile Include="ActiveTime\ActiveTime.cs" />
+    <Compile Include="ApplicationEX\ApplicationEXSatelliteAttribute.cs" />
+    <Compile Include="ApplicationEX\ApplicationEX.cs" />
+    <Compile Include="ApplicationEX\ApplicationEXLiason.cs" />
+    <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
+    <Compile Include="Axis\Axis.cs" />
+    <Compile Include="Axis\Extensions\AxisExtensions.cs" />
+    <Compile Include="BorderCollider2D\BorderCollider2D.cs" />
+    <Compile Include="BoundsTree\BoundsTree_Create.cs" />
+    <Compile Include="BoundsTree\Extensions\BoundsTreeExtensions_Within.cs" />
+    <Compile Include="BoundsTree\Extensions\BoundsTreeExtensions_Add.cs" />
+    <Compile Include="BoundsTree\Extensions\BoundsTreeExtensions.cs" />
+    <Compile Include="ConvexPolygon\ConvexPolygon.cs" />
+    <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Primitives.cs" />
+    <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Point.cs" />
+    <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Boolean.cs" />
+    <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Add.cs" />
+    <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions.cs" />
+    <Compile Include="CustomAsset\CustomAssetGenerator.cs" />
+    <Compile Include="CustomAsset\CustomAssetInstance.cs" />
+    <Compile Include="CustomAsset\CustomAsset.cs" />
+    <Compile Include="CustomAsset\CustomAssetCategoryAttribute.cs" />
+    <Compile Include="Curve\Curve.cs" />
+    <Compile Include="Edge2\Edge2.cs" />
+    <Compile Include="Edge2\Extensions\Edge2Extensions_Points.cs" />
+    <Compile Include="Edge2\Extensions\Edge2Extensions.cs" />
+    <Compile Include="Edge3\Edge3.cs" />
+    <Compile Include="Edge3\Extensions\Edge3Extensions_Point.cs" />
+    <Compile Include="Edge3\Extensions\Edge3Extensions.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Center.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Scaled.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Size.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_SplitIntoPlanarQuarters.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Split_Center.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_CullingMask.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_RenderTexture.cs" />
+    <Compile Include="Extensions\CircleCollider2D\CircleCollider2DExtensions.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_Vectors.cs" />
+    <Compile Include="Extensions\Component\ComponentExtensions_GameObject.cs" />
+    <Compile Include="Extensions\Component\ComponentExtensions_Layer.cs" />
+    <Compile Include="Extensions\Component\IEnumerable\ComponentExtensions_IEnumerable_GameObject.cs" />
+    <Compile Include="Extensions\Component\IEnumerable\ComponentExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\ContactFilter2D\ContactFilter2DExtensions.cs" />
+    <Compile Include="Extensions\ContactPoint2D\ContactPoint2DExtensions_Penetration.cs" />
+    <Compile Include="Extensions\ContactPoint2D\ContactPoint2DExtensions.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Size.cs">
+      <DependentUpon>GameObjectComponentExtensions_Size.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Remove.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child_Remove.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Angle.cs">
+      <DependentUpon>GameObjectComponentExtensions_Angle.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetAllComponents.cs">
+      <DependentUpon>GameObjectComponentExtensions_GetAllComponents.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_RemoveComponent.cs">
+      <DependentUpon>GameObjectComponentExtensions_RemoveComponent.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Distance.cs">
+      <DependentUpon>GameObjectComponentExtensions_Distance.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Rigidbody2D.cs">
+      <DependentUpon>GameObjectComponentExtensions_Rigidbody2D.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Parent.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Parent.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Match.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Match.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Match.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Match.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Radial_Adjust.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Radial_Adjust.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Radial.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Radial.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Adjust.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Adjust.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\IEnumerable\GameObjectComponentExtensions_IEnumerable_Convert.cs">
+      <DependentUpon>GameObjectComponentExtensions_IEnumerable_Convert.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\IEnumerable\GameObjectComponentExtensions_IEnumerable_Distance.cs">
+      <DependentUpon>GameObjectComponentExtensions_IEnumerable_Distance.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObject\GameObjectExtensions_Active.cs" />
+    <Compile Include="Extensions\GameObject\IEnumerable\GameObjectExtensions_IEnumerable_Destroy.cs" />
+    <Compile Include="Extensions\GameObject\IEnumerable\GameObjectExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_WireCube.cs" />
+    <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions_Motor.cs" />
+    <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions.cs" />
+    <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions_With.cs" />
+    <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions.cs" />
+    <Compile Include="Extensions\Physics2D\Physics2DExtensions_Cast.cs" />
+    <Compile Include="Extensions\Physics2D\Physics2DExtensions_Contacts.cs" />
+    <Compile Include="Extensions\Physics2D\Physics2DExtensions_FindLargest.cs" />
+    <Compile Include="Extensions\Physics2D\Physics2DExtensions_Overlap.cs" />
+    <Compile Include="Extensions\Physics2D\Physics2DExtensions.cs" />
+    <Compile Include="Extensions\Physics\PhysicsExtensions_OverlapSphere.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Edge.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_General.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_SplitIntoQuarters.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Split_Center.cs" />
+    <Compile Include="Extensions\Renderer\RendererExtensions_Material.cs" />
+    <Compile Include="Extensions\RigidBody2D\RigidBody2DExtensions_Speed.cs" />
+    <Compile Include="Extensions\RigidBody2D\RigidBody2DExtensions_Rotation.cs" />
+    <Compile Include="Extensions\RigidBody2D\RigidBody2DExtensions_Position.cs" />
+    <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Speed.cs" />
+    <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Position.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Texture.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Match.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Units.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Color_Fill.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Stamps.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Stamp.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprite.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Match.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Match.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Parent.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Radial_Adjust.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Radial.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Adjust.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Designated.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Spacar.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Floats.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_VectorI2.cs" />
+    <Compile Include="Extensions\Vector2\Vector2s.cs">
+      <DependentUpon>Vector2s.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Abs.cs" />
+    <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Planar.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Abs.cs" />
+    <Compile Include="FaceCloud\Extensions\FaceCloudExtensions_Polygon.cs" />
+    <Compile Include="FaceCloud\Extensions\FaceCloudExtensions_Add.cs" />
+    <Compile Include="FaceCloud\Extensions\FaceCloudExtensions.cs" />
+    <Compile Include="FaceCloud\Extensions\FaceCloudFaceExtensions_Compare.cs" />
+    <Compile Include="FaceCloud\Extensions\FaceCloudFaceExtensions.cs" />
+    <Compile Include="FaceCloud\FaceCloudFace.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Rect.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Bounds.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Triangle.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Flip.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_BiRay.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Side.cs" />
+    <Compile Include="UnityObjectEX\PolymorphicField.cs" />
+    <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\GeneralUnityTyonDesignatedVariableProvider.cs" />
+    <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\UnityTyonDesignatedVariableProvider.cs" />
+    <Compile Include="WorkSystem\Extensions\WorkSystemExtensions.cs" />
+    <Compile Include="WorkSystem\Extensions\WorkSystemExtensions_Schedule.cs" />
+    <Compile Include="WorkSystem\PeriodicWorkScheduler.cs" />
+    <Compile Include="WorkSystem\WorkScheduler.cs" />
+    <Compile Include="WorkSystem\WorkSystem.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Seal.cs" />
+    <Compile Include="Pathfinding2D\Extensions\Pathfinding2DExtensions_IsPotentialConnection.cs" />
+    <Compile Include="Pathfinding2D\Extensions\Pathfinding2DExtensions_IsConnection.cs" />
+    <Compile Include="Pathfinding2D\Extensions\Pathfinding2DExtensions.cs" />
+    <Compile Include="Pathfinding2D\Pathfinding2D.cs" />
+    <Compile Include="Pathfinding2D\PathGraph2D\PathGraph2D_Growing.cs" />
+    <Compile Include="Pathfinding2D\PathGraphInfo2D\PathGraphInfo2D_Simple.cs" />
+    <Compile Include="Pathfinding2D\PathGraphInfo2D\PathGraphInfo2D_BlockableStatic.cs" />
+    <Compile Include="Pathfinding2D\PathNode2D\Extensions\PathNode2DExtensions_IsPotentialConnection.cs" />
+    <Compile Include="Pathfinding2D\PathNode2D\Extensions\PathNode2DExtensions_IsConnection.cs" />
+    <Compile Include="Pathfinding2D\PathNode2D\Extensions\PathNode2DExtensions.cs" />
+    <Compile Include="Pathfinding2D\PathNode2D\PathNode2D_BlockableStatic.cs" />
+    <Compile Include="Pathfinding2D\PathNode2D\PathNode2D_FullyStatic.cs" />
+    <Compile Include="Pathfinding2D\PathGraphInfo2D\PathGraphInfo2D_FullyStatic.cs" />
+    <Compile Include="Pathfinding2D\PathGraphInfo2D\PathGraphInfo2D.cs" />
+    <Compile Include="Pathfinding2D\PathGraph2D\PathGraph2D_QuadTree.cs" />
+    <Compile Include="Pathfinding2D\PathGraph2D\PathGraph2D.cs" />
+    <Compile Include="Pathfinding2D\PathNode2D\PathNode2D.cs" />
+    <Compile Include="PlacementEvaluator\PlacementEvaluator_NonColliding.cs" />
+    <Compile Include="PlacementEvaluator\PlacementEvaluator.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions_Origin.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions_BiRay.cs" />
+    <Compile Include="FaceCloud\FaceCloud.cs" />
+    <Compile Include="EditGadget\Attribute\AttachEditGadgetAttribute.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Enlarged.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Plane.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Compare.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Combine.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_GeometryIntersection.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Edges.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Triangle.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_RayLine.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Split.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_SplitIntoSpaceEighths.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_SplitIntoAreaQuarters.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Points.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Volume.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_AreaGridChunk.cs" />
+    <Compile Include="Extensions\Bounds\IEnumerable\BoundsExtensions_IEnumerable_Combine.cs" />
+    <Compile Include="Extensions\Bounds\IEnumerable\BoundsExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Bounds\IEnumerable\BoundsExtensions_IEnumerable_Boolean.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Encompassing.cs" />
+    <Compile Include="Extensions\BoxCollider2D\BoxCollider2DExtensions.cs" />
+    <Compile Include="Extensions\BoxCollider\BoxColliderExtensions.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_PixelSize.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_OrthographicLength.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_Render.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_PlanePoint.cs" />
+    <Compile Include="Extensions\Collider2D\Collider2DExtensions.cs" />
+    <Compile Include="Extensions\Collider2D\Collider2DExtensions_Size.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_Grayscale.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_Premultipled.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_Interpolate.cs" />
+    <Compile Include="Extensions\Component\ComponentExtensions_Remove.cs" />
+    <Compile Include="Extensions\Component\ComponentExtensions_Component.cs" />
+    <Compile Include="Extensions\Event\EventExtensions.cs" />
+    <Compile Include="Extensions\Font\FontExtensions_TextLayout.cs" />
+    <Compile Include="Extensions\Font\FontExtensions.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Overwrite.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child_Overwrite.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Destroy.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child_Destroy.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children_Destroy.cs">
+      <DependentUpon>GameObjectComponentExtensions_Children_Destroy.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Sequence.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child_Sequence.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Get.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child_Get.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_FetchComponent.cs">
+      <DependentUpon>GameObjectComponentExtensions_FetchComponent.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Parents.cs">
+      <DependentUpon>GameObjectComponentExtensions_Parents.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children.cs">
+      <DependentUpon>GameObjectComponentExtensions_Children.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Add.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child_Add.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_HasComponent.cs">
+      <DependentUpon>GameObjectComponentExtensions_HasComponent.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetComponentValue.cs">
+      <DependentUpon>GameObjectComponentExtensions_GetComponentValue.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetComponent.cs">
+      <DependentUpon>GameObjectComponentExtensions_GetComponent.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\IEnumerable\GameObjectComponentExtensions_IEnumerable.cs">
+      <DependentUpon>GameObjectComponentExtensions_IEnumerable.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Process.cs">
+      <DependentUpon>GameObjectComponentExtensions_Process.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Sprite.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Sprite.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Mesh.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Mesh.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Interpolate.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Interpolate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Adjust.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Adjust.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Spawn.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GameObjectComponentExtensions_Spawn.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\GameObject\GameObjectExtensions_Layer.cs" />
+    <Compile Include="Extensions\GameObject\GameObjectExtensions_Sorting.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Ray.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Arrow.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Matrix.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Triangle.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Plane.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Outlined.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Color.cs" />
+    <Compile Include="Extensions\GUISkin\GUISkinExtensions_TextLayout_Styles.cs">
+      <DependentUpon>GUISkinExtensions_TextLayout_Styles.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GUISkin\GUISkinExtensions_TextLayout.cs" />
+    <Compile Include="Extensions\GUISkin\GUISkinExtensions.cs" />
+    <Compile Include="Extensions\GUIStyle\GUIStyleExtensions_TextLayout.cs" />
+    <Compile Include="Extensions\GUIStyle\GUIStyleExtensions.cs" />
+    <Compile Include="Extensions\Material\MaterialExtensions_Main.cs" />
+    <Compile Include="Extensions\Material\MaterialExtensions_Colored.cs" />
+    <Compile Include="Extensions\Material\MaterialExtensions_Textured.cs" />
+    <Compile Include="Extensions\Material\MaterialExtensions.cs" />
+    <Compile Include="Extensions\Matrix4x4\Matrix4x4Extensions_Plane.cs" />
+    <Compile Include="Extensions\Matrix4x4\Matrix4x4Extensions.cs" />
+    <Compile Include="Extensions\MeshCollider\MeshColliderExtensions.cs" />
+    <Compile Include="Extensions\MeshFilter\MeshFilterExtensions_Bounds.cs" />
+    <Compile Include="Extensions\MeshFilter\MeshFilterExtensions_Size.cs" />
+    <Compile Include="Extensions\MeshFilter\MeshFilterExtensions.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateCombined.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateCircleOutline.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateCircle.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateQuad.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateNullQuad.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateCenterQuad.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateCornerQuad.cs" />
+    <Compile Include="Extensions\Mesh\Create\MeshExtensions.cs" />
+    <Compile Include="Extensions\Mesh\MeshExtensions_MeshDissector.cs" />
+    <Compile Include="Extensions\Mesh\MeshExtensions_Bounds.cs" />
+    <Compile Include="Extensions\Mesh\MeshExtensions_Chunk.cs" />
+    <Compile Include="Extensions\Mesh\MeshExtensions_Triangle.cs" />
+    <Compile Include="Extensions\Physics\PhysicsExtensions_OverlapBox.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_Point.cs" />
+    <Compile Include="Extensions\RectTransform\RectTransformExtensions_Size.cs" />
+    <Compile Include="Extensions\Rect\IEnumerable\RectExtensions_IEnumerable_Boolean.cs" />
+    <Compile Include="Extensions\Rect\IEnumerable\RectExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_GridChunk.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Points.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Spacar.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Shift.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Boolean.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Contains.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Size.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Constrain.cs" />
+    <Compile Include="Extensions\Renderer\RendererExtensions_Sorting.cs" />
+    <Compile Include="Extensions\RenderTexture\RenderTextureExtensions_Texture2D.cs" />
+    <Compile Include="Extensions\RenderTexture\RenderTextureExtensions.cs" />
+    <Compile Include="Extensions\RigidBody\RigidBodyExtensions.cs" />
+    <Compile Include="Extensions\RigidBody2D\RigidBody2DExtensions.cs" />
+    <Compile Include="Extensions\Screen\ScreenExtensions.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Interpolate.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Get.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Adjust.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Set.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color.cs" />
+    <Compile Include="Extensions\TextMesh\TextMeshExtensions_TextLayout.cs" />
+    <Compile Include="Extensions\TextMesh\TextMeshExtensions.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Grayscale.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Rect.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Surface.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Size.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Mesh.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Sprite.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_RelativePoint.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Interpolate.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Adjust.cs" />
+    <Compile Include="Extensions\UnityObject\IEnumerable\UnityObjectExtensions_IEnumerable_Spawn.cs" />
+    <Compile Include="Extensions\UnityObject\IEnumerable\UnityObjectExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Spawn.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_IteratedBinaryOperation.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_IsBound.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Axis.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Interpolate.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Line_ProjectedPoint.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_BindMagnitude.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_MinMax.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Binding.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_GUI.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Arear.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_VectorF2.cs" />
+    <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Bounds.cs" />
+    <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_IteratedBinaryOperation.cs" />
+    <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_MinMax.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_IsBound.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Axis.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_BindMagnitude.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Cross.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Interpolate.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Arear.cs" />
+    <Compile Include="Extensions\VectorF2\VectorF2Extensions_Vector2.cs" />
+    <Compile Include="Extensions\VectorF2\VectorF2Extensions.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Face.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Plane.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_RayLine.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions_Ray.cs" />
+    <Compile Include="Face\Extensions\FaceExtensions.cs" />
+    <Compile Include="Face\Face.cs" />
+    <Compile Include="GameRateLimiter\GameRateLimiter.cs" />
+    <Compile Include="GizmosEX\GizmosEX.cs" />
+    <Compile Include="Land\Land.cs" />
+    <Compile Include="Land\LandPoint.cs" />
+    <Compile Include="Land\LandRegionBuilder\LandRegionBuilder.cs" />
+    <Compile Include="Land\LandRegionBuilder\LandRegionBuilder_Topographic.cs" />
+    <Compile Include="Land\LandRegionBuilder\LandRegionBuilder_Topographic_All.cs" />
+    <Compile Include="Land\LandRegionBuilder\LandRegionBuilder_Topographic_AngleBand.cs" />
+    <Compile Include="Land\LandRegionBuilder\LandRegionBuilder_Topographic_HeightBand.cs" />
+    <Compile Include="Land\LandRegionPainter\LandRegionPainter.cs" />
+    <Compile Include="Land\LandRegionPainter\LandRegionPainter_Basic.cs" />
+    <Compile Include="Land\LandRegionPainter\LandRegionPainter_Basic_Multi.cs" />
+    <Compile Include="Land\LandRegionPainter\LandRegionPainter_Basic_Single.cs" />
+    <Compile Include="Land\LandRegionPainter\LandRegionPainter_DualTiledOverlay.cs" />
+    <Compile Include="Land\LandRegionPopulater\LandRegionPopulater.cs" />
+    <Compile Include="Land\LandRegionPopulater\LandRegionPopulater_Basic.cs" />
+    <Compile Include="Land\LandRegionPopulater\LandRegionPopulater_Basic_Multi.cs" />
+    <Compile Include="Land\LandRegionPopulater\LandRegionPopulater_Basic_Single.cs" />
+    <Compile Include="Land\LandRegionPrefabPopulater.cs" />
+    <Compile Include="Land\LandRegionSplat.cs" />
+    <Compile Include="Land\LandRegionType.cs" />
+    <Compile Include="LayerEX\LayerEX.cs" />
+    <Compile Include="MaintainScale\MaintainScaleAspect.cs" />
+    <Compile Include="MaintainScale\MaintainScale.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_ConvexPolygons.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk_Plane.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk_Bounds.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions.cs" />
+    <Compile Include="MeshBuilder\MeshBuilder.cs" />
+    <Compile Include="MeshDissector\Extensions\MeshDissectorExtensions.cs" />
+    <Compile Include="MeshDissector\Extensions\MeshDissectorExtensions_Chunk.cs" />
+    <Compile Include="MeshDissector\MeshDissectorTriangle.cs" />
+    <Compile Include="MeshDissector\MeshDissector.cs" />
+    <Compile Include="MeshLumper\LumpableMesh.cs" />
+    <Compile Include="MeshLumper\MeshLumper.cs" />
+    <Compile Include="NonConvexCollider\NonConvexColliderBoxWadFinalizationType.cs" />
+    <Compile Include="NonConvexCollider\NonConvexCollider_BoxWad.cs" />
+    <Compile Include="NonConvexCollider\NonConvexCollider.cs" />
+    <Compile Include="NonConvexCollider\NonConvexColliderFillResponse.cs" />
+    <Compile Include="NonConvexCollider\NonConvexCollider_BoxWad_Fill.cs" />
+    <Compile Include="NonConvexCollider\NonConvexCollider_BoxWad_Octree.cs" />
+    <Compile Include="NowMesh\NowMesh.cs" />
+    <Compile Include="BoundsTree\BoundsTree.cs" />
+    <Compile Include="OrderByY\OrderByY.cs" />
+    <Compile Include="Placer\Placer_Jitter.cs" />
+    <Compile Include="Placer\Placer.cs" />
+    <Compile Include="Placer\Placer_OnFloor.cs" />
+    <Compile Include="Placer\Placer_OnFloor_Jitter.cs" />
+    <Compile Include="Placer\Placer_OnFloor_Offset.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions_Point.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions_RayLine.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions_Ray.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Bounds.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_BiRay.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Plane.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Vector.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Triangle.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_GeometryIntersection.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Origin.cs" />
+    <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions.cs" />
+    <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Inflate.cs" />
+    <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Intersect.cs" />
+    <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Project.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Point.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_PlaneSpace.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_RayLine.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Ray.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Side.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions_Flip.cs" />
+    <Compile Include="Extensions\Plane\PlaneExtensions.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions_Flip.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions_Side.cs" />
+    <Compile Include="Plane2\Extensions\Plane2Extensions.cs" />
+    <Compile Include="Plane2\Plane2.cs" />
+    <Compile Include="PlaneSpace\PlaneSpace.cs" />
+    <Compile Include="PlayEditDistinction\EditDistinctionAttribute.cs" />
+    <Compile Include="PlayEditDistinction\PlayEditDistinction.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlayEditDistinction.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolygonTriangle\Extensions\PolygonTriangleExtensions_Point.cs" />
+    <Compile Include="PolygonTriangle\Extensions\PolygonTriangleExtensions.cs" />
+    <Compile Include="Polygon\Extensions\PolygonExtensions.cs" />
+    <Compile Include="Polygon\Extensions\PolygonExtensions_Point.cs" />
+    <Compile Include="PolygonTriangle\PolygonTriangle.cs" />
+    <Compile Include="Polygon\Polygon.cs" />
+    <Compile Include="PrefabRegion\PrefabRegion_PlanarMap.cs" />
+    <Compile Include="PrefabRegion\PrefabRegion_Bounds_Planar.cs" />
+    <Compile Include="PrefabRegion\PrefabRegion_Bounds_Area.cs" />
+    <Compile Include="PrefabRegion\PrefabRegion_Bounds_Volume.cs" />
+    <Compile Include="PrefabRegion\PrefabRegion_Bounds.cs" />
+    <Compile Include="PrefabRegion\PrefabRegion.cs" />
+    <Compile Include="PrefabSpawner\PrefabSpawner.cs" />
+    <Compile Include="PrefabSpawner\PrefabSpawner_Multiple.cs" />
+    <Compile Include="PrefabSpawner\PrefabSpawner_Single.cs" />
+    <Compile Include="Ray2\Extensions\Ray2Extensions_FindLargest.cs" />
+    <Compile Include="Ray2\Extensions\Ray2Extensions_General.cs" />
+    <Compile Include="Ray2\Extensions\Ray2Extensions.cs" />
+    <Compile Include="Ray2\Extensions\Ray2Extensions_Point.cs" />
+    <Compile Include="Ray2\Extensions\Ray2Extensions_Cast.cs" />
+    <Compile Include="Ray2\Extensions\Ray2Extensions_CircleCast.cs" />
+    <Compile Include="Ray2\Ray2.cs" />
+    <Compile Include="RayLine2\Extensions\RayLine2Extensions_FindLargest.cs" />
+    <Compile Include="RayLine2\Extensions\RayLine2Extensions_Transform.cs" />
+    <Compile Include="RayLine2\Extensions\RayLine2Extensions.cs" />
+    <Compile Include="RayLine2\Extensions\RayLine2Extensions_Point.cs" />
+    <Compile Include="RayLine2\Extensions\RayLine2Extensions_Cast.cs" />
+    <Compile Include="RayLine2\Extensions\RayLine2Extensions_CircleCast.cs" />
+    <Compile Include="RayLine2\RayLine2.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions_Point.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions_Transform.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions.cs" />
+    <Compile Include="RectTree\RectTree.cs" />
+    <Compile Include="RectTree\RectTree_Create.cs" />
+    <Compile Include="RectTree\Extensions\RectTreeExtensions.cs" />
+    <Compile Include="RectTree\Extensions\RectTreeExtensions_Add.cs" />
+    <Compile Include="RectTree\Extensions\RectTreeExtensions_Within.cs" />
+    <Compile Include="ReflectionSystemPrerunner\ReflectionSystemPrerunner.cs" />
+    <Compile Include="RenderEffect\RenderEffect.cs" />
+    <Compile Include="Scene\SceneEX.cs" />
+    <Compile Include="ScreenAnchor\Extensions\ScreenAnchorExtensions_Interpolate.cs" />
+    <Compile Include="ScreenAnchor\Extensions\ScreenAnchorExtensions.cs" />
+    <Compile Include="ScreenAnchor\ScreenAnchor.cs" />
+    <Compile Include="ScreenInput\ScreenInput.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions.cs" />
+    <Compile Include="Singletons\Placement.cs" />
+    <Compile Include="SortingLayerEX\SortingLayerControl.cs" />
+    <Compile Include="SortingLayerEX\SortingLayerEX.cs" />
+    <Compile Include="SpriteCollider2D\SpriteCollider2D.cs" />
+    <Compile Include="BackgroundRenderer\BackgroundRenderer.cs" />
+    <Compile Include="NonConvexCollider\NonConvexCollider_BoxWad_StrataQuadtree.cs" />
+    <Compile Include="SpriteEdit\SpriteEdit.cs" />
+    <Compile Include="Subsystem\Extensions\SubsystemExtensions_Resource.cs" />
+    <Compile Include="Subsystem\Extensions\SubsystemExtensions_Resource_Get.cs" />
+    <Compile Include="Subsystem\Extensions\SubsystemExtensions.cs" />
+    <Compile Include="Surface\Mixer\Mixer_Color_Simple.cs" />
+    <Compile Include="Surface\Mixer\Mixer_Color_Simple_Normal.cs" />
+    <Compile Include="Surface\Mixer\Mixer_Color_Simple_Overwrite.cs" />
+    <Compile Include="Surface\Mixer\Mixer_Color.cs" />
+    <Compile Include="Surface\Surface_Texture2D.cs" />
+    <Compile Include="Tap\Extensions\TapTypeExtensions_Compare.cs" />
+    <Compile Include="Tap\Extensions\TapTypeExtensions.cs" />
+    <Compile Include="Tap\TapTimer.cs" />
+    <Compile Include="RelativePoint\RelativePoint.cs" />
+    <Compile Include="ActiveGameTimer\ActiveGameTimer.cs" />
+    <Compile Include="ActiveGameTimer\ActiveGameTimer_Duration.cs" />
+    <Compile Include="GameTimer\GameTimer_Duration.cs" />
+    <Compile Include="ActiveGameTimer\TimeSource\TimeSource_ActiveGameTime.cs" />
+    <Compile Include="Triangle2\Extensions\Triangle2Extensions_Edge.cs" />
+    <Compile Include="Triangle2\Extensions\Triangle2Extensions_Rect.cs" />
+    <Compile Include="Triangle2\Extensions\Triangle2Extensions_Bounds.cs" />
+    <Compile Include="Triangle2\Extensions\Triangle2Extensions_Winding.cs" />
+    <Compile Include="Triangle2\Extensions\Triangle2Extensions_Points.cs" />
+    <Compile Include="Triangle2\Extensions\Triangle2Extensions.cs" />
+    <Compile Include="Triangle2\Triangle2.cs" />
+    <Compile Include="Triangle3\Extensions\IEnumerable\Triangle3Extensions_IEnumerable_Edge.cs" />
+    <Compile Include="Triangle3\Extensions\IEnumerable\Triangle3Extensions_IEnumerable.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions_Edge.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions_Winding.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions_Compare.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions_Normal.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions_Points.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions_Plane.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions_Bounds.cs" />
+    <Compile Include="Triangle3\Extensions\Triangle3Extensions.cs" />
+    <Compile Include="Triangle3\Triangle3.cs" />
+    <Compile Include="UnityObjectEX\TyonSerializationSettings\UnityTyonSerializationSettings.cs" />
+    <Compile Include="UnityObjectEX\SerializeFieldEX.cs" />
+    <Compile Include="UnityObjectEX\UnityObjectEX.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnityObjectEX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Curve\ValueCurve.cs" />
+    <Compile Include="WorldPressSystem\WorldPress.cs" />
+    <Compile Include="Tap\TapType.cs" />
+    <Compile Include="WorldPressSystem\WorldPressTarget.cs" />
+    <Compile Include="WorldPressSystem\WorldPressSystem.cs" />
+    <Compile Include="ScreenInput\ScreenTouch.cs" />
+    <Compile Include="GameTimer\GameTimer.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Footprint.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Faces.cs" />
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Planar.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_OrthographicPosition.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_OrthographicSize.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_HSL.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_With.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_WithScaled.cs" />
+    <Compile Include="Extensions\Component\ComponentExtensions.cs" />
+    <Compile Include="Extensions\GameObject\GameObjectExtensions_Destroy.cs" />
+    <Compile Include="Extensions\GameObject\GameObjectExtensions.cs" />
+    <Compile Include="Extensions\TerrainData\TerrainDataExtensions_Cell.cs" />
+    <Compile Include="Extensions\TerrainData\TerrainDataExtensions_Height.cs" />
+    <Compile Include="Extensions\TerrainData\TerrainDataExtensions_Sample.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_DontDestroyOnLoad.cs" />
+    <Compile Include="Subsystem\Subsystem.cs" />
+    <Compile Include="Subsystem\SubsystemManager.cs" />
+    <Compile Include="Extensions\GridCell\GridCellExtensions_Vector2.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_Texture2D.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_Vector2.cs" />
+    <Compile Include="InitBehaviour\InitBehaviour.cs" />
+    <Compile Include="Extensions\Physics\PhysicsExtensions_MultiRaycast.cs" />
+    <Compile Include="Extensions\Physics\PhysicsExtensions.cs" />
+    <Compile Include="Random\Vector3\RandVector3Box.cs" />
+    <Compile Include="Random\Vector3\RandVector3Box_Offset.cs" />
+    <Compile Include="Random\Vector3\RandVector3Box_Variance.cs" />
+    <Compile Include="Random\Vector3\RandVector3Source.cs" />
+    <Compile Include="Random\Vector2\RandVector2Source.cs" />
+    <Compile Include="Random\Vector2\RandVector2.cs" />
+    <Compile Include="Random\Vector2\RandVector2Box.cs" />
+    <Compile Include="Random\Vector2\RandVector2Box_Between.cs" />
+    <Compile Include="Random\Vector3\RandVector3.cs" />
+    <Compile Include="Extensions\RaycastHit2D\RaycastHit2DExtensions.cs" />
+    <Compile Include="Extensions\RaycastHit\RaycastHitExtensions.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_SphereCast_Against.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions_Cast_Discerning.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions_SphereCast_Against.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions_SphereCast_Discerning.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions_SphereCast.cs" />
+    <Compile Include="RayLine\Extensions\RayLineExtensions_Cast.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_SphereCast_Discerning.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_SphereCast.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_Cast_Against.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_Transform.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_Cast_Discerning.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions_Cast.cs" />
+    <Compile Include="Extensions\Ray\RayExtensions.cs" />
+    <Compile Include="RayLine\RayLine.cs" />
+    <Compile Include="Extensions\Renderer\RendererExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Adjust.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Compare.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Split.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Size.cs" />
+    <Compile Include="Extensions\TerrainData\TerrainDataExtensions.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Color.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Data.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Grid.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Grids.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Index.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_SubTexture.cs" />
+    <Compile Include="Extensions\TerrainData\TerrainSample.cs" />
+    <Compile Include="Singletons\SplatPrototypeCreator.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="GameTimer\TimeSource\TimeSource_GameTime.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Children.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Custom.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Degrees.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Percent.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Radians.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Distance.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Component.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Component.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Magnitude.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Normalize.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Direction.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Direction.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Distance.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Dot.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Dot.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Line_Point.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Loop.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Magnitude.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Normalize.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Path.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Line.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Spacar.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Triangle.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_With.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Planar.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_WithAdjusted.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Size.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Size.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Remove.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child_Remove.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Overwrite.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child_Overwrite.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Destroy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child_Destroy.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children_Destroy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Children_Destroy.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Sequence.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child_Sequence.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Get.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child_Get.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Angle.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Angle.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetAllComponents.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_GetAllComponents.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_RemoveComponent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_RemoveComponent.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_FetchComponent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_FetchComponent.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Parents.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Parents.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Children.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Add.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child_Add.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_HasComponent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_HasComponent.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetComponentValue.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_GetComponentValue.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetComponent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_GetComponent.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Distance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Distance.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Rigidbody2D.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Rigidbody2D.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Match.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Match.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Match.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Match.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\IEnumerable\GameObjectComponentExtensions_IEnumerable_Convert.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_IEnumerable_Convert.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\IEnumerable\GameObjectComponentExtensions_IEnumerable.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_IEnumerable.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Process.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Process.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Parent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Parent.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Radial_Adjust.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Radial_Adjust.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Radial.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Radial.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Adjust.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Adjust.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Sprite.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Sprite.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Mesh.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Mesh.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Interpolate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Interpolate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Adjust.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Adjust.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Spawn.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Spawn.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\IEnumerable\GameObjectComponentExtensions_IEnumerable_Distance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_IEnumerable_Distance.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GUISkin\GUISkinExtensions_TextLayout_Styles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GUISkinExtensions_TextLayout_Styles.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Vector2\Vector2s.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Vector2s.cs</LastGenOutput>
+    </Content>
+    <Content Include="PlayEditDistinction\PlayEditDistinction.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PlayEditDistinction.cs</LastGenOutput>
+    </Content>
+    <Content Include="UnityObjectEX\UnityObjectEX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UnityObjectEX.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

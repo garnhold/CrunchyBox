@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using System.Reflection;
+using System.Reflection.Emit;
+
+using System.Globalization;
+
+using CrunchyDough;
+
+namespace CrunchySalt
+{
+    static public class TypeExtensions_IL
+    {
+        static public ILField GetStaticILField(this Type item, string name)
+        {
+            return item.GetStaticField(name)
+                .IfNotNull(f => new ILField(null, f));
+        }
+
+        static public ILMethodInvokation GetStaticILMethodInvokation(this Type item, string name, IEnumerable<ILValue> arguments)
+        {
+            return item.GetStaticMethod(name, arguments.Convert(a => a.GetValueType()))
+                .IfNotNull(m => new ILMethodInvokation(null, m, arguments));
+        }
+        static public ILMethodInvokation GetStaticILMethodInvokation(this Type item, string name, params ILValue[] arguments)
+        {
+            return item.GetStaticILMethodInvokation(name, (IEnumerable<ILValue>)arguments);
+        }
+    }
+}

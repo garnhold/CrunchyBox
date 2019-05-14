@@ -1,0 +1,69 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Planar_Adjust
+    {
+<# foreach(string type_name in type_names){#>
+		static public void AdjustPlanarPosition(this <#=type_name#> item, Vector2 amount)
+        {
+            item.transform.AdjustPlanarPosition(amount);
+        }
+        static public void AdjustLocalPlanarPosition(this <#=type_name#> item, Vector2 amount)
+        {
+            item.transform.AdjustLocalPlanarPosition(amount);
+        }
+		static public void Adjust2DPosition(this <#=type_name#> item, Vector2 amount)
+		{
+			Rigidbody2D rigidbody = item.GetComponent<Rigidbody2D>();
+
+			if(rigidbody != null)
+				rigidbody.AdjustPosition(amount);
+			else
+				item.AdjustPlanarPosition(amount);
+		}
+
+        static public void AdjustPlanarRotation(this <#=type_name#> item, float amount)
+        {
+            item.transform.AdjustPlanarRotation(amount);
+        }
+        static public void AdjustLocalPlanarRotation(this <#=type_name#> item, float amount)
+        {
+            item.transform.AdjustLocalPlanarRotation(amount);
+        }
+		static public void Adjust2DRotation(this <#=type_name#> item, float amount)
+		{
+			Rigidbody2D rigidbody = item.GetComponent<Rigidbody2D>();
+
+			if(rigidbody != null)
+				rigidbody.AdjustRotation(amount);
+			else
+				item.AdjustPlanarRotation(amount);
+		}
+
+        static public void AdjustPlanarScale(this <#=type_name#> item, Vector2 amount)
+        {
+            item.transform.AdjustPlanarScale(amount);
+        }
+        static public void AdjustLocalPlanarScale(this <#=type_name#> item, Vector2 amount)
+        {
+            item.transform.AdjustLocalPlanarScale(amount);
+        }
+
+<# } #>
+	}
+}

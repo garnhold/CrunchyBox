@@ -1,0 +1,58 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] flavors = new string[]{
+	"",
+	"Dynamic"
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<# foreach(string flavor in flavors){#>
+	static public class I<#=flavor#>CustomAttributeProviderExtensions_Has
+    {
+		static public bool HasCustomAttributeOfType<T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit) where T : Attribute
+        {
+            return item.HasCustomAttributeOfType(typeof(T), inherit);
+        }
+
+		static public bool HasCustomAttribute(this I<#=flavor#>CustomAttributeProvider item, bool inherit, Predicate<Attribute> predicate)
+        {
+            if (item.FindCustomAttribute(inherit, predicate) != null)
+                return true;
+
+            return false;
+        }
+
+        static public bool HasCustomAttributeOfType(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit, Predicate<Attribute> predicate)
+        {
+			if (item.FindCustomAttributeOfType(attribute_type, inherit, predicate) != null)
+				return true;
+
+            return false;
+        }
+        static public bool HasCustomAttributeOfType<T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit, Predicate<T> predicate) where T : Attribute
+        {
+            if (item.FindCustomAttributeOfType<T>(inherit, predicate) != null)
+                return true;
+
+            return false;
+        }
+
+        static public bool HasCustomAttributeOfSubType<T>(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit, Predicate<T> predicate) where T : Attribute
+        {
+            if (item.FindCustomAttributeOfSubType<T>(attribute_type, inherit, predicate) != null)
+                return true;
+
+            return false;
+        }
+	}
+<# } #>
+}

@@ -1,0 +1,84 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_parameters = 10;
+string[] styles = new string[]{
+	"Void",
+	"Return"
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+using CrunchySalt;
+
+namespace CrunchyNoodle
+{
+<#foreach(string style in styles){#>
+	<#for(int i = 0; i < max_number_parameters; i++){#>
+		<#
+		bool is_void = style == "Void";
+		bool has_return = is_void == false;
+
+		string return_type = has_return.ConvertBool("R", "void");
+		string return_word = has_return.ConvertBool("return (R)", "");
+
+		string effective_parameter_arguments = TTCS.Arguments("typeof(P#)", i, "other");
+
+		string basic_generic_class = "TypeExtensions_MethodInfo_Specialization_Generic_" + style;
+		string generic_class = basic_generic_class + TTCS.ArgumentsForGeneric("P#", i, "O" + has_return.ConvertBool(", R"));
+
+		string parameters = TTCS.Parameters("P#", "p#", i);
+
+		string basic_function_name = "GetSpecializationMethod" + has_return.ConvertBool("WithReturn");
+		string function_name = basic_function_name + TTCS.ArgumentsForGeneric("P#", i, has_return.ConvertBool("R, ") + "O");
+
+		string basic_call_function_name = "CallSpecializationMethod" + has_return.ConvertBool("WithReturn");
+		string call_function_name = basic_call_function_name + TTCS.ArgumentsForGeneric("P#", i, has_return.ConvertBool("R, ") + "O");
+
+		string call_function_parameters = TTCS.Parameters("P#", "p#", i, "this object item, string name, O other");
+		string call_function_arguments = TTCS.Arguments("p#", i, "item, other");
+		#>
+
+		static public class <#=generic_class#>
+		{
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
+					.Narrow(m => m.CanEffectiveParametersHold(<#=effective_parameter_arguments#>))
+					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
+			});
+			static public MethodInfo <#=basic_function_name#>(Type self, string name, Type other)
+			{
+				return GET_SPECIALIZATION_METHOD.Fetch(self, name, other);
+			}
+		}
+		static public partial class <#=basic_generic_class#>
+		{
+			static public MethodInfo <#=function_name#>(this Type item, string name, Type other)
+			{
+				return <#=generic_class#>.<#=basic_function_name#>(item, name, other);
+			}
+
+			static public <#=return_type#> <#=call_function_name#>(<#=call_function_parameters#>)
+			{
+				Type type = item.GetType();
+				MethodInfo method = type.<#=function_name#>(name, other.GetTypeEX());
+
+				if(method == null)
+					throw new NotImplementedException(type + " doesn't implement a version of " + name + " to handle " + other);
+
+				<#=return_word#>method.Invoke(<#=call_function_arguments#>);
+			}
+		}
+	<#}#>
+<#}#>
+}

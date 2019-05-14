@@ -1,0 +1,109 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+	new TypeInfo("Bool", "bool", "ToStringEX()"),
+
+	new TypeInfo("Byte", "byte", "ToStringEX()"),
+	new TypeInfo("Short", "short", "ToStringEX()"),
+	new TypeInfo("Int", "int", "ToStringEX()"),
+	new TypeInfo("Long", "long", "ToStringEX()"),
+	new TypeInfo("Float", "float", "ToStringEX()"),
+	new TypeInfo("Double", "double", "ToStringEX()"),
+	new TypeInfo("Decimal", "decimal", "ToStringEX()"),
+	new TypeInfo("String", "string", "ToStringEX()"),
+
+	new TypeInfo("Assembly", "Assembly", "ToStringEX()"),
+	new TypeInfo("Type", "Type", "ToStringEX()")
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<#foreach(TypeInfo type in types){#>
+
+	public class Identifiable<#=type.class_name#> : Identifiable
+	{
+		private <#=type.type_name#> value;
+
+		static public implicit operator Identifiable<#=type.class_name#>(<#=type.type_name#> v) { return v.MakeIdentifiable(); }
+		static public implicit operator <#=type.type_name#>(Identifiable<#=type.class_name#> i) { return i.GetValue(); }
+
+		public Identifiable<#=type.class_name#>(<#=type.type_name#> v)
+		{
+			value = v;
+		}
+
+		public <#=type.type_name#> GetValue()
+		{
+			return value;
+		}
+
+		public string GetIdentity()
+		{
+			return value.<#=type.identity_code#>;
+		}
+
+		public override bool Equals(object obj)
+		{
+			Identifiable<#=type.class_name#> cast;
+
+			if(obj.Convert<Identifiable<#=type.class_name#>>(out cast))
+			{
+				if(cast.value.EqualsEX(value))
+					return true;
+			}
+
+			return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return value.GetHashCodeEX();
+		}
+	}
+	static public class Identifiable<#=type.class_name#>Extensions
+	{
+		static public IEnumerable<<#=type.type_name#>> GetValues(this IEnumerable<Identifiable<#=type.class_name#>> item)
+		{
+			return item.Convert(i => i.GetValue());
+		}
+
+		static public Identifiable<#=type.class_name#> MakeIdentifiable(this <#=type.type_name#> item)
+		{
+			return new Identifiable<#=type.class_name#>(item);
+		}
+		static public IdentifiableEnumerable<Identifiable<#=type.class_name#>> MakeIdentifiable(this IEnumerable<<#=type.type_name#>> item)
+		{
+			return new IdentifiableEnumerable<Identifiable<#=type.class_name#>>(
+				item.Convert(i => i.MakeIdentifiable())
+			);
+		}
+	}
+<#}#>
+}
+
+<#+
+public class TypeInfo
+{
+	public readonly string class_name;
+	public readonly string type_name;
+	public readonly string identity_code;
+
+	public TypeInfo(string c, string t, string i)
+	{
+		class_name = c;
+		type_name = t;
+
+		identity_code = i;
+	}
+}
+#>

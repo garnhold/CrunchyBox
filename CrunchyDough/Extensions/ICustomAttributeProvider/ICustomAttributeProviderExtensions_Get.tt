@@ -1,0 +1,58 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] flavors = new string[]{
+	"",
+	"Dynamic"
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+<# foreach(string flavor in flavors){#>
+	static public class I<#=flavor#>CustomAttributeProviderExtensions_Get
+    {
+		static public bool TryGetCustomAttributeOfType(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit, out Attribute attribute)
+		{
+			return item.GetAllCustomAttributesOfType(attribute_type, inherit).TryGetFirst(out attribute);
+		}
+		static public Attribute GetCustomAttributeOfType(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit)
+        {
+            Attribute attribute;
+
+			item.TryGetCustomAttributeOfType(attribute_type, inherit, out attribute);
+			return attribute;
+        }
+
+		static public bool TryGetCustomAttributeOfType<T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit, out T attribute) where T : Attribute
+        {
+            return item.GetAllCustomAttributesOfType<T>(inherit).TryGetFirst(out attribute);
+        }
+        static public T GetCustomAttributeOfType<T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit) where T : Attribute
+        {
+            T attribute;
+
+			item.TryGetCustomAttributeOfType<T>(inherit, out attribute);
+			return attribute;
+        }
+
+		static public bool TryGetCustomAttributeOfSubType<T>(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit, out T attribute) where T : Attribute
+        {
+            return item.GetAllCustomAttributesOfSubType<T>(attribute_type, inherit).TryGetFirst(out attribute);
+        }
+        static public T GetCustomAttributeOfSubType<T>(this I<#=flavor#>CustomAttributeProvider item, Type attribute_type, bool inherit) where T : Attribute
+        {
+            T attribute;
+
+			item.TryGetCustomAttributeOfSubType<T>(attribute_type, inherit, out attribute);
+			return attribute;
+        }
+	}
+<# } #>
+}

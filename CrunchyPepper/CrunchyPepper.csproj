@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9ECF488-6EF3-4B56-A529-C19871F228C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyPepper</RootNamespace>
+    <AssemblyName>CrunchyPepper</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\..\..\..\..\..\..\C#\Mono.Cecil.0.9.6.4\lib\net35\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyModifier\AssemblyModifier.cs" />
+    <Compile Include="Extensions\AssemblyDefinition\AssemblyDefinitionExtensions_Initilizer.cs" />
+    <Compile Include="Extensions\AssemblyDefinition\AssemblyDefinitionExtensions_Types.cs" />
+    <Compile Include="Extensions\AssemblyDefinition\AssemblyDefinitionExtensions.cs" />
+    <Compile Include="Extensions\FieldDefinition\FieldDefinitionExtensions_Initializer.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Instruction_Try.cs" />
+    <Compile Include="Extensions\Instruction\InstructionExtensions_Set.cs" />
+    <Compile Include="Extensions\Instruction\InstructionExtensions.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_Parameters.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_MethodReference.cs" />
+    <Compile Include="Extensions\FieldDefinition\FieldDefinitionExtensions.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Instruction.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Add.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Has.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_Clear.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_Variables.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_CustomAttribute.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_Extend.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_Surround.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_Upwards.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions_Compare.cs" />
+    <Compile Include="Extensions\MethodDefinition\MethodDefinitionExtensions.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_Treatment.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_Compare.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_CustomAttribute.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_Fields_Extended.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_Fields.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_Constructor.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_Upwards.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions_Methods.cs" />
+    <Compile Include="Extensions\TypeDefinition\TypeDefinitionExtensions.cs" />
+    <Compile Include="Extensions\TypeReference\TypeReferenceExtensions_Compare.cs" />
+    <Compile Include="Extensions\TypeReference\TypeReferenceExtensions_AreEquivolent.cs" />
+    <Compile Include="Extensions\TypeReference\TypeReferenceExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_TypeReference.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Instruction_Add.cs">
+      <DependentUpon>ICollectionExtensions_Instruction_Add.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Extensions\ICollection\ICollectionExtensions_Instruction_Add.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ICollectionExtensions_Instruction_Add.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,44 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Children
+    {
+<# foreach(string type_name in type_names){#>
+		static public bool HasChildren(this <#=type_name#> item)
+		{
+			return item.GetChildren().IsNotEmpty();
+		}
+
+		static public bool HasNoChildren(this <#=type_name#> item)
+		{
+			return item.GetChildren().IsEmpty();
+		}
+
+		static public IEnumerable<GameObject> GetChildren(this <#=type_name#> item)
+        {
+            return item.transform.GetChildren().Convert(c => c.gameObject);
+        }
+
+		static public IEnumerable<GameObject> GetSelfAndChildren(this <#=type_name#> item)
+        {
+            return item.GetChildren().Prepend(item.gameObject);
+        }
+
+<# } #>
+	}
+}

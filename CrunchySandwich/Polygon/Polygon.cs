@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+    public class Polygon
+    {
+        private List<PolygonTriangle> triangles;
+
+        public Polygon(IEnumerable<PolygonTriangle> t)
+        {
+            triangles = t.ToList();
+        }
+
+        public IEnumerable<PolygonTriangle> GetTriangles()
+        {
+            return triangles;
+        }
+    }
+}

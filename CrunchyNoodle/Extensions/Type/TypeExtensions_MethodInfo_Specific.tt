@@ -1,0 +1,43 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_parameters = 10;
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+using CrunchySalt;
+
+namespace CrunchyNoodle
+{
+	static public class TypeExtensions_MethodInfo_Specific
+	{
+		static private OperationCache<MethodInfoEX, Type, string, ContentsEnumerable<Type>> GET_INSTANCE_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name, ContentsEnumerable<Type> parameter_types){
+			return item.GetFilteredInstanceMethods(
+                Filterer_MethodInfo.IsNamed(name),
+                Filterer_MethodInfo.CanEffectiveParametersHold(parameter_types)
+            ).GetFirst();
+		});
+		static public MethodInfoEX GetInstanceMethod(this Type item, string name, IEnumerable<Type> parameter_types)
+		{
+			return GET_INSTANCE_METHOD.Fetch(item, name, new ContentsEnumerable<Type>(parameter_types));
+		}
+
+		<#for(int i = 0; i < max_number_parameters; i++){#>
+
+			static public MethodInfoEX GetInstanceMethod<#=TTCS.ArgumentsForGeneric("P#", i)#>(this Type item, string name)
+			{
+				return item.GetInstanceMethod(name, new Type[]{<#=TTCS.Arguments("typeof(P#)", i)#>});
+			}
+		<#}#>
+	}
+}

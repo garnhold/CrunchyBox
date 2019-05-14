@@ -1,0 +1,124 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+	new TypeInfo("Boolean", "bool", "boolValue"),
+
+	new TypeInfo("Integer", "int", "intValue"),
+	new TypeInfo("Float", "float", "floatValue"),
+
+	new TypeInfo("Character", "string", "stringValue"),
+	new TypeInfo("String", "string", "stringValue"),
+
+	new TypeInfo("Vector2", "Vector2", "vector2Value"),
+	new TypeInfo("Vector3", "Vector3", "vector3Value"),
+	new TypeInfo("Vector4", "Vector4", "vector4Value"),
+	new TypeInfo("Rect", "Rect", "rectValue"),
+	new TypeInfo("Bounds", "Bounds", "boundsValue"),
+	new TypeInfo("Vector2Int", "Vector2Int", "vector2IntValue"),
+	new TypeInfo("Vector3Int", "Vector3Int", "vector3IntValue"),
+	new TypeInfo("RectInt", "RectInt", "rectIntValue"),
+	new TypeInfo("BoundsInt", "BoundsInt", "boundsIntValue"),
+	new TypeInfo("Quaternion", "Quaternion", "quaternionValue"),
+
+	new TypeInfo("ArraySize", "int", "arraySize"),
+
+	new TypeInfo("LayerMask", "int", "intValue"),
+	
+	new TypeInfo("Color", "Color", "colorValue"),
+	new TypeInfo("Gradient", "Color", "colorValue"),
+
+	new TypeInfo("ObjectReference", "UnityEngine.Object", "objectReferenceValue"),
+	new TypeInfo("AnimationCurve", "AnimationCurve", "animationCurveValue")
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+using UnityEditor;
+
+using CrunchyDough;
+using CrunchyNoodle;
+using CrunchyBun;
+using CrunchySandwich;
+
+namespace CrunchySandwichBag
+{
+    static public class SerializedPropertyExtensions_Value
+    {
+		static public void ClearValue(this SerializedProperty item)
+		{
+			switch(item.propertyType)
+			{
+				case SerializedPropertyType.Generic:
+                    item.GetImmediateChildren(true).Process(c => c.ClearValue());
+                    break;
+
+				case SerializedPropertyType.Enum:
+                    item.enumValueIndex = 0;
+                    break;
+	<#foreach(TypeInfo type in types){#>
+
+				case SerializedPropertyType.<#=type.property_type#>:
+                    item.<#=type.field#> = default(<#=type.system_type#>);
+                    break;
+	<#}#>
+			}
+		}
+
+		static public void SetValue(this SerializedProperty item, object value)
+		{
+			switch(item.propertyType)
+			{
+				case SerializedPropertyType.Generic:
+                    item.objectReferenceValue = value.Convert<UnityEngine.Object>();
+                    break;
+
+				case SerializedPropertyType.Enum:
+                    item.enumValueIndex = value.Convert<Enum>().GetIndex();
+                    break;
+	<#foreach(TypeInfo type in types){#>
+
+				case SerializedPropertyType.<#=type.property_type#>:
+                    item.<#=type.field#> = value.ConvertEX<<#=type.system_type#>>();
+                    break;
+	<#}#>
+			}
+		}
+
+		static public object GetValue(this SerializedProperty item)
+		{
+			switch(item.propertyType)
+			{
+				case SerializedPropertyType.Generic: return item.objectReferenceValue;
+				case SerializedPropertyType.Enum: return item.enumValueIndex.ConvertIndexToEnum(item.GetVariableType());
+	<#foreach(TypeInfo type in types){#>
+				case SerializedPropertyType.<#=type.property_type#>: return item.<#=type.field#>;
+	<#}#>
+			}
+
+			return null;
+		}
+    }
+}
+
+<#+
+public class TypeInfo
+{
+	public readonly string property_type;
+	public readonly string system_type;
+	public readonly string field;
+
+	public TypeInfo(string p, string s, string f)
+	{
+		property_type = p;
+		system_type = s;
+		field = f;
+	}
+}
+#>

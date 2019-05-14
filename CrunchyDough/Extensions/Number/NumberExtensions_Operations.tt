@@ -1,0 +1,67 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_Operations
+    {
+<# foreach(string type_name in type_names){#>
+		static public <#=type_name#> GetAbs(this <#=type_name#> item)
+		{
+			if(item < 0)
+				return -item;
+
+			return item;
+		}
+
+		static public <#=type_name#> GetPositive(this <#=type_name#> item)
+		{
+			return item.GetAbs();
+		}
+
+		static public <#=type_name#> GetNegative(this <#=type_name#> item)
+		{
+			return -item.GetAbs();
+		}
+
+		static public <#=type_name#> GetSquared(this <#=type_name#> item)
+		{
+			return item * item;
+		}
+
+		static public <#=type_name#> GetTowards(this <#=type_name#> item, <#=type_name#> target, <#=type_name#> amount)
+		{
+			if(item < target)
+			{
+				item += amount;
+
+				if(item < target)
+					return item;
+			}
+			else
+			{
+				item -= amount;
+
+				if(item > target)
+					return item;
+			}
+
+			return target;
+		}
+<# } #>
+	}
+}

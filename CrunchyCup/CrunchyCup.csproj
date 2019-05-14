@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0904DC3E-2F1E-4BCD-B4AF-CCEAB81CE09B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyCup</RootNamespace>
+    <AssemblyName>CrunchyCup</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\..\..\..\C#\System.Data.SQLite.Core.1.0.106.0\lib\net20\System.Data.SQLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolidObject\Extensions\SolidObjectExtensions_Table.cs" />
+    <Compile Include="SolidObject\SolidObjectTable\SolidObjectTable.cs" />
+    <Compile Include="SolidObject\SolidObjectTable\Attribute\Extensions\SolidObjectTableAttributeExtensions_Create.cs" />
+    <Compile Include="SolidObject\SolidObjectTable\Attribute\Extensions\SolidObjectTableAttributeExtensions.cs" />
+    <Compile Include="SolidObject\SolidObjectTable\Attribute\SolidObjectTableAttribute.cs" />
+    <Compile Include="SolidObject\Extensions\SolidObjectExtensions_Commit.cs" />
+    <Compile Include="SolidObject\Extensions\SolidObjectExtensions_PrimaryKey.cs" />
+    <Compile Include="SolidObject\Extensions\SolidObjectExtensions_Propertys.cs" />
+    <Compile Include="SolidObject\Extensions\SolidObjectExtensions.cs" />
+    <Compile Include="SolidObject\SolidObjectPrimaryKey\SolidObjectPrimaryKey.cs" />
+    <Compile Include="SolidObject\SolidObjectPrimaryKey\Attribute\Extensions\SolidObjectPrimaryKeyAttributeExtensions_Create.cs" />
+    <Compile Include="SolidObject\SolidObjectProperty\SolidObjectProperty.cs" />
+    <Compile Include="SolidObject\SolidObjectPrimaryKey\Attribute\SolidObjectPrimaryKeyAttribute.cs" />
+    <Compile Include="SolidObject\SolidObjectPrimaryKey\Attribute\Extensions\SolidObjectPrimaryKeyAttributeExtensions.cs" />
+    <Compile Include="SolidObject\SolidObjectProperty\Attribute\Extensions\SolidObjectPropertyAttributeExtensions_Create.cs" />
+    <Compile Include="SolidObject\SolidObjectProperty\Attribute\Extensions\SolidObjectPropertyAttributeExtensions.cs" />
+    <Compile Include="SolidObject\SolidObjectProperty\Attribute\SolidObjectPropertyAttribute.cs" />
+    <Compile Include="SolidObject\SolidObject.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

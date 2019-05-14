@@ -1,0 +1,50 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Parent
+    {
+<# foreach(string type_name in type_names){#>
+		static public Vector2 GetParentPlanarPosition(this <#=type_name#> item)
+        {
+            return item.transform.GetParentPlanarPosition();
+        }
+        static public Vector2 GetParentLocalPlanarPosition(this <#=type_name#> item)
+        {
+            return item.transform.GetParentLocalPlanarPosition();
+        }
+
+        static public float GetParentPlanarRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetParentPlanarRotation();
+        }
+        static public float GetParentLocalPlanarRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetParentLocalPlanarRotation();
+        }
+
+        static public Vector2 GetParentPlanarScale(this <#=type_name#> item)
+        {
+            return item.transform.GetParentPlanarScale();
+        }
+        static public Vector2 GetParentLocalPlanarScale(this <#=type_name#> item)
+        {
+            return item.transform.GetParentLocalPlanarScale();
+        }
+<# } #>
+	}
+}

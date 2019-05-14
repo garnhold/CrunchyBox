@@ -1,0 +1,56 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+OperationInfo[] operations = new OperationInfo[]{
+	new OperationInfo("Added", "+"),
+	new OperationInfo("Subtracted", "-"),
+	new OperationInfo("Multiplied", "*"),
+	new OperationInfo("Divided", "/")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_IEnumerable_Operate
+    {
+<# foreach(string type_name in type_names){#>
+		static public IEnumerable<<#=type_name#>> GetSquaredValues(this IEnumerable<<#=type_name#>> item)
+		{
+			return item.Convert(n => n.GetSquared());
+		}
+
+		<#foreach(OperationInfo operation in operations){#>
+
+			static public IEnumerable<<#=type_name#>> Get<#=operation.name#>Values(this IEnumerable<<#=type_name#>> item, IEnumerable<<#=type_name#>> other)
+			{
+				return item.PairStrict(other, (n1, n2) => n1 <#=operation.symbol#> n2);
+			}
+		<#}#>
+<# } #>
+	}
+}
+<#+
+public class OperationInfo
+{
+	public readonly string name;
+	public readonly string symbol;
+
+	public OperationInfo(string n, string s)
+	{
+		name = n;
+		symbol = s;
+	}
+}
+#>

@@ -1,0 +1,51 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Planar_Interpolate
+    {
+<# foreach(string type_name in type_names){#>
+		static public void InterpolatePlanarPosition(this <#=type_name#> item, Vector2 target, float amount)
+        {
+            item.transform.InterpolatePlanarPosition(target, amount);
+        }
+        static public void InterpolateLocalPlanarPosition(this <#=type_name#> item, Vector2 target, float amount)
+        {
+            item.transform.InterpolateLocalPlanarPosition(target, amount);
+        }
+
+        static public void InterpolatePlanarRotation(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.InterpolatePlanarRotation(target, amount);
+        }
+        static public void InterpolateLocalPlanarRotation(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.InterpolateLocalPlanarRotation(target, amount);
+        }
+
+        static public void InterpolatePlanarScale(this <#=type_name#> item, Vector2 target, float amount)
+        {
+            item.transform.InterpolatePlanarScale(target, amount);
+        }
+        static public void InterpolateLocalPlanarScale(this <#=type_name#> item, Vector2 target, float amount)
+        {
+            item.transform.InterpolateLocalPlanarScale(target, amount);
+        }
+
+<# } #>
+	}
+}

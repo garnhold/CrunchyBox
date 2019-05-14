@@ -1,0 +1,26 @@
+﻿using System;
+using System.Text;
+using System.Reflection;
+using System.Reflection.Emit;
+
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+
+namespace CrunchySalt
+{
+    static public class ILValueExtensions_IEnumerable_Text
+    {
+        static public void RenderText_Value(this IEnumerable<ILValue> item, ILTextCanvas canvas, string seperator)
+        {
+            item.Process(
+                i => i.RenderText_Value(canvas),
+                i => {
+                    canvas.AppendToLine(seperator);
+                    i.RenderText_Value(canvas);
+                }
+            );
+        }
+    }
+}

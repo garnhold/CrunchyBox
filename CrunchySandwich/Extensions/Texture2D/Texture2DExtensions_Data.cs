@@ -1,0 +1,22 @@
+﻿using System;
+using System.IO;
+
+using UnityEngine;
+
+using CrunchyDough;
+
+namespace CrunchySandwich
+{
+    static public class Texture2DExtensions_Data
+    {
+        static public void SaveAsPNG(this Texture2D item, string filename)
+        {
+            File.WriteAllBytes(filename, item.EncodeToPNG());
+        }
+
+        static public void SaveAsJPG(this Texture2D item, string filename)
+        {
+            File.WriteAllBytes(filename, item.EncodeToJPG());
+        }
+    }
+}

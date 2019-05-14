@@ -1,0 +1,65 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] real_infos = new NumericInfo[]{
+	new NumericInfo("float", "Float", "0.0f", "float.MaxValue"),
+	new NumericInfo("double", "Double", "0.0", "double.MaxValue"),
+	new NumericInfo("decimal", "Decimal", "0.0m", "decimal.MaxValue")
+};
+
+NumericInfo[] infos = new NumericInfo[]{
+	new NumericInfo("byte", "Byte", "0", "byte.MaxValue"),
+	new NumericInfo("short", "Short", "0", "short.MaxValue"),
+	new NumericInfo("int", "Int", "0", "int.MaxValue"),
+	new NumericInfo("long", "Long", "0", "long.MaxValue")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberConvertExtensions
+    {
+<# foreach(NumericInfo src_info in real_infos){#>
+	<# foreach(NumericInfo dst_info in infos){#>
+		static public <#=dst_info.type_name#> Get<#=dst_info.class_name#>Percent(this <#=src_info.type_name#> item)
+		{
+			return (<#=dst_info.type_name#>)(item * <#=dst_info.maximum#>).BindBetween(<#=dst_info.minimum#>, <#=dst_info.maximum#>);
+		}
+	<# } #>
+<# } #>
+
+<# foreach(NumericInfo src_info in infos){#>
+	<# foreach(NumericInfo dst_info in real_infos){#>
+		static public <#=dst_info.type_name#> Get<#=dst_info.class_name#>Percent(this <#=src_info.type_name#> item)
+		{
+			return (<#=dst_info.type_name#>)item / <#=src_info.maximum#>;
+
+		}
+	<# } #>
+<# } #>
+	}
+}
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public readonly string minimum;
+	public readonly string maximum;
+
+	public NumericInfo(string t, string c, string min, string max)
+	{
+		type_name = t;
+		class_name = c;
+
+		minimum = min;
+		maximum = max;
+	}
+}
+#>

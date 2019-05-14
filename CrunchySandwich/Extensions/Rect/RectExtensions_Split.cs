@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+    static public class RectExtensions_Split
+    {
+        static public void SplitByX(this Rect item, float x, out Rect left, out Rect right)
+        {
+            float split = x.Min(item.xMax);
+
+            left = RectExtensions.CreateStrictMinMaxRect(item.min, item.max.GetWithX(split));
+            right = RectExtensions.CreateStrictMinMaxRect(item.min.GetWithX(split), item.max);
+        }
+        static public void SplitByXLeftOffset(this Rect item, float x_offset, out Rect left, out Rect right)
+        {
+            item.SplitByX(item.xMin + x_offset, out left, out right);
+        }
+        static public void SplitByXRightOffset(this Rect item, float x_offset, out Rect left, out Rect right)
+        {
+            item.SplitByX(item.xMax - x_offset, out left, out right);
+        }
+
+        static public void SplitByY(this Rect item, float y, out Rect bottom, out Rect top)
+        {
+            float split = y.Min(item.yMax);
+
+            bottom = RectExtensions.CreateStrictMinMaxRect(item.min, item.max.GetWithY(split));
+            top = RectExtensions.CreateStrictMinMaxRect(item.min.GetWithY(split), item.max);
+            
+        }
+        static public void SplitByYBottomOffset(this Rect item, float y_offset, out Rect bottom, out Rect top)
+        {
+            item.SplitByY(item.yMin + y_offset, out bottom, out top);
+        }
+        static public void SplitByYTopOffset(this Rect item, float y_offset, out Rect bottom, out Rect top)
+        {
+            item.SplitByY(item.yMax - y_offset, out bottom, out top);
+        }
+    }
+}

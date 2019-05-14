@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13E0E098-C383-4446-8EE8-35AC26E71A25}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyCane</RootNamespace>
+    <AssemblyName>CrunchyCane</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrunchyBun">
+      <HintPath>..\CrunchyBun\bin\Release\CrunchyBun.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice_Note_Pressure.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice_ChannelPressure.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice_ProgramChange.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice_ControlChange.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice_Note_On.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice_Note_Off.cs" />
+    <Compile Include="Midi\MidiMessage\MidiMessage_ChannelVoice\MidiMessage_ChannelVoice_Note.cs" />
+    <Compile Include="Midi\MidiNode\MidiNode_Channel.cs" />
+    <Compile Include="Midi\MidiNode\MidiNode_MidiNote.cs" />
+    <Compile Include="Midi\MidiNode\MidiNode_MidiControl.cs" />
+    <Compile Include="Midi\MidiNode\MidiNode.cs" />
+    <Compile Include="Midi\MidiNode\MidiNode_Process.cs" />
+    <Compile Include="Midi\MidiPort\MidiPort.cs" />
+    <Compile Include="Theory\KeylessChord\KeylessChord.cs" />
+    <Compile Include="Theory\InvalidScaleIntervalsException\InvalidScaleIntervalsException.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions_BasePitch.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions_Frequency.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions_Cent.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions_Semitone.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions_Midi.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions_Tone.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions_Octave.cs" />
+    <Compile Include="Theory\Pitch\Extensions\PitchExtensions.cs" />
+    <Compile Include="Theory\Pitch\Pitch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Theory\ChordTypes.cs" />
+    <Compile Include="Theory\Scale\ScalePitch.cs" />
+    <Compile Include="Theory\ScaleTypes.cs" />
+    <Compile Include="Theory\KeylessScale\KeylessPitch.cs" />
+    <Compile Include="Theory\KeylessScale\KeylessScale.cs" />
+    <Compile Include="Theory\Scale\Scale.cs" />
+    <Compile Include="Theory\Tone\ToneExtensions\ToneExtensions_Pitch.cs" />
+    <Compile Include="Theory\Tone\ToneExtensions\ToneExtensions.cs" />
+    <Compile Include="Theory\Tone\Tone.cs" />
+    <Compile Include="ThisAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

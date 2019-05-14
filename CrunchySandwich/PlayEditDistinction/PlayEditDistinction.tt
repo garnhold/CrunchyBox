@@ -1,0 +1,53 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(MSBuildProjectDirectory)\..\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_parameters = 10;
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchySalt;
+using CrunchyNoodle;
+
+namespace CrunchySandwich
+{
+	static public class PlayEditDistinction<ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : EditDistinctionAttribute
+	{
+	<#for(int i = 0; i < max_number_parameters; i++){#>
+		<#
+		string operation_type = "Operation" + TTCS.ArgumentsForGeneric("P#", i, "T");
+		#>
+
+		static public T Execute<#=TTCS.ArgumentsForGeneric("P#", i, "T")#>(<#=TTCS.Parameters("P#", "p#", i, operation_type + " operation")#>)
+		{
+			if(Application.isPlaying)
+				return operation(<#=TTCS.Arguments("p#", i)#>);
+
+			return ExecuteEditDistinction<#=TTCS.ArgumentsForGeneric("P#", i, "T")#>(<#=TTCS.Arguments("p#", i)#>);
+		}
+
+		static public T ExecuteEditDistinction<#=TTCS.ArgumentsForGeneric("P#", i, "T")#>(<#=TTCS.Parameters("P#", "p#", i)#>)
+		{
+			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
+				<#if(i == 0){#>
+					Filterer_MethodInfo.HasNoEffectiveParameters(),
+				<#}else{#>
+					Filterer_MethodInfo.CanEffectiveParametersHold<#=TTCS.ArgumentsForGeneric("P#", i)#>(),
+				<#}#>
+
+				Filterer_MethodInfo.CanReturnInto<T>()
+			).GetFirst().Invoke(<#=TTCS.Arguments("p#", i, "null")#>);
+		}
+
+	<#}#>
+	}
+}

@@ -1,0 +1,30 @@
+﻿using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+using UnityEditor;
+
+using CrunchyDough;
+using CrunchyBun;
+using CrunchySauce;
+using CrunchySandwich;
+
+namespace CrunchySandwichBag
+{
+    public abstract class EditorSceneElement_EditGadgetInstance : EditorSceneElement
+    {
+        private EditGadgetInstance gadget_instance;
+
+        public EditorSceneElement_EditGadgetInstance(EditGadgetInstance g)
+        {
+            gadget_instance = g;
+        }
+
+        public EditGadgetInstance GetGadgetInstance()
+        {
+            return gadget_instance;
+        }
+    }
+}

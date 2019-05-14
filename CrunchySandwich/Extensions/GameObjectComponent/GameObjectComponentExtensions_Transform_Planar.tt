@@ -1,0 +1,94 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Planar
+    {
+<# foreach(string type_name in type_names){#>
+		static public void SetPlanarPosition(this <#=type_name#> item, Vector2 position)
+        {
+            item.transform.SetPlanarPosition(position);
+        }
+        static public void SetLocalPlanarPosition(this <#=type_name#> item, Vector2 position)
+        {
+            item.transform.SetLocalPlanarPosition(position);
+        }
+		static public void SetOffsetPlanarPosition(this <#=type_name#> item, Vector2 position)
+		{
+			item.transform.SetOffsetPlanarPosition(position);
+		}
+
+        static public void SetPlanarRotation(this <#=type_name#> item, float angle)
+        {
+            item.transform.SetPlanarRotation(angle);
+        }
+        static public void SetLocalPlanarRotation(this <#=type_name#> item, float angle)
+        {
+            item.transform.SetLocalPlanarRotation(angle);
+        }
+
+        static public void SetPlanarScale(this <#=type_name#> item, Vector2 scale)
+        {
+            item.transform.SetPlanarScale(scale);
+        }
+        static public void SetPlanarScale(this <#=type_name#> item, float scale)
+        {
+            item.transform.SetPlanarScale(scale);
+        }
+        static public void SetLocalPlanarScale(this <#=type_name#> item, Vector2 scale)
+        {
+            item.transform.SetLocalPlanarScale(scale);
+        }
+        static public void SetLocalPlanarScale(this <#=type_name#> item, float scale)
+        {
+            item.transform.SetLocalPlanarScale(scale);
+        }
+
+        static public Vector2 GetPlanarPosition(this <#=type_name#> item)
+        {
+            return item.transform.GetPlanarPosition();
+        }
+        static public Vector2 GetLocalPlanarPosition(this <#=type_name#> item)
+        {
+            return item.transform.GetLocalPlanarPosition();
+        }
+		static public Vector2 GetOffsetPlanarPosition(this <#=type_name#> item)
+		{
+			return item.transform.GetOffsetPlanarPosition();
+		}
+
+        static public float GetPlanarRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetPlanarRotation();
+        }
+        static public float GetLocalPlanarRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetLocalPlanarRotation();
+        }
+
+        static public Vector2 GetPlanarScale(this <#=type_name#> item)
+        {
+            return item.transform.GetPlanarScale();
+        }
+        static public Vector2 GetLocalPlanarScale(this <#=type_name#> item)
+        {
+            return item.transform.GetLocalPlanarScale();
+        }
+
+<# } #>
+	}
+}

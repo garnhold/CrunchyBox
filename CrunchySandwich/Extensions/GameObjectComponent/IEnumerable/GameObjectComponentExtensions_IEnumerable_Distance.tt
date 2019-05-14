@@ -1,0 +1,60 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_IEnumerable_Distance
+    {
+		static public GameObject GetSpacarClosest(this IEnumerable<GameObject> item, Vector3 position)
+		{
+			return item.FindLowestRated(i => position.GetSquaredDistanceTo(i.GetSpacarPosition()));
+		}
+		static public GameObject GetPlanarClosest(this IEnumerable<GameObject> item, Vector2 position)
+		{
+			return item.FindLowestRated(i => position.GetSquaredDistanceTo(i.GetPlanarPosition()));
+		}
+
+		static public T GetSpacarClosest<T>(this IEnumerable<T> item, Vector3 position) where T : Component
+		{
+			return item.FindLowestRated(i => position.GetSquaredDistanceTo(i.GetSpacarPosition()));
+		}
+		static public T GetPlanarClosest<T>(this IEnumerable<T> item, Vector2 position) where T : Component
+		{
+			return item.FindLowestRated(i => position.GetSquaredDistanceTo(i.GetPlanarPosition()));
+		}
+
+<# foreach(string type_name in type_names){#>
+		static public GameObject GetSpacarClosest(this IEnumerable<GameObject> item, <#=type_name#> target)
+		{
+			return item.GetSpacarClosest(target.GetSpacarPosition());
+		}
+		static public GameObject GetPlanarClosest(this IEnumerable<GameObject> item, <#=type_name#> target)
+		{
+			return item.GetPlanarClosest(target.GetPlanarPosition());
+		}
+
+		static public T GetSpacarClosest<T>(this IEnumerable<T> item, <#=type_name#> target) where T : Component
+		{
+			return item.GetSpacarClosest<T>(target.GetSpacarPosition());
+		}
+		static public T GetPlanarClosest<T>(this IEnumerable<T> item, <#=type_name#> target) where T : Component
+		{
+			return item.GetPlanarClosest<T>(target.GetPlanarPosition());
+		}
+
+<# } #>
+	}
+}
