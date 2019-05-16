@@ -16,18 +16,18 @@ namespace CrunchyCart
     public partial class Syncronizer
     {
         [AttributeUsage(AttributeTargets.Method)]
-        public abstract class MethodAttribute : Attribute
+        public abstract class EntityMethodAttribute : Attribute
         {
             public abstract EntityMethod CreateEntityMethod(MethodInfo method);
         }
 
-        public abstract class EntityMethod : EntityInvokable
+        public abstract class EntityMethod : Invokable
         {
             public abstract void ReadMethodInvoke(Entity entity, Buffer buffer);
             public abstract void SendMethodInvoke(Entity entity, object[] arguments);
 
             static private OperationCache<EntityMethod, MethodInfo> GET_ENTITY_METHOD = new OperationCache<EntityMethod, MethodInfo>(delegate(MethodInfo method) {
-                return method.GetCustomAttributeOfType<MethodAttribute>(true).CreateEntityMethod(method);
+                return method.GetCustomAttributeOfType<EntityMethodAttribute>(true).CreateEntityMethod(method);
             });
             static public EntityMethod GetEntityMethod(MethodInfo method)
             {
@@ -38,7 +38,7 @@ namespace CrunchyCart
                 return GetEntityMethod(
                     type.GetFilteredInstanceMethods(
                         Filterer_MethodInfo.IsNamed(name),
-                        Filterer_MethodInfo.HasCustomAttributeOfType<MethodAttribute>()
+                        Filterer_MethodInfo.HasCustomAttributeOfType<EntityMethodAttribute>()
                     ).GetFirst()
                 );
             });

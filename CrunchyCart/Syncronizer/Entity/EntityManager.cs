@@ -33,29 +33,24 @@ namespace CrunchyCart
                 syncronizer = s;
             }
 
-            public Entity RegisterEntityTarget(int id, object target, EntityConstructor constructor, object[] constructor_arguments)
+            public Entity RegisterEntityTarget(int id, object target, System constructor_system, SystemMethod_Constructor constructor, object[] constructor_arguments)
             {
-                Entity entity = new Entity(id, target, constructor, constructor_arguments, this);
+                Entity entity = new Entity(id, target, constructor_system, constructor, constructor_arguments, this);
 
                 entitys_by_id.Add(entity.GetId(), entity);
                 entitys_by_target.Add(entity.GetTarget(), entity);
 
                 return entity;
             }
-            public Entity RegisterEntityTarget(object target, EntityConstructor constructor, object[] constructor_arguments)
+            public Entity RegisterEntityTarget(object target, System constructor_system, SystemMethod_Constructor constructor, object[] constructor_arguments)
             {
-                return RegisterEntityTarget(next_entity_id++, target, constructor, constructor_arguments);
+                return RegisterEntityTarget(next_entity_id++, target, constructor_system, constructor, constructor_arguments);
             }
 
             public void UnregisterEntity(Entity entity)
             {
                 entitys_by_id.Remove(entity.GetId());
                 entitys_by_target.Remove(entity.GetTarget());
-            }
-
-            public void ReadConstructorInvoke(Buffer buffer)
-            {
-                buffer.ReadEntityConstructor().ReadConstructorInvoke(GetSyncronizer(), buffer);
             }
 
             public void ReadMethodInvoke(Buffer buffer)

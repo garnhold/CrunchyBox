@@ -20,6 +20,7 @@ namespace CrunchyCart
         private Dictionary<int, List<Buffer>> ordered_message_queue;
 
         private EntityManager entity_manager;
+        private SystemManager system_manager;
         private ConstantManager constant_manager;
 
         private bool ProcessDataUnordered(Buffer buffer, int channel)
@@ -66,11 +67,12 @@ namespace CrunchyCart
                     case MessageType.UpdateConstant: constant_manager.ReadUpdate(buffer); break;
                     case MessageType.FullUpdateConstant: constant_manager.ReadFullUpdate(buffer); break;
 
-                    case MessageType.InvokeEntityConstructor: entity_manager.ReadConstructorInvoke(buffer); break;
                     case MessageType.InvokeEntityMethod: entity_manager.ReadMethodInvoke(buffer); break;
                     case MessageType.ChangeEntityAuthority: entity_manager.ReadAuthority(buffer); break;
                     case MessageType.DestroyEntity: entity_manager.ReadDestroy(buffer); break;
                     case MessageType.UpdateEntity: entity_manager.ReadUpdate(buffer); break;
+
+                    case MessageType.InvokeSystemMethod: system_manager.ReadMethodInvoke(buffer); break;
 
                     default: throw new UnaccountedBranchException("message_type", message_type);
                 }
@@ -98,7 +100,7 @@ namespace CrunchyCart
             return to_return;
         }
 
-        public Syncronizer(NetworkPeer p)
+        public Syncronizer(NetworkPeer p, IEnumerable<object> ts)
         {
             peer = p;
 
@@ -107,6 +109,7 @@ namespace CrunchyCart
             ordered_message_queue = new Dictionary<int, List<Buffer>>();
 
             entity_manager = new EntityManager(this);
+            system_manager = new SystemManager(this, ts);
             constant_manager = new ConstantManager(this);
 
             peer.OnConnect += delegate(NetIncomingMessage message) {
@@ -130,6 +133,8 @@ namespace CrunchyCart
             };
         }
 
+        public Syncronizer(NetworkPeer p, params object[] ts) : this(p, (IEnumerable<object>)ts) { }
+
         public void Update()
         {
             peer.ProcessMessages();
@@ -144,6 +149,11 @@ namespace CrunchyCart
         public Entity GetEntity(object target)
         {
             return entity_manager.ReferenceObject(target);
+        }
+
+        public System GetSystem(object target)
+        {
+            return system_manager.ReferenceObject(target);
         }
 
         public NetworkActor GetNetworkActor()

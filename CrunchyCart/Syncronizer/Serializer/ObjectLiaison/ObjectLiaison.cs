@@ -13,19 +13,59 @@ namespace CrunchyCart
 {
     public partial class Syncronizer
     {
-        public abstract class ObjectLiaison
+        public delegate void ObjectLiaisonReader(object liaison, object target, Buffer buffer);
+        public delegate void ObjectLiaisonWriter(object liaison, object target, Buffer buffer);
+
+        public class ObjectLiaison
         {
-            public abstract object GetTarget();
-            public abstract TypeSerializer GetLiaison();
+            private object target;
+            private int delivery_channel;
 
-            public abstract int GetDeliveryChannel();
+            private ObjectLiaisonReader reader;
+            private ObjectLiaisonWriter writer;
 
-            public abstract void ReadUpdateInternal(object target, Buffer buffer);
-            public abstract void WriteUpdateInternal(object target, Buffer buffer);
+            private TypeSerializer type_serializer;
+
+            public ObjectLiaison(ObjectLiaisonReader r, ObjectLiaisonWriter w, TypeSerializer t)
+            {
+                reader = r;
+                writer = w;
+
+                type_serializer = t;
+            }
+
+            public void ReadUpdateInternal(object t, Buffer buffer)
+            {
+                target = t;
+
+                reader(this, target, buffer);
+            }
+
+            public void WriteUpdateInternal(object t, Buffer buffer)
+            {
+                target = t;
+
+                writer(this, target, buffer);
+            }
+
+            public object GetTarget()
+            {
+                return target;
+            }
+
+            public TypeSerializer GetTypeSerializer()
+            {
+                return type_serializer;
+            }
+
+            public int GetDeliveryChannel()
+            {
+                return delivery_channel;
+            }
 
             public Type GetTargetType()
             {
-                return GetLiaison().GetTargetType();
+                return GetTypeSerializer().GetTargetType();
             }
 
             public bool Validate(Type type)

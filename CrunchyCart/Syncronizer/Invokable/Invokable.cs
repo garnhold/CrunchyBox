@@ -20,7 +20,7 @@ namespace CrunchyCart
         public delegate object[] ArgumentReader(Buffer buffer);
         public delegate void ArgumentWriter(object[] arguments, Buffer buffer);
 
-        public abstract class EntityInvokable
+        public abstract class Invokable
         {
             private MethodInfo method;
 
@@ -39,7 +39,9 @@ namespace CrunchyCart
                 if (invoker == null)
                 {
                     invoker = CreateDelegate<Invoker>((Operation<ILStatement, ILValue, ILValue>)delegate(ILValue il_target, ILValue il_arguments) {
-                        return il_target.GetILMethodInvokation(method, il_arguments.GetILExpandedParams());
+                        return new ILReturn(
+                            il_target.GetILMethodInvokation(method, il_arguments.GetILExpandedParams(method))
+                        );
                     });
                 }
 
@@ -68,7 +70,7 @@ namespace CrunchyCart
                 if (argument_writer == null)
                 {
                     argument_writer = CreateDelegate<ArgumentWriter>((Operation<ILStatement, ILValue, ILValue>)delegate(ILValue il_arguments, ILValue il_buffer) {
-                        return il_arguments.GetILExpandedParams()
+                        return il_arguments.GetILExpandedParams(method)
                             .Convert(v => ILSerialize.GenerateObjectWrite(v, il_buffer))
                             .ToBlock();
                     });
@@ -77,7 +79,7 @@ namespace CrunchyCart
                 argument_writer(arguments, buffer);
             }
 
-            public EntityInvokable(MethodInfo m)
+            public Invokable(MethodInfo m)
             {
                 method = m;
             }

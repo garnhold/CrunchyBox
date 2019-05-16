@@ -34,6 +34,15 @@ namespace CrunchyCart
             {
                 WriteEntityReference(syncronizer.entity_manager.ReferenceObject(obj));
             }
+
+            public EntityMethod ReadEntityMethod()
+            {
+                return syncronizer.constant_manager.GetEntityMethodSubManager().ReadConstantReference(this);
+            }
+            public void WriteEntityMethod(EntityMethod method)
+            {
+                syncronizer.constant_manager.GetEntityMethodSubManager().WriteConstantReference(method, this);
+            }
         }
     }
 }

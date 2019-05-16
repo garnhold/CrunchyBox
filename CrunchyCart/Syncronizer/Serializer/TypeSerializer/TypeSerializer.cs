@@ -23,13 +23,14 @@ namespace CrunchyCart
         public class TypeSerializer
         {
             private Type target_type;
-            private List<PropInfoEX> target_type_props;
+            private List<PropInfoEX> target_props;
 
             private FieldInfo target_field;
             private FieldInfo serializer_field;
 
-            private List<PropInfoEX> target_simple_props;
-            private List<TypeSerializerDataTypeProp> target_data_type_props;
+            private List<TypeSerializerProp> target_serializer_props;
+
+            ILCastInfo_MakePointer the//generated type be just a data type and generate some delegates that mess with dat shit
 
             private Type generated_type;
             private ObjectReader reader;
@@ -110,25 +111,23 @@ namespace CrunchyCart
                 target_field = type_builder.CreateField(GetTargetType(), "target", FieldAttributesExtensions.PRIVATE);
                 serializer_field = type_builder.CreateField(typeof(TypeSerializer), "serializer", FieldAttributesExtensions.PRIVATE);
 
-                target_simple_props = target_type_props.ToList();
-
-                target_data_type_props = target_simple_props.Extract(p => p.GetPropType().HasCustomAttributeOfType<DataTypeAttribute>(true))
-                    .Convert(p => new TypeSerializerDataTypeProp(type_builder, p))
+                target_serializer_props = target_props
+                    .Convert(p => TypeSerializerProp.Create(type_builder, p, this))
                     .ToList();
             }
 
             private void CreateConstructor(TypeBuilder type_builder)
             {
-                type_builder.CreateConstructor(MethodAttributesExtensions.PUBLIC, delegate(ConstructorBuilder method) {
+                type_builder.CreateConstructor(MethodAttributesExtensions.PUBLIC, delegate(ConstructorBuilderEX method) {
                     return new ILBlock(
-                        new ILAssign(method.GetILField(serializer_field), method.GetEffectiveILParameter(1))
+                        new ILAssign(method.GetILField(serializer_field), method.GetEffectiveILParameter(0))
                     );
                 }, typeof(TypeSerializer));
             }
 
             private void CreateMethods(TypeBuilder type_builder)
             {
-                type_builder.CreateMethod("ReadUpdateInternal", MethodAttributesExtensions.VIRTUAL_PUBLIC, delegate(MethodBuilder method) {
+                type_builder.CreateMethod("ReadUpdateInternal", MethodAttributesExtensions.VIRTUAL_PUBLIC, delegate(MethodBuilderEX method) {
                     ILBlock block = new ILBlock();
 
                     block.AddStatement(new ILAssign(method.GetILField(target_field), method.GetEffectiveILParameter(0)));
@@ -136,42 +135,36 @@ namespace CrunchyCart
                     return block;
                 }, typeof(object), typeof(Buffer));
 
-                type_builder.CreateMethod("WriteUpdateInternal", MethodAttributesExtensions.VIRTUAL_PUBLIC, delegate(MethodBuilder method) {
+                type_builder.CreateMethod("WriteUpdateInternal", MethodAttributesExtensions.VIRTUAL_PUBLIC, delegate(MethodBuilderEX method) {
                     ILBlock block = new ILBlock();
 
                     block.AddStatement(new ILAssign(method.GetILField(target_field), method.GetEffectiveILParameter(0)));
-                    CreateWriteUpdateInternal(method, block, method.GetEffectiveILParameter(0));
+                    CreateWriteUpdateInternal(method, block, method.GetEffectiveILParameter(1));
                     return block;
                 }, typeof(object), typeof(Buffer));
 
-                type_builder.CreateMethod("GetTarget", MethodAttributesExtensions.VIRTUAL_PUBLIC, typeof(object), delegate(MethodBuilder method) {
+                type_builder.CreateMethod("GetDeliveryChannel", MethodAttributesExtensions.VIRTUAL_PUBLIC, typeof(int), delegate(MethodBuilderEX method) {
+                    return new ILReturn(0);
+                });
+
+                type_builder.CreateMethod("GetTarget", MethodAttributesExtensions.VIRTUAL_PUBLIC, typeof(object), delegate(MethodBuilderEX method) {
                     return new ILReturn(method.GetILField(target_field));
+                });
+
+                type_builder.CreateMethod("GetTypeSerializer", MethodAttributesExtensions.VIRTUAL_PUBLIC, typeof(TypeSerializer), delegate(MethodBuilderEX method) {
+                    return new ILReturn(method.GetILField(serializer_field));
                 });
             }
             private void CreateReadUpdateInternal(MethodBase method, ILBlock block, ILValue buffer)
             {
                 block.AddStatements(
-                    target_simple_props
-                        .Convert(p => method.GetILProp(p))
-                        .Convert(p => ILSerialize.GenerateObjectReadInto(p, buffer))
-                );
-
-                block.AddStatements(
-                    target_data_type_props
-                        .Convert(p => p.GenerateRead(method, buffer))
+                    target_serializer_props.Convert(p => p.GenerateRead(method, buffer))
                 );
             }
             private void CreateWriteUpdateInternal(MethodBase method, ILBlock block, ILValue buffer)
             {
                 block.AddStatements(
-                    target_simple_props
-                        .Convert(p => method.GetILProp(p))
-                        .Convert(p => ILSerialize.GenerateObjectWrite(p, buffer))
-                );
-
-                block.AddStatements(
-                    target_data_type_props
-                        .Convert(p => p.GenerateWrite(method, buffer))
+                    target_serializer_props.Convert(p => p.GenerateWrite(method, buffer))
                 );
             }
 
@@ -189,7 +182,7 @@ namespace CrunchyCart
             private TypeSerializer(Type t, IEnumerable<PropInfoEX> p)
             {
                 target_type = t;
-                target_type_props = p.ToList();
+                target_props = p.ToList();
             }
 
             private TypeSerializer(Type t, IEnumerable<Filterer<PropInfoEX>> f) : this(t, t.GetFilteredInstanceProps(f)) { }
@@ -201,7 +194,7 @@ namespace CrunchyCart
                     ILLocal value = block.CreateLocal(new ILNew(target_type), true);
 
                     block.AddStatements(
-                        target_type_props
+                        target_props
                             .Convert(p => value.GetILProp(p))
                             .Convert(p => ILSerialize.GenerateObjectReadInto(p, buffer))
                     );
@@ -212,7 +205,7 @@ namespace CrunchyCart
 
             public ILStatement GenerateWrite(ILValue target, ILValue buffer)
             {
-                return target_type_props
+                return target_props
                     .Convert(p => target.GetILProp(p))
                     .Convert(p => ILSerialize.GenerateObjectWrite(p, buffer))
                     .ToBlock();
@@ -253,6 +246,16 @@ namespace CrunchyCart
             public Type GetTargetType()
             {
                 return target_type;
+            }
+
+            public FieldInfo GetTargetField()
+            {
+                return target_field;
+            }
+
+            public FieldInfo GetSerializerField()
+            {
+                return serializer_field;
             }
         }
     }

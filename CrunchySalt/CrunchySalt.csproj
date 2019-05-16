@@ -44,6 +44,7 @@
     <Compile Include="AssemblyCreator\AssemblyCreator_Builder_External.cs" />
     <Compile Include="AssemblyCreator\AssemblyCreator_Builder_Internal.cs" />
     <Compile Include="AssemblyCreator\AssemblyCreator.cs" />
+    <Compile Include="ConstructorBuilderEX\ConstructorBuilderEX.cs" />
     <Compile Include="ConstructorInfoEX\ConstructorInfoEX.cs" />
     <Compile Include="EmitDebugger\EmitDebugger.cs" />
     <Compile Include="EventDeregister\EventDeregister.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="IL\ILStatement\Extensions\IEnumerable\ILStatementExtensions_IEnumerable_Block.cs" />
     <Compile Include="IL\ILStatement\Extensions\IEnumerable\ILStatementExtensions_IEnumerable.cs" />
     <Compile Include="IL\ILStatement\Extensions\ILStatementExtensions.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILThis.cs" />
     <Compile Include="IL\ILValue\Derivations\ILUnaryOperatorInvokation.cs" />
     <Compile Include="IL\ILValue\Derivations\ILIfValue.cs" />
     <Compile Include="IL\ILValue\Derivations\ILNullCoalesce.cs" />
@@ -253,6 +255,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEX_Method\BinaryOperatorInfoEX_Method.cs" />
+    <Compile Include="MethodBuilderEX\MethodBuilderEX.cs" />
+    <Compile Include="ParameterInfoEX\ParameterInfoEX_Quick.cs" />
+    <Compile Include="ParameterInfoEX\ParameterInfoEX.cs" />
     <Compile Include="PropInfoEX\Extensions\PropInfoEXExtensions_Compare.cs" />
     <Compile Include="PropInfoEX\Extensions\PropInfoEXExtensions.cs" />
     <Compile Include="PropInfoEX\PropInfoEX_MethodPair.cs" />

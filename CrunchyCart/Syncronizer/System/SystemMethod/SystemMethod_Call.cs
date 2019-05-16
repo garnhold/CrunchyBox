@@ -15,60 +15,60 @@ namespace CrunchyCart
 {
     public partial class Syncronizer
     {
-        public class EntityMethod_CallAttribute : EntityMethodAttribute
+        public class SystemMethod_CallAttribute : SystemMethodAttribute
         {
             private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public EntityMethod_CallAttribute(int dc, NetDeliveryMethod dm)
+            public SystemMethod_CallAttribute(int dc, NetDeliveryMethod dm)
             {
                 delivery_channel = dc;
                 delivery_method = dm;
             }
 
-            public override EntityMethod CreateEntityMethod(MethodInfo method)
+            public override SystemMethod CreateSystemMethod(MethodInfo method)
             {
-                return new EntityMethod_Call(method, delivery_channel, delivery_method);
+                return new SystemMethod_Call(method, delivery_channel, delivery_method);
             }
         }
 
-        public class EntityMethod_Call : EntityMethod
+        public class SystemMethod_Call : SystemMethod
         {
             private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public EntityMethod_Call(MethodInfo m, int dc, NetDeliveryMethod dm) : base(m)
+            public SystemMethod_Call(MethodInfo m, int dc, NetDeliveryMethod dm) : base(m)
             {
                 delivery_channel = dc;
                 delivery_method = dm;
             }
 
-            public override void ReadMethodInvoke(Entity entity, Buffer buffer)
+            public override void ReadMethodInvoke(System system, Buffer buffer)
             {
-                Syncronizer syncronizer = entity.GetSyncronizer();
+                Syncronizer syncronizer = system.GetSyncronizer();
                 NetworkActor actor = syncronizer.GetNetworkActor();
 
                 object[] arguments = ReadArguments(buffer);
 
                 if (actor.IsServer())
-                    SendMethodInvoke(entity, arguments);
+                    SendMethodInvoke(system, arguments);
                 else
-                    Invoke(entity.GetTarget(), arguments);
+                    Invoke(system.GetTarget(), arguments);
             }
 
-            public override void SendMethodInvoke(Entity entity, object[] arguments)
+            public override void SendMethodInvoke(System system, object[] arguments)
             {
-                Syncronizer syncronizer = entity.GetSyncronizer();
+                Syncronizer syncronizer = system.GetSyncronizer();
                 NetworkActor actor = syncronizer.GetNetworkActor();
 
-                syncronizer.Send(NetworkRecipient_All.INSTANCE, MessageType.InvokeEntityMethod, delivery_method, delivery_channel, delegate(Buffer buffer) {
-                    buffer.WriteEntityReference(entity);
-                    buffer.WriteEntityMethod(this);
+                syncronizer.Send(NetworkRecipient_All.INSTANCE, MessageType.InvokeSystemMethod, delivery_method, delivery_channel, delegate(Buffer buffer) {
+                    buffer.WriteSystemReference(system);
+                    buffer.WriteSystemMethod(this);
 
                     WriteArguments(arguments, buffer);
 
                     if (actor.IsServer())
-                        Invoke(entity.GetTarget(), arguments);
+                        Invoke(system.GetTarget(), arguments);
                 });
             }
         }

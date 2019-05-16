@@ -22,17 +22,19 @@ namespace CrunchyCart
 
             private NetworkActor authority;
 
-            private EntityConstructor constructor;
+            private System constructor_system;
+            private SystemMethod_Constructor constructor;
             private object[] constructor_arguments;
 
             private EntityManager manager;
 
-            public Entity(int i, object t, EntityConstructor c, object[] ca, EntityManager m)
+            public Entity(int i, object t, System cs, SystemMethod_Constructor c, object[] ca, EntityManager m)
             {
                 id = i;
                 target = t;
                 liaison = TypeSerializer.InstanceLiaison(target.GetTypeEX());
 
+                constructor_system = cs;
                 constructor = c;
                 constructor_arguments = ca.ToArray();
 
@@ -62,7 +64,7 @@ namespace CrunchyCart
             public void SendConstructReplay(NetworkRecipient recipient)
             {
                 if (GetNetworkActor().IsServer())
-                    constructor.SendConstructorReplay(GetSyncronizer(), recipient, constructor_arguments, this);
+                    constructor.SendConstructorReplay(constructor_system, recipient, constructor_arguments, this);
             }
 
             public void ReadAuthority(Buffer buffer)

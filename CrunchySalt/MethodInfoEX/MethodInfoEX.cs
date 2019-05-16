@@ -35,7 +35,7 @@ namespace CrunchySalt
             return null;
         }
 
-        private MethodInfoEX(MethodInfo m)
+        protected MethodInfoEX(MethodInfo m)
         {
             native_method_info = m;
         }

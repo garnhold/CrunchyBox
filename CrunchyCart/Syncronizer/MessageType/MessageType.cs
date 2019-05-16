@@ -17,11 +17,12 @@ namespace CrunchyCart
             UpdateConstant,
             FullUpdateConstant,
 
-            InvokeEntityConstructor,
             InvokeEntityMethod,
             ChangeEntityAuthority,
             UpdateEntity,
-            DestroyEntity
+            DestroyEntity,
+
+            InvokeSystemMethod
         }
     }
 }

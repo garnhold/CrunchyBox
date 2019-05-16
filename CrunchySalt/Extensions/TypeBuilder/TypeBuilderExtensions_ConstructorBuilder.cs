@@ -10,11 +10,13 @@ namespace CrunchySalt
 {
     static public class TypeBuilderExtensions_ConstructorBuilder
     {
-        static public ConstructorBuilder CreateConstructorBuilder(this TypeBuilder item, MethodAttributes attributes, IEnumerable<Type> parameter_types)
+        static public ConstructorBuilderEX CreateConstructorBuilder(this TypeBuilder item, MethodAttributes attributes, IEnumerable<Type> parameter_types)
         {
-            return item.DefineConstructor(attributes, CallingConventions.Standard, parameter_types.ToArray());
+            ConstructorBuilder builder = item.DefineConstructor(attributes, CallingConventions.Standard, parameter_types.ToArray());
+
+            return new ConstructorBuilderEX(builder, parameter_types);
         }
-        static public ConstructorBuilder CreateConstructorBuilder(this TypeBuilder item, MethodAttributes attributes, params Type[] parameter_types)
+        static public ConstructorBuilderEX CreateConstructorBuilder(this TypeBuilder item, MethodAttributes attributes, params Type[] parameter_types)
         {
             return item.CreateConstructorBuilder(attributes, (IEnumerable<Type>)parameter_types);
         }

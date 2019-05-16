@@ -36,7 +36,7 @@ namespace CrunchySalt
             return null;
         }
 
-        private FieldInfoEX(FieldInfo f)
+        protected FieldInfoEX(FieldInfo f)
         {
             native_field_info = f;
         }

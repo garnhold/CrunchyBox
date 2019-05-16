@@ -10,49 +10,38 @@ using CrunchyDough;
 
 namespace CrunchySalt
 {
-    public class ILParameter : ILValue, ILAddressable
+    public class ILThis : ILValue, ILAddressable
     {
-        private ParameterInfo parameter;
+        private Type this_type;
 
-        private int GetArgIndex(ILCanvas canvas)
+        public ILThis(Type t)
         {
-            if (canvas.GetMethod().IsTechnicallyInstanceMethod())
-                return parameter.Position + 1;
-
-            return parameter.Position;
-        }
-
-        public ILParameter(ParameterInfo p)
-        {
-            parameter = p;
+            this_type = t;
         }
 
         public override void RenderIL_Load(ILCanvas canvas)
         {
-            canvas.Emit_Ldarg(GetArgIndex(canvas));
+            canvas.Emit_Ldarg(0);
         }
 
         public void RenderIL_LoadAddress(ILCanvas canvas)
         {
-            canvas.Emit_Ldarga(GetArgIndex(canvas));
+            canvas.Emit_Ldarga(0);
         }
 
         public override void RenderIL_Store(ILCanvas canvas, ILValue value)
         {
-            value.GetILImplicitCast(GetValueType())
-                .RenderIL_Load(canvas);
-
-            canvas.Emit_Starg(GetArgIndex(canvas));
+            throw new InvalidOperationException(GetType() + " doesn't support storing.");
         }
 
         public override void RenderText_Value(ILTextCanvas canvas)
         {
-            canvas.AppendToLine(parameter.Name.CoalesceBlank("parameter" + parameter.Position));
+            canvas.AppendToLine("this");
         }
 
         public override Type GetValueType()
         {
-            return parameter.ParameterType;
+            return this_type;
         }
 
         public override bool IsILCostTrivial()
@@ -67,7 +56,7 @@ namespace CrunchySalt
 
         public override bool CanStore()
         {
-            return true;
+            return false;
         }
     }
 }

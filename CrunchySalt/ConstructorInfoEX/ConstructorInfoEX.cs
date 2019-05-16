@@ -35,7 +35,7 @@ namespace CrunchySalt
             return null;
         }
 
-        private ConstructorInfoEX(ConstructorInfo c)
+        protected ConstructorInfoEX(ConstructorInfo c)
         {
             native_constructor_info = c;
         }

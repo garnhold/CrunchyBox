@@ -14,23 +14,23 @@ namespace CrunchyCart
 {
     public partial class Syncronizer
     {
-        public class ConstantSubManager_EntityConstructor : ConstantSubManager<EntityConstructor>
+        public class ConstantSubManager_SystemMethod : ConstantSubManager<SystemMethod>
         {
-            protected override EntityConstructor ReadConstantValue(Buffer buffer)
+            protected override SystemMethod ReadConstantValue(Buffer buffer)
             {
-                return EntityConstructor.GetEntityConstructorBySignature(
+                return SystemMethod.GetSystemMethodBySignature(
                     buffer.ReadType(),
                     buffer.ReadString()
                 );
             }
 
-            protected override void WriteConstantValue(EntityConstructor value, Buffer buffer)
+            protected override void WriteConstantValue(SystemMethod value, Buffer buffer)
             {
                 buffer.WriteType(value.GetDeclaringType());
                 buffer.WriteString(value.GetName());
             }
 
-            public ConstantSubManager_EntityConstructor(ConstantManager m) : base(m) { }
+            public ConstantSubManager_SystemMethod(ConstantManager m) : base(m) { }
         }
     }
 }

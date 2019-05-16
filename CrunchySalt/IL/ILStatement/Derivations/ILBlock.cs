@@ -19,8 +19,9 @@ namespace CrunchySalt
         public ILBlock(IEnumerable<ILStatement> s)
         {
             locals = new List<ILLocal>();
+            statements = new List<ILStatement>();
 
-            statements = s.ToList();
+            AddStatements(s);
         }
 
         public ILBlock(params ILStatement[] s) : this((IEnumerable<ILStatement>)s) { }
@@ -69,6 +70,9 @@ namespace CrunchySalt
 
         public void AddStatement(ILStatement to_add)
         {
+            if (to_add == null)
+                throw new ArgumentNullException("to_add");
+
             statements.Add(to_add);
         }
         public void AddStatements(IEnumerable<ILStatement> to_add)

@@ -7,22 +7,6 @@ using CrunchyDough;
 
 namespace CrunchyNoodle
 {
-    public class Filterer_MethodInfo_HasNoEffectiveParameters : Filterer_MethodInfo_CanEffectiveParametersHold
-    {
-        static public readonly Filterer_MethodInfo_HasNoEffectiveParameters INSTANCE = new Filterer_MethodInfo_HasNoEffectiveParameters();
-
-        private Filterer_MethodInfo_HasNoEffectiveParameters() : base(Empty.IEnumerable<Type>())
-        {
-        }
-    }
-    static public partial class Filterer_MethodInfo
-    {
-        static public Filterer<MethodInfo> HasNoEffectiveParameters()
-        {
-            return Filterer_MethodInfo_HasNoEffectiveParameters.INSTANCE;
-        }
-    }
-
     public class Filterer_MethodInfo_CanEffectiveParametersHold : Filterer_General<MethodInfo, IdentifiableEnumerable<IdentifiableType>>
     {
         public Filterer_MethodInfo_CanEffectiveParametersHold(IEnumerable<Type> p) : base(p.MakeIdentifiable())

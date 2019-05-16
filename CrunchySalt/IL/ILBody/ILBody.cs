@@ -26,11 +26,11 @@ namespace CrunchySalt
         {
             return Write(method, method.GetILGenerator(), statement);
         }
-        static public ILBody Write(ConstructorBuilder builder, ILStatement statement)
+        static public ILBody Write(ConstructorBuilderEX builder, ILStatement statement)
         {
             return Write(builder, builder.GetILGenerator(), statement);
         }
-        static public ILBody Write(MethodBuilder builder, ILStatement statement)
+        static public ILBody Write(MethodBuilderEX builder, ILStatement statement)
         {
             return Write(builder, builder.GetILGenerator(), statement);
         }

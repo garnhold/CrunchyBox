@@ -15,12 +15,12 @@ namespace CrunchyCart
 {
     public partial class Syncronizer
     {
-        public class Method_CommandAttribute : MethodAttribute
+        public class EntityMethod_CommandAttribute : EntityMethodAttribute
         {
             private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public Method_CommandAttribute(int dc, NetDeliveryMethod dm)
+            public EntityMethod_CommandAttribute(int dc, NetDeliveryMethod dm)
             {
                 delivery_channel = dc;
                 delivery_method = dm;
