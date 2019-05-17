@@ -54,6 +54,7 @@ namespace CrunchySalt
         public override void Emit_Initobj(Type type) { canvas.AppendInstruction("Initobj", type.Name); }
 
         public override void Emit_Call(MethodInfo method) { canvas.AppendInstruction("Call", method.ToString()); }
+        public override void Emit_Call(ConstructorInfo method) { canvas.AppendInstruction("Call", method.ToString()); }
         public override void Emit_Callvirt(MethodInfo method) { canvas.AppendInstruction("Callvirt", method.ToString()); }
 
         public override void Emit_Ldc_I4_M1_Direct() { canvas.AppendInstruction("Ldc.I4.M1"); }

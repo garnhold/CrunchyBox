@@ -48,6 +48,8 @@
     <Compile Include="Extensions\ILValue\ILValueExtensions_MethodInvokation.cs" />
     <Compile Include="Extensions\ILValue\ILValueExtensions_Props.cs" />
     <Compile Include="Extensions\ILValue\ILValueExtensions.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_IL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

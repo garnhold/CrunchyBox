@@ -53,6 +53,7 @@ namespace CrunchySalt
         public override void Emit_Initobj(Type type) { il_generator.Emit(OpCodes.Initobj, type); }
 
         public override void Emit_Call(MethodInfo method) { il_generator.Emit(OpCodes.Call, method.GetNativeMethodInfo()); }
+        public override void Emit_Call(ConstructorInfo method) { il_generator.Emit(OpCodes.Call, method.GetNativeConstructorInfo()); }
         public override void Emit_Callvirt(MethodInfo method) { il_generator.Emit(OpCodes.Callvirt, method.GetNativeMethodInfo()); }
 
         public override void Emit_Ldc_I4_M1_Direct() { il_generator.Emit(OpCodes.Ldc_I4_M1); }

@@ -42,6 +42,7 @@ namespace CrunchySalt
         public abstract void Emit_Initobj(Type type);
 
         public abstract void Emit_Call(MethodInfo method);
+        public abstract void Emit_Call(ConstructorInfo method);
         public abstract void Emit_Callvirt(MethodInfo method);
 
         public abstract void Emit_Ldc_I4_M1_Direct();

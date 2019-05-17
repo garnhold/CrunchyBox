@@ -17,18 +17,18 @@ namespace CrunchyCart
     {
         public class TypeSerializerProp_Simple : TypeSerializerProp
         {
+            protected override ILStatement GenerateReadInternal(ILValue target, ILValue liaison, ILValue buffer)
+            {
+                return ILSerialize.GenerateObjectReadInto(target, buffer);
+            }
+
+            protected override ILStatement GenerateWriteInternal(ILValue target, ILValue liaison, ILValue buffer)
+            {
+                return ILSerialize.GenerateObjectWrite(target, buffer);
+            }
+
             public TypeSerializerProp_Simple(PropInfoEX p, TypeSerializer t) : base(p, t)
             {
-            }
-
-            public override ILStatement GenerateRead(MethodBase method, ILValue buffer)
-            {
-                return ILSerialize.GenerateObjectReadInto(GetILProp(method), buffer);
-            }
-
-            public override ILStatement GenerateWrite(MethodBase method, ILValue buffer)
-            {
-                return ILSerialize.GenerateObjectWrite(GetILProp(method), buffer);
             }
         }
     }

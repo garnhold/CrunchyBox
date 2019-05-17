@@ -21,13 +21,13 @@ namespace CrunchyCart
 
             private TypeSerializer type_serializer;
 
-            public abstract ILStatement GenerateRead(MethodBase method, ILValue buffer);
-            public abstract ILStatement GenerateWrite(MethodBase method, ILValue buffer);
+            protected abstract ILStatement GenerateReadInternal(ILValue target, ILValue liaison, ILValue buffer);
+            protected abstract ILStatement GenerateWriteInternal(ILValue target, ILValue liaison, ILValue buffer);
 
             static public TypeSerializerProp Create(TypeBuilder type_builder, PropInfoEX prop, TypeSerializer type_serializer)
             {
                 if (prop.GetPropType().HasCustomAttributeOfTypeOnAnInstanceMember<Value_SpecialAttribute>())
-                    return new TypeSerializerProp_Liaison(type_builder, prop, type_serializer);
+                    return new TypeSerializerProp_NestedLiaison(type_builder, prop, type_serializer);
 
                 return new TypeSerializerProp_Simple(prop, type_serializer);
             }
@@ -39,15 +39,19 @@ namespace CrunchyCart
                 type_serializer = t;
             }
 
+            public ILStatement GenerateRead(ILValue target, ILValue liaison, ILValue buffer)
+            {
+                return GenerateReadInternal(target.GetILProp(target_prop), liaison, buffer);
+            }
+
+            public ILStatement GenerateWrite(ILValue target, ILValue liaison, ILValue buffer)
+            {
+                return GenerateWriteInternal(target.GetILProp(target_prop), liaison, buffer);
+            }
+
             public Type GetPropType()
             {
                 return target_prop.GetPropType();
-            }
-
-            public ILProp GetILProp(MethodBase method)
-            {
-                return method.GetILField(type_serializer.GetTargetField())
-                    .GetILProp(target_prop);
             }
 
             public bool IsPolymorphic()

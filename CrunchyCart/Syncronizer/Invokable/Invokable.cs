@@ -29,16 +29,11 @@ namespace CrunchyCart
             private ArgumentReader argument_reader;
             private ArgumentWriter argument_writer;
 
-            private T CreateDelegate<T>(Delegate operation)
-            {
-                return method.DeclaringType.CreateDynamicMethodDelegate<T>(typeof(T).Name + "<" + method.Name + ">", operation);
-            }
-
             protected object Invoke(object target, object[] arguments)
             {
                 if (invoker == null)
                 {
-                    invoker = CreateDelegate<Invoker>((Operation<ILStatement, ILValue, ILValue>)delegate(ILValue il_target, ILValue il_arguments) {
+                    invoker = method.DeclaringType.CreateDynamicMethodDelegate<Invoker>(delegate(ILValue il_target, ILValue il_arguments) {
                         return new ILReturn(
                             il_target.GetILMethodInvokation(method, il_arguments.GetILExpandedParams(method))
                         );
@@ -52,7 +47,7 @@ namespace CrunchyCart
             {
                 if (argument_reader == null)
                 {
-                    argument_reader = CreateDelegate<ArgumentReader>((Operation<ILStatement, ILValue>)delegate(ILValue il_buffer) {
+                    argument_reader = method.DeclaringType.CreateDynamicMethodDelegate<ArgumentReader>(delegate(ILValue il_buffer) {
                         return new ILReturn(
                             new ILNewPopulatedArray(
                                 typeof(object),
@@ -69,7 +64,7 @@ namespace CrunchyCart
             {
                 if (argument_writer == null)
                 {
-                    argument_writer = CreateDelegate<ArgumentWriter>((Operation<ILStatement, ILValue, ILValue>)delegate(ILValue il_arguments, ILValue il_buffer) {
+                    argument_writer = method.DeclaringType.CreateDynamicMethodDelegate<ArgumentWriter>(delegate(ILValue il_arguments, ILValue il_buffer) {
                         return il_arguments.GetILExpandedParams(method)
                             .Convert(v => ILSerialize.GenerateObjectWrite(v, il_buffer))
                             .ToBlock();

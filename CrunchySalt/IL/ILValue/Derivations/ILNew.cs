@@ -28,7 +28,7 @@ namespace CrunchySalt
 
         public ILNew(Type t, ConstructorInfo c, params ILValue[] a) : this(t, c, (IEnumerable<ILValue>)a) { }
 
-        public ILNew(Type t, IEnumerable<ILValue> a) : this(t, t.GetInstanceConstructor(a.Convert(z => z.GetValueType())), a) { }
+        public ILNew(Type t, IEnumerable<ILValue> a) : this(t, t.GetInstanceConstructor(a.GetValueTypes()), a) { }
         public ILNew(Type t, params ILValue[] a) : this(t, (IEnumerable<ILValue>)a) { }
 
         public ILNew(ConstructorInfo c, IEnumerable<ILValue> a) : this(c.DeclaringType, c, a) { }

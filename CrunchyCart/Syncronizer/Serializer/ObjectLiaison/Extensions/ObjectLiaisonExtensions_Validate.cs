@@ -13,18 +13,10 @@ namespace CrunchyCart
 {
     static public class ObjectLiaisonExtensions_Validate
     {
-        static public bool ValidateEX(this Syncronizer.ObjectLiaison item, Type type)
+        static public bool ValidateEX(this Syncronizer.ObjectLiaison item, object target)
         {
             if (item != null)
-                return item.Validate(type);
-
-            return false;
-        }
-
-        static public bool ValidateEX(this Syncronizer.ObjectLiaison item)
-        {
-            if (item != null)
-                return item.Validate();
+                return item.Validate(target);
 
             return false;
         }

@@ -117,7 +117,7 @@ namespace CrunchyCart
             public void ReadUpdate(Buffer buffer)
             {
                 if (buffer.GetSender().HasAuthorityOver(this))
-                    liaison.ReadUpdateInternal(target, buffer);
+                    liaison.Read(target, buffer);
             }
             
             public void SendUpdate()
@@ -133,7 +133,7 @@ namespace CrunchyCart
             }
             public void WriteUpdate(Buffer buffer)
             {
-                liaison.WriteUpdateInternal(target, buffer);
+                liaison.Write(target, buffer);
             }
 
             public int GetId()

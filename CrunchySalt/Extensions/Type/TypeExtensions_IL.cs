@@ -21,7 +21,7 @@ namespace CrunchySalt
 
         static public ILMethodInvokation GetStaticILMethodInvokation(this Type item, string name, IEnumerable<ILValue> arguments)
         {
-            return item.GetStaticMethod(name, arguments.Convert(a => a.GetValueType()))
+            return item.GetStaticMethod(name, arguments.GetValueTypes())
                 .IfNotNull(m => new ILMethodInvokation(null, m, arguments));
         }
         static public ILMethodInvokation GetStaticILMethodInvokation(this Type item, string name, params ILValue[] arguments)

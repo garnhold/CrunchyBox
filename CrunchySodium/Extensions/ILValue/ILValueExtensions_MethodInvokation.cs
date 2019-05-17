@@ -17,7 +17,7 @@ namespace CrunchySodium
         static public ILMethodInvokation GetInstanceILMethodInvokation(this ILValue item, string name, IEnumerable<ILValue> arguments)
         {
             return item.GetILMethodInvokation(
-                item.GetValueType().GetInstanceMethod(name, arguments.Convert(a => a.GetValueType())),
+                item.GetValueType().GetInstanceMethod(name, arguments.GetValueTypes()),
                 arguments
             );
         }

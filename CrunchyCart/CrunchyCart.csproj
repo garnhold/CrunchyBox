@@ -104,7 +104,7 @@
     <Compile Include="Syncronizer\Serializer\ObjectLiaison\Extensions\ObjectLiaisonExtensions.cs" />
     <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp.cs" />
     <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp_Simple.cs" />
-    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp_Liaison.cs" />
+    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp_NestedLiaison.cs" />
     <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializer.cs" />
     <Compile Include="Syncronizer\Serializer\ObjectLiaison\ObjectLiaison.cs" />
     <Compile Include="Syncronizer\BufferDefermentException\BufferDefermentException.cs" />

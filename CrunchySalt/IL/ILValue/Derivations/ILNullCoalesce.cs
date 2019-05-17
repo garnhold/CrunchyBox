@@ -51,7 +51,7 @@ namespace CrunchySalt
 
         public override Type GetValueType()
         {
-            return values.Convert(v => v.GetValueType()).GetCommonAncestor();
+            return values.GetValueTypes().GetCommonAncestor();
         }
 
         public override bool IsILCostTrivial()

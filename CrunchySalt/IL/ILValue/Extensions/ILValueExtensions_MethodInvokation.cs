@@ -24,7 +24,8 @@ namespace CrunchySalt
         static public ILMethodInvokation GetTechnicalInstanceILMethodInvokation(this ILValue item, string name, IEnumerable<ILValue> arguments)
         {
             return item.GetILMethodInvokation(
-                item.GetValueType().GetTechnicalInstanceMethod(name, arguments.Convert(a => a.GetValueType()))
+                item.GetValueType().GetTechnicalInstanceMethod(name, arguments.GetValueTypes()),
+                arguments
             );
         }
         static public ILMethodInvokation GetTechnicalInstanceILMethodInvokation(this ILValue item, string name, params ILValue[] arguments)

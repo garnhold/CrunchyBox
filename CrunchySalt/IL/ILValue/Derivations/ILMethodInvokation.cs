@@ -37,9 +37,8 @@ namespace CrunchySalt
                 caller.GetILImplicitCast(method.GetILMethodInvokationType())
                     .RenderIL_Load(canvas);
 
-                method.GetEffectiveParameterTypes().ProcessTandemStrict(arguments,
-                    (t, a) => a.GetILImplicitCast(t).RenderIL_Load(canvas)
-                );
+                arguments.GetILImplicitCasts(method.GetEffectiveParameterTypes())
+                    .RenderIL_Load(canvas);
 
                 if (method.IsTechnicallyInstanceMethod() && method.DeclaringType.IsReferenceType())
                     canvas.Emit_Callvirt(method);
@@ -48,9 +47,8 @@ namespace CrunchySalt
             }
             else
             {
-                method.GetTechnicalParameterTypes().ProcessTandemStrict(arguments,
-                    (t, a) => a.GetILImplicitCast(t).RenderIL_Load(canvas)
-                );
+                arguments.GetILImplicitCasts(method.GetTechnicalParameterTypes())
+                    .RenderIL_Load(canvas);
 
                 canvas.Emit_Call(method);
             }

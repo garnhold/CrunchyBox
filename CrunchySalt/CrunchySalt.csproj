@@ -111,6 +111,11 @@
     <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_MethodBuilder.cs" />
     <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_Method.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Delegate.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_DynamicMethod_Convience.cs">
+      <DependentUpon>TypeExtensions_DynamicMethod_Convience.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\Type\TypeExtensions_Treatment.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Conversion.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_IL.cs" />
@@ -172,6 +177,7 @@
     <Compile Include="IL\ILStatement\Extensions\IEnumerable\ILStatementExtensions_IEnumerable_Block.cs" />
     <Compile Include="IL\ILStatement\Extensions\IEnumerable\ILStatementExtensions_IEnumerable.cs" />
     <Compile Include="IL\ILStatement\Extensions\ILStatementExtensions.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILConstructorInvokation.cs" />
     <Compile Include="IL\ILValue\Derivations\ILThis.cs" />
     <Compile Include="IL\ILValue\Derivations\ILUnaryOperatorInvokation.cs" />
     <Compile Include="IL\ILValue\Derivations\ILIfValue.cs" />
@@ -217,10 +223,14 @@
     <Compile Include="IL\ILStatement\Derivations\ILWhile.cs" />
     <Compile Include="IL\ILValue\Derivations\ILStringExpression.cs" />
     <Compile Include="IL\ILTextCanvas\ILTextCanvas.cs" />
+    <Compile Include="IL\ILValue\Extensions\IEnumerable\ILValueExtensions_IEnumerable_Type.cs" />
+    <Compile Include="IL\ILValue\Extensions\IEnumerable\ILValueExtensions_IEnumerable_Load.cs" />
+    <Compile Include="IL\ILValue\Extensions\IEnumerable\ILValueExtensions_IEnumerable_Cast.cs" />
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Address.cs" />
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions.cs" />
     <Compile Include="IL\ILValue\Extensions\IEnumerable\ILValueExtensions_IEnumerable_Text.cs" />
     <Compile Include="IL\ILValue\Extensions\IEnumerable\ILValueExtensions_IEnumerable.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_ConstructorInvokation.cs" />
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Params.cs" />
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions_UnaryOperators.cs" />
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions_MethodInvokation.cs" />
@@ -297,6 +307,10 @@
     <Content Include="Extensions\String\StringExtensions_Inject_Explicit.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StringExtensions_Inject_Explicit.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Type\TypeExtensions_DynamicMethod_Convience.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_DynamicMethod_Convience.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\Type\TypeExtensions_FieldInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -13,44 +13,36 @@ namespace CrunchyCart
 {
     public partial class Syncronizer
     {
-        public delegate void ObjectLiaisonReader(object liaison, object target, Buffer buffer);
-        public delegate void ObjectLiaisonWriter(object liaison, object target, Buffer buffer);
-
-        public class ObjectLiaison
+        public abstract class ObjectLiaison
         {
-            private object target;
-            private int delivery_channel;
-
-            private ObjectLiaisonReader reader;
-            private ObjectLiaisonWriter writer;
-
             private TypeSerializer type_serializer;
 
-            public ObjectLiaison(ObjectLiaisonReader r, ObjectLiaisonWriter w, TypeSerializer t)
+            public ObjectLiaison(TypeSerializer t)
             {
-                reader = r;
-                writer = w;
-
                 type_serializer = t;
             }
 
-            public void ReadUpdateInternal(object t, Buffer buffer)
+            public bool Validate(object target)
             {
-                target = t;
+                if (target.GetTypeEX() == GetTypeSerializerType())
+                    return true;
 
-                reader(this, target, buffer);
+                return false;
             }
 
-            public void WriteUpdateInternal(object t, Buffer buffer)
+            public void Read(object target, Buffer buffer)
             {
-                target = t;
-
-                writer(this, target, buffer);
+                type_serializer.Read(target, this, buffer);
             }
 
-            public object GetTarget()
+            public void Write(object target, Buffer buffer)
             {
-                return target;
+                type_serializer.Write(target, this, buffer);
+            }
+
+            public int GetDeliveryChannel()
+            {
+                return 0;
             }
 
             public TypeSerializer GetTypeSerializer()
@@ -58,26 +50,9 @@ namespace CrunchyCart
                 return type_serializer;
             }
 
-            public int GetDeliveryChannel()
-            {
-                return delivery_channel;
-            }
-
-            public Type GetTargetType()
+            public Type GetTypeSerializerType()
             {
                 return GetTypeSerializer().GetTargetType();
-            }
-
-            public bool Validate(Type type)
-            {
-                if (type == GetTargetType())
-                    return true;
-
-                return false;
-            }
-            public bool Validate()
-            {
-                return Validate(GetTarget().GetTypeEX());
             }
         }
     }
