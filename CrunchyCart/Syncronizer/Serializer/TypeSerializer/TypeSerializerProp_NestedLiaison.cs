@@ -27,7 +27,7 @@ namespace CrunchyCart
                 );
             }
 
-            protected override ILStatement GenerateReadInternal(ILValue target, ILValue liaison, ILValue buffer)
+            protected override ILStatement GenerateReadInternal(ILValue prop, ILValue liaison, ILValue buffer)
             {
                 ILBlock block = new ILBlock();
 
@@ -37,7 +37,7 @@ namespace CrunchyCart
 
                     block.AddStatement(
                         new ILIf(
-                            liaison.GetILField(nested_liaison_field).GetILInvoke("ValidateEX", target).GetILIsFalse(),
+                            liaison.GetILField(nested_liaison_field).GetILInvoke("ValidateEX", prop).GetILIsFalse(),
                             GenerateInitialize(liaison, type)
                         )
                     );
@@ -52,21 +52,21 @@ namespace CrunchyCart
                     );
                 }
 
-                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Read", target, buffer));
+                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Read", prop, buffer));
                 return block;
             }
 
-            protected override ILStatement GenerateWriteInternal(ILValue target, ILValue liaison, ILValue buffer)
+            protected override ILStatement GenerateWriteInternal(ILValue prop, ILValue liaison, ILValue buffer)
             {
                 ILBlock block = new ILBlock();
 
                 if (IsPolymorphic())
                 {
-                    ILLocal type = block.CreateLocal(target.GetILTypeEX(), true);
+                    ILLocal type = block.CreateLocal(prop.GetILTypeEX(), true);
 
                     block.AddStatement(
                         new ILIf(
-                            liaison.GetILField(nested_liaison_field).GetILInvoke("ValidateEX", target).GetILIsFalse(),
+                            liaison.GetILField(nested_liaison_field).GetILInvoke("ValidateEX", prop).GetILIsFalse(),
                             GenerateInitialize(liaison, type)
                         )
                     );
@@ -83,7 +83,7 @@ namespace CrunchyCart
                     );
                 }
 
-                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Write", target, buffer));
+                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Write", prop, buffer));
                 return block;
             }
 

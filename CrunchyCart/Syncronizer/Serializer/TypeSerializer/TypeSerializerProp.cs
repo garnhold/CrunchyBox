@@ -21,8 +21,8 @@ namespace CrunchyCart
 
             private TypeSerializer type_serializer;
 
-            protected abstract ILStatement GenerateReadInternal(ILValue target, ILValue liaison, ILValue buffer);
-            protected abstract ILStatement GenerateWriteInternal(ILValue target, ILValue liaison, ILValue buffer);
+            protected abstract ILStatement GenerateReadInternal(ILValue prop, ILValue liaison, ILValue buffer);
+            protected abstract ILStatement GenerateWriteInternal(ILValue prop, ILValue liaison, ILValue buffer);
 
             static public TypeSerializerProp Create(TypeBuilder type_builder, PropInfoEX prop, TypeSerializer type_serializer)
             {

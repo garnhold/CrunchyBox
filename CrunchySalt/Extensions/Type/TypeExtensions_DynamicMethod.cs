@@ -43,6 +43,16 @@ namespace CrunchySalt
             DYNAMIC_IL_BODY.Add(to_return, body);
             return to_return;
         }
+        static public T CreateDynamicMethodDelegate<T>(this Type item, string name, ILStatement statement)
+        {
+            return item.CreateDynamicMethodDelegate<T>(name, delegate(MethodBase method) {
+                return statement;
+            });
+        }
+        static public T CreateDynamicMethodDelegate<T>(this Type item, ILStatement statement)
+        {
+            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, statement);
+        }
 
         static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Delegate operation)
         {
@@ -53,15 +63,6 @@ namespace CrunchySalt
         static public T CreateDynamicMethodDelegate<T>(this Type item, Delegate operation)
         {
             return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
-        }
-
-        static public T CreateDynamicMethodDelegate<T>(this Type item, string name, ILStatement statement)
-        {
-            return item.CreateDynamicMethodDelegate<T>(name, () => statement);
-        }
-        static public T CreateDynamicMethodDelegate<T>(this Type item, ILStatement statement)
-        {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, statement);
         }
 
         static private readonly Dictionary<object, ILBody> DYNAMIC_IL_BODY = new Dictionary<object, ILBody>();

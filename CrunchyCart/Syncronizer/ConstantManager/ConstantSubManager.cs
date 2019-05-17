@@ -125,21 +125,18 @@ namespace CrunchyCart
             {
                 Constant<T> constant;
 
-                if (constant_by_values.TryGetValue(value, out constant))
+                if (constant_by_values.TryGetValue(value, out constant) && constant.ShouldCompress())
                 {
-                    if (constant.ShouldCompress())
-                    {
-                        buffer.WriteBoolean(true);
-                        buffer.WriteInt24(constant.GetCompressedId());
-                    }
+                    buffer.WriteBoolean(true);
+                    buffer.WriteInt24(constant.GetCompressedId());
                 }
                 else
                 {
                     Request(value);
-                }
 
-                buffer.WriteBoolean(false);
-                WriteConstantValue(value, buffer);
+                    buffer.WriteBoolean(false);
+                    WriteConstantValue(value, buffer);
+                }
             }
 
             public override bool CanUncompress(int compressed_id)

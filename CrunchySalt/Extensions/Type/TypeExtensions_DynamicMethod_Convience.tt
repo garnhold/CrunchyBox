@@ -19,7 +19,7 @@ namespace CrunchySalt
 {
 	static public class TypeExtensions_DynamicMethod_Convience
 	{
-	<#for(int i = 0; i < 10; i++){#>
+	<#for(int i = 1; i < 10; i++){#>
 		<#string operation_type = "Operation" + TTCS.ArgumentsForGeneric("ILValue", i, "ILStatement");#>
 
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, <#=operation_type#> operation)

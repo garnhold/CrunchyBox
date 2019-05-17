@@ -23,7 +23,7 @@ namespace CrunchyCart
                 return item.GetInvocationList().ProcessAND(delegate(Delegate d) {
                     message.Position = 0;
 
-                    return (bool)d.DynamicInvoke(message);
+                    return ((NetworkMessageProcessor)d)(message);
                 });
             }
 

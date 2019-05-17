@@ -23,7 +23,7 @@ namespace CrunchyCart
 
             public SystemManager(Syncronizer s, IEnumerable<object> ts)
             {
-                systems_by_id = ts.ConvertWithIndex((i, t) => new System(i, t, this))
+                systems_by_id = ts.ConvertWithIndex((i, t) => new System(i + 1, t, this))
                     .ToDictionaryValues(z => z.GetId());
 
                 systems_by_target = systems_by_id.Values
