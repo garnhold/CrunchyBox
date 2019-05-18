@@ -4,23 +4,23 @@
 <#@ output extension=".cs" #>
 <#
 TypeInfo[] types = new TypeInfo[]{
-	new TypeInfo("bool", "Bool", "Toggle"),
-	new TypeInfo("byte", "Byte", "IntField"),
-	new TypeInfo("short", "Short", "IntField"),
-	new TypeInfo("int", "Int", "IntField"),
-	new TypeInfo("long", "Long", "LongField"),
-	new TypeInfo("float", "Float", "FloatField"),
-	new TypeInfo("double", "Double", "DoubleField"),
-	new TypeInfo("string", "String", "TextField"),
+	new TypeInfo("bool", "Bool", "Toggle", "DEFAULT_HEIGHT"),
+	new TypeInfo("byte", "Byte", "IntField", "DEFAULT_HEIGHT"),
+	new TypeInfo("short", "Short", "IntField", "DEFAULT_HEIGHT"),
+	new TypeInfo("int", "Int", "IntField", "DEFAULT_HEIGHT"),
+	new TypeInfo("long", "Long", "LongField", "DEFAULT_HEIGHT"),
+	new TypeInfo("float", "Float", "FloatField", "DEFAULT_HEIGHT"),
+	new TypeInfo("double", "Double", "DoubleField", "DEFAULT_HEIGHT"),
+	new TypeInfo("string", "String", "TextField", "DEFAULT_HEIGHT"),
 
-	new TypeInfo("Color", "Color", "ColorField"),
+	new TypeInfo("Color", "Color", "ColorField", "DEFAULT_HEIGHT"),
 
-	new TypeInfo("Bounds", "Bounds", "BoundsField"),
-	new TypeInfo("Rect", "Rect", "RectField"),
-	new TypeInfo("Vector2", "Vector2", "Vector2Field"),
-	new TypeInfo("Vector3", "Vector3", "Vector3Field"),
+	new TypeInfo("Bounds", "Bounds", "BoundsField", "DEFAULT_HEIGHT * 3.0f"),
+	new TypeInfo("Rect", "Rect", "RectField", "DEFAULT_HEIGHT"),
+	new TypeInfo("Vector2", "Vector2", "Vector2Field", "DEFAULT_HEIGHT"),
+	new TypeInfo("Vector3", "Vector3", "Vector3Field", "DEFAULT_HEIGHT"),
 
-	new TypeInfo("Enum", "Enum", "EnumPopup")
+	new TypeInfo("Enum", "Enum", "EnumPopup", "DEFAULT_HEIGHT")
 };
 #>
 using System;
@@ -47,7 +47,7 @@ namespace CrunchySandwichBag
         }
 
         public EditorGUIElement_Single_EditPropertyValue_Simple_<#=type.class_name#>(EditProperty_Value p, float h) : base(p, h) { }
-        public EditorGUIElement_Single_EditPropertyValue_Simple_<#=type.class_name#>(EditProperty_Value p) : this(p, DEFAULT_HEIGHT) { }
+        public EditorGUIElement_Single_EditPropertyValue_Simple_<#=type.class_name#>(EditProperty_Value p) : this(p, <#=type.height#>) { }
     }
 
 <#}#>
@@ -60,11 +60,15 @@ public class TypeInfo
 	public readonly string class_name;
 	public readonly string function_name;
 
-	public TypeInfo(string t, string c, string f)
+	public readonly string height;
+
+	public TypeInfo(string t, string c, string f, string h)
 	{
 		type_name = t;
 		class_name = c;
 		function_name = f;
+
+		height = h;
 	}
 }
 #>

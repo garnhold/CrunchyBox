@@ -65,6 +65,34 @@ namespace CrunchySalt
             return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
         }
 
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Delegate operation, IEnumerable<Type> parameter_types)
+        {
+            return item.CreateDynamicMethodDelegate<T>(name, delegate(MethodBase method) {
+                ILBlock block = new ILBlock();
+
+                ILValue[] arguments = method.GetAllTechnicalILParameters()
+                    .GetILImplicitCasts(parameter_types)
+                    .Convert(v => block.CreateTrivial(v))
+                    .ToArray();
+
+                block.AddStatement(operation.DynamicInvoke(arguments).Convert<ILStatement>());
+                return block;
+            });
+        }
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Delegate operation, params Type[] parameter_types)
+        {
+            return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, operation, (IEnumerable<Type>)parameter_types);
+        }
+
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Delegate operation, IEnumerable<Type> parameter_types)
+        {
+            return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(typeof(T).Name, operation, parameter_types);
+        }
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Delegate operation, params Type[] parameter_types)
+        {
+            return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(operation, (IEnumerable<Type>)parameter_types);
+        }
+
         static private readonly Dictionary<object, ILBody> DYNAMIC_IL_BODY = new Dictionary<object, ILBody>();
         static public ILBody GetDynamicMethodILBody(this Delegate item)
         {

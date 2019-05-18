@@ -30,9 +30,10 @@ namespace CrunchyCart
 
             private List<TypeSerializerProp> target_serializer_props;
 
-            private Type generated_type;
             private ObjectReader object_reader;
             private ObjectWriter object_writer;
+
+            private Type liaison_type;
             private ObjectLiaisonReader object_liaison_reader;
             private ObjectLiaisonWriter object_liaison_writer;
             private ObjectLiaisonInstancer instancer;
@@ -120,9 +121,9 @@ namespace CrunchyCart
             {
                 if (object_writer != null)
                 {
-                    object_writer = GetTargetType().CreateDynamicMethodDelegate<ObjectWriter>(delegate(ILValue il_target, ILValue il_buffer) {
+                    object_writer = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectWriter>(delegate(ILValue il_target, ILValue il_buffer) {
                         return GenerateWrite(il_target, il_buffer);
-                    });
+                    }, GetTargetType(), typeof(Buffer));
                 }
 
                 object_writer(target, buffer);
@@ -132,11 +133,11 @@ namespace CrunchyCart
             {
                 if (object_liaison_reader == null)
                 {
-                    object_liaison_reader = GetTargetType().CreateDynamicMethodDelegate<ObjectLiaisonReader>(delegate(ILValue il_target, ILValue il_liaison, ILValue il_buffer) {
+                    object_liaison_reader = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectLiaisonReader>(delegate(ILValue il_target, ILValue il_liaison, ILValue il_buffer) {
                         return target_serializer_props
                             .Convert(p => p.GenerateRead(il_target, il_liaison, il_buffer))
                             .ToBlock();
-                    });
+                    }, GetTargetType(), GetLiaisonType(), typeof(Buffer));
                 }
 
                 object_liaison_reader(target, liaison, buffer);
@@ -145,11 +146,11 @@ namespace CrunchyCart
             {
                 if (object_liaison_writer == null)
                 {
-                    object_liaison_writer = GetTargetType().CreateDynamicMethodDelegate<ObjectLiaisonWriter>(delegate(ILValue il_target, ILValue il_liaison, ILValue il_buffer) {
+                    object_liaison_writer = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectLiaisonWriter>(delegate(ILValue il_target, ILValue il_liaison, ILValue il_buffer) {
                         return target_serializer_props
                             .Convert(p => p.GenerateWrite(il_target, il_liaison, il_buffer))
                             .ToBlock();
-                    });
+                    }, GetTargetType(), GetLiaisonType(), typeof(Buffer));
                 }
 
                 object_liaison_writer(target, liaison, buffer);
@@ -160,18 +161,23 @@ namespace CrunchyCart
                 if (instancer == null)
                 {
                     instancer = GetTargetType().CreateDynamicMethodDelegate<ObjectLiaisonInstancer>(delegate(ILValue il_serializer) {
-                        return new ILReturn(new ILNew(GetGeneratedType(), il_serializer));
+                        return new ILReturn(new ILNew(GetLiaisonType(), il_serializer));
                     });
                 }
 
                 return instancer(this);
             }
 
-            public Type GetGeneratedType()
+            public Type GetTargetType()
             {
-                if (generated_type == null)
+                return target_type;
+            }
+
+            public Type GetLiaisonType()
+            {
+                if (liaison_type == null)
                 {
-                    generated_type = TypeCreator.CreateType("ObjectLiaison_" + GetTargetType().Name, TypeAttributesExtensions.PUBLIC_CLASS, delegate(TypeBuilder type_builder) {
+                    liaison_type = TypeCreator.CreateType("ObjectLiaison_" + GetTargetType().Name, TypeAttributesExtensions.PUBLIC_CLASS, delegate(TypeBuilder type_builder) {
                         type_builder.SetParent(typeof(ObjectLiaison));
 
                         target_serializer_props = target_props
@@ -184,12 +190,7 @@ namespace CrunchyCart
                     });
                 }
 
-                return generated_type;
-            }
-
-            public Type GetTargetType()
-            {
-                return target_type;
+                return liaison_type;
             }
         }
     }

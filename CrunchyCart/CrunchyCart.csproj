@@ -67,6 +67,7 @@
     <Compile Include="NetworkPeer\NetworkClient.cs" />
     <Compile Include="NetworkPeer\NetworkServer.cs" />
     <Compile Include="Syncronizer\Buffer\Partials\Buffer_System.cs" />
+    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp\Special\TypeSerializerProp_Interpolate.cs" />
     <Compile Include="Syncronizer\Serializer\Value_SpecialAttribute.cs" />
     <Compile Include="Syncronizer\Serializer\ValueAttribute.cs" />
     <Compile Include="Syncronizer\BufferDefermentException\BufferDefermentException_MissingConstant.cs" />
@@ -102,9 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syncronizer\Serializer\ObjectLiaison\Extensions\ObjectLiaisonExtensions_Validate.cs" />
     <Compile Include="Syncronizer\Serializer\ObjectLiaison\Extensions\ObjectLiaisonExtensions.cs" />
-    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp.cs" />
-    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp_Simple.cs" />
-    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp_NestedLiaison.cs" />
+    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp\TypeSerializerProp.cs" />
+    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp\Basic\TypeSerializerProp_Simple.cs" />
+    <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializerProp\Basic\TypeSerializerProp_NestedLiaison.cs" />
     <Compile Include="Syncronizer\Serializer\TypeSerializer\TypeSerializer.cs" />
     <Compile Include="Syncronizer\Serializer\ObjectLiaison\ObjectLiaison.cs" />
     <Compile Include="Syncronizer\BufferDefermentException\BufferDefermentException.cs" />

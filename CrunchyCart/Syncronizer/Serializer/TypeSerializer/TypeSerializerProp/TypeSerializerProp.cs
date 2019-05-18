@@ -29,6 +29,10 @@ namespace CrunchyCart
                 if (prop.GetPropType().HasCustomAttributeOfTypeOnAnInstanceMember<Value_SpecialAttribute>())
                     return new TypeSerializerProp_NestedLiaison(type_builder, prop, type_serializer);
 
+                Value_SpecialAttribute attribute;
+                if (prop.TryGetCustomAttributeOfType<Value_SpecialAttribute>(true, out attribute))
+                    return attribute.CreateTypeSerializerProp(type_builder, prop, type_serializer);
+
                 return new TypeSerializerProp_Simple(prop, type_serializer);
             }
 

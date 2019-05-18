@@ -16,8 +16,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue> operation)
         {
@@ -25,8 +43,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue> operation)
         {
@@ -34,8 +70,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue> operation)
         {
@@ -43,8 +97,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
@@ -52,8 +124,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
@@ -61,8 +151,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
@@ -70,8 +178,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
@@ -79,8 +205,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
@@ -88,7 +232,25 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Operation<ILStatement, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue, ILValue> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 		}
 }

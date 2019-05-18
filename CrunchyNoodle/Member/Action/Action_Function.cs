@@ -10,7 +10,6 @@ namespace CrunchyNoodle
     public class Action_Function : Action
     {
         private Function function;
-
         private object[] arguments;
 
         static public Action_Function New(Function function, IEnumerable<object> arguments)

@@ -14,13 +14,13 @@ namespace CrunchySandwichBag
     public class EditorGUIElement_SerializedProperty_Field : EditorGUIElement_SerializedProperty
     {
         private Rect element_rect;
-        private EditorGUIElementAttachment_Singular_GUIContentLabel_Inline label;
+        private EditorGUIElementAttachment_Singular_GUIContentLabel label;
 
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
         {
-            EditorGUIElementAttachment_Singular_GUIContentLabel_Inline cast;
+            EditorGUIElementAttachment_Singular_GUIContentLabel cast;
 
-            if (attachment.Convert<EditorGUIElementAttachment_Singular_GUIContentLabel_Inline>(out cast))
+            if (attachment.Convert<EditorGUIElementAttachment_Singular_GUIContentLabel>(out cast))
             {
                 label = cast;
                 return false;

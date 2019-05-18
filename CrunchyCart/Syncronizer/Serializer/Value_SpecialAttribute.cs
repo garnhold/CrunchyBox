@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,6 +16,7 @@ namespace CrunchyCart
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Method)]
         public abstract class Value_SpecialAttribute : ValueAttribute
         {
+            public abstract TypeSerializerProp CreateTypeSerializerProp(TypeBuilder type_builder, PropInfoEX prop, TypeSerializer type_serializer);
         }
     }
 }

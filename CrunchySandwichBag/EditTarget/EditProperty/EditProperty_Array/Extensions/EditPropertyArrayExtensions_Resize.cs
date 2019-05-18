@@ -31,7 +31,7 @@ namespace CrunchySandwichBag
                     }
                     else
                     {
-                        for (int i = current_size - 1; i >= new_size; i++)
+                        for (int i = current_size - 1; i >= new_size; i--)
                             item.RemoveElement(i);
                     }
                 }

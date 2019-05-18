@@ -36,10 +36,6 @@ namespace CrunchyNoodle
 
             return return_value;
         }
-        public object Execute(object target, object[] arguments)
-        {
-            return Execute(target, (IEnumerable<object>)arguments);
-        }
 
         public Action CreateAction(IEnumerable<object> arguments)
         {

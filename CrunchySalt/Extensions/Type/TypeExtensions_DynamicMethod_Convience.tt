@@ -28,8 +28,26 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, <#=operation_type#> operation)
         {
-            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
         }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, <#=operation_type#> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, <#=operation_type#> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, <#=operation_type#> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, <#=operation_type#> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
 	<#}#>
 	}
 }

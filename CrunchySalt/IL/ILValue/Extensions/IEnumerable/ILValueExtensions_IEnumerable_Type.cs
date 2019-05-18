@@ -12,7 +12,7 @@ namespace CrunchySalt
 {
     static public class ILValueExtensions_IEnumerable_Type
     {
-        static public IEnumerable<Type> GetValueTypes(this IEnumerable<ILValue> item)
+        static public IEnumerable<Type> GetValueTypes<T>(this IEnumerable<T> item) where T : ILValue
         {
             return item.Convert(i => i.GetValueType());
         }

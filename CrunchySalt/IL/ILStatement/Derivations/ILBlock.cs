@@ -68,6 +68,14 @@ namespace CrunchySalt
             return CreateLocal(null, value, is_cemented);
         }
 
+        public ILValue CreateTrivial(ILValue value)
+        {
+            if (value.IsILCostTrivial())
+                return value;
+
+            return CreateLocal(value, true);
+        }
+
         public void AddStatement(ILStatement to_add)
         {
             if (to_add == null)

@@ -129,7 +129,7 @@ namespace CrunchySandwichBag
         }
 
         public EditorGUIElement_Single_EditPropertyValue_Simple_Bounds(EditProperty_Value p, float h) : base(p, h) { }
-        public EditorGUIElement_Single_EditPropertyValue_Simple_Bounds(EditProperty_Value p) : this(p, DEFAULT_HEIGHT) { }
+        public EditorGUIElement_Single_EditPropertyValue_Simple_Bounds(EditProperty_Value p) : this(p, DEFAULT_HEIGHT * 3.0f) { }
     }
 
 	[EditorGUIElementForType(typeof(Rect), true)]

@@ -12,7 +12,7 @@ namespace CrunchySalt
 {
     static public class ILValueExtensions_IEnumerable_Text
     {
-        static public void RenderText_Value(this IEnumerable<ILValue> item, ILTextCanvas canvas, string seperator)
+        static public void RenderText_Value<T>(this IEnumerable<T> item, ILTextCanvas canvas, string seperator) where T : ILValue
         {
             item.Process(
                 i => i.RenderText_Value(canvas),

@@ -42,7 +42,6 @@ namespace CrunchyCart
 
             public int GetDeliveryChannel()
             {
-                return 0;
             }
 
             public TypeSerializer GetTypeSerializer()
