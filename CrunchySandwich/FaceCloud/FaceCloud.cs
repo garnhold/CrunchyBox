@@ -69,60 +69,8 @@ namespace CrunchySandwich
         public IEnumerable<IEnumerable<Vector2>> GetVertexLoops()
         {
             Validate();
+
             return vertex_loops.ConvertGrouped(i => i);
-        }
-        
-        public IEnumerable<IEnumerable<Face>> BuildFaceLoops()
-        {
-            return GetVertexLoops().ConvertGrouped(l => 
-                l.CloseLoop().ConvertConnections((v0, v1) => FaceExtensions.CreatePoints(v0, v1))
-            );
-        }
-        
-        public IEnumerable<PolygonTriangle> BuildPolygonTriangles()
-        {
-            bool is_work_progressing;
-            List<Face> face_loop = new List<Face>();
-
-            foreach (IEnumerable<Face> face_loop_iter in BuildFaceLoops())
-            {
-                is_work_progressing = true;
-                face_loop.Set(face_loop_iter);
-
-                while (face_loop.IsNotEmpty() && is_work_progressing)
-                {
-                    is_work_progressing = false;
-
-                    for (int i = 0; i < face_loop.Count; i++)
-                    {
-                        Face added_face;
-                        Triangle2 added_triangle;
-
-                        int index1 = face_loop.GetLoopedIndex(i);
-                        int index2 = face_loop.GetLoopedIndex(i + 1);
-
-                        Face f1 = face_loop[index1];
-                        Face f2 = face_loop[index2];
-
-                        if (f1.TryCreateTriangle(f2, out added_triangle, out added_face))
-                        {
-                            PolygonTriangle polygon_triangle = new PolygonTriangle(added_triangle);
-                            
-                            if (
-                                faces.Convert(f => f.GetFace().v0)
-                                    .AreNone(p => polygon_triangle.Contains(p, -float.Epsilon))
-                            )
-                            {
-                                yield return polygon_triangle;
-                                face_loop[index1] = added_face.GetFlipped();
-                                face_loop.RemoveAt(index2);
-
-                                is_work_progressing = true;
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

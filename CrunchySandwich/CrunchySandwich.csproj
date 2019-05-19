@@ -180,6 +180,7 @@
     <Compile Include="Extensions\GameObject\IEnumerable\GameObjectExtensions_IEnumerable_Destroy.cs" />
     <Compile Include="Extensions\GameObject\IEnumerable\GameObjectExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_WireCube.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_Vectorize.cs" />
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions_Motor.cs" />
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions.cs" />
     <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions_With.cs" />
@@ -191,6 +192,8 @@
     <Compile Include="Extensions\Physics2D\Physics2DExtensions.cs" />
     <Compile Include="Extensions\Physics\PhysicsExtensions_OverlapSphere.cs" />
     <Compile Include="Extensions\Plane\PlaneExtensions_Edge.cs" />
+    <Compile Include="Extensions\PolygonCollider2D\PolygonCollider2DExtensions_Paths.cs" />
+    <Compile Include="Extensions\PolygonCollider2D\PolygonCollider2DExtensions.cs" />
     <Compile Include="Extensions\Ray\RayExtensions_General.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_SplitIntoQuarters.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Split_Center.cs" />
@@ -202,7 +205,10 @@
     <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Position.cs" />
     <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Texture.cs" />
     <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Match.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Vectorize.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Data.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Units.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Vertorize.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Color_Fill.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Stamps.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Stamp.cs" />
@@ -215,6 +221,12 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Adjust.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Designated.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_ContentIdentity.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Loop.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Winding.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Area.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Tesselate.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_FaceLoop.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Spacar.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Floats.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_VectorI2.cs" />
@@ -226,6 +238,7 @@
     <Compile Include="Extensions\Vector2\Vector2Extensions_Abs.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Planar.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Abs.cs" />
+    <Compile Include="FaceCloud\Extensions\FaceCloudExtensions_Tesselate.cs" />
     <Compile Include="FaceCloud\Extensions\FaceCloudExtensions_Polygon.cs" />
     <Compile Include="FaceCloud\Extensions\FaceCloudExtensions_Add.cs" />
     <Compile Include="FaceCloud\Extensions\FaceCloudExtensions.cs" />
@@ -238,6 +251,10 @@
     <Compile Include="Face\Extensions\FaceExtensions_Flip.cs" />
     <Compile Include="Face\Extensions\FaceExtensions_BiRay.cs" />
     <Compile Include="Face\Extensions\FaceExtensions_Side.cs" />
+    <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable_Tesselate.cs" />
+    <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle2.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PolygonTriangle.cs" />
     <Compile Include="UnityObjectEX\PolymorphicField.cs" />
     <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\GeneralUnityTyonDesignatedVariableProvider.cs" />
     <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\UnityTyonDesignatedVariableProvider.cs" />
@@ -551,7 +568,7 @@
     <Compile Include="LayerEX\LayerEX.cs" />
     <Compile Include="MaintainScale\MaintainScaleAspect.cs" />
     <Compile Include="MaintainScale\MaintainScale.cs" />
-    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle3.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_ConvexPolygons.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk_Plane.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk_Bounds.cs" />

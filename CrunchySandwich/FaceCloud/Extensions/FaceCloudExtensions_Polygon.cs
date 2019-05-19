@@ -12,7 +12,7 @@ namespace CrunchySandwich
     {
         static public Polygon BuildPolygon(this FaceCloud item)
         {
-            return new Polygon(item.BuildPolygonTriangles());
+            return new Polygon(item.Tesselate());
         }
     }
 }

@@ -18,5 +18,12 @@ namespace CrunchySandwich
         {
             File.WriteAllBytes(filename, item.EncodeToJPG());
         }
+
+        static public Texture2D Sideload(this Texture2D item)
+        {
+            return PlayEditDistinction<SideloadEditDistinctionAttribute>.Execute(t => t, item);
+        }
     }
+
+    public class SideloadEditDistinctionAttribute : EditDistinctionAttribute { }
 }

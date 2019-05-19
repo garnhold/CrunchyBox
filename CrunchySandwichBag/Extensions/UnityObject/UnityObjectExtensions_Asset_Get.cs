@@ -30,7 +30,7 @@ namespace CrunchySandwichBag
         {
             string path = AssetDatabase.GetAssetPath(item);
 
-            if(item.IsAssetFolder())
+            if (item.IsAssetFolder())
                 return path + "/";
 
             return path;

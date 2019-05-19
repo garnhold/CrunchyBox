@@ -34,7 +34,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<#=TTCS.ArgumentsForGeneric("P#", i, "T")#>(<#=TTCS.Arguments("p#", i)#>);
 		}
-
 		static public T ExecuteEditDistinction<#=TTCS.ArgumentsForGeneric("P#", i, "T")#>(<#=TTCS.Parameters("P#", "p#", i)#>)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(

@@ -12,14 +12,21 @@ namespace CrunchyDough
             {
                 if (iterator.MoveNext())
                 {
-                    T first = iterator.Current;
+                    T first;
+                    T current;
 
+                    first = iterator.Current;
+                    current = first;
                     yield return first;
 
                     while (iterator.MoveNext())
-                        yield return iterator.Current;
+                    {
+                        current = iterator.Current;
+                        yield return current;
+                    }
 
-                    yield return first;
+                    if (current.NotEqualsEX(first))
+                        yield return first;
                 }
             }
         }

@@ -4,13 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEditor;
 
 using CrunchyDough;
 using CrunchyBun;
-using CrunchySandwich;
 
-namespace CrunchySandwichBag
+namespace CrunchySandwich
 {
     static public class SpriteExtensions_Data
     {

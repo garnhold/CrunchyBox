@@ -12,9 +12,11 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
+    [SideloadEditDistinctionAttribute]
     static public class Texture2DExtensions_Data
     {
-        static public Texture2D Sideload(this Texture2D item)
+        [SideloadEditDistinctionAttribute]
+        static public Texture2D Sideload(Texture2D item)
         {
             return CrunchySandwich.Texture2DExtensions.Create(item.GetAssetBytes());
         }

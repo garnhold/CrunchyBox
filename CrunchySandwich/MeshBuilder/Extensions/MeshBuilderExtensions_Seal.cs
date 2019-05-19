@@ -21,10 +21,10 @@ namespace CrunchySandwich
                     faces.AddFace(FaceExtensions.CreateEdge(plane_space.ProjectEdge(edge)));
             }
 
-            item.AddTriangles(plane_space.InflateTriangles(
-                faces.BuildPolygonTriangles()
-                    .Convert(t => t.triangle.GetReversedWinding())
-            ));
+            item.AddTriangles(
+                plane_space.InflateTriangles(faces.Tesselate())
+                    .Convert(t => t.GetReversedWinding())
+            );
         }
     }
 }

@@ -20,7 +20,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T>();
 		}
-
 		static public T ExecuteEditDistinction<T>()
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -38,7 +37,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1>(p1);
 		}
-
 		static public T ExecuteEditDistinction<T, P1>(P1 p1)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -56,7 +54,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2>(p1, p2);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2>(P1 p1, P2 p2)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -74,7 +71,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2, P3>(p1, p2, p3);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2, P3>(P1 p1, P2 p2, P3 p3)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -92,7 +88,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2, P3, P4>(p1, p2, p3, p4);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2, P3, P4>(P1 p1, P2 p2, P3 p3, P4 p4)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -110,7 +105,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2, P3, P4, P5>(p1, p2, p3, p4, p5);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2, P3, P4, P5>(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -128,7 +122,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6>(p1, p2, p3, p4, p5, p6);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6>(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -146,7 +139,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6, P7>(p1, p2, p3, p4, p5, p6, p7);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6, P7>(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -164,7 +156,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6, P7, P8>(p1, p2, p3, p4, p5, p6, p7, p8);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6, P7, P8>(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
@@ -182,7 +173,6 @@ namespace CrunchySandwich
 
 			return ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(p1, p2, p3, p4, p5, p6, p7, p8, p9);
 		}
-
 		static public T ExecuteEditDistinction<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8, P9 p9)
 		{
 			return (T)MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(

@@ -24,30 +24,30 @@ namespace CrunchySandwich
         [SerializeField]private float minimum_shortest_to_longest_ratio = 0.003f;
 
         private List<List<Vector2>> complete_paths;
-        private DateTime last_generate_complete_paths_time;
+        private int last_generate_complete_paths_content_identity;
+        private float last_generate_complete_paths_alpha_threshold;
 
-        private void GenerateCompletePaths(Grid<bool> solid_grid)
+        private void UpdateCompletePaths()
         {
-            float units_per_cell = sprite.GetUnitsPerPixel();
-            Vector2 unit_offset = sprite.pivot * units_per_cell;
+            int content_identity = sprite.GetContentIdentity();
 
-            complete_paths = new List<List<Vector2>>(
-                solid_grid.TraverseEdges(6).Convert(
-                    p => p.Convert(c => new Vector2(c.GetX(), c.GetY()) * units_per_cell - unit_offset).ToList()
-                )
-            );
+            if (complete_paths.IsEmpty() ||
+                content_identity != last_generate_complete_paths_content_identity ||
+                alpha_threshold != last_generate_complete_paths_alpha_threshold)
+            {
+                complete_paths = sprite.Vectorize(alpha_threshold, 6).ToList();
 
-            last_generate_complete_paths_time = DateTime.UtcNow;
+                last_generate_complete_paths_content_identity = content_identity;
+                last_generate_complete_paths_alpha_threshold = alpha_threshold;
+            }
         }
 
-        public void UpdateGeometry(DateTime last_source_write_time, Operation<Grid<bool>> operation)
+        public void UpdateGeometry()
         {
             float units_per_cell = sprite.GetUnitsPerPixel();
-            PolygonCollider2D polygon_collider = GetComponent<PolygonCollider2D>();
             List<List<Vector2>> reduced_paths = new List<List<Vector2>>();
 
-            if (last_source_write_time > last_generate_complete_paths_time || complete_paths.IsEmpty())
-                GenerateCompletePaths(operation.Execute());
+            UpdateCompletePaths();
 
             foreach (List<Vector2> path in complete_paths)
             {
@@ -62,30 +62,12 @@ namespace CrunchySandwich
                     reduced_paths.Add(reduced_path);
             }
 
-            polygon_collider.pathCount = reduced_paths.Count;
-            reduced_paths.ProcessWithIndex((i, p) => polygon_collider.SetPath(i, p.ToArray()));
-        }
-
-        public void DirtyGeometry()
-        {
-            complete_paths = null;
-            last_generate_complete_paths_time = DateTime.MinValue;
+            GetComponent<PolygonCollider2D>().SetPaths(reduced_paths);
         }
 
         public void SetSpriteAutomatically()
         {
             sprite = GetComponent<SpriteRenderer>().IfNotNull(r => r.sprite);
-            DirtyGeometry();
-        }
-
-        public Sprite GetSprite()
-        {
-            return sprite;
-        }
-
-        public float GetAlphaThreshold()
-        {
-            return alpha_threshold;
         }
     }
 }

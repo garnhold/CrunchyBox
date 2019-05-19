@@ -212,8 +212,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\Sprite\SpriteExtensions_Data.cs" />
-    <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
     <Compile Include="Extensions\Subsystem\SubsystemExtensions_Asset.cs" />
     <Compile Include="Extensions\Subsystem\SubsystemExtensions_Asset_Get.cs" />
     <Compile Include="Extensions\Subsystem\SubsystemExtensions_Asset_Save.cs" />
@@ -221,6 +219,7 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Data.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_ContentIdentity.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Prefab.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Cohabitants.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Save.cs" />

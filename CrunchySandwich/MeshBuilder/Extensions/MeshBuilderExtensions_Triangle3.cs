@@ -8,7 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    static public class MeshBuilderExtensions_Triangle
+    static public class MeshBuilderExtensions_Triangle3
     {
         static public void AddTriangle(this MeshBuilder item, Triangle3 triangle)
         {

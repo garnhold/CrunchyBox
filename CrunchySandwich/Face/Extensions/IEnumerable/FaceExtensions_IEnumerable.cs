@@ -1,18 +1,15 @@
 ﻿using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEditor;
 
 using CrunchyDough;
 using CrunchyBun;
-using CrunchySandwich;
 
-namespace CrunchySandwichBag
+namespace CrunchySandwich
 {
-    static public class SpriteExtensions
+    static public class FaceExtensions_IEnumerable
     {
     }
 }

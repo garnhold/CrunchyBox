@@ -40,5 +40,14 @@ namespace CrunchySandwich
         {
             return triangles.Convert(t => item.InflateTriangle(t));
         }
+
+        static public Triangle3 InflateTriangle(this PlaneSpace item, PolygonTriangle triangle)
+        {
+            return item.InflateTriangle(triangle.triangle);
+        }
+        static public IEnumerable<Triangle3> InflateTriangles(this PlaneSpace item, IEnumerable<PolygonTriangle> triangles)
+        {
+            return triangles.Convert(t => item.InflateTriangle(t));
+        }
     }
 }
