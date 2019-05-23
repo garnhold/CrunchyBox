@@ -28,19 +28,28 @@ namespace CrunchySalt
 	{
 	<#foreach(Style style in styles){#>
 
-		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_<#=style.name#>_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<MethodInfo>, Type> GET_IMMEDIATE_NATIVE_<#=style.name#>_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetMethods(<#=style.binding_flags#>)
-				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
-		static public IEnumerable<MethodInfoEX> GetImmediate<#=style.name#>Methods(this Type item)
+		static public IEnumerable<MethodInfo> GetImmediateNative<#=style.name#>Methods(this Type item)
 		{
-			return GET_IMMEDIATE_<#=style.name#>_METHODS.Fetch(item);
+			return GET_IMMEDIATE_NATIVE_<#=style.name#>_METHODS.Fetch(item);
+		}
+
+		static private OperationCache<List<MethodInfo>, Type> GET_NATIVE_<#=style.name#>_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediateNative<#=style.name#>Methods())
+				.ToList();
+		});
+		static public IEnumerable<MethodInfo> GetNative<#=style.name#>Methods(this Type item)
+		{
+			return GET_NATIVE_<#=style.name#>_METHODS.Fetch(item);
 		}
 
 		static private OperationCache<List<MethodInfoEX>, Type> GET_<#=style.name#>_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
-			return item.GetTypeAndAllBaseTypes()
-				.Convert(t => t.GetImmediate<#=style.name#>Methods())
+			return item.GetNative<#=style.name#>Methods()
+				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
 		static public IEnumerable<MethodInfoEX> Get<#=style.name#>Methods(this Type item)

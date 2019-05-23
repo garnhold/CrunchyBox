@@ -16,7 +16,10 @@ namespace CrunchyCart
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Method)]
         public abstract class Value_SpecialAttribute : ValueAttribute
         {
-            public abstract TypeSerializerProp CreateTypeSerializerProp(TypeBuilder type_builder, PropInfoEX prop, TypeSerializer type_serializer);
+            public abstract TypeSerializerProp CreateTypeSerializerProp(TypeBuilder type_builder, PropInfoEX prop);
+
+            public Value_SpecialAttribute(Interval ui) : base(ui) { }
+            public Value_SpecialAttribute() : this(Interval.Default) { }
         }
     }
 }

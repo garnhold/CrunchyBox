@@ -16,10 +16,12 @@ namespace CrunchyCart
     public partial class Syncronizer
     {
         public delegate object ObjectReader(Buffer buffer);
+        public delegate void ObjectInPlaceReader(object target, Buffer buffer);
         public delegate void ObjectWriter(object target, Buffer buffer);
 
         public delegate void ObjectLiaisonReader(object target, object liaison, Buffer buffer);
-        public delegate void ObjectLiaisonWriter(object target, object liaison, Buffer buffer);
+        public delegate bool ObjectLiaisonWriter(object target, Interval field_update_interval, object liaison, Buffer buffer);
+        public delegate void ObjectLiaisonUpdater(object target, object liaison);
 
         public delegate ObjectLiaison ObjectLiaisonInstancer(TypeSerializer serializer);
 
@@ -28,14 +30,19 @@ namespace CrunchyCart
             private Type target_type;
             private List<PropInfoEX> target_props;
 
-            private List<TypeSerializerProp> target_serializer_props;
+            private List<TypeSerializerPropGroup> target_serializer_prop_groups;
 
             private ObjectReader object_reader;
+            private ObjectInPlaceReader object_in_place_reader;
             private ObjectWriter object_writer;
+
+            private Interval type_update_interval;
+            private Interval liaison_update_interval;
 
             private Type liaison_type;
             private ObjectLiaisonReader object_liaison_reader;
             private ObjectLiaisonWriter object_liaison_writer;
+            private ObjectLiaisonUpdater object_liaison_updater;
             private ObjectLiaisonInstancer instancer;
 
             static private readonly OperationCache<TypeSerializer, Type> GET_OBJECT_LIAISON = new OperationCache<TypeSerializer, Type>(delegate(Type target_type) {
@@ -65,6 +72,10 @@ namespace CrunchyCart
             {
                 return GetTypeSerializer(type).Read(buffer);
             }
+            static public void ReadObjectInPlace(object target, Buffer buffer)
+            {
+                GetTypeSerializer(target.GetTypeEX()).ReadInPlace(target, buffer);
+            }
             static public void WriteObject(object target, Buffer buffer)
             {
                 GetTypeSerializer(target.GetTypeEX()).Write(target, buffer);
@@ -78,6 +89,9 @@ namespace CrunchyCart
             {
                 target_type = t;
                 target_props = p.ToList();
+
+                type_update_interval = target_type.GetCustomAttributeOfType<DataTypeAttribute>(true)
+                    .IfNotNull(a => a.GetDefaultUpdateInterval(), Interval.Default);
             }
 
             private TypeSerializer(Type t, IEnumerable<Filterer<PropInfoEX>> f) : this(t, t.GetFilteredInstanceProps(f)) { }
@@ -88,14 +102,17 @@ namespace CrunchyCart
                 return new ILLoadStatement(delegate(ILBlock block) {
                     ILLocal value = block.CreateLocal(new ILNew(target_type), true);
 
-                    block.AddStatements(
-                        target_props
-                            .Convert(p => value.GetILProp(p))
-                            .Convert(p => ILSerialize.GenerateObjectReadInto(p, buffer))
-                    );
-
+                    block.AddStatement(GenerateReadInto(value, buffer));
                     return value;
                 });
+            }
+
+            public ILStatement GenerateReadInto(ILValue target, ILValue buffer)
+            {
+                return target_props
+                    .Convert(p => target.GetILProp(p))
+                    .Convert(p => ILSerialize.GenerateObjectReadInto(p, buffer))
+                    .ToBlock();
             }
 
             public ILStatement GenerateWrite(ILValue target, ILValue buffer)
@@ -108,7 +125,7 @@ namespace CrunchyCart
 
             public object Read(Buffer buffer)
             {
-                if (object_reader != null)
+                if (object_reader == null)
                 {
                     object_reader = GetTargetType().CreateDynamicMethodDelegate<ObjectReader>(delegate(ILValue il_buffer) {
                         return new ILReturn(GenerateRead(il_buffer));
@@ -117,9 +134,20 @@ namespace CrunchyCart
 
                 return object_reader(buffer);
             }
+            public void ReadInPlace(object target, Buffer buffer)
+            {
+                if (object_in_place_reader == null)
+                {
+                    object_in_place_reader = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectInPlaceReader>(delegate(ILValue il_target, ILValue il_buffer) {
+                        return GenerateReadInto(il_target, il_buffer);
+                    }, GetTargetType(), typeof(Buffer));
+                }
+
+                object_in_place_reader(target, buffer);
+            }
             public void Write(object target, Buffer buffer)
             {
-                if (object_writer != null)
+                if (object_writer == null)
                 {
                     object_writer = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectWriter>(delegate(ILValue il_target, ILValue il_buffer) {
                         return GenerateWrite(il_target, il_buffer);
@@ -129,31 +157,56 @@ namespace CrunchyCart
                 object_writer(target, buffer);
             }
 
-            public void Read(object target, object liaison, Buffer buffer)
+            public void ReadWithLiaison(object target, object liaison, Buffer buffer)
             {
                 if (object_liaison_reader == null)
                 {
                     object_liaison_reader = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectLiaisonReader>(delegate(ILValue il_target, ILValue il_liaison, ILValue il_buffer) {
-                        return target_serializer_props
-                            .Convert(p => p.GenerateRead(il_target, il_liaison, il_buffer))
+                        return target_serializer_prop_groups
+                            .Convert(g => g.GenerateRead(il_target, il_liaison, il_buffer))
                             .ToBlock();
                     }, GetTargetType(), GetLiaisonType(), typeof(Buffer));
                 }
 
                 object_liaison_reader(target, liaison, buffer);
             }
-            public void Write(object target, object liaison, Buffer buffer)
+            public bool WriteWithLiaison(object target, Interval field_update_interval, object liaison, Buffer buffer)
             {
                 if (object_liaison_writer == null)
                 {
-                    object_liaison_writer = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectLiaisonWriter>(delegate(ILValue il_target, ILValue il_liaison, ILValue il_buffer) {
-                        return target_serializer_props
-                            .Convert(p => p.GenerateWrite(il_target, il_liaison, il_buffer))
-                            .ToBlock();
-                    }, GetTargetType(), GetLiaisonType(), typeof(Buffer));
+                    object_liaison_writer = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectLiaisonWriter>(delegate(ILValue il_target, ILValue il_field_update_interval, ILValue il_liaison, ILValue il_buffer) {
+                        ILBlock block = new ILBlock();
+
+                        ILLocal il_to_return = block.CreateLocal(typeof(bool), "to_return");
+
+                        block.AddStatements(
+                            target_serializer_prop_groups
+                                .Convert(g => g.GenerateWrite(il_target, il_field_update_interval, type_update_interval, il_liaison, il_to_return, il_buffer))
+                        );
+
+                        block.AddStatement(new ILReturn(il_to_return));
+                        return block;
+                    }, GetTargetType(), typeof(Interval), GetLiaisonType(), typeof(Buffer));
                 }
 
-                object_liaison_writer(target, liaison, buffer);
+                return object_liaison_writer(target, field_update_interval, liaison, buffer);
+            }
+            public bool WriteWithLiaison(object target, object liaison, Buffer buffer)
+            {
+                return WriteWithLiaison(target, Interval.Default, liaison, buffer);
+            }
+            public void UpdateWithLiaison(object target, object liaison)
+            {
+                if (object_liaison_updater == null)
+                {
+                    object_liaison_updater = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectLiaisonUpdater>(delegate(ILValue il_target, ILValue il_liaison) {
+                        return target_serializer_prop_groups
+                            .Convert(g => g.GenerateUpdate(il_target, il_liaison))
+                            .ToBlock();
+                    }, GetTargetType(), GetLiaisonType());
+                }
+
+                object_liaison_updater(target, liaison);
             }
 
             public ObjectLiaison Instance()
@@ -180,17 +233,43 @@ namespace CrunchyCart
                     liaison_type = TypeCreator.CreateType("ObjectLiaison_" + GetTargetType().Name, TypeAttributesExtensions.PUBLIC_CLASS, delegate(TypeBuilder type_builder) {
                         type_builder.SetParent(typeof(ObjectLiaison));
 
-                        target_serializer_props = target_props
-                            .Convert(p => TypeSerializerProp.Create(type_builder, p, this))
-                            .ToList();
+                        target_serializer_prop_groups = target_props
+                            .Convert(p => TypeSerializerProp.Create(type_builder, p))
+                            .Group(
+                                p => p.GetUpdateInterval(),
+                                (i, ps) => new TypeSerializerPropGroup(type_builder, i, ps)
+                            ).ToList();
+
+                        liaison_update_interval = target_serializer_prop_groups
+                            .Convert(g => g.GetUpdateInterval())
+                            .Min();
 
                         type_builder.CreateConstructor(MethodAttributesExtensions.PUBLIC, delegate(ConstructorBuilderEX method) {
-                            return method.GetBaseILConstruct(method.GetEffectiveILParameter(0));
+                            return new ILBlock(
+                                method.GetBaseILConstruct(method.GetEffectiveILParameter(0)),
+                                target_serializer_prop_groups
+                                    .Convert(g => g.GenerateConstructor(method.GetILThis()))
+                                    .ToBlock()
+                            );
                         }, typeof(TypeSerializer));
                     });
                 }
 
                 return liaison_type;
+            }
+
+            public Interval GetTypeUpdateInterval()
+            {
+                GetTargetType();
+
+                return type_update_interval;
+            }
+
+            public Interval GetLiaisonUpdateInterval()
+            {
+                GetLiaisonType();
+
+                return liaison_update_interval;
             }
         }
     }

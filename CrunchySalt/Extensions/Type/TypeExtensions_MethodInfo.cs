@@ -10,19 +10,28 @@ namespace CrunchySalt
 	static public class TypeExtensions_MethodInfo
 	{
 	
-		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<MethodInfo>, Type> GET_IMMEDIATE_NATIVE_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
-		static public IEnumerable<MethodInfoEX> GetImmediateTechnicalMemberMethods(this Type item)
+		static public IEnumerable<MethodInfo> GetImmediateNativeTechnicalMemberMethods(this Type item)
 		{
-			return GET_IMMEDIATE_TechnicalMember_METHODS.Fetch(item);
+			return GET_IMMEDIATE_NATIVE_TechnicalMember_METHODS.Fetch(item);
+		}
+
+		static private OperationCache<List<MethodInfo>, Type> GET_NATIVE_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediateNativeTechnicalMemberMethods())
+				.ToList();
+		});
+		static public IEnumerable<MethodInfo> GetNativeTechnicalMemberMethods(this Type item)
+		{
+			return GET_NATIVE_TechnicalMember_METHODS.Fetch(item);
 		}
 
 		static private OperationCache<List<MethodInfoEX>, Type> GET_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
-			return item.GetTypeAndAllBaseTypes()
-				.Convert(t => t.GetImmediateTechnicalMemberMethods())
+			return item.GetNativeTechnicalMemberMethods()
+				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
 		static public IEnumerable<MethodInfoEX> GetTechnicalMemberMethods(this Type item)
@@ -151,19 +160,28 @@ namespace CrunchySalt
 				return item.GetTechnicalMemberMethod(name, new Type[]{typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8), typeof(P9)});
 			}
 			
-		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_TechnicalInstance_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<MethodInfo>, Type> GET_IMMEDIATE_NATIVE_TechnicalInstance_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
-		static public IEnumerable<MethodInfoEX> GetImmediateTechnicalInstanceMethods(this Type item)
+		static public IEnumerable<MethodInfo> GetImmediateNativeTechnicalInstanceMethods(this Type item)
 		{
-			return GET_IMMEDIATE_TechnicalInstance_METHODS.Fetch(item);
+			return GET_IMMEDIATE_NATIVE_TechnicalInstance_METHODS.Fetch(item);
+		}
+
+		static private OperationCache<List<MethodInfo>, Type> GET_NATIVE_TechnicalInstance_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediateNativeTechnicalInstanceMethods())
+				.ToList();
+		});
+		static public IEnumerable<MethodInfo> GetNativeTechnicalInstanceMethods(this Type item)
+		{
+			return GET_NATIVE_TechnicalInstance_METHODS.Fetch(item);
 		}
 
 		static private OperationCache<List<MethodInfoEX>, Type> GET_TechnicalInstance_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
-			return item.GetTypeAndAllBaseTypes()
-				.Convert(t => t.GetImmediateTechnicalInstanceMethods())
+			return item.GetNativeTechnicalInstanceMethods()
+				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
 		static public IEnumerable<MethodInfoEX> GetTechnicalInstanceMethods(this Type item)
@@ -292,19 +310,28 @@ namespace CrunchySalt
 				return item.GetTechnicalInstanceMethod(name, new Type[]{typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8), typeof(P9)});
 			}
 			
-		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_Static_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<MethodInfo>, Type> GET_IMMEDIATE_NATIVE_Static_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly)
-				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
-		static public IEnumerable<MethodInfoEX> GetImmediateStaticMethods(this Type item)
+		static public IEnumerable<MethodInfo> GetImmediateNativeStaticMethods(this Type item)
 		{
-			return GET_IMMEDIATE_Static_METHODS.Fetch(item);
+			return GET_IMMEDIATE_NATIVE_Static_METHODS.Fetch(item);
+		}
+
+		static private OperationCache<List<MethodInfo>, Type> GET_NATIVE_Static_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediateNativeStaticMethods())
+				.ToList();
+		});
+		static public IEnumerable<MethodInfo> GetNativeStaticMethods(this Type item)
+		{
+			return GET_NATIVE_Static_METHODS.Fetch(item);
 		}
 
 		static private OperationCache<List<MethodInfoEX>, Type> GET_Static_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
-			return item.GetTypeAndAllBaseTypes()
-				.Convert(t => t.GetImmediateStaticMethods())
+			return item.GetNativeStaticMethods()
+				.Convert(m => m.GetMethodInfoEX())
 				.ToList();
 		});
 		static public IEnumerable<MethodInfoEX> GetStaticMethods(this Type item)

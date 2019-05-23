@@ -20,6 +20,9 @@ namespace CrunchySalt
 			if(value == null)
 				return ILNull.INSTANCE;
 
+			if(type.IsEnumType())
+				return new ILEnum((Enum)value);
+
 		
 			if(type == typeof(bool))
 				return new ILBool((bool)value);

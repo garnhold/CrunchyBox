@@ -15,10 +15,9 @@ namespace CrunchyCart
     {
         public partial class Buffer
         {
-            public void ExecuteWrite(MessageType type, Process process)
+            public void ExecuteWrite(MessageType type)
             {
-                buffer.Write((byte)type);
-                process();
+                WriteEnum(type);
             }
 
             public bool ExecuteRead(Process<MessageType> process)
@@ -29,7 +28,7 @@ namespace CrunchyCart
 
                     try
                     {
-                        MessageType message_type = (MessageType)buffer.ReadByte();
+                        MessageType message_type = ReadEnum<MessageType>();
 
                         process(message_type);
                         return true;

@@ -80,7 +80,7 @@ namespace CrunchySandwichBag
                     break;
 
 				case SerializedPropertyType.Enum:
-                    item.enumValueIndex = value.Convert<Enum>().GetIndex();
+                    item.enumValueIndex = value.Convert<Enum>().GetEnumIndex();
                     break;
 	<#foreach(TypeInfo type in types){#>
 
@@ -96,7 +96,7 @@ namespace CrunchySandwichBag
 			switch(item.propertyType)
 			{
 				case SerializedPropertyType.Generic: return item.objectReferenceValue;
-				case SerializedPropertyType.Enum: return item.enumValueIndex.ConvertIndexToEnum(item.GetVariableType());
+				case SerializedPropertyType.Enum: return item.GetVariableType().GetEnumValueByIndex(item.enumValueIndex);
 	<#foreach(TypeInfo type in types){#>
 				case SerializedPropertyType.<#=type.property_type#>: return item.<#=type.field#>;
 	<#}#>

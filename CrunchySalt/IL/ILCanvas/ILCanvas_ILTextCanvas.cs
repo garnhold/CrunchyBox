@@ -152,6 +152,7 @@ namespace CrunchySalt
         public override void Emit_And() { canvas.AppendInstruction("And"); }
         public override void Emit_Or() { canvas.AppendInstruction("Or"); }
         public override void Emit_Not() { canvas.AppendInstruction("Not"); }
+        public override void Emit_Xor() { canvas.AppendInstruction("Xor"); }
 
         public override void Emit_Ceq() { canvas.AppendInstruction("Ceq"); }
         public override void Emit_Clt() { canvas.AppendInstruction("Clt"); }

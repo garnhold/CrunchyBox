@@ -17,29 +17,25 @@ namespace CrunchyCart
     {
         public class SystemMethod_CallAttribute : SystemMethodAttribute
         {
-            private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public SystemMethod_CallAttribute(int dc, NetDeliveryMethod dm)
+            public SystemMethod_CallAttribute(NetDeliveryMethod dm)
             {
-                delivery_channel = dc;
                 delivery_method = dm;
             }
 
             public override SystemMethod CreateSystemMethod(MethodInfo method)
             {
-                return new SystemMethod_Call(method, delivery_channel, delivery_method);
+                return new SystemMethod_Call(method, delivery_method);
             }
         }
 
         public class SystemMethod_Call : SystemMethod
         {
-            private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public SystemMethod_Call(MethodInfo m, int dc, NetDeliveryMethod dm) : base(m)
+            public SystemMethod_Call(MethodInfo m, NetDeliveryMethod dm) : base(m)
             {
-                delivery_channel = dc;
                 delivery_method = dm;
             }
 
@@ -61,7 +57,7 @@ namespace CrunchyCart
                 Syncronizer syncronizer = system.GetSyncronizer();
                 NetworkActor actor = syncronizer.GetNetworkActor();
 
-                syncronizer.Send(NetworkRecipient_All.INSTANCE, MessageType.InvokeSystemMethod, delivery_method, delivery_channel, delegate(Buffer buffer) {
+                syncronizer.CreateMessage(MessageType.InvokeSystemMethod, delivery_method, delegate(Buffer buffer) {
                     buffer.WriteSystemReference(system);
                     buffer.WriteSystemMethod(this);
 
@@ -69,7 +65,7 @@ namespace CrunchyCart
 
                     if (actor.IsServer())
                         Invoke(system.GetTarget(), arguments);
-                });
+                }).Send();
             }
         }
     }

@@ -49,9 +49,17 @@
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions.cs" />
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions_String.cs" />
     <Compile Include="ByteSequence\ByteSequence.cs" />
+    <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Convert.cs" />
+    <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Get.cs" />
+    <Compile Include="EnumValueInfo\EnumValueInfo.cs" />
+    <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions_Value.cs" />
+    <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Combine.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
+    <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Group.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
     <Compile Include="Worker\Worker_SimpleAmortize.cs" />
     <Compile Include="Worker\Worker.cs" />
@@ -208,8 +216,7 @@
     <Compile Include="ProgramInfo\ProgramInfo.cs" />
     <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions_SimpleName.cs" />
     <Compile Include="Extensions\Assembly\AssemblyExtensions_SimpleName.cs" />
-    <Compile Include="Extensions\Enum\EnumExtensions_EnumInfo.cs" />
-    <Compile Include="Extensions\Enum\EnumExtensions_Index.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions_Info.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions_Contains.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Count.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_CopyTo.cs" />
@@ -263,7 +270,6 @@
     <Compile Include="Extensions\IList\IListExtensions_Remove.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract_Section.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Swap.cs" />
-    <Compile Include="Extensions\Int\IntExtensions_Enum.cs" />
     <Compile Include="Extensions\LinkedList\LinkedListExtensions_Nodes_Search.cs" />
     <Compile Include="Extensions\LinkedList\LinkedListExtensions_Nodes.cs" />
     <Compile Include="Extensions\LinkedList\LinkedListExtensions_Insert.cs" />
@@ -533,7 +539,6 @@
     <Compile Include="Extensions\DateTime\DateTimeExtensions_To.cs" />
     <Compile Include="Extensions\DateTime\DateTimeExtensions_TimeZone.cs" />
     <Compile Include="Extensions\DateTime\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\Enum\EnumExtensions_Int.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_List.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions_CalculateRelations.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions.cs" />

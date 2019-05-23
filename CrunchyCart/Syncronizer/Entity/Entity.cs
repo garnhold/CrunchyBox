@@ -41,6 +41,14 @@ namespace CrunchyCart
                 manager = m;
             }
 
+            public void Update()
+            {
+                if (GetNetworkActor().IsServer())
+                    SendUpdate();
+                else
+                    liaison.Update(target);
+            }
+
             public void ReadMethodInvoke(Buffer buffer)
             {
                 if (buffer.GetSender().HasAuthorityOver(this))
@@ -86,11 +94,11 @@ namespace CrunchyCart
             {
                 if (GetNetworkActor().HasAuthorityOver(this))
                 {
-                    GetSyncronizer().Send(NetworkRecipient_All.INSTANCE, MessageType.ChangeEntityAuthority, NetDeliveryMethod.ReliableOrdered, liaison.GetDeliveryChannel(), delegate(Buffer buffer) {
+                    GetSyncronizer().CreateMessage(MessageType.ChangeEntityAuthority, NetDeliveryMethod.ReliableOrdered, delegate(Buffer buffer) {
                         buffer.WriteEntityReference(this);
 
                         buffer.WriteNetworkActor(authority);
-                    });
+                    }).Send();
                 }
             }
 
@@ -108,9 +116,9 @@ namespace CrunchyCart
             {
                 if (GetNetworkActor().HasAuthorityOver(this))
                 {
-                    GetSyncronizer().Send(NetworkRecipient_All.INSTANCE, MessageType.DestroyEntity, NetDeliveryMethod.ReliableOrdered, liaison.GetDeliveryChannel(), delegate(Buffer buffer) {
+                    GetSyncronizer().CreateMessage(MessageType.DestroyEntity, NetDeliveryMethod.ReliableOrdered, delegate(Buffer buffer) {
                         buffer.WriteEntityReference(this);
-                    });
+                    }).Send();
                 }
             }
 
@@ -124,16 +132,12 @@ namespace CrunchyCart
             {
                 if (GetNetworkActor().IsServer())
                 {
-                    GetSyncronizer().Send(NetworkRecipient_All.INSTANCE, MessageType.UpdateEntity, NetDeliveryMethod.UnreliableSequenced, liaison.GetDeliveryChannel(), delegate(Buffer buffer) {
+                    GetSyncronizer().CreateMessage(MessageType.UpdateEntity, NetDeliveryMethod.UnreliableSequenced, delegate(Buffer buffer) {
                         buffer.WriteEntityReference(this);
 
-                        WriteUpdate(buffer);
-                    });
+                        return liaison.Write(target, buffer);
+                    }).IfNotNull(m => m.Send());
                 }
-            }
-            public void WriteUpdate(Buffer buffer)
-            {
-                liaison.Write(target, buffer);
             }
 
             public int GetId()

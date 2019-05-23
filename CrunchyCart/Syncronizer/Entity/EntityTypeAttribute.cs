@@ -13,9 +13,10 @@ namespace CrunchyCart
 {
     public partial class Syncronizer
     {
-        [AttributeUsage(AttributeTargets.Class)]
-        public class EntityTypeAttribute : Attribute
+        public class EntityTypeAttribute : DataTypeAttribute
         {
+            public EntityTypeAttribute(Interval dui) : base(dui) { }
+            public EntityTypeAttribute() : this(Interval.Default) { }
         }
     }
 }

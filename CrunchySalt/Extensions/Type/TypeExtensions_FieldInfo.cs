@@ -10,19 +10,28 @@ namespace CrunchySalt
 	static public class TypeExtensions_FieldInfo
 	{
 	
-		static private OperationCache<List<FieldInfoEX>, Type> GET_IMMEDIATE_Member_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_IMMEDIATE_NATIVE_Member_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-				.Convert(f => f.GetFieldInfoEX())
 				.ToList();
 		});
-		static public IEnumerable<FieldInfoEX> GetImmediateMemberFields(this Type item)
+		static public IEnumerable<FieldInfo> GetImmediateNativeMemberFields(this Type item)
 		{
-			return GET_IMMEDIATE_Member_FIELDS.Fetch(item);
+			return GET_IMMEDIATE_NATIVE_Member_FIELDS.Fetch(item);
 		}
 
-		static private OperationCache<List<FieldInfoEX>, Type> GET_Member_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_Member_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
-				.Convert(f => f.GetImmediateMemberFields())
+				.Convert(f => f.GetImmediateNativeMemberFields())
+				.ToList();
+		});
+		static public IEnumerable<FieldInfo> GetNativeMemberFields(this Type item)
+		{
+			return GET_NATIVE_Member_FIELDS.Fetch(item);
+		}
+		
+		static private OperationCache<List<FieldInfoEX>, Type> GET_Member_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetNativeMemberFields()
+				.Convert(f => f.GetFieldInfoEX())
 				.ToList();
 		});
 		static public IEnumerable<FieldInfoEX> GetMemberFields(this Type item)
@@ -49,19 +58,28 @@ namespace CrunchySalt
 			return GET_Member_FIELD.Fetch(item, name);
 		}
 	
-		static private OperationCache<List<FieldInfoEX>, Type> GET_IMMEDIATE_Instance_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_IMMEDIATE_NATIVE_Instance_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly)
-				.Convert(f => f.GetFieldInfoEX())
 				.ToList();
 		});
-		static public IEnumerable<FieldInfoEX> GetImmediateInstanceFields(this Type item)
+		static public IEnumerable<FieldInfo> GetImmediateNativeInstanceFields(this Type item)
 		{
-			return GET_IMMEDIATE_Instance_FIELDS.Fetch(item);
+			return GET_IMMEDIATE_NATIVE_Instance_FIELDS.Fetch(item);
 		}
 
-		static private OperationCache<List<FieldInfoEX>, Type> GET_Instance_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_Instance_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
-				.Convert(f => f.GetImmediateInstanceFields())
+				.Convert(f => f.GetImmediateNativeInstanceFields())
+				.ToList();
+		});
+		static public IEnumerable<FieldInfo> GetNativeInstanceFields(this Type item)
+		{
+			return GET_NATIVE_Instance_FIELDS.Fetch(item);
+		}
+		
+		static private OperationCache<List<FieldInfoEX>, Type> GET_Instance_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetNativeInstanceFields()
+				.Convert(f => f.GetFieldInfoEX())
 				.ToList();
 		});
 		static public IEnumerable<FieldInfoEX> GetInstanceFields(this Type item)
@@ -88,19 +106,28 @@ namespace CrunchySalt
 			return GET_Instance_FIELD.Fetch(item, name);
 		}
 	
-		static private OperationCache<List<FieldInfoEX>, Type> GET_IMMEDIATE_Static_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_IMMEDIATE_NATIVE_Static_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly)
-				.Convert(f => f.GetFieldInfoEX())
 				.ToList();
 		});
-		static public IEnumerable<FieldInfoEX> GetImmediateStaticFields(this Type item)
+		static public IEnumerable<FieldInfo> GetImmediateNativeStaticFields(this Type item)
 		{
-			return GET_IMMEDIATE_Static_FIELDS.Fetch(item);
+			return GET_IMMEDIATE_NATIVE_Static_FIELDS.Fetch(item);
 		}
 
-		static private OperationCache<List<FieldInfoEX>, Type> GET_Static_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_Static_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
-				.Convert(f => f.GetImmediateStaticFields())
+				.Convert(f => f.GetImmediateNativeStaticFields())
+				.ToList();
+		});
+		static public IEnumerable<FieldInfo> GetNativeStaticFields(this Type item)
+		{
+			return GET_NATIVE_Static_FIELDS.Fetch(item);
+		}
+		
+		static private OperationCache<List<FieldInfoEX>, Type> GET_Static_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetNativeStaticFields()
+				.Convert(f => f.GetFieldInfoEX())
 				.ToList();
 		});
 		static public IEnumerable<FieldInfoEX> GetStaticFields(this Type item)

@@ -89,12 +89,9 @@ namespace CrunchyCart
         {
         }
 
-        public void SendMessage(NetworkRecipient recipient, NetDeliveryMethod delivery_method, int delivery_channel, Process<NetOutgoingMessage> process)
+        public NetworkEnvelope CreateEnvelope(NetDeliveryMethod delivery_method, int delivery_channel)
         {
-            NetOutgoingMessage message = GetNetPeer().CreateMessage();
-
-            process(message);
-            recipient.Send(delivery_method, delivery_channel, message, GetNetPeer());
+            return new NetworkEnvelope(delivery_method, delivery_channel, GetNetPeer());
         }
 
         public void Flush()

@@ -24,23 +24,29 @@ namespace CrunchyCart
             protected abstract ILStatement GenerateReadInternal(ILValue prop, ILValue liaison, ILValue buffer);
             protected abstract ILStatement GenerateWriteInternal(ILValue prop, ILValue liaison, ILValue buffer);
 
-            static public TypeSerializerProp Create(TypeBuilder type_builder, PropInfoEX prop, TypeSerializer type_serializer)
+            protected virtual ILStatement GenerateConstructorInternal(ILValue liaison) { return ILNothing.INSTANCE; }
+            protected virtual ILStatement GenerateUpdateInternal(ILValue prop, ILValue liaison) { return ILNothing.INSTANCE; }
+
+            static public TypeSerializerProp Create(TypeBuilder type_builder, PropInfoEX prop)
             {
                 if (prop.GetPropType().HasCustomAttributeOfTypeOnAnInstanceMember<Value_SpecialAttribute>())
-                    return new TypeSerializerProp_NestedLiaison(type_builder, prop, type_serializer);
+                    return new TypeSerializerProp_NestedLiaison(type_builder, prop);
 
                 Value_SpecialAttribute attribute;
                 if (prop.TryGetCustomAttributeOfType<Value_SpecialAttribute>(true, out attribute))
-                    return attribute.CreateTypeSerializerProp(type_builder, prop, type_serializer);
+                    return attribute.CreateTypeSerializerProp(type_builder, prop);
 
-                return new TypeSerializerProp_Simple(prop, type_serializer);
+                return new TypeSerializerProp_Simple(prop);
             }
 
-            public TypeSerializerProp(PropInfoEX p, TypeSerializer t)
+            public TypeSerializerProp(PropInfoEX p)
             {
                 target_prop = p;
+            }
 
-                type_serializer = t;
+            public ILStatement GenerateConstructor(ILValue liaison)
+            {
+                return GenerateConstructorInternal(liaison);
             }
 
             public ILStatement GenerateRead(ILValue target, ILValue liaison, ILValue buffer)
@@ -53,9 +59,20 @@ namespace CrunchyCart
                 return GenerateWriteInternal(target.GetILProp(target_prop), liaison, buffer);
             }
 
+            public ILStatement GenerateUpdate(ILValue target, ILValue liaison)
+            {
+                return GenerateUpdateInternal(target.GetILProp(target_prop), liaison);
+            }
+
             public Type GetPropType()
             {
                 return target_prop.GetPropType();
+            }
+
+            public Interval GetUpdateInterval()
+            {
+                return target_prop.GetCustomAttributeOfType<ValueAttribute>(true)
+                    .IfNotNull(a => a.GetUpdateInterval(), Interval.Default);
             }
 
             public bool IsPolymorphic()

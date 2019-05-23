@@ -43,10 +43,10 @@ namespace CrunchyCart
                         Add(new Constant<T>(value));
                     else
                     {
-                        GetSyncronizer().Send(NetworkRecipient_All.INSTANCE, MessageType.RequestConstant, NetDeliveryMethod.ReliableUnordered, ConstantDeliveryChannel, delegate(Buffer buffer) {
+                        GetSyncronizer().CreateMessage(MessageType.RequestConstant, NetDeliveryMethod.ReliableUnordered, delegate(Buffer buffer) {
                             buffer.WriteByte(GetIndex());
                             WriteConstantValue(value, buffer);
-                        });
+                        }).Send();
                     }
                 }
             }
@@ -58,10 +58,10 @@ namespace CrunchyCart
 
                 if (GetNetworkActor().IsServer())
                 {
-                    GetSyncronizer().Send(NetworkRecipient_All.INSTANCE, MessageType.UpdateConstant, NetDeliveryMethod.ReliableUnordered, ConstantDeliveryChannel, delegate(Buffer buffer) {
+                    GetSyncronizer().CreateMessage(MessageType.UpdateConstant, NetDeliveryMethod.ReliableUnordered, delegate(Buffer buffer) {
                         buffer.WriteByte(GetIndex());
                         WriteConstant(constant, buffer);
-                    });
+                    }).Send();
                 }
             }
             private void Add(IEnumerable<Constant<T>> constants)
@@ -81,10 +81,10 @@ namespace CrunchyCart
             {
                 if (GetNetworkActor().IsServer())
                 {
-                    GetSyncronizer().Send(recipient, MessageType.FullUpdateConstant, NetDeliveryMethod.ReliableUnordered, ConstantDeliveryChannel, delegate(Buffer buffer) {
+                    GetSyncronizer().CreateMessage(MessageType.FullUpdateConstant, NetDeliveryMethod.ReliableUnordered, delegate(Buffer buffer) {
                         buffer.WriteByte(GetIndex());
                         buffer.WriteCollection(constant_by_values.Values, c => WriteConstant(c, buffer));
-                    });
+                    }).Send(recipient);
                 }
             }
             public override void ReadFullUpdate(Buffer buffer)
@@ -152,8 +152,6 @@ namespace CrunchyCart
         {
             private byte index;
             private ConstantManager manager;
-
-            public const int ConstantDeliveryChannel = 31;
 
             public abstract void SendFullUpdate(NetworkRecipient recipient);
             public abstract void ReadFullUpdate(Buffer buffer);

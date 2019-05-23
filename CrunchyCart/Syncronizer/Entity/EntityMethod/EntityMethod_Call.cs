@@ -17,29 +17,25 @@ namespace CrunchyCart
     {
         public class EntityMethod_CallAttribute : EntityMethodAttribute
         {
-            private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public EntityMethod_CallAttribute(int dc, NetDeliveryMethod dm)
+            public EntityMethod_CallAttribute(NetDeliveryMethod dm)
             {
-                delivery_channel = dc;
                 delivery_method = dm;
             }
 
             public override EntityMethod CreateEntityMethod(MethodInfo method)
             {
-                return new EntityMethod_Call(method, delivery_channel, delivery_method);
+                return new EntityMethod_Call(method, delivery_method);
             }
         }
 
         public class EntityMethod_Call : EntityMethod
         {
-            private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public EntityMethod_Call(MethodInfo m, int dc, NetDeliveryMethod dm) : base(m)
+            public EntityMethod_Call(MethodInfo m, NetDeliveryMethod dm) : base(m)
             {
-                delivery_channel = dc;
                 delivery_method = dm;
             }
 
@@ -61,7 +57,7 @@ namespace CrunchyCart
                 Syncronizer syncronizer = entity.GetSyncronizer();
                 NetworkActor actor = syncronizer.GetNetworkActor();
 
-                syncronizer.Send(NetworkRecipient_All.INSTANCE, MessageType.InvokeEntityMethod, delivery_method, delivery_channel, delegate(Buffer buffer) {
+                syncronizer.CreateMessage(MessageType.InvokeEntityMethod, delivery_method, delegate(Buffer buffer) {
                     buffer.WriteEntityReference(entity);
                     buffer.WriteEntityMethod(this);
 
@@ -69,7 +65,7 @@ namespace CrunchyCart
 
                     if (actor.IsServer())
                         Invoke(entity.GetTarget(), arguments);
-                });
+                }).Send();
             }
         }
     }

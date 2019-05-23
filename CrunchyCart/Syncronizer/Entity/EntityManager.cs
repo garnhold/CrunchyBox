@@ -33,6 +33,11 @@ namespace CrunchyCart
                 syncronizer = s;
             }
 
+            public void Update()
+            {
+                entitys_by_id.Values.Process(e => e.Update());
+            }
+
             public Entity RegisterEntityTarget(int id, object target, System constructor_system, SystemMethod_Constructor constructor, object[] constructor_arguments)
             {
                 Entity entity = new Entity(id, target, constructor_system, constructor, constructor_arguments, this);

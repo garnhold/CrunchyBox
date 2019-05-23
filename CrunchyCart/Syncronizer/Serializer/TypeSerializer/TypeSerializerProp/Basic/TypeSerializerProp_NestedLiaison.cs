@@ -37,7 +37,7 @@ namespace CrunchyCart
 
                     block.AddStatement(
                         new ILIf(
-                            liaison.GetILField(nested_liaison_field).GetILInvoke("ValidateEX", prop).GetILIsFalse(),
+                            liaison.GetILField(nested_liaison_field).GetILInvoke("ValidateEX", prop, type).GetILIsFalse(),
                             GenerateInitialize(liaison, type)
                         )
                     );
@@ -82,14 +82,19 @@ namespace CrunchyCart
                         )
                     );
                 }
-
-                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Write", prop, buffer));
+                
+                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Write", prop, GetUpdateInterval().GetWholeMilliseconds(), buffer));
                 return block;
             }
 
-            public TypeSerializerProp_NestedLiaison(TypeBuilder type_builder, PropInfoEX p, TypeSerializer t) : base(p, t)
+            protected override ILStatement GenerateUpdateInternal(ILValue prop, ILValue liaison)
             {
-                nested_liaison_field = type_builder.CreateField<object>(
+                return liaison.GetILField(nested_liaison_field).GetILInvoke("Update", prop);
+            }
+
+            public TypeSerializerProp_NestedLiaison(TypeBuilder type_builder, PropInfoEX p) : base(p)
+            {
+                nested_liaison_field = type_builder.CreateFieldBuilder<object>(
                     p.GetName() + "_liaison",
                     FieldAttributesExtensions.PRIVATE
                 );

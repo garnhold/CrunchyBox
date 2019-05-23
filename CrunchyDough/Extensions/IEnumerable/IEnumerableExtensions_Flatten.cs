@@ -15,5 +15,10 @@ namespace CrunchyDough
         {
             return item.Convert(i => (IEnumerable<T>)i);
         }
+
+        static public IEnumerable<T> Flatten<T>(this IEnumerable<HashSet<T>> item)
+        {
+            return item.Convert(i => (IEnumerable<T>)i);
+        }
     }
 }

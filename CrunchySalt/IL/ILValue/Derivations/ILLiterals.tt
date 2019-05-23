@@ -47,6 +47,9 @@ namespace CrunchySalt
 			if(value == null)
 				return ILNull.INSTANCE;
 
+			if(type.IsEnumType())
+				return new ILEnum((Enum)value);
+
 		<#foreach(ConstantType constant_type in constant_types){#>
 
 			if(type == typeof(<#=constant_type.type_name#>))

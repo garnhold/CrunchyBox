@@ -7,17 +7,19 @@ namespace CrunchyDough
     public class EnumInfo
     {
         private Type enum_type;
+        private Type underlying_type;
         private bool is_flag_type;
 
-        private OptionTable<Enum> strings_to_values;
+        private List<EnumValueInfo> enum_value_infos;
 
-        private Dictionary<Enum, int> values_to_indexs;
-        private Dictionary<int, Enum> indexs_to_values;
+        private Dictionary<string, EnumValueInfo> enum_value_infos_by_name;
+        private Dictionary<Enum, EnumValueInfo> enum_value_infos_by_value;
+        private Dictionary<long, EnumValueInfo> enum_value_infos_by_long_value;
 
-        static public IEnumerable<T> GetValues<T>()
-        {
-            return typeof(T).GetEnumInfo().GetValues().Convert<Enum, T>();
-        }
+        private EnumValueInfo min_enum_value_info;
+        private EnumValueInfo max_enum_value_info;
+
+        private int minimum_bitage;
 
         static private OperationCache<EnumInfo, Type> GET_ENUM_INFO = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
             if (type.CanBeTreatedAs<Enum>())
@@ -33,15 +35,41 @@ namespace CrunchyDough
         private EnumInfo(Type e)
         {
             enum_type = e;
+            underlying_type = enum_type.GetEnumUnderlyingType();
             is_flag_type = enum_type.IsEnumFlagType();
 
-            strings_to_values = new OptionTable<Enum>(
-                Enum.GetNames(e).PairStrict(Enum.GetValues(e).Bridge<Enum>())
-                    .ConvertToKeyValuePairs()
-            );
+            enum_value_infos = Enum.GetNames(enum_type)
+                .PairStrictWithIndex(Enum.GetValues(enum_type).Bridge<Enum>(), (i, n, v) => new EnumValueInfo(i, n, v, this))
+                .ToList();
 
-            values_to_indexs = Enum.GetValues(e).Bridge<Enum>().ConvertToKeyOfIndexedPair().ToDictionaryOverwrite();
-            indexs_to_values = Enum.GetValues(e).Bridge<Enum>().ConvertToValueOfIndexedPair().ToDictionaryOverwrite();
+            enum_value_infos_by_name = enum_value_infos.ConvertToValueOfPair(i => i.GetName()).ToDictionaryOverwrite();
+            enum_value_infos_by_value = enum_value_infos.ConvertToValueOfPair(i => i.GetValue()).ToDictionaryOverwrite();
+            enum_value_infos_by_long_value = enum_value_infos.ConvertToValueOfPair(i => i.GetLongValue()).ToDictionaryOverwrite();
+
+            min_enum_value_info = enum_value_infos.FindLowestRated(i => i.GetLongValue());
+            max_enum_value_info = enum_value_infos.FindHighestRated(i => i.GetLongValue());
+
+            minimum_bitage = max_enum_value_info.GetLongValue().GetHighestBitIndex() + 1;
+        }
+
+        public bool TryGetEnumValueInfoByIndex(int index, out EnumValueInfo info)
+        {
+            return enum_value_infos.TryGet(index, out info);
+        }
+
+        public bool TryGetEnumValueInfoByName(string name, out EnumValueInfo info)
+        {
+            return enum_value_infos_by_name.TryGetValue(name, out info);
+        }
+
+        public bool TryGeEnumValuetInfoByValue(Enum value, out EnumValueInfo info)
+        {
+            return enum_value_infos_by_value.TryGetValue(value, out info);
+        }
+
+        public bool TryGetEnumValueInfoByLongValue(long value, out EnumValueInfo info)
+        {
+            return enum_value_infos_by_long_value.TryGetValue(value, out info);
         }
 
         public Type GetEnumType()
@@ -49,35 +77,9 @@ namespace CrunchyDough
             return enum_type;
         }
 
-        public bool TryConvertIndexToValue(int index, out Enum value)
+        public Type GetUnderlyingType()
         {
-            return indexs_to_values.TryGetValue(index, out value);
-        }
-        public bool TryConvertValueToIndex(Enum value, out int index)
-        {
-            return values_to_indexs.TryGetValue(value, out index);
-        }
-
-        public bool TryConvertNameToValue(string name, out Enum value)
-        {
-            return strings_to_values.TryLookup(out value, name);
-        }
-
-        public bool TryConvertTextToValue(string text, out Enum value)
-        {
-            value = null;
-
-            if (IsFlagType())
-            {
-                value = (Enum)Enum.ToObject(
-                    enum_type,
-                    text.ParseIds().Convert(i => this.ConvertNameToValue(i).GetLong()).BitwiseOR()
-                );
-
-                return true;
-            }
-
-            return TryConvertNameToValue(text, out value);
+            return underlying_type;
         }
 
         public bool IsFlagType()
@@ -85,9 +87,24 @@ namespace CrunchyDough
             return is_flag_type;
         }
 
-        public IEnumerable<Enum> GetValues()
+        public IEnumerable<EnumValueInfo> GetEnumValueInfos()
         {
-            return indexs_to_values.Values;
+            return enum_value_infos;
+        }
+
+        public EnumValueInfo GetMinEnumValueInfo()
+        {
+            return min_enum_value_info;
+        }
+
+        public EnumValueInfo GetMaxEnumValueInfo()
+        {
+            return max_enum_value_info;
+        }
+
+        public int GetMinimumBitage()
+        {
+            return minimum_bitage;
         }
     }
 }

@@ -35,6 +35,11 @@ namespace CrunchyDough
             return keys.Convert(k => item.GetValues(k));
         }
 
+        static public IEnumerable<VALUE_TYPE> GetAll<KEY_TYPE, VALUE_TYPE>(this IDictionary<KEY_TYPE, List<VALUE_TYPE>> item)
+        {
+            return item.Values.Flatten();
+        }
+
         static public void CullEmpty<KEY_TYPE, VALUE_TYPE>(this IDictionary<KEY_TYPE, List<VALUE_TYPE>> item)
         {
             item.RemoveAll(p => p.Value.IsEmpty());

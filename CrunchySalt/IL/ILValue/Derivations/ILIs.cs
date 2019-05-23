@@ -31,8 +31,7 @@ namespace CrunchySalt
             canvas.Emit_Isinst(check_type);
 
             canvas.Emit_Ldnull();
-            canvas.Emit_Ceq();
-            canvas.Emit_Not();
+            canvas.Emit_Cneq();
         }
 
         public override void RenderIL_Store(ILCanvas canvas, ILValue value)

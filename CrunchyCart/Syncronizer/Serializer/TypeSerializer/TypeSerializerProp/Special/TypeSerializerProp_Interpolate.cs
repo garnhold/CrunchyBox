@@ -19,28 +19,29 @@ namespace CrunchyCart
         {
             private float smooth_amount;
 
-            public Value_InterpolateAttribute(float s)
+            public Value_InterpolateAttribute(Interval ui, float s) : base(ui)
             {
                 smooth_amount = s;
             }
 
-            public override TypeSerializerProp CreateTypeSerializerProp(TypeBuilder type_builder, PropInfoEX prop, TypeSerializer type_serializer)
+            public Value_InterpolateAttribute(float s) : this(Interval.Default, s) { }
+
+            public override TypeSerializerProp CreateTypeSerializerProp(TypeBuilder type_builder, PropInfoEX prop)
             {
-                return new TypeSerializerProp_Interpolate(smooth_amount, type_builder, prop, type_serializer);
+                return new TypeSerializerProp_Interpolate(smooth_amount, type_builder, prop);
             }
         }
 
         public class TypeSerializerProp_Interpolate : TypeSerializerProp
         {
+            private FieldInfo target_field;
             private float smooth_amount;
 
             protected override ILStatement GenerateReadInternal(ILValue prop, ILValue liaison, ILValue buffer)
             {
-                ILValue new_value = ILSerialize.GenerateObjectRead(prop.GetValueType(), buffer);
-
                 return new ILAssign(
-                    prop,
-                    prop.GetILInvoke("GetInterpolate", new_value, smooth_amount)
+                    liaison.GetILField(target_field),
+                    ILSerialize.GenerateObjectRead(prop.GetValueType(), buffer)
                 );
             }
 
@@ -49,8 +50,18 @@ namespace CrunchyCart
                 return ILSerialize.GenerateObjectWrite(prop, buffer);
             }
 
-            public TypeSerializerProp_Interpolate(float s, TypeBuilder type_builder, PropInfoEX p, TypeSerializer t) : base(p, t)
+            protected override ILStatement GenerateUpdateInternal(ILValue prop, ILValue liaison)
             {
+                return new ILAssign(
+                    prop,
+                    prop.GetILInvoke("GetInterpolate", liaison.GetILField(target_field), smooth_amount)
+                );
+            }
+
+            public TypeSerializerProp_Interpolate(float s, TypeBuilder type_builder, PropInfoEX p) : base(p)
+            {
+                target_field = type_builder.CreateFieldBuilder(GetPropType(), "interpolate_target", FieldAttributesExtensions.PRIVATE);
+
                 smooth_amount = s;
             }
         }

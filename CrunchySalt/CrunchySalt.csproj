@@ -44,13 +44,28 @@
     <Compile Include="AssemblyCreator\AssemblyCreator_Builder_External.cs" />
     <Compile Include="AssemblyCreator\AssemblyCreator_Builder_Internal.cs" />
     <Compile Include="AssemblyCreator\AssemblyCreator.cs" />
-    <Compile Include="ConstructorBuilderEX\ConstructorBuilderEX.cs" />
-    <Compile Include="ConstructorInfoEX\ConstructorInfoEX.cs" />
+    <Compile Include="Extensions\ConstructorBuilder\ConstructorBuilderExtensions.cs" />
+    <Compile Include="Extensions\ConstructorBuilder\ConstructorBuilderExtensions_Foreign.cs" />
+    <Compile Include="Extensions\ConstructorBuilder\ConstructorBuilderExtensions _TypeBuilder.cs" />
+    <Compile Include="Extensions\ConstructorBuilder\ConstructorBuilderExtensions_Compare.cs" />
+    <Compile Include="Extensions\FieldBuilder\FieldBuilderExtensions_Compare.cs" />
+    <Compile Include="Extensions\FieldBuilder\FieldBuilderExtensions.cs" />
+    <Compile Include="Extensions\FieldBuilder\FieldBuilderExtensions_Foreign.cs" />
+    <Compile Include="Extensions\FieldBuilder\FieldBuilderExtensions _TypeBuilder.cs" />
+    <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions_Compare.cs" />
+    <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions _TypeBuilder.cs" />
+    <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions_Foreign.cs" />
+    <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Foreign.cs" />
+    <Compile Include="ForeignType\ForeignType.cs" />
+    <Compile Include="TypeBuilderEX\ConstructorBuilderEX\ConstructorBuilderEX.cs" />
+    <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoPass.cs" />
+    <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoEX.cs" />
     <Compile Include="EmitDebugger\EmitDebugger.cs" />
     <Compile Include="EventDeregister\EventDeregister.cs" />
     <Compile Include="EventRegister\EventRegister.cs" />
-    <Compile Include="EvtInfoEX\EvtInfoEX_MethodPair.cs" />
-    <Compile Include="EvtInfoEX\EvtInfoEX.cs" />
+    <Compile Include="TypeEX\EvtInfoEX\EvtInfoEX_MethodPair.cs" />
+    <Compile Include="TypeEX\EvtInfoEX\EvtInfoEX.cs" />
     <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_DefaultFilename.cs" />
     <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_Save.cs" />
     <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_Module.cs" />
@@ -67,12 +82,12 @@
     <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions_Foreign.cs" />
     <Compile Include="Extensions\DynamicMethod\DynamicMethodExtensions_Delegate.cs" />
     <Compile Include="Extensions\DynamicMethod\DynamicMethodExtensions.cs" />
-    <Compile Include="Extensions\FieldAttributesExtensions\FieldAttributesExtensions.cs" />
+    <Compile Include="Extensions\FieldAttributes\FieldAttributesExtensions.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Prop.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Type.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_IL.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Foreign.cs" />
-    <Compile Include="Extensions\MethodAttributesExtensions\MethodAttributesExtensions.cs" />
+    <Compile Include="Extensions\MethodAttributes\MethodAttributesExtensions.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL_EffectiveParameters.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL_TechnicalParameters.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Type.cs" />
@@ -106,7 +121,7 @@
     </Compile>
     <Compile Include="Extensions\TypeAttributesExtensions\TypeAttributesExtensions.cs" />
     <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_Constructor.cs" />
-    <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_Field.cs" />
+    <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_FieldBuilder.cs" />
     <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_ConstructorBuilder.cs" />
     <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_MethodBuilder.cs" />
     <Compile Include="Extensions\TypeBuilder\TypeBuilderExtensions_Method.cs" />
@@ -134,7 +149,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="FieldInfoEX\FieldInfoEX.cs" />
+    <Compile Include="TypeEX\FieldInfoEX\FieldInfoPass.cs" />
+    <Compile Include="TypeEX\FieldInfoEX\FieldInfoEX.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_EX.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Value.cs" />
@@ -178,6 +194,7 @@
     <Compile Include="IL\ILStatement\Extensions\IEnumerable\ILStatementExtensions_IEnumerable.cs" />
     <Compile Include="IL\ILStatement\Extensions\ILStatementExtensions.cs" />
     <Compile Include="IL\ILValue\Derivations\ILConstructorInvokation.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILEnum.cs" />
     <Compile Include="IL\ILValue\Derivations\ILThis.cs" />
     <Compile Include="IL\ILValue\Derivations\ILUnaryOperatorInvokation.cs" />
     <Compile Include="IL\ILValue\Derivations\ILIfValue.cs" />
@@ -244,37 +261,38 @@
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions_BasicType.cs" />
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Cast.cs" />
     <Compile Include="IL\ILValue\ILValue.cs" />
-    <Compile Include="IndexerInfoEX\IndexerInfoEXSystem.cs" />
-    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Class.cs" />
-    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Struct.cs" />
-    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array.cs" />
-    <Compile Include="IndexerInfoEX\IndexerInfoEX.cs" />
-    <Compile Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEx_Array_Simple.cs">
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEXSystem.cs" />
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Class.cs" />
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Struct.cs" />
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array.cs" />
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX.cs" />
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEx_Array_Simple.cs">
       <DependentUpon>IndexerInfoEx_Array_Simple.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="IndexerInfoEX\IndexerInfoEX_MethodPair\IndexerInfoEX_MethodPair.cs" />
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_MethodPair\IndexerInfoEX_MethodPair.cs" />
     <Compile Include="IteratorGetter\IteratorGetter.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_MethodCaller.cs" />
-    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEX.cs" />
-    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEX_Internal\BinaryOperatorInfoEX_Internal.cs" />
-    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEXSystem.cs">
+    <Compile Include="TypeEX\BinaryOperatorInfoEX\BinaryOperatorInfoEX.cs" />
+    <Compile Include="TypeEX\BinaryOperatorInfoEX\BinaryOperatorInfoEX_Internal\BinaryOperatorInfoEX_Internal.cs" />
+    <Compile Include="TypeEX\BinaryOperatorInfoEX\BinaryOperatorInfoEXSystem.cs">
       <DependentUpon>BinaryOperatorInfoEXSystem.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="BinaryOperatorInfoEX\BinaryOperatorInfoEX_Method\BinaryOperatorInfoEX_Method.cs" />
-    <Compile Include="MethodBuilderEX\MethodBuilderEX.cs" />
-    <Compile Include="ParameterInfoEX\ParameterInfoEX_Quick.cs" />
-    <Compile Include="ParameterInfoEX\ParameterInfoEX.cs" />
-    <Compile Include="PropInfoEX\Extensions\PropInfoEXExtensions_Compare.cs" />
-    <Compile Include="PropInfoEX\Extensions\PropInfoEXExtensions.cs" />
-    <Compile Include="PropInfoEX\PropInfoEX_MethodPair.cs" />
-    <Compile Include="PropInfoEX\PropInfoEX_Field.cs" />
-    <Compile Include="PropInfoEX\PropInfoEX.cs" />
+    <Compile Include="TypeEX\BinaryOperatorInfoEX\BinaryOperatorInfoEX_Method\BinaryOperatorInfoEX_Method.cs" />
+    <Compile Include="TypeBuilderEX\MethodBuilderEX\MethodBuilderEX.cs" />
+    <Compile Include="TypeEX\MethodInfoEX\MethodInfoPass.cs" />
+    <Compile Include="TypeEX\ParameterInfoEX\ParameterInfoEX_Quick.cs" />
+    <Compile Include="TypeEX\ParameterInfoEX\ParameterInfoEX.cs" />
+    <Compile Include="TypeEX\PropInfoEX\Extensions\PropInfoEXExtensions_Compare.cs" />
+    <Compile Include="TypeEX\PropInfoEX\Extensions\PropInfoEXExtensions.cs" />
+    <Compile Include="TypeEX\PropInfoEX\PropInfoEX_MethodPair.cs" />
+    <Compile Include="TypeEX\PropInfoEX\PropInfoEX_Field.cs" />
+    <Compile Include="TypeEX\PropInfoEX\PropInfoEX.cs" />
     <Compile Include="MethodInvoker\MethodInvoker.cs" />
-    <Compile Include="MethodInfoEX\MethodInfoEX.cs" />
+    <Compile Include="TypeEX\MethodInfoEX\MethodInfoEX.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_EX.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_MethodInvoker.cs" />
@@ -285,10 +303,11 @@
     <Compile Include="Extensions\Type\TypeExtensions_Initilization.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Iterator.cs" />
     <Compile Include="TypeCreator\TypeCreator.cs" />
-    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEX_Method\UnaryOperatorInfoEX_Method.cs" />
-    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEX_Internal\UnaryOperatorInfoEX_Internal.cs" />
-    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEX.cs" />
-    <Compile Include="UnaryOperatorInfoEX\UnaryOperatorInfoEXSystem.cs">
+    <Compile Include="TypeEX\TypePass.cs" />
+    <Compile Include="TypeEX\UnaryOperatorInfoEX\UnaryOperatorInfoEX_Method\UnaryOperatorInfoEX_Method.cs" />
+    <Compile Include="TypeEX\UnaryOperatorInfoEX\UnaryOperatorInfoEX_Internal\UnaryOperatorInfoEX_Internal.cs" />
+    <Compile Include="TypeEX\UnaryOperatorInfoEX\UnaryOperatorInfoEX.cs" />
+    <Compile Include="TypeEX\UnaryOperatorInfoEX\UnaryOperatorInfoEXSystem.cs">
       <DependentUpon>UnaryOperatorInfoEXSystem.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -328,15 +347,15 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ILLiterals.cs</LastGenOutput>
     </Content>
-    <Content Include="IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEx_Array_Simple.tt">
+    <Content Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEx_Array_Simple.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IndexerInfoEx_Array_Simple.cs</LastGenOutput>
     </Content>
-    <Content Include="BinaryOperatorInfoEX\BinaryOperatorInfoEXSystem.tt">
+    <Content Include="TypeEX\BinaryOperatorInfoEX\BinaryOperatorInfoEXSystem.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BinaryOperatorInfoEXSystem.cs</LastGenOutput>
     </Content>
-    <Content Include="UnaryOperatorInfoEX\UnaryOperatorInfoEXSystem.tt">
+    <Content Include="TypeEX\UnaryOperatorInfoEX\UnaryOperatorInfoEXSystem.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UnaryOperatorInfoEXSystem.cs</LastGenOutput>
     </Content>

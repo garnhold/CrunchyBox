@@ -21,9 +21,9 @@ namespace CrunchyCart
             recipient = r;
         }
 
-        public override void Send(NetDeliveryMethod delivery_method, int delivery_channel, NetOutgoingMessage message, NetPeer peer)
+        public override void Send(NetworkEnvelope envelope)
         {
-            peer.SendMessage(message, recipient, delivery_method, delivery_channel);
+            envelope.Send(recipient);
         }
     }
 }

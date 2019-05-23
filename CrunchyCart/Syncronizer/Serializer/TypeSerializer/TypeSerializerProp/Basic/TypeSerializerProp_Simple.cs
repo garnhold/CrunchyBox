@@ -27,7 +27,7 @@ namespace CrunchyCart
                 return ILSerialize.GenerateObjectWrite(prop, buffer);
             }
 
-            public TypeSerializerProp_Simple(PropInfoEX p, TypeSerializer t) : base(p, t)
+            public TypeSerializerProp_Simple(PropInfoEX p) : base(p)
             {
             }
         }

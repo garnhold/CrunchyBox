@@ -16,7 +16,7 @@ namespace CrunchySalt
 
         protected override ILCanvasLocal CreateLocalInternal(Type type)
         {
-            return new ILCanvasLocal_ILGenerator(il_generator.DeclareLocal(type));
+            return new ILCanvasLocal_ILGenerator(il_generator.DeclareLocal(type.GetNativeType()));
         }
 
         public ILCanvas_ILGenerator(MethodBase m, ILGenerator g) : base(m)
@@ -35,22 +35,22 @@ namespace CrunchySalt
         public override void Emit_Pop() { il_generator.Emit(OpCodes.Pop); }
         public override void Emit_Ret() { il_generator.Emit(OpCodes.Ret); }
 
-        public override void Emit_Ldtoken(Type type) { il_generator.Emit(OpCodes.Ldtoken, type); }
+        public override void Emit_Ldtoken(Type type) { il_generator.Emit(OpCodes.Ldtoken, type.GetNativeType()); }
         public override void Emit_Ldtoken(FieldInfo field) { il_generator.Emit(OpCodes.Ldtoken, field.GetNativeFieldInfo()); }
         public override void Emit_Ldtoken(MethodInfo method) { il_generator.Emit(OpCodes.Ldtoken, method.GetNativeMethodInfo()); }
 
-        public override void Emit_Castclass(Type type) { il_generator.Emit(OpCodes.Castclass, type); }
-        public override void Emit_Box(Type type) { il_generator.Emit(OpCodes.Box, type); }
-        public override void Emit_Unbox_Any(Type type) { il_generator.Emit(OpCodes.Unbox_Any, type); }
-        public override void Emit_Unbox(Type type) { il_generator.Emit(OpCodes.Unbox, type); }
-        public override void Emit_Isinst(Type type) { il_generator.Emit(OpCodes.Isinst, type); }
+        public override void Emit_Castclass(Type type) { il_generator.Emit(OpCodes.Castclass, type.GetNativeType()); }
+        public override void Emit_Box(Type type) { il_generator.Emit(OpCodes.Box, type.GetNativeType()); }
+        public override void Emit_Unbox_Any(Type type) { il_generator.Emit(OpCodes.Unbox_Any, type.GetNativeType()); }
+        public override void Emit_Unbox(Type type) { il_generator.Emit(OpCodes.Unbox, type.GetNativeType()); }
+        public override void Emit_Isinst(Type type) { il_generator.Emit(OpCodes.Isinst, type.GetNativeType()); }
 
         public override void Emit_Newobj(ConstructorInfo constructor) { il_generator.Emit(OpCodes.Newobj, constructor.GetNativeConstructorInfo()); }
-        public override void Emit_Newarr(Type type) { il_generator.Emit(OpCodes.Newarr, type); }
+        public override void Emit_Newarr(Type type) { il_generator.Emit(OpCodes.Newarr, type.GetNativeType()); }
 
-        public override void Emit_Ldobj(Type type) { il_generator.Emit(OpCodes.Ldobj, type); }
-        public override void Emit_Stobj(Type type) { il_generator.Emit(OpCodes.Stobj, type); }
-        public override void Emit_Initobj(Type type) { il_generator.Emit(OpCodes.Initobj, type); }
+        public override void Emit_Ldobj(Type type) { il_generator.Emit(OpCodes.Ldobj, type.GetNativeType()); }
+        public override void Emit_Stobj(Type type) { il_generator.Emit(OpCodes.Stobj, type.GetNativeType()); }
+        public override void Emit_Initobj(Type type) { il_generator.Emit(OpCodes.Initobj, type.GetNativeType()); }
 
         public override void Emit_Call(MethodInfo method) { il_generator.Emit(OpCodes.Call, method.GetNativeMethodInfo()); }
         public override void Emit_Call(ConstructorInfo method) { il_generator.Emit(OpCodes.Call, method.GetNativeConstructorInfo()); }
@@ -129,7 +129,7 @@ namespace CrunchySalt
         public override void Emit_Ldelem_R8() { il_generator.Emit(OpCodes.Ldelem_R8); }
         public override void Emit_Ldelem_Ref() { il_generator.Emit(OpCodes.Ldelem_Ref); }
 
-        public override void Emit_Ldelema(Type type) { il_generator.Emit(OpCodes.Ldelema, type); }
+        public override void Emit_Ldelema(Type type) { il_generator.Emit(OpCodes.Ldelema, type.GetNativeType()); }
 
         public override void Emit_Stelem_I1() { il_generator.Emit(OpCodes.Stelem_I1); }
         public override void Emit_Stelem_I2() { il_generator.Emit(OpCodes.Stelem_I2); }
@@ -150,6 +150,7 @@ namespace CrunchySalt
         public override void Emit_And() { il_generator.Emit(OpCodes.And); }
         public override void Emit_Or() { il_generator.Emit(OpCodes.Or); }
         public override void Emit_Not() { il_generator.Emit(OpCodes.Not); }
+        public override void Emit_Xor() { il_generator.Emit(OpCodes.Xor); }
 
         public override void Emit_Ceq() { il_generator.Emit(OpCodes.Ceq); }
         public override void Emit_Clt() { il_generator.Emit(OpCodes.Clt); }

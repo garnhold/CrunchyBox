@@ -9,8 +9,17 @@ namespace CrunchySalt
 {
 	static public class TypeExtensions_ConstructorInfo
 	{
-		static private OperationCache<List<ConstructorInfoEX>, Type> GET_INSTANCE_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<ConstructorInfo>, Type> GET_NATIVE_INSTANCE_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
 			return item.GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+				.ToList();
+		});
+		static public IEnumerable<ConstructorInfo> GetNativeInstanceConstructors(this Type item)
+		{
+			return GET_NATIVE_INSTANCE_CONSTRUCTORS.Fetch(item);
+		}
+
+		static private OperationCache<List<ConstructorInfoEX>, Type> GET_INSTANCE_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+			return item.GetNativeInstanceConstructors()
 				.Convert(c => c.GetConstructorInfoEX())
 				.ToList();
 		});

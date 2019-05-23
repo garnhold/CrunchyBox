@@ -14,6 +14,6 @@ namespace CrunchyCart
 {
     public abstract class NetworkRecipient
     {
-        public abstract void Send(NetDeliveryMethod delivery_method, int delivery_channel, NetOutgoingMessage message, NetPeer peer);
+        public abstract void Send(NetworkEnvelope envelope);
     }
 }

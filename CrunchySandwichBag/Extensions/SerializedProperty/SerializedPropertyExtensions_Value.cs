@@ -122,7 +122,7 @@ namespace CrunchySandwichBag
                     break;
 
 				case SerializedPropertyType.Enum:
-                    item.enumValueIndex = value.Convert<Enum>().GetIndex();
+                    item.enumValueIndex = value.Convert<Enum>().GetEnumIndex();
                     break;
 	
 				case SerializedPropertyType.Boolean:
@@ -216,7 +216,7 @@ namespace CrunchySandwichBag
 			switch(item.propertyType)
 			{
 				case SerializedPropertyType.Generic: return item.objectReferenceValue;
-				case SerializedPropertyType.Enum: return item.enumValueIndex.ConvertIndexToEnum(item.GetVariableType());
+				case SerializedPropertyType.Enum: return item.GetVariableType().GetEnumValueByIndex(item.enumValueIndex);
 					case SerializedPropertyType.Boolean: return item.boolValue;
 					case SerializedPropertyType.Integer: return item.intValue;
 					case SerializedPropertyType.Float: return item.floatValue;

@@ -29,19 +29,31 @@ namespace CrunchyCart
 
                 return false;
             }
+            public bool Validate(object target, Type desired_type)
+            {
+                if (Validate(target) && GetTypeSerializerType() == desired_type)
+                    return true;
+
+                return false;
+            }
 
             public void Read(object target, Buffer buffer)
             {
-                type_serializer.Read(target, this, buffer);
+                type_serializer.ReadWithLiaison(target, this, buffer);
             }
 
-            public void Write(object target, Buffer buffer)
+            public bool Write(object target, Interval field_update_interval, Buffer buffer)
             {
-                type_serializer.Write(target, this, buffer);
+                return type_serializer.WriteWithLiaison(target, field_update_interval, this, buffer);
+            }
+            public bool Write(object target, Buffer buffer)
+            {
+                return type_serializer.WriteWithLiaison(target, this, buffer);
             }
 
-            public int GetDeliveryChannel()
+            public void Update(object target)
             {
+                type_serializer.UpdateWithLiaison(target, this);
             }
 
             public TypeSerializer GetTypeSerializer()

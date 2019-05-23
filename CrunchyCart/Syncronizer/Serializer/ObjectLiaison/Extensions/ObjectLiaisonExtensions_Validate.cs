@@ -20,5 +20,12 @@ namespace CrunchyCart
 
             return false;
         }
+        static public bool ValidateEX(this Syncronizer.ObjectLiaison item, object target, Type desired_type)
+        {
+            if (item != null)
+                return item.Validate(target, desired_type);
+
+            return false;
+        }
     }
 }

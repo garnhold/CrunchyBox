@@ -139,6 +139,7 @@ namespace CrunchySalt
         public abstract void Emit_And();
         public abstract void Emit_Or();
         public abstract void Emit_Not();
+        public abstract void Emit_Xor();
 
         public abstract void Emit_Ceq();
         public abstract void Emit_Clt();
@@ -244,6 +245,30 @@ namespace CrunchySalt
                 Emit_Stloc_S_Direct((byte)index);
             else
                 Emit_Stloc_Direct((ushort)index);
+        }
+
+        public void Emit_LNot()
+        {
+            Emit_Ldc_I4_1_Direct();
+            Emit_Xor();
+        }
+
+        public void Emit_Cneq()
+        {
+            Emit_Ceq();
+            Emit_LNot();
+        }
+
+        public void Emit_Cgtoe()
+        {
+            Emit_Clt();
+            Emit_LNot();
+        }
+
+        public void Emit_Cltoe()
+        {
+            Emit_Cgt();
+            Emit_LNot();
         }
 
         public void Finish()

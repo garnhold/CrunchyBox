@@ -1,0 +1,285 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+
+List<OperatorTypeInfo> operator_type_infos = new List<OperatorTypeInfo>();
+
+OperatorTypeInfo multiply_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("Multiply", "*", "op_Multiply"));
+OperatorTypeInfo divide_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("Divide", "/", "op_Divide"));
+OperatorTypeInfo modulo_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("Modulo", "%", "op_Modulo"));
+
+OperatorTypeInfo add_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("Add", "+", "op_Addition"));
+OperatorTypeInfo subtract_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("Subtract", "-", "op_Subtraction"));
+
+OperatorTypeInfo and_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("And", "&", "op_BitwiseAnd"));
+OperatorTypeInfo or_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("Or", "|", "op_BitwiseOr"));
+
+OperatorTypeInfo equal_to_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("EqualTo", "==", "op_Equality"));
+OperatorTypeInfo not_equal_to_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("NotEqualTo", "!=", "op_Inequality"));
+
+OperatorTypeInfo less_than_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("LessThan", "<", "op_LessThan"));
+OperatorTypeInfo less_than_or_equal_to_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("LessThanOrEqualTo", "<=", "op_LessThanOrEqualTo"));
+
+OperatorTypeInfo greater_than_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("GreaterThan", ">", "op_GreaterThan"));
+OperatorTypeInfo greater_than_or_equal_to_operator = operator_type_infos.AddAndGet(new OperatorTypeInfo("GreaterThanOrEqualTo", ">=", "op_GreaterThanOrEqualTo"));
+
+string numeric_input_type = "Numeric.GetMostPrecedentType(l, r)";
+
+TypeOperatorInfo[] type_operator_infos = new TypeOperatorInfo[]{
+	new TypeOperatorInfo("Bool", true, "item.IsBool() && right.IsBool()",
+		new OperatorInfo_AutoLoad(and_operator, "typeof(bool)", "typeof(bool)", "canvas.Emit_And();"),
+		new OperatorInfo_AutoLoad(or_operator, "typeof(bool)", "typeof(bool)", "canvas.Emit_Or();"),
+
+		new OperatorInfo_AutoLoad(equal_to_operator, "typeof(bool)", "typeof(bool)", "canvas.Emit_Ceq();"),
+		new OperatorInfo_AutoLoad(not_equal_to_operator, "typeof(bool)", "typeof(bool)", "canvas.Emit_Cneq();")
+	),
+
+	new TypeOperatorInfo("Integer", true, "item.IsInteger() && right.IsInteger()",
+		new OperatorInfo_AutoLoad(and_operator, numeric_input_type, numeric_input_type, "canvas.Emit_And();"),
+		new OperatorInfo_AutoLoad(or_operator, numeric_input_type, numeric_input_type, "canvas.Emit_Or();")
+	),
+
+	new TypeOperatorInfo("Numeric", true, "item.IsNumeric() && right.IsNumeric()",
+		new OperatorInfo_AutoLoad(multiply_operator, numeric_input_type, numeric_input_type, "canvas.Emit_Mul();"),
+		new OperatorInfo_AutoLoad(divide_operator, numeric_input_type, numeric_input_type, "canvas.Emit_Div();"),
+		new OperatorInfo_AutoLoad(modulo_operator, numeric_input_type, numeric_input_type, "canvas.Emit_Rem();"),
+
+		new OperatorInfo_AutoLoad(add_operator, numeric_input_type, numeric_input_type, "canvas.Emit_Add();"),
+		new OperatorInfo_AutoLoad(subtract_operator, numeric_input_type, numeric_input_type, "canvas.Emit_Sub();"),
+
+		new OperatorInfo_AutoLoad(equal_to_operator, numeric_input_type, "typeof(bool)", "canvas.Emit_Ceq();"),
+		new OperatorInfo_AutoLoad(not_equal_to_operator, numeric_input_type, "typeof(bool)", "canvas.Emit_Cneq();"),
+
+		new OperatorInfo_AutoLoad(less_than_operator, numeric_input_type, "typeof(bool)", "canvas.Emit_Clt();"),
+		new OperatorInfo_AutoLoad(less_than_or_equal_to_operator, numeric_input_type, "typeof(bool)", "canvas.Emit_Cltoe();"),
+
+		new OperatorInfo_AutoLoad(greater_than_operator, numeric_input_type, "typeof(bool)", "canvas.Emit_Cgt();"),
+		new OperatorInfo_AutoLoad(greater_than_or_equal_to_operator, numeric_input_type, "typeof(bool)", "canvas.Emit_Cgtoe();")
+	),
+
+	new TypeOperatorInfo("String", true, "item.IsString() || right.IsString()",
+		new OperatorInfo(add_operator, "typeof(string)", "typeof(string)", "typeof(string).GetStaticILMethodInvokation(\"Concat\", left, right).RenderIL_Load(canvas);")
+	),
+
+	new TypeOperatorInfo("Object", false, "item.IsReferenceType() && right.IsReferenceType()",
+		new OperatorInfo(equal_to_operator, "typeof(object)", "typeof(bool)", "typeof(ObjectExtensions_Compare).GetStaticILMethodInvokation(\"EqualsEX\", left, right).RenderIL_Load(canvas);"),
+		new OperatorInfo(not_equal_to_operator, "typeof(object)", "typeof(bool)", "typeof(ObjectExtensions_Compare).GetStaticILMethodInvokation(\"NotEqualsEX\", left, right).RenderIL_Load(canvas);")
+	)
+};
+
+#>
+using System;
+using System.Reflection;
+using System.Reflection.Emit;
+
+using CrunchyDough;
+using CrunchySalt;
+
+namespace CrunchySalt
+{
+	public enum BinaryOperatorType
+	{
+<#foreach(OperatorTypeInfo info in operator_type_infos){#>
+		<#=info.name#>,
+<#}#>
+	}
+
+	static public class BinaryOperatorTypeExtensions
+	{
+		static public string GetSymbol(this BinaryOperatorType item)
+		{
+			switch(item)
+			{
+<#foreach(OperatorTypeInfo info in operator_type_infos){#>
+				case BinaryOperatorType.<#=info.name#>: return "<#=info.symbol#>";
+<#}#>
+			}
+
+			throw new UnaccountedBranchException("item", item);
+		}
+
+		static public string GetSpecialName(this BinaryOperatorType item)
+		{
+			switch(item)
+			{
+<#foreach(OperatorTypeInfo info in operator_type_infos){#>
+				case BinaryOperatorType.<#=info.name#>: return "<#=info.special_name#>";
+<#}#>
+			}
+
+			throw new UnaccountedBranchException("item", item);
+		}
+
+		static public BinaryOperatorType GetBinaryOperatorTypeBySymbol(string symbol)
+		{
+			switch(symbol)
+			{
+<#foreach(OperatorTypeInfo info in operator_type_infos){#>
+				case "<#=info.symbol#>": return BinaryOperatorType.<#=info.name#>;
+<#}#>
+			}
+
+			throw new UnaccountedBranchException("symbol", symbol);
+		}
+
+		static public BinaryOperatorType GetBinaryOperatorTypeByName(string name)
+		{
+			switch(name)
+			{
+<#foreach(OperatorTypeInfo info in operator_type_infos){#>
+				case "<#=info.name#>": return BinaryOperatorType.<#=info.name#>;
+<#}#>
+			}
+
+			throw new UnaccountedBranchException("name", name);
+		}
+	}
+
+	static public class TypeExtensions_BinaryOperatorInfo
+	{
+		static public BinaryOperatorInfoEX GetBinaryOperator(this Type item, Type right_type, BinaryOperatorType operator_type)
+		{
+			switch(operator_type)
+			{
+<#foreach(OperatorTypeInfo info in operator_type_infos){#>
+				case BinaryOperatorType.<#=info.name#>: return item.Get<#=info.name#>BinaryOperator(right_type);
+<#}#>				
+			}
+
+			throw new UnaccountedBranchException("operator_type", operator_type);
+		}
+
+		static public BinaryOperatorInfoEX GetBinaryOperatorByName(this Type item, Type right_type, string name)
+		{
+			return item.GetBinaryOperator(right_type, BinaryOperatorTypeExtensions.GetBinaryOperatorTypeByName(name));
+		}
+
+		static public BinaryOperatorInfoEX GetBinaryOperatorBySymbol(this Type item, Type right_type, string symbol)
+		{
+			return item.GetBinaryOperator(right_type, BinaryOperatorTypeExtensions.GetBinaryOperatorTypeBySymbol(symbol));
+		}
+
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type, BinaryOperatorType> GET_OVERLOADED_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right, BinaryOperatorType operator_type) {
+			string special_name = operator_type.GetSpecialName();
+			Type[] parameter_types = new Type[] { item, right };
+
+			return (item.GetStaticMethod(special_name, parameter_types) ?? 
+				right.GetStaticMethod(special_name, parameter_types)
+			)
+			.IfNotNull(m => (BinaryOperatorInfoEX)new BinaryOperatorInfoEX_Method(operator_type, m));
+		});
+		static public BinaryOperatorInfoEX GetOverloadedBinaryOperator(this Type item, Type right_type, BinaryOperatorType operator_type)
+		{
+			return GET_OVERLOADED_OPERATOR.Fetch(item, right_type, operator_type);
+		}
+
+<#foreach(OperatorTypeInfo info in operator_type_infos){#>
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_<#=info.name#>_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+	<#foreach(TypeOperatorInfo type_operator_info in type_operator_infos.Narrow(t => t.is_pre_override).Narrow(t => t.infos.Has(o => o.type_info == info))){#>
+
+			if(<#=type_operator_info.condition_code#>)
+				return new BinaryOperatorInfoEX_Internal_<#=type_operator_info.name#>_<#=info.name#>(item, right);
+	<#}#>
+
+			BinaryOperatorInfoEX overloaded_operator = item.GetOverloadedBinaryOperator(right, BinaryOperatorType.<#=info.name#>);
+			if(overloaded_operator != null)
+				return overloaded_operator;
+	<#foreach(TypeOperatorInfo type_operator_info in type_operator_infos.Narrow(t => t.is_pre_override == false).Narrow(t => t.infos.Has(o => o.type_info == info))){#>
+
+			if(<#=type_operator_info.condition_code#>)
+				return new BinaryOperatorInfoEX_Internal_<#=type_operator_info.name#>_<#=info.name#>(item, right);
+	<#}#>
+
+			throw new InvalidOperationException("No binary operator exists for the types " + item + " and " + right + ".");
+		});
+		static public BinaryOperatorInfoEX Get<#=info.name#>BinaryOperator(this Type item, Type right)
+		{
+			return GET_<#=info.name#>_OPERATOR.Fetch(item, right);
+		}
+
+<#}#>
+	}
+
+<#foreach(TypeOperatorInfo type_info in type_operator_infos){#>
+
+<#foreach(OperatorInfo info in type_info.infos){#>
+	public class BinaryOperatorInfoEX_Internal_<#=type_info.name#>_<#=info.type_info.name#> : BinaryOperatorInfoEX_Internal
+	{
+		public BinaryOperatorInfoEX_Internal_<#=type_info.name#>_<#=info.type_info.name#>(Type l, Type r) : base(BinaryOperatorType.<#=info.type_info.name#>, <#=info.input_type#>, l, r, <#=info.output_type#>) { }
+
+		public override void RenderIL_Operate(ILCanvas canvas, ILValue left, ILValue right)
+		{
+			<#=info.il_load_code#>
+		}
+	}
+<#}#>
+<#}#>
+}
+
+<#+
+class TypeOperatorInfo
+{
+	public readonly string name;
+
+	public readonly bool is_pre_override;
+
+	public readonly string condition_code;
+	public readonly OperatorInfo[] infos;
+
+	public TypeOperatorInfo(string n, bool ipo, string c, params OperatorInfo[] i)
+	{
+		name = n;
+
+		is_pre_override = ipo;
+
+		condition_code = c;
+		infos = i;
+	}
+}
+
+class OperatorInfo
+{
+	public readonly OperatorTypeInfo type_info;
+
+	public readonly string input_type;
+	public readonly string output_type;
+
+	public readonly string il_load_code;
+
+	public OperatorInfo(OperatorTypeInfo t, string it, string ot, string ilc)
+	{
+		type_info = t;
+
+		input_type = it;
+		output_type = ot;
+
+		il_load_code = ilc;
+	}
+}
+class OperatorInfo_AutoLoad : OperatorInfo
+{
+	public OperatorInfo_AutoLoad(OperatorTypeInfo t, string it, string ot, string ilc) : base(t, it, ot, "LoadValues(canvas, left, right); " + ilc) { }
+}
+
+class OperatorTypeInfo
+{
+	public readonly string name;
+
+	public readonly string symbol;
+	public readonly string special_name;
+
+	public OperatorTypeInfo(string n, string s, string sn)
+	{
+		name = n;
+
+		symbol = s;
+		special_name = sn;
+	}
+}
+#>

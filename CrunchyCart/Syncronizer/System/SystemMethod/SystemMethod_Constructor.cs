@@ -17,26 +17,20 @@ namespace CrunchyCart
     {
         public class SystemMethod_ConstructorAttribute : SystemMethodAttribute
         {
-            private int delivery_channel;
-
-            public SystemMethod_ConstructorAttribute(int dc)
+            public SystemMethod_ConstructorAttribute()
             {
-                delivery_channel = dc;
             }
 
             public override SystemMethod CreateSystemMethod(MethodInfo method)
             {
-                return new SystemMethod_Constructor(method, delivery_channel);
+                return new SystemMethod_Constructor(method);
             }
         }
 
         public class SystemMethod_Constructor : SystemMethod
         {
-            private int delivery_channel;
-
-            public SystemMethod_Constructor(MethodInfo m, int dc) : base(m)
+            public SystemMethod_Constructor(MethodInfo m) : base(m)
             {
-                delivery_channel = dc;
             }
 
             public override void ReadMethodInvoke(System system, Buffer buffer)
@@ -53,7 +47,7 @@ namespace CrunchyCart
                     object spawned = Invoke(system.GetTarget(), arguments);
                     Entity spawned_entity = syncronizer.entity_manager.RegisterEntityTarget(buffer.ReadInt32(), spawned, system, this, arguments);
 
-                    spawned_entity.ReadUpdate(buffer);
+                    TypeSerializer.ReadObjectInPlace(spawned_entity.GetTarget(), buffer);
                 }
             }
 
@@ -80,7 +74,7 @@ namespace CrunchyCart
                 Syncronizer syncronizer = system.GetSyncronizer();
                 NetworkActor actor = syncronizer.GetNetworkActor();
 
-                syncronizer.Send(recipient, MessageType.InvokeSystemMethod, NetDeliveryMethod.ReliableOrdered, delivery_channel, delegate(Buffer buffer) {
+                syncronizer.CreateMessage(MessageType.InvokeSystemMethod, NetDeliveryMethod.ReliableOrdered, delegate(Buffer buffer) {
                     buffer.WriteSystemReference(system);
                     buffer.WriteSystemMethod(this);
 
@@ -89,9 +83,9 @@ namespace CrunchyCart
                     if (actor.IsServer())
                     {
                         buffer.WriteInt32(spawned_entity.GetId());
-                        spawned_entity.WriteUpdate(buffer);
+                        TypeSerializer.WriteObject(spawned_entity.GetTarget(), buffer);
                     }
-                });
+                }).Send(recipient);
             }
         }
     }
