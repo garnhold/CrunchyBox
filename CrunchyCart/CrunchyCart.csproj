@@ -76,8 +76,8 @@
     <Compile Include="Syncronizer\Interval\Extensions\IntervalExtensions_Duration.cs" />
     <Compile Include="Syncronizer\Interval\Extensions\IntervalExtensions.cs" />
     <Compile Include="Syncronizer\Interval\Interval.cs" />
-    <Compile Include="Syncronizer\Message.cs" />
-    <Compile Include="Syncronizer\MessageProcessor.cs" />
+    <Compile Include="Syncronizer\Message\Message.cs" />
+    <Compile Include="Syncronizer\Message\MessageProcessor.cs" />
     <Compile Include="Syncronizer\MessageType\Extensions\MessageTypeExtensions_DeliveryChannel.cs" />
     <Compile Include="Syncronizer\MessageType\Extensions\MessageTypeExtensions.cs" />
     <Compile Include="Syncronizer\Serializer\DataTypeAttribute.cs" />

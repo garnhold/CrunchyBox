@@ -83,7 +83,7 @@ namespace CrunchyCart
                     );
                 }
                 
-                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Write", prop, GetUpdateInterval().GetWholeMilliseconds(), buffer));
+                block.AddStatement(liaison.GetILField(nested_liaison_field).GetILInvoke("Write", prop, GetUpdateInterval(), buffer));
                 return block;
             }
 
