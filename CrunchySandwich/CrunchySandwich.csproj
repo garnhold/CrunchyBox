@@ -253,8 +253,12 @@
     <Compile Include="Face\Extensions\FaceExtensions_Side.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable_Tesselate.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_TriangleFan.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Quad.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle2.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PolygonTriangle.cs" />
+    <Compile Include="MeshBuilder\MeshBuilder_Flat.cs" />
+    <Compile Include="MeshBuilder\MeshBuilder_Smooth.cs" />
     <Compile Include="UnityObjectEX\PolymorphicField.cs" />
     <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\GeneralUnityTyonDesignatedVariableProvider.cs" />
     <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\UnityTyonDesignatedVariableProvider.cs" />
@@ -569,7 +573,7 @@
     <Compile Include="MaintainScale\MaintainScaleAspect.cs" />
     <Compile Include="MaintainScale\MaintainScale.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle3.cs" />
-    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_ConvexPolygons.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_ConvexPolygon.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk_Plane.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk_Bounds.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Chunk.cs" />

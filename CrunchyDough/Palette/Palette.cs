@@ -58,7 +58,7 @@ namespace CrunchyDough
                 yield return i;
         }
 
-        public IEnumerable<T> GetValues()
+        public ICatalog<T> GetValues()
         {
             return values;
         }
