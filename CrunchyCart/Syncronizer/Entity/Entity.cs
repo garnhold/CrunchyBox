@@ -18,9 +18,8 @@ namespace CrunchyCart
         {
             private int id;
             private object target;
+            private Authority authority;
             private ObjectLiaison liaison;
-
-            private NetworkActor? authority;asfd
 
             private System constructor_system;
             private SystemMethod_Constructor constructor;
@@ -28,19 +27,38 @@ namespace CrunchyCart
 
             private EntityManager manager;
 
-            private void CedeAuthority(NetworkActor successor, bool force_broadcast = false)
+            private void CedeAuthority(Authority new_authority, bool force_broadcast = false)
             {
-                LocalAuthorityState state;
+                bool was_local = GetNetworkActor().IsAuthority(authority);
+                bool is_local = GetNetworkActor().IsAuthority(new_authority);
 
-                authority = authority.CedeAuthority(successor, out state);
+                authority = new_authority;
 
                 if (force_broadcast || GetNetworkActor().IsServer())
-                    SendAuthority();
-
-                switch (state)
                 {
-                    case LocalAuthorityState.GainedAuthority: manager.NotifyGainedAuthority(this); break;
-                    case LocalAuthorityState.LosedAuthority: manager.NotifyLosedAuthority(this); break;
+                    GetSyncronizer().CreateMessage(MessageType.ChangeEntityAuthority, NetDeliveryMethod.ReliableOrdered, delegate(Buffer buffer) {
+                        buffer.WriteEntityReference(this);
+
+                        buffer.WriteAuthority(authority);
+                    }).Send();
+                }
+
+                if (was_local == false && is_local)
+                    manager.NotifyGainedAuthority(this);
+
+                if (was_local && is_local == false)
+                    manager.NotifyLostAuthority(this);
+            }
+
+            private void Destroy()
+            {
+                manager.UnregisterEntity(this);
+
+                if (GetNetworkActor().IsServer())
+                {
+                    GetSyncronizer().CreateMessage(MessageType.DestroyEntity, NetDeliveryMethod.ReliableOrdered, delegate(Buffer buffer) {
+                        buffer.WriteEntityReference(this);
+                    }).Send();
                 }
             }
 
@@ -48,6 +66,7 @@ namespace CrunchyCart
             {
                 id = i;
                 target = t;
+                authority = Authority_Server.INSTANCE;
                 liaison = TypeSerializer.InstanceLiaison(target.GetTypeEX());
 
                 constructor_system = cs;
@@ -67,7 +86,7 @@ namespace CrunchyCart
 
             public void ReadMethodInvoke(Buffer buffer)
             {
-                if (buffer.GetSender().HasAuthorityOver(this))
+                if (buffer.GetSender().IsAuthority(authority))
                     buffer.ReadEntityMethod().ReadMethodInvoke(this, buffer);
             }
             public void SendMethodInvoke(string name, object[] arguments)
@@ -80,7 +99,7 @@ namespace CrunchyCart
             }
             public void SendMethodInvoke(EntityMethod method, object[] arguments)
             {
-                if (GetNetworkActor().HasAuthorityOver(this))
+                if (GetNetworkActor().IsAuthority(authority))
                     method.SendMethodInvoke(this, arguments);
             }
 
@@ -91,55 +110,40 @@ namespace CrunchyCart
             }
             public void ReadSync(Buffer buffer)
             {
-                CedeAuthority(buffer.ReadNetworkActor());
+                CedeAuthority(buffer.ReadAuthority());
                 liaison.GetTypeSerializer().ReadInPlace(target, buffer);
             }
             public void WriteSync(Buffer buffer)
             {
-                buffer.WriteNetworkActor(authority);
+                buffer.WriteAuthority(authority);
                 liaison.GetTypeSerializer().Write(target, buffer);
             }
 
             public void ReadAuthority(Buffer buffer)
             {
-                if (buffer.GetSender().HasAuthorityOver(this))
-                    CedeAuthority(buffer.ReadNetworkActor());
+                if (buffer.GetSender().IsAuthority(authority))
+                    CedeAuthority(buffer.ReadAuthority());
             }
-            public void SendAuthority(NetworkActor actor)
+            public void SendAuthority(Authority new_authority)
             {
-                if (GetNetworkActor().HasAuthorityOver(this))
-                    CedeAuthority(actor, true);
-            }
-            public void SendAuthority()
-            {
-                if (GetNetworkActor().HasAuthorityOver(this))
-                {
-                    GetSyncronizer().CreateMessage(MessageType.ChangeEntityAuthority, NetDeliveryMethod.ReliableOrdered, delegate(Buffer buffer) {
-                        buffer.WriteEntityReference(this);
-
-                        buffer.WriteNetworkActor(authority);
-                    }).Send();
-                }
+                if (GetNetworkActor().IsAuthority(authority))
+                    CedeAuthority(new_authority, true);
             }
 
             public void ReadDestroy(Buffer buffer)
             {
-                if (buffer.GetSender().HasAuthorityOver(this))
-                    manager.UnregisterEntity(this);
+                if (buffer.GetSender().IsServer())
+                    Destroy();
             }
             public void SendDestroy()
             {
-                if (GetNetworkActor().HasAuthorityOver(this))
-                {
-                    GetSyncronizer().CreateMessage(MessageType.DestroyEntity, NetDeliveryMethod.ReliableOrdered, delegate(Buffer buffer) {
-                        buffer.WriteEntityReference(this);
-                    }).Send();
-                }
+                if (GetNetworkActor().IsServer())
+                    Destroy();
             }
 
             public void ReadUpdate(Buffer buffer)
             {
-                if (buffer.GetSender().HasAuthorityOver(this))
+                if (buffer.GetSender().IsServer())
                     liaison.Read(target, buffer);
             }
             public void SendUpdate()
@@ -169,7 +173,7 @@ namespace CrunchyCart
                 return target.GetTypeEX();
             }
 
-            public NetworkActor GetAuthority()
+            public Authority GetAuthority()
             {
                 return authority;
             }

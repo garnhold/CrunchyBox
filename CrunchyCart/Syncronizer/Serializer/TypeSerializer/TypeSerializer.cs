@@ -80,6 +80,30 @@ namespace CrunchyCart
             {
                 GetTypeSerializer(target.GetTypeEX()).Write(target, buffer);
             }
+
+            static public object ReadPolymorphicObject(Buffer buffer)
+            {
+                Type type;
+                
+                type = buffer.ReadType();
+                if (type != null)
+                    return GetTypeSerializer(type).Read(buffer);
+
+                return null;
+            }
+            static public T ReadPolymorphicObject<T>(Buffer buffer)
+            {
+                return ReadPolymorphicObject(buffer).Convert<T>();
+            }
+            static public void WritePolymorphicObject(object target, Buffer buffer)
+            {
+                Type type = target.GetTypeEX();
+
+                buffer.WriteType(type);
+                if (type != null)
+                    GetTypeSerializer(type).Write(target, buffer);
+            }
+
             static public ObjectLiaison InstanceLiaison(Type type)
             {
                 return GetTypeSerializer(type).Instance();

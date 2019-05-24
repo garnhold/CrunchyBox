@@ -18,20 +18,15 @@ namespace CrunchyCart
         private bool is_local;
         private bool is_server;
 
+        static public bool operator ==(NetworkActor a1, NetworkActor a2) { return a1.EqualsEX(a2); }
+        static public bool operator !=(NetworkActor a1, NetworkActor a2) { return a1.NotEqualsEX(a2); }
+
         public NetworkActor(long i, bool l, bool s)
         {
             id = i;
 
             is_local = l;
             is_server = s;
-        }
-
-        public bool HasAuthorityOver(NetworkActor actor)
-        {
-            if (IsServer() || GetId() == actor.GetId())
-                return true;
-
-            return false;
         }
 
         public long GetId()

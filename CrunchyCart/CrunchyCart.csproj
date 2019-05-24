@@ -53,8 +53,7 @@
     <Compile Include="Extensions\NetConnection\NetConnectionExtensions.cs" />
     <Compile Include="Extensions\NetPeer\NetPeerExtensions_NetworkActor.cs" />
     <Compile Include="Extensions\NetPeer\NetPeerExtensions.cs" />
-    <Compile Include="NetworkActor\Extensions\NetworkActorExtensions_Cede.cs" />
-    <Compile Include="NetworkActor\Extensions\NetworkActorExtensions_SyncronizerEntity.cs" />
+    <Compile Include="NetworkActor\Extensions\NetworkActorExtensions_Authority.cs" />
     <Compile Include="NetworkActor\Extensions\NetworkActorExtensions_Compare.cs" />
     <Compile Include="NetworkActor\Extensions\NetworkActorExtensions.cs" />
     <Compile Include="NetworkConfiguration\NetworkConfiguration.cs" />
@@ -68,8 +67,14 @@
     <Compile Include="NetworkPeer\NetworkPeerBase.cs" />
     <Compile Include="NetworkPeer\NetworkClient.cs" />
     <Compile Include="NetworkPeer\NetworkServer.cs" />
+    <Compile Include="Syncronizer\Authority\Authority_Shared.cs" />
+    <Compile Include="Syncronizer\Authority\Authority_Server.cs" />
+    <Compile Include="Syncronizer\Authority\Authority_Normal.cs" />
+    <Compile Include="Syncronizer\Authority\Authority_Any.cs" />
     <Compile Include="Syncronizer\Buffer\Partials\Buffer_Enum.cs" />
+    <Compile Include="Syncronizer\Buffer\Partials\Buffer_Authority.cs" />
     <Compile Include="Syncronizer\Buffer\Partials\Buffer_System.cs" />
+    <Compile Include="Syncronizer\Authority\Authority.cs" />
     <Compile Include="Syncronizer\Interval\Extensions\IEnumerable\IntervalIEnumerableExtensions_Compare.cs" />
     <Compile Include="Syncronizer\Interval\Extensions\IEnumerable\IntervalIEnumerableExtensions.cs" />
     <Compile Include="Syncronizer\Interval\Extensions\IntervalExtensions_Compare.cs" />
@@ -100,7 +105,6 @@
     <Compile Include="Syncronizer\ConstantManager\ConstantSubManager_String.cs" />
     <Compile Include="Syncronizer\ConstantManager\ConstantManager.cs" />
     <Compile Include="Syncronizer\ConstantManager\ConstantSubManager.cs" />
-    <Compile Include="LocalAuthorityState\LocalAuthorityState.cs" />
     <Compile Include="Syncronizer\System\SystemMethod\SystemMethod_Call.cs" />
     <Compile Include="Syncronizer\System\SystemMethod\SystemMethod_Constructor.cs" />
     <Compile Include="Syncronizer\System\SystemMethod\SystemMethod.cs" />

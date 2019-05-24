@@ -65,7 +65,7 @@ namespace CrunchyCart
             {
                 OnGainAuthority.InvokeAll(entity);
             }
-            public void NotifyLosedAuthority(Entity entity)
+            public void NotifyLostAuthority(Entity entity)
             {
                 OnLoseAuthority.InvokeAll(entity);
             }
