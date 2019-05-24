@@ -23,6 +23,9 @@ namespace CrunchyCart
 
             private Syncronizer syncronizer;
 
+            public event MultiProcess<Entity> OnGainAuthority;
+            public event MultiProcess<Entity> OnLoseAuthority;
+
             public EntityManager(Syncronizer s)
             {
                 next_entity_id = 1;
@@ -58,6 +61,15 @@ namespace CrunchyCart
                 entitys_by_target.Remove(entity.GetTarget());
             }
 
+            public void NotifyGainedAuthority(Entity entity)
+            {
+                OnGainAuthority.InvokeAll(entity);
+            }
+            public void NotifyLosedAuthority(Entity entity)
+            {
+                OnLoseAuthority.InvokeAll(entity);
+            }
+
             public void ReadMethodInvoke(Buffer buffer)
             {
                 buffer.ReadEntityReference().ReadMethodInvoke(buffer);
@@ -70,10 +82,7 @@ namespace CrunchyCart
 
             public void ReadDestroy(Buffer buffer)
             {
-                Entity entity = buffer.ReadEntityReference();
-
-                if (entity.ReadDestroy(buffer))
-                    UnregisterEntity(entity);
+                buffer.ReadEntityReference().ReadDestroy(buffer);
             }
 
             public void ReadUpdate(Buffer buffer)

@@ -47,7 +47,7 @@ namespace CrunchyCart
                     object spawned = Invoke(system.GetTarget(), arguments);
                     Entity spawned_entity = syncronizer.entity_manager.RegisterEntityTarget(buffer.ReadInt32(), spawned, system, this, arguments);
 
-                    TypeSerializer.ReadObjectInPlace(spawned_entity.GetTarget(), buffer);
+                    spawned_entity.ReadSync(buffer);
                 }
             }
 
@@ -83,7 +83,7 @@ namespace CrunchyCart
                     if (actor.IsServer())
                     {
                         buffer.WriteInt32(spawned_entity.GetId());
-                        TypeSerializer.WriteObject(spawned_entity.GetTarget(), buffer);
+                        spawned_entity.WriteSync(buffer);
                     }
                 }).Send(recipient);
             }

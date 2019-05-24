@@ -20,6 +20,20 @@ namespace CrunchyCart
         private SystemManager system_manager;
         private ConstantManager constant_manager;
 
+        public event MultiProcess<NetConnection> OnNewClient;
+
+        public event MultiProcess<Entity> OnGainAuthority
+        {
+            add { entity_manager.OnGainAuthority += value; }
+            remove { entity_manager.OnGainAuthority -= value; }
+        }
+
+        public event MultiProcess<Entity> OnLoseAuthority
+        {
+            add { entity_manager.OnLoseAuthority += value; }
+            remove { entity_manager.OnLoseAuthority -= value; }
+        }
+
         private bool ReadBuffer(Buffer buffer)
         {
             return buffer.ExecuteRead(delegate(MessageType message_type) {
@@ -80,11 +94,16 @@ namespace CrunchyCart
             system_manager = new SystemManager(this, ts);
             constant_manager = new ConstantManager(this);
 
-            peer.OnConnect += delegate(NetIncomingMessage message) {
-                constant_manager.SendFullUpdate(new NetworkRecipient_Single(message.SenderConnection));
-                entity_manager.InitializeRecipient(new NetworkRecipient_Single(message.SenderConnection));
-                return true;
-            };
+            if (GetNetworkActor().IsServer())
+            {
+                peer.OnConnect += delegate(NetIncomingMessage message) {
+                    constant_manager.SendFullUpdate(new NetworkRecipient_Single(message.SenderConnection));
+                    entity_manager.InitializeRecipient(new NetworkRecipient_Single(message.SenderConnection));
+
+                    OnNewClient.InvokeAll(message.SenderConnection);
+                    return true;
+                };
+            }
 
             peer.OnData += delegate(NetIncomingMessage message) {
                 return message_processor.ProcessMessage(message);

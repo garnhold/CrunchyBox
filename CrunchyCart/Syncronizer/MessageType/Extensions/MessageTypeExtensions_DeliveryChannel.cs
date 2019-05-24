@@ -25,6 +25,7 @@ namespace CrunchyCart
                 case Syncronizer.MessageType.ChangeEntityAuthority: return 1;
                 case Syncronizer.MessageType.UpdateEntity: return 1;
                 case Syncronizer.MessageType.DestroyEntity: return 1;
+
                 case Syncronizer.MessageType.InvokeSystemMethod: return 1;
             }
 
