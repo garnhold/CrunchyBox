@@ -52,10 +52,9 @@ namespace CrunchyDough
             return values.Get(index);
         }
 
-        public IEnumerable<int> GetIndexs()
+        public ICatalog<int> GetIndexs()
         {
-            for (int i = 0; i < values.Count; i++)
-                yield return i;
+            return new IndexList(values.Count).AsCatalog();
         }
 
         public ICatalog<T> GetValues()
