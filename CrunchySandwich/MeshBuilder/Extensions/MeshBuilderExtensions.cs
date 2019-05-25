@@ -10,6 +10,5 @@ namespace CrunchySandwich
 {
     static public class MeshBuilderExtensions
     {
-        
     }
 }

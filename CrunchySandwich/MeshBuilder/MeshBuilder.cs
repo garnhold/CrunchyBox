@@ -8,30 +8,42 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class MeshBuilder
+    public class MeshBuilder
     {
-        public abstract ICatalog<int> GetIndexs();
-        public abstract ICatalog<Vector3> GetVertexs();
+        private List<int> indexs;
 
-        public abstract void AddTriangle(Vector3 v0, Vector3 v1, Vector3 v2);
+        private Dictionary<Vector3, int> vertexs_to_index;
 
-        public Mesh BuildMesh()
+        public MeshBuilder()
         {
-            Mesh mesh = new Mesh();
-
-            mesh.vertices = GetVertexs().ToArray();
-            mesh.triangles = GetIndexs().ToArray();
-
-            mesh.RecalculateNormals();
-            mesh.RecalculateBounds();
-            return mesh;
+            indexs = new List<int>();
+            vert
         }
 
-        public IEnumerable<Triangle3> GetTriangles()
+        public void AddTriangle(Vector3 v0, Vector3 v1, Vector3 v2)
         {
-            return GetVertexs().AtIndexs(GetIndexs())
-                .ChunkStrict(3)
-                .Convert(i => Triangle3Extensions.CreatePoints(i));
+            int index0, index1, index2;
+
+            if (v0 != v1 && v1 != v2 && v2 != v0)
+            {
+                vertexs.TryAdd(v0, out index0);
+                vertexs.TryAdd(v1, out index1);
+                vertexs.TryAdd(v2, out index2);
+
+                indexs.Add(index0);
+                indexs.Add(index1);
+                indexs.Add(index2);
+            }
+        }
+
+        public ICatalog<int> GetIndexs()
+        {
+            return indexs;
+        }
+
+        public ICatalog<Vector3> GetVertexs()
+        {
+            return vertexs.GetValues();
         }
     }
 }

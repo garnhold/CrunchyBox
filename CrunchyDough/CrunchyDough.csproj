@@ -60,10 +60,12 @@
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Group.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_IRegister.cs" />
     <Compile Include="Extensions\IList\IListExtensions_ICatalog.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
     <Compile Include="ICatalog\ICatalog.cs" />
     <Compile Include="IndexList\IndexList.cs" />
+    <Compile Include="IRegister\IRegister.cs" />
     <Compile Include="Worker\Worker_SimpleAmortize.cs" />
     <Compile Include="Worker\Worker.cs" />
     <Compile Include="WorkCollection\WorkCollection.cs" />

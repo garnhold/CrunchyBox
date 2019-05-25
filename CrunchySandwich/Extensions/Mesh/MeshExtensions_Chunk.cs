@@ -12,7 +12,7 @@ namespace CrunchySandwich
     {
         static public Mesh GetChunk(this Mesh item, Bounds bounds)
         {
-            MeshBuilder builder = new MeshBuilder_Smooth();
+            MeshBuilder builder = new MeshBuilder();
 
             builder.AddChunk(item, bounds);
             return builder.BuildMesh();
@@ -20,7 +20,7 @@ namespace CrunchySandwich
 
         static public Mesh GetChunk(this Mesh item, Plane plane)
         {
-            MeshBuilder builder = new MeshBuilder_Smooth();
+            MeshBuilder builder = new MeshBuilder();
 
             builder.AddChunk(item, plane);
             return builder.BuildMesh();
