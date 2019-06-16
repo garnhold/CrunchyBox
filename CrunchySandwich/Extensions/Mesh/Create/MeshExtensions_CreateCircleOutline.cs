@@ -33,7 +33,6 @@ namespace CrunchySandwich
                         p1 + ring_vertexs, p2 + ring_vertexs, p2
                     )
                 )
-                .Flatten()
                 .ToArray();
 
             mesh.RecalculateNormals();

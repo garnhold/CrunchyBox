@@ -14,11 +14,22 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    static public partial class CodeGenerator
+    static public class CodeGenerator
     {
-        static private void GenerateCode(string directory, string filename, Process<CSTextDocumentBuilder> process)
+        [MenuItem("Edit/Force Code Generation")]
+        [UnityEditor.Callbacks.DidReloadScripts]
+        static private void GenerateCode()
+        {
+            MarkedMethods<CodeGeneratorAttribute>
+                .GetFilteredMarkedStaticMethods(
+                    Filterer_MethodInfo.HasNoEffectiveParameters()
+                ).Process(m => m.Invoke(null, Empty.Array<object>()));
+        }
+
+        static public void GenerateCode(string base_filename, Process<CSTextDocumentBuilder> process, bool is_editor)
         {
             CSTextDocument document = new CSTextDocument(new CSHeader_SimpleDated("MMMM dd, yyyy"));
+            string directory = is_editor.ConvertBool(Project.GetEditorGeneratedDirectory(), Project.GetGeneratedDirectory());
 
             CSTextDocumentBuilder builder = document.CreateCSTextBuilder();
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs();
@@ -40,42 +51,21 @@ namespace CrunchySandwichBag
 
             process(builder);
 
-            if (document.RenderDocument().SaveChanges(directory, filename, true))
+            if (document.RenderDocument().SaveChanges(directory, base_filename + ".cs", true))
                 AssetDatabase.Refresh();
         }
 
-        static private void GenerateClass(string directory, string class_name, Process<CSTextDocumentBuilder> process)
+        static public void GenerateStaticClass(string class_name, Process<CSTextDocumentBuilder> process, bool is_editor)
         {
-            GenerateCode(directory, class_name + ".cs", delegate(CSTextDocumentBuilder builder) {
+            GenerateCode(class_name, delegate(CSTextDocumentBuilder builder) {
                 CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                    "CLASSNAME", class_name
+                    "CLASS", class_name.StyleAsClassName()
                 );
 
-                writer.Write("static public class ?CLASSNAME", delegate() {
+                writer.Write("static public class ?CLASS", delegate() {
                     process(builder);
                 });
-            });
-        }
-
-        static private void GenerateCodeFromTypes(string directory, string class_base_name, Type type, Process<Type, CSTextDocumentBuilder> process)
-        {
-            GenerateCode(directory, class_base_name + ".cs", delegate(CSTextDocumentBuilder builder) {
-                CrunchyNoodle.Types.GetFilteredTypes(
-                    Filterer_Type.IsConcreteClass(),
-                    Filterer_Type.CanBeTreatedAs(type)
-                ).Process(t => process(t, builder));
-            });
-        }
-
-        static private void GenerateClassFromTypes(string directory, string class_name, Type type, Process<Type, CSTextDocumentBuilder> process)
-        {
-            GenerateClass(directory, class_name, delegate(CSTextDocumentBuilder builder) {
-                CrunchyNoodle.Types.GetFilteredTypes(
-                    Filterer_Type.IsConcreteClass(),
-                    Filterer_Type.CanBeTreatedAs(type)
-                )
-                .Process(t => process(t, builder));
-            });
+            }, is_editor);
         }
     }
 }

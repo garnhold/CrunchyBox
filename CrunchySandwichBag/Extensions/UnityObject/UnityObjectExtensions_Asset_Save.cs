@@ -22,12 +22,6 @@ namespace CrunchySandwichBag
             Selection.activeObject = item;
         }
 
-        static public void SaveAndFocusAsset(this UnityEngine.Object item, string filename)
-        {
-            item.SaveAsset(filename);
-            item.FocusAsset();
-        }
-
         static public void DeleteAsset(this UnityEngine.Object item)
         {
             AssetDatabase.DeleteAsset(item.GetAssetPath());

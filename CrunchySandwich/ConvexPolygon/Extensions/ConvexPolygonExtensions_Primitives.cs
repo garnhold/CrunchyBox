@@ -16,11 +16,6 @@ namespace CrunchySandwich
             return item.GetFaces().Convert(f => f.v0);
         }
 
-        static public IEnumerable<Tuple<Vector2, Vector2>> GetEdges(this ConvexPolygon item)
-        {
-            return item.GetVertexs().CloseLoop().ConvertConnections();
-        }
-
         static public IEnumerable<Vector2> GetNormals(this ConvexPolygon item)
         {
             return item.GetFaces().Convert(f => f.normal);

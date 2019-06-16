@@ -34,6 +34,10 @@ namespace CrunchySandwichBag
         {
             return GetExternalCustomAssetPathsOfType(type).Convert(p => AssetDatabase.LoadMainAssetAtPath(p) as CustomAsset);
         }
+        static public IEnumerable<T> GetExternalCustomAssetsOfType<T>() where T : CustomAsset
+        {
+            return GetExternalCustomAssetsOfType(typeof(T)).Convert<CustomAsset, T>();
+        }
 
         static public IEnumerable<CustomAsset> GetAllExternalCustomAssets()
         {

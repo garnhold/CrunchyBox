@@ -27,7 +27,7 @@ namespace CrunchySandwich
 
         private bool IsConnection(Vector2 position1, Vector2 position2, int layer_mask)
         {
-            RayLine2 line = new RayLine2(position1, position2);
+            LineSegment2 line = new LineSegment2(position1, position2);
 
             if (line.CircleCast(connection_radius, layer_mask) == false)
                 return true;

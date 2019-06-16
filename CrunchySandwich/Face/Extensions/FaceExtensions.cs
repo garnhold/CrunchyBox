@@ -35,10 +35,5 @@ namespace CrunchySandwich
 
             return face.GetFlipped();
         }
-
-        static public Face CreateEdge(Edge2 edge)
-        {
-            return CreatePoints(edge.v0, edge.v1);
-        }
     }
 }

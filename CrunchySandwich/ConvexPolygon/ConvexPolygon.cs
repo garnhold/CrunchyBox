@@ -24,10 +24,11 @@ namespace CrunchySandwich
                 is_dirty = false;
 
                 center = vertexs.Average();
-                faces.Set(vertexs
-                    .Sort(v => (v - center).GetAngleInDegrees())
-                    .CloseLoop()
-                    .ConvertConnections((v0, v1) => FaceExtensions.CreatePointsAndInsidePoint(v0, v1, center))
+                faces.Set(
+                    vertexs
+                        .Sort(v => -(v - center).GetAngleInDegrees())
+                        .CloseLoop()
+                        .ConvertConnections((v0, v1) => FaceExtensions.CreatePointsAndInsidePoint(v0, v1, center))
                 );
             }
         }

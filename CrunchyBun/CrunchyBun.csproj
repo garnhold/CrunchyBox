@@ -61,6 +61,7 @@
     <Compile Include="Extensions\Grid\GridExtensions_Stamp.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Get.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_VectorI2.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Path_Subdivide.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_RandomLine.cs" />
     <Compile Include="Extensions\Stream\StreamExtensions_Text.cs" />
@@ -127,6 +128,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mathq_IntPow.tt</DependentUpon>
     </Compile>
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
     <Compile Include="VectorF2\VectorF2s.cs">
       <DependentUpon>VectorF2s.tt</DependentUpon>
@@ -205,9 +207,9 @@
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Dot.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line_Point.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Loop.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_LoopReduction.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Binding.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Path.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathReduction.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Triangle.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_MinMax.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_With.cs" />

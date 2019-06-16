@@ -16,7 +16,7 @@ namespace CrunchySandwich
 
         static public Vector3 ScreenToWorldPlanePoint(this Camera item, Plane plane, Vector2 point)
         {
-            return plane.IntersectRay(item.ScreenPointToRay(point));
+            return plane.Intersect(item.ScreenPointToRay(point));
         }
 
         static public Vector2 ScreenToWorldPlanarPoint(this Camera item, Vector2 point)

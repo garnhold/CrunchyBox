@@ -18,7 +18,7 @@ namespace CrunchySandwich
             return false;
         }
 
-        static public bool IsInside(this Plane2 item, Vector3 point, float tolerance = 0.0f)
+        static public bool IsInside(this Plane2 item, Vector2 point, float tolerance = 0.0f)
         {
             if (item.IsOutside(point, tolerance) == false)
                 return true;

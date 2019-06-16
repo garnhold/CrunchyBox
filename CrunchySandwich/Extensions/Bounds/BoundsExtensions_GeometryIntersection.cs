@@ -14,9 +14,9 @@ namespace CrunchySandwich
         {
             Vector3 point;
 
-            foreach (RayLine ray_line in item.GetEdges().Convert(p => new RayLine(p.item1, p.item2)))
+            foreach (LineSegment3 line_segment in item.GetEdges().Convert(p => new LineSegment3(p.item1, p.item2)))
             {
-                if(plane.IntersectRayLine(ray_line, out point))
+                if(plane.IsIntersecting(line_segment, out point))
                     yield return point;
             }
         }

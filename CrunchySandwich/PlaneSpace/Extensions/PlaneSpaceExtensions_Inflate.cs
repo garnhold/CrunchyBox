@@ -28,6 +28,15 @@ namespace CrunchySandwich
             return vectors.Convert(v => item.InflateVector(v));
         }
 
+        static public LineSegment3 InflateLineSegment(this PlaneSpace item, LineSegment2 line_segment)
+        {
+            return new LineSegment3(item.InflatePoint(line_segment.v0), item.InflatePoint(line_segment.v1));
+        }
+        static public IEnumerable<LineSegment3> InflateLineSegments(this PlaneSpace item, IEnumerable<LineSegment2> line_segments)
+        {
+            return line_segments.Convert(l => item.InflateLineSegment(l));
+        }
+
         static public Triangle3 InflateTriangle(this PlaneSpace item, Triangle2 triangle)
         {
             return new Triangle3(

@@ -12,9 +12,7 @@ namespace CrunchySandwich
     {
         static public IEnumerable<Triangle3> GetTriangles(this MeshBuilder item)
         {
-            return item.GetVertexs().AtIndexs(item.GetIndexs())
-                .ChunkStrict(3)
-                .Convert(i => Triangle3Extensions.CreatePoints(i));
+            return item.GetVertexs().MakeIndexedTriangles(item.GetIndexs());
         }
     }
 }

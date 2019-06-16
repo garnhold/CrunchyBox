@@ -19,6 +19,11 @@ namespace CrunchySandwichBag
             return "Assets/Generated/";
         }
 
+        static public string GetEditorDirectory()
+        {
+            return "Assets/Editor/";
+        }
+
         static public string GetEditorGeneratedDirectory()
         {
             return "Assets/Editor/Generated/";

@@ -11,13 +11,12 @@ namespace CrunchySandwich
     public class MeshBuilder
     {
         private List<int> indexs;
-
-        private Dictionary<Vector3, int> vertexs_to_index;
+        private Palette<Vector3> vertexs;
 
         public MeshBuilder()
         {
             indexs = new List<int>();
-            vert
+            vertexs = new Palette<Vector3>();
         }
 
         public void AddTriangle(Vector3 v0, Vector3 v1, Vector3 v2)

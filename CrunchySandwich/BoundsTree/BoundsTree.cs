@@ -78,7 +78,7 @@ namespace CrunchySandwich
         {
             Bounds item_bounds = get_bounds_operation(item);
 
-            if (bounds.Intersects(item_bounds))
+            if (bounds.IsIntersecting(item_bounds))
             {
                 if (is_subdivided)
                     return AddToChildBounds(item);

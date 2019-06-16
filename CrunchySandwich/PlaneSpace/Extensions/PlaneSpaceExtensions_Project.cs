@@ -28,13 +28,22 @@ namespace CrunchySandwich
             return vectors.Convert(v => item.ProjectVector(v));
         }
 
-        static public Edge2 ProjectEdge(this PlaneSpace item, Edge3 edge)
+        static public LineSegment2 ProjectLineSegment(this PlaneSpace item, LineSegment3 line_segment)
         {
-            return new Edge2(item.ProjectPoint(edge.v0), item.ProjectPoint(edge.v1));
+            return new LineSegment2(item.ProjectPoint(line_segment.v0), item.ProjectPoint(line_segment.v1));
         }
-        static public IEnumerable<Edge2> ProjectEdges(this PlaneSpace item, IEnumerable<Edge3> edges)
+        static public IEnumerable<LineSegment2> ProjectLineSegments(this PlaneSpace item, IEnumerable<LineSegment3> line_segments)
         {
-            return edges.Convert(e => item.ProjectEdge(e));
+            return line_segments.Convert(l => item.ProjectLineSegment(l));
+        }
+
+        static public Triangle2 ProjectTriangle(this PlaneSpace item, Triangle3 triangle)
+        {
+            return new Triangle2(item.ProjectPoint(triangle.v0), item.ProjectPoint(triangle.v1), item.ProjectPoint(triangle.v2));
+        }
+        static public IEnumerable<Triangle2> ProjectTriangles(this PlaneSpace item, IEnumerable<Triangle3> triangles)
+        {
+            return triangles.Convert(t => item.ProjectTriangle(t));
         }
     }
 }

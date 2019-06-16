@@ -68,8 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEX\ApplicationEXEditorInitilizer.cs" />
-    <Compile Include="CodeGenerator\CodeGenerator_Standard.cs" />
-    <Compile Include="CodeGenerator\CodeGenerator_Editor.cs" />
+    <Compile Include="CodeGenerator\CodeGeneratorAttribute.cs" />
     <Compile Include="CustomAsset\CustomAssets_External_Manage.cs" />
     <Compile Include="CustomAsset\CustomAssets_External.cs" />
     <Compile Include="CustomAsset\CustomAssets_External_Create.cs" />
@@ -328,6 +327,9 @@
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Object.cs" />
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Value.cs" />
     <Compile Include="SortingLayer\SortingLayerInitilizer.cs" />
+    <Compile Include="SpriteSheet\SpriteSheetMenuInitilizer.cs" />
+    <Compile Include="SpriteSheet\SpriteAnimationFormat.cs" />
+    <Compile Include="SpriteSheet\SpriteSheetFormat.cs" />
     <Compile Include="Subsystem\SubsystemInitilizer.cs" />
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\ValueCurveDrawer.cs" />

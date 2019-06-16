@@ -14,23 +14,30 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
+    [CodeGenerator]
     static public class EditorWindowEXInitilizer
     {
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [CodeGenerator]
         static private void GenerateEditorWindowEXMenuItems()
         {
-            CodeGenerator.GenerateEditorClassFromTypes<EditorWindowEX>("EditorWindowEXMenuItems", delegate(Type type, CSTextDocumentBuilder builder) {
-                CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                    "PATH", ("Window/" + type.Name).StyleAsLiteralString(),
-                    "FUNCTION", ("Open" + type.Name).StyleAsFunctionName(),
-                    "TYPE", type.Namespace.AppendToVisible(".") + type.Name
-                );
+            CodeGenerator.GenerateStaticClass("EditorWindowEXMenuItems", delegate(CSTextDocumentBuilder builder) {
+                foreach (Type type in CrunchyNoodle.Types.GetFilteredTypes(
+                    Filterer_Type.CanBeTreatedAs<EditorWindowEX>(),
+                    Filterer_Type.IsConcreteClass()
+                ))
+                {
+                    CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                        "PATH", ("Window/" + type.Name).StyleAsLiteralString(),
+                        "FUNCTION", ("Open" + type.Name).StyleAsFunctionName(),
+                        "TYPE", type.Namespace.AppendToVisible(".") + type.Name
+                    );
 
-                writer.Write("[MenuItem(?PATH)]");
-                writer.Write("static public void ?FUNCTION()", delegate() {
-                    writer.Write("EditorWindow.GetWindow(typeof(?TYPE)).Show();");
-                });
-            });
+                    writer.Write("[MenuItem(?PATH)]");
+                    writer.Write("static public void ?FUNCTION()", delegate() {
+                        writer.Write("EditorWindow.GetWindow(typeof(?TYPE)).Show();");
+                    });
+                }
+            }, true);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CrunchySandwich
             Vector2 point;
             foreach (Face face in item.GetFaces())
             {
-                if (face.IntersectsPlane(plane, out point))
+                if (face.IsIntersecting(plane, out point))
                     intersection.AddVertex(point);
             }
 
@@ -39,7 +39,7 @@ namespace CrunchySandwich
             {
                 foreach (Face face2 in other.GetFaces())
                 {
-                    if (face1.IntersectsFace(face2, out point))
+                    if (face1.IsIntersecting(face2, out point))
                         intersection.AddVertex(point);
                 }
             }

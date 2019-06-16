@@ -15,10 +15,10 @@ namespace CrunchySandwich
             FaceCloud faces = new FaceCloud(edge_tolerance);
             PlaneSpace plane_space = plane.GetPlaneSpace();
 
-            foreach (Edge3 edge in item.GetTriangles().GetEdges())
+            foreach (LineSegment3 edge in item.GetTriangles().Convert(t => t.GetEdges()).Unique())
             {
                 if(plane.IsCoplanar(edge, plane_tolerance))
-                    faces.AddFace(FaceExtensions.CreateEdge(plane_space.ProjectEdge(edge)));
+                    faces.AddFace(plane_space.ProjectLineSegment(edge).GetFace());
             }
 
             item.AddTriangles(

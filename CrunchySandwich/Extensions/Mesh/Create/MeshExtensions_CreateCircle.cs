@@ -23,7 +23,6 @@ namespace CrunchySandwich
 
             mesh.triangles = Ints.Range(1, number_vertexs, false)
                 .ConvertConnections((p1, p2) => Enumerable.New(0, p2, p1))
-                .Flatten()
                 .ToArray();
 
             mesh.RecalculateNormals();

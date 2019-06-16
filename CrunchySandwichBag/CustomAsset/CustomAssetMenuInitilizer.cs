@@ -14,26 +14,32 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
+    [CodeGenerator]
     static public class CustomAssetMenuInitilizer
     {
-        [MenuItem("Edit/Force Custom Asset Menu Regeneration")]
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [CodeGenerator]
         static private void GenerateCustomAssetMenuItems()
         {
-            CodeGenerator.GenerateEditorClassFromTypes<CustomAsset>("CustomAssetMenuItems", delegate(Type type, CSTextDocumentBuilder builder) {
-                string category = type.GetCustomLabeledAttributeOfTypeLabel<CustomAssetCategoryAttribute>(true);
+            CodeGenerator.GenerateStaticClass("CustomAssetMenuItems", delegate(CSTextDocumentBuilder builder) {
+                foreach (Type type in CrunchyNoodle.Types.GetFilteredTypes(
+                    Filterer_Type.CanBeTreatedAs<CustomAsset>(),
+                    Filterer_Type.IsConcreteClass()
+                ))
+                {
+                    string category = type.GetCustomLabeledAttributeOfTypeLabel<CustomAssetCategoryAttribute>(true);
 
-                CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                    "PATH", ("Assets/Create/" + category.AppendToVisible("/") + type.Name.Replace("_", "/")).StyleAsLiteralString(),
-                    "FUNCTION", ("Create" + type.Name).StyleAsFunctionName(),
-                    "TYPENAME", type.Namespace.AppendToVisible(".") + type.Name
-                );
+                    CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                        "PATH", ("Assets/Create/" + category.AppendToVisible("/") + type.Name.Replace("_", "/")).StyleAsLiteralString(),
+                        "FUNCTION", ("Create" + type.Name).StyleAsFunctionName(),
+                        "TYPENAME", type.Namespace.AppendToVisible(".") + type.Name
+                    );
 
-                writer.Write("[MenuItem(?PATH)]");
-                writer.Write("static public void ?FUNCTION()", delegate() {
-                    writer.Write("CustomAssets.CreateExternalCustomAsset<?TYPENAME>();");
-                });
-            });
+                    writer.Write("[MenuItem(?PATH)]");
+                    writer.Write("static public void ?FUNCTION()", delegate() {
+                        writer.Write("CustomAssets.CreateExternalCustomAsset<?TYPENAME>();");
+                    });
+                }
+            }, true);
         }
     }
 }

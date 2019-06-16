@@ -28,7 +28,7 @@ namespace CrunchySandwich
                     );
 
                     Plane2 plane_polygon;
-                    if (plane_space.IntersectPlane(item, out plane_polygon))
+                    if (plane_space.IsIntersecting(item, out plane_polygon))
                     {
                         return plane_space.InflatePoints(
                             triangle_polygon.GetIntersection(plane_polygon).GetVertexs()

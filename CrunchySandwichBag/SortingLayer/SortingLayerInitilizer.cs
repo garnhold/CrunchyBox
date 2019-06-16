@@ -14,13 +14,13 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
+    [CodeGenerator]
     static public class SortingLayerInitilizer
     {
-        [MenuItem("Edit/Force SortingLayers Class Regeneration")]
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [CodeGenerator]
         static private void GenerateSortingLayersClass()
         {
-            CodeGenerator.GenerateStandardClass("SortingLayers", delegate(CSTextDocumentBuilder builder) {
+            CodeGenerator.GenerateStaticClass("SortingLayers", delegate(CSTextDocumentBuilder builder) {
                 SortingLayerEX.GetAllSortingLayers().Process(delegate(SortingLayerEX layer) {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "NAME", layer.GetName().StyleAsConstantName(),
@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("static public readonly SortingLayerEX ?NAME = new SortingLayerEX(?VALUE);");
                 });
-            });
+            }, false);
         }
     }
 }

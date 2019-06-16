@@ -14,13 +14,13 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
+    [CodeGenerator]
     static public class LayerInitilizer
     {
-        [MenuItem("Edit/Force Layers Class Regeneration")]
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [CodeGenerator]
         static private void GenerateLayersClass()
         {
-            CodeGenerator.GenerateStandardClass("Layers", delegate(CSTextDocumentBuilder builder) {
+            CodeGenerator.GenerateStaticClass("Layers", delegate(CSTextDocumentBuilder builder) {
                 LayerEX.GetAllLayers().Process(delegate(LayerEX layer) {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "NAME", layer.GetName().StyleAsConstantName(),
@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("static public readonly LayerEX ?NAME = new LayerEX(?VALUE);");
                 });
-            });
+            }, false);
         }
     }
 }
