@@ -60,12 +60,26 @@
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Group.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Percent.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_PercentDropped.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_PercentCapped.cs" />
     <Compile Include="Extensions\IList\IListExtensions_IRegister.cs" />
     <Compile Include="Extensions\IList\IListExtensions_ICatalog.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_PercentLooped.cs" />
     <Compile Include="ICatalog\ICatalog.cs" />
     <Compile Include="IndexList\IndexList.cs" />
     <Compile Include="IRegister\IRegister.cs" />
+    <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Serial.cs" />
+    <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Parallel.cs" />
+    <Compile Include="OperationProcess\Extensions\MultiOperationExtensions.cs" />
+    <Compile Include="OperationProcess\MultiOperation.cs" />
+    <Compile Include="Time\FluxTimer\Extensions\FluxTimerExtensions.cs" />
+    <Compile Include="Time\FluxTimer\FluxTimer.cs" />
+    <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Seconds.cs" />
+    <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Duration.cs" />
+    <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions.cs" />
+    <Compile Include="Time\ManualTimer\ManualTimer.cs" />
     <Compile Include="Worker\Worker_SimpleAmortize.cs" />
     <Compile Include="Worker\Worker.cs" />
     <Compile Include="WorkCollection\WorkCollection.cs" />
@@ -526,8 +540,8 @@
     <Compile Include="Extensions\Value\ValueExtensions_TraverseWeb.cs" />
     <Compile Include="Grid\Extensions\Data\GridExtensions_Data_GetOrCreate.cs" />
     <Compile Include="MipMask\MipMask.cs" />
-    <Compile Include="OperationProcess\Extensions\MultiProcessExtensions.cs" />
-    <Compile Include="OperationProcess\MultiProcess.cs" />
+    <Compile Include="Process\Extensions\MultiProcessExtensions.cs" />
+    <Compile Include="Process\MultiProcess.cs" />
     <Compile Include="OperationProcess\Operation.cs" />
     <Compile Include="Palette\Extensions\PaletteExtensions_Add.cs" />
     <Compile Include="Palette\Extensions\PaletteExtensions_AtIndexs.cs" />
@@ -712,7 +726,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="OperationProcess\Process.cs" />
+    <Compile Include="Process\Process.cs" />
     <Compile Include="PeriodicProcess\PeriodicProcess_Timer.cs" />
     <Compile Include="Pinned\Pinned.cs" />
     <Compile Include="Pinned\Pin.cs" />

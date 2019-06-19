@@ -25,7 +25,7 @@ namespace CrunchyNoodle
 
         public bool SetContents(object target, object value)
         {
-            if (target != null)
+            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
                 return SetContentsInternal(target, PrepareValue(value));
 
             return false;
@@ -33,7 +33,7 @@ namespace CrunchyNoodle
 
         public bool UpdateContents(object target, object value)
         {
-            if (target != null)
+            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
             {
                 object prepared_value = PrepareValue(value);
 
@@ -50,7 +50,7 @@ namespace CrunchyNoodle
         {
             object value = null;
 
-            if (target != null)
+            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
                 value = GetContentsInternal(target);
 
             return value;

@@ -8,15 +8,21 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Sprite")]
-    public class SpriteAnimation : CustomAsset
+    [Serializable]
+    public class SpriteAnimation
     {
         [SerializeField]private string name;
+        [SerializeField]private float duration;
         [SerializeField]private Sprite[] frames;
 
-        public void Initialize(string n, IEnumerable<Sprite> f)
+        public SpriteAnimation()
+        {
+        }
+
+        public SpriteAnimation(string n, float d, IEnumerable<Sprite> f)
         {
             name = n;
+            duration = d;
             frames = f.ToArray();
         }
 
@@ -25,14 +31,29 @@ namespace CrunchySandwich
             return name;
         }
 
+        public float GetDuration()
+        {
+            return duration;
+        }
+
         public int GetNumberFrames()
         {
             return frames.Length;
         }
 
-        public Sprite GetFrame(int index)
+        public Sprite GetDefaultFrame()
+        {
+            return frames.GetFirst();
+        }
+
+        public Sprite GetFrameByIndex(int index)
         {
             return frames.GetLooped(index);
+        }
+
+        public Sprite GetFrameByTime(float seconds)
+        {
+            return frames.GetPercentLooped(seconds / duration);
         }
 
         public IEnumerable<Sprite> GetFrames()

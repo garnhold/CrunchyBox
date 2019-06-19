@@ -26,7 +26,7 @@ namespace CrunchyNoodle
         {
             object return_value = null;
 
-            if (target != null)
+            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
             {
                 return_value = ExecuteInternal(
                     target,

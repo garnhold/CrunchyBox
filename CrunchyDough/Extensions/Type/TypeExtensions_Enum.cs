@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -57,6 +59,15 @@ namespace CrunchyDough
         static public Enum GetEnumValueByName(this Type item, string name)
         {
             return item.GetEnumValueInfoByName(name).IfNotNull(i => i.GetValue());
+        }
+
+        static public IEnumerable<EnumValueInfo> GetEnumValueInfos(this Type item)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfos());
+        }
+        static public IEnumerable<Enum> GetEnumValues(this Type item)
+        {
+            return item.GetEnumValueInfos().Convert(i => i.GetValue());
         }
     }
 }

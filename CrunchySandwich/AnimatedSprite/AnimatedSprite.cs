@@ -8,8 +8,8 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Sprite")]
-    public class SpriteSheet : CustomAsset
+    [CustomAssetCategory("AnimatedSprite")]
+    public class AnimatedSprite : CustomAsset
     {
         [SerializeField]private SpriteAnimation[] animations;
 
@@ -18,9 +18,19 @@ namespace CrunchySandwich
             animations = a.ToArray();
         }
 
+        public Sprite GetDefaultFrame()
+        {
+            return GetDefaultAnimation().GetDefaultFrame();
+        }
+
+        public SpriteAnimation GetDefaultAnimation()
+        {
+            return animations.GetFirst();
+        }
+
         public SpriteAnimation GetAnimation(string name)
         {
-            return animations.FindFirst(a => a.GetName() == name);
+            return animations.FindFirst(a => a.GetName() == name) ?? GetDefaultAnimation();
         }
     }
 }

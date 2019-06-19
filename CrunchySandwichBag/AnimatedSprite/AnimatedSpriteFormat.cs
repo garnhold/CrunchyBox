@@ -9,14 +9,14 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [CustomAssetCategory("Sprite")]
-    public class SpriteSheetFormat : CustomAsset
+    [CustomAssetCategory("AnimatedSprite")]
+    public class AnimatedSpriteFormat : CustomAsset
     {
         [SerializeField]private SpriteAnimationFormat[] animation_formats;
 
-        public SpriteSheet CreateSpriteSheet(Texture2D texture)
+        public AnimatedSprite CreateAnimatedSprite(Texture2D texture)
         {
-            return CustomAssets.CreateExternalCustomAsset<SpriteSheet>(s => s.Initialize(
+            return CustomAssets.CreateExternalCustomAsset<AnimatedSprite>(s => s.Initialize(
                 animation_formats.Convert(f => f.CreateSpriteAnimation(texture))
             ));
         }

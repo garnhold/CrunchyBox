@@ -9,18 +9,16 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [CustomAssetCategory("Sprite")]
-    public class SpriteAnimationFormat : CustomAsset
+    [Serializable]
+    public class SpriteAnimationFormat
     {
         [SerializeField]private string name;
+        [SerializeField]private float duration;
         [SerializeField]private int[] indexs;
 
         public SpriteAnimation CreateSpriteAnimation(Texture2D texture)
         {
-            return CustomAssets.CreateInternalCustomAsset<SpriteAnimation>(a => a.Initialize(
-                name,
-                texture.GetSprites().ToArray().AtIndexs(indexs)
-            ));
+            return new SpriteAnimation(name, duration, texture.GetSprites().ToArray().AtIndexs(indexs));
         }
     }
 }

@@ -24,15 +24,8 @@ namespace CrunchySandwichBag
         {
             if (item != null)
             {
-                try
-                {
-                    if (item.serializedObject.FindProperty(item.propertyPath) != null)
-                        return true;
-                }
-                catch (Exception ex)
-                {
-                    Debug.Log("d: "+ item);
-                }
+                if (item.serializedObject.FindProperty(item.propertyPath) != null)
+                    return true;
             }
 
             return false;

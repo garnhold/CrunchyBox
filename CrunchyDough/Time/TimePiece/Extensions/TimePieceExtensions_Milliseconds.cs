@@ -5,6 +5,11 @@ namespace CrunchyDough
 {
     static public class TimePieceExtensions_Milliseconds
     {
+        static public void AddElapsedTimeInMilliseconds(this TimePiece item, long milliseconds)
+        {
+            item.SetElapsedTimeInMilliseconds(item.GetElapsedTimeInMilliseconds() + milliseconds);
+        }
+
         static public long ResetGetMilliseconds(this TimePiece item)
         {
             long milliseconds = item.GetElapsedTimeInMilliseconds();

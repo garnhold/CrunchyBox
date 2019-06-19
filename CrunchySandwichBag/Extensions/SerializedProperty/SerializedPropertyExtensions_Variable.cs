@@ -22,10 +22,41 @@ namespace CrunchySandwichBag
                 return "[" + match.Groups[1].Value + "]";
             });
         }
+        static public bool TryGetRelativeVariablePath(this SerializedProperty item, SerializedProperty parent, out string path)
+        {
+            return item.GetVariablePath().TryTrimPrefix(parent.GetVariablePath(), out path);
+        }
+        static public string GetRelativeVariablePath(this SerializedProperty item, SerializedProperty parent)
+        {
+            string path;
+
+            item.TryGetRelativeVariablePath(parent, out path);
+            return path;
+        }
 
         static public Variable GetVariable(this SerializedProperty item)
         {
             return item.serializedObject.GetTargetType().GetVariableByPath(item.GetVariablePath());
+        }
+        static public bool TryGetRelativeVariable(this SerializedProperty item, SerializedProperty parent, out Variable variable)
+        {
+            string path;
+
+            if (item.TryGetRelativeVariablePath(parent, out path))
+            {
+                variable = parent.GetVariableType().GetVariableByPath(path);
+                return true;
+            }
+
+            variable = null;
+            return false;
+        }
+        static public Variable GetRelativeVariable(this SerializedProperty item, SerializedProperty parent)
+        {
+            Variable variable;
+
+            item.TryGetRelativeVariable(parent, out variable);
+            return variable;
         }
 
         static public Type GetVariableType(this SerializedProperty item)

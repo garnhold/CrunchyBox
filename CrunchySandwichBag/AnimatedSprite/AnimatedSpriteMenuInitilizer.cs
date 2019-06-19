@@ -15,16 +15,16 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [CodeGenerator]
-    static public class SpriteSheetMenuInitilizer
+    static public class AnimatedSpriteMenuInitilizer
     {
         [CodeGenerator]
-        static private void GenerateSpriteSheetMenuItems()
+        static private void GenerateAnimatedSpriteMenuItems()
         {
-            CodeGenerator.GenerateStaticClass("SpriteSheetMenuItems", delegate(CSTextDocumentBuilder builder) {
-                foreach (SpriteSheetFormat format in CustomAssets.GetExternalCustomAssetsOfType<SpriteSheetFormat>())
+            CodeGenerator.GenerateStaticClass("AnimatedSpriteMenuItems", delegate(CSTextDocumentBuilder builder) {
+                foreach (AnimatedSpriteFormat format in CustomAssets.GetExternalCustomAssetsOfType<AnimatedSpriteFormat>())
                 {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "PATH", ("Assets/Create SpriteSheet/" + format.name).StyleAsLiteralString(),
+                        "PATH", ("Assets/Create AnimatedSprite/" + format.name).StyleAsLiteralString(),
                         "FUNCTION_EXECUTE", ("Execute" + format.name).StyleAsFunctionName(),
                         "FUNCTION_VALIDATE", ("Validate" + format.name).StyleAsFunctionName(),
                         "FORMAT_PATH", format.GetAssetPath().StyleAsLiteralString()
@@ -32,7 +32,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("[MenuItem(?PATH)]");
                     writer.Write("static public void ?FUNCTION_EXECUTE()", delegate() {
-                        writer.Write("AssetDatabase.LoadAssetAtPath<SpriteSheetFormat>(?FORMAT_PATH).CreateSpriteSheet(Selection.activeObject as Texture2D);");
+                        writer.Write("AssetDatabase.LoadAssetAtPath<AnimatedSpriteFormat>(?FORMAT_PATH).CreateAnimatedSprite(Selection.activeObject as Texture2D);");
                     });
 
                     writer.Write("[MenuItem(?PATH, true)]");

@@ -49,9 +49,13 @@
     <Compile Include="AnimatedFloat\AutoAnimatedFloat.cs" />
     <Compile Include="AnimatedFloat\AnimatedFloat.cs" />
     <Compile Include="AnimatedFloat\AnimateOperations.cs" />
+    <Compile Include="CardinalDirection\CardinalDirection.cs" />
+    <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_VectorF2.cs" />
+    <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions.cs" />
     <Compile Include="Easer\AutoEaser.cs" />
     <Compile Include="Easer\EaseFunction.cs" />
     <Compile Include="Easer\Extensions\EaseOperationExtensions.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_CardinalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Mix.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Distance.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Difference.cs" />
@@ -129,6 +133,7 @@
       <DependentUpon>Mathq_IntPow.tt</DependentUpon>
     </Compile>
     <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalDirection.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
     <Compile Include="VectorF2\VectorF2s.cs">
       <DependentUpon>VectorF2s.tt</DependentUpon>

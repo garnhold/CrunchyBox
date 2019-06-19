@@ -12,9 +12,9 @@ namespace CrunchySandwichBag
 {
     static public class SerializedPropertyExtensions_Array_PushPop
     {
-        static public void PushArrayElement(this SerializedProperty item)
+        static public SerializedProperty PushArrayElement(this SerializedProperty item)
         {
-            item.InsertAndNullArrayElementAtIndex(item.GetArrayFinalIndex() + 1);
+            return item.InsertAndNullArrayElementAtIndex(item.GetArrayFinalIndex() + 1);
         }
 
         static public void PopArrayElement(this SerializedProperty item)

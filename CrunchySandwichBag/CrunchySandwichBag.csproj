@@ -203,6 +203,8 @@
     <Compile Include="Extensions\RequireComponent\RequireComponentExtensions.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_TargetType.cs" />
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Attributes.cs" />
+    <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_ChildValue.cs" />
+    <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Value_Internal.cs" />
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Variable.cs" />
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Treatment.cs" />
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Array.cs" />
@@ -225,6 +227,14 @@
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Spawn.cs" />
     <Compile Include="GUIControl\GUIControl.cs" />
     <Compile Include="CodeGenerator\CodeGenerator.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinition.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Stick_Joystick.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Stick.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_Basic.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Axis.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Axis_Joystick.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button.cs" />
     <Compile Include="Layer\LayerInitilizer.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_Texture.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_SoftCircle.cs" />
@@ -235,6 +245,7 @@
     <Compile Include="Painter\PainterBrush\PainterBrush_Circle.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush.cs" />
     <Compile Include="Painter\Painter.cs" />
+    <Compile Include="ProjectSettings\ProjectSettings.cs" />
     <Compile Include="PropertyDrawersAndEditors\Editors\DefaultEditor.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_SerializedObjectSection.cs" />
     <Compile Include="Extensions\CustomPropertyDrawer\CustomPropertyDrawerExtensions.cs" />
@@ -327,9 +338,9 @@
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Object.cs" />
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Value.cs" />
     <Compile Include="SortingLayer\SortingLayerInitilizer.cs" />
-    <Compile Include="SpriteSheet\SpriteSheetMenuInitilizer.cs" />
-    <Compile Include="SpriteSheet\SpriteAnimationFormat.cs" />
-    <Compile Include="SpriteSheet\SpriteSheetFormat.cs" />
+    <Compile Include="AnimatedSprite\AnimatedSpriteMenuInitilizer.cs" />
+    <Compile Include="AnimatedSprite\SpriteAnimationFormat.cs" />
+    <Compile Include="AnimatedSprite\AnimatedSpriteFormat.cs" />
     <Compile Include="Subsystem\SubsystemInitilizer.cs" />
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\ValueCurveDrawer.cs" />

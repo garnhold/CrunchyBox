@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="ActiveGameRateLimiter\ActiveGameRateLimiter.cs" />
     <Compile Include="ActiveTime\ActiveTime.cs" />
+    <Compile Include="AnimatedSpriteRenderer\AnimatedSpriteRenderer.cs" />
+    <Compile Include="AnimatedSpriteRenderer\Extensions\AnimatedSpriteRendererExtensions.cs" />
     <Compile Include="ApplicationEX\ApplicationEXSatelliteAttribute.cs" />
     <Compile Include="ApplicationEX\ApplicationEX.cs" />
     <Compile Include="ApplicationEX\ApplicationEXLiason.cs" />
@@ -238,6 +240,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Extensions\Vector2\Vector2Extensions_Abs.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_CardinalDirection.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Connect.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Triangles.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Planar.cs" />
@@ -260,6 +263,10 @@
     <Compile Include="Face\Extensions\FaceExtensions_Side.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable_Tesselate.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent_Stick.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent_Axis.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent_Button.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Face.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Direction.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Length.cs" />
@@ -276,8 +283,8 @@
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PolygonTriangle.cs" />
     <Compile Include="Plane2\Extensions\Plane2Extensions_Intersect_Triangle.cs" />
     <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Intersect_Plane.cs" />
-    <Compile Include="SpriteSheet\SpriteAnimation.cs" />
-    <Compile Include="SpriteSheet\SpriteSheet.cs" />
+    <Compile Include="AnimatedSprite\SpriteAnimation.cs" />
+    <Compile Include="AnimatedSprite\AnimatedSprite.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Split.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Area.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Fantize.cs" />

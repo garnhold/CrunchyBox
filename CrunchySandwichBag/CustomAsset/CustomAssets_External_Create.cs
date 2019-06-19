@@ -18,6 +18,7 @@ namespace CrunchySandwichBag
 
             process(asset);
             asset.SaveAsset(filename);
+            asset.FocusAsset();
             return asset;
         }
         static public CustomAsset CreateExternalCustomAsset(Type type, string filename)

@@ -15,9 +15,14 @@ namespace CrunchyDough
             return Duration.Milliseconds(item.RestartGetMilliseconds());
         }
 
+        static public void AddElapsedTime(this TimePiece item, Duration duration)
+        {
+            item.AddElapsedTimeInMilliseconds(duration.GetWholeMilliseconds());
+        }
+
         static public void SetElapsedTime(this TimePiece item, Duration duration)
         {
-            item.SetElapsedTimeInMilliseconds((long)duration.GetMilliseconds());
+            item.SetElapsedTimeInMilliseconds(duration.GetWholeMilliseconds());
         }
 
         static public Duration GetElapsedTime(this TimePiece item)

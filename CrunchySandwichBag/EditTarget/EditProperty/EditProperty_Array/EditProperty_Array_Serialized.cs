@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
 
         public override void InsertElement(int index)
         {
-            property.InsertArrayElementAtIndex(index);
+            property.InsertAndNullArrayElementAtIndex(index);
         }
 
         public override void RemoveElement(int index)
