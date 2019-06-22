@@ -85,6 +85,8 @@
     <Compile Include="CustomAsset\CustomAsset.cs" />
     <Compile Include="CustomAsset\CustomAssetCategoryAttribute.cs" />
     <Compile Include="Curve\Curve.cs" />
+    <Compile Include="DeployablePrefab\DeployablePrefabManager.cs" />
+    <Compile Include="DeployablePrefab\DeployablePrefab.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_Deploy.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Intersection_Bounds.cs" />
