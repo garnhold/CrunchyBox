@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
         static private void GenerateSortingLayersClass()
         {
             CodeGenerator.GenerateStaticClass("SortingLayers", delegate(CSTextDocumentBuilder builder) {
-                SortingLayerEX.GetAllSortingLayers().Process(delegate(SortingLayerEX layer) {
+                SortingLayerEXExtensions.GetAllSortingLayers().Process(delegate(SortingLayerEX layer) {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "NAME", layer.GetName().StyleAsConstantName(),
                         "VALUE", layer.GetName().StyleAsLiteralString()

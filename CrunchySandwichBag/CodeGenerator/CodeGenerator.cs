@@ -35,6 +35,8 @@ namespace CrunchySandwichBag
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs();
             
             writer.Write("using System;");
+            writer.Write("using System.Collections;");
+            writer.Write("using System.Collections.Generic;");
 
             writer.Write("using UnityEngine;");
 

@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class InputDeviceComponent
+    static public class AudioClipExtensions
     {
     }
 }

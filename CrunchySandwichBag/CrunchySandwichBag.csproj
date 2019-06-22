@@ -88,6 +88,7 @@
     <Compile Include="EditTarget\EditProperty\EditProperty_Value\Extensions\EditPropertyValueExtensions.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_ForceProperty.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions.cs" />
+    <Compile Include="BurstSprite\BurstSpriteMenu.cs" />
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions_Get.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_ScrollBox.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_GUIContentLabel.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DrawQuad.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions.cs" />
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviourExtensions.cs" />
+    <Compile Include="Extensions\MonoScript\MonoScriptExtensions.cs" />
     <Compile Include="Extensions\PropertyDrawer\PropertyDrawerExtensions.cs" />
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviourExtensions_RequireComponent.cs" />
     <Compile Include="Extensions\RequireComponent\RequireComponentExtensions_Types.cs" />
@@ -337,6 +339,11 @@
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Array.cs" />
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Object.cs" />
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Value.cs" />
+    <Compile Include="ScriptExecutionOrderAttribute\ScriptExecutionOrderAttributeInitilizer.cs" />
+    <Compile Include="SequencedSprite\SequencedSpriteFormat.cs" />
+    <Compile Include="SequencedSprite\SequencedSpriteMenuInitilizer.cs" />
+    <Compile Include="SequencedSprite\SpriteSequenceFrameFormat.cs" />
+    <Compile Include="SequencedSprite\SpriteSequenceFormat.cs" />
     <Compile Include="SortingLayer\SortingLayerInitilizer.cs" />
     <Compile Include="AnimatedSprite\AnimatedSpriteMenuInitilizer.cs" />
     <Compile Include="AnimatedSprite\SpriteAnimationFormat.cs" />

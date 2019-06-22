@@ -53,5 +53,14 @@ namespace CrunchySandwichBag
         {
             return name;
         }
+
+        public void GenerateClassUpdate(CSTextDocumentBuilder builder)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "VARIABLE", GetName().StyleAsVariableName()
+            );
+
+            writer.Write("?VARIABLE.Update();");
+        }
     }
 }

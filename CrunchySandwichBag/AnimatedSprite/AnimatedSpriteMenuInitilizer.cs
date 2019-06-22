@@ -24,7 +24,7 @@ namespace CrunchySandwichBag
                 foreach (AnimatedSpriteFormat format in CustomAssets.GetExternalCustomAssetsOfType<AnimatedSpriteFormat>())
                 {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "PATH", ("Assets/Create AnimatedSprite/" + format.name).StyleAsLiteralString(),
+                        "PATH", ("Assets/Create Sprite/Animated/" + format.name).StyleAsLiteralString(),
                         "FUNCTION_EXECUTE", ("Execute" + format.name).StyleAsFunctionName(),
                         "FUNCTION_VALIDATE", ("Validate" + format.name).StyleAsFunctionName(),
                         "FORMAT_PATH", format.GetAssetPath().StyleAsLiteralString()

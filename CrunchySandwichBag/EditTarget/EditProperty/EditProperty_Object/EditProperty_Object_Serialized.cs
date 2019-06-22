@@ -86,5 +86,14 @@ namespace CrunchySandwichBag
         {
             return property.GetAllCustomAttributes(inherit);
         }
+
+        protected override EditorGUIElement CreateEditorGUIElementInternal()
+        {
+            return CustomPropertyDrawers.GetPropertyDrawer(GetPropertyType())
+                .IfNotNull(
+                    d => d.CreateEditorGUIElement(property),
+                    () => base.CreateEditorGUIElementInternal()
+                );
+        }
     }
 }

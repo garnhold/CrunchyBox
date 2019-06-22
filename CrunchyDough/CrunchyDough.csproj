@@ -67,6 +67,11 @@
     <Compile Include="Extensions\IList\IListExtensions_ICatalog.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentLooped.cs" />
+    <Compile Include="Extensions\Number\NumberExtensions_PingPonged.cs">
+      <DependentUpon>NumberExtensions_PingPonged.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ICatalog\ICatalog.cs" />
     <Compile Include="IndexList\IndexList.cs" />
     <Compile Include="IRegister\IRegister.cs" />
@@ -1186,6 +1191,10 @@
     <Content Include="Extensions\Number\NumberExtensions_Length.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberExtensions_Length.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_PingPonged.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_PingPonged.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\Number\NumberExtensions_Quantized.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

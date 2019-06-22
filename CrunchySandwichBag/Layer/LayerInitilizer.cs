@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
         static private void GenerateLayersClass()
         {
             CodeGenerator.GenerateStaticClass("Layers", delegate(CSTextDocumentBuilder builder) {
-                LayerEX.GetAllLayers().Process(delegate(LayerEX layer) {
+                LayerEXExtensions.GetAllLayers().Process(delegate(LayerEX layer) {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "NAME", layer.GetName().StyleAsConstantName(),
                         "VALUE", layer.GetName().StyleAsLiteralString()

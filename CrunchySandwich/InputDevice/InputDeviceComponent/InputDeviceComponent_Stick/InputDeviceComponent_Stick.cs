@@ -19,6 +19,10 @@ namespace CrunchySandwich
             vertical_internal_axis_name = va;
         }
 
+        public override void Update()
+        {
+        }
+
         public Vector2 GetValue()
         {
             return new Vector2(Input.GetAxis(horizontal_internal_axis_name), Input.GetAxis(vertical_internal_axis_name));

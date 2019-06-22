@@ -1,0 +1,37 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"byte",
+	"short",
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class NumberExtensions_PingPonged
+    {
+<# foreach(string type_name in type_names){#>
+		static public <#=type_name#> GetPingPonged(this <#=type_name#> item, <#=type_name#> length)
+        {
+			long times = (long)(item / length);
+			<#=type_name#> looped = item.GetLooped(length);
+
+			if(times % 2 == 0)
+				return (<#=type_name#>)(length - looped);
+			
+			return looped;
+        }
+<# } #>
+	}
+}

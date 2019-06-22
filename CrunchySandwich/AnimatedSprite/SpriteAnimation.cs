@@ -41,7 +41,7 @@ namespace CrunchySandwich
             return frames.Length;
         }
 
-        public Sprite GetDefaultFrame()
+        public Sprite GetFirstFrame()
         {
             return frames.GetFirst();
         }

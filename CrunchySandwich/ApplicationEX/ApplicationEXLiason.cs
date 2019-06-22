@@ -8,6 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
+    [ScriptExecutionOrder(-10000)]
     public class ApplicationEXLiason : MonoBehaviour
     {
         private void OnDrawGizmos()

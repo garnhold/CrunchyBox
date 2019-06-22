@@ -54,6 +54,15 @@ namespace CrunchyDough
             return item.RemoveAllUntil(i => i.EqualsEX(to_remove), should_remove_last);
         }
 
+        static public int RemoveAllWhile<T>(this ICollection<T> item, Predicate<T> predicate)
+        {
+            return item.RemoveAllUntil(i => predicate(i) == false, false);
+        }
+        static public int RemoveAllWhile<T>(this ICollection<T> item, T to_remove)
+        {
+            return item.RemoveAllWhile(i => i.EqualsEX(to_remove));
+        }
+
         static public int RemoveAllSince<T>(this ICollection<T> item, Predicate<T> predicate, bool should_remove_first)
         {
             bool has_reached = false;

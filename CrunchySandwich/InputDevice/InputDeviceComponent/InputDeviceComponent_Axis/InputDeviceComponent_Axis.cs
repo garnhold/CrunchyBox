@@ -17,6 +17,10 @@ namespace CrunchySandwich
             internal_axis_name = a;
         }
 
+        public override void Update()
+        {
+        }
+
         public float GetValue()
         {
             return Input.GetAxis(internal_axis_name);

@@ -39,12 +39,37 @@ namespace CrunchySandwichBag
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
             );
 
+            writer.Write("[ApplicationEXSatellite]");
+            writer.Write("static public class InputDeviceSatellite", delegate() {
+                writer.Write("static private void Update()", delegate() {
+                    writer.Write("InputDevice.GetInputDevices().Process(d => d.Update());");
+                });
+            });
+
             writer.Write("public class InputDevice", delegate() {
                 for (int i = 1; i <= max_number_devices; i++)
                     writer.Write("static public readonly InputDevice Device" + i + " = new InputDevice(" + i + ");");
 
-                writer.Write("public InputDevice(int device_id)", delegate() {
+                writer.Write("static public InputDevice GetInputDevice(int device_id)", delegate() {
+                    writer.Write("switch(device_id)", delegate() {
+                        for (int i = 1; i <= max_number_devices; i++)
+                            writer.Write("case " + i + ": return Device" + i + ";");
+                    });
+
+                    writer.Write("throw new UnaccountedBranchException(\"device_id\", device_id);");
+                });
+
+                writer.Write("static public IEnumerable<InputDevice> GetInputDevices()", delegate() {
+                    for (int i = 1; i <= max_number_devices; i++)
+                        writer.Write("yield return Device" + i + ";");
+                });
+
+                writer.Write("private InputDevice(int device_id)", delegate() {
                     components.Process(c => c.GenerateClassConstructor(builder, "device_id"));
+                });
+
+                writer.Write("public void Update()", delegate() {
+                    components.Process(c => c.GenerateClassUpdate(builder));
                 });
 
                 components.Process(c => c.GenerateClassMembers(builder));

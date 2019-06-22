@@ -1,0 +1,82 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+	new TypeInfo("SpriteRenderer", "color"),
+	new TypeInfo("TextMesh", "color")
+};
+
+ComponentInfo[] components = new ComponentInfo[]{
+	new ComponentInfo("Red", "r"),
+	new ComponentInfo("Green", "g"),
+	new ComponentInfo("Blue", "b"),
+	new ComponentInfo("Alpha", "a")
+};
+
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class HasColorExtensions
+    {
+<#foreach(ComponentInfo component in components){#>
+	<#foreach(TypeInfo type in types){#>
+
+		static public void Set<#=component.name#>(this <#=type.name#> item, float value)
+        {
+            item.color = item.color.GetWith<#=component.name#>(value);
+        }
+
+		static public void Adjust<#=component.name#>(this <#=type.name#> item, float amount)
+        {
+            item.Set<#=component.name#>(item.Get<#=component.name#>() + amount);
+        }
+
+		static public void Interpolate<#=component.name#>(this <#=type.name#> item, float target, float amount)
+        {
+            item.Set<#=component.name#>(item.Get<#=component.name#>().GetInterpolate(target, amount));
+        }
+
+		static public float Get<#=component.name#>(this <#=type.name#> item)
+        {
+            return item.<#=type.color_code#>.<#=component.variable#>;
+        }
+	<#}#>
+<#}#>
+	}
+}
+<#+
+class TypeInfo
+{
+	public readonly string name;
+	public readonly string color_code;
+
+	public TypeInfo(string n, string cc)
+	{
+		name = n;
+		color_code = cc;
+	}
+}
+
+class ComponentInfo
+{
+	public readonly string name;
+	public readonly string variable;
+
+	public ComponentInfo(string n, string v)
+	{
+		name = n;
+		variable = v;
+	}
+}
+#>

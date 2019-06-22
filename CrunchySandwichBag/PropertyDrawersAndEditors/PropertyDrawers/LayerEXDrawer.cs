@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
     {
         protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, SerializedProperty property)
         {
-            root.AddChild(new LayerPopup(property.FindPropertyRelative("id"), LayerEX.GetAllLayers(), l => l.GetId()));
+            root.AddChild(new LayerPopup(property.FindPropertyRelative("id"), LayerEXExtensions.GetAllLayers(), l => l.GetId()));
         }
     }
 }

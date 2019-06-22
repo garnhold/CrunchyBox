@@ -8,7 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("AnimatedSprite")]
+    [CustomAssetCategory("Sprite")]
     public class AnimatedSprite : CustomAsset
     {
         [SerializeField]private SpriteAnimation[] animations;
@@ -17,10 +17,14 @@ namespace CrunchySandwich
         {
             animations = a.ToArray();
         }
+        public void Initialize(params SpriteAnimation[] a)
+        {
+            Initialize((IEnumerable<SpriteAnimation>)a);
+        }
 
         public Sprite GetDefaultFrame()
         {
-            return GetDefaultAnimation().GetDefaultFrame();
+            return GetDefaultAnimation().GetFirstFrame();
         }
 
         public SpriteAnimation GetDefaultAnimation()

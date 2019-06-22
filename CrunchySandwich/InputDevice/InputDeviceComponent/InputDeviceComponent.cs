@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
-using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    static public class SpriteRendererExtensions_Color
+    public abstract class InputDeviceComponent
     {
+        public abstract void Update();
     }
 }

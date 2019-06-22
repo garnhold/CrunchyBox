@@ -70,6 +70,10 @@
     <Compile Include="BoundsTree\Extensions\BoundsTreeExtensions_Within.cs" />
     <Compile Include="BoundsTree\Extensions\BoundsTreeExtensions_Add.cs" />
     <Compile Include="BoundsTree\Extensions\BoundsTreeExtensions.cs" />
+    <Compile Include="BurstAudioSource\BurstAudioSource.cs" />
+    <Compile Include="BurstSpriteRenderer\BurstSpriteRenderer.cs" />
+    <Compile Include="BurstSprite\BurstSprite.cs" />
+    <Compile Include="BurstSprite\Extensions\BurstSpriteExtensions.cs" />
     <Compile Include="ConvexPolygon\ConvexPolygon.cs" />
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Primitives.cs" />
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Point.cs" />
@@ -81,6 +85,8 @@
     <Compile Include="CustomAsset\CustomAsset.cs" />
     <Compile Include="CustomAsset\CustomAssetCategoryAttribute.cs" />
     <Compile Include="Curve\Curve.cs" />
+    <Compile Include="Extensions\AudioClip\AudioClipExtensions_Deploy.cs" />
+    <Compile Include="Extensions\AudioClip\AudioClipExtensions.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Intersection_Bounds.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Intersection.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Center.cs" />
@@ -179,6 +185,11 @@
     <Compile Include="Extensions\GameObject\IEnumerable\GameObjectExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_WireCube.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Vectorize.cs" />
+    <Compile Include="Extensions\HasColor\HasColorExtensions.cs">
+      <DependentUpon>HasColorExtensions.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions_Motor.cs" />
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions.cs" />
     <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions_With.cs" />
@@ -241,6 +252,7 @@
     </Compile>
     <Compile Include="Extensions\Vector2\Vector2Extensions_Abs.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_CardinalDirection.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Compare.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Connect.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Triangles.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Planar.cs" />
@@ -263,10 +275,15 @@
     <Compile Include="Face\Extensions\FaceExtensions_Side.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable_Tesselate.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent_Stick.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent_Axis.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent_Button.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\Extensions\InputDeviceComponentButtonExtensions_Recent.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\Extensions\InputDeviceComponentButtonExtensions_Released.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\Extensions\InputDeviceComponentButtonExtensions.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\InputDeviceComponentButtonPress.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceComponent_Stick.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Axis\InputDeviceComponent_Axis.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\InputDeviceComponent_Button.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent.cs" />
+    <Compile Include="LayerEX\Extensions\LayerEXExtensions.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Face.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Direction.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Length.cs" />
@@ -285,6 +302,14 @@
     <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Intersect_Plane.cs" />
     <Compile Include="AnimatedSprite\SpriteAnimation.cs" />
     <Compile Include="AnimatedSprite\AnimatedSprite.cs" />
+    <Compile Include="ScriptExecutionOrderAttribute\ScriptExecutionOrderAttribute.cs" />
+    <Compile Include="SequencedSpriteRenderer\Extensions\SequencedSpriteRendererExtensions.cs" />
+    <Compile Include="SequencedSpriteRenderer\SequencedSpriteRenderer.cs" />
+    <Compile Include="SequencedSprite\SequencedSprite.cs" />
+    <Compile Include="SequencedSprite\SpriteSequenceFrame.cs" />
+    <Compile Include="SequencedSprite\SpriteSequence.cs" />
+    <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
+    <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Split.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Area.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Fantize.cs" />
@@ -530,11 +555,6 @@
     <Compile Include="Extensions\RigidBody\RigidBodyExtensions.cs" />
     <Compile Include="Extensions\RigidBody2D\RigidBody2DExtensions.cs" />
     <Compile Include="Extensions\Screen\ScreenExtensions.cs" />
-    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Interpolate.cs" />
-    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Get.cs" />
-    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Adjust.cs" />
-    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color_Set.cs" />
-    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Color.cs" />
     <Compile Include="Extensions\TextMesh\TextMeshExtensions_TextLayout.cs" />
     <Compile Include="Extensions\TextMesh\TextMeshExtensions.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Grayscale.cs" />
@@ -1021,6 +1041,10 @@
     <Content Include="Extensions\GUISkin\GUISkinExtensions_TextLayout_Styles.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GUISkinExtensions_TextLayout_Styles.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\HasColor\HasColorExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HasColorExtensions.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\Vector2\Vector2s.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
