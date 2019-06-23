@@ -40,7 +40,20 @@ namespace CrunchySandwichBag
 
         static public string GetSubsystemAssetPath(Type type)
         {
-            return Path.Combine(Project.GetResourcesDirectory(), SubsystemExtensions_Resource.GetSubsystemResourcePath(type));
+            return GetSubsystemAssetPath(type.Name);
+        }
+        static public string GetSubsystemAssetPath(string type_name)
+        {
+            return Path.Combine(Project.GetResourcesDirectory(), SubsystemExtensions_Resource.GetSubsystemResourcePath(type_name));
+        }
+
+        static public Subsystem GetSubsystemAsset(Type type)
+        {
+            return GetSubsystemAsset(type.Name);
+        }
+        static public Subsystem GetSubsystemAsset(string type_name)
+        {
+            return AssetDatabase.LoadAssetAtPath<Subsystem>(GetSubsystemAssetPath(type_name));
         }
     }
 }

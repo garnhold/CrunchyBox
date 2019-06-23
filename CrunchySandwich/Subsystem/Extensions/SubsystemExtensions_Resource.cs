@@ -18,7 +18,11 @@ namespace CrunchySandwich
 
         static public string GetSubsystemResourcePath(Type type)
         {
-            return Filename.MakeFilename(GetSubsystemDirectoryResourcePath(), type.Name, "asset");
+            return GetSubsystemResourcePath(type.Name);
+        }
+        static public string GetSubsystemResourcePath(string type_name)
+        {
+            return Filename.MakeFilename(GetSubsystemDirectoryResourcePath(), type_name, "asset");
         }
 
         static public IEnumerable<Subsystem> LoadSubsystemResources()

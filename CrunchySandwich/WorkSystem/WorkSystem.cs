@@ -8,14 +8,9 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public class WorkSystem : Subsystem
+    public class WorkSystem : Subsystem<WorkSystem>
     {
         private LazySchedule<Process> processes;
-
-        static public WorkSystem GetInstance()
-        {
-            return Subsystem.GetInstance<WorkSystem>();
-        }
 
         public WorkSystem()
         {

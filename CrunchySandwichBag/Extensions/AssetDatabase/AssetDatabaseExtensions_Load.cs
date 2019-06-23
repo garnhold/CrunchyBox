@@ -15,41 +15,28 @@ namespace CrunchySandwichBag
 {
     static public partial class AssetDatabaseExtensions
     {
-        static public IEnumerable<UnityEngine.Object> GetMainAssets(string filter, string directory, IEnumerable<string> labels, IEnumerable<Type> types)
+        static public IEnumerable<UnityEngine.Object> GetAssets(string filter, string directory, bool include_sub_asset, IEnumerable<string> labels, IEnumerable<Type> types)
         {
-            return GetAssetPaths(filter, directory, labels, types).Convert(p => AssetDatabase.LoadMainAssetAtPath(p));
-        }
-        static public IEnumerable<UnityEngine.Object> GetMainAssets(string filter, string directory, params object[] labels_and_types)
-        {
-            return GetMainAssets(
-                filter,
-                directory,
-                labels_and_types.Convert<string>(),
-                labels_and_types.Convert<Type>()
-            );
-        }
-        static public IEnumerable<T> GetMainAssets<T>(string filter, string directory) where T : UnityEngine.Object
-        {
-            return GetMainAssets(filter, directory, typeof(T)).Convert<UnityEngine.Object, T>();
-        }
+            IEnumerable<string> paths = GetAssetPaths(filter, directory, labels, types);
 
-        static public IEnumerable<UnityEngine.Object> GetAllAssets(string filter, string directory, IEnumerable<string> labels, IEnumerable<Type> types)
-        {
-            return GetAssetPaths(filter, directory, labels, types)
-                .Convert(p => (IEnumerable<UnityEngine.Object>)AssetDatabase.LoadAllAssetsAtPath(p));
+            if(include_sub_asset)
+                return paths.Convert(p => (IEnumerable<UnityEngine.Object>)AssetDatabase.LoadAllAssetsAtPath(p));
+
+            return paths.Convert(p => AssetDatabase.LoadMainAssetAtPath(p));
         }
-        static public IEnumerable<UnityEngine.Object> GetAllAssets(string filter, string directory, params object[] labels_and_types)
+        static public IEnumerable<UnityEngine.Object> GetAssets(string filter, string directory, bool include_sub_asset, params object[] labels_and_types)
         {
-            return GetAllAssets(
+            return GetAssets(
                 filter,
                 directory,
+                include_sub_asset,
                 labels_and_types.Convert<string>(),
                 labels_and_types.Convert<Type>()
             );
         }
-        static public IEnumerable<T> GetAllAssets<T>(string filter, string directory) where T : UnityEngine.Object
+        static public IEnumerable<T> GetAssets<T>(string filter, string directory, bool include_sub_asset) where T : UnityEngine.Object
         {
-            return GetAllAssets(filter, directory, typeof(T)).Convert<UnityEngine.Object, T>();
+            return GetAssets(filter, directory, include_sub_asset, typeof(T)).Convert<UnityEngine.Object, T>();
         }
     }
 }

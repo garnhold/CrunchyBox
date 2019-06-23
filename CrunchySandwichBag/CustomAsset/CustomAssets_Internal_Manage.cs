@@ -15,7 +15,7 @@ namespace CrunchySandwichBag
     {
         static public IEnumerable<CustomAsset> GetAllInternalCustomAssets()
         {
-            return AssetDatabaseExtensions.GetMainAssets<CustomAsset>("", Project.GetInternalAssetDirectory());
+            return AssetDatabaseExtensions.GetAssets<CustomAsset>("", Project.GetInternalAssetDirectory(), false);
         }
 
         static public IEnumerable<CustomAsset> GetAllOrphanedInternalCustomAssets()

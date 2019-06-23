@@ -24,8 +24,7 @@ namespace CrunchySandwichBag
 
         static public IEnumerable<UnityEngine.Object> GetAssetDependents(this UnityEngine.Object item)
         {
-            return AssetDatabase.GetAllAssetPaths()
-                .Convert(p => AssetDatabase.LoadMainAssetAtPath(p))
+            return AssetDatabaseExtensions.GetAssets(true)
                 .Skip(item)
                 .Narrow(o => o.GetAssetDependencyPaths(true).Has(item.GetAssetPath()));
         }

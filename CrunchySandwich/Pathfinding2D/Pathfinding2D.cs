@@ -9,7 +9,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class Pathfinding2D : Subsystem
+    public class Pathfinding2D : Subsystem<Pathfinding2D>
     {
         [SerializeField]private float connection_radius;
         [SerializeField]private float connection_fudge_distance;
@@ -19,11 +19,6 @@ namespace CrunchySandwich
         [SerializeField]private LayerEX node_layer;
         [SerializeField]private LayerMask dynamic_obstacle_layer_mask;
         [SerializeField]private LayerMask static_obstacle_layer_mask;
-
-        static public Pathfinding2D GetInstance()
-        {
-            return Subsystem.GetInstance<Pathfinding2D>();
-        }
 
         private bool IsConnection(Vector2 position1, Vector2 position2, int layer_mask)
         {

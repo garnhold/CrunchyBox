@@ -15,7 +15,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class Painter : Subsystem, ISerializationCallbackReceiver
+    public class Painter : Subsystem<Painter>, ISerializationCallbackReceiver
     {
         [SerializeField]private PainterToolType tool_type;
 
@@ -27,11 +27,6 @@ namespace CrunchySandwichBag
         [SerializeField]private Color secondary_color;
 
         private Utensil<Color> utensil;
-
-        static public Painter GetInstance()
-        {
-            return Subsystem.GetInstance<Painter>();
-        }
 
         private Utensil<Color> CreateUtensil()
         {

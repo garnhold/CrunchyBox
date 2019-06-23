@@ -75,7 +75,9 @@
     <Compile Include="CustomAsset\CustomAssets_Internal_Manage.cs" />
     <Compile Include="CustomAsset\CustomAssets_Internal_Create.cs" />
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
-    <Compile Include="DeployablePrefab\DeployablePrefabManagerInitilizer.cs" />
+    <Compile Include="DeployablePrefab\DeployablePrefabExtensions_Generate.cs" />
+    <Compile Include="DeployablePrefab\DeployablePrefabExtensions.cs" />
+    <Compile Include="Prefabs\PrefabsInitilizer.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_Complex\EditorSceneElement_Complex_EditGadget.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\Extensions\EditorSceneElementEditGadgetInstanceExtensions_Execute.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\Extensions\EditorSceneElementEditGadgetInstanceExtensions_Set.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_ForceProperty.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions.cs" />
     <Compile Include="BurstSprite\BurstSpriteMenu.cs" />
+    <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions_Load_Extended.cs" />
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions_Get.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_ScrollBox.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_GUIContentLabel.cs" />
@@ -204,6 +207,7 @@
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviourExtensions_RequireComponent.cs" />
     <Compile Include="Extensions\RequireComponent\RequireComponentExtensions_Types.cs" />
     <Compile Include="Extensions\RequireComponent\RequireComponentExtensions.cs" />
+    <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_ChildValue.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_TargetType.cs" />
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Attributes.cs" />
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_ChildValue.cs" />
@@ -223,6 +227,7 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Data.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Modify.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_ContentIdentity.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Prefab.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Cohabitants.cs" />

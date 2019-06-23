@@ -14,6 +14,11 @@ namespace CrunchySandwichBag
             return Selection.activeObject.GetAssetDirectory();
         }
 
+        static public string GetAssetDirectory()
+        {
+            return "Assets/";
+        }
+
         static public string GetGeneratedDirectory()
         {
             return "Assets/Generated/";

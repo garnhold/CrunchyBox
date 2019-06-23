@@ -16,12 +16,8 @@ namespace CrunchySandwichBag
 
         static public void ModifySettings(string filename, Process<SerializedObject> process)
         {
-            string path = Filename.MakeFilename(GetProjectSettingsDirectory(), filename);
-            SerializedObject obj = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(path).GetFirst());
-
-            process(obj);
-
-            obj.ApplyModifiedProperties();
+            AssetDatabase.LoadMainAssetAtPath(Filename.MakeFilename(GetProjectSettingsDirectory(), filename))
+                .ModifyAsset(process);
         }
     }
 }

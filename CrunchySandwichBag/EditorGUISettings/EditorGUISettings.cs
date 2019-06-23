@@ -14,16 +14,11 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUISettings : Subsystem
+    public class EditorGUISettings : Subsystem<EditorGUISettings>
     {
         [SerializeField]private bool is_custom_gui_enabled;
         [SerializeField]private bool is_custom_scene_gui_enabled;
         [SerializeField][Range(10.0f, 300.0f)]private float default_label_width;
-
-        static public EditorGUISettings GetInstance()
-        {
-            return Subsystem.GetInstance<EditorGUISettings>();
-        }
 
         public bool IsCustomGUIEnabled()
         {
