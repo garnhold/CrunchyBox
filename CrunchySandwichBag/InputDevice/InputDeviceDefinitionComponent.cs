@@ -16,6 +16,7 @@ namespace CrunchySandwichBag
     public abstract class InputDeviceDefinitionComponent : CustomAsset
     {
         public abstract void GenerateInternalAxises(int device_id, SerializedProperty axises);
+
         public abstract void GenerateClassConstructor(CSTextDocumentBuilder builder, string device_id);
         public abstract void GenerateClassMembers(CSTextDocumentBuilder builder);
 
@@ -52,6 +53,26 @@ namespace CrunchySandwichBag
         public string GetName()
         {
             return name;
+        }
+
+        public void GenerateEnumMember(CSTextDocumentBuilder builder)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "ENUM", GetName().StyleAsEnumName()
+            );
+
+            writer.Write("?ENUM, ");
+        }
+
+        public void GenerateGetCase(CSTextDocumentBuilder builder, string enum_type)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "VARIABLE", GetName().StyleAsVariableName(),
+                "ENUM", GetName().StyleAsEnumName(),
+                "ENUM_TYPE", enum_type
+            );
+
+            writer.Write("case ?ENUM_TYPE.?ENUM: return ?VARIABLE;");
         }
 
         public void GenerateClassUpdate(CSTextDocumentBuilder builder)

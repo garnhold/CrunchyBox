@@ -71,5 +71,10 @@ namespace CrunchySalt
         {
             return item.StyleAsVariableName().ToUpper();
         }
+
+        static public string StyleAsEnumName(this string item)
+        {
+            return item.StyleAsUppercasedEntity();
+        }
     }
 }

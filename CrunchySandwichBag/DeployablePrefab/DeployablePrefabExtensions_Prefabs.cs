@@ -14,18 +14,18 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    static public class DeployablePrefabExtensions_Generate
+    static public class DeployablePrefabExtensions_Prefabs
     {
         static public void PushPrefabToPrefabs(this DeployablePrefab item, SerializedObject obj)
         {
-            obj.SetChildValue(item.name.StyleAsVariableName(), item);
+            obj.SetChildValue(item.GetPrefabsName(), item);
         }
 
         static public void GeneratePrefabsMembers(this DeployablePrefab item, CSTextDocumentBuilder builder)
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "TYPE", item.GetType().Name,
-                "NAME", item.name.StyleAsVariableName(),
+                "NAME", item.GetPrefabsName(),
                 "STATIC_FUNCTION", ("Deploy_" + item.name).StyleAsFunctionName(),
                 "INSTANCE_FUNCTION", ("Spawn_" + item.name + "_Instance").StyleAsFunctionName()
             );
@@ -50,6 +50,11 @@ namespace CrunchySandwichBag
                     writer.Write("return GetInstance().?INSTANCE_FUNCTION(" + arguments + ");");
                 });
             }
+        }
+
+        static public string GetPrefabsName(this DeployablePrefab item)
+        {
+            return item.name.StyleAsVariableName();
         }
     }
 }

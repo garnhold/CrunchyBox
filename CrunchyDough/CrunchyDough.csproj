@@ -67,6 +67,11 @@
     <Compile Include="Extensions\IList\IListExtensions_ICatalog.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentLooped.cs" />
+    <Compile Include="Extensions\Number\NumberExtensions_Approximate.cs">
+      <DependentUpon>NumberExtensions_Approximate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\Number\NumberExtensions_PingPonged.cs">
       <DependentUpon>NumberExtensions_PingPonged.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -569,7 +574,6 @@
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Ensure.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Alter.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_To.cs" />
-    <Compile Include="Extensions\IComparable\IComparableExtensions_Is.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_CalculateKeyRelations.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_FollowInferences_Same.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_FollowInferences.cs" />
@@ -1187,6 +1191,10 @@
     <Content Include="Extensions\Number\IEnumerable\NumberExtensions_IEnumerable.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberExtensions_IEnumerable.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Approximate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Approximate.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\Number\NumberExtensions_Length.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

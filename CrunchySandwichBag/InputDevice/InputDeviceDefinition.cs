@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyNoodle;
 using CrunchyGinger;
 using CrunchySandwich;
@@ -22,19 +23,10 @@ namespace CrunchySandwichBag
         private void Use()
         {
             ProjectSettings.ModifySettings("InputManager.asset", o => GenerateInternalAxises(o));
-            CodeGenerator.GenerateCode("InputDevice", b => GenerateClass(b), false);
+            CodeGenerator.GenerateCode("InputDevice", b => GenerateCode(b), false);
         }
 
-        public void GenerateInternalAxises(SerializedObject obj)
-        {
-            SerializedProperty axises = obj.FindProperty("m_Axes");
-
-            axises.ClearArray();
-            for (int i = 1; i <= max_number_devices; i++)
-                components.Process(c => c.GenerateInternalAxises(i, axises));
-        }
-
-        public void GenerateClass(CSTextDocumentBuilder builder)
+        private void GenerateSatelliteClass(CSTextDocumentBuilder builder)
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
             );
@@ -45,6 +37,12 @@ namespace CrunchySandwichBag
                     writer.Write("InputDevice.GetInputDevices().Process(d => d.Update());");
                 });
             });
+        }
+
+        private void GenerateClass(CSTextDocumentBuilder builder)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+            );
 
             writer.Write("public class InputDevice", delegate() {
                 for (int i = 1; i <= max_number_devices; i++)
@@ -72,8 +70,65 @@ namespace CrunchySandwichBag
                     components.Process(c => c.GenerateClassUpdate(builder));
                 });
 
+                GenerateGetComponentFunction<InputDeviceDefinitionComponent_Axis>(builder);
+                GenerateGetComponentFunction<InputDeviceDefinitionComponent_Button>(builder);
+                GenerateGetComponentFunction<InputDeviceDefinitionComponent_Stick>(builder);
+
                 components.Process(c => c.GenerateClassMembers(builder));
             });
+        }
+
+        private void GenerateInputDeviceEnum<T>(CSTextDocumentBuilder builder) where T : InputDeviceDefinitionComponent
+        {
+            string name = typeof(T).Name.TrimPrefix("InputDeviceDefinitionComponent_");
+
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "ENUM_TYPE_NAME", ("InputDevice_" + name).StyleAsClassName()
+            );
+
+            writer.Write("public enum ?ENUM_TYPE_NAME", delegate() {
+                components.Convert<T>().Process(c => c.GenerateEnumMember(builder));
+            });
+        }
+
+        private void GenerateGetComponentFunction<T>(CSTextDocumentBuilder builder) where T : InputDeviceDefinitionComponent
+        {
+            string name = typeof(T).Name.TrimPrefix("InputDeviceDefinitionComponent_");
+            string enum_type_name = ("InputDevice_" + name).StyleAsClassName();
+
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "ENUM_TYPE_NAME", enum_type_name,
+                "TYPE", "InputDeviceComponent_" + name.StyleAsClassName(),
+                "FUNCTION", ("Get_" + name).StyleAsFunctionName()
+            );
+
+            writer.Write("public ?TYPE ?FUNCTION(?ENUM_TYPE_NAME value)", delegate() {
+                writer.Write("switch(value)", delegate() {
+                    components.Convert<T>().Process(c => c.GenerateGetCase(builder, enum_type_name));
+                });
+
+                writer.Write("throw new UnaccountedBranchException(\"value\", value);");
+            });
+        }
+
+        public void GenerateInternalAxises(SerializedObject obj)
+        {
+            SerializedProperty axises = obj.FindProperty("m_Axes");
+
+            axises.ClearArray();
+            for (int i = 1; i <= max_number_devices; i++)
+                components.Process(c => c.GenerateInternalAxises(i, axises));
+        }
+
+        public void GenerateCode(CSTextDocumentBuilder builder)
+        {
+            GenerateSatelliteClass(builder);
+
+            GenerateInputDeviceEnum<InputDeviceDefinitionComponent_Axis>(builder);
+            GenerateInputDeviceEnum<InputDeviceDefinitionComponent_Button>(builder);
+            GenerateInputDeviceEnum<InputDeviceDefinitionComponent_Stick>(builder);
+
+            GenerateClass(builder);
         }
     }
 }

@@ -75,7 +75,7 @@
     <Compile Include="CustomAsset\CustomAssets_Internal_Manage.cs" />
     <Compile Include="CustomAsset\CustomAssets_Internal_Create.cs" />
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
-    <Compile Include="DeployablePrefab\DeployablePrefabExtensions_Generate.cs" />
+    <Compile Include="DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
     <Compile Include="DeployablePrefab\DeployablePrefabExtensions.cs" />
     <Compile Include="Prefabs\PrefabsInitilizer.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_Complex\EditorSceneElement_Complex_EditGadget.cs" />

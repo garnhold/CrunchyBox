@@ -29,6 +29,13 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public bool IsBoundAbove(this <#=type_name#> item, <#=type_name#> lower)
+		{
+			if (item >= lower)
+				return true;
+
+			return false;
+		}
 
         static public <#=type_name#> BindBelow(this <#=type_name#> item, <#=type_name#> upper)
         {
@@ -37,6 +44,13 @@ namespace CrunchyDough
 
             return upper;
         }
+		static public bool IsBoundBelow(this <#=type_name#> item, <#=type_name#> upper)
+		{
+			if (item <= upper)
+				return true;
+
+			return false;
+		}
 
         static public <#=type_name#> BindBetween(this <#=type_name#> item, <#=type_name#> value1, <#=type_name#> value2)
         {
@@ -55,6 +69,18 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public bool IsBoundBetween(this <#=type_name#> item, <#=type_name#> value1, <#=type_name#> value2)
+		{
+			<#=type_name#> low;
+            <#=type_name#> high;
+
+            value1.Order(value2, out low, out high);
+
+            if (item.IsBoundAbove(low) && item.IsBoundBelow(high))
+                return true;
+
+            return false;
+		}
 <# } #>
 	}
 }
