@@ -19,15 +19,7 @@ namespace CrunchySandwich
         public override long GetCurrentTimeInMilliseconds()
         {
             if (ApplicationEX.GetInstance().IsUnityMainThread())
-            {
-                try
-                {
-                    current_time_in_milliseconds = (long)(Time.time * 1000.0f);
-                }
-                catch (UnityException)
-                {
-                }
-            }
+                current_time_in_milliseconds = (long)(Time.time * 1000.0f);
 
             return current_time_in_milliseconds;
         }

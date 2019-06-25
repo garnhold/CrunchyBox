@@ -22,9 +22,6 @@ namespace CrunchySandwichBag
             if (property.IsTypicalArray())
                 return new EditProperty_Array_Serialized(target, property);
 
-            if (property.IsGenericObject())
-                return new EditProperty_Object_Serialized(target, property);
-
             return new EditProperty_Value_Serialized(target, property);
         }
         protected EditProperty CreateProperty(SerializedProperty property)

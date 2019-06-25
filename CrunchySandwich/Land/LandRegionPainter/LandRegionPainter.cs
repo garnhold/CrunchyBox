@@ -6,7 +6,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Land")]
+    [AssetClassCategory("Land")]
     public abstract class LandRegionPainter : CustomAsset
     {
         public abstract void InitilizeLandRegion(Land land, LandRegionType land_region_type, Palette<LandRegionSplat> palette);

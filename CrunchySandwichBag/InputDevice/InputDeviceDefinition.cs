@@ -13,7 +13,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [CustomAssetCategory("InputDevice")]
+    [AssetClassCategory("InputDevice")]
     public class InputDeviceDefinition : CustomAsset
     {
         [SerializeField]private int max_number_devices;

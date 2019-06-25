@@ -13,12 +13,12 @@ namespace CrunchyDough
 
         static public void SetCapped<T>(this IList<T> item, int index, T value)
         {
-            item[item.GetCappedIndex(index)] = value;
+            item.SetDropped(item.GetCappedIndex(index), value);
         }
 
         static public T GetCapped<T>(this IList<T> item, int index)
         {
-            return item[item.GetCappedIndex(index)];
+            return item.GetDropped(item.GetCappedIndex(index));
         }
     }
 }

@@ -96,7 +96,25 @@ namespace CrunchyDough
             return false;
         }
 
-		static public byte GetLowestBitIndex(this byte item)
+		static public bool HasNoOtherBits(this byte item, byte bits)
+		{
+			if ((item & (~bits)) == 0)
+				return true;
+
+			return false;
+		}
+
+		static public bool HasNthBit(this byte item, int n)
+		{
+			if(item.HasAllBits(ByteBits.GetNthBitValue(n)))
+				return true;
+
+			return false;
+		}
+
+	
+		static private byte[] LOWEST_BIT_INDEX_TABLE;
+		static private byte GetLowestBitIndexInternal(this byte item)
 		{
 			unchecked
 			{
@@ -145,12 +163,16 @@ return 7;}
 
 			}
 		}
-		static public byte GetLowestBitValue(this byte item)
-        {
-            return ByteBits.GetNthBitValue(item.GetLowestBitIndex());
-        }
+		static public byte GetLowestBitIndex(this byte item)
+		{
+			if(LOWEST_BIT_INDEX_TABLE == null)
+				LOWEST_BIT_INDEX_TABLE = Ints.Range(0, byte.MaxValue, true).Convert(i => GetLowestBitIndexInternal((byte)i)).ToArray();
 
-		static public byte GetHighestBitIndex(this byte item)
+			return LOWEST_BIT_INDEX_TABLE[item];
+		}
+
+		static private byte[] HIGHEST_BIT_INDEX_TABLE;
+		static private byte GetHighestBitIndexInternal(this byte item)
 		{
 			unchecked
 			{
@@ -199,11 +221,74 @@ return 0;}
 
 			}
 		}
-		static public byte GetHighestBitValue(this byte item)
-        {
-            return ByteBits.GetNthBitValue(item.GetHighestBitIndex());
-        }
+		static public byte GetHighestBitIndex(this byte item)
+		{
+			if(HIGHEST_BIT_INDEX_TABLE == null)
+				HIGHEST_BIT_INDEX_TABLE = Ints.Range(0, byte.MaxValue, true).Convert(i => GetHighestBitIndexInternal((byte)i)).ToArray();
 
+			return HIGHEST_BIT_INDEX_TABLE[item];
+		}
+
+		static private byte[] NUMBER_BITS_TABLE;
+		static private byte GetNumberBitsInternal(this byte item)
+		{
+			unchecked
+			{
+				byte count = 0;
+if(item.HasAnyBits((byte)0x0F))
+{
+if(item.HasAnyBits((byte)0x03))
+{
+if(item.HasAnyBits((byte)0x01))
+{
+count++;}
+if(item.HasAnyBits((byte)0x02))
+{
+count++;}
+}
+if(item.HasAnyBits((byte)0x0C))
+{
+if(item.HasAnyBits((byte)0x04))
+{
+count++;}
+if(item.HasAnyBits((byte)0x08))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((byte)0xF0))
+{
+if(item.HasAnyBits((byte)0x30))
+{
+if(item.HasAnyBits((byte)0x10))
+{
+count++;}
+if(item.HasAnyBits((byte)0x20))
+{
+count++;}
+}
+if(item.HasAnyBits((byte)0xC0))
+{
+if(item.HasAnyBits((byte)0x40))
+{
+count++;}
+if(item.HasAnyBits((byte)0x80))
+{
+count++;}
+}
+}
+
+return count;
+			}
+		}
+		static public byte GetNumberBits(this byte item)
+		{
+			if(NUMBER_BITS_TABLE == null)
+				 NUMBER_BITS_TABLE = Ints.Range(0, byte.MaxValue, true).Convert(i => GetNumberBitsInternal((byte)i)).ToArray();
+
+			return NUMBER_BITS_TABLE[item];
+		}
+	
 		static public IEnumerable<byte> GetBitIndexs(this byte item)
 		{
 			unchecked
@@ -253,6 +338,16 @@ yield return 7;}
 
 			}
 		}
+	
+		static public byte GetLowestBitValue(this byte item)
+        {
+            return ByteBits.GetNthBitValue(item.GetLowestBitIndex());
+        }
+
+		static public byte GetHighestBitValue(this byte item)
+        {
+            return ByteBits.GetNthBitValue(item.GetHighestBitIndex());
+        }
 
 	
 			static public byte BitwiseOR(this IEnumerable<byte> item)
@@ -438,6 +533,23 @@ yield return 7;}
             return false;
         }
 
+		static public bool HasNoOtherBits(this int item, int bits)
+		{
+			if ((item & (~bits)) == 0)
+				return true;
+
+			return false;
+		}
+
+		static public bool HasNthBit(this int item, int n)
+		{
+			if(item.HasAllBits(IntBits.GetNthBitValue(n)))
+				return true;
+
+			return false;
+		}
+
+	
 		static public byte GetLowestBitIndex(this int item)
 		{
 			unchecked
@@ -631,10 +743,6 @@ return 31;}
 
 			}
 		}
-		static public int GetLowestBitValue(this int item)
-        {
-            return IntBits.GetNthBitValue(item.GetLowestBitIndex());
-        }
 
 		static public byte GetHighestBitIndex(this int item)
 		{
@@ -829,11 +937,203 @@ return 0;}
 
 			}
 		}
-		static public int GetHighestBitValue(this int item)
-        {
-            return IntBits.GetNthBitValue(item.GetHighestBitIndex());
-        }
 
+		static public byte GetNumberBits(this int item)
+		{
+			unchecked
+			{
+				byte count = 0;
+if(item.HasAnyBits((int)0x0000FFFF))
+{
+if(item.HasAnyBits((int)0x000000FF))
+{
+if(item.HasAnyBits((int)0x0000000F))
+{
+if(item.HasAnyBits((int)0x00000003))
+{
+if(item.HasAnyBits((int)0x00000001))
+{
+count++;}
+if(item.HasAnyBits((int)0x00000002))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0x0000000C))
+{
+if(item.HasAnyBits((int)0x00000004))
+{
+count++;}
+if(item.HasAnyBits((int)0x00000008))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((int)0x000000F0))
+{
+if(item.HasAnyBits((int)0x00000030))
+{
+if(item.HasAnyBits((int)0x00000010))
+{
+count++;}
+if(item.HasAnyBits((int)0x00000020))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0x000000C0))
+{
+if(item.HasAnyBits((int)0x00000040))
+{
+count++;}
+if(item.HasAnyBits((int)0x00000080))
+{
+count++;}
+}
+}
+}
+if(item.HasAnyBits((int)0x0000FF00))
+{
+if(item.HasAnyBits((int)0x00000F00))
+{
+if(item.HasAnyBits((int)0x00000300))
+{
+if(item.HasAnyBits((int)0x00000100))
+{
+count++;}
+if(item.HasAnyBits((int)0x00000200))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0x00000C00))
+{
+if(item.HasAnyBits((int)0x00000400))
+{
+count++;}
+if(item.HasAnyBits((int)0x00000800))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((int)0x0000F000))
+{
+if(item.HasAnyBits((int)0x00003000))
+{
+if(item.HasAnyBits((int)0x00001000))
+{
+count++;}
+if(item.HasAnyBits((int)0x00002000))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0x0000C000))
+{
+if(item.HasAnyBits((int)0x00004000))
+{
+count++;}
+if(item.HasAnyBits((int)0x00008000))
+{
+count++;}
+}
+}
+}
+}
+if(item.HasAnyBits((int)0xFFFF0000))
+{
+if(item.HasAnyBits((int)0x00FF0000))
+{
+if(item.HasAnyBits((int)0x000F0000))
+{
+if(item.HasAnyBits((int)0x00030000))
+{
+if(item.HasAnyBits((int)0x00010000))
+{
+count++;}
+if(item.HasAnyBits((int)0x00020000))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0x000C0000))
+{
+if(item.HasAnyBits((int)0x00040000))
+{
+count++;}
+if(item.HasAnyBits((int)0x00080000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((int)0x00F00000))
+{
+if(item.HasAnyBits((int)0x00300000))
+{
+if(item.HasAnyBits((int)0x00100000))
+{
+count++;}
+if(item.HasAnyBits((int)0x00200000))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0x00C00000))
+{
+if(item.HasAnyBits((int)0x00400000))
+{
+count++;}
+if(item.HasAnyBits((int)0x00800000))
+{
+count++;}
+}
+}
+}
+if(item.HasAnyBits((int)0xFF000000))
+{
+if(item.HasAnyBits((int)0x0F000000))
+{
+if(item.HasAnyBits((int)0x03000000))
+{
+if(item.HasAnyBits((int)0x01000000))
+{
+count++;}
+if(item.HasAnyBits((int)0x02000000))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0x0C000000))
+{
+if(item.HasAnyBits((int)0x04000000))
+{
+count++;}
+if(item.HasAnyBits((int)0x08000000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((int)0xF0000000))
+{
+if(item.HasAnyBits((int)0x30000000))
+{
+if(item.HasAnyBits((int)0x10000000))
+{
+count++;}
+if(item.HasAnyBits((int)0x20000000))
+{
+count++;}
+}
+if(item.HasAnyBits((int)0xC0000000))
+{
+if(item.HasAnyBits((int)0x40000000))
+{
+count++;}
+if(item.HasAnyBits((int)0x80000000))
+{
+count++;}
+}
+}
+}
+}
+
+return count;
+			}
+		}
+	
 		static public IEnumerable<byte> GetBitIndexs(this int item)
 		{
 			unchecked
@@ -1027,6 +1327,16 @@ yield return 31;}
 
 			}
 		}
+	
+		static public int GetLowestBitValue(this int item)
+        {
+            return IntBits.GetNthBitValue(item.GetLowestBitIndex());
+        }
+
+		static public int GetHighestBitValue(this int item)
+        {
+            return IntBits.GetNthBitValue(item.GetHighestBitIndex());
+        }
 
 			static public byte GetNthByte(this int item, int n)
 		{
@@ -1319,6 +1629,23 @@ yield return 31;}
             return false;
         }
 
+		static public bool HasNoOtherBits(this long item, long bits)
+		{
+			if ((item & (~bits)) == 0)
+				return true;
+
+			return false;
+		}
+
+		static public bool HasNthBit(this long item, int n)
+		{
+			if(item.HasAllBits(LongBits.GetNthBitValue(n)))
+				return true;
+
+			return false;
+		}
+
+	
 		static public byte GetLowestBitIndex(this long item)
 		{
 			unchecked
@@ -1704,10 +2031,6 @@ return 63;}
 
 			}
 		}
-		static public long GetLowestBitValue(this long item)
-        {
-            return LongBits.GetNthBitValue(item.GetLowestBitIndex());
-        }
 
 		static public byte GetHighestBitIndex(this long item)
 		{
@@ -2094,11 +2417,395 @@ return 0;}
 
 			}
 		}
-		static public long GetHighestBitValue(this long item)
-        {
-            return LongBits.GetNthBitValue(item.GetHighestBitIndex());
-        }
 
+		static public byte GetNumberBits(this long item)
+		{
+			unchecked
+			{
+				byte count = 0;
+if(item.HasAnyBits((long)0x00000000FFFFFFFF))
+{
+if(item.HasAnyBits((long)0x000000000000FFFF))
+{
+if(item.HasAnyBits((long)0x00000000000000FF))
+{
+if(item.HasAnyBits((long)0x000000000000000F))
+{
+if(item.HasAnyBits((long)0x0000000000000003))
+{
+if(item.HasAnyBits((long)0x0000000000000001))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000000002))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x000000000000000C))
+{
+if(item.HasAnyBits((long)0x0000000000000004))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000000008))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0x00000000000000F0))
+{
+if(item.HasAnyBits((long)0x0000000000000030))
+{
+if(item.HasAnyBits((long)0x0000000000000010))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000000020))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x00000000000000C0))
+{
+if(item.HasAnyBits((long)0x0000000000000040))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000000080))
+{
+count++;}
+}
+}
+}
+if(item.HasAnyBits((long)0x000000000000FF00))
+{
+if(item.HasAnyBits((long)0x0000000000000F00))
+{
+if(item.HasAnyBits((long)0x0000000000000300))
+{
+if(item.HasAnyBits((long)0x0000000000000100))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000000200))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x0000000000000C00))
+{
+if(item.HasAnyBits((long)0x0000000000000400))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000000800))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0x000000000000F000))
+{
+if(item.HasAnyBits((long)0x0000000000003000))
+{
+if(item.HasAnyBits((long)0x0000000000001000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000002000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x000000000000C000))
+{
+if(item.HasAnyBits((long)0x0000000000004000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000008000))
+{
+count++;}
+}
+}
+}
+}
+if(item.HasAnyBits((long)0x00000000FFFF0000))
+{
+if(item.HasAnyBits((long)0x0000000000FF0000))
+{
+if(item.HasAnyBits((long)0x00000000000F0000))
+{
+if(item.HasAnyBits((long)0x0000000000030000))
+{
+if(item.HasAnyBits((long)0x0000000000010000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000020000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x00000000000C0000))
+{
+if(item.HasAnyBits((long)0x0000000000040000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000080000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0x0000000000F00000))
+{
+if(item.HasAnyBits((long)0x0000000000300000))
+{
+if(item.HasAnyBits((long)0x0000000000100000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000200000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x0000000000C00000))
+{
+if(item.HasAnyBits((long)0x0000000000400000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000000800000))
+{
+count++;}
+}
+}
+}
+if(item.HasAnyBits((long)0x00000000FF000000))
+{
+if(item.HasAnyBits((long)0x000000000F000000))
+{
+if(item.HasAnyBits((long)0x0000000003000000))
+{
+if(item.HasAnyBits((long)0x0000000001000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000002000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x000000000C000000))
+{
+if(item.HasAnyBits((long)0x0000000004000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000008000000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0x00000000F0000000))
+{
+if(item.HasAnyBits((long)0x0000000030000000))
+{
+if(item.HasAnyBits((long)0x0000000010000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000020000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x00000000C0000000))
+{
+if(item.HasAnyBits((long)0x0000000040000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000080000000))
+{
+count++;}
+}
+}
+}
+}
+}
+if(item.HasAnyBits((long)0xFFFFFFFF00000000))
+{
+if(item.HasAnyBits((long)0x0000FFFF00000000))
+{
+if(item.HasAnyBits((long)0x000000FF00000000))
+{
+if(item.HasAnyBits((long)0x0000000F00000000))
+{
+if(item.HasAnyBits((long)0x0000000300000000))
+{
+if(item.HasAnyBits((long)0x0000000100000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000200000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x0000000C00000000))
+{
+if(item.HasAnyBits((long)0x0000000400000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000000800000000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0x000000F000000000))
+{
+if(item.HasAnyBits((long)0x0000003000000000))
+{
+if(item.HasAnyBits((long)0x0000001000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000002000000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x000000C000000000))
+{
+if(item.HasAnyBits((long)0x0000004000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000008000000000))
+{
+count++;}
+}
+}
+}
+if(item.HasAnyBits((long)0x0000FF0000000000))
+{
+if(item.HasAnyBits((long)0x00000F0000000000))
+{
+if(item.HasAnyBits((long)0x0000030000000000))
+{
+if(item.HasAnyBits((long)0x0000010000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000020000000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x00000C0000000000))
+{
+if(item.HasAnyBits((long)0x0000040000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000080000000000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0x0000F00000000000))
+{
+if(item.HasAnyBits((long)0x0000300000000000))
+{
+if(item.HasAnyBits((long)0x0000100000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000200000000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x0000C00000000000))
+{
+if(item.HasAnyBits((long)0x0000400000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0000800000000000))
+{
+count++;}
+}
+}
+}
+}
+if(item.HasAnyBits((long)0xFFFF000000000000))
+{
+if(item.HasAnyBits((long)0x00FF000000000000))
+{
+if(item.HasAnyBits((long)0x000F000000000000))
+{
+if(item.HasAnyBits((long)0x0003000000000000))
+{
+if(item.HasAnyBits((long)0x0001000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0002000000000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x000C000000000000))
+{
+if(item.HasAnyBits((long)0x0004000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0008000000000000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0x00F0000000000000))
+{
+if(item.HasAnyBits((long)0x0030000000000000))
+{
+if(item.HasAnyBits((long)0x0010000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0020000000000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x00C0000000000000))
+{
+if(item.HasAnyBits((long)0x0040000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0080000000000000))
+{
+count++;}
+}
+}
+}
+if(item.HasAnyBits((long)0xFF00000000000000))
+{
+if(item.HasAnyBits((long)0x0F00000000000000))
+{
+if(item.HasAnyBits((long)0x0300000000000000))
+{
+if(item.HasAnyBits((long)0x0100000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0200000000000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0x0C00000000000000))
+{
+if(item.HasAnyBits((long)0x0400000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x0800000000000000))
+{
+count++;}
+}
+}
+if(item.HasAnyBits((long)0xF000000000000000))
+{
+if(item.HasAnyBits((long)0x3000000000000000))
+{
+if(item.HasAnyBits((long)0x1000000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x2000000000000000))
+{
+count++;}
+}
+if(item.HasAnyBits((long)0xC000000000000000))
+{
+if(item.HasAnyBits((long)0x4000000000000000))
+{
+count++;}
+if(item.HasAnyBits((long)0x8000000000000000))
+{
+count++;}
+}
+}
+}
+}
+}
+
+return count;
+			}
+		}
+	
 		static public IEnumerable<byte> GetBitIndexs(this long item)
 		{
 			unchecked
@@ -2484,6 +3191,16 @@ yield return 63;}
 
 			}
 		}
+	
+		static public long GetLowestBitValue(this long item)
+        {
+            return LongBits.GetNthBitValue(item.GetLowestBitIndex());
+        }
+
+		static public long GetHighestBitValue(this long item)
+        {
+            return LongBits.GetNthBitValue(item.GetHighestBitIndex());
+        }
 
 			static public byte GetNthByte(this long item, int n)
 		{

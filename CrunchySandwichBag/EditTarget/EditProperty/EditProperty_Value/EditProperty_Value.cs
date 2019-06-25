@@ -16,7 +16,13 @@ namespace CrunchySandwichBag
         public abstract void SetContents(object value);
 
         public abstract bool TryGetContents(out object value);
+        public abstract bool TryGetContents(out EditTarget value);
         public abstract bool TryGetContentsType(out Type type);
+
+        protected override EditorGUIElement CreateEditorGUIElementInternal()
+        {
+            return new EditorGUIElement_Composite_EditPropertyValue_Generic(this);
+        }
 
         public EditProperty_Value(EditTarget t) : base(t)
         {

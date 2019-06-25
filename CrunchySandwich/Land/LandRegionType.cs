@@ -8,7 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Land")]
+    [AssetClassCategory("Land")]
     public class LandRegionType : CustomAsset
     {
         [SerializeField]private int ground_offset;

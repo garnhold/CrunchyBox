@@ -24,11 +24,16 @@ namespace CrunchyDough
 <# foreach(string type_name in type_names){#>
 		static public <#=type_name#> GetLooped(this <#=type_name#> item, <#=type_name#> length)
         {
-            item = (<#=type_name#>)(item % length);
-            if (item < 0)
-                item += length;
+			if(length > 0)
+			{
+				item = (<#=type_name#>)(item % length);
+				if (item < 0)
+					item += length;
 
-            return item;
+				return item;
+			}
+
+			return 0;
         }
 <# } #>
 	}

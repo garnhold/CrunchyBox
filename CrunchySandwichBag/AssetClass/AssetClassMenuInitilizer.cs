@@ -15,18 +15,18 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [CodeGenerator]
-    static public class CustomAssetMenuInitilizer
+    static public class AssetClassMenuInitilizer
     {
         [CodeGenerator]
-        static private void GenerateCustomAssetMenuItems()
+        static private void GenerateAssetClassMenuItems()
         {
-            CodeGenerator.GenerateStaticClass("CustomAssetMenuItems", delegate(CSTextDocumentBuilder builder) {
+            CodeGenerator.GenerateStaticClass("AssetClassMenuItems", delegate(CSTextDocumentBuilder builder) {
                 foreach (Type type in CrunchyNoodle.Types.GetFilteredTypes(
-                    Filterer_Type.CanBeTreatedAs<CustomAsset>(),
+                    Filterer_Type.HasCustomAttributeOfType<AssetClassAttribute>(true),
                     Filterer_Type.IsConcreteClass()
                 ))
                 {
-                    string category = type.GetCustomLabeledAttributeOfTypeLabel<CustomAssetCategoryAttribute>(true);
+                    string category = type.GetCustomLabeledAttributeOfTypeLabel<AssetClassCategoryAttribute>(true);
 
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "PATH", ("Assets/Create/" + category.AppendToVisible("/") + type.Name.Replace("_", "/")).StyleAsLiteralString(),
@@ -36,7 +36,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("[MenuItem(?PATH)]");
                     writer.Write("static public void ?FUNCTION()", delegate() {
-                        writer.Write("CustomAssets.CreateExternalCustomAsset<?TYPENAME>();");
+                        writer.Write("Assets.CreateAsset<?TYPENAME>();");
                     });
                 }
             }, true);

@@ -46,6 +46,13 @@ namespace CrunchySandwichBag
             return false;
         }
 
+        public override bool TryGetContents(out EditTarget value)
+        {
+            value = new EditTarget_Serialized_Property(property);
+
+            return true;
+        }
+
         public override string GetName()
         {
             return property.name;
@@ -78,10 +85,9 @@ namespace CrunchySandwichBag
         protected override EditorGUIElement CreateEditorGUIElementInternal()
         {
             return CustomPropertyDrawers.GetPropertyDrawer(GetPropertyType())
-                .IfNotNull(
-                    d => d.CreateEditorGUIElement(property),
-                    () => new EditorGUIElement_SerializedProperty_Field(property)
-                );
+                .IfNotNull(d => d.CreateEditorGUIElement(property))
+                ??
+                base.CreateEditorGUIElementInternal();
         }
     }
 }

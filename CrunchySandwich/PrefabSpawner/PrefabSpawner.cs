@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Utility")]
+    [AssetClassCategory("Utility")]
     public abstract class PrefabSpawner : CustomAsset
     {
         [SerializeField]private Placer placer;

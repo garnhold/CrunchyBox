@@ -15,7 +15,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [CustomAssetCategory("Painter/Mixer")]
+    [AssetClassCategory("Painter/Mixer")]
     public abstract class PainterMixer : CustomAsset
     {
         public abstract Mixer<Color> CreateMixer();

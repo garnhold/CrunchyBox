@@ -62,12 +62,12 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEX\ApplicationEXEditorInitilizer.cs" />
+    <Compile Include="AssetClass\AssetClassMenuInitilizer.cs" />
+    <Compile Include="Assets\Assets_Create.cs" />
+    <Compile Include="Assets\Assets.cs" />
     <Compile Include="CodeGenerator\CodeGeneratorAttribute.cs" />
     <Compile Include="CustomAsset\CustomAssets_External_Manage.cs" />
     <Compile Include="CustomAsset\CustomAssets_External.cs" />
@@ -77,6 +77,10 @@
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
     <Compile Include="DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
     <Compile Include="DeployablePrefab\DeployablePrefabExtensions.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_Generic.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_NeighborMask.cs" />
     <Compile Include="Prefabs\PrefabsInitilizer.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_Complex\EditorSceneElement_Complex_EditGadget.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\Extensions\EditorSceneElementEditGadgetInstanceExtensions_Execute.cs" />
@@ -183,7 +187,6 @@
     <Compile Include="EditTarget\EditAction\EditAction.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\EditProperty_Array.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_SetElementValue.cs" />
-    <Compile Include="EditTarget\EditProperty\EditProperty_Object\EditProperty_Object_Serialized.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_GUIContent.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_Resize.cs" />
@@ -267,7 +270,6 @@
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Array_Insert.cs" />
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_GUIContent.cs" />
     <Compile Include="AssetType\AssetType.cs" />
-    <Compile Include="CustomAsset\CustomAssetMenuInitilizer.cs" />
     <Compile Include="CustomAsset\CustomAssets.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Dependency.cs" />
     <Compile Include="PropertyDrawersAndEditors\EditorWindows\PainterWindow.cs" />

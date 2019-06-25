@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Utility")]
+    [AssetClassCategory("Utility")]
     public abstract class PlacementEvaluator : CustomAsset
     {
         public abstract bool IsGameObjectPlacementValid(GameObject game_object);

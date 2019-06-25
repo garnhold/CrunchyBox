@@ -50,7 +50,8 @@
       <HintPath>..\CrunchySauce\bin\Release\CrunchySauce.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="UnityEngine">
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -63,6 +64,8 @@
     <Compile Include="ApplicationEX\ApplicationEX.cs" />
     <Compile Include="ApplicationEX\ApplicationEXLiason.cs" />
     <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
+    <Compile Include="AssetClass\AssetClassAttribute.cs" />
+    <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
     <Compile Include="Axis\Axis.cs" />
     <Compile Include="Axis\Extensions\AxisExtensions.cs" />
     <Compile Include="BorderCollider2D\BorderCollider2D.cs" />
@@ -83,8 +86,8 @@
     <Compile Include="CustomAsset\CustomAssetGenerator.cs" />
     <Compile Include="CustomAsset\CustomAssetInstance.cs" />
     <Compile Include="CustomAsset\CustomAsset.cs" />
-    <Compile Include="CustomAsset\CustomAssetCategoryAttribute.cs" />
     <Compile Include="Curve\Curve.cs" />
+    <Compile Include="CustomTile\CustomTile.cs" />
     <Compile Include="DeployablePrefab\DeployablePrefab.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_Deploy.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions.cs" />
@@ -193,6 +196,8 @@
     </Compile>
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions_Motor.cs" />
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions.cs" />
+    <Compile Include="Extensions\ITilemap\ITilemapExtensions_Neighbors.cs" />
+    <Compile Include="Extensions\ITilemap\ITilemapExtensions.cs" />
     <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions_With.cs" />
     <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions.cs" />
     <Compile Include="Extensions\Mesh\MeshExtensions_CalculateUV.cs" />
@@ -299,6 +304,11 @@
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Quad.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle2.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PolygonTriangle.cs" />
+    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Compare.cs" />
+    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Has.cs" />
+    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_GetWith.cs" />
+    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions.cs" />
+    <Compile Include="NeighborMask\NeighborMask.cs" />
     <Compile Include="Plane2\Extensions\Plane2Extensions_Intersect_Triangle.cs" />
     <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Intersect_Plane.cs" />
     <Compile Include="AnimatedSprite\SpriteAnimation.cs" />
@@ -311,6 +321,8 @@
     <Compile Include="SequencedSprite\SpriteSequence.cs" />
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
+    <Compile Include="TerrainTile\TerrainSubTile.cs" />
+    <Compile Include="TerrainTile\TerrainTile.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Split.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Area.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Fantize.cs" />

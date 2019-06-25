@@ -9,7 +9,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [CustomAssetCategory("Sprite")]
+    [AssetClassCategory("Sprite")]
     public class SequencedSpriteFormat : CustomAsset
     {
         [SerializeField]private SpriteSequenceFormat[] sequence_formats;

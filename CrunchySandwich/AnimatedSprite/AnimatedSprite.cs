@@ -8,7 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Sprite")]
+    [AssetClassCategory("Sprite")]
     public class AnimatedSprite : CustomAsset
     {
         [SerializeField]private SpriteAnimation[] animations;

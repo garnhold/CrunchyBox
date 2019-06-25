@@ -14,43 +14,38 @@ namespace CrunchySandwichBag
     {
         static public CustomAsset CreateExternalCustomAsset(Type type, string filename, Process<CustomAsset> process)
         {
-            CustomAsset asset = ScriptableObject.CreateInstance(type) as CustomAsset;
-
-            process(asset);
-            asset.SaveAsset(filename);
-            asset.FocusAsset();
-            return asset;
+            return Assets.CreateAsset<CustomAsset>(type, filename, process);
         }
         static public CustomAsset CreateExternalCustomAsset(Type type, string filename)
         {
-            return CreateExternalCustomAsset(type, filename, a => { });
+            return Assets.CreateAsset<CustomAsset>(type, filename);
         }
 
         static public CustomAsset CreateExternalCustomAsset(Type type, Process<CustomAsset> process)
         {
-            return CreateExternalCustomAsset(type, Project.MakeNewCurrentDirectoryFilename(type.Name, "asset"), process);
+            return Assets.CreateAsset<CustomAsset>(type, process);
         }
         static public CustomAsset CreateExternalCustomAsset(Type type)
         {
-            return CreateExternalCustomAsset(type, a => { });
+            return Assets.CreateAsset<CustomAsset>(type);
         }
 
         static public T CreateExternalCustomAsset<T>(string filename, Process<T> process) where T : CustomAsset
         {
-            return (T)CreateExternalCustomAsset(typeof(T), filename, a => process((T)a));
+            return Assets.CreateAsset<T>(filename, process);
         }
         static public T CreateExternalCustomAsset<T>(string filename) where T : CustomAsset
         {
-            return CreateExternalCustomAsset<T>(filename, a => { });
+            return Assets.CreateAsset<T>(filename);
         }
 
         static public T CreateExternalCustomAsset<T>(Process<T> process) where T : CustomAsset
         {
-            return CreateExternalCustomAsset<T>(Project.MakeNewCurrentDirectoryFilename(typeof(T).Name, "asset"), process);
+            return Assets.CreateAsset<T>(process);
         }
         static public T CreateExternalCustomAsset<T>() where T : CustomAsset
         {
-            return CreateExternalCustomAsset<T>(a => { });
+            return Assets.CreateAsset<T>();
         }
     }
 }

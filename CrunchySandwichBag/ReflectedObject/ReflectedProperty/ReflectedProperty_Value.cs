@@ -33,6 +33,16 @@ namespace CrunchySandwichBag
             return false;
         }
 
+        public bool TryGetContents(out ReflectedObject value)
+        {
+            value = new ReflectedObject(GetAllContents(), GetReflectedObject());
+
+            if (value.IsValid())
+                return true;
+
+            return false;
+        }
+
         public bool TryGetContents<T>(out T value)
         {
             object temp;

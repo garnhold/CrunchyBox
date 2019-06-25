@@ -35,6 +35,15 @@ namespace CrunchySandwichBag
             return property.TryGetContents(out value);
         }
 
+        public override bool TryGetContents(out EditTarget value)
+        {
+            ReflectedObject temp;
+            bool to_return = property.TryGetContents(out temp);
+
+            value = new EditTarget_Reflected(temp);
+            return to_return;
+        }
+
         public override string GetName()
         {
             return property.GetVariableName();

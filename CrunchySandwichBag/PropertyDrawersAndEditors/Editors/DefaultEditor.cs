@@ -16,9 +16,6 @@ namespace CrunchySandwichBag
     [CustomEditor(typeof(MonoBehaviour), true)]
     public class DefaultEditor_MonoBehaviour : DefaultEditor<MonoBehaviour> { }
 
-    [CustomEditor(typeof(NetworkBehaviour), true)]
-    public class DefaultEditor_NetworkBehaviour : DefaultEditor<NetworkBehaviour> { }
-
     [CustomEditor(typeof(ScriptableObject), true)]
     public class DefaultEditor_ScriptableObject : DefaultEditor<ScriptableObject> { }
 

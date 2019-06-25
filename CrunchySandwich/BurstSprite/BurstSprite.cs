@@ -8,7 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Sprite")]
+    [AssetClassCategory("Sprite")]
     public class BurstSprite : CustomAsset
     {
         [SerializeField]private float duration;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Land")]
+    [AssetClassCategory("Land")]
     public class LandRegionSplat : CustomAsset
     {
         [SerializeField]private Texture2D color_texture;

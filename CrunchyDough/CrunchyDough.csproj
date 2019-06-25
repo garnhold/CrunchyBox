@@ -54,12 +54,16 @@
     <Compile Include="EnumValueInfo\EnumValueInfo.cs" />
     <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions_Value.cs" />
     <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions.cs" />
+    <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable_Bits.cs" />
+    <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Combine.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Group.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_RatingAll.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Congruent.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Percent.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentDropped.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentCapped.cs" />
@@ -67,6 +71,7 @@
     <Compile Include="Extensions\IList\IListExtensions_ICatalog.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentLooped.cs" />
+    <Compile Include="Extensions\Int\IntExtensions_Congruent.cs" />
     <Compile Include="Extensions\Number\NumberExtensions_Approximate.cs">
       <DependentUpon>NumberExtensions_Approximate.tt</DependentUpon>
       <AutoGen>True</AutoGen>

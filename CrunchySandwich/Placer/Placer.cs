@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace CrunchySandwich
 {
-    [CustomAssetCategory("Utility")]
+    [AssetClassCategory("Utility")]
     public class Placer : CustomAsset
     {
         [SerializeField]private List<PlacementEvaluator> placement_evaluators;
