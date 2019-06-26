@@ -21,5 +21,15 @@ namespace CrunchySandwichBag
 
             obj.ApplyModifiedProperties();
         }
+
+        static public void ModifyAssetImporter(this UnityEngine.Object item, Process<SerializedObject> process)
+        {
+            AssetImporter importer = item.GetAssetImporter();
+
+            importer.ModifyAsset(process);
+
+            importer.Reserialize();
+            importer.SaveAndReimport();
+        }
     }
 }

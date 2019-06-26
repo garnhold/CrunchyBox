@@ -35,7 +35,7 @@ namespace CrunchySandwich
                 content_identity != last_generate_complete_paths_content_identity ||
                 alpha_threshold != last_generate_complete_paths_alpha_threshold)
             {
-                complete_paths = sprite.Vectorize(alpha_threshold, 6).ToList();
+                complete_paths = sprite.ScaledVectorize(alpha_threshold, 6, 1.0f).ToList();
 
                 last_generate_complete_paths_content_identity = content_identity;
                 last_generate_complete_paths_alpha_threshold = alpha_threshold;
@@ -44,25 +44,18 @@ namespace CrunchySandwich
 
         public void UpdateGeometry()
         {
-            float units_per_cell = sprite.GetUnitsPerPixel();
-            List<List<Vector2>> reduced_paths = new List<List<Vector2>>();
-
             UpdateCompletePaths();
 
-            foreach (List<Vector2> path in complete_paths)
-            {
-                List<Vector2> reduced_path = path.ToList();
-
-                reduced_path = reduced_path.BisectApproximateLoop(bisection_deviance * units_per_cell).ToList();
-                reduced_path = reduced_path.VariableSweepApproximateLoop(50, sweep_deviance * units_per_cell).ToList();
-                reduced_path = reduced_path.CollapseLoopPoints(minimum_length * units_per_cell).ToList();
-                reduced_path = reduced_path.CollapseLoopStellations(minimum_shortest_to_longest_ratio).ToList();
-
-                if (reduced_path.Count >= 3 && reduced_path.Count < 256)
-                    reduced_paths.Add(reduced_path);
-            }
-
-            GetComponent<PolygonCollider2D>().SetPaths(reduced_paths);
+            GetComponent<PolygonCollider2D>().SetPaths(
+                complete_paths.Convert(p => p.ApproximateLoop(
+                    bisection_deviance * sprite.GetUnitsPerPixel(),
+                    50,
+                    sweep_deviance * sprite.GetUnitsPerPixel(),
+                    minimum_length * sprite.GetUnitsPerPixel(),
+                    minimum_shortest_to_longest_ratio
+                ).ToList())
+                .Narrow(p => p.Count.IsBoundBetween(3, 256))
+            );
         }
 
         public void SetSpriteAutomatically()

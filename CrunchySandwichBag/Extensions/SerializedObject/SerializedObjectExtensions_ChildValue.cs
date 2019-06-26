@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 
 using CrunchyDough;
+using CrunchyNoodle;
 using CrunchyBun;
 
 namespace CrunchySandwichBag
@@ -20,6 +21,10 @@ namespace CrunchySandwichBag
         static public object GetChildValue(this SerializedObject item, string name)
         {
             return item.FindProperty(name).GetValue();
+        }
+        static public T GetChildValue<T>(this SerializedObject item, string name)
+        {
+            return item.GetChildValue(name).ConvertEX<T>();
         }
     }
 }

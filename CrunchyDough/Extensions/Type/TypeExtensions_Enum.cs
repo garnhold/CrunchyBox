@@ -61,6 +61,20 @@ namespace CrunchyDough
             return item.GetEnumValueInfoByName(name).IfNotNull(i => i.GetValue());
         }
 
+        static public EnumValueInfo GetEnumValueInfoByLongValue(this Type item, long value)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfoByLongValue(value));
+        }
+        static public Enum GetEnumValueByLongValue(this Type item, long value)
+        {
+            return item.GetEnumValueInfoByLongValue(value).IfNotNull(i => i.GetValue());
+        }
+
+        static public EnumValueInfo GetEnumValueInfoByValue(this Type item, Enum value)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfoByValue(value));
+        }
+
         static public IEnumerable<EnumValueInfo> GetEnumValueInfos(this Type item)
         {
             return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfos());

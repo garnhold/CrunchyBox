@@ -16,6 +16,11 @@ namespace CrunchySandwich
             return Texture2DExtensions.Create(item.GetWidth(), item.GetHeight(), item.GetData().Convert(operation).ToArray());
         }
 
+        static public Texture2D CreateTexture2D(this Grid<Color> item)
+        {
+            return item.CreateTexture2D(c => c);
+        }
+
         static public Texture2D CreateTexture2D(this Grid<float> item)
         {
             return item.CreateTexture2D(f => new Color(f, f, f));

@@ -24,7 +24,7 @@ namespace CrunchySandwichBag
                 foreach (SequencedSpriteFormat format in CustomAssets.GetExternalCustomAssetsOfType<SequencedSpriteFormat>())
                 {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "PATH", ("Assets/Create Sprite/Sequenced/" + format.name).StyleAsLiteralString(),
+                        "PATH", ("Assets/Sprite/Create/Sequenced/" + format.name).StyleAsLiteralString(),
                         "FUNCTION_EXECUTE", ("Execute" + format.name).StyleAsFunctionName(),
                         "FUNCTION_VALIDATE", ("Validate" + format.name).StyleAsFunctionName(),
                         "FORMAT_PATH", format.GetAssetPath().StyleAsLiteralString()

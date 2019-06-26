@@ -18,5 +18,10 @@ namespace CrunchySandwichBag
         {
             return item.GetAssetCohabitants().Convert<UnityEngine.Object, Sprite>();
         }
+
+        static public Sprite GetSpriteById(this Texture2D item, string id)
+        {
+            return item.GetSprites().FindFirst(s => s.GetSpriteId() == id);
+        }
     }
 }

@@ -12,5 +12,29 @@ namespace CrunchyNoodle
         {
             return value.ParseEnum(type);
         }
+
+        [Conversion]
+        static public Enum ToEnum(byte value, Type type)
+        {
+            return type.GetEnumValueByLongValue(value);
+        }
+
+        [Conversion]
+        static public Enum ToEnum(short value, Type type)
+        {
+            return type.GetEnumValueByLongValue(value);
+        }
+
+        [Conversion]
+        static public Enum ToEnum(int value, Type type)
+        {
+            return type.GetEnumValueByLongValue(value);
+        }
+
+        [Conversion]
+        static public Enum ToEnum(long value, Type type)
+        {
+            return type.GetEnumValueByLongValue(value);
+        }
     }
 }

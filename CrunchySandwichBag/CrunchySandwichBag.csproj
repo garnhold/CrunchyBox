@@ -81,6 +81,15 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_Generic.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_NeighborMask.cs" />
+    <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
+    <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Id.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Collider.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_BurstSprite.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_Collider.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Importer.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_GetValue.cs" />
     <Compile Include="Prefabs\PrefabsInitilizer.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_Complex\EditorSceneElement_Complex_EditGadget.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\Extensions\EditorSceneElementEditGadgetInstanceExtensions_Execute.cs" />
@@ -95,7 +104,6 @@
     <Compile Include="EditTarget\EditProperty\EditProperty_Value\Extensions\EditPropertyValueExtensions.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_ForceProperty.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions.cs" />
-    <Compile Include="BurstSprite\BurstSpriteMenu.cs" />
     <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions_Load_Extended.cs" />
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions_Get.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_ScrollBox.cs" />

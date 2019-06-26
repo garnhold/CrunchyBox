@@ -225,6 +225,8 @@
     <Compile Include="Extensions\Sprite\SpriteExtensions_Vectorize.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Data.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Units.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_MipMaps.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Scaled.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Vertorize.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Color_Fill.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Stamps.cs" />
@@ -239,6 +241,9 @@
     <Compile Include="Extensions\Type\TypeExtensions_Designated.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_ContentIdentity.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Constrain.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_LoopInflate.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_LoopReduction_General.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_PathPromotion.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Loop.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Winding.cs" />
@@ -320,6 +325,7 @@
     <Compile Include="SequencedSprite\SpriteSequenceFrame.cs" />
     <Compile Include="SequencedSprite\SpriteSequence.cs" />
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
+    <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
     <Compile Include="TerrainTile\TerrainTile.cs" />

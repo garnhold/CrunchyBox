@@ -22,6 +22,11 @@ namespace CrunchySandwich
             return new Texture2D(width, height);
         }
 
+        static public Texture2D Create(int width, int height, Operation<Color, int, int> operation)
+        {
+            return new Grid<Color>(width, height, operation).CreateTexture2D();
+        }
+
         static public Texture2D Create(int width, int height, Color[] colors)
         {
             Texture2D texture = Create(width, height);
