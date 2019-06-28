@@ -11,12 +11,19 @@ namespace CrunchySandwich
 {
     static public class Vector2Extensions_IEnumerable_LoopReduction_General
     {
-        static public IEnumerable<Vector2> ApproximateLoop(this IEnumerable<Vector2> item, float maximum_sweep_normal_deviance, int inspect_length, float maximum_inspect_normal_deviance, float minimum_inter_length, float minimum_shortest_to_longest_ratio)
+        static public IEnumerable<Vector2> ApproximateLoop(this IEnumerable<Vector2> item, int quality, float maximum_normal_deviance, float minimum_inter_length, float minimum_area)
         {
-            return item.BisectApproximateLoop(maximum_sweep_normal_deviance)
-                .VariableSweepApproximateLoop(inspect_length, maximum_inspect_normal_deviance)
+            if (quality > 0)
+            {
+                return item.BisectApproximateLoop(maximum_normal_deviance / 4.0f)
+                    .VariableSweepApproximateLoop(quality, maximum_normal_deviance)
+                    .CollapseLoopPoints(minimum_inter_length)
+                    .CollapseLoopTriangles(minimum_area);
+            }
+
+            return item.BisectApproximateLoop(maximum_normal_deviance)
                 .CollapseLoopPoints(minimum_inter_length)
-                .CollapseLoopStellations(minimum_shortest_to_longest_ratio);
+                .CollapseLoopTriangles(minimum_area);
         }
     }
 }

@@ -60,7 +60,9 @@
     <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_PrepareMultipass.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertCenterConnections.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertLoopedNeighbors.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Prepare.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Group.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_RatingAll.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />
@@ -924,7 +926,7 @@
     <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get.cs" />
     <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set.cs" />
     <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Spiral.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_CloseLoop.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Loop.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Add.cs" />
     <Compile Include="Extensions\IComparable\IComparableExtensions.cs" />

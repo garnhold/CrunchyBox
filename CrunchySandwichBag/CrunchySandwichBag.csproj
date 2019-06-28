@@ -80,6 +80,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_Generic.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_SpriteVectorizerTuner.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_NeighborMask.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />

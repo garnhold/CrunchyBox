@@ -15,28 +15,32 @@ namespace CrunchySandwich
         [SerializeField]private float pre_scale = 1.0f;
         [SerializeField]private int maximum_trace_gap = 6;
 
-        [SerializeField]private float maximum_sweep_normal_deviance = 5.0f;
-
-        [SerializeField]private int inspect_length = 10;
-        [SerializeField]private float maximum_inspect_normal_deviance = 1.0f;
-
-        [SerializeField]private float minimum_inter_length = 2.0f;
-        [SerializeField]private float minimum_shortest_to_longest_ratio = 0.003f;
-
         [SerializeField]private float inflate_amount = 1.0f;
+
+        [SerializeField]private int quality = 50;
+        [SerializeField]private float maximum_normal_deviance = 5.0f;
+
+        [SerializeField]private float minimum_inter_length = 1.0f;
+        [SerializeField]private float minimum_triangle_area = 0.003f;
+
+        [SerializeField]private SpriteVectorizerTuner tuner;
 
         public IEnumerable<List<Vector2>> VectorizeSprite(Sprite sprite)
         {
-            return sprite.UnscaledVectorize(alpha_threshold, maximum_trace_gap, pre_scale)
-                .Convert(l => l.ApproximateLoop(
-                    maximum_sweep_normal_deviance,
-                    inspect_length,
-                    maximum_inspect_normal_deviance,
-                    minimum_inter_length,
-                    minimum_shortest_to_longest_ratio
-                ).OffsetInflateLoop(inflate_amount).Constrain(RectExtensions.CreateMinMaxRect(0.0f, 0.0f, sp)).ToList());
+            Rect binding_rect = sprite.GetSpriteSpaceRect();
 
-            constrain this tjo //the sprite rect so that over inflating and constraining gets perfect edges etc.
+            return sprite.UnscaledVectorize(alpha_threshold, maximum_trace_gap, pre_scale)
+                .Convert(l => l
+                    .InflateLoop(inflate_amount)
+                    .Convert(p => p.BindWithin(binding_rect))
+                    .ApproximateLoop(
+                        quality,
+                        maximum_normal_deviance,
+                        minimum_inter_length,
+                        minimum_triangle_area
+                    )
+                    .ToList()
+                );
         }
         static public IEnumerable<List<Vector2>> Vectorize(Sprite sprite)
         {

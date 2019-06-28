@@ -35,7 +35,7 @@ namespace CrunchySandwich
             Sprite sprite = item.sprite;
 
             if (sprite != null)
-                return sprite.bounds.GetPlanarSize();
+                return sprite.GetWorldSize();
 
             return Vector2.zero;
         }

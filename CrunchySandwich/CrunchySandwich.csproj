@@ -187,8 +187,17 @@
     <Compile Include="Extensions\GameObject\GameObjectExtensions_Active.cs" />
     <Compile Include="Extensions\GameObject\IEnumerable\GameObjectExtensions_IEnumerable_Destroy.cs" />
     <Compile Include="Extensions\GameObject\IEnumerable\GameObjectExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Loop.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Path.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_WireCube.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Vectorize.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Square.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Loop.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Path.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Pixel.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Line.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Sprite.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Color.cs" />
     <Compile Include="Extensions\HasColor\HasColorExtensions.cs">
       <DependentUpon>HasColorExtensions.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -222,6 +231,8 @@
     <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Position.cs" />
     <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Texture.cs" />
     <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Match.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Rect.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Size.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Vectorize.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Data.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Units.cs" />
@@ -241,7 +252,7 @@
     <Compile Include="Extensions\Type\TypeExtensions_Designated.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_ContentIdentity.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Constrain.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Convert.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_LoopInflate.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_LoopReduction_General.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_PathPromotion.cs" />
@@ -253,9 +264,11 @@
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Spacar.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Floats.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Connect.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Normal.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_Rect.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_Bounds.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_VectorI2.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Invert.cs" />
     <Compile Include="Extensions\Vector2\Vector2s.cs">
       <DependentUpon>Vector2s.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -325,6 +338,7 @@
     <Compile Include="SequencedSprite\SpriteSequenceFrame.cs" />
     <Compile Include="SequencedSprite\SpriteSequence.cs" />
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
+    <Compile Include="SpriteVectorizer\SpriteVectorizerTuner.cs" />
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />

@@ -47,14 +47,14 @@ namespace CrunchySandwich
             UpdateCompletePaths();
 
             GetComponent<PolygonCollider2D>().SetPaths(
-                complete_paths.Convert(p => p.ApproximateLoop(
-                    bisection_deviance * sprite.GetUnitsPerPixel(),
-                    50,
-                    sweep_deviance * sprite.GetUnitsPerPixel(),
-                    minimum_length * sprite.GetUnitsPerPixel(),
-                    minimum_shortest_to_longest_ratio
-                ).ToList())
-                .Narrow(p => p.Count.IsBoundBetween(3, 256))
+                complete_paths.Convert(p => p
+                    .BisectApproximateLoop(bisection_deviance * sprite.GetUnitsPerPixel())
+                    .VariableSweepApproximateLoop(50, sweep_deviance * sprite.GetUnitsPerPixel())
+                    .CollapseLoopPoints(minimum_length * sprite.GetUnitsPerPixel())
+                    .CollapseLoopStellations(minimum_shortest_to_longest_ratio)
+                    .ToList()
+                )
+                .Narrow(z => z.Count.IsBoundBetween(3, 256))
             );
         }
 

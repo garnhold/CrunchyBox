@@ -62,6 +62,7 @@
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions_Path.cs" />
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions.cs" />
     <Compile Include="Extensions\GridCell\GridCellExtensions_VectorI2.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_Scale.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Stamp.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Get.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_VectorI2.cs" />
@@ -133,9 +134,11 @@
       <DependentUpon>Mathq_IntPow.tt</DependentUpon>
     </Compile>
     <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Invert.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalDirection.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Compare.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Normal.cs" />
     <Compile Include="VectorF2\VectorF2s.cs">
       <DependentUpon>VectorF2s.tt</DependentUpon>
       <AutoGen>True</AutoGen>
