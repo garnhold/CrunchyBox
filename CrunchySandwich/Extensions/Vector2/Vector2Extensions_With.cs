@@ -16,9 +16,19 @@ namespace CrunchySandwich
             return new Vector2(x, item.y);
         }
 
+        static public Vector2 GetWithFlippedX(this Vector2 item)
+        {
+            return item.GetWithX(-item.x);
+        }
+
         static public Vector2 GetWithY(this Vector2 item, float y)
         {
             return new Vector2(item.x, y);
+        }
+
+        static public Vector2 GetWithFlippedY(this Vector2 item)
+        {
+            return item.GetWithY(-item.y);
         }
     }
 }

@@ -14,24 +14,9 @@ namespace CrunchySandwichBag
 {
     static public class SpriteExtensions_Collider
     {
-        static public void GenerateSpriteCollider(this Sprite item)
+        static public void GenerateSpriteCollider(this Sprite item, SpriteVectorizer vectorizer)
         {
-            item.texture.GenerateSpriteCollider(item);
-        }
-
-        [MenuItem("Assets/Sprite/Generate Collider")]
-        static private void GenerateSpriteCollider()
-        {
-            ((Sprite)Selection.activeObject).GenerateSpriteCollider();
-        }
-
-        [MenuItem("Assets/Sprite/Generate Collider", true)]
-        static private bool GenerateSpriteColliderValidate()
-        {
-            if (Selection.activeObject is Sprite)
-                return true;
-
-            return false;
+            item.texture.GenerateSpriteCollider(item, vectorizer);
         }
     }
 }

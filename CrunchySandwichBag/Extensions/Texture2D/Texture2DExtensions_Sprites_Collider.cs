@@ -14,33 +14,34 @@ namespace CrunchySandwichBag
 {
     static public class Texture2DExtensions_Sprites_Collider
     {
-        static public void GenerateSpriteColliders(this Texture2D item)
+        static public void GenerateSpriteColliders(this Texture2D item, SpriteVectorizer vectorizer)
         {
             item.ModifyAssetImporter(delegate(SerializedObject obj) {
                 GetSpriteSerializedPropertys(obj)
-                    .Process(p => GenerateSpriteCollider(item, p));
+                    .Process(p => GenerateSpriteCollider(item, p, vectorizer));
             });
         }
 
-        static public void GenerateSpriteCollider(this Texture2D item, Sprite sprite)
+        static public void GenerateSpriteCollider(this Texture2D item, Sprite sprite, SpriteVectorizer vectorizer)
         {
             item.ModifyAssetImporter(delegate(SerializedObject obj) {
                 GetSpriteSerializedPropertys(obj)
                     .Narrow(p => p.GetChildValue<string>("m_SpriteID") == sprite.GetSpriteId())
-                    .Process(p => GenerateSpriteCollider(item, p));
+                    .Process(p => GenerateSpriteCollider(item, p, vectorizer));
             });
         }
-        
-        static private void GenerateSpriteCollider(Texture2D texture, SerializedProperty property)
+
+        static private void GenerateSpriteCollider(Texture2D texture, SerializedProperty property, SpriteVectorizer vectorizer)
         {
             GenerateSpriteCollider(
                 texture.GetSpriteById(property.GetChildValue<string>("m_SpriteID")),
-                property
+                property,
+                vectorizer
             );
         }
-        static private void GenerateSpriteCollider(Sprite sprite, SerializedProperty property)
+        static private void GenerateSpriteCollider(Sprite sprite, SerializedProperty property, SpriteVectorizer vectorizer)
         {
-            property.SetChildValue("m_PhysicsShape", SpriteVectorizer.Vectorize(sprite));
+            property.SetChildValue("m_PhysicsShape", vectorizer.VectorizeSprite(sprite));
         }
         static private IEnumerable<SerializedProperty> GetSpriteSerializedPropertys(SerializedObject obj)
         {
@@ -54,21 +55,6 @@ namespace CrunchySandwichBag
             }
 
             return Empty.IEnumerable<SerializedProperty>();
-        }
-
-        [MenuItem("Assets/Sprite/Generate Colliders")]
-        static private void GenerateSpriteColliders()
-        {
-            ((Texture2D)Selection.activeObject).GenerateSpriteColliders();
-        }
-
-        [MenuItem("Assets/Sprite/Generate Colliders", true)]
-        static private bool GenerateSpriteCollidersValidate()
-        {
-            if (Selection.activeObject is Texture2D)
-                return true;
-
-            return false;
         }
     }
 }

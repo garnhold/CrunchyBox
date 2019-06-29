@@ -80,10 +80,11 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_Generic.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_SpriteVectorizerTuner.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_NeighborMask.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SpriteVectorizerTest.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Id.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Collider.cs" />
@@ -347,7 +348,6 @@
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\SceneEXDrawer.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\SortingLayerEXDrawer.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\LayerEXDrawer.cs" />
-    <Compile Include="PropertyDrawersAndEditors\Editors\SpriteCollider2DEditor.cs" />
     <Compile Include="ReflectedObject\ReflectedAction\ReflectedAction.cs" />
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadget.cs" />
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadgetInstance.cs" />
@@ -365,6 +365,8 @@
     <Compile Include="AnimatedSprite\AnimatedSpriteMenuInitilizer.cs" />
     <Compile Include="AnimatedSprite\SpriteAnimationFormat.cs" />
     <Compile Include="AnimatedSprite\AnimatedSpriteFormat.cs" />
+    <Compile Include="PropertyDrawersAndEditors\Editors\SpriteVectorizerEditor.cs" />
+    <Compile Include="SpriteVectorizer\SpriteVectorizerMenuInitializer.cs" />
     <Compile Include="Subsystem\SubsystemInitilizer.cs" />
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\ValueCurveDrawer.cs" />

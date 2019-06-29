@@ -14,8 +14,6 @@ namespace CrunchySandwich
     public class SpriteCollider2D : MonoBehaviour
     {
         [SerializeField]private Sprite sprite;
-        
-        [SerializeField]private bool is_show_all_parameters = false;
 
         [SerializeField]private float alpha_threshold = 0.9f;
         [SerializeField]private float bisection_deviance = 1.0f;
@@ -26,6 +24,17 @@ namespace CrunchySandwich
         private List<List<Vector2>> complete_paths;
         private int last_generate_complete_paths_content_identity;
         private float last_generate_complete_paths_alpha_threshold;
+
+        [ContextMenu("Set Sprite Automatically")]
+        public void SetSpriteAutomatically()
+        {
+            sprite = GetComponent<SpriteRenderer>().IfNotNull(r => r.sprite);
+        }
+
+        private void OnValidate()
+        {
+            UpdateGeometry();
+        }
 
         private void UpdateCompletePaths()
         {
@@ -56,11 +65,6 @@ namespace CrunchySandwich
                 )
                 .Narrow(z => z.Count.IsBoundBetween(3, 256))
             );
-        }
-
-        public void SetSpriteAutomatically()
-        {
-            sprite = GetComponent<SpriteRenderer>().IfNotNull(r => r.sprite);
         }
     }
 }

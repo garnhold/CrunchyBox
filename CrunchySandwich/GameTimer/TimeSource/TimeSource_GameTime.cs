@@ -8,20 +8,18 @@ namespace CrunchySandwich
 {
     public class TimeSource_GameTime : TimeSource
     {
-        private long current_time_in_milliseconds;
+        private Timer internal_timer;
 
         static public readonly TimeSource_GameTime INSTANCE = new TimeSource_GameTime();
 
         private TimeSource_GameTime()
         {
+            internal_timer = new Timer().StartAndGet();
         }
 
         public override long GetCurrentTimeInMilliseconds()
         {
-            if (ApplicationEX.GetInstance().IsUnityMainThread())
-                current_time_in_milliseconds = (long)(Time.time * 1000.0f);
-
-            return current_time_in_milliseconds;
+            return internal_timer.GetElapsedTimeInMilliseconds();
         }
     }
 }

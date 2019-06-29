@@ -134,7 +134,6 @@
       <DependentUpon>Mathq_IntPow.tt</DependentUpon>
     </Compile>
     <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Invert.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalDirection.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Compare.cs" />
