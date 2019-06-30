@@ -34,6 +34,10 @@
     <Reference Include="CrunchyBun">
       <HintPath>..\CrunchyBun\bin\Release\CrunchyBun.dll</HintPath>
     </Reference>
+    <Reference Include="CrunchyCheese, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrunchyCheese\bin\Release\CrunchyCheese.dll</HintPath>
+    </Reference>
     <Reference Include="CrunchyDough">
       <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
     </Reference>

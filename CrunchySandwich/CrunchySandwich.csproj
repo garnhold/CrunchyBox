@@ -34,6 +34,9 @@
     <Reference Include="CrunchyBun">
       <HintPath>..\CrunchyBun\bin\Release\CrunchyBun.dll</HintPath>
     </Reference>
+    <Reference Include="CrunchyCheese">
+      <HintPath>..\CrunchyCheese\bin\Release\CrunchyCheese.dll</HintPath>
+    </Reference>
     <Reference Include="CrunchyDough">
       <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
     </Reference>
@@ -323,11 +326,38 @@
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Quad.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle2.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PolygonTriangle.cs" />
+    <Compile Include="MotionNode\MotionNode_Function.cs" />
+    <Compile Include="MotionNode\MotionNode.cs" />
+    <Compile Include="Motion\Motion.cs" />
+    <Compile Include="Motion\Motion_LocalPlanarRotation.cs" />
+    <Compile Include="Motion\Motion_LocalPlanarScale.cs" />
+    <Compile Include="Motion\Motion_LocalPlanarPosition.cs" />
+    <Compile Include="Motion\Motion_LocalScale.cs" />
+    <Compile Include="Motion\Motion_LocalRotation.cs" />
+    <Compile Include="Motion\Motion_LocalPosition.cs" />
+    <Compile Include="MotionNode\MotionNode_Time.cs" />
     <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Compare.cs" />
     <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Has.cs" />
     <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_GetWith.cs" />
     <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions.cs" />
     <Compile Include="NeighborMask\NeighborMask.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_MExp.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Multiple.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Average.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Product.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Sum.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Composite.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Curve.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Pulse.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Ramp.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_ReverseSaw.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Square.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_SkewTriangle.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Saw.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_InfiniteRamp.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Triangle.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Sine.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction.cs" />
     <Compile Include="Plane2\Extensions\Plane2Extensions_Intersect_Triangle.cs" />
     <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Intersect_Plane.cs" />
     <Compile Include="AnimatedSprite\SpriteAnimation.cs" />

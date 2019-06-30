@@ -28,25 +28,25 @@ namespace CrunchySandwich
 
         public void OnBeforeSerialize()
         {
-			string old_tyon_data = tyon_data;
-			List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
-
-			try
+			if (did_unpack_tyon_data)
 			{
-				List<object> external_objects = new List<object>();
+				string old_tyon_data = tyon_data;
+				List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
 
-				if (did_unpack_tyon_data)
+				try
 				{
+					List<object> external_objects = new List<object>();
+
 					tyon_data = Tyon.Serialize(this, UnityTyonSerializationSettings.INSTANCE, external_objects);
 					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
 				}
-			}
-			catch(Exception)
-			{
-				tyon_data = old_tyon_data;
-				tyon_unity_objects = old_tyon_unity_objects;
+				catch(Exception)
+				{
+					tyon_data = old_tyon_data;
+					tyon_unity_objects = old_tyon_unity_objects;
 
-				throw;
+					throw;
+				}
 			}
         }
 

@@ -17,6 +17,20 @@ namespace CrunchySalt
             return new ILUnaryOperatorInvokation(type, item);
         }
 
+        static public ILUnaryOperatorInvokation GetILUnaryOperatorInvokationBySymbol(this ILValue item, string symbol)
+        {
+            return item.GetILUnaryOperatorInvokation(
+                UnaryOperatorTypeExtensions.GetUnaryOperatorTypeBySymbol(symbol)
+            );
+        }
+
+        static public ILUnaryOperatorInvokation GetILUnaryOperatorInvokationByName(this ILValue item, string name)
+        {
+            return item.GetILUnaryOperatorInvokation(
+                UnaryOperatorTypeExtensions.GetUnaryOperatorTypeByName(name)
+            );
+        }
+
         static public ILUnaryOperatorInvokation GetILNumericNegated(this ILValue item)
         {
             return item.GetILUnaryOperatorInvokation(UnaryOperatorType.NumericNegate);

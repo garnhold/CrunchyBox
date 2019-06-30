@@ -28,6 +28,35 @@ namespace CrunchySandwich
 			return item.GetComponentUpward(typeof(T)).Convert<T>();
 		}
 
+		static public Component GetComponentUpwardFromParent(this <#=type_name#> item, Type type)
+		{
+			return item.GetParent().IfNotNull(p => p.GetComponentUpward(type));
+		}
+		static public T GetComponentUpwardFromParent<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentUpwardFromParent(typeof(T)).Convert<T>();
+		}
+
+		static public Component GetComponentDownward(this <#=type_name#> item, Type type)
+		{
+			return item.GetComponentInChildren(type);
+		}
+		static public T GetComponentDownward<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentDownward(typeof(T)).Convert<T>();
+		}
+
+		static public Component GetComponentDownwardFromChildren(this <#=type_name#> item, Type type)
+		{
+			return item.GetChildren()
+                .Convert(c => c.GetComponentDownward(type))
+                .GetFirstNonNull();
+		}
+		static public T GetComponentDownwardFromChildren<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentDownwardFromChildren(typeof(T)).Convert<T>();
+		}
+
 		static public Component GetComponentEX(this <#=type_name#> item, Type type)
 		{
 			return item.IfNotNull(i => i.GetComponent(type));

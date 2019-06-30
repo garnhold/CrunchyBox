@@ -17,6 +17,22 @@ namespace CrunchySalt
             return new ILBinaryOperatorInvokation(type, item, right);
         }
 
+        static public ILBinaryOperatorInvokation GetILBinaryOperatorInvokationBySymbol(this ILValue item, string symbol, ILValue right)
+        {
+            return item.GetILBinaryOperatorInvokation(
+                BinaryOperatorTypeExtensions.GetBinaryOperatorTypeBySymbol(symbol),
+                right
+            );
+        }
+
+        static public ILBinaryOperatorInvokation GetILBinaryOperatorInvokationByName(this ILValue item, string name, ILValue right)
+        {
+            return item.GetILBinaryOperatorInvokation(
+                BinaryOperatorTypeExtensions.GetBinaryOperatorTypeByName(name),
+                right
+            );
+        }
+
         static public ILBinaryOperatorInvokation GetILMultiplied(this ILValue item, ILValue right)
         {
             return item.GetILBinaryOperatorInvokation(BinaryOperatorType.Multiply, right);

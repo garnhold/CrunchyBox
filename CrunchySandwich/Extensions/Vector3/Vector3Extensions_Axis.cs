@@ -20,7 +20,19 @@ namespace CrunchySandwich
                 case Axis.Z: return item.z;
             }
 
-            return 0.0f;
+            throw new UnaccountedBranchException("axis", axis);
+        }
+
+        static public Vector3 GetWith(this Vector3 item, Axis axis, float value)
+        {
+            switch (axis)
+            {
+                case Axis.X: return item.GetWithX(value);
+                case Axis.Y: return item.GetWithY(value);
+                case Axis.Z: return item.GetWithZ(value);
+            }
+
+            throw new UnaccountedBranchException("axis", axis);
         }
     }
 }

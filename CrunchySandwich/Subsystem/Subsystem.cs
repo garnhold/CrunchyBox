@@ -10,15 +10,6 @@ namespace CrunchySandwich
     {
         public virtual void Update() { }
         public virtual void UpdateInEditor() { }
-
-        static public Subsystem GetInstance(Type type)
-        {
-            return SubsystemManager.GetInstance().GetSubsystemInstance(type);
-        }
-        static public T GetInstance<T>() where T : Subsystem
-        {
-            return SubsystemManager.GetInstance().GetSubsystemInstance<T>();
-        }
     }
 
     public abstract class Subsystem<T> : Subsystem where T : Subsystem<T>
@@ -27,7 +18,7 @@ namespace CrunchySandwich
         static public T GetInstance()
         {
             if (INSTANCE == null)
-                INSTANCE = GetInstance<T>();
+                INSTANCE = SubsystemManager.GetInstance().GetSubsystemInstance<T>();
 
             return INSTANCE;
         }

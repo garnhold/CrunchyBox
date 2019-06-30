@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE3BACC6-E370-4C60-915C-CC28BFE76408}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrunchyCheese</RootNamespace>
+    <AssemblyName>CrunchyCheese</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\CrunchySack_WPF\bin\Release\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyBun">
+      <HintPath>..\CrunchyBun\bin\Release\CrunchyBun.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySodium">
+      <HintPath>..\CrunchySodium\bin\Release\CrunchySodium.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MExp\antlr4\MExpBaseVisitor.cs" />
+    <Compile Include="MExp\antlr4\MExpLexer.cs" />
+    <Compile Include="MExp\antlr4\MExpParser.cs" />
+    <Compile Include="MExp\antlr4\MExpVisitor.cs" />
+    <Compile Include="MExp\Attribute\MExpFunctionAttribute.cs" />
+    <Compile Include="MExp\Functions\MExpFunctions.cs" />
+    <Compile Include="MExp\MExpAdditiveOperator.cs" />
+    <Compile Include="MExp\MExpEntry.cs" />
+    <Compile Include="MExp\MExp.cs" />
+    <Compile Include="MExp\MExpUnaryOperator.cs" />
+    <Compile Include="MExp\MExpBinaryOperator_Additive.cs" />
+    <Compile Include="MExp\MExpBinaryOperator_Additive_Addition.cs" />
+    <Compile Include="MExp\MExpBinaryOperator_Additive_Subtraction.cs" />
+    <Compile Include="MExp\MExpBinaryOperator_Multiplicative.cs" />
+    <Compile Include="MExp\MExpBinaryOperator_Multiplicative_Division.cs" />
+    <Compile Include="MExp\MExpBinaryOperator_Multiplicative_Modulo.cs" />
+    <Compile Include="MExp\MExpBinaryOperator_Multiplicative_Multiplication.cs" />
+    <Compile Include="MExp\MExpDOMinator.cs" />
+    <Compile Include="MExp\MExpElement.cs" />
+    <Compile Include="MExp\MExpExpression.cs" />
+    <Compile Include="MExp\MExpExpression_Additive.cs" />
+    <Compile Include="MExp\MExpExpression_Constant.cs" />
+    <Compile Include="MExp\MExpExpression_Function.cs" />
+    <Compile Include="MExp\MExpExpression_Group.cs" />
+    <Compile Include="MExp\MExpExpression_Multiplicative.cs" />
+    <Compile Include="MExp\MExpExpression_Sign.cs" />
+    <Compile Include="MExp\MExpExpression_Term.cs" />
+    <Compile Include="MExp\MExpFunction.cs" />
+    <Compile Include="MExp\MExpMultiplicativeOperator.cs" />
+    <Compile Include="MExp\MExpBinaryOperator.cs" />
+    <Compile Include="MExp\MExpResolver.cs" />
+    <Compile Include="MExp\MExpSyntaxException.cs" />
+    <Compile Include="MExp\MExpUnaryOperator_Sign.cs" />
+    <Compile Include="MExp\MExpUnaryOperator_Sign_Negate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

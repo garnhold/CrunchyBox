@@ -45,10 +45,5 @@ namespace CrunchySandwich
             return curve.GetValue(x.ConvertFromRangeToPercent(domain_start, domain_end))
                 .ConvertFromPercentToRange(range_start, range_end);
         }
-
-        public float GetLoopedValue(float x)
-        {
-            return GetValue(x.GetLooped(1.0f));
-        }
     }
 }

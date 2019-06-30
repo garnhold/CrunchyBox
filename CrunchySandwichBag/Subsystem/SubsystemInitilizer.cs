@@ -34,7 +34,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("[MenuItem(?PATH)]");
                     writer.Write("static public void ?FUNCTION()", delegate() {
-                        writer.Write("Subsystem.GetInstance<?TYPE>().FocusAsset();");
+                        writer.Write("?TYPE.GetInstance().FocusAsset();");
                     });
 
                     SubsystemExtensions_Asset.CreateSubsystemAssetIfMissing(type);

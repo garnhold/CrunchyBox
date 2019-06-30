@@ -22,6 +22,7 @@ using CrunchyNoodle;
     typeof(CrunchySalt.ThisAssembly),
     typeof(CrunchyNoodle.ThisAssembly),
     typeof(CrunchyBun.ThisAssembly),
+    typeof(CrunchyCheese.ThisAssembly),
     typeof(CrunchySauce.ThisAssembly),
     typeof(CrunchyRecipe.ThisAssembly),
     typeof(UnityEngine.Object)
