@@ -15,7 +15,7 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [CodeGenerator]
-    [InitializeOnLoad]
+    [EditorInitializer]
     static public class PrefabsInitializer
     {
         [CodeGenerator]
@@ -29,9 +29,18 @@ namespace CrunchySandwichBag
                         .ConvertComponent<DeployablePrefab>()
                         .Process(p => p.GeneratePrefabsMembers(builder));
                 });
+
+                writer.Write("static public class PrefabsExtensions", delegate() {
+                    CrunchyNoodle.Types.GetFilteredTypes(
+                        Filterer_Type.CanBeTreatedAs<DeployablePrefab>(),
+                        Filterer_Type.CanBeTreatedAs<MonoBehaviour>()
+                    )
+                    .Process(t => DeployablePrefabExtensions_Prefabs.GeneratePrefabsExtensionsMembers(t, builder));
+                });
             }, false);
         }
 
+        [EditorInitializer]
         static private void Initilize()
         {
             SubsystemExtensions_Asset.GetSubsystemAsset("Prefabs")
@@ -40,11 +49,6 @@ namespace CrunchySandwichBag
                         .ConvertComponent<DeployablePrefab>()
                         .Process(p => p.PushPrefabToPrefabs(obj))
                 ));
-        }
-
-        static PrefabsInitializer()
-        {
-            Initilize();
         }
     }
 }

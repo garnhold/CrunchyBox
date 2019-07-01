@@ -15,7 +15,7 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class CodeGeneratorAttribute : Attribute
+    public class EditorInitializerAttribute : Attribute
     {
     }
 }

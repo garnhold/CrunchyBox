@@ -7,11 +7,11 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class PeriodicFunction_InfiniteRamp : PeriodicFunction
+    public class EaseFunction_QuintIn : EaseFunction
     {
         protected override float ExecuteInternal(float input)
         {
-            return input;
+            return EaseOperations.QuintIn(input);
         }
     }
 }

@@ -9,24 +9,24 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/MotionNode_Function")]
-    public class MotionNode_Function : MotionNode
+    [AddComponentMenu("Motion/Motion_PeriodicFunction")]
+    public class Motion_PeriodicFunction : Motion
     {
         [SerializeField]private PeriodicFunction function;
 
         private float time_offset;
-        private MotionNode parent_motion_node;
+        private Motion parent_motion;
 
         private void Start()
         {
             time_offset = RandFloat.GetMagnitude(3600.0f);
-            parent_motion_node = this.GetComponentUpwardFromParent<MotionNode>();
+            parent_motion = this.GetComponentUpwardFromParent<Motion>();
         }
 
-        public override float GetValue()
+        public override float GetMotionValue()
         {
             return function.Execute(
-                parent_motion_node.IfNotNull(p => p.GetValue(), () => Time.time + time_offset)
+                parent_motion.IfNotNull(p => p.GetMotionValue(), () => Time.time + time_offset)
             );
         }
     }

@@ -9,15 +9,15 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/Motion_LocalPlanarRotation")]
-    public class Motion_LocalPlanarRotation : Motion
+    [AddComponentMenu("Motion/MotionNode_SpriteAlpha")]
+    public class MotionNode_SpriteAlpha : MotionNode
     {
         [SerializeField]private float center;
         [SerializeField]private float radius;
 
         protected override void UpdateInternal(float value)
         {
-            this.SetLocalPlanarRotation(center + radius * value);
+            this.GetComponent<SpriteRenderer>().SetAlpha(center + radius * value);
         }
     }
 }

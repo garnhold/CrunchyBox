@@ -34,6 +34,9 @@ namespace CrunchySandwichBag
             {
                 EditorGUIElement root = GetEditorGUIElement(item, serializedObject);
 
+                //Required to edit if missing scripts
+                EditorGUI.EndDisabledGroup();
+
                 root.LayoutDrawAndUnwind(
                     EditorGUILayout.GetControlRect(true, root.GetHeight()),
                     EditorGUISettings.GetInstance().GetDefaultLabelWidth()

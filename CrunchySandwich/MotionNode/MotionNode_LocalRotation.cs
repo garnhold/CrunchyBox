@@ -9,15 +9,15 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/Motion_LocalScale")]
-    public class Motion_LocalScale : Motion
+    [AddComponentMenu("Motion/MotionNode_LocalRotation")]
+    public class MotionNode_LocalRotation : MotionNode
     {
         [SerializeField]private Vector3 center;
         [SerializeField]private Vector3 radius;
 
         protected override void UpdateInternal(float value)
         {
-            this.SetLocalSpacarScale(center + radius * value);
+            this.SetLocalSpacarRotation(center + radius * value);
         }
     }
 }

@@ -9,8 +9,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class Motion : MonoBehaviour
+    static public class TargetedMotionExtensions
     {
-        public abstract float GetMotionValue();
     }
 }

@@ -9,7 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class DeployablePrefab : MonoBehaviour
+    public interface DeployablePrefab
     {
+        string name { get; set; }
     }
 }

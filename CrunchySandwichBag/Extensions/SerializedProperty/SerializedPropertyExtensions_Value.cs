@@ -257,6 +257,10 @@ namespace CrunchySandwichBag
 
 			return null;
 		}
+		static public T GetValue<T>(this SerializedProperty item)
+		{
+			return item.GetValue().ConvertEX<T>();
+		}
     }
 }
 

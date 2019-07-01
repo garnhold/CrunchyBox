@@ -23,7 +23,16 @@ namespace CrunchySandwichBag
             MarkedMethods<CodeGeneratorAttribute>
                 .GetFilteredMarkedStaticMethods(
                     Filterer_MethodInfo.HasNoEffectiveParameters()
-                ).Process(m => m.Invoke(null, Empty.Array<object>()));
+                ).Process(delegate(MethodInfoEX method) {
+                    try
+                    {
+                        method.Invoke(null, Empty.Array<object>());
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogAssertion(ex);
+                    }
+                });
         }
 
         static public void GenerateCode(string base_filename, Process<CSTextDocumentBuilder> process, bool is_editor)

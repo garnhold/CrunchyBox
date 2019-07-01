@@ -8,9 +8,17 @@ namespace CrunchyBun
 
     static public class EaseOperations
     {
-        static public float Instant(float x)
+        static public float InstantAtStart(float x)
         {
             return 1.0f;
+        }
+
+        static public float InstantAtEnd(float x)
+        {
+            if (x >= 1.0f)
+                return 1.0f;
+
+            return 0.0f;
         }
 
         static public float Linear(float x)

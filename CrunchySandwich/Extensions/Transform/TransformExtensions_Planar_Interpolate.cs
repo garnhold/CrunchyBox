@@ -37,5 +37,14 @@ namespace CrunchySandwich
         {
             item.SetLocalPlanarScale(item.GetLocalPlanarScale().GetInterpolate(target, amount));
         }
+
+        static public void InterpolatePlanarScale(this Transform item, float target, float amount)
+        {
+            item.InterpolatePlanarScale(new Vector2(target, target), amount);
+        }
+        static public void InterpolateLocalPlanarScale(this Transform item, float target, float amount)
+        {
+            item.InterpolateLocalPlanarScale(new Vector2(target, target), amount);
+        }
     }
 }

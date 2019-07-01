@@ -20,15 +20,18 @@ namespace CrunchySandwichBag
 
         protected override Type PullState()
         {
-            return serialized_object.targetObjects.Convert(o => o.GetTypeEX()).GetCommonAncestor();
+            return serialized_object.GetTargetType();
         }
 
         protected override EditorSceneElement PushState()
         {
             EditorSceneElement_Container_Auto_Simple_Normal container = new EditorSceneElement_Container_Auto_Simple_Normal();
 
-            container.AddChild(new EditorSceneElement_Complex_EditTarget(serialized_object));
-            container.AddChild(new EditorSceneElement_Complex_EditTarget(reflected_object));
+            if (serialized_object.HasScript())
+            {
+                container.AddChild(new EditorSceneElement_Complex_EditTarget(serialized_object));
+                container.AddChild(new EditorSceneElement_Complex_EditTarget(reflected_object));
+            }
 
             return container;
         }

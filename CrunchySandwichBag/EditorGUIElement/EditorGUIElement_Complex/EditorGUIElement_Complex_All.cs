@@ -27,10 +27,17 @@ namespace CrunchySandwichBag
         {
             EditorGUIElement_Container_Auto container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
 
-            container.AddChild(new EditorGUIElement_Complex_EditTarget(serialized_object));
+            if (serialized_object.HasScript())
+            {
+                container.AddChild(new EditorGUIElement_Complex_EditTarget(serialized_object));
 
-            container.AddChild(new EditorGUIElement_Single_Text("Extended"));
-            container.AddChild(new EditorGUIElement_Complex_EditTarget(reflected_object));
+                container.AddChild(new EditorGUIElement_Single_Text("Extended"));
+                container.AddChild(new EditorGUIElement_Complex_EditTarget(reflected_object));
+            }
+            else
+            {
+                container.AddChild(new EditorGUIElement_Complex_MissingScriptSerializedObject(serialized_object));
+            }
 
             return container;
         }

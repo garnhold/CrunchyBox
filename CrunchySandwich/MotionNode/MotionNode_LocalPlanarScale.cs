@@ -9,8 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/Motion_LocalPlanarScale")]
-    public class Motion_LocalPlanarScale : Motion
+    [AddComponentMenu("Motion/MotionNode_LocalPlanarScale")]
+    public class MotionNode_LocalPlanarScale : MotionNode
     {
         [SerializeField]private Vector2 center;
         [SerializeField]private Vector2 radius;

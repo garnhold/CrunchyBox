@@ -79,8 +79,12 @@
     <Compile Include="CustomAsset\CustomAssets_Internal_Manage.cs" />
     <Compile Include="CustomAsset\CustomAssets_Internal_Create.cs" />
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
-    <Compile Include="DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
-    <Compile Include="DeployablePrefab\DeployablePrefabExtensions.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
+    <Compile Include="EditorInitializer\EditorInitializerAttribute.cs" />
+    <Compile Include="EditorInitializer\EditorInitializer.cs" />
+    <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
+    <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_Generic.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
+    <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Script.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Id.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Collider.cs" />
@@ -161,7 +166,6 @@
     <Compile Include="EditorGUIFragment\EditorGUIFragment.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_FieldEX.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_List.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_Generic.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElementLength\EditorGUIElementLength_Weighted.cs" />

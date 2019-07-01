@@ -7,9 +7,10 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [InitializeOnLoad]
+    [EditorInitializer]
     static public class ApplicationEXEditorInitilizer
     {
+        [EditorInitializer]
         static private void Initilize()
         {
             ApplicationEX.GetInstance().Start();
@@ -17,11 +18,6 @@ namespace CrunchySandwichBag
             EditorApplication.update += delegate() {
                 ApplicationEX.GetInstance().Update();
             };
-        }
-
-        static ApplicationEXEditorInitilizer()
-        {
-            Initilize();
         }
     }
 }

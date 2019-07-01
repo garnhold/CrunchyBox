@@ -46,6 +46,15 @@ namespace CrunchySandwich
             item.transform.InterpolateLocalPlanarScale(target, amount);
         }
 
+		static public void InterpolatePlanarScale(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.InterpolatePlanarScale(target, amount);
+        }
+        static public void InterpolateLocalPlanarScale(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.InterpolateLocalPlanarScale(target, amount);
+        }
+
 <# } #>
 	}
 }

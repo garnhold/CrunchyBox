@@ -92,6 +92,25 @@
     <Compile Include="Curve\Curve.cs" />
     <Compile Include="CustomTile\CustomTile.cs" />
     <Compile Include="DeployablePrefab\DeployablePrefab.cs" />
+    <Compile Include="Destroyer\Destroyer_Duration.cs" />
+    <Compile Include="Destroyer\Destroyer.cs" />
+    <Compile Include="EaseFunction\EaseFunction_Curve.cs" />
+    <Compile Include="EaseFunction\EaseFunction_SineIn.cs" />
+    <Compile Include="EaseFunction\EaseFunction_QuintIn.cs" />
+    <Compile Include="EaseFunction\EaseFunction_QuadIn.cs" />
+    <Compile Include="EaseFunction\EaseFunction_SineInOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_QuintInOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_QuadInOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_SineOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_QuintOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_QuadOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_InstantAtEnd.cs" />
+    <Compile Include="EaseFunction\EaseFunction_InstantAtStart.cs" />
+    <Compile Include="EaseFunction\EaseFunction_CubicInOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_CubicOut.cs" />
+    <Compile Include="EaseFunction\EaseFunction_CubicIn.cs" />
+    <Compile Include="EaseFunction\EaseFunction_Linear.cs" />
+    <Compile Include="EaseFunction\EaseFunction.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_Deploy.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Intersection_Bounds.cs" />
@@ -112,6 +131,11 @@
     <Compile Include="Extensions\ContactFilter2D\ContactFilter2DExtensions.cs" />
     <Compile Include="Extensions\ContactPoint2D\ContactPoint2DExtensions_Penetration.cs" />
     <Compile Include="Extensions\ContactPoint2D\ContactPoint2DExtensions.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetComponents.cs">
+      <DependentUpon>GameObjectComponentExtensions_GetComponents.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Size.cs">
       <DependentUpon>GameObjectComponentExtensions_Size.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -326,16 +350,19 @@
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Quad.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_Triangle2.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PolygonTriangle.cs" />
-    <Compile Include="MotionNode\MotionNode_Function.cs" />
-    <Compile Include="MotionNode\MotionNode.cs" />
+    <Compile Include="Motion\Motion_EaseFunction.cs" />
+    <Compile Include="Motion\Motion_PeriodicFunction.cs" />
     <Compile Include="Motion\Motion.cs" />
-    <Compile Include="Motion\Motion_LocalPlanarRotation.cs" />
-    <Compile Include="Motion\Motion_LocalPlanarScale.cs" />
-    <Compile Include="Motion\Motion_LocalPlanarPosition.cs" />
-    <Compile Include="Motion\Motion_LocalScale.cs" />
-    <Compile Include="Motion\Motion_LocalRotation.cs" />
-    <Compile Include="Motion\Motion_LocalPosition.cs" />
-    <Compile Include="MotionNode\MotionNode_Time.cs" />
+    <Compile Include="Motion\Motion_Manual.cs" />
+    <Compile Include="MotionNode\MotionNode.cs" />
+    <Compile Include="MotionNode\MotionNode_LocalPlanarRotation.cs" />
+    <Compile Include="MotionNode\MotionNode_LocalPlanarScale.cs" />
+    <Compile Include="MotionNode\MotionNode_LocalPlanarPosition.cs" />
+    <Compile Include="MotionNode\MotionNode_SpriteAlpha.cs" />
+    <Compile Include="MotionNode\MotionNode_LocalScale.cs" />
+    <Compile Include="MotionNode\MotionNode_LocalRotation.cs" />
+    <Compile Include="MotionNode\MotionNode_LocalPosition.cs" />
+    <Compile Include="Motion\Motion_Time.cs" />
     <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Compare.cs" />
     <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Has.cs" />
     <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_GetWith.cs" />
@@ -343,6 +370,8 @@
     <Compile Include="NeighborMask\NeighborMask.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_MExp.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Multiple.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Max.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Min.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Average.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Product.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Multiple_Sum.cs" />
@@ -354,7 +383,7 @@
     <Compile Include="PeriodicFunction\PeriodicFunction_Square.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_SkewTriangle.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Saw.cs" />
-    <Compile Include="PeriodicFunction\PeriodicFunction_InfiniteRamp.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Identity.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Triangle.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Sine.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction.cs" />
@@ -370,6 +399,10 @@
     <Compile Include="SequencedSprite\SpriteSequence.cs" />
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
+    <Compile Include="TargetedMotionNode\TargetedMotionNode.cs" />
+    <Compile Include="TargetedMotion\Extensions\TargetedMotionExtensions_Deploy.cs" />
+    <Compile Include="TargetedMotion\Extensions\TargetedMotionExtensions.cs" />
+    <Compile Include="TargetedMotion\TargetedMotion.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
     <Compile Include="TerrainTile\TerrainTile.cs" />
@@ -949,6 +982,10 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetComponents.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_GetComponents.cs</LastGenOutput>
+    </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Size.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Size.cs</LastGenOutput>

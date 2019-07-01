@@ -9,8 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/Motion_LocalPlanarPosition")]
-    public class Motion_LocalPlanarPosition : Motion
+    [AddComponentMenu("Motion/MotionNode_LocalPlanarPosition")]
+    public class MotionNode_LocalPlanarPosition : MotionNode
     {
         [SerializeField]
         [AttachEditGadget(

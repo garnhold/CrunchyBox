@@ -1,0 +1,61 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_GetComponents
+    {
+<# foreach(string type_name in type_names){#>
+		static public IEnumerable<Component> GetComponentsUpward(this <#=type_name#> item, Type type)
+		{
+			return item.GetComponentsInParent(type);
+		}
+		static public IEnumerable<T> GetComponentsUpward<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentsUpward(typeof(T)).Convert<Component, T>();
+		}
+
+		static public IEnumerable<Component> GetComponentsUpwardFromParent(this <#=type_name#> item, Type type)
+		{
+			return item.GetParent().IfNotNull(p => p.GetComponentsUpward(type));
+		}
+		static public IEnumerable<T> GetComponentsUpwardFromParent<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentsUpwardFromParent(typeof(T)).Convert<Component, T>();
+		}
+
+		static public IEnumerable<Component> GetComponentsDownward(this <#=type_name#> item, Type type)
+		{
+			return item.GetComponentsInChildren(type);
+		}
+		static public IEnumerable<T> GetComponentsDownward<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentsDownward(typeof(T)).Convert<Component, T>();
+		}
+
+		static public IEnumerable<Component> GetComponentsDownwardFromChildren(this <#=type_name#> item, Type type)
+		{
+			return item.GetChildren()
+                .Convert(c => c.GetComponentsDownward(type));
+		}
+		static public IEnumerable<T> GetComponentsDownwardFromChildren<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentsDownwardFromChildren(typeof(T)).Convert<Component, T>();
+		}
+
+<# } #>
+	}
+}
