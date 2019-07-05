@@ -21,6 +21,11 @@ namespace CrunchySandwichBag
             property = p;
         }
 
+        public override void EnsurePresence()
+        {
+            //Intentionally blank
+        }
+
         public override void InsertElement(int index)
         {
             property.InsertAndNullArrayElementAtIndex(index);

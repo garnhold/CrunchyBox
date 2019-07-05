@@ -37,5 +37,10 @@ namespace CrunchySandwichBag
         {
             return target_type;
         }
+
+        public override bool IsSerializationCorrupt()
+        {
+            return serialized_object.IsSerializationCorrupt();
+        }
     }
 }

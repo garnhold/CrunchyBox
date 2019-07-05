@@ -59,6 +59,14 @@ namespace CrunchySandwichBag
             return false;
         }
 
+        public bool IsSerializationCorrupt()
+        {
+            if (objects.Convert<SerializationCorruptable>().Has(c => c.IsSerializationCorrupt()))
+                return true;
+
+            return false;
+        }
+
         public Type GetObjectType()
         {
             return object_type;
@@ -81,22 +89,56 @@ namespace CrunchySandwichBag
 
         public IEnumerable<ReflectedAction> GetActions()
         {
-            return object_type.GetDesignatedActions()
-                .Convert(a => ReflectedAction.New(this, a));
+            return object_type.GetFilteredInstanceMethods(
+                Filterer_MethodInfo.HasNoEffectiveParameters(),
+                Filterer_MethodInfo.HasCustomAttributeOfType<ContextMenu>()
+            ).Convert(m => m.CreateAction())
+            .Convert(a => ReflectedAction.New(this, a));
         }
 
         public IEnumerable<ReflectedProperty> GetPropertys()
         {
-            return object_type.GetDesignatedVariablesForPropertys()
+            return UnityTyonSerializationSettings.INSTANCE.GetDesignatedVariables(object_type)
+                .Skip(v => v.HasCustomAttributeOfType<HideInInspector>(true))
+                .Skip(v => v.HasCustomAttributeOfType<RecoveryFieldAttribute>(true))
+                .Convert(v => ReflectedProperty.New(this, v));
+        }
+
+        public IEnumerable<ReflectedProperty> GetRecoveryPropertys()
+        {
+            return UnityTyonSerializationSettings.INSTANCE.GetDesignatedVariables(object_type)
+                .Narrow(v => v.HasCustomAttributeOfType<RecoveryFieldAttribute>(true))
                 .Convert(v => ReflectedProperty.New(this, v));
         }
 
         public IEnumerable<ReflectedGadget> GetGadgets()
         {
-            return object_type.GetDesignatedVariablesForGadgets()
-                .TryNarrow((Variable v, out AttachEditGadgetAttribute a) => 
-                    v.TryGetCustomAttributeOfType<AttachEditGadgetAttribute>(true, out a)
-                ).Convert(p => ReflectedGadget.New(this, p.item1, p.item2));
+            return object_type.GetFilteredInstanceFields(
+                Filterer_FieldInfo.HasCustomAttributeOfType<AttachEditGadgetAttribute>()
+            ).Convert(f => f.CreateVariable())
+            .TryNarrow((Variable v, out AttachEditGadgetAttribute a) => 
+                v.TryGetCustomAttributeOfType<AttachEditGadgetAttribute>(true, out a)
+            ).Convert(p => ReflectedGadget.New(this, p.item1, p.item2));
+        }
+
+        public int GetNumberActions()
+        {
+            return GetActions().Count();
+        }
+
+        public int GetNumberPropertys()
+        {
+            return GetPropertys().Count();
+        }
+
+        public int GetNumberRecoveryPropertys()
+        {
+            return GetRecoveryPropertys().Count();
+        }
+
+        public int GetNumberGadgets()
+        {
+            return GetGadgets().Count();
         }
     }
 }

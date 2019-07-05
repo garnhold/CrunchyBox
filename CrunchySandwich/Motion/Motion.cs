@@ -9,8 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class Motion : MonoBehaviour
+    public abstract class Motion : CustomAsset
     {
-        public abstract float GetMotionValue();
+        public abstract float Execute(float input);
     }
 }

@@ -27,14 +27,28 @@ namespace CrunchySandwichBag
         {
         }
 
+        public void EnsurePresence()
+        {
+            Touch("Creating " + GetVariableName(), delegate() {
+                GetObjects().Process(o => {
+                    if (GetContents(o) == null)
+                        SetContents(o, GetVariableType().CreateInstance());
+                });
+            });
+        }
+
         public void InsertElement(int index)
         {
-            GetAllIEnumerables().Process(i => i.InspectInsert(index));
+            Touch("Inserting Element Into " + GetVariableName(), delegate() {
+                GetAllIEnumerables().Process(i => i.InspectInsert(index));
+            });
         }
 
         public void RemoveElement(int index)
         {
-            GetAllIEnumerables().Process(i => i.InspectRemoveAt(index));
+            Touch("Removing Element From " + GetVariableName(), delegate() {
+                GetAllIEnumerables().Process(i => i.InspectRemoveAt(index));
+            });
         }
 
         public ReflectedProperty GetElement(int index)

@@ -19,7 +19,7 @@ namespace CrunchySalt
                 return new ILReturn(
                     new ILNew(
                         item,
-                        arguments.GetILExpandedParams(method)
+                        arguments.GetILExpandedParams(item)
                     )
                 );
             });

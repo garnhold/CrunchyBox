@@ -15,5 +15,9 @@ namespace CrunchyBun
         {
             return item * (upper - lower) + lower;
         }
+        static public float ConvertFromPercentToRange(this float item, FloatRange range)
+        {
+            return item.ConvertFromPercentToRange(range.x1, range.x2);
+        }
     }
 }

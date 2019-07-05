@@ -27,6 +27,11 @@ namespace CrunchyNoodle
             return variable.GetVariableName() + "[" + index + "]";
         }
 
+        protected override IEnumerable<Attribute> GetAllCustomAttributesInternal(bool inherit)
+        {
+            return variable.GetAllCustomAttributes(inherit);
+        }
+
         public Variable_Element(Variable v, int i) : base(v.GetDeclaringType(), v.GetVariableType().GetIEnumerableType())
         {
             variable = v;

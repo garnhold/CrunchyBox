@@ -35,5 +35,10 @@ namespace CrunchySandwichBag
         {
             return property.GetVariableType();
         }
+
+        public override bool IsSerializationCorrupt()
+        {
+            return false;
+        }
     }
 }

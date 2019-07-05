@@ -13,6 +13,7 @@ namespace CrunchySandwichBag
 {
     public abstract class EditProperty_Array : EditProperty
     {
+        public abstract void EnsurePresence();
         public abstract void InsertElement(int index);
         public abstract void RemoveElement(int index);
         public abstract EditProperty GetElement(int index);

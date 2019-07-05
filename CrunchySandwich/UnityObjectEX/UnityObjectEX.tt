@@ -19,16 +19,19 @@ using CrunchyRecipe;
 namespace CrunchySandwich
 {
 <# foreach(string type_name in type_names){#>
-	public class <#=type_name#>EX : <#=type_name#>, ISerializationCallbackReceiver
+	public class <#=type_name#>EX : <#=type_name#>, ISerializationCallbackReceiver, SerializationCorruptable
     {
-		[SerializeField][HideInInspector][Multiline(12)]private string tyon_data = "";
-		[SerializeField][HideInInspector]private List<UnityEngine.Object> tyon_unity_objects;
+		[SerializeField][RecoveryField][Multiline(12)]private string tyon_data = "";
+		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
+
+		[SerializeField][RecoveryField]private string pack_error;
+        [SerializeField][RecoveryField]private string unpack_error;
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
-        public void OnBeforeSerialize()
-        {
-			if (did_unpack_tyon_data)
+		private void PackTyon()
+		{
+			if (did_unpack_tyon_data || tyon_data.IsVisible() == false)
 			{
 				string old_tyon_data = tyon_data;
 				List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
@@ -39,26 +42,60 @@ namespace CrunchySandwich
 
 					tyon_data = Tyon.Serialize(this, UnityTyonSerializationSettings.INSTANCE, external_objects);
 					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
+
+					pack_error = null;
 				}
-				catch(Exception)
+				catch(Exception ex)
 				{
 					tyon_data = old_tyon_data;
 					tyon_unity_objects = old_tyon_unity_objects;
 
-					throw;
+					pack_error = ex.Message;
 				}
 			}
+		}
+
+		private void UnpackTyon()
+		{
+			if (tyon_data.IsVisible())
+			{
+				try
+				{
+					List<object> external_objects = tyon_unity_objects.Convert<UnityEngine.Object, object>().ToList();
+
+					did_unpack_tyon_data = false;
+					Tyon.DeserializeInto(tyon_data, this, UnityTyonSerializationSettings.INSTANCE, external_objects);
+
+					did_unpack_tyon_data = true;
+					unpack_error = null;
+				}
+				catch(Exception ex)
+				{
+					unpack_error = ex.Message;
+				}
+			}
+		}
+
+        public void OnBeforeSerialize()
+        {
+			PackTyon();
         }
 
         public void OnAfterDeserialize()
         {
-			did_unpack_tyon_data = false;
-
-			List<object> external_objects = tyon_unity_objects.Convert<UnityEngine.Object, object>().ToList();
-
-			Tyon.DeserializeInto(tyon_data, this, UnityTyonSerializationSettings.INSTANCE, external_objects);
-			did_unpack_tyon_data = true;
+			UnpackTyon();
         }
+
+		public bool IsSerializationCorrupt()
+		{
+			if (unpack_error.IsVisible())
+				return true;
+
+			if (pack_error.IsVisible())
+				return true;
+
+			return false;
+		}
 	}
 
 <# } #>

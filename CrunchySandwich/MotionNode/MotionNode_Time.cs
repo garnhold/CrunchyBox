@@ -9,8 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/Motion_Time")]
-    public class Motion_Time : Motion
+    [AddComponentMenu("Motion/MotionNode_Time")]
+    public class MotionNode_Time : MotionNode
     {
         [SerializeField]private float time_offset;
 

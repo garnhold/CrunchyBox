@@ -48,7 +48,16 @@ namespace CrunchySandwichBag
         {
             return GetPropertysInternal()
                 .Skip(p => p.name == "m_Script")
-                .Convert(p => CreateProperty(p));
+                .Convert(p => CreateProperty(p))
+                .Skip(p => p.HasCustomAttributeOfType<RecoveryFieldAttribute>(true));
+        }
+
+        public override IEnumerable<EditProperty> GetRecoveryPropertys()
+        {
+            return GetPropertysInternal()
+                .Skip(p => p.name == "m_Script")
+                .Convert(p => CreateProperty(p))
+                .Narrow(p => p.HasCustomAttributeOfType<RecoveryFieldAttribute>(true));
         }
 
         public override IEnumerable<EditGadget> GetGadgets()

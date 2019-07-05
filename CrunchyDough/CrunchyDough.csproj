@@ -92,6 +92,11 @@
     <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Parallel.cs" />
     <Compile Include="OperationProcess\Extensions\MultiOperationExtensions.cs" />
     <Compile Include="OperationProcess\MultiOperation.cs" />
+    <Compile Include="NumericRange\NumericRange.cs">
+      <DependentUpon>NumericRange.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Time\FluxTimer\Extensions\FluxTimerExtensions.cs" />
     <Compile Include="Time\FluxTimer\FluxTimer.cs" />
     <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Seconds.cs" />
@@ -1279,6 +1284,10 @@
     <Content Include="OrderedCollection\OrderedList.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>OrderedList.cs</LastGenOutput>
+    </Content>
+    <Content Include="NumericRange\NumericRange.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumericRange.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

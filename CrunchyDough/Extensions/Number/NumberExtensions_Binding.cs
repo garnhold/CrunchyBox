@@ -53,6 +53,11 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public byte BindBetween(this byte item, ByteRange range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
+
 		static public bool IsBoundBetween(this byte item, byte value1, byte value2)
 		{
 			byte low;
@@ -64,6 +69,10 @@ namespace CrunchyDough
                 return true;
 
             return false;
+		}
+		static public bool IsBoundBetween(this byte item, ByteRange range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
 		}
 		static public short BindAbove(this short item, short lower)
         {
@@ -112,6 +121,11 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public short BindBetween(this short item, ShortRange range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
+
 		static public bool IsBoundBetween(this short item, short value1, short value2)
 		{
 			short low;
@@ -123,6 +137,10 @@ namespace CrunchyDough
                 return true;
 
             return false;
+		}
+		static public bool IsBoundBetween(this short item, ShortRange range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
 		}
 		static public int BindAbove(this int item, int lower)
         {
@@ -171,6 +189,11 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public int BindBetween(this int item, IntRange range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
+
 		static public bool IsBoundBetween(this int item, int value1, int value2)
 		{
 			int low;
@@ -182,6 +205,10 @@ namespace CrunchyDough
                 return true;
 
             return false;
+		}
+		static public bool IsBoundBetween(this int item, IntRange range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
 		}
 		static public long BindAbove(this long item, long lower)
         {
@@ -230,6 +257,11 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public long BindBetween(this long item, LongRange range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
+
 		static public bool IsBoundBetween(this long item, long value1, long value2)
 		{
 			long low;
@@ -241,6 +273,10 @@ namespace CrunchyDough
                 return true;
 
             return false;
+		}
+		static public bool IsBoundBetween(this long item, LongRange range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
 		}
 		static public float BindAbove(this float item, float lower)
         {
@@ -289,6 +325,11 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public float BindBetween(this float item, FloatRange range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
+
 		static public bool IsBoundBetween(this float item, float value1, float value2)
 		{
 			float low;
@@ -300,6 +341,10 @@ namespace CrunchyDough
                 return true;
 
             return false;
+		}
+		static public bool IsBoundBetween(this float item, FloatRange range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
 		}
 		static public double BindAbove(this double item, double lower)
         {
@@ -348,6 +393,11 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public double BindBetween(this double item, DoubleRange range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
+
 		static public bool IsBoundBetween(this double item, double value1, double value2)
 		{
 			double low;
@@ -359,6 +409,10 @@ namespace CrunchyDough
                 return true;
 
             return false;
+		}
+		static public bool IsBoundBetween(this double item, DoubleRange range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
 		}
 		static public decimal BindAbove(this decimal item, decimal lower)
         {
@@ -407,6 +461,11 @@ namespace CrunchyDough
 
             return lower;
         }
+		static public decimal BindBetween(this decimal item, DecimalRange range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
+
 		static public bool IsBoundBetween(this decimal item, decimal value1, decimal value2)
 		{
 			decimal low;
@@ -418,6 +477,10 @@ namespace CrunchyDough
                 return true;
 
             return false;
+		}
+		static public bool IsBoundBetween(this decimal item, DecimalRange range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
 		}
 	}
 }

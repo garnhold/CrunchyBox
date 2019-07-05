@@ -13,14 +13,14 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElement_Complex_All : EditorGUIElement_Complex<Type>
+    public class EditorGUIElement_Complex_All : EditorGUIElement_Complex<Tuple<bool, Type>>
     {
         private SerializedObject serialized_object;
         private ReflectedObject reflected_object;
 
-        protected override Type PullState()
+        protected override Tuple<bool, Type> PullState()
         {
-            return serialized_object.GetTargetType();
+            return Tuple.New(serialized_object.HasScript(), serialized_object.GetTargetType());
         }
 
         protected override EditorGUIElement PushState()
@@ -31,8 +31,11 @@ namespace CrunchySandwichBag
             {
                 container.AddChild(new EditorGUIElement_Complex_EditTarget(serialized_object));
 
-                container.AddChild(new EditorGUIElement_Single_Text("Extended"));
-                container.AddChild(new EditorGUIElement_Complex_EditTarget(reflected_object));
+                if (reflected_object.GetNumberPropertys() > 0 || reflected_object.GetNumberActions() > 0)
+                {
+                    container.AddChild(new EditorGUIElement_Single_Text("Extended"));
+                    container.AddChild(new EditorGUIElement_Complex_EditTarget(reflected_object));
+                }
             }
             else
             {

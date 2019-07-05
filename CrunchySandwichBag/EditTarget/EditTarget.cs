@@ -15,11 +15,14 @@ namespace CrunchySandwichBag
     {
         public abstract Type GetTargetType();
 
+        public abstract bool IsSerializationCorrupt();
+
         public abstract EditAction ForceAction(string path);
         public abstract EditProperty ForceProperty(string path);
 
         public abstract IEnumerable<EditAction> GetActions();
         public abstract IEnumerable<EditProperty> GetPropertys();
+        public abstract IEnumerable<EditProperty> GetRecoveryPropertys();
         public abstract IEnumerable<EditGadget> GetGadgets();
     }
 }

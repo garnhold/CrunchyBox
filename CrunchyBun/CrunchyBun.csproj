@@ -59,6 +59,7 @@
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Mix.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Distance.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Difference.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromRate.cs" />
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions_Path.cs" />
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions.cs" />
     <Compile Include="Extensions\GridCell\GridCellExtensions_VectorI2.cs" />

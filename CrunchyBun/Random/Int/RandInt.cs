@@ -37,5 +37,9 @@ namespace CrunchyBun
         {
             return SOURCE.GetBetween(a, b);
         }
+        static public int GetBetween(IntRange range)
+        {
+            return SOURCE.GetBetween(range.x1, range.x2);
+        }
     }
 }

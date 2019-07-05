@@ -9,8 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/MotionNode_LocalRotation")]
-    public class MotionNode_LocalRotation : MotionNode
+    [AddComponentMenu("Motion/MotionController_LocalRotation")]
+    public class MotionController_LocalRotation : MotionController
     {
         [SerializeField]private Vector3 center;
         [SerializeField]private Vector3 radius;

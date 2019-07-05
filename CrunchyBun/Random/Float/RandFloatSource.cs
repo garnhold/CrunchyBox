@@ -39,5 +39,9 @@ namespace CrunchyBun
             a.Order(b, out low, out high);
             return low + Get() * (high - low);
         }
+        public float GetBetween(FloatRange range)
+        {
+            return GetBetween(range.x1, range.x2);
+        }
     }
 }

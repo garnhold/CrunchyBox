@@ -81,8 +81,14 @@
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_Ranges.cs">
+      <DependentUpon>EditorGUIElement_Single_EditPropertyValue_Simple_Ranges.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="EditorInitializer\EditorInitializerAttribute.cs" />
     <Compile Include="EditorInitializer\EditorInitializer.cs" />
+    <Compile Include="EditTarget\Extensions\EditTargetExtensions_SerializationCorruptable.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
@@ -93,6 +99,7 @@
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
+    <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_SerializationCorruptable.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Script.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Id.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
@@ -101,7 +108,8 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_Collider.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Importer.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_GetValue.cs" />
-    <Compile Include="Prefabs\PrefabsInitilizer.cs" />
+    <Compile Include="PrefabsSettings\DeployablePrefabGroup.cs" />
+    <Compile Include="PrefabsSettings\PrefabsSettings.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_Complex\EditorSceneElement_Complex_EditGadget.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\Extensions\EditorSceneElementEditGadgetInstanceExtensions_Execute.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\Extensions\EditorSceneElementEditGadgetInstanceExtensions_Set.cs" />
@@ -274,6 +282,7 @@
     <Compile Include="Painter\PainterBrush\PainterBrush_Circle.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush.cs" />
     <Compile Include="Painter\Painter.cs" />
+    <Compile Include="Prefabs\PrefabsInitilizer.cs" />
     <Compile Include="ProjectSettings\ProjectSettings.cs" />
     <Compile Include="PropertyDrawersAndEditors\Editors\DefaultEditor.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_SerializedObjectSection.cs" />
@@ -390,6 +399,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_Ranges.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EditorGUIElement_Single_EditPropertyValue_Simple_Ranges.cs</LastGenOutput>
+    </Content>
     <Content Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simples.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EditorGUIElement_Single_EditPropertyValue_Simples.cs</LastGenOutput>

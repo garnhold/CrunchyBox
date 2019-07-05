@@ -15,5 +15,9 @@ namespace CrunchyBun
         {
             return item.ConvertFromOffsetToPercent().ConvertFromPercentToRange(lower, upper);
         }
+        static public float ConvertFromOffsetToRange(this float item, FloatRange range)
+        {
+            return item.ConvertFromOffsetToRange(range.x1, range.x2);
+        }
     }
 }

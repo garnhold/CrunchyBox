@@ -12,7 +12,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElement_Complex_EditPropertyArray_Generic : EditorGUIElement_Complex_EditPropertyArray<int>
+    public class EditorGUIElement_Complex_EditPropertyArray_Generic : EditorGUIElement_Complex_EditPropertyArray<Tuple<bool, int>>
     {
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
         {
@@ -24,12 +24,12 @@ namespace CrunchySandwichBag
             return base.HandleAttachment(ref attachment);
         }
 
-        protected override int PullState()
+        protected override Tuple<bool, int> PullState()
         {
             int number_elements;
+            bool result = GetEditPropertyArray().TryGetNumberElements(out number_elements);
 
-            GetEditPropertyArray().TryGetNumberElements(out number_elements);
-            return number_elements;
+            return Tuple.New(result, number_elements);
         }
 
         protected override EditorGUIElement PushState()
@@ -61,6 +61,11 @@ namespace CrunchySandwichBag
                         property.RemoveElement(i_latched);
                     }));
                 }
+            }
+            else
+            {
+                container.AddChild(new EditorGUIElement_Single_Text("--Disabled(Array lengths are not unified)--"));
+                property.EnsurePresence();
             }
 
             return container;

@@ -11,12 +11,9 @@ namespace CrunchySandwichBag
 {
     static public partial class EditorGUIExtensions
     {
-        static private OperationCache<Material> DRAW_COLORED_MESH_MATERIAL = new OperationCache<Material>(delegate() {
-            return MaterialExtensions.CreateUnlitColorMaterial(Color.white);
-        });
         static public void DrawColoredMesh(Mesh mesh, Color color)
         {
-            Material material = DRAW_COLORED_MESH_MATERIAL.Fetch();
+            Material material = MaterialExtensions.CreateUnlitColorMaterial(Color.white);
 
             material.SetMainColor(color);
             material.SetPass(0);

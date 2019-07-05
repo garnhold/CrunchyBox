@@ -9,7 +9,9 @@ namespace CrunchyDough
     {
         static public IEnumerable<string> ParseWords(this string item)
         {
-            return item.RegexMatches("([A-Z]?[a-z0-9]+|[A-Z0-9]+(?![a-z]))").Bridge<Match>().Convert<Match, string>(m => m.Value.StyleAsWord());
+            return item.RegexMatches("([A-Z]?[a-z0-9]+|[A-Z0-9]+(?![a-z]))")
+                .Bridge<Match>()
+                .Convert<Match, string>(m => m.Value.StyleAsWord());
         }
 
         static public IEnumerable<string> ParseWordInvariants(this string item)

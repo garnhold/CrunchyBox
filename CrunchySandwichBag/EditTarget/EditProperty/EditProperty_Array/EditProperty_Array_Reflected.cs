@@ -20,6 +20,11 @@ namespace CrunchySandwichBag
             property = p;
         }
 
+        public override void EnsurePresence()
+        {
+            property.EnsurePresence();
+        }
+
         public override void InsertElement(int index)
         {
             property.InsertElement(index);

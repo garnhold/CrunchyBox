@@ -67,6 +67,11 @@ namespace CrunchySandwichBag
             return reflected_object.GetObjectType();
         }
 
+        public override bool IsSerializationCorrupt()
+        {
+            return reflected_object.IsSerializationCorrupt();
+        }
+
         public override EditAction ForceAction(string path)
         {
             return CreateAction(reflected_object.ForceAction(path));
@@ -86,6 +91,12 @@ namespace CrunchySandwichBag
         public override IEnumerable<EditProperty> GetPropertys()
         {
             return reflected_object.GetPropertys()
+                .Convert(p => CreateProperty(p));
+        }
+
+        public override IEnumerable<EditProperty> GetRecoveryPropertys()
+        {
+            return reflected_object.GetRecoveryPropertys()
                 .Convert(p => CreateProperty(p));
         }
 

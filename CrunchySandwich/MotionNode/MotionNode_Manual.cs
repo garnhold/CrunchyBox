@@ -9,8 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/Motion_Manual")]
-    public class Motion_Manual : Motion
+    [AddComponentMenu("Motion/MotionNode_Manual")]
+    public class MotionNode_Manual : MotionNode
     {
         [SerializeField]private float value;
 

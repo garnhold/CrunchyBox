@@ -14,7 +14,7 @@ namespace CrunchySalt
     static public class ILCastInfos
     {
         static private OperationCache<ILCastInfo, Type, Type, bool, bool, bool> GET_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache<ILCastInfo, Type, Type, bool, bool, bool>(delegate(Type source_type, Type destination_type, bool copy_on_unbox, bool allow_implicit_operators, bool allow_explicit_operators) {
-            if (source_type == destination_type)
+            if (source_type.CanILTreatAs(destination_type))
                 return new ILCastInfo_Nothing(source_type, destination_type);
 
             if (source_type.IsVoidType())

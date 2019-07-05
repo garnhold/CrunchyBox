@@ -20,7 +20,7 @@ namespace CrunchyRecipe
         {
             SetTyonType(TyonType.CreateTyonType(array.GetType().GetIEnumerableType()));
             SetTyonValues(
-                array.Convert<IEnumerable>().Bridge<object>().Convert(v => context.CreateTyonValue(v, variable))
+                array.ToEnumerable<object>().Convert(v => context.CreateTyonValue(v, variable))
             );
         }
 

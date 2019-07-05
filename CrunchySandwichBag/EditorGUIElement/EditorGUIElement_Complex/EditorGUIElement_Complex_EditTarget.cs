@@ -13,28 +13,41 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElement_Complex_EditTarget : EditorGUIElement_Complex<Type>
+    public class EditorGUIElement_Complex_EditTarget : EditorGUIElement_Complex<Tuple<bool, Type>>
     {
         private EditTarget target;
 
-        protected override Type PullState()
+        protected override Tuple<bool, Type> PullState()
         {
-            return target.GetTargetType();
+            return Tuple.New(target.IsSerializationCorrupt(), target.GetTargetType());
         }
 
         protected override EditorGUIElement PushState()
         {
             EditorGUIElement_Container_Auto container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
 
-            container.AddChildren(
-                target.GetPropertys()
-                    .Convert(p => p.CreateEditorGUIElement().LabelWithGUIContent(p.GetGUIContentLabel()))
-            );
+            if (target.IsSerializationNotCorrupt())
+            {
+                container.AddChildren(
+                    target.GetPropertys()
+                        .Convert(p => p.CreateEditorGUIElement().LabelWithGUIContent(p.GetGUIContentLabel()))
+                );
 
-            container.AddChildren(
-                target.GetActions()
-                    .Convert(a => a.CreateEditorGUIElement())
-            );
+                container.AddChildren(
+                    target.GetActions()
+                        .Convert(a => a.CreateEditorGUIElement())
+                );
+            }
+            else
+            {
+                container.AddChild(new EditorGUIElement_Single_Text("!Corruption Detected!"));
+                container.AddAttachment(new EditorGUIElementAttachment_Box(Color.red));
+
+                container.AddChildren(
+                    target.GetRecoveryPropertys()
+                        .Convert(p => p.CreateEditorGUIElement().LabelWithGUIContent(p.GetGUIContentLabel()))
+                );
+            }
 
             return container;
         }

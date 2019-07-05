@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
         {
             Rect label_rect;
 
-            rect.SplitByXLeftOffset(EditorGUIUtility.labelWidth, out label_rect, out rect);
+            rect.SplitByXLeftOffset(GetLayoutLabelWidth(), out label_rect, out rect);
 
             GUI.Label(label_rect, label);
 

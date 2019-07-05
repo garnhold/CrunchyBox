@@ -36,6 +36,16 @@ namespace CrunchySandwich
             item.SplitByXRightOffset(item.width * x_percent, out left, out right);
         }
 
+        static public void SplitByXCenterOffset(this Rect item, float x_offset, out Rect left, out Rect right)
+        {
+            item.SplitByX(item.center.x + x_offset, out left, out right);
+        }
+
+        static public void SplitByXCenter(this Rect item, out Rect left, out Rect right)
+        {
+            item.SplitByX(item.center.x, out left, out right);
+        }
+
         static public void SplitByY(this Rect item, float y, out Rect bottom, out Rect top)
         {
             float split = y.Min(item.yMax);
@@ -60,6 +70,16 @@ namespace CrunchySandwich
         static public void SplitByYTopPercent(this Rect item, float y_percent, out Rect bottom, out Rect top)
         {
             item.SplitByYTopOffset(item.height * y_percent, out bottom, out top);
+        }
+
+        static public void SplitByYCenterOffset(this Rect item, float y_offset, out Rect bottom, out Rect top)
+        {
+            item.SplitByY(item.center.y + y_offset, out bottom, out top);
+        }
+
+        static public void SplitByYCenter(this Rect item, out Rect bottom, out Rect top)
+        {
+            item.SplitByY(item.center.y, out bottom, out top);
         }
     }
 }

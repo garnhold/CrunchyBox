@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
         static private void SetValue_Array(this SerializedProperty item, object value)
         {
             item.ClearArray();
-            ((IEnumerable)value).Bridge<object>().Process(o => item.PushArrayElement().SetValue(o));
+            value.ToEnumerable<object>().Process(o => item.PushArrayElement().SetValue(o));
         }
         static private object GetValue_Array(this SerializedProperty item)
         {

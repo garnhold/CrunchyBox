@@ -9,8 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [AddComponentMenu("Motion/MotionNode_SpriteAlpha")]
-    public class MotionNode_SpriteAlpha : MotionNode
+    [AddComponentMenu("Motion/MotionController_SpriteAlpha")]
+    public class MotionController_SpriteAlpha : MotionController
     {
         [SerializeField]private float center;
         [SerializeField]private float radius;

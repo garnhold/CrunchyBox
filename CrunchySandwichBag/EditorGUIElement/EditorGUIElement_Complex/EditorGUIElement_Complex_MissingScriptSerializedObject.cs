@@ -30,11 +30,10 @@ namespace CrunchySandwichBag
                 .LabelWithGUIContent("Missing Script");
 
             children = container.AddChild(new EditorGUIElement_Container_Auto_Simple_VerticalStrip());
-
-            serialized_object.GetImmediateChildren(false)
-                .Process(p => children.AddChild(new EditorGUIElement_SerializedProperty_Field(p)).LabelWithGUIContent(p.GetGUIContentLabel()));
-
             children.AddAttachment(new EditorGUIElementAttachment_Disabled());
+
+            serialized_object.GetImmediateChildren(true)
+                .Process(p => children.AddChild(new EditorGUIElement_SerializedProperty_Field(p)).LabelWithGUIContent(p.GetGUIContentLabel()));
 
             return container;
         }

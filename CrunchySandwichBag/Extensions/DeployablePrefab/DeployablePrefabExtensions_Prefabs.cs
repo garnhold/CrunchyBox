@@ -77,6 +77,15 @@ namespace CrunchySandwichBag
             }
         }
 
+        static public void GeneratePrefabsYieldReturn(this DeployablePrefab item, CSTextDocumentBuilder builder)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "NAME", item.GetPrefabsName()
+            );
+
+            writer.Write("yield return GetInstance().?NAME;");
+        }
+
         static public string GetPrefabsName(this DeployablePrefab item)
         {
             return item.name.StyleAsVariableName();
