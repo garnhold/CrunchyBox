@@ -14,5 +14,10 @@ namespace CrunchySandwich
         {
             return item.Deploy().Chain(r => r.SetPlanarPosition(position));
         }
+
+        static public BurstSpriteRenderer Deploy(this BurstSprite item, Vector2 position, float angle)
+        {
+            return item.Deploy(position).Chain(r => r.SetPlanarRotation(angle));
+        }
     }
 }

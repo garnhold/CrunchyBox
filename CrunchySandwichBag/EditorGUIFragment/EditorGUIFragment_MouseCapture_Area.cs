@@ -15,17 +15,14 @@ namespace CrunchySandwichBag
     {
         private Process<int, Vector2> process;
 
-        protected override void HandleMouseEvent(Rect rect, EventType type, Event vnt)
-        {
-            process(
-                vnt.button,
-                (vnt.mousePosition - rect.min).BindBetween(Vector2.zero, rect.GetSize())
-            );
-        }
-
         public EditorGUIFragment_MouseCapture_Area(Process<int, Vector2> p)
         {
             process = p;
+        }
+
+        public override void Draw()
+        {
+            GetControl().UpdatePoint(GetElementRect(), process);
         }
     }
 }

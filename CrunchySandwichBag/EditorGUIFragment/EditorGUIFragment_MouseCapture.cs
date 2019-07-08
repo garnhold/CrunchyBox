@@ -13,30 +13,16 @@ namespace CrunchySandwichBag
 {
     public abstract class EditorGUIFragment_MouseCapture : EditorGUIFragment
     {
-        protected abstract void HandleMouseEvent(Rect rect, EventType type, Event vnt);
+        private GUIControl_MouseCapture control;
 
-        protected override bool HandleEvent(Rect rect, EventType type, Event vnt)
+        public EditorGUIFragment_MouseCapture()
         {
-            switch (type)
-            {
-                case EventType.MouseDown:
-                    if(rect.Contains(vnt.mousePosition))
-                        CaptureControl();
+            control = new GUIControl_MouseCapture();
+        }
 
-                    break;
-
-                case EventType.MouseUp:
-                    ReleaseControl();
-                    break;
-            }
-
-            if (vnt.isMouse && IsControlCaptured())
-            {
-                HandleMouseEvent(rect, type, vnt);
-                return true;
-            }
-
-            return false;
+        public GUIControl_MouseCapture GetControl()
+        {
+            return control;
         }
     }
 }

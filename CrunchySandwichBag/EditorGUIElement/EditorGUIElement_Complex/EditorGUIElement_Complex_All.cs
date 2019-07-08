@@ -33,7 +33,7 @@ namespace CrunchySandwichBag
 
                 if (reflected_object.GetNumberPropertys() > 0 || reflected_object.GetNumberActions() > 0)
                 {
-                    container.AddChild(new EditorGUIElement_Single_Text("Extended"));
+                    container.AddChild(new EditorGUIElement_Single_HorizontalRule());
                     container.AddChild(new EditorGUIElement_Complex_EditTarget(reflected_object));
                 }
             }

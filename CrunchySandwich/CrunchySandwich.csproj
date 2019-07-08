@@ -88,6 +88,15 @@
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions.cs" />
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions_Volume.cs" />
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions.cs" />
+    <Compile Include="Extensions\Component\ComponentExtensions_SpawnInstance.cs" />
+    <Compile Include="Extensions\GameObject\GameObjectExtensions_SpawnInstance.cs" />
+    <Compile Include="Extensions\GUIContent\GUIContentExtensions.cs" />
+    <Compile Include="Extensions\GUIContent\GUIContentExtensions_Layout.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Label.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_HorizontalRule.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Rect.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Sized.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Adjust_Side.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_Angle.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions.cs" />
     <Compile Include="SerializationCorruptable\SerializationCorruptable.cs" />
@@ -406,9 +415,6 @@
     <Compile Include="SequencedSprite\SpriteSequenceFrame.cs" />
     <Compile Include="SequencedSprite\SpriteSequence.cs" />
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
-    <Compile Include="SpriteEXRenderer\SpriteEXRenderer.cs" />
-    <Compile Include="SpriteEX\SpritePoint.cs" />
-    <Compile Include="SpriteEX\SpriteEX.cs" />
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
     <Compile Include="TargetedMotionNode\TargetedMotionNode.cs" />
     <Compile Include="TargetedMotion\Extensions\TargetedMotionExtensions_Deploy.cs" />

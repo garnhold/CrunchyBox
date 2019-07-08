@@ -34,7 +34,7 @@ namespace CrunchySandwichBag
             if (HasLabel())
             {
                 rect.SplitByYBottomOffset(label_height, out label_rect, out rect);
-                rect = rect.GetAdjusted(indent_width, 0.0f, 0.0f, 0.0f);
+                rect = rect.GetShrunkLeft(indent_width);
             }
 
             return rect;

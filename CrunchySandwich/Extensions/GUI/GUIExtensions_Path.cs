@@ -15,7 +15,7 @@ namespace CrunchySandwich
             path.ProcessConnections((v1, v2) => DrawLine(v1, v2, line_thickness));
 
             if (point_size > 0.0f)
-                path.Process(v => DrawSquare(v, point_size));
+                path.Process(v => DrawCenterSquare(v, point_size));
         }
     }
 }

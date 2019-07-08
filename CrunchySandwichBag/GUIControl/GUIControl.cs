@@ -32,13 +32,11 @@ namespace CrunchySandwichBag
             if (is_control_captured)
                 GUIUtility.hotControl = control_id;
         }
-
-        public void Update(Operation<bool, EventType, Event> operation)
+        public void Update(TryProcess<EventType, Event> operation)
         {
             Update();
             if (operation(GetEventType(), GetEvent()))
                 UseEvent();
-
         }
 
         public void UseEvent()

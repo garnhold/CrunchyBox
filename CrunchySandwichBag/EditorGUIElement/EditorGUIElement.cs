@@ -32,6 +32,7 @@ namespace CrunchySandwichBag
 
         protected virtual Rect LayoutElementInternal(Rect rect, float label_width) { return rect; }
         protected virtual void LayoutContentsInternal(Rect rect, float label_width) { }
+        protected virtual float CalculateLayoutLabelWidthInternal(float incoming) { return incoming; }
 
         protected virtual void DrawElementInternal(Rect view) { }
         protected virtual void DrawContentsInternal(Rect view) { }
@@ -129,6 +130,8 @@ namespace CrunchySandwichBag
         {
             if (EventExtensions.IsLayoutNullRect(rect) == false)
             {
+                label_width = CalculateLayoutLabelWidthInternal(label_width);
+
                 if (rect != layout_rect || label_width != layout_label_width)
                 {
                     layout_rect = rect;

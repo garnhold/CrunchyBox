@@ -17,20 +17,26 @@ namespace CrunchySandwichBag
 
         private Vector2 offset;
 
-        protected override void HandleMouseEvent(Rect rect, EventType type, Event vnt)
-        {
-            if (type == EventType.MouseDown)
-                offset = rect.position - vnt.mousePosition;
-
-            process(
-                vnt.button,
-                vnt.mousePosition + offset
-            );
-        }
-
         public EditorGUIFragment_MouseCapture_Drag(Process<int, Vector2> p)
         {
             process = p;
+        }
+
+        public override void Draw()
+        {
+            Rect rect = GetElementRect();
+
+            GetControl().Update(rect, delegate(EventType type, Event vnt) {
+                if (type == EventType.MouseDown)
+                    offset = rect.position - vnt.mousePosition;
+
+                process(
+                    vnt.button,
+                    vnt.mousePosition + offset
+                );
+
+                return true;
+            });
         }
     }
 }

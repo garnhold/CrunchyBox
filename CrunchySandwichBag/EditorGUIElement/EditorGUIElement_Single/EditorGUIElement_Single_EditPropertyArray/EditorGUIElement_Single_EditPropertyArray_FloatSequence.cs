@@ -18,13 +18,12 @@ namespace CrunchySandwichBag
 
         private Rect border_rect;
         private Rect background_rect;
-        private EditorGUIFragment_MouseCapture_PercentArea percent_area;
+        private GUIControl_MouseCapture percent_area;
 
         protected override Rect LayoutElementInternal(Rect rect, float label_width)
         {
             border_rect = rect;
             background_rect = border_rect.GetShrunk(1.0f);
-            percent_area.Layout(background_rect);
 
             return base.LayoutElementInternal(background_rect, label_width);
         }
@@ -62,7 +61,13 @@ namespace CrunchySandwichBag
                     x += element_width;
                 }
 
-                percent_area.Draw();
+                percent_area.UpdatePercentPoint(background_rect, delegate(int button, Vector2 position) {
+                    int index = (int)(number_elements * position.x);
+                    float magnitude = 1.0f - position.y;
+
+                    if (property.IsIndexValid(index))
+                        property.SetElementValue(index, magnitude.ConvertFromPercentToRange(min_value, max_value));
+                });
                 return true;
             }
 
@@ -74,19 +79,7 @@ namespace CrunchySandwichBag
             min_value = min;
             max_value = max;
 
-            percent_area = new EditorGUIFragment_MouseCapture_PercentArea(delegate(int button, Vector2 position) {
-                int number_elements;
-                EditProperty_Array property = GetEditPropertyArray();
-
-                if (property.TryGetNumberElements(out number_elements))
-                {
-                    int index = (int)(number_elements * position.x);
-                    float magnitude = 1.0f - position.y;
-
-                    if (property.IsIndexValid(index))
-                        property.SetElementValue(index, magnitude.ConvertFromPercentToRange(min_value, max_value));
-                }
-            });
+            percent_area = new GUIControl_MouseCapture();
         }
 
         public EditorGUIElement_Single_EditPropertyArray_FloatSequence(EditProperty_Array p, float min, float max) : this(p, min, max, DEFAULT_HEIGHT * 3.0f) { }

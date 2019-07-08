@@ -24,9 +24,9 @@ namespace CrunchySandwichBag
 {
 <#foreach(TypeInfo type in types){#>
 	[EditorGUIElementForType(typeof(<#=type.type_name#>), true)]
-    public class EditorGUIElement_Single_EditPropertyValue_Simple_<#=type.type_name#> : EditorGUIElement_Single_EditPropertyValue_Simple<<#=type.type_name#>>
+    public class EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_<#=type.type_name#> : EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn<<#=type.type_name#>>
     {
-        protected override <#=type.type_name#> DrawFieldInternal(Rect rect, GUIContent label, <#=type.type_name#> value)
+        protected override <#=type.type_name#> DrawBuiltInFieldInternal(Rect rect, GUIContent label, <#=type.type_name#> value)
         {
             Rect x1_rect;
             Rect x2_rect;
@@ -39,8 +39,8 @@ namespace CrunchySandwichBag
             return new <#=type.type_name#>(x1, x2);
         }
 
-        public EditorGUIElement_Single_EditPropertyValue_Simple_<#=type.type_name#>(EditProperty_Value p, float h) : base(p, h) { }
-        public EditorGUIElement_Single_EditPropertyValue_Simple_<#=type.type_name#>(EditProperty_Value p) : this(p, <#=type.height#>) { }
+        public EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_<#=type.type_name#>(EditProperty_Value p, float h) : base(p, h) { }
+        public EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_<#=type.type_name#>(EditProperty_Value p) : this(p, <#=type.height#>) { }
     }
 
 <#}#>

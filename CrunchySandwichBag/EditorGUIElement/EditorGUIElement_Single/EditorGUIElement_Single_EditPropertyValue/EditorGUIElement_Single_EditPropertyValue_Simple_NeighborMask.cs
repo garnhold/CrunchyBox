@@ -14,14 +14,8 @@ namespace CrunchySandwichBag
     [EditorGUIElementForType(typeof(NeighborMask), true)]
     public class EditorGUIElement_Single_EditPropertyValue_Simple_NeighborMask : EditorGUIElement_Single_EditPropertyValue_Simple<NeighborMask>
     {
-        protected override NeighborMask DrawFieldInternal(Rect rect, GUIContent label, NeighborMask value)
+        protected override NeighborMask DrawFieldInternal(Rect rect, NeighborMask value)
         {
-            Rect label_rect;
-
-            rect.SplitByXLeftOffset(GetLayoutLabelWidth(), out label_rect, out rect);
-
-            GUI.Label(label_rect, label);
-
             rect.ProcessGrid(3, 3, delegate(int x, int y, Rect sub_rect) {
                 if(x == 1 && y == 1)
                 {

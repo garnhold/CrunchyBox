@@ -21,7 +21,7 @@ namespace CrunchySandwich
 <# foreach(string type_name in type_names){#>
 		static public void ClearParent(this <#=type_name#> item)
 		{
-			item.SetParent(null);
+			item.SetParent((GameObject)null);
 		}
 
 		static public bool HasParent(this <#=type_name#> item)
@@ -36,6 +36,10 @@ namespace CrunchySandwich
 		{
 			item.transform.parent = parent.IfNotNull(p => p.transform);
 		}
+		static public void SetParent(this <#=type_name#> item, Component parent)
+		{
+			item.SetParent(parent.gameObject);
+		}
 
         static public GameObject GetParent(this <#=type_name#> item)
         {
@@ -46,6 +50,11 @@ namespace CrunchySandwich
 
             return null;
         }
+
+		static public GameObject GetRoot(this <#=type_name#> item)
+		{
+			return item.GetSelfAndParents().GetLast();
+		}
 
 		static public IEnumerable<GameObject> GetParents(this <#=type_name#> item)
         {

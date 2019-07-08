@@ -24,6 +24,11 @@ namespace CrunchySandwich
             item.GetComponent<T>().IfNotNull(process);
         }
 
+		static public void ProcessComponents<T>(this <#=type_name#> item, Process<T> process)
+		{
+			item.GetComponents<T>().Process(process);
+		}
+
         static public void ProcessComponentUpward<T>(this <#=type_name#> item, Process<T> process)
         {
 			item.GetComponentUpward<T>().IfNotNull(process);
@@ -33,6 +38,15 @@ namespace CrunchySandwich
 			item.GetComponentUpwardFromParent<T>().IfNotNull(process);
 		}
 
+		static public void ProcessComponentsUpward<T>(this <#=type_name#> item, Process<T> process)
+		{
+			item.GetComponentsUpward<T>().Process(process);
+		}
+		static public void ProcessComponentsUpwardFromParent<T>(this <#=type_name#> item, Process<T> process)
+		{
+			item.GetComponentsUpwardFromParent<T>().Process(process);
+		}
+
 		static public void ProcessComponentDownward<T>(this <#=type_name#> item, Process<T> process)
 		{
 			item.GetComponentDownward<T>().IfNotNull(process);
@@ -40,6 +54,15 @@ namespace CrunchySandwich
 		static public void ProcessComponentDownwardFromChildren<T>(this <#=type_name#> item, Process<T> process)
 		{
 			item.GetComponentDownwardFromChildren<T>().IfNotNull(process);
+		}
+
+		static public void ProcessComponentsDownward<T>(this <#=type_name#> item, Process<T> process)
+		{
+			item.GetComponentsDownward<T>().Process(process);
+		}
+		static public void ProcessComponentsDownwardFromChildren<T>(this <#=type_name#> item, Process<T> process)
+		{
+			item.GetComponentsDownwardFromChildren<T>().Process(process);
 		}
 
 <# } #>

@@ -10,16 +10,12 @@ namespace CrunchySandwich
 {
     static public partial class GUIExtensions
     {
-        static public void DrawCenterRect(Vector2 center, Vector2 size)
+        static public void DrawRect(Rect rect)
         {
             GUI.DrawTexture(
-                RectExtensions.CreateCenterRect(center, size),
+                rect,
                 GetWhitePixelTexture()
             );
-        }
-        static public void DrawCenterSquare(Vector2 center, float size)
-        {
-            DrawCenterRect(center, new Vector2(size, size));
         }
     }
 }

@@ -49,7 +49,7 @@ namespace CrunchySandwichBag
                     case AssetType.None:
                     case AssetType.External:
                         type_container.AddChild(1.0f,
-                            new EditorGUIElement_Single_EditPropertyValue_Simple_UnityObject(property)
+                            new EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_UnityObject(property)
                         );
                         break;
 

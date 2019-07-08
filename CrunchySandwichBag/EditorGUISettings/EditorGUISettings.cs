@@ -20,6 +20,9 @@ namespace CrunchySandwichBag
         [SerializeField]private bool is_custom_scene_gui_enabled;
         [SerializeField][Range(10.0f, 300.0f)]private float default_label_width;
 
+        [SerializeField]private bool should_shrink_labels;
+        [SerializeField][Range(0.0f, 64.0f)]private float shrunk_label_margin;
+
         public bool IsCustomGUIEnabled()
         {
             return is_custom_gui_enabled;
@@ -33,6 +36,16 @@ namespace CrunchySandwichBag
         public float GetDefaultLabelWidth()
         {
             return default_label_width.BindBetween(10.0f, 300.0f);
+        }
+
+        public bool ShouldShrinkLabels()
+        {
+            return should_shrink_labels;
+        }
+
+        public float GetShrunkLabelMargin()
+        {
+            return shrunk_label_margin.BindBetween(0.0f, 64.0f);
         }
     }
 }

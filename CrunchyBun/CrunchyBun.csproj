@@ -50,6 +50,7 @@
     <Compile Include="AnimatedFloat\AnimatedFloat.cs" />
     <Compile Include="AnimatedFloat\AnimateOperations.cs" />
     <Compile Include="CardinalDirection\CardinalDirection.cs" />
+    <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_Reduce.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_VectorF2.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions.cs" />
     <Compile Include="Easer\AutoEaser.cs" />

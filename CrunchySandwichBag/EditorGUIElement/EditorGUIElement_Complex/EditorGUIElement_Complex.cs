@@ -48,6 +48,14 @@ namespace CrunchySandwichBag
                 element.Layout(rect, label_width);
         }
 
+        protected override float CalculateLayoutLabelWidthInternal(float incoming)
+        {
+            if (element != null)asfd
+                return element.CalculateElementHeightInternal(incoming);
+
+            return incoming;
+        }
+
         protected override void DrawContentsInternal(Rect view)
         {
             if (element != null)
