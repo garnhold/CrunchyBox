@@ -22,7 +22,7 @@ namespace CrunchySandwichBag
 
             root.LayoutDrawAndUnwind(
                 EditorGUILayout.GetControlRect(true, root.GetHeight()),
-                EditorGUISettings.GetInstance().GetDefaultLabelWidth()
+                EditorGUISettings.GetInstance().GetInitialLayoutState()
             );
         }
 

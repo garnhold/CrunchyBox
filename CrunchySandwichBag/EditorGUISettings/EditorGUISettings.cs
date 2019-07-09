@@ -20,8 +20,8 @@ namespace CrunchySandwichBag
         [SerializeField]private bool is_custom_scene_gui_enabled;
         [SerializeField][Range(10.0f, 300.0f)]private float default_label_width;
 
-        [SerializeField]private bool should_shrink_labels;
-        [SerializeField][Range(0.0f, 64.0f)]private float shrunk_label_margin;
+        [SerializeField]private bool should_auto_size_labels;
+        [SerializeField][Range(0.0f, 64.0f)]private float auto_size_label_margin;
 
         public bool IsCustomGUIEnabled()
         {
@@ -38,14 +38,23 @@ namespace CrunchySandwichBag
             return default_label_width.BindBetween(10.0f, 300.0f);
         }
 
-        public bool ShouldShrinkLabels()
+        public bool ShouldAutoSizeLabels()
         {
-            return should_shrink_labels;
+            return should_auto_size_labels;
         }
 
-        public float GetShrunkLabelMargin()
+        public float GetAutoSizeLabelMargin()
         {
-            return shrunk_label_margin.BindBetween(0.0f, 64.0f);
+            return auto_size_label_margin.BindBetween(0.0f, 64.0f);
+        }
+
+        public EditorGUILayoutState GetInitialLayoutState()
+        {
+            return new EditorGUILayoutState(
+                GetDefaultLabelWidth(),
+                ShouldAutoSizeLabels(),
+                GetAutoSizeLabelMargin()
+            );
         }
     }
 }

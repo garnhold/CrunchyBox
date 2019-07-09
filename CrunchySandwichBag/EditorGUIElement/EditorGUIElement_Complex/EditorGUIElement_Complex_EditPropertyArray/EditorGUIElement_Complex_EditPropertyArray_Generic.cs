@@ -40,7 +40,7 @@ namespace CrunchySandwichBag
 
             if (property.TryGetNumberElements(out number_elements))
             {
-                container.AddChild(new EditorGUIElement_Single_EditPropertyArray_ArraySize(property).LabelWithGUIContent("# Elements"));
+                container.AddChild(new EditorGUIElement_Single_EditPropertyArray_ArraySize(property).LabelWithGUIContent("Length"));
 
                 for (int i = 0; i < number_elements; i++)
                 {

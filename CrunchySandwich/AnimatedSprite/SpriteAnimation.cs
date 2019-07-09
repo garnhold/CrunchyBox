@@ -26,6 +26,9 @@ namespace CrunchySandwich
             frames = f.ToArray();
         }
 
+        public SpriteAnimation(float d, IEnumerable<Sprite> f) : this("Animation", d, f) { }
+        public SpriteAnimation(IEnumerable<Sprite> f) : this(1.0f, f) { }
+
         public string GetName()
         {
             return name;

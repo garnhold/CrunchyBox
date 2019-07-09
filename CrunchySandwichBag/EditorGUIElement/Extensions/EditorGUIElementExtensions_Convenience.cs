@@ -13,9 +13,9 @@ namespace CrunchySandwichBag
 {
     static public class EditorGUIElementExtensions_Convenience
     {
-        static public void LayoutDrawAndUnwind(this EditorGUIElement item, Rect rect, float label_width)
+        static public void LayoutDrawAndUnwind(this EditorGUIElement item, Rect rect, EditorGUILayoutState state)
         {
-            item.Layout(rect, label_width);
+            item.Layout(rect, state);
             item.Draw();
             item.Unwind();
         }

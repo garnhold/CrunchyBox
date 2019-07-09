@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
 
         protected abstract bool DrawSingleInternal(Rect rect);
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             element_rect = rect;
 

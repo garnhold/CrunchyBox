@@ -24,6 +24,10 @@ namespace CrunchySandwich
             frames = f.ToArray();
         }
 
+        public SpriteSequence(string n, float v, IEnumerable<Sprite> s) : this(n, s.Convert(i => new SpriteSequenceFrame(v, i))) { }
+        public SpriteSequence(float v, IEnumerable<Sprite> s) : this("Sequence", v, s) { }
+        public SpriteSequence(IEnumerable<Sprite> s) : this(1.0f, s) { }
+
         public string GetName()
         {
             return name;

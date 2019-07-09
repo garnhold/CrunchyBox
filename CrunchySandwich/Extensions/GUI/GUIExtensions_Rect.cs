@@ -10,12 +10,14 @@ namespace CrunchySandwich
 {
     static public partial class GUIExtensions
     {
-        static public void DrawRect(Rect rect)
+        static public void DrawRect(Rect rect, Color color)
         {
-            GUI.DrawTexture(
-                rect,
-                GetWhitePixelTexture()
-            );
+            GUIExtensions.PushPopColor(color, delegate() {
+                GUI.DrawTexture(
+                    rect,
+                    GetWhitePixelTexture()
+                );
+            });
         }
     }
 }

@@ -22,7 +22,7 @@ namespace CrunchySandwichBag
         private Rect background_rect;
         private GUIControl_MouseCapture percent_area;
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             border_rect = rect;
             background_rect = border_rect.GetShrunk(1.0f);

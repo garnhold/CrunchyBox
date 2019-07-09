@@ -15,7 +15,7 @@ namespace CrunchySandwichBag
     {
         private List<Tuple<EditorGUIElementLength, EditorGUIElement>> strip_elements;
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
             float total_weight = strip_elements.Convert(t => t.item1.GetWeight()).Sum();
             float total_fixed_width = strip_elements.Convert(t => t.item1.GetFixedLength()).Sum();
@@ -27,7 +27,7 @@ namespace CrunchySandwichBag
                 float width = element.item1.GetLength(total_weighted_width, total_weight);
 
                 rect.SplitByXLeftOffset(width, out current_rect, out rect);
-                element.item2.Layout(current_rect, label_width);
+                element.item2.Layout(current_rect, state);
             }
         }
 

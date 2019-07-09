@@ -17,17 +17,17 @@ namespace CrunchySandwich
 
         static public void DestroyGameObjects<T>(this IEnumerable<T> item) where T : Component
         {
-            item.ConvertToGameObjects().Destroy();
+            item.ConvertToGameObjects().SkipNull().Destroy();
         }
 
         static public void DestroyGameObjectsImmediate<T>(this IEnumerable<T> item, bool is_asset = false) where T : Component
         {
-            item.ConvertToGameObjects().DestroyImmediate(is_asset);
+            item.ConvertToGameObjects().SkipNull().DestroyImmediate(is_asset);
         }
 
         static public void DestroyGameObjectsAdvisory<T>(this IEnumerable<T> item, bool is_asset = false) where T : Component
         {
-            item.ConvertToGameObjects().DestroyAdvisory(is_asset);
+            item.ConvertToGameObjects().SkipNull().DestroyAdvisory(is_asset);
         }
     }
 }

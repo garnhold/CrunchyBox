@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
 
         public EditorGUIElementAttachment_Box() : this(Color.gray) { }
 
-        public override Rect LayoutElementInternal(Rect rect, float label_width)
+        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             box_rect = rect;
 

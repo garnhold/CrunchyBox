@@ -39,7 +39,7 @@ namespace CrunchySandwichBag
             element.Initilize();
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             rect = GetDesiredRect().GetConstrainedByOrShrunk(rect);
 
@@ -52,9 +52,9 @@ namespace CrunchySandwichBag
             return box_rect;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
-            element.Layout(rect, label_width);
+            element.Layout(rect, state);
         }
 
         protected override void DrawElementInternal(Rect view)

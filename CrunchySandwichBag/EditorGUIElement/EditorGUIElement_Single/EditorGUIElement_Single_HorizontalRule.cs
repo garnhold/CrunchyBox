@@ -15,7 +15,10 @@ namespace CrunchySandwichBag
     {
         protected override bool DrawSingleInternal(Rect rect)
         {
-            GUIExtensions.DrawHorizontalRule(rect);
+            GUIExtensions.DrawRect(
+                rect.GetHeightedAnchorCenter(1.0f).GetShrunk(rect.width * 0.125f, 0.0f),
+                Color.gray
+            );
 
             return true;
         }

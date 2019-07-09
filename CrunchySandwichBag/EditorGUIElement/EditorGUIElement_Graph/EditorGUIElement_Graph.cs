@@ -24,16 +24,16 @@ namespace CrunchySandwichBag
             nodes.Process(n => n.Initilize());
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             element_rect = rect;
 
             return rect;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
-            nodes.Process(n => n.Layout(rect, label_width));
+            nodes.Process(n => n.Layout(rect, state));
         }
 
         protected override void DrawElementInternal(Rect view)

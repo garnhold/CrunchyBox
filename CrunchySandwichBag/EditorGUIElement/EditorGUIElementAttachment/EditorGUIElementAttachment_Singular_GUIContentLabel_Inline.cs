@@ -22,10 +22,10 @@ namespace CrunchySandwichBag
 
         public EditorGUIElementAttachment_Singular_GUIContentLabel_Inline() : this(GUIContent.none) { }
 
-        public override Rect LayoutElementInternal(Rect rect, float label_width)
+        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             if (HasLabel())
-                rect.SplitByXLeftOffset(label_width, out label_rect, out rect);
+                rect.SplitByXLeftOffset(state.GetCurrentLabelWidth(), out label_rect, out rect);
 
             return rect;
         }

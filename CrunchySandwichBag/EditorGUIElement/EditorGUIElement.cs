@@ -16,7 +16,7 @@ namespace CrunchySandwichBag
         private float height;
 
         private Rect layout_rect;
-        private float layout_label_width;
+        private EditorGUILayoutState layout_state;
 
         private bool is_height_dirty;
         private bool is_layout_dirty;
@@ -30,9 +30,8 @@ namespace CrunchySandwichBag
 
         protected virtual bool HandleAttachment(ref EditorGUIElementAttachment attachment) { return true; }
 
-        protected virtual Rect LayoutElementInternal(Rect rect, float label_width) { return rect; }
-        protected virtual void LayoutContentsInternal(Rect rect, float label_width) { }
-        protected virtual float CalculateLayoutLabelWidthInternal(float incoming) { return incoming; }
+        protected virtual Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state) { return rect; }
+        protected virtual void LayoutContentsInternal(Rect rect, EditorGUILayoutState state) { }
 
         protected virtual void DrawElementInternal(Rect view) { }
         protected virtual void DrawContentsInternal(Rect view) { }
@@ -77,13 +76,13 @@ namespace CrunchySandwichBag
 
         private void DoLayout()
         {
-            attachments.Process(a => a.PreLayoutInternal(layout_rect, layout_label_width));
-                Rect element_rect = attachments.Apply(layout_rect, (r, a) => a.LayoutElementInternal(r, layout_label_width));
-                Rect contents_rect = LayoutElementInternal(element_rect, layout_label_width);
+            attachments.Process(a => a.PreLayoutInternal(layout_rect, layout_state));
+                Rect element_rect = attachments.Apply(layout_rect, (r, a) => a.LayoutElementInternal(r, layout_state));
+                Rect contents_rect = LayoutElementInternal(element_rect, layout_state);
 
-                contents_rect = attachments.Apply(contents_rect, (r, a) => a.LayoutContentsInternal(r, layout_label_width));
-                LayoutContentsInternal(contents_rect, layout_label_width);
-            attachments.Process(a => a.PostLayoutInternal(layout_rect, layout_label_width));
+                contents_rect = attachments.Apply(contents_rect, (r, a) => a.LayoutContentsInternal(r, layout_state));
+                LayoutContentsInternal(contents_rect, layout_state);
+            attachments.Process(a => a.PostLayoutInternal(layout_rect, layout_state));
 
             is_layout_dirty = false;
         }
@@ -93,7 +92,7 @@ namespace CrunchySandwichBag
             height = -1.0f;
 
             layout_rect = new Rect();
-            layout_label_width = 0.0f;
+            layout_state = new EditorGUILayoutState();
 
             is_height_dirty = true;
             is_layout_dirty = true;
@@ -126,16 +125,14 @@ namespace CrunchySandwichBag
             InvalidateLayout();
         }
 
-        public void Layout(Rect rect, float label_width)
+        public void Layout(Rect rect, EditorGUILayoutState state)
         {
             if (EventExtensions.IsLayoutNullRect(rect) == false)
             {
-                label_width = CalculateLayoutLabelWidthInternal(label_width);
-
-                if (rect != layout_rect || label_width != layout_label_width)
+                if (rect != layout_rect || state != layout_state)
                 {
                     layout_rect = rect;
-                    layout_label_width = label_width;
+                    layout_state = state;
 
                     DoLayout();
                 }
@@ -146,20 +143,17 @@ namespace CrunchySandwichBag
         {
             Validate();
 
-            float old_label_width = EditorGUIUtility.labelWidth;
-            EditorGUIUtility.labelWidth = layout_label_width;
+            EditorGUIUtilityExtensions.UseLabelWidth(layout_state.GetCurrentLabelWidth(), delegate() {
+                attachments.Process(a => a.PreDrawInternal());
+                    if (view.Overlaps(layout_rect))
+                    {
+                        DrawElementInternal(view);
+                        DrawContentsInternal(view);
 
-            attachments.Process(a => a.PreDrawInternal());
-                if (view.Overlaps(layout_rect))
-                {
-                    DrawElementInternal(view);
-                    DrawContentsInternal(view);
-
-                    attachments.Process(a => a.DrawInternal(view));
-                }
-            attachments.Process(a => a.PostDrawInternal());
-
-            EditorGUIUtility.labelWidth = old_label_width;
+                        attachments.Process(a => a.DrawInternal(view));
+                    }
+                attachments.Process(a => a.PostDrawInternal());
+            });
         }
 
         public void Draw()
@@ -251,11 +245,6 @@ namespace CrunchySandwichBag
         public Rect GetLayoutRect()
         {
             return layout_rect;
-        }
-
-        public float GetLayoutLabelWidth()
-        {
-            return layout_label_width;
         }
     }
 }

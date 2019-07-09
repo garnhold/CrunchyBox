@@ -93,10 +93,10 @@
     <Compile Include="Extensions\GUIContent\GUIContentExtensions.cs" />
     <Compile Include="Extensions\GUIContent\GUIContentExtensions_Layout.cs" />
     <Compile Include="Extensions\GUI\GUIExtensions_Label.cs" />
-    <Compile Include="Extensions\GUI\GUIExtensions_HorizontalRule.cs" />
     <Compile Include="Extensions\GUI\GUIExtensions_Rect.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Sized.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Adjust_Side.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_HorizontalDirection.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_Angle.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions.cs" />
     <Compile Include="SerializationCorruptable\SerializationCorruptable.cs" />

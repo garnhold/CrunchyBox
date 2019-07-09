@@ -15,7 +15,7 @@ namespace CrunchySandwichBag
     {
         private int width_in_cells;
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
             Rect remaining_rect = rect;
             float cell_width = rect.width / width_in_cells;
@@ -26,7 +26,7 @@ namespace CrunchySandwichBag
                 float x = rect.xMin;
                 foreach (EditorGUIElement element in row)
                 {
-                    element.Layout(new Rect(x, y, cell_width, element.GetHeight()), label_width);
+                    element.Layout(new Rect(x, y, cell_width, element.GetHeight()), state);
                     x += cell_width;
                 }
 

@@ -27,7 +27,10 @@ namespace CrunchySandwichBag
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
-                GetEditorGUIElement(property).LabelWithGUIContent(label).LayoutDrawAndUnwind(position, EditorGUIUtility.labelWidth);
+                GetEditorGUIElement(property).LabelWithGUIContent(label).LayoutDrawAndUnwind(
+                    position, 
+                    new EditorGUILayoutState(EditorGUIUtility.labelWidth)
+                );
             EditorGUI.EndProperty();
         }
 

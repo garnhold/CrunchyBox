@@ -28,16 +28,19 @@ namespace CrunchySandwichBag
             element.Initilize();
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             scroll_box_rect = rect;
 
             return rect;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
-            element.Layout(CalculateScrollBoxContentsRect(rect.width - SCROLL_BAR_WIDTH, label_width), label_width);
+            element.Layout(
+                CalculateScrollBoxContentsRect(rect.width - SCROLL_BAR_WIDTH, state.GetCurrentLabelWidth()),
+                state
+            );
         }
 
         protected override void DrawContentsInternal(Rect view)

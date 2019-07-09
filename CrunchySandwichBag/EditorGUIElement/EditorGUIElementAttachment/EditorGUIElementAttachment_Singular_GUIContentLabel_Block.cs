@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
         public EditorGUIElementAttachment_Singular_GUIContentLabel_Block(GUIContent l, float i) : this(l, i, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
         public EditorGUIElementAttachment_Singular_GUIContentLabel_Block(GUIContent l) : this(l, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
 
-        public override Rect LayoutElementInternal(Rect rect, float label_width)
+        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             if (HasLabel())
             {

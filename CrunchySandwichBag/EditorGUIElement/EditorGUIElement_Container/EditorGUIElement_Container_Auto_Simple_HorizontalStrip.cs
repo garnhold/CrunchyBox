@@ -13,7 +13,7 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElement_Container_Auto_Simple_HorizontalStrip : EditorGUIElement_Container_Auto_Simple
     {
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
             Rect remaining_rect = rect;
             float child_width = rect.width / GetChildren().Count();
@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
                 Rect current_rect;
 
                 remaining_rect.SplitByXLeftOffset(child_width, out current_rect, out remaining_rect);
-                element.Layout(current_rect, label_width);
+                element.Layout(current_rect, state);
             }
         }
 

@@ -29,14 +29,14 @@ namespace CrunchySandwichBag
 
         public EditorGUIElementAttachment_Label(string l) : this(l, EditorGUIElementAttachment_Label.DEFAULT_PERCENT_WIDTH) { }
 
-        public override Rect LayoutElementInternal(Rect rect, float label_width)
+        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             Rect label_rect;
             Rect remainder;
 
             rect.SplitByXLeftOffset(rect.width * percent_width, out label_rect, out remainder);
 
-            label.Layout(label_rect, label_width);
+            label.Layout(label_rect, state);
             return remainder;
         }
 

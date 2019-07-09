@@ -41,7 +41,12 @@ namespace CrunchySandwichBag
                 ??
                 CreateEditorGUIElementInternal()
                 ??
-                new EditorGUIElement_Single_Text("--Unable to create GUI element for " + GetPropertyType() + "--");
+                new EditorGUIElement_Single_UnhandledEditProperty(this);
+        }
+
+        public override string ToString()
+        {
+            return GetPropertyType() + " " + GetName();
         }
     }
 }

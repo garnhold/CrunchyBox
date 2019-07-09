@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
         public EditorGUIElementAttachment_Singular_Margin(float lr, float tb) : this(lr, lr, tb, tb) { }
         public EditorGUIElementAttachment_Singular_Margin(float p) : this(p, p) { }
 
-        public override Rect LayoutElementInternal(Rect rect, float label_width)
+        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             return rect.GetShrunk(left, bottom, right, top);
         }

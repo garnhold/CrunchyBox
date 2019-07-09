@@ -87,8 +87,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_LayerMask.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_HorizontalRule.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_UnhandledEditProperty.cs" />
     <Compile Include="EditorGUIElement\Extensions\EditorGUIElementExtensions_Attachment.cs" />
+    <Compile Include="EditorGUILayoutState\EditorGUILayoutState.cs" />
+    <Compile Include="EditorGUILayoutState\Extensions\EditorGUILayoutStateExtensions_With.cs" />
+    <Compile Include="EditorGUILayoutState\Extensions\EditorGUILayoutStateExtensions.cs" />
     <Compile Include="EditorInitializer\EditorInitializerAttribute.cs" />
     <Compile Include="EditorInitializer\EditorInitializer.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_SerializationCorruptable.cs" />
@@ -101,12 +106,16 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SpriteVectorizerTest.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
+    <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions_LabelWidth.cs" />
+    <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_SerializationCorruptable.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Script.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Id.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Collider.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_AnimatedSprite.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_SequencedSprite.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_BurstSprite.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_Collider.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Importer.cs" />
@@ -129,7 +138,6 @@
     <Compile Include="EditTarget\Extensions\EditTargetExtensions.cs" />
     <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions_Load_Extended.cs" />
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions_Get.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_ScrollBox.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_GUIContentLabel.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_GUIContentLabel_Block.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_GUIContentLabel_Inline.cs" />

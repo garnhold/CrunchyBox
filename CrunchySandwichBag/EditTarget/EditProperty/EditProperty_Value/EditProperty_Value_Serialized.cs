@@ -38,7 +38,7 @@ namespace CrunchySandwichBag
         {
             if (IsUnified())
             {
-                value = property.GetValue();
+                value = property.GetValue(GetPropertyType());
                 return true;
             }
 

@@ -22,6 +22,10 @@ namespace CrunchySandwichBag
         {
             return item.FindProperty(name).GetValue();
         }
+        static public object GetChildValue(this SerializedObject item, string name, Type type)
+        {
+            return item.FindProperty(name).GetValue(type);
+        }
         static public T GetChildValue<T>(this SerializedObject item, string name)
         {
             return item.GetChildValue(name).ConvertEX<T>();

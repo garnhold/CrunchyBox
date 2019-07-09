@@ -42,18 +42,10 @@ namespace CrunchySandwichBag
             return false;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
             if (element != null)
-                element.Layout(rect, label_width);
-        }
-
-        protected override float CalculateLayoutLabelWidthInternal(float incoming)
-        {
-            if (element != null)asfd
-                return element.CalculateElementHeightInternal(incoming);
-
-            return incoming;
+                element.Layout(rect, state);
         }
 
         protected override void DrawContentsInternal(Rect view)

@@ -27,16 +27,16 @@ namespace CrunchySandwichBag
             container.Initilize();
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {
             rect.SplitByYBottomOffset(single_height, out label_rect, out rect);
 
             return rect;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
-            container.Layout(rect, label_width);
+            container.Layout(rect, state);
         }
 
         protected override void DrawElementInternal(Rect view)

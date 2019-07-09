@@ -50,12 +50,12 @@
     <Compile Include="AnimatedFloat\AnimatedFloat.cs" />
     <Compile Include="AnimatedFloat\AnimateOperations.cs" />
     <Compile Include="CardinalDirection\CardinalDirection.cs" />
-    <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_Reduce.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_VectorF2.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions.cs" />
     <Compile Include="Easer\AutoEaser.cs" />
     <Compile Include="Easer\EaseFunction.cs" />
     <Compile Include="Easer\Extensions\EaseOperationExtensions.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_HorizontalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_CardinalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Mix.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Distance.cs" />
@@ -111,6 +111,9 @@
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Radians\GraphNode_AngleAware_Radians.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer.cs" />
+    <Compile Include="HorizontalDirection\Extensions\HorizontalDirectionExtensions.cs" />
+    <Compile Include="HorizontalDirection\Extensions\HorizontalDirectionExtensions_VectorF2.cs" />
+    <Compile Include="HorizontalDirection\HorizontalDirection.cs" />
     <Compile Include="LineF2\Extensions\LineF2Extensions_Point.cs" />
     <Compile Include="LineF2\Extensions\LineF2Extensions_Intersection.cs" />
     <Compile Include="LineF2\Extensions\LineF2Extensions.cs" />

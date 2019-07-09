@@ -14,15 +14,14 @@ namespace CrunchySandwich
         [SerializeField]private float value;
         [SerializeField]private Sprite sprite;
 
-        public SpriteSequenceFrame()
-        {
-        }
-
         public SpriteSequenceFrame(float v, Sprite s)
         {
             value = v;
             sprite = s;
         }
+
+        public SpriteSequenceFrame(Sprite s) : this(1.0f, s) { }
+        public SpriteSequenceFrame() : this(null) { }
 
         public float GetValue()
         {
