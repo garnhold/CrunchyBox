@@ -33,7 +33,7 @@ namespace CrunchySandwichBag
 
                 if (reflected_object.GetNumberPropertys() > 0 || reflected_object.GetNumberActions() > 0)
                 {
-                    container.AddChild(new EditorGUIElement_Single_HorizontalRule());
+                    container.AddChild(new EditorGUIElement_HorizontalRule());
                     container.AddChild(new EditorGUIElement_Complex_EditTarget(reflected_object));
                 }
             }
@@ -49,6 +49,8 @@ namespace CrunchySandwichBag
         {
             serialized_object = s;
             reflected_object = new ReflectedObject(s.targetObjects);
+
+            AddAttachment(new EditorGUIElementAttachment_SerializedObjectSection(s));
         }
 
         public EditorGUIElement_Complex_All(params UnityEngine.Object[] t) : this(new SerializedObject(t)) { }

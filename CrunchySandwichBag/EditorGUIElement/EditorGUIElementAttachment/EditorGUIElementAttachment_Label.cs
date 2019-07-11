@@ -14,7 +14,7 @@ namespace CrunchySandwichBag
     public class EditorGUIElementAttachment_Label : EditorGUIElementAttachment
     {
         private float percent_width;
-        private EditorGUIElement_Single_Text label;
+        private EditorGUIElement_Text label;
 
         static public readonly float DEFAULT_PERCENT_WIDTH = 0.385f;
 
@@ -22,7 +22,7 @@ namespace CrunchySandwichBag
         {
             percent_width = w;
 
-            label = new EditorGUIElement_Single_Text(l, EditorGUIElement_Single.DEFAULT_HEIGHT);
+            label = new EditorGUIElement_Text(l);
             label.AddAttachment(new EditorGUIElementAttachment_Singular_Margin(0.0f));
             label.AddAttachment(new EditorGUIElementAttachment_Singular_Padding(0.0f));
         }

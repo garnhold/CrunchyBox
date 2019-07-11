@@ -23,6 +23,8 @@ namespace CrunchySandwichBag
         [SerializeField]private bool should_auto_size_labels;
         [SerializeField][Range(0.0f, 64.0f)]private float auto_size_label_margin;
 
+        [SerializeField]private bool should_always_show_recovery_fields;
+
         public bool IsCustomGUIEnabled()
         {
             return is_custom_gui_enabled;
@@ -48,12 +50,18 @@ namespace CrunchySandwichBag
             return auto_size_label_margin.BindBetween(0.0f, 64.0f);
         }
 
+        public bool ShouldAlwaysShowRecoveryFields()
+        {
+            return should_always_show_recovery_fields;
+        }
+
         public EditorGUILayoutState GetInitialLayoutState()
         {
             return new EditorGUILayoutState(
                 GetDefaultLabelWidth(),
                 ShouldAutoSizeLabels(),
-                GetAutoSizeLabelMargin()
+                GetAutoSizeLabelMargin(),
+                ShouldAlwaysShowRecoveryFields()
             );
         }
     }

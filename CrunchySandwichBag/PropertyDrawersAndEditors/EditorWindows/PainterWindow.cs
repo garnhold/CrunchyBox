@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
                 painter.DirtyUtensil();
             }));
 
-            root.AddChild(new EditorGUIElement_Single_Button("Swap Colors", delegate() {
+            root.AddChild(new EditorGUIElement_Button("Swap Colors", delegate() {
                 painter.SwapColors();
             }));
         }

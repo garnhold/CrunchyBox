@@ -86,6 +86,8 @@
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Boolean.cs" />
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Add.cs" />
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions.cs" />
+    <Compile Include="EaseFunctionTransform\EaseFunctionTransform.cs" />
+    <Compile Include="EaseFunction\EaseFunction_Typical.cs" />
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions_Volume.cs" />
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions.cs" />
     <Compile Include="Extensions\Component\ComponentExtensions_SpawnInstance.cs" />
@@ -99,6 +101,9 @@
     <Compile Include="Extensions\Vector2\Vector2Extensions_HorizontalDirection.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_Angle.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_Typical.cs" />
+    <Compile Include="PeriodicFunction\PeriodicFunction_RampEase.cs" />
+    <Compile Include="PeriodicFunctionTransform\PeriodicFunctionTransform.cs" />
     <Compile Include="SerializationCorruptable\SerializationCorruptable.cs" />
     <Compile Include="CustomAsset\CustomAssetGenerator.cs" />
     <Compile Include="CustomAsset\CustomAssetInstance.cs" />

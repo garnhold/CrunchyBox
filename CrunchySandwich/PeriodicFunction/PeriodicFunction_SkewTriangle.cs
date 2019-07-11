@@ -7,7 +7,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class PeriodicFunction_SkewTriangle : PeriodicFunction
+    public class PeriodicFunction_SkewTriangle : PeriodicFunction_Typical
     {
         [SerializeField]private float peak;
 

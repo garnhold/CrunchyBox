@@ -15,6 +15,9 @@ namespace CrunchySandwichBag
     {
         private float height;
 
+        private Rect element_rect;
+        private Rect contents_rect;
+
         private Rect layout_rect;
         private EditorGUILayoutState layout_state;
 
@@ -38,7 +41,9 @@ namespace CrunchySandwichBag
 
         protected virtual void UnwindInternal() { }
 
-        protected abstract float CalculateElementHeightInternal();
+        protected virtual float CalculateElementHeightInternal() { return LINE_HEIGHT; }
+
+        public const float LINE_HEIGHT = 16.0f;
 
         private void Validate()
         {
@@ -77,8 +82,8 @@ namespace CrunchySandwichBag
         private void DoLayout()
         {
             attachments.Process(a => a.PreLayoutInternal(layout_rect, layout_state));
-                Rect element_rect = attachments.Apply(layout_rect, (r, a) => a.LayoutElementInternal(r, layout_state));
-                Rect contents_rect = LayoutElementInternal(element_rect, layout_state);
+                element_rect = attachments.Apply(layout_rect, (r, a) => a.LayoutElementInternal(r, layout_state));
+                contents_rect = LayoutElementInternal(element_rect, layout_state);
 
                 contents_rect = attachments.Apply(contents_rect, (r, a) => a.LayoutContentsInternal(r, layout_state));
                 LayoutContentsInternal(contents_rect, layout_state);
@@ -90,6 +95,9 @@ namespace CrunchySandwichBag
         public EditorGUIElement()
         {
             height = -1.0f;
+            
+            element_rect = new Rect();
+            contents_rect = new Rect();
 
             layout_rect = new Rect();
             layout_state = new EditorGUILayoutState();
@@ -242,9 +250,24 @@ namespace CrunchySandwichBag
             return height;
         }
 
+        public Rect GetElementRect()
+        {
+            return element_rect;
+        }
+
+        public Rect GetContentsRect()
+        {
+            return contents_rect;
+        }
+
         public Rect GetLayoutRect()
         {
             return layout_rect;
+        }
+
+        public EditorGUILayoutState GetLayoutState()
+        {
+            return layout_state;
         }
     }
 }

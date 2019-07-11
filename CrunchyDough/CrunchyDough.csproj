@@ -1032,7 +1032,6 @@
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions.cs" />
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Consecutive.cs" />
     <Compile Include="Extensions\IList\IListExtensions.cs" />
-    <Compile Include="Extensions\IList\IListExtensions_Count.cs" />
     <Compile Include="LabeledAttribute\LabeledAttribute.cs" />
     <Compile Include="LabeledItemSet\LabeledItem.cs" />
     <Compile Include="LabeledItemSet\LabeledItemSet.cs" />

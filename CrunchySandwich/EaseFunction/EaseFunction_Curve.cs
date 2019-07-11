@@ -7,7 +7,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class EaseFunction_Curve : EaseFunction
+    public class EaseFunction_Curve : EaseFunction_Typical
     {
         [SerializeField]private Curve curve;
 

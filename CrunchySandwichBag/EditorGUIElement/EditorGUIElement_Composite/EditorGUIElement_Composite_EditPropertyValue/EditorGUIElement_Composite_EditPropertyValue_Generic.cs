@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
             if (property.TryGetContents(out value))
                 container.AddChild(new EditorGUIElement_Complex_EditTarget(value));
             else
-                container.AddChild(new EditorGUIElement_Single_UnhandledEditProperty(property));
+                container.AddChild(new EditorGUIElement_UnhandledEditProperty(property));
 
             return container;
         }

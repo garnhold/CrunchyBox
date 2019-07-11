@@ -23,7 +23,7 @@ namespace CrunchyRecipe
             SetTyonType(TyonType.CreateTyonType(obj.GetType()));
             SetTyonVariables(
                 context.GetDesignatedVariables(obj.GetType())
-                    .Convert(v => new TyonVariable(obj, v, context))
+                    .Convert(v => new TyonVariable(v.CreateStrongInstance(obj), context))
             );
         }
 

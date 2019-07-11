@@ -17,10 +17,10 @@ namespace CrunchyRecipe
 {
 	public partial class TyonVariable : TyonElement
 	{
-        public TyonVariable(object obj, Variable variable, TyonContext_Dehydration context) : this()
+        public TyonVariable(VariableInstance variable, TyonContext_Dehydration context) : this()
         {
-            SetId(variable.GetVariableName());
-            SetTyonValue(context.CreateTyonValue(variable.GetContents(obj), variable));
+            SetId(variable.GetVariable().GetVariableName());
+            SetTyonValue(context.CreateTyonValue(variable));
         }
 
         public void PushToSystemObject(object obj, TyonContext_Hydration context)

@@ -7,7 +7,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class EaseFunction_QuadOut : EaseFunction
+    public class EaseFunction_QuadOut : EaseFunction_Typical
     {
         protected override float ExecuteInternal(float input)
         {

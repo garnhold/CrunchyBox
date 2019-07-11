@@ -32,7 +32,7 @@ namespace CrunchySandwichBag
 
         public EditorGUIElement CreateEditorGUIElement()
         {
-            return new EditorGUIElement_Single_EditAction_Button(this);
+            return new EditorGUIElement_EditAction_Button(this);
         }
     }
 }

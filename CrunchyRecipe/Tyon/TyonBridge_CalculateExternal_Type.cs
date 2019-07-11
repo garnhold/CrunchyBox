@@ -14,9 +14,9 @@ namespace CrunchyRecipe
         protected abstract ADDRESS_TYPE CalculateAddressInternal(VALUE_TYPE value);
         protected abstract VALUE_TYPE ResolveAddressInternal(ADDRESS_TYPE address);
 
-        protected override object CalculateAddress(object value, Variable variable, TyonContext_Dehydration context)
+        protected override object CalculateAddress(VariableInstance variable, TyonContext_Dehydration context)
         {
-            return CalculateAddressInternal(value.ConvertEX<VALUE_TYPE>());
+            return CalculateAddressInternal(variable.GetContents().ConvertEX<VALUE_TYPE>());
         }
 
         protected override object ResolveAddress(object address, Variable variable, TyonContext_Hydration context)

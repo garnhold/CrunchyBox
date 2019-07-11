@@ -7,7 +7,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class PeriodicFunction_Pulse : PeriodicFunction
+    public class PeriodicFunction_Pulse : PeriodicFunction_Typical
     {
         [SerializeField]private float duty;
 

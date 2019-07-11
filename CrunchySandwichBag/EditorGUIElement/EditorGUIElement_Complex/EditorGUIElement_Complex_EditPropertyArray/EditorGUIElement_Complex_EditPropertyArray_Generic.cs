@@ -40,7 +40,7 @@ namespace CrunchySandwichBag
 
             if (property.TryGetNumberElements(out number_elements))
             {
-                container.AddChild(new EditorGUIElement_Single_EditPropertyArray_ArraySize(property).LabelWithGUIContent("Length"));
+                container.AddChild(new EditorGUIElement_EditPropertyArray_ArraySize(property).LabelWithGUIContent("Length"));
 
                 for (int i = 0; i < number_elements; i++)
                 {
@@ -51,20 +51,20 @@ namespace CrunchySandwichBag
                         .LabelWithGUIContent("[" + i + "]");
 
                     strip.AddChild(1.0f, sub_property.CreateEditorGUIElement());
-                    strip.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Single_Button("+v", delegate() {
+                    strip.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+v", delegate() {
                         property.InsertElement(i_latched + 1);
                     }));
-                    strip.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Single_Button("+^", delegate() {
+                    strip.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+^", delegate() {
                         property.InsertElement(i_latched);
                     }));
-                    strip.AddChild(new EditorGUIElementLength_Fixed(20.0f), new EditorGUIElement_Single_Button("-", delegate() {
+                    strip.AddChild(new EditorGUIElementLength_Fixed(20.0f), new EditorGUIElement_Button("-", delegate() {
                         property.RemoveElement(i_latched);
                     }));
                 }
             }
             else
             {
-                container.AddChild(new EditorGUIElement_Single_Text("--Disabled(Array lengths are not unified)--"));
+                container.AddChild(new EditorGUIElement_Text("--Disabled(Array lengths are not unified)--"));
                 property.EnsurePresence();
             }
 

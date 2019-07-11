@@ -9,7 +9,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class PeriodicFunction_Multiple : PeriodicFunction
+    public abstract class PeriodicFunction_Multiple : PeriodicFunction_Typical
     {
         [SerializeField]private List<PeriodicFunction> functions;
 

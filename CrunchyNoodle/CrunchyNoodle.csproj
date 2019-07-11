@@ -206,6 +206,7 @@
     <Compile Include="MemberInstance\TargetInstance\TargetInstance_Static.cs" />
     <Compile Include="MemberInstance\TargetInstance\TargetInstance_Strong.cs" />
     <Compile Include="MemberInstance\TargetInstance\TargetInstance_Weak.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Elements.cs" />
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_RelativeAction.cs" />
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_RelativeFunction.cs" />
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Relative.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Member\Action\Action_Function.cs" />
     <Compile Include="Member\Function\Extensions\FunctionExtensions_Parameters.cs" />
     <Compile Include="Member\Function\Extensions\FunctionExtensions.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Elements.cs" />
     <Compile Include="Member\Variable\Variable_Prop\Variable_Prop.cs" />
     <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions_Instance.cs" />
     <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions.cs" />

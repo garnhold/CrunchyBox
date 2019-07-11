@@ -47,7 +47,7 @@ namespace CrunchySandwichBag
 
                 strip.AddChild(
                     new EditorGUIElementLength_Fixed(90.0f),
-                    new EditorGUIElement_Single_Button("Delete", delegate() {
+                    new EditorGUIElement_Button("Delete", delegate() {
                         property.ClearContents();
                     })
                 );

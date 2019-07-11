@@ -41,7 +41,7 @@ namespace CrunchySandwichBag
             operation = o1;
         }
 
-        public EditorGUIElement_Popup_SerializedProperty_Represented(SerializedProperty s, IEnumerable<ELEMENT_TYPE> es, Operation<SURROGATE_TYPE, ELEMENT_TYPE> o1, Operation<string, ELEMENT_TYPE> o2) : this(s, es, o1, o2, EditorGUIElement_Single_Text.DEFAULT_HEIGHT) { }
+        public EditorGUIElement_Popup_SerializedProperty_Represented(SerializedProperty s, IEnumerable<ELEMENT_TYPE> es, Operation<SURROGATE_TYPE, ELEMENT_TYPE> o1, Operation<string, ELEMENT_TYPE> o2) : this(s, es, o1, o2, LINE_HEIGHT) { }
         public EditorGUIElement_Popup_SerializedProperty_Represented(SerializedProperty s, IEnumerable<ELEMENT_TYPE> es, Operation<SURROGATE_TYPE, ELEMENT_TYPE> o1) : this(s, es, o1, e => e.ToStringEX()) { }
 
         public override void SetSelectedElement(ELEMENT_TYPE element)

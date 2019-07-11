@@ -13,13 +13,17 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElement_Complex_EditTarget : EditorGUIElement_Complex<Tuple<bool, Type>>
+    public class EditorGUIElement_Complex_EditTarget : EditorGUIElement_Complex<Tuple<bool, bool, Type>>
     {
         private EditTarget target;
 
-        protected override Tuple<bool, Type> PullState()
+        protected override Tuple<bool, bool, Type> PullState()
         {
-            return Tuple.New(target.IsSerializationCorrupt(), target.GetTargetType());
+            return Tuple.New(
+                target.IsSerializationCorrupt(),
+                GetLayoutState().ShouldAlwaysShowRecoveryFields(),
+                target.GetTargetType()
+            );
         }
 
         protected override EditorGUIElement PushState()
@@ -30,7 +34,7 @@ namespace CrunchySandwichBag
             {
                 container.AddChildren(
                     target.GetPropertys()
-                        .Convert(p => p.CreateEditorGUIElement().LabelWithGUIContent(p.GetGUIContentLabel()))
+                        .Convert(p => p.CreateLabeledEditorGUIElement())
                 );
 
                 container.AddChildren(
@@ -38,14 +42,24 @@ namespace CrunchySandwichBag
                         .Convert(a => a.CreateEditorGUIElement())
                 );
             }
-            else
+            
+            if(target.IsSerializationCorrupt() || GetLayoutState().ShouldAlwaysShowRecoveryFields())
             {
-                container.AddChild(new EditorGUIElement_Single_Text("!Corruption Detected!"));
-                container.AddAttachment(new EditorGUIElementAttachment_Box(Color.red));
+                EditorGUIElement_Container_Auto recovery_container = container.AddChild(new EditorGUIElement_Container_Auto_Simple_VerticalStrip());
 
-                container.AddChildren(
+                if (target.IsSerializationCorrupt())
+                {
+                    recovery_container.AddChild(new EditorGUIElement_Text("!Corruption Detected!"));
+                    recovery_container.AddAttachment(new EditorGUIElementAttachment_Box(Color.red));
+                }
+                else
+                {
+                    recovery_container.AddAttachment(new EditorGUIElementAttachment_Box(Color.blue));
+                }
+
+                recovery_container.AddChildren(
                     target.GetRecoveryPropertys()
-                        .Convert(p => p.CreateEditorGUIElement().LabelWithGUIContent(p.GetGUIContentLabel()))
+                        .Convert(p => p.CreateLabeledEditorGUIElement())
                 );
             }
 

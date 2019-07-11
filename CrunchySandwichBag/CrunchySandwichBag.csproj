@@ -81,34 +81,61 @@
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Ranges.cs">
-      <DependentUpon>EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Ranges.tt</DependentUpon>
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_StaticOptions.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\Primitives\EditorGUIElement_EditPropertyValue_BuiltIn_NumberPrimitives.cs">
+      <DependentUpon>EditorGUIElement_EditPropertyValue_BuiltIn_NumberPrimitives.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_LayerMask.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_HorizontalRule.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_UnhandledEditProperty.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\Primitives\EditorGUIElement_EditPropertyValue_BuiltIn_String.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\Primitives\EditorGUIElement_EditPropertyValue_BuiltIn_Primitives.cs">
+      <DependentUpon>EditorGUIElement_EditPropertyValue_BuiltIn_Primitives.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn_Ranges.cs">
+      <DependentUpon>EditorGUIElement_EditPropertyValue_BuiltIn_Ranges.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn_LayerMask.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_HorizontalRule\EditorGUIElement_HorizontalRule.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_UnhandledEditProperty\EditorGUIElement_UnhandledEditProperty.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue.cs" />
     <Compile Include="EditorGUIElement\Extensions\EditorGUIElementExtensions_Attachment.cs" />
     <Compile Include="EditorGUILayoutState\EditorGUILayoutState.cs" />
     <Compile Include="EditorGUILayoutState\Extensions\EditorGUILayoutStateExtensions_With.cs" />
     <Compile Include="EditorGUILayoutState\Extensions\EditorGUILayoutStateExtensions.cs" />
     <Compile Include="EditorInitializer\EditorInitializerAttribute.cs" />
     <Compile Include="EditorInitializer\EditorInitializer.cs" />
+    <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_Labeled.cs" />
+    <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_SerializationCorruptable.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_Generic.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_NeighborMask.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SpriteVectorizerTest.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_NeighborMask.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_SpriteVectorizerTest\EditorGUIElement_SpriteVectorizerTest.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions_LabelWidth.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Focus.cs">
+      <DependentUpon>GameObjectComponentExtensions_Focus.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions.cs">
+      <DependentUpon>GameObjectComponentExtensions.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_SerializationCorruptable.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Script.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Id.cs" />
@@ -153,32 +180,22 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Extensions\EditorGUIElementContainerHorizontalStripExtensions_Child_Attachments.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Extensions\EditorGUIElementContainerHorizontalStripExtensions_Child.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Extensions\EditorGUIElementContainerHorizontalStripExtensions.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_EditPropertyValue\EditorGUIElement_Popup_EditPropertyValue.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_EditPropertyValue\EditorGUIElement_Popup_EditPropertyValue_Direct.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_ProcessOperation.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_SerializedProperty\EditorGUIElement_SerializedProperty.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditAction\EditorGUIElement_Single_EditAction_Button.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditAction\EditorGUIElement_Single_EditAction.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyArray\EditorGUIElement_Single_EditPropertyArray_FloatSequence.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditAction\EditorGUIElement_EditAction_Button.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditAction\EditorGUIElement_EditAction.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyArray\EditorGUIElement_EditPropertyArray_FloatSequence.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Foldout\EditorGUIElement_Foldout.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Foldout\EditorGUIElement_Foldout_EditPropertyValue\EditorGUIElement_Foldout_EditPropertyValue_VerticalStrip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Foldout\EditorGUIElement_Foldout_EditPropertyValue\EditorGUIElement_Foldout_EditPropertyValue.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyArray\EditorGUIElement_Single_EditPropertyArray.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyArray\EditorGUIElement_Single_EditPropertyArray_ArraySize.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyArray\EditorGUIElement_EditPropertyArray.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyArray\EditorGUIElement_EditPropertyArray_ArraySize.cs" />
     <Compile Include="EditorGUIElement\Attribute\EditorGUIElementForTypeAttribute.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Primitives.cs">
-      <DependentUpon>EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Primitives.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_UnityObject.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Slider.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn_UnityObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Operation.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Overflow.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_SerializedProperty\EditorGUIElement_Single_SerializedProperty_TypedObjectField.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_TypedObjectField.cs" />
     <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_Drag.cs" />
     <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_PercentArea.cs" />
     <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_Area.cs" />
@@ -195,7 +212,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Graph\EditorGUIElement_Graph.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Overflow_VerticalStrip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_SerializedProperty\EditorGUIElement_Single_SerializedProperty_ArraySize.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_ArraySize.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_SerializedProperty\EditorGUIElement_SerializedProperty_Field.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_SerializedProperty\EditorGUIElement_SerializedProperty_PropertyDrawer.cs" />
     <Compile Include="EditorGUIElement\Extensions\EditorGUIElementExtensions_GUIContentLabel.cs" />
@@ -225,8 +242,6 @@
     <Compile Include="EditTarget\EditAction\EditAction.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\EditProperty_Array.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_SetElementValue.cs" />
-    <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_GUIContent.cs" />
-    <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_Resize.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_GetElementValue.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_Index.cs" />
@@ -241,7 +256,6 @@
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DrawMesh.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DrawQuad.cs" />
-    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions.cs" />
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviourExtensions.cs" />
     <Compile Include="Extensions\MonoScript\MonoScriptExtensions.cs" />
     <Compile Include="Extensions\PropertyDrawer\PropertyDrawerExtensions.cs" />
@@ -341,10 +355,10 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElement_Container_Auto_Simple_VerticalStrip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElement_Container_HorizontalStrip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_Process.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_Button.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_SerializedProperty\EditorGUIElement_Single_SerializedProperty.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_SerializedProperty\EditorGUIElement_Single_SerializedProperty_ObjectField.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Process\EditorGUIElement_Process.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Button\EditorGUIElement_Button.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_ObjectField.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty_Represented.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty_Represented_Int.cs" />
@@ -352,9 +366,9 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty_Int.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty_String.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedPropertyUnityObject.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_SerializedProperty\EditorGUIElement_Single_SerializedProperty_Slider.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_Text.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_Texture.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_Slider.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Text\EditorGUIElement_Text.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Texture\EditorGUIElement_Texture.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_AssetType.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Get.cs" />
@@ -411,13 +425,25 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Ranges.tt">
+    <Content Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\Primitives\EditorGUIElement_EditPropertyValue_BuiltIn_NumberPrimitives.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Ranges.cs</LastGenOutput>
+      <LastGenOutput>EditorGUIElement_EditPropertyValue_BuiltIn_NumberPrimitives.cs</LastGenOutput>
     </Content>
-    <Content Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_EditPropertyValue\EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Primitives.tt">
+    <Content Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\Primitives\EditorGUIElement_EditPropertyValue_BuiltIn_Primitives.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_Primitives.cs</LastGenOutput>
+      <LastGenOutput>EditorGUIElement_EditPropertyValue_BuiltIn_Primitives.cs</LastGenOutput>
+    </Content>
+    <Content Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn_Ranges.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EditorGUIElement_EditPropertyValue_BuiltIn_Ranges.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Focus.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Focus.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Value.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

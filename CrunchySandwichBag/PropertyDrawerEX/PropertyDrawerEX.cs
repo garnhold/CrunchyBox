@@ -28,8 +28,9 @@ namespace CrunchySandwichBag
         {
             EditorGUI.BeginProperty(position, label, property);
                 GetEditorGUIElement(property).LabelWithGUIContent(label).LayoutDrawAndUnwind(
-                    position, 
-                    new EditorGUILayoutState(EditorGUIUtility.labelWidth)
+                    position,
+                    EditorGUISettings.GetInstance().GetInitialLayoutState()
+                        .GetWithCurrentLabelWidth(EditorGUIUtility.labelWidth)
                 );
             EditorGUI.EndProperty();
         }

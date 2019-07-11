@@ -39,8 +39,10 @@ namespace CrunchyRecipe
             return tyon_object;
         }
 
-        public TyonValue CreateTyonValue(object value, Variable variable)
+        public TyonValue CreateTyonValue(VariableInstance variable)
         {
+            object value = variable.GetContents();
+
             if (value != null)
             {
                 object address;
@@ -51,7 +53,7 @@ namespace CrunchyRecipe
                 if (object_to_tyon_addressable.TryGetValue(value, out addressable))
                     return new TyonValue_InternalAddress(addressable.RequestAddress(this), this);
 
-                return GetBridge(variable).CreateTyonValue(value, variable, this);
+                return GetBridge(variable.GetVariable()).CreateTyonValue(variable, this);
             }
 
             return new TyonValue_Null();

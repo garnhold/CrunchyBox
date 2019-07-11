@@ -13,7 +13,7 @@ namespace CrunchyRecipe
     {
         public abstract bool IsCompatible(Variable variable);
 
-        public abstract TyonValue CreateTyonValue(object value, Variable variable, TyonContext_Dehydration context);
+        public abstract TyonValue CreateTyonValue(VariableInstance variable, TyonContext_Dehydration context);
         public abstract object ResolveTyonAddress(TyonAddress address, Variable variable, TyonContext_Hydration context);
     }
 }

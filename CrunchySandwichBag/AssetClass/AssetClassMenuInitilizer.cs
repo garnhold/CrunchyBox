@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
                     string category = type.GetCustomLabeledAttributeOfTypeLabel<AssetClassCategoryAttribute>(true);
 
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "PATH", ("Assets/Create/" + category.AppendToVisible("/") + type.Name.Replace("_", "/")).StyleAsLiteralString(),
+                        "PATH", ("Assets/Create Custom/" + category.AppendToVisible("/") + type.Name.Replace("_", "/")).StyleAsLiteralString(),
                         "FUNCTION", ("Create" + type.Name).StyleAsFunctionName(),
                         "TYPENAME", type.Namespace.AppendToVisible(".") + type.Name
                     );

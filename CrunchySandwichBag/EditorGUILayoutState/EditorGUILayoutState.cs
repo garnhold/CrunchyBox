@@ -21,15 +21,17 @@ namespace CrunchySandwichBag
         private bool should_auto_size_labels;
         private float auto_size_label_margin;
 
+        private bool should_always_show_recovery_fields;
+
         static public bool operator ==(EditorGUILayoutState s1, EditorGUILayoutState s2)
         {
-            if (s1.current_label_width == s2.current_label_width)
+            if (s1.current_label_width == s2.current_label_width &&
+                s1.should_auto_size_labels == s2.should_auto_size_labels &&
+                s1.auto_size_label_margin == s2.auto_size_label_margin &&
+                s1.should_always_show_recovery_fields == s2.should_always_show_recovery_fields
+                )
             {
-                if (s1.should_auto_size_labels == s2.should_auto_size_labels)
-                {
-                    if (s1.auto_size_label_margin == s2.auto_size_label_margin)
-                        return true;
-                }
+                return true;
             }
 
             return false;
@@ -42,16 +44,17 @@ namespace CrunchySandwichBag
             return true;
         }
 
-        public EditorGUILayoutState(float w, bool a, float m)
+        public EditorGUILayoutState(float w, bool a, float m, bool c)
         {
             current_label_width = w;
 
             should_auto_size_labels = a;
             auto_size_label_margin = m;
+
+            should_always_show_recovery_fields = c;
         }
 
-        public EditorGUILayoutState(float w) : this(w, false, 10.0f) { }
-        public EditorGUILayoutState() : this(10.0f) { }
+        public EditorGUILayoutState() : this(10.0f, false, 10.0f, false) { }
 
         public float GetCurrentLabelWidth()
         {
@@ -68,6 +71,11 @@ namespace CrunchySandwichBag
             return auto_size_label_margin;
         }
 
+        public bool ShouldAlwaysShowRecoveryFields()
+        {
+            return should_always_show_recovery_fields;
+        }
+
         public override int GetHashCode()
         {
             unchecked
@@ -77,6 +85,7 @@ namespace CrunchySandwichBag
                 hash = hash * 23 + current_label_width.GetHashCode();
                 hash = hash * 23 + should_auto_size_labels.GetHashCode();
                 hash = hash * 23 + auto_size_label_margin.GetHashCode();
+                hash = hash * 23 + should_always_show_recovery_fields.GetHashCode();
                 return hash;
             }
         }

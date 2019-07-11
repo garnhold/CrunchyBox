@@ -8,7 +8,7 @@ using CrunchyCheese;
 
 namespace CrunchySandwich
 {
-    public class PeriodicFunction_MExp : PeriodicFunction
+    public class PeriodicFunction_MExp : PeriodicFunction_Typical
     {
         [SerializeField]private string equation;
 

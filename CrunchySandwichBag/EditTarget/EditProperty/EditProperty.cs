@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyNoodle;
 using CrunchyBun;
 using CrunchySandwich;
@@ -15,6 +16,7 @@ namespace CrunchySandwichBag
     {
         private EditTarget target;
 
+        protected virtual GUIContent CreateGUIContentLabelInternal() { return null; }
         protected virtual EditorGUIElement CreateEditorGUIElementInternal() { return null; }
 
         public abstract bool IsUnified();
@@ -34,6 +36,16 @@ namespace CrunchySandwichBag
             return target;
         }
 
+        public GUIContent CreateGUIContentLabel()
+        {
+            return CreateGUIContentLabelInternal()
+                ??
+                new GUIContent(
+                    GetName().StyleEntityForDisplay(),
+                    this.GetCustomAttributeOfType<TooltipAttribute>(true).IfNotNull(a => a.tooltip)
+                );
+        }
+
         public EditorGUIElement CreateEditorGUIElement()
         {
             return ForTypes.GetTypeForType<EditorGUIElementForTypeAttribute>(GetPropertyType())
@@ -41,7 +53,7 @@ namespace CrunchySandwichBag
                 ??
                 CreateEditorGUIElementInternal()
                 ??
-                new EditorGUIElement_Single_UnhandledEditProperty(this);
+                new EditorGUIElement_UnhandledEditProperty(this);
         }
 
         public override string ToString()

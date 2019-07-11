@@ -49,7 +49,7 @@ namespace CrunchySandwichBag
                     case AssetType.None:
                     case AssetType.External:
                         type_container.AddChild(1.0f,
-                            new EditorGUIElement_Single_EditPropertyValue_Simple_BuiltIn_UnityObject(property)
+                            new EditorGUIElement_EditPropertyValue_BuiltIn_UnityObject(property)
                         );
                         break;
 
@@ -64,7 +64,7 @@ namespace CrunchySandwichBag
                         break;
                 }
 
-                type_container.AddChild(new EditorGUIElementLength_Fixed(64.0f), new EditorGUIElement_Single_Process(delegate(Rect rect) {
+                type_container.AddChild(new EditorGUIElementLength_Fixed(64.0f), new EditorGUIElement_Process(delegate(Rect rect) {
                     AssetType new_type = EditorGUIExtensions.EnumPopup(rect, asset.GetAssetType());
 
                     if (asset.GetAssetType() != new_type)

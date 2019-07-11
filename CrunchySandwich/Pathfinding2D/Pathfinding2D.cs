@@ -11,9 +11,12 @@ namespace CrunchySandwich
 {
     public class Pathfinding2D : Subsystem<Pathfinding2D>
     {
+        [Tooltip("The radius of the cast circle between nodes; the radius of the navigating entity.")]
         [SerializeField]private float connection_radius;
+        [Tooltip("The distance that is added to a node's radius to determine connected nodes.")]
         [SerializeField]private float connection_fudge_distance;
 
+        [Tooltip("The maximum node radius to attempt. Higher values will yield better results, but slower generation times.")]
         [SerializeField]private float max_clearing_radius;
 
         [SerializeField]private LayerEX node_layer;

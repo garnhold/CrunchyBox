@@ -7,7 +7,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class PeriodicFunction_Curve : PeriodicFunction
+    public class PeriodicFunction_Curve : PeriodicFunction_Typical
     {
         [SerializeField]private Curve curve;
 

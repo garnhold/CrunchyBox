@@ -7,7 +7,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class PeriodicFunction_Identity : PeriodicFunction
+    public abstract class PeriodicFunction_Identity : PeriodicFunction_Typical
     {
         protected override float ExecuteInternal(float input)
         {

@@ -43,13 +43,13 @@ namespace CrunchySandwichBag
                     .LabelWithGUIContent("[" + i + "]");
 
                 line_container.AddChild(1.0f, new EditorGUIElement_Complex_SerializedProperty_FieldEX(sub_property));
-                line_container.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Single_Button("+v", delegate() {
+                line_container.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+v", delegate() {
                     serialized_property.InsertArrayElementAbove(sub_property);
                 }));
-                line_container.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Single_Button("+^", delegate() {
+                line_container.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+^", delegate() {
                     serialized_property.InsertArrayElementBelow(sub_property);
                 }));
-                line_container.AddChild(new EditorGUIElementLength_Fixed(20.0f), new EditorGUIElement_Single_Button("-", delegate() {
+                line_container.AddChild(new EditorGUIElementLength_Fixed(20.0f), new EditorGUIElement_Button("-", delegate() {
                     serialized_property.DeleteSerializedPropertyElement(sub_property);
                 }));
             }

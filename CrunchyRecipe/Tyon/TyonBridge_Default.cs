@@ -15,26 +15,26 @@ namespace CrunchyRecipe
 
         private TyonBridge_Default() { }
 
-        public override TyonValue CreateTyonValue(object value, Variable variable, TyonContext_Dehydration context)
+        public override TyonValue CreateTyonValue(VariableInstance variable, TyonContext_Dehydration context)
         {
-            Type type = value.GetType();
+            Type type = variable.GetContents().GetType();
 
             if (type.IsString())
-                return new TyonValue_String(value, context);
+                return new TyonValue_String(variable, context);
 
             if (type.IsNumeric())
-                return new TyonValue_Number(value, context);
+                return new TyonValue_Number(variable, context);
 
             if (type.IsTypicalIEnumerable())
-                return new TyonValue_Array(value, variable, context);
+                return new TyonValue_Array(variable, context);
 
             if (context.GetDesignatedVariables(type).IsNotEmpty())
-                return new TyonValue_Object(value, context);
+                return new TyonValue_Object(variable, context);
 
             if (variable.GetVariableType().CanHaveChildTypes() == false)
-                return new TyonValue_String(value, context);
+                return new TyonValue_String(variable, context);
 
-            return new TyonValue_Surrogate(value, context);
+            return new TyonValue_Surrogate(variable, context);
         }
 
         public override object ResolveTyonAddress(TyonAddress address, Variable variable, TyonContext_Hydration context)

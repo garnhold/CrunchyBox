@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyNoodle;
 using CrunchyBun;
 using CrunchySandwich;
