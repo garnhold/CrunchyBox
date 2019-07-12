@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
     {
         protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, SerializedProperty property)
         {
-            root.AddLabeledChild("Resolution", new Field(property.FindPropertyRelative("percents.Array.size")));
+            root.AddChild(new Field(property.FindPropertyRelative("percents.Array.size")).LabelWithGUIContent("Resolution"));
             root.AddChild(new FloatSequence(property.FindPropertyRelative("percents")));
         }
     }

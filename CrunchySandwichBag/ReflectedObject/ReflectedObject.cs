@@ -31,8 +31,13 @@ namespace CrunchySandwichBag
 
                 objects
                     .Convert<UnityEngine.Object>()
-                    .Narrow(o => o.IsPrefab())
+                    .Narrow(o => o.IsPrefabInstance())
                     .Process(o => PrefabUtility.RecordPrefabInstancePropertyModifications(o));
+
+                objects
+                    .Convert<UnityEngine.Object>()
+                    .Narrow(o => o.IsPrefab())
+                    .Process(o => EditorUtility.SetDirty(o));
             }
             else
             {

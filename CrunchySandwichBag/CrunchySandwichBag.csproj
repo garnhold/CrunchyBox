@@ -340,7 +340,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Foldout\EditorGUIElement_Foldout_SerializedProperty\EditorGUIElement_Foldout_SerializedProperty.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_Margin.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_Padding_Indent.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Label.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_Padding.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Extensions\EditorGUIElementContainerAutoExtensions.cs" />

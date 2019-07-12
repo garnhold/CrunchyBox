@@ -30,7 +30,7 @@ namespace CrunchySandwichBag
                     }
                     catch (Exception ex)
                     {
-                        Debug.LogAssertion(ex);
+                        Debug.LogException(ex);
                     }
                 });
         }

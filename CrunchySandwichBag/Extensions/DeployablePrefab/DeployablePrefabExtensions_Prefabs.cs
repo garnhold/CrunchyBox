@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
     {
         static public void PushPrefabToPrefabs(this DeployablePrefab item, SerializedObject obj)
         {
-            obj.SetChildValue(item.GetPrefabsName(), item);
+            obj.SetChildValue(item.GetPrefabsName().StyleAsUnderscoredEntity(), item);
         }
 
         static public void GeneratePrefabsMembers(this DeployablePrefab item, CSTextDocumentBuilder builder)

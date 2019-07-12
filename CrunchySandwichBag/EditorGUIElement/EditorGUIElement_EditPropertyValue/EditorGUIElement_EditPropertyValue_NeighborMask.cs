@@ -33,6 +33,8 @@ namespace CrunchySandwichBag
                             value = value.GetWithoutBitAt(dx, dy);
                         else
                             value = value.GetWithBitAt(dx, dy);
+
+                        GUI.changed = true;
                     }
                 }
             });

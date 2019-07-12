@@ -69,6 +69,7 @@
     <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
+    <Compile Include="AutoMultilineAttribute\AutoMultilineAttribute.cs" />
     <Compile Include="Axis\Axis.cs" />
     <Compile Include="Axis\Extensions\AxisExtensions.cs" />
     <Compile Include="BorderCollider2D\BorderCollider2D.cs" />

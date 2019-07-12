@@ -24,10 +24,5 @@ namespace CrunchySandwichBag
         {
             return item.AddChildWithAttachments(child, (IEnumerable<EditorGUIElementAttachment>)attachments);
         }
-
-        static public T AddLabeledChild<T>(this EditorGUIElement_Container_Auto item, string label, T child) where T : EditorGUIElement
-        {
-            return item.AddChildWithAttachments(child, new EditorGUIElementAttachment_Label(label));
-        }
     }
 }

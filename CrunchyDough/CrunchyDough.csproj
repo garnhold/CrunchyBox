@@ -85,6 +85,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\String\StringExtensions_Count_Any.cs" />
     <Compile Include="ICatalog\ICatalog.cs" />
     <Compile Include="IndexList\IndexList.cs" />
     <Compile Include="IRegister\IRegister.cs" />

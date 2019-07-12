@@ -13,7 +13,7 @@ namespace CrunchySandwich
 {
 	public class MonoBehaviourEX : MonoBehaviour, ISerializationCallbackReceiver, SerializationCorruptable
     {
-		[SerializeField][RecoveryField][Multiline(12)]private string tyon_data = "";
+		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
 
 		[SerializeField][RecoveryField]private string pack_error;
@@ -36,6 +36,9 @@ namespace CrunchySandwich
 					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
 
 					pack_error = null;
+
+					if(tyon_data != old_tyon_data)
+						UnpackTyon();
 				}
 				catch(Exception ex)
 				{
@@ -92,7 +95,7 @@ namespace CrunchySandwich
 
 	public class ScriptableObjectEX : ScriptableObject, ISerializationCallbackReceiver, SerializationCorruptable
     {
-		[SerializeField][RecoveryField][Multiline(12)]private string tyon_data = "";
+		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
 
 		[SerializeField][RecoveryField]private string pack_error;
@@ -115,6 +118,9 @@ namespace CrunchySandwich
 					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
 
 					pack_error = null;
+
+					if(tyon_data != old_tyon_data)
+						UnpackTyon();
 				}
 				catch(Exception ex)
 				{

@@ -49,8 +49,6 @@ namespace CrunchySandwichBag
         {
             serialized_object = s;
             reflected_object = new ReflectedObject(s.targetObjects);
-
-            AddAttachment(new EditorGUIElementAttachment_SerializedObjectSection(s));
         }
 
         public EditorGUIElement_Complex_All(params UnityEngine.Object[] t) : this(new SerializedObject(t)) { }
