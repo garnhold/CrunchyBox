@@ -52,9 +52,13 @@
     <Compile Include="CardinalDirection\CardinalDirection.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_VectorF2.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions.cs" />
+    <Compile Include="CardinalOrdinalDirection\CardinalOrdinalDirection.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_VectorF2.cs" />
     <Compile Include="Easer\AutoEaser.cs" />
     <Compile Include="Easer\EaseFunction.cs" />
     <Compile Include="Easer\Extensions\EaseOperationExtensions.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_CardinalOrdinalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_HorizontalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_CardinalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Mix.cs" />

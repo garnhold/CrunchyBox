@@ -14,7 +14,7 @@ namespace CrunchySandwich
         {
             if (item.IsButtonReleased())
             {
-                if (item.GetRecentButtonPress().GetDuration() <= max_duration)
+                if (item.GetHistory().GetPreviousEvent().GetDuration() <= max_duration)
                     return true;
             }
 
@@ -25,7 +25,7 @@ namespace CrunchySandwich
         {
             if (item.IsButtonReleased())
             {
-                if (item.GetRecentButtonPress().GetDuration() >= min_duration)
+                if (item.GetHistory().GetPreviousEvent().GetDuration() >= min_duration)
                     return true;
             }
 
@@ -34,11 +34,13 @@ namespace CrunchySandwich
 
         static public bool IsButtonReleasedNTapped(this InputDeviceComponent_Button item, int count, float max_duration)
         {
+            int double_count = count * 2 - 1;
+
             if (item.IsButtonReleased())
             {
-                if (item.GetNumberRecentButtonPresses() >= count)
+                if (item.GetHistory().GetNumberPastEvents() >= double_count)
                 {
-                    if (item.GetRecentButtonPresses(count).GetFirst().GetTimeSince() <= max_duration)
+                    if (item.GetHistory().GetPastEvents(double_count).AreAll(e => e.GetDuration() <= max_duration))
                         return true;
                 }
             }

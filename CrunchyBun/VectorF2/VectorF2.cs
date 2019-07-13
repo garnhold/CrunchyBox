@@ -14,11 +14,14 @@ namespace CrunchyBun
         static public readonly VectorF2 HALF = new VectorF2(0.5f);
         static public readonly VectorF2 ZERO = new VectorF2(0.0f);
 
-        static public readonly VectorF2 UP = new VectorF2(0.0f, 1.0f);
-        static public readonly VectorF2 DOWN = new VectorF2(0.0f, -1.0f);
-
-        static public readonly VectorF2 LEFT = new VectorF2(-1.0f, 0.0f);
         static public readonly VectorF2 RIGHT = new VectorF2(1.0f, 0.0f);
+        static public readonly VectorF2 RIGHT_UP = new VectorF2(Mathq.DIAGONAL, Mathq.DIAGONAL);
+        static public readonly VectorF2 UP = new VectorF2(0.0f, 1.0f);
+        static public readonly VectorF2 LEFT_UP = new VectorF2(-Mathq.DIAGONAL, Mathq.DIAGONAL);
+        static public readonly VectorF2 LEFT = new VectorF2(-1.0f, 0.0f);
+        static public readonly VectorF2 LEFT_DOWN = new VectorF2(-Mathq.DIAGONAL, -Mathq.DIAGONAL);
+        static public readonly VectorF2 DOWN = new VectorF2(0.0f, -1.0f);
+        static public readonly VectorF2 RIGHT_DOWN = new VectorF2(Mathq.DIAGONAL, -Mathq.DIAGONAL);
 
         static public VectorF2 operator -(VectorF2 v) { return new VectorF2(-v.x, -v.y); }
 

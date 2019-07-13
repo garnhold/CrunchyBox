@@ -8,12 +8,14 @@ namespace CrunchyBun
     {
         static public HorizontalDirection GetAngleClosestHorizontalDirection(this float item, float period)
         {
+            float quarter = period / 4.0f;
+
             item = item.GetLooped(period);
 
-            if (item < period * 0.25f)
+            if (item < quarter)
                 return HorizontalDirection.Right;
 
-            if (item < period * 0.75f)
+            if (item < quarter * 3.0f)
                 return HorizontalDirection.Left;
 
             return HorizontalDirection.Right;

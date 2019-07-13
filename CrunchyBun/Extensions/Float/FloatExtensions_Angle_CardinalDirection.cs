@@ -8,18 +8,20 @@ namespace CrunchyBun
     {
         static public CardinalDirection GetAngleClosestCardinalDirection(this float item, float period)
         {
+            float eighth = period / 8.0f;
+
             item = item.GetLooped(period);
 
-            if (item < period * (0.125f))
+            if (item < eighth)
                 return CardinalDirection.Right;
 
-            if (item < period * (0.125f + 0.25f))
+            if (item < eighth * 3.0f)
                 return CardinalDirection.Up;
 
-            if (item < period * (0.125f + 0.25f + 0.25f))
+            if (item < eighth * 5.0f)
                 return CardinalDirection.Left;
 
-            if (item < period * (0.125f + 0.25f + 0.25f + 0.25f))
+            if (item < eighth * 7.0f)
                 return CardinalDirection.Down;
 
             return CardinalDirection.Right;

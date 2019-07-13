@@ -104,6 +104,8 @@
     <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Duration.cs" />
     <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions.cs" />
     <Compile Include="Time\ManualTimer\ManualTimer.cs" />
+    <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions_Seconds.cs" />
+    <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions_Duration.cs" />
     <Compile Include="Worker\Worker_SimpleAmortize.cs" />
     <Compile Include="Worker\Worker.cs" />
     <Compile Include="WorkCollection\WorkCollection.cs" />

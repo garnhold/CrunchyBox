@@ -12,54 +12,46 @@ namespace CrunchySandwich
     {
         private string internal_axis_name;
 
+        private bool is_down;
         private bool is_pressed;
         private bool is_released;
-        private InputDeviceComponentButtonPress current_press;
 
-        private CircularStack<InputDeviceComponentButtonPress> presses;
+        private InputDeviceEventLog<bool> presses;
 
         public InputDeviceComponent_Button(string a)
         {
             internal_axis_name = a;
 
+            is_down = false;
             is_pressed = false;
             is_released = false;
-            current_press = null;
-            presses = new CircularStack<InputDeviceComponentButtonPress>(32);
+
+            presses = new InputDeviceEventLog<bool>(32);
         }
 
         public override void Update()
         {
+            is_down = false;
             is_pressed = false;
             is_released = false;
 
             if (Input.GetButton(internal_axis_name))
             {
-                if (current_press == null)
-                {
-                    current_press = new InputDeviceComponentButtonPress();
+                if (presses.LogValue(true))
                     is_pressed = true;
-                }
+
+                is_down = true;
             }
             else
             {
-                if (current_press != null)
-                {
-                    current_press.Release();
-                    presses.Advance(current_press);
-
-                    current_press = null;
+                if (presses.LogValue(false))
                     is_released = true;
-                }
             }
         }
 
         public bool IsButtonDown()
         {
-            if (current_press != null)
-                return true;
-
-            return false;
+            return is_down;
         }
 
         public bool IsButtonPressed()
@@ -72,20 +64,9 @@ namespace CrunchySandwich
             return is_released;
         }
 
-        public InputDeviceComponentButtonPress GetCurrentButtonPress()
+        public InputDeviceEventHistory<bool> GetHistory()
         {
-            return current_press;
-        }
-
-        public int GetNumberRecentButtonPresses()
-        {
-            return presses.Count;
-        }
-
-        public IEnumerable<InputDeviceComponentButtonPress> GetRecentButtonPresses(int count)
-        {
-            for (int i = count - 1; i >= 0; i--)
-                yield return presses[i];
+            return presses;
         }
     }
 }
