@@ -17,7 +17,7 @@ namespace CrunchySandwichBag
         static public BurstSprite CreateBurstSprite(this Texture2D texture)
         {
             return CustomAssets.CreateExternalCustomAsset<BurstSprite>(
-                texture.name,
+                Filename.SetExtension(texture.GetAssetPath(), "asset"),
                 s => s.Initialize(1.0f, texture.GetSprites())
             );
         }

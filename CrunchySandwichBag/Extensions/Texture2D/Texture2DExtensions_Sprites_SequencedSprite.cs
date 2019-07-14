@@ -17,7 +17,7 @@ namespace CrunchySandwichBag
         static public SequencedSprite CreateSimpleSequencedSprite(this Texture2D texture)
         {
             return CustomAssets.CreateExternalCustomAsset<SequencedSprite>(
-                texture.name,
+                Filename.SetExtension(texture.GetAssetPath(), "asset"),
                 s => s.Initialize(new SpriteSequence(texture.GetSprites()))
             );
         }

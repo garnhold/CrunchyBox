@@ -10,12 +10,12 @@ namespace CrunchySandwichBag
 {
     static public class UnityObjectExtensions_Asset_Save
     {
-        static public void SaveAsset(this UnityEngine.Object item, string filename)
+        static public void SaveNewAsset(this UnityEngine.Object item, string filename)
         {
             if (Filename.HasExtension(filename) == false)
                 filename = Filename.SetExtension(filename, "asset");
 
-            AssetDatabase.CreateAsset(item, filename);
+            AssetDatabase.CreateAsset(item, Files.GetUnusedFilename(filename));
             AssetDatabase.SaveAssets();
         }
 

@@ -44,9 +44,9 @@ namespace CrunchySandwichBag
             return "Assets/Resources/";
         }
 
-        static public string MakeNewCurrentDirectoryFilename(string base_name, string extension)
+        static public string MakeUnusedCurrentDirectoryFilename(string base_name, string extension)
         {
-            return Filename.MakeNewFilename(GetCurrentDirectory(), base_name, extension);
+            return Filename.MakeUnusedFilename(GetCurrentDirectory(), base_name, extension);
         }
     }
 }

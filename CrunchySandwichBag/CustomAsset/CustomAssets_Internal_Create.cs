@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
             CustomAsset asset = ScriptableObject.CreateInstance(type) as CustomAsset;
 
             process(asset);
-            asset.SaveAsset(Filename.MakeNewFilename(Project.GetInternalAssetDirectory(), "asset"));
+            asset.SaveNewAsset(Filename.MakeUnusedFilename(Project.GetInternalAssetDirectory(), "asset"));
             return asset;
         }
         static public CustomAsset CreateInternalCustomAsset(Type type)

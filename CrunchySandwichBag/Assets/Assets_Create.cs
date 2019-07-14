@@ -17,7 +17,7 @@ namespace CrunchySandwichBag
             T asset = ScriptableObject.CreateInstance(type) as T;
 
             process(asset);
-            asset.SaveAsset(filename);
+            asset.SaveNewAsset(filename);
             asset.FocusAsset();
             return asset;
         }
@@ -28,7 +28,7 @@ namespace CrunchySandwichBag
 
         static public T CreateAsset<T>(Type type, Process<T> process) where T : ScriptableObject
         {
-            return CreateAsset<T>(type, Project.MakeNewCurrentDirectoryFilename(type.Name, "asset"), process);
+            return CreateAsset<T>(type, Project.MakeUnusedCurrentDirectoryFilename(type.Name, "asset"), process);
         }
         static public T CreateAsset<T>(Type type) where T : ScriptableObject
         {

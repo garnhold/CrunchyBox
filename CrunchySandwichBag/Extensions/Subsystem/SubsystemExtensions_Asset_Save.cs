@@ -16,7 +16,7 @@ namespace CrunchySandwichBag
     {
         static public void SaveSubsystemAsset(this Subsystem item)
         {
-            item.SaveAsset(item.GetSubsystemAssetPath());
+            item.SaveNewAsset(item.GetSubsystemAssetPath());
 
             SubsystemManager.GetInstance().Refresh();
         }

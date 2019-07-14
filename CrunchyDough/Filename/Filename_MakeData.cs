@@ -40,9 +40,9 @@ namespace CrunchyDough
             return Filename.MakeDataFilename(directory, HashTypes.SHA1.CalculateAsUnicode(info).ToHexString(), extension);
         }
 
-        static public string MakeNewDataFilename(string directory, string extension)
+        static public string MakeUnusedDataFilename(string directory, string extension)
         {
-            return Filename.MakeNewFilename(MakeDataPath(directory), extension);
+            return Filename.MakeUnusedFilename(MakeDataPath(directory), extension);
         }
     }
 }
