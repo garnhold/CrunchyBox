@@ -8,17 +8,17 @@ namespace CrunchyDough
     {
         static public bool HasAny<T>(this IEnumerable<T> item, IEnumerable<T> to_check)
         {
-            return item.ForceCollection().HasAny<T>(to_check);
+            return item.PrepareForMultipass().HasAny<T>(to_check);
         }
 
         static public bool HasNone<T>(this IEnumerable<T> item, IEnumerable<T> to_check)
         {
-            return item.ForceCollection().HasNone(to_check);
+            return item.PrepareForMultipass().HasNone(to_check);
         }
 
         static public bool HasAll<T>(this IEnumerable<T> item, IEnumerable<T> to_check)
         {
-            return item.ForceCollection().HasAll(to_check);
+            return item.PrepareForMultipass().HasAll(to_check);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace CrunchySandwich
             return false;
         }
 
-        static public bool IsEventSequenceOccuringThisFrame<T>(this InputDeviceEventHistory<T> item, IList<T> sequence)
+        static public bool IsEventSequenceOccuringThisFrame<T>(this InputDeviceEventHistory<T> item, ICollection<T> sequence)
         {
             if (item.IsEventOccuringThisFrame(h => h.AreCurrentAndPastValuesEqual(sequence)))
                 return true;
@@ -35,7 +35,7 @@ namespace CrunchySandwich
         }
         static public bool IsEventSequenceOccuringThisFrame<T>(this InputDeviceEventHistory<T> item, params T[] sequence)
         {
-            return item.IsEventSequenceOccuringThisFrame((IList<T>)sequence);
+            return item.IsEventSequenceOccuringThisFrame((ICollection<T>)sequence);
         }
         static public bool IsEventSequenceOccuringThisFrame<T>(this InputDeviceEventHistory<T> item, IEnumerable<T> sequence)
         {

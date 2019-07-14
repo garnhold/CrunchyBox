@@ -7,13 +7,10 @@ namespace CrunchyDough
 {
     static public class IEnumerableExtensions_Prepare
     {
-        static public IEnumerable<T> PrepareForMultipass<T>(this IEnumerable<T> item)
+        static public ICollection<T> PrepareForMultipass<T>(this IEnumerable<T> item)
         {
             if (item is ICollection<T>)
-                return item;
-
-            if (item is ICollection)
-                return item;
+                return (ICollection<T>)item;
 
             return item.ToList();
         }

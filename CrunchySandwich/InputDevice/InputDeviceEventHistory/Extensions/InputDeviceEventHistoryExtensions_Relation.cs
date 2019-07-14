@@ -10,7 +10,7 @@ namespace CrunchySandwich
 {
     static public class InputDeviceEventHistoryExtensions_Relation
     {
-        static public bool AreCurrentAndPastEvents<T, J>(this InputDeviceEventHistory<T> item, IList<J> sequence, Relation<InputDeviceEvent<T>, J> relation)
+        static public bool AreCurrentAndPastEvents<T, J>(this InputDeviceEventHistory<T> item, ICollection<J> sequence, Relation<InputDeviceEvent<T>, J> relation)
         {
             return item.GetCurrentAndPastEvents(sequence.Count)
                 .AreElements(sequence, relation);
@@ -20,7 +20,7 @@ namespace CrunchySandwich
             return item.AreCurrentAndPastEvents(sequence.ToList(), relation);
         }
 
-        static public bool AreCurrentAndPastValues<T, J>(this InputDeviceEventHistory<T> item, IList<J> sequence, Relation<T, J> relation)
+        static public bool AreCurrentAndPastValues<T, J>(this InputDeviceEventHistory<T> item, ICollection<J> sequence, Relation<T, J> relation)
         {
             return item.AreCurrentAndPastEvents(sequence, (e, o) => relation(e.GetValue(), o));
         }
@@ -29,13 +29,13 @@ namespace CrunchySandwich
             return item.AreCurrentAndPastValues(sequence.ToList(), relation);
         }
 
-        static public bool AreCurrentAndPastValuesEqual<T>(this InputDeviceEventHistory<T> item, IList<T> sequence)
+        static public bool AreCurrentAndPastValuesEqual<T>(this InputDeviceEventHistory<T> item, ICollection<T> sequence)
         {
             return item.AreCurrentAndPastValues(sequence, (e, o) => e.EqualsEX(o));
         }
         static public bool AreCurrentAndPastValuesEqual<T>(this InputDeviceEventHistory<T> item, params T[] sequence)
         {
-            return item.AreCurrentAndPastValuesEqual((IList<T>)sequence);
+            return item.AreCurrentAndPastValuesEqual((ICollection<T>)sequence);
         }
         static public bool AreCurrentAndPastValuesEqual<T>(this InputDeviceEventHistory<T> item, IEnumerable<T> sequence)
         {

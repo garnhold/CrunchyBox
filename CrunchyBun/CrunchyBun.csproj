@@ -55,6 +55,9 @@
     <Compile Include="CardinalOrdinalDirection\CardinalOrdinalDirection.cs" />
     <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions.cs" />
     <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_VectorF2.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Adjacent.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Angle.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Sequence.cs" />
     <Compile Include="Easer\AutoEaser.cs" />
     <Compile Include="Easer\EaseFunction.cs" />
     <Compile Include="Easer\Extensions\EaseOperationExtensions.cs" />
@@ -64,6 +67,8 @@
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Mix.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Distance.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Difference.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_MoveTowards.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_Towards.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_ConvertFromRate.cs" />
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions_Path.cs" />
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions.cs" />
@@ -142,7 +147,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mathq_IntPow.tt</DependentUpon>
     </Compile>
+    <Compile Include="RotationDirection\RotationDirection.cs" />
     <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_MoveTowards.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Towards.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalDirection.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Compare.cs" />

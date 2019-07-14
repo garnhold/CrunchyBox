@@ -62,6 +62,33 @@ namespace CrunchyDough
 
 			return target;
 		}
+
+		static public bool GetMoveTowards(this <#=type_name#> item, <#=type_name#> target, <#=type_name#> amount, out <#=type_name#> output)
+		{
+			if(item < target)
+			{
+				item += amount;
+
+				if(item < target)
+				{
+					output = item;
+					return false;
+				}
+			}
+			else
+			{
+				item -= amount;
+
+				if(item > target)
+				{
+					output = item;
+					return false;
+				}
+			}
+
+			output = target;
+			return true;
+		}
 <# } #>
 	}
 }

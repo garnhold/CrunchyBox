@@ -16,9 +16,12 @@ namespace CrunchySandwichBag
 
         public SequencedSprite CreateSequencedSprite(Texture2D texture)
         {
-            return CustomAssets.CreateExternalCustomAsset<SequencedSprite>(s => s.Initialize(
-                sequence_formats.Convert(f => f.CreateSpriteSequence(texture))
-            ));
+            return CustomAssets.CreateExternalCustomAsset<SequencedSprite>(
+                Filename.SetExtension(texture.name, "asset"),
+                s => s.Initialize(
+                    sequence_formats.Convert(f => f.CreateSpriteSequence(texture))
+                )
+            );
         }
     }
 }

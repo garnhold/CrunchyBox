@@ -1,0 +1,60 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Planar_MoveTowards
+    {
+<# foreach(string type_name in type_names){#>
+		static public bool MoveTowardsPlanarPosition(this <#=type_name#> item, Vector2 target, Vector2 amount)
+        {
+            return item.transform.MoveTowardsPlanarPosition(target, amount);
+        }
+        static public bool MoveTowardsLocalPlanarPosition(this <#=type_name#> item, Vector2 target, Vector2 amount)
+        {
+            return item.transform.MoveTowardsLocalPlanarPosition(target, amount);
+        }
+
+        static public bool MoveTowardsPlanarRotation(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveTowardsPlanarRotation(target, amount);
+        }
+        static public bool MoveTowardsLocalPlanarRotation(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveTowardsLocalPlanarRotation(target, amount);
+        }
+
+        static public bool MoveTowardsPlanarScale(this <#=type_name#> item, Vector2 target, Vector2 amount)
+        {
+            return item.transform.MoveTowardsPlanarScale(target, amount);
+        }
+        static public bool MoveTowardsLocalPlanarScale(this <#=type_name#> item, Vector2 target, Vector2 amount)
+        {
+            return item.transform.MoveTowardsLocalPlanarScale(target, amount);
+        }
+
+		static public bool MoveTowardsPlanarScale(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveTowardsPlanarScale(target, amount);
+        }
+        static public bool MoveTowardsLocalPlanarScale(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveTowardsLocalPlanarScale(target, amount);
+        }
+
+<# } #>
+	}
+}

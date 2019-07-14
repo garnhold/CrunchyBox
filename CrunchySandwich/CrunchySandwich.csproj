@@ -93,7 +93,18 @@
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions.cs" />
     <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions.cs" />
     <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions_InputDeviceComponentStickZone.cs" />
+    <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions_Vector2.cs" />
     <Compile Include="Extensions\Component\ComponentExtensions_SpawnInstance.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_MoveTowards.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_MoveTowards.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Towards.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Towards.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\GameObject\GameObjectExtensions_SpawnInstance.cs" />
     <Compile Include="Extensions\GUIContent\GUIContentExtensions.cs" />
     <Compile Include="Extensions\GUIContent\GUIContentExtensions_Layout.cs" />
@@ -101,17 +112,28 @@
     <Compile Include="Extensions\GUI\GUIExtensions_Rect.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Sized.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Adjust_Side.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_MoveTowards.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Towards.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_CardinalOrdinalDirection.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_HorizontalDirection.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Towards.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_MoveTowards.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceEventHistoryStickExtensions_StickGesture.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceEventHistoryStickExtensions.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_Direction.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions.cs" />
     <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Frame.cs" />
     <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Relation.cs" />
     <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Values.cs" />
-    <Compile Include="InputDevice\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_Angle.cs" />
+    <Compile Include="InputDevice\InputDeviceStickGesture\InputDeviceStickGesture_Generated.cs" />
+    <Compile Include="InputDevice\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence_Custom.cs" />
+    <Compile Include="InputDevice\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence.cs" />
+    <Compile Include="InputDevice\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence_Repeated.cs" />
+    <Compile Include="InputDevice\InputDeviceStickGesture\InputDeviceStickGesture_Generated_Rotate.cs" />
+    <Compile Include="InputDevice\InputDeviceStickGesture\InputDeviceStickGesture_Custom.cs" />
+    <Compile Include="InputDevice\InputDeviceStickGesture\InputDeviceStickGesture.cs" />
+    <Compile Include="InputDevice\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_CardinalOrdinalDirection.cs" />
     <Compile Include="InputDevice\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_Vector2.cs" />
-    <Compile Include="InputDevice\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_Sequence.cs" />
-    <Compile Include="InputDevice\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_Adjacent.cs" />
     <Compile Include="InputDevice\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions.cs" />
     <Compile Include="InputDevice\InputDeviceStickZone\InputDeviceStickZone.cs" />
     <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Events.cs" />
@@ -1103,6 +1125,14 @@
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Rigidbody2D.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Rigidbody2D.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_MoveTowards.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_MoveTowards.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Towards.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Towards.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Match.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

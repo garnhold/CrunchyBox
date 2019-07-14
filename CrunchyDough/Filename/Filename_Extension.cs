@@ -5,6 +5,14 @@ namespace CrunchyDough
 {
     static public partial class Filename
     {
+        static public bool HasExtension(string path)
+        {
+            if (GetExtension(path).IsVisible())
+                return true;
+
+            return false;
+        }
+
         static public string GetExtension(string path)
         {
             return Path.GetExtension(path).TrimPrefix(".");

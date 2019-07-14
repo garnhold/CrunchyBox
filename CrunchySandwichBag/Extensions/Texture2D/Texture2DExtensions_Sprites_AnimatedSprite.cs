@@ -17,6 +17,7 @@ namespace CrunchySandwichBag
         static public AnimatedSprite CreateSimpleAnimatedSprite(this Texture2D texture)
         {
             return CustomAssets.CreateExternalCustomAsset<AnimatedSprite>(
+                Filename.SetExtension(texture.name, "asset"),
                 s => s.Initialize(new SpriteAnimation(texture.GetSprites()))
             );
         }
