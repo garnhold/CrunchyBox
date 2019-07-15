@@ -20,8 +20,7 @@ namespace CrunchySandwich
 
         private void Start()
         {
-            animation_time = new FluxTimer().StartAndGet();
-            current_animation = animated_sprite.GetDefaultAnimation();
+            Initialize();
         }
 
         private void Update()
@@ -35,6 +34,19 @@ namespace CrunchySandwich
             {
                 GetComponent<SpriteRenderer>().sprite = animated_sprite.GetDefaultFrame();
             }
+        }
+
+        public void Initialize()
+        {
+            animation_time = new FluxTimer().StartAndGet();
+            current_animation = animated_sprite.GetDefaultAnimation();
+        }
+
+        public void Initialize(AnimatedSprite s)
+        {
+            animated_sprite = s;
+
+            Initialize();
         }
 
         public void SetRate(float rate)

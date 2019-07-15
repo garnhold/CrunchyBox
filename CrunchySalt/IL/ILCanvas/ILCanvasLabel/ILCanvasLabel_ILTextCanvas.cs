@@ -42,5 +42,10 @@ namespace CrunchySalt
         {
             canvas.AppendInstruction("Brfalse", id.ToString());
         }
+
+        public override void Emit_Leave()
+        {
+            canvas.AppendInstruction("Leave", id.ToString());
+        }
     }
 }

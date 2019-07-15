@@ -18,7 +18,13 @@ namespace CrunchySalt
         public abstract ILCanvasLabel CreateLabel();
         protected abstract ILCanvasLocal CreateLocalInternal(Type type);
 
+        public abstract ILCanvasLabel BeginExceptionBlock();
+        public abstract void BeginCatchBlock(Type type);
+        public abstract void EndExceptionBlock();
+
         public abstract void Emit_Nop();
+        public abstract void Emit_Throw();
+        public abstract void Emit_Rethrow();
 
         public abstract void Emit_Dup();
         public abstract void Emit_Pop();

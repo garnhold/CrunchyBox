@@ -12,6 +12,8 @@ namespace CrunchySandwich
     {
         private string internal_axis_name;
 
+        private float value;
+
         public InputDeviceComponent_Axis(string a)
         {
             internal_axis_name = a;
@@ -19,11 +21,12 @@ namespace CrunchySandwich
 
         public override void Update()
         {
+            value = Input.GetAxis(internal_axis_name);
         }
 
         public float GetValue()
         {
-            return Input.GetAxis(internal_axis_name);
+            return value;
         }
     }
 }

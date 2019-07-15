@@ -23,7 +23,8 @@ namespace CrunchySandwichBag
             CodeGenerator.GenerateStaticClass("AssetClassMenuItems", delegate(CSTextDocumentBuilder builder) {
                 foreach (Type type in CrunchyNoodle.Types.GetFilteredTypes(
                     Filterer_Type.HasCustomAttributeOfType<AssetClassAttribute>(true),
-                    Filterer_Type.IsConcreteClass()
+                    Filterer_Type.IsConcreteClass(),
+                    Filterer_Type.IsNonGenericClass()
                 ))
                 {
                     string category = type.GetCustomLabeledAttributeOfTypeLabel<AssetClassCategoryAttribute>(true);

@@ -58,6 +58,7 @@
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Foreign.cs" />
     <Compile Include="ForeignType\ForeignType.cs" />
+    <Compile Include="IL\ILStatement\Derivations\ILThrow.cs" />
     <Compile Include="TypeBuilderEX\ConstructorBuilderEX\ConstructorBuilderEX.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoPass.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoEX.cs" />
@@ -363,7 +364,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="IL\ILStatementImplementation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

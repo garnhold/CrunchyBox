@@ -17,5 +17,6 @@ namespace CrunchySalt
         public abstract void Emit_Br();
         public abstract void Emit_Brtrue();
         public abstract void Emit_Brfalse();
+        public abstract void Emit_Leave();
     }
 }

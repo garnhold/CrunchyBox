@@ -30,7 +30,26 @@ namespace CrunchySalt
             return new ILCanvasLabel_ILTextCanvas(canvas);
         }
 
+        public override ILCanvasLabel BeginExceptionBlock()
+        {
+            canvas.AppendToNewline("BeginExceptionBlock");
+
+            return CreateLabel();
+        }
+
+        public override void BeginCatchBlock(Type type)
+        {
+            canvas.AppendToNewline("BeginCatchBlock(" + type + ")");
+        }
+
+        public override void EndExceptionBlock()
+        {
+            canvas.AppendToNewline("EndExceptionBlock");
+        }
+        
         public override void Emit_Nop() { canvas.AppendInstruction("Nop"); }
+        public override void Emit_Throw() { canvas.AppendToNewline("Throw"); }
+        public override void Emit_Rethrow() { canvas.AppendToNewline("Rethrow"); }
 
         public override void Emit_Dup() { canvas.AppendInstruction("Dup"); }
         public override void Emit_Pop() { canvas.AppendInstruction("Pop"); }

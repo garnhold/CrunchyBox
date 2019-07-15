@@ -13,7 +13,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [AssetClassCategory("InputDevice")]
+    [AssetClassCategory("Input")]
     public class InputDeviceDefinition : CustomAsset
     {
         [SerializeField]private int max_number_devices;
@@ -24,6 +24,12 @@ namespace CrunchySandwichBag
         {
             ProjectSettings.ModifySettings("InputManager.asset", o => GenerateInternalAxises(o));
             CodeGenerator.GenerateCode("InputDevice", b => GenerateCode(b), false);
+
+            CrunchyNoodle.Types.GetFilteredTypes(
+                Filterer_Type.IsConcreteClass(),
+                Filterer_Type.CanBeTreatedAs<InputDeviceAction>(),
+                Filterer_Type.IsGenericClass()
+            ).Process(t => GenerateInputDeviceActionCode(t));
         }
 
         private void GenerateSatelliteClass(CSTextDocumentBuilder builder)
@@ -44,7 +50,7 @@ namespace CrunchySandwichBag
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
             );
 
-            writer.Write("public class InputDevice", delegate() {
+            writer.Write("public class InputDevice : InputDevice<InputDeviceThing, InputDeviceAxis, InputDeviceButton, InputDeviceStick>", delegate() {
                 for (int i = 1; i <= max_number_devices; i++)
                     writer.Write("static public readonly InputDevice Device" + i + " = new InputDevice(" + i + ");");
 
@@ -62,19 +68,30 @@ namespace CrunchySandwichBag
                         writer.Write("yield return Device" + i + ";");
                 });
 
+                writer.Write("protected override void UpdateInternal()", delegate() {
+                    components.Process(c => c.GenerateClassUpdate(builder));
+                });
+
                 writer.Write("private InputDevice(int device_id)", delegate() {
                     components.Process(c => c.GenerateClassConstructor(builder, "device_id"));
                 });
 
-                writer.Write("public void Update()", delegate() {
-                    components.Process(c => c.GenerateClassUpdate(builder));
-                });
-
+                GenerateGetComponentAllFunction(builder);
                 GenerateGetComponentFunction<InputDeviceDefinitionComponent_Axis>(builder);
                 GenerateGetComponentFunction<InputDeviceDefinitionComponent_Button>(builder);
                 GenerateGetComponentFunction<InputDeviceDefinitionComponent_Stick>(builder);
 
                 components.Process(c => c.GenerateClassMembers(builder));
+            });
+        }
+
+        private void GenerateInputDeviceAllEnum(CSTextDocumentBuilder builder)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+            );
+
+            writer.Write("public enum InputDeviceThing", delegate() {
+                components.Process(c => c.GenerateEnumMember(builder));
             });
         }
 
@@ -91,6 +108,20 @@ namespace CrunchySandwichBag
             });
         }
 
+        private void GenerateGetComponentAllFunction(CSTextDocumentBuilder builder)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+            );
+
+            writer.Write("public override InputDeviceComponent GetComponent(InputDeviceThing value)", delegate() {
+                writer.Write("switch(value)", delegate() {
+                    components.Process(c => c.GenerateGetCase(builder, "InputDeviceThing"));
+                });
+
+                writer.Write("throw new UnaccountedBranchException(\"value\", value);");
+            });
+        }
+
         private void GenerateGetComponentFunction<T>(CSTextDocumentBuilder builder) where T : InputDeviceDefinitionComponent
         {
             string name = typeof(T).Name.TrimPrefix("InputDeviceDefinitionComponent_");
@@ -102,7 +133,7 @@ namespace CrunchySandwichBag
                 "FUNCTION", ("Get_" + name).StyleAsFunctionName()
             );
 
-            writer.Write("public ?TYPE ?FUNCTION(?ENUM_TYPE_NAME value)", delegate() {
+            writer.Write("public override ?TYPE ?FUNCTION(?ENUM_TYPE_NAME value)", delegate() {
                 writer.Write("switch(value)", delegate() {
                     components.Convert<T>().Process(c => c.GenerateGetCase(builder, enum_type_name));
                 });
@@ -124,11 +155,24 @@ namespace CrunchySandwichBag
         {
             GenerateSatelliteClass(builder);
 
+            GenerateInputDeviceAllEnum(builder);
             GenerateInputDeviceEnum<InputDeviceDefinitionComponent_Axis>(builder);
             GenerateInputDeviceEnum<InputDeviceDefinitionComponent_Button>(builder);
             GenerateInputDeviceEnum<InputDeviceDefinitionComponent_Stick>(builder);
 
             GenerateClass(builder);
+        }
+
+        public void GenerateInputDeviceActionCode(Type type)
+        {
+            CodeGenerator.GenerateCode(type.GetCleanName(), delegate(CSTextDocumentBuilder builder) {
+                CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                    "NAME", type.GetCleanName()
+                );
+
+                writer.Write("public class ?NAME : ?NAME<InputDeviceThing, InputDeviceAxis, InputDeviceButton, InputDeviceStick>", delegate() {
+                });
+            }, false);
         }
     }
 }

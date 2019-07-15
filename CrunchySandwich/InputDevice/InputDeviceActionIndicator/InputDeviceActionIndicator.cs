@@ -8,8 +8,9 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class InputDeviceStickGesture : CustomAsset
+    [Serializable]
+    public abstract class InputDeviceActionIndicator
     {
-        public abstract ICatalog<InputDeviceStickZone> GetStickZones();
+        public abstract GameObject SpawnIndicator();
     }
 }

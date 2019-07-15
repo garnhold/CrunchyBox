@@ -26,10 +26,27 @@ namespace CrunchySalt
 
         public override ILCanvasLabel CreateLabel()
         {
-            return new ILCanvasLabel_ILGenerator(il_generator);
+            return new ILCanvasLabel_ILGenerator(il_generator, il_generator.DefineLabel());
+        }
+
+        public override ILCanvasLabel BeginExceptionBlock()
+        {
+            return new ILCanvasLabel_ILGenerator(il_generator, il_generator.BeginExceptionBlock());
+        }
+
+        public override void BeginCatchBlock(Type type)
+        {
+            il_generator.BeginCatchBlock(type);
+        }
+
+        public override void EndExceptionBlock()
+        {
+            il_generator.EndExceptionBlock();
         }
 
         public override void Emit_Nop() { il_generator.Emit(OpCodes.Nop); }
+        public override void Emit_Throw() { il_generator.Emit(OpCodes.Throw); }
+        public override void Emit_Rethrow() { il_generator.Emit(OpCodes.Rethrow); }
 
         public override void Emit_Dup() { il_generator.Emit(OpCodes.Dup); }
         public override void Emit_Pop() { il_generator.Emit(OpCodes.Pop); }

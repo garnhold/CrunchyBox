@@ -40,6 +40,11 @@ namespace CrunchySalt
             FetchLabel(canvas).Emit_Br();
         }
 
+        public void RenderIL_Leave(ILCanvas canvas)
+        {
+            FetchLabel(canvas).Emit_Leave();
+        }
+
         public override void RenderIL_Execute(ILCanvas canvas)
         {
             FetchLabel(canvas).Emit_Label();

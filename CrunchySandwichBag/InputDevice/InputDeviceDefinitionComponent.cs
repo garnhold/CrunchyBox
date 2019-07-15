@@ -12,7 +12,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [AssetClassCategory("InputDevice")]
+    [AssetClassCategory("Input")]
     public abstract class InputDeviceDefinitionComponent : CustomAsset
     {
         public abstract void GenerateInternalAxises(int device_id, SerializedProperty axises);

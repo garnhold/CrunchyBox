@@ -73,6 +73,7 @@
     <Compile Include="Assets\Assets_Create.cs" />
     <Compile Include="Assets\Assets.cs" />
     <Compile Include="CodeGenerator\CodeGeneratorAttribute.cs" />
+    <Compile Include="CompileMenu\CompileMenu.cs" />
     <Compile Include="CustomAsset\CustomAssets_External_Manage.cs" />
     <Compile Include="CustomAsset\CustomAssets_External.cs" />
     <Compile Include="CustomAsset\CustomAssets_External_Create.cs" />
