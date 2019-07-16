@@ -14,19 +14,30 @@ namespace CrunchySandwich
 
         private float value;
 
-        public InputDeviceComponent_Axis(string a)
+        private float frozen_value;
+
+        protected override void FreezeInternal()
         {
-            internal_axis_name = a;
+            frozen_value = value;
         }
 
-        public override void Update()
+        protected override void UpdateInternal()
         {
             value = Input.GetAxis(internal_axis_name);
         }
 
+        public InputDeviceComponent_Axis(string a)
+        {
+            internal_axis_name = a;
+
+            value = 0.0f;
+
+            frozen_value = 0.0f;
+        }
+
         public float GetValue()
         {
-            return value;
+            return SwitchSharedFrozen(value, frozen_value);
         }
     }
 }

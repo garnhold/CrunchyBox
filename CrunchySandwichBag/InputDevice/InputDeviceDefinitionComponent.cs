@@ -55,24 +55,44 @@ namespace CrunchySandwichBag
             return name;
         }
 
-        public void GenerateEnumMember(CSTextDocumentBuilder builder)
+        public void GenerateIdsMember(CSTextDocumentBuilder builder, string id_type, int value)
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                "ENUM", GetName().StyleAsEnumName()
+                "TYPE", id_type,
+                "NAME", GetName().StyleAsEnumName(),
+                "VALUE", value.ToString()
             );
 
-            writer.Write("?ENUM, ");
+            writer.Write("static public readonly ?TYPE ?NAME = new ?TYPE(?VALUE);");
         }
 
-        public void GenerateGetCase(CSTextDocumentBuilder builder, string enum_type)
+        public void GenerateIdsYield(CSTextDocumentBuilder builder)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "NAME", GetName().StyleAsEnumName()
+            );
+
+            writer.Write("yield return ?NAME;");
+        }
+
+        public void GenerateGetNameCase(CSTextDocumentBuilder builder, int value)
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "NAME", GetName().StyleAsLiteralString(),
+                "VALUE", value.ToString()
+            );
+
+            writer.Write("case ?VALUE: return ?NAME;");
+        }
+
+        public void GenerateGetVariableCase(CSTextDocumentBuilder builder, int value)
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "VARIABLE", GetName().StyleAsVariableName(),
-                "ENUM", GetName().StyleAsEnumName(),
-                "ENUM_TYPE", enum_type
+                "VALUE", value.ToString()
             );
 
-            writer.Write("case ?ENUM_TYPE.?ENUM: return ?VARIABLE;");
+            writer.Write("case ?VALUE: return ?VARIABLE;");
         }
 
         public void GenerateClassUpdate(CSTextDocumentBuilder builder)

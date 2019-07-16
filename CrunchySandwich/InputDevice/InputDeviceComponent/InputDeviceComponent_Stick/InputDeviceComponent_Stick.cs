@@ -18,17 +18,20 @@ namespace CrunchySandwich
         private float angle_in_degrees;
         private float magnitude;
 
+        private Vector2 frozen_value;
+        private float frozen_angle_in_degrees;
+        private float frozen_magnitude;
+
         private InputDeviceEventLog<InputDeviceStickZone> stick_zones;
 
-        public InputDeviceComponent_Stick(string ha, string va)
+        protected override void FreezeInternal()
         {
-            horizontal_internal_axis_name = ha;
-            vertical_internal_axis_name = va;
-
-            stick_zones = new InputDeviceEventLog<InputDeviceStickZone>(64);
+            frozen_value = value;
+            frozen_angle_in_degrees = angle_in_degrees;
+            frozen_magnitude = magnitude;
         }
 
-        public override void Update()
+        protected override void UpdateInternal()
         {
             value = new Vector2(Input.GetAxis(horizontal_internal_axis_name), Input.GetAxis(vertical_internal_axis_name));
             angle_in_degrees = value.GetAngleInDegrees();
@@ -44,24 +47,43 @@ namespace CrunchySandwich
             }
         }
 
+        public InputDeviceComponent_Stick(string ha, string va)
+        {
+            horizontal_internal_axis_name = ha;
+            vertical_internal_axis_name = va;
+
+            value = Vector2.zero;
+            angle_in_degrees = 0.0f;
+            magnitude = 0.0f;
+
+            frozen_value = Vector2.zero;
+            frozen_angle_in_degrees = 0.0f;
+            frozen_magnitude = 0.0f;
+
+            stick_zones = new InputDeviceEventLog<InputDeviceStickZone>(64);
+        }
+
         public Vector2 GetValue()
         {
-            return value;
+            return SwitchSharedFrozen(value, frozen_value);
         }
 
         public float GetAngleInDegrees()
         {
-            return angle_in_degrees;
+            return SwitchSharedFrozen(angle_in_degrees, frozen_angle_in_degrees);
         }
 
         public float GetMagnitude()
         {
-            return magnitude;
+            return SwitchSharedFrozen(magnitude, frozen_magnitude);
         }
 
         public InputDeviceEventHistory<InputDeviceStickZone> GetHistory()
         {
-            return stick_zones;
+            return SwitchSharedExclusive<InputDeviceEventHistory<InputDeviceStickZone>>(
+                stick_zones,
+                InputDeviceEventEmptyHistory<InputDeviceStickZone>.INSTANCE
+            );
         }
     }
 }

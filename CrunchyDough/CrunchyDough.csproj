@@ -86,6 +86,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\Stack\StackExtensions_PeekEX.cs" />
     <Compile Include="Extensions\String\StringExtensions_Count_Any.cs" />
     <Compile Include="Filename\Filename_Absolute.cs" />
     <Compile Include="Filename\Filename_Clean.cs" />

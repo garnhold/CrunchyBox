@@ -95,6 +95,11 @@
     <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions_InputDeviceComponentStickZone.cs" />
     <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions_Vector2.cs" />
     <Compile Include="Extensions\Component\ComponentExtensions_SpawnInstance.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children_Set.cs">
+      <DependentUpon>GameObjectComponentExtensions_Children_Set.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_MoveTowards.cs">
       <DependentUpon>GameObjectComponentExtensions_Transform_Planar_MoveTowards.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -125,6 +130,11 @@
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonRelease.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_StickGesture.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonHold.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponentIds.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InputDeviceComponentIds.tt</DependentUpon>
+    </Compile>
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_StickGesture.cs" />
     <Compile Include="InputDevice\InputDevice.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonPress.cs" />
@@ -149,10 +159,14 @@
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\InputDeviceStickZone.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Events.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\InputDeviceEventEmptyHistory.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\InputDeviceEventLog.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\InputDeviceEventHistory.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEvent\InputDeviceEvent.cs" />
-    <Compile Include="InputDevice\InputDeviceContextAction\InputDeviceContextAction.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponentState\Extensions\InputDeviceComponentStateExtensions.cs" />
+    <Compile Include="InputDevice\InputDeviceHandle\InputDeviceComponentHandle.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponentState\InputDeviceComponentState.cs" />
+    <Compile Include="InputDevice\InputDeviceHandle\InputDeviceHandle.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Typical.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_RampEase.cs" />
     <Compile Include="PeriodicFunctionTransform\PeriodicFunctionTransform.cs" />
@@ -1054,6 +1068,10 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children_Set.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Children_Set.cs</LastGenOutput>
+    </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_GetComponents.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_GetComponents.cs</LastGenOutput>
@@ -1229,6 +1247,10 @@
     <Content Include="Extensions\Vector2\Vector2s.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Vector2s.cs</LastGenOutput>
+    </Content>
+    <Content Include="InputDevice\InputDeviceComponent\InputDeviceComponentIds.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InputDeviceComponentIds.cs</LastGenOutput>
     </Content>
     <Content Include="PlayEditDistinction\PlayEditDistinction.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

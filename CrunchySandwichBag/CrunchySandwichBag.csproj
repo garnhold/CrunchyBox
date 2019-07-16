@@ -82,6 +82,13 @@
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.cs">
+      <DependentUpon>EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_LayerEX.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_SortingLayerEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_StaticOptions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn.cs" />
@@ -425,6 +432,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.cs</LastGenOutput>
+    </Content>
     <Content Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\Primitives\EditorGUIElement_EditPropertyValue_BuiltIn_NumberPrimitives.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EditorGUIElement_EditPropertyValue_BuiltIn_NumberPrimitives.cs</LastGenOutput>

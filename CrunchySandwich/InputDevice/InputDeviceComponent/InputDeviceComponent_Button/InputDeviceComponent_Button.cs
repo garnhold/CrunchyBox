@@ -16,20 +16,16 @@ namespace CrunchySandwich
         private bool is_pressed;
         private bool is_released;
 
+        private bool frozen_is_down;
+
         private InputDeviceEventLog<bool> presses;
 
-        public InputDeviceComponent_Button(string a)
+        protected override void FreezeInternal()
         {
-            internal_axis_name = a;
-
-            is_down = false;
-            is_pressed = false;
-            is_released = false;
-
-            presses = new InputDeviceEventLog<bool>(32);
+            frozen_is_down = is_down;
         }
 
-        public override void Update()
+        protected override void UpdateInternal()
         {
             is_down = false;
             is_pressed = false;
@@ -49,24 +45,40 @@ namespace CrunchySandwich
             }
         }
 
+        public InputDeviceComponent_Button(string a)
+        {
+            internal_axis_name = a;
+
+            is_down = false;
+            is_pressed = false;
+            is_released = false;
+
+            frozen_is_down = false;
+
+            presses = new InputDeviceEventLog<bool>(32);
+        }
+
         public bool IsButtonDown()
         {
-            return is_down;
+            return SwitchSharedFrozen(is_down, frozen_is_down);
         }
 
         public bool IsButtonPressed()
         {
-            return is_pressed;
+            return SwitchSharedExclusive(is_pressed);
         }
 
         public bool IsButtonReleased()
         {
-            return is_released;
+            return SwitchSharedExclusive(is_released);
         }
 
         public InputDeviceEventHistory<bool> GetHistory()
         {
-            return presses;
+            return SwitchSharedExclusive<InputDeviceEventHistory<bool>>(
+                presses,
+                InputDeviceEventEmptyHistory<bool>.INSTANCE
+            );
         }
     }
 }

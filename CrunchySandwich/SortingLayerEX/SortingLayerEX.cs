@@ -11,7 +11,7 @@ using CrunchyBun;
 namespace CrunchySandwich
 {
     [Serializable]
-    public class SortingLayerEX
+    public struct SortingLayerEX
     {
         [SerializeField]private int id;
 
@@ -22,7 +22,6 @@ namespace CrunchySandwich
 
         public SortingLayerEX(SortingLayer l) : this(l.id) { }
         public SortingLayerEX(string n) : this(SortingLayer.NameToID(n)) { }
-        public SortingLayerEX() : this(0) { }
 
         public int GetId()
         {

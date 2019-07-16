@@ -16,7 +16,7 @@ namespace CrunchySandwich
 
         public override ICatalog<InputDeviceStickZone> GetStickZones()
         {
-            if (zones == null)
+            if (zones.IsEmpty())
                 zones = GenerateStickZones().ToList();
 
             return zones;

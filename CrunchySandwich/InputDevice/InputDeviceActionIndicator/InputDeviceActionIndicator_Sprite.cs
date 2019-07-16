@@ -12,11 +12,16 @@ namespace CrunchySandwich
     {
         [SerializeField]private Sprite sprite;
 
+        [SerializeField]private SortingLayerEX layer;
+        [SerializeField]private int order;
+
         public override GameObject SpawnIndicator()
         {
             GameObject game_object = new GameObject();
+            SpriteRenderer renderer = game_object.AddComponent<SpriteRenderer>();
 
-            game_object.AddComponent<SpriteRenderer>().sprite = sprite;
+            renderer.sprite = sprite;
+            renderer.SetSortingLayerAndOrder(layer, order);
             return game_object;
         }
     }

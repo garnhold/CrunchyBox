@@ -1,0 +1,106 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] types = new string[]{
+	"Component",
+	"Axis",
+	"Button",
+	"Stick"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchySalt;
+using CrunchyNoodle;
+
+namespace CrunchySandwich
+{
+<#foreach(string type in types){#>
+
+	[Serializable]
+    public struct InputDevice<#=type#>Id
+    {
+        [SerializeField]private int id;
+
+        static public bool operator==(InputDevice<#=type#>Id id1, InputDevice<#=type#>Id id2)
+        {
+            if(id1.id == id2.id)
+                return true;
+
+            return false;
+        }
+        static public bool operator!=(InputDevice<#=type#>Id id1, InputDevice<#=type#>Id id2)
+        {
+            if(id1.id != id2.id)
+                return true;
+
+            return false;
+        }
+
+		static private readonly OperationCache<List<InputDevice<#=type#>Id>> GET_ALL = ReflectionCache.Get().NewOperationCache(delegate() {
+			return CrunchyNoodle.Types.GetFilteredTypes(
+				Filterer_Type.IsNamed("InputDevice<#=type#>Ids"),
+				Filterer_Type.IsStaticClass()
+			).GetFirst()
+				.GetStaticMethod("GetAll")
+				.Invoke(null, new object[]{})
+				.ToEnumerable<InputDevice<#=type#>Id>()
+				.ToList();
+        });
+		static public IEnumerable<InputDevice<#=type#>Id> Get<#=type#>s()
+		{
+			return GET_ALL.Fetch();
+		}
+
+        public InputDevice<#=type#>Id(int i)
+        {
+            id = i;
+        }
+
+		public int GetValue()
+		{
+			return id;
+		}
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            InputDevice<#=type#>Id cast;
+
+            if (obj.Convert<InputDevice<#=type#>Id>(out cast))
+            {
+                if (cast == this)
+                    return true;
+            }
+
+            return false;
+        }
+
+        static private readonly OperationCache<string, int> TO_STRING = ReflectionCache.Get().NewOperationCache(delegate(int id) {
+            return CrunchyNoodle.Types.GetFilteredTypes(
+				Filterer_Type.IsNamed("InputDevice<#=type#>Ids"),
+				Filterer_Type.IsStaticClass()
+			).GetFirst()
+				.GetStaticMethod<int>("GetName")
+				.Invoke(null, new object[] { id }).ToString();
+        });
+        public override string ToString()
+        {
+            return TO_STRING.Fetch(id);
+        }
+    }
+<#}#>
+}

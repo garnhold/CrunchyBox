@@ -13,13 +13,16 @@ namespace CrunchySandwich
     {
         static public Transform AddChild(this Transform item, Transform child)
         {
-            child.SetParent(item, true);
+            if (child != null)
+                child.SetParent(item, true);
+
             return child;
         }
 
         static public Transform AddChildAtSelf(this Transform item, Transform child)
         {
-            item.AddChild(child).position = item.position;
+            item.AddChild(child).IfNotNull(c => c.position = item.position);
+
             return child;
         }
 

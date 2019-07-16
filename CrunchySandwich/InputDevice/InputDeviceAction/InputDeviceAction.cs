@@ -8,11 +8,6 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class InputDeviceAction<ALL, AXIS, BUTTON, STICK> : InputDeviceAction
-    {
-        public abstract bool IsOccuringThisFrame(InputDevice<ALL, AXIS, BUTTON, STICK> device);
-    }
-
     [AssetClassCategory("Input")]
     public abstract class InputDeviceAction : CustomAsset
     {
@@ -20,6 +15,8 @@ namespace CrunchySandwich
         [SerializeField]private string command;
 
         [SerializeFieldEX][PolymorphicField]private InputDeviceActionIndicator indicator;
+
+        public abstract bool IsOccuringThisFrame(InputDeviceBase device);
 
         public string GetTitle()
         {

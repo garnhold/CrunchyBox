@@ -11,7 +11,7 @@ using CrunchyBun;
 namespace CrunchySandwich
 {
     [Serializable]
-    public class LayerEX
+    public struct LayerEX
     {
         [SerializeField]private int id;
 

@@ -8,11 +8,11 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public class InputDeviceAction_ButtonHold<ALL, AXIS, BUTTON, STICK> : InputDeviceAction<ALL, AXIS, BUTTON, STICK>
+    public class InputDeviceAction_ButtonHold : InputDeviceAction
     {
-        [SerializeField]private BUTTON button;
+        [SerializeField]private InputDeviceButtonId button;
 
-        public override bool IsOccuringThisFrame(InputDevice<ALL, AXIS, BUTTON, STICK> device)
+        public override bool IsOccuringThisFrame(InputDeviceBase device)
         {
             if (device.GetButton(button).IsButtonDown())
                 return true;
