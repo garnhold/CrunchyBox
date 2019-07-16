@@ -60,6 +60,7 @@
     <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_AppendIfNot.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Interleave.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertCenterConnections.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertLoopedNeighbors.cs" />

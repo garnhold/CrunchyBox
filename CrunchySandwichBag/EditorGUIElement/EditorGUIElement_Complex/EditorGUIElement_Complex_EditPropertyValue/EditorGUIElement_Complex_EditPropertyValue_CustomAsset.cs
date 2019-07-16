@@ -28,14 +28,14 @@ namespace CrunchySandwichBag
         {
             CustomAsset value;
 
-            GetEditPropertyValue().TryGetContents<CustomAsset>(out value);
+            GetProperty().TryGetContents<CustomAsset>(out value);
             return value;
         }
 
         protected override EditorGUIElement PushState()
         {
             CustomAsset asset;
-            EditProperty_Value property = GetEditPropertyValue();
+            EditProperty_Value property = GetProperty();
 
             Type field_type = property.GetPropertyType();
 
@@ -49,7 +49,7 @@ namespace CrunchySandwichBag
                     case AssetType.None:
                     case AssetType.External:
                         type_container.AddChild(1.0f,
-                            new EditorGUIElement_EditPropertyValue_BuiltIn_UnityObject(property)
+                            new EditorGUIElement_Composite_EditPropertyValue_UnityObject(property)
                         );
                         break;
 

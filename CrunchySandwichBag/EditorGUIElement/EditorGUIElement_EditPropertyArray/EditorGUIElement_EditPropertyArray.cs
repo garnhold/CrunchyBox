@@ -27,7 +27,7 @@ namespace CrunchySandwichBag
             }
             else
             {
-                GUI.Label(GetElementRect(), "--Disabled--");
+                GUI.Label(GetElementRect(), "(Non-Unified Array Length)");
             }
         }
 

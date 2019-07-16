@@ -30,7 +30,7 @@ namespace CrunchySandwichBag
             }
             else
             {
-                EditorGUI.LabelField(GetElementRect(), "--Disabled--");
+                EditorGUI.LabelField(GetElementRect(), "(Non-Unified Value)");
             }
         }
 

@@ -48,7 +48,7 @@ namespace CrunchySandwichBag
 
         public EditorGUIElement CreateEditorGUIElement()
         {
-            return ForTypes.GetTypeForType<EditorGUIElementForTypeAttribute>(GetPropertyType())
+            return ForTypes.GetBestTypeForType<EditorGUIElementForTypeAttribute>(GetPropertyType())
                 .IfNotNull(t => t.CreateInstance<EditorGUIElement>(this))
                 ??
                 CreateEditorGUIElementInternal()

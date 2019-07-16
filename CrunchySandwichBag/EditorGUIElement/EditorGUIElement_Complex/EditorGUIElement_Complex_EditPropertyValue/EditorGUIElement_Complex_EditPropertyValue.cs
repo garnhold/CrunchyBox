@@ -22,7 +22,7 @@ namespace CrunchySandwichBag
             property = p;
         }
 
-        public EditProperty_Value GetEditPropertyValue()
+        public EditProperty_Value GetProperty()
         {
             return property;
         }

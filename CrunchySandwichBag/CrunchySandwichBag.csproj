@@ -82,12 +82,15 @@
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_UnityObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_Prefab.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.cs">
       <DependentUpon>EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_LayerEX.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_Asset.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_SortingLayerEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_StaticOptions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup.cs" />
@@ -199,7 +202,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyArray\EditorGUIElement_EditPropertyArray.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyArray\EditorGUIElement_EditPropertyArray_ArraySize.cs" />
     <Compile Include="EditorGUIElement\Attribute\EditorGUIElementForTypeAttribute.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn_UnityObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Operation.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Overflow.cs" />

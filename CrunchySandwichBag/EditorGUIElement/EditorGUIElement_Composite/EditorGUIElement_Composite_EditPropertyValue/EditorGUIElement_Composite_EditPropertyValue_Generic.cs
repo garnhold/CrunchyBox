@@ -28,8 +28,6 @@ namespace CrunchySandwichBag
             return container;
         }
 
-        public EditorGUIElement_Composite_EditPropertyValue_Generic(EditProperty_Value p) : base(CreateElement(p), p)
-        {
-        }
+        public EditorGUIElement_Composite_EditPropertyValue_Generic(EditProperty_Value p) : base(CreateElement(p), p) { }
     }
 }

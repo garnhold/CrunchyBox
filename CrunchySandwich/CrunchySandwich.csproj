@@ -69,6 +69,8 @@
     <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
+    <Compile Include="PrefabFieldAttribute\PrefabFieldAttribute.cs" />
+    <Compile Include="AssetFieldAttribute\AssetFieldAttribute.cs" />
     <Compile Include="AutoMultilineAttribute\AutoMultilineAttribute.cs" />
     <Compile Include="Axis\Axis.cs" />
     <Compile Include="Axis\Extensions\AxisExtensions.cs" />
@@ -130,7 +132,7 @@
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonRelease.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_StickGesture.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonHold.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponentIds.cs">
+    <Compile Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InputDeviceComponentIds.tt</DependentUpon>
@@ -143,9 +145,9 @@
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceEventHistoryStickExtensions.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_Direction.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Frame.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Relation.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Values.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Frame.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Relation.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Values.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence_Custom.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence.cs" />
@@ -157,15 +159,15 @@
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_Vector2.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\InputDeviceStickZone.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Events.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\InputDeviceEventEmptyHistory.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\InputDeviceEventLog.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEventHistory\InputDeviceEventHistory.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceEvent\InputDeviceEvent.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponentState\Extensions\InputDeviceComponentStateExtensions.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Events.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventEmptyHistory.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventLog.cs" />
+    <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventHistory.cs" />
+    <Compile Include="InputDevice\InputDeviceEvent\InputDeviceEvent.cs" />
+    <Compile Include="InputDevice\InputDeviceComponentState\Extensions\InputDeviceComponentStateExtensions.cs" />
     <Compile Include="InputDevice\InputDeviceHandle\InputDeviceComponentHandle.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponentState\InputDeviceComponentState.cs" />
+    <Compile Include="InputDevice\InputDeviceComponentState\InputDeviceComponentState.cs" />
     <Compile Include="InputDevice\InputDeviceHandle\InputDeviceHandle.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_Typical.cs" />
     <Compile Include="PeriodicFunction\PeriodicFunction_RampEase.cs" />
@@ -1248,7 +1250,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Vector2s.cs</LastGenOutput>
     </Content>
-    <Content Include="InputDevice\InputDeviceComponent\InputDeviceComponentIds.tt">
+    <Content Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>InputDeviceComponentIds.cs</LastGenOutput>
     </Content>
