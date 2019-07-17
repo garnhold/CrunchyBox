@@ -92,7 +92,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_LayerEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_Asset.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_SortingLayerEX.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_StaticOptions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_BuiltIn.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\Primitives\EditorGUIElement_EditPropertyValue_BuiltIn_NumberPrimitives.cs">

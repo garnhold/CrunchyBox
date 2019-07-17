@@ -15,27 +15,29 @@ namespace CrunchySandwich
         private string vertical_internal_axis_name;
 
         private Vector2 value;
-        private float angle_in_degrees;
         private float magnitude;
+        private float angle_in_degrees;
 
         private Vector2 frozen_value;
-        private float frozen_angle_in_degrees;
         private float frozen_magnitude;
+        private float frozen_angle_in_degrees;
 
         private InputDeviceEventLog<InputDeviceStickZone> stick_zones;
 
         protected override void FreezeInternal()
         {
             frozen_value = value;
-            frozen_angle_in_degrees = angle_in_degrees;
             frozen_magnitude = magnitude;
+            frozen_angle_in_degrees = angle_in_degrees;
         }
 
         protected override void UpdateInternal()
         {
             value = new Vector2(Input.GetAxis(horizontal_internal_axis_name), Input.GetAxis(vertical_internal_axis_name));
-            angle_in_degrees = value.GetAngleInDegrees();
             magnitude = value.GetMagnitude();
+
+            if (magnitude != 0.0f)
+                angle_in_degrees = value.GetAngleInDegrees();
 
             if (magnitude < 0.4f)
                 stick_zones.LogValue(InputDeviceStickZone.Center);
@@ -53,12 +55,12 @@ namespace CrunchySandwich
             vertical_internal_axis_name = va;
 
             value = Vector2.zero;
-            angle_in_degrees = 0.0f;
             magnitude = 0.0f;
+            angle_in_degrees = 0.0f;
 
             frozen_value = Vector2.zero;
-            frozen_angle_in_degrees = 0.0f;
             frozen_magnitude = 0.0f;
+            frozen_angle_in_degrees = 0.0f;
 
             stick_zones = new InputDeviceEventLog<InputDeviceStickZone>(64);
         }
@@ -68,14 +70,14 @@ namespace CrunchySandwich
             return SwitchSharedFrozen(value, frozen_value);
         }
 
-        public float GetAngleInDegrees()
-        {
-            return SwitchSharedFrozen(angle_in_degrees, frozen_angle_in_degrees);
-        }
-
         public float GetMagnitude()
         {
             return SwitchSharedFrozen(magnitude, frozen_magnitude);
+        }
+
+        public float GetAngleInDegrees()
+        {
+            return SwitchSharedFrozen(angle_in_degrees, frozen_angle_in_degrees);
         }
 
         public InputDeviceEventHistory<InputDeviceStickZone> GetHistory()

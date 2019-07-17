@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
                 EditorGUI.Popup(
                     rect, 
                     GetOptions().FindIndexOf(value), 
-                    GetOptions().Convert(o => o.IfNotNull(z => z.ToString(), "None")).ToArray()
+                    GetOptions().Convert(o => o.IfNotNull(z => z.ToString(), "None (null)")).ToArray()
                 )
             );
         }
