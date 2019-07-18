@@ -16,10 +16,19 @@ namespace CrunchySandwichBag
     {
         private EditorGUIElement element;
 
+        protected abstract EditorGUIElement CreateElement();
+
         protected override void InitilizeInternal()
         {
-            if (element != null)
-                element.Initilize();
+            if (element == null)
+            {
+                element = CreateElement();
+                element.SetParent(this);
+
+                element.AddAttachments(GetAttachments());
+            }
+
+            element.Initilize();
         }
 
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
@@ -53,12 +62,6 @@ namespace CrunchySandwichBag
             return 0.0f;
         }
 
-        public EditorGUIElement_Composite(EditorGUIElement e)
-        {
-            element = e;
-            element.SetParent(this);
-
-            element.AddAttachments(GetAttachments());
-        }
+        public EditorGUIElement_Composite() { }
     }
 }

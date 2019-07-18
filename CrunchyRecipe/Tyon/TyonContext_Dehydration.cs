@@ -19,7 +19,7 @@ namespace CrunchyRecipe
             Clear();
         }
 
-        public TyonContext_Dehydration(TyonSerializationSettings s) : base(s)
+        public TyonContext_Dehydration(TyonSerializer s) : base(s)
         {
             next_internal_address = 1;
             object_to_tyon_addressable = new Dictionary<object, TyonAddressable>();
@@ -37,6 +37,17 @@ namespace CrunchyRecipe
 
             Finish();
             return tyon_object;
+        }
+
+        public TyonValue DehydrateValue(object value, Type type)
+        {
+            VariableInstance variable = new Variable_Static_Value("value", type, value)
+                .CreateInstance();
+
+            TyonValue tyon_value = CreateTyonValue(variable);
+
+            Finish();
+            return tyon_value;
         }
 
         public TyonValue CreateTyonValue(VariableInstance variable)
@@ -96,7 +107,7 @@ namespace CrunchyRecipe
 
         public IEnumerable<Variable> GetDesignatedVariables(Type type)
         {
-            return GetSettings().GetDesignatedVariables(type);
+            return GetSerializer().GetDesignatedVariables(type);
         }
 	}
 	

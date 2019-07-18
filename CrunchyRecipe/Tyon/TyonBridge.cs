@@ -9,7 +9,7 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-    public abstract class TyonBridge : TyonSerializationComponent
+    public abstract class TyonBridge : TyonSerializerComponent
     {
         public abstract bool IsCompatible(Variable variable);
 

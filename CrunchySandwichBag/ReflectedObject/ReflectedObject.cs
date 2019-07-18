@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyNoodle;
 using CrunchyBun;
 using CrunchySandwich;
@@ -84,12 +85,20 @@ namespace CrunchySandwichBag
 
         public ReflectedAction ForceAction(string path)
         {
-            return ReflectedAction.New(this, object_type.GetActionByPath(path));
+            return ReflectedAction.New(
+                this,
+                object_type.GetActionByPath(path)
+                    .AssertNotNull(() => new MissingMethodException("No action exists for type " + GetObjectType() + " and path " + path))
+            );
         }
 
         public ReflectedProperty ForceProperty(string path)
         {
-            return ReflectedProperty.New(this, object_type.GetVariableByPath(path));
+            return ReflectedProperty.New(
+                this,
+                object_type.GetVariableByPath(path)
+                    .AssertNotNull(() => new MissingFieldException("No property exists for type " + GetObjectType() + " and path " + path))
+            );
         }
 
         public IEnumerable<ReflectedAction> GetActions()
@@ -103,7 +112,7 @@ namespace CrunchySandwichBag
 
         public IEnumerable<ReflectedProperty> GetPropertys()
         {
-            return UnityTyonSerializationSettings.INSTANCE.GetDesignatedVariables(object_type)
+            return UnityTyonSerializer.INSTANCE.GetDesignatedVariables(object_type)
                 .Skip(v => v.HasCustomAttributeOfType<HideInInspector>(true))
                 .Skip(v => v.HasCustomAttributeOfType<RecoveryFieldAttribute>(true))
                 .Convert(v => ReflectedProperty.New(this, v));
@@ -111,7 +120,7 @@ namespace CrunchySandwichBag
 
         public IEnumerable<ReflectedProperty> GetRecoveryPropertys()
         {
-            return UnityTyonSerializationSettings.INSTANCE.GetDesignatedVariables(object_type)
+            return UnityTyonSerializer.INSTANCE.GetDesignatedVariables(object_type)
                 .Narrow(v => v.HasCustomAttributeOfType<RecoveryFieldAttribute>(true))
                 .Convert(v => ReflectedProperty.New(this, v));
         }

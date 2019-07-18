@@ -31,7 +31,7 @@ namespace CrunchySandwichBag
 
         public override EditAction ForceAction(string path)
         {
-            return null;
+            throw new MissingMethodException("No action exists for type " + GetTargetType() + " and path " + path);
         }
 
         public override EditProperty ForceProperty(string path)

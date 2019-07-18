@@ -14,6 +14,8 @@ tyonValue
     : NUMBER # tyonValue_Number
     | STRING /*info: custom_load_context*/ # tyonValue_String
 
+    | 'typeof' '(' tyonType ')' # tyonValue_Type
+
     | 'null' # tyonValue_Null
     | '&' tyonAddress # tyonValue_InternalAddress
     | '@' tyonAddress # tyonValue_ExternalAddress

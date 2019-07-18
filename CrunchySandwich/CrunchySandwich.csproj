@@ -69,6 +69,8 @@
     <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
+    <Compile Include="Functoid\Functoid.cs" />
+    <Compile Include="PolymorphicFieldAttribute\PolymorphicFieldAttribute.cs" />
     <Compile Include="PrefabFieldAttribute\PrefabFieldAttribute.cs" />
     <Compile Include="AssetFieldAttribute\AssetFieldAttribute.cs" />
     <Compile Include="AutoMultilineAttribute\AutoMultilineAttribute.cs" />
@@ -487,10 +489,12 @@
     <Compile Include="SequencedSprite\SpriteSequence.cs" />
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
+    <Compile Include="TargetComponent\TargetComponent.cs" />
     <Compile Include="TargetedMotionNode\TargetedMotionNode.cs" />
     <Compile Include="TargetedMotion\Extensions\TargetedMotionExtensions_Deploy.cs" />
     <Compile Include="TargetedMotion\Extensions\TargetedMotionExtensions.cs" />
     <Compile Include="TargetedMotion\TargetedMotion.cs" />
+    <Compile Include="TargetMethod\TargetMethod.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
     <Compile Include="TerrainTile\TerrainTile.cs" />
@@ -499,9 +503,8 @@
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Fantize.cs" />
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Mesh.cs" />
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Fantize.cs" />
-    <Compile Include="UnityObjectEX\PolymorphicField.cs" />
-    <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\GeneralUnityTyonDesignatedVariableProvider.cs" />
-    <Compile Include="UnityObjectEX\TyonDesignatedVariableProvider\UnityTyonDesignatedVariableProvider.cs" />
+    <Compile Include="UnityObjectEX\Tyon\GeneralUnityTyonDesignatedVariableProvider.cs" />
+    <Compile Include="UnityObjectEX\Tyon\UnityTyonDesignatedVariableProvider.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions_Schedule.cs" />
     <Compile Include="WorkSystem\PeriodicWorkScheduler.cs" />
@@ -949,7 +952,7 @@
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Bounds.cs" />
     <Compile Include="Triangle3\Extensions\Triangle3Extensions.cs" />
     <Compile Include="Triangle3\Triangle3.cs" />
-    <Compile Include="UnityObjectEX\TyonSerializationSettings\UnityTyonSerializationSettings.cs" />
+    <Compile Include="UnityObjectEX\Tyon\UnityTyonSerializer.cs" />
     <Compile Include="UnityObjectEX\SerializeFieldEX.cs" />
     <Compile Include="UnityObjectEX\UnityObjectEX.cs">
       <AutoGen>True</AutoGen>

@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
 
         protected override SerializedProperty GetPropertyInternal(string path)
         {
-            return property.FindPropertyRelative(path);
+            return property.ForceProperty(path);
         }
 
         protected override IEnumerable<SerializedProperty> GetPropertysInternal()

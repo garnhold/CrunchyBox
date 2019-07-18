@@ -11,11 +11,11 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public class UnityTyonSerializationSettings : TyonSerializationSettings
+    public class UnityTyonSerializer : TyonSerializer
     {
-        static public readonly UnityTyonSerializationSettings INSTANCE = new UnityTyonSerializationSettings();
+        static public readonly UnityTyonSerializer INSTANCE = new UnityTyonSerializer();
 
-        private UnityTyonSerializationSettings() : base(
+        private UnityTyonSerializer() : base(
             UnityTyonDesignatedVariableProvider.INSTANCE,
             GeneralUnityTyonDesignatedVariableProvider.INSTANCE,
 

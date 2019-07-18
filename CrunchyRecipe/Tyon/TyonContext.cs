@@ -11,14 +11,14 @@ namespace CrunchyRecipe
 {
 	public abstract class TyonContext
 	{
-        private TyonSerializationSettings settings;
+        private TyonSerializer serializer;
 
         private int next_registered_external_address;
         private BidirectionalDictionary<object, object> registered_external_address_to_objects;
 
-        public TyonContext(TyonSerializationSettings s)
+        public TyonContext(TyonSerializer s)
         {
-            settings = s;
+            serializer = s;
 
             next_registered_external_address = 1;
             registered_external_address_to_objects = new BidirectionalDictionary<object, object>();
@@ -67,12 +67,12 @@ namespace CrunchyRecipe
 
         public TyonBridge GetBridge(Variable variable)
         {
-            return settings.GetBridge(variable);
+            return serializer.GetBridge(variable);
         }
 
-        public TyonSerializationSettings GetSettings()
+        public TyonSerializer GetSerializer()
         {
-            return settings;
+            return serializer;
         }
 
         public IEnumerable<object> GetRegisteredExternalObjects()

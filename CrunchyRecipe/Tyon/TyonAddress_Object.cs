@@ -18,7 +18,7 @@ namespace CrunchyRecipe
 	{
         public TyonAddress_Object(object o, TyonContext_Dehydration context) : this()
         {
-            SetTyonObject(context.Dehydrate(o));
+            SetTyonObject(new TyonObject(o, context));
         }
 
         public override void Render(TextDocumentCanvas canvas)

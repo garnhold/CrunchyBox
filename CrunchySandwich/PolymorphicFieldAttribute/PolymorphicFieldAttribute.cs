@@ -12,7 +12,7 @@ using CrunchyRecipe;
 namespace CrunchySandwich
 {
     [AttributeUsage(AttributeTargets.Field)]
-    public class PolymorphicField : Attribute
+    public class PolymorphicFieldAttribute : Attribute
     {
     }
 }

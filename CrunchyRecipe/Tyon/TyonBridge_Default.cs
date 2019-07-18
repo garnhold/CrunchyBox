@@ -28,6 +28,9 @@ namespace CrunchyRecipe
             if (type.IsEnumType())
                 return new TyonValue_String(variable, context);
 
+            if (type.IsTypeType())
+                return new TyonValue_Type(variable, context);
+
             if (type.IsTypicalIEnumerable())
                 return new TyonValue_Array(variable, context);
 

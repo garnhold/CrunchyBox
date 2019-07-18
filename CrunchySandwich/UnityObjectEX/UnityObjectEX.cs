@@ -32,7 +32,7 @@ namespace CrunchySandwich
 				{
 					List<object> external_objects = new List<object>();
 
-					tyon_data = Tyon.Serialize(this, UnityTyonSerializationSettings.INSTANCE, external_objects);
+					tyon_data = UnityTyonSerializer.INSTANCE.Serialize(this, external_objects);
 					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
 
 					pack_error = null;
@@ -59,7 +59,7 @@ namespace CrunchySandwich
 					List<object> external_objects = tyon_unity_objects.Convert<UnityEngine.Object, object>().ToList();
 
 					did_unpack_tyon_data = false;
-					Tyon.DeserializeInto(tyon_data, this, UnityTyonSerializationSettings.INSTANCE, external_objects);
+					UnityTyonSerializer.INSTANCE.DeserializeInto(tyon_data, this, external_objects);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
@@ -71,12 +71,12 @@ namespace CrunchySandwich
 			}
 		}
 
-        public void OnBeforeSerialize()
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
 			PackTyon();
         }
 
-        public void OnAfterDeserialize()
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
 			UnpackTyon();
         }
@@ -114,7 +114,7 @@ namespace CrunchySandwich
 				{
 					List<object> external_objects = new List<object>();
 
-					tyon_data = Tyon.Serialize(this, UnityTyonSerializationSettings.INSTANCE, external_objects);
+					tyon_data = UnityTyonSerializer.INSTANCE.Serialize(this, external_objects);
 					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
 
 					pack_error = null;
@@ -141,7 +141,7 @@ namespace CrunchySandwich
 					List<object> external_objects = tyon_unity_objects.Convert<UnityEngine.Object, object>().ToList();
 
 					did_unpack_tyon_data = false;
-					Tyon.DeserializeInto(tyon_data, this, UnityTyonSerializationSettings.INSTANCE, external_objects);
+					UnityTyonSerializer.INSTANCE.DeserializeInto(tyon_data, this, external_objects);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
@@ -153,12 +153,12 @@ namespace CrunchySandwich
 			}
 		}
 
-        public void OnBeforeSerialize()
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
 			PackTyon();
         }
 
-        public void OnAfterDeserialize()
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
 			UnpackTyon();
         }

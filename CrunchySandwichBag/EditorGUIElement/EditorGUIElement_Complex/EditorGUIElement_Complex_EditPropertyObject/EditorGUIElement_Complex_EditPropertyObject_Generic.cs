@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
             EditProperty_Object property = GetEditPropertyObject();
             EditorGUIElement_Container_Auto container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
 
-            if (property.HasCustomAttributeOfType<PolymorphicField>(true))
+            if (property.HasCustomAttributeOfType<PolymorphicFieldAttribute>(true))
             {
                 EditorGUIElement_Container_HorizontalStrip strip = container.AddChild(new EditorGUIElement_Container_HorizontalStrip());
 

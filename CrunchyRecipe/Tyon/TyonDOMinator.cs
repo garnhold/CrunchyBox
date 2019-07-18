@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: March 02 2019 22:17:42 -08:00
+//Date: July 17 2019 18:31:04 -07:00
 
 using System;
 using System.IO;
@@ -684,6 +684,70 @@ namespace CrunchyRecipe
 		public string GetString()
 		{
 			return @string;
+		}
+		
+	}
+	
+	public partial class TyonValue_Type : TyonValue
+	{
+		[RelatableChild]private TyonType tyon_type;
+		static public TyonValue_Type DOMify(TyonParser.TyonValue_TypeContext context)
+		{
+			if(context != null)
+			{
+				return new TyonValue_Type(context);
+			}
+			
+			return null;
+		}
+		
+		static new public TyonValue_Type DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as TyonParser.TyonValue_TypeContext);
+		}
+		
+		static new public TyonValue_Type DOMify(Stream stream)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(stream).tyonValue());
+		}
+		
+		static new public TyonValue_Type DOMify(string text)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(text).tyonValue());
+		}
+		
+		static new public TyonValue_Type DOMifyFile(string filename)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateFileParser(filename).tyonValue());
+		}
+		
+		public TyonValue_Type()
+		{
+			tyon_type = null;
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public TyonValue_Type(TyonParser.TyonValue_TypeContext context) : this()
+		{
+			SetTyonType(TyonType.DOMify(context.tyonType()));
+		}
+		
+		public override TyonValue Duplicate()
+		{
+			TyonValue_Type instance = new TyonValue_Type();
+			instance.SetTyonType(GetTyonType().IfNotNull(z => z.Duplicate()));
+			return instance;
+		}
+		
+		private void SetTyonType(TyonType input)
+		{
+			tyon_type = input;
+		}
+		
+		public TyonType GetTyonType()
+		{
+			return tyon_type;
 		}
 		
 	}
@@ -1543,6 +1607,11 @@ namespace CrunchyRecipe
 		public override TyonElement VisitTyonValue_String(TyonParser.TyonValue_StringContext context)
 		{
 			return TyonValue_String.DOMify(context);
+		}
+		
+		public override TyonElement VisitTyonValue_Type(TyonParser.TyonValue_TypeContext context)
+		{
+			return TyonValue_Type.DOMify(context);
 		}
 		
 		public override TyonElement VisitTyonValue_Null(TyonParser.TyonValue_NullContext context)

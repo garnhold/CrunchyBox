@@ -26,10 +26,16 @@ namespace CrunchySandwichBag
                 return new ReflectedProperty_Array(reflected_object, variable);
             else
             {
-                if (variable_type.IsTypicalValueType() || variable_type.CanBeTreatedAs<UnityEngine.Object>())
-                    return new ReflectedProperty_Value(reflected_object, variable);
+                if (
+                    variable.HasCustomAttributeOfType<PolymorphicFieldAttribute>(true) &&
+                    variable_type.IsTypicalValueType() == false &&
+                    variable_type.CanBeTreatedAs<UnityEngine.Object>() == false
+                    )
+                {
+                    return new ReflectedProperty_Object(reflected_object, variable);
+                }
 
-                return new ReflectedProperty_Object(reflected_object, variable);
+                return new ReflectedProperty_Value(reflected_object, variable);
             }
         }
 

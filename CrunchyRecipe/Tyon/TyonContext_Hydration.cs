@@ -20,7 +20,7 @@ namespace CrunchyRecipe
             Clear();
         }
 
-        public TyonContext_Hydration(TyonSerializationSettings s) : base(s)
+        public TyonContext_Hydration(TyonSerializer s) : base(s)
         {
             deferred_processes = new List<Process>();
             internal_address_to_object = new Dictionary<object, object>();
@@ -44,6 +44,17 @@ namespace CrunchyRecipe
         {
             tyon_object.PushToSystemObject(obj, this);
             Finish();
+        }
+
+        public object HydrateValue(TyonValue tyon_value, Type type)
+        {
+            VariableInstance variable = new Variable_Static_Value("value", type, null)
+                .CreateInstance();
+
+            tyon_value.PushToVariable(variable, this);
+            Finish();
+
+            return variable.GetContents();
         }
 
         public void RegisterInternalObject(object obj, TyonAddress address)
@@ -76,7 +87,7 @@ namespace CrunchyRecipe
 
         public bool TryGetDesignatedVariable(Type type, string name, out Variable variable)
         {
-            return GetSettings().TryGetDesignatedVariable(type, name, out variable);
+            return GetSerializer().TryGetDesignatedVariable(type, name, out variable);
         }
 	}
 	

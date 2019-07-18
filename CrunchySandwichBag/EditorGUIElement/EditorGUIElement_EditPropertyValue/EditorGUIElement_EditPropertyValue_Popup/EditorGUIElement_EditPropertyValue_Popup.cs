@@ -17,13 +17,7 @@ namespace CrunchySandwichBag
 
         protected override T DrawValueInternal(Rect rect, T value)
         {
-            return GetOptions().Get(
-                EditorGUI.Popup(
-                    rect, 
-                    GetOptions().FindIndexOf(value), 
-                    GetOptions().Convert(o => o.IfNotNull(z => z.ToString(), "None (null)")).ToArray()
-                )
-            );
+            return EditorGUIExtensions.Popup(rect, value, GetOptions());
         }
 
         public EditorGUIElement_EditPropertyValue_Popup(EditProperty_Value p) : base(p) { }

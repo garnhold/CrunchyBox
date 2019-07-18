@@ -16,20 +16,20 @@ namespace CrunchySandwichBag
     [EditorGUIElementForType(typeof(UnityEngine.Object), true)]
     public class EditorGUIElement_Composite_EditPropertyValue_UnityObject : EditorGUIElement_Composite_EditPropertyValue
     {
-        static private EditorGUIElement CreateElement(EditProperty_Value property)
+        protected override EditorGUIElement CreateElement()
         {
             AssetFieldAttribute asset_field_attribute;
-            if (property.TryGetCustomAttributeOfType<AssetFieldAttribute>(true, out asset_field_attribute))
-                return new EditorGUIElement_EditPropertyValue_Popup_Asset(property, asset_field_attribute.ShouldForceNonNull());
+            if (GetProperty().TryGetCustomAttributeOfType<AssetFieldAttribute>(true, out asset_field_attribute))
+                return new EditorGUIElement_EditPropertyValue_Popup_Asset(GetProperty(), asset_field_attribute.ShouldForceNonNull());
 
             PrefabFieldAttribute prefab_field_attribute;
-            if (property.TryGetCustomAttributeOfType<PrefabFieldAttribute>(true, out prefab_field_attribute))
-                return new EditorGUIElement_EditPropertyValue_Popup_Prefab(property, prefab_field_attribute.ShouldForceNonNull());
+            if (GetProperty().TryGetCustomAttributeOfType<PrefabFieldAttribute>(true, out prefab_field_attribute))
+                return new EditorGUIElement_EditPropertyValue_Popup_Prefab(GetProperty(), prefab_field_attribute.ShouldForceNonNull());
 
-            return new BuiltIn(property);
+            return new BuiltIn(GetProperty());
         }
 
-        public EditorGUIElement_Composite_EditPropertyValue_UnityObject(EditProperty_Value p) : base(CreateElement(p), p) { }
+        public EditorGUIElement_Composite_EditPropertyValue_UnityObject(EditProperty_Value p) : base(p) { }
 
         private class BuiltIn : EditorGUIElement_EditPropertyValue_BuiltIn<UnityEngine.Object>
         {

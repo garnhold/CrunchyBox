@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Extensions\Stack\StackExtensions_PeekEX.cs" />
     <Compile Include="Extensions\String\StringExtensions_Count_Any.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Treatment_Common.cs" />
     <Compile Include="Filename\Filename_Absolute.cs" />
     <Compile Include="Filename\Filename_Clean.cs" />
     <Compile Include="Filename\Filename_Combine.cs" />

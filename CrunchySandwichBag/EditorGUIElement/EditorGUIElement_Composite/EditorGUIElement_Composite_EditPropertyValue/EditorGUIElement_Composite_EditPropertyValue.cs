@@ -17,12 +17,12 @@ namespace CrunchySandwichBag
     {
         private EditProperty_Value property;
 
-        public EditorGUIElement_Composite_EditPropertyValue(EditorGUIElement e, EditProperty_Value p) : base(e)
+        public EditorGUIElement_Composite_EditPropertyValue(EditProperty_Value p)
         {
             property = p;
         }
 
-        public EditProperty_Value GetEditPropertyValue()
+        public EditProperty_Value GetProperty()
         {
             return property;
         }

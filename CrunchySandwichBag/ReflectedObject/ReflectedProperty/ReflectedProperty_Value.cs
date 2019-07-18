@@ -7,6 +7,7 @@ using UnityEngine;
 using CrunchyDough;
 using CrunchyNoodle;
 using CrunchyBun;
+using CrunchyRecipe;
 using CrunchySandwich;
 
 namespace CrunchySandwichBag
@@ -20,7 +21,18 @@ namespace CrunchySandwichBag
         public void SetContents(object value)
         {
             Touch("Setting " + GetVariableName(), delegate() {
-                GetObjects().Process(o => SetContents(o, value));
+                if (GetVariableType().IsReferenceType() && value != null)
+                {
+                    Type type = value.GetTypeEX();
+                    List<object> external_objects = new List<object>();
+                    string data = UnityTyonSerializer.INSTANCE.SerializeValue(value, type, external_objects);
+
+                    GetObjects().Process(o => SetContents(o, UnityTyonSerializer.INSTANCE.DeserializeValue(data, type, external_objects)));
+                }
+                else
+                {
+                    GetObjects().Process(o => SetContents(o, value));
+                }
             });
         }
 

@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
 
         protected override EditorGUIElement CreateEditorGUIElementInternal()
         {
-            return new EditorGUIElement_Composite_EditPropertyValue_Generic(this);
+            return new EditorGUIElement_Composite_EditPropertyValue_EditTarget_Generic(this);
         }
 
         public EditProperty_Value(EditTarget t) : base(t)

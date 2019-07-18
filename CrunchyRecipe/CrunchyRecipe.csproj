@@ -64,7 +64,6 @@
     <Compile Include="Tyon\TyonBridge_RegisterExternal_Type.cs" />
     <Compile Include="Tyon\TyonBridge_RegisterExternal.cs" />
     <Compile Include="Tyon\TyonBridge_Default.cs" />
-    <Compile Include="Tyon\Tyon.cs" />
     <Compile Include="Tyon\TyonArray.cs" />
     <Compile Include="Tyon\TyonContext.cs" />
     <Compile Include="Tyon\TyonSurrogate.cs" />
@@ -80,8 +79,8 @@
     <Compile Include="Tyon\TyonDesignatedVariableProvider_Manual.cs" />
     <Compile Include="Tyon\TyonDesignatedVariableProvider_Fields_Marked.cs" />
     <Compile Include="Tyon\TyonDesignatedVariableProvider.cs" />
-    <Compile Include="Tyon\TyonSerializationComponent.cs" />
-    <Compile Include="Tyon\TyonSerializationSettings.cs" />
+    <Compile Include="Tyon\TyonSerializerComponent.cs" />
+    <Compile Include="Tyon\TyonSerializer.cs" />
     <Compile Include="Tyon\TyonSyntaxException.cs" />
     <Compile Include="Tyon\TyonType.cs" />
     <Compile Include="Tyon\TyonType_Normal.cs" />
@@ -95,6 +94,7 @@
     <Compile Include="Tyon\TyonValue_Object.cs" />
     <Compile Include="Tyon\TyonValue_String.cs" />
     <Compile Include="Tyon\TyonValue_Surrogate.cs" />
+    <Compile Include="Tyon\TyonValue_Type.cs" />
     <Compile Include="Tyon\TyonVariable.cs" />
   </ItemGroup>
   <ItemGroup />

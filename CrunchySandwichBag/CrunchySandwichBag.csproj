@@ -82,7 +82,11 @@
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_EditTarget.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_UnityObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_TargetMethod.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_TargetComponent.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_Operation.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_Prefab.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_Popup\EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.cs">
       <DependentUpon>EditorGUIElement_EditPropertyValue_Popup_InputDeviceComponentIds.tt</DependentUpon>
@@ -127,13 +131,14 @@
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_Generic.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertyValue\EditorGUIElement_Composite_EditPropertyValue_EditTarget_Generic.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyValue\EditorGUIElement_EditPropertyValue_NeighborMask.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_SpriteVectorizerTest\EditorGUIElement_SpriteVectorizerTest.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions_LabelWidth.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Popup.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Focus.cs">
@@ -146,8 +151,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Force.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_SerializationCorruptable.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Script.cs" />
+    <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Force.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Id.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Collider.cs" />
