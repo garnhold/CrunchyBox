@@ -9,7 +9,7 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-    public abstract class TyonDesignatedVariableProvider : TyonSerializerComponent
+    public abstract class TyonDesignatedVariableProvider : TyonSettingsComponent
     {
         public abstract IEnumerable<Variable> GetDesignatedVariables(Type type);
     }

@@ -21,7 +21,7 @@ namespace CrunchyRecipe
             SetString(input.ExtractStringValueFromLiteralString());
         }
 
-        public TyonAddress_String(string s, TyonContext_Dehydration context) : this()
+        public TyonAddress_String(string s, TyonDehydrater dehydrater) : this()
         {
             SetString(s);
         }
@@ -31,7 +31,7 @@ namespace CrunchyRecipe
             canvas.AppendToLine(GetString().StyleAsLiteralString());
         }
 
-        public override object GetAddressValue(TyonContext_Hydration context)
+        public override object GetAddressValue(TyonHydrater hydrater)
         {
             return GetString();
         }

@@ -18,19 +18,18 @@ namespace CrunchyRecipe
 	{
         static public TyonType CreateTyonType(Type type)
         {
-            if (type.IsGenericClass())
-                return new TyonType_Templated(type);
+            if (type.IsArray)
+                return new TyonType_Array(type);
 
-            return new TyonType_Normal(type);
+            if (type.IsGenericClass())
+                return new TyonType_Direct_Templated(type);
+
+            return new TyonType_Direct_Normal(type);
         }
 
         public abstract Type GetSystemType();
+        public abstract object InstanceSystemType();
         public abstract void Render(TextDocumentCanvas canvas);
-
-        public object InstanceSystemType()
-        {
-            return GetSystemType().CreateForcedInstance();
-        }
 
         public string Render()
         {

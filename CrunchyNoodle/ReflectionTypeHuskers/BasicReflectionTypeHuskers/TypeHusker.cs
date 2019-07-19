@@ -9,11 +9,63 @@ using CrunchySalt;
 
 namespace CrunchyNoodle
 {
-    public partial class TypeHusker : Husker<Type>
+    public class TypeHusker : Husker<Type>
     {
-        private Type Resolve(Module module, int metadata_token)
+        static public readonly TypeHusker INSTANCE = new TypeHusker();
+
+        private TypeHusker() { }
+
+        public override void Dehydrate(HuskWriter writer, Type to_dehydrate)
         {
-            return module.ResolveType(metadata_token);
+            if (to_dehydrate != null)
+            {
+                writer.WriteInt(to_dehydrate.MetadataToken);
+				writer.WriteRecurrant(to_dehydrate.Module, ModuleHusker.INSTANCE);
+
+                if (to_dehydrate.IsGenericClass())
+                {
+                    if (to_dehydrate.IsGenericTypedClass())
+                    {
+                        writer.WriteBool(true);
+                        TypeListHusker.INSTANCE.Dehydrate(writer, to_dehydrate.GetGenericArguments().ToList());
+                    }
+                    else
+                    {
+                        writer.WriteBool(false);
+                    }
+                }
+            }
+            else
+            {
+                writer.WriteInt(0);
+            }
         }
+
+        public override Type Hydrate(HuskReader reader)
+        {
+            int metadata_token = reader.ReadInt();
+
+            if (metadata_token != 0)
+            {
+                Type type = reader.ReadRecurrant(ModuleHusker.INSTANCE).ResolveType(metadata_token);
+
+                if (type.IsGenericClass())
+                {
+                    if (reader.ReadBool())
+                        return type.MakeGenericType(TypeListHusker.INSTANCE.Hydrate(reader).ToArray());
+                }
+
+                return type;
+            }
+
+            return null;
+        }
+    }
+
+    public class TypeListHusker : ListHusker<Type>
+    {
+        static public readonly TypeListHusker INSTANCE = new TypeListHusker();
+
+        private TypeListHusker() : base(TypeHusker.INSTANCE) { }
     }
 }

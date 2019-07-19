@@ -176,7 +176,7 @@ namespace CrunchyNoodle
                         data = operation();
                     });
 
-                    if (operation_time > 1)
+                    if (operation_time > 10)
                         Write(filename, data);
                 }
 

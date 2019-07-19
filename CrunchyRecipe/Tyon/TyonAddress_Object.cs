@@ -16,9 +16,9 @@ namespace CrunchyRecipe
 {
 	public partial class TyonAddress_Object : TyonAddress
 	{
-        public TyonAddress_Object(object o, TyonContext_Dehydration context) : this()
+        public TyonAddress_Object(object o, TyonDehydrater dehydrater) : this()
         {
-            SetTyonObject(new TyonObject(o, context));
+            SetTyonObject(dehydrater.GetContext().CreateDehydrater().Dehydrate(o));
         }
 
         public override void Render(TextDocumentCanvas canvas)
@@ -26,9 +26,9 @@ namespace CrunchyRecipe
             GetTyonObject().Render(canvas);
         }
 
-        public override object GetAddressValue(TyonContext_Hydration context)
+        public override object GetAddressValue(TyonHydrater hydrater)
         {
-            return GetTyonObject().InstanceSystemObject(context);
+            return hydrater.GetContext().CreateHydrater().Hydrate(GetTyonObject());
         }
 	}
 	

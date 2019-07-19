@@ -112,7 +112,7 @@ namespace CrunchySandwichBag
 
         public IEnumerable<ReflectedProperty> GetPropertys()
         {
-            return UnityTyonSerializer.INSTANCE.GetDesignatedVariables(object_type)
+            return UnityTyonSettings.INSTANCE.GetDesignatedVariables(object_type)
                 .Skip(v => v.HasCustomAttributeOfType<HideInInspector>(true))
                 .Skip(v => v.HasCustomAttributeOfType<RecoveryFieldAttribute>(true))
                 .Convert(v => ReflectedProperty.New(this, v));
@@ -120,7 +120,7 @@ namespace CrunchySandwichBag
 
         public IEnumerable<ReflectedProperty> GetRecoveryPropertys()
         {
-            return UnityTyonSerializer.INSTANCE.GetDesignatedVariables(object_type)
+            return UnityTyonSettings.INSTANCE.GetDesignatedVariables(object_type)
                 .Narrow(v => v.HasCustomAttributeOfType<RecoveryFieldAttribute>(true))
                 .Convert(v => ReflectedProperty.New(this, v));
         }

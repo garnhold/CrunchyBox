@@ -37,6 +37,13 @@ public interface ITyonVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTyonType_Normal([NotNull] TyonParser.TyonType_NormalContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>tyonType_Array</c>
+	/// labeled alternative in <see cref="TyonParser.tyonType"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTyonType_Array([NotNull] TyonParser.TyonType_ArrayContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonType_Templated</c>
 	/// labeled alternative in <see cref="TyonParser.tyonType"/>.
 	/// </summary>
@@ -75,13 +82,6 @@ public interface ITyonVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitTyonValue_String([NotNull] TyonParser.TyonValue_StringContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonValue_Type</c>
-	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitTyonValue_Type([NotNull] TyonParser.TyonValue_TypeContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonValue_Null</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.

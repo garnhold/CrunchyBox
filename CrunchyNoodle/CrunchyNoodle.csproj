@@ -146,6 +146,13 @@
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPublicField.cs" />
     <Compile Include="Filterer\Filterer_General.cs" />
     <Compile Include="Filterer\Filterer_Simple.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanTechnicalParametersHold_Generic.cs">
+      <DependentUpon>Filterer_MethodInfo_CanTechnicalParametersHold_Generic.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanTechnicalParametersHold.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNTechnicalParameters.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropCompatible.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropOfTypeCompatible.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsDeclaredWithin.cs" />
@@ -182,6 +189,9 @@
     <Compile Include="Filterer\Type\Filterer_Type_HasChildTypes.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_HasCustomForTypeAttributeOfType.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsBasicNamed.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNamespace.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNonNestedClass.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNestedClass.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsNonGenericClass.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsGenericClass.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsCleanNamed.cs" />
@@ -232,11 +242,6 @@
     <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\MethodInfoEXHusker.cs" />
     <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\FieldInfoEXHusker.cs" />
     <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\TypeHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\BasicReflectionTypeHusker.cs">
-      <DependentUpon>BasicReflectionTypeHusker.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="MarkedMethods\MarkedMethods.cs" />
     <Compile Include="ConfigurationVariable\ConfigurationVariable_Create_FactoryAttribute.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Member_Variable.cs" />
@@ -438,6 +443,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Filterer_ConstructorInfo_CanEffectiveParametersHold_Generic.cs</LastGenOutput>
     </Content>
+    <Content Include="Filterer\MethodInfo\Filterer_MethodInfo_CanTechnicalParametersHold_Generic.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Filterer_MethodInfo_CanTechnicalParametersHold_Generic.cs</LastGenOutput>
+    </Content>
     <Content Include="Filterer\MethodInfo\Filterer_MethodInfo_CanGenericParametersHold_Generic.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Filterer_MethodInfo_CanGenericParametersHold_Generic.cs</LastGenOutput>
@@ -452,10 +461,6 @@
     </Content>
     <Content Include="MIMEType\mime_types.txt" />
     <Content Include="MIMEType\source.txt" />
-    <Content Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\BasicReflectionTypeHusker.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BasicReflectionTypeHusker.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

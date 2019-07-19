@@ -17,9 +17,9 @@ namespace CrunchyRecipe
 {
     public partial class TyonValue_Array : TyonValue
     {
-        public TyonValue_Array(VariableInstance variable, TyonContext_Dehydration context) : this()
+        public TyonValue_Array(VariableInstance variable, TyonDehydrater dehydrater) : this()
         {
-            SetTyonArray(new TyonArray(variable, context));
+            SetTyonArray(new TyonArray(variable, dehydrater));
         }
 
         public override void Render(TextDocumentCanvas canvas)
@@ -27,7 +27,7 @@ namespace CrunchyRecipe
             GetTyonArray().Render(canvas);
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             int size = GetTyonArray().GetNumberTyonValues();
             Type type = GetTyonArray().GetTyonType().GetSystemType();
@@ -44,9 +44,9 @@ namespace CrunchyRecipe
             while (index < size)
                 log.CreateStrongInstance(index++);
 
-            GetTyonArray().GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(log.CreateStrongInstance(i), context));
+            GetTyonArray().GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(log.CreateStrongInstance(i), hydrater));
 
-            context.DeferProcess(delegate() {
+            hydrater.DeferProcess(delegate() {
                 variable.SetContents(log.GetValues().Truncate(size).ToArrayOfType(type));
             });
         }

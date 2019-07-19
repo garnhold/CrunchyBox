@@ -16,6 +16,6 @@ namespace CrunchyRecipe
 {
     public interface TyonAddressable
     {
-        TyonAddress RequestAddress(TyonContext_Dehydration context);
+        TyonAddress RequestAddress(TyonDehydrater dehydrater);
     }
 }

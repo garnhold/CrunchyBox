@@ -15,35 +15,32 @@ namespace CrunchyRecipe
 
         private TyonBridge_Default() { }
 
-        public override TyonValue CreateTyonValue(VariableInstance variable, TyonContext_Dehydration context)
+        public override TyonValue CreateTyonValue(VariableInstance variable, TyonDehydrater dehydrater)
         {
             Type type = variable.GetContents().GetType();
 
             if (type.IsString())
-                return new TyonValue_String(variable, context);
+                return new TyonValue_String(variable, dehydrater);
 
             if (type.IsNumeric())
-                return new TyonValue_Number(variable, context);
+                return new TyonValue_Number(variable, dehydrater);
 
             if (type.IsEnumType())
-                return new TyonValue_String(variable, context);
-
-            if (type.IsTypeType())
-                return new TyonValue_Type(variable, context);
+                return new TyonValue_String(variable, dehydrater);
 
             if (type.IsTypicalIEnumerable())
-                return new TyonValue_Array(variable, context);
+                return new TyonValue_Array(variable, dehydrater);
 
-            if (context.GetDesignatedVariables(type).IsNotEmpty())
-                return new TyonValue_Object(variable, context);
+            if (dehydrater.GetDesignatedVariables(type).IsNotEmpty())
+                return new TyonValue_Object(variable, dehydrater);
 
             if (variable.GetVariableType().CanHaveChildTypes() == false)
-                return new TyonValue_String(variable, context);
+                return new TyonValue_String(variable, dehydrater);
 
-            return new TyonValue_Surrogate(variable, context);
+            return new TyonValue_Surrogate(variable, dehydrater);
         }
 
-        public override object ResolveTyonAddress(TyonAddress address, Variable variable, TyonContext_Hydration context)
+        public override object ResolveTyonAddress(TyonAddress address, Variable variable, TyonHydrater hydrater)
         {
             throw new InvalidOperationException(GetType() + " cannot resolve addresses.");
         }

@@ -21,7 +21,7 @@ namespace CrunchyRecipe
             canvas.AppendToLine("null");
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             variable.SetContents(null);
         }

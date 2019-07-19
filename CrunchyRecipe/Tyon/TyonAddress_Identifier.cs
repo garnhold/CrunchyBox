@@ -16,7 +16,7 @@ namespace CrunchyRecipe
 {
 	public partial class TyonAddress_Identifier : TyonAddress
 	{
-        public TyonAddress_Identifier(string i, TyonContext_Dehydration context) : this()
+        public TyonAddress_Identifier(string i, TyonDehydrater dehydrater) : this()
         {
             SetId(i);
         }
@@ -26,7 +26,7 @@ namespace CrunchyRecipe
             canvas.AppendToLine(GetId());
         }
 
-        public override object GetAddressValue(TyonContext_Hydration context)
+        public override object GetAddressValue(TyonHydrater hydrater)
         {
             return GetId();
         }

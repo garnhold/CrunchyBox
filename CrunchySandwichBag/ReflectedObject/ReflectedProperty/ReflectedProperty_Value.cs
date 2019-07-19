@@ -24,10 +24,11 @@ namespace CrunchySandwichBag
                 if (GetVariableType().IsReferenceType() && value != null)
                 {
                     Type type = value.GetTypeEX();
-                    List<object> external_objects = new List<object>();
-                    string data = UnityTyonSerializer.INSTANCE.SerializeValue(value, type, external_objects);
+                    TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
-                    GetObjects().Process(o => SetContents(o, UnityTyonSerializer.INSTANCE.DeserializeValue(data, type, external_objects)));
+                    string data = context.SerializeValue(value, type);
+
+                    GetObjects().Process(o => SetContents(o, context.DeserializeValue(data, type)));
                 }
                 else
                 {

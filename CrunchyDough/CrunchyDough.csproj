@@ -60,6 +60,7 @@
     <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Generic.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_AppendIfNot.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Interleave.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertCenterConnections.cs" />
@@ -89,6 +90,7 @@
     </Compile>
     <Compile Include="Extensions\Stack\StackExtensions_PeekEX.cs" />
     <Compile Include="Extensions\String\StringExtensions_Count_Any.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Namespace.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Treatment_Common.cs" />
     <Compile Include="Filename\Filename_Absolute.cs" />
     <Compile Include="Filename\Filename_Clean.cs" />

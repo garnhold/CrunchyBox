@@ -16,11 +16,11 @@ namespace CrunchyRecipe
 {
 	public partial class TyonArray : TyonElement
 	{
-        public TyonArray(VariableInstance variable, TyonContext_Dehydration context) : this()
+        public TyonArray(VariableInstance variable, TyonDehydrater dehydrater) : this()
         {
             SetTyonType(TyonType.CreateTyonType(variable.GetVariable().GetVariableElementType()));
             SetTyonValues(
-                variable.GetAllVariableInstanceElements().Convert(v => context.CreateTyonValue(v))
+                variable.GetAllVariableInstanceElements().Convert(v => dehydrater.CreateTyonValue(v))
             );
         }
 

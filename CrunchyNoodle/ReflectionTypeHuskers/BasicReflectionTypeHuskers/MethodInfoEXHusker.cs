@@ -9,13 +9,40 @@ using CrunchySalt;
 
 namespace CrunchyNoodle
 {
-    public partial class MethodInfoEXHusker : Husker<MethodInfoEX>
+    public class MethodInfoEXHusker : Husker<MethodInfoEX>
     {
-        private MethodInfoEX Resolve(Module module, int metadata_token)
+        static public readonly MethodInfoEXHusker INSTANCE = new MethodInfoEXHusker();
+
+        private MethodInfoEXHusker() { }
+
+        public override void Dehydrate(HuskWriter writer, MethodInfoEX to_dehydrate)
         {
-            return module.ResolveMethod(metadata_token)
-                .Convert<MethodInfo>()
-                .GetMethodInfoEX();
+            if (to_dehydrate != null)
+            {
+                writer.WriteInt(to_dehydrate.MetadataToken);
+                writer.WriteRecurrant(to_dehydrate.DeclaringType, TypeHusker.INSTANCE);
+            }
+            else
+            {
+                writer.WriteInt(0);
+            }
         }
+
+        public override MethodInfoEX Hydrate(HuskReader reader)
+        {
+            int metadata_token = reader.ReadInt();
+
+            if (metadata_token != 0)
+                return reader.ReadRecurrant(TypeHusker.INSTANCE).ResolveMethod(metadata_token);
+
+            return null;
+        }
+    }
+
+    public class MethodInfoEXListHusker : ListHusker<MethodInfoEX>
+    {
+        static public readonly MethodInfoEXListHusker INSTANCE = new MethodInfoEXListHusker();
+
+        private MethodInfoEXListHusker() : base(MethodInfoEXHusker.INSTANCE) { }
     }
 }

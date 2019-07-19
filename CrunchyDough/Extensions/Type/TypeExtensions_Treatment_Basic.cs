@@ -76,5 +76,20 @@ namespace CrunchyDough
 
             return false;
         }
+
+        static public bool IsNestedClass(this Type item)
+        {
+            if (item.IsNested)
+                return true;
+
+            return false;
+        }
+        static public bool IsNonNestedClass(this Type item)
+        {
+            if (item.IsNestedClass() == false)
+                return true;
+
+            return false;
+        }
     }
 }

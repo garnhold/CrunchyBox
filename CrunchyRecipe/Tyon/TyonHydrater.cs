@@ -9,10 +9,12 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-	public class TyonContext_Hydration : TyonContext
+	public class TyonHydrater
 	{
         private List<Process> deferred_processes;
         private Dictionary<object, object> internal_address_to_object;
+
+        private TyonContext context;
 
         private void Finish()
         {
@@ -20,10 +22,12 @@ namespace CrunchyRecipe
             Clear();
         }
 
-        public TyonContext_Hydration(TyonSerializer s) : base(s)
+        public TyonHydrater(TyonContext c)
         {
             deferred_processes = new List<Process>();
             internal_address_to_object = new Dictionary<object, object>();
+
+            context = c;
         }
 
         public void Clear()
@@ -39,11 +43,19 @@ namespace CrunchyRecipe
             Finish();
             return obj;
         }
+        public object Hydrate(string text)
+        {
+            return Hydrate(TyonObject.DOMify(text));
+        }
 
         public void HydrateInto(object obj, TyonObject tyon_object)
         {
             tyon_object.PushToSystemObject(obj, this);
             Finish();
+        }
+        public void HydrateInto(object obj, string text)
+        {
+            HydrateInto(obj, TyonObject.DOMify(text));
         }
 
         public object HydrateValue(TyonValue tyon_value, Type type)
@@ -55,6 +67,10 @@ namespace CrunchyRecipe
             Finish();
 
             return variable.GetContents();
+        }
+        public object HydrateValue(string text, Type type)
+        {
+            return HydrateValue(TyonValue.DOMify(text), type);
         }
 
         public void RegisterInternalObject(object obj, TyonAddress address)
@@ -77,7 +93,12 @@ namespace CrunchyRecipe
 
         public object ResolveExternalAddress(TyonAddress address, Variable variable)
         {
-            return GetBridge(variable).ResolveTyonAddress(address, variable, this);
+            return context.GetBridge(variable).ResolveTyonAddress(address, variable, this);
+        }
+
+        public object ResolveRegisteredExternalAddress(object address)
+        {
+            return context.ResolveRegisteredExternalAddress(address);
         }
 
         public void DeferProcess(Process process)
@@ -87,7 +108,12 @@ namespace CrunchyRecipe
 
         public bool TryGetDesignatedVariable(Type type, string name, out Variable variable)
         {
-            return GetSerializer().TryGetDesignatedVariable(type, name, out variable);
+            return context.GetSettings().TryGetDesignatedVariable(type, name, out variable);
+        }
+
+        public TyonContext GetContext()
+        {
+            return context;
         }
 	}
 	

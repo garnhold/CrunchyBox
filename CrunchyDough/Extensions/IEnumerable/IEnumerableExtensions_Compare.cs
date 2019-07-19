@@ -24,10 +24,7 @@ namespace CrunchyDough
         {
             unchecked
             {
-                int hash_code = 17;
-
-                item.Process(i => hash_code = hash_code * 23 + i.GetHashCodeEX());
-                return hash_code;
+                return item.Apply(17, (h, i) => h * 23 + i.GetHashCodeEX());
             }
         }
     }

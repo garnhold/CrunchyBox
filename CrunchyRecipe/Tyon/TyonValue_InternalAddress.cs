@@ -16,9 +16,9 @@ namespace CrunchyRecipe
 {
 	public partial class TyonValue_InternalAddress : TyonValue
 	{
-        public TyonValue_InternalAddress(object a, TyonContext_Dehydration context) : this()
+        public TyonValue_InternalAddress(object a, TyonDehydrater dehydrater) : this()
         {
-            SetTyonAddress(context.CreateTyonAddress(a));
+            SetTyonAddress(dehydrater.CreateTyonAddress(a));
         }
 
         public override void Render(TextDocumentCanvas canvas)
@@ -27,10 +27,10 @@ namespace CrunchyRecipe
             GetTyonAddress().Render(canvas);
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            context.DeferProcess(delegate() {
-                variable.SetContents(context.ResolveInternalAddress(GetTyonAddress()));
+            hydrater.DeferProcess(delegate() {
+                variable.SetContents(hydrater.ResolveInternalAddress(GetTyonAddress()));
             });
         }
 	}

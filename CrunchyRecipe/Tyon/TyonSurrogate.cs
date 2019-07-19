@@ -21,19 +21,19 @@ namespace CrunchyRecipe
             SetString(input.ExtractStringValueFromLiteralString());
         }
 
-        public TyonSurrogate(object obj, TyonContext_Dehydration context) : this()
+        public TyonSurrogate(object obj, TyonDehydrater dehydrater) : this()
         {
-            context.RegisterInternalObject(obj, this);
+            dehydrater.RegisterInternalObject(obj, this);
 
             SetTyonType(TyonType.CreateTyonType(obj.GetType()));
             SetString(obj.ToStringEX());
         }
 
-        public object InstanceSystemObject(TyonContext_Hydration context)
+        public object InstanceSystemObject(TyonHydrater hydrater)
         {
             object obj = GetString().ConvertEX(GetTyonType().GetSystemType());
 
-            context.RegisterInternalObject(obj, GetTyonAddress());
+            hydrater.RegisterInternalObject(obj, GetTyonAddress());
             return obj;
         }
 
@@ -61,10 +61,10 @@ namespace CrunchyRecipe
             canvas.AppendToLine("}");
         }
 
-        public TyonAddress RequestAddress(TyonContext_Dehydration context)
+        public TyonAddress RequestAddress(TyonDehydrater dehydrater)
         {
             if (GetTyonAddress() == null)
-                SetTyonAddress(context.GetNewInternalAddress());
+                SetTyonAddress(dehydrater.GetNewInternalAddress());
 
             return GetTyonAddress();
         }

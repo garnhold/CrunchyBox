@@ -9,20 +9,24 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-	public class TyonContext_Dehydration : TyonContext
+	public class TyonDehydrater
 	{
         private int next_internal_address;
         private Dictionary<object, TyonAddressable> object_to_tyon_addressable;
+
+        private TyonContext context;
 
         private void Finish()
         {
             Clear();
         }
 
-        public TyonContext_Dehydration(TyonSerializer s) : base(s)
+        public TyonDehydrater(TyonContext c)
         {
             next_internal_address = 1;
             object_to_tyon_addressable = new Dictionary<object, TyonAddressable>();
+
+            context = c;
         }
 
         public void Clear()
@@ -57,14 +61,14 @@ namespace CrunchyRecipe
             if (value != null)
             {
                 object address;
-                if (TryResolveRegisteredExternalObject(value, out address))
+                if (context.TryResolveRegisteredExternalObject(value, out address))
                     return new TyonValue_ExternalAddress(address, this);
 
                 TyonAddressable addressable;
                 if (object_to_tyon_addressable.TryGetValue(value, out addressable))
                     return new TyonValue_InternalAddress(addressable.RequestAddress(this), this);
 
-                return GetBridge(variable.GetVariable()).CreateTyonValue(variable, this);
+                return context.GetBridge(variable.GetVariable()).CreateTyonValue(variable, this);
             }
 
             return new TyonValue_Null();
@@ -100,6 +104,11 @@ namespace CrunchyRecipe
                 object_to_tyon_addressable.Add(obj, addressable);
         }
 
+        public object RegisterExternalObject(object obj)
+        {
+            return context.RegisterExternalObject(obj);
+        }
+
         public TyonAddress GetNewInternalAddress()
         {
             return new TyonAddress_Int(next_internal_address++, this);
@@ -107,7 +116,12 @@ namespace CrunchyRecipe
 
         public IEnumerable<Variable> GetDesignatedVariables(Type type)
         {
-            return GetSerializer().GetDesignatedVariables(type);
+            return context.GetSettings().GetDesignatedVariables(type);
+        }
+
+        public TyonContext GetContext()
+        {
+            return context;
         }
 	}
 	

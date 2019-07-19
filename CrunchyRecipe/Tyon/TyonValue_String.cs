@@ -22,19 +22,19 @@ namespace CrunchyRecipe
             SetString(input.ExtractStringValueFromLiteralString());
         }
 
-        public TyonValue_String(object value, TyonContext_Dehydration context) : this()
+        public TyonValue_String(object value, TyonDehydrater dehydrater) : this()
         {
             SetString(value.ToString());
         }
 
-        public TyonValue_String(VariableInstance variable, TyonContext_Dehydration context) : this(variable.GetContents(), context) { }
+        public TyonValue_String(VariableInstance variable, TyonDehydrater dehydrater) : this(variable.GetContents(), dehydrater) { }
 
         public override void Render(TextDocumentCanvas canvas)
         {
             canvas.AppendToLine(GetString().StyleAsLiteralString());
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             variable.SetContents(GetString());
         }

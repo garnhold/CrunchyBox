@@ -30,10 +30,10 @@ namespace CrunchySandwich
 
 				try
 				{
-					List<object> external_objects = new List<object>();
+					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
-					tyon_data = UnityTyonSerializer.INSTANCE.Serialize(this, external_objects);
-					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
+                    tyon_data = context.Serialize(this);
+                    tyon_unity_objects = context.GetRegisteredExternalObjects().Convert<object, UnityEngine.Object>().ToList();
 
 					pack_error = null;
 
@@ -56,10 +56,10 @@ namespace CrunchySandwich
 			{
 				try
 				{
-					List<object> external_objects = tyon_unity_objects.Convert<UnityEngine.Object, object>().ToList();
+					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
-					did_unpack_tyon_data = false;
-					UnityTyonSerializer.INSTANCE.DeserializeInto(tyon_data, this, external_objects);
+                    did_unpack_tyon_data = false;
+                    context.DeserializeInto(this, tyon_data);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
@@ -112,10 +112,10 @@ namespace CrunchySandwich
 
 				try
 				{
-					List<object> external_objects = new List<object>();
+					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
-					tyon_data = UnityTyonSerializer.INSTANCE.Serialize(this, external_objects);
-					tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
+                    tyon_data = context.Serialize(this);
+                    tyon_unity_objects = context.GetRegisteredExternalObjects().Convert<object, UnityEngine.Object>().ToList();
 
 					pack_error = null;
 
@@ -138,10 +138,10 @@ namespace CrunchySandwich
 			{
 				try
 				{
-					List<object> external_objects = tyon_unity_objects.Convert<UnityEngine.Object, object>().ToList();
+					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
-					did_unpack_tyon_data = false;
-					UnityTyonSerializer.INSTANCE.DeserializeInto(tyon_data, this, external_objects);
+                    did_unpack_tyon_data = false;
+                    context.DeserializeInto(this, tyon_data);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;

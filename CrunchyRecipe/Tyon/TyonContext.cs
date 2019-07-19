@@ -9,19 +9,60 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-	public abstract class TyonContext
+	public class TyonContext
 	{
-        private TyonSerializer serializer;
+        private TyonSettings settings;
 
         private int next_registered_external_address;
         private BidirectionalDictionary<object, object> registered_external_address_to_objects;
 
-        public TyonContext(TyonSerializer s)
+        public TyonContext(TyonSettings s)
         {
-            serializer = s;
+            settings = s;
 
             next_registered_external_address = 1;
             registered_external_address_to_objects = new BidirectionalDictionary<object, object>();
+        }
+
+        public TyonDehydrater CreateDehydrater()
+        {
+            return new TyonDehydrater(this);
+        }
+        public TyonHydrater CreateHydrater()
+        {
+            return new TyonHydrater(this);
+        }
+
+        public string Serialize(object obj)
+        {
+            return CreateDehydrater().Dehydrate(obj).Render();
+        }
+        public string SerializeValue(object value, Type type)
+        {
+            return CreateDehydrater().DehydrateValue(value, type).Render();
+        }
+
+        public object Deserialize(string text)
+        {
+            return CreateHydrater().Hydrate(text);
+        }
+        public T Deserialize<T>(string text)
+        {
+            return Deserialize(text).Convert<T>();
+        }
+
+        public object DeserializeValue(string text, Type type)
+        {
+            return CreateHydrater().HydrateValue(text, type);
+        }
+        public T DeserializeValue<T>(string text)
+        {
+            return DeserializeValue(text, typeof(T)).Convert<T>();
+        }
+
+        public void DeserializeInto(object obj, string text)
+        {
+            CreateHydrater().HydrateInto(obj, text);
         }
 
         public object RegisterExternalObject(object obj)
@@ -67,12 +108,12 @@ namespace CrunchyRecipe
 
         public TyonBridge GetBridge(Variable variable)
         {
-            return serializer.GetBridge(variable);
+            return settings.GetBridge(variable);
         }
 
-        public TyonSerializer GetSerializer()
+        public TyonSettings GetSettings()
         {
-            return serializer;
+            return settings;
         }
 
         public IEnumerable<object> GetRegisteredExternalObjects()

@@ -952,7 +952,7 @@
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Bounds.cs" />
     <Compile Include="Triangle3\Extensions\Triangle3Extensions.cs" />
     <Compile Include="Triangle3\Triangle3.cs" />
-    <Compile Include="UnityObjectEX\Tyon\UnityTyonSerializer.cs" />
+    <Compile Include="UnityObjectEX\Tyon\UnityTyonSettings.cs" />
     <Compile Include="UnityObjectEX\SerializeFieldEX.cs" />
     <Compile Include="UnityObjectEX\UnityObjectEX.cs">
       <AutoGen>True</AutoGen>
