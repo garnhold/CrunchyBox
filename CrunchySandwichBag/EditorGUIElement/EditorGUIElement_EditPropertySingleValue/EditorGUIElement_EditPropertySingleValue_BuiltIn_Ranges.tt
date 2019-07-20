@@ -1,0 +1,66 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+	new TypeInfo("IntRange", "int", "IntField", "DEFAULT_HEIGHT"),
+	new TypeInfo("FloatRange", "float", "FloatField", "DEFAULT_HEIGHT")
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+using UnityEditor;
+
+using CrunchyDough;
+using CrunchyBun;
+using CrunchySandwich;
+
+namespace CrunchySandwichBag
+{
+<#foreach(TypeInfo type in types){#>
+	[EditorGUIElementForType(typeof(<#=type.type_name#>), true)]
+    public class EditorGUIElement_EditPropertySingleValue_BuiltIn_<#=type.type_name#> : EditorGUIElement_EditPropertySingleValue_BuiltIn<<#=type.type_name#>>
+    {
+        protected override <#=type.type_name#> DrawBuiltInInternal(Rect rect, GUIContent label, <#=type.type_name#> value)
+        {
+            Rect x1_rect;
+            Rect x2_rect;
+
+			rect.SplitByXCenter(out x1_rect, out x2_rect);
+
+            <#=type.primitive_name#> x1 = EditorGUI.<#=type.function_name#>(x1_rect, label, value.x1);
+            <#=type.primitive_name#> x2 = EditorGUI.<#=type.function_name#>(x2_rect, "->", value.x2);
+
+            return new <#=type.type_name#>(x1, x2);
+        }
+
+        public EditorGUIElement_EditPropertySingleValue_BuiltIn_<#=type.type_name#>(EditProperty_Single_Value p) : base(p) { }
+    }
+
+<#}#>
+}
+
+<#+
+public class TypeInfo
+{
+	public readonly string type_name;
+	public readonly string primitive_name;
+	public readonly string function_name;
+
+	public readonly string height;
+
+	public TypeInfo(string t, string p, string f, string h)
+	{
+		type_name = t;
+		primitive_name = p;
+		function_name = f;
+
+		height = h;
+	}
+}
+#>

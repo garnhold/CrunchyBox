@@ -9,8 +9,8 @@ namespace CrunchyDough
     {
         static public int GetNumberLines(this string item)
         {
-            if (item != null)
-                return item.CountAny(CharExtensions_Category.NEWLINE);
+            if (item.IsVisible())
+                return item.CountAny(CharExtensions_Category.NEWLINE) + 1;
 
             return 0;
         }

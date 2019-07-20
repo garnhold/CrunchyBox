@@ -15,10 +15,10 @@ namespace CrunchySandwichBag
     {
         static public void SetElementValue(this EditProperty_Array item, int index, object value)
         {
-            EditProperty_Value property;
+            EditProperty_Single_Value property;
 
             if (item.TryGetElementValue(index, out property))
-                property.SetContents(value);
+                property.SetContentValues(value);
         }
     }
 }

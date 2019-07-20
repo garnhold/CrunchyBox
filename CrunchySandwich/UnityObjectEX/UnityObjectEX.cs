@@ -16,8 +16,8 @@ namespace CrunchySandwich
 		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
 
-		[SerializeField][RecoveryField]private string pack_error;
-        [SerializeField][RecoveryField]private string unpack_error;
+		[SerializeField][RecoveryField][AutoMultiline]private string pack_error;
+        [SerializeField][RecoveryField][AutoMultiline]private string unpack_error;
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
@@ -33,11 +33,13 @@ namespace CrunchySandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
                     tyon_data = context.Serialize(this);
-                    tyon_unity_objects = context.GetRegisteredExternalObjects().Convert<object, UnityEngine.Object>().ToList();
+                    tyon_unity_objects = context.GetRegisteredExternalObjects()
+						.Convert<object, UnityEngine.Object>()
+						.ToList();
 
 					pack_error = null;
 
-					if(tyon_data != old_tyon_data)
+					if (tyon_data != old_tyon_data)
 						UnpackTyon();
 				}
 				catch(Exception ex)
@@ -98,8 +100,8 @@ namespace CrunchySandwich
 		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
 
-		[SerializeField][RecoveryField]private string pack_error;
-        [SerializeField][RecoveryField]private string unpack_error;
+		[SerializeField][RecoveryField][AutoMultiline]private string pack_error;
+        [SerializeField][RecoveryField][AutoMultiline]private string unpack_error;
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
@@ -115,11 +117,13 @@ namespace CrunchySandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
                     tyon_data = context.Serialize(this);
-                    tyon_unity_objects = context.GetRegisteredExternalObjects().Convert<object, UnityEngine.Object>().ToList();
+                    tyon_unity_objects = context.GetRegisteredExternalObjects()
+						.Convert<object, UnityEngine.Object>()
+						.ToList();
 
 					pack_error = null;
 
-					if(tyon_data != old_tyon_data)
+					if (tyon_data != old_tyon_data)
 						UnpackTyon();
 				}
 				catch(Exception ex)

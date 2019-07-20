@@ -13,17 +13,17 @@ namespace CrunchySandwichBag
 {
     static public class EditPropertyArrayExtensions_GetElement
     {
-        static public bool TryGetElementValue(this EditProperty_Array item, int index, out EditProperty_Value value)
+        static public bool TryGetElementValue(this EditProperty_Array item, int index, out EditProperty_Single_Value value)
         {
-            return item.GetElement(index).Convert<EditProperty_Value>(out value);
+            return item.GetElement(index).Convert<EditProperty_Single_Value>(out value);
         }
 
         static public bool TryGetElementValue(this EditProperty_Array item, int index, out object value)
         {
-            EditProperty_Value property;
+            EditProperty_Single_Value property;
 
             if(item.TryGetElementValue(index, out property))
-                return property.TryGetContents(out value);
+                return property.TryGetContentValues(out value);
 
             value = null;
             return false;

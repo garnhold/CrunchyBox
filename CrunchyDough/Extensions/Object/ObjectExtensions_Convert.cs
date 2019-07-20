@@ -36,7 +36,15 @@ namespace CrunchyDough
         {
             if (item != null)
             {
-                if (type.IsAssignableFrom(item.GetType()))
+                if (type != null)
+                {
+                    if (type.IsAssignableFrom(item.GetType()))
+                        return true;
+                }
+            }
+            else
+            {
+                if (type.IsNullable())
                     return true;
             }
 

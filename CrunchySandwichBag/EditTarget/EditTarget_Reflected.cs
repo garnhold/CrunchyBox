@@ -28,15 +28,15 @@ namespace CrunchySandwichBag
 
         static public EditProperty CreateProperty(EditTarget target, ReflectedProperty property)
         {
-            ReflectedProperty_Value value;
-            ReflectedProperty_Object obj;
+            ReflectedProperty_Single_Value value;
+            ReflectedProperty_Single_Object obj;
             ReflectedProperty_Array array;
 
-            if (property.Convert<ReflectedProperty_Value>(out value))
-                return new EditProperty_Value_Reflected(target, value);
+            if (property.Convert<ReflectedProperty_Single_Value>(out value))
+                return new EditProperty_Single_Value_Reflected(target, value);
 
-            if (property.Convert<ReflectedProperty_Object>(out obj))
-                return new EditProperty_Object_Reflected(target, obj);
+            if (property.Convert<ReflectedProperty_Single_Object>(out obj))
+                return new EditProperty_Single_Object_Reflected(target, obj);
 
             if (property.Convert<ReflectedProperty_Array>(out array))
                 return new EditProperty_Array_Reflected(target, array);

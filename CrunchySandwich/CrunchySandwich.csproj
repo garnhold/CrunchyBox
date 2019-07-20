@@ -69,7 +69,13 @@
     <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
+    <Compile Include="Functoid\FunctoidInvokerBase.cs" />
     <Compile Include="Functoid\Functoid.cs" />
+    <Compile Include="Functoid\FunctoidInvokers.cs">
+      <DependentUpon>FunctoidInvokers.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="PolymorphicFieldAttribute\PolymorphicFieldAttribute.cs" />
     <Compile Include="PrefabFieldAttribute\PrefabFieldAttribute.cs" />
     <Compile Include="AssetFieldAttribute\AssetFieldAttribute.cs" />
@@ -1252,6 +1258,10 @@
     <Content Include="Extensions\Vector2\Vector2s.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Vector2s.cs</LastGenOutput>
+    </Content>
+    <Content Include="Functoid\FunctoidInvokers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FunctoidInvokers.cs</LastGenOutput>
     </Content>
     <Content Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

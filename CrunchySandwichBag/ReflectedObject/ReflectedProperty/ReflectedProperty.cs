@@ -32,10 +32,10 @@ namespace CrunchySandwichBag
                     variable_type.CanBeTreatedAs<UnityEngine.Object>() == false
                     )
                 {
-                    return new ReflectedProperty_Object(reflected_object, variable);
+                    return new ReflectedProperty_Single_Object(reflected_object, variable);
                 }
 
-                return new ReflectedProperty_Value(reflected_object, variable);
+                return new ReflectedProperty_Single_Value(reflected_object, variable);
             }
         }
 

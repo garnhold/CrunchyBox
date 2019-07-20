@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
             rect.SplitByXLeftOffset(EditorGUIUtility.labelWidth, out label_rect, out rect);
 
             GUI.Label(label_rect, label);
-            return EditorGUI.TextArea(rect, value);
+            return EditorGUI.TextArea(rect, value).TrimTrailingWhitespace();
         }
     }
 }
