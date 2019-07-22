@@ -12,9 +12,9 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [EditorGUIElementForType(typeof(SortingLayerEX), true)]
-    public class EditorGUIElement_EditPropertySingleValue_Popup_SortingLayerEX : EditorGUIElement_EditPropertySingleValue_Popup<SortingLayerEX>
+    public class EditorGUIElement_EditPropertySingleValuePopup_SortingLayerEX : EditorGUIElement_EditPropertySingleValuePopup<SortingLayerEX>
     {
-        public EditorGUIElement_EditPropertySingleValue_Popup_SortingLayerEX(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValuePopup_SortingLayerEX(EditProperty_Single_Value p) : base(p) { }
 
         public override IEnumerable<SortingLayerEX> GetOptions()
         {

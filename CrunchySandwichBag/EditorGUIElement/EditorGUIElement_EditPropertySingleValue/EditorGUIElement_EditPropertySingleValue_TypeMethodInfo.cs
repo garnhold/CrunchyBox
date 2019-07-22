@@ -27,35 +27,49 @@ namespace CrunchySandwichBag
 
             Rect popup_rect;
 
-            rect.SplitByXLeftPercent(0.4f, out rect, out popup_rect);
-            /*
+            rect.SplitByXLeftPercent(0.7f, out rect, out popup_rect);
+
             if (type_property.TryGetContentValues(out type))
             {
-                string name = value.IfNotNull(m => m.Name);
-                string new_name = EditorGUI.DelayedTextField(rect, name);
-
-                if (new_name != name || option_array == null)
+                if (type != null)
                 {
-                    name = new_name;
+                    string name = value.IfNotNull(m => m.Name);
+                    string new_name = EditorGUI.DelayedTextField(rect, name);
 
-                    options.Change(
-                        type.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
-                            .Convert<MethodInfoEX, MethodInfo>()
-                    );
-                    option_array = options.Convert(o => o.GetEffectiveParameterTypes().ToString(", ")).ToArray();
+                    if (name != new_name || option_array == null)
+                    {
+                        name = new_name;
 
-                    value = options.GetFirst();
+                        options.Change(
+                            type.GetFilteredInstanceMethods(
+                                Filterer_MethodInfo.IsNamed(name)
+                            ).Convert<MethodInfoEX, MethodInfo>()
+                        );
+
+                        option_array = options.Convert(
+                            o => o.GetEffectiveParameterTypes().ToString(", ").CoalesceBlank("(No Parameters)")
+                        ).ToArray();
+                    }
+
+                    if (options.IsNotEmpty())
+                    {
+                        value = options.GetCapped(
+                            EditorGUI.Popup(
+                                popup_rect,
+                                options.FindIndexOf(value),
+                                option_array
+                            )
+                        );
+                    }
+                    else
+                    {
+                        GUI.Label(popup_rect, "No method selected");
+
+                        value = null;
+                    }
                 }
-
-                value = options.Get(
-                    EditorGUI.Popup(
-                        popup_rect,
-                        options.FindIndexOf(value),
-                        option_array
-                    )
-                );
             }
-            */
+
             return value;
         }
 

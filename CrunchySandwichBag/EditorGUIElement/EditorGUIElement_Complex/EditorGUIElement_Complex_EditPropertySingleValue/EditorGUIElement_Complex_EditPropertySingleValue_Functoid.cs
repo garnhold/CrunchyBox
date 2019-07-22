@@ -58,7 +58,12 @@ namespace CrunchySandwichBag
 
                         invoker_property.EnsureContents(invoker_type);
                         if (invoker_property.TryGetContents(out invoker_contents))
-                            container.AddChild(new EditorGUIElement_Complex_EditTarget(invoker_contents));
+                        {
+                            container.AddChildWithAttachments(
+                                new EditorGUIElement_Complex_EditTarget(invoker_contents),
+                                new EditorGUIElementAttachment_Indent()
+                            );
+                        }
                     }
                     else
                     {

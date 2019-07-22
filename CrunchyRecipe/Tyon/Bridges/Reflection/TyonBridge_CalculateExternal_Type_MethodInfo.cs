@@ -24,7 +24,7 @@ namespace CrunchyRecipe
 
         protected override MethodInfo ResolveAddressInternal(Tuple<Type, string, Type[]> address)
         {
-            return address.item1.GetFilteredInstanceMethods(
+            return address.item1.GetFilteredMethods(
                 Filterer_MethodInfo.IsNamed(address.item2),
                 Filterer_MethodInfo.CanTechnicalParametersHold(address.item3)
             ).GetFirst();

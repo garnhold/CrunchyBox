@@ -14,11 +14,11 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElement_EditPropertySingleValue_Popup_TypeSubType : EditorGUIElement_EditPropertySingleValue_Popup<Type>
+    public class EditorGUIElement_EditPropertySingleValuePopup_TypeSubType : EditorGUIElement_EditPropertySingleValuePopup<Type>
     {
         private EditProperty_Single_Value type_property;
 
-        public EditorGUIElement_EditPropertySingleValue_Popup_TypeSubType(EditProperty_Single_Value p, EditProperty_Single_Value t) : base(p)
+        public EditorGUIElement_EditPropertySingleValuePopup_TypeSubType(EditProperty_Single_Value p, EditProperty_Single_Value t) : base(p)
         {
             type_property = t;
         }

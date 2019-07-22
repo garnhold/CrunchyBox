@@ -12,9 +12,9 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [EditorGUIElementForType(typeof(LayerEX), true)]
-    public class EditorGUIElement_EditPropertySingleValue_Popup_LayerEX : EditorGUIElement_EditPropertySingleValue_Popup<LayerEX>
+    public class EditorGUIElement_EditPropertySingleValuePopup_LayerEX : EditorGUIElement_EditPropertySingleValuePopup<LayerEX>
     {
-        public EditorGUIElement_EditPropertySingleValue_Popup_LayerEX(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValuePopup_LayerEX(EditProperty_Single_Value p) : base(p) { }
 
         public override IEnumerable<LayerEX> GetOptions()
         {

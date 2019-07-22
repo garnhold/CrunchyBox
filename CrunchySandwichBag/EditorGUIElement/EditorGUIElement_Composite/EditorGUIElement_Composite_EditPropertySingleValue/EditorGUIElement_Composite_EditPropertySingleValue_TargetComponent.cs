@@ -24,7 +24,7 @@ namespace CrunchySandwichBag
             container.AddChild(0.3f, target.ForcePropertyValue("game_object").CreateEditorGUIElement());
             container.AddChild(
                 0.7f,
-                new EditorGUIElement_EditPropertySingleValue_Popup_GameObjectComponentType(
+                new EditorGUIElement_EditPropertySingleValuePopup_GameObjectComponentType(
                     target.ForcePropertyValue("component_type"),
                     target.ForcePropertyValue("game_object")
                 )

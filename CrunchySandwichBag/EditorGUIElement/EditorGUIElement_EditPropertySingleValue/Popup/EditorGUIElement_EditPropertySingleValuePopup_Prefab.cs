@@ -11,11 +11,11 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElement_EditPropertySingleValue_Popup_Prefab : EditorGUIElement_EditPropertySingleValue_Popup<UnityEngine.Object>
+    public class EditorGUIElement_EditPropertySingleValuePopup_Prefab : EditorGUIElement_EditPropertySingleValuePopup<UnityEngine.Object>
     {
         private bool should_force_non_null;
 
-        public EditorGUIElement_EditPropertySingleValue_Popup_Prefab(EditProperty_Single_Value p, bool non_null) : base(p)
+        public EditorGUIElement_EditPropertySingleValuePopup_Prefab(EditProperty_Single_Value p, bool non_null) : base(p)
         {
             should_force_non_null = non_null;
         }

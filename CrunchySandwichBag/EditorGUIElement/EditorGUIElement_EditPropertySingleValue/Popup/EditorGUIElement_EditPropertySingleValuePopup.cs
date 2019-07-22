@@ -11,7 +11,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public abstract class EditorGUIElement_EditPropertySingleValue_Popup<T> : EditorGUIElement
+    public abstract class EditorGUIElement_EditPropertySingleValuePopup<T> : EditorGUIElement
     {
         private EditProperty_Single_Value property;
 
@@ -39,7 +39,7 @@ namespace CrunchySandwichBag
             }
         }
 
-        public EditorGUIElement_EditPropertySingleValue_Popup(EditProperty_Single_Value p)
+        public EditorGUIElement_EditPropertySingleValuePopup(EditProperty_Single_Value p)
         {
             property = p;
         }

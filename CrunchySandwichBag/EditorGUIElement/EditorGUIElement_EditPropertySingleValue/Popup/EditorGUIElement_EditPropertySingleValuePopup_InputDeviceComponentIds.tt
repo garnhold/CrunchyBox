@@ -26,9 +26,9 @@ namespace CrunchySandwichBag
 <#foreach(string type in types){#>
 
     [EditorGUIElementForType(typeof(InputDevice<#=type#>Id), true)]
-    public class EditorGUIElement_EditPropertySingleValue_Popup_InputDevice<#=type#>Id : EditorGUIElement_EditPropertySingleValue_Popup<InputDevice<#=type#>Id>
+    public class EditorGUIElement_EditPropertySingleValuePopup_InputDevice<#=type#>Id : EditorGUIElement_EditPropertySingleValuePopup<InputDevice<#=type#>Id>
     {
-        public EditorGUIElement_EditPropertySingleValue_Popup_InputDevice<#=type#>Id(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValuePopup_InputDevice<#=type#>Id(EditProperty_Single_Value p) : base(p) { }
 
         public override IEnumerable<InputDevice<#=type#>Id> GetOptions()
         {
