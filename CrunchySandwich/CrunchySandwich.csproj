@@ -69,6 +69,7 @@
     <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Extrude.cs" />
     <Compile Include="Functoid\FunctoidInvokerBase.cs" />
     <Compile Include="Functoid\Functoid.cs" />
     <Compile Include="Functoid\FunctoidInvokers.cs">

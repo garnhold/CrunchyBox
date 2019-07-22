@@ -64,6 +64,14 @@ namespace CrunchyDough
             return item.IsExtensionMethod(typeof(T));
         }
 
+        static public bool IsNonExtensionMethod(this MethodBase item)
+        {
+            if (item.IsExtensionMethod() == false)
+                return true;
+
+            return false;
+        }
+
         static public bool IsGenericMethod(this MethodBase item)
         {
             if (item.IsGenericMethod)

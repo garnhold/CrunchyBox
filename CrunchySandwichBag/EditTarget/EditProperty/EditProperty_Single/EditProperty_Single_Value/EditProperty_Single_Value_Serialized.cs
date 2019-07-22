@@ -30,7 +30,7 @@ namespace CrunchySandwichBag
         {
         }
 
-        public override void SetContentValues(object value)
+        public override void ForceContentValues(object value)
         {
             property.SetValue(value);
         }

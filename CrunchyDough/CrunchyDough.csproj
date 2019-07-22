@@ -70,6 +70,7 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_RatingAll.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Congruent.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Change.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Percent.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentDropped.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentCapped.cs" />

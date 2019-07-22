@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
         {
         }
 
-        public void SetContentValues(object value)
+        public void ForceContentValues(object value)
         {
             Touch("Setting " + GetVariableName(), delegate() {
                 if (GetVariableType().IsReferenceType() && value != null)
@@ -35,6 +35,12 @@ namespace CrunchySandwichBag
                     GetObjects().Process(o => SetContents(o, value));
                 }
             });
+        }
+
+        public void SetContentValues(object value)
+        {
+            if (IsUnified())
+                ForceContentValues(value);
         }
 
         public bool TryGetContentValues(out object value)

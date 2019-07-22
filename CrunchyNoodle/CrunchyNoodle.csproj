@@ -156,6 +156,7 @@
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropCompatible.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropOfTypeCompatible.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsDeclaredWithin.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNonExtensionMethod.cs" />
     <Compile Include="Filterer\MethodInfo\MethodInfoFilters.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNEffectiveParameters.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanNthEffectiveParameterHold.cs" />

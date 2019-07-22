@@ -55,11 +55,6 @@ namespace CrunchyNoodle
         {
             return item.CanGenericParametersHold(GetId().GetValues());
         }
-
-        public override IEnumerable<Filterer<Assembly>> GetAssemblyFilters()
-        {
-            return GetId().Convert(t => Filterer_Assembly.IsTypeVisible(t));
-        }
     }
     static public partial class Filterer_Type
     {

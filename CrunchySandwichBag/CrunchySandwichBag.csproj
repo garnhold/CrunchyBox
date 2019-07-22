@@ -86,9 +86,10 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_TargetMethod.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_TargetComponent.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_UnityObject.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_ObjectMethodInfo.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_TypeMethodInfo.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_PopupEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_GameObjectComponentType.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_TypeMethodInfo.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_TypeSubType.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_Operation.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_Prefab.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_InputDeviceComponentIds.cs">
@@ -142,7 +143,7 @@
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions_LabelWidth.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions.cs" />
-    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Popup.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DropdownButton.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Focus.cs">
@@ -155,6 +156,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\GenericMenu\GenericMenuExtensions_Add.cs" />
+    <Compile Include="Extensions\GenericMenu\GenericMenuExtensions.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Force.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_SerializationCorruptable.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Script.cs" />

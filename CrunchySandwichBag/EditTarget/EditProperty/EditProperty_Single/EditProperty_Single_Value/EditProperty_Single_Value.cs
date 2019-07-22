@@ -13,7 +13,7 @@ namespace CrunchySandwichBag
 {
     public abstract class EditProperty_Single_Value : EditProperty_Single
     {
-        public abstract void SetContentValues(object value);
+        public abstract void ForceContentValues(object value);
         public abstract bool TryGetContentValues(out object value);
 
         protected override EditorGUIElement CreateEditorGUIElementInternal()
@@ -23,6 +23,12 @@ namespace CrunchySandwichBag
 
         public EditProperty_Single_Value(EditTarget t) : base(t)
         {
+        }
+
+        public void SetContentValues(object value)
+        {
+            if (IsUnified())
+                ForceContentValues(value);
         }
 
         public bool TryGetContentValues<T>(out T value)

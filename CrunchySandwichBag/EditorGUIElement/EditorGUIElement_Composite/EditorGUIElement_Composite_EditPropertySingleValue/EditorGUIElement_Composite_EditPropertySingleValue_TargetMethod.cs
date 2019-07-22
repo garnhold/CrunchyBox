@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
             
             container.AddChild(target.ForceProperty("target_component").CreateEditorGUIElement());
             container.AddChild(
-                new EditorGUIElement_EditPropertySingleValue_Popup_TypeMethodInfo(
+                new EditorGUIElement_EditPropertySingleValue_TypeMethodInfo(
                     target.ForcePropertyValue("method"),
                     target.ForcePropertyValue("target_component.component_type")
                 )
