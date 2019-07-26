@@ -17,10 +17,13 @@ namespace CrunchySandwichBag
         {
             if (item.IsNotNull())
             {
-                if (Filename.ArePathsEquivalent(item.GetAssetDirectory(), Project.GetInternalAssetDirectory()))
+                AssetInfo info = item.GetAssetInfo();
+
+                if(info.IsInternalAsset())
                     return AssetType.Internal;
 
-                return AssetType.External;
+                if (info.IsExternalAsset())
+                    return AssetType.External;
             }
 
             return AssetType.None;

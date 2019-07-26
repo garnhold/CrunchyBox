@@ -24,10 +24,5 @@ namespace CrunchySandwichBag
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = item;
         }
-
-        static public void DeleteAsset(this UnityEngine.Object item)
-        {
-            AssetDatabase.DeleteAsset(item.GetAssetPath());
-        }
     }
 }

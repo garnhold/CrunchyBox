@@ -54,8 +54,7 @@ namespace CrunchySandwichBag
 
         public IEnumerable<DeployablePrefab> GetAllDeployablePrefabs()
         {
-            return AssetDatabaseExtensions.GetPrefabs()
-                .ConvertComponent<DeployablePrefab>();
+            return Project.GetAllPrefabs<DeployablePrefab>();
         }
     }
 }

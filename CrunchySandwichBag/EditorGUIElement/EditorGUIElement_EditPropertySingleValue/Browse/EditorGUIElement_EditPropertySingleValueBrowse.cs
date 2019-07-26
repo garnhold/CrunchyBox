@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
         private Rect field_rect;
         private Rect browse_rect;
 
-        protected abstract EditorGUIElement CreateAssetElement(T asset);
+        protected abstract EditorGUIElement CreateAssetInfoElement(AssetInfo info);
 
         protected virtual T DrawValueInternal(Rect rect, T value)
         {
@@ -47,8 +47,8 @@ namespace CrunchySandwichBag
                 {
                     ModalEditorWindow.OpenWindow("Browse", delegate(EditorGUIElement_Container_Auto container) {
                         container.AddChildren(
-                            AssetDatabaseExtensions.GetAssets<T>(false)
-                                .Convert(a => CreateAssetElement(a))
+                            Project.GetAllAssetInfos<T>()
+                                .Convert(a => CreateAssetInfoElement(a))
                         );
                     });
                 }

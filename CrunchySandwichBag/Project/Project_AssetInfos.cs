@@ -30,24 +30,5 @@ namespace CrunchySandwichBag
                 labels_and_types.Convert<Type>()
             );
         }
-
-        static public IEnumerable<AssetInfo> GetAllAssetInfos()
-        {
-            return GetAssetInfos("", Project.GetAssetDirectory());
-        }
-
-        static public IEnumerable<AssetInfo> GetAllAssetInfos(Type type)
-        {
-            return GetAssetInfos("", Project.GetAssetDirectory(), type);
-        }
-        static public IEnumerable<AssetInfo> GetAllAssetInfos<T>()
-        {
-            return GetAllAssetInfos(typeof(T));
-        }
-
-        static public IEnumerable<AssetInfo> GetAllPrefabAssetInfos()
-        {
-            return GetAllAssetInfos<GameObject>();
-        }
     }
 }

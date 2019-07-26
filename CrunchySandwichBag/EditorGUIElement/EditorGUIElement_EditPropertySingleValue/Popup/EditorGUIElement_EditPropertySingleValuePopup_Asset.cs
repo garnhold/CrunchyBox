@@ -22,7 +22,8 @@ namespace CrunchySandwichBag
 
         public override IEnumerable<UnityEngine.Object> GetOptions()
         {
-            return AssetDatabaseExtensions.GetAssets(false, GetProperty().GetPropertyType())
+            return Project.GetAllAssetInfos(GetProperty().GetPropertyType())
+                .Convert(a => a.Resolve())
                 .PrependIfNot(should_force_non_null, (UnityEngine.Object)null);
         }
     }

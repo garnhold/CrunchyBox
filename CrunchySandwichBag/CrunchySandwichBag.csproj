@@ -100,6 +100,8 @@
     <Compile Include="ApplicationEX\ApplicationEXEditorInitilizer.cs" />
     <Compile Include="AssetClass\AssetClassMenuInitilizer.cs" />
     <Compile Include="AssetInfo\AssetInfo.cs" />
+    <Compile Include="AssetInfo\Extensions\AssetInfoExtensions_AssetType.cs" />
+    <Compile Include="AssetInfo\Extensions\AssetInfoExtensions_Delete.cs" />
     <Compile Include="AssetInfo\Extensions\AssetInfoExtensions_DependencyPath.cs" />
     <Compile Include="AssetInfo\Extensions\AssetInfoExtensions_Dependency.cs" />
     <Compile Include="AssetInfo\Extensions\AssetInfoExtensions_Name.cs" />
@@ -163,6 +165,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_BuiltIn_LayerMask.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Selector\EditorGUIElement_EditPropertySingleValueSelector_Asset.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Selector\EditorGUIElement_EditPropertySingleValueSelector.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_HorizontalRule\EditorGUIElement_HorizontalRule.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_UnhandledEditProperty\EditorGUIElement_UnhandledEditProperty.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue.cs" />
@@ -237,7 +241,6 @@
     <Compile Include="EditTarget\EditGadget\EditGadgetInstance\EditGadgetInstance.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_ForceProperty.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions.cs" />
-    <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions_Load_Extended.cs" />
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions_Get.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_GUIContentLabel.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_GUIContentLabel_Block.cs" />
@@ -315,7 +318,6 @@
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\EditProperty_Array_Serialized.cs" />
     <Compile Include="EditTarget\EditTarget_Serialized_Object.cs" />
     <Compile Include="EditTarget\EditTarget_Serialized_Property.cs" />
-    <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions_Load.cs" />
     <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions_Paths.cs" />
     <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions.cs" />
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions.cs" />
@@ -375,7 +377,11 @@
     <Compile Include="Painter\Painter.cs" />
     <Compile Include="Prefabs\PrefabsInitilizer.cs" />
     <Compile Include="ProjectSettings\ProjectSettings.cs" />
-    <Compile Include="Project\Project_AssetInfo.cs" />
+    <Compile Include="Project\Project_Prefabs.cs" />
+    <Compile Include="Project\Project_AssetInfos.cs" />
+    <Compile Include="Project\Project_AssetInfos_External.cs" />
+    <Compile Include="Project\Project_AssetInfos_Internal.cs" />
+    <Compile Include="Project\Project_AssetInfos_All.cs" />
     <Compile Include="Project\Project_Filename.cs" />
     <Compile Include="PropertyDrawersAndEditors\Editors\DefaultEditor.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_SerializedObjectSection.cs" />
@@ -391,7 +397,6 @@
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_GUIContent.cs" />
     <Compile Include="AssetType\AssetType.cs" />
     <Compile Include="CustomAsset\CustomAssets.cs" />
-    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Dependency.cs" />
     <Compile Include="PropertyDrawersAndEditors\EditorWindows\PainterWindow.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\CurveDrawer.cs" />
     <Compile Include="EditorEX\EditorEX.cs" />

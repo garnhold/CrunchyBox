@@ -26,16 +26,16 @@ namespace CrunchySandwichBag
             return base.DrawValueInternal(rect, value);
         }
 
-        protected override EditorGUIElement CreateAssetElement(AudioClip asset)
+        protected override EditorGUIElement CreateAssetInfoElement(AssetInfo info)
         {
             EditorGUIElement_Container_HorizontalStrip container = new EditorGUIElement_Container_HorizontalStrip();
 
-            container.AddChild(1.0f, new EditorGUIElement_Button(asset.name, delegate() {
-                asset.PlaySample();
+            container.AddChild(1.0f, new EditorGUIElement_Button(info.GetName(), delegate() {
+                info.Resolve<AudioClip>().PlaySample();
             }));
             
             container.AddChild(0.2f, new EditorGUIElement_Button("Select", delegate() {
-                GetProperty().SetContentValues(asset);
+                GetProperty().SetContentValues(info.Resolve<AudioClip>());
             }));
 
             return container;

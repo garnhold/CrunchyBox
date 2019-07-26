@@ -13,20 +13,12 @@ namespace CrunchySandwichBag
 {
     static public partial class CustomAssets
     {
-        static public IEnumerable<CustomAsset> GetAllInternalCustomAssets()
-        {
-            return AssetDatabaseExtensions.GetAssets<CustomAsset>("", Project.GetInternalAssetDirectory(), false);
-        }
-
-        static public IEnumerable<CustomAsset> GetAllOrphanedInternalCustomAssets()
-        {
-            return GetAllInternalCustomAssets().Narrow(a => a.IsAssetOrphaned());
-        }
-
         [MenuItem("Edit/Purge Orphaned Internal CustomAssets")]
         static public void PurgeOrphanedInternalCustomAssets()
         {
-            GetAllOrphanedInternalCustomAssets().Process(a => a.DeleteAsset());
+            Project.GetInternalAssetInfos<CustomAsset>()
+                .Narrow(a => a.IsOrphaned())
+                .Process(a => a.Delete());
         }
     }
 }

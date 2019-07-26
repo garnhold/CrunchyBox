@@ -77,5 +77,10 @@ namespace CrunchySandwichBag
 
             return false;
         }
+
+        public override string ToString()
+        {
+            return this.GetName();
+        }
     }
 }
