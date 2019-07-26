@@ -14,7 +14,7 @@ namespace CrunchySandwich
 	[Serializable]
     public struct InputDeviceComponentId
     {
-        [SerializeField]private int id;
+        [SerializeField]private string id;
 
         static public bool operator==(InputDeviceComponentId id1, InputDeviceComponentId id2)
         {
@@ -46,19 +46,19 @@ namespace CrunchySandwich
 			return GET_ALL.Fetch();
 		}
 
-        public InputDeviceComponentId(int i)
+        public InputDeviceComponentId(string i)
         {
             id = i;
         }
 
-		public int GetValue()
+		public string GetValue()
 		{
 			return id;
 		}
 
         public override int GetHashCode()
         {
-            return id.GetHashCode();
+            return id.GetHashCodeEX();
         }
 
         public override bool Equals(object obj)
@@ -74,24 +74,16 @@ namespace CrunchySandwich
             return false;
         }
 
-        static private readonly OperationCache<string, int> TO_STRING = ReflectionCache.Get().NewOperationCache(delegate(int id) {
-            return CrunchyNoodle.Types.GetFilteredTypes(
-				Filterer_Type.IsNamed("InputDeviceComponentIds"),
-				Filterer_Type.IsStaticClass()
-			).GetFirst()
-				.GetStaticMethod<int>("GetName")
-				.Invoke(null, new object[] { id }).ToString();
-        });
         public override string ToString()
         {
-            return TO_STRING.Fetch(id);
+            return id;
         }
     }
 
 	[Serializable]
     public struct InputDeviceAxisId
     {
-        [SerializeField]private int id;
+        [SerializeField]private string id;
 
         static public bool operator==(InputDeviceAxisId id1, InputDeviceAxisId id2)
         {
@@ -123,19 +115,19 @@ namespace CrunchySandwich
 			return GET_ALL.Fetch();
 		}
 
-        public InputDeviceAxisId(int i)
+        public InputDeviceAxisId(string i)
         {
             id = i;
         }
 
-		public int GetValue()
+		public string GetValue()
 		{
 			return id;
 		}
 
         public override int GetHashCode()
         {
-            return id.GetHashCode();
+            return id.GetHashCodeEX();
         }
 
         public override bool Equals(object obj)
@@ -151,24 +143,16 @@ namespace CrunchySandwich
             return false;
         }
 
-        static private readonly OperationCache<string, int> TO_STRING = ReflectionCache.Get().NewOperationCache(delegate(int id) {
-            return CrunchyNoodle.Types.GetFilteredTypes(
-				Filterer_Type.IsNamed("InputDeviceAxisIds"),
-				Filterer_Type.IsStaticClass()
-			).GetFirst()
-				.GetStaticMethod<int>("GetName")
-				.Invoke(null, new object[] { id }).ToString();
-        });
         public override string ToString()
         {
-            return TO_STRING.Fetch(id);
+            return id;
         }
     }
 
 	[Serializable]
     public struct InputDeviceButtonId
     {
-        [SerializeField]private int id;
+        [SerializeField]private string id;
 
         static public bool operator==(InputDeviceButtonId id1, InputDeviceButtonId id2)
         {
@@ -200,19 +184,19 @@ namespace CrunchySandwich
 			return GET_ALL.Fetch();
 		}
 
-        public InputDeviceButtonId(int i)
+        public InputDeviceButtonId(string i)
         {
             id = i;
         }
 
-		public int GetValue()
+		public string GetValue()
 		{
 			return id;
 		}
 
         public override int GetHashCode()
         {
-            return id.GetHashCode();
+            return id.GetHashCodeEX();
         }
 
         public override bool Equals(object obj)
@@ -228,24 +212,16 @@ namespace CrunchySandwich
             return false;
         }
 
-        static private readonly OperationCache<string, int> TO_STRING = ReflectionCache.Get().NewOperationCache(delegate(int id) {
-            return CrunchyNoodle.Types.GetFilteredTypes(
-				Filterer_Type.IsNamed("InputDeviceButtonIds"),
-				Filterer_Type.IsStaticClass()
-			).GetFirst()
-				.GetStaticMethod<int>("GetName")
-				.Invoke(null, new object[] { id }).ToString();
-        });
         public override string ToString()
         {
-            return TO_STRING.Fetch(id);
+            return id;
         }
     }
 
 	[Serializable]
     public struct InputDeviceStickId
     {
-        [SerializeField]private int id;
+        [SerializeField]private string id;
 
         static public bool operator==(InputDeviceStickId id1, InputDeviceStickId id2)
         {
@@ -277,19 +253,19 @@ namespace CrunchySandwich
 			return GET_ALL.Fetch();
 		}
 
-        public InputDeviceStickId(int i)
+        public InputDeviceStickId(string i)
         {
             id = i;
         }
 
-		public int GetValue()
+		public string GetValue()
 		{
 			return id;
 		}
 
         public override int GetHashCode()
         {
-            return id.GetHashCode();
+            return id.GetHashCodeEX();
         }
 
         public override bool Equals(object obj)
@@ -305,17 +281,9 @@ namespace CrunchySandwich
             return false;
         }
 
-        static private readonly OperationCache<string, int> TO_STRING = ReflectionCache.Get().NewOperationCache(delegate(int id) {
-            return CrunchyNoodle.Types.GetFilteredTypes(
-				Filterer_Type.IsNamed("InputDeviceStickIds"),
-				Filterer_Type.IsStaticClass()
-			).GetFirst()
-				.GetStaticMethod<int>("GetName")
-				.Invoke(null, new object[] { id }).ToString();
-        });
         public override string ToString()
         {
-            return TO_STRING.Fetch(id);
+            return id;
         }
     }
 }

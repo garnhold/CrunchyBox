@@ -55,12 +55,12 @@ namespace CrunchySandwichBag
             return name;
         }
 
-        public void GenerateIdsMember(CSTextDocumentBuilder builder, string id_type, int value)
+        public void GenerateIdsMember(CSTextDocumentBuilder builder, string id_type)
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "TYPE", id_type,
                 "NAME", GetName().StyleAsEnumName(),
-                "VALUE", value.ToString()
+                "VALUE", GetName().StyleAsLiteralString()
             );
 
             writer.Write("static public readonly ?TYPE ?NAME = new ?TYPE(?VALUE);");
@@ -75,21 +75,11 @@ namespace CrunchySandwichBag
             writer.Write("yield return ?NAME;");
         }
 
-        public void GenerateGetNameCase(CSTextDocumentBuilder builder, int value)
-        {
-            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                "NAME", GetName().StyleAsLiteralString(),
-                "VALUE", value.ToString()
-            );
-
-            writer.Write("case ?VALUE: return ?NAME;");
-        }
-
-        public void GenerateGetVariableCase(CSTextDocumentBuilder builder, int value)
+        public void GenerateGetVariableCase(CSTextDocumentBuilder builder)
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "VARIABLE", GetName().StyleAsVariableName(),
-                "VALUE", value.ToString()
+                "VALUE", GetName().StyleAsLiteralString()
             );
 
             writer.Write("case ?VALUE: return ?VARIABLE;");

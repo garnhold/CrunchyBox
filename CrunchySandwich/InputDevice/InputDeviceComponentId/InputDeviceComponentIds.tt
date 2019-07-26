@@ -29,7 +29,7 @@ namespace CrunchySandwich
 	[Serializable]
     public struct InputDevice<#=type#>Id
     {
-        [SerializeField]private int id;
+        [SerializeField]private string id;
 
         static public bool operator==(InputDevice<#=type#>Id id1, InputDevice<#=type#>Id id2)
         {
@@ -61,19 +61,19 @@ namespace CrunchySandwich
 			return GET_ALL.Fetch();
 		}
 
-        public InputDevice<#=type#>Id(int i)
+        public InputDevice<#=type#>Id(string i)
         {
             id = i;
         }
 
-		public int GetValue()
+		public string GetValue()
 		{
 			return id;
 		}
 
         public override int GetHashCode()
         {
-            return id.GetHashCode();
+            return id.GetHashCodeEX();
         }
 
         public override bool Equals(object obj)
@@ -89,17 +89,9 @@ namespace CrunchySandwich
             return false;
         }
 
-        static private readonly OperationCache<string, int> TO_STRING = ReflectionCache.Get().NewOperationCache(delegate(int id) {
-            return CrunchyNoodle.Types.GetFilteredTypes(
-				Filterer_Type.IsNamed("InputDevice<#=type#>Ids"),
-				Filterer_Type.IsStaticClass()
-			).GetFirst()
-				.GetStaticMethod<int>("GetName")
-				.Invoke(null, new object[] { id }).ToString();
-        });
         public override string ToString()
         {
-            return TO_STRING.Fetch(id);
+            return id;
         }
     }
 <#}#>

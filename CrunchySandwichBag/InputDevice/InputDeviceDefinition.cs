@@ -87,18 +87,10 @@ namespace CrunchySandwichBag
             );
 
             writer.Write("static public class ?CLASS", delegate() {
-                components.Convert<T>().ProcessWithIndex((i, c) => c.GenerateIdsMember(builder, type, i));
-
-                writer.Write("static public string GetName(int value)", delegate() {
-                    writer.Write("switch(value)", delegate() {
-                        components.Convert<T>().ProcessWithIndex((i, c) => c.GenerateGetNameCase(builder, i));
-                    });
-
-                    writer.Write("throw new UnaccountedBranchException(\"value\", value);");
-                });
+                components.Convert<T>().Process(c => c.GenerateIdsMember(builder, type));
 
                 writer.Write("static public IEnumerable<?TYPE> GetAll()", delegate() {
-                    components.Convert<T>().ProcessWithIndex((i, c) => c.GenerateIdsYield(builder));
+                    components.Convert<T>().Process(c => c.GenerateIdsYield(builder));
 
                     writer.Write("yield break;");
                 });
@@ -112,7 +104,7 @@ namespace CrunchySandwichBag
 
             writer.Write("public override InputDeviceComponent GetComponent(InputDeviceComponentId value)", delegate() {
                 writer.Write("switch(value.GetValue())", delegate() {
-                    components.ProcessWithIndex((i, c) => c.GenerateGetVariableCase(builder, i));
+                    components.Process(c => c.GenerateGetVariableCase(builder));
                 });
 
                 writer.Write("throw new UnaccountedBranchException(\"value\", value);");
@@ -132,7 +124,7 @@ namespace CrunchySandwichBag
 
             writer.Write("public override ?TYPE ?FUNCTION(?ID_TYPE value)", delegate() {
                 writer.Write("switch(value.GetValue())", delegate() {
-                    components.Convert<T>().ProcessWithIndex((i, c) => c.GenerateGetVariableCase(builder, i));
+                    components.Convert<T>().Process(c => c.GenerateGetVariableCase(builder));
                 });
 
                 writer.Write("throw new UnaccountedBranchException(\"value\", value);");
