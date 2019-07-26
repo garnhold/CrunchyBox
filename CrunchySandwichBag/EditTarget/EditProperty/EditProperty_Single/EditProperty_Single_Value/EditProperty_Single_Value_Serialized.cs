@@ -33,6 +33,9 @@ namespace CrunchySandwichBag
         public override void ForceContentValues(object value)
         {
             property.SetValue(value);
+            property.serializedObject.ApplyModifiedProperties();
+
+            Debug.Log("Forcing SerializedObject to apply per property.");
         }
 
         public override bool IsUnified()

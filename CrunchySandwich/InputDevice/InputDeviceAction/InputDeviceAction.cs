@@ -30,7 +30,7 @@ namespace CrunchySandwich
 
         public GameObject SpawnIndicator()
         {
-            return indicator.SpawnIndicator();
+            return indicator.SpawnIndicator(this);
         }
     }
 }

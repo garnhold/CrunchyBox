@@ -34,7 +34,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("[MenuItem(?PATH)]");
                     writer.Write("static public void ?FUNCTION()", delegate() {
-                        writer.Write("EditorWindow.GetWindow(typeof(?TYPE)).Show();");
+                        writer.Write("EditorWindow.GetWindow<?TYPE>().Show();");
                     });
                 }
             }, true);

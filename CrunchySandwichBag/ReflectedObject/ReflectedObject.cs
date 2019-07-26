@@ -37,7 +37,7 @@ namespace CrunchySandwichBag
 
                 objects
                     .Convert<UnityEngine.Object>()
-                    .Narrow(o => o.IsPrefab())
+                    .Skip(o => o.IsSceneObject())
                     .Process(o => EditorUtility.SetDirty(o));
             }
             else

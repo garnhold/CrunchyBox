@@ -20,5 +20,10 @@ namespace CrunchySandwich
 
             return false;
         }
+
+        public InputDeviceStickGesture GetStickGesture()
+        {
+            return gesture;
+        }
     }
 }

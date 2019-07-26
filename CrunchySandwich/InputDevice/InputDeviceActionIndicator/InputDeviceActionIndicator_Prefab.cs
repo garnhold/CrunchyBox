@@ -12,7 +12,7 @@ namespace CrunchySandwich
     {
         [SerializeField]private GameObject prefab;
 
-        public override GameObject SpawnIndicator()
+        public override GameObject SpawnIndicator(InputDeviceAction action)
         {
             return prefab.SpawnInstance();
         }

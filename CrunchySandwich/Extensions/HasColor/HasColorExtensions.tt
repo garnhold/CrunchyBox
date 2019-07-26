@@ -29,8 +29,9 @@ namespace CrunchySandwich
 {
 	static public class HasColorExtensions
     {
-<#foreach(ComponentInfo component in components){#>
-	<#foreach(TypeInfo type in types){#>
+
+<#foreach(TypeInfo type in types){#>
+	<#foreach(ComponentInfo component in components){#>
 
 		static public void Set<#=component.name#>(this <#=type.name#> item, float value)
         {
@@ -52,6 +53,15 @@ namespace CrunchySandwich
             return item.<#=type.color_code#>.<#=component.variable#>;
         }
 	<#}#>
+
+		static public void SetRGB(this <#=type.name#> item, float r, float g, float b)
+		{
+			item.color = item.color.GetWithRGB(r, g, b);
+		}
+		static public void SetRGB(this <#=type.name#> item, Color rgb)
+		{
+			item.color = item.color.GetWithRGB(rgb);
+		}
 <#}#>
 	}
 }

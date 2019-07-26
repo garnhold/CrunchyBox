@@ -21,8 +21,6 @@ namespace CrunchySandwichBag
 
         static public readonly float SCROLL_BAR_WIDTH = 18.0f;
 
-        protected abstract Rect CalculateScrollBoxContentsRect(float width, float label_width);
-
         protected override void InitilizeInternal()
         {
             element.Initilize();
@@ -38,7 +36,7 @@ namespace CrunchySandwichBag
         protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
             element.Layout(
-                CalculateScrollBoxContentsRect(rect.width - SCROLL_BAR_WIDTH, state.GetCurrentLabelWidth()),
+                new Rect(0.0f, 0.0f, rect.width - SCROLL_BAR_WIDTH, GetElement().GetHeight()),
                 state
             );
         }
@@ -51,6 +49,11 @@ namespace CrunchySandwichBag
             scroll_position = GUI.BeginScrollView(scroll_box_rect, scroll_position, element.GetLayoutRect());
                 element.Draw(visible_space_rect);
             GUI.EndScrollView(IsOverflown());
+        }
+
+        protected override void UnwindInternal()
+        {
+            element.Unwind();
         }
 
         public EditorGUIElement_ScrollBox(T e)

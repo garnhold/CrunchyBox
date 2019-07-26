@@ -20,6 +20,15 @@ namespace CrunchySandwich
             return new Color(color.r, color.g, b, color.a);
         }
 
+        static public Color GetWithRGB(this Color color, float r, float g, float b)
+        {
+            return new Color(r, g, b, color.a);
+        }
+        static public Color GetWithRGB(this Color color, Color rgb)
+        {
+            return color.GetWithRGB(rgb.r, rgb.g, rgb.b);
+        }
+
         static public Color GetWithAlpha(this Color color, float a)
         {
             return new Color(color.r, color.g, color.b, a);

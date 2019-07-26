@@ -14,6 +14,11 @@ namespace CrunchySandwich
 
         protected abstract IEnumerable<InputDeviceStickZone> GenerateStickZones();
 
+        private void OnValidate()
+        {
+            zones = null;
+        }
+
         public override ICatalog<InputDeviceStickZone> GetStickZones()
         {
             if (zones.IsEmpty())

@@ -69,7 +69,34 @@
     <Compile Include="ApplicationEX\ApplicationEXRuntimeInitilizer.cs" />
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Orient.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Orient.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Orient.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Orient.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Scale.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Scale.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Scale.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Scale.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\Rect\RectExtensions_Extrude.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Points.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Points.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Scale.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Orient.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Scale.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
     <Compile Include="Functoid\FunctoidInvokerBase.cs" />
     <Compile Include="Functoid\Functoid.cs" />
     <Compile Include="Functoid\FunctoidInvokers.cs">
@@ -77,6 +104,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator_SpriteMap.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickSpriteMap\InputDeviceStickSpriteMap.cs" />
     <Compile Include="PolymorphicFieldAttribute\PolymorphicFieldAttribute.cs" />
     <Compile Include="PrefabFieldAttribute\PrefabFieldAttribute.cs" />
     <Compile Include="AssetFieldAttribute\AssetFieldAttribute.cs" />
@@ -1168,6 +1199,18 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Rigidbody2D.cs</LastGenOutput>
     </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Orient.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Orient.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Orient.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Orient.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Scale.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Scale.cs</LastGenOutput>
+    </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_MoveTowards.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_MoveTowards.cs</LastGenOutput>
@@ -1175,6 +1218,10 @@
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Towards.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Towards.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Scale.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Scale.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Match.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -11,7 +11,7 @@ namespace CrunchyBun
         static public IEnumerable<CardinalOrdinalDirection> GetSequenceTo(this CardinalOrdinalDirection item, CardinalOrdinalDirection target, RotationDirection direction)
         {
             return item.TraverseLoop(z => z.GetNext(direction))
-                .EndAfter(target)
+                .EndAt(target)
                 .Prepend(item);
         }
         static public IEnumerable<CardinalOrdinalDirection> GetFullRotationSequence(this CardinalOrdinalDirection item, RotationDirection direction)

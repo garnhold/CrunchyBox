@@ -15,7 +15,7 @@ namespace CrunchySandwich
         [SerializeField]private SortingLayerEX layer;
         [SerializeField]private int order;
 
-        public override GameObject SpawnIndicator()
+        public override GameObject SpawnIndicator(InputDeviceAction action)
         {
             GameObject game_object = new GameObject();
 

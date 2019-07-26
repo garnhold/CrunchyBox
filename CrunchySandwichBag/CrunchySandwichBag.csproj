@@ -87,6 +87,8 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_TargetMethod.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_TargetComponent.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_UnityObject.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_AudioClip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_TypeMethodInfo.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup_GameObjectComponentType.cs" />
@@ -127,10 +129,16 @@
     <Compile Include="EditorGUILayoutState\Extensions\EditorGUILayoutStateExtensions.cs" />
     <Compile Include="EditorInitializer\EditorInitializerAttribute.cs" />
     <Compile Include="EditorInitializer\EditorInitializer.cs" />
+    <Compile Include="Extensions\EditorWindow\EditorWindowExtensions_Size.cs" />
+    <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
+    <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_Labeled.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_SerializationCorruptable.cs" />
+    <Compile Include="Extensions\AudioClip\AudioClipExtensions_Play.cs" />
+    <Compile Include="Extensions\AudioClip\AudioClipExtensions.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
@@ -214,8 +222,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertyArray\EditorGUIElement_EditPropertyArray_ArraySize.cs" />
     <Compile Include="EditorGUIElement\Attribute\EditorGUIElementForTypeAttribute.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Operation.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Overflow.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_TypedObjectField.cs" />
     <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_Drag.cs" />
     <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_PercentArea.cs" />
@@ -231,7 +237,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElementLength\EditorGUIElementLength.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Graph\EditorGUIElement_GraphNode.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Graph\EditorGUIElement_Graph.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_Overflow_VerticalStrip.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_VerticalStrip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_ArraySize.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_SerializedProperty\EditorGUIElement_SerializedProperty_Field.cs" />

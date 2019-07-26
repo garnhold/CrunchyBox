@@ -10,7 +10,7 @@ namespace CrunchySandwich
     {
         static public Vector3 GetNormal(this Triangle3 item)
         {
-            return (item.v1 - item.v0).GetCross(item.v2 - item.v0).GetNormalized();
+            return item.v0.GetNormalizedNormal(item.v1, item.v2);
         }
     }
 }

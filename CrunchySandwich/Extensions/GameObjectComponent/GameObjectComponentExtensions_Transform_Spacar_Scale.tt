@@ -1,0 +1,33 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchyBun;
+
+namespace CrunchySandwich
+{
+	static public class GameObjectComponentExtensions_Transform_Spacar_Scale
+    {
+<# foreach(string type_name in type_names){#>
+		
+		static public void ScaleSpacarScale(this <#=type_name#> item, float scale)
+        {
+            item.transform.ScaleSpacarScale(scale);
+        }
+        static public void ScaleLocalSpacarScale(this <#=type_name#> item, float scale)
+        {
+            item.transform.ScaleLocalSpacarScale(scale);
+        }
+<# } #>
+	}
+}

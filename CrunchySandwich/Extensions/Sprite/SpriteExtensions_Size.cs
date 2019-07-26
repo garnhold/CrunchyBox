@@ -17,9 +17,27 @@ namespace CrunchySandwich
             return item.rect.size;
         }
 
+        static public float GetTextureWidth(this Sprite item)
+        {
+            return item.GetTextureSize().x;
+        }
+        static public float GetTextureHeight(this Sprite item)
+        {
+            return item.GetTextureSize().y;
+        }
+
         static public Vector2 GetWorldSize(this Sprite item)
         {
             return item.bounds.GetPlanarSize();
+        }
+
+        static public float GetWorldWidth(this Sprite item)
+        {
+            return item.GetWorldSize().x;
+        }
+        static public float GetWorldHeight(this Sprite item)
+        {
+            return item.GetWorldSize().y;
         }
     }
 }
