@@ -134,6 +134,10 @@
     <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator_SpriteMap.cs" />
     <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
     <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Axis\InputDeviceComponent_Axis_Basic.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\InputDeviceComponent_Button_AxisZone.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\InputDeviceComponent_Button_Basic.cs" />
+    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceComponent_Stick_Basic.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickSpriteMap\InputDeviceStickSpriteMap.cs" />
     <Compile Include="PolymorphicFieldAttribute\PolymorphicFieldAttribute.cs" />
     <Compile Include="PrefabFieldAttribute\PrefabFieldAttribute.cs" />

@@ -34,7 +34,7 @@ namespace CrunchySandwichBag
             property.SetChildValue("snap", true);
         }
 
-        protected void PushInternalJoystickAxis(SerializedProperty property, string name, int device_id, int axis_id, bool invert, bool snap, float gravity, float dead, float sensitivity)
+        protected void PushInternalJoystickAxis(SerializedProperty property, string name, int device_id, int axis_id, bool invert = false, bool snap = false, float gravity = 3.0f, float dead = 0.1f, float sensitivity = 1.0f)
         {
             property.SetChildValue("m_Name", name + device_id);
 

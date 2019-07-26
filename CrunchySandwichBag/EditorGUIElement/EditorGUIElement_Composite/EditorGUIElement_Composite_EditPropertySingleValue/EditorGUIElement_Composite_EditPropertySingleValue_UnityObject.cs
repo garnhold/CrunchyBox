@@ -20,7 +20,7 @@ namespace CrunchySandwichBag
         {
             AssetFieldAttribute asset_field_attribute;
             if (GetProperty().TryGetCustomAttributeOfType<AssetFieldAttribute>(true, out asset_field_attribute))
-                return new EditorGUIElement_EditPropertySingleValuePopup_Asset(GetProperty(), asset_field_attribute.ShouldForceNonNull());
+                return new EditorGUIElement_EditPropertySingleValueSelector_Asset(GetProperty(), asset_field_attribute.ShouldForceNonNull());
 
             PrefabFieldAttribute prefab_field_attribute;
             if (GetProperty().TryGetCustomAttributeOfType<PrefabFieldAttribute>(true, out prefab_field_attribute))

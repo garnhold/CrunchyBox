@@ -145,7 +145,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup_LayerEX.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup_Asset.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup_SortingLayerEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_BuiltIn.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Primitives\EditorGUIElement_EditPropertySingleValue_BuiltIn_NumberPrimitives.cs">
@@ -180,6 +179,7 @@
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_GUID.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
+    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_Labeled.cs" />

@@ -30,7 +30,7 @@ namespace CrunchySandwichBag
         {
             EditorGUIElement_Container_HorizontalStrip container = new EditorGUIElement_Container_HorizontalStrip();
 
-            container.AddChild(1.0f, new EditorGUIElement_Button(info.GetName(), delegate() {
+            container.AddChild(0.8f, new EditorGUIElement_Button(info.GetName(), delegate() {
                 info.Resolve<AudioClip>().PlaySample();
             }));
             

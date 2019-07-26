@@ -12,13 +12,16 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class InputDeviceDefinitionComponent_Button_Basic : InputDeviceDefinitionComponent_Button
+    public class InputDeviceDefinitionComponent_Button_JoystickAxis : InputDeviceDefinitionComponent_Button
     {
-        [SerializeField]private string button_pattern;
+        [SerializeField]private int axis_id;
+
+        [SerializeField]private float down_value;
+        [SerializeField]private float down_tolerance;
 
         public override void GenerateInternalAxises(int device_id, SerializedProperty axises)
         {
-            PushInternalButton(axises.PushArrayElement(), GetName(), device_id, button_pattern.RegexReplace("\\#", device_id.ToString()));
+            PushInternalJoystickAxis(axises.PushArrayElement(), GetName(), device_id, axis_id);
         }
 
         public override void GenerateClassConstructor(CSTextDocumentBuilder builder, string device_id)
@@ -26,10 +29,12 @@ namespace CrunchySandwichBag
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "VARIABLE", GetName().StyleAsVariableName(),
                 "INTERNAL_AXIS_NAME", GetName().StyleAsLiteralString(),
-                "DEVICE_ID", device_id
+                "DEVICE_ID", device_id,
+                "DOWN_VALUE", down_value + "f",
+                "DOWN_TOLERANCE", down_tolerance + "f"
             );
 
-            writer.Write("?VARIABLE = new InputDeviceComponent_Button_Basic(?INTERNAL_AXIS_NAME + ?DEVICE_ID);");
+            writer.Write("?VARIABLE = new InputDeviceComponent_Button_AxisZone(?INTERNAL_AXIS_NAME + ?DEVICE_ID, ?DOWN_VALUE, ?DOWN_TOLERANCE);");
         }
     }
 }

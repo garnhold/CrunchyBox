@@ -9,11 +9,8 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class InputDeviceComponent_Stick : InputDeviceComponent
+    public abstract class InputDeviceComponent_Stick : InputDeviceComponent
     {
-        private string horizontal_internal_axis_name;
-        private string vertical_internal_axis_name;
-
         private Vector2 value;
         private float magnitude;
         private float angle_in_degrees;
@@ -24,6 +21,8 @@ namespace CrunchySandwich
 
         private InputDeviceEventLog<InputDeviceStickZone> stick_zones;
 
+        protected abstract Vector2 GetValueInternal();
+
         protected override void FreezeInternal()
         {
             frozen_value = value;
@@ -33,7 +32,7 @@ namespace CrunchySandwich
 
         protected override void UpdateInternal()
         {
-            value = new Vector2(Input.GetAxis(horizontal_internal_axis_name), Input.GetAxis(vertical_internal_axis_name));
+            value = GetValueInternal();
             magnitude = value.GetMagnitude();
 
             if (magnitude != 0.0f)
@@ -49,11 +48,8 @@ namespace CrunchySandwich
             }
         }
 
-        public InputDeviceComponent_Stick(string ha, string va)
+        public InputDeviceComponent_Stick()
         {
-            horizontal_internal_axis_name = ha;
-            vertical_internal_axis_name = va;
-
             value = Vector2.zero;
             magnitude = 0.0f;
             angle_in_degrees = 0.0f;

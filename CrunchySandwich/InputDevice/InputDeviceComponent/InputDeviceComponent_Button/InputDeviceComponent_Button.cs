@@ -8,10 +8,8 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public class InputDeviceComponent_Button : InputDeviceComponent
+    public abstract class InputDeviceComponent_Button : InputDeviceComponent
     {
-        private string internal_axis_name;
-
         private bool is_down;
         private bool is_pressed;
         private bool is_released;
@@ -19,6 +17,8 @@ namespace CrunchySandwich
         private bool frozen_is_down;
 
         private InputDeviceEventLog<bool> presses;
+
+        protected abstract bool IsButtonDownInternal();
 
         protected override void FreezeInternal()
         {
@@ -31,7 +31,7 @@ namespace CrunchySandwich
             is_pressed = false;
             is_released = false;
 
-            if (Input.GetButton(internal_axis_name))
+            if (IsButtonDownInternal())
             {
                 if (presses.LogValue(true))
                     is_pressed = true;
@@ -45,10 +45,8 @@ namespace CrunchySandwich
             }
         }
 
-        public InputDeviceComponent_Button(string a)
+        public InputDeviceComponent_Button()
         {
-            internal_axis_name = a;
-
             is_down = false;
             is_pressed = false;
             is_released = false;

@@ -8,13 +8,13 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public class InputDeviceComponent_Axis : InputDeviceComponent
+    public abstract class InputDeviceComponent_Axis : InputDeviceComponent
     {
-        private string internal_axis_name;
-
         private float value;
 
         private float frozen_value;
+
+        protected abstract float GetValueInternal();
 
         protected override void FreezeInternal()
         {
@@ -23,13 +23,11 @@ namespace CrunchySandwich
 
         protected override void UpdateInternal()
         {
-            value = Input.GetAxis(internal_axis_name);
+            value = GetValueInternal();
         }
 
-        public InputDeviceComponent_Axis(string a)
+        public InputDeviceComponent_Axis()
         {
-            internal_axis_name = a;
-
             value = 0.0f;
 
             frozen_value = 0.0f;
