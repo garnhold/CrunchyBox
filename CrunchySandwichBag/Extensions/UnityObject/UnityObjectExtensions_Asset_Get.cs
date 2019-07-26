@@ -41,39 +41,9 @@ namespace CrunchySandwichBag
             return Filename.GetDirectory(item.GetAssetPath());
         }
 
-        static public T GetAssetInfo<T>(this UnityEngine.Object item, Operation<T, string> operation)
+        static public AssetInfo GetAssetInfo(this UnityEngine.Object item)
         {
-            string path = item.GetAssetPath();
-
-            if (path.IsVisible())
-                return operation.Execute(path);
-
-            return default(T);
-        }
-
-        static public DateTime GetAssetCreationDate(this UnityEngine.Object item)
-        {
-            return item.GetAssetInfo(f => File.GetCreationTimeUtc(f));
-        }
-
-        static public DateTime GetAssetLastWriteDate(this UnityEngine.Object item)
-        {
-            return item.GetAssetInfo(f => File.GetLastWriteTimeUtc(f));
-        }
-
-        static public DateTime GetAssetLastAccessDate(this UnityEngine.Object item)
-        {
-            return item.GetAssetInfo(f => File.GetLastAccessTimeUtc(f));
-        }
-
-        static public string GetAssetText(this UnityEngine.Object item)
-        {
-            return item.GetAssetInfo(f => File.ReadAllText(f));
-        }
-
-        static public byte[] GetAssetBytes(this UnityEngine.Object item)
-        {
-            return item.GetAssetInfo(f => File.ReadAllBytes(f));
+            return new AssetInfo(item);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
         [SideloadEditDistinctionAttribute]
         static public Texture2D Sideload(Texture2D item)
         {
-            return CrunchySandwich.Texture2DExtensions.Create(item.GetAssetBytes());
+            return CrunchySandwich.Texture2DExtensions.Create(item.GetAssetInfo().GetBytes());
         }
     }
 }

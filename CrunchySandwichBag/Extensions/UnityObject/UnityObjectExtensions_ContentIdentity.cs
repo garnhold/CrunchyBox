@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
             {
                 int hash = 17;
 
-                hash = hash * 23 + item.GetAssetLastWriteDate().GetHashCodeEX();
+                hash = hash * 23 + item.GetAssetInfo().GetTimestamp().GetHashCodeEX();
                 hash = hash * 23 + item.GetHashCodeEX();
                 return hash;
             }

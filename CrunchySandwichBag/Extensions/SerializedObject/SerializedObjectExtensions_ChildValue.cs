@@ -15,16 +15,16 @@ namespace CrunchySandwichBag
     {
         static public void SetChildValue(this SerializedObject item, string name, object value)
         {
-            item.FindProperty(name).SetValue(value);
+            item.ForceProperty(name).SetValue(value);
         }
 
         static public object GetChildValue(this SerializedObject item, string name)
         {
-            return item.FindProperty(name).GetValue();
+            return item.ForceProperty(name).GetValue();
         }
         static public object GetChildValue(this SerializedObject item, string name, Type type)
         {
-            return item.FindProperty(name).GetValue(type);
+            return item.ForceProperty(name).GetValue(type);
         }
         static public T GetChildValue<T>(this SerializedObject item, string name)
         {
