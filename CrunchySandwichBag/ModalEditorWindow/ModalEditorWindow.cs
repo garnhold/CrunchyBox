@@ -48,7 +48,7 @@ namespace CrunchySandwichBag
             element.Initilize();
 
             titleContent = new GUIContent(title);
-            ShowModalUtility();
+            ShowPopup();
         }
     }
 }

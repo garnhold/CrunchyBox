@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
-using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    static public class AudioClipExtensions
+    public abstract class InputDeviceRawStick
     {
+        public abstract Vector2 GetValue();
     }
 }

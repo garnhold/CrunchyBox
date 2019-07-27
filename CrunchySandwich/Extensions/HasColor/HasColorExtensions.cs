@@ -28,6 +28,20 @@ namespace CrunchySandwich
             item.SetRed(item.GetRed().GetInterpolate(target, amount));
         }
 
+		static public void TowardsRed(this SpriteRenderer item, float target, float amount)
+		{
+			item.SetRed(item.GetRed().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsRed(this SpriteRenderer item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetRed().GetMoveTowards(target, amount, out output);
+
+			item.SetRed(output);
+			return result;
+		}
+
 		static public float GetRed(this SpriteRenderer item)
         {
             return item.color.r;
@@ -47,6 +61,20 @@ namespace CrunchySandwich
         {
             item.SetGreen(item.GetGreen().GetInterpolate(target, amount));
         }
+
+		static public void TowardsGreen(this SpriteRenderer item, float target, float amount)
+		{
+			item.SetGreen(item.GetGreen().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsGreen(this SpriteRenderer item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetGreen().GetMoveTowards(target, amount, out output);
+
+			item.SetGreen(output);
+			return result;
+		}
 
 		static public float GetGreen(this SpriteRenderer item)
         {
@@ -68,6 +96,20 @@ namespace CrunchySandwich
             item.SetBlue(item.GetBlue().GetInterpolate(target, amount));
         }
 
+		static public void TowardsBlue(this SpriteRenderer item, float target, float amount)
+		{
+			item.SetBlue(item.GetBlue().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsBlue(this SpriteRenderer item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetBlue().GetMoveTowards(target, amount, out output);
+
+			item.SetBlue(output);
+			return result;
+		}
+
 		static public float GetBlue(this SpriteRenderer item)
         {
             return item.color.b;
@@ -87,6 +129,20 @@ namespace CrunchySandwich
         {
             item.SetAlpha(item.GetAlpha().GetInterpolate(target, amount));
         }
+
+		static public void TowardsAlpha(this SpriteRenderer item, float target, float amount)
+		{
+			item.SetAlpha(item.GetAlpha().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsAlpha(this SpriteRenderer item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetAlpha().GetMoveTowards(target, amount, out output);
+
+			item.SetAlpha(output);
+			return result;
+		}
 
 		static public float GetAlpha(this SpriteRenderer item)
         {
@@ -117,6 +173,20 @@ namespace CrunchySandwich
             item.SetRed(item.GetRed().GetInterpolate(target, amount));
         }
 
+		static public void TowardsRed(this TextMesh item, float target, float amount)
+		{
+			item.SetRed(item.GetRed().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsRed(this TextMesh item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetRed().GetMoveTowards(target, amount, out output);
+
+			item.SetRed(output);
+			return result;
+		}
+
 		static public float GetRed(this TextMesh item)
         {
             return item.color.r;
@@ -136,6 +206,20 @@ namespace CrunchySandwich
         {
             item.SetGreen(item.GetGreen().GetInterpolate(target, amount));
         }
+
+		static public void TowardsGreen(this TextMesh item, float target, float amount)
+		{
+			item.SetGreen(item.GetGreen().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsGreen(this TextMesh item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetGreen().GetMoveTowards(target, amount, out output);
+
+			item.SetGreen(output);
+			return result;
+		}
 
 		static public float GetGreen(this TextMesh item)
         {
@@ -157,6 +241,20 @@ namespace CrunchySandwich
             item.SetBlue(item.GetBlue().GetInterpolate(target, amount));
         }
 
+		static public void TowardsBlue(this TextMesh item, float target, float amount)
+		{
+			item.SetBlue(item.GetBlue().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsBlue(this TextMesh item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetBlue().GetMoveTowards(target, amount, out output);
+
+			item.SetBlue(output);
+			return result;
+		}
+
 		static public float GetBlue(this TextMesh item)
         {
             return item.color.b;
@@ -176,6 +274,20 @@ namespace CrunchySandwich
         {
             item.SetAlpha(item.GetAlpha().GetInterpolate(target, amount));
         }
+
+		static public void TowardsAlpha(this TextMesh item, float target, float amount)
+		{
+			item.SetAlpha(item.GetAlpha().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsAlpha(this TextMesh item, float target, float amount)
+		{
+			float output;
+			bool result = item.GetAlpha().GetMoveTowards(target, amount, out output);
+
+			item.SetAlpha(output);
+			return result;
+		}
 
 		static public float GetAlpha(this TextMesh item)
         {

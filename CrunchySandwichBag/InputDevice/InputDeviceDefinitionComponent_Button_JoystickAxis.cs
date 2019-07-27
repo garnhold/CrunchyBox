@@ -34,7 +34,7 @@ namespace CrunchySandwichBag
                 "DOWN_TOLERANCE", down_tolerance + "f"
             );
 
-            writer.Write("?VARIABLE = new InputDeviceComponent_Button_AxisZone(?INTERNAL_AXIS_NAME + ?DEVICE_ID, ?DOWN_VALUE, ?DOWN_TOLERANCE);");
+            writer.Write("?VARIABLE = new InputDeviceComponent_Button(new InputDeviceRawButton_Axis(new InputDeviceRawAxis_Native(?INTERNAL_AXIS_NAME + ?DEVICE_ID), ?DOWN_VALUE, ?DOWN_TOLERANCE));");
         }
     }
 }

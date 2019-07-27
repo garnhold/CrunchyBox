@@ -36,6 +36,11 @@ namespace CrunchySandwichBag
             return path;
         }
 
+        static public string GetAssetGUID(this UnityEngine.Object item)
+        {
+            return AssetDatabase.AssetPathToGUID(item.GetAssetPath());
+        }
+
         static public string GetAssetDirectory(this UnityEngine.Object item)
         {
             return Filename.GetDirectory(item.GetAssetPath());

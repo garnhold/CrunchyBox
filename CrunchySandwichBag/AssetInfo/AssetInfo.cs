@@ -47,10 +47,7 @@ namespace CrunchySandwichBag
         public UnityEngine.Object Resolve()
         {
             if (obj == null)
-            {
-                obj = AssetDatabase.LoadAllAssetsAtPath(this.GetPath())
-                    .FindFirst(o => o.GetAssetGUID() == guid);
-            }
+                obj = AssetDatabase.LoadMainAssetAtPath(this.GetPath());
 
             return obj;
         }

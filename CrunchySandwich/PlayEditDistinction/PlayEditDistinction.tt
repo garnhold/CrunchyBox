@@ -24,8 +24,29 @@ namespace CrunchySandwich
 	{
 	<#for(int i = 0; i < max_number_parameters; i++){#>
 		<#
+		string process_type = "Process" + TTCS.ArgumentsForGeneric("P#", i);
 		string operation_type = "Operation" + TTCS.ArgumentsForGeneric("P#", i, "T");
 		#>
+
+		static public void ExecuteNoReturn<#=TTCS.ArgumentsForGeneric("P#", i)#>(<#=TTCS.Parameters("P#", "p#", i, process_type + " process")#>)
+		{
+			if(Application.isPlaying)
+				process(<#=TTCS.Arguments("p#", i)#>);
+			else
+				ExecuteNoReturnEditDistinction<#=TTCS.ArgumentsForGeneric("P#", i)#>(<#=TTCS.Arguments("p#", i)#>);
+		}
+		static public void ExecuteNoReturnEditDistinction<#=TTCS.ArgumentsForGeneric("P#", i)#>(<#=TTCS.Parameters("P#", "p#", i)#>)
+		{
+			MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
+				<#if(i == 0){#>
+					Filterer_MethodInfo.HasNoEffectiveParameters(),
+				<#}else{#>
+					Filterer_MethodInfo.CanEffectiveParametersHold<#=TTCS.ArgumentsForGeneric("P#", i)#>(),
+				<#}#>
+
+				Filterer_MethodInfo.HasNoReturn()
+			).GetFirst().Invoke(<#=TTCS.Arguments("p#", i, "null")#>);
+		}
 
 		static public T Execute<#=TTCS.ArgumentsForGeneric("P#", i, "T")#>(<#=TTCS.Parameters("P#", "p#", i, operation_type + " operation")#>)
 		{

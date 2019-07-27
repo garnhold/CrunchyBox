@@ -47,7 +47,7 @@ namespace CrunchySandwichBag
                 {
                     ModalEditorWindow.OpenWindow("Browse", delegate(EditorGUIElement_Container_Auto container) {
                         container.AddChildren(
-                            Project.GetAllAssetInfos<T>()
+                            Project.GetExternalAssetInfos<T>()
                                 .Convert(a => CreateAssetInfoElement(a))
                         );
                     });

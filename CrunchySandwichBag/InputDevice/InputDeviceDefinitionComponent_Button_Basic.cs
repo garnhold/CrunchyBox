@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
                 "DEVICE_ID", device_id
             );
 
-            writer.Write("?VARIABLE = new InputDeviceComponent_Button_Basic(?INTERNAL_AXIS_NAME + ?DEVICE_ID);");
+            writer.Write("?VARIABLE = new InputDeviceComponent_Button(new InputDeviceRawButton_Native(?INTERNAL_AXIS_NAME + ?DEVICE_ID));");
         }
     }
 }

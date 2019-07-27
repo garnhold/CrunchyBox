@@ -24,12 +24,13 @@ namespace CrunchySandwich
                 this.DestroyGameObject();
         }
 
-        public void Initialize(AudioClip c, float v = 1.0f)
+        public void Initialize(AudioClip c, float v = 1.0f, float p = 1.0f)
         {
             AudioSource audio_source = this.FetchComponent<AudioSource>();
 
             audio_source.clip = c;
             audio_source.volume = v;
+            audio_source.pitch = p;
             audio_source.Play();
         }
 

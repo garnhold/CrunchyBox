@@ -22,7 +22,7 @@ namespace CrunchySandwichBag
 
         public override IEnumerable<AssetInfo> GetAssetInfos()
         {
-            return Project.GetAllAssetInfos(GetProperty().GetPropertyType())
+            return Project.GetExternalAssetInfos(GetProperty().GetPropertyType())
                 .PrependIfNot(should_force_non_null, (AssetInfo)null);
         }
     }

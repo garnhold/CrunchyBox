@@ -175,9 +175,9 @@
     <Compile Include="EditorGUILayoutState\Extensions\EditorGUILayoutStateExtensions.cs" />
     <Compile Include="EditorInitializer\EditorInitializerAttribute.cs" />
     <Compile Include="EditorInitializer\EditorInitializer.cs" />
+    <Compile Include="Extensions\AudioClip\AudioClipExtensions_BurstAudioClip.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions_Size.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
-    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_GUID.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
     <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
@@ -185,7 +185,7 @@
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_Labeled.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_SerializationCorruptable.cs" />
-    <Compile Include="Extensions\AudioClip\AudioClipExtensions_Play.cs" />
+    <Compile Include="Extensions\AudioClip\AudioClipExtensions_PlaySample.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions_Prefabs.cs" />
     <Compile Include="Extensions\DeployablePrefab\DeployablePrefabExtensions.cs" />

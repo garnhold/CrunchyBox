@@ -36,7 +36,7 @@ namespace CrunchySandwichBag
                 "DEVICE_ID", device_id
             );
 
-            writer.Write("?VARIABLE = new InputDeviceComponent_Axis_Basic(?INTERNAL_AXIS_NAME + ?DEVICE_ID);");
+            writer.Write("?VARIABLE = new InputDeviceComponent_Axis(new InputDeviceRawAxis_Native(?INTERNAL_AXIS_NAME + ?DEVICE_ID));");
         }
     }
 }

@@ -11,7 +11,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    static public class AudioClipExtensions_Play
+    static public class AudioClipExtensions_PlaySample
     {
         static public void PlaySample(this AudioClip item)
         {
