@@ -257,8 +257,6 @@
     <Compile Include="Curve\Curve.cs" />
     <Compile Include="CustomTile\CustomTile.cs" />
     <Compile Include="DeployablePrefab\DeployablePrefab.cs" />
-    <Compile Include="Destroyer\Destroyer_Duration.cs" />
-    <Compile Include="Destroyer\Destroyer.cs" />
     <Compile Include="EaseFunction\EaseFunction_Curve.cs" />
     <Compile Include="EaseFunction\EaseFunction_SineIn.cs" />
     <Compile Include="EaseFunction\EaseFunction_QuintIn.cs" />
@@ -564,10 +562,6 @@
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
     <Compile Include="TargetComponent\TargetComponent.cs" />
-    <Compile Include="TargetedMotionNode\TargetedMotionNode.cs" />
-    <Compile Include="TargetedMotion\Extensions\TargetedMotionExtensions_Deploy.cs" />
-    <Compile Include="TargetedMotion\Extensions\TargetedMotionExtensions.cs" />
-    <Compile Include="TargetedMotion\TargetedMotion.cs" />
     <Compile Include="TargetMethod\TargetMethod.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
