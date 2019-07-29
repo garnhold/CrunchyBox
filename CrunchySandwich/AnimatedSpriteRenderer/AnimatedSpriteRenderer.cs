@@ -18,11 +18,6 @@ namespace CrunchySandwich
         private FluxTimer animation_time;
         private SpriteAnimation current_animation;
 
-        private void OnValidate()
-        {
-            SetAnimation(current_animation.IfNotNull(a => a.GetName()));
-        }
-
         private void Start()
         {
             Initialize();

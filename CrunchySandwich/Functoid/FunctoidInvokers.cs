@@ -13,7 +13,6 @@ namespace CrunchySandwich
 	
 	public class FunctoidInvoker : FunctoidInvokerBase
     {
-	
 		public override object Invoke(object obj, MethodInfo method)
 		{
 			return method.Invoke(obj, new object[] {

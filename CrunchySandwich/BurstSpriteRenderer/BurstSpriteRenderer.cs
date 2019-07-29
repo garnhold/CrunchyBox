@@ -31,9 +31,14 @@ namespace CrunchySandwich
 
         public void Initialize(BurstSprite s)
         {
+            SpriteRenderer renderer = this.FetchComponent<SpriteRenderer>();
+
             burst_sprite = s;
 
-            this.FetchComponent<SpriteRenderer>().SetSortingLayerAndOrder(
+            renderer.flipX = burst_sprite.IsFlipX();
+            renderer.flipY = burst_sprite.IsFlipY();
+
+            renderer.SetSortingLayerAndOrder(
                 burst_sprite.GetSortingLayer(),
                 burst_sprite.GetSortingOrder()
             );

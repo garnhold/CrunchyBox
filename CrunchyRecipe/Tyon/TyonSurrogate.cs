@@ -33,6 +33,9 @@ namespace CrunchyRecipe
         {
             object obj = GetString().ConvertEX(GetTyonType().GetSystemType());
 
+            if (obj == null)
+                obj = GetTyonType().InstanceSystemType();
+
             hydrater.RegisterInternalObject(obj, GetTyonAddress());
             return obj;
         }

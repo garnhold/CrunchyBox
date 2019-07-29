@@ -125,6 +125,7 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Scale.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
+    <Compile Include="Functoid\Extensions\FunctoidExtensions.cs" />
     <Compile Include="Functoid\FunctoidInvokerBase.cs" />
     <Compile Include="Functoid\Functoid.cs" />
     <Compile Include="Functoid\FunctoidInvokers.cs">
@@ -132,9 +133,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator_SpriteMap.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
     <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Native.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Option\InputDeviceComponent_Option.cs" />

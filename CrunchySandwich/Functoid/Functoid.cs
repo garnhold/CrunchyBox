@@ -22,7 +22,7 @@ namespace CrunchySandwich
             Component component = GetComponent();
             MethodInfo method = GetMethod();
 
-            if (component != null && method != null && invoker != null)
+            if (component != null && method != null)
                 return invoker.Invoke(component, method);
 
             return null;
