@@ -16,7 +16,7 @@ namespace CrunchySandwichBag
             ApplicationEX.GetInstance().Start();
 
             EditorApplication.update += delegate() {
-                ApplicationEX.GetInstance().Update();
+                ApplicationEX.GetInstance().UpdateInEditor();
             };
         }
     }

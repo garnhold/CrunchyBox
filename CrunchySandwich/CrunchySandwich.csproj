@@ -87,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveGameRateLimiter\ActiveGameRateLimiter.cs" />
-    <Compile Include="ActiveTime\ActiveTime.cs" />
     <Compile Include="AnimatedSpriteRenderer\AnimatedSpriteRenderer.cs" />
     <Compile Include="AnimatedSpriteRenderer\Extensions\AnimatedSpriteRendererExtensions.cs" />
     <Compile Include="ApplicationEX\ApplicationEXSatelliteAttribute.cs" />
@@ -97,6 +96,11 @@
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
     <Compile Include="BurstAudioClip\BurstAudioClip.cs" />
+    <Compile Include="ComponentCache\ComponentCache_DownwardFromChildren.cs" />
+    <Compile Include="ComponentCache\ComponentCache_Downward.cs" />
+    <Compile Include="ComponentCache\ComponentCache_UpwardFromParent.cs" />
+    <Compile Include="ComponentCache\ComponentCache_Upward.cs" />
+    <Compile Include="ComponentCache\ComponentCache.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Orient.cs">
       <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Orient.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -563,6 +567,8 @@
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
     <Compile Include="TargetComponent\TargetComponent.cs" />
     <Compile Include="TargetMethod\TargetMethod.cs" />
+    <Compile Include="TimeType\Extensions\TimeTypeExtensions.cs" />
+    <Compile Include="TimeType\TimeType.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
     <Compile Include="TerrainTile\TerrainTile.cs" />
@@ -1000,10 +1006,10 @@
     <Compile Include="Tap\Extensions\TapTypeExtensions.cs" />
     <Compile Include="Tap\TapTimer.cs" />
     <Compile Include="RelativePoint\RelativePoint.cs" />
-    <Compile Include="ActiveGameTimer\ActiveGameTimer.cs" />
-    <Compile Include="ActiveGameTimer\ActiveGameTimer_Duration.cs" />
-    <Compile Include="GameTimer\GameTimer_Duration.cs" />
-    <Compile Include="ActiveGameTimer\TimeSource\TimeSource_ActiveGameTime.cs" />
+    <Compile Include="ActiveGameTime\ActiveGameTimer.cs" />
+    <Compile Include="ActiveGameTime\ActiveGameTimer_Duration.cs" />
+    <Compile Include="GameTime\GameTimer_Duration.cs" />
+    <Compile Include="ActiveGameTime\ActiveGameTime.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Edge.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Rect.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Bounds.cs" />
@@ -1033,7 +1039,7 @@
     <Compile Include="WorldPressSystem\WorldPressTarget.cs" />
     <Compile Include="WorldPressSystem\WorldPressSystem.cs" />
     <Compile Include="ScreenInput\ScreenTouch.cs" />
-    <Compile Include="GameTimer\GameTimer.cs" />
+    <Compile Include="GameTime\GameTimer.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Footprint.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Faces.cs" />
@@ -1105,7 +1111,7 @@
     <Compile Include="Extensions\TerrainData\TerrainSample.cs" />
     <Compile Include="Singletons\SplatPrototypeCreator.cs" />
     <Compile Include="ThisAssembly.cs" />
-    <Compile Include="GameTimer\TimeSource\TimeSource_GameTime.cs" />
+    <Compile Include="GameTime\GameTime.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Children.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions.cs" />

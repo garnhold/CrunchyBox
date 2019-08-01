@@ -36,9 +36,8 @@ namespace CrunchySandwich
             float cell_area = cell_size.x * cell_size.y;
 
             rect.ProcessCroppedGrid(cell_size, delegate(int x, int y, Rect sub_rect) {
-                float effective_density = texture.GetPixelAt(x, y).a * density;
-
-                effective_density.ConvertFromDensityToCount(cell_area).RepeatProcess(
+                (texture.GetPixelAt(x, y).a * density).ProcessDensity(
+                    cell_area, 
                     () => SpawnPrefab(RandVector2.GetWithinRect(sub_rect))
                 );
             });

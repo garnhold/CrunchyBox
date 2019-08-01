@@ -14,6 +14,7 @@ namespace CrunchySandwich
     public class AnimatedSpriteRenderer : MonoBehaviour
     {
         [SerializeField]private AnimatedSprite animated_sprite;
+        [SerializeField]private TimeType time_type;
 
         private FluxTimer animation_time;
         private SpriteAnimation current_animation;
@@ -38,7 +39,7 @@ namespace CrunchySandwich
 
         public void Initialize()
         {
-            animation_time = new FluxTimer().StartAndGet();
+            animation_time = new FluxTimer(time_type.GetTimeSource()).StartAndGet();
             current_animation = animated_sprite.GetDefaultAnimation();
         }
 

@@ -73,10 +73,15 @@ namespace CrunchySandwich
 
         public void Update()
         {
-            if (Application.isPlaying)
-                update_processes.Process(p => p());
-            else
-                update_in_editor_processes.Process(p => p());
+            update_processes.Process(p => p());
+
+            deferred_processes.Process(p => p());
+            deferred_processes.Clear();
+        }
+
+        public void UpdateInEditor()
+        {
+            update_in_editor_processes.Process(p => p());
 
             deferred_processes.Process(p => p());
             deferred_processes.Clear();

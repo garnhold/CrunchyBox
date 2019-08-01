@@ -3,65 +3,25 @@ using System.Reflection;
 
 namespace CrunchyDough
 {
-    public class FluxTimer : TimePiece
+    public class FluxTimer : Timer
     {
-        private Timer timer;
-        private float multiplier;
+        private TimeSource_Flux flux;
 
-        private long elapsed_time_in_milliseconds;
-
-        protected long GetInternalElapsedTimeInMilliseconds()
+        public FluxTimer(TimeSource t) : base(new TimeSource_Flux(t))
         {
-            return (long)(timer.GetElapsedTimeInMilliseconds() * multiplier);
-        }
-
-        public FluxTimer(TimeSource t)
-        {
-            timer = new Timer(t);
-            multiplier = 1.0f;
-
-            elapsed_time_in_milliseconds = 0;
+            flux = (TimeSource_Flux)GetTimeSource();
         }
 
         public FluxTimer() : this(TimeSource_Stopwatch.INSTANCE) { }
 
         public void SetMultiplier(float m)
         {
-            elapsed_time_in_milliseconds += GetInternalElapsedTimeInMilliseconds();
-            timer.Reset();
-
-            multiplier = m;
-        }
-
-        public override bool Start()
-        {
-            return timer.Start();
-        }
-
-        public override bool Pause()
-        {
-            return timer.Pause();
-        }
-
-        public override void SetElapsedTimeInMilliseconds(long m)
-        {
-            timer.Reset();
-            elapsed_time_in_milliseconds = m;
-        }
-
-        public override bool IsRunning()
-        {
-            return timer.IsRunning();
+            flux.SetMultiplier(m);
         }
 
         public float GetMultiplier()
         {
-            return multiplier;
-        }
-
-        public override long GetElapsedTimeInMilliseconds()
-        {
-            return elapsed_time_in_milliseconds + GetInternalElapsedTimeInMilliseconds();
+            return flux.GetMultiplier();
         }
     }
 }

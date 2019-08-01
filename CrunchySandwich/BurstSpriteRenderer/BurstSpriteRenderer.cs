@@ -14,11 +14,6 @@ namespace CrunchySandwich
         private BurstSprite burst_sprite;
         private Timer animation_time;
 
-        private void Start()
-        {
-            animation_time = new Timer().StartAndGet();
-        }
-
         private void Update()
         {
             float elapsed_time = animation_time.GetElapsedTimeInSeconds();
@@ -34,6 +29,7 @@ namespace CrunchySandwich
             SpriteRenderer renderer = this.FetchComponent<SpriteRenderer>();
 
             burst_sprite = s;
+            animation_time = new Timer(burst_sprite.GetTimeType().GetTimeSource()).StartAndGet();
 
             renderer.flipX = burst_sprite.IsFlipX();
             renderer.flipY = burst_sprite.IsFlipY();

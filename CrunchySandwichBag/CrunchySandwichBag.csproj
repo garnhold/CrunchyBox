@@ -129,6 +129,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElementLength\EditorGUIElementLength.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElementLength\EditorGUIElementLength_Fixed.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElementLength\EditorGUIElementLength_Weighted.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElement_Container_Flow.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Extensions\EditorGUIElementContainerHorizontalStripExtensions.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Extensions\EditorGUIElementContainerHorizontalStripExtensions_Child.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Extensions\EditorGUIElementContainerHorizontalStripExtensions_Child_Attachments.cs" />

@@ -64,5 +64,10 @@ namespace CrunchyDough
 
             return elapsed_time;
         }
+
+        public TimeSource GetTimeSource()
+        {
+            return time_source;
+        }
     }
 }

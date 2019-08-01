@@ -92,7 +92,7 @@ namespace CrunchySandwichBag
         }
         public void AddChildren(float w, params EditorGUIElement[] children)
         {
-            AddChildren((IEnumerable<EditorGUIElement>)children);
+            AddChildren(w, (IEnumerable<EditorGUIElement>)children);
         }
 
         public void AddChildren(IEnumerable<EditorGUIElement> children)

@@ -12,6 +12,8 @@ namespace CrunchySandwich
     public class BurstSprite : CustomAsset
     {
         [SerializeField]private float duration;
+        [SerializeField]private TimeType time_type;
+
         [SerializeField]private bool is_flip_x;
         [SerializeField]private bool is_flip_y;
         [SerializeField]private SortingLayerEX sorting_layer;
@@ -43,6 +45,11 @@ namespace CrunchySandwich
         public float GetDuration()
         {
             return duration;
+        }
+
+        public TimeType GetTimeType()
+        {
+            return time_type;
         }
 
         public bool IsFlipX()

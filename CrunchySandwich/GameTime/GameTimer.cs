@@ -6,6 +6,6 @@ namespace CrunchySandwich
 {
     public class GameTimer : Timer
     {
-        public GameTimer() : base(TimeSource_GameTime.INSTANCE) { }
+        public GameTimer() : base(GameTime.INSTANCE) { }
     }
 }

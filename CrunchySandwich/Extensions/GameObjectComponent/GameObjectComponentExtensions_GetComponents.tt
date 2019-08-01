@@ -56,6 +56,16 @@ namespace CrunchySandwich
 			return item.GetComponentsDownwardFromChildren(typeof(T)).Convert<Component, T>();
 		}
 
+		static public IEnumerable<Component> GetComponentsUpwardAndDownward(this <#=type_name#> item, Type type)
+		{
+			return item.GetComponentsUpward(type)
+				.Append(item.GetComponentsDownwardFromChildren(type));
+		}
+		static public IEnumerable<T> GetComponentsUpwardAndDownward<T>(this <#=type_name#> item)
+		{
+			return item.GetComponentsUpwardAndDownward(typeof(T)).Convert<Component, T>();
+		}
+
 <# } #>
 	}
 }

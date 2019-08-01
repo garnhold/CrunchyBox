@@ -11,6 +11,8 @@ namespace CrunchySandwich
 {
     public class MotionNode_Motion_RootRandom : MotionNode_Motion
     {
+        [SerializeField]private TimeType time_type;
+
         private Timer timer;
 
         protected override float GetMotionValueInput()
@@ -20,7 +22,7 @@ namespace CrunchySandwich
 
         private void Start()
         {
-            timer = new Timer().Chain(t => t.StartWithRandomElapsedTimeInSeconds(3600.0f));
+            timer = new Timer(time_type.GetTimeSource()).Chain(t => t.StartWithRandomElapsedTimeInSeconds(3600.0f));
         }
     }
 }

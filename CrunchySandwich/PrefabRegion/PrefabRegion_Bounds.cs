@@ -17,10 +17,8 @@ namespace CrunchySandwich
         protected override void PopulateRegionInternal(float density)
         {
             Bounds bounds = GetRegionBounds();
-            int count = density.ConvertFromDensityToCount(GetRegionSize());
 
-            for (int i = 0; i < count; i++)
-                SpawnPrefab(RandVector3.GetWithinBounds(bounds));
+            density.ProcessDensity(GetRegionSize(), () => SpawnPrefab(RandVector3.GetWithinBounds(bounds)));
         }
     }
 }

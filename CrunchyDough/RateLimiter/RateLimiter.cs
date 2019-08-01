@@ -18,11 +18,9 @@ namespace CrunchyDough
 
         public bool Process(Process process)
         {
-            if (timer.IsTimeOver())
+            if (timer.Repeat())
             {
                 process();
-
-                timer.Restart();
                 return true;
             }
 
