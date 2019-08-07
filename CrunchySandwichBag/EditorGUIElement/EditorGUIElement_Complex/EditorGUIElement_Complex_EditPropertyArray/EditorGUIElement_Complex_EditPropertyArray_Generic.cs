@@ -16,10 +16,10 @@ namespace CrunchySandwichBag
     {
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
         {
-            EditorGUIElementAttachment_Singular_GUIContentLabel_Inline label;
+            EditorGUIElementAttachment_Singular_Label_GUIContent_Inline label;
 
-            if (attachment.Convert<EditorGUIElementAttachment_Singular_GUIContentLabel_Inline>(out label))
-                attachment = new EditorGUIElementAttachment_Singular_GUIContentLabel_Block(label.GetLabel());
+            if (attachment.Convert<EditorGUIElementAttachment_Singular_Label_GUIContent_Inline>(out label))
+                attachment = new EditorGUIElementAttachment_Singular_Label_GUIContent_Block(label.GetLabel());
 
             return base.HandleAttachment(ref attachment);
         }
@@ -59,7 +59,7 @@ namespace CrunchySandwichBag
                         EditProperty sub_property = property.GetElement(i);
 
                         EditorGUIElement_Container_HorizontalStrip strip = container.AddChild(new EditorGUIElement_Container_HorizontalStrip())
-                            .LabelWithGUIContent("[" + i + "]");
+                            .LabelWithIndex(property, i, () => ForceRecreation());
 
                         strip.AddChild(1.0f, sub_property.CreateEditorGUIElement());
                         strip.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+v", delegate() {

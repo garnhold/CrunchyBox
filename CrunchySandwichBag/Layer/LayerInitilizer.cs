@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("static public readonly LayerEX ?NAME = new LayerEX(?VALUE);");
                 });
-            }, false);
+            }, GeneratedCodeType.RuntimeDefinition);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace CrunchySandwichBag
 
                     writer.Write("static public readonly SortingLayerEX ?NAME = new SortingLayerEX(?VALUE);");
                 });
-            }, false);
+            }, GeneratedCodeType.RuntimeDefinition);
         }
     }
 }

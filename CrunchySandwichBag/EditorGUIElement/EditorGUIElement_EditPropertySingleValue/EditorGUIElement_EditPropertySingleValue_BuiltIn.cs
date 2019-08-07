@@ -14,7 +14,7 @@ namespace CrunchySandwichBag
 {
     public abstract class EditorGUIElement_EditPropertySingleValue_BuiltIn<T> : EditorGUIElement_EditPropertySingleValue<T>
     {
-        private EditorGUIElementAttachment_Singular_GUIContentLabel label;
+        private EditorGUIElementAttachment_Singular_Label_GUIContent label;
 
         protected abstract T DrawBuiltInInternal(Rect rect, GUIContent label, T value);
 
@@ -25,9 +25,9 @@ namespace CrunchySandwichBag
 
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
         {
-            EditorGUIElementAttachment_Singular_GUIContentLabel cast;
+            EditorGUIElementAttachment_Singular_Label_GUIContent cast;
 
-            if (attachment.Convert<EditorGUIElementAttachment_Singular_GUIContentLabel>(out cast))
+            if (attachment.Convert<EditorGUIElementAttachment_Singular_Label_GUIContent>(out cast))
             {
                 label = cast;
                 return false;
@@ -38,7 +38,7 @@ namespace CrunchySandwichBag
 
         public EditorGUIElement_EditPropertySingleValue_BuiltIn(EditProperty_Single_Value p) : base(p)
         {
-            label = new EditorGUIElementAttachment_Singular_GUIContentLabel_Inline();
+            label = new EditorGUIElementAttachment_Singular_Label_GUIContent_Inline();
         }
 
         public GUIContent GetLabel()

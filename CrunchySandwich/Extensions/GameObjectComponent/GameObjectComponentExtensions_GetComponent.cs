@@ -49,6 +49,24 @@ namespace CrunchySandwich
 			return item.GetComponentDownwardFromChildren(typeof(T)).Convert<T>();
 		}
 
+		static public Component GetComponentUpwardOrDownward(this GameObject item, Type type)
+		{
+			return item.GetComponentUpward(type) ?? item.GetComponentDownward(type);
+		}
+		static public T GetComponentUpwardOrDownward<T>(this GameObject item)
+		{
+			return item.GetComponentUpwardOrDownward(typeof(T)).Convert<T>();
+		}
+
+		static public Component GetComponentWithinEntity(this GameObject item, Type type)
+		{
+			return item.GetRoot().GetComponentDownward(type);
+		}
+		static public T GetComponentWithinEntity<T>(this GameObject item)
+		{
+			return item.GetComponentWithinEntity(typeof(T)).Convert<T>();
+		}
+
 		static public Component GetComponentEX(this GameObject item, Type type)
 		{
 			return item.IfNotNull(i => i.GetComponent(type));
@@ -94,6 +112,24 @@ namespace CrunchySandwich
 		static public T GetComponentDownwardFromChildren<T>(this Component item)
 		{
 			return item.GetComponentDownwardFromChildren(typeof(T)).Convert<T>();
+		}
+
+		static public Component GetComponentUpwardOrDownward(this Component item, Type type)
+		{
+			return item.GetComponentUpward(type) ?? item.GetComponentDownward(type);
+		}
+		static public T GetComponentUpwardOrDownward<T>(this Component item)
+		{
+			return item.GetComponentUpwardOrDownward(typeof(T)).Convert<T>();
+		}
+
+		static public Component GetComponentWithinEntity(this Component item, Type type)
+		{
+			return item.GetRoot().GetComponentDownward(type);
+		}
+		static public T GetComponentWithinEntity<T>(this Component item)
+		{
+			return item.GetComponentWithinEntity(typeof(T)).Convert<T>();
 		}
 
 		static public Component GetComponentEX(this Component item, Type type)

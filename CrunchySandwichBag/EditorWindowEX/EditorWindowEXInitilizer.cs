@@ -37,7 +37,7 @@ namespace CrunchySandwichBag
                         writer.Write("EditorWindow.GetWindow<?TYPE>().Show();");
                     });
                 }
-            }, true);
+            }, GeneratedCodeType.EditorOnlyLeaf);
         }
     }
 }

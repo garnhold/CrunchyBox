@@ -11,11 +11,11 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public abstract class EditorGUIElementAttachment_Singular_GUIContentLabel : EditorGUIElementAttachment_Singular
+    public abstract class EditorGUIElementAttachment_Singular_Label_GUIContent : EditorGUIElementAttachment_Singular_Label
     {
         private GUIContent label;
 
-        public EditorGUIElementAttachment_Singular_GUIContentLabel(GUIContent l) : base("Label")
+        public EditorGUIElementAttachment_Singular_Label_GUIContent(GUIContent l)
         {
             label = l;
         }
@@ -31,6 +31,11 @@ namespace CrunchySandwichBag
         public GUIContent GetLabel()
         {
             return label;
+        }
+
+        public override float GetLabelWidth()
+        {
+            return label.GetLabelLayoutWidth();
         }
     }
 }

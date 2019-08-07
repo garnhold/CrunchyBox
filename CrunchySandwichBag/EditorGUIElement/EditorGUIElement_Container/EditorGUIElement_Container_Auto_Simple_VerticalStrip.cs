@@ -38,7 +38,7 @@ namespace CrunchySandwichBag
         protected float CalculateAutoSizeLabelWidth()
         {
             return GetChildren()
-                .Convert(c => c.GetAttachments<EditorGUIElementAttachment_Singular_GUIContentLabel>())
+                .Convert(c => c.GetAttachments<EditorGUIElementAttachment_Singular_Label_GUIContent>())
                 .Convert(a => a.GetLabel().GetLabelLayoutWidth())
                 .Max();
         }

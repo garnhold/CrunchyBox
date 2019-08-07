@@ -39,7 +39,7 @@ namespace CrunchySandwichBag
 
                     SubsystemExtensions_Asset.CreateSubsystemAssetIfMissing(type);
                 }
-            }, true);
+            }, GeneratedCodeType.EditorOnlyLeaf);
         }
     }
 }

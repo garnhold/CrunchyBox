@@ -61,6 +61,21 @@ namespace CrunchyDough
             throw new UnaccountedBranchException("unit", unit);
         }
 
+        static public bool TryParse(string value, out Duration output)
+        {
+            double number;
+            string units;
+
+            if (value.TryParseMeasurement(out number, out units))
+            {
+                output = Length(DurationUnitExtensions.GetUnitBySuffix(units), (float)number);
+                return true;
+            }
+
+            output = default(Duration);
+            return false;
+        }
+
         static public Duration MinutesSeconds(float minutes, float seconds)
         {
             return Minutes(minutes) + Seconds(seconds);
@@ -182,7 +197,7 @@ namespace CrunchyDough
             float length = GetLength(unit);
 
             if(length < float.MaxValue)
-                return length.ToString("F2") + unit.GetUnitSuffix();
+                return length.ToString("F4") + unit.GetUnitSuffix();
 
             return "forever";
         }

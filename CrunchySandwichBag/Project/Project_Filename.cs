@@ -24,6 +24,11 @@ namespace CrunchySandwichBag
             return "Assets/Generated/";
         }
 
+        static public string GetGeneratedLeafDirectory()
+        {
+            return "Assets/Generated/Leaf/";
+        }
+
         static public string GetEditorDirectory()
         {
             return "Assets/Editor/";
@@ -32,6 +37,11 @@ namespace CrunchySandwichBag
         static public string GetEditorGeneratedDirectory()
         {
             return "Assets/Editor/Generated/";
+        }
+
+        static public string GetEditorGeneratedLeafDirectory()
+        {
+            return "Assets/Editor/Generated/Leaf/";
         }
 
         static public string GetInternalAssetDirectory()

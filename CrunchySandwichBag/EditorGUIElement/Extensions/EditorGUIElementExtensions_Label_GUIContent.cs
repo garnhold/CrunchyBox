@@ -11,11 +11,11 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    static public class EditorGUIElementExtensions_GUIContentLabel
+    static public class EditorGUIElementExtensions_Label_GUIContent
     {
         static public T LabelWithGUIContent<T>(this T item, GUIContent label) where T : EditorGUIElement
         {
-            item.AddAttachment(new EditorGUIElementAttachment_Singular_GUIContentLabel_Inline(label));
+            item.AddAttachment(new EditorGUIElementAttachment_Singular_Label_GUIContent_Inline(label));
 
             return item;
         }
@@ -26,7 +26,7 @@ namespace CrunchySandwichBag
 
         static public T LabelWithGUIContentBlock<T>(this T item, GUIContent label) where T : EditorGUIElement
         {
-            item.AddAttachment(new EditorGUIElementAttachment_Singular_GUIContentLabel_Block(label));
+            item.AddAttachment(new EditorGUIElementAttachment_Singular_Label_GUIContent_Block(label));
 
             return item;
         }

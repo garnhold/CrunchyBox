@@ -35,6 +35,11 @@ namespace CrunchySandwichBag
             property.RemoveElement(index);
         }
 
+        public override void MoveElement(int src_index, int dst_index)
+        {
+            property.MoveElement(src_index, dst_index);
+        }
+
         public override bool IsUnified()
         {
             return property.IsUnified();

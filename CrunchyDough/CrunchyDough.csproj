@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="Extensions\Stack\StackExtensions_PeekEX.cs" />
     <Compile Include="Extensions\String\StringExtensions_Count_Any.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Duration.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Namespace.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Treatment_Common.cs" />
     <Compile Include="Filename\Filename_Absolute.cs" />
@@ -1076,7 +1077,6 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Process.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search.cs" />
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Tandem.cs" />
-    <Compile Include="OperationCache\OperationCacheItem.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\String\StringExtensions_Join.cs" />

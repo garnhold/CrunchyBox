@@ -19,5 +19,21 @@ namespace CrunchyDough
 
             throw new UnaccountedBranchException("item", item);
         }
+
+        static public DurationUnit GetUnitBySuffix(string suffix)
+        {
+            switch (suffix.ToLower())
+            {
+                case "ms": return DurationUnit.Milliseconds;
+                case "s": return DurationUnit.Seconds;
+                case "m": return DurationUnit.Minutes;
+                case "h": return DurationUnit.Hours;
+                case "d": return DurationUnit.Days;
+
+                case "hz": return DurationUnit.Hertz;
+            }
+
+            return DurationUnit.Seconds;
+        }
     }
 }

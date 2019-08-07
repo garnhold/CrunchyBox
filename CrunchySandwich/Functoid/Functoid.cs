@@ -17,6 +17,11 @@ namespace CrunchySandwich
         [SerializeFieldEX]private TargetMethod target_method;
         [SerializeFieldEX][PolymorphicField]private FunctoidInvokerBase invoker;
 
+        public Functoid()
+        {
+            target_method = new TargetMethod();
+        }
+
         public object Invoke()
         {
             Component component = GetComponent();

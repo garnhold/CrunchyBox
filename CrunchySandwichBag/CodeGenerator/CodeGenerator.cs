@@ -16,10 +16,14 @@ namespace CrunchySandwichBag
 {
     static public class CodeGenerator
     {
+        static private int REGENERATION_COUNT;
+
         [MenuItem("Edit/Force Code Generation")]
         [UnityEditor.Callbacks.DidReloadScripts]
         static private void GenerateCode()
         {
+            REGENERATION_COUNT = 0;
+
             MarkedMethods<CodeGeneratorAttribute>
                 .GetFilteredMarkedStaticMethods(
                     Filterer_MethodInfo.HasNoEffectiveParameters()
@@ -33,12 +37,14 @@ namespace CrunchySandwichBag
                         Debug.LogException(ex);
                     }
                 });
+
+            if(REGENERATION_COUNT >= 1)
+                AssetDatabase.Refresh();
         }
 
-        static public void GenerateCode(string base_filename, Process<CSTextDocumentBuilder> process, bool is_editor)
+        static public void GenerateCode(string base_filename, Process<CSTextDocumentBuilder> process, GeneratedCodeType type)
         {
             CSTextDocument document = new CSTextDocument(new CSHeader_SimpleDated("MMMM dd, yyyy"));
-            string directory = is_editor.ConvertBool(Project.GetEditorGeneratedDirectory(), Project.GetGeneratedDirectory());
 
             CSTextDocumentBuilder builder = document.CreateCSTextBuilder();
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs();
@@ -62,11 +68,11 @@ namespace CrunchySandwichBag
 
             process(builder);
 
-            if (document.RenderDocument().SaveChanges(directory, base_filename + ".cs", true))
-                AssetDatabase.Refresh();
+            if (document.RenderDocument().SaveChanges(type.GetDirectory(), base_filename + ".cs", true))
+                REGENERATION_COUNT++;
         }
 
-        static public void GenerateStaticClass(string class_name, Process<CSTextDocumentBuilder> process, bool is_editor)
+        static public void GenerateStaticClass(string class_name, Process<CSTextDocumentBuilder> process, GeneratedCodeType type)
         {
             GenerateCode(class_name, delegate(CSTextDocumentBuilder builder) {
                 CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
@@ -76,7 +82,7 @@ namespace CrunchySandwichBag
                 writer.Write("static public class ?CLASS", delegate() {
                     process(builder);
                 });
-            }, is_editor);
+            }, type);
         }
     }
 }

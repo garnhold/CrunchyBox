@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
         private void Use()
         {
             ProjectSettings.ModifySettings("InputManager.asset", o => GenerateInternalAxises(o));
-            CodeGenerator.GenerateCode("InputDevice", b => GenerateCode(b), false);
+            CodeGenerator.GenerateCode("InputDevice", b => GenerateCode(b), GeneratedCodeType.RuntimeDefinition);
         }
 
         private void GenerateSatelliteClass(CSTextDocumentBuilder builder)

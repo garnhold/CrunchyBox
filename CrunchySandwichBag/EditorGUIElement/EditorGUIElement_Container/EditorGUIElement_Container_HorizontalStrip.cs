@@ -13,44 +13,37 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElement_Container_HorizontalStrip : EditorGUIElement_Container
     {
-        private List<Tuple<EditorGUIElementLength, EditorGUIElement>> strip_elements;
+        private EditorGUIFlowRow row;
 
         protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
         {
-            float total_weight = strip_elements.Convert(t => t.item1.GetWeight()).Sum();
-            float total_fixed_width = strip_elements.Convert(t => t.item1.GetFixedLength()).Sum();
-            float total_weighted_width = rect.width - total_fixed_width;
-
-            foreach (Tuple<EditorGUIElementLength, EditorGUIElement> element in strip_elements)
-            {
-                Rect current_rect;
-                float width = element.item1.GetLength(total_weighted_width, total_weight);
-
-                rect.SplitByXLeftOffset(width, out current_rect, out rect);
-                element.item2.Layout(current_rect, state);
-            }
+            row.Layout(rect, state, rect.width);
         }
 
         protected override float CalculateElementHeightInternal()
         {
-            return strip_elements.Convert(e => e.item2.GetHeight()).Max();
+            return row.GetHeight();
         }
 
         public EditorGUIElement_Container_HorizontalStrip()
         {
-            strip_elements = new List<Tuple<EditorGUIElementLength, EditorGUIElement>>();
+            row = new EditorGUIFlowRow();
         }
 
-        public T AddChild<T>(EditorGUIElementLength l, T child) where T : EditorGUIElement
+        public void AddChild(EditorGUIFlowElement child)
         {
             if (child != null)
             {
-                strip_elements.Add(Tuple.New<EditorGUIElementLength, EditorGUIElement>(l, child));
+                row.Add(child);
 
                 Invalidate();
-                child.SetParent(this);
+                child.GetElement().SetParent(this);
             }
+        }
 
+        public T AddChild<T>(EditorGUIElementDimension d, T child) where T : EditorGUIElement
+        {
+            AddChild(new EditorGUIFlowElement(child, d));
             return child;
         }
 
@@ -106,14 +99,14 @@ namespace CrunchySandwichBag
 
         public override void ClearChildren()
         {
-            strip_elements.Clear();
+            row.Clear();
 
             Invalidate();
         }
 
         public override bool RemoveChild(EditorGUIElement child)
         {
-            if (strip_elements.RemoveFirst(e => e.item2 == child))
+            if (row.Remove(child))
             {
                 Invalidate();
 
@@ -125,7 +118,7 @@ namespace CrunchySandwichBag
 
         public override IEnumerable<EditorGUIElement> GetChildren()
         {
-            return strip_elements.Convert(e => e.item2);
+            return row.Convert(e => e.GetElement());
         }
     }
 }

@@ -96,11 +96,21 @@
     <Compile Include="AssetClass\AssetClassAttribute.cs" />
     <Compile Include="AssetClass\AssetClassCategoryAttribute.cs" />
     <Compile Include="BurstAudioClip\BurstAudioClip.cs" />
-    <Compile Include="ComponentCache\ComponentCache_DownwardFromChildren.cs" />
-    <Compile Include="ComponentCache\ComponentCache_Downward.cs" />
-    <Compile Include="ComponentCache\ComponentCache_UpwardFromParent.cs" />
-    <Compile Include="ComponentCache\ComponentCache_Upward.cs" />
+    <Compile Include="ComponentCacheManager\ComponentCacheManager.cs" />
     <Compile Include="ComponentCache\ComponentCache.cs" />
+    <Compile Include="ComponentCache\ComponentCache_Downward.cs" />
+    <Compile Include="ComponentCache\ComponentCache_DownwardFromChildren.cs" />
+    <Compile Include="ComponentCache\ComponentCache_WithinEntity.cs" />
+    <Compile Include="ComponentCache\ComponentCache_Upward.cs" />
+    <Compile Include="ComponentCache\ComponentCache_UpwardOrDownward.cs" />
+    <Compile Include="ComponentCache\ComponentCache_UpwardFromParent.cs" />
+    <Compile Include="ComponentsCache\ComponentsCache_WithinEntity.cs" />
+    <Compile Include="ComponentsCache\ComponentsCache_UpwardAndDownward.cs" />
+    <Compile Include="ComponentsCache\ComponentsCache_DownwardFromChildren.cs" />
+    <Compile Include="ComponentsCache\ComponentsCache_Downward.cs" />
+    <Compile Include="ComponentsCache\ComponentsCache_UpwardFromParent.cs" />
+    <Compile Include="ComponentsCache\ComponentsCache_Upward.cs" />
+    <Compile Include="ComponentsCache\ComponentsCache.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Orient.cs">
       <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Orient.tt</DependentUpon>
       <AutoGen>True</AutoGen>

@@ -17,6 +17,11 @@ namespace CrunchySandwich
         [SerializeFieldEX]private TargetComponent target_component;
         [SerializeFieldEX]private MethodInfo method;
 
+        public TargetMethod()
+        {
+            target_component = new TargetComponent();
+        }
+
         public object Invoke(object[] arguments)
         {
             return GetMethod().Invoke(GetComponent(), arguments);

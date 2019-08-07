@@ -47,16 +47,42 @@ namespace CrunchyDough
     public class OperationCache<T, P> : OperationCache
     {
         private Operation<T, P> operation;
-        private Dictionary<P, OperationCacheItem<T>> cached_results;
+
+        private T null_result;
+        private bool has_null_result;
+
+        private Dictionary<P, T> cached_results;
+
+        private T Calculate(P parameter)
+        {
+            try
+            {
+                return operation(parameter);
+            }
+            catch (NullReferenceException)
+            {
+                if (parameter == null)
+                    return default(T);
+
+                throw;
+            }
+        }
 
         public OperationCache(Operation<T, P> o)
         {
             operation = o;
-            cached_results = new Dictionary<P, OperationCacheItem<T>>();
+
+            null_result = default(T);
+            has_null_result = false;
+
+            cached_results = new Dictionary<P, T>();
         }
 
         public override void Clear()
         {
+            null_result = default(T);
+            has_null_result = false;
+
             cached_results.Clear();
         }
 
@@ -64,44 +90,65 @@ namespace CrunchyDough
         {
             if (IsActive())
             {
-                OperationCacheItem<T> item;
+                if (parameter != null)
+                {
+                    T result;
 
-                if (cached_results.TryGetValue(parameter, out item) == false)
-                    item = cached_results.AddAndGet(parameter, new OperationCacheItem<T>(operation(parameter)));
+                    if (cached_results.TryGetValue(parameter, out result) == false)
+                        result = cached_results.AddAndGet(parameter, Calculate(parameter));
 
-                return item.GetData();
+                    return result;
+                }
+                else
+                {
+                    if (has_null_result == false)
+                        null_result = Calculate(parameter);
+
+                    return null_result;
+                }
             }
 
-            return operation(parameter);
+            return Calculate(parameter);
         }
     }
 
     public class OperationCache<T> : OperationCache
     {
         private Operation<T> operation;
-        private OperationCacheItem<T> item;
+
+        private T result;
+        private bool has_result;
+
+        private T Calculate()
+        {
+            return operation();
+        }
 
         public OperationCache(Operation<T> o)
         {
             operation = o;
+
+            result = default(T);
+            has_result = false;
         }
 
         public override void Clear()
         {
-            item = null;
+            result = default(T);
+            has_result = false;
         }
 
         public T Fetch()
         {
             if (IsActive())
             {
-                if (item == null)
-                    item = new OperationCacheItem<T>(operation());
+                if (has_result == false)
+                    result = Calculate();
 
-                return item.GetData();
+                return result;
             }
 
-            return operation();
+            return Calculate();
         }
     }
 

@@ -40,7 +40,7 @@ namespace CrunchySandwichBag
                         writer.Write("Assets.CreateAsset<?TYPENAME>();");
                     });
                 }
-            }, true);
+            }, GeneratedCodeType.EditorOnlyLeaf);
         }
     }
 }

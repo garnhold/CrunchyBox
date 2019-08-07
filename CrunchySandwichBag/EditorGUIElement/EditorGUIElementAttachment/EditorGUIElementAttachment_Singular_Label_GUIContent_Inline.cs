@@ -11,16 +11,16 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElementAttachment_Singular_GUIContentLabel_Inline : EditorGUIElementAttachment_Singular_GUIContentLabel
+    public class EditorGUIElementAttachment_Singular_Label_GUIContent_Inline : EditorGUIElementAttachment_Singular_Label_GUIContent
     {
         private Rect label_rect;
 
-        public EditorGUIElementAttachment_Singular_GUIContentLabel_Inline(GUIContent l) : base(l)
+        public EditorGUIElementAttachment_Singular_Label_GUIContent_Inline(GUIContent l) : base(l)
         {
             label_rect = new Rect();
         }
 
-        public EditorGUIElementAttachment_Singular_GUIContentLabel_Inline() : this(GUIContent.none) { }
+        public EditorGUIElementAttachment_Singular_Label_GUIContent_Inline() : this(GUIContent.none) { }
 
         public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {

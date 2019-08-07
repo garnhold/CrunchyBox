@@ -14,13 +14,13 @@ namespace CrunchySandwichBag
     public class EditorGUIElement_SerializedProperty_Field : EditorGUIElement_SerializedProperty
     {
         private Rect element_rect;
-        private EditorGUIElementAttachment_Singular_GUIContentLabel label;
+        private EditorGUIElementAttachment_Singular_Label_GUIContent label;
 
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
         {
-            EditorGUIElementAttachment_Singular_GUIContentLabel cast;
+            EditorGUIElementAttachment_Singular_Label_GUIContent cast;
 
-            if (attachment.Convert<EditorGUIElementAttachment_Singular_GUIContentLabel>(out cast))
+            if (attachment.Convert<EditorGUIElementAttachment_Singular_Label_GUIContent>(out cast))
             {
                 label = cast;
                 return false;
@@ -48,7 +48,7 @@ namespace CrunchySandwichBag
 
         public EditorGUIElement_SerializedProperty_Field(SerializedProperty s) : base(s)
         {
-            label = new EditorGUIElementAttachment_Singular_GUIContentLabel_Inline();
+            label = new EditorGUIElementAttachment_Singular_Label_GUIContent_Inline();
         }
     }
 }

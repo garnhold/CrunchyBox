@@ -6,7 +6,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class Subsystem : ScriptableObject
+    public abstract class Subsystem : ScriptableObjectEX
     {
         public virtual void Update() { }
         public virtual void UpdateInEditor() { }

@@ -27,7 +27,7 @@ namespace CrunchySandwichBag
 
                 writer.Write("//?DATE");
                 writer.Write("//?JUNK");
-            }, false);
+            }, GeneratedCodeType.RuntimeDefinition);
         }
     }
 }

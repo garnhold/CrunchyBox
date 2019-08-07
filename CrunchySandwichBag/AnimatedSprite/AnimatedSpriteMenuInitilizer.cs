@@ -44,7 +44,7 @@ namespace CrunchySandwichBag
                         writer.Write("return false;");
                     });
                 }
-            }, true);
+            }, GeneratedCodeType.EditorOnlyLeaf);
         }
     }
 }

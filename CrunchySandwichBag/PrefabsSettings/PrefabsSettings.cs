@@ -33,7 +33,7 @@ namespace CrunchySandwichBag
                         DeployablePrefabExtensions_Prefabs.GeneratePrefabsExtensionsMembers(t, builder)
                     );
                 });
-            }, false);
+            }, GeneratedCodeType.RuntimeDefinition);
         }
 
         public void PopulatePrefabs()

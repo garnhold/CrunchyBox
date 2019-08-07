@@ -48,6 +48,7 @@
     <Compile Include="Assemblys\Assemblys_Inspected.cs" />
     <Compile Include="CompileTimeCache\CompileTimeCache.cs" />
     <Compile Include="CompileTimeCache\Extensions\CacheManagerExtensions_CompileTimeCache.cs" />
+    <Compile Include="ConversionMethods\Common\ConversionMethods_Duration.cs" />
     <Compile Include="ConversionMethods\Common\ConversionMethods_DateTime.cs" />
     <Compile Include="ConversionMethods\ConversionAttribute.cs" />
     <Compile Include="ConversionMethods\General\GeneralConversionMethods_String.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectCount.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectGetFirst.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectMove.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectRemoveAt.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectInsert.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectSet.cs" />

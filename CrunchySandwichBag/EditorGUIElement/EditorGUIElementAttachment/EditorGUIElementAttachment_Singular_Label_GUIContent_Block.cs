@@ -11,14 +11,14 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    public class EditorGUIElementAttachment_Singular_GUIContentLabel_Block : EditorGUIElementAttachment_Singular_GUIContentLabel
+    public class EditorGUIElementAttachment_Singular_Label_GUIContent_Block : EditorGUIElementAttachment_Singular_Label_GUIContent
     {
         private Rect label_rect;
 
         private float indent_width;
         private float label_height;
 
-        public EditorGUIElementAttachment_Singular_GUIContentLabel_Block(GUIContent l, float i, float h) : base(l)
+        public EditorGUIElementAttachment_Singular_Label_GUIContent_Block(GUIContent l, float i, float h) : base(l)
         {
             label_rect = new Rect();
 
@@ -26,8 +26,8 @@ namespace CrunchySandwichBag
             label_height = h;
         }
 
-        public EditorGUIElementAttachment_Singular_GUIContentLabel_Block(GUIContent l, float i) : this(l, i, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
-        public EditorGUIElementAttachment_Singular_GUIContentLabel_Block(GUIContent l) : this(l, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
+        public EditorGUIElementAttachment_Singular_Label_GUIContent_Block(GUIContent l, float i) : this(l, i, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
+        public EditorGUIElementAttachment_Singular_Label_GUIContent_Block(GUIContent l) : this(l, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
 
         public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
         {

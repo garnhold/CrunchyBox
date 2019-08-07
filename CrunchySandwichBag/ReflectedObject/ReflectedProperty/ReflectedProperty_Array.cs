@@ -51,6 +51,13 @@ namespace CrunchySandwichBag
             });
         }
 
+        public void MoveElement(int src, int dst)
+        {
+            Touch("Moving Element Within " + GetVariableName() + " From " + src + " to " + dst, delegate() {
+                GetAllIEnumerables().Process(i => i.InspectMove(src, dst));
+            });
+        }
+
         public ReflectedProperty GetElement(int index)
         {
             return ReflectedProperty.New(GetReflectedObject(), new Variable_Element(GetVariable(), index));

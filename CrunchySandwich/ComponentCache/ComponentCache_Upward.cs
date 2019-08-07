@@ -11,9 +11,9 @@ namespace CrunchySandwich
 {
     public class ComponentCache_Upward<T> : ComponentCache<T>
     {
-        protected override IEnumerable<T> GetComponentsInternal(Component component)
+        protected override T GetComponentInternal(Component parent)
         {
-            return component.GetComponentsUpward<T>();
+            return parent.GetComponentUpward<T>();
         }
 
         public ComponentCache_Upward(Component c) : base(c) { }

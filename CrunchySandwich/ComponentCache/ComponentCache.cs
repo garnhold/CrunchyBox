@@ -9,34 +9,30 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class ComponentCache<T> : IEnumerable<T>
+    public abstract class ComponentCache<T>
     {
-        private List<T> components;
+        private T component;
         private RateLimiter limiter;
 
-        private Component component;
+        private Component parent;
 
-        protected abstract IEnumerable<T> GetComponentsInternal(Component component);
+        protected abstract T GetComponentInternal(Component parent);
 
-        public ComponentCache(Component c)
+        public ComponentCache(Component p)
         {
-            components = new List<T>();
-            limiter = new RateLimiter(250);
+            component = default(T);
+            limiter = new RateLimiter(ComponentCacheManager.GetInstance().GetCacheLifetime());
 
-            component = c;
+            parent = p;
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public T GetComponent()
         {
             limiter.Process(delegate() {
-                components.Set(GetComponentsInternal(component));
+                component = GetComponentInternal(parent);
             });
 
-            return components.GetEnumerator();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
+            return component;
         }
     }
 }
