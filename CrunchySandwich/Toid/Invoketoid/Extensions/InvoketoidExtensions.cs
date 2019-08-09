@@ -12,11 +12,11 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    static public class FunctoidExtensions
+    static public class InvoketoidExtensions
     {
-        static public T Invoke<T>(this Functoid item)
+        static public T Invoke<T>(this Invoketoid item, GameObject target)
         {
-            return item.Invoke().ConvertEX<T>();
+            return item.Invoke(target).ConvertEX<T>();
         }
     }
 }

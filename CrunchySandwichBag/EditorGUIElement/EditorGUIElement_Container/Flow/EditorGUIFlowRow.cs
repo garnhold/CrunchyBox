@@ -55,7 +55,6 @@ namespace CrunchySandwichBag
         {
             return elements.Remove(element);
         }
-
         public bool Remove(EditorGUIElement element)
         {
             return elements.RemoveFirst(e => e.GetElement() == element);

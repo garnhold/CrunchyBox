@@ -19,12 +19,12 @@ namespace CrunchySandwichBag
             dimension = d;
         }
 
-        public Rect Layout(Rect rect, EditorGUILayoutState state, float width, float total_weight, float total_minimum)
+        public Rect Layout(Rect rect, EditorGUILayoutState state, float total_width, float total_weight, float total_minimum)
         {
             Rect element_rect;
 
             rect.SplitByXLeftOffset(
-                dimension.Calculate(width, total_weight, total_minimum),
+                dimension.Calculate(total_width, total_weight, total_minimum),
                 out element_rect,
                 out rect
             );

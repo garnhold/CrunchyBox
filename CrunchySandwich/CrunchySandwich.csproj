@@ -139,14 +139,10 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Scale.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
-    <Compile Include="Functoid\Extensions\FunctoidExtensions.cs" />
-    <Compile Include="Functoid\FunctoidInvokerBase.cs" />
-    <Compile Include="Functoid\Functoid.cs" />
-    <Compile Include="Functoid\FunctoidInvokers.cs">
-      <DependentUpon>FunctoidInvokers.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Compile Include="Toid\Checktoid\Checktoid.cs" />
+    <Compile Include="Toid\Invoketoid\Extensions\InvoketoidExtensions.cs" />
+    <Compile Include="Toid\Methtoid\Extensions\MethtoidExtensions.cs" />
+    <Compile Include="Toid\Methtoid\Methtoid.cs" />
     <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
     <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Native.cs" />
@@ -575,10 +571,17 @@
     <Compile Include="SequencedSprite\SpriteSequence.cs" />
     <Compile Include="SortingLayerEX\Extensions\SortingLayerEXExtensions.cs" />
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
-    <Compile Include="TargetComponent\TargetComponent.cs" />
-    <Compile Include="TargetMethod\TargetMethod.cs" />
     <Compile Include="TimeType\Extensions\TimeTypeExtensions.cs" />
     <Compile Include="TimeType\TimeType.cs" />
+    <Compile Include="Toid\Invoketoid\InvoketoidInvokerBase.cs" />
+    <Compile Include="Toid\Invoketoid\InvoketoidInvokers.cs">
+      <DependentUpon>InvoketoidInvokers.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Toid\Invoketoid\Invoketoid.cs" />
+    <Compile Include="Toid\Preditoid\Preditoid.cs" />
+    <Compile Include="Toid\Preditoid\PreditoidComparer.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
     <Compile Include="TerrainTile\TerrainTile.cs" />
@@ -1353,10 +1356,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Vector2s.cs</LastGenOutput>
     </Content>
-    <Content Include="Functoid\FunctoidInvokers.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FunctoidInvokers.cs</LastGenOutput>
-    </Content>
     <Content Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>InputDeviceComponentIds.cs</LastGenOutput>
@@ -1364,6 +1363,10 @@
     <Content Include="PlayEditDistinction\PlayEditDistinction.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PlayEditDistinction.cs</LastGenOutput>
+    </Content>
+    <Content Include="Toid\Invoketoid\InvoketoidInvokers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InvoketoidInvokers.cs</LastGenOutput>
     </Content>
     <Content Include="UnityObjectEX\UnityObjectEX.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

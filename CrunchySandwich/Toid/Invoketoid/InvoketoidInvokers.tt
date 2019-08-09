@@ -22,10 +22,10 @@ namespace CrunchySandwich
 {
 <#for(int i = 0; i <= 10; i++){#>
 	<#
-	string class_name = "FunctoidInvoker" + TTCS.ArgumentsForGeneric("P#", i);
+	string class_name = "InvoketoidInvoker" + TTCS.ArgumentsForGeneric("P#", i);
 	#>
 
-	public class <#=class_name#> : FunctoidInvokerBase
+	public class <#=class_name#> : InvoketoidInvokerBase
     {
 	<#for(int j = 1; j <= i; j++){#>
 		[SerializeFieldEX]private P<#=j#> p<#=j#>;

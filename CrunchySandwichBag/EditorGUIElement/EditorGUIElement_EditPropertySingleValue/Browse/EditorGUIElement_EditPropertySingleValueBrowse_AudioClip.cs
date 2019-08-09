@@ -28,13 +28,13 @@ namespace CrunchySandwichBag
 
         protected override EditorGUIElement CreateAssetInfoElement(AssetInfo info)
         {
-            EditorGUIElement_Container_HorizontalStrip container = new EditorGUIElement_Container_HorizontalStrip();
+            EditorGUIElement_Container_Flow_Line container = new EditorGUIElement_Container_Flow_Line();
 
-            container.AddChild(0.8f, new EditorGUIElement_Button(info.GetName(), delegate() {
+            container.AddWeightedChild(0.8f, new EditorGUIElement_Button(info.GetName(), delegate() {
                 info.Resolve<AudioClip>().PlaySample();
             }));
             
-            container.AddChild(0.2f, new EditorGUIElement_Button("Select", delegate() {
+            container.AddWeightedChild(0.2f, new EditorGUIElement_Button("Select", delegate() {
                 GetProperty().SetContentValues(info.Resolve<AudioClip>());
             }));
 

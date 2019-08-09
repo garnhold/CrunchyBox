@@ -9,7 +9,7 @@ using CrunchyDough;
 using CrunchySandwich;
 
 using Column = CrunchySandwichBag.EditorGUIElement_Container_Auto_Simple_VerticalStrip;
-using Row = CrunchySandwichBag.EditorGUIElement_Container_HorizontalStrip;
+using Row = CrunchySandwichBag.EditorGUIElement_Container_Flow_Line;
 using Grid = CrunchySandwichBag.EditorGUIElement_Container_Auto_Simple_Grid;
 using Field = CrunchySandwichBag.EditorGUIElement_Complex_SerializedProperty_FieldEX;
 using FloatSequence = CrunchySandwichBag.EditorGUIElement_SerializedProperty_FloatSequence;

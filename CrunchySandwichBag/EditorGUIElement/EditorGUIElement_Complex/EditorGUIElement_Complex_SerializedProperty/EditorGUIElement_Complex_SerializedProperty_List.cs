@@ -39,17 +39,17 @@ namespace CrunchySandwichBag
             for (int i = 0; i < serialized_property.arraySize; i++)
             {
                 SerializedProperty sub_property = serialized_property.GetArrayElementAtIndex(i);
-                EditorGUIElement_Container_HorizontalStrip line_container = container.AddChild(new EditorGUIElement_Container_HorizontalStrip())
+                EditorGUIElement_Container_Flow_Line line_container = container.AddChild(new EditorGUIElement_Container_Flow_Line())
                     .LabelWithGUIContent("[" + i + "]");
 
-                line_container.AddChild(1.0f, new EditorGUIElement_Complex_SerializedProperty_FieldEX(sub_property));
-                line_container.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+v", delegate() {
+                line_container.AddWeightedChild(1.0f, new EditorGUIElement_Complex_SerializedProperty_FieldEX(sub_property));
+                line_container.AddFixedChild(35.0f, new EditorGUIElement_Button("+v", delegate() {
                     serialized_property.InsertArrayElementAbove(sub_property);
                 }));
-                line_container.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+^", delegate() {
+                line_container.AddFixedChild(35.0f, new EditorGUIElement_Button("+^", delegate() {
                     serialized_property.InsertArrayElementBelow(sub_property);
                 }));
-                line_container.AddChild(new EditorGUIElementLength_Fixed(20.0f), new EditorGUIElement_Button("-", delegate() {
+                line_container.AddFixedChild(20.0f, new EditorGUIElement_Button("-", delegate() {
                     serialized_property.DeleteSerializedPropertyElement(sub_property);
                 }));
             }

@@ -41,19 +41,19 @@ namespace CrunchySandwichBag
             CustomAsset asset = serialized_property.objectReferenceValue as CustomAsset;
 
             EditorGUIElement_Container_Auto container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
-            EditorGUIElement_Container_HorizontalStrip type_container = container.AddChild(new EditorGUIElement_Container_HorizontalStrip());
+            EditorGUIElement_Container_Flow_Line type_container = container.AddChild(new EditorGUIElement_Container_Flow_Line());
 
             switch (asset.GetAssetType())
             {
                 case AssetType.None:
                 case AssetType.External:
-                    type_container.AddChild(1.0f,
+                    type_container.AddWeightedChild(1.0f,
                         new EditorGUIElement_Single_SerializedProperty_ObjectField(serialized_property)
                     );
                     break;
 
                 case AssetType.Internal:
-                    type_container.AddChild(1.0f,
+                    type_container.AddWeightedChild(1.0f,
                         new EditorGUIElement_Popup_SerializedProperty_ProcessOperation<Type>(
                             serialized_property,
                             GetInternalCustomAssetTypes(variable_type),
@@ -64,7 +64,7 @@ namespace CrunchySandwichBag
                     break;
             }
 
-            type_container.AddChild(new EditorGUIElementLength_Fixed(64.0f), new EditorGUIElement_Process(delegate(Rect rect) {
+            type_container.AddFixedChild(64.0f, new EditorGUIElement_Process(delegate(Rect rect) {
                 AssetType new_type = EditorGUIExtensions.EnumPopup(rect, asset.GetAssetType());
 
                 if (asset.GetAssetType() != new_type)

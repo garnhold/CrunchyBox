@@ -13,8 +13,8 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [EditorGUIElementForType(typeof(Functoid), true)]
-    public class EditorGUIElement_Complex_EditPropertySingleValue_Functoid : EditorGUIElement_Complex_EditPropertySingleValue<MethodInfo>
+    [EditorGUIElementForType(typeof(Invoketoid), true)]
+    public class EditorGUIElement_Complex_EditPropertySingleValue_Invoketoid : EditorGUIElement_Complex_EditPropertySingleValue<MethodInfo>
     {
         protected override MethodInfo PullState()
         {
@@ -22,7 +22,7 @@ namespace CrunchySandwichBag
 
             GetProperty()
                 .GetContents()
-                .ForcePropertyValue("target_method.method")
+                .ForcePropertyValue("target_method")
                 .TryGetContentValues<MethodInfo>(out value);
 
             return value;
@@ -35,9 +35,20 @@ namespace CrunchySandwichBag
 
             EditorGUIElement_Container_Auto_Simple_VerticalStrip container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
 
-            container.AddChild(target.ForceProperty("target_method").CreateEditorGUIElement());
-            
-            if (target.ForcePropertyValue("target_method.method").TryGetContentValues<MethodInfo>(out method))
+            EditorGUIElement_Container_Flow_Line line = container.AddChild(new EditorGUIElement_Container_Flow_Line());
+
+            line.AddWeightedChild(0.3f,
+                new EditorGUIElement_EditPropertySingleValue_Type(target.ForcePropertyValue("target_type"))
+            );
+
+            line.AddWeightedChild(0.7f,
+                new EditorGUIElement_EditPropertySingleValue_TypeMethodInfo(
+                    target.ForcePropertyValue("target_method"),
+                    target.ForcePropertyValue("target_type")
+                )
+            );
+
+            if (target.ForcePropertyValue("target_method").TryGetContentValues<MethodInfo>(out method))
             {
                 if (method != null)
                 {
@@ -45,7 +56,7 @@ namespace CrunchySandwichBag
                     EditProperty_Single invoker_property = target.ForcePropertySingle("invoker");
 
                     Type invoker_type = CrunchyNoodle.Types.GetFilteredTypes(
-                        Filterer_Type.CanBeTreatedAs<FunctoidInvokerBase>(),
+                        Filterer_Type.CanBeTreatedAs<InvoketoidInvokerBase>(),
                         Filterer_Type.IsConcreteClass(),
                         Filterer_Type.CanGenericParametersHold(method.GetEffectiveParameterTypes())
                     )
@@ -67,7 +78,7 @@ namespace CrunchySandwichBag
                     }
                     else
                     {
-                        container.AddChild(new EditorGUIElement_Text("Unable to find a FunctoidInvoker type that matches the method signature."));
+                        container.AddChild(new EditorGUIElement_Text("Unable to find a InvoketoidInvoker type that matches the method signature."));
                     }
                 }
             }
@@ -75,7 +86,7 @@ namespace CrunchySandwichBag
             return container;
         }
 
-        public EditorGUIElement_Complex_EditPropertySingleValue_Functoid(EditProperty_Single_Value p) : base(p)
+        public EditorGUIElement_Complex_EditPropertySingleValue_Invoketoid(EditProperty_Single_Value p) : base(p)
         {
         }
     }

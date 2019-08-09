@@ -54,6 +54,8 @@
     <Compile Include="EnumValueInfo\EnumValueInfo.cs" />
     <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions_Value.cs" />
     <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions.cs" />
+    <Compile Include="EqualityRelation\EqualityRelation.cs" />
+    <Compile Include="EqualityRelation\Extensions\EqualityRelationExtensions.cs" />
     <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable_Bits.cs" />
     <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Combine.cs" />

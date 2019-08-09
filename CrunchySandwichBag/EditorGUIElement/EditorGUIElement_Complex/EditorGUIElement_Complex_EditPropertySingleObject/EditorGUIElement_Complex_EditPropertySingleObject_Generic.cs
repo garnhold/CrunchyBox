@@ -31,10 +31,9 @@ namespace CrunchySandwichBag
 
             if (property.HasCustomAttributeOfType<PolymorphicFieldAttribute>(true))
             {
-                EditorGUIElement_Container_HorizontalStrip strip = container.AddChild(new EditorGUIElement_Container_HorizontalStrip());
+                EditorGUIElement_Container_Flow_Line strip = container.AddChild(new EditorGUIElement_Container_Flow_Line());
 
-                strip.AddChild(
-                    new EditorGUIElementLength_Weighted(1.0f),
+                strip.AddWeightedChild(1.0f,
                     new EditorGUIElement_Popup_ProcessOperation<Type>(
                         CrunchyNoodle.Types.GetFilteredTypes(
                             Filterer_Type.CanBeTreatedAs(property.GetPropertyType()),
@@ -45,8 +44,7 @@ namespace CrunchySandwichBag
                     )
                 );
 
-                strip.AddChild(
-                    new EditorGUIElementLength_Fixed(20.0f),
+                strip.AddFixedChild(20.0f,
                     new EditorGUIElement_Button("X", delegate() {
                         property.ClearContents();
                     })

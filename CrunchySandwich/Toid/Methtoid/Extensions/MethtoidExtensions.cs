@@ -12,8 +12,11 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class FunctoidInvokerBase
+    static public class MethtoidExtensions
     {
-        public abstract object Invoke(object obj, MethodInfo method);
+        static public T Invoke<T>(this Methtoid item)
+        {
+            return item.Invoke().ConvertEX<T>();
+        }
     }
 }

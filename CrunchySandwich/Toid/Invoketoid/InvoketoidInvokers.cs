@@ -11,8 +11,9 @@ using CrunchyBun;
 namespace CrunchySandwich
 {
 	
-	public class FunctoidInvoker : FunctoidInvokerBase
+	public class InvoketoidInvoker : InvoketoidInvokerBase
     {
+	
 		public override object Invoke(object obj, MethodInfo method)
 		{
 			return method.Invoke(obj, new object[] {
@@ -20,7 +21,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 	
@@ -32,7 +33,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -46,7 +47,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -62,7 +63,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3, P4> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3, P4> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -80,7 +81,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3, P4, P5> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3, P4, P5> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -100,7 +101,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3, P4, P5, P6> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3, P4, P5, P6> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -122,7 +123,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3, P4, P5, P6, P7> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3, P4, P5, P6, P7> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -146,7 +147,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3, P4, P5, P6, P7, P8> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3, P4, P5, P6, P7, P8> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -172,7 +173,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3, P4, P5, P6, P7, P8, P9> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3, P4, P5, P6, P7, P8, P9> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;
@@ -200,7 +201,7 @@ namespace CrunchySandwich
 		}
 	}
 	
-	public class FunctoidInvoker<P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> : FunctoidInvokerBase
+	public class InvoketoidInvoker<P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> : InvoketoidInvokerBase
     {
 			[SerializeFieldEX]private P1 p1;
 			[SerializeFieldEX]private P2 p2;

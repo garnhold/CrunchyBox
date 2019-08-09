@@ -40,14 +40,14 @@ namespace CrunchySandwichBag
 
             if (property.TryGetNumberElements(out number_elements))
             {
-                EditorGUIElement_Container_HorizontalStrip length_strip = container.AddChild(new EditorGUIElement_Container_HorizontalStrip())
+                EditorGUIElement_Container_Flow_Line length_strip = container.AddChild(new EditorGUIElement_Container_Flow_Line())
                     .LabelWithGUIContent("Length");
 
-                length_strip.AddChild(0.6f, new EditorGUIElement_EditPropertyArray_ArraySize(property));
+                length_strip.AddWeightedChild(0.6f, new EditorGUIElement_EditPropertyArray_ArraySize(property));
 
                 if (number_elements <= 0)
                 {
-                    length_strip.AddChild(0.4f, new EditorGUIElement_Button("+", delegate() {
+                    length_strip.AddWeightedChild(0.4f, new EditorGUIElement_Button("+", delegate() {
                         property.InsertElement(0);
                     }));
                 }
@@ -58,17 +58,17 @@ namespace CrunchySandwichBag
                         int i_latched = i;
                         EditProperty sub_property = property.GetElement(i);
 
-                        EditorGUIElement_Container_HorizontalStrip strip = container.AddChild(new EditorGUIElement_Container_HorizontalStrip())
+                        EditorGUIElement_Container_Flow_Line strip = container.AddChild(new EditorGUIElement_Container_Flow_Line())
                             .LabelWithIndex(property, i, () => ForceRecreation());
 
-                        strip.AddChild(1.0f, sub_property.CreateEditorGUIElement());
-                        strip.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+v", delegate() {
+                        strip.AddWeightedChild(1.0f, sub_property.CreateEditorGUIElement());
+                        strip.AddFixedChild(35.0f, new EditorGUIElement_Button("+v", delegate() {
                             property.InsertElement(i_latched + 1);
                         }));
-                        strip.AddChild(new EditorGUIElementLength_Fixed(35.0f), new EditorGUIElement_Button("+^", delegate() {
+                        strip.AddFixedChild(35.0f, new EditorGUIElement_Button("+^", delegate() {
                             property.InsertElement(i_latched);
                         }));
-                        strip.AddChild(new EditorGUIElementLength_Fixed(20.0f), new EditorGUIElement_Button("-", delegate() {
+                        strip.AddFixedChild(20.0f, new EditorGUIElement_Button("-", delegate() {
                             property.RemoveElement(i_latched);
                         }));
                     }

@@ -9,7 +9,7 @@ using CrunchyDough;
 using CrunchySandwich;
 
 using Column = CrunchySandwichBag.EditorGUIElement_Container_Auto_Simple_VerticalStrip;
-using Row = CrunchySandwichBag.EditorGUIElement_Container_HorizontalStrip;
+using Row = CrunchySandwichBag.EditorGUIElement_Container_Flow_Line;
 using Grid = CrunchySandwichBag.EditorGUIElement_Container_Auto_Simple_Grid;
 using Field = CrunchySandwichBag.EditorGUIElement_Complex_SerializedProperty_FieldEX;
 using FloatSequence = CrunchySandwichBag.EditorGUIElement_SerializedProperty_FloatSequence;
@@ -26,10 +26,8 @@ namespace CrunchySandwichBag
             Column range_column = new Column();
 
             root.AddChild(new Row())
-                .AddChildren(
-                    Tuple.New<float, EditorGUIElement>(0.9f, new Field(property.FindPropertyRelative("curve"))),
-                    Tuple.New<float, EditorGUIElement>(0.1f, range_column)
-                );
+                .Chain(r => r.AddWeightedChild(0.9f, new Field(property.FindPropertyRelative("curve"))))
+                .Chain(r => r.AddWeightedChild(0.1f, range_column));
 
             range_column.AddChildren(
                 new Field(property.FindPropertyRelative("range_end")),
@@ -37,10 +35,8 @@ namespace CrunchySandwichBag
             );
 
             root.AddChild(new Row())
-                .AddChildren(
-                    new Field(property.FindPropertyRelative("domain_start")),
-                    new Field(property.FindPropertyRelative("domain_end"))
-                );
+                .Chain(r => r.AddWeightedChild(1.0f, new Field(property.FindPropertyRelative("domain_start"))))
+                .Chain(r => r.AddWeightedChild(1.0f, new Field(property.FindPropertyRelative("domain_end"))));
         }
     }
 }
