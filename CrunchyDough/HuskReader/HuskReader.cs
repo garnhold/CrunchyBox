@@ -34,6 +34,11 @@ namespace CrunchyDough
 
         public string ReadString() { return reader.ReadString(); }
 
+        public bool ReadBoolBranch()
+        {
+            return ReadBool();
+        }
+
         public T ReadRecurrant<T>(Husker<T> husker)
         {
             int id = reader.ReadInt32();

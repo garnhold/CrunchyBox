@@ -58,6 +58,7 @@
     <Compile Include="EqualityRelation\Extensions\EqualityRelationExtensions.cs" />
     <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable_Bits.cs" />
     <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\DateTime\DateTimeExtensions_Age.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Combine.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
@@ -142,6 +143,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Timestamp.cs" />
     <Compile Include="Time\FluxTimer\Extensions\FluxTimerExtensions.cs" />
     <Compile Include="Time\FluxTimer\FluxTimer.cs" />
     <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Seconds.cs" />

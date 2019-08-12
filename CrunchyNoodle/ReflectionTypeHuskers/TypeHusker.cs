@@ -24,15 +24,8 @@ namespace CrunchyNoodle
 
                 if (to_dehydrate.IsGenericClass())
                 {
-                    if (to_dehydrate.IsGenericTypedClass())
-                    {
-                        writer.WriteBool(true);
+                    if (writer.WriteBoolBranch(to_dehydrate.IsGenericTypedClass()))
                         TypeListHusker.INSTANCE.Dehydrate(writer, to_dehydrate.GetGenericArguments().ToList());
-                    }
-                    else
-                    {
-                        writer.WriteBool(false);
-                    }
                 }
             }
             else
@@ -51,7 +44,7 @@ namespace CrunchyNoodle
 
                 if (type.IsGenericClass())
                 {
-                    if (reader.ReadBool())
+                    if (reader.ReadBoolBranch())
                         return type.MakeGenericType(TypeListHusker.INSTANCE.Hydrate(reader).ToArray());
                 }
 

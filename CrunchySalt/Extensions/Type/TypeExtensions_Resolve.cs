@@ -13,20 +13,26 @@ namespace CrunchySalt
 {
     static public class TypeExtensions_Resolve
     {
-        static private readonly OperationCache<FieldInfoEX, Type, int> RESOLVE_FIELD = ReflectionCache.Get().NewOperationCache(delegate(Type type, int metadata_token) {
-            return type.GetMemberFields().FindFirst(f => f.MetadataToken == metadata_token);
+        static private readonly OperationCache<Dictionary<int, FieldInfoEX>, Type> FIELDS_BY_METADATA_TOKEN = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
+            return type.GetMemberFields().ToDictionaryValues(f => f.MetadataToken);
         });
         static public FieldInfoEX ResolveField(this Type item, int metadata_token)
         {
-            return RESOLVE_FIELD.Fetch(item, metadata_token);
+            if (item.IsNonGenericClass())
+                return item.Module.ResolveField(metadata_token).GetFieldInfoEX();
+
+            return FIELDS_BY_METADATA_TOKEN.Fetch(item).GetValue(metadata_token);
         }
 
-        static private readonly OperationCache<MethodInfoEX, Type, int> RESOLVE_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type type, int metadata_token) {
-            return type.GetTechnicalMemberMethods().FindFirst(f => f.MetadataToken == metadata_token);
+        static private readonly OperationCache<Dictionary<int, MethodInfoEX>, Type> METHODS_BY_METADATA_TOKEN = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
+            return type.GetTechnicalMemberMethods().ToDictionaryValues(m => m.MetadataToken);
         });
         static public MethodInfoEX ResolveMethod(this Type item, int metadata_token)
         {
-            return RESOLVE_METHOD.Fetch(item, metadata_token);
+            if (item.IsNonGenericClass())
+                return ((MethodInfo)item.Module.ResolveMethod(metadata_token)).GetMethodInfoEX();
+
+            return METHODS_BY_METADATA_TOKEN.Fetch(item).GetValue(metadata_token);
         }
     }
 }

@@ -19,17 +19,10 @@ namespace CrunchySandwichBag
         protected override EditorGUIElement CreateElement()
         {
             EditTarget target = GetProperty().GetContents();
+            EditorGUIElement_Container_Auto_Simple_VerticalStrip container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
 
-            EditorGUIElement_Container_Flow_Line container = new EditorGUIElement_Container_Flow_Line();
-
-            container.AddFixedChild(100.0f,
-                target.ForceProperty("target").CreateEditorGUIElement()
-            );
-            
-            container.AddWeightedChild(1.0f,
-                target.ForcePropertyValue("invoketoid").CreateEditorGUIElement()
-            );
-
+            container.AddChild(target.ForceProperty("target").CreateEditorGUIElement());
+            container.AddChild(target.ForcePropertyValue("invoketoid").CreateEditorGUIElement());
             return container;
         }
 

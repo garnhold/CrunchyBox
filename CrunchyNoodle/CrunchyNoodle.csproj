@@ -242,9 +242,9 @@
     </Compile>
     <Compile Include="ReflectionTypeHuskers\PropInfoEXHusker.cs" />
     <Compile Include="ReflectionTypeHuskers\ModuleHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\MethodInfoEXHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\FieldInfoEXHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\TypeHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\MethodInfoEXHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\FieldInfoEXHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\TypeHusker.cs" />
     <Compile Include="MarkedMethods\MarkedMethods.cs" />
     <Compile Include="ConfigurationVariable\ConfigurationVariable_Create_FactoryAttribute.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Member_Variable.cs" />

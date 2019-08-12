@@ -36,6 +36,13 @@ namespace CrunchyDough
 
         public void WriteString(string value) { writer.Write(value); }
 
+        public bool WriteBoolBranch(bool value)
+        {
+            WriteBool(value);
+
+            return value;
+        }
+
         public void WriteRecurrant<T>(T value, Husker<T> husker)
         {
             int id;
