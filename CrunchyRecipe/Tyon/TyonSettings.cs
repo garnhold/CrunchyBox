@@ -25,11 +25,11 @@ namespace CrunchyRecipe
             variable_providers = v.ToList();
             variable_providers.Process(z => z.SetSettings(this));
 
-            bridges_cache = new OperationCache<TyonBridge, Variable>(delegate(Variable variable) {
+            bridges_cache = new OperationCache<TyonBridge, Variable>("bridges_cache", delegate(Variable variable) {
                 return bridges.FindFirst(z => z.IsCompatible(variable)) ?? TyonBridge_Default.INSTANCE;
             });
 
-            designated_variables_cache = new OperationCache<Dictionary<string, Variable>, Type>(delegate(Type type) {
+            designated_variables_cache = new OperationCache<Dictionary<string, Variable>, Type>("designated_variables_cache", delegate(Type type) {
                 return variable_providers.FindFirstNonEmpty(z => z.GetDesignatedVariables(type))
                     .ToDictionaryValues(z => z.GetVariableName());
             });

@@ -9,7 +9,7 @@ namespace CrunchyNoodle
 {
     static public class TypeExtensions_PropInfo_Method
     {
-        static private OperationCache<PropInfoEX, Type, string, string> GET_INSTANCE_METHOD_PROP_INTERNAL = ReflectionCache.Get().NewOperationCache(delegate(Type item, string set_method, string get_method) {
+        static private OperationCache<PropInfoEX, Type, string, string> GET_INSTANCE_METHOD_PROP_INTERNAL = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_METHOD_PROP_INTERNAL", delegate(Type item, string set_method, string get_method) {
             MethodInfoEX set = item.GetFilteredInstanceMethods(
                 Filterer_MethodInfo.HasNoReturn(),
                 Filterer_MethodInfo.IsNamed(set_method.TrimSuffix("()")),
@@ -32,7 +32,7 @@ namespace CrunchyNoodle
             return GET_INSTANCE_METHOD_PROP_INTERNAL.Fetch(item, set_method, get_method);
         }
 
-        static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_METHOD_PROP = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name) {
+        static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_METHOD_PROP = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_METHOD_PROP", delegate(Type item, string name) {
             string set_method;
             string get_method;
 
@@ -46,7 +46,7 @@ namespace CrunchyNoodle
             return GET_INSTANCE_METHOD_PROP.Fetch(item, name);
         }
 
-        static private OperationCache<List<PropInfoEX>, Type> GET_ALL_INSTANCE_METHOD_PROPS = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
+        static private OperationCache<List<PropInfoEX>, Type> GET_ALL_INSTANCE_METHOD_PROPS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSTANCE_METHOD_PROPS", delegate(Type type) {
             return type.GetFilteredInstanceMethods(
                 Filterer_MethodInfo.IsPropCompatible()
             ).Convert(m => type.GetInstanceMethodProp(m.Name))

@@ -11,7 +11,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -42,7 +42,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -73,7 +73,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -104,7 +104,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2, P3>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -135,7 +135,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2, P3, P4>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -166,7 +166,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2, P3, P4, P5>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -197,7 +197,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2, P3, P4, P5, P6>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -228,7 +228,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2, P3, P4, P5, P6, P7>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -259,7 +259,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2, P3, P4, P5, P6, P7, P8>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -290,7 +290,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O, P1, P2, P3, P4, P5, P6, P7, P8, P9>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8), typeof(P9)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -321,7 +321,7 @@ namespace CrunchyNoodle
 				
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -352,7 +352,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -383,7 +383,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -414,7 +414,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2, P3>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -445,7 +445,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2, P3, P4>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -476,7 +476,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2, P3, P4, P5>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -507,7 +507,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2, P3, P4, P5, P6>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -538,7 +538,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2, P3, P4, P5, P6, P7>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -569,7 +569,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2, P3, P4, P5, P6, P7, P8>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));
@@ -600,7 +600,7 @@ namespace CrunchyNoodle
 			
 		static public class TypeExtensions_MethodInfo_Specialization_Generic_Return<O, R, P1, P2, P3, P4, P5, P6, P7, P8, P9>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(other, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8), typeof(P9)))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));

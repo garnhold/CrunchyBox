@@ -13,7 +13,7 @@ namespace CrunchySack_Android
 {
     static public class AndroidExtensions
     {
-        static private readonly OperationCache<Handler> AUX_HANDLER = new OperationCache<Handler>(delegate() {
+        static private readonly OperationCache<Handler> AUX_HANDLER = new OperationCache<Handler>("AUX_HANDLER", delegate() {
             return new Handler(Looper.MainLooper);
         });
 

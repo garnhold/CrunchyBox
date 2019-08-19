@@ -4,7 +4,7 @@ namespace CrunchyDough
 {
     public class StringIndentation_Space : StringIndentation_TabAndSpace
     {
-        static private OperationCache<string, int> GET_STRING = new OperationCache<string, int>(delegate(int level) {
+        static private OperationCache<string, int> GET_STRING = new OperationCache<string, int>("GET_STRING", delegate(int level) {
             return " ".Repeat(level);
         });
         static public string GetString(int level)

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -20,6 +21,22 @@ using CrunchyNoodle;
 [assembly: InspectAssemblys_ByType(
     typeof(CrunchyDough.ThisAssembly),
     typeof(CrunchySalt.ThisAssembly)
+)]
+
+[assembly: InspectedTypes(
+    typeof(bool),
+    typeof(byte),
+    typeof(char),
+    typeof(short),
+    typeof(int),
+    typeof(long),
+    typeof(float),
+    typeof(double),
+    typeof(decimal),
+    typeof(string),
+    typeof(object),
+
+    typeof(Type)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

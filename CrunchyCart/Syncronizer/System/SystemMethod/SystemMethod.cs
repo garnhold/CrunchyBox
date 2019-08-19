@@ -26,7 +26,7 @@ namespace CrunchyCart
             public abstract void ReadMethodInvoke(System system, Buffer buffer);
             public abstract void SendMethodInvoke(System system, object[] arguments);
 
-            static private OperationCache<SystemMethod, MethodInfo> GET_SYSTEM_METHOD = new OperationCache<SystemMethod, MethodInfo>(delegate(MethodInfo method) {
+            static private OperationCache<SystemMethod, MethodInfo> GET_SYSTEM_METHOD = new OperationCache<SystemMethod, MethodInfo>("GET_SYSTEM_METHOD", delegate(MethodInfo method) {
                 return method.GetCustomAttributeOfType<SystemMethodAttribute>(true).CreateSystemMethod(method);
             });
             static public SystemMethod GetSystemMethod(MethodInfo method)
@@ -34,7 +34,7 @@ namespace CrunchyCart
                 return GET_SYSTEM_METHOD.Fetch(method);
             }
 
-            static private OperationCache<SystemMethod, Type, string> GET_SYSTEM_METHOD_BY_SIGNATURE = new OperationCache<SystemMethod, Type, string>(delegate(Type type, string name) {
+            static private OperationCache<SystemMethod, Type, string> GET_SYSTEM_METHOD_BY_SIGNATURE = new OperationCache<SystemMethod, Type, string>("GET_SYSTEM_METHOD_BY_SIGNATURE", delegate(Type type, string name) {
                 return GetSystemMethod(
                     type.GetFilteredInstanceMethods(
                         Filterer_MethodInfo.IsNamed(name),

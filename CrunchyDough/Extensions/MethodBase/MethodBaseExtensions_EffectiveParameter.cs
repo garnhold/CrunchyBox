@@ -8,7 +8,7 @@ namespace CrunchyDough
 {
     static public class MethodBaseExtensions_EffectiveParameter
     {
-        static private OperationCache<ParameterInfo[], MethodBase> GET_EFFECTIVE_PARAMETERS = ReflectionCache.Get().NewOperationCache(delegate(MethodBase item) {
+        static private OperationCache<ParameterInfo[], MethodBase> GET_EFFECTIVE_PARAMETERS = ReflectionCache.Get().NewOperationCache("GET_EFFECTIVE_PARAMETERS", delegate(MethodBase item) {
             if (item.IsExtensionMethod())
                 return item.GetParameters().Offset(1).ToArray();
 

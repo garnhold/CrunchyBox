@@ -9,7 +9,7 @@ namespace CrunchyNoodle
 {
     static public class TypeExtensions_EvtInfo_Event
     {
-        static private OperationCache<EvtInfoEX, Type, string> GET_INSTANCE_EVENT_EVT = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name) {
+        static private OperationCache<EvtInfoEX, Type, string> GET_INSTANCE_EVENT_EVT = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_EVENT_EVT", delegate(Type item, string name) {
             return item.GetInstanceMethodEvtInternal(
                 name.GetEntityEventAddMethodName(),
                 name.GetEntityEventRemoveMethodName()

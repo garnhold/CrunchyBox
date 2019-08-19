@@ -120,7 +120,7 @@ namespace CrunchySalt
 			return item.GetUnaryOperator(UnaryOperatorTypeExtensions.GetUnaryOperatorTypeBySymbol(symbol));
 		}
 
-		static private OperationCache<UnaryOperatorInfoEX, Type, UnaryOperatorType> GET_OVERLOADED_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, UnaryOperatorType operator_type) {
+		static private OperationCache<UnaryOperatorInfoEX, Type, UnaryOperatorType> GET_OVERLOADED_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_OVERLOADED_OPERATOR", delegate(Type item, UnaryOperatorType operator_type) {
 			string special_name = operator_type.GetSpecialName();
 			Type[] parameter_types = new Type[] { item };
 
@@ -133,7 +133,7 @@ namespace CrunchySalt
 		}
 
 <#foreach(OperatorTypeInfo info in operator_type_infos){#>
-		static private OperationCache<UnaryOperatorInfoEX, Type> GET_<#=info.name#>_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+		static private OperationCache<UnaryOperatorInfoEX, Type> GET_<#=info.name#>_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_<#=info.name#>_OPERATOR", delegate(Type item) {
 	<#foreach(TypeOperatorInfo type_operator_info in type_operator_infos.Narrow(t => t.is_pre_override).Narrow(t => t.infos.Has(o => o.type_info == info))){#>
 
 			if(<#=type_operator_info.condition_code#>)

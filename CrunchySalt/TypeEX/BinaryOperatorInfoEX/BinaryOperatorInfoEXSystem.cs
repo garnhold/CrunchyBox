@@ -150,7 +150,7 @@ namespace CrunchySalt
 			return item.GetBinaryOperator(right_type, BinaryOperatorTypeExtensions.GetBinaryOperatorTypeBySymbol(symbol));
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type, BinaryOperatorType> GET_OVERLOADED_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right, BinaryOperatorType operator_type) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type, BinaryOperatorType> GET_OVERLOADED_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_OVERLOADED_OPERATOR", delegate(Type item, Type right, BinaryOperatorType operator_type) {
 			string special_name = operator_type.GetSpecialName();
 			Type[] parameter_types = new Type[] { item, right };
 
@@ -164,7 +164,7 @@ namespace CrunchySalt
 			return GET_OVERLOADED_OPERATOR.Fetch(item, right_type, operator_type);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Multiply_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Multiply_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_Multiply_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_Multiply(item, right);
@@ -180,7 +180,7 @@ namespace CrunchySalt
 			return GET_Multiply_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Divide_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Divide_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_Divide_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_Divide(item, right);
@@ -196,7 +196,7 @@ namespace CrunchySalt
 			return GET_Divide_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Modulo_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Modulo_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_Modulo_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_Modulo(item, right);
@@ -212,7 +212,7 @@ namespace CrunchySalt
 			return GET_Modulo_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Add_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Add_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_Add_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_Add(item, right);
@@ -231,7 +231,7 @@ namespace CrunchySalt
 			return GET_Add_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Subtract_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Subtract_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_Subtract_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_Subtract(item, right);
@@ -247,7 +247,7 @@ namespace CrunchySalt
 			return GET_Subtract_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_And_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_And_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_And_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsBool() && right.IsBool())
 				return new BinaryOperatorInfoEX_Internal_Bool_And(item, right);
@@ -266,7 +266,7 @@ namespace CrunchySalt
 			return GET_And_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Or_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_Or_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_Or_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsBool() && right.IsBool())
 				return new BinaryOperatorInfoEX_Internal_Bool_Or(item, right);
@@ -285,7 +285,7 @@ namespace CrunchySalt
 			return GET_Or_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_EqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_EqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_EqualTo_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsBool() && right.IsBool())
 				return new BinaryOperatorInfoEX_Internal_Bool_EqualTo(item, right);
@@ -307,7 +307,7 @@ namespace CrunchySalt
 			return GET_EqualTo_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_NotEqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_NotEqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_NotEqualTo_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsBool() && right.IsBool())
 				return new BinaryOperatorInfoEX_Internal_Bool_NotEqualTo(item, right);
@@ -329,7 +329,7 @@ namespace CrunchySalt
 			return GET_NotEqualTo_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_LessThan_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_LessThan_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_LessThan_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_LessThan(item, right);
@@ -345,7 +345,7 @@ namespace CrunchySalt
 			return GET_LessThan_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_LessThanOrEqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_LessThanOrEqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_LessThanOrEqualTo_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_LessThanOrEqualTo(item, right);
@@ -361,7 +361,7 @@ namespace CrunchySalt
 			return GET_LessThanOrEqualTo_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_GreaterThan_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_GreaterThan_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_GreaterThan_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_GreaterThan(item, right);
@@ -377,7 +377,7 @@ namespace CrunchySalt
 			return GET_GreaterThan_OPERATOR.Fetch(item, right);
 		}
 
-		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_GreaterThanOrEqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type right) {
+		static private OperationCache<BinaryOperatorInfoEX, Type, Type> GET_GreaterThanOrEqualTo_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_GreaterThanOrEqualTo_OPERATOR", delegate(Type item, Type right) {
 	
 			if(item.IsNumeric() && right.IsNumeric())
 				return new BinaryOperatorInfoEX_Internal_Numeric_GreaterThanOrEqualTo(item, right);

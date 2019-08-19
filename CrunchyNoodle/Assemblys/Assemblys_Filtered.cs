@@ -10,7 +10,7 @@ namespace CrunchyNoodle
 {
     static public partial class Assemblys
     {
-        static private OperationCache<List<Assembly>, AssemblyFilters> GET_FILTERED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache(delegate(AssemblyFilters filters) {
+        static private OperationCache<List<Assembly>, AssemblyFilters> GET_FILTERED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_ASSEMBLYS", delegate(AssemblyFilters filters) {
             return GetAllInspectedAssemblys()
                 .FilterBy(filters)
                 .ToList();

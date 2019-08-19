@@ -9,7 +9,7 @@ namespace CrunchyNoodle
 {
     static public class AssemblyExtensions_ReferencedAssemblys
     {
-        static private OperationCache<HashSet<string>, Assembly> IMMEDIATE_REFERENCED_ASSEMBLY_NAMES_SET = ReflectionCache.Get().NewOperationCache(delegate(Assembly item) {
+        static private OperationCache<HashSet<string>, Assembly> IMMEDIATE_REFERENCED_ASSEMBLY_NAMES_SET = ReflectionCache.Get().NewOperationCache("IMMEDIATE_REFERENCED_ASSEMBLY_NAMES_SET", delegate(Assembly item) {
             return item.GetReferencedAssemblies()
                 .Convert(a => a.GetSimpleName())
                 .Append(item.GetSimpleName())

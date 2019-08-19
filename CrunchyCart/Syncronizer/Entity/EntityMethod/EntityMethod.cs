@@ -26,7 +26,7 @@ namespace CrunchyCart
             public abstract void ReadMethodInvoke(Entity entity, Buffer buffer);
             public abstract void SendMethodInvoke(Entity entity, object[] arguments);
 
-            static private OperationCache<EntityMethod, MethodInfo> GET_ENTITY_METHOD = new OperationCache<EntityMethod, MethodInfo>(delegate(MethodInfo method) {
+            static private OperationCache<EntityMethod, MethodInfo> GET_ENTITY_METHOD = new OperationCache<EntityMethod, MethodInfo>("GET_ENTITY_METHOD", delegate(MethodInfo method) {
                 return method.GetCustomAttributeOfType<EntityMethodAttribute>(true).CreateEntityMethod(method);
             });
             static public EntityMethod GetEntityMethod(MethodInfo method)
@@ -34,7 +34,7 @@ namespace CrunchyCart
                 return GET_ENTITY_METHOD.Fetch(method);
             }
 
-            static private OperationCache<EntityMethod, Type, string> GET_ENTITY_METHOD_BY_SIGNATURE = new OperationCache<EntityMethod, Type, string>(delegate(Type type, string name) {
+            static private OperationCache<EntityMethod, Type, string> GET_ENTITY_METHOD_BY_SIGNATURE = new OperationCache<EntityMethod, Type, string>("GET_ENTITY_METHOD_BY_SIGNATURE", delegate(Type type, string name) {
                 return GetEntityMethod(
                     type.GetFilteredInstanceMethods(
                         Filterer_MethodInfo.IsNamed(name),

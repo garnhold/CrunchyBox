@@ -16,7 +16,7 @@ namespace CrunchyCheese
 {
     static public class MExp
     {
-        static private OperationCache<Operation<float, float>, string, string> CREATE_OPERATION1 = ReflectionCache.Get().NewOperationCache(delegate(string text, string term) {
+        static private OperationCache<Operation<float, float>, string, string> CREATE_OPERATION1 = ReflectionCache.Get().NewOperationCache("CREATE_OPERATION1", delegate(string text, string term) {
             return MExpEntry.Compile<Operation<float, float>>(text, term);
         });
         static public Operation<float, float> GetOperation(string text, string term)

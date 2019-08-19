@@ -17,7 +17,7 @@ namespace CrunchySalt
 
         private BasicMethodInvoker basic_method_invoker;
 
-        static private OperationCache<MethodInfoEX, MethodInfo> GET_METHOD_INFO_EX = ReflectionCache.Get().NewOperationCache(delegate(MethodInfo method_info) {
+        static private OperationCache<MethodInfoEX, MethodInfo> GET_METHOD_INFO_EX = ReflectionCache.Get().NewOperationCache("GET_METHOD_INFO_EX", delegate(MethodInfo method_info) {
             return new MethodInfoEX(method_info);
         });
         static public MethodInfoEX GetMethodInfoEX(MethodInfo method_info)

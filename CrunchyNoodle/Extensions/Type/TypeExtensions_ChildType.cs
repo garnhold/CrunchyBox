@@ -10,7 +10,7 @@ namespace CrunchyNoodle
 {
     static public class TypeExtensions_ChildType
     {
-        static private OperationCache<Dictionary<Type, List<Type>>> GET_TYPE_HEIRARCHY = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<Dictionary<Type, List<Type>>> GET_TYPE_HEIRARCHY = ReflectionCache.Get().NewOperationCache("GET_TYPE_HEIRARCHY", delegate() {
             return Types.GetFilteredTypes()
                 .Narrow(t => t.BaseType != null)
                 .ToMultiDictionary(t => t.BaseType);
@@ -21,7 +21,7 @@ namespace CrunchyNoodle
             return GET_TYPE_HEIRARCHY.Fetch().GetValues(item);
         }
 
-        static private OperationCache<HashSet<Type>, Type> GET_ALL_CHILD_TYPES = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+        static private OperationCache<HashSet<Type>, Type> GET_ALL_CHILD_TYPES = ReflectionCache.Get().NewOperationCache("GET_ALL_CHILD_TYPES", delegate(Type item) {
             if (item.CanHaveChildTypes())
                 return item.TraverseTree(t => t.GetImmediateChildTypes()).ToHashSet();
 
@@ -32,7 +32,7 @@ namespace CrunchyNoodle
             return GET_ALL_CHILD_TYPES.Fetch(item);
         }
 
-        static private OperationCache<List<Type>, Type, TypeFilters> GET_FILTERED_CHILD_TYPES = ReflectionCache.Get().NewOperationCache(delegate(Type item, TypeFilters filters) {
+        static private OperationCache<List<Type>, Type, TypeFilters> GET_FILTERED_CHILD_TYPES = ReflectionCache.Get().NewOperationCache("GET_FILTERED_CHILD_TYPES", delegate(Type item, TypeFilters filters) {
             return item.GetAllChildTypes()
                 .FilterBy(filters)
                 .ToList();

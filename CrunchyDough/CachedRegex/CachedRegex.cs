@@ -21,17 +21,17 @@ namespace CrunchyDough
         {
             regex = r;
 
-            is_match_cache = new OperationCache<bool, string>(delegate(string input) {
+            is_match_cache = new OperationCache<bool, string>("is_match_cache", delegate(string input) {
                 return input.RegexIsMatch(regex);
             });
-            match_cache = new OperationCache<Match, string>(delegate(string input) {
+            match_cache = new OperationCache<Match, string>("match_cache", delegate(string input) {
                 return input.RegexMatch(regex);
             });
 
-            matches_cache = new OperationCache<MatchCollection, string>(delegate(string input) {
+            matches_cache = new OperationCache<MatchCollection, string>("matches_cache", delegate(string input) {
                 return input.RegexMatches(regex);
             });
-            replace_cache = new OperationCache<CachedRegexReplaceMatchCollection, string>(delegate(string input) {
+            replace_cache = new OperationCache<CachedRegexReplaceMatchCollection, string>("replace_cache", delegate(string input) {
                 return new CachedRegexReplaceMatchCollection(input, Matches(input));
             });
         }

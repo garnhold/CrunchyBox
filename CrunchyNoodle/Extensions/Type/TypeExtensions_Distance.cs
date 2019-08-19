@@ -8,7 +8,7 @@ namespace CrunchyNoodle
 {
     static public class TypeExtensions_Distance
     {
-        static private OperationCache<int, Type, Type> GET_TYPE_DISTANCE_TO_CHILD = ReflectionCache.Get().NewOperationCache(delegate(Type parent, Type child) {
+        static private OperationCache<int, Type, Type> GET_TYPE_DISTANCE_TO_CHILD = ReflectionCache.Get().NewOperationCache("GET_TYPE_DISTANCE_TO_CHILD", delegate(Type parent, Type child) {
             int distance = 0;
 
             if (parent.IsInterface)

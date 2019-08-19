@@ -30,7 +30,7 @@ namespace CrunchyDough
             .Surround("{", "}");
         }
 
-        static private OperationCache<string> GET_ID = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<string> GET_ID = ReflectionCache.Get().NewOperationCache("GET_ID", delegate() {
             return CalculateIdByAttribute() ??
                 CalculateIdByEntry() ??
                 CalculateIdByCollective();

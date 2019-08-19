@@ -8,7 +8,7 @@ namespace CrunchyDough
 {
     static public class TypeExtensions_BaseType
     {
-        static private OperationCache<List<Type>, Type> GET_ALL_BASE_TYPES = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+        static private OperationCache<List<Type>, Type> GET_ALL_BASE_TYPES = ReflectionCache.Get().NewOperationCache("GET_ALL_BASE_TYPES", delegate(Type item) {
             return item.Traverse(t => t.BaseType)
                 .ToList();
         });
@@ -17,7 +17,7 @@ namespace CrunchyDough
             return GET_ALL_BASE_TYPES.Fetch(item);
         }
 
-        static private OperationCache<List<Type>, Type> GET_TYPE_AND_ALL_BASE_TYPES = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+        static private OperationCache<List<Type>, Type> GET_TYPE_AND_ALL_BASE_TYPES = ReflectionCache.Get().NewOperationCache("GET_TYPE_AND_ALL_BASE_TYPES", delegate(Type item) {
             return item.GetAllBaseTypes()
                 .Prepend(item)
                 .ToList();
@@ -27,7 +27,7 @@ namespace CrunchyDough
             return GET_TYPE_AND_ALL_BASE_TYPES.Fetch(item);
         }
 
-        static private OperationCache<List<Type>, Type, DetailDirection> GET_TYPE_AND_ALL_BASE_TYPES_AND_INTERFACES = ReflectionCache.Get().NewOperationCache(delegate(Type item, DetailDirection direction) {
+        static private OperationCache<List<Type>, Type, DetailDirection> GET_TYPE_AND_ALL_BASE_TYPES_AND_INTERFACES = ReflectionCache.Get().NewOperationCache("GET_TYPE_AND_ALL_BASE_TYPES_AND_INTERFACES", delegate(Type item, DetailDirection direction) {
             return item.TraverseWebWithSelf(i => i.GetInterfaces().Prepend(i.BaseType))
                 .ModifySpecificToBasicSequence(direction)
                 .ToList();
@@ -41,7 +41,7 @@ namespace CrunchyDough
             return item.GetTypeAndAllBaseTypesAndInterfaces(DetailDirection.SpecificToBasic);
         }
 
-        static private OperationCache<List<Type>, Type, DetailDirection> GET_ALL_BASE_TYPES_AND_INTERFACES = ReflectionCache.Get().NewOperationCache(delegate(Type item, DetailDirection direction) {
+        static private OperationCache<List<Type>, Type, DetailDirection> GET_ALL_BASE_TYPES_AND_INTERFACES = ReflectionCache.Get().NewOperationCache("GET_ALL_BASE_TYPES_AND_INTERFACES", delegate(Type item, DetailDirection direction) {
             return item.GetTypeAndAllBaseTypesAndInterfaces(direction)
                 .Skip(item)
                 .ToList();

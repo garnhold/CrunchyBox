@@ -11,7 +11,7 @@ namespace CrunchySalt
 {
     static public class TypeExtensions_IndexerInfoEX
     {
-        static private OperationCache<MethodInfoEX, Type, Type> GET_INDEXER_SET_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type target_type, Type index_type) {
+        static private OperationCache<MethodInfoEX, Type, Type> GET_INDEXER_SET_METHOD = ReflectionCache.Get().NewOperationCache("GET_INDEXER_SET_METHOD", delegate(Type target_type, Type index_type) {
             return target_type.GetTechnicalInstanceMethods()
                 .Narrow(m => m.Name == "set_Item")
                 .Narrow(m => m.CanEffectiveParameterHold(0, index_type))
@@ -22,7 +22,7 @@ namespace CrunchySalt
             return GET_INDEXER_SET_METHOD.Fetch(item, index_type);
         }
 
-        static private OperationCache<MethodInfoEX, Type, Type> GET_INDEXER_GET_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type target_type, Type index_type) {
+        static private OperationCache<MethodInfoEX, Type, Type> GET_INDEXER_GET_METHOD = ReflectionCache.Get().NewOperationCache("GET_INDEXER_GET_METHOD", delegate(Type target_type, Type index_type) {
             return target_type.GetTechnicalInstanceMethods()
                 .Narrow(m => m.Name == "get_Item")
                 .Narrow(m => m.CanEffectiveParameterHold(0, index_type))
@@ -33,7 +33,7 @@ namespace CrunchySalt
             return GET_INDEXER_GET_METHOD.Fetch(item, index_type);
         }
 
-        static private OperationCache<IndexerInfoEX, Type, Type> GET_INDEXER = ReflectionCache.Get().NewOperationCache<IndexerInfoEX, Type, Type>(delegate(Type target_type, Type index_type) {
+        static private OperationCache<IndexerInfoEX, Type, Type> GET_INDEXER = ReflectionCache.Get().NewOperationCache<IndexerInfoEX, Type, Type>("GET_INDEXER", delegate(Type target_type, Type index_type) {
             if (target_type.IsArray)
             {
                 Type element_type = target_type.GetElementType();

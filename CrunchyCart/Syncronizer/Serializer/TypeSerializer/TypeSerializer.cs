@@ -45,7 +45,7 @@ namespace CrunchyCart
             private ObjectLiaisonUpdater object_liaison_updater;
             private ObjectLiaisonInstancer instancer;
 
-            static private readonly OperationCache<TypeSerializer, Type> GET_OBJECT_LIAISON = new OperationCache<TypeSerializer, Type>(delegate(Type target_type) {
+            static private readonly OperationCache<TypeSerializer, Type> GET_OBJECT_LIAISON = new OperationCache<TypeSerializer, Type>("GET_OBJECT_LIAISON", delegate(Type target_type) {
                 if (target_type.HasCustomAttributeOfTypeOnAnInstanceMember<ValueAttribute>())
                 {
                     return new TypeSerializer(target_type,

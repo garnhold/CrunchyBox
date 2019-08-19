@@ -20,7 +20,7 @@ namespace CrunchySack_Android
             return (int)item.GetAndroidMeasurer().Parse(measurement);
         }
 
-        static private readonly OperationCache<AndroidMeasurer, float> GET_ANDROID_MEASURER = new OperationCache<AndroidMeasurer, float>(delegate(float dpi) {
+        static private readonly OperationCache<AndroidMeasurer, float> GET_ANDROID_MEASURER = new OperationCache<AndroidMeasurer, float>("GET_ANDROID_MEASURER", delegate(float dpi) {
             return new AndroidMeasurer(dpi);
         });
         static public AndroidMeasurer GetAndroidMeasurer(this DisplayMetrics item)

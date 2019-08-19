@@ -42,6 +42,9 @@
       <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\CrunchyStyrofoam\bin\Release\System.Data.SQLite.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assemblys\Assemblys_Filtered.cs" />
@@ -209,6 +212,7 @@
     <Compile Include="Holding\Extensions\HoldableExtensions_Field.cs" />
     <Compile Include="Holding\Extensions\HoldingContainerExtensions_Predicate.cs" />
     <Compile Include="Holding\Extensions\HoldingContainerExtensions.cs" />
+    <Compile Include="InspectedTypesAttribute\InspectedTypesAttribute.cs" />
     <Compile Include="MemberInstance\ActionInstance\ActionInstance.cs" />
     <Compile Include="MemberInstance\FunctionInstance\FunctionInstance.cs" />
     <Compile Include="MemberInstance\MemberInstance.cs" />
@@ -288,6 +292,7 @@
     <Compile Include="Member\Variable\Variable_Static\Variable_Static.cs" />
     <Compile Include="Member\Variable\Variable_This\Variable_This.cs" />
     <Compile Include="ReflectionTypeHuskers\AssemblyHusker.cs" />
+    <Compile Include="Types\Types_Inspected.cs" />
     <Compile Include="VersionInfo\VersionInfo.cs" />
     <Compile Include="ReflectionSystem\ReflectionSystem.cs" />
     <Compile Include="Relatable\Extensions\RelatableExtensions_Ancestor.cs" />
@@ -308,7 +313,6 @@
     <Compile Include="ReferenceInstances\ReferenceInstances.cs" />
     <Compile Include="TypeDictionary\TypeDictionary.cs" />
     <Compile Include="Types\Types_FromAssemblys.cs" />
-    <Compile Include="Types\Types_Primitive.cs" />
     <Compile Include="InspectedAssemblyAttribute\InspectAssemblys_ByTypeAttribute.cs" />
     <Compile Include="InspectedAssemblyAttribute\InspectedAssemblyAttribute.cs" />
     <Compile Include="InspectedAssemblyAttribute\InspectAssemblysAttribute.cs" />

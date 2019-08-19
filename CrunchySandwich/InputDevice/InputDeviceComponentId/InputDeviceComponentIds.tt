@@ -46,7 +46,7 @@ namespace CrunchySandwich
             return false;
         }
 
-		static private readonly OperationCache<List<InputDevice<#=type#>Id>> GET_ALL = ReflectionCache.Get().NewOperationCache(delegate() {
+		static private readonly OperationCache<List<InputDevice<#=type#>Id>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
 			return CrunchyNoodle.Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDevice<#=type#>Ids"),
 				Filterer_Type.IsStaticClass()

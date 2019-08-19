@@ -11,7 +11,7 @@ namespace CrunchyNoodle
 {
     static public class TypeExtensions_IEnumerableType
     {
-        static private OperationCache<Type, Type> GET_IENUMERABLE_TYPE = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+        static private OperationCache<Type, Type> GET_IENUMERABLE_TYPE = ReflectionCache.Get().NewOperationCache("GET_IENUMERABLE_TYPE", delegate(Type item) {
             if (item.IsArray)
                 return item.GetElementType();
 

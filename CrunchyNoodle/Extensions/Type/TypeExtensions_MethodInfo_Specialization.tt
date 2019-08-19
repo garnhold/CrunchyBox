@@ -51,7 +51,7 @@ namespace CrunchyNoodle
 
 		static public class <#=generic_class#>
 		{
-			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type self, string name, Type other) {
+			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))
 					.Narrow(m => m.CanEffectiveParametersHold(<#=effective_parameter_arguments#>))
 					.FindLowestRated(m => m.GetEffectiveParameterType(0).GetTypeDistance(other));

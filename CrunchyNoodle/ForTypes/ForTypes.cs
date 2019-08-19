@@ -9,7 +9,7 @@ namespace CrunchyNoodle
 {
     static public class ForTypes
     {
-        static private OperationCache<List<Type>, Type, Type> GET_ALL_TYPES_FOR_TYPE = ReflectionCache.Get().NewOperationCache(delegate(Type attribute_type, Type type) {
+        static private OperationCache<List<Type>, Type, Type> GET_ALL_TYPES_FOR_TYPE = ReflectionCache.Get().NewOperationCache("GET_ALL_TYPES_FOR_TYPE", delegate(Type attribute_type, Type type) {
             return Types.GetFilteredTypes(
                 Filterer_Type.HasCustomForTypeAttributeOfType(attribute_type, type)
             ).ToList();
@@ -23,7 +23,7 @@ namespace CrunchyNoodle
             return GetAllTypesForType(typeof(T), type);
         }
 
-        static private OperationCache<List<Type>, Type, Type> GET_BEST_TYPES_FOR_TYPE = ReflectionCache.Get().NewOperationCache(delegate(Type attribute_type, Type type) {
+        static private OperationCache<List<Type>, Type, Type> GET_BEST_TYPES_FOR_TYPE = ReflectionCache.Get().NewOperationCache("GET_BEST_TYPES_FOR_TYPE", delegate(Type attribute_type, Type type) {
             return GetAllTypesForType(attribute_type, type)
                 .FindAllLowestRated(t => t.GetCustomForTypeAttributeOfTypeTypeDistance(attribute_type, type))
                 .ToList();

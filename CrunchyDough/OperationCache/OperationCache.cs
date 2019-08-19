@@ -6,7 +6,7 @@ namespace CrunchyDough
 {
     public class OperationCache<T, P1, P2, P3, P4, P5> : OperationCache<T, Tuple<P1, P2, P3, P4, P5>>
     {
-        public OperationCache(Operation<T, P1, P2, P3, P4, P5> o) : base(p => o(p.item1, p.item2, p.item3, p.item4, p.item5)) { }
+        public OperationCache(string i, Operation<T, P1, P2, P3, P4, P5> o) : base(i, p => o(p.item1, p.item2, p.item3, p.item4, p.item5)) { }
 
         public T Fetch(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
         {
@@ -16,7 +16,7 @@ namespace CrunchyDough
 
     public class OperationCache<T, P1, P2, P3, P4> : OperationCache<T, Tuple<P1, P2, P3, P4>>
     {
-        public OperationCache(Operation<T, P1, P2, P3, P4> o) : base(p => o(p.item1, p.item2, p.item3, p.item4)) { }
+        public OperationCache(string i, Operation<T, P1, P2, P3, P4> o) : base(i, p => o(p.item1, p.item2, p.item3, p.item4)) { }
 
         public T Fetch(P1 p1, P2 p2, P3 p3, P4 p4)
         {
@@ -26,7 +26,7 @@ namespace CrunchyDough
 
     public class OperationCache<T, P1, P2, P3> : OperationCache<T, Tuple<P1, P2, P3>>
     {
-        public OperationCache(Operation<T, P1, P2, P3> o) : base(p => o(p.item1, p.item2, p.item3)) { }
+        public OperationCache(string i, Operation<T, P1, P2, P3> o) : base(i, p => o(p.item1, p.item2, p.item3)) { }
 
         public T Fetch(P1 p1, P2 p2, P3 p3)
         {
@@ -36,7 +36,7 @@ namespace CrunchyDough
 
     public class OperationCache<T, P1, P2> : OperationCache<T, Tuple<P1, P2>>
     {
-        public OperationCache(Operation<T, P1, P2> o) : base(p => o(p.item1, p.item2)) { }
+        public OperationCache(string i, Operation<T, P1, P2> o) : base(i, p => o(p.item1, p.item2)) { }
 
         public T Fetch(P1 p1, P2 p2)
         {
@@ -68,7 +68,7 @@ namespace CrunchyDough
             }
         }
 
-        public OperationCache(Operation<T, P> o)
+        public OperationCache(string i, Operation<T, P> o) : base(i)
         {
             operation = o;
 
@@ -102,7 +102,10 @@ namespace CrunchyDough
                 else
                 {
                     if (has_null_result == false)
+                    {
                         null_result = Calculate(parameter);
+                        has_null_result = true;
+                    }
 
                     return null_result;
                 }
@@ -124,7 +127,7 @@ namespace CrunchyDough
             return operation();
         }
 
-        public OperationCache(Operation<T> o)
+        public OperationCache(string i, Operation<T> o) : base(i)
         {
             operation = o;
 
@@ -143,7 +146,10 @@ namespace CrunchyDough
             if (IsActive())
             {
                 if (has_result == false)
+                {
                     result = Calculate();
+                    has_result = true;
+                }
 
                 return result;
             }
@@ -154,5 +160,6 @@ namespace CrunchyDough
 
     public abstract class OperationCache : Cache
     {
+        public OperationCache(string i) : base(i) { }
     }
 }

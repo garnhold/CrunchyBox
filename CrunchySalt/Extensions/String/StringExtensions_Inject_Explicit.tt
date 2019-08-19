@@ -26,7 +26,7 @@ namespace CrunchySalt
 		string cache_name = "INJECT_EXPLICIT" + number_parameters;
 		#>
 
-		static private readonly OperationCache<<#=operation_type#>, string> <#=cache_name#> = TextParsingCache.Get().NewOperationCache(delegate(string format) {
+		static private readonly OperationCache<<#=operation_type#>, string> <#=cache_name#> = TextParsingCache.Get().NewOperationCache("<#=cache_name#>", delegate(string format) {
 			return typeof(string).CreateDynamicMethodDelegate<<#=operation_type#>>("FormatString", delegate(MethodBase method) {
 				return new ILReturn(
 					new ILStringExpression(format, s => method.GetTechnicalILParameter(s.ParseInt()))

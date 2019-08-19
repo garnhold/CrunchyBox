@@ -18,7 +18,7 @@ namespace CrunchySalt
         private BasicValueSetter basic_value_setter;
         private BasicValueGetter basic_value_getter;
 
-        static private OperationCache<FieldInfoEX, FieldInfo> GET_FIELD_INFO_EX = ReflectionCache.Get().NewOperationCache(delegate(FieldInfo field_info) {
+        static private OperationCache<FieldInfoEX, FieldInfo> GET_FIELD_INFO_EX = ReflectionCache.Get().NewOperationCache("GET_FIELD_INFO_EX", delegate(FieldInfo field_info) {
             return new FieldInfoEX(field_info);
         });
         static public FieldInfoEX GetFieldInfoEX(FieldInfo field_info)

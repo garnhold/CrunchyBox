@@ -14,7 +14,7 @@ namespace CrunchySandwich
     {
         static private CacheManager CACHE_MANAGER = new CacheManager(Application.isPlaying);
 
-        static private OperationCache<List<LayerEX>> GET_ALL_LAYERS = CACHE_MANAGER.NewOperationCache(delegate() {
+        static private OperationCache<List<LayerEX>> GET_ALL_LAYERS = CACHE_MANAGER.NewOperationCache("GET_ALL_LAYERS", delegate() {
             return Ints.Range(0, 31, true)
                 .Convert(n => new LayerEX(n))
                 .Narrow(l => l.GetName().IsVisible())

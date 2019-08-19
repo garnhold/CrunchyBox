@@ -21,7 +21,7 @@ namespace CrunchyDough
 
         private int minimum_bitage;
 
-        static private OperationCache<EnumInfo, Type> GET_ENUM_INFO = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
+        static private OperationCache<EnumInfo, Type> GET_ENUM_INFO = ReflectionCache.Get().NewOperationCache("GET_ENUM_INFO", delegate(Type type) {
             if (type.CanBeTreatedAs<Enum>())
                 return new EnumInfo(type);
 

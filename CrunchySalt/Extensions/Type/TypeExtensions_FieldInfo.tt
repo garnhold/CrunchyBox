@@ -26,7 +26,7 @@ namespace CrunchySalt
 	{
 	<#foreach(Style style in styles){#>
 
-		static private OperationCache<List<FieldInfo>, Type> GET_IMMEDIATE_NATIVE_<#=style.name#>_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_IMMEDIATE_NATIVE_<#=style.name#>_FIELDS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_NATIVE_<#=style.name#>_FIELDS", delegate(Type item){
 			return item.GetFields(<#=style.binding_flags#>)
 				.ToList();
 		});
@@ -35,9 +35,9 @@ namespace CrunchySalt
 			return GET_IMMEDIATE_NATIVE_<#=style.name#>_FIELDS.Fetch(item);
 		}
 
-		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_<#=style.name#>_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
+		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_<#=style.name#>_FIELDS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_<#=style.name#>_FIELDS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
-				.Convert(f => f.GetImmediateNative<#=style.name#>Fields())
+				.Convert(t => t.GetImmediateNative<#=style.name#>Fields())
 				.ToList();
 		});
 		static public IEnumerable<FieldInfo> GetNative<#=style.name#>Fields(this Type item)
@@ -45,9 +45,19 @@ namespace CrunchySalt
 			return GET_NATIVE_<#=style.name#>_FIELDS.Fetch(item);
 		}
 		
-		static private OperationCache<List<FieldInfoEX>, Type> GET_<#=style.name#>_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item){
-			return item.GetNative<#=style.name#>Fields()
+		static private OperationCache<List<FieldInfoEX>, Type> GET_IMMEDIATE_<#=style.name#>_FIELDS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_<#=style.name#>_FIELDS", delegate(Type item){
+			return item.GetImmediateNative<#=style.name#>Fields()
 				.Convert(f => f.GetFieldInfoEX())
+				.ToList();
+		});
+		static public IEnumerable<FieldInfoEX> GetImmediate<#=style.name#>Fields(this Type item)
+		{
+			return GET_IMMEDIATE_<#=style.name#>_FIELDS.Fetch(item);
+		}
+
+		static private OperationCache<List<FieldInfoEX>, Type> GET_<#=style.name#>_FIELDS = ReflectionCache.Get().NewOperationCache("GET_<#=style.name#>_FIELDS", delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediate<#=style.name#>Fields())
 				.ToList();
 		});
 		static public IEnumerable<FieldInfoEX> Get<#=style.name#>Fields(this Type item)
@@ -55,7 +65,7 @@ namespace CrunchySalt
 			return GET_<#=style.name#>_FIELDS.Fetch(item);
 		}
 
-		static private OperationCache<FieldInfoEX, Type, string> GET_IMMEDIATE_<#=style.name#>_FIELD = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name){
+		static private OperationCache<FieldInfoEX, Type, string> GET_IMMEDIATE_<#=style.name#>_FIELD = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_<#=style.name#>_FIELD", delegate(Type item, string name){
 			return item.GetField(name, <#=style.binding_flags#>)
 				.GetFieldInfoEX();
 		});
@@ -64,7 +74,7 @@ namespace CrunchySalt
 			return GET_IMMEDIATE_<#=style.name#>_FIELD.Fetch(item, name);
 		}
 
-		static private OperationCache<FieldInfoEX, Type, string> GET_<#=style.name#>_FIELD = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name){
+		static private OperationCache<FieldInfoEX, Type, string> GET_<#=style.name#>_FIELD = ReflectionCache.Get().NewOperationCache("GET_<#=style.name#>_FIELD", delegate(Type item, string name){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediate<#=style.name#>Field(name))
 				.GetFirstNonNull();

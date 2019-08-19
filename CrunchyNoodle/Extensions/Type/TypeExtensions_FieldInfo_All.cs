@@ -10,7 +10,7 @@ namespace CrunchyNoodle
 {
     static public class TypeExtensions_FieldInfo_All
     {
-        static private OperationCache<List<FieldInfoEX>, Type> GET_ALL_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+        static private OperationCache<List<FieldInfoEX>, Type> GET_ALL_FIELDS = ReflectionCache.Get().NewOperationCache("GET_ALL_FIELDS", delegate(Type item) {
             return item.GetAllInstanceFields()
                 .Append(item.GetAllStaticFields())
                 .ToList();
@@ -20,7 +20,7 @@ namespace CrunchyNoodle
             return GET_ALL_FIELDS.Fetch(item);
         }
 
-        static private OperationCache<List<FieldInfoEX>, Type, FieldInfoFilters> GET_FILTERED_FIELDS = ReflectionCache.Get().NewOperationCache(delegate(Type item, FieldInfoFilters filters) {
+        static private OperationCache<List<FieldInfoEX>, Type, FieldInfoFilters> GET_FILTERED_FIELDS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_FIELDS", delegate(Type item, FieldInfoFilters filters) {
             return item.GetFilteredInstanceFields(filters)
                 .Append(item.GetFilteredStaticFields(filters))
                 .ToList();

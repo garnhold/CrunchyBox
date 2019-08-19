@@ -90,7 +90,7 @@ namespace CrunchySalt
 			return item.GetUnaryOperator(UnaryOperatorTypeExtensions.GetUnaryOperatorTypeBySymbol(symbol));
 		}
 
-		static private OperationCache<UnaryOperatorInfoEX, Type, UnaryOperatorType> GET_OVERLOADED_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, UnaryOperatorType operator_type) {
+		static private OperationCache<UnaryOperatorInfoEX, Type, UnaryOperatorType> GET_OVERLOADED_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_OVERLOADED_OPERATOR", delegate(Type item, UnaryOperatorType operator_type) {
 			string special_name = operator_type.GetSpecialName();
 			Type[] parameter_types = new Type[] { item };
 
@@ -102,7 +102,7 @@ namespace CrunchySalt
 			return GET_OVERLOADED_OPERATOR.Fetch(item, operator_type);
 		}
 
-		static private OperationCache<UnaryOperatorInfoEX, Type> GET_NumericNegate_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+		static private OperationCache<UnaryOperatorInfoEX, Type> GET_NumericNegate_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_NumericNegate_OPERATOR", delegate(Type item) {
 	
 			if(item.IsNumeric())
 				return new UnaryOperatorInfoEX_Internal_Numeric_NumericNegate(item);
@@ -118,7 +118,7 @@ namespace CrunchySalt
 			return GET_NumericNegate_OPERATOR.Fetch(item);
 		}
 
-		static private OperationCache<UnaryOperatorInfoEX, Type> GET_LogicalNegate_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+		static private OperationCache<UnaryOperatorInfoEX, Type> GET_LogicalNegate_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_LogicalNegate_OPERATOR", delegate(Type item) {
 	
 			if(item.IsBool())
 				return new UnaryOperatorInfoEX_Internal_Bool_LogicalNegate(item);
@@ -134,7 +134,7 @@ namespace CrunchySalt
 			return GET_LogicalNegate_OPERATOR.Fetch(item);
 		}
 
-		static private OperationCache<UnaryOperatorInfoEX, Type> GET_OnesComplement_OPERATOR = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+		static private OperationCache<UnaryOperatorInfoEX, Type> GET_OnesComplement_OPERATOR = ReflectionCache.Get().NewOperationCache("GET_OnesComplement_OPERATOR", delegate(Type item) {
 	
 			if(item.IsInteger())
 				return new UnaryOperatorInfoEX_Internal_Integer_OnesComplement(item);

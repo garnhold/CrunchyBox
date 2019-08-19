@@ -20,7 +20,7 @@ namespace CrunchySack
             class_providers = new List<ClassProvider>();
             manual_classes = new Dictionary<Tuple<Type, string>, CmlEntry_Class>();
 
-            class_cache = new OperationCache<CmlEntry_Class, Type, string>(delegate(Type type, string layout) {
+            class_cache = new OperationCache<CmlEntry_Class, Type, string>("class_cache", delegate(Type type, string layout) {
                 return manual_classes.GetValue(Tuple.New(type, layout)) ?? 
                     class_providers.Convert(p => p.GetClass(type, layout)).GetFirstNonNull();
             });

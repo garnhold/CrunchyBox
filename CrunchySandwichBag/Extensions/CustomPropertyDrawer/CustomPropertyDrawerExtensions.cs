@@ -13,7 +13,7 @@ namespace CrunchySandwichBag
 {
     static public partial class CustomPropertyDrawerExtensions
     {
-        static private OperationCache<ValueGetter<Type>> GET_HANDLED_TYPE_GETTER = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<ValueGetter<Type>> GET_HANDLED_TYPE_GETTER = ReflectionCache.Get().NewOperationCache("GET_HANDLED_TYPE_GETTER", delegate() {
             return typeof(CustomPropertyDrawer)
                 .GetFilteredInstanceFieldsOfTypeValueGetters<Type>()
                 .GetFirst();
@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
             return GET_HANDLED_TYPE_GETTER.Fetch()(item);
         }
 
-        static private OperationCache<ValueGetter<bool>> DOES_HANDLE_CHILD_TYPES_GETTER = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<ValueGetter<bool>> DOES_HANDLE_CHILD_TYPES_GETTER = ReflectionCache.Get().NewOperationCache("DOES_HANDLE_CHILD_TYPES_GETTER", delegate() {
             return typeof(CustomPropertyDrawer)
                 .GetFilteredInstanceFieldsOfTypeValueGetters<bool>()
                 .GetFirst();

@@ -31,7 +31,7 @@ namespace CrunchyNoodle
             return item.GetConversionMethod(type).IfNotNull(m => m.GetBasicMethodInvoker());
         }
 
-        static private OperationCache<ConstructorInfoEX, Type, Type> GET_CONVERSION_CONSTRUCTOR = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type type) {
+        static private OperationCache<ConstructorInfoEX, Type, Type> GET_CONVERSION_CONSTRUCTOR = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_CONSTRUCTOR", delegate(Type item, Type type) {
             return type.GetInstanceConstructor(new Type[]{item});
         });
         static public ConstructorInfoEX GetConversionConstructor(this Type item, Type type)
@@ -43,7 +43,7 @@ namespace CrunchyNoodle
             return item.GetConversionConstructor(type).IfNotNull(c => c.GetBasicMethodInvoker());
         }
 
-        static private OperationCache<MethodInfoEX, Type, Type> GET_GENERAL_CONVERSION_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type type) {
+        static private OperationCache<MethodInfoEX, Type, Type> GET_GENERAL_CONVERSION_METHOD = ReflectionCache.Get().NewOperationCache("GET_GENERAL_CONVERSION_METHOD", delegate(Type item, Type type) {
             return MarkedMethods<ConversionAttribute>.GetFilteredMarkedStaticMethods(
                 Filterer_MethodInfo.CouldMaybeReturnInto(type),
                 Filterer_MethodInfo.CanEffectiveParametersHold(item, typeof(Type))
@@ -60,7 +60,7 @@ namespace CrunchyNoodle
             });
         }
 
-        static private OperationCache<BasicMethodInvoker, Type, Type> GET_CONVERSION_INVOKER = ReflectionCache.Get().NewOperationCache(delegate(Type item, Type type) {
+        static private OperationCache<BasicMethodInvoker, Type, Type> GET_CONVERSION_INVOKER = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_INVOKER", delegate(Type item, Type type) {
             return item.GetConversionMethodInvoker(type) ??
                 item.GetConversionConstructorInvoker(type) ??
                 item.GetGeneralConversionMethodInvoker(type);

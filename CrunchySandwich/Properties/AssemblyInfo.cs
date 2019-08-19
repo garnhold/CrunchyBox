@@ -24,8 +24,7 @@ using CrunchyNoodle;
     typeof(CrunchyBun.ThisAssembly),
     typeof(CrunchyCheese.ThisAssembly),
     typeof(CrunchySauce.ThisAssembly),
-    typeof(CrunchyRecipe.ThisAssembly),
-    typeof(UnityEngine.Object)
+    typeof(CrunchyRecipe.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

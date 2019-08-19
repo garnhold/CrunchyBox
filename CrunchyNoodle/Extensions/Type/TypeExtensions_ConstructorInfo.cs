@@ -9,7 +9,7 @@ namespace CrunchyNoodle
 {
     static public class TypeExtensions_ConstructorInfo
     {
-        static private OperationCache<List<ConstructorInfoEX>, Type, ConstructorInfoFilters> GET_FILTERED_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache(delegate(Type item, ConstructorInfoFilters filters) {
+        static private OperationCache<List<ConstructorInfoEX>, Type, ConstructorInfoFilters> GET_FILTERED_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_CONSTRUCTORS", delegate(Type item, ConstructorInfoFilters filters) {
             return item.GetInstanceConstructors()
                 .FilterBy(filters)
                 .ToList();

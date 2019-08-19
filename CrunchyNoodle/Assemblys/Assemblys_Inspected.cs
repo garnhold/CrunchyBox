@@ -26,7 +26,7 @@ namespace CrunchyNoodle
             }
         }
 
-        static private OperationCache<HashSet<Assembly>> GET_ALL_INSPECTED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<HashSet<Assembly>> GET_ALL_INSPECTED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSPECTED_ASSEMBLYS", delegate() {
             HashSet<Assembly> absorbed = new HashSet<Assembly>();
             HashSet<Assembly> visited = new HashSet<Assembly>();
 

@@ -12,7 +12,7 @@ namespace CrunchyNoodle
 {
     static public class VersionInfo
     {
-        static private OperationCache<ByteSequence> GET_ID = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<ByteSequence> GET_ID = ReflectionCache.Get().NewOperationCache("GET_ID", delegate() {
             return HashTypes.SHA1.CalculateAsUnicode(
                 Assemblys.GetAllInspectedAssemblys()
                     .Convert(a => a.GetAssemblyId() + a.GetAssemblyTimestamp())
@@ -24,7 +24,7 @@ namespace CrunchyNoodle
             return GET_ID.Fetch();
         }
 
-        static private OperationCache<string> GET_ID_STRING = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<string> GET_ID_STRING = ReflectionCache.Get().NewOperationCache("GET_ID_STRING", delegate() {
             return GetId().ToHexString();
         });
         static public string GetIdString()

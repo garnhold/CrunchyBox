@@ -11,7 +11,7 @@ namespace CrunchyStyrofoam
 {
     static public class DatabaseExtensions_Table
     {
-        static public DatabaseTable NewDatabaseTable(this Database item, string n)
+        static public DatabaseTable NewTable(this Database item, string n)
         {
             return item.AddTable(new DatabaseTable(n));
         }

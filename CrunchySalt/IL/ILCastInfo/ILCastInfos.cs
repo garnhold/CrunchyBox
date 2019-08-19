@@ -13,7 +13,7 @@ namespace CrunchySalt
 {
     static public class ILCastInfos
     {
-        static private OperationCache<ILCastInfo, Type, Type, bool, bool, bool> GET_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache<ILCastInfo, Type, Type, bool, bool, bool>(delegate(Type source_type, Type destination_type, bool copy_on_unbox, bool allow_implicit_operators, bool allow_explicit_operators) {
+        static private OperationCache<ILCastInfo, Type, Type, bool, bool, bool> GET_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache<ILCastInfo, Type, Type, bool, bool, bool>("GET_IL_CAST_INFO", delegate(Type source_type, Type destination_type, bool copy_on_unbox, bool allow_implicit_operators, bool allow_explicit_operators) {
             if (source_type.CanILTreatAs(destination_type))
                 return new ILCastInfo_Nothing(source_type, destination_type);
 
@@ -79,7 +79,7 @@ namespace CrunchySalt
             return GET_IL_CAST_INFO.Fetch(source_type, destination_type, copy_on_unbox, allow_implicit_operators, allow_explicit_operators);
         }
 
-        static private OperationCache<ILCastInfo, Type, Type> GET_THIN_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache(delegate(Type source_type, Type destination_type) {
+        static private OperationCache<ILCastInfo, Type, Type> GET_THIN_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache("GET_THIN_IL_CAST_INFO", delegate(Type source_type, Type destination_type) {
             return GetILCastInfo(source_type, destination_type, false, false, false);
         });
         static public ILCastInfo GetThinILCastInfo(Type source_type, Type destination_type)
@@ -87,7 +87,7 @@ namespace CrunchySalt
             return GET_THIN_IL_CAST_INFO.Fetch(source_type, destination_type);
         }
 
-        static private OperationCache<ILCastInfo, Type, Type> GET_IMPLICIT_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache(delegate(Type source_type, Type destination_type) {
+        static private OperationCache<ILCastInfo, Type, Type> GET_IMPLICIT_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache("GET_IMPLICIT_IL_CAST_INFO", delegate(Type source_type, Type destination_type) {
             return GetILCastInfo(source_type, destination_type, true, true, false);
         });
         static public ILCastInfo GetImplicitILCastInfo(Type source_type, Type destination_type)
@@ -95,7 +95,7 @@ namespace CrunchySalt
             return GET_IMPLICIT_IL_CAST_INFO.Fetch(source_type, destination_type);
         }
 
-        static private OperationCache<ILCastInfo, Type, Type> GET_EXPLICIT_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache(delegate(Type source_type, Type destination_type) {
+        static private OperationCache<ILCastInfo, Type, Type> GET_EXPLICIT_IL_CAST_INFO = ReflectionCache.Get().NewOperationCache("GET_EXPLICIT_IL_CAST_INFO", delegate(Type source_type, Type destination_type) {
             return GetILCastInfo(source_type, destination_type, true, true, true);
         });
         static public ILCastInfo GetExplicitILCastInfo(Type source_type, Type destination_type)

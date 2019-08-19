@@ -10,7 +10,7 @@ using CrunchySalt;
 
 namespace CrunchyStyrofoam
 {
-    public class DatabaseTableField
+    public abstract class DatabaseTableField
     {
         private int index;
         private string name;
@@ -22,6 +22,9 @@ namespace CrunchyStyrofoam
         private bool is_unique;
 
         private DatabaseTable table;
+
+        public abstract object TransformToInternal(object value);
+        public abstract object TransformFromInternal(object value);
 
         public DatabaseTableField(string n, DatabaseTableFieldType t, bool pk = false, bool ai = false, bool nn = false, bool u = false)
         {
@@ -84,7 +87,7 @@ namespace CrunchyStyrofoam
 
         public string GetUpdateDeclaration()
         {
-            return string.Format("{0} = {1}",
+            return "{0} = {1}".Inject(
                 GetName(),
                 GetParameter()
             );

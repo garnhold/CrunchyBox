@@ -11,7 +11,7 @@ namespace CrunchySalt
 {
     static public class StringExtensions_Inject_Implicit
     {
-        static private readonly OperationCache<Operation<string, object[]>, string> INJECT_IMPLICIT = TextParsingCache.Get().NewOperationCache(delegate(string format) {
+        static private readonly OperationCache<Operation<string, object[]>, string> INJECT_IMPLICIT = TextParsingCache.Get().NewOperationCache("INJECT_IMPLICIT", delegate(string format) {
             return typeof(string).CreateDynamicMethodDelegate<Operation<string, object[]>>("FormatString", delegate(MethodBase method) {
                 ILParameter array = method.GetTechnicalILParameter(0);
 

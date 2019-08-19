@@ -7,16 +7,17 @@ using CrunchyDough;
 
 namespace CrunchyNoodle
 {
-    public class InspectTypeSource_TypesAttribute : InspectTypeSourceAttribute
+    [AttributeUsage(AttributeTargets.Assembly)]
+    public class InspectedTypesAttribute : Attribute
     {
         private List<Type> types;
 
-        public InspectTypeSource_TypesAttribute(params Type[] t)
+        public InspectedTypesAttribute(params Type[] t)
         {
             types = t.ToList();
         }
 
-        public override IEnumerable<Type> GetTypes()
+        public IEnumerable<Type> GetTypes()
         {
             return types;
         }

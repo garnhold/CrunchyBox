@@ -13,7 +13,7 @@ namespace CrunchySalt
 {
     static public class TypeExtensions_Resolve
     {
-        static private readonly OperationCache<Dictionary<int, FieldInfoEX>, Type> FIELDS_BY_METADATA_TOKEN = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
+        static private readonly OperationCache<Dictionary<int, FieldInfoEX>, Type> FIELDS_BY_METADATA_TOKEN = ReflectionCache.Get().NewOperationCache("FIELDS_BY_METADATA_TOKEN", delegate(Type type) {
             return type.GetMemberFields().ToDictionaryValues(f => f.MetadataToken);
         });
         static public FieldInfoEX ResolveField(this Type item, int metadata_token)
@@ -24,7 +24,7 @@ namespace CrunchySalt
             return FIELDS_BY_METADATA_TOKEN.Fetch(item).GetValue(metadata_token);
         }
 
-        static private readonly OperationCache<Dictionary<int, MethodInfoEX>, Type> METHODS_BY_METADATA_TOKEN = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
+        static private readonly OperationCache<Dictionary<int, MethodInfoEX>, Type> METHODS_BY_METADATA_TOKEN = ReflectionCache.Get().NewOperationCache("METHODS_BY_METADATA_TOKEN", delegate(Type type) {
             return type.GetTechnicalMemberMethods().ToDictionaryValues(m => m.MetadataToken);
         });
         static public MethodInfoEX ResolveMethod(this Type item, int metadata_token)

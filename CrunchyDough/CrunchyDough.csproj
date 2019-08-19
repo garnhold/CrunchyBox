@@ -134,6 +134,12 @@
     <Compile Include="ICatalog\ICatalog.cs" />
     <Compile Include="IndexList\IndexList.cs" />
     <Compile Include="IRegister\IRegister.cs" />
+    <Compile Include="Log\Extensions\LogExtensions.cs" />
+    <Compile Include="Log\Log.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\Log_Text_DataFile.cs" />
+    <Compile Include="Log\Log_Text_File.cs" />
+    <Compile Include="Log\Log_Text.cs" />
     <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Serial.cs" />
     <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Parallel.cs" />
     <Compile Include="OperationProcess\Extensions\MultiOperationExtensions.cs" />

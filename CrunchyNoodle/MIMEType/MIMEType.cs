@@ -8,7 +8,7 @@ namespace CrunchyNoodle
 {
 	static public class MIMEType
 	{
-		static private OperationCache<OptionTable<string>> MIME_TYPE_DICTIONARY = ReflectionCache.Get().NewOperationCache(delegate(){
+        static private OperationCache<OptionTable<string>> MIME_TYPE_DICTIONARY = ReflectionCache.Get().NewOperationCache("MIME_TYPE_DICTIONARY", delegate() {
 			return new OptionTable<string>(
 KeyValuePair.New("ez", "application/andrew-inset"),
 KeyValuePair.New("aw", "application/applixware"),
