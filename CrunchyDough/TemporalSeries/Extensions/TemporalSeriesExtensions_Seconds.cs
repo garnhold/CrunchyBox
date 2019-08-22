@@ -3,29 +3,29 @@ using System.Reflection;
 
 namespace CrunchyDough
 {
-    static public class TimePieceExtensions_Seconds
+    static public class TemporalSeriesExtensions_Seconds
     {
-        static public float ResetGetSeconds(this TimePiece item)
+        static public float ResetGetSeconds(this TemporalSeries item)
         {
             return item.ResetGetTime().GetSeconds();
         }
 
-        static public float RestartGetSeconds(this TimePiece item)
+        static public float RestartGetSeconds(this TemporalSeries item)
         {
             return item.RestartGetTime().GetSeconds();
         }
 
-        static public void AddElapsedTimeInSeconds(this TimePiece item, float seconds)
+        static public void AddElapsedTimeInSeconds(this TemporalSeries item, float seconds)
         {
             item.AddElapsedTime(Duration.Seconds(seconds));
         }
 
-        static public void SetElapsedTimeInSeconds(this TimePiece item, float seconds)
+        static public void SetElapsedTimeInSeconds(this TemporalSeries item, float seconds)
         {
             item.SetElapsedTime(Duration.Seconds(seconds));
         }
 
-        static public float GetElapsedTimeInSeconds(this TimePiece item)
+        static public float GetElapsedTimeInSeconds(this TemporalSeries item)
         {
             return item.GetElapsedTime().GetSeconds();
         }

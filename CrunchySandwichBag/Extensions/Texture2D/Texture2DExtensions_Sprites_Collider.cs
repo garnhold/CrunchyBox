@@ -48,10 +48,10 @@ namespace CrunchySandwichBag
             switch (obj.GetChildValue<SpriteImportMode>("m_SpriteMode"))
             {
                 case SpriteImportMode.Single:
-                    return obj.FindProperty("m_SpriteSheet").WrapAsEnumerable();
+                    return obj.ForceProperty("m_SpriteSheet").WrapAsEnumerable();
 
                 case SpriteImportMode.Multiple:
-                    return obj.FindProperty("m_SpriteSheet.m_Sprites").GetArrayElements();
+                    return obj.ForceProperty("m_SpriteSheet.m_Sprites").GetArrayElements();
             }
 
             return Empty.IEnumerable<SerializedProperty>();

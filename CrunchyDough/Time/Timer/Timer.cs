@@ -2,14 +2,14 @@
 
 namespace CrunchyDough
 {
-    public class Timer : TimePiece
+    public class Timer : TemporalSeries
     {
-        private bool is_running;
+        [StateField]private bool is_running;
         private long start_time_in_milliseconds;
 
-        private long accumulated_time_in_milliseconds;
+        [StateField]private long accumulated_time_in_milliseconds;
 
-        private TimeSource time_source;
+        [SettingField]private TimeSource time_source;
 
         public Timer(TimeSource t)
         {
@@ -18,7 +18,7 @@ namespace CrunchyDough
 
         public Timer() : this(TimeSource_Stopwatch.INSTANCE) { }
 
-        public override bool Start()
+        public bool Start()
         {
             if (is_running == false)
             {
@@ -31,7 +31,7 @@ namespace CrunchyDough
             return false;
         }
 
-        public override bool Pause()
+        public bool Pause()
         {
             if (is_running == true)
             {
@@ -44,18 +44,18 @@ namespace CrunchyDough
             return false;
         }
 
-        public override void SetElapsedTimeInMilliseconds(long m)
+        public void SetElapsedTimeInMilliseconds(long m)
         {
             start_time_in_milliseconds = time_source.GetCurrentTimeInMilliseconds();
             accumulated_time_in_milliseconds = m;
         }
 
-        public override bool IsRunning()
+        public bool IsRunning()
         {
             return is_running;
         }
 
-        public override long GetElapsedTimeInMilliseconds()
+        public long GetElapsedTimeInMilliseconds()
         {
             long elapsed_time = accumulated_time_in_milliseconds;
 

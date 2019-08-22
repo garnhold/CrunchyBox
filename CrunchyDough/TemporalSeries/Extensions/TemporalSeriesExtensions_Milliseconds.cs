@@ -3,14 +3,14 @@ using System.Reflection;
 
 namespace CrunchyDough
 {
-    static public class TimePieceExtensions_Milliseconds
+    static public class TemporalSeriesExtensions_Milliseconds
     {
-        static public void AddElapsedTimeInMilliseconds(this TimePiece item, long milliseconds)
+        static public void AddElapsedTimeInMilliseconds(this TemporalSeries item, long milliseconds)
         {
             item.SetElapsedTimeInMilliseconds(item.GetElapsedTimeInMilliseconds() + milliseconds);
         }
 
-        static public long ResetGetMilliseconds(this TimePiece item)
+        static public long ResetGetMilliseconds(this TemporalSeries item)
         {
             long milliseconds = item.GetElapsedTimeInMilliseconds();
 
@@ -18,7 +18,7 @@ namespace CrunchyDough
             return milliseconds;
         }
 
-        static public long RestartGetMilliseconds(this TimePiece item)
+        static public long RestartGetMilliseconds(this TemporalSeries item)
         {
             long milliseconds = item.GetElapsedTimeInMilliseconds();
 

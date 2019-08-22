@@ -28,7 +28,7 @@ namespace CrunchySandwichBag
         }
         static public T GetChildValue<T>(this SerializedProperty item, string name)
         {
-            return item.ForceProperty(name).ConvertEX<T>();
+            return item.GetChildValue(name, typeof(T)).Convert<T>();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace CrunchyDough
 {
-    public class ManualTimer : TimePiece
+    public class ManualTimer : TemporalSeries
     {
         private bool is_running;
         private long elapsed_time_in_milliseconds;
@@ -14,7 +14,7 @@ namespace CrunchyDough
                 elapsed_time_in_milliseconds += milliseconds;
         }
 
-        public override bool Start()
+        public bool Start()
         {
             if (is_running == false)
             {
@@ -25,7 +25,7 @@ namespace CrunchyDough
             return false;
         }
 
-        public override bool Pause()
+        public bool Pause()
         {
             if (is_running)
             {
@@ -36,17 +36,17 @@ namespace CrunchyDough
             return false;
         }
 
-        public override void SetElapsedTimeInMilliseconds(long m)
+        public void SetElapsedTimeInMilliseconds(long m)
         {
             elapsed_time_in_milliseconds = m;
         }
 
-        public override bool IsRunning()
+        public bool IsRunning()
         {
             return is_running;
         }
 
-        public override long GetElapsedTimeInMilliseconds()
+        public long GetElapsedTimeInMilliseconds()
         {
             return elapsed_time_in_milliseconds;
         }

@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace CrunchyDough
 {
-    public class StepTimer : TimePiece
+    public class StepTimer : TemporalSeries
     {
         private Timer timer;
         private long elapsed_time_in_milliseconds;
@@ -33,23 +33,23 @@ namespace CrunchyDough
             return step_in_milliseconds;
         }
 
-        public override bool Start()
+        public bool Start()
         {
             return timer.Start();
         }
 
-        public override bool Pause()
+        public bool Pause()
         {
             return timer.Pause();
         }
 
-        public override void SetElapsedTimeInMilliseconds(long m)
+        public void SetElapsedTimeInMilliseconds(long m)
         {
             timer.Reset();
             elapsed_time_in_milliseconds = m;
         }
 
-        public override bool IsRunning()
+        public bool IsRunning()
         {
             return timer.IsRunning();
         }
@@ -59,7 +59,7 @@ namespace CrunchyDough
             return timer.GetElapsedTimeInMilliseconds().BindBetween(0, max_step_in_milliseconds);
         }
 
-        public override long GetElapsedTimeInMilliseconds()
+        public long GetElapsedTimeInMilliseconds()
         {
             return elapsed_time_in_milliseconds + GetStepTimeInMilliseconds();
         }

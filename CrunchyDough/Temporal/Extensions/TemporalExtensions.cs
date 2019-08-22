@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace CrunchyDough
 {
-    static public class TimePieceExtensions
+    static public class TemporalExtensions
     {
-        static public T StartAndGet<T>(this T item) where T : TimePiece
+        static public T StartAndGet<T>(this T item) where T : Temporal
         {
             item.Start();
 

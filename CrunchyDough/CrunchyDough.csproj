@@ -49,6 +49,9 @@
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions.cs" />
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions_String.cs" />
     <Compile Include="ByteSequence\ByteSequence.cs" />
+    <Compile Include="Trigger\Trigger_Periodic_Regular.cs" />
+    <Compile Include="Trigger\Trigger_Periodic.cs" />
+    <Compile Include="Trigger\Trigger.cs" />
     <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Convert.cs" />
     <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Get.cs" />
     <Compile Include="EnumValueInfo\EnumValueInfo.cs" />
@@ -149,7 +152,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="SettingFieldAttribute\SettingFieldAttribute.cs" />
+    <Compile Include="StateFieldAttribute\StateFieldAttribute.cs" />
     <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Timestamp.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_General.cs" />
+    <Compile Include="TemporalSeries\TemporalSeries.cs" />
+    <Compile Include="Temporal\Temporal.cs" />
     <Compile Include="Time\FluxTimer\Extensions\FluxTimerExtensions.cs" />
     <Compile Include="Time\FluxTimer\FluxTimer.cs" />
     <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Seconds.cs" />
@@ -550,12 +558,11 @@
     <Compile Include="Time\StepTimer\Extensions\StepTimerExtensions_Duration.cs" />
     <Compile Include="Time\StepTimer\Extensions\StepTimerExtensions_Seconds.cs" />
     <Compile Include="Time\StepTimer\StepTimer.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_General.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Duration.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Milliseconds.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Seconds.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions.cs" />
-    <Compile Include="Time\TimePiece\TimePiece.cs" />
+    <Compile Include="Temporal\Extensions\TemporalExtensions_General.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Duration.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Milliseconds.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Seconds.cs" />
+    <Compile Include="Temporal\Extensions\TemporalExtensions.cs" />
     <Compile Include="Time\Timer\Extensions\TimerExtensions_Restart.cs" />
     <Compile Include="Time\Timer\Extensions\TimerExtensions_Start.cs" />
     <Compile Include="Time\Timer\Extensions\TimerExtensions.cs" />
