@@ -147,6 +147,8 @@
     </Compile>
     <Compile Include="Filterer\FieldInfo\FieldInfoFilters.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsDeclaredWithin.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsTypicalValueType.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsTypicalReferenceType.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPrivateField.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPublicField.cs" />
     <Compile Include="Filterer\Filterer_General.cs" />

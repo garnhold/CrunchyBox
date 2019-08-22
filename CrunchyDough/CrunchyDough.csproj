@@ -49,6 +49,7 @@
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions.cs" />
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions_String.cs" />
     <Compile Include="ByteSequence\ByteSequence.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Treatment_Basic.cs" />
     <Compile Include="Trigger\Trigger_Periodic_Regular.cs" />
     <Compile Include="Trigger\Trigger_Periodic.cs" />
     <Compile Include="Trigger\Trigger.cs" />
@@ -152,18 +153,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="SettingFieldAttribute\SettingFieldAttribute.cs" />
-    <Compile Include="StateFieldAttribute\StateFieldAttribute.cs" />
     <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Timestamp.cs" />
     <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_General.cs" />
     <Compile Include="TemporalSeries\TemporalSeries.cs" />
     <Compile Include="Temporal\Temporal.cs" />
     <Compile Include="Time\FluxTimer\Extensions\FluxTimerExtensions.cs" />
     <Compile Include="Time\FluxTimer\FluxTimer.cs" />
-    <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Seconds.cs" />
-    <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions_Duration.cs" />
-    <Compile Include="Time\ManualTimer\Extensions\ManualTimerExtensions.cs" />
-    <Compile Include="Time\ManualTimer\ManualTimer.cs" />
     <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions_Seconds.cs" />
     <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions_Duration.cs" />
     <Compile Include="Time\TimeSource\TimeSource_Flux.cs" />

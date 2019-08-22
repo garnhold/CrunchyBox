@@ -4,7 +4,7 @@ namespace CrunchyDough
 {
     public class Timer_Duration : Timer
     {
-        [SettingField]private long duration_in_milliseconds;
+        private long duration_in_milliseconds;
 
         public Timer_Duration(long d, TimeSource t) : base(t)
         {

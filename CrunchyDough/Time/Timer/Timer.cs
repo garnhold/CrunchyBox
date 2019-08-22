@@ -4,12 +4,12 @@ namespace CrunchyDough
 {
     public class Timer : TemporalSeries
     {
-        [StateField]private bool is_running;
+        private bool is_running;
         private long start_time_in_milliseconds;
 
-        [StateField]private long accumulated_time_in_milliseconds;
+        private long accumulated_time_in_milliseconds;
 
-        [SettingField]private TimeSource time_source;
+        private TimeSource time_source;
 
         public Timer(TimeSource t)
         {
