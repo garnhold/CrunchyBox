@@ -10,7 +10,7 @@ namespace CrunchyLunch
         private int bar_width;
 
         private float progress;
-        private Timer progress_timer;
+        private Stopwatch progress_stopwatch;
 
         protected override void RenderInternal(int x, int y, int width, Terminal terminal)
         {
@@ -28,7 +28,7 @@ namespace CrunchyLunch
             bar_width = bw;
 
             progress = 0.0f;
-            progress_timer = new Timer();
+            progress_stopwatch = new Stopwatch();
         }
 
         public TerminalBlock_Progress() : this(0) { }
@@ -36,19 +36,19 @@ namespace CrunchyLunch
         public void StartProgress()
         {
             UpdateProgress(0.0f);
-            progress_timer.Restart();
+            progress_stopwatch.Restart();
         }
 
         public void FinishProgress()
         {
             UpdateProgress(1.0f);
-            progress_timer.Pause();
+            progress_stopwatch.Pause();
         }
 
         public void UpdateProgress(float p)
         {
-            if (progress_timer.IsStopped())
-                progress_timer.Restart();
+            if (progress_stopwatch.IsStopped())
+                progress_stopwatch.Restart();
 
             progress = p.BindBetween(0.0f, 1.0f);
             Render();
@@ -75,7 +75,7 @@ namespace CrunchyLunch
 
         public Duration GetRemainingTime()
         {
-            return Duration.Milliseconds(GetRemainingAsMultiple() * progress_timer.GetElapsedTimeInMilliseconds());
+            return Duration.Milliseconds(GetRemainingAsMultiple() * progress_stopwatch.GetElapsedTimeInMilliseconds());
         }
     }
 }

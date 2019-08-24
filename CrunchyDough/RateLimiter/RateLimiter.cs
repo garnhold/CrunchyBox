@@ -4,17 +4,17 @@ namespace CrunchyDough
 {
     public class RateLimiter
     {
-        private Timer_Duration timer;
+        private Timer timer;
 
         public RateLimiter(long d, TimeSource t)
         {
-            timer = new Timer_Duration(d, t).StartExpireAndGet();
+            timer = new Timer(d, t).StartExpireAndGet();
         }
 
-        public RateLimiter(long d) : this(d, TimeSource_Stopwatch.INSTANCE) { }
+        public RateLimiter(long d) : this(d, TimeSource_System.INSTANCE) { }
 
         public RateLimiter(Duration d, TimeSource t) : this(d.GetWholeMilliseconds(), t) { }
-        public RateLimiter(Duration d) : this(d, TimeSource_Stopwatch.INSTANCE) { }
+        public RateLimiter(Duration d) : this(d, TimeSource_System.INSTANCE) { }
 
         public bool Process(Process process)
         {

@@ -14,9 +14,8 @@ namespace CrunchySandwich
     public class AnimatedSpriteRenderer : MonoBehaviour
     {
         [SerializeField]private AnimatedSprite animated_sprite;
-        [SerializeField]private TimeType time_type;
+        [SerializeField]private GameStopwatch animation_time;
 
-        private FluxTimer animation_time;
         private SpriteAnimation current_animation;
 
         private void Start()
@@ -39,7 +38,7 @@ namespace CrunchySandwich
 
         public void Initialize()
         {
-            animation_time = new FluxTimer(time_type.GetTimeSource()).StartAndGet();
+            animation_time.Start();
             current_animation = animated_sprite.GetDefaultAnimation();
         }
 
@@ -52,7 +51,7 @@ namespace CrunchySandwich
 
         public void SetRate(float rate)
         {
-            animation_time.SetMultiplier(rate);
+            animation_time.SetSpeed(rate);
         }
 
         public void SetAnimation(string name)
@@ -88,7 +87,7 @@ namespace CrunchySandwich
 
         public float GetRate()
         {
-            return animation_time.GetMultiplier();
+            return animation_time.GetSpeed();
         }
     }
 }

@@ -18,6 +18,13 @@ namespace CrunchySandwich
 
         protected abstract T GetComponentInternal(Component parent);
 
+        private void Touch()
+        {
+            limiter.Process(delegate() {
+                component = GetComponentInternal(parent);
+            });
+        }
+
         public ComponentCache(Component p)
         {
             component = default(T);
@@ -28,9 +35,7 @@ namespace CrunchySandwich
 
         public T GetComponent()
         {
-            limiter.Process(delegate() {
-                component = GetComponentInternal(parent);
-            });
+            Touch();
 
             return component;
         }

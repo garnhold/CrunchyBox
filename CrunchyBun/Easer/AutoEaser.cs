@@ -10,8 +10,8 @@ namespace CrunchyBun
 
         public AutoEaser(Easer t) : this(t, 16) { }
 
-        public AutoEaser(EaseFunction f, Timer t) : this(new Easer(f, t)) { }
-        public AutoEaser(EaseFunction f) : this(f, new Timer()) { }
+        public AutoEaser(EaseFunction f, Stopwatch s) : this(new Easer(f, s)) { }
+        public AutoEaser(EaseFunction f) : this(f, new Stopwatch()) { }
     }
 
     public class AutoEaser
@@ -42,8 +42,8 @@ namespace CrunchyBun
         }
 
         public AutoEaser(Type pt, Easer t) : this(pt, t, 16) { }
-        public AutoEaser(Type pt, EaseFunction f, Timer t) : this(pt, new Easer(f, t)) { }
-        public AutoEaser(Type pt, EaseFunction f) : this(pt, f, new Timer()) { }
+        public AutoEaser(Type pt, EaseFunction f, Stopwatch s) : this(pt, new Easer(f, s)) { }
+        public AutoEaser(Type pt, EaseFunction f) : this(pt, f, new Stopwatch()) { }
 
         public void DoDone()
         {

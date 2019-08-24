@@ -8,14 +8,14 @@ namespace CrunchyLunch
     {
         private string process_name;
 
-        private Timer timer;
+        private Stopwatch stopwatch;
         private bool is_processed;
 
         public TerminalBlock_ProcessInfo(string n, int nw) : base(nw)
         {
             process_name = n;
 
-            timer = new Timer();
+            stopwatch = new Stopwatch();
         }
 
         public TerminalBlock_ProcessInfo(int nw) : this("", nw) { }
@@ -23,7 +23,7 @@ namespace CrunchyLunch
 
         public void StartProcess()
         {
-            timer.Restart();
+            stopwatch.Restart();
             is_processed = false;
 
             SetText(process_name + "...");
@@ -31,10 +31,10 @@ namespace CrunchyLunch
 
         public void FinishProcess()
         {
-            timer.Pause();
+            stopwatch.Pause();
             is_processed = true;
 
-            SetText(process_name + " Done " + timer.GetElapsedTimeInMilliseconds() + "ms");
+            SetText(process_name + " Done " + stopwatch.GetElapsedTimeInMilliseconds() + "ms");
         }
 
         public void DoProcess(Process process)

@@ -12,10 +12,10 @@ namespace CrunchyBun
         private float target_value;
 
         private AnimateOperation operation;
-        private StepTimer step_timer;
+        private StepStopwatch step_timer;
 
         private bool is_animating;
-        private Timer_Duration sleep_timer;
+        private Timer sleep_timer;
 
         public event MultiProcess OnAnimate;
         public event MultiProcess OnDone;
@@ -23,10 +23,10 @@ namespace CrunchyBun
         public AnimatedFloat(AnimateOperation o)
         {
             operation = o;
-            step_timer = new StepTimer(Duration.Seconds(0.050f)).Chain(z => z.Start());
+            step_timer = new StepStopwatch(Duration.Seconds(0.050f)).Chain(z => z.Start());
 
             is_animating = true;
-            sleep_timer = new Timer_Duration(Duration.Seconds(0.5f));
+            sleep_timer = new Timer(Duration.Seconds(0.5f));
         }
 
         public bool Animate()

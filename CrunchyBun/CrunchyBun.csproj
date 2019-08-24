@@ -82,6 +82,8 @@
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_RandomLine.cs" />
     <Compile Include="Extensions\Stream\StreamExtensions_Text.cs" />
     <Compile Include="Extensions\Stream\StreamExtensions.cs" />
+    <Compile Include="Extensions\TemporalSeries\TemporalSeriesExtensions_Start.cs" />
+    <Compile Include="Extensions\TemporalSeries\TemporalSeriesExtensions.cs" />
     <Compile Include="FloatChoreography\FloatChoreographyKeyFrame.cs" />
     <Compile Include="FloatChoreography\FloatChoreography.cs" />
     <Compile Include="Easer\Easer.cs" />
@@ -106,10 +108,8 @@
     <Compile Include="Extensions\IList\IListExtensions_Get.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Shuffle.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Random.cs" />
-    <Compile Include="Extensions\Timer\TimerExtensions.cs" />
-    <Compile Include="Extensions\Timer\TimerExtensions_Start.cs" />
-    <Compile Include="Extensions\Timer_Duration\TimerDurationExtensions.cs" />
-    <Compile Include="Extensions\Timer_Duration\TimerDurationExtensions_Start.cs" />
+    <Compile Include="Extensions\TemporalDuration\TemporalDurationExtensions.cs" />
+    <Compile Include="Extensions\TemporalDuration\TemporalDurationExtensions_Start.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Degrees\GraphNodeWanderer_AngleLimited_Degrees.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Degrees\GraphNode_AngleAware_Degrees.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Percent\GraphNodeWanderer_AngleLimited_Percent.cs" />

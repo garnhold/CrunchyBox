@@ -10,7 +10,10 @@ namespace CrunchyBun
 
         public int GetMagnitude(int m)
         {
-            return Get() % m;
+            if (m != 0)
+                return Get() % m;
+
+            return 0;
         }
 
         public int GetIndex(int count)

@@ -18,6 +18,13 @@ namespace CrunchySandwich
 
         protected abstract IEnumerable<T> GetComponentsInternal(Component parent);
 
+        private void Touch()
+        {
+            limiter.Process(delegate() {
+                components.Set(GetComponentsInternal(parent));
+            });
+        }
+
         public ComponentsCache(Component p)
         {
             components = new List<T>();
@@ -26,11 +33,16 @@ namespace CrunchySandwich
             parent = p;
         }
 
+        public ICatalog<T> AsCatalog()
+        {
+            Touch();
+
+            return components.AsCatalog();
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
-            limiter.Process(delegate() {
-                components.Set(GetComponentsInternal(parent));
-            });
+            Touch();
 
             return components.GetEnumerator();
         }

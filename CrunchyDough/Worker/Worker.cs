@@ -18,10 +18,10 @@ namespace CrunchyDough
             work_collection = new WorkCollection<T>(p);
         }
 
-        public Worker(long i, Process<T> p) : this(i, p, TimeSource_Stopwatch.INSTANCE) { }
+        public Worker(long i, Process<T> p) : this(i, p, TimeSource_System.INSTANCE) { }
 
         public Worker(Duration i, Process<T> p, TimeSource t) : this(i.GetWholeMilliseconds(), p, t) { }
-        public Worker(Duration i, Process<T> p) : this(i, p, TimeSource_Stopwatch.INSTANCE) { }
+        public Worker(Duration i, Process<T> p) : this(i, p, TimeSource_System.INSTANCE) { }
 
         public void Clear()
         {

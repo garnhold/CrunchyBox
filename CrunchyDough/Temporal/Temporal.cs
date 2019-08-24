@@ -9,5 +9,8 @@ namespace CrunchyDough
         bool Pause();
 
         bool IsRunning();
+
+        void SetSpeed(float speed);
+        float GetSpeed();
     }
 }

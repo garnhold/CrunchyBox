@@ -9,7 +9,7 @@ namespace CrunchyDough
         {
             if (milliseconds > 0)
             {
-                Timer_Duration timer = new Timer_Duration(milliseconds).StartAndGet();
+                Timer timer = new Timer(milliseconds).StartAndGet();
 
                 do
                 {

@@ -26,7 +26,7 @@ namespace CrunchyCart
             {
                 update_interval = ui;
 
-                timer_field = type_builder.CreateFieldBuilder<Timer>("timer_" + update_interval.ToString().StyleAsVariableName(), FieldAttributesExtensions.PRIVATE);
+                timer_field = type_builder.CreateFieldBuilder<Stopwatch>("stopwatch_" + update_interval.ToString().StyleAsVariableName(), FieldAttributesExtensions.PRIVATE);
                 props = p.ToList();
             }
 
@@ -70,7 +70,7 @@ namespace CrunchyCart
             {
                 return props
                     .Convert(p => p.GenerateConstructor(liaison))
-                    .Append(new ILAssign(liaison.GetILField(timer_field), new ILNew(typeof(Timer))))
+                    .Append(new ILAssign(liaison.GetILField(timer_field), new ILNew(typeof(Stopwatch))))
                     .Append(liaison.GetILField(timer_field).GetILInvoke("Start"))
                     .ToBlock();
             }

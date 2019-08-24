@@ -5,7 +5,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class TapTimer : GameTimer
+    public class TapTimer : GameStopwatch
     {
         static private readonly SpectrumLookup<TapType> TAP_SPECTRUM = new Spectrum<TapType>(
             KeyValuePair.New(float.NegativeInfinity, TapType.MicroTap),

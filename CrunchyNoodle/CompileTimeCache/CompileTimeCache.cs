@@ -172,7 +172,7 @@ namespace CrunchyNoodle
 
                 if (Read(filename, out data).IsUndesired())
                 {
-                    long operation_time = TimeSource_Stopwatch.INSTANCE.TimeProcessInMilliseconds(delegate() {
+                    long operation_time = TimeSource_System.INSTANCE.TimeProcessInMilliseconds(delegate() {
                         data = operation();
                     });
                     

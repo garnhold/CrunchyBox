@@ -6,16 +6,16 @@ namespace CrunchyDough
 {
     public class LogTimer
     {
-        private Timer timer;
+        private Stopwatch timer;
         private List<long> times_in_milliseconds;
 
         public LogTimer(TimeSource t)
         {
-            timer = new Timer(t);
+            timer = new Stopwatch(t);
             times_in_milliseconds = new List<long>();
         }
 
-        public LogTimer() : this(TimeSource_Stopwatch.INSTANCE) { }
+        public LogTimer() : this(TimeSource_System.INSTANCE) { }
 
         public void Clear()
         {

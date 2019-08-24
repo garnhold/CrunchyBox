@@ -11,7 +11,7 @@ namespace CrunchyDough
 
         private Process<T> process;
 
-        private Timer_Duration work_timer;
+        private Timer work_timer;
 
         public Scheduler(long e, Process<T> p, TimeSource t)
         {
@@ -23,14 +23,14 @@ namespace CrunchyDough
 
             process = p;
 
-            work_timer = new Timer_Duration(t);
+            work_timer = new Timer(t);
         }
 
         public Scheduler(Duration e, Process<T> p, TimeSource t) : this(e.GetWholeMilliseconds(), p, t) { }
-        public Scheduler(Duration e, Process<T> p) : this(e, p, TimeSource_Stopwatch.INSTANCE) { }
+        public Scheduler(Duration e, Process<T> p) : this(e, p, TimeSource_System.INSTANCE) { }
 
         public Scheduler(Process<T> p, TimeSource t) : this(0, p, t) { }
-        public Scheduler(Process<T> p) : this(p, TimeSource_Stopwatch.INSTANCE) { }
+        public Scheduler(Process<T> p) : this(p, TimeSource_System.INSTANCE) { }
 
         public void Work(long timestamp, long target_work_milliseconds)
         {

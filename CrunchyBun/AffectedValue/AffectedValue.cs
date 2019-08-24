@@ -14,8 +14,8 @@ namespace CrunchyBun
         private VALUE_TYPE rest_value;
 
         private bool is_active;
-        private StepTimer step_timer;
-        private Timer_Duration sleep_timer;
+        private StepStopwatch step_timer;
+        private Timer sleep_timer;
 
         private List<AffectedValueAffector<VALUE_TYPE>> affectors;
 
@@ -37,8 +37,8 @@ namespace CrunchyBun
             rest_value = r;
 
             is_active = true;
-            step_timer = new StepTimer(Duration.Seconds(0.050f)).StartAndGet();
-            sleep_timer = new Timer_Duration(Duration.Seconds(0.5f));
+            step_timer = new StepStopwatch(Duration.Seconds(0.050f)).StartAndGet();
+            sleep_timer = new Timer(Duration.Seconds(0.5f));
 
             affectors = new List<AffectedValueAffector<VALUE_TYPE>>();
         }

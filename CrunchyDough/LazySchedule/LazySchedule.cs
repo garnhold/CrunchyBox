@@ -8,27 +8,27 @@ namespace CrunchyDough
     {
         private long frame_target_time;
 
-        private Timer frame_timer;
+        private Stopwatch frame_timer;
         private Schedule<T> schedule;
 
         public LazySchedule(long f, long e, Process<T> p, TimeSource t)
         {
             frame_target_time = f;
 
-            frame_timer = new Timer(t).StartAndGet();
+            frame_timer = new Stopwatch(t).StartAndGet();
             schedule = new Schedule<T>(e, p, t);
         }
 
         public LazySchedule(long f, Process<T> p, TimeSource t) : this(f, 2000, p, t) { }
 
-        public LazySchedule(long f, long e, Process<T> p) : this(f, e, p, TimeSource_Stopwatch.INSTANCE) { }
-        public LazySchedule(long f, Process<T> p) : this(f, p, TimeSource_Stopwatch.INSTANCE) { }
+        public LazySchedule(long f, long e, Process<T> p) : this(f, e, p, TimeSource_System.INSTANCE) { }
+        public LazySchedule(long f, Process<T> p) : this(f, p, TimeSource_System.INSTANCE) { }
 
         public LazySchedule(Duration f, Duration e, Process<T> p, TimeSource t) : this(f.GetWholeMilliseconds(), e.GetWholeMilliseconds(), p, t) { }
         public LazySchedule(Duration f, Process<T> p, TimeSource t) : this(f.GetWholeMilliseconds(), p, t) { }
 
-        public LazySchedule(Duration f, Duration e, Process<T> p) : this(f, e, p, TimeSource_Stopwatch.INSTANCE) { }
-        public LazySchedule(Duration f, Process<T> p) : this(f, p, TimeSource_Stopwatch.INSTANCE) { }
+        public LazySchedule(Duration f, Duration e, Process<T> p) : this(f, e, p, TimeSource_System.INSTANCE) { }
+        public LazySchedule(Duration f, Process<T> p) : this(f, p, TimeSource_System.INSTANCE) { }
 
         public void Work()
         {

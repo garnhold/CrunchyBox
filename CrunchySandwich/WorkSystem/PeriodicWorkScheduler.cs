@@ -10,12 +10,12 @@ namespace CrunchySandwich
 {
     public class PeriodicWorkScheduler
     {
-        private Timer_Duration timer;
+        private Timer timer;
         private WorkScheduler scheduler;
 
         public PeriodicWorkScheduler(long i, long a, Process p)
         {
-            timer = new Timer_Duration(i).StartAndGet();
+            timer = new Timer(i).StartAndGet();
 
             scheduler = new WorkScheduler(a, delegate() {
                 timer.Restart();

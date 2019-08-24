@@ -11,17 +11,17 @@ namespace CrunchyBun
         private EaseFunction function;
 
         private bool is_easing;
-        private Timer ease_timer;
+        private Stopwatch ease_stopwatch;
 
         public event MultiProcess<float> OnEase;
         public event MultiProcess OnDone;
 
-        public Easer(EaseFunction f, Timer t)
+        public Easer(EaseFunction f, Stopwatch s)
         {
             function = f;
 
             is_easing = true;
-            ease_timer = t;
+            ease_stopwatch = s;
         }
 
         public bool Ease()
@@ -30,7 +30,7 @@ namespace CrunchyBun
             {
                 OnEase.InvokeAll(GetCurrentValue());
 
-                if (ease_timer.GetElapsedTimeInSeconds() >= function.GetEndTime())
+                if (ease_stopwatch.GetElapsedTimeInSeconds() >= function.GetEndTime())
                     DoDone();
             }
 
@@ -55,17 +55,17 @@ namespace CrunchyBun
         public void StopClear()
         {
             is_easing = true;
-            ease_timer.StopClear();
+            ease_stopwatch.StopClear();
         }
 
         public void Start()
         {
-            ease_timer.Start();
+            ease_stopwatch.Start();
         }
 
         public void Pause()
         {
-            ease_timer.Pause();
+            ease_stopwatch.Pause();
         }
 
         public void Restart()
@@ -76,7 +76,7 @@ namespace CrunchyBun
 
         public float GetCurrentValue()
         {
-            return function.Evaluate(ease_timer.GetElapsedTimeInSeconds());
+            return function.Evaluate(ease_stopwatch.GetElapsedTimeInSeconds());
         }
     }
 }
