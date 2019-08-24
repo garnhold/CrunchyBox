@@ -32,6 +32,10 @@ namespace CrunchyBun
         {
             return SOURCE.GetVariance(center, radius);
         }
+        static public int GetVariance(IntVariance variance)
+        {
+            return SOURCE.GetVariance(variance);
+        }
 
         static public int GetBetween(int a, int b)
         {
@@ -39,7 +43,7 @@ namespace CrunchyBun
         }
         static public int GetBetween(IntRange range)
         {
-            return SOURCE.GetBetween(range.x1, range.x2);
+            return SOURCE.GetBetween(range);
         }
     }
 }

@@ -30,6 +30,10 @@ namespace CrunchyBun
         {
             return x + GetMagnitude(radius);
         }
+        public int GetVariance(IntVariance variance)
+        {
+            return GetVariance(variance.value, variance.radius);
+        }
 
         public int GetBetween(int a, int b)
         {

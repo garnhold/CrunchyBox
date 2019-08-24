@@ -30,6 +30,10 @@ namespace CrunchyBun
         {
             return center + GetOffset(radius);
         }
+        public float GetVariance(FloatVariance variance)
+        {
+            return GetVariance(variance.value, variance.radius);
+        }
 
         public float GetBetween(float a, float b)
         {

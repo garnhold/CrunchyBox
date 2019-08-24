@@ -145,8 +145,8 @@
     <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Parallel.cs" />
     <Compile Include="OperationProcess\Extensions\MultiOperationExtensions.cs" />
     <Compile Include="OperationProcess\MultiOperation.cs" />
-    <Compile Include="NumericRange\NumericRange.cs">
-      <DependentUpon>NumericRange.tt</DependentUpon>
+    <Compile Include="NumericRangeVariance\NumericRangeVariance.cs">
+      <DependentUpon>NumericRangeVariance.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1304,9 +1304,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>OrderedList.cs</LastGenOutput>
     </Content>
-    <Content Include="NumericRange\NumericRange.tt">
+    <Content Include="NumericRangeVariance\NumericRangeVariance.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NumericRange.cs</LastGenOutput>
+      <LastGenOutput>NumericRangeVariance.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
