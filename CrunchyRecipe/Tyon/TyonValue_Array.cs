@@ -30,25 +30,28 @@ namespace CrunchyRecipe
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             int size = GetTyonArray().GetNumberTyonValues();
-            Type type = GetTyonArray().GetTyonType().GetSystemType();
-            
-            int index = 0;
-            Variable_IndexedLog log = Variable_IndexedLog.New(type);
+            Type type = GetTyonArray().GetTyonType().GetSystemType(hydrater);
 
-            if (variable.GetContents() != null)
+            if (type != null)
             {
-                foreach (object old_element in variable.GetContents().Convert<IEnumerable>())
-                    log.CreateStrongInstance(index++).SetContents(old_element);
+                int index = 0;
+                Variable_IndexedLog log = Variable_IndexedLog.New(type);
+
+                if (variable.GetContents() != null)
+                {
+                    foreach (object old_element in variable.GetContents().Convert<IEnumerable>())
+                        log.CreateStrongInstance(index++).SetContents(old_element);
+                }
+
+                while (index < size)
+                    log.CreateStrongInstance(index++);
+
+                GetTyonArray().GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(log.CreateStrongInstance(i), hydrater));
+
+                hydrater.DeferProcess(delegate() {
+                    variable.SetContents(log.GetValues().Truncate(size).ToArrayOfType(type));
+                });
             }
-
-            while (index < size)
-                log.CreateStrongInstance(index++);
-
-            GetTyonArray().GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(log.CreateStrongInstance(i), hydrater));
-
-            hydrater.DeferProcess(delegate() {
-                variable.SetContents(log.GetValues().Truncate(size).ToArrayOfType(type));
-            });
         }
     }
 

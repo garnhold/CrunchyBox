@@ -21,20 +21,21 @@ namespace CrunchyRecipe
             SetId(type.GetNamespace().AppendToVisible(".") + type.GetBasicName());
         }
 
-        public override Type GetSystemType()
+        public override Type GetSystemType(TyonHydrater hydrater)
         {
             IEnumerable<Filterer<Type>> filters = new Filterer<Type>[] {
                 Filterer_Type.IsNamed(GetName()),
                 Filterer_Type.IsNonNestedClass(),
                 Filterer_Type.IsNonGenericClass()
             };
-            
+
             return Types.GetFilteredTypes(
                 filters.AppendIf(
                     HasNamespace(),
                     Filterer_Type.IsNamespace(GetNamespace())
                 )
-            ).GetFirst();
+            ).GetFirst()
+            .ChainIfNull(t => hydrater.LogMissingType(GetId()));
         }
 
         public override void Render(TextDocumentCanvas canvas)

@@ -35,7 +35,7 @@ namespace CrunchyRecipe
 
         public object InstanceSystemObject(TyonHydrater hydrater)
         {
-            object obj = GetTyonType().InstanceSystemType();
+            object obj = GetTyonType().InstanceSystemType(hydrater);
 
             PushToSystemObject(obj, hydrater);
             return obj;
@@ -73,6 +73,11 @@ namespace CrunchyRecipe
                 SetTyonAddress(dehydrater.GetNewInternalAddress());
 
             return GetTyonAddress();
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

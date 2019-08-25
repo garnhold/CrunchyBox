@@ -14,12 +14,12 @@ namespace CrunchyRecipe
         private Operation<ADDRESS_TYPE, VALUE_TYPE> calculate_address;
         private Operation<VALUE_TYPE, ADDRESS_TYPE> resolve_address;
 
-        protected override ADDRESS_TYPE CalculateAddressInternal(VALUE_TYPE value)
+        protected override ADDRESS_TYPE CalculateAddressInternal(VALUE_TYPE value, TyonDehydrater dehydrater)
         {
             return calculate_address(value);
         }
 
-        protected override VALUE_TYPE ResolveAddressInternal(ADDRESS_TYPE address)
+        protected override VALUE_TYPE ResolveAddressInternal(ADDRESS_TYPE address, TyonHydrater hydrater)
         {
             return resolve_address(address);
         }

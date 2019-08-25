@@ -22,10 +22,10 @@ namespace CrunchyRecipe
             SetTyonTypes(type.GetGenericArguments().Convert(t => TyonType.CreateTyonType(t)));
         }
 
-        public override Type GetSystemType()
+        public override Type GetSystemType(TyonHydrater hydrater)
         {
             Type[] generic_arguments = GetTyonTypes()
-                .Convert(t => t.GetSystemType())
+                .Convert(t => t.GetSystemType(hydrater))
                 .ToArray();
 
             IEnumerable<Filterer<Type>> filters = new Filterer<Type>[] {
@@ -40,7 +40,8 @@ namespace CrunchyRecipe
                     HasNamespace(),
                     Filterer_Type.IsNamespace(GetNamespace())
                 )
-            ).GetFirst();
+            ).GetFirst()
+            .ChainIfNull(t => hydrater.LogMissingType(GetId()));
 
             return generic_type.MakeGenericType(generic_arguments);
         }

@@ -27,6 +27,11 @@ namespace CrunchyRecipe
             Render(canvas);
             return canvas.ToString();
         }
+
+        public override string ToString()
+        {
+            return Render();
+        }
 	}
 	
 }

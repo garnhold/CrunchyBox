@@ -13,14 +13,14 @@ namespace CrunchyRecipe
     {
         static public readonly TyonBridge_CalculateExternal_Type_Type INSTANCE = new TyonBridge_CalculateExternal_Type_Type();
 
-        protected override string CalculateAddressInternal(Type value)
+        protected override string CalculateAddressInternal(Type value, TyonDehydrater dehydrater)
         {
             return TyonType.CreateTyonType(value).Render();
         }
 
-        protected override Type ResolveAddressInternal(string address)
+        protected override Type ResolveAddressInternal(string address, TyonHydrater hydrater)
         {
-            return TyonType.DOMify(address).GetSystemType();
+            return TyonType.DOMify(address).GetSystemType(hydrater);
         }
 
         private TyonBridge_CalculateExternal_Type_Type() { }

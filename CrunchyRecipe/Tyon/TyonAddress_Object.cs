@@ -28,7 +28,7 @@ namespace CrunchyRecipe
 
         public override object GetAddressValue(TyonHydrater hydrater)
         {
-            return hydrater.GetContext().CreateHydrater().Hydrate(GetTyonObject());
+            return hydrater.CreateHydrater().Hydrate(GetTyonObject());
         }
 	}
 	

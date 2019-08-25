@@ -66,11 +66,13 @@
     <Compile Include="Tyon\Bridges\TyonBridge_RegisterExternal_Type.cs" />
     <Compile Include="Tyon\Bridges\TyonBridge_RegisterExternal.cs" />
     <Compile Include="Tyon\Bridges\TyonBridge_Default.cs" />
+    <Compile Include="Tyon\TyonHydrationMode.cs" />
     <Compile Include="Tyon\TyonArray.cs" />
     <Compile Include="Tyon\TyonContext.cs" />
     <Compile Include="Tyon\TyonDehydrater.cs" />
     <Compile Include="Tyon\TyonSurrogate.cs" />
     <Compile Include="Tyon\TyonAddressable.cs" />
+    <Compile Include="Tyon\TyonResolutionException.cs" />
     <Compile Include="Tyon\TyonType_Direct.cs" />
     <Compile Include="Tyon\TyonType_Array.cs" />
     <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Fields.cs" />

@@ -47,6 +47,11 @@ namespace CrunchyRecipe
         {
             return tyon_values.Count;
         }
+
+        public override string ToString()
+        {
+            return Render();
+        }
 	}
 	
 }

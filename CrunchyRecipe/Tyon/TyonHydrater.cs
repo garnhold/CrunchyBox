@@ -11,6 +11,8 @@ namespace CrunchyRecipe
 {
 	public class TyonHydrater
 	{
+        private TyonHydrationMode mode;
+
         private List<Process> deferred_processes;
         private Dictionary<object, object> internal_address_to_object;
 
@@ -22,12 +24,19 @@ namespace CrunchyRecipe
             Clear();
         }
 
-        public TyonHydrater(TyonContext c)
+        public TyonHydrater(TyonHydrationMode m, TyonContext c)
         {
+            mode = m;
+
             deferred_processes = new List<Process>();
             internal_address_to_object = new Dictionary<object, object>();
 
             context = c;
+        }
+
+        public TyonHydrater CreateHydrater()
+        {
+            return context.CreateHydrater(mode);
         }
 
         public void Clear()
@@ -109,6 +118,18 @@ namespace CrunchyRecipe
         public bool TryGetDesignatedVariable(Type type, string name, out Variable variable)
         {
             return context.GetSettings().TryGetDesignatedVariable(type, name, out variable);
+        }
+
+        public void LogMissingType(string id)
+        {
+            if (mode == TyonHydrationMode.Strict)
+                throw new TyonResolutionException("Unable to resolve type " + id);
+        }
+
+        public void LogMissingField(Type type, string id)
+        {
+            if (mode == TyonHydrationMode.Strict)
+                throw new TyonResolutionException("Unable to resolve field " + id + " of " + type);
         }
 
         public TyonContext GetContext()

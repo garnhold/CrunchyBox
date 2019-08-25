@@ -27,8 +27,8 @@ namespace CrunchyRecipe
             return new TyonType_Direct_Normal(type);
         }
 
-        public abstract Type GetSystemType();
-        public abstract object InstanceSystemType();
+        public abstract Type GetSystemType(TyonHydrater hydrater);
+        public abstract object InstanceSystemType(TyonHydrater hydrater);
         public abstract void Render(TextDocumentCanvas canvas);
 
         public string Render()
@@ -37,6 +37,11 @@ namespace CrunchyRecipe
 
             Render(canvas);
             return canvas.ToString();
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

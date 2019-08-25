@@ -28,7 +28,7 @@ namespace CrunchySandwichBag
 
                     string data = context.SerializeValue(value, type);
 
-                    GetObjects().Process(o => SetContents(o, context.DeserializeValue(data, type)));
+                    GetObjects().Process(o => SetContents(o, context.DeserializeValue(data, type, TyonHydrationMode.Permissive)));
                 }
                 else
                 {

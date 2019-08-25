@@ -42,7 +42,7 @@ namespace CrunchyRecipe
 
         public override object ResolveTyonAddress(TyonAddress address, Variable variable, TyonHydrater hydrater)
         {
-            throw new InvalidOperationException(GetType() + " cannot resolve addresses.");
+            throw new InvalidOperationException(GetType() + " cannot resolve " + address + " for " + variable);
         }
 
         public override bool IsCompatible(Variable variable)

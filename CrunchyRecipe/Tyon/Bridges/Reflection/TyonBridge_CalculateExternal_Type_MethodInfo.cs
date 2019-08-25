@@ -13,7 +13,7 @@ namespace CrunchyRecipe
     {
         static public readonly TyonBridge_CalculateExternal_Type_MethodInfo INSTANCE = new TyonBridge_CalculateExternal_Type_MethodInfo();
 
-        protected override Tuple<Type, string, Type[]> CalculateAddressInternal(MethodInfo value)
+        protected override Tuple<Type, string, Type[]> CalculateAddressInternal(MethodInfo value, TyonDehydrater dehydrater)
         {
             return Tuple.New(
                 value.DeclaringType,
@@ -22,7 +22,7 @@ namespace CrunchyRecipe
             );
         }
 
-        protected override MethodInfo ResolveAddressInternal(Tuple<Type, string, Type[]> address)
+        protected override MethodInfo ResolveAddressInternal(Tuple<Type, string, Type[]> address, TyonHydrater hydrater)
         {
             return address.item1.GetFilteredMethods(
                 Filterer_MethodInfo.IsNamed(address.item2),

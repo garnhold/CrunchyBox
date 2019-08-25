@@ -31,7 +31,7 @@ namespace CrunchyRecipe
 
         public object InstanceSystemObject(TyonHydrater hydrater)
         {
-            object obj = GetString().ConvertEX(GetTyonType().GetSystemType()) ?? GetTyonType().InstanceSystemType();
+            object obj = GetString().ConvertEX(GetTyonType().GetSystemType(hydrater)) ?? GetTyonType().InstanceSystemType(hydrater);
 
             hydrater.RegisterInternalObject(obj, GetTyonAddress());
             return obj;
@@ -67,6 +67,11 @@ namespace CrunchyRecipe
                 SetTyonAddress(dehydrater.GetNewInternalAddress());
 
             return GetTyonAddress();
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

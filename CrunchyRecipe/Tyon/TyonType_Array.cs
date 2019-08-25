@@ -21,12 +21,12 @@ namespace CrunchyRecipe
             SetTyonType(TyonType.CreateTyonType(type.GetElementType()));
         }
 
-        public override Type GetSystemType()
+        public override Type GetSystemType(TyonHydrater hydrater)
         {
-            return GetTyonType().GetSystemType().MakeArrayType();
+            return GetTyonType().GetSystemType(hydrater).MakeArrayType();
         }
 
-        public override object InstanceSystemType()
+        public override object InstanceSystemType(TyonHydrater hydrater)
         {
             return null;
         }

@@ -11,17 +11,17 @@ namespace CrunchyRecipe
 {
     public abstract class TyonBridge_CalculateExternal_Type<VALUE_TYPE, ADDRESS_TYPE> : TyonBridge_CalculateExternal_Type
     {
-        protected abstract ADDRESS_TYPE CalculateAddressInternal(VALUE_TYPE value);
-        protected abstract VALUE_TYPE ResolveAddressInternal(ADDRESS_TYPE address);
+        protected abstract ADDRESS_TYPE CalculateAddressInternal(VALUE_TYPE value, TyonDehydrater dehydrater);
+        protected abstract VALUE_TYPE ResolveAddressInternal(ADDRESS_TYPE address, TyonHydrater hydrater);
 
         protected override object CalculateAddress(VariableInstance variable, TyonDehydrater dehydrater)
         {
-            return CalculateAddressInternal(variable.GetContents().ConvertEX<VALUE_TYPE>());
+            return CalculateAddressInternal(variable.GetContents().ConvertEX<VALUE_TYPE>(), dehydrater);
         }
 
         protected override object ResolveAddress(object address, Variable variable, TyonHydrater hydrater)
         {
-            return ResolveAddressInternal(address.ConvertEX<ADDRESS_TYPE>());
+            return ResolveAddressInternal(address.ConvertEX<ADDRESS_TYPE>(), hydrater);
         }
 
         public TyonBridge_CalculateExternal_Type() : base(typeof(VALUE_TYPE)) { }

@@ -29,6 +29,8 @@ namespace CrunchyRecipe
 
             if (hydrater.TryGetDesignatedVariable(obj.GetType(), GetId(), out variable))
                 GetTyonValue().PushToVariable(variable.CreateStrongInstance(obj), hydrater);
+            else
+                hydrater.LogMissingField(obj.GetType(), GetId());
         }
 
         public string Render()
@@ -45,6 +47,11 @@ namespace CrunchyRecipe
             canvas.AppendToLine(" = ");
             GetTyonValue().Render(canvas);
             canvas.AppendToLine(";");
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

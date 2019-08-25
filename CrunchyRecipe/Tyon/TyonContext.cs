@@ -28,9 +28,9 @@ namespace CrunchyRecipe
         {
             return new TyonDehydrater(this);
         }
-        public TyonHydrater CreateHydrater()
+        public TyonHydrater CreateHydrater(TyonHydrationMode mode)
         {
-            return new TyonHydrater(this);
+            return new TyonHydrater(mode, this);
         }
 
         public string Serialize(object obj)
@@ -42,27 +42,27 @@ namespace CrunchyRecipe
             return CreateDehydrater().DehydrateValue(value, type).Render();
         }
 
-        public object Deserialize(string text)
+        public object Deserialize(string text, TyonHydrationMode mode)
         {
-            return CreateHydrater().Hydrate(text);
+            return CreateHydrater(mode).Hydrate(text);
         }
-        public T Deserialize<T>(string text)
+        public T Deserialize<T>(string text, TyonHydrationMode mode)
         {
-            return Deserialize(text).Convert<T>();
-        }
-
-        public object DeserializeValue(string text, Type type)
-        {
-            return CreateHydrater().HydrateValue(text, type);
-        }
-        public T DeserializeValue<T>(string text)
-        {
-            return DeserializeValue(text, typeof(T)).Convert<T>();
+            return Deserialize(text, mode).Convert<T>();
         }
 
-        public void DeserializeInto(object obj, string text)
+        public object DeserializeValue(string text, Type type, TyonHydrationMode mode)
         {
-            CreateHydrater().HydrateInto(obj, text);
+            return CreateHydrater(mode).HydrateValue(text, type);
+        }
+        public T DeserializeValue<T>(string text, TyonHydrationMode mode)
+        {
+            return DeserializeValue(text, typeof(T), mode).Convert<T>();
+        }
+
+        public void DeserializeInto(object obj, string text, TyonHydrationMode mode)
+        {
+            CreateHydrater(mode).HydrateInto(obj, text);
         }
 
         public object RegisterExternalObject(object obj)

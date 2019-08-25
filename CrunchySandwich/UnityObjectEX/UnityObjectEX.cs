@@ -61,7 +61,7 @@ namespace CrunchySandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
                     did_unpack_tyon_data = false;
-                    context.DeserializeInto(this, tyon_data);
+                    context.DeserializeInto(this, tyon_data, TyonHydrationMode.Strict);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
@@ -145,7 +145,7 @@ namespace CrunchySandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
                     did_unpack_tyon_data = false;
-                    context.DeserializeInto(this, tyon_data);
+                    context.DeserializeInto(this, tyon_data, TyonHydrationMode.Strict);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;

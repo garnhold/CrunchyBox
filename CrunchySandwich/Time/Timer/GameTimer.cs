@@ -9,6 +9,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
+    [Serializable]
     public class GameTimer : GameStopwatch, TemporalDuration
     {
         [SerializeField]private float duration;
