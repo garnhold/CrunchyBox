@@ -35,10 +35,8 @@ namespace CrunchyRecipe
 
         public object InstanceSystemObject(TyonHydrater hydrater)
         {
-            object obj = GetTyonType().InstanceSystemType(hydrater);
-
-            PushToSystemObject(obj, hydrater);
-            return obj;
+            return GetTyonType().InstanceSystemType(hydrater)
+                .ChainIfNotNull(o => PushToSystemObject(o, hydrater));
         }
 
         public string Render()

@@ -31,10 +31,8 @@ namespace CrunchyRecipe
 
         public object InstanceSystemObject(TyonHydrater hydrater)
         {
-            object obj = GetString().ConvertEX(GetTyonType().GetSystemType(hydrater)) ?? GetTyonType().InstanceSystemType(hydrater);
-
-            hydrater.RegisterInternalObject(obj, GetTyonAddress());
-            return obj;
+            return (GetString().ConvertEX(GetTyonType().GetSystemType(hydrater)) ?? GetTyonType().InstanceSystemType(hydrater))
+                .ChainIfNotNull(o => hydrater.RegisterInternalObject(o, GetTyonAddress()));
         }
 
         public string Render()

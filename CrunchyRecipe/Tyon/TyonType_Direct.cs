@@ -20,7 +20,7 @@ namespace CrunchyRecipe
 
         public override object InstanceSystemType(TyonHydrater hydrater)
         {
-            return GetSystemType(hydrater).CreateForcedInstance();
+            return GetSystemType(hydrater).IfNotNull(t => t.CreateForcedInstance());
         }
 
         public string GetName()

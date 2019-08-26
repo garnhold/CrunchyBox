@@ -23,7 +23,7 @@ namespace CrunchyRecipe
 
         public override Type GetSystemType(TyonHydrater hydrater)
         {
-            return GetTyonType().GetSystemType(hydrater).MakeArrayType();
+            return GetTyonType().GetSystemType(hydrater).IfNotNull(t => t.MakeArrayType());
         }
 
         public override object InstanceSystemType(TyonHydrater hydrater)
