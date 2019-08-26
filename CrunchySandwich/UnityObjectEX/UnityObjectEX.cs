@@ -21,6 +21,12 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
+		[RecoveryFunction]
+		private void ForcePermissiveUnpackTyon()
+		{
+			UnpackTyon(TyonHydrationMode.Permissive);
+		}
+
 		private void PackTyon()
 		{
 			if (did_unpack_tyon_data || tyon_data.IsVisible() == false)
@@ -52,7 +58,7 @@ namespace CrunchySandwich
 			}
 		}
 
-		private void UnpackTyon()
+		private void UnpackTyon(TyonHydrationMode mode = TyonHydrationMode.Strict)
 		{
 			if (tyon_data.IsVisible())
 			{
@@ -61,7 +67,7 @@ namespace CrunchySandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
                     did_unpack_tyon_data = false;
-                    context.DeserializeInto(this, tyon_data, TyonHydrationMode.Strict);
+                    context.DeserializeInto(this, tyon_data, mode);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
@@ -105,6 +111,12 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
+		[RecoveryFunction]
+		private void ForcePermissiveUnpackTyon()
+		{
+			UnpackTyon(TyonHydrationMode.Permissive);
+		}
+
 		private void PackTyon()
 		{
 			if (did_unpack_tyon_data || tyon_data.IsVisible() == false)
@@ -136,7 +148,7 @@ namespace CrunchySandwich
 			}
 		}
 
-		private void UnpackTyon()
+		private void UnpackTyon(TyonHydrationMode mode = TyonHydrationMode.Strict)
 		{
 			if (tyon_data.IsVisible())
 			{
@@ -145,7 +157,7 @@ namespace CrunchySandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
                     did_unpack_tyon_data = false;
-                    context.DeserializeInto(this, tyon_data, TyonHydrationMode.Strict);
+                    context.DeserializeInto(this, tyon_data, mode);
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;

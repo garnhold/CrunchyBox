@@ -61,6 +61,11 @@ namespace CrunchySandwichBag
                     target.GetRecoveryPropertys()
                         .Convert(p => p.CreateLabeledEditorGUIElement())
                 );
+
+                recovery_container.AddChildren(
+                    target.GetRecoveryActions()
+                        .Convert(a => a.CreateEditorGUIElement())
+                );
             }
 
             return container;

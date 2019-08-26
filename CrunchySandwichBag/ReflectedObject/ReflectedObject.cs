@@ -110,6 +110,15 @@ namespace CrunchySandwichBag
             .Convert(a => ReflectedAction.New(this, a));
         }
 
+        public IEnumerable<ReflectedAction> GetRecoveryActions()
+        {
+            return object_type.GetFilteredInstanceMethods(
+                Filterer_MethodInfo.HasNoEffectiveParameters(),
+                Filterer_MethodInfo.HasCustomAttributeOfType<RecoveryFunctionAttribute>()
+            ).Convert(m => m.CreateAction())
+            .Convert(a => ReflectedAction.New(this, a));
+        }
+
         public IEnumerable<ReflectedProperty> GetPropertys()
         {
             return UnityTyonSettings.INSTANCE.GetDesignatedVariables(object_type)

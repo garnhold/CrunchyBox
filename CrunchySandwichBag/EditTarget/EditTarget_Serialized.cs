@@ -44,6 +44,11 @@ namespace CrunchySandwichBag
             return Empty.IEnumerable<EditAction>();
         }
 
+        public override IEnumerable<EditAction> GetRecoveryActions()
+        {
+            return Empty.IEnumerable<EditAction>();
+        }
+
         public override IEnumerable<EditProperty> GetPropertys()
         {
             return GetPropertysInternal()

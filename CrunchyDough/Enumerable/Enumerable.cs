@@ -10,5 +10,10 @@ namespace CrunchyDough
         {
             return items;
         }
+
+        static public IEnumerable<T> New<T>(params IEnumerable<T>[] items)
+        {
+            return items.Flatten();
+        }
     }
 }

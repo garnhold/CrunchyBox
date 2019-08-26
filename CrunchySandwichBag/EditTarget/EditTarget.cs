@@ -21,8 +21,11 @@ namespace CrunchySandwichBag
         public abstract EditProperty ForceProperty(string path);
 
         public abstract IEnumerable<EditAction> GetActions();
+        public abstract IEnumerable<EditAction> GetRecoveryActions();
+
         public abstract IEnumerable<EditProperty> GetPropertys();
         public abstract IEnumerable<EditProperty> GetRecoveryPropertys();
+
         public abstract IEnumerable<EditGadget> GetGadgets();
     }
 }

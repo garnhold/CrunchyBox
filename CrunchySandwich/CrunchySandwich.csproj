@@ -144,6 +144,7 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Scale.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
+    <Compile Include="RecoveryFunctionAttribute\RecoveryFunctionAttribute.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm_Range.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm.cs" />

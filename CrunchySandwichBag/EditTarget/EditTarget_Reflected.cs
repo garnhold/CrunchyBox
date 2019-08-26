@@ -88,6 +88,12 @@ namespace CrunchySandwichBag
                 .Convert(a => CreateAction(a));
         }
 
+        public override IEnumerable<EditAction> GetRecoveryActions()
+        {
+            return reflected_object.GetRecoveryActions()
+                .Convert(a => CreateAction(a));
+        }
+
         public override IEnumerable<EditProperty> GetPropertys()
         {
             return reflected_object.GetPropertys()
