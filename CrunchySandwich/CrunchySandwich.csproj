@@ -114,6 +114,8 @@
     <Compile Include="ComponentsCache\ComponentsCache_UpwardFromParent.cs" />
     <Compile Include="ComponentsCache\ComponentsCache_Upward.cs" />
     <Compile Include="ComponentsCache\ComponentsCache.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_MoveTowards.cs" />
+    <Compile Include="Extensions\Color\ColorExtensions_Towards.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Orient.cs">
       <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Orient.tt</DependentUpon>
       <AutoGen>True</AutoGen>

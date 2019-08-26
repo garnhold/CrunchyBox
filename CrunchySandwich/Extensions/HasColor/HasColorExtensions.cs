@@ -12,6 +12,25 @@ namespace CrunchySandwich
 	static public class HasColorExtensions
     {
 
+		static public void InterpolateColor(this SpriteRenderer item, Color target, float amount)
+        {
+            item.color = item.color.GetInterpolate(target, amount);
+        }
+
+		static public void TowardsColor(this SpriteRenderer item, Color target, Color amount)
+		{
+			item.color = item.color.GetTowards(target, amount);
+		}
+
+		static public bool MoveTowardsColor(this SpriteRenderer item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.color.GetMoveTowards(target, amount, out output);
+
+			item.color = output;
+			return result;
+		}
+
 	
 		static public void SetRed(this SpriteRenderer item, float value)
         {
@@ -157,6 +176,49 @@ namespace CrunchySandwich
 		{
 			item.color = item.color.GetWithRGB(rgb);
 		}
+
+		static public void InterpolateRGB(this SpriteRenderer item, Color target, float amount)
+        {
+            item.SetRGB(item.GetRGB().GetInterpolate(target, amount));
+        }
+
+		static public void TowardsRGB(this SpriteRenderer item, Color target, Color amount)
+		{
+			item.SetRGB(item.GetRGB().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsRGB(this SpriteRenderer item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.GetRGB().GetMoveTowards(target, amount, out output);
+
+			item.SetRGB(output);
+			return result;
+		}
+
+		static public Color GetRGB(this SpriteRenderer item)
+        {
+            return item.color.GetWithAlpha(1.0f);
+        }
+		static public void InterpolateColor(this TextMesh item, Color target, float amount)
+        {
+            item.color = item.color.GetInterpolate(target, amount);
+        }
+
+		static public void TowardsColor(this TextMesh item, Color target, Color amount)
+		{
+			item.color = item.color.GetTowards(target, amount);
+		}
+
+		static public bool MoveTowardsColor(this TextMesh item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.color.GetMoveTowards(target, amount, out output);
+
+			item.color = output;
+			return result;
+		}
+
 	
 		static public void SetRed(this TextMesh item, float value)
         {
@@ -302,5 +364,29 @@ namespace CrunchySandwich
 		{
 			item.color = item.color.GetWithRGB(rgb);
 		}
+
+		static public void InterpolateRGB(this TextMesh item, Color target, float amount)
+        {
+            item.SetRGB(item.GetRGB().GetInterpolate(target, amount));
+        }
+
+		static public void TowardsRGB(this TextMesh item, Color target, Color amount)
+		{
+			item.SetRGB(item.GetRGB().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsRGB(this TextMesh item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.GetRGB().GetMoveTowards(target, amount, out output);
+
+			item.SetRGB(output);
+			return result;
+		}
+
+		static public Color GetRGB(this TextMesh item)
+        {
+            return item.color.GetWithAlpha(1.0f);
+        }
 	}
 }

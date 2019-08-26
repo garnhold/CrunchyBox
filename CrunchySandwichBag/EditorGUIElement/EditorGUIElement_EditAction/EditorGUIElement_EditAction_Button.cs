@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEditor;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyBun;
 using CrunchySandwich;
 
@@ -18,7 +19,7 @@ namespace CrunchySandwichBag
 
         protected override void DrawElementInternal(Rect view)
         {
-            is_pressed = GUI.Button(GetElementRect(), GetEditAction().GetName());
+            is_pressed = GUI.Button(GetElementRect(), GetEditAction().GetName().StyleEntityForDisplay());
         }
 
         protected override void UnwindInternal()

@@ -31,6 +31,25 @@ namespace CrunchySandwich
     {
 
 <#foreach(TypeInfo type in types){#>
+		static public void InterpolateColor(this <#=type.name#> item, Color target, float amount)
+        {
+            item.color = item.color.GetInterpolate(target, amount);
+        }
+
+		static public void TowardsColor(this <#=type.name#> item, Color target, Color amount)
+		{
+			item.color = item.color.GetTowards(target, amount);
+		}
+
+		static public bool MoveTowardsColor(this <#=type.name#> item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.color.GetMoveTowards(target, amount, out output);
+
+			item.color = output;
+			return result;
+		}
+
 	<#foreach(ComponentInfo component in components){#>
 
 		static public void Set<#=component.name#>(this <#=type.name#> item, float value)
@@ -76,6 +95,30 @@ namespace CrunchySandwich
 		{
 			item.color = item.color.GetWithRGB(rgb);
 		}
+
+		static public void InterpolateRGB(this <#=type.name#> item, Color target, float amount)
+        {
+            item.SetRGB(item.GetRGB().GetInterpolate(target, amount));
+        }
+
+		static public void TowardsRGB(this <#=type.name#> item, Color target, Color amount)
+		{
+			item.SetRGB(item.GetRGB().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsRGB(this <#=type.name#> item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.GetRGB().GetMoveTowards(target, amount, out output);
+
+			item.SetRGB(output);
+			return result;
+		}
+
+		static public Color GetRGB(this <#=type.name#> item)
+        {
+            return item.color.GetWithAlpha(1.0f);
+        }
 <#}#>
 	}
 }
