@@ -42,9 +42,10 @@ namespace CrunchySandwich
             current_animation = animated_sprite.GetDefaultAnimation();
         }
 
-        public void Initialize(AnimatedSprite s)
+        public void Initialize(AnimatedSprite s, TimeType t)
         {
             animated_sprite = s;
+            animation_time = new GameStopwatch(t);
 
             Initialize();
         }

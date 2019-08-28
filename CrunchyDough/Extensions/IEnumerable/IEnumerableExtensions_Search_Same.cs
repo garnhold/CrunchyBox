@@ -8,6 +8,8 @@ namespace CrunchyDough
     {
         static public bool AreAllSame<T>(this IEnumerable<T> item, out T value)
         {
+            T first_value = default(T);
+            
             value = default(T);
 
             if (item != null)
@@ -16,7 +18,7 @@ namespace CrunchyDough
                 {
                     if (iter.MoveNext())
                     {
-                        value = iter.Current;
+                        first_value = iter.Current;
 
                         while (iter.MoveNext())
                         {
@@ -27,6 +29,7 @@ namespace CrunchyDough
                 }
             }
 
+            value = first_value;
             return true;
         }
         static public bool AreAllSame<T>(this IEnumerable<T> item)
@@ -34,6 +37,13 @@ namespace CrunchyDough
             T value;
 
             return item.AreAllSame(out value);
+        }
+        static public T GetIfAreAllSame<T>(this IEnumerable<T> item)
+        {
+            T value;
+
+            item.AreAllSame(out value);
+            return value;
         }
     }
 }

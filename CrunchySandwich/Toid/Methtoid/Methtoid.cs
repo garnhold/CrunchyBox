@@ -26,5 +26,15 @@ namespace CrunchySandwich
         {
             return invoketoid.Invoke(target);
         }
+
+        public Type GetTargetType()
+        {
+            return invoketoid.GetTargetType();
+        }
+
+        public Type GetReturnType()
+        {
+            return invoketoid.GetReturnType();
+        }
     }
 }

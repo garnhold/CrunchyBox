@@ -2,7 +2,7 @@
 
 namespace CrunchyDough
 {
-    static public class DurationUnitExtensions
+    static public class DurationExtensions
     {
     }
 }

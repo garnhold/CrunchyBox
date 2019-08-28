@@ -26,5 +26,15 @@ namespace CrunchySandwich
 
             return null;
         }
+
+        public Type GetTargetType()
+        {
+            return target_type;
+        }
+
+        public Type GetReturnType()
+        {
+            return target_method.IfNotNull(m => m.ReturnType);
+        }
     }
 }

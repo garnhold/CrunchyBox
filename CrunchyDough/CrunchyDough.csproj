@@ -49,6 +49,12 @@
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions.cs" />
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions_String.cs" />
     <Compile Include="ByteSequence\ByteSequence.cs" />
+    <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Order.cs" />
+    <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Suffix.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions_PartOut.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions_Whole.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions_String.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Treatment_Basic.cs" />
     <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Convert.cs" />
     <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Get.cs" />
@@ -65,6 +71,7 @@
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Generic.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Divvy.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_AppendIfNot.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Interleave.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertCenterConnections.cs" />

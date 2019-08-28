@@ -139,14 +139,15 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIFlowElement.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_AudioClip.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Combo\EditorGUIElement_EditPropertySingleValueCombo.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Combo\EditorGUIElement_EditPropertySingleValueCombo_Type.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Combo\EditorGUIElement_EditPropertySingleValueCombo_TypeMethodInfo.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_BuiltIn_Variances.cs">
       <DependentUpon>EditorGUIElement_EditPropertySingleValue_BuiltIn_Variances.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_Duration.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_Type.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue_TypeMethodInfo.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup_GameObjectComponentType.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValuePopup_TypeSubType.cs" />

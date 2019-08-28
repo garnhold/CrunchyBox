@@ -25,12 +25,8 @@ namespace CrunchySandwichBag
             {
                 if (EditorGUIExtensions.DropdownButton(GetElementRect(), old_value.ToStringEX("None")))
                 {
-                    GenericMenu menu = new GenericMenu();
-
-                    foreach (T option in GetOptions())
-                        menu.AddItem(option.ToStringEX("None"), () => property.SetContentValues(option));
-
-                    menu.ShowAsContext();
+                    GenericMenuExtensions.Create<T>(GetOptions(), o => property.SetContentValues(o))
+                        .DropDown(GetElementRect());
                 }
             }
             else

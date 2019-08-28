@@ -197,6 +197,7 @@
     <Compile Include="Filterer\Type\Filterer_Type_HasChildTypes.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_HasCustomForTypeAttributeOfType.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsBasicNamed.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_DoesNameContain.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsNamespace.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsNonNestedClass.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsNestedClass.cs" />

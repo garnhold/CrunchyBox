@@ -31,7 +31,7 @@ namespace CrunchySandwichBag
             {
                 container.AddChild(new EditorGUIElement_Complex_EditTarget(serialized_object));
 
-                if (reflected_object.GetNumberPropertys() > 0 || reflected_object.GetNumberActions() > 0)
+                if (reflected_object.IsVisible())
                 {
                     container.AddChild(new EditorGUIElement_HorizontalRule());
                     container.AddChild(new EditorGUIElement_Complex_EditTarget(reflected_object));

@@ -37,12 +37,9 @@ namespace CrunchySandwichBag
 
             EditorGUIElement_Container_Flow_Line line = container.AddChild(new EditorGUIElement_Container_Flow_Line());
 
-            line.AddWeightedChild(0.3f,
-                new EditorGUIElement_EditPropertySingleValue_Type(target.ForcePropertyValue("target_type"))
-            );
-
+            line.AddWeightedChild(0.3f,target.ForceProperty("target_type").CreateEditorGUIElement());
             line.AddWeightedChild(0.7f,
-                new EditorGUIElement_EditPropertySingleValue_TypeMethodInfo(
+                new EditorGUIElement_EditPropertySingleValueCombo_TypeMethodInfo(
                     target.ForcePropertyValue("target_method"),
                     target.ForcePropertyValue("target_type")
                 )

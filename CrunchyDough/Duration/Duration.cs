@@ -68,7 +68,7 @@ namespace CrunchyDough
 
             if (value.TryParseMeasurement(out number, out units))
             {
-                output = Length(DurationUnitExtensions.GetUnitBySuffix(units), (float)number);
+                output = Length(DurationUnitExtensions_Suffix.GetUnitBySuffix(units), (float)number);
                 return true;
             }
 
@@ -200,13 +200,7 @@ namespace CrunchyDough
 
         public override string ToString()
         {
-            DurationUnit unit = GetComfortableDurationUnit();
-            float length = GetLength(unit);
-
-            if(length < float.MaxValue)
-                return length.ToString("F4") + unit.GetUnitSuffix();
-
-            return "forever";
+            return this.ToComfortableString();
         }
     }
 }

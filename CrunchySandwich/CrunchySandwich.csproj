@@ -88,6 +88,17 @@
     <Reference Include="UnityEngine.TilemapModule">
       <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Hub\Editor\2019.1.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Hub\Editor\2019.1.8f1\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Hub\Editor\2019.1.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Hub\Editor\2019.1.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedSpriteRenderer\AnimatedSpriteRenderer.cs" />
@@ -146,11 +157,13 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Scale.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
+    <Compile Include="LinkedText\LinkedText.cs" />
     <Compile Include="RecoveryFunctionAttribute\RecoveryFunctionAttribute.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm_Range.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm.cs" />
     <Compile Include="Time\Stopwatch\GameStopwatch.cs" />
+    <Compile Include="Toid\Actoid\Actoid.cs" />
     <Compile Include="Toid\Checktoid\Checktoid.cs" />
     <Compile Include="Toid\Invoketoid\Extensions\InvoketoidExtensions.cs" />
     <Compile Include="Toid\Methtoid\Extensions\MethtoidExtensions.cs" />
@@ -594,6 +607,7 @@
     <Compile Include="Toid\Invoketoid\Invoketoid.cs" />
     <Compile Include="Toid\Preditoid\Preditoid.cs" />
     <Compile Include="Toid\Preditoid\PreditoidComparer.cs" />
+    <Compile Include="Toid\Valtoid\Valtoid.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
     <Compile Include="TerrainTile\TerrainTile.cs" />

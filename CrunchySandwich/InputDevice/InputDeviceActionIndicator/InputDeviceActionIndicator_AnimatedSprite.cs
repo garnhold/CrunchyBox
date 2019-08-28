@@ -20,7 +20,7 @@ namespace CrunchySandwich
             GameObject game_object = new GameObject();
 
             game_object.AddComponent<SpriteRenderer>().SetSortingLayerAndOrder(layer, order);
-            game_object.AddComponent<AnimatedSpriteRenderer>().Initialize(sprite);
+            game_object.AddComponent<AnimatedSpriteRenderer>().Initialize(sprite, TimeType.Active);
             return game_object;
         }
     }

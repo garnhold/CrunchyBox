@@ -13,5 +13,12 @@ namespace CrunchySandwichBag
 {
     static public class GenericMenuExtensions
     {
+        static public GenericMenu Create<T>(IEnumerable<T> options, Process<T> process)
+        {
+            GenericMenu menu = new GenericMenu();
+
+            menu.AddItems<T>(options, process);
+            return menu;
+        }
     }
 }

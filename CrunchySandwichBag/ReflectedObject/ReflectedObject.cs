@@ -144,24 +144,18 @@ namespace CrunchySandwichBag
             ).Convert(p => ReflectedGadget.New(this, p.item1, p.item2));
         }
 
-        public int GetNumberActions()
+        public bool IsVisible()
         {
-            return GetActions().Count();
-        }
+            if (GetPropertys().IsNotEmpty() || GetActions().IsNotEmpty())
+                return true;
 
-        public int GetNumberPropertys()
-        {
-            return GetPropertys().Count();
-        }
+            if (IsSerializationCorrupt())
+            {
+                if (GetRecoveryPropertys().IsNotEmpty() || GetRecoveryActions().IsNotEmpty())
+                    return true;
+            }
 
-        public int GetNumberRecoveryPropertys()
-        {
-            return GetRecoveryPropertys().Count();
-        }
-
-        public int GetNumberGadgets()
-        {
-            return GetGadgets().Count();
+            return false;
         }
     }
 }

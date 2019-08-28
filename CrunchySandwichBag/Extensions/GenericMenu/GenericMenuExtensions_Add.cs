@@ -17,5 +17,15 @@ namespace CrunchySandwichBag
         {
             item.AddItem(new GUIContent(text), false, () => process());
         }
+
+        static public void AddItem<T>(this GenericMenu item, T option, Process<T> process)
+        {
+            item.AddItem(option.ToStringEX("None"), () => process(option));
+        }
+
+        static public void AddItems<T>(this GenericMenu item, IEnumerable<T> options, Process<T> process)
+        {
+            options.Process(o => item.AddItem<T>(o, process));
+        }
     }
 }
