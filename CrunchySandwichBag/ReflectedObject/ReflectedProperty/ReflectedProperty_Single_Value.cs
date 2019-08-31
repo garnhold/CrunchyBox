@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
             Touch("Setting " + GetVariableName(), delegate() {
                 if (GetVariableType().IsReferenceType() && value != null)
                 {
-                    Type type = value.GetTypeEX();
+                    Type type = GetVariableType();
                     TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
                     string data = context.SerializeValue(type, value);
