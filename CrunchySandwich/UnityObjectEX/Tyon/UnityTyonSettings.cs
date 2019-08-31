@@ -19,10 +19,10 @@ namespace CrunchySandwich
             UnityTyonDesignatedVariableProvider.INSTANCE,
             GeneralUnityTyonDesignatedVariableProvider.INSTANCE,
 
-            TyonBridge_RegisterExternal_Type<UnityEngine.Object>.INSTANCE,
+            TyonTypeHandler_Externalize_Type<UnityEngine.Object>.INSTANCE,
 
-            TyonBridge_CalculateExternal_Type_Type.INSTANCE,
-            TyonBridge_CalculateExternal_Type_MethodInfo.INSTANCE
+            TyonTypeHandler_Type.INSTANCE,
+            TyonTypeHandler_MethodInfo.INSTANCE
         )
         {
         }

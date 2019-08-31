@@ -17,9 +17,9 @@ namespace CrunchyRecipe
 {
     public partial class TyonValue_Array : TyonValue
     {
-        public TyonValue_Array(VariableInstance variable, TyonDehydrater dehydrater) : this()
+        public TyonValue_Array(Type element_type, object value, TyonDehydrater dehydrater) : this()
         {
-            SetTyonArray(new TyonArray(variable, dehydrater));
+            SetTyonArray(new TyonArray(element_type, value, dehydrater));
         }
 
         public override void Render(TextDocumentCanvas canvas)

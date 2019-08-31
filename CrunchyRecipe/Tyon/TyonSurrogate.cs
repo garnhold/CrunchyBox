@@ -14,25 +14,23 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-	public partial class TyonSurrogate : TyonElement, TyonAddressable
+	public partial class TyonSurrogate : TyonElement
 	{
-        private void LoadContextIntermediateString(string input)
+        public TyonSurrogate(Type type, object surrogate, TyonDehydrater dehydrater) : this()
         {
-            SetString(input.ExtractStringValueFromLiteralString());
+            SetTyonType(TyonType.CreateTyonType(type));
+            SetTyonAddress(dehydrater.CreateTyonAddress(surrogate));
         }
 
-        public TyonSurrogate(object obj, TyonDehydrater dehydrater) : this()
+        public object ResolveSystemObject(TyonHydrater hydrater)
         {
-            dehydrater.RegisterInternalObject(obj, this);
+            Type type = GetTyonType().GetSystemType(hydrater);
+            object surrogate = GetTyonAddress().GetAddressValue(hydrater);
 
-            SetTyonType(TyonType.CreateTyonType(obj.GetType()));
-            SetString(obj.ToStringEX());
-        }
-
-        public object InstanceSystemObject(TyonHydrater hydrater)
-        {
-            return (GetString().ConvertEX(GetTyonType().GetSystemType(hydrater)) ?? GetTyonType().InstanceSystemType(hydrater))
-                .ChainIfNotNull(o => hydrater.RegisterInternalObject(o, GetTyonAddress()));
+            return hydrater.GetContext()
+                .GetSettings()
+                .GetTypeResolver(type)
+                .ResolveSurrogate(type, surrogate, hydrater);
         }
 
         public string Render()
@@ -45,26 +43,10 @@ namespace CrunchyRecipe
 
         public void Render(TextDocumentCanvas canvas)
         {
+            canvas.AppendToLine("$");
             GetTyonType().Render(canvas);
-
-            if (GetTyonAddress() != null)
-            {
-                canvas.AppendToLine("(&");
-                GetTyonAddress().Render(canvas);
-                canvas.AppendToLine(")");
-            }
-
-            canvas.AppendToLine(" {");
-                canvas.AppendToLine(GetString().StyleAsLiteralString());
-            canvas.AppendToLine("}");
-        }
-
-        public TyonAddress RequestAddress(TyonDehydrater dehydrater)
-        {
-            if (GetTyonAddress() == null)
-                SetTyonAddress(dehydrater.GetNewInternalAddress());
-
-            return GetTyonAddress();
+            canvas.AppendToLine(":");
+            GetTyonAddress().Render(canvas);
         }
 
         public override string ToString()

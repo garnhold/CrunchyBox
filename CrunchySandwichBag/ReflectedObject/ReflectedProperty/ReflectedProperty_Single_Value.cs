@@ -26,9 +26,9 @@ namespace CrunchySandwichBag
                     Type type = value.GetTypeEX();
                     TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
-                    string data = context.SerializeValue(value, type);
+                    string data = context.SerializeValue(type, value);
 
-                    GetObjects().Process(o => SetContents(o, context.DeserializeValue(data, type, TyonHydrationMode.Permissive)));
+                    GetObjects().Process(o => SetContents(o, context.DeserializeValue(type, data, TyonHydrationMode.Permissive)));
                 }
                 else
                 {

@@ -13,15 +13,15 @@ namespace CrunchyRecipe
 	{
         private TyonSettings settings;
 
-        private int next_registered_external_address;
-        private BidirectionalDictionary<object, object> registered_external_address_to_objects;
+        private int next_external_address;
+        private BidirectionalDictionary<object, object> external_address_to_objects;
 
         public TyonContext(TyonSettings s)
         {
             settings = s;
 
-            next_registered_external_address = 1;
-            registered_external_address_to_objects = new BidirectionalDictionary<object, object>();
+            next_external_address = 1;
+            external_address_to_objects = new BidirectionalDictionary<object, object>();
         }
 
         public TyonDehydrater CreateDehydrater()
@@ -37,9 +37,9 @@ namespace CrunchyRecipe
         {
             return CreateDehydrater().Dehydrate(obj).Render();
         }
-        public string SerializeValue(object value, Type type)
+        public string SerializeValue(Type type, object value)
         {
-            return CreateDehydrater().DehydrateValue(value, type).Render();
+            return CreateDehydrater().DehydrateValue(type, value).Render();
         }
 
         public object Deserialize(string text, TyonHydrationMode mode)
@@ -51,13 +51,13 @@ namespace CrunchyRecipe
             return Deserialize(text, mode).Convert<T>();
         }
 
-        public object DeserializeValue(string text, Type type, TyonHydrationMode mode)
+        public object DeserializeValue(Type type, string text, TyonHydrationMode mode)
         {
-            return CreateHydrater(mode).HydrateValue(text, type);
+            return CreateHydrater(mode).HydrateValue(type, text);
         }
         public T DeserializeValue<T>(string text, TyonHydrationMode mode)
         {
-            return DeserializeValue(text, typeof(T), mode).Convert<T>();
+            return DeserializeValue(typeof(T), text, mode).Convert<T>();
         }
 
         public void DeserializeInto(object obj, string text, TyonHydrationMode mode)
@@ -69,10 +69,10 @@ namespace CrunchyRecipe
         {
             object address;
 
-            if (registered_external_address_to_objects.TryGetValueByRight(obj, out address) == false)
+            if (external_address_to_objects.TryGetValueByRight(obj, out address) == false)
             {
-                address = next_registered_external_address++;
-                registered_external_address_to_objects.Add(address, obj);
+                address = next_external_address++;
+                external_address_to_objects.Add(address, obj);
             }
 
             return address;
@@ -82,33 +82,28 @@ namespace CrunchyRecipe
             objs.Process(o => RegisterExternalObject(o));
         }
 
-        public bool TryResolveRegisteredExternalObject(object obj, out object address)
+        public bool TryResolveExternalObject(object obj, out object address)
         {
-            return registered_external_address_to_objects.TryGetValueByRight(obj, out address);
+            return external_address_to_objects.TryGetValueByRight(obj, out address);
         }
-        public object ResolveRegisteredExternalObject(object obj)
+        public object ResolveExternalObject(object obj)
         {
             object address;
 
-            TryResolveRegisteredExternalObject(obj, out address);
+            TryResolveExternalObject(obj, out address);
             return address;
         }
 
-        public bool TryResolveRegisteredExternalAddress(object address, out object obj)
+        public bool TryResolveExternalAddress(object address, out object obj)
         {
-            return registered_external_address_to_objects.TryGetValueByLeft(address, out obj);
+            return external_address_to_objects.TryGetValueByLeft(address, out obj);
         }
-        public object ResolveRegisteredExternalAddress(object address)
+        public object ResolveExternalAddress(object address)
         {
             object obj;
 
-            TryResolveRegisteredExternalAddress(address, out obj);
+            TryResolveExternalAddress(address, out obj);
             return obj;
-        }
-
-        public TyonBridge GetBridge(Variable variable)
-        {
-            return settings.GetBridge(variable);
         }
 
         public TyonSettings GetSettings()
@@ -118,7 +113,7 @@ namespace CrunchyRecipe
 
         public IEnumerable<object> GetRegisteredExternalObjects()
         {
-            return registered_external_address_to_objects.Convert(p => p.Value);
+            return external_address_to_objects.Convert(p => p.Value);
         }
 	}
 	

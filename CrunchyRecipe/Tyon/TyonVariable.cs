@@ -20,7 +20,7 @@ namespace CrunchyRecipe
         public TyonVariable(VariableInstance variable, TyonDehydrater dehydrater) : this()
         {
             SetId(variable.GetVariable().GetVariableName());
-            SetTyonValue(dehydrater.CreateTyonValue(variable));
+            SetTyonValue(dehydrater.CreateTyonValue(variable.GetVariableType(), variable.GetContents()));
         }
 
         public void PushToSystemObject(object obj, TyonHydrater hydrater)

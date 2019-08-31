@@ -30,7 +30,7 @@ namespace CrunchyRecipe
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             hydrater.DeferProcess(delegate() {
-                variable.SetContents(hydrater.ResolveExternalAddress(GetTyonAddress(), variable.GetVariable()));
+                variable.SetContents(hydrater.ResolveExternalAddress(GetTyonAddress()));
             });
         }
 	}

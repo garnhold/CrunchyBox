@@ -16,12 +16,10 @@ namespace CrunchyRecipe
 {
 	public partial class TyonValue_Surrogate : TyonValue
 	{
-        public TyonValue_Surrogate(object value, TyonDehydrater dehydrater) : this()
+        public TyonValue_Surrogate(Type type, object surrogate, TyonDehydrater dehydrater) : this()
         {
-            SetTyonSurrogate(new TyonSurrogate(value, dehydrater));
+            SetTyonSurrogate(new TyonSurrogate(type, surrogate, dehydrater));
         }
-
-        public TyonValue_Surrogate(VariableInstance variable, TyonDehydrater dehydrater) : this(variable.GetContents(), dehydrater) { }
 
         public override void Render(TextDocumentCanvas canvas)
         {
@@ -30,7 +28,7 @@ namespace CrunchyRecipe
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            object value = GetTyonSurrogate().InstanceSystemObject(hydrater);
+            object value = GetTyonSurrogate().ResolveSystemObject(hydrater);
 
             hydrater.DeferProcess(delegate() {
                 variable.SetContents(value);

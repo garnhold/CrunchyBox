@@ -43,32 +43,29 @@ namespace CrunchyRecipe
             return tyon_object;
         }
 
-        public TyonValue DehydrateValue(object value, Type type)
+        public TyonValue DehydrateValue(Type type, object value)
         {
-            VariableInstance variable = new Variable_Static_Value("value", type, value)
-                .CreateInstance();
-
-            TyonValue tyon_value = CreateTyonValue(variable);
+            TyonValue tyon_value = CreateTyonValue(type, value);
 
             Finish();
             return tyon_value;
         }
 
-        public TyonValue CreateTyonValue(VariableInstance variable)
+        public TyonValue CreateTyonValue(Type field_type, object value)
         {
-            object value = variable.GetContents();
-
             if (value != null)
             {
+                Type value_type = value.GetType();
+
                 object address;
-                if (context.TryResolveRegisteredExternalObject(value, out address))
+                if (context.TryResolveExternalObject(value, out address))
                     return new TyonValue_ExternalAddress(address, this);
 
                 TyonAddressable addressable;
                 if (object_to_tyon_addressable.TryGetValue(value, out addressable))
                     return new TyonValue_InternalAddress(addressable.RequestAddress(this), this);
 
-                return context.GetBridge(variable.GetVariable()).CreateTyonValue(variable, this);
+                return context.GetSettings().GetTypeDehydrater(value_type).Dehydrate(field_type, value, this);
             }
 
             return new TyonValue_Null();

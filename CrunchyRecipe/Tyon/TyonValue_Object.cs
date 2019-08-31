@@ -21,8 +21,6 @@ namespace CrunchyRecipe
             SetTyonObject(new TyonObject(value, dehydrater));
         }
 
-        public TyonValue_Object(VariableInstance variable, TyonDehydrater dehydrater) : this(variable.GetContents(), dehydrater) { }
-
         public override void Render(TextDocumentCanvas canvas)
         {
             GetTyonObject().Render(canvas);

@@ -21,8 +21,6 @@ namespace CrunchyRecipe
             SetNumber(value.ToString().ParseNumber());
         }
 
-        public TyonValue_Number(VariableInstance variable, TyonDehydrater dehydrater) : this(variable.GetContents(), dehydrater) { }
-
         public override void Render(TextDocumentCanvas canvas)
         {
             canvas.AppendToLine(GetNumber());

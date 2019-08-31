@@ -11,22 +11,41 @@ namespace CrunchyRecipe
 {
     public class TyonSettings
     {
-        private List<TyonBridge> bridges;
+        private List<TyonTypeHandler> type_handlers;
+        private List<TyonTypeDehydrater> type_dehydraters;
+        private List<TyonTypeResolver> type_resolvers;
+
         private List<TyonDesignatedVariableProvider> variable_providers;
 
-        private OperationCache<TyonBridge, Variable> bridges_cache;
+        private OperationCache<TyonTypeDehydrater, Type> type_dehydrater_cache;
+        private OperationCache<TyonTypeResolver, Type> type_resolver_cache;
         private OperationCache<Dictionary<string, Variable>, Type> designated_variables_cache;
 
-        public TyonSettings(IEnumerable<TyonBridge> b, IEnumerable<TyonDesignatedVariableProvider> v)
+        public TyonSettings(IEnumerable<TyonTypeHandler> t, IEnumerable<TyonDesignatedVariableProvider> v)
         {
-            bridges = b.ToList();
-            bridges.Process(z => z.SetSettings(this));
+            type_handlers = t.Prepend(
+                TyonTypeHandler_String.INSTANCE,
+                TyonTypeHandler_Number.INSTANCE,
+                TyonTypeHandler_Enum.INSTANCE,
+                TyonTypeHandler_IEnumerable.INSTANCE,
+                TyonTypeHandler_Object.INSTANCE
+            ).Append(
+                TyonTypeHandler_Surrogate_Default.INSTANCE
+            ).ToList();
+            type_handlers.Process(z => z.SetSettings(this));
+
+            type_dehydraters = type_handlers.Convert<TyonTypeHandler, TyonTypeDehydrater>().ToList();
+            type_resolvers = type_handlers.Convert<TyonTypeHandler, TyonTypeResolver>().ToList();
 
             variable_providers = v.ToList();
             variable_providers.Process(z => z.SetSettings(this));
 
-            bridges_cache = new OperationCache<TyonBridge, Variable>("bridges_cache", delegate(Variable variable) {
-                return bridges.FindFirst(z => z.IsCompatible(variable)) ?? TyonBridge_Default.INSTANCE;
+            type_dehydrater_cache = new OperationCache<TyonTypeDehydrater, Type>("type_dehydrater_cache", delegate(Type type) {
+                return type_dehydraters.FindFirst(z => z.IsDehydrater(type));
+            });
+
+            type_resolver_cache = new OperationCache<TyonTypeResolver, Type>("type_resolver_cache", delegate(Type type) {
+                return type_resolvers.FindFirst(z => z.IsResolver(type));
             });
 
             designated_variables_cache = new OperationCache<Dictionary<string, Variable>, Type>("designated_variables_cache", delegate(Type type) {
@@ -35,7 +54,7 @@ namespace CrunchyRecipe
             });
         }
 
-        public TyonSettings(IEnumerable<TyonSettingsComponent> c) : this(c.Convert<TyonSettingsComponent, TyonBridge>(), c.Convert<TyonSettingsComponent, TyonDesignatedVariableProvider>()) { }
+        public TyonSettings(IEnumerable<TyonSettingsComponent> c) : this(c.Convert<TyonSettingsComponent, TyonTypeHandler>(), c.Convert<TyonSettingsComponent, TyonDesignatedVariableProvider>()) { }
         public TyonSettings(params TyonSettingsComponent[] c) : this((IEnumerable<TyonSettingsComponent>)c) { }
 
         public TyonContext CreateContext()
@@ -51,9 +70,14 @@ namespace CrunchyRecipe
             return context;
         }
 
-        public TyonBridge GetBridge(Variable variable)
+        public TyonTypeDehydrater GetTypeDehydrater(Type type)
         {
-            return bridges_cache.Fetch(variable);
+            return type_dehydrater_cache.Fetch(type);
+        }
+
+        public TyonTypeResolver GetTypeResolver(Type type)
+        {
+            return type_resolver_cache.Fetch(type);
         }
 
         public IEnumerable<Variable> GetDesignatedVariables(Type type)

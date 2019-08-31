@@ -159,6 +159,9 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
     <Compile Include="LinkedText\LinkedText.cs" />
     <Compile Include="RecoveryFunctionAttribute\RecoveryFunctionAttribute.cs" />
+    <Compile Include="Scriptlet\ScriptletArgument.cs" />
+    <Compile Include="Scriptlet\ScriptletManager.cs" />
+    <Compile Include="Scriptlet\Scriptlet.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm_Range.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm.cs" />

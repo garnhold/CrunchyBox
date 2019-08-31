@@ -67,7 +67,7 @@ namespace CrunchyRecipe
             HydrateInto(obj, TyonObject.DOMify(text));
         }
 
-        public object HydrateValue(TyonValue tyon_value, Type type)
+        public object HydrateValue(Type type, TyonValue tyon_value)
         {
             VariableInstance variable = new Variable_Static_Value("value", type, null)
                 .CreateInstance();
@@ -77,9 +77,9 @@ namespace CrunchyRecipe
 
             return variable.GetContents();
         }
-        public object HydrateValue(string text, Type type)
+        public object HydrateValue(Type type, string text)
         {
-            return HydrateValue(TyonValue.DOMify(text), type);
+            return HydrateValue(type, TyonValue.DOMify(text));
         }
 
         public void RegisterInternalObject(object obj, TyonAddress address)
@@ -100,14 +100,9 @@ namespace CrunchyRecipe
             return obj;
         }
 
-        public object ResolveExternalAddress(TyonAddress address, Variable variable)
+        public object ResolveExternalAddress(TyonAddress address)
         {
-            return context.GetBridge(variable).ResolveTyonAddress(address, variable, this);
-        }
-
-        public object ResolveRegisteredExternalAddress(object address)
-        {
-            return context.ResolveRegisteredExternalAddress(address);
+            return context.ResolveExternalAddress(address.GetAddressValue(this));
         }
 
         public void DeferProcess(Process process)

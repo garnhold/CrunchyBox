@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: July 18 2019 23:53:03 -07:00
+//Date: August 30 2019 0:02:28 -07:00
 
 using System;
 using System.IO;
@@ -402,7 +402,6 @@ namespace CrunchyRecipe
 	{
 		[RelatableChild]private TyonType tyon_type;
 		[RelatableChild]private TyonAddress tyon_address;
-		private string @string;
 		static public TyonSurrogate DOMify(TyonParser.TyonSurrogateContext context)
 		{
 			if(context != null)
@@ -437,7 +436,6 @@ namespace CrunchyRecipe
 		{
 			tyon_type = null;
 			tyon_address = null;
-			@string = "";
 			OnConstructor();
 		}
 		
@@ -446,7 +444,6 @@ namespace CrunchyRecipe
 		{
 			SetTyonType(TyonType.DOMify(context.tyonType()));
 			SetTyonAddress(TyonAddress.DOMify(context.tyonAddress()));
-			LoadContextIntermediateString(context.STRING().GetTextEX());
 		}
 		
 		public TyonSurrogate Duplicate()
@@ -454,7 +451,6 @@ namespace CrunchyRecipe
 			TyonSurrogate instance = new TyonSurrogate();
 			instance.SetTyonType(GetTyonType().IfNotNull(z => z.Duplicate()));
 			instance.SetTyonAddress(GetTyonAddress().IfNotNull(z => z.Duplicate()));
-			instance.SetString(GetString());
 			return instance;
 		}
 		
@@ -476,16 +472,6 @@ namespace CrunchyRecipe
 		public TyonAddress GetTyonAddress()
 		{
 			return tyon_address;
-		}
-		
-		private void SetString(string input)
-		{
-			@string = input;
-		}
-		
-		public string GetString()
-		{
-			return @string;
 		}
 		
 	}
