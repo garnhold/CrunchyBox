@@ -9,20 +9,20 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-    public class TyonTypeHandler_Enum : TyonTypeHandler
+    public class TyonTypeHandler_Type : TyonTypeHandler
     {
-        static public readonly TyonTypeHandler_Enum INSTANCE = new TyonTypeHandler_Enum();
+        static public readonly TyonTypeHandler_Type INSTANCE = new TyonTypeHandler_Type();
 
-        private TyonTypeHandler_Enum() { }
+        private TyonTypeHandler_Type() { }
 
         public override TyonValue Dehydrate(Type field_type, object value, TyonDehydrater dehydrater)
         {
-            return new TyonValue_String(value, dehydrater);
+            return new TyonValue_Type(value.ConvertEX<Type>(), dehydrater);
         }
 
         public override bool IsCompatible(Type type)
         {
-            if (type.IsEnumType())
+            if (type.IsTypeType())
                 return true;
 
             return false;

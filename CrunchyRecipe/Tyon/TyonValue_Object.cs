@@ -34,8 +34,11 @@ namespace CrunchyRecipe
 
                 if (current_value != null)
                 {
-                    GetTyonObject().PushToSystemObject(current_value, hydrater);
-                    return;
+                    if (GetTyonObject().GetSystemType(hydrater) == current_value.GetType())
+                    {
+                        GetTyonObject().PushToSystemObject(current_value, hydrater);
+                        return;
+                    }
                 }
             }
 

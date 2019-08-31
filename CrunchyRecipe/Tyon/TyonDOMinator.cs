@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: August 30 2019 0:02:28 -07:00
+//Date: August 30 2019 23:36:10 -07:00
 
 using System;
 using System.IO;
@@ -401,7 +401,7 @@ namespace CrunchyRecipe
 	public partial class TyonSurrogate : TyonElement
 	{
 		[RelatableChild]private TyonType tyon_type;
-		[RelatableChild]private TyonAddress tyon_address;
+		private string @string;
 		static public TyonSurrogate DOMify(TyonParser.TyonSurrogateContext context)
 		{
 			if(context != null)
@@ -435,7 +435,7 @@ namespace CrunchyRecipe
 		public TyonSurrogate()
 		{
 			tyon_type = null;
-			tyon_address = null;
+			@string = "";
 			OnConstructor();
 		}
 		
@@ -443,14 +443,14 @@ namespace CrunchyRecipe
 		public TyonSurrogate(TyonParser.TyonSurrogateContext context) : this()
 		{
 			SetTyonType(TyonType.DOMify(context.tyonType()));
-			SetTyonAddress(TyonAddress.DOMify(context.tyonAddress()));
+			LoadContextIntermediateString(context.STRING().GetTextEX());
 		}
 		
 		public TyonSurrogate Duplicate()
 		{
 			TyonSurrogate instance = new TyonSurrogate();
 			instance.SetTyonType(GetTyonType().IfNotNull(z => z.Duplicate()));
-			instance.SetTyonAddress(GetTyonAddress().IfNotNull(z => z.Duplicate()));
+			instance.SetString(GetString());
 			return instance;
 		}
 		
@@ -464,14 +464,14 @@ namespace CrunchyRecipe
 			return tyon_type;
 		}
 		
-		private void SetTyonAddress(TyonAddress input)
+		private void SetString(string input)
 		{
-			tyon_address = input;
+			@string = input;
 		}
 		
-		public TyonAddress GetTyonAddress()
+		public string GetString()
 		{
-			return tyon_address;
+			return @string;
 		}
 		
 	}
@@ -784,6 +784,70 @@ namespace CrunchyRecipe
 		{
 			TyonValue_Null instance = new TyonValue_Null();
 			return instance;
+		}
+		
+	}
+	
+	public partial class TyonValue_Type : TyonValue
+	{
+		[RelatableChild]private TyonType tyon_type;
+		static public TyonValue_Type DOMify(TyonParser.TyonValue_TypeContext context)
+		{
+			if(context != null)
+			{
+				return new TyonValue_Type(context);
+			}
+			
+			return null;
+		}
+		
+		static new public TyonValue_Type DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as TyonParser.TyonValue_TypeContext);
+		}
+		
+		static new public TyonValue_Type DOMify(Stream stream)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(stream).tyonValue());
+		}
+		
+		static new public TyonValue_Type DOMify(string text)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(text).tyonValue());
+		}
+		
+		static new public TyonValue_Type DOMifyFile(string filename)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateFileParser(filename).tyonValue());
+		}
+		
+		public TyonValue_Type()
+		{
+			tyon_type = null;
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public TyonValue_Type(TyonParser.TyonValue_TypeContext context) : this()
+		{
+			SetTyonType(TyonType.DOMify(context.tyonType()));
+		}
+		
+		public override TyonValue Duplicate()
+		{
+			TyonValue_Type instance = new TyonValue_Type();
+			instance.SetTyonType(GetTyonType().IfNotNull(z => z.Duplicate()));
+			return instance;
+		}
+		
+		private void SetTyonType(TyonType input)
+		{
+			tyon_type = input;
+		}
+		
+		public TyonType GetTyonType()
+		{
+			return tyon_type;
 		}
 		
 	}
@@ -1603,6 +1667,11 @@ namespace CrunchyRecipe
 		public override TyonElement VisitTyonValue_Null(TyonParser.TyonValue_NullContext context)
 		{
 			return TyonValue_Null.DOMify(context);
+		}
+		
+		public override TyonElement VisitTyonValue_Type(TyonParser.TyonValue_TypeContext context)
+		{
+			return TyonValue_Type.DOMify(context);
 		}
 		
 		public override TyonElement VisitTyonValue_InternalAddress(TyonParser.TyonValue_InternalAddressContext context)

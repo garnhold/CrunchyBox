@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: March 02 2019 21:52:08 -08:00
+//Date: August 30 2019 23:36:10 -07:00
 
 using System;
 using System.Collections;
@@ -14,25 +14,23 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-	public partial class TyonValue_Surrogate : TyonValue
+	public partial class TyonValue_Type : TyonValue
 	{
-        public TyonValue_Surrogate(object value, TyonDehydrater dehydrater) : this()
+        public TyonValue_Type(Type type, TyonDehydrater dehydrater)
         {
-            SetTyonSurrogate(new TyonSurrogate(value, dehydrater));
+            SetTyonType(TyonType.CreateTyonType(type));
         }
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            GetTyonSurrogate().Render(canvas);
+            canvas.AppendToLine("typeof(");
+                GetTyonType().Render(canvas);
+            canvas.AppendToLine(")");
         }
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            object value = GetTyonSurrogate().ResolveSystemObject(hydrater);
-
-            hydrater.DeferProcess(delegate() {
-                variable.SetContents(value);
-            });
+            variable.SetContents(GetTyonType().GetSystemType(hydrater));
         }
 	}
 	

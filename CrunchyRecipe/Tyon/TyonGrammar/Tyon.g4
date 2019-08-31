@@ -8,7 +8,7 @@ tyonType
     ;
 
 tyonObject : tyonType ('(' '&' tyonAddress ')')? ('{' tyonVariable* '}')?;
-tyonSurrogate : '$' tyonType ':' tyonAddress;
+tyonSurrogate : '$' tyonType ':' STRING /*info: custom_load_context*/;
 
 tyonArray : tyonType '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
 
@@ -17,6 +17,8 @@ tyonValue
     | STRING /*info: custom_load_context*/ # tyonValue_String
 
     | 'null' # tyonValue_Null
+    | 'typeof' '(' tyonType ')' # tyonValue_Type
+
     | '&' tyonAddress # tyonValue_InternalAddress
     | '@' tyonAddress # tyonValue_ExternalAddress
 

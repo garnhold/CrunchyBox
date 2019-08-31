@@ -19,9 +19,8 @@ namespace CrunchySandwich
             UnityTyonDesignatedVariableProvider.INSTANCE,
             GeneralUnityTyonDesignatedVariableProvider.INSTANCE,
 
-            TyonTypeHandler_Externalize_Type<UnityEngine.Object>.INSTANCE,
+            TyonTypeHandler_Externalize_ExplicitType<UnityEngine.Object>.INSTANCE,
 
-            TyonTypeHandler_Type.INSTANCE,
             TyonTypeHandler_MethodInfo.INSTANCE
         )
         {

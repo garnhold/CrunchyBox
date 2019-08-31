@@ -65,7 +65,7 @@ namespace CrunchyRecipe
                 if (object_to_tyon_addressable.TryGetValue(value, out addressable))
                     return new TyonValue_InternalAddress(addressable.RequestAddress(this), this);
 
-                return context.GetSettings().GetTypeDehydrater(value_type).Dehydrate(field_type, value, this);
+                return context.GetSettings().GetTypeHandler(value_type).Dehydrate(field_type, value, this);
             }
 
             return new TyonValue_Null();

@@ -9,27 +9,42 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-    public class TyonTypeHandler_MethodInfo : TyonTypeHandler_Surrogate_ExplicitType<MethodInfo, Tuple<Type, string, Type[]>>
+    public class TyonTypeHandler_MethodInfo : TyonTypeHandler_Substitute_ExplicitType<MethodInfo, MethodReference>
     {
-        static public readonly TyonTypeHandler_MethodInfo INSTANCE = new TyonTypeHandler_MethodInfo();
+    }
 
-        protected override Tuple<Type, string, Type[]> CreateSurrogateInternal(MethodInfo value, TyonDehydrater dehydrater)
+    public class MethodReference
+    {
+        public readonly Type declaring_type;
+        public readonly string name;
+        public readonly List<Type> parameter_types;
+
+        static public implicit operator MethodInfo(MethodReference r)
         {
-            return Tuple.New(
-                value.DeclaringType,
-                value.Name,
-                value.GetTechnicalParameterTypes().ToArray()
-            );
+            return r.Resolve();
         }
 
-        protected override MethodInfo ResolveSurrogateInternal(Tuple<Type, string, Type[]> surrogate, TyonHydrater hydrater)
+        static public implicit operator MethodReference(MethodInfo i)
         {
-            return surrogate.item1.GetFilteredMethods(
-                Filterer_MethodInfo.IsNamed(surrogate.item2),
-                Filterer_MethodInfo.CanTechnicalParametersHold(surrogate.item3)
+            return new MethodReference(i);
+        }
+
+        public MethodReference(Type d, string n, IEnumerable<Type> p)
+        {
+            declaring_type = d;
+            name = n;
+            parameter_types = p.ToList();
+        }
+
+        public MethodReference() : this(null, "", Empty.IEnumerable<Type>()) { }
+        public MethodReference(MethodInfo i) : this(i.DeclaringType, i.Name, i.GetTechnicalParameterTypes()) { }
+
+        public MethodInfo Resolve()
+        {
+            return declaring_type.GetFilteredMethods(
+                Filterer_MethodInfo.IsNamed(name),
+                Filterer_MethodInfo.CanTechnicalParametersHold(parameter_types)
             ).GetFirst();
         }
-
-        private TyonTypeHandler_MethodInfo() { }
     }
 }

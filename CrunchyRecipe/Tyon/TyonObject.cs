@@ -73,6 +73,11 @@ namespace CrunchyRecipe
             return GetTyonAddress();
         }
 
+        public Type GetSystemType(TyonHydrater hydrater)
+        {
+            return GetTyonType().GetSystemType(hydrater);
+        }
+
         public override string ToString()
         {
             return Render();
