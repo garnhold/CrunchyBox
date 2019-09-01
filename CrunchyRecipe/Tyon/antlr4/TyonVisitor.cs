@@ -69,12 +69,19 @@ public interface ITyonVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTyonArray([NotNull] TyonParser.TyonArrayContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonValue_Number</c>
+	/// Visit a parse tree produced by the <c>tyonValue_Int</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitTyonValue_Number([NotNull] TyonParser.TyonValue_NumberContext context);
+	Result VisitTyonValue_Int([NotNull] TyonParser.TyonValue_IntContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>tyonValue_Float</c>
+	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTyonValue_Float([NotNull] TyonParser.TyonValue_FloatContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonValue_String</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
@@ -152,13 +159,6 @@ public interface ITyonVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitTyonAddress_String([NotNull] TyonParser.TyonAddress_StringContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonAddress_Object</c>
-	/// labeled alternative in <see cref="TyonParser.tyonAddress"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitTyonAddress_Object([NotNull] TyonParser.TyonAddress_ObjectContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="TyonParser.tyonVariable"/>.
 	/// </summary>

@@ -85,12 +85,12 @@ namespace CrunchyRecipe
         public void RegisterInternalObject(object obj, TyonAddress address)
         {
             if (address != null)
-                internal_address_to_object.Add(address.GetAddressValue(this), obj);
+                internal_address_to_object.Add(address.GetSystemValue(), obj);
         }
 
         public bool TryResolveInternalAddress(TyonAddress address, out object obj)
         {
-            return internal_address_to_object.TryGetValue(address.GetAddressValue(this), out obj);
+            return internal_address_to_object.TryGetValue(address.GetSystemValue(), out obj);
         }
         public object ResolveInternalAddress(TyonAddress address)
         {
@@ -102,7 +102,7 @@ namespace CrunchyRecipe
 
         public object ResolveExternalAddress(TyonAddress address)
         {
-            return context.ResolveExternalAddress(address.GetAddressValue(this));
+            return context.ResolveExternalAddress(address.GetSystemValue());
         }
 
         public void DeferProcess(Process process)

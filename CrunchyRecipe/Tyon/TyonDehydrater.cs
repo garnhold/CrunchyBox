@@ -92,7 +92,7 @@ namespace CrunchyRecipe
                 return new TyonAddress_Int(cast, this);
             }
 
-            return new TyonAddress_Object(value, this);
+            return null;
         }
 
         public void RegisterInternalObject(object obj, TyonAddressable addressable)

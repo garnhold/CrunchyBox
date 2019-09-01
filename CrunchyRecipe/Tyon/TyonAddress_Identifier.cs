@@ -26,7 +26,7 @@ namespace CrunchyRecipe
             canvas.AppendToLine(GetId());
         }
 
-        public override object GetAddressValue(TyonHydrater hydrater)
+        public override object GetSystemValue()
         {
             return GetId();
         }

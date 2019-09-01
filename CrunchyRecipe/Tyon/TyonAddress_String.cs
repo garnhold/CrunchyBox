@@ -31,7 +31,7 @@ namespace CrunchyRecipe
             canvas.AppendToLine(GetString().StyleAsLiteralString());
         }
 
-        public override object GetAddressValue(TyonHydrater hydrater)
+        public override object GetSystemValue()
         {
             return GetString();
         }

@@ -16,8 +16,8 @@ namespace CrunchyRecipe
 {
 	public abstract partial class TyonAddress : TyonElement
 	{
+        public abstract object GetSystemValue();
         public abstract void Render(TextDocumentCanvas canvas);
-        public abstract object GetAddressValue(TyonHydrater hydrater);
 
         public string Render()
         {

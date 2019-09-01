@@ -29,7 +29,7 @@ namespace CrunchySandwich
 
 		private void PackTyon()
 		{
-			if (did_unpack_tyon_data || tyon_data.IsVisible() == false)
+			if (did_unpack_tyon_data || tyon_data.IsBlank())
 			{
 				string old_tyon_data = tyon_data;
 				List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
@@ -71,6 +71,8 @@ namespace CrunchySandwich
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
+
+					PackTyon();
 				}
 				catch(Exception ex)
 				{
@@ -119,7 +121,7 @@ namespace CrunchySandwich
 
 		private void PackTyon()
 		{
-			if (did_unpack_tyon_data || tyon_data.IsVisible() == false)
+			if (did_unpack_tyon_data || tyon_data.IsBlank())
 			{
 				string old_tyon_data = tyon_data;
 				List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
@@ -161,6 +163,8 @@ namespace CrunchySandwich
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
+
+					PackTyon();
 				}
 				catch(Exception ex)
 				{

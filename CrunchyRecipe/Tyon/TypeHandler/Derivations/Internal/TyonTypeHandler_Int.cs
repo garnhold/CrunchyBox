@@ -9,20 +9,20 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-    public class TyonTypeHandler_Number : TyonTypeHandler
+    public class TyonTypeHandler_Int : TyonTypeHandler
     {
-        static public readonly TyonTypeHandler_Number INSTANCE = new TyonTypeHandler_Number();
+        static public readonly TyonTypeHandler_Int INSTANCE = new TyonTypeHandler_Int();
 
-        private TyonTypeHandler_Number() { }
+        private TyonTypeHandler_Int() { }
 
         public override TyonValue Dehydrate(Type field_type, object value, TyonDehydrater dehydrater)
         {
-            return new TyonValue_Number(value, dehydrater);
+            return new TyonValue_Int(value, dehydrater);
         }
 
         public override bool IsCompatible(Type type)
         {
-            if (type.IsNumeric())
+            if (type.IsInteger())
                 return true;
 
             return false;

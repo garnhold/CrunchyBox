@@ -18,17 +18,17 @@ namespace CrunchyRecipe
 	{
         public TyonAddress_Int(int n, TyonDehydrater dehydrater) : this()
         {
-            SetNumber(n);
+            SetInt(n);
         }
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetNumber().ToString());
+            canvas.AppendToLine(GetInt().ToString());
         }
 
-        public override object GetAddressValue(TyonHydrater hydrater)
+        public override object GetSystemValue()
         {
-            return GetNumber();
+            return GetInt();
         }
 	}
 	

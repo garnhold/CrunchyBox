@@ -7,7 +7,7 @@ namespace CrunchyNoodle
 {
     static public class ObjectExtensions_Convert
     {
-        static public bool ConvertEX(this object item, Type type, out object output)
+        static public bool ConvertEX(this object item, Type type, out object output, bool allow_null_object = false)
         {
             if (item != null)
             {
@@ -26,6 +26,13 @@ namespace CrunchyNoodle
             }
 
             output = type.GetDefaultValue();
+
+            if (allow_null_object)
+            {
+                if(item == null)
+                    return true;
+            }
+
             return false;
         }
         static public object ConvertEX(this object item, Type type)

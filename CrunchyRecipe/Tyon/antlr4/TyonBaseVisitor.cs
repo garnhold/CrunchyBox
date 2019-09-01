@@ -92,7 +92,7 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <return>The visitor result.</return>
 	public virtual Result VisitTyonArray([NotNull] TyonParser.TyonArrayContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="TyonParser.tyonValue_Number"/>.
+	/// Visit a parse tree produced by <see cref="TyonParser.tyonValue_Int"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -100,7 +100,17 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTyonValue_Number([NotNull] TyonParser.TyonValue_NumberContext context) { return VisitChildren(context); }
+	public virtual Result VisitTyonValue_Int([NotNull] TyonParser.TyonValue_IntContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="TyonParser.tyonValue_Float"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitTyonValue_Float([NotNull] TyonParser.TyonValue_FloatContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="TyonParser.tyonValue_String"/>.
 	/// <para>
@@ -211,16 +221,6 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitTyonAddress_String([NotNull] TyonParser.TyonAddress_StringContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="TyonParser.tyonAddress_Object"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitTyonAddress_Object([NotNull] TyonParser.TyonAddress_ObjectContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="TyonParser.tyonVariable"/>.
 	/// <para>

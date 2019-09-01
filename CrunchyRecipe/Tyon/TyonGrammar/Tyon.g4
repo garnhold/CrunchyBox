@@ -13,7 +13,8 @@ tyonSurrogate : '$' tyonType ':' STRING /*info: custom_load_context*/;
 tyonArray : tyonType '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
 
 tyonValue
-    : NUMBER # tyonValue_Number
+    : INT # tyonValue_Int
+    | FLOAT # tyonValue_Float
     | STRING /*info: custom_load_context*/ # tyonValue_String
 
     | 'null' # tyonValue_Null
@@ -31,15 +32,15 @@ tyonValue
 tyonAddress
     : ID # tyonAddress_Identifier
 
-    | NUMBER /*info: type=>int*/ # tyonAddress_Int
+    | INT # tyonAddress_Int
     | STRING /*info: custom_load_context*/ # tyonAddress_String
-
-    | tyonObject # tyonAddress_Object
     ;
 
 tyonVariable : ID '=' tyonValue ';';
 
-NUMBER : ('-'|'+')? [0-9]+ ('.' [0-9]*)?;
+
+INT /*info: type=>long*/ : ('-'|'+')? [0-9]+;
+FLOAT /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]*?;
 STRING : '"' ('\\"'|.)*? '"';
 ID : [A-Za-z_][A-Za-z0-9_\.]*;
 

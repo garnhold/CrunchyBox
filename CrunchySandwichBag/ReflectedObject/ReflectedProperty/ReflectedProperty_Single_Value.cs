@@ -58,7 +58,7 @@ namespace CrunchySandwichBag
 
             if (TryGetContentValues(out temp))
             {
-                if (temp.Convert<T>(out value))
+                if (temp.Convert<T>(out value, true))
                     return true;
             }
 

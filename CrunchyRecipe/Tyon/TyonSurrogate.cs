@@ -29,9 +29,8 @@ namespace CrunchyRecipe
 
         public object ResolveSystemObject(TyonHydrater hydrater)
         {
-            return GetString().ConvertEX(
-                GetTyonType().GetSystemType(hydrater)
-            );
+            return GetString().ConvertEX(GetTyonType().GetSystemType(hydrater)) ??
+                GetTyonType().InstanceSystemType(hydrater);
         }
 
         public string Render()
