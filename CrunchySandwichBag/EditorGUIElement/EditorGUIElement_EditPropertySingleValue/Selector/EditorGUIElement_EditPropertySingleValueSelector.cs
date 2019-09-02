@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
         {
             T old_value;
 
-            if (property.TryGetContentValues<T>(out old_value))
+            if (property.TryGetContentValues<T>(out old_value, true))
             {
                 if (EditorGUIExtensions.DropdownButton(GetElementRect(), old_value.ToStringEX("None")))
                 {

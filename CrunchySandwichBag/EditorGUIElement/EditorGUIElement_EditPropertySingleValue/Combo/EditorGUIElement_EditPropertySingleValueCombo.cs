@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
         {
             T old_value;
 
-            if (property.TryGetContentValues<T>(out old_value))
+            if (property.TryGetContentValues<T>(out old_value, true))
             {
                 string old_text = old_value.ToStringEX("None");
                 string new_text = EditorGUI.DelayedTextField(GetElementRect(), old_text);

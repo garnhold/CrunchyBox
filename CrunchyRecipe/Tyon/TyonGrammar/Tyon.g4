@@ -7,14 +7,14 @@ tyonType
     | tyonType '[' ']' # tyonType_Array
     ;
 
-tyonObject : tyonType ('(' '&' tyonAddress ')')? ('{' tyonVariable* '}')?;
+tyonObject : tyonType ('(' '&' tyonAddress ')')? '{' tyonVariable* '}';
 tyonSurrogate : '$' tyonType ':' STRING /*info: custom_load_context*/;
 
 tyonArray : tyonType '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
 
 tyonValue
-    : INT # tyonValue_Int
-    | FLOAT # tyonValue_Float
+    : INTEGER # tyonValue_Integer
+    | REAL # tyonValue_Real
     | STRING /*info: custom_load_context*/ # tyonValue_String
 
     | 'null' # tyonValue_Null
@@ -32,15 +32,17 @@ tyonValue
 tyonAddress
     : ID # tyonAddress_Identifier
 
-    | INT # tyonAddress_Int
+    | 'null' # tyonAddress_Null
+
+    | INTEGER # tyonAddress_Integer
     | STRING /*info: custom_load_context*/ # tyonAddress_String
     ;
 
 tyonVariable : ID '=' tyonValue ';';
 
 
-INT /*info: type=>long*/ : ('-'|'+')? [0-9]+;
-FLOAT /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]*?;
+INTEGER /*info: type=>long*/ : ('-'|'+')? [0-9]+;
+REAL /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]*?;
 STRING : '"' ('\\"'|.)*? '"';
 ID : [A-Za-z_][A-Za-z0-9_\.]*;
 

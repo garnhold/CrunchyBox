@@ -28,7 +28,7 @@ namespace CrunchySandwichBag
             GameObject game_object;
 
             if (game_object_property.TryGetContentValues(out game_object))
-                return game_object.IfNotNull(g => g.GetAllComponents().Convert(c => c.GetType()).Unique());
+                return game_object.GetAllComponents().Convert(c => c.GetType()).Unique();
 
             return Empty.IEnumerable<Type>();
         }

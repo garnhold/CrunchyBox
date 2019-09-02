@@ -9,14 +9,14 @@ namespace CrunchyNoodle
     {
         static public bool ConvertEX(this object item, Type type, out object output, bool allow_null_object = false)
         {
+            if (item.CanConvert(type, allow_null_object))
+            {
+                output = item;
+                return true;
+            }
+
             if (item != null)
             {
-                if (item.CanConvert(type))
-                {
-                    output = item;
-                    return true;
-                }
-
                 BasicMethodInvoker invoker = item.GetType().GetConversionInvoker(type);
                 if (invoker != null)
                 {
@@ -26,13 +26,6 @@ namespace CrunchyNoodle
             }
 
             output = type.GetDefaultValue();
-
-            if (allow_null_object)
-            {
-                if(item == null)
-                    return true;
-            }
-
             return false;
         }
         static public object ConvertEX(this object item, Type type)

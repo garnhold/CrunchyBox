@@ -36,7 +36,7 @@ namespace CrunchySandwichBag
         {
             T old_value;
 
-            if (property.TryGetContentValues<T>(out old_value))
+            if (property.TryGetContentValues<T>(out old_value, true))
             {
                 T new_value = DrawValueInternal(field_rect, old_value);
 

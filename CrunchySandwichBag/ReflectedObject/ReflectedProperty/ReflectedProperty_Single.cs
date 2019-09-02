@@ -34,10 +34,9 @@ namespace CrunchySandwichBag
             Touch("Creating " + GetVariableName(), delegate() {
                 GetObjects().Process(o => {
                     if (GetContents(o).GetTypeEX() != type)
-                        SetContents(o, type.CreateInstance());
+                        SetContents(o, GetContents(o).ConvertEX(type) ?? type.CreateInstance());
                 });
             });
-            
         }
         public void EnsureContents()
         {

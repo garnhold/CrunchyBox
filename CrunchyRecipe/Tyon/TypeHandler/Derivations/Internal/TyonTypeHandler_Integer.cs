@@ -9,15 +9,15 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-    public class TyonTypeHandler_Int : TyonTypeHandler
+    public class TyonTypeHandler_Integer : TyonTypeHandler
     {
-        static public readonly TyonTypeHandler_Int INSTANCE = new TyonTypeHandler_Int();
+        static public readonly TyonTypeHandler_Integer INSTANCE = new TyonTypeHandler_Integer();
 
-        private TyonTypeHandler_Int() { }
+        private TyonTypeHandler_Integer() { }
 
         public override TyonValue Dehydrate(Type field_type, object value, TyonDehydrater dehydrater)
         {
-            return new TyonValue_Int(value, dehydrater);
+            return new TyonValue_Integer(value, dehydrater);
         }
 
         public override bool IsCompatible(Type type)

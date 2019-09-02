@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: February 28 2019 23:41:22 -08:00
+//Date: August 31 2019 21:26:35 -07:00
 
 using System;
 using System.Collections;
@@ -14,21 +14,16 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-	public partial class TyonAddress_Int : TyonAddress
+	public partial class TyonAddress_Null : TyonAddress
 	{
-        public TyonAddress_Int(int n, TyonDehydrater dehydrater) : this()
-        {
-            SetInt(n);
-        }
-
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetInt().ToString());
+            canvas.AppendToLine("null");
         }
 
         public override object GetSystemValue()
         {
-            return GetInt();
+            return null;
         }
 	}
 	

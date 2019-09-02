@@ -32,20 +32,18 @@ namespace CrunchyDough
             return output;
         }
 
-        static public bool CanConvert(this object item, Type type)
+        static public bool CanConvert(this object item, Type type, bool allow_null_object = false)
         {
-            if (item != null)
+            if (type != null)
             {
-                if (type != null)
+                if (type.IsAssignableFrom(item.GetTypeEX()))
+                    return true;
+
+                if (allow_null_object)
                 {
-                    if (type.IsAssignableFrom(item.GetType()))
+                    if (item == null)
                         return true;
                 }
-            }
-            else
-            {
-                if (type.IsNullable())
-                    return true;
             }
 
             return false;

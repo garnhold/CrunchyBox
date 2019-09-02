@@ -10,11 +10,11 @@ namespace CrunchyNoodle
     {
         static public bool ConvertEX(object item, out T output, bool allow_null_object = false)
         {
+            if (item.Convert<T>(out output, allow_null_object))
+                return true;
+
             if (item != null)
             {
-                if (item.Convert<T>(out output, allow_null_object))
-                    return true;
-
                 BasicMethodInvoker invoker = item.GetType().GetConversionInvoker<T>();
                 if (invoker != null)
                 {

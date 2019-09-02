@@ -47,36 +47,33 @@ namespace CrunchySandwichBag
 
             if (target.ForcePropertyValue("target_method").TryGetContentValues<MethodInfo>(out method))
             {
-                if (method != null)
+                EditTarget invoker_contents;
+                EditProperty_Single invoker_property = target.ForcePropertySingle("invoker");
+
+                Type invoker_type = CrunchyNoodle.Types.GetFilteredTypes(
+                    Filterer_Type.CanBeTreatedAs<InvoketoidInvokerBase>(),
+                    Filterer_Type.IsConcreteClass(),
+                    Filterer_Type.CanGenericParametersHold(method.GetEffectiveParameterTypes())
+                )
+                .GetFirst();
+
+                if (invoker_type != null)
                 {
-                    EditTarget invoker_contents;
-                    EditProperty_Single invoker_property = target.ForcePropertySingle("invoker");
+                    if (invoker_type.IsGenericClass())
+                        invoker_type = invoker_type.MakeGenericType(method.GetEffectiveParameterTypes().ToArray());
 
-                    Type invoker_type = CrunchyNoodle.Types.GetFilteredTypes(
-                        Filterer_Type.CanBeTreatedAs<InvoketoidInvokerBase>(),
-                        Filterer_Type.IsConcreteClass(),
-                        Filterer_Type.CanGenericParametersHold(method.GetEffectiveParameterTypes())
-                    )
-                    .GetFirst();
-
-                    if (invoker_type != null)
+                    invoker_property.EnsureContents(invoker_type);
+                    if (invoker_property.TryGetContents(out invoker_contents))
                     {
-                        if (invoker_type.IsGenericClass())
-                            invoker_type = invoker_type.MakeGenericType(method.GetEffectiveParameterTypes().ToArray());
-
-                        invoker_property.EnsureContents(invoker_type);
-                        if (invoker_property.TryGetContents(out invoker_contents))
-                        {
-                            container.AddChildWithAttachments(
-                                new EditorGUIElement_Complex_EditTarget(invoker_contents),
-                                new EditorGUIElementAttachment_Indent()
-                            );
-                        }
+                        container.AddChildWithAttachments(
+                            new EditorGUIElement_Complex_EditTarget(invoker_contents),
+                            new EditorGUIElementAttachment_Indent()
+                        );
                     }
-                    else
-                    {
-                        container.AddChild(new EditorGUIElement_Text("Unable to find a InvoketoidInvoker type that matches the method signature."));
-                    }
+                }
+                else
+                {
+                    container.AddChild(new EditorGUIElement_Text("Unable to find a InvoketoidInvoker type that matches the method signature."));
                 }
             }
             

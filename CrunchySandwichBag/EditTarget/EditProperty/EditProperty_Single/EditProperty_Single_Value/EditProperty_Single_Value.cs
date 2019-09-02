@@ -31,13 +31,13 @@ namespace CrunchySandwichBag
                 ForceContentValues(value);
         }
 
-        public bool TryGetContentValues<T>(out T value)
+        public bool TryGetContentValues<T>(out T value, bool allow_null_object = false)
         {
             object temp;
 
             if (TryGetContentValues(out temp))
             {
-                if (temp.Convert<T>(out value, true))
+                if (temp.ConvertEX<T>(out value, allow_null_object))
                     return true;
             }
 

@@ -29,7 +29,7 @@ public partial class TyonLexer : Lexer {
 	public const int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		INT=18, FLOAT=19, STRING=20, ID=21, WHITESPACE=22;
+		INTEGER=18, REAL=19, STRING=20, ID=21, WHITESPACE=22;
 	public static string[] modeNames = {
 		"DEFAULT_MODE"
 	};
@@ -37,7 +37,7 @@ public partial class TyonLexer : Lexer {
 	public static readonly string[] ruleNames = {
 		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
 		"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16", 
-		"INT", "FLOAT", "STRING", "ID", "WHITESPACE"
+		"INTEGER", "REAL", "STRING", "ID", "WHITESPACE"
 	};
 
 
@@ -53,7 +53,8 @@ public partial class TyonLexer : Lexer {
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, "INT", "FLOAT", "STRING", "ID", "WHITESPACE"
+		null, null, null, null, null, null, "INTEGER", "REAL", "STRING", "ID", 
+		"WHITESPACE"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 

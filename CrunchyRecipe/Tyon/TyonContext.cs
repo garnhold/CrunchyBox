@@ -13,7 +13,7 @@ namespace CrunchyRecipe
 	{
         private TyonSettings settings;
 
-        private int next_external_address;
+        private long next_external_address;
         private BidirectionalDictionary<object, object> external_address_to_objects;
 
         public TyonContext(TyonSettings s)

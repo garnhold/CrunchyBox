@@ -42,7 +42,7 @@ namespace CrunchySandwichBag
             EditorGUIElement_Container_Auto container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
             EditorGUIElement_Container_Flow_Line type_container = container.AddChild(new EditorGUIElement_Container_Flow_Line());
 
-            if (property.TryGetContentValues<CustomAsset>(out asset))
+            if (property.TryGetContentValues<CustomAsset>(out asset, true))
             {
                 switch (asset.GetAssetType())
                 {

@@ -39,28 +39,25 @@ namespace CrunchySandwichBag
             
             if (target.ForcePropertyValue("invoketoid.target_method").TryGetContentValues<MethodInfo>(out method))
             {
-                if (method != null)
+                if (method.HasReturn())
                 {
-                    if (method.HasReturn())
+                    EditTarget comparer_contents;
+                    EditProperty_Single comparer_property = target.ForcePropertySingle("comparer");
+
+                    Type comparer_type = typeof(PreditoidComparer<>).MakeGenericType(method.GetReturnType());
+
+                    comparer_property.EnsureContents(comparer_type);
+                    if (comparer_property.TryGetContents(out comparer_contents))
                     {
-                        EditTarget comparer_contents;
-                        EditProperty_Single comparer_property = target.ForcePropertySingle("comparer");
+                        EditorGUIElement_Container_Flow_Line line = container.AddChild(new EditorGUIElement_Container_Flow_Line());
 
-                        Type comparer_type = typeof(PreditoidComparer<>).MakeGenericType(method.GetReturnType());
-
-                        comparer_property.EnsureContents(comparer_type);
-                        if (comparer_property.TryGetContents(out comparer_contents))
-                        {
-                            EditorGUIElement_Container_Flow_Line line = container.AddChild(new EditorGUIElement_Container_Flow_Line());
-
-                            line.AddFixedChild(100.0f, comparer_contents.ForceProperty("relation").CreateEditorGUIElement());
-                            line.AddWeightedChild(1.0f, comparer_contents.ForceProperty("value").CreateEditorGUIElement());
-                        }
+                        line.AddFixedChild(100.0f, comparer_contents.ForceProperty("relation").CreateEditorGUIElement());
+                        line.AddWeightedChild(1.0f, comparer_contents.ForceProperty("value").CreateEditorGUIElement());
                     }
-                    else
-                    {
-                        container.AddChild(new EditorGUIElement_Text("Selected method has no return value."));
-                    }
+                }
+                else
+                {
+                    container.AddChild(new EditorGUIElement_Text("Selected method has no return value."));
                 }
             }
             

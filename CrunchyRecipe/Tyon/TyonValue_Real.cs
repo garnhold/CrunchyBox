@@ -14,21 +14,21 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-	public partial class TyonValue_Int : TyonValue
+	public partial class TyonValue_Real : TyonValue
 	{
-        public TyonValue_Int(object value, TyonDehydrater dehydrater) : this()
+        public TyonValue_Real(object value, TyonDehydrater dehydrater) : this()
         {
-            SetInt(value.ConvertEX<long>());
+            SetReal(value.ConvertEX<decimal>());
         }
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetInt().ToString());
+            canvas.AppendToLine(GetReal().ToString());
         }
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            variable.SetContents(GetInt());
+            variable.SetContents(GetReal());
         }
 	}
 	
