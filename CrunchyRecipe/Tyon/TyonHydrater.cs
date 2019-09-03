@@ -14,7 +14,7 @@ namespace CrunchyRecipe
         private TyonHydrationMode mode;
 
         private List<Process> deferred_processes;
-        private Dictionary<object, object> internal_address_to_object;
+        private Dictionary<TyonAddress, object> internal_address_to_object;
 
         private TyonContext context;
 
@@ -29,7 +29,7 @@ namespace CrunchyRecipe
             mode = m;
 
             deferred_processes = new List<Process>();
-            internal_address_to_object = new Dictionary<object, object>();
+            internal_address_to_object = new Dictionary<TyonAddress, object>();
 
             context = c;
         }
@@ -85,12 +85,12 @@ namespace CrunchyRecipe
         public void RegisterInternalObject(object obj, TyonAddress address)
         {
             if (address != null)
-                internal_address_to_object.Add(address.GetSystemValue(), obj);
+                internal_address_to_object.Add(address, obj);
         }
 
         public bool TryResolveInternalAddress(TyonAddress address, out object obj)
         {
-            return internal_address_to_object.TryGetValue(address.GetSystemValue(), out obj);
+            return internal_address_to_object.TryGetValue(address, out obj);
         }
         public object ResolveInternalAddress(TyonAddress address)
         {
@@ -102,7 +102,7 @@ namespace CrunchyRecipe
 
         public object ResolveExternalAddress(TyonAddress address)
         {
-            return context.ResolveExternalAddress(address.GetSystemValue());
+            return context.ResolveExternalAddress(address);
         }
 
         public void DeferProcess(Process process)

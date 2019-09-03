@@ -146,13 +146,6 @@ public interface ITyonVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTyonAddress_Identifier([NotNull] TyonParser.TyonAddress_IdentifierContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonAddress_Null</c>
-	/// labeled alternative in <see cref="TyonParser.tyonAddress"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitTyonAddress_Null([NotNull] TyonParser.TyonAddress_NullContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonAddress_Integer</c>
 	/// labeled alternative in <see cref="TyonParser.tyonAddress"/>.
 	/// </summary>

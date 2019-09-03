@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: September 01 2019 18:26:50 -07:00
+//Date: September 03 2019 1:01:16 -07:00
 
 using System;
 using System.IO;
@@ -1330,56 +1330,6 @@ namespace CrunchyRecipe
 		
 	}
 	
-	public partial class TyonAddress_Null : TyonAddress
-	{
-		static public TyonAddress_Null DOMify(TyonParser.TyonAddress_NullContext context)
-		{
-			if(context != null)
-			{
-				return new TyonAddress_Null(context);
-			}
-			
-			return null;
-		}
-		
-		static new public TyonAddress_Null DOMify(IParseTree parse_tree)
-		{
-			return DOMify(parse_tree as TyonParser.TyonAddress_NullContext);
-		}
-		
-		static new public TyonAddress_Null DOMify(Stream stream)
-		{
-			return DOMify(TyonDOMinatorUtilities.CreateParser(stream).tyonAddress());
-		}
-		
-		static new public TyonAddress_Null DOMify(string text)
-		{
-			return DOMify(TyonDOMinatorUtilities.CreateParser(text).tyonAddress());
-		}
-		
-		static new public TyonAddress_Null DOMifyFile(string filename)
-		{
-			return DOMify(TyonDOMinatorUtilities.CreateFileParser(filename).tyonAddress());
-		}
-		
-		public TyonAddress_Null()
-		{
-			OnConstructor();
-		}
-		
-		partial void OnConstructor();
-		public TyonAddress_Null(TyonParser.TyonAddress_NullContext context) : this()
-		{
-		}
-		
-		public override TyonAddress Duplicate()
-		{
-			TyonAddress_Null instance = new TyonAddress_Null();
-			return instance;
-		}
-		
-	}
-	
 	public partial class TyonAddress_Integer : TyonAddress
 	{
 		private long integer;
@@ -1757,11 +1707,6 @@ namespace CrunchyRecipe
 		public override TyonElement VisitTyonAddress_Identifier(TyonParser.TyonAddress_IdentifierContext context)
 		{
 			return TyonAddress_Identifier.DOMify(context);
-		}
-		
-		public override TyonElement VisitTyonAddress_Null(TyonParser.TyonAddress_NullContext context)
-		{
-			return TyonAddress_Null.DOMify(context);
 		}
 		
 		public override TyonElement VisitTyonAddress_Integer(TyonParser.TyonAddress_IntegerContext context)

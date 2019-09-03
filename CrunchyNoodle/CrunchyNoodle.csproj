@@ -98,6 +98,7 @@
     <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance.cs" />
     <Compile Include="Extensions\PropInfoEX\PropInfoEXExtensions_Variable.cs" />
     <Compile Include="Extensions\PropInfoEX\PropInfoEXExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Instancing.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EvtInfo_Event.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EvtInfo_Method.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_All.cs" />

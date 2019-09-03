@@ -57,7 +57,7 @@ namespace CrunchyRecipe
             {
                 Type value_type = value.GetType();
 
-                object address;
+                TyonAddress address;
                 if (context.TryResolveExternalObject(value, out address))
                     return new TyonValue_ExternalAddress(address, this);
 
@@ -71,44 +71,20 @@ namespace CrunchyRecipe
             return new TyonValue_Null();
         }
 
-        public TyonAddress CreateTyonAddress(object value)
-        {
-            Type type = value.GetType();
-
-            if (type.IsString())
-            {
-                string cast = (string)value;
-
-                if (cast.IsId())
-                    return new TyonAddress_Identifier(cast, this);
-
-                return new TyonAddress_String(cast, this);
-            }
-
-            if (type.IsInteger())
-            {
-                long cast = (long)value;
-
-                return new TyonAddress_Integer(cast, this);
-            }
-
-            return new TyonAddress_Null();
-        }
-
         public void RegisterInternalObject(object obj, TyonAddressable addressable)
         {
             if (obj.GetType().IsTypicalReferenceType())
                 object_to_tyon_addressable.Add(obj, addressable);
         }
 
-        public object RegisterExternalObject(object obj)
+        public TyonAddress RegisterExternalObject(object obj)
         {
             return context.RegisterExternalObject(obj);
         }
 
         public TyonAddress GetNewInternalAddress()
         {
-            return new TyonAddress_Integer(next_internal_address++, this);
+            return new TyonAddress_Integer(next_internal_address++);
         }
 
         public IEnumerable<Variable> GetDesignatedVariables(Type type)

@@ -32,8 +32,6 @@ tyonValue
 tyonAddress
     : ID # tyonAddress_Identifier
 
-    | 'null' # tyonAddress_Null
-
     | INTEGER # tyonAddress_Integer
     | STRING /*info: custom_load_context*/ # tyonAddress_String
     ;

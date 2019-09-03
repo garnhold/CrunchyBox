@@ -16,9 +16,9 @@ namespace CrunchyRecipe
 {
 	public partial class TyonValue_InternalAddress : TyonValue
 	{
-        public TyonValue_InternalAddress(object a, TyonDehydrater dehydrater) : this()
+        public TyonValue_InternalAddress(TyonAddress address, TyonDehydrater dehydrater) : this()
         {
-            SetTyonAddress(dehydrater.CreateTyonAddress(a));
+            SetTyonAddress(address);
         }
 
         public override void Render(TextDocumentCanvas canvas)

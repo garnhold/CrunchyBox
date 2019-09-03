@@ -16,7 +16,7 @@ namespace CrunchyRecipe
 {
 	public partial class TyonAddress_Integer : TyonAddress
 	{
-        public TyonAddress_Integer(long n, TyonDehydrater dehydrater) : this()
+        public TyonAddress_Integer(long n) : this()
         {
             SetInteger(n);
         }
@@ -26,9 +26,29 @@ namespace CrunchyRecipe
             canvas.AppendToLine(GetInteger().ToString());
         }
 
-        public override object GetSystemValue()
+        public override int GetHashCode()
         {
-            return GetInteger();
+            unchecked
+            {
+                int hash = 17;
+
+                hash = hash * 23 + GetInteger().GetHashCode();
+                hash = hash * 23 + typeof(TyonValue_Integer).GetHashCode();
+                return hash;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            TyonAddress_Integer cast;
+
+            if (obj.Convert<TyonAddress_Integer>(out cast))
+            {
+                if (cast.GetInteger().EqualsEX(GetInteger()))
+                    return true;
+            }
+
+            return false;
         }
 	}
 	

@@ -52,7 +52,6 @@
     <Compile Include="Tyon\antlr4\TyonLexer.cs" />
     <Compile Include="Tyon\antlr4\TyonParser.cs" />
     <Compile Include="Tyon\antlr4\TyonVisitor.cs" />
-    <Compile Include="Tyon\TyonAddress_Null.cs" />
     <Compile Include="Tyon\TyonValue_Real.cs" />
     <Compile Include="Tyon\TyonValue_Integer.cs" />
     <Compile Include="Tyon\TyonValue_Type.cs" />

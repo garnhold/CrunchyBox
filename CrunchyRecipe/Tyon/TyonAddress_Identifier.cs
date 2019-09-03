@@ -16,7 +16,7 @@ namespace CrunchyRecipe
 {
 	public partial class TyonAddress_Identifier : TyonAddress
 	{
-        public TyonAddress_Identifier(string i, TyonDehydrater dehydrater) : this()
+        public TyonAddress_Identifier(string i) : this()
         {
             SetId(i);
         }
@@ -26,9 +26,29 @@ namespace CrunchyRecipe
             canvas.AppendToLine(GetId());
         }
 
-        public override object GetSystemValue()
+        public override int GetHashCode()
         {
-            return GetId();
+            unchecked
+            {
+                int hash = 17;
+
+                hash = hash * 23 + GetId().GetHashCode();
+                hash = hash * 23 + typeof(TyonAddress_Identifier).GetHashCode();
+                return hash;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            TyonAddress_Identifier cast;
+
+            if (obj.Convert<TyonAddress_Identifier>(out cast))
+            {
+                if (cast.GetId().EqualsEX(GetId()))
+                    return true;
+            }
+
+            return false;
         }
 	}
 	

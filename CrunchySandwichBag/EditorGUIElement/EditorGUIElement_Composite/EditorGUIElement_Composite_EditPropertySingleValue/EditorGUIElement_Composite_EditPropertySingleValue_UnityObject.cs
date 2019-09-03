@@ -16,6 +16,8 @@ namespace CrunchySandwichBag
     [EditorGUIElementForType(typeof(UnityEngine.Object), true)]
     public class EditorGUIElement_Composite_EditPropertySingleValue_UnityObject : EditorGUIElement_Composite_EditPropertySingleValue
     {
+        private Type specific_type;
+
         protected override EditorGUIElement CreateElement()
         {
             AssetFieldAttribute asset_field_attribute;
@@ -26,19 +28,29 @@ namespace CrunchySandwichBag
             if (GetProperty().TryGetCustomAttributeOfType<PrefabFieldAttribute>(true, out prefab_field_attribute))
                 return new EditorGUIElement_EditPropertySingleValuePopup_Prefab(GetProperty(), prefab_field_attribute.ShouldForceNonNull());
 
-            return new BuiltIn(GetProperty());
+            return new BuiltIn(GetProperty(), specific_type);
         }
 
-        public EditorGUIElement_Composite_EditPropertySingleValue_UnityObject(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_Composite_EditPropertySingleValue_UnityObject(EditProperty_Single_Value p, Type s) : base(p)
+        {
+            specific_type = s;
+        }
+
+        public EditorGUIElement_Composite_EditPropertySingleValue_UnityObject(EditProperty_Single_Value p) : this(p, p.GetPropertyType()) { }
 
         private class BuiltIn : EditorGUIElement_EditPropertySingleValue_BuiltIn<UnityEngine.Object>
         {
+            private Type specific_type;
+
             protected override UnityEngine.Object DrawBuiltInInternal(Rect rect, GUIContent label, UnityEngine.Object value)
             {
-                return EditorGUI.ObjectField(rect, label, value, GetProperty().GetPropertyType());
+                return EditorGUI.ObjectField(rect, label, value, specific_type);
             }
 
-            public BuiltIn(EditProperty_Single_Value p) : base(p) { }
+            public BuiltIn(EditProperty_Single_Value p, Type s) : base(p)
+            {
+                specific_type = s;
+            }
         }
     }
 }

@@ -14,14 +14,14 @@ namespace CrunchyRecipe
         private TyonSettings settings;
 
         private long next_external_address;
-        private BidirectionalDictionary<object, object> external_address_to_objects;
+        private BidirectionalDictionary<TyonAddress, object> external_address_to_objects;
 
         public TyonContext(TyonSettings s)
         {
             settings = s;
 
             next_external_address = 1;
-            external_address_to_objects = new BidirectionalDictionary<object, object>();
+            external_address_to_objects = new BidirectionalDictionary<TyonAddress, object>();
         }
 
         public TyonDehydrater CreateDehydrater()
@@ -65,13 +65,13 @@ namespace CrunchyRecipe
             CreateHydrater(mode).HydrateInto(obj, text);
         }
 
-        public object RegisterExternalObject(object obj)
+        public TyonAddress RegisterExternalObject(object obj)
         {
-            object address;
+            TyonAddress address;
 
             if (external_address_to_objects.TryGetValueByRight(obj, out address) == false)
             {
-                address = next_external_address++;
+                address = new TyonAddress_Integer(next_external_address++);
                 external_address_to_objects.Add(address, obj);
             }
 
@@ -82,23 +82,23 @@ namespace CrunchyRecipe
             objs.Process(o => RegisterExternalObject(o));
         }
 
-        public bool TryResolveExternalObject(object obj, out object address)
+        public bool TryResolveExternalObject(object obj, out TyonAddress address)
         {
             return external_address_to_objects.TryGetValueByRight(obj, out address);
         }
-        public object ResolveExternalObject(object obj)
+        public TyonAddress ResolveExternalObject(object obj)
         {
-            object address;
+            TyonAddress address;
 
             TryResolveExternalObject(obj, out address);
             return address;
         }
 
-        public bool TryResolveExternalAddress(object address, out object obj)
+        public bool TryResolveExternalAddress(TyonAddress address, out object obj)
         {
             return external_address_to_objects.TryGetValueByLeft(address, out obj);
         }
-        public object ResolveExternalAddress(object address)
+        public object ResolveExternalAddress(TyonAddress address)
         {
             object obj;
 

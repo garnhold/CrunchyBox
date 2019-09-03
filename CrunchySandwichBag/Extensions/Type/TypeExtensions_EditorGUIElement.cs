@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEditor;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyNoodle;
 using CrunchyBun;
 using CrunchySandwich;
@@ -15,18 +16,31 @@ namespace CrunchySandwichBag
 {
     static public class TypeExtensions_EditorGUIElement
     {
-        static public Type GetEditorGUIElementTypeForType(this Type item)
+        static public EditorGUIElement CreateExplicitEditorGUIElementForType(this Type item, EditProperty property)
         {
-            return ForTypes.GetBestTypeForType<EditorGUIElementForTypeAttribute>(item)
-                ??
-                item.IsTypicalIEnumerable().ConvertBool(typeof(EditorGUIElement_Complex_EditPropertyArray_Generic))
-                ??
-                typeof(EditorGUIElement_Composite_EditPropertySingleValue_EditTarget_Generic);
+            Type element_type = ForTypes.GetBestTypeForType<EditorGUIElementForTypeAttribute>(item);
+
+            if (element_type != null)
+            {
+                return element_type.CreateBestInstance<EditorGUIElement>(property, item) ??
+                    element_type.CreateBestInstance<EditorGUIElement>(property);
+            }
+
+            return null;
         }
 
-        static public EditorGUIElement CreateEditorGUIElement(this Type item, EditProperty property)
+        static public EditorGUIElement CreateBestEditorGUIElementForType(this Type item, EditProperty property)
         {
-            return item.GetEditorGUIElementTypeForType().CreateInstance<EditorGUIElement>(property);
+            EditorGUIElement element;
+
+            element = item.CreateExplicitEditorGUIElementForType(property);
+            if (element != null)
+                return element;
+
+            if(item.IsTypicalIEnumerable())
+                return new EditorGUIElement_Complex_EditPropertyArray_Generic((EditProperty_Array)property);
+
+            return new EditorGUIElement_Composite_EditPropertySingleValue_EditTarget_Generic((EditProperty_Single_Value)property);
         }
     }
 }

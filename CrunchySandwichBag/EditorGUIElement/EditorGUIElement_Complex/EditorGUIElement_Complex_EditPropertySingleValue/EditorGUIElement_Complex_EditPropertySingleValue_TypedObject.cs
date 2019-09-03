@@ -34,7 +34,7 @@ namespace CrunchySandwichBag
             {
                 GetProperty().EnsureContents(type);
 
-                container.AddChild(type.CreateEditorGUIElement(GetProperty()));
+                container.AddChild(type.CreateBestEditorGUIElementForType(GetProperty()));
             }
 
             return container;
