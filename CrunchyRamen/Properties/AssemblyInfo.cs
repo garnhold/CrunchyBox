@@ -2,37 +2,17 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-using CrunchyNoodle;
-
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CrunchySandwich")]
+[assembly: AssemblyTitle("CrunchyRamen")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CrunchySandwich")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("CrunchyRamen")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-[assembly: InspectedAssembly]
-[assembly: InspectAssemblys_ByType(
-    typeof(CrunchyDough.ThisAssembly),
-    typeof(CrunchySalt.ThisAssembly),
-    typeof(CrunchyNoodle.ThisAssembly),
-    typeof(CrunchyBun.ThisAssembly),
-    typeof(CrunchyCheese.ThisAssembly),
-    typeof(CrunchySauce.ThisAssembly),
-    typeof(CrunchyRecipe.ThisAssembly)
-)]
-
-[assembly: InspectedTypes(
-    typeof(UnityEngine.Object),
-    typeof(UnityEngine.GameObject),
-    typeof(UnityEngine.Vector2),
-    typeof(UnityEngine.Vector3)
-)]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -40,7 +20,7 @@ using CrunchyNoodle;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("41576bad-00b6-42d8-86f6-88b5a2a78400")]
+[assembly: Guid("94ab7d2a-75bf-4b82-a3f6-863948ccb169")]
 
 // Version information for an assembly consists of the following four values:
 //

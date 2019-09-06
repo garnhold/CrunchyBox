@@ -14,9 +14,10 @@ namespace CrunchySandwich
         [SerializeField]private Bounds bounds;
         [SerializeField]private Vector2 margins;
 
-        [SerializeField]private float size;
-        [SerializeField]private Vector2 chunk_size;
+        [SerializeField]private float orthographic_size;
         [SerializeField]private int maximum_number_chunks;
+
+        [SerializeField]private FilterMode filter_mode;
 
         [SerializeField]private LayerMask source_mask;
         [SerializeField]private SortingLayerEX destination_layer;
@@ -50,8 +51,8 @@ namespace CrunchySandwich
             camera.nearClipPlane = -1.0f;
 
             camera.orthographic = true;
-            camera.orthographicSize = size;
-            camera.SetPixelSize(chunk_size);
+            camera.orthographicSize = orthographic_size;
+            camera.aspect = 1.0f;
 
             int number_chunks = 0;
             Vector2 cell_size = camera.GetOrthographicSize() - margins;
@@ -68,6 +69,8 @@ namespace CrunchySandwich
                     MeshFilter mesh_filter = cell.AddComponent<MeshFilter>();
                     MeshRenderer mesh_renderer = cell.AddComponent<MeshRenderer>();
 
+                    rendered.filterMode = filter_mode;
+
                     mesh_filter.mesh = MeshExtensions.CreateCenterQuad(sub_rect.GetSize() + margins);
                     mesh_renderer.material = MaterialExtensions.CreateUnlitTransparentTextureMaterial(rendered);
                     mesh_renderer.SetSortingLayer(destination_layer);
@@ -75,6 +78,8 @@ namespace CrunchySandwich
                     number_chunks++;
                 }
             });
+
+            camera.DestroyGameObjectAdvisory();
         }
 
         private void Start()

@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+
+namespace CrunchySandwich
+{
+    public class GUISkinManager : Subsystem<GUISkinManager>
+    {
+        [SerializeField]private GUISkin skin;
+
+        public GUISkin GetSkin()
+        {
+            return skin;
+        }
+    }
+}

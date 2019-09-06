@@ -74,7 +74,9 @@
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectCount.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectGetFirst.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectAdd.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectMove.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectRemove.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectRemoveAt.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectInsert.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectSet.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Action.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Function.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_VariableValue.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_ActionInstance.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

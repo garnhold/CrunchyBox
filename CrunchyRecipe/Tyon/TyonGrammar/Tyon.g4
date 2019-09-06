@@ -39,8 +39,8 @@ tyonAddress
 tyonVariable : ID '=' tyonValue ';';
 
 
+REAL /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]+;
 INTEGER /*info: type=>long*/ : ('-'|'+')? [0-9]+;
-REAL /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]*?;
 STRING : '"' ('\\"'|.)*? '"';
 ID : [A-Za-z_][A-Za-z0-9_\.]*;
 

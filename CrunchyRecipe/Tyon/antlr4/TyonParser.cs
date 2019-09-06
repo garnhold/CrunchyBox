@@ -33,7 +33,7 @@ public partial class TyonParser : Parser {
 	public const int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		INTEGER=18, REAL=19, STRING=20, ID=21, WHITESPACE=22;
+		REAL=18, INTEGER=19, STRING=20, ID=21, WHITESPACE=22;
 	public const int
 		RULE_tyonType = 0, RULE_tyonObject = 1, RULE_tyonSurrogate = 2, RULE_tyonArray = 3, 
 		RULE_tyonValue = 4, RULE_tyonAddress = 5, RULE_tyonVariable = 6;
@@ -48,7 +48,7 @@ public partial class TyonParser : Parser {
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, "INTEGER", "REAL", "STRING", "ID", 
+		null, null, null, null, null, null, "REAL", "INTEGER", "STRING", "ID", 
 		"WHITESPACE"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
@@ -360,7 +360,7 @@ public partial class TyonParser : Parser {
 			State = 61; Match(T__3);
 			State = 70;
 			_la = TokenStream.La(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << T__10) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << INTEGER) | (1L << REAL) | (1L << STRING) | (1L << ID))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << T__10) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << REAL) | (1L << INTEGER) | (1L << STRING) | (1L << ID))) != 0)) {
 				{
 				State = 62; tyonValue();
 				State = 67;
@@ -768,13 +768,13 @@ public partial class TyonParser : Parser {
 		"=\a\x3\x2\x2\x2>?\x5\x2\x2\x2?H\a\x6\x2\x2@\x45\x5\n\x6\x2\x41\x42\a\x4"+
 		"\x2\x2\x42\x44\x5\n\x6\x2\x43\x41\x3\x2\x2\x2\x44G\x3\x2\x2\x2\x45\x43"+
 		"\x3\x2\x2\x2\x45\x46\x3\x2\x2\x2\x46I\x3\x2\x2\x2G\x45\x3\x2\x2\x2H@\x3"+
-		"\x2\x2\x2HI\x3\x2\x2\x2IJ\x3\x2\x2\x2JK\a\a\x2\x2K\t\x3\x2\x2\x2L]\a\x14"+
-		"\x2\x2M]\a\x15\x2\x2N]\a\x16\x2\x2O]\a\xF\x2\x2PQ\a\x10\x2\x2QR\a\b\x2"+
+		"\x2\x2\x2HI\x3\x2\x2\x2IJ\x3\x2\x2\x2JK\a\a\x2\x2K\t\x3\x2\x2\x2L]\a\x15"+
+		"\x2\x2M]\a\x14\x2\x2N]\a\x16\x2\x2O]\a\xF\x2\x2PQ\a\x10\x2\x2QR\a\b\x2"+
 		"\x2RS\x5\x2\x2\x2ST\a\n\x2\x2T]\x3\x2\x2\x2UV\a\t\x2\x2V]\x5\f\a\x2WX"+
 		"\a\x11\x2\x2X]\x5\f\a\x2Y]\x5\x4\x3\x2Z]\x5\x6\x4\x2[]\x5\b\x5\x2\\L\x3"+
 		"\x2\x2\x2\\M\x3\x2\x2\x2\\N\x3\x2\x2\x2\\O\x3\x2\x2\x2\\P\x3\x2\x2\x2"+
 		"\\U\x3\x2\x2\x2\\W\x3\x2\x2\x2\\Y\x3\x2\x2\x2\\Z\x3\x2\x2\x2\\[\x3\x2"+
-		"\x2\x2]\v\x3\x2\x2\x2^\x62\a\x17\x2\x2_\x62\a\x14\x2\x2`\x62\a\x16\x2"+
+		"\x2\x2]\v\x3\x2\x2\x2^\x62\a\x17\x2\x2_\x62\a\x15\x2\x2`\x62\a\x16\x2"+
 		"\x2\x61^\x3\x2\x2\x2\x61_\x3\x2\x2\x2\x61`\x3\x2\x2\x2\x62\r\x3\x2\x2"+
 		"\x2\x63\x64\a\x17\x2\x2\x64\x65\a\x12\x2\x2\x65\x66\x5\n\x6\x2\x66g\a"+
 		"\x13\x2\x2g\xF\x3\x2\x2\x2\v\x19\x1E%.\x34\x45H\\\x61";

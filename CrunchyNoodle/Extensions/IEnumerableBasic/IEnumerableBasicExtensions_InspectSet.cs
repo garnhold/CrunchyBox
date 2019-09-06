@@ -23,7 +23,6 @@ namespace CrunchyNoodle
 
                 MethodInfo method = item.GetType().GetFilteredInstanceMethods(
                     Filterer_MethodInfo.IsNamed("set_Item"),
-                    Filterer_MethodInfo.HasNoReturn(),
                     Filterer_MethodInfo.CanNthEffectiveParameterHold(0, typeof(int)),
                     Filterer_MethodInfo.HasTwoEffectiveParameters()
                 ).GetFirst();

@@ -157,6 +157,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="UnorderedTuple\UnorderedTuple.cs" />
+    <Compile Include="UnorderedTuple\UnorderedTuple_New.cs" />
     <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Timestamp.cs" />
     <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions.cs" />
     <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Duration.cs" />

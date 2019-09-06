@@ -9,19 +9,19 @@ using CrunchySalt;
 
 namespace CrunchyNoodle
 {
-    static public class IEnumerableBasicExtensions_InspectRemoveAt
+    static public class IEnumerableBasicExtensions_InspectRemove
     {
-        static public bool InspectRemoveAt(this IEnumerable item, int index)
+        static public bool InspectRemove(this IEnumerable item, object value)
         {
             if (item != null)
             {
                 MethodInfoEX method = item.GetType().GetFilteredInstanceMethods(
-                    Filterer_MethodInfo.IsNamed("RemoveAt"),
-                    Filterer_MethodInfo.CanEffectiveParametersHold<int>()
+                    Filterer_MethodInfo.IsNamed("Remove"),
+                    Filterer_MethodInfo.HasOneEffectiveParameter()
                 ).GetFirst();
                 if (method != null)
                 {
-                    method.Invoke(item, new object[] { index });
+                    method.Invoke(item, new object[] { value });
                     return true;
                 }
             }

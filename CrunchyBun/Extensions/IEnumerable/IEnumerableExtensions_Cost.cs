@@ -24,6 +24,21 @@ namespace CrunchyBun
             return item.Convert(operation).RunningSum().FindIndexOf(s => s > cost);
         }
 
+        static public T GetElementForCost<T>(this IEnumerable<T> item, double cost, Operation<double, T> operation)
+        {
+            double current_cost = 0.0;
+
+            foreach (T sub_item in item)
+            {
+                if (current_cost > cost)
+                    return sub_item;
+
+                current_cost += operation(sub_item);
+            }
+
+            return default(T);
+        }
+
         static public IEnumerable<IEnumerable<T>> GetCostGroups<T>(this IEnumerable<T> item, double cost, Operation<double, T> operation)
         {
             double group_cost = 0.0;
