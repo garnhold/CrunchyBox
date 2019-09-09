@@ -24,11 +24,13 @@ namespace CrunchySandwich
         {
             representation_node = new ComponentCache_Upward<RepresentationNode>(this);
 
+            /*
             this.GetComponent<Button>().onClick.AddListener(delegate() {
                 representation_node.GetComponent()
                     .IfNotNull(n => n.GetTarget())
                     .IfNotNull(t => invoketoid.Invoke())
             });
+             */
         }
     }
 }

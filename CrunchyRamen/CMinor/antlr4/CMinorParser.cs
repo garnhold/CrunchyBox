@@ -33,26 +33,29 @@ public partial class CMinorParser : Parser {
 	public const int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		BOOL=18, INT=19, FLOAT=20, DOUBLE=21, STRING=22, ID=23, WHITESPACE=24;
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
+		T__24=25, BOOL=26, INT=27, FLOAT=28, DOUBLE=29, STRING=30, ID=31, WHITESPACE=32;
 	public const int
-		RULE_cMinorType = 0, RULE_cMinorTypeList = 1, RULE_cMinorConstant = 2, 
-		RULE_cMinorMember = 3, RULE_cMinorExpression = 4, RULE_cMinorMultiplicativeOperator = 5, 
-		RULE_cMinorAdditiveOperator = 6, RULE_cMinorComparativeOperator = 7, RULE_cMinorBooleanOperator = 8, 
-		RULE_cMinorExpressionList = 9;
+		RULE_cMinorType = 0, RULE_cMinorTypeList = 1, RULE_cMinorLiteral = 2, 
+		RULE_cMinorExpression = 3, RULE_cMinorBinaryOperator_Multiplicative = 4, 
+		RULE_cMinorBinaryOperator_Additive = 5, RULE_cMinorBinaryOperator_Comparative = 6, 
+		RULE_cMinorBinaryOperator_Boolean = 7, RULE_cMinorExpressionList = 8, 
+		RULE_cMinorStatement = 9;
 	public static readonly string[] ruleNames = {
-		"cMinorType", "cMinorTypeList", "cMinorConstant", "cMinorMember", "cMinorExpression", 
-		"cMinorMultiplicativeOperator", "cMinorAdditiveOperator", "cMinorComparativeOperator", 
-		"cMinorBooleanOperator", "cMinorExpressionList"
+		"cMinorType", "cMinorTypeList", "cMinorLiteral", "cMinorExpression", "cMinorBinaryOperator_Multiplicative", 
+		"cMinorBinaryOperator_Additive", "cMinorBinaryOperator_Comparative", "cMinorBinaryOperator_Boolean", 
+		"cMinorExpressionList", "cMinorStatement"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'<'", "'>'", "'['", "']'", "','", "'.'", "'('", "')'", "'*'", "'/'", 
-		"'%'", "'+'", "'-'", "'='", "'!'", "'&'", "'|'"
+		null, "'<'", "'>'", "'['", "']'", "','", "'null'", "'this'", "'.'", "'('", 
+		"')'", "'*'", "'/'", "'%'", "'+'", "'-'", "'='", "'!'", "'&'", "'|'", 
+		"';'", "'{'", "'}'", "'if'", "'else'", "'while'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, "BOOL", "INT", "FLOAT", "DOUBLE", 
-		"STRING", "ID", "WHITESPACE"
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, "BOOL", "INT", "FLOAT", "DOUBLE", "STRING", "ID", "WHITESPACE"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -77,21 +80,46 @@ public partial class CMinorParser : Parser {
 		Interpreter = new ParserATNSimulator(this,_ATN);
 	}
 	public partial class CMinorTypeContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
-		public CMinorTypeListContext cMinorTypeList() {
-			return GetRuleContext<CMinorTypeListContext>(0);
-		}
-		public CMinorTypeContext cMinorType() {
-			return GetRuleContext<CMinorTypeContext>(0);
-		}
 		public CMinorTypeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_cMinorType; } }
+	 
+		public CMinorTypeContext() { }
+		public virtual void CopyFrom(CMinorTypeContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CMinorType_NormalContext : CMinorTypeContext {
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorType_NormalContext(CMinorTypeContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorType(this);
+			if (typedVisitor != null) return typedVisitor.VisitCMinorType_Normal(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorType_TemplatedContext : CMinorTypeContext {
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorTypeListContext cMinorTypeList() {
+			return GetRuleContext<CMinorTypeListContext>(0);
+		}
+		public CMinorType_TemplatedContext(CMinorTypeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorType_Templated(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorType_ArrayContext : CMinorTypeContext {
+		public CMinorTypeContext cMinorType() {
+			return GetRuleContext<CMinorTypeContext>(0);
+		}
+		public CMinorType_ArrayContext(CMinorTypeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorType_Array(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -116,11 +144,18 @@ public partial class CMinorParser : Parser {
 			switch ( Interpreter.AdaptivePredict(TokenStream,0,Context) ) {
 			case 1:
 				{
+				_localctx = new CMinorType_NormalContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+
 				State = 21; Match(ID);
 				}
 				break;
 			case 2:
 				{
+				_localctx = new CMinorType_TemplatedContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
 				State = 22; Match(ID);
 				State = 23; Match(T__0);
 				State = 24; cMinorTypeList();
@@ -139,7 +174,7 @@ public partial class CMinorParser : Parser {
 					_prevctx = _localctx;
 					{
 					{
-					_localctx = new CMinorTypeContext(_parentctx, _parentState);
+					_localctx = new CMinorType_ArrayContext(new CMinorTypeContext(_parentctx, _parentState));
 					PushNewRecursionContext(_localctx, _startState, RULE_cMinorType);
 					State = 29;
 					if (!(Precpred(Context, 1))) throw new FailedPredicateException(this, "Precpred(Context, 1)");
@@ -220,92 +255,123 @@ public partial class CMinorParser : Parser {
 		return _localctx;
 	}
 
-	public partial class CMinorConstantContext : ParserRuleContext {
-		public ITerminalNode BOOL() { return GetToken(CMinorParser.BOOL, 0); }
+	public partial class CMinorLiteralContext : ParserRuleContext {
+		public CMinorLiteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_cMinorLiteral; } }
+	 
+		public CMinorLiteralContext() { }
+		public virtual void CopyFrom(CMinorLiteralContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CMinorLiteral_IntContext : CMinorLiteralContext {
 		public ITerminalNode INT() { return GetToken(CMinorParser.INT, 0); }
+		public CMinorLiteral_IntContext(CMinorLiteralContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorLiteral_Int(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorLiteral_FloatContext : CMinorLiteralContext {
 		public ITerminalNode FLOAT() { return GetToken(CMinorParser.FLOAT, 0); }
-		public ITerminalNode DOUBLE() { return GetToken(CMinorParser.DOUBLE, 0); }
+		public CMinorLiteral_FloatContext(CMinorLiteralContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorLiteral_Float(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorLiteral_StringContext : CMinorLiteralContext {
 		public ITerminalNode STRING() { return GetToken(CMinorParser.STRING, 0); }
-		public CMinorConstantContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_cMinorConstant; } }
+		public CMinorLiteral_StringContext(CMinorLiteralContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorConstant(this);
+			if (typedVisitor != null) return typedVisitor.VisitCMinorLiteral_String(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorLiteral_BoolContext : CMinorLiteralContext {
+		public ITerminalNode BOOL() { return GetToken(CMinorParser.BOOL, 0); }
+		public CMinorLiteral_BoolContext(CMinorLiteralContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorLiteral_Bool(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorLiteral_NullContext : CMinorLiteralContext {
+		public CMinorLiteral_NullContext(CMinorLiteralContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorLiteral_Null(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorLiteral_DoubleContext : CMinorLiteralContext {
+		public ITerminalNode DOUBLE() { return GetToken(CMinorParser.DOUBLE, 0); }
+		public CMinorLiteral_DoubleContext(CMinorLiteralContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorLiteral_Double(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public CMinorConstantContext cMinorConstant() {
-		CMinorConstantContext _localctx = new CMinorConstantContext(Context, State);
-		EnterRule(_localctx, 4, RULE_cMinorConstant);
-		int _la;
+	public CMinorLiteralContext cMinorLiteral() {
+		CMinorLiteralContext _localctx = new CMinorLiteralContext(Context, State);
+		EnterRule(_localctx, 4, RULE_cMinorLiteral);
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 45;
-			_la = TokenStream.La(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING))) != 0)) ) {
-			ErrorHandler.RecoverInline(this);
-			}
-			else {
-			    Consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class CMinorMemberContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
-		public CMinorTypeListContext cMinorTypeList() {
-			return GetRuleContext<CMinorTypeListContext>(0);
-		}
-		public CMinorMemberContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_cMinorMember; } }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorMember(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public CMinorMemberContext cMinorMember() {
-		CMinorMemberContext _localctx = new CMinorMemberContext(Context, State);
-		EnterRule(_localctx, 6, RULE_cMinorMember);
-		try {
-			State = 53;
-			switch ( Interpreter.AdaptivePredict(TokenStream,3,Context) ) {
-			case 1:
+			State = 51;
+			switch (TokenStream.La(1)) {
+			case T__5:
+				_localctx = new CMinorLiteral_NullContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 47; Match(ID);
+				State = 45; Match(T__5);
 				}
 				break;
-			case 2:
+			case BOOL:
+				_localctx = new CMinorLiteral_BoolContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 48; Match(ID);
-				State = 49; Match(T__0);
-				State = 50; cMinorTypeList();
-				State = 51; Match(T__1);
+				State = 46; Match(BOOL);
 				}
 				break;
+			case INT:
+				_localctx = new CMinorLiteral_IntContext(_localctx);
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 47; Match(INT);
+				}
+				break;
+			case FLOAT:
+				_localctx = new CMinorLiteral_FloatContext(_localctx);
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 48; Match(FLOAT);
+				}
+				break;
+			case DOUBLE:
+				_localctx = new CMinorLiteral_DoubleContext(_localctx);
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 49; Match(DOUBLE);
+				}
+				break;
+			case STRING:
+				_localctx = new CMinorLiteral_StringContext(_localctx);
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 50; Match(STRING);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -320,41 +386,178 @@ public partial class CMinorParser : Parser {
 	}
 
 	public partial class CMinorExpressionContext : ParserRuleContext {
-		public CMinorConstantContext cMinorConstant() {
-			return GetRuleContext<CMinorConstantContext>(0);
+		public CMinorExpressionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
 		}
-		public CMinorMemberContext cMinorMember() {
-			return GetRuleContext<CMinorMemberContext>(0);
+		public override int RuleIndex { get { return RULE_cMinorExpression; } }
+	 
+		public CMinorExpressionContext() { }
+		public virtual void CopyFrom(CMinorExpressionContext context) {
+			base.CopyFrom(context);
 		}
+	}
+	public partial class CMinorExpression_DirectIdentifierContext : CMinorExpressionContext {
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorExpression_DirectIdentifierContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_DirectIdentifier(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_InvokeGenericContext : CMinorExpressionContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorTypeListContext cMinorTypeList() {
+			return GetRuleContext<CMinorTypeListContext>(0);
+		}
+		public CMinorExpressionListContext cMinorExpressionList() {
+			return GetRuleContext<CMinorExpressionListContext>(0);
+		}
+		public CMinorExpression_InvokeGenericContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_InvokeGeneric(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_LiteralContext : CMinorExpressionContext {
+		public CMinorLiteralContext cMinorLiteral() {
+			return GetRuleContext<CMinorLiteralContext>(0);
+		}
+		public CMinorExpression_LiteralContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_Literal(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_BinaryOperation_ComparativeContext : CMinorExpressionContext {
 		public CMinorExpressionContext[] cMinorExpression() {
 			return GetRuleContexts<CMinorExpressionContext>();
 		}
 		public CMinorExpressionContext cMinorExpression(int i) {
 			return GetRuleContext<CMinorExpressionContext>(i);
 		}
-		public CMinorMultiplicativeOperatorContext cMinorMultiplicativeOperator() {
-			return GetRuleContext<CMinorMultiplicativeOperatorContext>(0);
+		public CMinorBinaryOperator_ComparativeContext cMinorBinaryOperator_Comparative() {
+			return GetRuleContext<CMinorBinaryOperator_ComparativeContext>(0);
 		}
-		public CMinorAdditiveOperatorContext cMinorAdditiveOperator() {
-			return GetRuleContext<CMinorAdditiveOperatorContext>(0);
+		public CMinorExpression_BinaryOperation_ComparativeContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_BinaryOperation_Comparative(this);
+			else return visitor.VisitChildren(this);
 		}
-		public CMinorComparativeOperatorContext cMinorComparativeOperator() {
-			return GetRuleContext<CMinorComparativeOperatorContext>(0);
-		}
-		public CMinorBooleanOperatorContext cMinorBooleanOperator() {
-			return GetRuleContext<CMinorBooleanOperatorContext>(0);
+	}
+	public partial class CMinorExpression_InvokeContext : CMinorExpressionContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
 		}
 		public CMinorExpressionListContext cMinorExpressionList() {
 			return GetRuleContext<CMinorExpressionListContext>(0);
 		}
-		public CMinorExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_cMinorExpression; } }
+		public CMinorExpression_InvokeContext(CMinorExpressionContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_Invoke(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_BinaryOperation_AdditiveContext : CMinorExpressionContext {
+		public CMinorExpressionContext[] cMinorExpression() {
+			return GetRuleContexts<CMinorExpressionContext>();
+		}
+		public CMinorExpressionContext cMinorExpression(int i) {
+			return GetRuleContext<CMinorExpressionContext>(i);
+		}
+		public CMinorBinaryOperator_AdditiveContext cMinorBinaryOperator_Additive() {
+			return GetRuleContext<CMinorBinaryOperator_AdditiveContext>(0);
+		}
+		public CMinorExpression_BinaryOperation_AdditiveContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_BinaryOperation_Additive(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_ThisContext : CMinorExpressionContext {
+		public CMinorExpression_ThisContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_This(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_GroupContext : CMinorExpressionContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorExpression_GroupContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_Group(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_IndirectIdentifierContext : CMinorExpressionContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorExpression_IndirectIdentifierContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_IndirectIdentifier(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_BinaryOperation_BooleanContext : CMinorExpressionContext {
+		public CMinorExpressionContext[] cMinorExpression() {
+			return GetRuleContexts<CMinorExpressionContext>();
+		}
+		public CMinorExpressionContext cMinorExpression(int i) {
+			return GetRuleContext<CMinorExpressionContext>(i);
+		}
+		public CMinorBinaryOperator_BooleanContext cMinorBinaryOperator_Boolean() {
+			return GetRuleContext<CMinorBinaryOperator_BooleanContext>(0);
+		}
+		public CMinorExpression_BinaryOperation_BooleanContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_BinaryOperation_Boolean(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_IndexContext : CMinorExpressionContext {
+		public CMinorExpressionContext[] cMinorExpression() {
+			return GetRuleContexts<CMinorExpressionContext>();
+		}
+		public CMinorExpressionContext cMinorExpression(int i) {
+			return GetRuleContext<CMinorExpressionContext>(i);
+		}
+		public CMinorExpression_IndexContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_Index(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorExpression_BinaryOperation_MultiplicativeContext : CMinorExpressionContext {
+		public CMinorExpressionContext[] cMinorExpression() {
+			return GetRuleContexts<CMinorExpressionContext>();
+		}
+		public CMinorExpressionContext cMinorExpression(int i) {
+			return GetRuleContext<CMinorExpressionContext>(i);
+		}
+		public CMinorBinaryOperator_MultiplicativeContext cMinorBinaryOperator_Multiplicative() {
+			return GetRuleContext<CMinorBinaryOperator_MultiplicativeContext>(0);
+		}
+		public CMinorExpression_BinaryOperation_MultiplicativeContext(CMinorExpressionContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorExpression_BinaryOperation_Multiplicative(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -369,125 +572,176 @@ public partial class CMinorParser : Parser {
 		int _parentState = State;
 		CMinorExpressionContext _localctx = new CMinorExpressionContext(Context, _parentState);
 		CMinorExpressionContext _prevctx = _localctx;
-		int _startState = 8;
-		EnterRecursionRule(_localctx, 8, RULE_cMinorExpression, _p);
+		int _startState = 6;
+		EnterRecursionRule(_localctx, 6, RULE_cMinorExpression, _p);
 		int _la;
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 62;
+			State = 61;
 			switch (TokenStream.La(1)) {
+			case T__5:
 			case BOOL:
 			case INT:
 			case FLOAT:
 			case DOUBLE:
 			case STRING:
 				{
-				State = 56; cMinorConstant();
-				}
-				break;
-			case ID:
-				{
-				State = 57; cMinorMember();
+				_localctx = new CMinorExpression_LiteralContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+
+				State = 54; cMinorLiteral();
 				}
 				break;
 			case T__6:
 				{
-				State = 58; Match(T__6);
-				State = 59; cMinorExpression(0);
-				State = 60; Match(T__7);
+				_localctx = new CMinorExpression_ThisContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 55; Match(T__6);
+				}
+				break;
+			case ID:
+				{
+				_localctx = new CMinorExpression_DirectIdentifierContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 56; Match(ID);
+				}
+				break;
+			case T__8:
+				{
+				_localctx = new CMinorExpression_GroupContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 57; Match(T__8);
+				State = 58; cMinorExpression(0);
+				State = 59; Match(T__9);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			Context.Stop = TokenStream.Lt(-1);
-			State = 91;
+			State = 105;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,7,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,8,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
 				if ( _alt==1 ) {
 					if ( ParseListeners!=null )
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 89;
-					switch ( Interpreter.AdaptivePredict(TokenStream,6,Context) ) {
+					State = 103;
+					switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
 					case 1:
 						{
-						_localctx = new CMinorExpressionContext(_parentctx, _parentState);
+						_localctx = new CMinorExpression_BinaryOperation_MultiplicativeContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 64;
+						State = 63;
 						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 65; cMinorMultiplicativeOperator();
-						State = 66; cMinorExpression(5);
+						State = 64; cMinorBinaryOperator_Multiplicative();
+						State = 65; cMinorExpression(5);
 						}
 						break;
 					case 2:
 						{
-						_localctx = new CMinorExpressionContext(_parentctx, _parentState);
+						_localctx = new CMinorExpression_BinaryOperation_AdditiveContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 68;
+						State = 67;
 						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-						State = 69; cMinorAdditiveOperator();
-						State = 70; cMinorExpression(4);
+						State = 68; cMinorBinaryOperator_Additive();
+						State = 69; cMinorExpression(4);
 						}
 						break;
 					case 3:
 						{
-						_localctx = new CMinorExpressionContext(_parentctx, _parentState);
+						_localctx = new CMinorExpression_BinaryOperation_ComparativeContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 72;
+						State = 71;
 						if (!(Precpred(Context, 2))) throw new FailedPredicateException(this, "Precpred(Context, 2)");
-						State = 73; cMinorComparativeOperator();
-						State = 74; cMinorExpression(3);
+						State = 72; cMinorBinaryOperator_Comparative();
+						State = 73; cMinorExpression(3);
 						}
 						break;
 					case 4:
 						{
-						_localctx = new CMinorExpressionContext(_parentctx, _parentState);
+						_localctx = new CMinorExpression_BinaryOperation_BooleanContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 76;
+						State = 75;
 						if (!(Precpred(Context, 1))) throw new FailedPredicateException(this, "Precpred(Context, 1)");
-						State = 77; cMinorBooleanOperator();
-						State = 78; cMinorExpression(2);
+						State = 76; cMinorBinaryOperator_Boolean();
+						State = 77; cMinorExpression(2);
 						}
 						break;
 					case 5:
 						{
-						_localctx = new CMinorExpressionContext(_parentctx, _parentState);
+						_localctx = new CMinorExpression_IndirectIdentifierContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 80;
-						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
-						State = 81; Match(T__5);
-						State = 82; cMinorMember();
+						State = 79;
+						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
+						State = 80; Match(T__7);
+						State = 81; Match(ID);
 						}
 						break;
 					case 6:
 						{
-						_localctx = new CMinorExpressionContext(_parentctx, _parentState);
+						_localctx = new CMinorExpression_InvokeGenericContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 83;
-						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
-						State = 84; Match(T__6);
-						State = 86;
+						State = 82;
+						if (!(Precpred(Context, 8))) throw new FailedPredicateException(this, "Precpred(Context, 8)");
+						State = 83; Match(T__0);
+						State = 84; cMinorTypeList();
+						State = 85; Match(T__1);
+						State = 86; Match(T__8);
+						State = 88;
 						_la = TokenStream.La(1);
-						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
+						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
 							{
-							State = 85; cMinorExpressionList();
+							State = 87; cMinorExpressionList();
 							}
 						}
 
-						State = 88; Match(T__7);
+						State = 90; Match(T__9);
+						}
+						break;
+					case 7:
+						{
+						_localctx = new CMinorExpression_InvokeContext(new CMinorExpressionContext(_parentctx, _parentState));
+						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
+						State = 92;
+						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
+						State = 93; Match(T__8);
+						State = 95;
+						_la = TokenStream.La(1);
+						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
+							{
+							State = 94; cMinorExpressionList();
+							}
+						}
+
+						State = 97; Match(T__9);
+						}
+						break;
+					case 8:
+						{
+						_localctx = new CMinorExpression_IndexContext(new CMinorExpressionContext(_parentctx, _parentState));
+						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
+						State = 98;
+						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
+						State = 99; Match(T__2);
+						State = 100; cMinorExpression(0);
+						State = 101; Match(T__3);
 						}
 						break;
 					}
 					} 
 				}
-				State = 93;
+				State = 107;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,7,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,8,Context);
 			}
 			}
 		}
@@ -502,154 +756,138 @@ public partial class CMinorParser : Parser {
 		return _localctx;
 	}
 
-	public partial class CMinorMultiplicativeOperatorContext : ParserRuleContext {
-		public CMinorMultiplicativeOperatorContext(ParserRuleContext parent, int invokingState)
+	public partial class CMinorBinaryOperator_MultiplicativeContext : ParserRuleContext {
+		public CMinorBinaryOperator_MultiplicativeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_cMinorMultiplicativeOperator; } }
+		public override int RuleIndex { get { return RULE_cMinorBinaryOperator_Multiplicative; } }
+	 
+		public CMinorBinaryOperator_MultiplicativeContext() { }
+		public virtual void CopyFrom(CMinorBinaryOperator_MultiplicativeContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CMinorBinaryOperator_Multiplicative_MultiplyContext : CMinorBinaryOperator_MultiplicativeContext {
+		public CMinorBinaryOperator_Multiplicative_MultiplyContext(CMinorBinaryOperator_MultiplicativeContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorMultiplicativeOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Multiplicative_Multiply(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Multiplicative_DivideContext : CMinorBinaryOperator_MultiplicativeContext {
+		public CMinorBinaryOperator_Multiplicative_DivideContext(CMinorBinaryOperator_MultiplicativeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Multiplicative_Divide(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Multiplicative_ModuloContext : CMinorBinaryOperator_MultiplicativeContext {
+		public CMinorBinaryOperator_Multiplicative_ModuloContext(CMinorBinaryOperator_MultiplicativeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Multiplicative_Modulo(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public CMinorMultiplicativeOperatorContext cMinorMultiplicativeOperator() {
-		CMinorMultiplicativeOperatorContext _localctx = new CMinorMultiplicativeOperatorContext(Context, State);
-		EnterRule(_localctx, 10, RULE_cMinorMultiplicativeOperator);
-		int _la;
+	public CMinorBinaryOperator_MultiplicativeContext cMinorBinaryOperator_Multiplicative() {
+		CMinorBinaryOperator_MultiplicativeContext _localctx = new CMinorBinaryOperator_MultiplicativeContext(Context, State);
+		EnterRule(_localctx, 8, RULE_cMinorBinaryOperator_Multiplicative);
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 94;
-			_la = TokenStream.La(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__8) | (1L << T__9) | (1L << T__10))) != 0)) ) {
-			ErrorHandler.RecoverInline(this);
-			}
-			else {
-			    Consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class CMinorAdditiveOperatorContext : ParserRuleContext {
-		public CMinorAdditiveOperatorContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_cMinorAdditiveOperator; } }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorAdditiveOperator(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public CMinorAdditiveOperatorContext cMinorAdditiveOperator() {
-		CMinorAdditiveOperatorContext _localctx = new CMinorAdditiveOperatorContext(Context, State);
-		EnterRule(_localctx, 12, RULE_cMinorAdditiveOperator);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 96;
-			_la = TokenStream.La(1);
-			if ( !(_la==T__11 || _la==T__12) ) {
-			ErrorHandler.RecoverInline(this);
-			}
-			else {
-			    Consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class CMinorComparativeOperatorContext : ParserRuleContext {
-		public CMinorComparativeOperatorContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_cMinorComparativeOperator; } }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorComparativeOperator(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public CMinorComparativeOperatorContext cMinorComparativeOperator() {
-		CMinorComparativeOperatorContext _localctx = new CMinorComparativeOperatorContext(Context, State);
-		EnterRule(_localctx, 14, RULE_cMinorComparativeOperator);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 110;
+			State = 111;
 			switch (TokenStream.La(1)) {
-			case T__0:
+			case T__10:
+				_localctx = new CMinorBinaryOperator_Multiplicative_MultiplyContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
 				{
-				State = 98; Match(T__0);
-				State = 100;
-				_la = TokenStream.La(1);
-				if (_la==T__13) {
-					{
-					State = 99; Match(T__13);
-					}
-				}
-
+				State = 108; Match(T__10);
 				}
 				break;
-			case T__1:
+			case T__11:
+				_localctx = new CMinorBinaryOperator_Multiplicative_DivideContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
 				{
-				State = 102; Match(T__1);
-				State = 104;
-				_la = TokenStream.La(1);
-				if (_la==T__13) {
-					{
-					State = 103; Match(T__13);
-					}
-				}
-
+				State = 109; Match(T__11);
 				}
 				break;
-			case T__13:
+			case T__12:
+				_localctx = new CMinorBinaryOperator_Multiplicative_ModuloContext(_localctx);
+				EnterOuterAlt(_localctx, 3);
 				{
-				State = 106; Match(T__13);
-				State = 107; Match(T__13);
-				}
-				break;
-			case T__14:
-				{
-				State = 108; Match(T__14);
-				State = 109; Match(T__13);
+				State = 110; Match(T__12);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CMinorBinaryOperator_AdditiveContext : ParserRuleContext {
+		public CMinorBinaryOperator_AdditiveContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_cMinorBinaryOperator_Additive; } }
+	 
+		public CMinorBinaryOperator_AdditiveContext() { }
+		public virtual void CopyFrom(CMinorBinaryOperator_AdditiveContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CMinorBinaryOperator_Additive_AddContext : CMinorBinaryOperator_AdditiveContext {
+		public CMinorBinaryOperator_Additive_AddContext(CMinorBinaryOperator_AdditiveContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Additive_Add(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Additive_SubtractContext : CMinorBinaryOperator_AdditiveContext {
+		public CMinorBinaryOperator_Additive_SubtractContext(CMinorBinaryOperator_AdditiveContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Additive_Subtract(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CMinorBinaryOperator_AdditiveContext cMinorBinaryOperator_Additive() {
+		CMinorBinaryOperator_AdditiveContext _localctx = new CMinorBinaryOperator_AdditiveContext(Context, State);
+		EnterRule(_localctx, 10, RULE_cMinorBinaryOperator_Additive);
+		try {
+			State = 115;
+			switch (TokenStream.La(1)) {
+			case T__13:
+				_localctx = new CMinorBinaryOperator_Additive_AddContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 113; Match(T__13);
+				}
+				break;
+			case T__14:
+				_localctx = new CMinorBinaryOperator_Additive_SubtractContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 114; Match(T__14);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -663,35 +901,185 @@ public partial class CMinorParser : Parser {
 		return _localctx;
 	}
 
-	public partial class CMinorBooleanOperatorContext : ParserRuleContext {
-		public CMinorBooleanOperatorContext(ParserRuleContext parent, int invokingState)
+	public partial class CMinorBinaryOperator_ComparativeContext : ParserRuleContext {
+		public CMinorBinaryOperator_ComparativeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_cMinorBooleanOperator; } }
+		public override int RuleIndex { get { return RULE_cMinorBinaryOperator_Comparative; } }
+	 
+		public CMinorBinaryOperator_ComparativeContext() { }
+		public virtual void CopyFrom(CMinorBinaryOperator_ComparativeContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CMinorBinaryOperator_Comparative_LessThanOrEqualToContext : CMinorBinaryOperator_ComparativeContext {
+		public CMinorBinaryOperator_Comparative_LessThanOrEqualToContext(CMinorBinaryOperator_ComparativeContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCMinorBooleanOperator(this);
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Comparative_LessThanOrEqualTo(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Comparative_GreaterThanContext : CMinorBinaryOperator_ComparativeContext {
+		public CMinorBinaryOperator_Comparative_GreaterThanContext(CMinorBinaryOperator_ComparativeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Comparative_GreaterThan(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Comparative_LessThanContext : CMinorBinaryOperator_ComparativeContext {
+		public CMinorBinaryOperator_Comparative_LessThanContext(CMinorBinaryOperator_ComparativeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Comparative_LessThan(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Comparative_GreaterThanOrEqualToContext : CMinorBinaryOperator_ComparativeContext {
+		public CMinorBinaryOperator_Comparative_GreaterThanOrEqualToContext(CMinorBinaryOperator_ComparativeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Comparative_GreaterThanOrEqualTo(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Comparative_EqualToContext : CMinorBinaryOperator_ComparativeContext {
+		public CMinorBinaryOperator_Comparative_EqualToContext(CMinorBinaryOperator_ComparativeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Comparative_EqualTo(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Comparative_NotEqualToContext : CMinorBinaryOperator_ComparativeContext {
+		public CMinorBinaryOperator_Comparative_NotEqualToContext(CMinorBinaryOperator_ComparativeContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Comparative_NotEqualTo(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public CMinorBooleanOperatorContext cMinorBooleanOperator() {
-		CMinorBooleanOperatorContext _localctx = new CMinorBooleanOperatorContext(Context, State);
-		EnterRule(_localctx, 16, RULE_cMinorBooleanOperator);
-		int _la;
+	public CMinorBinaryOperator_ComparativeContext cMinorBinaryOperator_Comparative() {
+		CMinorBinaryOperator_ComparativeContext _localctx = new CMinorBinaryOperator_ComparativeContext(Context, State);
+		EnterRule(_localctx, 12, RULE_cMinorBinaryOperator_Comparative);
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 112;
-			_la = TokenStream.La(1);
-			if ( !(_la==T__15 || _la==T__16) ) {
-			ErrorHandler.RecoverInline(this);
+			State = 127;
+			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
+			case 1:
+				_localctx = new CMinorBinaryOperator_Comparative_LessThanContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 117; Match(T__0);
+				}
+				break;
+			case 2:
+				_localctx = new CMinorBinaryOperator_Comparative_LessThanOrEqualToContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 118; Match(T__0);
+				State = 119; Match(T__15);
+				}
+				break;
+			case 3:
+				_localctx = new CMinorBinaryOperator_Comparative_GreaterThanContext(_localctx);
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 120; Match(T__1);
+				}
+				break;
+			case 4:
+				_localctx = new CMinorBinaryOperator_Comparative_GreaterThanOrEqualToContext(_localctx);
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 121; Match(T__1);
+				State = 122; Match(T__15);
+				}
+				break;
+			case 5:
+				_localctx = new CMinorBinaryOperator_Comparative_EqualToContext(_localctx);
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 123; Match(T__15);
+				State = 124; Match(T__15);
+				}
+				break;
+			case 6:
+				_localctx = new CMinorBinaryOperator_Comparative_NotEqualToContext(_localctx);
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 125; Match(T__16);
+				State = 126; Match(T__15);
+				}
+				break;
 			}
-			else {
-			    Consume();
-			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CMinorBinaryOperator_BooleanContext : ParserRuleContext {
+		public CMinorBinaryOperator_BooleanContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_cMinorBinaryOperator_Boolean; } }
+	 
+		public CMinorBinaryOperator_BooleanContext() { }
+		public virtual void CopyFrom(CMinorBinaryOperator_BooleanContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CMinorBinaryOperator_Boolean_OrContext : CMinorBinaryOperator_BooleanContext {
+		public CMinorBinaryOperator_Boolean_OrContext(CMinorBinaryOperator_BooleanContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Boolean_Or(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorBinaryOperator_Boolean_AndContext : CMinorBinaryOperator_BooleanContext {
+		public CMinorBinaryOperator_Boolean_AndContext(CMinorBinaryOperator_BooleanContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorBinaryOperator_Boolean_And(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CMinorBinaryOperator_BooleanContext cMinorBinaryOperator_Boolean() {
+		CMinorBinaryOperator_BooleanContext _localctx = new CMinorBinaryOperator_BooleanContext(Context, State);
+		EnterRule(_localctx, 14, RULE_cMinorBinaryOperator_Boolean);
+		try {
+			State = 131;
+			switch (TokenStream.La(1)) {
+			case T__17:
+				_localctx = new CMinorBinaryOperator_Boolean_AndContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 129; Match(T__17);
+				}
+				break;
+			case T__18:
+				_localctx = new CMinorBinaryOperator_Boolean_OrContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 130; Match(T__18);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -727,23 +1115,23 @@ public partial class CMinorParser : Parser {
 	[RuleVersion(0)]
 	public CMinorExpressionListContext cMinorExpressionList() {
 		CMinorExpressionListContext _localctx = new CMinorExpressionListContext(Context, State);
-		EnterRule(_localctx, 18, RULE_cMinorExpressionList);
+		EnterRule(_localctx, 16, RULE_cMinorExpressionList);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 114; cMinorExpression(0);
-			State = 119;
+			State = 133; cMinorExpression(0);
+			State = 138;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
 			while (_la==T__4) {
 				{
 				{
-				State = 115; Match(T__4);
-				State = 116; cMinorExpression(0);
+				State = 134; Match(T__4);
+				State = 135; cMinorExpression(0);
 				}
 				}
-				State = 121;
+				State = 140;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
@@ -760,10 +1148,374 @@ public partial class CMinorParser : Parser {
 		return _localctx;
 	}
 
+	public partial class CMinorStatementContext : ParserRuleContext {
+		public CMinorStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_cMinorStatement; } }
+	 
+		public CMinorStatementContext() { }
+		public virtual void CopyFrom(CMinorStatementContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class CMinorStatement_OperationAssign_IndirectMultiplicativeContext : CMinorStatementContext {
+		public CMinorExpressionContext[] cMinorExpression() {
+			return GetRuleContexts<CMinorExpressionContext>();
+		}
+		public CMinorExpressionContext cMinorExpression(int i) {
+			return GetRuleContext<CMinorExpressionContext>(i);
+		}
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorBinaryOperator_MultiplicativeContext cMinorBinaryOperator_Multiplicative() {
+			return GetRuleContext<CMinorBinaryOperator_MultiplicativeContext>(0);
+		}
+		public CMinorStatement_OperationAssign_IndirectMultiplicativeContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_OperationAssign_IndirectMultiplicative(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_IfContext : CMinorStatementContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorStatementContext[] cMinorStatement() {
+			return GetRuleContexts<CMinorStatementContext>();
+		}
+		public CMinorStatementContext cMinorStatement(int i) {
+			return GetRuleContext<CMinorStatementContext>(i);
+		}
+		public CMinorStatement_IfContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_If(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_InvokeGenericContext : CMinorStatementContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorTypeListContext cMinorTypeList() {
+			return GetRuleContext<CMinorTypeListContext>(0);
+		}
+		public CMinorExpressionListContext cMinorExpressionList() {
+			return GetRuleContext<CMinorExpressionListContext>(0);
+		}
+		public CMinorStatement_InvokeGenericContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_InvokeGeneric(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_InvokeContext : CMinorStatementContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorExpressionListContext cMinorExpressionList() {
+			return GetRuleContext<CMinorExpressionListContext>(0);
+		}
+		public CMinorStatement_InvokeContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_Invoke(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_BlockContext : CMinorStatementContext {
+		public CMinorStatementContext[] cMinorStatement() {
+			return GetRuleContexts<CMinorStatementContext>();
+		}
+		public CMinorStatementContext cMinorStatement(int i) {
+			return GetRuleContext<CMinorStatementContext>(i);
+		}
+		public CMinorStatement_BlockContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_Block(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_OperationAssign_DirectAdditiveContext : CMinorStatementContext {
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorBinaryOperator_AdditiveContext cMinorBinaryOperator_Additive() {
+			return GetRuleContext<CMinorBinaryOperator_AdditiveContext>(0);
+		}
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorStatement_OperationAssign_DirectAdditiveContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_OperationAssign_DirectAdditive(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_DirectAssignContext : CMinorStatementContext {
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorStatement_DirectAssignContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_DirectAssign(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_IndirectAssignContext : CMinorStatementContext {
+		public CMinorExpressionContext[] cMinorExpression() {
+			return GetRuleContexts<CMinorExpressionContext>();
+		}
+		public CMinorExpressionContext cMinorExpression(int i) {
+			return GetRuleContext<CMinorExpressionContext>(i);
+		}
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorStatement_IndirectAssignContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_IndirectAssign(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_OperationAssign_DirectMultiplicativeContext : CMinorStatementContext {
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorBinaryOperator_MultiplicativeContext cMinorBinaryOperator_Multiplicative() {
+			return GetRuleContext<CMinorBinaryOperator_MultiplicativeContext>(0);
+		}
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorStatement_OperationAssign_DirectMultiplicativeContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_OperationAssign_DirectMultiplicative(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_OperationAssign_IndirectAdditiveContext : CMinorStatementContext {
+		public CMinorExpressionContext[] cMinorExpression() {
+			return GetRuleContexts<CMinorExpressionContext>();
+		}
+		public CMinorExpressionContext cMinorExpression(int i) {
+			return GetRuleContext<CMinorExpressionContext>(i);
+		}
+		public ITerminalNode ID() { return GetToken(CMinorParser.ID, 0); }
+		public CMinorBinaryOperator_AdditiveContext cMinorBinaryOperator_Additive() {
+			return GetRuleContext<CMinorBinaryOperator_AdditiveContext>(0);
+		}
+		public CMinorStatement_OperationAssign_IndirectAdditiveContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_OperationAssign_IndirectAdditive(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CMinorStatement_WhileContext : CMinorStatementContext {
+		public CMinorExpressionContext cMinorExpression() {
+			return GetRuleContext<CMinorExpressionContext>(0);
+		}
+		public CMinorStatementContext cMinorStatement() {
+			return GetRuleContext<CMinorStatementContext>(0);
+		}
+		public CMinorStatement_WhileContext(CMinorStatementContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatement_While(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CMinorStatementContext cMinorStatement() {
+		CMinorStatementContext _localctx = new CMinorStatementContext(Context, State);
+		EnterRule(_localctx, 18, RULE_cMinorStatement);
+		int _la;
+		try {
+			State = 223;
+			switch ( Interpreter.AdaptivePredict(TokenStream,18,Context) ) {
+			case 1:
+				_localctx = new CMinorStatement_DirectAssignContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 141; Match(ID);
+				State = 142; Match(T__15);
+				State = 143; cMinorExpression(0);
+				State = 144; Match(T__19);
+				}
+				break;
+			case 2:
+				_localctx = new CMinorStatement_IndirectAssignContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 146; cMinorExpression(0);
+				State = 147; Match(T__7);
+				State = 148; Match(ID);
+				State = 149; Match(T__15);
+				State = 150; cMinorExpression(0);
+				State = 151; Match(T__19);
+				}
+				break;
+			case 3:
+				_localctx = new CMinorStatement_OperationAssign_DirectAdditiveContext(_localctx);
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 153; Match(ID);
+				State = 154; cMinorBinaryOperator_Additive();
+				State = 155; Match(T__15);
+				State = 156; cMinorExpression(0);
+				State = 157; Match(T__19);
+				}
+				break;
+			case 4:
+				_localctx = new CMinorStatement_OperationAssign_DirectMultiplicativeContext(_localctx);
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 159; Match(ID);
+				State = 160; cMinorBinaryOperator_Multiplicative();
+				State = 161; Match(T__15);
+				State = 162; cMinorExpression(0);
+				State = 163; Match(T__19);
+				}
+				break;
+			case 5:
+				_localctx = new CMinorStatement_OperationAssign_IndirectAdditiveContext(_localctx);
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 165; cMinorExpression(0);
+				State = 166; Match(T__7);
+				State = 167; Match(ID);
+				State = 168; cMinorBinaryOperator_Additive();
+				State = 169; Match(T__15);
+				State = 170; cMinorExpression(0);
+				State = 171; Match(T__19);
+				}
+				break;
+			case 6:
+				_localctx = new CMinorStatement_OperationAssign_IndirectMultiplicativeContext(_localctx);
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 173; cMinorExpression(0);
+				State = 174; Match(T__7);
+				State = 175; Match(ID);
+				State = 176; cMinorBinaryOperator_Multiplicative();
+				State = 177; Match(T__15);
+				State = 178; cMinorExpression(0);
+				State = 179; Match(T__19);
+				}
+				break;
+			case 7:
+				_localctx = new CMinorStatement_InvokeGenericContext(_localctx);
+				EnterOuterAlt(_localctx, 7);
+				{
+				State = 181; cMinorExpression(0);
+				State = 182; Match(T__0);
+				State = 183; cMinorTypeList();
+				State = 184; Match(T__1);
+				State = 185; Match(T__8);
+				State = 187;
+				_la = TokenStream.La(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
+					{
+					State = 186; cMinorExpressionList();
+					}
+				}
+
+				State = 189; Match(T__9);
+				State = 190; Match(T__19);
+				}
+				break;
+			case 8:
+				_localctx = new CMinorStatement_InvokeContext(_localctx);
+				EnterOuterAlt(_localctx, 8);
+				{
+				State = 192; cMinorExpression(0);
+				State = 193; Match(T__8);
+				State = 195;
+				_la = TokenStream.La(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
+					{
+					State = 194; cMinorExpressionList();
+					}
+				}
+
+				State = 197; Match(T__9);
+				State = 198; Match(T__19);
+				}
+				break;
+			case 9:
+				_localctx = new CMinorStatement_BlockContext(_localctx);
+				EnterOuterAlt(_localctx, 9);
+				{
+				State = 200; Match(T__20);
+				State = 204;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.La(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << T__20) | (1L << T__22) | (1L << T__24) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
+					{
+					{
+					State = 201; cMinorStatement();
+					}
+					}
+					State = 206;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.La(1);
+				}
+				State = 207; Match(T__21);
+				}
+				break;
+			case 10:
+				_localctx = new CMinorStatement_IfContext(_localctx);
+				EnterOuterAlt(_localctx, 10);
+				{
+				State = 208; Match(T__22);
+				State = 209; Match(T__8);
+				State = 210; cMinorExpression(0);
+				State = 211; Match(T__9);
+				State = 212; cMinorStatement();
+				State = 215;
+				switch ( Interpreter.AdaptivePredict(TokenStream,17,Context) ) {
+				case 1:
+					{
+					State = 213; Match(T__23);
+					State = 214; cMinorStatement();
+					}
+					break;
+				}
+				}
+				break;
+			case 11:
+				_localctx = new CMinorStatement_WhileContext(_localctx);
+				EnterOuterAlt(_localctx, 11);
+				{
+				State = 217; Match(T__24);
+				State = 218; Match(T__8);
+				State = 219; cMinorExpression(0);
+				State = 220; Match(T__9);
+				State = 221; cMinorStatement();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
 		case 0: return cMinorType_sempred((CMinorTypeContext)_localctx, predIndex);
-		case 4: return cMinorExpression_sempred((CMinorExpressionContext)_localctx, predIndex);
+		case 3: return cMinorExpression_sempred((CMinorExpressionContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -779,55 +1531,100 @@ public partial class CMinorParser : Parser {
 		case 2: return Precpred(Context, 3);
 		case 3: return Precpred(Context, 2);
 		case 4: return Precpred(Context, 1);
-		case 5: return Precpred(Context, 7);
-		case 6: return Precpred(Context, 6);
+		case 5: return Precpred(Context, 9);
+		case 6: return Precpred(Context, 8);
+		case 7: return Precpred(Context, 7);
+		case 8: return Precpred(Context, 6);
 		}
 		return true;
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\x1A}\x4\x2\t\x2"+
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\"\xE4\x4\x2\t\x2"+
 		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
 		"\t\x4\n\t\n\x4\v\t\v\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x5\x2\x1E"+
 		"\n\x2\x3\x2\x3\x2\x3\x2\a\x2#\n\x2\f\x2\xE\x2&\v\x2\x3\x3\x3\x3\x3\x3"+
-		"\a\x3+\n\x3\f\x3\xE\x3.\v\x3\x3\x4\x3\x4\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5"+
-		"\x3\x5\x5\x5\x38\n\x5\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x5\x6"+
-		"\x41\n\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6"+
-		"\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3\x6\x3"+
-		"\x6\x5\x6Y\n\x6\x3\x6\a\x6\\\n\x6\f\x6\xE\x6_\v\x6\x3\a\x3\a\x3\b\x3\b"+
-		"\x3\t\x3\t\x5\tg\n\t\x3\t\x3\t\x5\tk\n\t\x3\t\x3\t\x3\t\x3\t\x5\tq\n\t"+
-		"\x3\n\x3\n\x3\v\x3\v\x3\v\a\vx\n\v\f\v\xE\v{\v\v\x3\v\x2\x4\x2\n\f\x2"+
-		"\x4\x6\b\n\f\xE\x10\x12\x14\x2\x6\x3\x2\x14\x18\x3\x2\v\r\x3\x2\xE\xF"+
-		"\x3\x2\x12\x13\x85\x2\x1D\x3\x2\x2\x2\x4\'\x3\x2\x2\x2\x6/\x3\x2\x2\x2"+
-		"\b\x37\x3\x2\x2\x2\n@\x3\x2\x2\x2\f`\x3\x2\x2\x2\xE\x62\x3\x2\x2\x2\x10"+
-		"p\x3\x2\x2\x2\x12r\x3\x2\x2\x2\x14t\x3\x2\x2\x2\x16\x17\b\x2\x1\x2\x17"+
-		"\x1E\a\x19\x2\x2\x18\x19\a\x19\x2\x2\x19\x1A\a\x3\x2\x2\x1A\x1B\x5\x4"+
-		"\x3\x2\x1B\x1C\a\x4\x2\x2\x1C\x1E\x3\x2\x2\x2\x1D\x16\x3\x2\x2\x2\x1D"+
-		"\x18\x3\x2\x2\x2\x1E$\x3\x2\x2\x2\x1F \f\x3\x2\x2 !\a\x5\x2\x2!#\a\x6"+
-		"\x2\x2\"\x1F\x3\x2\x2\x2#&\x3\x2\x2\x2$\"\x3\x2\x2\x2$%\x3\x2\x2\x2%\x3"+
-		"\x3\x2\x2\x2&$\x3\x2\x2\x2\',\x5\x2\x2\x2()\a\a\x2\x2)+\x5\x2\x2\x2*("+
-		"\x3\x2\x2\x2+.\x3\x2\x2\x2,*\x3\x2\x2\x2,-\x3\x2\x2\x2-\x5\x3\x2\x2\x2"+
-		".,\x3\x2\x2\x2/\x30\t\x2\x2\x2\x30\a\x3\x2\x2\x2\x31\x38\a\x19\x2\x2\x32"+
-		"\x33\a\x19\x2\x2\x33\x34\a\x3\x2\x2\x34\x35\x5\x4\x3\x2\x35\x36\a\x4\x2"+
-		"\x2\x36\x38\x3\x2\x2\x2\x37\x31\x3\x2\x2\x2\x37\x32\x3\x2\x2\x2\x38\t"+
-		"\x3\x2\x2\x2\x39:\b\x6\x1\x2:\x41\x5\x6\x4\x2;\x41\x5\b\x5\x2<=\a\t\x2"+
-		"\x2=>\x5\n\x6\x2>?\a\n\x2\x2?\x41\x3\x2\x2\x2@\x39\x3\x2\x2\x2@;\x3\x2"+
-		"\x2\x2@<\x3\x2\x2\x2\x41]\x3\x2\x2\x2\x42\x43\f\x6\x2\x2\x43\x44\x5\f"+
-		"\a\x2\x44\x45\x5\n\x6\a\x45\\\x3\x2\x2\x2\x46G\f\x5\x2\x2GH\x5\xE\b\x2"+
-		"HI\x5\n\x6\x6I\\\x3\x2\x2\x2JK\f\x4\x2\x2KL\x5\x10\t\x2LM\x5\n\x6\x5M"+
-		"\\\x3\x2\x2\x2NO\f\x3\x2\x2OP\x5\x12\n\x2PQ\x5\n\x6\x4Q\\\x3\x2\x2\x2"+
-		"RS\f\t\x2\x2ST\a\b\x2\x2T\\\x5\b\x5\x2UV\f\b\x2\x2VX\a\t\x2\x2WY\x5\x14"+
-		"\v\x2XW\x3\x2\x2\x2XY\x3\x2\x2\x2YZ\x3\x2\x2\x2Z\\\a\n\x2\x2[\x42\x3\x2"+
-		"\x2\x2[\x46\x3\x2\x2\x2[J\x3\x2\x2\x2[N\x3\x2\x2\x2[R\x3\x2\x2\x2[U\x3"+
-		"\x2\x2\x2\\_\x3\x2\x2\x2][\x3\x2\x2\x2]^\x3\x2\x2\x2^\v\x3\x2\x2\x2_]"+
-		"\x3\x2\x2\x2`\x61\t\x3\x2\x2\x61\r\x3\x2\x2\x2\x62\x63\t\x4\x2\x2\x63"+
-		"\xF\x3\x2\x2\x2\x64\x66\a\x3\x2\x2\x65g\a\x10\x2\x2\x66\x65\x3\x2\x2\x2"+
-		"\x66g\x3\x2\x2\x2gq\x3\x2\x2\x2hj\a\x4\x2\x2ik\a\x10\x2\x2ji\x3\x2\x2"+
-		"\x2jk\x3\x2\x2\x2kq\x3\x2\x2\x2lm\a\x10\x2\x2mq\a\x10\x2\x2no\a\x11\x2"+
-		"\x2oq\a\x10\x2\x2p\x64\x3\x2\x2\x2ph\x3\x2\x2\x2pl\x3\x2\x2\x2pn\x3\x2"+
-		"\x2\x2q\x11\x3\x2\x2\x2rs\t\x5\x2\x2s\x13\x3\x2\x2\x2ty\x5\n\x6\x2uv\a"+
-		"\a\x2\x2vx\x5\n\x6\x2wu\x3\x2\x2\x2x{\x3\x2\x2\x2yw\x3\x2\x2\x2yz\x3\x2"+
-		"\x2\x2z\x15\x3\x2\x2\x2{y\x3\x2\x2\x2\xE\x1D$,\x37@X[]\x66jpy";
+		"\a\x3+\n\x3\f\x3\xE\x3.\v\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x5\x4"+
+		"\x36\n\x4\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x5\x5@\n\x5"+
+		"\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3"+
+		"\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5"+
+		"\x3\x5\x3\x5\x5\x5[\n\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x5\x5\x62\n\x5"+
+		"\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\a\x5j\n\x5\f\x5\xE\x5m\v\x5\x3\x6"+
+		"\x3\x6\x3\x6\x5\x6r\n\x6\x3\a\x3\a\x5\av\n\a\x3\b\x3\b\x3\b\x3\b\x3\b"+
+		"\x3\b\x3\b\x3\b\x3\b\x3\b\x5\b\x82\n\b\x3\t\x3\t\x5\t\x86\n\t\x3\n\x3"+
+		"\n\x3\n\a\n\x8B\n\n\f\n\xE\n\x8E\v\n\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3"+
+		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3"+
+		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3"+
+		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xBE\n\v"+
+		"\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xC6\n\v\x3\v\x3\v\x3\v\x3\v\x3\v\a"+
+		"\v\xCD\n\v\f\v\xE\v\xD0\v\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5"+
+		"\v\xDA\n\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xE2\n\v\x3\v\x2\x4\x2\b"+
+		"\f\x2\x4\x6\b\n\f\xE\x10\x12\x14\x2\x2\x106\x2\x1D\x3\x2\x2\x2\x4\'\x3"+
+		"\x2\x2\x2\x6\x35\x3\x2\x2\x2\b?\x3\x2\x2\x2\nq\x3\x2\x2\x2\fu\x3\x2\x2"+
+		"\x2\xE\x81\x3\x2\x2\x2\x10\x85\x3\x2\x2\x2\x12\x87\x3\x2\x2\x2\x14\xE1"+
+		"\x3\x2\x2\x2\x16\x17\b\x2\x1\x2\x17\x1E\a!\x2\x2\x18\x19\a!\x2\x2\x19"+
+		"\x1A\a\x3\x2\x2\x1A\x1B\x5\x4\x3\x2\x1B\x1C\a\x4\x2\x2\x1C\x1E\x3\x2\x2"+
+		"\x2\x1D\x16\x3\x2\x2\x2\x1D\x18\x3\x2\x2\x2\x1E$\x3\x2\x2\x2\x1F \f\x3"+
+		"\x2\x2 !\a\x5\x2\x2!#\a\x6\x2\x2\"\x1F\x3\x2\x2\x2#&\x3\x2\x2\x2$\"\x3"+
+		"\x2\x2\x2$%\x3\x2\x2\x2%\x3\x3\x2\x2\x2&$\x3\x2\x2\x2\',\x5\x2\x2\x2("+
+		")\a\a\x2\x2)+\x5\x2\x2\x2*(\x3\x2\x2\x2+.\x3\x2\x2\x2,*\x3\x2\x2\x2,-"+
+		"\x3\x2\x2\x2-\x5\x3\x2\x2\x2.,\x3\x2\x2\x2/\x36\a\b\x2\x2\x30\x36\a\x1C"+
+		"\x2\x2\x31\x36\a\x1D\x2\x2\x32\x36\a\x1E\x2\x2\x33\x36\a\x1F\x2\x2\x34"+
+		"\x36\a \x2\x2\x35/\x3\x2\x2\x2\x35\x30\x3\x2\x2\x2\x35\x31\x3\x2\x2\x2"+
+		"\x35\x32\x3\x2\x2\x2\x35\x33\x3\x2\x2\x2\x35\x34\x3\x2\x2\x2\x36\a\x3"+
+		"\x2\x2\x2\x37\x38\b\x5\x1\x2\x38@\x5\x6\x4\x2\x39@\a\t\x2\x2:@\a!\x2\x2"+
+		";<\a\v\x2\x2<=\x5\b\x5\x2=>\a\f\x2\x2>@\x3\x2\x2\x2?\x37\x3\x2\x2\x2?"+
+		"\x39\x3\x2\x2\x2?:\x3\x2\x2\x2?;\x3\x2\x2\x2@k\x3\x2\x2\x2\x41\x42\f\x6"+
+		"\x2\x2\x42\x43\x5\n\x6\x2\x43\x44\x5\b\x5\a\x44j\x3\x2\x2\x2\x45\x46\f"+
+		"\x5\x2\x2\x46G\x5\f\a\x2GH\x5\b\x5\x6Hj\x3\x2\x2\x2IJ\f\x4\x2\x2JK\x5"+
+		"\xE\b\x2KL\x5\b\x5\x5Lj\x3\x2\x2\x2MN\f\x3\x2\x2NO\x5\x10\t\x2OP\x5\b"+
+		"\x5\x4Pj\x3\x2\x2\x2QR\f\v\x2\x2RS\a\n\x2\x2Sj\a!\x2\x2TU\f\n\x2\x2UV"+
+		"\a\x3\x2\x2VW\x5\x4\x3\x2WX\a\x4\x2\x2XZ\a\v\x2\x2Y[\x5\x12\n\x2ZY\x3"+
+		"\x2\x2\x2Z[\x3\x2\x2\x2[\\\x3\x2\x2\x2\\]\a\f\x2\x2]j\x3\x2\x2\x2^_\f"+
+		"\t\x2\x2_\x61\a\v\x2\x2`\x62\x5\x12\n\x2\x61`\x3\x2\x2\x2\x61\x62\x3\x2"+
+		"\x2\x2\x62\x63\x3\x2\x2\x2\x63j\a\f\x2\x2\x64\x65\f\b\x2\x2\x65\x66\a"+
+		"\x5\x2\x2\x66g\x5\b\x5\x2gh\a\x6\x2\x2hj\x3\x2\x2\x2i\x41\x3\x2\x2\x2"+
+		"i\x45\x3\x2\x2\x2iI\x3\x2\x2\x2iM\x3\x2\x2\x2iQ\x3\x2\x2\x2iT\x3\x2\x2"+
+		"\x2i^\x3\x2\x2\x2i\x64\x3\x2\x2\x2jm\x3\x2\x2\x2ki\x3\x2\x2\x2kl\x3\x2"+
+		"\x2\x2l\t\x3\x2\x2\x2mk\x3\x2\x2\x2nr\a\r\x2\x2or\a\xE\x2\x2pr\a\xF\x2"+
+		"\x2qn\x3\x2\x2\x2qo\x3\x2\x2\x2qp\x3\x2\x2\x2r\v\x3\x2\x2\x2sv\a\x10\x2"+
+		"\x2tv\a\x11\x2\x2us\x3\x2\x2\x2ut\x3\x2\x2\x2v\r\x3\x2\x2\x2w\x82\a\x3"+
+		"\x2\x2xy\a\x3\x2\x2y\x82\a\x12\x2\x2z\x82\a\x4\x2\x2{|\a\x4\x2\x2|\x82"+
+		"\a\x12\x2\x2}~\a\x12\x2\x2~\x82\a\x12\x2\x2\x7F\x80\a\x13\x2\x2\x80\x82"+
+		"\a\x12\x2\x2\x81w\x3\x2\x2\x2\x81x\x3\x2\x2\x2\x81z\x3\x2\x2\x2\x81{\x3"+
+		"\x2\x2\x2\x81}\x3\x2\x2\x2\x81\x7F\x3\x2\x2\x2\x82\xF\x3\x2\x2\x2\x83"+
+		"\x86\a\x14\x2\x2\x84\x86\a\x15\x2\x2\x85\x83\x3\x2\x2\x2\x85\x84\x3\x2"+
+		"\x2\x2\x86\x11\x3\x2\x2\x2\x87\x8C\x5\b\x5\x2\x88\x89\a\a\x2\x2\x89\x8B"+
+		"\x5\b\x5\x2\x8A\x88\x3\x2\x2\x2\x8B\x8E\x3\x2\x2\x2\x8C\x8A\x3\x2\x2\x2"+
+		"\x8C\x8D\x3\x2\x2\x2\x8D\x13\x3\x2\x2\x2\x8E\x8C\x3\x2\x2\x2\x8F\x90\a"+
+		"!\x2\x2\x90\x91\a\x12\x2\x2\x91\x92\x5\b\x5\x2\x92\x93\a\x16\x2\x2\x93"+
+		"\xE2\x3\x2\x2\x2\x94\x95\x5\b\x5\x2\x95\x96\a\n\x2\x2\x96\x97\a!\x2\x2"+
+		"\x97\x98\a\x12\x2\x2\x98\x99\x5\b\x5\x2\x99\x9A\a\x16\x2\x2\x9A\xE2\x3"+
+		"\x2\x2\x2\x9B\x9C\a!\x2\x2\x9C\x9D\x5\f\a\x2\x9D\x9E\a\x12\x2\x2\x9E\x9F"+
+		"\x5\b\x5\x2\x9F\xA0\a\x16\x2\x2\xA0\xE2\x3\x2\x2\x2\xA1\xA2\a!\x2\x2\xA2"+
+		"\xA3\x5\n\x6\x2\xA3\xA4\a\x12\x2\x2\xA4\xA5\x5\b\x5\x2\xA5\xA6\a\x16\x2"+
+		"\x2\xA6\xE2\x3\x2\x2\x2\xA7\xA8\x5\b\x5\x2\xA8\xA9\a\n\x2\x2\xA9\xAA\a"+
+		"!\x2\x2\xAA\xAB\x5\f\a\x2\xAB\xAC\a\x12\x2\x2\xAC\xAD\x5\b\x5\x2\xAD\xAE"+
+		"\a\x16\x2\x2\xAE\xE2\x3\x2\x2\x2\xAF\xB0\x5\b\x5\x2\xB0\xB1\a\n\x2\x2"+
+		"\xB1\xB2\a!\x2\x2\xB2\xB3\x5\n\x6\x2\xB3\xB4\a\x12\x2\x2\xB4\xB5\x5\b"+
+		"\x5\x2\xB5\xB6\a\x16\x2\x2\xB6\xE2\x3\x2\x2\x2\xB7\xB8\x5\b\x5\x2\xB8"+
+		"\xB9\a\x3\x2\x2\xB9\xBA\x5\x4\x3\x2\xBA\xBB\a\x4\x2\x2\xBB\xBD\a\v\x2"+
+		"\x2\xBC\xBE\x5\x12\n\x2\xBD\xBC\x3\x2\x2\x2\xBD\xBE\x3\x2\x2\x2\xBE\xBF"+
+		"\x3\x2\x2\x2\xBF\xC0\a\f\x2\x2\xC0\xC1\a\x16\x2\x2\xC1\xE2\x3\x2\x2\x2"+
+		"\xC2\xC3\x5\b\x5\x2\xC3\xC5\a\v\x2\x2\xC4\xC6\x5\x12\n\x2\xC5\xC4\x3\x2"+
+		"\x2\x2\xC5\xC6\x3\x2\x2\x2\xC6\xC7\x3\x2\x2\x2\xC7\xC8\a\f\x2\x2\xC8\xC9"+
+		"\a\x16\x2\x2\xC9\xE2\x3\x2\x2\x2\xCA\xCE\a\x17\x2\x2\xCB\xCD\x5\x14\v"+
+		"\x2\xCC\xCB\x3\x2\x2\x2\xCD\xD0\x3\x2\x2\x2\xCE\xCC\x3\x2\x2\x2\xCE\xCF"+
+		"\x3\x2\x2\x2\xCF\xD1\x3\x2\x2\x2\xD0\xCE\x3\x2\x2\x2\xD1\xE2\a\x18\x2"+
+		"\x2\xD2\xD3\a\x19\x2\x2\xD3\xD4\a\v\x2\x2\xD4\xD5\x5\b\x5\x2\xD5\xD6\a"+
+		"\f\x2\x2\xD6\xD9\x5\x14\v\x2\xD7\xD8\a\x1A\x2\x2\xD8\xDA\x5\x14\v\x2\xD9"+
+		"\xD7\x3\x2\x2\x2\xD9\xDA\x3\x2\x2\x2\xDA\xE2\x3\x2\x2\x2\xDB\xDC\a\x1B"+
+		"\x2\x2\xDC\xDD\a\v\x2\x2\xDD\xDE\x5\b\x5\x2\xDE\xDF\a\f\x2\x2\xDF\xE0"+
+		"\x5\x14\v\x2\xE0\xE2\x3\x2\x2\x2\xE1\x8F\x3\x2\x2\x2\xE1\x94\x3\x2\x2"+
+		"\x2\xE1\x9B\x3\x2\x2\x2\xE1\xA1\x3\x2\x2\x2\xE1\xA7\x3\x2\x2\x2\xE1\xAF"+
+		"\x3\x2\x2\x2\xE1\xB7\x3\x2\x2\x2\xE1\xC2\x3\x2\x2\x2\xE1\xCA\x3\x2\x2"+
+		"\x2\xE1\xD2\x3\x2\x2\x2\xE1\xDB\x3\x2\x2\x2\xE2\x15\x3\x2\x2\x2\x15\x1D"+
+		"$,\x35?Z\x61ikqu\x81\x85\x8C\xBD\xC5\xCE\xD9\xE1";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

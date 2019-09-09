@@ -1,50 +1,87 @@
 grammar CMinor;
 
 cMinorType
-    : ID
-    | ID '<' cMinorTypeList '>'
-    | cMinorType '[' ']'
+    : ID # cMinorType_Normal
+    | ID '<' cMinorTypeList '>' # cMinorType_Templated
+    | cMinorType '[' ']' # cMinorType_Array
     ;
 
-cMinorTypeList : cMinorType (',' cMinorType)*;
+cMinorTypeList : /*group:{*/ cMinorType (',' cMinorType)* /*group:}*/;
 
-cMinorConstant
-    : BOOL
-    | INT
-    | FLOAT
-    | DOUBLE
-    | STRING
-    ;
-
-cMinorMember
-    : ID
-    | ID '<' cMinorTypeList'>'
+cMinorLiteral
+    : 'null' # cMinorLiteral_Null
+    | BOOL # cMinorLiteral_Bool
+    | INT # cMinorLiteral_Int
+    | FLOAT # cMinorLiteral_Float
+    | DOUBLE # cMinorLiteral_Double
+    | STRING /*info: custom_load_context*/ # cMinorLiteral_String
     ;
 
 cMinorExpression
-    : cMinorConstant
+    : cMinorLiteral # cMinorExpression_Literal
 
-    | cMinorMember
+    | 'this' # cMinorExpression_This
 
-    | cMinorExpression '.' cMinorMember
-    | cMinorExpression '(' cMinorExpressionList? ')'
+    | ID # cMinorExpression_DirectIdentifier
+    | cMinorExpression '.' ID # cMinorExpression_IndirectIdentifier
 
-    | '(' cMinorExpression ')'
+    | cMinorExpression '<' cMinorTypeList '>' '(' cMinorExpressionList? ')' # cMinorExpression_InvokeGeneric
+    | cMinorExpression '(' cMinorExpressionList? ')' # cMinorExpression_Invoke
+    | cMinorExpression '[' cMinorExpression ']' # cMinorExpression_Index
 
-    | cMinorExpression cMinorMultiplicativeOperator cMinorExpression
-    | cMinorExpression cMinorAdditiveOperator cMinorExpression
-    | cMinorExpression cMinorComparativeOperator cMinorExpression
+    | '(' cMinorExpression ')' # cMinorExpression_Group
 
-    | cMinorExpression cMinorBooleanOperator cMinorExpression
+    | cMinorExpression /*info: get_override*/ cMinorBinaryOperator_Multiplicative cMinorExpression /*info: get_override*/ # cMinorExpression_BinaryOperation_Multiplicative /*info: base_type=>CMinorExpression_BinaryOperation*/
+    | cMinorExpression /*info: get_override*/ cMinorBinaryOperator_Additive cMinorExpression /*info: get_override*/ # cMinorExpression_BinaryOperation_Additive /*info: base_type=>CMinorExpression_BinaryOperation*/
+    | cMinorExpression /*info: get_override*/ cMinorBinaryOperator_Comparative cMinorExpression /*info: get_override*/ # cMinorExpression_BinaryOperation_Comparative /*info: base_type=>CMinorExpression_BinaryOperation*/
+
+    | cMinorExpression /*info: get_override*/ cMinorBinaryOperator_Boolean cMinorExpression /*info: get_override*/ # cMinorExpression_BinaryOperation_Boolean /*info: base_type=>CMinorExpression_BinaryOperation*/
     ;
 
-cMinorMultiplicativeOperator : ('*' | '/' | '%');
-cMinorAdditiveOperator : ('+' | '-');
-cMinorComparativeOperator : ('<' '='? | '>' '='? | '=' '=' | '!' '=');
+cMinorBinaryOperator_Multiplicative /*info: base_type=>CMinorBinaryOperator*/
+    : '*' # cMinorBinaryOperator_Multiplicative_Multiply
+    | '/' # cMinorBinaryOperator_Multiplicative_Divide
+    | '%' # cMinorBinaryOperator_Multiplicative_Modulo
+    ;
 
-cMinorBooleanOperator : ('&' | '|');
+cMinorBinaryOperator_Additive /*info: base_type=>CMinorBinaryOperator*/
+    : '+' # cMinorBinaryOperator_Additive_Add
+    | '-' # cMinorBinaryOperator_Additive_Subtract
+    ;
 
-cMinorExpressionList : cMinorExpression (',' cMinorExpression)*;
+cMinorBinaryOperator_Comparative /*info: base_type=>CMinorBinaryOperator*/
+    : '<' # cMinorBinaryOperator_Comparative_LessThan
+    | '<' '=' # cMinorBinaryOperator_Comparative_LessThanOrEqualTo
+    | '>' # cMinorBinaryOperator_Comparative_GreaterThan
+    | '>' '=' # cMinorBinaryOperator_Comparative_GreaterThanOrEqualTo
+    | '=' '=' # cMinorBinaryOperator_Comparative_EqualTo
+    | '!' '=' # cMinorBinaryOperator_Comparative_NotEqualTo
+    ;
+
+cMinorBinaryOperator_Boolean /*info: base_type=>CMinorBinaryOperator*/
+    : '&' # cMinorBinaryOperator_Boolean_And
+    | '|' # cMinorBinaryOperator_Boolean_Or
+    ;
+
+cMinorExpressionList : /*group:{*/ cMinorExpression (',' cMinorExpression)* /*group:}*/;
+
+cMinorStatement
+    : ID '=' cMinorExpression ';' # cMinorStatement_DirectAssign
+    | cMinorExpression '.' ID '=' cMinorExpression ';' # cMinorStatement_IndirectAssign
+
+    | ID cMinorBinaryOperator_Additive '=' cMinorExpression /*info: name=>assignment_expression, get_override*/ ';' # cMinorStatement_OperationAssign_DirectAdditive /*info: base_type=>CMinorStatement_OperationAssign*/
+    | ID cMinorBinaryOperator_Multiplicative '=' cMinorExpression /*info: name=>assignment_expression, get_override*/ ';' # cMinorStatement_OperationAssign_DirectMultiplicative /*info: base_type=>CMinorStatement_OperationAssign*/
+    | cMinorExpression '.' ID cMinorBinaryOperator_Additive '=' cMinorExpression /*info: name=>assignment_expression, get_override*/ ';' # cMinorStatement_OperationAssign_IndirectAdditive /*info: base_type=>CMinorStatement_OperationAssign*/
+    | cMinorExpression '.' ID cMinorBinaryOperator_Multiplicative '=' cMinorExpression /*info: name=>assignment_expression, get_override*/ ';' # cMinorStatement_OperationAssign_IndirectMultiplicative /*info: base_type=>CMinorStatement_OperationAssign*/
+
+    | cMinorExpression '<' cMinorTypeList '>' '(' cMinorExpressionList? ')' ';' # cMinorStatement_InvokeGeneric
+    | cMinorExpression '(' cMinorExpressionList? ')' ';' # cMinorStatement_Invoke
+
+    | '{' cMinorStatement* '}' # cMinorStatement_Block
+
+    | 'if' '(' cMinorExpression ')' cMinorStatement ('else' cMinorStatement)? # cMinorStatement_If
+    | 'while' '(' cMinorExpression ')' cMinorStatement # cMinorStatement_While
+    ;
 
 BOOL /*info: type=>bool*/ : ('true' | 'false');
 INT /*info: type=>int*/ : ('-'|'+')? [0-9]+;

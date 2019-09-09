@@ -32,7 +32,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, ICMinorVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorType"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorType_Normal"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -40,7 +40,27 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorType([NotNull] CMinorParser.CMinorTypeContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorType_Normal([NotNull] CMinorParser.CMinorType_NormalContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorType_Templated"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorType_Templated([NotNull] CMinorParser.CMinorType_TemplatedContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorType_Array"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorType_Array([NotNull] CMinorParser.CMinorType_ArrayContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorTypeList"/>.
 	/// <para>
@@ -52,7 +72,7 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// <return>The visitor result.</return>
 	public virtual Result VisitCMinorTypeList([NotNull] CMinorParser.CMinorTypeListContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorConstant"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorLiteral_Null"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -60,9 +80,9 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorConstant([NotNull] CMinorParser.CMinorConstantContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorLiteral_Null([NotNull] CMinorParser.CMinorLiteral_NullContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorMember"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorLiteral_Bool"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -70,9 +90,9 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorMember([NotNull] CMinorParser.CMinorMemberContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorLiteral_Bool([NotNull] CMinorParser.CMinorLiteral_BoolContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorLiteral_Int"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -80,9 +100,9 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorExpression([NotNull] CMinorParser.CMinorExpressionContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorLiteral_Int([NotNull] CMinorParser.CMinorLiteral_IntContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorMultiplicativeOperator"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorLiteral_Float"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -90,9 +110,9 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorMultiplicativeOperator([NotNull] CMinorParser.CMinorMultiplicativeOperatorContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorLiteral_Float([NotNull] CMinorParser.CMinorLiteral_FloatContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorAdditiveOperator"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorLiteral_Double"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -100,9 +120,9 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorAdditiveOperator([NotNull] CMinorParser.CMinorAdditiveOperatorContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorLiteral_Double([NotNull] CMinorParser.CMinorLiteral_DoubleContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorComparativeOperator"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorLiteral_String"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -110,9 +130,9 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorComparativeOperator([NotNull] CMinorParser.CMinorComparativeOperatorContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorLiteral_String([NotNull] CMinorParser.CMinorLiteral_StringContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBooleanOperator"/>.
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_DirectIdentifier"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -120,7 +140,247 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCMinorBooleanOperator([NotNull] CMinorParser.CMinorBooleanOperatorContext context) { return VisitChildren(context); }
+	public virtual Result VisitCMinorExpression_DirectIdentifier([NotNull] CMinorParser.CMinorExpression_DirectIdentifierContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_InvokeGeneric"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_InvokeGeneric([NotNull] CMinorParser.CMinorExpression_InvokeGenericContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_Literal"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_Literal([NotNull] CMinorParser.CMinorExpression_LiteralContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_BinaryOperation_Comparative"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_BinaryOperation_Comparative([NotNull] CMinorParser.CMinorExpression_BinaryOperation_ComparativeContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_Invoke"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_Invoke([NotNull] CMinorParser.CMinorExpression_InvokeContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_BinaryOperation_Additive"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_BinaryOperation_Additive([NotNull] CMinorParser.CMinorExpression_BinaryOperation_AdditiveContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_This"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_This([NotNull] CMinorParser.CMinorExpression_ThisContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_Group"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_Group([NotNull] CMinorParser.CMinorExpression_GroupContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_IndirectIdentifier"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_IndirectIdentifier([NotNull] CMinorParser.CMinorExpression_IndirectIdentifierContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_BinaryOperation_Boolean"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_BinaryOperation_Boolean([NotNull] CMinorParser.CMinorExpression_BinaryOperation_BooleanContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_Index"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_Index([NotNull] CMinorParser.CMinorExpression_IndexContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpression_BinaryOperation_Multiplicative"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorExpression_BinaryOperation_Multiplicative([NotNull] CMinorParser.CMinorExpression_BinaryOperation_MultiplicativeContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Multiplicative_Multiply"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Multiplicative_Multiply([NotNull] CMinorParser.CMinorBinaryOperator_Multiplicative_MultiplyContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Multiplicative_Divide"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Multiplicative_Divide([NotNull] CMinorParser.CMinorBinaryOperator_Multiplicative_DivideContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Multiplicative_Modulo"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Multiplicative_Modulo([NotNull] CMinorParser.CMinorBinaryOperator_Multiplicative_ModuloContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Additive_Add"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Additive_Add([NotNull] CMinorParser.CMinorBinaryOperator_Additive_AddContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Additive_Subtract"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Additive_Subtract([NotNull] CMinorParser.CMinorBinaryOperator_Additive_SubtractContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Comparative_LessThan"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Comparative_LessThan([NotNull] CMinorParser.CMinorBinaryOperator_Comparative_LessThanContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Comparative_LessThanOrEqualTo"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Comparative_LessThanOrEqualTo([NotNull] CMinorParser.CMinorBinaryOperator_Comparative_LessThanOrEqualToContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Comparative_GreaterThan"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Comparative_GreaterThan([NotNull] CMinorParser.CMinorBinaryOperator_Comparative_GreaterThanContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Comparative_GreaterThanOrEqualTo"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Comparative_GreaterThanOrEqualTo([NotNull] CMinorParser.CMinorBinaryOperator_Comparative_GreaterThanOrEqualToContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Comparative_EqualTo"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Comparative_EqualTo([NotNull] CMinorParser.CMinorBinaryOperator_Comparative_EqualToContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Comparative_NotEqualTo"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Comparative_NotEqualTo([NotNull] CMinorParser.CMinorBinaryOperator_Comparative_NotEqualToContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Boolean_And"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Boolean_And([NotNull] CMinorParser.CMinorBinaryOperator_Boolean_AndContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorBinaryOperator_Boolean_Or"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorBinaryOperator_Boolean_Or([NotNull] CMinorParser.CMinorBinaryOperator_Boolean_OrContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorExpressionList"/>.
 	/// <para>
@@ -131,4 +391,114 @@ public partial class CMinorBaseVisitor<Result> : AbstractParseTreeVisitor<Result
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitCMinorExpressionList([NotNull] CMinorParser.CMinorExpressionListContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_DirectAssign"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_DirectAssign([NotNull] CMinorParser.CMinorStatement_DirectAssignContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_IndirectAssign"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_IndirectAssign([NotNull] CMinorParser.CMinorStatement_IndirectAssignContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_OperationAssign_DirectAdditive"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_OperationAssign_DirectAdditive([NotNull] CMinorParser.CMinorStatement_OperationAssign_DirectAdditiveContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_OperationAssign_DirectMultiplicative"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_OperationAssign_DirectMultiplicative([NotNull] CMinorParser.CMinorStatement_OperationAssign_DirectMultiplicativeContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_OperationAssign_IndirectAdditive"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_OperationAssign_IndirectAdditive([NotNull] CMinorParser.CMinorStatement_OperationAssign_IndirectAdditiveContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_OperationAssign_IndirectMultiplicative"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_OperationAssign_IndirectMultiplicative([NotNull] CMinorParser.CMinorStatement_OperationAssign_IndirectMultiplicativeContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_InvokeGeneric"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_InvokeGeneric([NotNull] CMinorParser.CMinorStatement_InvokeGenericContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_Invoke"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_Invoke([NotNull] CMinorParser.CMinorStatement_InvokeContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_Block"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_Block([NotNull] CMinorParser.CMinorStatement_BlockContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_If"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_If([NotNull] CMinorParser.CMinorStatement_IfContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatement_While"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCMinorStatement_While([NotNull] CMinorParser.CMinorStatement_WhileContext context) { return VisitChildren(context); }
 }

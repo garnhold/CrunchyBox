@@ -34,5 +34,14 @@ namespace CrunchySodium
         {
             return item.GetILInvoke(name, (IEnumerable<ILValue>)arguments);
         }
+
+        static public ILMethodInvokation GetILInvokeSelf(this ILValue item, IEnumerable<ILValue> arguments)
+        {
+            return item.GetILInvoke("Invoke", arguments);
+        }
+        static public ILMethodInvokation GetILInvokeSelf(this ILValue item, params ILValue[] arguments)
+        {
+            return item.GetILInvokeSelf((IEnumerable<ILValue>)arguments);
+        }
     }
 }

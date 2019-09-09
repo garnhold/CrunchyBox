@@ -58,11 +58,6 @@ namespace CrunchySalt
 			return New(value.GetTypeEX(), value);
 		}
 
-		public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
-        }
-
 		public override bool IsILCostTrivial()
 		{
 			return true;
@@ -71,11 +66,6 @@ namespace CrunchySalt
 		public override bool CanLoad()
 		{
 			return true;
-		}
-
-		public override bool CanStore()
-		{
-			return false;
 		}
 	}
 

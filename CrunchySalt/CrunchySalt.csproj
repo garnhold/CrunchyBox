@@ -60,6 +60,7 @@
     <Compile Include="Extensions\Type\TypeExtensions_Foreign.cs" />
     <Compile Include="ForeignType\ForeignType.cs" />
     <Compile Include="IL\ILStatement\Derivations\ILThrow.cs" />
+    <Compile Include="IL\ILValue\Extensions\ILValueExtensions_MethodInvokation_Generic.cs" />
     <Compile Include="TypeBuilderEX\ConstructorBuilderEX\ConstructorBuilderEX.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoPass.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoEX.cs" />

@@ -45,11 +45,6 @@ namespace CrunchySalt
                 typeof(string).GetStaticILMethodInvokation("Concat", new ILNewPopulatedArray(typeof(object), values)).RenderIL_Load(canvas);
         }
 
-        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
-        }
-
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             values.RenderText_Value(canvas, " + ");
@@ -68,11 +63,6 @@ namespace CrunchySalt
         public override bool CanLoad()
         {
             return true;
-        }
-
-        public override bool CanStore()
-        {
-            return false;
         }
     }
 }

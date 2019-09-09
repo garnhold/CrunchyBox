@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Extensions\ILValue\ILValueExtensions_Common.cs" />
     <Compile Include="Extensions\ILValue\ILValueExtensions_Fields.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions_MethodInvokation_Generic.cs" />
     <Compile Include="Extensions\ILValue\ILValueExtensions_MethodInvokation.cs" />
     <Compile Include="Extensions\ILValue\ILValueExtensions_Props.cs" />
     <Compile Include="Extensions\ILValue\ILValueExtensions.cs" />

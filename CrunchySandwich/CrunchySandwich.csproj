@@ -158,8 +158,8 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
     <Compile Include="GUISkinManager\GUISkinManager.cs" />
-    <Compile Include="LinkedText\LinkedText.cs" />
     <Compile Include="RecoveryFunctionAttribute\RecoveryFunctionAttribute.cs" />
+    <Compile Include="Representation\RepresentationButton.cs" />
     <Compile Include="Representation\RepresentationText.cs" />
     <Compile Include="Representation\RepresentationNode.cs" />
     <Compile Include="Scriptlet\ScriptletArgument.cs" />

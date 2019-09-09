@@ -15,11 +15,11 @@ namespace CrunchySalt
         public abstract Type GetValueType();
         public abstract bool IsILCostTrivial();
 
-        public abstract bool CanLoad();
-        public abstract bool CanStore();
+        public virtual bool CanLoad() { return false; }
+        public virtual bool CanStore() { return false; }
 
-        public abstract void RenderIL_Load(ILCanvas canvas);
-        public abstract void RenderIL_Store(ILCanvas canvas, ILValue value);
+        public virtual void RenderIL_Load(ILCanvas canvas) { throw new InvalidOperationException(GetType() + " doesn't support loading."); }
+        public virtual void RenderIL_Store(ILCanvas canvas, ILValue value) { throw new InvalidOperationException(GetType() + " doesn't support storing."); }
 
         public abstract void RenderText_Value(ILTextCanvas canvas);
 

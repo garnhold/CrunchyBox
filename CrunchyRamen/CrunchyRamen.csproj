@@ -31,11 +31,98 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\CrunchySack_WPF\bin\Release\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyDough">
+      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchyNoodle">
+      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySalt">
+      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
+    </Reference>
+    <Reference Include="CrunchySodium">
+      <HintPath>..\CrunchySodium\bin\Release\CrunchySodium.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CMinor\antlr4\CMinorBaseVisitor.cs" />
+    <Compile Include="CMinor\antlr4\CMinorLexer.cs" />
+    <Compile Include="CMinor\antlr4\CMinorParser.cs" />
+    <Compile Include="CMinor\antlr4\CMinorVisitor.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Additive.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Additive_Add.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Additive_Subtract.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Boolean.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Boolean_And.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Boolean_Or.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Comparative.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Comparative_EqualTo.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Comparative_GreaterThan.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Comparative_GreaterThanOrEqualTo.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Comparative_LessThan.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Comparative_LessThanOrEqualTo.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Comparative_NotEqualTo.cs" />
+    <Compile Include="CMinor\Singleton\CMinor_Internal.cs" />
+    <Compile Include="CMinor\Singleton\CMinor.cs" />
+    <Compile Include="CMinor\CMinorExpression_BinaryOperation_Additive.cs" />
+    <Compile Include="CMinor\CMinorExpression_BinaryOperation_Boolean.cs" />
+    <Compile Include="CMinor\CMinorExpression_BinaryOperation_Comparative.cs" />
+    <Compile Include="CMinor\CMinorExpression_BinaryOperation_Multiplicative.cs" />
+    <Compile Include="CMinor\CMinorExpression_DirectIdentifier.cs" />
+    <Compile Include="CMinor\CMinorExpression_IndirectIdentifier.cs" />
+    <Compile Include="CMinor\CMinorExpression_BinaryOperation.cs" />
+    <Compile Include="CMinor\CMinorExpression_InvokeGeneric.cs" />
+    <Compile Include="CMinor\CMinorExpression_This.cs" />
+    <Compile Include="CMinor\CMinorLiteral.cs" />
+    <Compile Include="CMinor\CMinorLiteral_Bool.cs" />
+    <Compile Include="CMinor\CMinorLiteral_Double.cs" />
+    <Compile Include="CMinor\CMinorLiteral_Float.cs" />
+    <Compile Include="CMinor\CMinorLiteral_Int.cs" />
+    <Compile Include="CMinor\CMinorLiteral_Null.cs" />
+    <Compile Include="CMinor\CMinorLiteral_String.cs" />
+    <Compile Include="CMinor\CMinorDOMinator.cs" />
+    <Compile Include="CMinor\CMinorElement.cs" />
+    <Compile Include="CMinor\CMinorExpression.cs" />
+    <Compile Include="CMinor\CMinorExpressionList.cs" />
+    <Compile Include="CMinor\CMinorExpression_Literal.cs" />
+    <Compile Include="CMinor\CMinorExpression_Group.cs" />
+    <Compile Include="CMinor\CMinorExpression_Index.cs" />
+    <Compile Include="CMinor\CMinorExpression_Invoke.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Multiplicative.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Multiplicative_Divide.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Multiplicative_Modulo.cs" />
+    <Compile Include="CMinor\CMinorBinaryOperator_Multiplicative_Multiply.cs" />
+    <Compile Include="CMinor\CMinorResolver.cs" />
+    <Compile Include="CMinor\CMinorStatement.cs" />
+    <Compile Include="CMinor\CMinorStatement_Block.cs" />
+    <Compile Include="CMinor\CMinorStatement_DirectAssign.cs" />
+    <Compile Include="CMinor\CMinorStatement_If.cs" />
+    <Compile Include="CMinor\CMinorStatement_IndirectAssign.cs" />
+    <Compile Include="CMinor\CMinorStatement_Invoke.cs" />
+    <Compile Include="CMinor\CMinorStatement_InvokeGeneric.cs" />
+    <Compile Include="CMinor\CMinorStatement_OperationAssign.cs" />
+    <Compile Include="CMinor\CMinorStatement_OperationAssign_DirectAdditive.cs" />
+    <Compile Include="CMinor\CMinorStatement_OperationAssign_DirectMultiplicative.cs" />
+    <Compile Include="CMinor\CMinorStatement_OperationAssign_IndirectAdditive.cs" />
+    <Compile Include="CMinor\CMinorStatement_OperationAssign_IndirectMultiplicative.cs" />
+    <Compile Include="CMinor\CMinorStatement_While.cs" />
+    <Compile Include="CMinor\CMinorSyntaxException.cs" />
+    <Compile Include="CMinor\CMinorType.cs" />
+    <Compile Include="CMinor\CMinorTypeList.cs" />
+    <Compile Include="CMinor\CMinorType_Array.cs" />
+    <Compile Include="CMinor\CMinorType_Normal.cs" />
+    <Compile Include="CMinor\CMinorType_Templated.cs" />
+    <Compile Include="CMinor\Environment\CMinorEnvironment_Object.cs" />
+    <Compile Include="CMinor\Environment\CMinorEnvironment.cs" />
+    <Compile Include="ThisAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

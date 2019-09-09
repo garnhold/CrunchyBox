@@ -37,11 +37,6 @@ namespace CrunchySalt
             statement.RenderIL_Execute(canvas);
         }
 
-        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
-        }
-
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             canvas.AppendToLine("{");
@@ -65,11 +60,6 @@ namespace CrunchySalt
         public override bool CanLoad()
         {
             return true;
-        }
-
-        public override bool CanStore()
-        {
-            return false;
         }
     }
 }
