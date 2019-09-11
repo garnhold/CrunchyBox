@@ -180,11 +180,6 @@
     <Compile Include="Time\GameAlarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\GameAlarm\GameAlarm.cs" />
     <Compile Include="Time\Stopwatch\GameStopwatch.cs" />
-    <Compile Include="Toid\Actoid\Actoid.cs" />
-    <Compile Include="Toid\Checktoid\Checktoid.cs" />
-    <Compile Include="Toid\Invoketoid\Extensions\InvoketoidExtensions.cs" />
-    <Compile Include="Toid\Methtoid\Extensions\MethtoidExtensions.cs" />
-    <Compile Include="Toid\Methtoid\Methtoid.cs" />
     <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
     <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Native.cs" />
@@ -615,16 +610,6 @@
     <Compile Include="SpriteVectorizer\SpriteVectorizer.cs" />
     <Compile Include="Time\TimeType\Extensions\TimeTypeExtensions.cs" />
     <Compile Include="Time\TimeType\TimeType.cs" />
-    <Compile Include="Toid\Invoketoid\InvoketoidInvokerBase.cs" />
-    <Compile Include="Toid\Invoketoid\InvoketoidInvokers.cs">
-      <DependentUpon>InvoketoidInvokers.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Toid\Invoketoid\Invoketoid.cs" />
-    <Compile Include="Toid\Preditoid\Preditoid.cs" />
-    <Compile Include="Toid\Preditoid\PreditoidComparer.cs" />
-    <Compile Include="Toid\Valtoid\Valtoid.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
     <Compile Include="TerrainTile\TerrainSubTile.cs" />
     <Compile Include="TerrainTile\TerrainTile.cs" />
@@ -1402,10 +1387,6 @@
     <Content Include="PlayEditDistinction\PlayEditDistinction.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PlayEditDistinction.cs</LastGenOutput>
-    </Content>
-    <Content Include="Toid\Invoketoid\InvoketoidInvokers.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>InvoketoidInvokers.cs</LastGenOutput>
     </Content>
     <Content Include="UnityObjectEX\UnityObjectEX.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

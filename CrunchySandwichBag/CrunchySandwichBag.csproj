@@ -138,12 +138,8 @@
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_Label_Index.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_TypedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_ScriptletArgument.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_Preditoid.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_Invoketoid.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_Checktoid.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_Methtoid.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_UnityObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElementDimension\EditorGUIElementDimension.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIElement_Container_Flow_Line.cs" />
