@@ -28,7 +28,9 @@ namespace CrunchySandwichBag
 
                 if (new_text != old_text)
                 {
-                    List<T> options = GetOptions(new_text).ToList();
+                    List<T> options = GetOptions(new_text)
+                        .Sort(o => o.ToStringEX().Length)
+                        .ToList();
 
                     if (options.HasOnlyOne())
                         property.SetContentValues(options.GetOnly());

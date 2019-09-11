@@ -23,11 +23,13 @@ using CrunchyNoodle;
     typeof(CrunchyDough.ThisAssembly),
     typeof(CrunchySalt.ThisAssembly),
     typeof(CrunchyNoodle.ThisAssembly),
+    typeof(CrunchySodium.ThisAssembly),
     typeof(CrunchyGinger.ThisAssembly),
     typeof(CrunchyBun.ThisAssembly),
     typeof(CrunchyCheese.ThisAssembly),
     typeof(CrunchySauce.ThisAssembly),
     typeof(CrunchyRecipe.ThisAssembly),
+    typeof(CrunchyRamen.ThisAssembly),
     typeof(CrunchySandwich.ThisAssembly)
 )]
 

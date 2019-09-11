@@ -84,6 +84,7 @@
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Action.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Function.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_ActionExecute.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_VariableValue.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_ActionInstance.cs">
       <AutoGen>True</AutoGen>

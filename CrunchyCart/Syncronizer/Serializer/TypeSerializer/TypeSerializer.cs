@@ -124,7 +124,7 @@ namespace CrunchyCart
             public ILValue GenerateRead(ILValue buffer)
             {
                 return new ILLoadStatement(delegate(ILBlock block) {
-                    ILLocal value = block.CreateLocal(new ILNew(target_type), true);
+                    ILLocal value = block.CreateCementedLocal(new ILNew(target_type));
 
                     block.AddStatement(GenerateReadInto(value, buffer));
                     return value;
@@ -201,7 +201,7 @@ namespace CrunchyCart
                     object_liaison_writer = GetTargetType().CreateDynamicMethodDelegateWithForcedParameterTypes<ObjectLiaisonWriter>(delegate(ILValue il_target, ILValue il_field_update_interval, ILValue il_liaison, ILValue il_buffer) {
                         ILBlock block = new ILBlock();
 
-                        ILLocal il_to_return = block.CreateLocal(typeof(bool), "to_return");
+                        ILLocal il_to_return = block.CreateNamedLocal(typeof(bool), "to_return");
 
                         block.AddStatements(
                             target_serializer_prop_groups

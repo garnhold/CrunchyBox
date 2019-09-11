@@ -24,7 +24,7 @@ namespace CrunchyCart
             static private ILStatement GenerateInspectedObjectWrite_Polymorphic(ILValue value, ILValue buffer)
             {
                 ILBlock block = new ILBlock();
-                ILLocal type = block.CreateLocal(value.GetILTypeEX(), true);
+                ILLocal type = block.CreateCementedLocal(value.GetILTypeEX());
 
                 block.AddStatement(buffer.GetILInvoke("WriteType", type));
                 block.AddStatement(

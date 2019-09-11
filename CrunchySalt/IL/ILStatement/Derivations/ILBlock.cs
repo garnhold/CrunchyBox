@@ -12,13 +12,18 @@ namespace CrunchySalt
 {
     public class ILBlock : ILStatement
     {
-        private List<ILLocal> locals;
+        private Dictionary<string, ILLocal> named_locals;
+        private List<ILLocal> unamed_locals;
+        private List<ILLocal> cemented_locals;
 
         private List<ILStatement> statements;
 
         public ILBlock(IEnumerable<ILStatement> s)
         {
-            locals = new List<ILLocal>();
+            named_locals = new Dictionary<string, ILLocal>();
+            unamed_locals = new List<ILLocal>();
+            cemented_locals = new List<ILLocal>();
+            
             statements = new List<ILStatement>();
 
             AddStatements(s);
@@ -31,41 +36,30 @@ namespace CrunchySalt
             process(this);
         }
 
-        public ILLocal CreateLocal(Type type, string name, ILValue initial_value, bool is_cemented)
+        public ILLocal CreateNamedLocal(Type type, string name, ILValue initial_value = null)
         {
-            ILLocal local = locals.AddAndGet(new ILLocal(type, name, initial_value, is_cemented));
-
-            AddStatement(new ILInitializeLocal(local));
-            return local;
+            return named_locals.AddAndGet(name, new ILLocal(type, name, initial_value, false))
+                .Chain(l => AddStatement(new ILInitializeLocal(l)));
         }
 
-        public ILLocal CreateLocal(Type type, string name)
+        public ILLocal CreateUnamedLocal(Type type, ILValue initial_value = null)
         {
-            return CreateLocal(type, name, null, false);
-        }
-        public ILLocal CreateLocal(Type type)
-        {
-            return CreateLocal(type, null);
+            return unamed_locals.AddAndGet(new ILLocal(type, null, initial_value, false))
+                .Chain(l => AddStatement(new ILInitializeLocal(l)));
         }
 
-        public ILLocal CreateLocal(string name, ILValue value, bool is_cemented)
+        public ILLocal CreateCementedLocal(ILValue value)
         {
-            return CreateLocal(value.GetValueType(), name, value, is_cemented);
-        }
-        public ILLocal CreateLocal(ILValue value, bool is_cemented)
-        {
-            if(is_cemented)
+            ILLocal local;
+
+            if (value.Convert<ILLocal>(out local))
             {
-                ILLocal local;
-
-                if (value.Convert<ILLocal>(out local))
-                {
-                    if (local.IsCemented())
-                        return local;
-                }
+                if (local.IsCemented())
+                    return local;
             }
 
-            return CreateLocal(null, value, is_cemented);
+            return cemented_locals.AddAndGet(new ILLocal(value.GetValueType(), null, value, true))
+                .Chain(l => AddStatement(new ILInitializeLocal(l)));
         }
 
         public ILValue CreateTrivial(ILValue value)
@@ -73,7 +67,7 @@ namespace CrunchySalt
             if (value.IsILCostTrivial())
                 return value;
 
-            return CreateLocal(value, true);
+            return CreateCementedLocal(value);
         }
 
         public void AddStatement(ILStatement to_add)
@@ -94,11 +88,11 @@ namespace CrunchySalt
 
         public override void RenderIL_Execute(ILCanvas canvas)
         {
-            locals.Process(l => l.Allocate(canvas));
+            GetLocals().Process(l => l.Allocate(canvas));
 
                 statements.Process(s => s.RenderIL_Execute(canvas));
 
-            locals.Process(l => l.Release(canvas));
+            GetLocals().Process(l => l.Release(canvas));
         }
 
         public override void RenderText_Statement(ILTextCanvas canvas)
@@ -106,9 +100,23 @@ namespace CrunchySalt
             statements.Process(s => s.RenderText_Statement(canvas));
         }
 
+        public bool TryGetNamedLocal(string name, out ILLocal local)
+        {
+            return named_locals.TryGetValue(name, out local);
+        }
+        public ILLocal GetNamedLocal(string name)
+        {
+            ILLocal local;
+
+            TryGetNamedLocal(name, out local);
+            return local;
+        }
+
         public IEnumerable<ILLocal> GetLocals()
         {
-            return locals;
+            return named_locals.Values
+                .Append(unamed_locals)
+                .Append(cemented_locals);
         }
 
         public IEnumerable<ILStatement> GetStatements()

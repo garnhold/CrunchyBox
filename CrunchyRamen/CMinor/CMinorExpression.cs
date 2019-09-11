@@ -28,21 +28,6 @@ namespace CrunchyRamen
         {
             throw new InvalidOperationException(GetType() + " doesn't support generic invokation.");
         }
-
-        public Operation<RETURN_TYPE, OBJECT_TYPE> CreateObjectLambda<RETURN_TYPE, OBJECT_TYPE>(Type object_type)
-        {
-            return object_type.CreateDynamicMethodDelegateWithForcedParameterTypes<Operation<RETURN_TYPE, OBJECT_TYPE>>(delegate(ILValue value) {
-                return new ILReturn(
-                    CompileAsValue(
-                        new CMinorEnvironment_Object(value)
-                    )
-                );
-            }, object_type);
-        }
-        public Operation<object, object> CreateObjectLambda(Type object_type)
-        {
-            return CreateObjectLambda<object, object>(object_type);
-        }
 	}
 	
 }

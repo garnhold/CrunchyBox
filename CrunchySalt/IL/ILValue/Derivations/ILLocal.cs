@@ -123,6 +123,11 @@ namespace CrunchySalt
             return local_type;
         }
 
+        public string GetName()
+        {
+            return local_name;
+        }
+
         public override bool IsILCostTrivial()
         {
             return true;

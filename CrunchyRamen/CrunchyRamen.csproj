@@ -67,7 +67,8 @@
     <Compile Include="CMinor\CMinorBinaryOperator_Comparative_LessThan.cs" />
     <Compile Include="CMinor\CMinorBinaryOperator_Comparative_LessThanOrEqualTo.cs" />
     <Compile Include="CMinor\CMinorBinaryOperator_Comparative_NotEqualTo.cs" />
-    <Compile Include="CMinor\Singleton\CMinor_Internal.cs" />
+    <Compile Include="CMinor\Environment\CMinorEnvironment_ObjectAndParams.cs" />
+    <Compile Include="CMinor\Singleton\CMinorCompileType.cs" />
     <Compile Include="CMinor\Singleton\CMinor.cs" />
     <Compile Include="CMinor\CMinorExpression_BinaryOperation_Additive.cs" />
     <Compile Include="CMinor\CMinorExpression_BinaryOperation_Boolean.cs" />

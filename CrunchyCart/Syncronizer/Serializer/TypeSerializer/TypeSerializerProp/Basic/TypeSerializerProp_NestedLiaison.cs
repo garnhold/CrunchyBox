@@ -33,7 +33,7 @@ namespace CrunchyCart
 
                 if (IsPolymorphic())
                 {
-                    ILLocal type = block.CreateLocal(buffer.GetILInvoke("ReadType"), true);
+                    ILLocal type = block.CreateCementedLocal(buffer.GetILInvoke("ReadType"));
 
                     block.AddStatement(
                         new ILIf(
@@ -62,7 +62,7 @@ namespace CrunchyCart
 
                 if (IsPolymorphic())
                 {
-                    ILLocal type = block.CreateLocal(prop.GetILTypeEX(), true);
+                    ILLocal type = block.CreateCementedLocal(prop.GetILTypeEX());
 
                     block.AddStatement(
                         new ILIf(
