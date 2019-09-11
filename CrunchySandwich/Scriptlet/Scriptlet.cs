@@ -18,29 +18,28 @@ namespace CrunchySandwich
         [SerializeFieldEX]private CMinorCompileType cminor_compile_type;
         [SerializeFieldEX]private string code;
 
-        private Type compiled_target_type;
-        private CMinorCompileType compiled_cminor_compile_type;
-        private string compiled_code;
+        private AutoCompoundState compile_state;
         private Operation<object, object, object[]> compiled_operation;
+
+        public Scriptlet()
+        {
+            compile_state = AutoCompoundState.New(() => target_type, () => cminor_compile_type, () => code);
+        }
 
         public object Invoke(object target)
         {
-            if (target_type != compiled_target_type || cminor_compile_type != compiled_cminor_compile_type || code != compiled_code)
+            if (compile_state.UpdateState())
             {
-                compiled_target_type = target_type;
-                compiled_cminor_compile_type = cminor_compile_type;
-                compiled_code = code;
-
                 compiled_operation = CMinor.CompileForObjectAndParams(
-                    compiled_target_type,
-                    compiled_code,
+                    target_type,
+                    code,
                     arguments.Convert(a => KeyValuePair.New(a.GetArgumentName(), a.GetArgumentType())),
-                    compiled_cminor_compile_type
+                    cminor_compile_type
                 );
             }
 
             return compiled_operation(
-                target.ConvertEX(compiled_target_type),
+                target.ConvertEX(target_type),
                 arguments.Convert(a => a.GetArgumentValue()).ToArray()
             );
         }

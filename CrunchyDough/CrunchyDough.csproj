@@ -49,6 +49,8 @@
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions.cs" />
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions_String.cs" />
     <Compile Include="ByteSequence\ByteSequence.cs" />
+    <Compile Include="CompoundState\AutoCompoundState.cs" />
+    <Compile Include="CompoundState\CompoundState.cs" />
     <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Order.cs" />
     <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Suffix.cs" />
     <Compile Include="Duration\Extensions\DurationExtensions_PartOut.cs" />
@@ -148,10 +150,10 @@
     <Compile Include="Log\Log_Text_DataFile.cs" />
     <Compile Include="Log\Log_Text_File.cs" />
     <Compile Include="Log\Log_Text.cs" />
-    <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Serial.cs" />
-    <Compile Include="OperationProcess\Extensions\MultiOperationExtensions_Parallel.cs" />
-    <Compile Include="OperationProcess\Extensions\MultiOperationExtensions.cs" />
-    <Compile Include="OperationProcess\MultiOperation.cs" />
+    <Compile Include="Operation\Extensions\MultiOperationExtensions_Serial.cs" />
+    <Compile Include="Operation\Extensions\MultiOperationExtensions_Parallel.cs" />
+    <Compile Include="Operation\Extensions\MultiOperationExtensions.cs" />
+    <Compile Include="Operation\MultiOperation.cs" />
     <Compile Include="NumericRangeVariance\NumericRangeVariance.cs">
       <DependentUpon>NumericRangeVariance.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -618,7 +620,7 @@
     <Compile Include="MipMask\MipMask.cs" />
     <Compile Include="Process\Extensions\MultiProcessExtensions.cs" />
     <Compile Include="Process\MultiProcess.cs" />
-    <Compile Include="OperationProcess\Operation.cs" />
+    <Compile Include="Operation\Operation.cs" />
     <Compile Include="Palette\Extensions\PaletteExtensions_Add.cs" />
     <Compile Include="Palette\Extensions\PaletteExtensions_AtIndexs.cs" />
     <Compile Include="Duration\Duration.cs" />
@@ -1073,7 +1075,7 @@
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Type.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_Compare.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_String.cs" />
-    <Compile Include="OperationProcess\Extensions\OperationExtensions.cs" />
+    <Compile Include="Operation\Extensions\OperationExtensions.cs" />
     <Compile Include="Extensions\ParameterInfo\ParameterInfoExtensions_Treatment.cs" />
     <Compile Include="Extensions\Predicate\PredicateExtensions.cs" />
     <Compile Include="Extensions\Queue\QueueExtensions_Count.cs" />
