@@ -12,8 +12,8 @@ namespace CrunchyPantry
     {
         private STRUCTURE_TYPE structure;
 
-        private RateLimiter initilize_rate_limiter;
-        private RateLimiter update_rate_limiter;
+        private Timer initilize_timer;
+        private Timer update_timer;
 
         protected abstract bool DeleteInternal(FILE_TYPE snapshot);
 
@@ -46,23 +46,19 @@ namespace CrunchyPantry
 
         private void Update()
         {
-            initilize_rate_limiter.Process(delegate() {
+            if (initilize_timer.Repeat())
                 InitilizeStructure();
-            });
 
-            update_rate_limiter.Process(delegate() {
+            if (update_timer.Repeat())
                 UpdateStructure();
-            });
         }
 
         public NookSystem_StorageStructure(STRUCTURE_TYPE s, Duration id, Duration ud)
         {
             structure = s;
 
-            initilize_rate_limiter = new RateLimiter(id);
-            update_rate_limiter = new RateLimiter(ud);
-
-            update_rate_limiter.Reset();
+            initilize_timer = new Timer(id).StartExpireAndGet();
+            update_timer = new Timer(ud).StartAndGet();
         }
 
         public override bool Delete(string path)

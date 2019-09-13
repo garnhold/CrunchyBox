@@ -16,8 +16,7 @@ namespace CrunchySandwich
         static public readonly GeneralUnityTyonDesignatedVariableProvider INSTANCE = new GeneralUnityTyonDesignatedVariableProvider();
 
         private GeneralUnityTyonDesignatedVariableProvider() : base(
-            new Variable_Operation<Timer, float>("duration", (t, v) => t.SetDurationInSeconds(v), t => t.GetDurationInSeconds()),
-            new Variable_Operation<RateLimiter, float>("rate", (t, v) => t.SetRate(v), t => t.GetRate())
+            new Variable_Operation<Timer, float>("duration", (t, v) => t.SetDurationInSeconds(v), t => t.GetDurationInSeconds())
         ) { }
     }
 }

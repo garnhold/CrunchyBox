@@ -12,7 +12,7 @@ namespace CrunchySandwich
     public abstract class ComponentsCache<T> : IEnumerable<T>
     {
         private List<T> components;
-        private RateLimiter limiter;
+        private Timer timer;
 
         private Component parent;
 
@@ -20,15 +20,14 @@ namespace CrunchySandwich
 
         private void Touch()
         {
-            limiter.Process(delegate() {
+            if (timer.Repeat() || Application.isPlaying == false)
                 components.Set(GetComponentsInternal(parent));
-            });
         }
 
         public ComponentsCache(Component p)
         {
             components = new List<T>();
-            limiter = new RateLimiter(ComponentCacheManager.GetInstance().GetCacheLifetime());
+            timer = new Timer(ComponentCacheManager.GetInstance().GetCacheLifetime());
 
             parent = p;
         }

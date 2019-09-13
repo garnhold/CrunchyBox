@@ -51,6 +51,8 @@
     <Compile Include="ByteSequence\ByteSequence.cs" />
     <Compile Include="CompoundState\AutoCompoundState.cs" />
     <Compile Include="CompoundState\CompoundState.cs" />
+    <Compile Include="DecaySet\DecayCounter.cs" />
+    <Compile Include="DecaySet\DecaySet.cs" />
     <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Order.cs" />
     <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Suffix.cs" />
     <Compile Include="Duration\Extensions\DurationExtensions_PartOut.cs" />
@@ -159,6 +161,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="EqualityComparerOperation\EqualityComparerOperation.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Hertz.cs" />
     <Compile Include="UnorderedTuple\UnorderedTuple.cs" />
     <Compile Include="UnorderedTuple\UnorderedTuple_New.cs" />
     <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Timestamp.cs" />
@@ -797,14 +801,6 @@
     <Compile Include="Pinned\Pinned.cs" />
     <Compile Include="Pinned\Pin.cs" />
     <Compile Include="PixelMeasurer\PixelMeasurer.cs" />
-    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions.cs" />
-    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions_Hertz.cs" />
-    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions_Seconds.cs" />
-    <Compile Include="RateLimiter\RateLimiter.cs" />
-    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions.cs" />
-    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions_Hertz.cs" />
-    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions_Seconds.cs" />
-    <Compile Include="RefreshingValue\RefreshingValue.cs" />
     <Compile Include="ResolveState\Extensions\IEnumerableExtensions_Resolve.cs" />
     <Compile Include="ResolveState\ResolveState.cs" />
     <Compile Include="SanityCheckException\SanityCheckException.cs" />
