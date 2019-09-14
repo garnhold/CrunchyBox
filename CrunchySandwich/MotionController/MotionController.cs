@@ -9,25 +9,25 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class MotionController : MonoBehaviour
+    public abstract class MotionController : MonoBehaviourEX
     {
-        [SerializeField]private Motion motion;
+        [SerializeFieldEX][PolymorphicField]private Signal signal;
 
-        private MotionNode motion_node;
+        private ComponentCache_Upward<MotionNode> motion_node;
 
         protected abstract void UpdateInternal(float value);
 
         private void Start()
         {
-            motion_node = this.GetComponentUpward<MotionNode>();
+            motion_node = new ComponentCache_Upward<MotionNode>(this);
         }
 
         private void Update()
         {
-            float input = motion_node.GetMotionValue();
+            float input = motion_node.GetComponent().GetMotionValue();
 
-            if (motion != null)
-                input = motion.Execute(input);
+            if (signal != null)
+                input = signal.Execute(input);
             
             UpdateInternal(input);
         }
