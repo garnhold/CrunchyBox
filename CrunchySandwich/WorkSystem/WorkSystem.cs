@@ -5,31 +5,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchySalt;
 
 namespace CrunchySandwich
 {
     public class WorkSystem : Subsystem<WorkSystem>
     {
-        private LazySchedule<Process> processes;
+        [SerializeFieldEX]private Duration target_frame_length = Duration.Hertz(60.0f);
+
+        private LazyScheduler scheduler;
 
         public WorkSystem()
         {
-            processes = new LazySchedule<Process>(Duration.Hertz(70.0f), Duration.Minutes(0.5f), p => p());
+            scheduler = new LazyScheduler(new BinSchedule(4096, Duration.Seconds(0.050f)));
         }
 
         public override void Update()
         {
-            processes.Work();
+            if (Application.isPlaying)
+                scheduler.Update(target_frame_length);
         }
 
         public override void UpdateInEditor()
         {
-            processes.Work();
+            if (Application.isPlaying == false)
+                scheduler.Update(target_frame_length);
         }
 
-        public void Schedule(long allowance, Process process)
+        public void Schedule(long delay, Process process)
         {
-            processes.AddIn(allowance, process);
+            scheduler.ScheduleIn(delay, delegate() {
+                try
+                {
+                    process();
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogException(ex);
+                }
+            });
         }
     }
 }

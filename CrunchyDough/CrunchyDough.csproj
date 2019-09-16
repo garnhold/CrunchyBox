@@ -162,6 +162,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="EqualityComparerOperation\EqualityComparerOperation.cs" />
+    <Compile Include="Pool\QueuePool.cs" />
+    <Compile Include="Scheduler\Extensions\LazySchedulerExtensions.cs" />
+    <Compile Include="Scheduler\LazyScheduler.cs" />
+    <Compile Include="Schedule\BinSchedule.cs" />
+    <Compile Include="Scheduler\Scheduler.cs" />
+    <Compile Include="Schedule\ISchedule.cs" />
+    <Compile Include="Schedule\TreeSchedule.cs" />
     <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Hertz.cs" />
     <Compile Include="UnorderedTuple\UnorderedTuple.cs" />
     <Compile Include="UnorderedTuple\UnorderedTuple_New.cs" />
@@ -456,8 +463,6 @@
     <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Looped.cs" />
     <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Looped.cs" />
     <Compile Include="IDynamicCustomAttributeProvider\IDynamicCustomAttributeProvider.cs" />
-    <Compile Include="LazySchedule\Extensions\LazyScheduleExtensions_Add.cs" />
-    <Compile Include="LazySchedule\Extensions\LazyScheduleExtensions.cs" />
     <Compile Include="OperationCache\Extensions\CacheManagerExtensions_OperationCache.cs" />
     <Compile Include="OrderedCollection\OrderedList.cs">
       <AutoGen>True</AutoGen>
@@ -469,9 +474,6 @@
     <Compile Include="PeriodicProcess\Extensions\PeriodicProcessExtensions_Restart.cs" />
     <Compile Include="PeriodicProcess\Extensions\PeriodicProcessExtensions.cs" />
     <Compile Include="ReflectionCache\ReflectionCache.cs" />
-    <Compile Include="Scheduler\Extensions\SchedulerExtensions_Work.cs" />
-    <Compile Include="Scheduler\Extensions\SchedulerExtensions_Add.cs" />
-    <Compile Include="Scheduler\Extensions\SchedulerExtensions.cs" />
     <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions_File.cs" />
     <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions_Directory.cs" />
     <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions.cs" />
@@ -555,21 +557,14 @@
     <Compile Include="ObjectTable\ObjectTable.cs" />
     <Compile Include="WeakKey\WeakKey.cs" />
     <Compile Include="WeakReference\WeakReference.cs" />
-    <Compile Include="Schedule\Extensions\ScheduleExtensions_Add.cs" />
-    <Compile Include="Schedule\Extensions\ScheduleExtensions.cs" />
-    <Compile Include="LazySchedule\LazySchedule.cs" />
-    <Compile Include="Schedule\Schedule.cs" />
-    <Compile Include="Pool\ArrayPool.cs" />
-    <Compile Include="Pool\ContainerPool.cs" />
-    <Compile Include="Pool\Extensions\ArrayPool\ArrayPoolExtensions_UseEnumerate.cs" />
-    <Compile Include="Pool\Extensions\ArrayPool\ArrayPoolExtensions.cs" />
-    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions_Use.cs" />
-    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions_UseEnumerate.cs" />
-    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions.cs" />
-    <Compile Include="Pool\ListPool.cs" />
+    <Compile Include="Pool\ArrayPool\ArrayPool.cs" />
+    <Compile Include="Pool\ArrayPool\Extensions\ArrayPoolExtensions_UseEnumerate.cs" />
+    <Compile Include="Pool\ArrayPool\Extensions\ArrayPoolExtensions.cs" />
+    <Compile Include="Pool\ListPool\Extensions\ListPoolExtensions_Use.cs" />
+    <Compile Include="Pool\ListPool\Extensions\ListPoolExtensions_UseEnumerate.cs" />
+    <Compile Include="Pool\ListPool\Extensions\ListPoolExtensions.cs" />
+    <Compile Include="Pool\ListPool\ListPool.cs" />
     <Compile Include="Pool\Pooled.cs" />
-    <Compile Include="Scheduler\SchedulerItem.cs" />
-    <Compile Include="Scheduler\Scheduler.cs" />
     <Compile Include="Time\StepStopwatch\Extensions\StepStopwatchExtensions_Duration.cs" />
     <Compile Include="Time\StepStopwatch\Extensions\StepStopwatchExtensions_Seconds.cs" />
     <Compile Include="Time\StepStopwatch\StepStopwatch.cs" />

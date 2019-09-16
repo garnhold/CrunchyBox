@@ -12,36 +12,33 @@ namespace CrunchySandwich
     public abstract class ComponentsCache<T> : IEnumerable<T>
     {
         private List<T> components;
-        private Timer timer;
+        private PeriodicWorkScheduler scheduler;
 
         private Component parent;
 
         protected abstract IEnumerable<T> GetComponentsInternal(Component parent);
 
-        private void Touch()
-        {
-            if (timer.Repeat() || Application.isPlaying == false)
-                components.Set(GetComponentsInternal(parent));
-        }
-
         public ComponentsCache(Component p)
         {
-            components = new List<T>();
-            timer = new Timer(ComponentCacheManager.GetInstance().GetCacheLifetime());
-
             parent = p;
+
+            components = new List<T>();
+            scheduler = new PeriodicWorkScheduler(
+                ComponentCacheManager.GetInstance().GetCacheLifetime(),
+                () => components.Set(GetComponentsInternal(parent))
+            );
         }
 
         public ICatalog<T> AsCatalog()
         {
-            Touch();
+            scheduler.Update();
 
             return components.AsCatalog();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            Touch();
+            scheduler.Update();
 
             return components.GetEnumerator();
         }

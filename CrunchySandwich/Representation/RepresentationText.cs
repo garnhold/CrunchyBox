@@ -22,30 +22,27 @@ namespace CrunchySandwich
 
         private ComponentCache_Upward<RepresentationNode> representation_node;
 
-        private void Start()
+        private void Awake()
         {
             representation_node = new ComponentCache_Upward<RepresentationNode>(this);
         }
 
         private void Update()
         {
-            if (Application.isPlaying)
+            if (refresh_timer.Repeat() || this.IsEditing())
             {
-                if (refresh_timer.Repeat())
-                {
-                    object target = representation_node.GetComponent().IfNotNull(n => n.GetTarget());
+                object target = representation_node.GetComponent().IfNotNull(n => n.GetTarget());
 
-                    if(target != null)
-                    {
-                        this.GetComponent<Text>().text = markup.RegexReplace("{([A-Za-z_\\.\\(\\)\\[\\]]+)}", delegate(Match match) {
-                            return target.GetVariableValueByPath<string>(match.Groups[1].Value);
-                        });
-                    }
+                if (target != null)
+                {
+                    this.GetComponent<Text>().text = markup.RegexReplace("{([A-Za-z_\\.\\(\\)\\[\\]]+)}", delegate(Match match) {
+                        return target.GetVariableValueByPath<string>(match.Groups[1].Value);
+                    });
                 }
-            }
-            else
-            {
-                this.GetComponent<Text>().text = markup;
+                else
+                {
+                    this.GetComponent<Text>().text = markup;
+                }
             }
         }
     }

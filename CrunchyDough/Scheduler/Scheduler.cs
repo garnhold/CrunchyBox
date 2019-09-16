@@ -4,60 +4,36 @@ using System.Collections.Generic;
 
 namespace CrunchyDough
 {
-    public class Scheduler<T>
+    public class Scheduler
     {
-        private long allowable_earliness;
-        private DynamicOrderList<SchedulerItem<T>> items;
+        private Stopwatch timer;
+        private ISchedule schedule;
 
-        private Process<T> process;
+        private Timer target_timer;
 
-        private Timer work_timer;
-
-        public Scheduler(long e, Process<T> p, TimeSource t)
+        public Scheduler(ISchedule s)
         {
-            allowable_earliness = e;
+            timer = new Stopwatch().StartAndGet();
+            schedule = s;
 
-            items = new DynamicOrderList<SchedulerItem<T>>(
-                (i1, i2) => (int)(i1.GetTimestamp() - i2.GetTimestamp())
-            );
-
-            process = p;
-
-            work_timer = new Timer(t);
+            target_timer = new Timer();
         }
 
-        public Scheduler(Duration e, Process<T> p, TimeSource t) : this(e.GetWholeMilliseconds(), p, t) { }
-        public Scheduler(Duration e, Process<T> p) : this(e, p, TimeSource_System.INSTANCE) { }
-
-        public Scheduler(Process<T> p, TimeSource t) : this(0, p, t) { }
-        public Scheduler(Process<T> p) : this(p, TimeSource_System.INSTANCE) { }
-
-        public void Work(long timestamp, long target_work_milliseconds)
+        public void Update(long lookahead, long target_milliseconds)
         {
-            long earliest_timestamp = timestamp;
-            long latest_timestamp = timestamp + allowable_earliness;
+            target_timer.RestartSetDurationInMilliseconds(target_milliseconds);
 
-            work_timer.RestartSetDurationInMilliseconds(target_work_milliseconds);
-
-            while (items.IsNotEmpty())
-            {
-                if (items.GetFirst().GetTimestamp() > latest_timestamp)
-                    return;
-                else
-                {
-                    SchedulerItem<T> item = items.Pop();
-
-                    process(item.GetData());
-
-                    if (item.GetTimestamp() > earliest_timestamp && work_timer.IsTimeOver())
-                        return;
-                }
-            }
+            schedule.Complete(timer.GetElapsedTimeInMilliseconds());
+            schedule.Lookahead(timer.GetElapsedTimeInMilliseconds() + lookahead, target_timer.GetTimeTillInMilliseconds());
         }
 
-        public void Add(long timestamp, T data)
+        public void ScheduleAt(long timestamp, Process process)
         {
-            items.Add(new SchedulerItem<T>(timestamp, data));
+            schedule.ScheduleProcess(timestamp, process);
+        }
+        public void ScheduleIn(long delay, Process process)
+        {
+            ScheduleAt(timer.GetElapsedTimeInMilliseconds() + delay, process);
         }
     }
 }

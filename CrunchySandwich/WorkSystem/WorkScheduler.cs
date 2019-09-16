@@ -11,14 +11,14 @@ namespace CrunchySandwich
     public class WorkScheduler
     {
         private Process process;
-        private long allowance;
+        private long delay;
 
         private bool has_scheduled;
 
-        public WorkScheduler(long a, Process p)
+        public WorkScheduler(long d, Process p)
         {
             process = p;
-            allowance = a;
+            delay = d;
 
             has_scheduled = false;
         }
@@ -31,7 +31,7 @@ namespace CrunchySandwich
             {
                 has_scheduled = true;
 
-                WorkSystem.GetInstance().Schedule(allowance, delegate() {
+                WorkSystem.GetInstance().Schedule(delay, delegate() {
                     has_scheduled = false;
 
                     process();

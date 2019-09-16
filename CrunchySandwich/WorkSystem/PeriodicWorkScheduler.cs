@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchyBun;
 
 namespace CrunchySandwich
 {
@@ -13,22 +14,17 @@ namespace CrunchySandwich
         private Timer timer;
         private WorkScheduler scheduler;
 
-        public PeriodicWorkScheduler(long i, long a, Process p)
+        public PeriodicWorkScheduler(long i, Process p)
         {
             timer = new Timer(i).StartAndGet();
-
-            scheduler = new WorkScheduler(a, delegate() {
-                timer.Restart();
-
-                p();
-            });
+            scheduler = new WorkScheduler(i, p);
         }
 
-        public PeriodicWorkScheduler(Duration i, Duration a, Process p) : this(i.GetWholeMilliseconds(), a.GetWholeMilliseconds(), p) { }
+        public PeriodicWorkScheduler(Duration i, Process p) : this(i.GetWholeMilliseconds(), p) { }
 
         public void Update()
         {
-            if (timer.IsTimeOver())
+            if (timer.Repeat())
                 scheduler.Schedule();
         }
     }

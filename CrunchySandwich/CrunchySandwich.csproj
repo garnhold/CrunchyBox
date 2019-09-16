@@ -138,6 +138,11 @@
     <Compile Include="ConversionMethods\GeneralConversionMethods_GameObject.cs" />
     <Compile Include="Extensions\Color\ColorExtensions_MoveTowards.cs" />
     <Compile Include="Extensions\Color\ColorExtensions_Towards.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_IsPlaying.cs">
+      <DependentUpon>GameObjectComponentExtensions_IsPlaying.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Orient.cs">
       <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Orient.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1175,6 +1180,10 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_IsPlaying.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_IsPlaying.cs</LastGenOutput>
+    </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children_Set.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Children_Set.cs</LastGenOutput>
