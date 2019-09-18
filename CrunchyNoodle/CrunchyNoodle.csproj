@@ -81,6 +81,7 @@
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectInsert.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectSet.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectGet.cs" />
+    <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Variable.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Action.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Function.cs" />

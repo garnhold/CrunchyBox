@@ -19,7 +19,7 @@ namespace CrunchyRamen
         public override ILStatement Compile(CMinorEnvironment environment)
         {
             return new ILAssign(
-                environment.ResolveIdentifierAsValue(GetId()),
+                environment.ResolveDirectIdentifierAsValue(GetId()),
                 GetCMinorExpression().CompileAsValue(environment)
             );
         }

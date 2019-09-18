@@ -16,9 +16,9 @@ namespace CrunchyRamen
 {
 	public partial class CMinorType_Array : CMinorType
 	{
-        public override Type GetSystemType()
+        public override Type GetSystemType(CMinorEnvironment environment)
         {
-            return GetCMinorType().GetSystemType().MakeArrayType();
+            return GetCMinorType().GetSystemType(environment).MakeArrayType();
         }
 	}
 	

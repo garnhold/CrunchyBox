@@ -34,6 +34,11 @@ namespace CrunchySandwichBag
             throw new MissingMethodException("No action exists for type " + GetTargetType() + " and path " + path);
         }
 
+        public override EditDisplay ForceDisplay(string path)
+        {
+            throw new MissingMethodException("No display exists for type " + GetTargetType() + " and path " + path);
+        }
+
         public override EditProperty ForceProperty(string path)
         {
             return CreateProperty(GetPropertyInternal(path));
@@ -47,6 +52,11 @@ namespace CrunchySandwichBag
         public override IEnumerable<EditAction> GetRecoveryActions()
         {
             return Empty.IEnumerable<EditAction>();
+        }
+
+        public override IEnumerable<EditDisplay> GetDisplays()
+        {
+            return Empty.IEnumerable<EditDisplay>();
         }
 
         public override IEnumerable<EditProperty> GetPropertys()

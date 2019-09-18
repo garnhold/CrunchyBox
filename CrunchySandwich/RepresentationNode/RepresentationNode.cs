@@ -12,7 +12,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [ExecuteAlways]
+    [ExecuteInEditMode]
     public class RepresentationNode : MonoBehaviourEX
     {
         [SerializeFieldEX]private GameObject game_object;
@@ -25,10 +25,11 @@ namespace CrunchySandwich
             parent = new ComponentCache_UpwardFromParent<RepresentationNode>(this);
         }
 
+        [InspectorDisplay]
         public object GetTarget()
         {
             return path.Invoke(
-                game_object ?? parent.GetComponent().GetTarget()
+                game_object ?? parent.GetComponent().IfNotNull(p => p.GetTarget()) ?? this
             );
         }
     }

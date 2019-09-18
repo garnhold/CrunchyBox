@@ -23,19 +23,19 @@ namespace CrunchyRamen
             return obj;
         }
 
-        public override ILValue ResolveIdentifierAsValue(string id)
+        public override ILValue ResolveIdentifierAsValue(ILValue context, string id)
         {
-            return obj.GetILProp(id);
+            return base.ResolveIdentifierAsValue(context ?? obj, id);
         }
 
-        public override ILValue ResolveIdentifierAsInvokation(string id, IEnumerable<ILValue> arguments)
+        public override ILValue ResolveIdentifierAsInvokation(ILValue context, string id, IEnumerable<ILValue> arguments)
         {
-            return obj.GetILInvoke(id, arguments);
+            return base.ResolveIdentifierAsInvokation(context ?? obj, id, arguments);
         }
 
-        public override ILValue ResolveIdentifierAsGenericInvokation(string id, IEnumerable<Type> generic_arguments, IEnumerable<ILValue> arguments)
+        public override ILValue ResolveIdentifierAsGenericInvokation(ILValue context, string id, IEnumerable<Type> generic_arguments, IEnumerable<ILValue> arguments)
         {
-            return obj.GetILGenericInvoke(id, generic_arguments, arguments);
+            return base.ResolveIdentifierAsGenericInvokation(context ?? obj, id, generic_arguments, arguments);
         }
 	}
 	

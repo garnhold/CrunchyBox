@@ -18,8 +18,36 @@ namespace CrunchySandwich
         [SerializeFieldEX]private CMinorCompileType cminor_compile_type;
         [SerializeFieldEX]private string code;
 
+        private string compile_message;
         private AutoCompoundState compile_state;
         private Operation<object, object, object[]> compiled_operation;
+
+        [InspectorDisplay]
+        private string Compile()
+        {
+            if (compile_state.UpdateState())
+            {
+                try
+                {
+                    compiled_operation = CMinor.CompileForObjectAndParams(
+                        target_type,
+                        code,
+                        arguments.Convert(a => KeyValuePair.New(a.GetArgumentName(), a.GetArgumentType())),
+                        cminor_compile_type
+                    );
+
+                    compile_message = "Success";
+                }
+                catch (Exception ex)
+                {
+                    compile_message = ex.Message;
+
+                    Debug.LogException(ex);
+                }
+            }
+
+            return compile_message;
+        }
 
         public Scriptlet()
         {
@@ -28,15 +56,7 @@ namespace CrunchySandwich
 
         public object Invoke(object target)
         {
-            if (compile_state.UpdateState())
-            {
-                compiled_operation = CMinor.CompileForObjectAndParams(
-                    target_type,
-                    code,
-                    arguments.Convert(a => KeyValuePair.New(a.GetArgumentName(), a.GetArgumentType())),
-                    cminor_compile_type
-                );
-            }
+            Compile();
 
             return compiled_operation(
                 target.ConvertEX(target_type),

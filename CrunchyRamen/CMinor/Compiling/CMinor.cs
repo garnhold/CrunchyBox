@@ -37,7 +37,7 @@ namespace CrunchyRamen
             IEnumerable<Type> parameter_types = parameters_collection.Convert(p => p.Value);
 
             return object_type.CreateDynamicMethodDelegateWithForcedParameterTypes<Operation<object, object, object[]>>(delegate(ILValue value, ILValue arguments) {
-                CMinorEnvironment environment = new CMinorEnvironment_ObjectAndParams(
+                CMinorEnvironment environment = new CMinorEnvironment_Object_WithParams(
                     value,
                     parameter_names.PairStrict(
                         arguments.GetILExpandedParams(parameter_types)

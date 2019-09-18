@@ -16,9 +16,9 @@ namespace CrunchyRamen
 {
 	public partial class CMinorTypeList : CMinorElement
 	{
-        public IEnumerable<Type> GetSystemTypes()
+        public IEnumerable<Type> GetSystemTypes(CMinorEnvironment environment)
         {
-            return GetCMinorTypes().Convert(t => t.GetSystemType());
+            return GetCMinorTypes().Convert(t => t.GetSystemType(environment));
         }
 	}
 	

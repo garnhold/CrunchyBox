@@ -67,9 +67,10 @@
     <Compile Include="CMinor\CMinorBinaryOperator_Comparative_LessThan.cs" />
     <Compile Include="CMinor\CMinorBinaryOperator_Comparative_LessThanOrEqualTo.cs" />
     <Compile Include="CMinor\CMinorBinaryOperator_Comparative_NotEqualTo.cs" />
-    <Compile Include="CMinor\Environment\CMinorEnvironment_ObjectAndParams.cs" />
-    <Compile Include="CMinor\Singleton\CMinorCompileType.cs" />
-    <Compile Include="CMinor\Singleton\CMinor.cs" />
+    <Compile Include="CMinor\Compiling\CMinorCompileException.cs" />
+    <Compile Include="CMinor\Environment\CMinorEnvironment_Object_WithParams.cs" />
+    <Compile Include="CMinor\Compiling\CMinorCompileType.cs" />
+    <Compile Include="CMinor\Compiling\CMinor.cs" />
     <Compile Include="CMinor\CMinorExpression_BinaryOperation_Additive.cs" />
     <Compile Include="CMinor\CMinorExpression_BinaryOperation_Boolean.cs" />
     <Compile Include="CMinor\CMinorExpression_BinaryOperation_Comparative.cs" />
@@ -120,6 +121,9 @@
     <Compile Include="CMinor\CMinorType_Templated.cs" />
     <Compile Include="CMinor\Environment\CMinorEnvironment_Object.cs" />
     <Compile Include="CMinor\Environment\CMinorEnvironment.cs" />
+    <Compile Include="CMinor\Environment\Extensions\CMinorEnvironmentExtensions_Indirect.cs" />
+    <Compile Include="CMinor\Environment\Extensions\CMinorEnvironmentExtensions_Direct.cs" />
+    <Compile Include="CMinor\Environment\Extensions\CMinorEnvironmentExtensions.cs" />
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

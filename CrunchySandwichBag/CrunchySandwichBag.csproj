@@ -147,6 +147,8 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIElement_Container_Flow.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIFlowRow.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIFlowElement.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay_Text.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_AudioClip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Combo\EditorGUIElement_EditPropertySingleValueCombo.cs" />
@@ -199,7 +201,12 @@
     <Compile Include="EditorGUILayoutState\Extensions\EditorGUILayoutStateExtensions.cs" />
     <Compile Include="EditorInitializer\EditorInitializerAttribute.cs" />
     <Compile Include="EditorInitializer\EditorInitializer.cs" />
+    <Compile Include="EditTarget\EditDisplay\EditDisplay_Reflected.cs" />
+    <Compile Include="EditTarget\EditDisplay\EditDisplay.cs" />
+    <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions.cs" />
+    <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions_Labeled.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_BurstAudioClip.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextDisplay.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions_Size.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
@@ -488,6 +495,7 @@
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\SortingLayerEXDrawer.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\LayerEXDrawer.cs" />
     <Compile Include="ReflectedObject\ReflectedAction\ReflectedAction.cs" />
+    <Compile Include="ReflectedObject\ReflectedDisplay\ReflectedDisplay.cs" />
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadget.cs" />
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadgetInstance.cs" />
     <Compile Include="ReflectedObject\ReflectedObject.cs" />

@@ -16,7 +16,7 @@ namespace CrunchyRamen
 {
 	public partial class CMinorType : CMinorElement
 	{
-        public abstract Type GetSystemType();
+        public abstract Type GetSystemType(CMinorEnvironment environment);
 	}
 	
 }

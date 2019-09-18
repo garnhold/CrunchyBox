@@ -14,14 +14,10 @@ namespace CrunchySandwich
         private List<T> components;
         private PeriodicWorkScheduler scheduler;
 
-        private Component parent;
-
         protected abstract IEnumerable<T> GetComponentsInternal(Component parent);
 
-        public ComponentsCache(Component p)
+        public ComponentsCache(Component parent)
         {
-            parent = p;
-
             components = new List<T>();
             scheduler = new PeriodicWorkScheduler(
                 ComponentCacheManager.GetInstance().GetCacheLifetime(),

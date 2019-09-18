@@ -20,7 +20,7 @@ namespace CrunchyRamen
         {
             return GetCMinorExpression().CompileAsGenericInvokation(
                 environment,
-                GetCMinorTypeList().GetSystemTypes(),
+                GetCMinorTypeList().GetSystemTypes(environment),
                 GetCMinorExpressionList().IfNotNull(l => l.CompileAsValues(environment))
             ).CreateILCalculate();
         }

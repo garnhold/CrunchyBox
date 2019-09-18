@@ -92,6 +92,15 @@ namespace CrunchySandwichBag
             );
         }
 
+        public ReflectedDisplay ForceDisplay(string path)
+        {
+            return ReflectedDisplay.New(
+                this,
+                object_type.GetVariableByPath(path)
+                    .AssertNotNull(() => new MissingMethodException("No method exists for type " + GetObjectType() + " and path " + path))
+            );
+        }
+
         public ReflectedProperty ForceProperty(string path)
         {
             return ReflectedProperty.New(
@@ -117,6 +126,15 @@ namespace CrunchySandwichBag
                 Filterer_MethodInfo.HasCustomAttributeOfType<RecoveryFunctionAttribute>()
             ).Convert(m => m.CreateAction())
             .Convert(a => ReflectedAction.New(this, a));
+        }
+
+        public IEnumerable<ReflectedDisplay> GetDisplays()
+        {
+            return object_type.GetFilteredInstanceMethods(
+                Filterer_MethodInfo.HasNoEffectiveParameters(),
+                Filterer_MethodInfo.HasCustomAttributeOfType<InspectorDisplayAttribute>()
+            ).Convert(m => m.CreateVariable())
+            .Convert(v => ReflectedDisplay.New(this, v));
         }
 
         public IEnumerable<ReflectedProperty> GetPropertys()
@@ -146,7 +164,7 @@ namespace CrunchySandwichBag
 
         public bool IsVisible()
         {
-            if (GetPropertys().IsNotEmpty() || GetActions().IsNotEmpty())
+            if (GetPropertys().IsNotEmpty() || GetActions().IsNotEmpty() || GetDisplays().IsNotEmpty())
                 return true;
 
             if (IsSerializationCorrupt())

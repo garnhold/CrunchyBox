@@ -17,6 +17,22 @@ namespace CrunchySandwichBag
         private MultilineAttribute multiline_attribute;
         private AutoMultilineAttribute auto_multiline_attribute;
 
+        private int CalculateNumberLines()
+        {
+            if (multiline_attribute != null)
+                return multiline_attribute.lines;
+
+            if (auto_multiline_attribute != null)
+            {
+                string value;
+
+                if (GetProperty().TryGetContentValues<string>(out value))
+                    return (value.GetNumberLines() + 1).BindAbove(auto_multiline_attribute.GetMinimumNumberLines());
+            }
+
+            return 1;
+        }
+
         protected override string DrawBuiltInInternal(Rect rect, GUIContent label, string value)
         {
             if (multiline_attribute != null)
@@ -37,18 +53,7 @@ namespace CrunchySandwichBag
 
         protected override float CalculateElementHeightInternal()
         {
-            if (multiline_attribute != null)
-                return multiline_attribute.lines * LINE_HEIGHT;
-
-            if(auto_multiline_attribute != null)
-            {
-                string value;
-
-                if (GetProperty().TryGetContentValues<string>(out value))
-                    return value.GetNumberLines().BindAbove(1) * LINE_HEIGHT;
-            }
-
-            return LINE_HEIGHT;
+            return CalculateNumberLines() * LINE_HEIGHT;
         }
 
         public EditorGUIElement_EditPropertySingleValue_BuiltIn_String(EditProperty_Single_Value p) : base(p)

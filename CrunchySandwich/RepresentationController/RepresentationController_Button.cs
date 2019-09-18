@@ -14,20 +14,14 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class RepresentationButton : MonoBehaviourEX
+    public class RepresentationController_Button : RepresentationController
     {
         [SerializeFieldEX]private Scriptlet scriptlet;
 
-        private ComponentCache_Upward<RepresentationNode> representation_node;
-
         private void Start()
         {
-            representation_node = new ComponentCache_Upward<RepresentationNode>(this);
-
             this.GetComponent<Button>().onClick.AddListener(delegate() {
-                representation_node.GetComponent()
-                    .IfNotNull(n => n.GetTarget())
-                    .IfNotNull(t => scriptlet.Invoke(t));
+                GetTarget().IfNotNull(t => scriptlet.Invoke(t));
             });
         }
     }

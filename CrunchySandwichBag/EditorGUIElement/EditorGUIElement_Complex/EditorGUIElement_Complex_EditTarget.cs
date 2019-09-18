@@ -38,6 +38,11 @@ namespace CrunchySandwichBag
                 );
 
                 container.AddChildren(
+                    target.GetDisplays()
+                        .Convert(d => d.CreateLabeledEditorGUIElement())
+                );
+
+                container.AddChildren(
                     target.GetActions()
                         .Convert(a => a.CreateEditorGUIElement())
                 );

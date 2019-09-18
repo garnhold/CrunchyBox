@@ -18,17 +18,22 @@ namespace CrunchyRamen
 	{
         public override ILValue CompileAsValue(CMinorEnvironment environment)
         {
-            return environment.ResolveIdentifierAsValue(GetId());
+            return environment.ResolveDirectIdentifierAsValue(GetId());
+        }
+
+        public override ILValue CompileAsIndexed(CMinorEnvironment environment, ILValue index)
+        {
+            return environment.ResolveDirectIdentifierAsIndexed(GetId(), index);
         }
 
         public override ILValue CompileAsInvokation(CMinorEnvironment environment, IEnumerable<ILValue> arguments)
         {
-            return environment.ResolveIdentifierAsInvokation(GetId(), arguments);
+            return environment.ResolveDirectIdentifierAsInvokation(GetId(), arguments);
         }
 
         public override ILValue CompileAsGenericInvokation(CMinorEnvironment environment, IEnumerable<Type> generic_arguments, IEnumerable<ILValue> arguments)
         {
-            return environment.ResolveIdentifierAsGenericInvokation(GetId(), generic_arguments, arguments);
+            return environment.ResolveDirectIdentifierAsGenericInvokation(GetId(), generic_arguments, arguments);
         }
 	}
 	

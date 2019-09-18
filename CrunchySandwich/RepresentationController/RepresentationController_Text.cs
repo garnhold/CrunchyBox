@@ -14,34 +14,28 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [ExecuteAlways]
-    public class RepresentationText : MonoBehaviourEX
+    [ExecuteInEditMode]
+    public class RepresentationController_Text : RepresentationController
     {
         [SerializeFieldEX]private GameTimer refresh_timer = new GameTimer(0.050f, TimeType.Actual);
         [SerializeFieldEX][AutoMultiline]private string markup;
-
-        private ComponentCache_Upward<RepresentationNode> representation_node;
-
-        private void Awake()
-        {
-            representation_node = new ComponentCache_Upward<RepresentationNode>(this);
-        }
 
         private void Update()
         {
             if (refresh_timer.Repeat() || this.IsEditing())
             {
-                object target = representation_node.GetComponent().IfNotNull(n => n.GetTarget());
+                object target = GetTarget();
 
-                if (target != null)
-                {
-                    this.GetComponent<Text>().text = markup.RegexReplace("{([A-Za-z_\\.\\(\\)\\[\\]]+)}", delegate(Match match) {
-                        return target.GetVariableValueByPath<string>(match.Groups[1].Value);
-                    });
-                }
+                if (this.IsEditing() && target == null)
+                    this.GetComponent<Text>().text = markup;
                 else
                 {
-                    this.GetComponent<Text>().text = markup;
+                    this.GetComponent<Text>().text = markup.RegexReplace("{([A-Za-z_\\.\\(\\)\\[\\]]+)}", delegate(Match match) {
+                        if (target != null)
+                            return target.GetVariableValueByPath<string>(match.Groups[1].Value);
+
+                        return "";
+                    });
                 }
             }
         }

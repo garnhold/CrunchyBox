@@ -26,6 +26,15 @@ namespace CrunchySandwichBag
             return CreateAction(this, action);
         }
 
+        static public EditDisplay CreateDisplay(EditTarget target, ReflectedDisplay display)
+        {
+            return new EditDisplay_Reflected(target, display);
+        }
+        protected EditDisplay CreateDisplay(ReflectedDisplay display)
+        {
+            return CreateDisplay(this, display);
+        }
+
         static public EditProperty CreateProperty(EditTarget target, ReflectedProperty property)
         {
             ReflectedProperty_Single_Value value;
@@ -77,6 +86,11 @@ namespace CrunchySandwichBag
             return CreateAction(reflected_object.ForceAction(path));
         }
 
+        public override EditDisplay ForceDisplay(string path)
+        {
+            return CreateDisplay(reflected_object.ForceDisplay(path));
+        }
+
         public override EditProperty ForceProperty(string path)
         {
             return CreateProperty(reflected_object.ForceProperty(path));
@@ -92,6 +106,12 @@ namespace CrunchySandwichBag
         {
             return reflected_object.GetRecoveryActions()
                 .Convert(a => CreateAction(a));
+        }
+
+        public override IEnumerable<EditDisplay> GetDisplays()
+        {
+            return reflected_object.GetDisplays()
+                .Convert(d => CreateDisplay(d));
         }
 
         public override IEnumerable<EditProperty> GetPropertys()

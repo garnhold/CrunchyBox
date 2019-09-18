@@ -19,8 +19,7 @@ namespace CrunchyRamen
         public override ILValue CompileAsValue(CMinorEnvironment environment)
         {
             return GetCMinorExpression1()
-                .CompileAsValue(environment)
-                .GetILIndexed(GetCMinorExpression2().CompileAsValue(environment));
+                .CompileAsIndexed(environment, GetCMinorExpression2().CompileAsValue(environment));
         }
 	}
 	

@@ -19,9 +19,10 @@ namespace CrunchyRamen
 	{
         protected override ILValue ResolveDestination(CMinorEnvironment environment)
         {
-            return GetCMinorExpression1()
-                .CompileAsValue(environment)
-                .GetILProp(GetId());
+            return environment.ResolveIndirectIdentifierAsValue(
+                GetCMinorExpression1().CompileAsValue(environment),
+                GetId()
+            );
         }
 
         public override CMinorBinaryOperator GetCMinorBinaryOperator()

@@ -19,6 +19,11 @@ namespace CrunchyRamen
 	{
         public abstract ILValue CompileAsValue(CMinorEnvironment environment);
 
+        public virtual ILValue CompileAsIndexed(CMinorEnvironment environment, ILValue index)
+        {
+            return CompileAsValue(environment).GetILIndexed(index);
+        }
+
         public virtual ILValue CompileAsInvokation(CMinorEnvironment environment, IEnumerable<ILValue> arguments)
         {
             return CompileAsValue(environment).GetILInvokeSelf(arguments);

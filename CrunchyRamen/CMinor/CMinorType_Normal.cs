@@ -16,12 +16,9 @@ namespace CrunchyRamen
 {
 	public partial class CMinorType_Normal : CMinorType
 	{
-        public override Type GetSystemType()
+        public override Type GetSystemType(CMinorEnvironment environment)
         {
-            return Types.GetFilteredTypes(
-                Filterer_Type.IsBasicNamed(GetId()),
-                Filterer_Type.IsNonGenericClass()
-            ).GetFirst();
+            return environment.ResolveTypeAsNormal(GetId());
         }
 	}
 	
