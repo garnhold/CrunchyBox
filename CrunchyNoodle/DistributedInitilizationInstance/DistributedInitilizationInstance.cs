@@ -21,7 +21,7 @@ namespace CrunchyNoodle
         {
             if (instance == null)
             {
-                instance = typeof(INSTANCE_TYPE).CreateForcedInstance<INSTANCE_TYPE>();
+                instance = typeof(INSTANCE_TYPE).CreateInstance<INSTANCE_TYPE>();
 
                 MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
                     Filterer_MethodInfo.CanEffectiveParametersHold<INSTANCE_TYPE>()

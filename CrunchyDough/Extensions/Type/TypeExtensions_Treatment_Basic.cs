@@ -69,6 +69,14 @@ namespace CrunchyDough
             return false;
         }
 
+        static public bool IsClass(this Type item)
+        {
+            if (item.IsTypicalReferenceType())
+                return true;
+
+            return false;
+        }
+
         static public bool IsNullable(this Type item)
         {
             if (item.IsReferenceType())

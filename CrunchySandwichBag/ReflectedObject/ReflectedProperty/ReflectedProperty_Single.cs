@@ -25,7 +25,7 @@ namespace CrunchySandwichBag
         public void CreateContents(Type type)
         {
             Touch("Creating " + GetVariableName(), delegate() {
-                GetObjects().Process(o => SetContents(o, type.CreateInstance()));
+                GetObjects().Process(o => SetContents(o, type.CreateBlankValue()));
             });
         }
 
@@ -34,7 +34,7 @@ namespace CrunchySandwichBag
             Touch("Creating " + GetVariableName(), delegate() {
                 GetObjects().Process(o => {
                     if (GetContents(o).GetTypeEX() != type)
-                        SetContents(o, GetContents(o).ConvertEX(type) ?? type.CreateInstance());
+                        SetContents(o, GetContents(o).ConvertEX(type) ?? type.CreateBlankValue());
                 });
             });
         }

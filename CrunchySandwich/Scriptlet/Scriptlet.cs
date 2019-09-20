@@ -16,7 +16,7 @@ namespace CrunchySandwich
         [SerializeFieldEX]private List<ScriptletArgument> arguments;
 
         [SerializeFieldEX]private CMinorCompileType cminor_compile_type;
-        [SerializeFieldEX]private string code;
+        [SerializeFieldEX][AutoMultiline]private string code;
 
         private string compile_message;
         private AutoCompoundState compile_state;
@@ -40,9 +40,7 @@ namespace CrunchySandwich
                 }
                 catch (Exception ex)
                 {
-                    compile_message = ex.Message;
-
-                    Debug.LogException(ex);
+                    compile_message = ex.InnerException.Message;
                 }
             }
 

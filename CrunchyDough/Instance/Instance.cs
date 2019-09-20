@@ -15,7 +15,7 @@ namespace CrunchyDough
         public T Get()
         {
             if (instance == null)
-                instance = typeof(T).CreateForcedInstance<T>();
+                instance = typeof(T).CreateInstance<T>();
 
             return instance;
         }

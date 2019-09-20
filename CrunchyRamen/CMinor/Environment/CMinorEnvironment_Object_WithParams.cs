@@ -20,7 +20,7 @@ namespace CrunchyRamen
 
         public override ILValue ResolveIdentifierAsValue(ILValue context, string id)
         {
-            if (context != null)
+            if (context == null)
             {
                 ILValue value;
                 if (parameters.TryGetValue(id, out value))

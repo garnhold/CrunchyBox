@@ -451,7 +451,6 @@
     <Compile Include="Extensions\Type\IEnumerable\TypeExtensionsIEnumerable_AncestorType.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_AncestorType.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_BaseType.cs" />
-    <Compile Include="Extensions\Type\TypeExtensions_Instancing_Forced.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Interface.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Treatment_Basic.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Default.cs" />

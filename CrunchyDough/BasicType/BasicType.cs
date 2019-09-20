@@ -4,6 +4,8 @@ namespace CrunchyDough
 {
     public enum BasicType
     {
+        Void,
+
         Bool,
 
         Byte,
@@ -18,8 +20,8 @@ namespace CrunchyDough
         Char,
         String,
 
-        Class,
         Enum,
-        Struct
+        Struct,
+        Class
     }
 }

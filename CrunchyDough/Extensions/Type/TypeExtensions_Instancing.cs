@@ -13,7 +13,12 @@ namespace CrunchyDough
             {
                 try
                 {
-                    return Activator.CreateInstance(item, arguments);
+                    return Activator.CreateInstance(item,
+                        BindingFlags.Instance |
+                        BindingFlags.NonPublic |
+                        BindingFlags.Public |
+                        BindingFlags.DeclaredOnly,
+                    null, arguments, null, null);
                 }
                 catch (TargetInvocationException ex)
                 {

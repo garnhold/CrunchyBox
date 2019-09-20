@@ -34,7 +34,16 @@ namespace CrunchySandwichBag
 
         public IEnumerable<object> GetValues()
         {
-            return reflected_object.GetObjects().Convert(o => variable.GetContents(o));
+            return reflected_object.GetObjects().Convert(delegate(object obj) {
+                try
+                {
+                    return variable.GetContents(obj);
+                }
+                catch (Exception ex)
+                {
+                    return ex;
+                }
+            });
         }
 
         public bool TryGetValue(out object value)
