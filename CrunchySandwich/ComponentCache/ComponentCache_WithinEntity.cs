@@ -16,6 +16,6 @@ namespace CrunchySandwich
             return parent.GetComponentWithinEntity<T>();
         }
 
-        public ComponentCache_WithinEntity(Component c) : base(c) { }
+        public ComponentCache_WithinEntity(Component parent) : base(parent) { }
     }
 }

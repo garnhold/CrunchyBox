@@ -20,6 +20,11 @@ namespace CrunchySandwichBag
             GUI.Label(GetContentsRect(), text);
         }
 
+        protected override float CalculateElementHeightInternal()
+        {
+            return text.GetNumberLines() * LINE_HEIGHT;
+        }
+
         public EditorGUIElement_Text(string t)
         {
             text = t;

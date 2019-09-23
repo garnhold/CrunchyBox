@@ -130,9 +130,9 @@ namespace CrunchySandwichBag
 
         public IEnumerable<ReflectedDisplay> GetDisplays()
         {
-            return object_type.GetFilteredInstanceMethods(
-                Filterer_MethodInfo.HasNoEffectiveParameters(),
-                Filterer_MethodInfo.HasCustomAttributeOfType<InspectorDisplayAttribute>()
+            return object_type.GetFilteredInstanceProps(
+                Filterer_PropInfo.HasCustomAttributeOfType<InspectorDisplayAttribute>(),
+                Filterer_PropInfo.CanGet()
             ).Convert(m => m.CreateVariable())
             .Convert(v => ReflectedDisplay.New(this, v));
         }
@@ -142,6 +142,7 @@ namespace CrunchySandwichBag
             return UnityTyonSettings.INSTANCE.GetDesignatedVariables(object_type)
                 .Skip(v => v.HasCustomAttributeOfType<HideInInspector>(true))
                 .Skip(v => v.HasCustomAttributeOfType<RecoveryFieldAttribute>(true))
+                .Skip(v => v.GetVariableType().HasCustomAttributeOfType<HideInInspector>(true))
                 .Convert(v => ReflectedProperty.New(this, v));
         }
 

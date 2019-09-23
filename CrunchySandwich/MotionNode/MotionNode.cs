@@ -12,14 +12,9 @@ namespace CrunchySandwich
     public class MotionNode : MonoBehaviourEX
     {
         [SerializeFieldEX][PolymorphicField]private Signal signal;
+        [SerializeFieldEX]private ComponentCache_Upward<MotionNode> parent;
 
         private float motion_value;
-        private ComponentCache_Upward<MotionNode> parent;
-
-        private void Start()
-        {
-            parent = new ComponentCache_Upward<MotionNode>(this);
-        }
 
         private void Update()
         {

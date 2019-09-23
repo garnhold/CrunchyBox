@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchyNoodle;
 
 namespace CrunchySandwich
 {
@@ -27,7 +28,7 @@ namespace CrunchySandwich
 
         public object GetArgumentValue()
         {
-            return value;
+            return value.ConvertEX(type);
         }
     }
 }

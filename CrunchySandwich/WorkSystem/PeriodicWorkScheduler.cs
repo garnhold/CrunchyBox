@@ -11,21 +11,38 @@ namespace CrunchySandwich
 {
     public class PeriodicWorkScheduler
     {
-        private Timer timer;
+        private Stopwatch timer;
+        private Operation<long> operation;
+
         private WorkScheduler scheduler;
 
-        public PeriodicWorkScheduler(long i, Process p)
+        public PeriodicWorkScheduler(Operation<long> w, Process p)
         {
-            timer = new Timer(i).StartAndGet();
-            scheduler = new WorkScheduler(i, p);
+            timer = new Stopwatch().StartAndGet();
+            operation = w;
+
+            scheduler = new WorkScheduler(p);
         }
 
-        public PeriodicWorkScheduler(Duration i, Process p) : this(i.GetWholeMilliseconds(), p) { }
+        public PeriodicWorkScheduler(Operation<Duration> w, Process p) : this(() => w().GetWholeMilliseconds(), p) { }
 
         public void Update()
         {
-            if (timer.Repeat())
-                scheduler.Schedule();
+            if (Application.isPlaying)
+            {
+                long work_interval = operation();
+
+                if (timer.GetElapsedTimeInMilliseconds() >= work_interval)
+                {
+                    scheduler.Request(work_interval);
+
+                    timer.Restart();
+                }
+            }
+            else
+            {
+                scheduler.Execute();
+            }
         }
     }
 }

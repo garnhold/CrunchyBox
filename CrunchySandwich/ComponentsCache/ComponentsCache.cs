@@ -20,10 +20,12 @@ namespace CrunchySandwich
         {
             components = new List<T>();
             scheduler = new PeriodicWorkScheduler(
-                ComponentCacheManager.GetInstance().GetCacheLifetime(),
+                () => ComponentCacheManager.GetInstance().GetCacheLifetime(),
                 () => components.Set(GetComponentsInternal(parent))
             );
         }
+
+        public ComponentsCache() : this(null) { }
 
         public ICatalog<T> AsCatalog()
         {

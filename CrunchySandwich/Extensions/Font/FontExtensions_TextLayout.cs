@@ -7,8 +7,6 @@ namespace CrunchySandwich
 {
     static public class FontExtensions_TextLayout
     {
-        static private readonly float TYPE_UNITS_PER_SPACE_UNIT = 10.0f;
-
         static public float GetTextLayoutWidth(this Font item, string text, int size)
         {
             CharacterInfo info;
@@ -28,7 +26,7 @@ namespace CrunchySandwich
         {
             CharacterInfo info;
 
-            return text.Layout(max_width * TYPE_UNITS_PER_SPACE_UNIT, delegate(char character) {
+            return text.Layout(max_width, delegate(char character) {
                 item.GetCharacterInfo(character, out info, size);
 
                 return info.advance;

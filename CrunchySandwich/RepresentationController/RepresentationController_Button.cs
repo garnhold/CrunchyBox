@@ -18,8 +18,10 @@ namespace CrunchySandwich
     {
         [SerializeFieldEX]private Scriptlet scriptlet;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             this.GetComponent<Button>().onClick.AddListener(delegate() {
                 GetTarget().IfNotNull(t => scriptlet.Invoke(t));
             });

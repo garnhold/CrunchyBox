@@ -14,12 +14,12 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [ExecuteInEditMode]
+    [ExecuteAlways]
     public abstract class RepresentationController : MonoBehaviourEX
     {
         private ComponentCache_Upward<RepresentationNode> representation_node;
 
-        public RepresentationController()
+        protected virtual void Start()
         {
             representation_node = new ComponentCache_Upward<RepresentationNode>(this);
         }

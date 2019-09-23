@@ -163,7 +163,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\MonoBehaviour\MonoBehaviour_EditMode.cs" />
+    <Compile Include="Extensions\MonoBehaviour\MonoBehaviour.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Extrude.cs" />
+    <Compile Include="Extensions\ScriptableObject\ScriptableObjectExtensions_EditMode.cs" />
+    <Compile Include="Extensions\ScriptableObject\ScriptableObjectExtensions.cs" />
     <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Points.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Points.cs" />
     <Compile Include="Extensions\Tilemap\TilemapExtensions_Tiles.cs" />

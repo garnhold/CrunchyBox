@@ -53,7 +53,7 @@ namespace CrunchySandwich
 					tyon_data = old_tyon_data;
 					tyon_unity_objects = old_tyon_unity_objects;
 
-					pack_error = ex.Message;
+					pack_error = ex.ToString();
 				}
 			}
 		}
@@ -69,6 +69,9 @@ namespace CrunchySandwich
                     did_unpack_tyon_data = false;
                     context.DeserializeInto(this, tyon_data, mode);
 
+					if (ApplicationEX.GetInstance().IsEditing() && this.ShouldExecuteInEditMode())
+						GetType().GetInstanceMethod("Start").IfNotNull(m => m.Invoke(this, null));
+
 					did_unpack_tyon_data = true;
 					unpack_error = null;
 
@@ -76,7 +79,7 @@ namespace CrunchySandwich
 				}
 				catch(Exception ex)
 				{
-					unpack_error = ex.Message;
+					unpack_error = ex.ToString();
 				}
 			}
 		}
@@ -145,7 +148,7 @@ namespace CrunchySandwich
 					tyon_data = old_tyon_data;
 					tyon_unity_objects = old_tyon_unity_objects;
 
-					pack_error = ex.Message;
+					pack_error = ex.ToString();
 				}
 			}
 		}
@@ -161,6 +164,9 @@ namespace CrunchySandwich
                     did_unpack_tyon_data = false;
                     context.DeserializeInto(this, tyon_data, mode);
 
+					if (ApplicationEX.GetInstance().IsEditing() && this.ShouldExecuteInEditMode())
+						GetType().GetInstanceMethod("Start").IfNotNull(m => m.Invoke(this, null));
+
 					did_unpack_tyon_data = true;
 					unpack_error = null;
 
@@ -168,7 +174,7 @@ namespace CrunchySandwich
 				}
 				catch(Exception ex)
 				{
-					unpack_error = ex.Message;
+					unpack_error = ex.ToString();
 				}
 			}
 		}

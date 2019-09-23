@@ -27,7 +27,7 @@ namespace CrunchySandwichBag
                 string value;
 
                 if (GetProperty().TryGetContentValues<string>(out value))
-                    return (value.GetNumberLines() + 1).BindAbove(auto_multiline_attribute.GetMinimumNumberLines());
+                    return value.GetNumberLines().BindAbove(auto_multiline_attribute.GetMinimumNumberLines());
             }
 
             return 1;

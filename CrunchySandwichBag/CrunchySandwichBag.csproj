@@ -206,6 +206,7 @@
     <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions.cs" />
     <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions_Labeled.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_BurstAudioClip.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextDisplay.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions_Size.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
@@ -232,7 +233,6 @@
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions_LabelWidth.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DropdownButton.cs" />
-    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Focus.cs">
       <DependentUpon>GameObjectComponentExtensions_Focus.tt</DependentUpon>

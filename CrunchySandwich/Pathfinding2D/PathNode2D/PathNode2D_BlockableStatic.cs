@@ -29,7 +29,7 @@ namespace CrunchySandwich
         {
             Debug.Log("Awa Check " + check_interval);
             scheduler = new PeriodicWorkScheduler(
-                Duration.Seconds(check_interval),
+                () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
             current_connections = new List<PathNode2D>();
@@ -39,7 +39,7 @@ namespace CrunchySandwich
         {
             Debug.Log("start Check " + check_interval);
             scheduler = new PeriodicWorkScheduler(
-                Duration.Seconds(check_interval),
+                () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
             current_connections = new List<PathNode2D>();
@@ -51,7 +51,7 @@ namespace CrunchySandwich
         {
             Debug.Log("ContCheck " + check_interval);
             scheduler = new PeriodicWorkScheduler(
-                Duration.Seconds(check_interval),
+                () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
             current_connections = new List<PathNode2D>();

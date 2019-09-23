@@ -12,7 +12,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [ExecuteInEditMode]
+    [ExecuteAlways]
     public class RepresentationNode : MonoBehaviourEX
     {
         [SerializeFieldEX]private GameObject game_object;

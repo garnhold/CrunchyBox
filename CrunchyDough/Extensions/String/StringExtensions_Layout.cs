@@ -22,11 +22,10 @@ namespace CrunchyDough
             float space_width = operation(' ');
             StringBuilder builder = new StringBuilder();
 
-            foreach(string line in item.GetLines())
-            {
+            item.GetLines().ProcessWithInterleaving(delegate(string line) {
                 float current_width = 0.0f;
 
-                foreach(string island in item.GetIslands())
+                foreach (string island in item.GetIslands())
                 {
                     float island_width = island.GetLayoutWidth(operation);
                     float new_width = current_width + island_width;
@@ -43,9 +42,9 @@ namespace CrunchyDough
                     builder.Append(" ");
                     current_width += space_width;
                 }
-
+            }, delegate() {
                 builder.Append("\n");
-            }
+            });
 
             return builder.ToString();
         }

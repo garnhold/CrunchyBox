@@ -16,6 +16,6 @@ namespace CrunchySandwich
             return parent.GetComponentsUpwardAndDownward<T>();
         }
 
-        public ComponentsCache_UpwardAndDownward(Component c) : base(c) { }
+        public ComponentsCache_UpwardAndDownward(Component p) : base(p) { }
     }
 }
