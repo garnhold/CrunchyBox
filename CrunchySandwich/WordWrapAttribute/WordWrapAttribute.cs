@@ -9,7 +9,7 @@ using CrunchyDough;
 namespace CrunchySandwich
 {
     [AttributeUsage(AttributeTargets.Field)]
-    public class AutoMultilineAttribute : Attribute
+    public class WordWrapAttribute : Attribute
     {
     }
 }

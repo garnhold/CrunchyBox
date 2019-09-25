@@ -10,7 +10,7 @@ namespace CrunchySandwich
     {
         static public float GetLabelLayoutWidth(this GUIContent item)
         {
-            return GUI.skin.GetLabelTextLayoutWidth(item.text) + item.image.IfNotNull(i => i.width);
+            return GUI.skin.GetTextLayoutWidth(GUI.skin.label, item.text) + item.image.IfNotNull(i => i.width);
         }
     }
 }

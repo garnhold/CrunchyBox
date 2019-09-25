@@ -19,7 +19,7 @@ namespace CrunchySandwich
         }
         static public float GetTextLayoutWidth(this Font item, string text)
         {
-            return item.GetTextLayoutWidth(text, 0);
+            return item.GetTextLayoutWidth(text, item.fontSize);
         }
 
         static public string LayoutText(this Font item, string text, float max_width, int size)
@@ -34,7 +34,7 @@ namespace CrunchySandwich
         }
         static public string LayoutText(this Font item, string text, float max_width)
         {
-            return item.LayoutText(text, max_width, 0);
+            return item.LayoutText(text, max_width, item.fontSize);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace CrunchyDough
             item.GetLines().ProcessWithInterleaving(delegate(string line) {
                 float current_width = 0.0f;
 
-                foreach (string island in item.GetIslands())
+                foreach (string island in line.GetIslands())
                 {
                     float island_width = island.GetLayoutWidth(operation);
                     float new_width = current_width + island_width;

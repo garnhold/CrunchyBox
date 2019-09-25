@@ -623,6 +623,7 @@
     <Compile Include="Time\Timer\GameTimer.cs" />
     <Compile Include="UnityObjectEX\Tyon\GeneralUnityTyonDesignatedVariableProvider.cs" />
     <Compile Include="UnityObjectEX\Tyon\UnityTyonDesignatedVariableProvider.cs" />
+    <Compile Include="WordWrapAttribute\WordWrapAttribute.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions_Schedule.cs" />
     <Compile Include="WorkSystem\PeriodicWorkScheduler.cs" />
@@ -810,15 +811,8 @@
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Plane.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Outlined.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Color.cs" />
-    <Compile Include="Extensions\GUISkin\GUISkinExtensions_TextLayout_Styles.cs">
-      <DependentUpon>GUISkinExtensions_TextLayout_Styles.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Extensions\GUISkin\GUISkinExtensions_TextLayout.cs" />
     <Compile Include="Extensions\GUISkin\GUISkinExtensions.cs" />
-    <Compile Include="Extensions\GUIStyle\GUIStyleExtensions_TextLayout.cs" />
-    <Compile Include="Extensions\GUIStyle\GUIStyleExtensions.cs" />
     <Compile Include="Extensions\Material\MaterialExtensions_Main.cs" />
     <Compile Include="Extensions\Material\MaterialExtensions_Colored.cs" />
     <Compile Include="Extensions\Material\MaterialExtensions_Textured.cs" />
@@ -1373,10 +1367,6 @@
     <Content Include="Extensions\GameObjectComponent\IEnumerable\GameObjectComponentExtensions_IEnumerable_Distance.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_IEnumerable_Distance.cs</LastGenOutput>
-    </Content>
-    <Content Include="Extensions\GUISkin\GUISkinExtensions_TextLayout_Styles.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GUISkinExtensions_TextLayout_Styles.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\HasColor\HasColorExtensions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
