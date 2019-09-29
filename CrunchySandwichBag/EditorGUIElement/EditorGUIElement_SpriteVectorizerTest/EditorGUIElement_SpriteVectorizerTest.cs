@@ -15,6 +15,11 @@ namespace CrunchySandwichBag
     {
         private SpriteVectorizer vectorizer;
 
+        protected override float DoPlanInternal()
+        {
+            return LINE_HEIGHT * 10.0f;
+        }
+
         protected override void DrawElementInternal(Rect view)
         {
             Rect rect = GetElementRect();
@@ -44,11 +49,6 @@ namespace CrunchySandwichBag
                     paths.Process(p => GUIExtensions.DrawLoop(p, line_thickness, point_size));
                 }
             }
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return LINE_HEIGHT * 10.0f;
         }
 
         public EditorGUIElement_SpriteVectorizerTest(SpriteVectorizer v)

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -19,19 +21,44 @@ namespace CrunchySandwichBag
             dimension = d;
         }
 
-        public Rect Layout(Rect rect, EditorGUILayoutState state, float total_width, float total_weight, float total_minimum)
+        public float Plan(float width, EditorGUILayoutState state)
         {
-            Rect element_rect;
-
-            rect.SplitByXLeftOffset(
-                dimension.Calculate(total_width, total_weight, total_minimum),
-                out element_rect,
-                out rect
-            );
-
-            element.Layout(element_rect, state);
-            return rect;
+            return element.Plan(width, state);
         }
+        public float Plan(float total_width, float total_weight, float total_minimum, EditorGUILayoutState state)
+        {
+            return Plan(dimension.Calculate(total_width, total_weight, total_minimum), state);
+        }
+
+        public void Initialize() { element.Initialize(); }
+        public void Layout(Vector2 position) { element.Layout(position); }
+        public void Draw(Rect view) { element.Draw(view); }
+        public void Draw() { element.Draw(); }
+        public void Unwind() { element.Unwind(); }
+
+        public void Invalidate() { element.Invalidate(); }
+        public void InvalidatePlan() { element.InvalidatePlan(); }
+        public void InvalidateLayout() { element.InvalidateLayout(); }
+
+        public void SetParent(EditorGUIElement p) { element.SetParent(p); }
+
+        public void ClearAttachments() { element.ClearAttachments(); }
+        public void AddAttachment(EditorGUIElementAttachment to_add) { element.AddAttachment(to_add); }
+        public void AddAttachments(IEnumerable<EditorGUIElementAttachment> to_add) { element.AddAttachments(to_add); }
+        public void AddAttachments(params EditorGUIElementAttachment[] to_add) { element.AddAttachments(to_add); }
+        public bool RemoveAttachment(EditorGUIElementAttachment to_remove) { return element.RemoveAttachment(to_remove); }
+        public void RemoveAttachments(Predicate<EditorGUIElementAttachment> predicate) { element.RemoveAttachments(predicate); }
+        public IEnumerable<EditorGUIElementAttachment> GetAttachments() { return element.GetAttachments(); }
+
+        public EditorGUIElement GetParent() { return element.GetParent(); }
+
+        public float GetFootprintWidth() { return element.GetFootprintWidth(); }
+        public float GetElementWidth() { return element.GetElementWidth(); }
+        public float GetContentsWidth() { return element.GetContentsWidth(); }
+        public float GetFootprintHeight() { return element.GetFootprintHeight(); }
+        public Rect GetElementRect() { return element.GetElementRect(); }
+        public Rect GetContentsRect() { return element.GetContentsRect(); }
+        public EditorGUILayoutState GetLayoutState() { return element.GetLayoutState(); }
 
         public EditorGUIElement GetElement()
         {

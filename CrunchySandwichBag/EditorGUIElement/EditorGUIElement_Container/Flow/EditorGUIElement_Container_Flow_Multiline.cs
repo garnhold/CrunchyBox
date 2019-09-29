@@ -13,36 +13,32 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElement_Container_Flow_Multiline : EditorGUIElement_Container_Flow
     {
-        private float width;
         private List<EditorGUIFlowRow> flow_rows;
 
         private List<EditorGUIFlowElement> flow_elements;
 
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
         {
-            if (rect.width != width)
-            {
-                width = rect.width;
-                flow_rows.Set(
-                    flow_elements
-                        .GetCostGroups(width, p => p.GetDimension().GetMinimum())
-                        .Convert(e => new EditorGUIFlowRow(e))
-                );
+            flow_rows.Set(
+                flow_elements
+                    .GetCostGroups(GetContentsWidth(), p => p.GetDimension().GetMinimum())
+                    .Convert(e => new EditorGUIFlowRow(e))
+            );
 
-                InvalidateHeight();
-            }
-
-            flow_rows.Apply(rect, (r, e) => e.Layout(r, state, width));
+            return flow_rows.Convert(r => r.Plan(GetContentsWidth(), GetLayoutState())).Sum();
         }
 
-        protected override float CalculateElementHeightInternal()
+        protected override void LayoutContentsInternal(Vector2 position)
         {
-            return flow_rows.Convert(r => r.GetHeight()).Sum();
+            foreach (EditorGUIFlowRow row in flow_rows)
+            {
+                row.Layout(position);
+                position.y += row.GetHeight();
+            }
         }
 
         public EditorGUIElement_Container_Flow_Multiline()
         {
-            width = -1.0f;
             flow_rows = new List<EditorGUIFlowRow>();
 
             flow_elements = new List<EditorGUIFlowElement>();
@@ -54,7 +50,7 @@ namespace CrunchySandwichBag
             {
                 flow_elements.Add(child);
 
-                child.GetElement().SetParent(this);
+                child.SetParent(this);
                 Invalidate();
             }
         }

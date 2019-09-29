@@ -35,7 +35,7 @@ namespace CrunchySandwichBag
                 EditorGUIElement root = GetEditorGUIElement(item, serializedObject);
 
                 root.LayoutDrawAndUnwind(
-                    EditorGUILayout.GetControlRect(true, root.GetHeight()),
+                    EditorGUILayout.GetControlRect(true, root.GetFootprintHeight()),
                     EditorGUISettings.GetInstance().GetInitialLayoutState()
                 );
             }

@@ -684,7 +684,6 @@
     <Compile Include="Extensions\Color\ColorExtensions_Interpolate.cs" />
     <Compile Include="Extensions\Component\ComponentExtensions_Remove.cs" />
     <Compile Include="Extensions\Component\ComponentExtensions_Component.cs" />
-    <Compile Include="Extensions\Event\EventExtensions.cs" />
     <Compile Include="Extensions\Font\FontExtensions_TextLayout.cs" />
     <Compile Include="Extensions\Font\FontExtensions.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Overwrite.cs">

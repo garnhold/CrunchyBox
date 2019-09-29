@@ -13,21 +13,26 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElementAttachment_Singular_Label_GUIContent_Inline : EditorGUIElementAttachment_Singular_Label_GUIContent
     {
+        private EditorGUIElementPlan label_plan;
         private Rect label_rect;
 
         public EditorGUIElementAttachment_Singular_Label_GUIContent_Inline(GUIContent l) : base(l)
         {
-            label_rect = new Rect();
         }
 
         public EditorGUIElementAttachment_Singular_Label_GUIContent_Inline() : this(GUIContent.none) { }
 
-        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        public override EditorGUIElementPlan PlanElementInternal(EditorGUIElementPlan plan, EditorGUILayoutState state)
         {
             if (HasLabel())
-                rect.SplitByXLeftOffset(state.GetCurrentLabelWidth(), out label_rect, out rect);
+                plan.SplitAtLeftOffset(state.GetCurrentLabelWidth(), out label_plan, out plan);
 
-            return rect;
+            return plan;
+        }
+
+        public override void LayoutInternal(Vector2 position, float footprint_height)
+        {
+            label_rect = label_plan.Layout(position, footprint_height);
         }
 
         public override void DrawInternal(Rect view)

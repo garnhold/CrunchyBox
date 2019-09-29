@@ -14,33 +14,30 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElement_Container_Auto_Simple_VerticalStrip : EditorGUIElement_Container_Auto_Simple
     {
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
         {
-            Rect remaining_rect = rect;
+            EditorGUILayoutState state = GetLayoutState();
 
             if (state.ShouldAutoSizeLabels())
-                state = state.GetWithCurrentLabelWidth(CalculateAutoSizeLabelWidth() + state.GetAutoSizeLabelMargin());
+            {
+                state = state.GetWithCurrentLabelWidth(
+                    GetChildren()
+                        .Convert(c => c.GetAttachments<EditorGUIElementAttachment_Singular_Label_GUIContent_Inline>())
+                        .Convert(a => a.GetLabel().GetLabelLayoutWidth())
+                        .Max() + state.GetAutoSizeLabelMargin()
+                );
+            }
 
+            return GetChildren().Convert(e => e.Plan(GetContentsWidth(), state)).Sum();
+        }
+
+        protected override void LayoutContentsInternal(Vector2 position)
+        {
             foreach (EditorGUIElement element in GetChildren())
             {
-                Rect current_rect;
-
-                remaining_rect.SplitByYBottomOffset(element.GetHeight(), out current_rect, out remaining_rect);
-                element.Layout(current_rect, state);
+                element.Layout(position);
+                position.y += element.GetFootprintHeight();
             }
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return GetChildren().Convert(e => e.GetHeight()).Sum();
-        }
-
-        protected float CalculateAutoSizeLabelWidth()
-        {
-            return GetChildren()
-                .Convert(c => c.GetAttachments<EditorGUIElementAttachment_Singular_Label_GUIContent>())
-                .Convert(a => a.GetLabel().GetLabelLayoutWidth())
-                .Max();
         }
     }
 }

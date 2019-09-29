@@ -33,15 +33,15 @@ namespace CrunchySandwichBag
 	[EditorGUIElementForType(typeof(<#=type.type_name#>), true)]
     public class EditorGUIElement_EditPropertySingleValue_BuiltIn_<#=type.class_name#> : EditorGUIElement_EditPropertySingleValue_BuiltIn<<#=type.type_name#>>
     {
+		protected override float DoSizeInternal()
+		{
+			return <#=type.height#>;
+		}
+
         protected override <#=type.type_name#> DrawBuiltInInternal(Rect rect, GUIContent label, <#=type.type_name#> value)
         {
             return (<#=type.type_name#>)EditorGUI.<#=type.function_name#>(rect, label, value);
         }
-
-		protected override float CalculateElementHeightInternal()
-		{
-			return <#=type.height#>;
-		}
 
         public EditorGUIElement_EditPropertySingleValue_BuiltIn_<#=type.class_name#>(EditProperty_Single_Value p) : base(p) { }
     }

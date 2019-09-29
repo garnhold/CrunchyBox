@@ -13,6 +13,7 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElementAttachment_Singular_Label_Index : EditorGUIElementAttachment_Singular_Label
     {
+        private EditorGUIElementPlan index_plan;
         private Rect index_rect;
 
         private EditProperty_Array property;
@@ -28,16 +29,16 @@ namespace CrunchySandwichBag
             process = p;
         }
 
-        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        public override EditorGUIElementPlan PlanContentsInternal(EditorGUIElementPlan plan, EditorGUILayoutState state)
         {
-            Rect discard;
+            plan.SplitAtLeftOffset(state.GetCurrentLabelWidth(), out index_plan, out plan);
 
-            rect.SplitByXLeftOffset(state.GetCurrentLabelWidth(), out index_rect, out rect);
+            return plan;
+        }
 
-            index_rect.SplitByXLeftOffset(GetLabelWidth(), out index_rect, out discard);
-            index_rect.SplitByYBottomOffset(EditorGUIElement.LINE_HEIGHT, out index_rect, out discard);
-
-            return rect;
+        public override void LayoutInternal(Vector2 position, float footprint_height)
+        {
+            index_rect = index_plan.Layout(position, EditorGUIElement.LINE_HEIGHT);
         }
 
         public override void DrawInternal(Rect view)

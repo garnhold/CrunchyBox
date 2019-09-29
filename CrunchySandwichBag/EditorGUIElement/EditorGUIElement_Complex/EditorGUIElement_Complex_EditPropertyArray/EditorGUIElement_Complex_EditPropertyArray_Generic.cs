@@ -58,19 +58,23 @@ namespace CrunchySandwichBag
                         int i_latched = i;
                         EditProperty sub_property = property.GetElement(i);
 
-                        EditorGUIElement_Container_Flow_Line strip = container.AddChild(new EditorGUIElement_Container_Flow_Line())
-                            .LabelWithIndex(property, i, () => ForceRecreation());
+                        EditorGUIElement control = sub_property.CreateEditorGUIElement();
+                        EditorGUIElement_Container_Auto_Simple_HorizontalStrip buttons = new EditorGUIElement_Container_Auto_Simple_HorizontalStrip();
 
-                        strip.AddWeightedChild(1.0f, sub_property.CreateEditorGUIElement());
-                        strip.AddFixedChild(35.0f, new EditorGUIElement_Button("+v", delegate() {
+                        buttons.AddChild(new EditorGUIElement_Button("+v", delegate() {
                             property.InsertElement(i_latched + 1);
                         }));
-                        strip.AddFixedChild(35.0f, new EditorGUIElement_Button("+^", delegate() {
+                        buttons.AddChild(new EditorGUIElement_Button("+^", delegate() {
                             property.InsertElement(i_latched);
                         }));
-                        strip.AddFixedChild(20.0f, new EditorGUIElement_Button("-", delegate() {
+                        buttons.AddChild(new EditorGUIElement_Button("-", delegate() {
                             property.RemoveElement(i_latched);
                         }));
+
+                        container.AddChild(new EditorGUIElement_Sideboard(
+                            new EditorGUIFlowElement(control, EditorGUIElementDimension.Weighted(1.0f)),
+                            new EditorGUIFlowElement(buttons, EditorGUIElementDimension.Fixed(100.0f))
+                        )).LabelWithIndex(property, i_latched, () => ForceRecreation());
                     }
                 }
             }

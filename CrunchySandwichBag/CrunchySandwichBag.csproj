@@ -133,9 +133,10 @@
     <Compile Include="CustomAsset\CustomAssets_Internal_Manage.cs" />
     <Compile Include="CustomAsset\CustomAssets_Internal_Create.cs" />
     <Compile Include="CustomPropertyDrawer\CustomPropertyDrawers.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Indent.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_Label.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Singular_Label_Index.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElementPlan\EditorGUIElementPlan.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_TypedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_ScriptletArgument.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Selector\EditorGUIElement_EditPropertySingleValueSelector_Asset.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Selector\EditorGUIElement_EditPropertySingleValueSelector.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_HorizontalRule\EditorGUIElement_HorizontalRule.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Sideboard\EditorGUIElement_Sideboard.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_UnhandledEditProperty\EditorGUIElement_UnhandledEditProperty.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\EditorGUIElement_EditPropertySingleValue.cs" />
     <Compile Include="EditorGUIElement\Extensions\EditorGUIElementExtensions_Attachment.cs" />
@@ -309,8 +311,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_FieldEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_List.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_Generic.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Graph\EditorGUIElement_GraphNode.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Graph\EditorGUIElement_Graph.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox_VerticalStrip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_ScrollBox\EditorGUIElement_ScrollBox.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_ArraySize.cs" />
@@ -434,7 +434,6 @@
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\CurveDrawer.cs" />
     <Compile Include="EditorEX\EditorEX.cs" />
     <Compile Include="EditorEX\EditorEX_Simple.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_Box.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_ChangeListener.cs" />

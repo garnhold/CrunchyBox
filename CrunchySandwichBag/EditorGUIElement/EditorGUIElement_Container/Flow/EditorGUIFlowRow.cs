@@ -12,6 +12,7 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIFlowRow : IEnumerable<EditorGUIFlowElement>
     {
+        private float height;
         private List<EditorGUIFlowElement> elements;
 
         public EditorGUIFlowRow()
@@ -24,21 +25,22 @@ namespace CrunchySandwichBag
             elements = e.ToList();
         }
 
-        public Rect Layout(Rect rect, EditorGUILayoutState state, float width)
+        public float Plan(float width, EditorGUILayoutState state)
         {
-            Rect row_rect;
-
             float total_weight = elements.Convert(e => e.GetDimension().GetWeight()).Sum();
             float total_minimum = elements.Convert(e => e.GetDimension().GetMinimum()).Sum();
 
-            rect.SplitByYBottomOffset(
-                GetHeight(),
-                out row_rect,
-                out rect
-            );
+            height = elements.Convert(e => e.Plan(width, total_weight, total_minimum, state)).Max();
+            return height;
+        }
 
-            elements.Apply(row_rect, (r, e) => e.Layout(r, state, width, total_weight, total_minimum));
-            return rect;
+        public void Layout(Vector2 position)
+        {
+            foreach (EditorGUIFlowElement element in elements)
+            {
+                element.Layout(position);
+                position.x += element.GetFootprintWidth();
+            }
         }
 
         public void Clear()
@@ -62,7 +64,7 @@ namespace CrunchySandwichBag
 
         public float GetHeight()
         {
-            return elements.Convert(e => e.GetElement().GetHeight()).Max();
+            return height;
         }
 
         public IEnumerator<EditorGUIFlowElement> GetEnumerator()

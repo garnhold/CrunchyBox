@@ -29,7 +29,12 @@ namespace CrunchySandwichBag
             return true;
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
+        {
+            return EditorGUI.GetPropertyHeight(GetSerializedProperty(), label.GetLabel());
+        }
+
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             element_rect = rect;
 
@@ -39,11 +44,6 @@ namespace CrunchySandwichBag
         protected override void DrawElementInternal(Rect view)
         {
             EditorGUI.PropertyField(element_rect, GetSerializedProperty(), label.GetLabel());
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return EditorGUI.GetPropertyHeight(GetSerializedProperty(), label.GetLabel());
         }
 
         public EditorGUIElement_SerializedProperty_Field(SerializedProperty s) : base(s)

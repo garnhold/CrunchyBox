@@ -14,6 +14,11 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElement_EditDisplay_Text : EditorGUIElement_EditDisplay
     {
+        protected override float DoPlanInternal()
+        {
+            return LINE_HEIGHT * 1.2f;
+        }
+
         protected override void DrawElementInternal(Rect view)
         {
             object value;
@@ -22,11 +27,6 @@ namespace CrunchySandwichBag
                 EditorGUIExtensions.TextDisplay(GetElementRect(), value.ToStringEX());
             else
                 EditorGUIExtensions.TextDisplay(GetElementRect(), "Non Unified Values");
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return LINE_HEIGHT * 1.2f;
         }
 
         public EditorGUIElement_EditDisplay_Text(EditDisplay d) : base(d) { }

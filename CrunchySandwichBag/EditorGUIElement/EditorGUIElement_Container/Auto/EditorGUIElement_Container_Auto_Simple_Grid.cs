@@ -15,28 +15,30 @@ namespace CrunchySandwichBag
     {
         private int width_in_cells;
 
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
         {
-            Rect remaining_rect = rect;
-            float cell_width = rect.width / width_in_cells;
+            float cell_width = GetContentsWidth() / width_in_cells;
 
-            float y = rect.yMin;
-            foreach (IEnumerable<EditorGUIElement> row in GetChildren().ChunkPermissive(width_in_cells))
-            {
-                float x = rect.xMin;
-                foreach (EditorGUIElement element in row)
-                {
-                    element.Layout(new Rect(x, y, cell_width, element.GetHeight()), state);
-                    x += cell_width;
-                }
-
-                y += row.Convert(e => e.GetHeight()).Max();
-            }
+            return GetChildren().Convert(c => c.Plan(cell_width, GetLayoutState()))
+                    .ChunkPermissive(width_in_cells)
+                    .Convert(r => r.Max())
+                    .Sum();
         }
 
-        protected override float CalculateElementHeightInternal()
+        protected override void LayoutContentsInternal(Vector2 position)
         {
-            return GetChildren().Convert(c => c.GetHeight()).ChunkPermissive(width_in_cells).Convert(r => r.Max()).Sum();
+            float y = position.x;
+            foreach (IEnumerable<EditorGUIElement> row in GetChildren().ChunkPermissive(width_in_cells))
+            {
+                float x = position.y;
+                foreach (EditorGUIElement element in row)
+                {
+                    element.Layout(new Vector2(x, y));
+                    x += element.GetFootprintWidth();
+                }
+
+                y += row.Convert(e => e.GetFootprintHeight()).Max();
+            }
         }
 
         public EditorGUIElement_Container_Auto_Simple_Grid(int w)

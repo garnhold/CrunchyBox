@@ -22,7 +22,12 @@ namespace CrunchySandwichBag
         private Rect background_rect;
         private GUIControl_MouseCapture percent_area;
 
-        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
+        {
+            return height;
+        }
+
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             border_rect = rect;
             background_rect = border_rect.GetShrunk(1.0f);
@@ -63,11 +68,6 @@ namespace CrunchySandwichBag
                 if (GetSerializedProperty().IsArrayIndexValid(index))
                     GetSerializedProperty().GetArrayElementAtIndex(index).floatValue = magnitude.ConvertFromPercentToRange(min_value, max_value);
             });
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return height;
         }
 
         public EditorGUIElement_SerializedProperty_FloatSequence(SerializedProperty s, float min, float max, float h) : base(s)

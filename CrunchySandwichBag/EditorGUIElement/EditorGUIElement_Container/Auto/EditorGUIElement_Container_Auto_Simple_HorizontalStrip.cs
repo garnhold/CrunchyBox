@@ -13,23 +13,22 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElement_Container_Auto_Simple_HorizontalStrip : EditorGUIElement_Container_Auto_Simple
     {
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        private float child_width;
+
+        protected override float DoPlanInternal()
         {
-            Rect remaining_rect = rect;
-            float child_width = rect.width / GetChildren().Count();
+            child_width = GetContentsWidth() / GetChildren().Count();
 
-            foreach (EditorGUIElement element in GetChildren())
-            {
-                Rect current_rect;
-
-                remaining_rect.SplitByXLeftOffset(child_width, out current_rect, out remaining_rect);
-                element.Layout(current_rect, state);
-            }
+            return GetChildren().Convert(e => e.Plan(child_width, GetLayoutState())).Max();
         }
 
-        protected override float CalculateElementHeightInternal()
+        protected override void LayoutContentsInternal(Vector2 position)
         {
-            return GetChildren().Convert(e => e.GetHeight()).Max();
+            foreach (EditorGUIElement element in GetChildren())
+            {
+                element.Layout(position);
+                position.x += element.GetFootprintWidth();
+            }
         }
     }
 }

@@ -15,14 +15,19 @@ namespace CrunchySandwichBag
     {
         static public void LayoutDrawAndUnwind(this EditorGUIElement item, Rect rect, EditorGUILayoutState state)
         {
-            item.Layout(rect, state);
-            item.Draw();
-            item.Unwind();
+            if (rect.width > 16.0f)
+            {
+                item.Plan(rect.width, state);
+                item.Layout(rect.min);
+
+                item.Draw();
+                item.Unwind();
+            }
         }
 
         static public EditorGUIElement InitilizeAndGet(this EditorGUIElement item)
         {
-            item.Initilize();
+            item.Initialize();
 
             return item;
         }

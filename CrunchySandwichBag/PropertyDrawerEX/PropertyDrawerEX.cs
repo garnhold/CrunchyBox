@@ -37,7 +37,7 @@ namespace CrunchySandwichBag
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return GetEditorGUIElement(property).LabelWithGUIContent(label).GetHeight();
+            return GetEditorGUIElement(property).LabelWithGUIContent(label).GetFootprintHeight();
         }
 
         public EditorGUIElement GetEditorGUIElement(SerializedProperty serialized_property)

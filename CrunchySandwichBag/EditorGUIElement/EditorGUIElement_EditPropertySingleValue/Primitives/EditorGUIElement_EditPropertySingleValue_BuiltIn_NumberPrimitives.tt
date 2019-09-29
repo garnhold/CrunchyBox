@@ -49,11 +49,6 @@ namespace CrunchySandwichBag
             return DrawNumberInternal(rect, label, value);
         }
 
-		protected override float CalculateElementHeightInternal()
-		{
-			return LINE_HEIGHT;
-		}
-
         public EditorGUIElement_EditPropertySingleValue_BuiltIn_Number(EditProperty_Single_Value p) : base(p)
 		{
 			range_attribute = p.GetCustomAttributeOfType<RangeAttribute>(true);

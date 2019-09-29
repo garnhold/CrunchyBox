@@ -14,6 +14,11 @@ namespace CrunchySandwichBag
     [EditorGUIElementForType(typeof(NeighborMask), true)]
     public class EditorGUIElement_EditPropertySingleValue_NeighborMask : EditorGUIElement_EditPropertySingleValue<NeighborMask>
     {
+        protected override float DoPlanInternal()
+        {
+            return LINE_HEIGHT * 3.0f;
+        }
+
         protected override NeighborMask DrawValueInternal(Rect rect, NeighborMask value)
         {
             rect.ProcessGrid(3, 3, delegate(int x, int y, Rect sub_rect) {
@@ -40,11 +45,6 @@ namespace CrunchySandwichBag
             });
 
             return value;
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return LINE_HEIGHT * 3.0f;
         }
 
         public EditorGUIElement_EditPropertySingleValue_NeighborMask(EditProperty_Single_Value p) : base(p) { }

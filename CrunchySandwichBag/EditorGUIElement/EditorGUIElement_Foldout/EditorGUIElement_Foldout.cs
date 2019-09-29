@@ -22,21 +22,31 @@ namespace CrunchySandwichBag
         protected abstract void SetIsOpenInternal(bool is_open);
         protected abstract bool GetIsOpenInternal();
 
-        protected override void InitilizeInternal()
+        protected override void InitializeInternal()
         {
-            container.Initilize();
+            container.Initialize();
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
+        {
+            float height = single_height;
+
+            if (IsOpen())
+                height += container.Plan(GetContentsWidth(), GetLayoutState());
+
+            return height;
+        }
+
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             rect.SplitByYBottomOffset(single_height, out label_rect, out rect);
 
             return rect;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        protected override void LayoutContentsInternal(Vector2 position)
         {
-            container.Layout(rect, state);
+            container.Layout(position);
         }
 
         protected override void DrawElementInternal(Rect view)
@@ -56,16 +66,6 @@ namespace CrunchySandwichBag
                 container.Unwind();
         }
 
-        protected override float CalculateElementHeightInternal()
-        {
-            float height = single_height;
-
-            if (IsOpen())
-                height += container.GetHeight();
-
-            return height;
-        }
-
         public EditorGUIElement_Foldout(string t, T c, float h)
         {
             text = t;
@@ -83,7 +83,7 @@ namespace CrunchySandwichBag
             if (IsOpen() != is_open)
             {
                 SetIsOpenInternal(is_open);
-                InvalidateHeight();
+                InvalidatePlan();
             }
         }
 

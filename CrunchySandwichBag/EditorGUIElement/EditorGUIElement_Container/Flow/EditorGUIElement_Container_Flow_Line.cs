@@ -15,14 +15,14 @@ namespace CrunchySandwichBag
     {
         private EditorGUIFlowRow row;
 
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
         {
-            row.Layout(rect, state, rect.width);
+            return row.Plan(GetContentsWidth(), GetLayoutState());
         }
 
-        protected override float CalculateElementHeightInternal()
+        protected override void LayoutContentsInternal(Vector2 position)
         {
-            return row.GetHeight();
+            row.Layout(position);
         }
 
         public EditorGUIElement_Container_Flow_Line()
@@ -36,7 +36,7 @@ namespace CrunchySandwichBag
             {
                 row.Add(child);
 
-                child.GetElement().SetParent(this);
+                child.SetParent(this);
                 Invalidate();
             }
         }

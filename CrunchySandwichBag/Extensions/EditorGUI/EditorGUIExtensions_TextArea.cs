@@ -28,7 +28,7 @@ namespace CrunchySandwichBag
             if (use_word_wrap)
                 value = GUI.skin.LayoutText(GUI.skin.textArea, value, width - EditorGUIUtility.labelWidth);
 
-            return value.GetNumberLines();
+            return value.GetNumberLines().BindAbove(1);
         }
     }
 }

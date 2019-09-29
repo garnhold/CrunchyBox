@@ -13,6 +13,7 @@ namespace CrunchySandwichBag
 {
     public class EditorGUIElementAttachment_Singular_Label_GUIContent_Block : EditorGUIElementAttachment_Singular_Label_GUIContent
     {
+        private EditorGUIElementPlan label_plan;
         private Rect label_rect;
 
         private float indent_width;
@@ -20,8 +21,6 @@ namespace CrunchySandwichBag
 
         public EditorGUIElementAttachment_Singular_Label_GUIContent_Block(GUIContent l, float i, float h) : base(l)
         {
-            label_rect = new Rect();
-
             indent_width = i;
             label_height = h;
         }
@@ -29,29 +28,31 @@ namespace CrunchySandwichBag
         public EditorGUIElementAttachment_Singular_Label_GUIContent_Block(GUIContent l, float i) : this(l, i, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
         public EditorGUIElementAttachment_Singular_Label_GUIContent_Block(GUIContent l) : this(l, EditorGUIElement_Single.DEFAULT_HEIGHT) { }
 
-        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        public override EditorGUIElementPlan PlanContentsInternal(EditorGUIElementPlan plan, EditorGUILayoutState state)
         {
             if (HasLabel())
-            {
-                rect.SplitByYBottomOffset(label_height, out label_rect, out rect);
-                rect = rect.GetShrunkLeft(indent_width);
-            }
+                plan.SplitAtBottomOffset(label_height, out label_plan, out plan);
 
-            return rect;
+            return plan.Shrink(indent_width, 0.0f, 0.0f, 0.0f);
+        }
+
+        public override float ModifyFootprintHeight(float height, EditorGUILayoutState state)
+        {
+            if (HasLabel())
+                return height + label_height;
+
+            return height;
+        }
+
+        public override void LayoutInternal(Vector2 position, float footprint_height)
+        {
+            label_rect = label_plan.Layout(position, EditorGUIElement.LINE_HEIGHT);
         }
 
         public override void DrawInternal(Rect view)
         {
             if (HasLabel())
                 GUI.Label(label_rect, GetLabel());
-        }
-
-        public override float ModifyElementHeight(float height)
-        {
-            if (HasLabel())
-                return height + label_height;
-
-            return height;
         }
     }
 }

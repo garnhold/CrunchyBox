@@ -15,14 +15,14 @@ namespace CrunchySandwichBag
     {
         private string text;
 
+        protected override float DoPlanInternal()
+        {
+            return text.GetNumberLines() * LINE_HEIGHT;
+        }
+
         protected override void DrawContentsInternal(Rect view)
         {
             GUI.Label(GetContentsRect(), text);
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return text.GetNumberLines() * LINE_HEIGHT;
         }
 
         public EditorGUIElement_Text(string t)

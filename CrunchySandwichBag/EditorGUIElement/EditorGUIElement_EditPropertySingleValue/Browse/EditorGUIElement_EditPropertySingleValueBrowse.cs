@@ -25,7 +25,7 @@ namespace CrunchySandwichBag
             return (T)EditorGUI.ObjectField(rect, value, typeof(T), false);
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             rect.SplitByXRightOffset(60.0f, out field_rect, out browse_rect);
 

@@ -15,13 +15,12 @@ namespace CrunchySandwichBag
     {
         public virtual bool PrepareElementForAttachment(EditorGUIElement element) { return true; }
 
-        public virtual Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state) { return rect; }
-        public virtual Rect LayoutContentsInternal(Rect rect, EditorGUILayoutState state) { return rect; }
+        public virtual EditorGUIElementPlan PlanElementInternal(EditorGUIElementPlan plan, EditorGUILayoutState state) { return plan; }
+        public virtual EditorGUIElementPlan PlanContentsInternal(EditorGUIElementPlan plan, EditorGUILayoutState state) { return plan; }
 
-        public virtual float ModifyElementHeight(float height) { return height; }
+        public virtual float ModifyFootprintHeight(float height, EditorGUILayoutState state) { return height; }
 
-        public virtual void PreLayoutInternal(Rect rect, EditorGUILayoutState state) { }
-        public virtual void PostLayoutInternal(Rect rect, EditorGUILayoutState state) { }
+        public virtual void LayoutInternal(Vector2 position, float footprint_height) { }
 
         public virtual void PreDrawInternal() { }
         public virtual void DrawInternal(Rect view) { }

@@ -45,7 +45,7 @@ namespace CrunchySandwichBag
             element = new EditorGUIElement_ScrollBox_VerticalStrip();
 
             process(element.GetElement());
-            element.Initilize();
+            element.Initialize();
 
             titleContent = new GUIContent(title);
             ShowPopup();

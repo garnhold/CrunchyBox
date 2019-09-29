@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
         protected abstract bool NeedRecreation();
         protected abstract EditorGUIElement Recreate();
 
-        protected override void InitilizeInternal()
+        protected override void InitializeInternal()
         {
             if (NeedRecreation())
             {
@@ -31,7 +31,7 @@ namespace CrunchySandwichBag
             }
 
             if (element != null)
-                element.Initilize();
+                element.Initialize();
         }
 
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
@@ -42,10 +42,18 @@ namespace CrunchySandwichBag
             return false;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
         {
             if (element != null)
-                element.Layout(rect, state);
+                return element.Plan(GetContentsWidth(), GetLayoutState());
+
+            return 0.0f;
+        }
+
+        protected override void LayoutContentsInternal(Vector2 position)
+        {
+            if (element != null)
+                element.Layout(position);
         }
 
         protected override void DrawContentsInternal(Rect view)
@@ -57,15 +65,7 @@ namespace CrunchySandwichBag
             }
 
             if (NeedRecreation())
-                Initilize();
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            if (element != null)
-                return element.GetHeight();
-
-            return 0.0f;
+                Initialize();
         }
 
         public EditorGUIElement_Complex()

@@ -29,12 +29,12 @@ namespace CrunchySandwichBag
         public EditorGUIElementAttachment_Singular_Margin(float lr, float tb) : this(lr, lr, tb, tb) { }
         public EditorGUIElementAttachment_Singular_Margin(float p) : this(p, p) { }
 
-        public override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        public override EditorGUIElementPlan PlanElementInternal(EditorGUIElementPlan plan, EditorGUILayoutState state)
         {
-            return rect.GetShrunk(left, bottom, right, top);
+            return plan.Shrink(left, right, bottom, top);
         }
 
-        public override float ModifyElementHeight(float height)
+        public override float ModifyFootprintHeight(float height, EditorGUILayoutState state)
         {
             return height + bottom + top;
         }

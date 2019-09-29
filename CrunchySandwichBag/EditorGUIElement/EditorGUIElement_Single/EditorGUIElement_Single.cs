@@ -21,7 +21,12 @@ namespace CrunchySandwichBag
 
         protected abstract bool DrawSingleInternal(Rect rect);
 
-        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
+        {
+            return single_height;
+        }
+
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             element_rect = rect;
 
@@ -32,11 +37,6 @@ namespace CrunchySandwichBag
         {
             if (DrawSingleInternal(element_rect) == false)
                 EditorGUI.LabelField(element_rect, "--Disabled--");
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return single_height;
         }
 
         public EditorGUIElement_Single(float h)

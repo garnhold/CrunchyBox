@@ -21,24 +21,26 @@ namespace CrunchySandwichBag
 
         static public readonly float SCROLL_BAR_WIDTH = 18.0f;
 
-        protected override void InitilizeInternal()
+        protected override void InitializeInternal()
         {
-            element.Initilize();
+            element.Initialize();
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, EditorGUILayoutState state)
+        protected override float DoPlanInternal()
+        {
+            return element.Plan(GetContentsWidth() - SCROLL_BAR_WIDTH, GetLayoutState());
+        }
+
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             scroll_box_rect = rect;
 
             return rect;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, EditorGUILayoutState state)
+        protected override void LayoutContentsInternal(Vector2 position)
         {
-            element.Layout(
-                new Rect(0.0f, 0.0f, rect.width - SCROLL_BAR_WIDTH, GetElement().GetHeight()),
-                state
-            );
+            element.Layout(new Vector2(0.0f, 0.0f));
         }
 
         protected override void DrawContentsInternal(Rect view)
@@ -46,7 +48,7 @@ namespace CrunchySandwichBag
             Rect visible_box_rect = scroll_box_rect.GetIntersection(view);
             Rect visible_space_rect = visible_box_rect.GetShifted(scroll_position - scroll_box_rect.min);
 
-            scroll_position = GUI.BeginScrollView(scroll_box_rect, scroll_position, element.GetLayoutRect());
+            scroll_position = GUI.BeginScrollView(scroll_box_rect, scroll_position, element.GetElementRect());
                 element.Draw(visible_space_rect);
             GUI.EndScrollView(IsOverflown());
         }
@@ -71,7 +73,7 @@ namespace CrunchySandwichBag
 
         public bool IsOverflown()
         {
-            if (scroll_box_rect.CouldContain(element.GetLayoutRect()) == false)
+            if (scroll_box_rect.CouldContain(element.GetElementRect()) == false)
                 return true;
 
             return false;

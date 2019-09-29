@@ -35,6 +35,11 @@ namespace CrunchySandwichBag
             return 1;
         }
 
+        protected override float DoPlanInternal()
+        {
+            return CalculateNumberLines() * LINE_HEIGHT;
+        }
+
         protected override string DrawBuiltInInternal(Rect rect, GUIContent label, string value)
         {
             if (multiline_attribute != null)
@@ -45,17 +50,12 @@ namespace CrunchySandwichBag
                 string new_value = EditorGUIExtensions.TextArea(rect, label, value, use_word_wrap);
 
                 if (new_value != value)
-                    InvalidateHeight();
+                    Invalidate();
 
                 return new_value;
             }
 
             return EditorGUI.TextField(rect, label, value);
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return CalculateNumberLines() * LINE_HEIGHT;
         }
 
         public EditorGUIElement_EditPropertySingleValue_BuiltIn_String(EditProperty_Single_Value p) : base(p)

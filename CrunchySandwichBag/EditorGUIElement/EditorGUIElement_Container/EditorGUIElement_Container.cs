@@ -18,9 +18,9 @@ namespace CrunchySandwichBag
 
         public abstract IEnumerable<EditorGUIElement> GetChildren();
 
-        protected override void InitilizeInternal()
+        protected override void InitializeInternal()
         {
-            GetChildren().Process(c => c.Initilize());
+            GetChildren().Process(c => c.Initialize());
         }
 
         protected override void DrawContentsInternal(Rect view)
