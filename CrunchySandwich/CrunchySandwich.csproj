@@ -163,6 +163,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Grid.cs" />
+    <Compile Include="Extensions\ITilemapTilemap\ITilemapTilemapExtensions_Neighbors.cs">
+      <DependentUpon>ITilemapTilemapExtensions_Neighbors.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\ITilemapTilemap\ITilemapTilemapExtensions.cs">
+      <DependentUpon>ITilemapTilemapExtensions.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviour_EditMode.cs" />
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviour.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Extrude.cs" />
@@ -453,8 +464,6 @@
     </Compile>
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions_Motor.cs" />
     <Compile Include="Extensions\HingeJoint2D\HingeJoint2DExtensions.cs" />
-    <Compile Include="Extensions\ITilemap\ITilemapExtensions_Neighbors.cs" />
-    <Compile Include="Extensions\ITilemap\ITilemapExtensions.cs" />
     <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions_With.cs" />
     <Compile Include="Extensions\JointMotor2D\JointMotor2DExtensions.cs" />
     <Compile Include="Extensions\Mesh\MeshExtensions_CalculateUV.cs" />
@@ -1370,6 +1379,14 @@
     <Content Include="Extensions\HasColor\HasColorExtensions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HasColorExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ITilemapTilemap\ITilemapTilemapExtensions_Neighbors.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ITilemapTilemapExtensions_Neighbors.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ITilemapTilemap\ITilemapTilemapExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ITilemapTilemapExtensions.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\Vector2\Vector2s.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
