@@ -32,6 +32,11 @@ namespace CrunchyDough
             return item.SubSection(0, end);
         }
 
+        static public string TruncateAmount(this string item, int amount)
+        {
+            return item.Truncate(item.Length - amount);
+        }
+
         static public string ExtractPreIntersection(this string item, string input)
         {
             return item.SubSection(0, item.IndexOfIntersectionStart(input));

@@ -9,7 +9,7 @@ namespace CrunchyDough
         static public bool TryParseHexInt(this string item, out int value)
         {
             return int.TryParse(
-                item,
+                item.TrimAnyPrefix("0x", "0X"),
                 System.Globalization.NumberStyles.HexNumber,
                 System.Globalization.CultureInfo.InvariantCulture,
                 out value

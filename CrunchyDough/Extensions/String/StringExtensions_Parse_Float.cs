@@ -8,7 +8,7 @@ namespace CrunchyDough
     {
         static public bool TryParseFloat(this string item, out float value)
         {
-            return float.TryParse(item, out value);
+            return float.TryParse(item.TrimAnySuffix("f", "F"), out value);
         }
 
         static public float ParseFloat(this string item, float default_value)

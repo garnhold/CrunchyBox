@@ -26,6 +26,11 @@ namespace CrunchySandwich
             return item.GetWithX(item.x + amount);
         }
 
+        static public Vector2 GetWithScaledX(this Vector2 item, float scale)
+        {
+            return item.GetWithX(item.x * scale);
+        }
+
         static public Vector2 GetWithY(this Vector2 item, float y)
         {
             return new Vector2(item.x, y);
@@ -39,6 +44,11 @@ namespace CrunchySandwich
         static public Vector2 GetWithAdjustedY(this Vector2 item, float amount)
         {
             return item.GetWithY(item.y + amount);
+        }
+
+        static public Vector2 GetWithScaledY(this Vector2 item, float scale)
+        {
+            return item.GetWithY(item.y * scale);
         }
     }
 }

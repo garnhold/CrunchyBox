@@ -56,10 +56,10 @@ namespace CrunchySandwich
         {
             Compile();
 
-            return compiled_operation(
+            return compiled_operation.IfNotNull(o => o(
                 target.ConvertEX(target_type),
                 arguments.Convert(a => a.GetArgumentValue()).ToArray()
-            );
+            ));
         }
     }
 }

@@ -62,7 +62,7 @@ namespace CrunchySandwichBag
 
         public IEnumerable<Vector3Int> GetPointsAt(Vector3Int center)
         {
-            return GetPoints().Convert(p => new Vector3Int(center.x + p.x, center.y + p.y, center.z));
+            return GetPoints().Convert(p => center + p.GetVector3Int());
         }
     }
 }

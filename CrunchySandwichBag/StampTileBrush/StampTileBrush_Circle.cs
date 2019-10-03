@@ -27,7 +27,7 @@ namespace CrunchySandwichBag
                 {
                     Vector2Int point = new Vector2Int(dx, dy);
 
-                    if (point.sqrMagnitude <= radius_squared)
+                    if (point.GetSquaredMagnitude() <= radius_squared)
                         yield return point;
                 }
             }
