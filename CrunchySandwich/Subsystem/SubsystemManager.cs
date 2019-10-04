@@ -17,6 +17,11 @@ namespace CrunchySandwich
             SubsystemManager.GetInstance().Start();
         }
 
+        static private void StartInEditor()
+        {
+            SubsystemManager.GetInstance().StartInEditor();
+        }
+
         static private void Update()
         {
             SubsystemManager.GetInstance().Update();
@@ -44,6 +49,13 @@ namespace CrunchySandwich
         public void Start()
         {
             Refresh();
+            GetSubsystems().Process(s => s.Start());
+        }
+
+        public void StartInEditor()
+        {
+            Refresh();
+            GetSubsystems().Process(s => s.StartInEditor());
         }
 
         public void Update()

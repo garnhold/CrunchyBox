@@ -36,7 +36,7 @@ namespace CrunchySandwichBag
                         property.SetContentValues(options.GetOnly());
                     else
                     {
-                        GenericMenuExtensions.Create<T>(options, o => property.SetContentValues(o))
+                        GenericMenuExtensions.Create<T>(options.Prepend(default(T)), o => property.SetContentValues(o))
                             .DropDown(GetElementRect());
                     }
                 }

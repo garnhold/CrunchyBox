@@ -222,6 +222,11 @@
     <Compile Include="Signal\Generator\Signal_Generator_Time_ActiveGameTime.cs" />
     <Compile Include="Signal\Generator\Signal_Generator.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic.cs" />
+    <Compile Include="StateSystem\StateSystem.cs" />
+    <Compile Include="StateSystem\Tyon\StateFieldAttribute.cs" />
+    <Compile Include="StateSystem\Tyon\ExplicitStateSystemTypeAttribute.cs" />
+    <Compile Include="StateSystem\Tyon\StateSystemTyonSettings.cs" />
+    <Compile Include="StateSystem\Tyon\StateSystemTyonDesignatedVariableProvider.cs" />
     <Compile Include="Time\Alarm\GameAlarm_Range.cs" />
     <Compile Include="Time\Alarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\Alarm\GameAlarm.cs" />

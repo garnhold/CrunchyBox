@@ -13,7 +13,7 @@ namespace CrunchySandwichBag
         [EditorInitializer]
         static private void Initilize()
         {
-            ApplicationEX.GetInstance().Start();
+            ApplicationEX.GetInstance().StartInEditor();
 
             EditorApplication.update += delegate() {
                 ApplicationEX.GetInstance().UpdateInEditor();

@@ -8,6 +8,9 @@ namespace CrunchySandwich
 {
     public abstract class Subsystem : ScriptableObjectEX
     {
+        public virtual void Start() { }
+        public virtual void StartInEditor() { }
+
         public virtual void Update() { }
         public virtual void UpdateInEditor() { }
     }

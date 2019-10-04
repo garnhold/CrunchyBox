@@ -18,6 +18,9 @@ namespace CrunchySandwich
         private bool is_playing;
         private Thread unity_main_thread;
 
+        private List<Process> start_processes;
+        private List<Process> start_in_editor_processes; //These will only be called if CrunchySandwichBag is also used
+
         private List<Process> update_processes;
         private List<Process> update_in_editor_processes; //These will only be called if CrunchySandwichBag is also used
 
@@ -56,6 +59,11 @@ namespace CrunchySandwich
                 .Convert<MethodInfoEX, Process>(m => delegate() { m.Invoke(null, Empty.Array<object>()); });
         }
 
+        private void StartGeneral()
+        {
+            unity_main_thread = System.Threading.Thread.CurrentThread;
+        }
+
         private void UpdateGeneral()
         {
             is_playing = Application.isPlaying;
@@ -68,6 +76,9 @@ namespace CrunchySandwich
         {
             is_playing = false;
 
+            start_processes = GetApplicationEXMarkedTypeMethodProcesses("Start").ToList();
+            start_in_editor_processes = GetApplicationEXMarkedTypeMethodProcesses("StartInEditor").ToList();
+
             update_processes = GetApplicationEXMarkedTypeMethodProcesses("Update").ToList();
             update_in_editor_processes = GetApplicationEXMarkedTypeMethodProcesses("UpdateInEditor").ToList();
 
@@ -77,21 +88,26 @@ namespace CrunchySandwich
 
         public void Start()
         {
-            unity_main_thread = System.Threading.Thread.CurrentThread;
+            StartGeneral();
+            start_processes.Process(p => p());
+        }
 
-            GetApplicationEXMarkedTypeMethodProcesses("Start").Process(p => p());
+        public void StartInEditor()
+        {
+            StartGeneral();
+            start_in_editor_processes.Process(p => p());
         }
 
         public void Update()
         {
-            update_processes.Process(p => p());
             UpdateGeneral();
+            update_processes.Process(p => p());
         }
 
         public void UpdateInEditor()
         {
-            update_in_editor_processes.Process(p => p());
             UpdateGeneral();
+            update_in_editor_processes.Process(p => p());
         }
 
         public void DrawGizmos()
