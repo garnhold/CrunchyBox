@@ -11,7 +11,14 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-	public class MonoBehaviourEX : MonoBehaviour, ISerializationCallbackReceiver, SerializationCorruptable
+	public interface UnityObjectEX
+	{
+		string GetPrefabId();
+	}
+
+	public class UnityObjectEXPrefabIdEditDistinctionAttribute : EditDistinctionAttribute { }
+
+	public class MonoBehaviourEX : MonoBehaviour, ISerializationCallbackReceiver, SerializationCorruptable, UnityObjectEX
     {
 		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
@@ -21,10 +28,23 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
+		[SerializeField][InspectorDisplay][HideInInspector]private string prefab_id;
+
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
 			UnpackTyon(TyonHydrationMode.Permissive);
+		}
+
+		private void OnValidate()
+		{
+			if (ApplicationEX.GetInstance().IsEditing())
+			{
+				prefab_id = PlayEditDistinction<UnityObjectEXPrefabIdEditDistinctionAttribute>
+					.ExecuteEditDistinction<string, UnityEngine.Object>(this);
+
+				PrefabLookupSystem.GetInstance().RegisterPrefab(prefab_id, this);
+			}
 		}
 
 		private void PackTyon()
@@ -103,10 +123,15 @@ namespace CrunchySandwich
 				return true;
 
 			return false;
+		}
+
+		public string GetPrefabId()
+		{
+			return prefab_id;
 		}
 	}
 
-	public class ScriptableObjectEX : ScriptableObject, ISerializationCallbackReceiver, SerializationCorruptable
+	public class ScriptableObjectEX : ScriptableObject, ISerializationCallbackReceiver, SerializationCorruptable, UnityObjectEX
     {
 		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
@@ -116,10 +141,23 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
+		[SerializeField][InspectorDisplay][HideInInspector]private string prefab_id;
+
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
 			UnpackTyon(TyonHydrationMode.Permissive);
+		}
+
+		private void OnValidate()
+		{
+			if (ApplicationEX.GetInstance().IsEditing())
+			{
+				prefab_id = PlayEditDistinction<UnityObjectEXPrefabIdEditDistinctionAttribute>
+					.ExecuteEditDistinction<string, UnityEngine.Object>(this);
+
+				PrefabLookupSystem.GetInstance().RegisterPrefab(prefab_id, this);
+			}
 		}
 
 		private void PackTyon()
@@ -198,6 +236,11 @@ namespace CrunchySandwich
 				return true;
 
 			return false;
+		}
+
+		public string GetPrefabId()
+		{
+			return prefab_id;
 		}
 	}
 

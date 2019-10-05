@@ -21,6 +21,12 @@ namespace CrunchyNoodle
             {
                 writer.WriteInt(to_dehydrate.MetadataToken);
                 writer.WriteRecurrant(to_dehydrate.DeclaringType, TypeHusker.INSTANCE);
+
+                if (to_dehydrate.IsGenericMethod())
+                {
+                    if (writer.WriteBoolBranch(to_dehydrate.IsGenericTypedMethod()))
+                        TypeListHusker.INSTANCE.Dehydrate(writer, to_dehydrate.GetGenericArguments().ToList());
+                }
             }
             else
             {
@@ -33,7 +39,20 @@ namespace CrunchyNoodle
             int metadata_token = reader.ReadInt();
 
             if (metadata_token != 0)
-                return reader.ReadRecurrant(TypeHusker.INSTANCE).ResolveMethod(metadata_token);
+            {
+                MethodInfoEX method = reader.ReadRecurrant(TypeHusker.INSTANCE).ResolveMethod(metadata_token);
+
+                if (method.IsGenericMethod())
+                {
+                    if (reader.ReadBoolBranch())
+                    {
+                        return method.MakeGenericMethod(TypeListHusker.INSTANCE.Hydrate(reader).ToArray())
+                            .GetMethodInfoEX();
+                    }
+                }
+
+                return method;
+            }
 
             return null;
         }

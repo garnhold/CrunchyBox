@@ -23,6 +23,7 @@ namespace CrunchyNoodle
         static private CompileTimeCache<List<MethodInfoEX>, IdentifiableType, MethodInfoFilters> GET_FILTERED_INSTANCE_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_FILTERED_INSTANCE_METHODS", MethodInfoEXListHusker.INSTANCE, delegate(IdentifiableType item, MethodInfoFilters filters) {
             return item.GetValue().GetAllInstanceMethods()
                 .FilterBy(filters)
+                .Convert(m => m.GetMethodInfoEX())
                 .ToList();
         });
         static public IEnumerable<MethodInfoEX> GetFilteredInstanceMethods(this Type item, IEnumerable<Filterer<MethodInfo>> filters)

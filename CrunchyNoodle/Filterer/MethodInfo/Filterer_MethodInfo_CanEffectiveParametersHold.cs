@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using CrunchyDough;
+using CrunchySalt;
 
 namespace CrunchyNoodle
 {
@@ -23,6 +24,11 @@ namespace CrunchyNoodle
         public override bool Filter(MethodInfo item)
         {
             return item.CanEffectiveParametersHold(GetId().GetValues());
+        }
+
+        public override bool Filter(MethodInfo item, out MethodInfo adjusted)
+        {
+            return item.CanEffectiveParametersHold(out adjusted, GetId().GetValues());
         }
 
         public override IEnumerable<Filterer<Assembly>> GetAssemblyFilters()

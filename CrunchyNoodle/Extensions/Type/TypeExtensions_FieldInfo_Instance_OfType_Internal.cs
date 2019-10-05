@@ -23,6 +23,7 @@ namespace CrunchyNoodle
         static private OperationCache<List<FieldInfoEX>, Type, FieldInfoFilters> GET_FILTERED_INSTANCE_FIELDS_OF_TYPE = ReflectionCache.Get().NewOperationCache("GET_FILTERED_INSTANCE_FIELDS_OF_TYPE", delegate(Type item, FieldInfoFilters filters) {
             return item.GetAllInstanceFieldsOfType<T>()
                 .FilterBy(filters)
+                .Convert(f => f.GetFieldInfoEX())
                 .ToList();
         });
         static public IEnumerable<FieldInfoEX> GetFilteredInstanceFieldsOfType(Type item, IEnumerable<Filterer<FieldInfo>> filters)

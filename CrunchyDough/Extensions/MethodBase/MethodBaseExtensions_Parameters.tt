@@ -1,0 +1,133 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(MSBuildProjectDirectory)\..\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+string[] parameter_types = new string[]{ "Technical", "Effective" };
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace CrunchyDough
+{
+	static public class MethodBaseExtensions_Parameter
+    {
+		static public ParameterInfo[] GetTechnicalParameters(this MethodBase item)
+        {
+            return item.GetParameters();
+        }
+
+		static private OperationCache<ParameterInfo[], MethodBase> GET_EFFECTIVE_PARAMETERS = ReflectionCache.Get().NewOperationCache("GET_EFFECTIVE_PARAMETERS", delegate(MethodBase item) {
+            if (item.IsExtensionMethod())
+                return item.GetParameters().Offset(1).ToArray();
+
+            return item.GetParameters();
+        });
+        static public ParameterInfo[] GetEffectiveParameters(this MethodBase item)
+        {
+            return GET_EFFECTIVE_PARAMETERS.Fetch(item);
+        }
+<#foreach(string parameter_type in parameter_types){#>
+	
+        static public IEnumerable<Type> Get<#=parameter_type#>ParameterTypes(this MethodBase item)
+        {
+            return item.Get<#=parameter_type#>Parameters().Convert(p => p.ParameterType);
+        }
+
+        static public int GetNumber<#=parameter_type#>Parameters(this MethodBase item)
+        {
+            return item.Get<#=parameter_type#>Parameters().Length;
+        }
+        static public bool Has<#=parameter_type#>Parameters(this MethodBase item)
+        {
+            if (item.GetNumber<#=parameter_type#>Parameters() >= 1)
+                return true;
+
+            return false;
+        }
+        static public bool HasNo<#=parameter_type#>Parameters(this MethodBase item)
+        {
+            if (item.Has<#=parameter_type#>Parameters() == false)
+                return true;
+
+            return false;
+        }
+
+        static public bool TryGet<#=parameter_type#>Parameter(this MethodBase item, int index, out ParameterInfo output)
+        {
+            return item.Get<#=parameter_type#>Parameters().TryGet(index, out output);
+        }
+
+        static public ParameterInfo Get<#=parameter_type#>Parameter(this MethodBase item, int index)
+        {
+            return item.Get<#=parameter_type#>Parameters().Get(index);
+        }
+
+        static public Type Get<#=parameter_type#>ParameterType(this MethodBase item, int index)
+        {
+            ParameterInfo parameter_info;
+
+            if (item.TryGet<#=parameter_type#>Parameter(index, out parameter_info))
+                return parameter_info.ParameterType;
+
+            return null;
+        }
+
+        static public bool Can<#=parameter_type#>ParameterHold(this MethodBase item, int index, Type type)
+        {
+            ParameterInfo parameter_info;
+
+            if (item.TryGet<#=parameter_type#>Parameter(index, out parameter_info))
+                return parameter_info.CanHold(type);
+
+            return false;
+        }
+
+        static public bool Can<#=parameter_type#>ParametersHold(this MethodBase item, IEnumerable<Type> parameter_types)
+        {
+            if (item.Get<#=parameter_type#>Parameters().AreElements(parameter_types, (p1, p2) => p1.CanHold(p2)))
+                return true;
+
+            return false;
+        }
+        static public bool Can<#=parameter_type#>ParametersHold(this MethodBase item, params Type[] parameter_types)
+        {
+            return item.Can<#=parameter_type#>ParametersHold((IEnumerable<Type>)parameter_types);
+        }
+
+        static public bool Can<#=parameter_type#>ParametersHold<P1>(this MethodBase item)
+        {
+            return item.Can<#=parameter_type#>ParametersHold(typeof(P1));
+        }
+
+        static public bool Can<#=parameter_type#>ParametersHold<P1, P2>(this MethodBase item)
+        {
+            return item.Can<#=parameter_type#>ParametersHold(typeof(P1), typeof(P2));
+        }
+
+		static public bool Can<#=parameter_type#>ParametersHold(this MethodInfo item, out MethodInfo output, IEnumerable<Type> parameter_types)
+        {
+            if (item.IsGenericTypelessMethod())
+            {
+                Type[] generic_arguments = new Type[item.GetNumberGenericParameters()];
+
+                if(item.Get<#=parameter_type#>ParameterTypes()
+                    .PairStrict(parameter_types)
+					.AreAll(p => p.item1.FillGenericArgumentsToHold(p.item2, generic_arguments)))
+				{
+					item = item.MakeGenericMethod(generic_arguments);
+				}
+            }
+
+            output = item;
+            return item.Can<#=parameter_type#>ParametersHold(parameter_types);
+        }
+<#}#>
+	}
+}

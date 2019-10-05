@@ -11,6 +11,13 @@ namespace CrunchyNoodle
     {
         public abstract bool Filter(T item);
 
+        public virtual bool Filter(T item, out T adjusted)
+        {
+            adjusted = item;
+
+            return Filter(item);
+        }
+
         static public Filterer<T> operator |(Filterer<T> f1, Filterer<T> f2)
         {
             return new Filterer_BinaryOperation_Or<T>(f1, f2);

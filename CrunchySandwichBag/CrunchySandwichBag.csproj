@@ -218,6 +218,8 @@
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions.cs" />
+    <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions_PrefabId.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
     <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />

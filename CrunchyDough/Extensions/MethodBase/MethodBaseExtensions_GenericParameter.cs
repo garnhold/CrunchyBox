@@ -16,6 +16,11 @@ namespace CrunchyDough
             return Empty.IEnumerable<Type>();
         }
 
+        static public int GetNumberGenericParameters(this MethodBase item)
+        {
+            return item.GetGenericParameterTypes().Count();
+        }
+
         static public bool CanGenericParametersHold(this MethodBase item, IEnumerable<Type> parameter_types)
         {
             if (item.GetGenericParameterTypes().AreElements(parameter_types, (p1, p2) => p1.CanHold(p2)))

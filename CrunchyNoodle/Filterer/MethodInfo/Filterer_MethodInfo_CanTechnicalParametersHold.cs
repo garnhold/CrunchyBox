@@ -25,6 +25,11 @@ namespace CrunchyNoodle
             return item.CanTechnicalParametersHold(GetId().GetValues());
         }
 
+        public override bool Filter(MethodInfo item, out MethodInfo adjusted)
+        {
+            return item.CanTechnicalParametersHold(out adjusted, GetId().GetValues());
+        }
+
         public override IEnumerable<Filterer<Assembly>> GetAssemblyFilters()
         {
             return GetId().Convert(t => Filterer_Assembly.IsTypeVisible(t));

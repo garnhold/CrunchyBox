@@ -18,6 +18,7 @@ namespace CrunchyNoodle
         static private CompileTimeCache<List<FieldInfoEX>, IdentifiableType, FieldInfoFilters> GET_FILTERED_INSTANCE_FIELDS = ReflectionCache.Get().NewCompileTimeCache("GET_FILTERED_INSTANCE_FIELDS", FieldInfoEXListHusker.INSTANCE, delegate(IdentifiableType item, FieldInfoFilters filters) {
             return item.GetValue().GetAllInstanceFields()
                 .FilterBy(filters)
+                .Convert(f => f.GetFieldInfoEX())
                 .ToList();
         });
         static public IEnumerable<FieldInfoEX> GetFilteredInstanceFields(this Type item, IEnumerable<Filterer<FieldInfo>> filters)

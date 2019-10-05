@@ -26,6 +26,7 @@ namespace CrunchyNoodle
         static private OperationCache<List<MethodInfoEX>, MethodInfoFilters> GET_FILTERED_MARKED_STATIC_METHODS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_MARKED_STATIC_METHODS", delegate(MethodInfoFilters filters) {
             return GetAllMarkedStaticMethods()
                 .FilterBy(filters)
+                .Convert(m => m.GetMethodInfoEX())
                 .ToList();
         });
         static public IEnumerable<MethodInfoEX> GetFilteredMarkedStaticMethods(IEnumerable<Filterer<MethodInfo>> filters)

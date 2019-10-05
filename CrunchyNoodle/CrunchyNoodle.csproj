@@ -53,6 +53,7 @@
     <Compile Include="CompileTimeCache\Extensions\CacheManagerExtensions_CompileTimeCache.cs" />
     <Compile Include="ConversionMethods\Common\ConversionMethods_Duration.cs" />
     <Compile Include="ConversionMethods\Common\ConversionMethods_DateTime.cs" />
+    <Compile Include="ConversionMethods\Container\ConversionMethods_Dictionary.cs" />
     <Compile Include="ConversionMethods\ConversionAttribute.cs" />
     <Compile Include="ConversionMethods\General\GeneralConversionMethods_String.cs" />
     <Compile Include="ConversionMethods\General\GeneralConversionMethods_Enum.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Holding\Extensions\HoldingContainerExtensions_Predicate.cs" />
     <Compile Include="Holding\Extensions\HoldingContainerExtensions.cs" />
     <Compile Include="InspectedTypesAttribute\InspectedTypesAttribute.cs" />
+    <Compile Include="MarkedMethods\MarkedMethods.cs" />
     <Compile Include="MemberInstance\ActionInstance\ActionInstance.cs" />
     <Compile Include="MemberInstance\FunctionInstance\FunctionInstance.cs" />
     <Compile Include="MemberInstance\MemberInstance.cs" />
@@ -258,7 +260,6 @@
     <Compile Include="ReflectionTypeHuskers\MethodInfoEXHusker.cs" />
     <Compile Include="ReflectionTypeHuskers\FieldInfoEXHusker.cs" />
     <Compile Include="ReflectionTypeHuskers\TypeHusker.cs" />
-    <Compile Include="MarkedMethods\MarkedMethods.cs" />
     <Compile Include="ConfigurationVariable\ConfigurationVariable_Create_FactoryAttribute.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Member_Variable.cs" />
     <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Byte.cs" />
@@ -409,7 +410,7 @@
     <Compile Include="Holding\HoldingContainerAttribute.cs" />
     <Compile Include="Holding\HoldingList.cs" />
     <Compile Include="Holding\HoldingSingle.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Filterer.cs" />
+    <Compile Include="Filterer\Extensions\FiltererExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance_GetValue.cs" />

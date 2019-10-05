@@ -95,6 +95,11 @@
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
     <Compile Include="Extensions\IList\IListExtensions_PercentLooped.cs" />
     <Compile Include="Extensions\Int\IntExtensions_Congruent.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Parameters.cs">
+      <DependentUpon>MethodBaseExtensions_Parameters.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\Number\NumberExtensions_Approximate.cs">
       <DependentUpon>NumberExtensions_Approximate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1059,9 +1064,7 @@
     <Compile Include="LabeledItemSet\LabeledItem.cs" />
     <Compile Include="LabeledItemSet\LabeledItemSet.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Compare.cs" />
-    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_EffectiveParameter.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Name.cs" />
-    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_TechnicalParameter.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Shadow.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Type.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_Compare.cs" />
@@ -1189,6 +1192,10 @@
     <Content Include="Extensions\IEnumerable\IEnumerableExtensions_PartOut.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IEnumerableExtensions_PartOut.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\MethodBase\MethodBaseExtensions_Parameters.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MethodBaseExtensions_Parameters.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\NumberFit\NumberFitExtensions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
