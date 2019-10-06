@@ -7,6 +7,7 @@ using UnityEditor;
 
 using CrunchyDough;
 using CrunchyBun;
+using CrunchyNoodle;
 using CrunchySandwich;
 
 namespace CrunchySandwichBag
@@ -15,12 +16,15 @@ namespace CrunchySandwichBag
     static public class UnityObjectEXExtensions_PrefabId
     {
         [UnityObjectEXOnValidateEditDistinction]
-        static public string OnValidate(UnityEngine.Object item)
+        static public void OnValidate(UnityEngine.Object item)
         {
-            string prefab_id = item.GetAssetGUID();
+            if (item.IsPrefab())
+            {
+                string prefab_id = item.GetAssetGUID();
 
-            PrefabLookup.GetInstance().RegisterPrefab(prefab_id, item);
-            return prefab_id;
+                PrefabLookup.GetInstance().RegisterPrefab(prefab_id, item);
+                item.SetVariableValueByPath("prefab_id", prefab_id);
+            }
         }
     }
 }

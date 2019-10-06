@@ -23,8 +23,6 @@ namespace CrunchySalt
         public abstract bool IsSetPublic();
         public abstract bool IsGetPublic();
 
-        public abstract PropInfoEXType GetPropInfoType();
-
         public abstract BasicValueSetter GetBasicValueSetter();
         public abstract BasicValueGetter GetBasicValueGetter();
 

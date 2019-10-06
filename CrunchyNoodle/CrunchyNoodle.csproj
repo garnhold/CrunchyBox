@@ -206,10 +206,7 @@
     <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_IsSetPublic.cs" />
     <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_IsSetAndGetPublic.cs" />
     <Compile Include="Filterer\PropertyInfo\PropertyInfoFilters.cs" />
-    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsUnassociatedMethodsBacked.cs" />
-    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsPropertyMethodsBacked.cs" />
     <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsSetAndGetPublic.cs" />
-    <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsFieldBacked.cs" />
     <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsSetPublic.cs" />
     <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsGetPublic.cs" />
     <Compile Include="Filterer\PropInfo\Filterer_PropInfo_CanSetAndGet.cs" />

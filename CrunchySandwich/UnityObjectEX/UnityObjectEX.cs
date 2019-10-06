@@ -38,11 +38,8 @@ namespace CrunchySandwich
 
 		private void OnValidate()
 		{
-			if (ApplicationEX.GetInstance().IsEditing())
-			{
-				prefab_id = PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
-					.ExecuteEditDistinction<string, UnityEngine.Object>(this);
-			}
+			PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
+				.ExecuteNoReturn(t => { }, this);
 		}
 
 		private void PackTyon()
@@ -149,11 +146,8 @@ namespace CrunchySandwich
 
 		private void OnValidate()
 		{
-			if (ApplicationEX.GetInstance().IsEditing())
-			{
-				prefab_id = PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
-					.ExecuteEditDistinction<string, UnityEngine.Object>(this);
-			}
+			PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
+				.ExecuteNoReturn(t => { }, this);
 		}
 
 		private void PackTyon()

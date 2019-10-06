@@ -56,6 +56,7 @@
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions _TypeBuilder.cs" />
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions_Foreign.cs" />
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Backing.cs" />
     <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_EX.cs" />
     <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Prop.cs" />
     <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Property.cs" />
@@ -307,7 +308,8 @@
     <Compile Include="TypeEX\PropertyInfoEX\PropertyInfoPass.cs" />
     <Compile Include="TypeEX\PropInfoEX\Extensions\PropInfoEXExtensions_Compare.cs" />
     <Compile Include="TypeEX\PropInfoEX\Extensions\PropInfoEXExtensions.cs" />
-    <Compile Include="TypeEX\PropInfoEX\PropInfoEXType.cs" />
+    <Compile Include="TypeEX\PropInfoEX\PropInfoEX_Property.cs" />
+    <Compile Include="TypeEX\PropInfoEX\PropInfoEX_PermissiveProperty.cs" />
     <Compile Include="TypeEX\PropInfoEX\PropInfoEX_MethodPair.cs" />
     <Compile Include="TypeEX\PropInfoEX\PropInfoEX_Field.cs" />
     <Compile Include="TypeEX\PropInfoEX\PropInfoEX.cs" />

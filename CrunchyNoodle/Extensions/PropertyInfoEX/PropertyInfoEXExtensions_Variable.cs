@@ -13,5 +13,10 @@ namespace CrunchyNoodle
         {
             return item.GetProp().CreateVariable();
         }
+
+        static public Variable CreatePermissiveVariable(this PropertyInfoEX item)
+        {
+            return item.GetPermissiveProp().CreateVariable();
+        }
     }
 }

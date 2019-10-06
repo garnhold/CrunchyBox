@@ -15,10 +15,12 @@ namespace CrunchySalt
     {
         static public PropInfoEX GetProp(this PropertyInfo item)
         {
-            return new PropInfoEX_MethodPair(
-                item.GetSetMethod(true).GetMethodInfoEX(),
-                item.GetGetMethod(true).GetMethodInfoEX()
-            );
+            return new PropInfoEX_Property(item.GetPropertyInfoEX());
+        }
+
+        static public PropInfoEX GetPermissiveProp(this PropertyInfo item)
+        {
+            return new PropInfoEX_PermissiveProperty(item.GetPropertyInfoEX());
         }
     }
 }

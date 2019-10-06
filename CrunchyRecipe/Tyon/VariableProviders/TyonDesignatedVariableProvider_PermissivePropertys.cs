@@ -9,14 +9,14 @@ using CrunchyNoodle;
 
 namespace CrunchyRecipe
 {
-    public abstract class TyonDesignatedVariableProvider_Propertys : TyonDesignatedVariableProvider
+    public abstract class TyonDesignatedVariableProvider_PermissivePropertys : TyonDesignatedVariableProvider
     {
         protected abstract Filterer<PropertyInfo> GetPropertyInfoFilterer(Type type);
 
         public override IEnumerable<Variable> GetDesignatedVariables(Type type)
         {
             return type.GetFilteredInstancePropertys(GetPropertyInfoFilterer(type))
-                .Convert(p => p.CreateVariable());
+                .Convert(p => p.CreatePermissiveVariable());
         }
     }
 }

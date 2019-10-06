@@ -36,7 +36,10 @@ using CrunchyNoodle;
     typeof(string),
     typeof(object),
 
-    typeof(Type)
+    typeof(Type),
+
+    typeof(System.Collections.Generic.List<>),
+    typeof(System.Collections.Generic.KeyValuePair<,>)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

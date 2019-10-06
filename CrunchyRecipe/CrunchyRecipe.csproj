@@ -82,8 +82,8 @@
     <Compile Include="Tyon\TyonResolutionException.cs" />
     <Compile Include="Tyon\TyonType_Direct.cs" />
     <Compile Include="Tyon\TyonType_Array.cs" />
-    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Propertys_Public.cs" />
-    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Propertys.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_PermissivePropertys_Public.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_PermissivePropertys.cs" />
     <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Fields.cs" />
     <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Fields_Public.cs" />
     <Compile Include="Tyon\TyonDOMinator.cs" />

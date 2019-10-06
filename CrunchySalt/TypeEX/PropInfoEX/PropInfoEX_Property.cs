@@ -11,97 +11,99 @@ using CrunchyDough;
 
 namespace CrunchySalt
 {
-    public class PropInfoEX_Field : PropInfoEX
+    public class PropInfoEX_Property : PropInfoEX
     {
-        private FieldInfoEX field_info;
+        private PropertyInfoEX property_info;
 
-        public PropInfoEX_Field(FieldInfoEX f)
+        private PropInfoEX_MethodPair method_pair;
+
+        public PropInfoEX_Property(PropertyInfoEX p)
         {
-            field_info = f;
+            property_info = p;
+
+            method_pair = new PropInfoEX_MethodPair(
+                property_info.GetSetMethod(true).GetMethodInfoEX(),
+                property_info.GetGetMethod(true).GetMethodInfoEX()
+            );
         }
 
         public override string GetName()
         {
-            return field_info.Name;
+            return property_info.Name;
         }
 
         public override Type GetPropType()
         {
-            return field_info.FieldType;
+            return property_info.PropertyType;
         }
 
         public override Type GetDeclaringType()
         {
-            return field_info.DeclaringType;
+            return property_info.DeclaringType;
         }
 
         public override bool CanSet()
         {
-            return true;
+            return method_pair.CanSet();
         }
 
         public override bool CanGet()
         {
-            return true;
+            return method_pair.CanGet();
         }
 
         public override bool IsSetPublic()
         {
-            return field_info.IsPublic;
+            return method_pair.IsSetPublic();
         }
 
         public override bool IsGetPublic()
         {
-            return field_info.IsPublic;
+            return method_pair.IsGetPublic();
         }
 
         public override BasicValueSetter GetBasicValueSetter()
         {
-            return field_info.GetBasicValueSetter();
+            return method_pair.GetBasicValueSetter();
         }
 
         public override BasicValueGetter GetBasicValueGetter()
         {
-            return field_info.GetBasicValueGetter();
+            return method_pair.GetBasicValueGetter();
         }
 
         public override IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
         {
-            return field_info.GetAllCustomAttributes(inherit);
+            return property_info.GetAllCustomAttributes(inherit);
         }
 
         public override void EmitLoad(ILCanvas canvas, ILValue target)
         {
-            new ILField(target, field_info).RenderIL_Load(canvas);
+            method_pair.EmitLoad(canvas, target);
         }
 
         public override void EmitLoadAddress(ILCanvas canvas, ILValue target)
         {
-            new ILField(target, field_info).RenderIL_LoadAddress(canvas);
+            method_pair.EmitLoadAddress(canvas, target);
         }
 
         public override void EmitStore(ILCanvas canvas, ILValue target, ILValue to_store)
         {
-            new ILField(target, field_info).RenderIL_Store(canvas, to_store);
-        }
-
-        public FieldInfoEX GetFieldInfo()
-        {
-            return field_info;
+            method_pair.EmitStore(canvas, target, to_store);
         }
 
         public override int GetHashCode()
         {
-            return field_info.GetHashCodeEX();
+            return property_info.GetHashCodeEX();
         }
 
         public override bool Equals(object obj)
         {
-            PropInfoEX_Field cast;
+            PropInfoEX_Property cast;
 
-            if (obj.Convert<PropInfoEX_Field>(out cast))
+            if (obj.Convert<PropInfoEX_Property>(out cast))
             {
-                if (cast.field_info == field_info)
+                if (cast.property_info == property_info)
                     return true;
             }
 

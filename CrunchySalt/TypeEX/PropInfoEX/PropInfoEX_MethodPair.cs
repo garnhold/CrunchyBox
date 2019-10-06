@@ -66,17 +66,6 @@ namespace CrunchySalt
             return get_method.IfNotNull(m => m.IsPublic);
         }
 
-        public override PropInfoEXType GetPropInfoType()
-        {
-            if (get_method.IfNotNull(m => m.IsPropertyGetMethod()))
-                return PropInfoEXType.PropertyMethods;
-
-            if (set_method.IfNotNull(m => m.IsPropertySetMethod()))
-                return PropInfoEXType.PropertyMethods;
-
-            return PropInfoEXType.UnassociatedMethods;
-        }
-
         public override BasicValueSetter GetBasicValueSetter()
         {
             return set_method.IfNotNull(m => m.GetSimulatedBasicValueSetter());
