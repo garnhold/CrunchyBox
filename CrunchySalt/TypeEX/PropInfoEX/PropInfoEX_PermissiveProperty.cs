@@ -73,12 +73,12 @@ namespace CrunchySalt
 
         public override BasicValueSetter GetBasicValueSetter()
         {
-            return method_pair.GetBasicValueSetter() ?? backing_field.GetBasicValueSetter();
+            return method_pair.GetBasicValueSetter() ?? backing_field.IfNotNull(f => f.GetBasicValueSetter());
         }
 
         public override BasicValueGetter GetBasicValueGetter()
         {
-            return method_pair.GetBasicValueGetter() ?? backing_field.GetBasicValueGetter();
+            return method_pair.GetBasicValueGetter() ?? backing_field.IfNotNull(f => f.GetBasicValueGetter());
         }
 
         public override IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)

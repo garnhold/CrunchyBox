@@ -67,6 +67,11 @@ namespace CrunchySalt
             return variable_name;
         }
 
+        static public string StyleAsPropertyName(this string item)
+        {
+            return item.StyleAsUppercasedEntity();
+        }
+
         static public string StyleAsConstantName(this string item)
         {
             return item.StyleAsVariableName().ToUpper();

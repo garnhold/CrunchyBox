@@ -17,12 +17,10 @@ namespace CrunchySandwich
 
         private UnityTyonSettings() : base(
             UnityTyonDesignatedVariableProvider.INSTANCE,
-            GeneralUnityTyonDesignatedVariableProvider.INSTANCE,
+            UnityExplicitTyonDesignatedVariableProvider.INSTANCE,
 
             TyonTypeHandler_Externalize_ExplicitType<UnityEngine.Object>.INSTANCE,
-            TyonTypeHandler_MethodInfo.INSTANCE,
-
-            TyonDesignatedVariableProvider_PermissivePropertys_Public.INSTANCE
+            TyonTypeHandler_MethodInfo.INSTANCE
         )
         {
         }

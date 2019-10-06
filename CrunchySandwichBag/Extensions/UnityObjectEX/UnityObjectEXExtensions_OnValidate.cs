@@ -13,7 +13,7 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [UnityObjectEXOnValidateEditDistinction]
-    static public class UnityObjectEXExtensions_PrefabId
+    static public class UnityObjectEXExtensions_OnValidate
     {
         [UnityObjectEXOnValidateEditDistinction]
         static public void OnValidate(UnityEngine.Object item)

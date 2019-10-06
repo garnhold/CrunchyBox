@@ -26,7 +26,7 @@ namespace CrunchySandwich
             return Filterer_Utility.Any(
                 Filterer_FieldInfo.HasCustomAttributeOfType<SerializeField>(),
                 Filterer_FieldInfo.HasCustomAttributeOfType<SerializeFieldEX>(),
-                Filterer_FieldInfo.IsPublicField()
+                Filterer_FieldInfo.IsGetPublic()
             );
         }
     }

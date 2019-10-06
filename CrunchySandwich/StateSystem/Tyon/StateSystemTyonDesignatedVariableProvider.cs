@@ -21,13 +21,13 @@ namespace CrunchySandwich
         protected override Filterer<FieldInfo> GetFieldInfoFilterer(Type type)
         {
             if (type.HasCustomAttributeOfType<ExplicitStateSystemTypeAttribute>(true))
-                return Filterer_FieldInfo.HasCustomAttributeOfType<StateFieldAttribute>();
+                return Filterer_FieldInfo.HasCustomAttributeOfType<StateSystemFieldAttribute>();
 
             return Filterer_Utility.Any(
                 Filterer_FieldInfo.HasCustomAttributeOfType<SerializeField>(),
                 Filterer_FieldInfo.HasCustomAttributeOfType<SerializeFieldEX>(),
-                Filterer_FieldInfo.HasCustomAttributeOfType<StateFieldAttribute>(),
-                Filterer_FieldInfo.IsPublicField()
+                Filterer_FieldInfo.HasCustomAttributeOfType<StateSystemFieldAttribute>(),
+                Filterer_FieldInfo.IsGetPublic()
             );
         }
     }

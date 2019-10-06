@@ -11,11 +11,11 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public class GeneralUnityTyonDesignatedVariableProvider : TyonDesignatedVariableProvider_Manual
+    public class UnityExplicitTyonDesignatedVariableProvider : TyonDesignatedVariableProvider_Manual
     {
-        static public readonly GeneralUnityTyonDesignatedVariableProvider INSTANCE = new GeneralUnityTyonDesignatedVariableProvider();
+        static public readonly UnityExplicitTyonDesignatedVariableProvider INSTANCE = new UnityExplicitTyonDesignatedVariableProvider();
 
-        private GeneralUnityTyonDesignatedVariableProvider() : base(
+        private UnityExplicitTyonDesignatedVariableProvider() : base(
             new Variable_Operation<Timer, float>("duration", (t, v) => t.SetDurationInSeconds(v), t => t.GetDurationInSeconds())
         ) { }
     }

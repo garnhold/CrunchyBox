@@ -12,7 +12,7 @@ using CrunchyRecipe;
 namespace CrunchySandwich
 {
     [AttributeUsage(AttributeTargets.Field)]
-    public class StateFieldAttribute : Attribute
+    public class StateSystemFieldAttribute : Attribute
     {
     }
 }

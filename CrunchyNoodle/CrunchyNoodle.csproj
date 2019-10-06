@@ -159,7 +159,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Filterer\FieldInfo\FieldInfoFilters.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsSetPublic.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsGetPublic.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsDeclaredWithin.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsBackingField.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsTypicalValueType.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsTypicalReferenceType.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPrivateField.cs" />

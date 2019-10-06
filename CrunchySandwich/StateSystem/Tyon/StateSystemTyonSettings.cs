@@ -17,7 +17,9 @@ namespace CrunchySandwich
 
         private StateSystemTyonSettings() : base(
             StateSystemTyonDesignatedVariableProvider.INSTANCE,
-            GeneralUnityTyonDesignatedVariableProvider.INSTANCE
+            UnityExplicitTyonDesignatedVariableProvider.INSTANCE,
+
+            TyonTypeHandler_Substitute_ExplicitType<UnityEngine.Object, StateSystemPrefabReference>.INSTANCE
         )
         {
         }

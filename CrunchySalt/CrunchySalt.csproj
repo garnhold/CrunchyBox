@@ -52,6 +52,8 @@
     <Compile Include="Extensions\FieldBuilder\FieldBuilderExtensions.cs" />
     <Compile Include="Extensions\FieldBuilder\FieldBuilderExtensions_Foreign.cs" />
     <Compile Include="Extensions\FieldBuilder\FieldBuilderExtensions _TypeBuilder.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Access.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Backing.cs" />
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions_Compare.cs" />
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions _TypeBuilder.cs" />
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions_Foreign.cs" />
