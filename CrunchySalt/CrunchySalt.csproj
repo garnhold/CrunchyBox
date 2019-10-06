@@ -56,6 +56,18 @@
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions _TypeBuilder.cs" />
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions_Foreign.cs" />
     <Compile Include="Extensions\MethodBuilder\MethodBuilderExtensions.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_EX.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Prop.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Property.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo.cs">
+      <DependentUpon>TypeExtensions_PropertyInfo.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ForeignPropertyInfo\ForeignPropertyInfo.cs" />
+    <Compile Include="PropertyGetter\PropertyGetter.cs" />
+    <Compile Include="PropertySetter\PropertySetter.cs" />
     <Compile Include="TypeEX\MethodInfoEX\Extensions\MethodInfoExtensions.cs" />
     <Compile Include="TypeEX\MethodInfoEX\Extensions\MethodInfoExtensions_Prop.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Resolve.cs" />
@@ -291,8 +303,11 @@
     <Compile Include="TypeEX\MethodInfoEX\MethodInfoPass.cs" />
     <Compile Include="TypeEX\ParameterInfoEX\ParameterInfoEX_Quick.cs" />
     <Compile Include="TypeEX\ParameterInfoEX\ParameterInfoEX.cs" />
+    <Compile Include="TypeEX\PropertyInfoEX\PropertyInfoEX.cs" />
+    <Compile Include="TypeEX\PropertyInfoEX\PropertyInfoPass.cs" />
     <Compile Include="TypeEX\PropInfoEX\Extensions\PropInfoEXExtensions_Compare.cs" />
     <Compile Include="TypeEX\PropInfoEX\Extensions\PropInfoEXExtensions.cs" />
+    <Compile Include="TypeEX\PropInfoEX\PropInfoEXType.cs" />
     <Compile Include="TypeEX\PropInfoEX\PropInfoEX_MethodPair.cs" />
     <Compile Include="TypeEX\PropInfoEX\PropInfoEX_Field.cs" />
     <Compile Include="TypeEX\PropInfoEX\PropInfoEX.cs" />
@@ -335,6 +350,10 @@
     <Content Include="Extensions\Type\TypeExtensions_DynamicMethod_Convience.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TypeExtensions_DynamicMethod_Convience.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Type\TypeExtensions_PropertyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_PropertyInfo.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\Type\TypeExtensions_FieldInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

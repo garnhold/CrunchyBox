@@ -55,6 +55,11 @@ namespace CrunchySalt
             return field_info.IsPublic;
         }
 
+        public override PropInfoEXType GetPropInfoType()
+        {
+            return PropInfoEXType.Field;
+        }
+
         public override BasicValueSetter GetBasicValueSetter()
         {
             return field_info.GetBasicValueSetter();

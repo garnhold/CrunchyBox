@@ -28,5 +28,29 @@ namespace CrunchySalt
 
             return false;
         }
+
+        static public bool IsFieldBacked(this PropInfoEX item)
+        {
+            if (item.GetPropInfoType() == PropInfoEXType.Field)
+                return true;
+
+            return false;
+        }
+
+        static public bool IsPropertyMethodsBacked(this PropInfoEX item)
+        {
+            if (item.GetPropInfoType() == PropInfoEXType.PropertyMethods)
+                return true;
+
+            return false;
+        }
+
+        static public bool IsUnassociatedMethodsBacked(this PropInfoEX item)
+        {
+            if (item.GetPropInfoType() == PropInfoEXType.UnassociatedMethods)
+                return true;
+
+            return false;
+        }
     }
 }

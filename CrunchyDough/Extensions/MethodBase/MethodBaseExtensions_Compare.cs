@@ -72,6 +72,28 @@ namespace CrunchyDough
             return false;
         }
 
+        static public bool IsPropertySetMethod(this MethodBase item)
+        {
+            if (item.Name.StartsWith("set_"))
+                return true;
+
+            return false;
+        }
+        static public bool IsPropertyGetMethod(this MethodBase item)
+        {
+            if (item.Name.StartsWith("get_"))
+                return true;
+
+            return false;
+        }
+        static public bool IsPropertyMethod(this MethodBase item)
+        {
+            if (item.IsPropertySetMethod() || item.IsPropertyGetMethod())
+                return true;
+
+            return false;
+        }
+
         static public bool IsGenericMethod(this MethodBase item)
         {
             if (item.IsGenericMethod)

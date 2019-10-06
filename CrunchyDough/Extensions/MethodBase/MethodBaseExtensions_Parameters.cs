@@ -109,7 +109,8 @@ namespace CrunchyDough
                     .PairStrict(parameter_types)
 					.AreAll(p => p.item1.FillGenericArgumentsToHold(p.item2, generic_arguments)))
 				{
-					item = item.MakeGenericMethod(generic_arguments);
+					if (generic_arguments.AreAllNotNull())
+						item = item.MakeGenericMethod(generic_arguments);
 				}
             }
 
@@ -203,7 +204,8 @@ namespace CrunchyDough
                     .PairStrict(parameter_types)
 					.AreAll(p => p.item1.FillGenericArgumentsToHold(p.item2, generic_arguments)))
 				{
-					item = item.MakeGenericMethod(generic_arguments);
+					if (generic_arguments.AreAllNotNull())
+						item = item.MakeGenericMethod(generic_arguments);
 				}
             }
 

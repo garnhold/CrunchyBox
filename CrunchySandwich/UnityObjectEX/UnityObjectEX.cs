@@ -16,7 +16,7 @@ namespace CrunchySandwich
 		string GetPrefabId();
 	}
 
-	public class UnityObjectEXPrefabIdEditDistinctionAttribute : EditDistinctionAttribute { }
+	public class UnityObjectEXOnValidateEditDistinctionAttribute : EditDistinctionAttribute { }
 
 	public class MonoBehaviourEX : MonoBehaviour, ISerializationCallbackReceiver, SerializationCorruptable, UnityObjectEX
     {
@@ -40,10 +40,8 @@ namespace CrunchySandwich
 		{
 			if (ApplicationEX.GetInstance().IsEditing())
 			{
-				prefab_id = PlayEditDistinction<UnityObjectEXPrefabIdEditDistinctionAttribute>
+				prefab_id = PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
 					.ExecuteEditDistinction<string, UnityEngine.Object>(this);
-
-				PrefabLookupSystem.GetInstance().RegisterPrefab(prefab_id, this);
 			}
 		}
 
@@ -153,10 +151,8 @@ namespace CrunchySandwich
 		{
 			if (ApplicationEX.GetInstance().IsEditing())
 			{
-				prefab_id = PlayEditDistinction<UnityObjectEXPrefabIdEditDistinctionAttribute>
+				prefab_id = PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
 					.ExecuteEditDistinction<string, UnityEngine.Object>(this);
-
-				PrefabLookupSystem.GetInstance().RegisterPrefab(prefab_id, this);
 			}
 		}
 

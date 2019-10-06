@@ -36,6 +36,11 @@ namespace CrunchyDough
             return true;
         }
 
+        static public bool AreAllNotNull<T>(this IEnumerable<T> item)
+        {
+            return item.AreAll(i => i.IsNotNull());
+        }
+
         static public bool AreNone<T>(this IEnumerable<T> item, Predicate<T> predicate)
         {
             foreach (T sub_item in item)

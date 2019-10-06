@@ -1,0 +1,101 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CrunchyDough" #>
+<#@ output extension=".cs" #>
+<#
+Style[] styles = new Style[]{
+	new Style("Member", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly"),
+	new Style("Instance", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly"),
+	new Style("Static", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly")
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using CrunchyDough;
+
+namespace CrunchySalt
+{
+	static public class TypeExtensions_PropertyInfo
+	{
+	<#foreach(Style style in styles){#>
+
+		static private OperationCache<List<PropertyInfo>, Type> GET_IMMEDIATE_NATIVE_<#=style.name#>_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_NATIVE_<#=style.name#>_PROPERTYS", delegate(Type item){
+			return item.GetProperties(<#=style.binding_flags#>)
+				.ToList();
+		});
+		static public IEnumerable<PropertyInfo> GetImmediateNative<#=style.name#>Propertys(this Type item)
+		{
+			return GET_IMMEDIATE_NATIVE_<#=style.name#>_PROPERTYS.Fetch(item);
+		}
+
+		static private OperationCache<List<PropertyInfo>, Type> GET_NATIVE_<#=style.name#>_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_<#=style.name#>_PROPERTYS", delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediateNative<#=style.name#>Propertys())
+				.ToList();
+		});
+		static public IEnumerable<PropertyInfo> GetNative<#=style.name#>Propertys(this Type item)
+		{
+			return GET_NATIVE_<#=style.name#>_PROPERTYS.Fetch(item);
+		}
+		
+		static private OperationCache<List<PropertyInfoEX>, Type> GET_IMMEDIATE_<#=style.name#>_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_<#=style.name#>_PROPERTYS", delegate(Type item){
+			return item.GetImmediateNative<#=style.name#>Propertys()
+				.Convert(f => f.GetPropertyInfoEX())
+				.ToList();
+		});
+		static public IEnumerable<PropertyInfoEX> GetImmediate<#=style.name#>Propertys(this Type item)
+		{
+			return GET_IMMEDIATE_<#=style.name#>_PROPERTYS.Fetch(item);
+		}
+
+		static private OperationCache<List<PropertyInfoEX>, Type> GET_<#=style.name#>_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_<#=style.name#>_PROPERTYS", delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediate<#=style.name#>Propertys())
+				.ToList();
+		});
+		static public IEnumerable<PropertyInfoEX> Get<#=style.name#>Propertys(this Type item)
+		{
+			return GET_<#=style.name#>_PROPERTYS.Fetch(item);
+		}
+
+		static private OperationCache<PropertyInfoEX, Type, string> GET_IMMEDIATE_<#=style.name#>_PROPERTY = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_<#=style.name#>_PROPERTY", delegate(Type item, string name){
+			return item.GetProperty(name, <#=style.binding_flags#>)
+				.GetPropertyInfoEX();
+		});
+		static public PropertyInfoEX GetImmediate<#=style.name#>Property(this Type item, string name)
+		{
+			return GET_IMMEDIATE_<#=style.name#>_PROPERTY.Fetch(item, name);
+		}
+
+		static private OperationCache<PropertyInfoEX, Type, string> GET_<#=style.name#>_PROPERTY = ReflectionCache.Get().NewOperationCache("GET_<#=style.name#>_PROPERTY", delegate(Type item, string name){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediate<#=style.name#>Property(name))
+				.GetFirstNonNull();
+		});
+		static public PropertyInfoEX Get<#=style.name#>Property(this Type item, string name)
+		{
+			return GET_<#=style.name#>_PROPERTY.Fetch(item, name);
+		}
+	<#}#>
+	}
+}
+<#+
+public class Style
+{
+	public readonly string name;
+	public readonly string binding_flags;
+
+	public Style(string n, string b)
+	{
+		name = n;
+		binding_flags = b;
+	}
+}
+#>

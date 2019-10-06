@@ -26,7 +26,7 @@ namespace CrunchyDough
                 return true;
             }
 
-            if (item.IsGenericTypelessClass() && to_hold.IsGenericTypedClass())
+            if (item.IsGenericTypelessClass())
             {
                 to_hold = to_hold.GetTypeAndAllBaseTypesAndInterfaces(DetailDirection.SpecificToBasic)
                     .Narrow(t => t.IsGenericClass())

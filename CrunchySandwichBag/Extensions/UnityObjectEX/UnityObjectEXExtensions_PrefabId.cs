@@ -11,13 +11,16 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [UnityObjectEXPrefabIdEditDistinction]
+    [UnityObjectEXOnValidateEditDistinction]
     static public class UnityObjectEXExtensions_PrefabId
     {
-        [UnityObjectEXPrefabIdEditDistinction]
-        static public string GetPrefabId(UnityEngine.Object item)
+        [UnityObjectEXOnValidateEditDistinction]
+        static public string OnValidate(UnityEngine.Object item)
         {
-            return item.GetAssetGUID();
+            string prefab_id = item.GetAssetGUID();
+
+            PrefabLookup.GetInstance().RegisterPrefab(prefab_id, item);
+            return prefab_id;
         }
     }
 }
