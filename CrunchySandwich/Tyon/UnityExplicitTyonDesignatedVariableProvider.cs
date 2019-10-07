@@ -11,10 +11,9 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
+    [UnityTyonSettingComponent]
     public class UnityExplicitTyonDesignatedVariableProvider : TyonDesignatedVariableProvider_Manual
     {
-        static public readonly UnityExplicitTyonDesignatedVariableProvider INSTANCE = new UnityExplicitTyonDesignatedVariableProvider();
-
         private UnityExplicitTyonDesignatedVariableProvider() : base(
             new Variable_Operation<Timer, float>("duration", (t, v) => t.SetDurationInSeconds(v), t => t.GetDurationInSeconds())
         ) { }

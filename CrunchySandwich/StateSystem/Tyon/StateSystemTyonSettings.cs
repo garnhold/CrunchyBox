@@ -11,13 +11,12 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public class StateSystemTyonSettings : TyonSettings
+    public class StateSystemTyonSettings : TyonSettings_Distributed<UnityTyonSettingComponentAttribute>
     {
         static public readonly StateSystemTyonSettings INSTANCE = new StateSystemTyonSettings();
 
         private StateSystemTyonSettings() : base(
             StateSystemTyonDesignatedVariableProvider.INSTANCE,
-            UnityExplicitTyonDesignatedVariableProvider.INSTANCE,
 
             TyonTypeHandler_Substitute_ExplicitType<UnityEngine.Object, StateSystemPrefabReference>.INSTANCE
         )

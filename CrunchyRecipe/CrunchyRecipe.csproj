@@ -52,6 +52,7 @@
     <Compile Include="Tyon\antlr4\TyonLexer.cs" />
     <Compile Include="Tyon\antlr4\TyonParser.cs" />
     <Compile Include="Tyon\antlr4\TyonVisitor.cs" />
+    <Compile Include="Tyon\Settings\Derivations\TyonSettings_Distributed.cs" />
     <Compile Include="Tyon\TyonValue_Real.cs" />
     <Compile Include="Tyon\TyonValue_Integer.cs" />
     <Compile Include="Tyon\TyonValue_Type.cs" />
@@ -94,8 +95,8 @@
     <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Manual.cs" />
     <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Fields_Marked.cs" />
     <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider.cs" />
-    <Compile Include="Tyon\TyonSettingsComponent.cs" />
-    <Compile Include="Tyon\TyonSettings.cs" />
+    <Compile Include="Tyon\Settings\TyonSettingsComponent.cs" />
+    <Compile Include="Tyon\Settings\TyonSettings.cs" />
     <Compile Include="Tyon\TyonSyntaxException.cs" />
     <Compile Include="Tyon\TyonType.cs" />
     <Compile Include="Tyon\TyonType_Direct_Normal.cs" />
