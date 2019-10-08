@@ -201,6 +201,9 @@
     <Compile Include="InspectorDisplayAttribute\InspectorDisplayAttribute.cs" />
     <Compile Include="PrefabLookup\PrefabLookup.cs" />
     <Compile Include="RepresentationController\RepresentationController.cs" />
+    <Compile Include="Scene\Extensions\SceneEXExtensions_Activate.cs" />
+    <Compile Include="Scene\Extensions\SceneEXExtensions.cs" />
+    <Compile Include="Scene\SceneEX.cs" />
     <Compile Include="Scriptlet\Extensions\ScriptletExtensions.cs" />
     <Compile Include="Scriptlet\Targeted\Extensions\TargetedScriptletExtensions.cs" />
     <Compile Include="Scriptlet\Targeted\TargetedScriptlet.cs" />
@@ -216,6 +219,7 @@
     <Compile Include="Signal\Ease\Signal_EaseShape_Linear.cs" />
     <Compile Include="Signal\Ease\Signal_EaseShape_Quad.cs" />
     <Compile Include="Signal\Ease\Signal_EaseShape.cs" />
+    <Compile Include="Signal\Operation\Signal_Transform.cs" />
     <Compile Include="Signal\Ease\Signal_Ease_InOut.cs" />
     <Compile Include="Signal\Ease\Signal_Ease.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Time.cs" />
@@ -646,8 +650,9 @@
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Mesh.cs" />
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Fantize.cs" />
     <Compile Include="Time\Timer\GameTimer.cs" />
-    <Compile Include="UnityObjectEX\Tyon\UnityExplicitTyonDesignatedVariableProvider.cs" />
+    <Compile Include="Tyon\UnityExplicitTyonDesignatedVariableProvider.cs" />
     <Compile Include="UnityObjectEX\Tyon\UnityTyonDesignatedVariableProvider.cs" />
+    <Compile Include="Tyon\UnityTyonSettingComponentAttribute.cs" />
     <Compile Include="WordWrapAttribute\WordWrapAttribute.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions_Schedule.cs" />
@@ -1041,7 +1046,6 @@
     <Compile Include="RectTree\Extensions\RectTreeExtensions_Within.cs" />
     <Compile Include="ReflectionSystemPrerunner\ReflectionSystemPrerunner.cs" />
     <Compile Include="RenderEffect\RenderEffect.cs" />
-    <Compile Include="Scene\SceneEX.cs" />
     <Compile Include="ScreenAnchor\Extensions\ScreenAnchorExtensions_Interpolate.cs" />
     <Compile Include="ScreenAnchor\Extensions\ScreenAnchorExtensions.cs" />
     <Compile Include="ScreenAnchor\ScreenAnchor.cs" />

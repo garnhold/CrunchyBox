@@ -27,16 +27,10 @@ namespace CrunchySandwichBag
             MarkedMethods<CodeGeneratorAttribute>
                 .GetFilteredMarkedStaticMethods(
                     Filterer_MethodInfo.HasNoEffectiveParameters()
-                ).Process(delegate(MethodInfoEX method) {
-                    try
-                    {
-                        method.Invoke(null, Empty.Array<object>());
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.LogException(ex);
-                    }
-                });
+                ).ProcessSandboxed(
+                    m => m.Invoke(null, Empty.Array<object>()),
+                    e => Debug.LogException(e)
+                );
 
             if(REGENERATION_COUNT >= 1)
                 AssetDatabase.Refresh();

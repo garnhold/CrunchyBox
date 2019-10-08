@@ -12,7 +12,7 @@ using CrunchySandwich;
 namespace CrunchySandwichBag
 {
     [EditorGUIElementForType(typeof(AudioClip), true)]
-    public class EditorGUIElement_EditPropertySingleValueBrowse_AudioClip : EditorGUIElement_EditPropertySingleValueBrowse<AudioClip>
+    public class EditorGUIElement_EditPropertySingleValue_Browse_AudioClip : EditorGUIElement_EditPropertySingleValue_Browse<AudioClip>
     {
         protected override AudioClip DrawValueInternal(Rect rect, AudioClip value)
         {
@@ -41,6 +41,6 @@ namespace CrunchySandwichBag
             return container;
         }
 
-        public EditorGUIElement_EditPropertySingleValueBrowse_AudioClip(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValue_Browse_AudioClip(EditProperty_Single_Value p) : base(p) { }
     }
 }

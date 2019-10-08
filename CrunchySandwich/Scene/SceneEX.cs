@@ -11,27 +11,32 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    [Serializable]
-    public class SceneEX : ISerializationCallbackReceiver
-    {
-        [SerializeField]private UnityEngine.Object scene;
-        [SerializeField][HideInInspector]private string name;
+    public class SceneEXOnValidateEditDistinctionAttribute : EditDistinctionAttribute { }
 
-        public void OnAfterDeserialize() { }
-        public void OnBeforeSerialize()
+    public class SceneEX : CustomAsset
+    {
+        [SerializeFieldEX]private UnityEngine.Object scene_asset;
+        [SerializeFieldEX][InspectorDisplay]private string path;
+
+        protected override void OnValidateInternal()
         {
-            if (scene != null)
-                name = scene.name;
+            PlayEditDistinction<SceneEXOnValidateEditDistinctionAttribute>
+                .ExecuteNoReturn(t => { }, this);
+        }
+
+        public void Initialize(UnityEngine.Object s)
+        {
+            scene_asset = s;
         }
 
         public void LoadScene()
         {
-            SceneManager.LoadScene(name);
+            SceneManager.LoadScene(path);
         }
 
-        public string GetName()
+        public bool IsSceneLoaded()
         {
-            return name;
+            return SceneManager.GetSceneByPath(path).IfNotNull(s => s.isLoaded);
         }
     }
 }

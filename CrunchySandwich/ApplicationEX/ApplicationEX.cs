@@ -68,7 +68,7 @@ namespace CrunchySandwich
         {
             is_playing = Application.isPlaying;
 
-            deferred_processes.Process(p => p());
+            deferred_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
             deferred_processes.Clear();
         }
 
@@ -89,30 +89,30 @@ namespace CrunchySandwich
         public void Start()
         {
             StartGeneral();
-            start_processes.Process(p => p());
+            start_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
         }
 
         public void StartInEditor()
         {
             StartGeneral();
-            start_in_editor_processes.Process(p => p());
+            start_in_editor_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
         }
 
         public void Update()
         {
             UpdateGeneral();
-            update_processes.Process(p => p());
+            update_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
         }
 
         public void UpdateInEditor()
         {
             UpdateGeneral();
-            update_in_editor_processes.Process(p => p());
+            update_in_editor_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
         }
 
         public void DrawGizmos()
         {
-            draw_gizmos_processes.Process(p => p());
+            draw_gizmos_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
             draw_gizmos_processes.Clear();
         }
 

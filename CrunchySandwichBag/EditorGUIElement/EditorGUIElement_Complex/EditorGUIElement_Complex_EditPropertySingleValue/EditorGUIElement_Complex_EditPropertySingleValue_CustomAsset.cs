@@ -49,7 +49,7 @@ namespace CrunchySandwichBag
                     case AssetType.None:
                     case AssetType.External:
                         type_container.AddWeightedChild(1.0f,
-                            new EditorGUIElement_EditPropertySingleValueSelector_Asset(property, false)
+                            new EditorGUIElement_EditPropertySingleValue_Selector_Asset(property, false)
                         );
                         break;
 

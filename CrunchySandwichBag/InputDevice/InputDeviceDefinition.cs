@@ -45,6 +45,8 @@ namespace CrunchySandwichBag
             );
 
             writer.Write("public class InputDevice : InputDeviceBase", delegate() {
+                writer.Write("private readonly int device_id;");
+
                 for (int i = 1; i <= max_number_devices; i++)
                     writer.Write("static public readonly InputDevice Device" + i + " = new InputDevice(" + i + ");");
 
@@ -62,7 +64,9 @@ namespace CrunchySandwichBag
                         writer.Write("yield return Device" + i + ";");
                 });
 
-                writer.Write("private InputDevice(int device_id)", delegate() {
+                writer.Write("private InputDevice(int id)", delegate() {
+                    writer.Write("device_id = id;");
+
                     components.Process(c => c.GenerateClassConstructor(builder, "device_id"));
                 });
 
@@ -76,6 +80,10 @@ namespace CrunchySandwichBag
                 GenerateGetComponentFunction<InputDeviceDefinitionComponent_Stick>(builder);
 
                 components.Process(c => c.GenerateClassMembers(builder));
+
+                writer.Write("public int GetDeviceId()", delegate() {
+                    writer.Write("return device_id;");
+                });
             });
         }
 

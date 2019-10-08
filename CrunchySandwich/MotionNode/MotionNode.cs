@@ -13,13 +13,13 @@ namespace CrunchySandwich
     {
         [SerializeFieldEX][PolymorphicField]private Signal signal;
 
-        private ComponentCache_Upward<MotionNode> parent;
+        private ComponentCache_UpwardFromParent<MotionNode> parent;
 
         private float motion_value;
 
         private void Start()
         {
-            parent = new ComponentCache_Upward<MotionNode>(this);
+            parent = new ComponentCache_UpwardFromParent<MotionNode>(this);
         }
 
         private void Update()

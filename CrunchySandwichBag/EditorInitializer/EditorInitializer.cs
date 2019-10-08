@@ -23,16 +23,10 @@ namespace CrunchySandwichBag
             MarkedMethods<EditorInitializerAttribute>
                 .GetFilteredMarkedStaticMethods(
                     Filterer_MethodInfo.HasNoEffectiveParameters()
-                ).Process(delegate(MethodInfoEX method) {
-                    try
-                    {
-                        method.Invoke(null, Empty.Array<object>());
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.LogException(ex);
-                    }
-                });
+                ).ProcessSandboxed(
+                    m => m.Invoke(null, Empty.Array<object>()),
+                    e => Debug.LogException(e)
+                );
         }
 
         static EditorInitializer()

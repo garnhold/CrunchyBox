@@ -49,23 +49,23 @@ namespace CrunchySandwich
         public void Start()
         {
             Refresh();
-            GetSubsystems().Process(s => s.Start());
+            GetSubsystems().ProcessSandboxed(s => s.Start(), e => Debug.LogException(e));
         }
 
         public void StartInEditor()
         {
             Refresh();
-            GetSubsystems().Process(s => s.StartInEditor());
+            GetSubsystems().ProcessSandboxed(s => s.StartInEditor(), e => Debug.LogException(e));
         }
 
         public void Update()
         {
-            GetSubsystems().Process(s => s.Update());
+            GetSubsystems().ProcessSandboxed(s => s.Update(), e => Debug.LogException(e));
         }
 
         public void UpdateInEditor()
         {
-            GetSubsystems().Process(s => s.UpdateInEditor());
+            GetSubsystems().ProcessSandboxed(s => s.UpdateInEditor(), e => Debug.LogException(e));
         }
 
         public void Refresh()

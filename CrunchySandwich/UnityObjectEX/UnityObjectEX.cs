@@ -30,6 +30,8 @@ namespace CrunchySandwich
 
 		[SerializeField][InspectorDisplay][HideInInspector]private string prefab_id;
 
+		protected virtual void OnValidateInternal() { }
+
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -40,6 +42,8 @@ namespace CrunchySandwich
 		{
 			PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
 				.ExecuteNoReturn(t => { }, this);
+
+			OnValidateInternal();
 		}
 
 		private void PackTyon()
@@ -138,6 +142,8 @@ namespace CrunchySandwich
 
 		[SerializeField][InspectorDisplay][HideInInspector]private string prefab_id;
 
+		protected virtual void OnValidateInternal() { }
+
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -148,6 +154,8 @@ namespace CrunchySandwich
 		{
 			PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
 				.ExecuteNoReturn(t => { }, this);
+
+			OnValidateInternal();
 		}
 
 		private void PackTyon()

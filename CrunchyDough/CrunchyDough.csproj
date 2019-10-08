@@ -83,6 +83,7 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertLoopedNeighbors.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Prepare.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Group.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessSandboxed.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_FindType.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_RatingAll.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />

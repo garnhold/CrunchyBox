@@ -15,7 +15,7 @@ namespace CrunchySandwichBag
     {
         private EditProperty_Single_Value property;
 
-        protected abstract T DrawValueInternal(Rect rect, T value);
+        protected abstract void DrawUnifiedElementInternal(Rect rect, T old_value);
 
         protected override void DrawElementInternal(Rect view)
         {
@@ -23,10 +23,7 @@ namespace CrunchySandwichBag
 
             if (property.TryGetContentValues<T>(out old_value, true))
             {
-                T new_value = DrawValueInternal(GetElementRect(), old_value);
-
-                if (new_value.NotEqualsEX(old_value))
-                    property.SetContentValues(new_value);
+                DrawUnifiedElementInternal(GetElementRect(), old_value);
             }
             else
             {
