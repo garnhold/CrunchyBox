@@ -16,5 +16,10 @@ namespace CrunchySandwich
         {
             return RectExtensions.CreateCenterRect(Vector2.zero, item.GetTextureSize());
         }
+
+        static public Rect GetNormalizedTextureRect(this Sprite item)
+        {
+            return item.rect.GetNormalized(item.texture.GetSize());
+        }
     }
 }

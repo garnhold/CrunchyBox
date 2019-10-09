@@ -164,6 +164,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Grid.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Button.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\ITilemapTilemap\ITilemapTilemapExtensions_Neighbors.cs">
       <DependentUpon>ITilemapTilemapExtensions_Neighbors.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -176,6 +178,7 @@
     </Compile>
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviour_EditMode.cs" />
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviour.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_Normalize.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Extrude.cs" />
     <Compile Include="Extensions\ScriptableObject\ScriptableObjectExtensions_EditMode.cs" />
     <Compile Include="Extensions\ScriptableObject\ScriptableObjectExtensions.cs" />
@@ -200,6 +203,8 @@
     <Compile Include="Finder\Finder.cs" />
     <Compile Include="InspectorDisplayAttribute\InspectorDisplayAttribute.cs" />
     <Compile Include="PrefabLookup\PrefabLookup.cs" />
+    <Compile Include="GUIControl\GUIControl.cs" />
+    <Compile Include="GUIControl\GUIControl_MouseCapture.cs" />
     <Compile Include="RepresentationController\RepresentationController.cs" />
     <Compile Include="Scene\Extensions\SceneEXExtensions_Activate.cs" />
     <Compile Include="Scene\Extensions\SceneEXExtensions.cs" />
@@ -219,7 +224,7 @@
     <Compile Include="Signal\Ease\Signal_EaseShape_Linear.cs" />
     <Compile Include="Signal\Ease\Signal_EaseShape_Quad.cs" />
     <Compile Include="Signal\Ease\Signal_EaseShape.cs" />
-    <Compile Include="Signal\Operation\Signal_Transform.cs" />
+    <Compile Include="Signal\Transform\Signal_Transform.cs" />
     <Compile Include="Signal\Ease\Signal_Ease_InOut.cs" />
     <Compile Include="Signal\Ease\Signal_Ease.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Time.cs" />

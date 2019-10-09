@@ -34,12 +34,20 @@ namespace CrunchySandwich
             NeighborMask mask = tilemap.GetNeighborMask(position, t => t.EqualsEX(this));
 
             tileData.colliderType = collider_type;
+            tileData.sprite = GetApplicableSprite(mask, position.GetHashCode());
+        }
 
-            tileData.sprite = sub_tiles
+        public Sprite GetApplicableSprite(NeighborMask mask, int hash)
+        {
+            return sub_tiles
                 .Narrow(t => t.GetMask().CanBeUsedFor(mask))
                 .FindAllHighestRated(t => t.GetMask().GetComplexity())
-                .GetACongruent(position.GetHashCode())
+                .GetACongruent(hash)
                 .IfNotNull(t => t.GetSprite());
+        }
+        public Sprite GetApplicableSprite(NeighborMask mask)
+        {
+            return GetApplicableSprite(mask, 0);
         }
     }
 }

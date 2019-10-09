@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace CrunchySandwich
 {
-    static public partial class GUIExtensions_Label
+    static public partial class GUIExtensions
     {
         static public void AutoLabel(Rect rect, GUIContent content, out Rect actual_rect)
         {

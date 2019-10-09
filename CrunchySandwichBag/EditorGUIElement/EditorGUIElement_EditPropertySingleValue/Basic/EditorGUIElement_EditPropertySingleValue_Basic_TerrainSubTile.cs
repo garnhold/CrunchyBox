@@ -11,42 +11,45 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [EditorGUIElementForType(typeof(NeighborMask), true)]
-    public class EditorGUIElement_EditPropertySingleValue_Basic_NeighborMask : EditorGUIElement_EditPropertySingleValue_Basic<NeighborMask>
+    [EditorGUIElementForType(typeof(TerrainSubTile), true)]
+    public class EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile : EditorGUIElement_EditPropertySingleValue_Basic<TerrainSubTile>
     {
         protected override float DoPlanInternal()
         {
-            return LINE_HEIGHT * 3.0f;
+            return LINE_HEIGHT * 8.0f;
         }
 
-        protected override NeighborMask DrawValueInternal(Rect rect, NeighborMask value)
+        protected override TerrainSubTile DrawValueInternal(Rect rect, TerrainSubTile value)
         {
+            Sprite sprite = value.GetSprite();
+            NeighborMask mask = value.GetMask();
+
             new Rect(rect.position, Vector2.one.GetFilledDimension(rect.GetSize()))
                 .ProcessGrid(3, 3, delegate(int x, int y, Rect sub_rect) {
                     if(x == 1 && y == 1)
                     {
-                        GUIExtensions.DrawRect(sub_rect, Color.black);
+                        sprite = EditorGUIExtensions.SpriteDropZone(sub_rect, sprite);
                     }
                     else
                     {
                         int dx = x - 1;
                         int dy = y - 1;
 
-                        bool has = value.HasBitAt(dx, dy);
+                        bool has = mask.HasBitAt(dx, dy);
 
                         if (GUIExtensions.ColorButton(sub_rect, has.ConvertBool(Color.black, Color.clear)))
                         {
                             if (has)
-                                value = value.GetWithoutBitAt(dx, dy);
+                                mask = mask.GetWithoutBitAt(dx, dy);
                             else
-                                value = value.GetWithBitAt(dx, dy);
+                                mask = mask.GetWithBitAt(dx, dy);
                         }
                     }
                 });
 
-            return value;
+            return new TerrainSubTile(mask, sprite);
         }
 
-        public EditorGUIElement_EditPropertySingleValue_Basic_NeighborMask(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile(EditProperty_Single_Value p) : base(p) { }
     }
 }

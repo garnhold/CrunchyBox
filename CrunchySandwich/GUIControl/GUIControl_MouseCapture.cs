@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEditor;
 
 using CrunchyDough;
 using CrunchyBun;
-using CrunchySandwich;
 
-namespace CrunchySandwichBag
+namespace CrunchySandwich
 {
     public class GUIControl_MouseCapture : GUIControl
     {
@@ -17,11 +15,11 @@ namespace CrunchySandwichBag
 
         public void Update(Rect rect, TryProcess<EventType, Event> process)
         {
-            base.Update(delegate(EventType type, Event vnt) {
+            base.Update(delegate(EventType type, Event evt) {
                 switch (type)
                 {
                     case EventType.MouseDown:
-                        if (rect.Contains(vnt.mousePosition))
+                        if (rect.Contains(evt.mousePosition))
                             CaptureControl();
 
                         break;
@@ -31,19 +29,42 @@ namespace CrunchySandwichBag
                         break;
                 }
 
-                if (vnt.isMouse && IsControlCaptured())
-                    return process(type, vnt);
+                if (evt.isMouse && IsControlCaptured())
+                    return process(type, evt);
 
                 return false;
             });
         }
 
+        public void UpdateClick(Rect rect, Process process)
+        {
+            Update(rect, delegate(EventType type, Event evt) {
+                if (evt.type == EventType.MouseUp)
+                {
+                    process();
+                    return true;
+                }
+
+                return false;
+            });
+        }
+        public bool UpdateClick(Rect rect)
+        {
+            bool state = false;
+
+            UpdateClick(rect, delegate() {
+                state = true;
+            });
+
+            return state;
+        }
+
         public void UpdatePoint(Rect rect, Process<int, Vector2> process)
         {
-            Update(rect, delegate(EventType type, Event vnt) {
+            Update(rect, delegate(EventType type, Event evt) {
                 process(
-                    vnt.button,
-                    (vnt.mousePosition - rect.min).BindBetween(Vector2.zero, rect.GetSize())
+                    evt.button,
+                    (evt.mousePosition - rect.min).BindBetween(Vector2.zero, rect.GetSize())
                 );
                 return true;
             });

@@ -154,6 +154,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIFlowElement.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay_Text.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValue_Browse.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_AudioClip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Combo\EditorGUIElement_EditPropertySingleValue_Combo.cs" />
@@ -213,19 +214,17 @@
     <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions.cs" />
     <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions_Labeled.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_BurstAudioClip.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DropZone.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextDisplay.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions_Size.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
-    <Compile Include="Extensions\SceneAsset\SceneAssetExtensions_SceneEX.cs" />
-    <Compile Include="Extensions\SceneAsset\SceneAssetExtensions.cs" />
-    <Compile Include="Extensions\SceneEX\SceneEXExtensions.cs" />
-    <Compile Include="Extensions\SceneEX\SceneEXExtensions_OnValidate.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions.cs" />
     <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions_OnValidate.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
+    <Compile Include="GUIControl\GUIControl_DropCapture.cs" />
     <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single.cs" />
@@ -246,7 +245,6 @@
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions_LabelWidth.cs" />
     <Compile Include="Extensions\EditorGUIUtility\EditorGUIUtilityExtensions.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DropdownButton.cs" />
-    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Focus.cs">
       <DependentUpon>GameObjectComponentExtensions_Focus.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -273,7 +271,6 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_Collider.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Importer.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_GetValue.cs" />
-    <Compile Include="GUIControl\GUIControl_MouseCapture.cs" />
     <Compile Include="PrefabsSettings\DeployablePrefabGroup.cs" />
     <Compile Include="PrefabsSettings\PrefabsSettings.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_Complex\EditorSceneElement_Complex_EditGadget.cs" />
@@ -399,7 +396,6 @@
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Cohabitants.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Save.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Spawn.cs" />
-    <Compile Include="GUIControl\GUIControl.cs" />
     <Compile Include="CodeGenerator\CodeGenerator.cs" />
     <Compile Include="InputDevice\InputDeviceDefinition.cs" />
     <Compile Include="InputDevice\InputDeviceDefinitionComponent.cs" />
@@ -501,6 +497,7 @@
     <Compile Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Path.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset.cs" />
+    <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\SceneEXDrawer.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\SortingLayerEXDrawer.cs" />
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\LayerEXDrawer.cs" />
     <Compile Include="ReflectedObject\ReflectedAction\ReflectedAction.cs" />

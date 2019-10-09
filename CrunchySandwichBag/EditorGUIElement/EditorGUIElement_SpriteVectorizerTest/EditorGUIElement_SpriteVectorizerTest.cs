@@ -42,7 +42,7 @@ namespace CrunchySandwichBag
                         .Convert(l => l.Convert(p => p.GetWithFlippedY().GetComponentDivide(divisor) + rect.center).ToList())
                         .ToList();
 
-                    EditorGUIExtensions.DrawSprite(rect, sprite);
+                    GUIExtensions.DrawSprite(rect, sprite);
                     GUI.Label(info_rect, "Number Vertexs: " + paths.Convert(p => p.Count).Sum());
 
                     GUI.color = Color.white;
