@@ -37,7 +37,7 @@ namespace CrunchySandwichBag
 
                         bool has = mask.HasBitAt(dx, dy);
 
-                        if (GUIExtensions.ColorButton(sub_rect, has.ConvertBool(Color.black, Color.clear)))
+                        if (GUIExtensions.ColorButton(sub_rect, has.ConvertBool(Color.black, Color.gray)))
                         {
                             if (has)
                                 mask = mask.GetWithoutBitAt(dx, dy);

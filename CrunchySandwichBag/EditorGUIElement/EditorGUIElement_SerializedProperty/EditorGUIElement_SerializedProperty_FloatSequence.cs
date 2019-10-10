@@ -20,7 +20,6 @@ namespace CrunchySandwichBag
 
         private Rect border_rect;
         private Rect background_rect;
-        private GUIControl_MouseCapture percent_area;
 
         protected override float DoPlanInternal()
         {
@@ -58,16 +57,18 @@ namespace CrunchySandwichBag
                 Vector2 p3 = new Vector2(x, y - heights.item2);
                 Vector2 p4 = new Vector2(x, y);
 
-                EditorGUIExtensions.DrawQuad(p1, p2, p3, p4, Color.cyan);
+                GUIExtensions.DrawQuad(p1, p2, p3, p4, Color.cyan);
             }
 
-            percent_area.UpdatePercentPoint(background_rect, delegate(int button, Vector2 position) {
-                int index = (int)(GetSerializedProperty().arraySize * position.x);
-                float magnitude = 1.0f - position.y;
+            Vector2 percent;
+            if (GUIExtensions.MousePercentArea(background_rect, out percent, true))
+            {
+                int index = (int)(GetSerializedProperty().arraySize * percent.x);
+                float magnitude = 1.0f - percent.y;
 
                 if (GetSerializedProperty().IsArrayIndexValid(index))
                     GetSerializedProperty().GetArrayElementAtIndex(index).floatValue = magnitude.ConvertFromPercentToRange(min_value, max_value);
-            });
+            }
         }
 
         public EditorGUIElement_SerializedProperty_FloatSequence(SerializedProperty s, float min, float max, float h) : base(s)
@@ -76,8 +77,6 @@ namespace CrunchySandwichBag
             max_value = max;
 
             height = h;
-
-            percent_area = new GUIControl_MouseCapture();
         }
 
         public EditorGUIElement_SerializedProperty_FloatSequence(SerializedProperty s, float min, float max) : this(s, min, max, EditorGUIElement_Single.DEFAULT_HEIGHT * 3.0f) { }

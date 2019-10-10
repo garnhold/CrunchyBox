@@ -10,11 +10,6 @@ namespace CrunchySandwich
 {
     static public partial class GUIExtensions
     {
-        static public bool ZoneButton(Rect rect)
-        {
-            return new GUIControl_MouseCapture().UpdateClick(rect);
-        }
-
         static public bool ColorButton(Rect rect, Color color)
         {
             Rect inner_rect = rect.GetShrunk(1.0f);
@@ -23,7 +18,7 @@ namespace CrunchySandwich
             DrawRect(inner_rect, Color.gray);
             DrawRect(inner_rect, color);
 
-            return ZoneButton(rect);
+            return ClickZone(rect);
         }
 
         static public bool TextureButton(Rect rect, Texture2D texture)
@@ -34,7 +29,7 @@ namespace CrunchySandwich
             DrawRect(inner_rect, Color.gray);
             GUI.DrawTexture(inner_rect, texture);
 
-            return ZoneButton(rect);
+            return ClickZone(rect);
         }
 
         static public bool SpriteButton(Rect rect, Sprite sprite)
@@ -45,7 +40,7 @@ namespace CrunchySandwich
             DrawRect(inner_rect, Color.gray);
             GUIExtensions.DrawSprite(inner_rect, sprite);
 
-            return ZoneButton(rect);
+            return ClickZone(rect);
         }
     }
 }

@@ -13,16 +13,23 @@ namespace CrunchySandwichBag
     {
         static public object DropZone(Rect rect, object value, Type type)
         {
-            new GUIControl_DropCapture(DragAndDropVisualMode.Copy).UpdateSingle(
-                rect,
-                o => o.CanObjectBeTreatedAs(type),
-                o => value = o
-            );
+            UnityEngine.Object dragging = DragAndDrop.objectReferences.GetFirst();
+            GUIControlHandle handle = GUIExtensions.GetControlHandle(FocusType.Passive);
 
-            new GUIControl_MouseCapture().UpdateClick(
-                rect,
-                () => Selection.activeObject = value as UnityEngine.Object
-            );
+            if (rect.Contains(handle.GetEvent().mousePosition) && dragging.CanObjectBeTreatedAs(type))
+            {
+                switch (handle.GetEventType())
+                {
+                    case EventType.DragUpdated:
+                        DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+                        break;
+
+                    case EventType.DragPerform:
+                        DragAndDrop.AcceptDrag();
+                        handle.UseEvent();
+                        return dragging;
+                }
+            }
 
             return value;
         }

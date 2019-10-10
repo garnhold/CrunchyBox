@@ -15,8 +15,6 @@ namespace CrunchySandwichBag
 {
     public class EditorSceneElement_EditGadgetInstance_Paintable : EditorSceneElement_EditGadgetInstance
     {
-        private GUIControl control;
-
         private NowMesh brush_now_mesh;
         private NowMesh surface_now_mesh;
 
@@ -25,6 +23,8 @@ namespace CrunchySandwichBag
 
         protected override void DrawInternal()
         {
+            GUIControlHandle handle = GUIExtensions.GetControlHandle(FocusType.Passive);
+
             Texture2D texture = this.GetContents<Texture2D>();
             Vector3 position = this.GetAuxContents<Vector3>("position");
             Quaternion rotation = this.GetAuxContents<Quaternion>("rotation");
@@ -36,64 +36,58 @@ namespace CrunchySandwichBag
 
             Matrix4x4 transform = Matrix4x4.TRS(position, rotation, size.GetSpacar(1.0f));
             Matrix4x4 inv_transform = transform.inverse;
+            
+            Vector3 world_point = Camera.current.ScreenToWorldPlanePoint(
+                transform.MultiplyPlane(PlaneExtensions.CreateNormalAndPoint(new Vector3(0.0f, 0.0f, 1.0f), Vector3.zero)),
+                handle.GetEvent().mousePosition.ConvertFromGUIToScreen()
+            );
 
-            control.Update(delegate(EventType event_type, Event vnt) {
-                Vector3 world_point = Camera.current.ScreenToWorldPlanePoint(
-                    transform.MultiplyPlane(PlaneExtensions.CreateNormalAndPoint(new Vector3(0.0f, 0.0f, 1.0f), Vector3.zero)),
-                    vnt.mousePosition.ConvertFromGUIToScreen()
-                );
+            Vector3 local_point = inv_transform.MultiplyPoint(world_point);
+            Vector2 texture_point = local_point.GetComponentMultiply(texture.GetSize()).GetPlanar() + 0.5f * texture.GetSize();
 
-                Vector3 local_point = inv_transform.MultiplyPoint(world_point);
-                Vector2 texture_point = local_point.GetComponentMultiply(texture.GetSize()).GetPlanar() + 0.5f * texture.GetSize();
+            Vector3 brush_size = new Vector2(Painter.GetInstance().GetBrushSize(), Painter.GetInstance().GetBrushSize())
+                .GetComponentDivide(texture.GetSize())
+                .GetComponentMultiply(size)
+                .GetSpacar(1.0f);
 
-                Vector3 brush_size = new Vector2(Painter.GetInstance().GetBrushSize(), Painter.GetInstance().GetBrushSize())
-                    .GetComponentDivide(texture.GetSize())
-                    .GetComponentMultiply(size)
-                    .GetSpacar(1.0f);
+            if (handle.IsControlCaptured() && is_overlay_enabled)
+            {
+                surface_now_mesh.GetMaterial().SetMainTexture(texture);
+                surface_now_mesh.Draw(transform);
+            }
 
-                if (control.IsControlCaptured() && is_overlay_enabled)
+            brush_now_mesh.Draw(world_point, rotation, brush_size);
+
+            if (handle.GetEventType().IsMouseRelated() && handle.GetEvent().button == 0)
+            {
+                if (handle.GetEventType() == EventType.MouseDown)
                 {
-                    surface_now_mesh.GetMaterial().SetMainTexture(texture);
-                    surface_now_mesh.Draw(transform);
-                }
+                    handle.CaptureControl();
 
-                brush_now_mesh.Draw(world_point, rotation, brush_size);
-
-                if (vnt.isMouse && vnt.button == 0)
-                {
-                    if (event_type == EventType.MouseDown)
-                    {
-                        control.CaptureControl();
-
-                        this.Execute("MouseDown");
-                        last_texture_point = texture_point;
-                    }
-
-                    if (event_type == EventType.MouseUp)
-                    {
-                        control.ReleaseControl();
-
-                        this.Execute("MouseUp");
-                    }
-
-                    if (control.IsControlCaptured())
-                    {
-                        line_tool.MarkLines(surface, utensil, last_texture_point.GetVectorF2(), texture_point.GetVectorF2());
-                        texture.Apply();
-                    }
-
+                    this.Execute("MouseDown");
                     last_texture_point = texture_point;
-                    return true;
                 }
 
-                return false;
-            });
+                if (handle.GetEventType() == EventType.MouseUp)
+                {
+                    handle.ReleaseControl();
+
+                    this.Execute("MouseUp");
+                }
+
+                if (handle.IsControlCaptured())
+                {
+                    line_tool.MarkLines(surface, utensil, last_texture_point.GetVectorF2(), texture_point.GetVectorF2());
+                    texture.Apply();
+                }
+
+                last_texture_point = texture_point;
+                handle.UseEvent();
+            }
         }
 
         public EditorSceneElement_EditGadgetInstance_Paintable(EditGadgetInstance g) : base(g)
         {
-            control = new GUIControl(FocusType.Passive);
-
             brush_now_mesh = new NowMesh(
                 MeshExtensions.CreateCircleOutline(0.03f, 32),
                 MaterialExtensions.CreateUnlitColorMaterial(Color.black)

@@ -18,7 +18,6 @@ namespace CrunchySandwichBag
 
         private Rect border_rect;
         private Rect background_rect;
-        private GUIControl_MouseCapture percent_area;
 
         protected override float DoPlanInternal()
         {
@@ -63,21 +62,21 @@ namespace CrunchySandwichBag
                 x += element_width;
             }
 
-            percent_area.UpdatePercentPoint(background_rect, delegate(int button, Vector2 position) {
-                int index = (int)(array_size * position.x);
-                float magnitude = 1.0f - position.y;
+            Vector2 percent;
+            if (GUIExtensions.MousePercentArea(background_rect, out percent, true))
+            {
+                int index = (int)(array_size * percent.x);
+                float magnitude = 1.0f - percent.y;
 
                 if (property.IsIndexValid(index))
                     property.SetElementValue(index, magnitude.ConvertFromPercentToRange(min_value, max_value));
-            });
+            }
         }
 
         public EditorGUIElement_EditPropertyArray_FloatSequence(EditProperty_Array p, float min, float max) : base(p)
         {
             min_value = min;
             max_value = max;
-
-            percent_area = new GUIControl_MouseCapture();
         }
 
         public EditorGUIElement_EditPropertyArray_FloatSequence(EditProperty_Array p, float max) : this(p, 0.0f, max) { }

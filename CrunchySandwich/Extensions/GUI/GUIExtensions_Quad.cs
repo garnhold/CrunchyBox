@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEditor;
 
 using CrunchyDough;
 using CrunchyBun;
-using CrunchySandwich;
 
-namespace CrunchySandwichBag
+namespace CrunchySandwich
 {
-    static public partial class EditorGUIExtensions
+    static public partial class GUIExtensions
     {
         static public void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Color color)
         {

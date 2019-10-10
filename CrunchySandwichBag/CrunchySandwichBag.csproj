@@ -224,7 +224,6 @@
     <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions.cs" />
     <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions_OnValidate.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
-    <Compile Include="GUIControl\GUIControl_DropCapture.cs" />
     <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single.cs" />
@@ -310,11 +309,6 @@
     <Compile Include="EditorGUIElement\Attribute\EditorGUIElementForTypeAttribute.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Popup\EditorGUIElement_Popup_SerializedProperty\EditorGUIElement_Popup_SerializedProperty.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single_SerializedProperty\EditorGUIElement_Single_SerializedProperty_TypedObjectField.cs" />
-    <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_Drag.cs" />
-    <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_PercentArea.cs" />
-    <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture_Area.cs" />
-    <Compile Include="EditorGUIFragment\EditorGUIFragment_MouseCapture.cs" />
-    <Compile Include="EditorGUIFragment\EditorGUIFragment.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_FieldEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedProperty\EditorGUIElement_Complex_SerializedProperty_List.cs" />
@@ -362,8 +356,6 @@
     <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions_Paths.cs" />
     <Compile Include="Extensions\AssetDatabase\AssetDatabaseExtensions.cs" />
     <Compile Include="Extensions\AttachEditGadgetAttribute\AttachEditGadgetAttributeExtensions.cs" />
-    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DrawMesh.cs" />
-    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DrawQuad.cs" />
     <Compile Include="Extensions\MonoBehaviour\MonoBehaviourExtensions.cs" />
     <Compile Include="Extensions\MonoScript\MonoScriptExtensions.cs" />
     <Compile Include="Extensions\PropertyDrawer\PropertyDrawerExtensions.cs" />
@@ -426,7 +418,6 @@
     <Compile Include="PropertyDrawersAndEditors\Editors\DefaultEditor.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_SerializedObjectSection.cs" />
     <Compile Include="Extensions\CustomPropertyDrawer\CustomPropertyDrawerExtensions.cs" />
-    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DrawOutlinedRect.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_EnumPopup.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions_Children.cs" />
     <Compile Include="Extensions\SerializedObject\SerializedObjectExtensions.cs" />

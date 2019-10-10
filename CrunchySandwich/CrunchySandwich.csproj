@@ -138,6 +138,8 @@
     <Compile Include="ConversionMethods\GeneralConversionMethods_GameObject.cs" />
     <Compile Include="Extensions\Color\ColorExtensions_MoveTowards.cs" />
     <Compile Include="Extensions\Color\ColorExtensions_Towards.cs" />
+    <Compile Include="Extensions\EventType\EventTypeExtensions_Compare.cs" />
+    <Compile Include="Extensions\EventType\EventTypeExtensions.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_IsPlaying.cs">
       <DependentUpon>GameObjectComponentExtensions_IsPlaying.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -164,6 +166,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Grid.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Quad.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Mesh.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_ClickZone.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_MouseArea.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_ControlHandle.cs" />
     <Compile Include="Extensions\GUI\GUIExtensions_Button.cs" />
     <Compile Include="Extensions\GUI\GUIExtensions_Sprite.cs" />
     <Compile Include="Extensions\ITilemapTilemap\ITilemapTilemapExtensions_Neighbors.cs">
@@ -201,10 +208,9 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normal.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Vector3Int.cs" />
     <Compile Include="Finder\Finder.cs" />
+    <Compile Include="GUIControlHandle\GUIControlHandle.cs" />
     <Compile Include="InspectorDisplayAttribute\InspectorDisplayAttribute.cs" />
     <Compile Include="PrefabLookup\PrefabLookup.cs" />
-    <Compile Include="GUIControl\GUIControl.cs" />
-    <Compile Include="GUIControl\GUIControl_MouseCapture.cs" />
     <Compile Include="RepresentationController\RepresentationController.cs" />
     <Compile Include="Scene\Extensions\SceneEXExtensions_Activate.cs" />
     <Compile Include="Scene\Extensions\SceneEXExtensions.cs" />

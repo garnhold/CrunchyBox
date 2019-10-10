@@ -1,15 +1,13 @@
 ﻿using System;
 
 using UnityEngine;
-using UnityEditor;
 
 using CrunchyDough;
 using CrunchyBun;
-using CrunchySandwich;
 
-namespace CrunchySandwichBag
+namespace CrunchySandwich
 {
-    static public partial class EditorGUIExtensions
+    static public partial class GUIExtensions
     {
         static public void DrawColoredMesh(Mesh mesh, Color color)
         {

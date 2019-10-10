@@ -19,5 +19,19 @@ namespace CrunchySandwich
                 );
             });
         }
+
+        static public void DrawOutlinedRect(Rect rect, Color primary, float weight, Color outline)
+        {
+            DrawRect(rect, outline);
+            DrawRect(rect.GetShrunk(weight), primary);
+        }
+        static public void DrawOutlinedRect(Rect rect, Color primary, float weight)
+        {
+            DrawOutlinedRect(rect, primary, weight, primary.GetBrightened(0.7f));
+        }
+        static public void DrawOutlinedRect(Rect rect, Color primary)
+        {
+            DrawOutlinedRect(rect, primary, 1.0f);
+        }
     }
 }
