@@ -27,16 +27,6 @@ namespace CrunchySandwichBag
         {
         }
 
-        public void EnsurePresence()
-        {
-            Touch("Creating " + GetVariableName(), delegate() {
-                GetObjects().Process(o => {
-                    if (GetContents(o) == null)
-                        SetContents(o, GetVariableType().CreateInstance());
-                });
-            });
-        }
-
         public void InsertElement(int index)
         {
             Touch("Inserting Element Into " + GetVariableName(), delegate() {

@@ -20,9 +20,24 @@ namespace CrunchySandwichBag
             property = p;
         }
 
-        public override void EnsurePresence()
+        public override void ClearContents()
         {
-            property.EnsurePresence();
+            property.ClearContents();
+        }
+
+        public override void CreateContents(Type type)
+        {
+            property.CreateContents(type);
+        }
+
+        public override void EnsureContents(Type type)
+        {
+            property.EnsureContents(type);
+        }
+
+        public override void ForceContentValues(object value)
+        {
+            property.ForceContentValues(value);
         }
 
         public override void InsertElement(int index)

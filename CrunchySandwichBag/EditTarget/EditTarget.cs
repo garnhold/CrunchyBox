@@ -17,9 +17,12 @@ namespace CrunchySandwichBag
 
         public abstract bool IsSerializationCorrupt();
 
+        public abstract EditFunction ForceFunction(string path, IEnumerable<Type> parameter_types);
         public abstract EditAction ForceAction(string path);
         public abstract EditDisplay ForceDisplay(string path);
         public abstract EditProperty ForceProperty(string path);
+
+        public abstract IEnumerable<EditFunction> GetFunctions();
 
         public abstract IEnumerable<EditAction> GetActions();
         public abstract IEnumerable<EditAction> GetRecoveryActions();

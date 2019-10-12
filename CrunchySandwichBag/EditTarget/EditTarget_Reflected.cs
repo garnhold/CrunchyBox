@@ -17,6 +17,15 @@ namespace CrunchySandwichBag
     {
         private ReflectedObject reflected_object;
 
+        static public EditFunction CreateFunction(EditTarget target, ReflectedFunction function)
+        {
+            return new EditFunction_Reflected(target, function);
+        }
+        protected EditFunction CreateFunction(ReflectedFunction function)
+        {
+            return CreateFunction(this, function);
+        }
+
         static public EditAction CreateAction(EditTarget target, ReflectedAction action)
         {
             return new EditAction_Reflected(target, action);
@@ -81,6 +90,11 @@ namespace CrunchySandwichBag
             return reflected_object.IsSerializationCorrupt();
         }
 
+        public override EditFunction ForceFunction(string path, IEnumerable<Type> parameter_types)
+        {
+            return CreateFunction(reflected_object.ForceFunction(path, parameter_types));
+        }
+
         public override EditAction ForceAction(string path)
         {
             return CreateAction(reflected_object.ForceAction(path));
@@ -94,6 +108,12 @@ namespace CrunchySandwichBag
         public override EditProperty ForceProperty(string path)
         {
             return CreateProperty(reflected_object.ForceProperty(path));
+        }
+
+        public override IEnumerable<EditFunction> GetFunctions()
+        {
+            return reflected_object.GetFunctions()
+                .Convert(f => CreateFunction(f));
         }
 
         public override IEnumerable<EditAction> GetActions()

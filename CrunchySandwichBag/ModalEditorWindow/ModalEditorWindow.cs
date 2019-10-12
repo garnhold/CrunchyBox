@@ -28,6 +28,8 @@ namespace CrunchySandwichBag
         {
             if (element != null)
             {
+                element.SetHeight(this.GetHeight());
+
                 element.LayoutDrawAndUnwind(
                     EditorGUILayout.GetControlRect(true, this.GetHeight()),
                     EditorGUISettings.GetInstance().GetInitialLayoutState()
@@ -42,13 +44,13 @@ namespace CrunchySandwichBag
 
         public void Open(string title, Process<EditorGUIElement_Container_Auto> process)
         {
-            element = new EditorGUIElement_ScrollBox_VerticalStrip();
+            element = new EditorGUIElement_ScrollBox_VerticalStrip(this.GetHeight());
 
             process(element.GetElement());
             element.Initialize();
 
             titleContent = new GUIContent(title);
-            ShowPopup();
+            ShowUtility();
         }
     }
 }

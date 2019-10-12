@@ -19,6 +19,11 @@ namespace CrunchySandwichBag
         protected virtual GUIContent CreateGUIContentLabelInternal() { return null; }
         protected virtual EditorGUIElement CreateEditorGUIElementInternal() { return null; }
 
+        public abstract void ClearContents();
+        public abstract void CreateContents(Type type);
+        public abstract void EnsureContents(Type type);
+        public abstract void ForceContentValues(object value);
+
         public abstract bool IsUnified();
 
         public abstract string GetName();
@@ -29,6 +34,16 @@ namespace CrunchySandwichBag
         public EditProperty(EditTarget t)
         {
             target = t;
+        }
+
+        public void CreateContents()
+        {
+            CreateContents(GetPropertyType());
+        }
+
+        public void EnsureContents()
+        {
+            EnsureContents(GetPropertyType());
         }
 
         public EditTarget GetTarget()

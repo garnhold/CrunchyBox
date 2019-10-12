@@ -29,6 +29,11 @@ namespace CrunchySandwichBag
             return CreateProperty(this, property);
         }
 
+        public override EditFunction ForceFunction(string path, IEnumerable<Type> parameter_types)
+        {
+            throw new MissingMethodException("No function exits for type " + GetTargetType() + " and path " + path);
+        }
+
         public override EditAction ForceAction(string path)
         {
             throw new MissingMethodException("No action exists for type " + GetTargetType() + " and path " + path);
@@ -42,6 +47,11 @@ namespace CrunchySandwichBag
         public override EditProperty ForceProperty(string path)
         {
             return CreateProperty(GetPropertyInternal(path));
+        }
+
+        public override IEnumerable<EditFunction> GetFunctions()
+        {
+            return Empty.IEnumerable<EditFunction>();
         }
 
         public override IEnumerable<EditAction> GetActions()

@@ -18,6 +18,7 @@ namespace CrunchySandwichBag
         private Vector2 scroll_position;
 
         private T element;
+        private float height;
 
         static public readonly float SCROLL_BAR_WIDTH = 18.0f;
 
@@ -28,7 +29,9 @@ namespace CrunchySandwichBag
 
         protected override float DoPlanInternal()
         {
-            return element.Plan(GetContentsWidth() - SCROLL_BAR_WIDTH, GetLayoutState());
+            element.Plan(GetContentsWidth() - SCROLL_BAR_WIDTH, GetLayoutState());
+
+            return height;
         }
 
         protected override Rect LayoutElementInternal(Rect rect)
@@ -58,12 +61,21 @@ namespace CrunchySandwichBag
             element.Unwind();
         }
 
-        public EditorGUIElement_ScrollBox(T e)
+        public EditorGUIElement_ScrollBox(T e, float h)
         {
             element = e;
             element.SetParent(this);
 
+            height = h;
+
             AddAttachment(new EditorGUIElementAttachment_Singular_Margin(0.0f));
+        }
+
+        public void SetHeight(float h)
+        {
+            height = h;
+
+            InvalidatePlan();
         }
 
         public T GetElement()

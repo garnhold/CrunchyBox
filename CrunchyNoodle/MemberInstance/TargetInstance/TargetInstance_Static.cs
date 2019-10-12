@@ -17,7 +17,7 @@ namespace CrunchyNoodle
 
         public override object GetTarget()
         {
-            return this;
+            return Variable_Static.TARGET_INSTANCE;
         }
 
         public override string ToString()

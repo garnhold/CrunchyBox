@@ -35,6 +35,11 @@ namespace CrunchySandwichBag
             property.EnsureContents(type);
         }
 
+        public override void ForceContentValues(object value)
+        {
+            property.ForceContentValues(value);
+        }
+
         public override bool IsUnified()
         {
             return property.IsUnified();

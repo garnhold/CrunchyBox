@@ -74,6 +74,48 @@ namespace CrunchySandwichBag
             variable = v;
         }
 
+        public void ClearContents()
+        {
+            Touch("Clearing " + GetVariableName(), delegate() {
+                GetObjects().Process(o => SetContents(o, null));
+            });
+        }
+
+        public void CreateContents(Type type)
+        {
+            Touch("Creating " + GetVariableName(), delegate() {
+                GetObjects().Process(o => SetContents(o, type.CreateBlankValue()));
+            });
+        }
+
+        public void EnsureContents(Type type)
+        {
+            Touch("Creating " + GetVariableName(), delegate() {
+                GetObjects().Process(o => {
+                    if (GetContents(o).GetTypeEX() != type)
+                        SetContents(o, GetContents(o).ConvertEX(type) ?? type.CreateBlankValue());
+                });
+            });
+        }
+        public void EnsureContents()
+        {
+            EnsureContents(GetVariableType());
+        }
+
+        public void ForceContentValues(object value)
+        {
+            Touch("Setting " + GetVariableName(), delegate() {
+                if (GetVariableType().IsPrimitive())
+                    GetObjects().Process(o => SetContents(o, value));
+                else
+                {
+                    UnityTyonReplayer replayer = new UnityTyonReplayer(value);
+
+                    GetObjects().Process(o => SetContents(o, replayer.CreateInstance()));
+                }
+            });
+        }
+
         public ReflectedObject GetReflectedObject()
         {
             return reflected_object;

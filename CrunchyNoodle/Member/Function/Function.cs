@@ -9,17 +9,17 @@ namespace CrunchyNoodle
     public abstract class Function : Member, IDynamicCustomAttributeProvider
     {
         private Type return_type;
-        private List<Type> parameter_types;
+        private List<KeyValuePair<string, Type>> parameters;
 
         protected abstract object ExecuteInternal(object target, object[] arguments);
 
         protected abstract string GetFunctionNameInternal();
         protected virtual IEnumerable<Attribute> GetAllCustomAttributesInternal(bool inherit) { return Empty.IEnumerable<Attribute>(); }
 
-        public Function(Type d, Type r, IEnumerable<Type> p) : base(d)
+        public Function(Type d, Type r, IEnumerable<KeyValuePair<string, Type>> p) : base(d)
         {
             return_type = r;
-            parameter_types = p.ToList();
+            parameters = p.ToList();
         }
 
         public object Execute(object target, IEnumerable<object> arguments)
@@ -30,7 +30,7 @@ namespace CrunchyNoodle
             {
                 return_value = ExecuteInternal(
                     target,
-                    parameter_types.PairPermissive(arguments, (t, a) => a.ConvertEX(t)).ToArray()
+                    this.GetParameterTypes().PairPermissive(arguments, (t, a) => a.ConvertEX(t)).ToArray()
                );
             }
 
@@ -56,19 +56,19 @@ namespace CrunchyNoodle
             return GetFunctionNameInternal();
         }
 
-        public IEnumerable<Type> GetParameterTypes()
-        {
-            return parameter_types;
-        }
-
         public int GetNumberParameters()
         {
-            return parameter_types.Count;
+            return parameters.Count;
         }
 
-        public Type GetParameterType(int index)
+        public KeyValuePair<string, Type> GetParameter(int index)
         {
-            return parameter_types.GetDropped(index);
+            return parameters[index];
+        }
+
+        public IEnumerable<KeyValuePair<string, Type>> GetParameters()
+        {
+            return parameters;
         }
 
         public IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
@@ -81,7 +81,7 @@ namespace CrunchyNoodle
             string to_return = GetFunctionName();
 
             if (include_parameter_types)
-                to_return = to_return + "(" + GetParameterTypes().ToString(", ") + ")";
+                to_return = to_return + "(" + GetParameters().Convert(p => p.Value + " " + p.Key).Join(", ") + ")";
 
             if (include_declaring_type)
                 to_return = GetDeclaringType() + "::" + to_return;

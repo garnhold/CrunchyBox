@@ -18,14 +18,20 @@ namespace CrunchySandwichBag
         private Predicate<T> predicate;
         private Process<IList<T>> process;
 
+        private bool is_dropped;
+        private IList<T> dragged;
+
         protected override void DrawElementInternal(Rect view)
         {
-            IList<T> dragged;
-
             GUIExtensions.DrawOutlinedRect(GetElementRect(), Color.gray);
-            GUI.Label(GetElementRect(), label);   
+            GUI.Label(GetElementRect(), label);
 
-            if (EditorGUIExtensions.DropZone(GetElementRect(), predicate, out dragged))
+            is_dropped = EditorGUIExtensions.DropZone(GetElementRect(), predicate, out dragged);
+        }
+
+        protected override void UnwindInternal()
+        {
+            if (is_dropped)
                 process(dragged);
         }
 
@@ -36,5 +42,10 @@ namespace CrunchySandwichBag
             predicate = pre;
             process = pro;
         }
+    }
+
+    public class EditorGUIElement_DropZone : EditorGUIElement_DropZone<UnityEngine.Object>
+    {
+        public EditorGUIElement_DropZone(string l, Predicate<UnityEngine.Object> pre, Process<IList<UnityEngine.Object>> pro) : base(l, pre, pro) { }
     }
 }

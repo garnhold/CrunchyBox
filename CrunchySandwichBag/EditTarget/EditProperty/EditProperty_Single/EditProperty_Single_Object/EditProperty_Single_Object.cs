@@ -13,8 +13,6 @@ namespace CrunchySandwichBag
 {
     public abstract class EditProperty_Single_Object : EditProperty_Single
     {
-        public abstract void CreateContents(Type type);
-
         protected override EditorGUIElement CreateEditorGUIElementInternal()
         {
             return new EditorGUIElement_Complex_EditPropertySingleObject_Generic(this);

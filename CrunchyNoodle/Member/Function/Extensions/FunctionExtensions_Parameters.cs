@@ -23,6 +23,16 @@ namespace CrunchyNoodle
             return false;
         }
 
+        static public Type GetParameterType(this Function item, int index)
+        {
+            return item.GetParameter(index).Value;
+        }
+
+        static public IEnumerable<Type> GetParameterTypes(this Function item)
+        {
+            return item.GetParameters().Convert(p => p.Value);
+        }
+
         static public bool CanParametersHold(this Function item, IEnumerable<Type> types)
         {
             if (item.GetParameterTypes().AreElements(types, (t1, t2) => t1.CanHold(t2)))

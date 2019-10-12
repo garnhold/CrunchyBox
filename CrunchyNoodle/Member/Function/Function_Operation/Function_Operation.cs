@@ -26,7 +26,7 @@ namespace CrunchyNoodle
             return name;
         }
 
-        public Function_Operation(Type t, Type r, string n, IEnumerable<Type> p, Operation<object, object, object[]> o) : base(t, r, p)
+        public Function_Operation(Type t, Type r, string n, IEnumerable<Type> p, Operation<object, object, object[]> o) : base(t, r, p.Convert(z => KeyValuePair.New("parameter", z)))
         {
             name = n;
 

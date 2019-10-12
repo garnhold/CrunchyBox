@@ -25,6 +25,11 @@ namespace CrunchySandwichBag
             property.ClearContents();
         }
 
+        public override void CreateContents(Type type)
+        {
+            property.CreateContents(type);
+        }
+
         public override void EnsureContents(Type type)
         {
             property.EnsureContents(type);

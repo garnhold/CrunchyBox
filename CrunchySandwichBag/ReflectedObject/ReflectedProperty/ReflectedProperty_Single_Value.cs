@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyNoodle;
 using CrunchyBun;
 using CrunchyRecipe;
@@ -16,25 +17,6 @@ namespace CrunchySandwichBag
     {
         public ReflectedProperty_Single_Value(ReflectedObject o, Variable v) : base(o, v)
         {
-        }
-
-        public void ForceContentValues(object value)
-        {
-            Touch("Setting " + GetVariableName(), delegate() {
-                if (GetVariableType().IsReferenceType() && value != null)
-                {
-                    Type type = GetVariableType();
-                    TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
-
-                    string data = context.SerializeValue(type, value);
-
-                    GetObjects().Process(o => SetContents(o, context.DeserializeValue(type, data, TyonHydrationMode.Permissive)));
-                }
-                else
-                {
-                    GetObjects().Process(o => SetContents(o, value));
-                }
-            });
         }
 
         public void SetContentValues(object value)

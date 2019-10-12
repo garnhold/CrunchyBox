@@ -21,7 +21,7 @@ namespace CrunchyNoodle
             return path_resolver + "." + function.ToString(false, false, true);
         }
 
-        public Function_Path(Function f, PathResolver p) : base(p.GetInputType(), f.GetReturnType(), f.GetParameterTypes())
+        public Function_Path(Function f, PathResolver p) : base(p.GetInputType(), f.GetReturnType(), f.GetParameters())
         {
             function = f;
             path_resolver = p;

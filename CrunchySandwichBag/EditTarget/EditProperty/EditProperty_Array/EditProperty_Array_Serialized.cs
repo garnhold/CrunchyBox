@@ -21,9 +21,27 @@ namespace CrunchySandwichBag
             property = p;
         }
 
-        public override void EnsurePresence()
+        public override void ClearContents()
+        {
+            property.ClearValue();
+        }
+
+        public override void CreateContents(Type type)
+        {
+            property.ClearValue();
+        }
+
+        public override void EnsureContents(Type type)
         {
             //Intentionally blank
+        }
+
+        public override void ForceContentValues(object value)
+        {
+            property.SetValue(value);
+            property.serializedObject.ApplyModifiedProperties();
+
+            Debug.Log("Forcing SerializedObject to apply per property.");
         }
 
         public override void InsertElement(int index)

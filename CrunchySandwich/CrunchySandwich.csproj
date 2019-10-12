@@ -209,7 +209,9 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_Vector3Int.cs" />
     <Compile Include="Finder\Finder.cs" />
     <Compile Include="GUIControlHandle\GUIControlHandle.cs" />
+    <Compile Include="InspectorActionAttribute\InspectorActionAttribute.cs" />
     <Compile Include="InspectorDisplayAttribute\InspectorDisplayAttribute.cs" />
+    <Compile Include="InspectorFunctionAttribute\InspectorFunctionAttribute.cs" />
     <Compile Include="PrefabLookup\PrefabLookup.cs" />
     <Compile Include="RepresentationController\RepresentationController.cs" />
     <Compile Include="Scene\Extensions\SceneEXExtensions_Activate.cs" />
@@ -664,6 +666,7 @@
     <Compile Include="Tyon\UnityExplicitTyonDesignatedVariableProvider.cs" />
     <Compile Include="UnityObjectEX\Tyon\UnityTyonDesignatedVariableProvider.cs" />
     <Compile Include="Tyon\UnityTyonSettingComponentAttribute.cs" />
+    <Compile Include="UnityObjectEX\Tyon\UnityTyonReplayer.cs" />
     <Compile Include="WordWrapAttribute\WordWrapAttribute.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions.cs" />
     <Compile Include="WorkSystem\Extensions\WorkSystemExtensions_Schedule.cs" />

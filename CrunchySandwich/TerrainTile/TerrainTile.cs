@@ -21,6 +21,12 @@ namespace CrunchySandwich
                 .ToArray();
         }
 
+        [InspectorFunction]
+        public void ReinitializeWithSprites(List<UnityEngine.Object> sprites)
+        {
+            Initialize(sprites.Convert<UnityEngine.Object, Sprite>());
+        }
+
         public override void RefreshTile(Vector3Int position, ITilemap tilemap)
         {
             for (int dy = -1; dy <= 1; dy++)

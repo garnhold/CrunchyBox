@@ -155,6 +155,8 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_DropZone\EditorGUIElement_DropZone.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay_Text.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditFunction\EditorGUIElement_EditFunction_Button.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditFunction\EditorGUIElement_EditFunction.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValue_Browse.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_AudioClip.cs" />
@@ -214,6 +216,8 @@
     <Compile Include="EditTarget\EditDisplay\EditDisplay.cs" />
     <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions.cs" />
     <Compile Include="EditTarget\EditDisplay\Extensions\EditDisplayExtensions_Labeled.cs" />
+    <Compile Include="EditTarget\EditFunction\EditFunction_Reflected.cs" />
+    <Compile Include="EditTarget\EditFunction\EditFunction.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_BurstAudioClip.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DropZone.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
@@ -495,6 +499,7 @@
     <Compile Include="PropertyDrawersAndEditors\PropertyDrawers\LayerEXDrawer.cs" />
     <Compile Include="ReflectedObject\ReflectedAction\ReflectedAction.cs" />
     <Compile Include="ReflectedObject\ReflectedDisplay\ReflectedDisplay.cs" />
+    <Compile Include="ReflectedObject\ReflectedFunction\ReflectedFunction.cs" />
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadget.cs" />
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadgetInstance.cs" />
     <Compile Include="ReflectedObject\ReflectedObject.cs" />

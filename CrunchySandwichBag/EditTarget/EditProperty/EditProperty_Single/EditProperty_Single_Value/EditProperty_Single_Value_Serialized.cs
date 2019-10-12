@@ -26,8 +26,14 @@ namespace CrunchySandwichBag
             property.ClearValue();
         }
 
+        public override void CreateContents(Type type)
+        {
+            property.ClearValue();
+        }
+
         public override void EnsureContents(Type type)
         {
+            //Intentionally Blank
         }
 
         public override void ForceContentValues(object value)

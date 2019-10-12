@@ -44,6 +44,8 @@ namespace CrunchySandwichBag
             {
                 if (parent != null)
                     parent.Touch(label, process);
+                else
+                    process();
             }
         }
 
@@ -56,6 +58,7 @@ namespace CrunchySandwichBag
         }
 
         public ReflectedObject(IEnumerable<object> o) : this(o, null) { }
+        public ReflectedObject(params object[] o) : this((IEnumerable<object>)o) { }
 
         public bool IsValid()
         {
@@ -81,6 +84,15 @@ namespace CrunchySandwichBag
         public IEnumerable<object> GetObjects()
         {
             return objects;
+        }
+
+        public ReflectedFunction ForceFunction(string path, IEnumerable<Type> parameter_types)
+        {
+            return ReflectedFunction.New(
+                this,
+                object_type.GetFunctionByPath(path, parameter_types)
+                    .AssertNotNull(() => new MissingMethodException("No function exists for type " + GetObjectType() + " and path " + path))
+            );
         }
 
         public ReflectedAction ForceAction(string path)
@@ -110,11 +122,19 @@ namespace CrunchySandwichBag
             );
         }
 
+        public IEnumerable<ReflectedFunction> GetFunctions()
+        {
+            return object_type.GetFilteredInstanceMethods(
+                Filterer_MethodInfo.HasCustomAttributeOfType<InspectorFunctionAttribute>()
+            ).Convert(m => m.CreateFunction())
+            .Convert(f => ReflectedFunction.New(this, f));
+        }
+
         public IEnumerable<ReflectedAction> GetActions()
         {
             return object_type.GetFilteredInstanceMethods(
                 Filterer_MethodInfo.HasNoEffectiveParameters(),
-                Filterer_MethodInfo.HasCustomAttributeOfType<ContextMenu>()
+                Filterer_MethodInfo.HasCustomAttributeOfType<ContextMenu>() | Filterer_MethodInfo.HasCustomAttributeOfType<InspectorActionAttribute>()
             ).Convert(m => m.CreateAction())
             .Convert(a => ReflectedAction.New(this, a));
         }
@@ -165,7 +185,7 @@ namespace CrunchySandwichBag
 
         public bool IsVisible()
         {
-            if (GetPropertys().IsNotEmpty() || GetActions().IsNotEmpty() || GetDisplays().IsNotEmpty())
+            if (GetPropertys().IsNotEmpty() || GetFunctions().IsNotEmpty() || GetActions().IsNotEmpty() || GetDisplays().IsNotEmpty())
                 return true;
 
             if (IsSerializationCorrupt())

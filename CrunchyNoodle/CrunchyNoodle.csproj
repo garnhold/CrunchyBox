@@ -266,8 +266,13 @@
     <Compile Include="Member\Action\Action_Function.cs" />
     <Compile Include="Member\Function\Extensions\FunctionExtensions_Parameters.cs" />
     <Compile Include="Member\Function\Extensions\FunctionExtensions.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Override.cs" />
     <Compile Include="Member\Variable\Extensions\VariableExtensions_Elements.cs" />
+    <Compile Include="Member\Variable\Variable_Pass\Variable_OverrideTypeAndName.cs" />
+    <Compile Include="Member\Variable\Variable_Pass\Variable_OverrideType.cs" />
+    <Compile Include="Member\Variable\Variable_Pass\Variable_Pass.cs" />
     <Compile Include="Member\Variable\Variable_Prop\Variable_Prop.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions_GetContents.cs" />
     <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions_Instance.cs" />
     <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions.cs" />
     <Compile Include="MIMEType\MIMEType.cs">

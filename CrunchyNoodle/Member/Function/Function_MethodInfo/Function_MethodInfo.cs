@@ -65,7 +65,7 @@ namespace CrunchyNoodle
             : base(
                 m.IfNotNull(z => z.DeclaringType),
                 m.IfNotNull(z => z.ReturnType),
-                m.IfNotNull(z => z.GetEffectiveParameterTypes())
+                m.IfNotNull(z => z.GetEffectiveParameters().Convert(p => KeyValuePair.New(p.Name, p.ParameterType)))
             )
         {
             name = m.IfNotNull(z => z.Name);

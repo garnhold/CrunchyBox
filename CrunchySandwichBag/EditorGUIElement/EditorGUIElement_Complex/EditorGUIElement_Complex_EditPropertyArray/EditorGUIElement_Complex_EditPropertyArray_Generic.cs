@@ -52,6 +52,14 @@ namespace CrunchySandwichBag
                     length_strip.AddWeightedChild(0.4f, new EditorGUIElement_Button("+", delegate() {
                         property.InsertElement(0);
                     }));
+
+                    if (array_type.CanBeTreatedAs<UnityEngine.Object>())
+                    {
+                        length_strip.AddWeightedChild(0.6f, new EditorGUIElement_DropZone("Drag + Drop",
+                            o => o.CanObjectBeTreatedAs(array_type),
+                            l => property.ForceContentValues(l)
+                        ));
+                    }
                 }
                 else
                 {
@@ -83,7 +91,7 @@ namespace CrunchySandwichBag
             else
             {
                 container.AddChild(new EditorGUIElement_Text("--Disabled(Array lengths are not unified)--"));
-                property.EnsurePresence();
+                property.EnsureContents();
             }
 
             return container;
