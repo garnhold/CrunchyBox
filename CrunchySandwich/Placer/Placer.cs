@@ -22,8 +22,11 @@ namespace CrunchySandwich
         {
             ForcePlaceGameObjectAt(game_object, position);
 
-            if (placement_evaluators.AreAll(e => e.IsGameObjectPlacementValid(game_object)))
-                return true;
+            if (placement_evaluators != null)
+            {
+                if (placement_evaluators.AreAll(e => e.IsGameObjectPlacementValid(game_object)))
+                    return true;
+            }
             
             if(handle_destroy)
                 game_object.DestroyAdvisory();

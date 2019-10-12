@@ -16,8 +16,6 @@ namespace CrunchySandwich
                 case EventType.MouseMove: return true;
                 case EventType.MouseDrag: return true;
 
-                case EventType.ScrollWheel: return true;
-
                 case EventType.ContextClick: return true;
                 case EventType.MouseEnterWindow: return true;
                 case EventType.MouseLeaveWindow: return true;
@@ -25,6 +23,8 @@ namespace CrunchySandwich
                 case EventType.DragUpdated: return true;
                 case EventType.DragPerform: return true;
                 case EventType.DragExited: return true;
+
+                case EventType.ScrollWheel: return false;
 
                 case EventType.KeyDown: return false;
                 case EventType.KeyUp: return false;

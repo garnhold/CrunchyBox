@@ -15,6 +15,12 @@ namespace CrunchySandwich
         [SerializeField]private Tile.ColliderType collider_type;
         [SerializeField]private TerrainSubTile[] sub_tiles;
 
+        public void Initialize(IEnumerable<Sprite> sprites)
+        {
+            sub_tiles = sprites.Convert(s => new TerrainSubTile(s))
+                .ToArray();
+        }
+
         public override void RefreshTile(Vector3Int position, ITilemap tilemap)
         {
             for (int dy = -1; dy <= 1; dy++)
@@ -42,7 +48,7 @@ namespace CrunchySandwich
             return sub_tiles
                 .Narrow(t => t.GetMask().CanBeUsedFor(mask))
                 .FindAllHighestRated(t => t.GetMask().GetComplexity())
-                .GetACongruent(hash)
+                .PickACongruent(hash, t => t.GetWeight())
                 .IfNotNull(t => t.GetSprite());
         }
         public Sprite GetApplicableSprite(NeighborMask mask)

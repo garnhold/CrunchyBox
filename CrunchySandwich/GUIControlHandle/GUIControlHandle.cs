@@ -26,15 +26,9 @@ namespace CrunchySandwich
             GUI.changed = true;
         }
 
-        public bool CaptureControl()
+        public void CaptureControl()
         {
-            if (IsControlCapturable())
-            {
-                GUIUtility.hotControl = control_id;
-                return true;
-            }
-
-            return false;
+            GUIUtility.hotControl = control_id;
         }
 
         public bool ReleaseControl()
@@ -44,14 +38,6 @@ namespace CrunchySandwich
                 GUIUtility.hotControl = 0;
                 return true;
             }
-
-            return false;
-        }
-
-        public bool IsControlCapturable()
-        {
-            if (GUIUtility.hotControl == 0)
-                return true;
 
             return false;
         }

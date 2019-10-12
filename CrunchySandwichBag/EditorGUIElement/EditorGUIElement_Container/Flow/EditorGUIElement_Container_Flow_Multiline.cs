@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
         {
             flow_rows.Set(
                 flow_elements
-                    .GetCostGroups(GetContentsWidth(), p => p.GetDimension().GetMinimum())
+                    .GetCostGroups(GetContentsWidth(), BoundType.Below, p => p.GetDimension().GetMinimum())
                     .Convert(e => new EditorGUIFlowRow(e))
             );
 

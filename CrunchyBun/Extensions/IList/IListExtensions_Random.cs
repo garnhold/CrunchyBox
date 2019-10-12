@@ -26,6 +26,13 @@ namespace CrunchyBun
             return item.PopRandom(RandInt.SOURCE);
         }
 
+        static public T PickRandom<T>(this IList<T> item, Operation<double, T> operation, RandFloatSource source)
+        {
+            double total_cost = item.GetCost(operation);
+
+            return item.GetElementForCost(source.GetBetween(0.0f, (float)total_cost), BoundType.Below, operation);
+        }
+
         static public IEnumerable<T> GetMultipleRandom<T>(this IList<T> item, int count, RandIntSource source)
         {
             for (int i = 0; i < count; i++)

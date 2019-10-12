@@ -10,16 +10,23 @@ using CrunchyDough;
 namespace CrunchySandwich
 {
     [Serializable]
-    public struct TerrainSubTile
+    public class TerrainSubTile
     {
         [SerializeField]private NeighborMask mask;
         [SerializeField]private Sprite sprite;
 
-        public TerrainSubTile(NeighborMask m, Sprite s)
+        [SerializeField]private float weight = 1.0f;
+
+        public TerrainSubTile(NeighborMask m, Sprite s, float w)
         {
             mask = m;
             sprite = s;
+
+            weight = w;
         }
+
+        public TerrainSubTile(Sprite s) : this(new NeighborMask(), s, 1.0f) { }
+        public TerrainSubTile() : this(null) { }
 
         public NeighborMask GetMask()
         {
@@ -31,6 +38,11 @@ namespace CrunchySandwich
             return sprite;
         }
 
+        public float GetWeight()
+        {
+            return weight;
+        }
+
         public override int GetHashCode()
         {
             unchecked
@@ -39,6 +51,7 @@ namespace CrunchySandwich
 
                 hash = hash * 23 + mask.GetHashCodeEX();
                 hash = hash * 23 + sprite.GetHashCodeEX();
+                hash = hash * 23 + weight.GetHashCodeEX();
                 return hash;
             }
         }
@@ -52,7 +65,10 @@ namespace CrunchySandwich
                 if (cast.mask.EqualsEX(mask))
                 {
                     if (cast.sprite.EqualsEX(sprite))
-                        return true;
+                    {
+                        if (cast.weight.EqualsEX(weight))
+                            return true;
+                    }
                 }
             }
 

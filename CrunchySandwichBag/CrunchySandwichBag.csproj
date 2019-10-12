@@ -152,6 +152,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIElement_Container_Flow.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIFlowRow.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\Flow\EditorGUIFlowElement.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_DropZone\EditorGUIElement_DropZone.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay_Text.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextDisplay.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions_Size.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_TerrainTile.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions.cs" />

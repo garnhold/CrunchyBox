@@ -30,20 +30,20 @@ namespace CrunchySandwichBag
             return Assets.CreateAsset<CustomAsset>(type);
         }
 
-        static public T CreateExternalCustomAsset<T>(string filename, Process<T> process) where T : CustomAsset
+        static public T CreateExternalCustomAsset<T>(string filename, Process<T> process) where T : ScriptableObject
         {
             return Assets.CreateAsset<T>(filename, process);
         }
-        static public T CreateExternalCustomAsset<T>(string filename) where T : CustomAsset
+        static public T CreateExternalCustomAsset<T>(string filename) where T : ScriptableObject
         {
             return Assets.CreateAsset<T>(filename);
         }
 
-        static public T CreateExternalCustomAsset<T>(Process<T> process) where T : CustomAsset
+        static public T CreateExternalCustomAsset<T>(Process<T> process) where T : ScriptableObject
         {
             return Assets.CreateAsset<T>(process);
         }
-        static public T CreateExternalCustomAsset<T>() where T : CustomAsset
+        static public T CreateExternalCustomAsset<T>() where T : ScriptableObject
         {
             return Assets.CreateAsset<T>();
         }

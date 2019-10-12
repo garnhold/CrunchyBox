@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
@@ -11,31 +13,50 @@ namespace CrunchySandwichBag
 {
     static public partial class EditorGUIExtensions
     {
-        static public object DropZone(Rect rect, object value, Type type)
+        static public bool DropZone<T>(Rect rect, Predicate<T> predicate, out IList<T> dragging)
         {
-            UnityEngine.Object dragging = DragAndDrop.objectReferences.GetFirst();
             GUIControlHandle handle = GUIExtensions.GetControlHandle(FocusType.Passive);
 
-            if (rect.Contains(handle.GetEvent().mousePosition) && dragging.CanObjectBeTreatedAs(type))
+            if (rect.Contains(handle.GetEvent().mousePosition))
             {
-                switch (handle.GetEventType())
-                {
-                    case EventType.DragUpdated:
-                        DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-                        break;
+                dragging = DragAndDrop.objectReferences
+                    .Convert<UnityEngine.Object, T>()
+                    .Narrow(predicate)
+                    .ToList();
 
-                    case EventType.DragPerform:
-                        DragAndDrop.AcceptDrag();
-                        handle.UseEvent();
-                        return dragging;
+                if (dragging.IsNotEmpty())
+                {
+                    switch (handle.GetEventType())
+                    {
+                        case EventType.DragUpdated:
+                            DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+                            break;
+
+                        case EventType.DragPerform:
+                            DragAndDrop.AcceptDrag();
+                            handle.UseEvent();
+                            return true;
+                    }
                 }
             }
 
+            dragging = Empty.IList<T>();
+            return false;
+        }
+        
+        static public T DropZone<T>(Rect rect, T value, Predicate<T> predicate)
+        {
+            IList<T> dragging;
+
+            if (DropZone(rect, predicate, out dragging))
+                return dragging.GetFirst();
+
             return value;
         }
+
         static public T DropZone<T>(Rect rect, T value)
         {
-            return DropZone(rect, value, typeof(T)).Convert<T>();
+            return DropZone<T>(rect, value, v => true);
         }
 
         static public Sprite SpriteDropZone(Rect rect, Sprite value)

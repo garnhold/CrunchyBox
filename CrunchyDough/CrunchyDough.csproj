@@ -75,6 +75,7 @@
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
     <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Generic.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Skip_FirstLast.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Branch.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Divvy.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_AppendIfNot.cs" />

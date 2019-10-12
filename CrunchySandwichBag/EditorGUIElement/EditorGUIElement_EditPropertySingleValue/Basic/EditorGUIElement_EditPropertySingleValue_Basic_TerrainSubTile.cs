@@ -23,8 +23,21 @@ namespace CrunchySandwichBag
         {
             Sprite sprite = value.GetSprite();
             NeighborMask mask = value.GetMask();
+            float weight = value.GetWeight();
 
-            new Rect(rect.position, Vector2.one.GetFilledDimension(rect.GetSize()))
+            Rect left_rect;
+            Rect right_rect;
+
+            Rect weight_rect;
+
+            Vector2 filled_dimension = Vector2.one.GetFilledDimension(rect.GetSize());
+
+            rect.SplitByXLeftOffset(filled_dimension.x, out left_rect, out right_rect);
+            right_rect.SplitByYBottomOffset(LINE_HEIGHT, out weight_rect, out right_rect);
+
+            weight = EditorGUI.FloatField(weight_rect, "Weight", weight);
+
+            left_rect
                 .ProcessGrid(3, 3, delegate(int x, int y, Rect sub_rect) {
                     if(x == 1 && y == 1)
                     {
@@ -47,7 +60,7 @@ namespace CrunchySandwichBag
                     }
                 });
 
-            return new TerrainSubTile(mask, sprite);
+            return new TerrainSubTile(mask, sprite, weight);
         }
 
         public EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile(EditProperty_Single_Value p) : base(p) { }

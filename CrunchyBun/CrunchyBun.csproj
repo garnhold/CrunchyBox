@@ -78,6 +78,7 @@
     <Compile Include="Extensions\Grid\GridExtensions_Get.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_VectorI2.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Path_Subdivide.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Congruent.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_RandomLine.cs" />
     <Compile Include="Extensions\Stream\StreamExtensions_Text.cs" />

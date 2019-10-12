@@ -38,6 +38,8 @@ namespace CrunchySandwichBag
             EditProperty_Array property = GetEditPropertyArray();
             EditorGUIElement_Container_Auto container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
 
+            Type array_type = property.GetPropertyType().GetIEnumerableType();
+
             if (property.TryGetNumberElements(out number_elements))
             {
                 EditorGUIElement_Container_Flow_Line length_strip = container.AddChild(new EditorGUIElement_Container_Flow_Line())
