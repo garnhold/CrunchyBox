@@ -25,6 +25,14 @@ namespace CrunchyDough
 
             return false;
         }
+
+        public void DirtyState()
+        {
+            p1 = default(P1);
+            p2 = default(P2);
+            p3 = default(P3);
+            p4 = default(P4);
+        }
     }
 
     public class CompoundState<P1, P2, P3>
@@ -46,6 +54,13 @@ namespace CrunchyDough
 
             return false;
         }
+
+        public void DirtyState()
+        {
+            p1 = default(P1);
+            p2 = default(P2);
+            p3 = default(P3);
+        }
     }
 
     public class CompoundState<P1, P2>
@@ -64,6 +79,12 @@ namespace CrunchyDough
             }
 
             return false;
+        }
+
+        public void DirtyState()
+        {
+            p1 = default(P1);
+            p2 = default(P2);
         }
     }
 }

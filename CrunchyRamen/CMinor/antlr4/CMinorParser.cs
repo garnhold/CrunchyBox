@@ -40,11 +40,11 @@ public partial class CMinorParser : Parser {
 		RULE_cMinorExpression = 3, RULE_cMinorBinaryOperator_Multiplicative = 4, 
 		RULE_cMinorBinaryOperator_Additive = 5, RULE_cMinorBinaryOperator_Comparative = 6, 
 		RULE_cMinorBinaryOperator_Boolean = 7, RULE_cMinorExpressionList = 8, 
-		RULE_cMinorStatement = 9;
+		RULE_cMinorStatement = 9, RULE_cMinorStatements = 10;
 	public static readonly string[] ruleNames = {
 		"cMinorType", "cMinorTypeList", "cMinorLiteral", "cMinorExpression", "cMinorBinaryOperator_Multiplicative", 
 		"cMinorBinaryOperator_Additive", "cMinorBinaryOperator_Comparative", "cMinorBinaryOperator_Boolean", 
-		"cMinorExpressionList", "cMinorStatement"
+		"cMinorExpressionList", "cMinorStatement", "cMinorStatements"
 	};
 
 	private static readonly string[] _LiteralNames = {
@@ -140,7 +140,7 @@ public partial class CMinorParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 27;
+			State = 29;
 			switch ( Interpreter.AdaptivePredict(TokenStream,0,Context) ) {
 			case 1:
 				{
@@ -148,7 +148,7 @@ public partial class CMinorParser : Parser {
 				Context = _localctx;
 				_prevctx = _localctx;
 
-				State = 21; Match(ID);
+				State = 23; Match(ID);
 				}
 				break;
 			case 2:
@@ -156,15 +156,15 @@ public partial class CMinorParser : Parser {
 				_localctx = new CMinorType_TemplatedContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 22; Match(ID);
-				State = 23; Match(T__0);
-				State = 24; cMinorTypeList();
-				State = 25; Match(T__1);
+				State = 24; Match(ID);
+				State = 25; Match(T__0);
+				State = 26; cMinorTypeList();
+				State = 27; Match(T__1);
 				}
 				break;
 			}
 			Context.Stop = TokenStream.Lt(-1);
-			State = 34;
+			State = 36;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,1,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -176,14 +176,14 @@ public partial class CMinorParser : Parser {
 					{
 					_localctx = new CMinorType_ArrayContext(new CMinorTypeContext(_parentctx, _parentState));
 					PushNewRecursionContext(_localctx, _startState, RULE_cMinorType);
-					State = 29;
+					State = 31;
 					if (!(Precpred(Context, 1))) throw new FailedPredicateException(this, "Precpred(Context, 1)");
-					State = 30; Match(T__2);
-					State = 31; Match(T__3);
+					State = 32; Match(T__2);
+					State = 33; Match(T__3);
 					}
 					} 
 				}
-				State = 36;
+				State = 38;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,1,Context);
 			}
@@ -227,18 +227,18 @@ public partial class CMinorParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 37; cMinorType(0);
-			State = 42;
+			State = 39; cMinorType(0);
+			State = 44;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
 			while (_la==T__4) {
 				{
 				{
-				State = 38; Match(T__4);
-				State = 39; cMinorType(0);
+				State = 40; Match(T__4);
+				State = 41; cMinorType(0);
 				}
 				}
-				State = 44;
+				State = 46;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
@@ -326,48 +326,48 @@ public partial class CMinorParser : Parser {
 		CMinorLiteralContext _localctx = new CMinorLiteralContext(Context, State);
 		EnterRule(_localctx, 4, RULE_cMinorLiteral);
 		try {
-			State = 51;
+			State = 53;
 			switch (TokenStream.La(1)) {
 			case T__5:
 				_localctx = new CMinorLiteral_NullContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 45; Match(T__5);
+				State = 47; Match(T__5);
 				}
 				break;
 			case BOOL:
 				_localctx = new CMinorLiteral_BoolContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 46; Match(BOOL);
+				State = 48; Match(BOOL);
 				}
 				break;
 			case INT:
 				_localctx = new CMinorLiteral_IntContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 47; Match(INT);
+				State = 49; Match(INT);
 				}
 				break;
 			case FLOAT:
 				_localctx = new CMinorLiteral_FloatContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 48; Match(FLOAT);
+				State = 50; Match(FLOAT);
 				}
 				break;
 			case DOUBLE:
 				_localctx = new CMinorLiteral_DoubleContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 49; Match(DOUBLE);
+				State = 51; Match(DOUBLE);
 				}
 				break;
 			case STRING:
 				_localctx = new CMinorLiteral_StringContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 50; Match(STRING);
+				State = 52; Match(STRING);
 				}
 				break;
 			default:
@@ -579,7 +579,7 @@ public partial class CMinorParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 61;
+			State = 63;
 			switch (TokenStream.La(1)) {
 			case T__5:
 			case BOOL:
@@ -592,7 +592,7 @@ public partial class CMinorParser : Parser {
 				Context = _localctx;
 				_prevctx = _localctx;
 
-				State = 54; cMinorLiteral();
+				State = 56; cMinorLiteral();
 				}
 				break;
 			case T__6:
@@ -600,7 +600,7 @@ public partial class CMinorParser : Parser {
 				_localctx = new CMinorExpression_ThisContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 55; Match(T__6);
+				State = 57; Match(T__6);
 				}
 				break;
 			case ID:
@@ -608,7 +608,7 @@ public partial class CMinorParser : Parser {
 				_localctx = new CMinorExpression_DirectIdentifierContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 56; Match(ID);
+				State = 58; Match(ID);
 				}
 				break;
 			case T__8:
@@ -616,16 +616,16 @@ public partial class CMinorParser : Parser {
 				_localctx = new CMinorExpression_GroupContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 57; Match(T__8);
-				State = 58; cMinorExpression(0);
-				State = 59; Match(T__9);
+				State = 59; Match(T__8);
+				State = 60; cMinorExpression(0);
+				State = 61; Match(T__9);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			Context.Stop = TokenStream.Lt(-1);
-			State = 105;
+			State = 107;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,8,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -634,112 +634,112 @@ public partial class CMinorParser : Parser {
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 103;
+					State = 105;
 					switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
 					case 1:
 						{
 						_localctx = new CMinorExpression_BinaryOperation_MultiplicativeContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 63;
+						State = 65;
 						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 64; cMinorBinaryOperator_Multiplicative();
-						State = 65; cMinorExpression(5);
+						State = 66; cMinorBinaryOperator_Multiplicative();
+						State = 67; cMinorExpression(5);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new CMinorExpression_BinaryOperation_AdditiveContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 67;
+						State = 69;
 						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-						State = 68; cMinorBinaryOperator_Additive();
-						State = 69; cMinorExpression(4);
+						State = 70; cMinorBinaryOperator_Additive();
+						State = 71; cMinorExpression(4);
 						}
 						break;
 					case 3:
 						{
 						_localctx = new CMinorExpression_BinaryOperation_ComparativeContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 71;
+						State = 73;
 						if (!(Precpred(Context, 2))) throw new FailedPredicateException(this, "Precpred(Context, 2)");
-						State = 72; cMinorBinaryOperator_Comparative();
-						State = 73; cMinorExpression(3);
+						State = 74; cMinorBinaryOperator_Comparative();
+						State = 75; cMinorExpression(3);
 						}
 						break;
 					case 4:
 						{
 						_localctx = new CMinorExpression_BinaryOperation_BooleanContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 75;
+						State = 77;
 						if (!(Precpred(Context, 1))) throw new FailedPredicateException(this, "Precpred(Context, 1)");
-						State = 76; cMinorBinaryOperator_Boolean();
-						State = 77; cMinorExpression(2);
+						State = 78; cMinorBinaryOperator_Boolean();
+						State = 79; cMinorExpression(2);
 						}
 						break;
 					case 5:
 						{
 						_localctx = new CMinorExpression_IndirectIdentifierContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 79;
+						State = 81;
 						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
-						State = 80; Match(T__7);
-						State = 81; Match(ID);
+						State = 82; Match(T__7);
+						State = 83; Match(ID);
 						}
 						break;
 					case 6:
 						{
 						_localctx = new CMinorExpression_InvokeGenericContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 82;
+						State = 84;
 						if (!(Precpred(Context, 8))) throw new FailedPredicateException(this, "Precpred(Context, 8)");
-						State = 83; Match(T__0);
-						State = 84; cMinorTypeList();
-						State = 85; Match(T__1);
-						State = 86; Match(T__8);
-						State = 88;
+						State = 85; Match(T__0);
+						State = 86; cMinorTypeList();
+						State = 87; Match(T__1);
+						State = 88; Match(T__8);
+						State = 90;
 						_la = TokenStream.La(1);
 						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
 							{
-							State = 87; cMinorExpressionList();
+							State = 89; cMinorExpressionList();
 							}
 						}
 
-						State = 90; Match(T__9);
+						State = 92; Match(T__9);
 						}
 						break;
 					case 7:
 						{
 						_localctx = new CMinorExpression_InvokeContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 92;
+						State = 94;
 						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
-						State = 93; Match(T__8);
-						State = 95;
+						State = 95; Match(T__8);
+						State = 97;
 						_la = TokenStream.La(1);
 						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
 							{
-							State = 94; cMinorExpressionList();
+							State = 96; cMinorExpressionList();
 							}
 						}
 
-						State = 97; Match(T__9);
+						State = 99; Match(T__9);
 						}
 						break;
 					case 8:
 						{
 						_localctx = new CMinorExpression_IndexContext(new CMinorExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_cMinorExpression);
-						State = 98;
+						State = 100;
 						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
-						State = 99; Match(T__2);
-						State = 100; cMinorExpression(0);
-						State = 101; Match(T__3);
+						State = 101; Match(T__2);
+						State = 102; cMinorExpression(0);
+						State = 103; Match(T__3);
 						}
 						break;
 					}
 					} 
 				}
-				State = 107;
+				State = 109;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,8,Context);
 			}
@@ -798,27 +798,27 @@ public partial class CMinorParser : Parser {
 		CMinorBinaryOperator_MultiplicativeContext _localctx = new CMinorBinaryOperator_MultiplicativeContext(Context, State);
 		EnterRule(_localctx, 8, RULE_cMinorBinaryOperator_Multiplicative);
 		try {
-			State = 111;
+			State = 113;
 			switch (TokenStream.La(1)) {
 			case T__10:
 				_localctx = new CMinorBinaryOperator_Multiplicative_MultiplyContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 108; Match(T__10);
+				State = 110; Match(T__10);
 				}
 				break;
 			case T__11:
 				_localctx = new CMinorBinaryOperator_Multiplicative_DivideContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 109; Match(T__11);
+				State = 111; Match(T__11);
 				}
 				break;
 			case T__12:
 				_localctx = new CMinorBinaryOperator_Multiplicative_ModuloContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 110; Match(T__12);
+				State = 112; Match(T__12);
 				}
 				break;
 			default:
@@ -870,20 +870,20 @@ public partial class CMinorParser : Parser {
 		CMinorBinaryOperator_AdditiveContext _localctx = new CMinorBinaryOperator_AdditiveContext(Context, State);
 		EnterRule(_localctx, 10, RULE_cMinorBinaryOperator_Additive);
 		try {
-			State = 115;
+			State = 117;
 			switch (TokenStream.La(1)) {
 			case T__13:
 				_localctx = new CMinorBinaryOperator_Additive_AddContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 113; Match(T__13);
+				State = 115; Match(T__13);
 				}
 				break;
 			case T__14:
 				_localctx = new CMinorBinaryOperator_Additive_SubtractContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 114; Match(T__14);
+				State = 116; Match(T__14);
 				}
 				break;
 			default:
@@ -967,52 +967,52 @@ public partial class CMinorParser : Parser {
 		CMinorBinaryOperator_ComparativeContext _localctx = new CMinorBinaryOperator_ComparativeContext(Context, State);
 		EnterRule(_localctx, 12, RULE_cMinorBinaryOperator_Comparative);
 		try {
-			State = 127;
+			State = 129;
 			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
 			case 1:
 				_localctx = new CMinorBinaryOperator_Comparative_LessThanContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 117; Match(T__0);
+				State = 119; Match(T__0);
 				}
 				break;
 			case 2:
 				_localctx = new CMinorBinaryOperator_Comparative_LessThanOrEqualToContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 118; Match(T__0);
-				State = 119; Match(T__15);
+				State = 120; Match(T__0);
+				State = 121; Match(T__15);
 				}
 				break;
 			case 3:
 				_localctx = new CMinorBinaryOperator_Comparative_GreaterThanContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 120; Match(T__1);
+				State = 122; Match(T__1);
 				}
 				break;
 			case 4:
 				_localctx = new CMinorBinaryOperator_Comparative_GreaterThanOrEqualToContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 121; Match(T__1);
-				State = 122; Match(T__15);
+				State = 123; Match(T__1);
+				State = 124; Match(T__15);
 				}
 				break;
 			case 5:
 				_localctx = new CMinorBinaryOperator_Comparative_EqualToContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 123; Match(T__15);
-				State = 124; Match(T__15);
+				State = 125; Match(T__15);
+				State = 126; Match(T__15);
 				}
 				break;
 			case 6:
 				_localctx = new CMinorBinaryOperator_Comparative_NotEqualToContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 125; Match(T__16);
-				State = 126; Match(T__15);
+				State = 127; Match(T__16);
+				State = 128; Match(T__15);
 				}
 				break;
 			}
@@ -1062,20 +1062,20 @@ public partial class CMinorParser : Parser {
 		CMinorBinaryOperator_BooleanContext _localctx = new CMinorBinaryOperator_BooleanContext(Context, State);
 		EnterRule(_localctx, 14, RULE_cMinorBinaryOperator_Boolean);
 		try {
-			State = 131;
+			State = 133;
 			switch (TokenStream.La(1)) {
 			case T__17:
 				_localctx = new CMinorBinaryOperator_Boolean_AndContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 129; Match(T__17);
+				State = 131; Match(T__17);
 				}
 				break;
 			case T__18:
 				_localctx = new CMinorBinaryOperator_Boolean_OrContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 130; Match(T__18);
+				State = 132; Match(T__18);
 				}
 				break;
 			default:
@@ -1120,18 +1120,18 @@ public partial class CMinorParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 133; cMinorExpression(0);
-			State = 138;
+			State = 135; cMinorExpression(0);
+			State = 140;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
 			while (_la==T__4) {
 				{
 				{
-				State = 134; Match(T__4);
-				State = 135; cMinorExpression(0);
+				State = 136; Match(T__4);
+				State = 137; cMinorExpression(0);
 				}
 				}
-				State = 140;
+				State = 142;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
@@ -1227,11 +1227,8 @@ public partial class CMinorParser : Parser {
 		}
 	}
 	public partial class CMinorStatement_BlockContext : CMinorStatementContext {
-		public CMinorStatementContext[] cMinorStatement() {
-			return GetRuleContexts<CMinorStatementContext>();
-		}
-		public CMinorStatementContext cMinorStatement(int i) {
-			return GetRuleContext<CMinorStatementContext>(i);
+		public CMinorStatementsContext cMinorStatements() {
+			return GetRuleContext<CMinorStatementsContext>(0);
 		}
 		public CMinorStatement_BlockContext(CMinorStatementContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
@@ -1336,153 +1333,141 @@ public partial class CMinorParser : Parser {
 		EnterRule(_localctx, 18, RULE_cMinorStatement);
 		int _la;
 		try {
-			State = 223;
-			switch ( Interpreter.AdaptivePredict(TokenStream,18,Context) ) {
+			State = 221;
+			switch ( Interpreter.AdaptivePredict(TokenStream,17,Context) ) {
 			case 1:
 				_localctx = new CMinorStatement_DirectAssignContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 141; Match(ID);
-				State = 142; Match(T__15);
-				State = 143; cMinorExpression(0);
-				State = 144; Match(T__19);
+				State = 143; Match(ID);
+				State = 144; Match(T__15);
+				State = 145; cMinorExpression(0);
+				State = 146; Match(T__19);
 				}
 				break;
 			case 2:
 				_localctx = new CMinorStatement_IndirectAssignContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 146; cMinorExpression(0);
-				State = 147; Match(T__7);
-				State = 148; Match(ID);
-				State = 149; Match(T__15);
-				State = 150; cMinorExpression(0);
-				State = 151; Match(T__19);
+				State = 148; cMinorExpression(0);
+				State = 149; Match(T__7);
+				State = 150; Match(ID);
+				State = 151; Match(T__15);
+				State = 152; cMinorExpression(0);
+				State = 153; Match(T__19);
 				}
 				break;
 			case 3:
 				_localctx = new CMinorStatement_OperationAssign_DirectAdditiveContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 153; Match(ID);
-				State = 154; cMinorBinaryOperator_Additive();
-				State = 155; Match(T__15);
-				State = 156; cMinorExpression(0);
-				State = 157; Match(T__19);
+				State = 155; Match(ID);
+				State = 156; cMinorBinaryOperator_Additive();
+				State = 157; Match(T__15);
+				State = 158; cMinorExpression(0);
+				State = 159; Match(T__19);
 				}
 				break;
 			case 4:
 				_localctx = new CMinorStatement_OperationAssign_DirectMultiplicativeContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 159; Match(ID);
-				State = 160; cMinorBinaryOperator_Multiplicative();
-				State = 161; Match(T__15);
-				State = 162; cMinorExpression(0);
-				State = 163; Match(T__19);
+				State = 161; Match(ID);
+				State = 162; cMinorBinaryOperator_Multiplicative();
+				State = 163; Match(T__15);
+				State = 164; cMinorExpression(0);
+				State = 165; Match(T__19);
 				}
 				break;
 			case 5:
 				_localctx = new CMinorStatement_OperationAssign_IndirectAdditiveContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 165; cMinorExpression(0);
-				State = 166; Match(T__7);
-				State = 167; Match(ID);
-				State = 168; cMinorBinaryOperator_Additive();
-				State = 169; Match(T__15);
-				State = 170; cMinorExpression(0);
-				State = 171; Match(T__19);
+				State = 167; cMinorExpression(0);
+				State = 168; Match(T__7);
+				State = 169; Match(ID);
+				State = 170; cMinorBinaryOperator_Additive();
+				State = 171; Match(T__15);
+				State = 172; cMinorExpression(0);
+				State = 173; Match(T__19);
 				}
 				break;
 			case 6:
 				_localctx = new CMinorStatement_OperationAssign_IndirectMultiplicativeContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 173; cMinorExpression(0);
-				State = 174; Match(T__7);
-				State = 175; Match(ID);
-				State = 176; cMinorBinaryOperator_Multiplicative();
-				State = 177; Match(T__15);
-				State = 178; cMinorExpression(0);
-				State = 179; Match(T__19);
+				State = 175; cMinorExpression(0);
+				State = 176; Match(T__7);
+				State = 177; Match(ID);
+				State = 178; cMinorBinaryOperator_Multiplicative();
+				State = 179; Match(T__15);
+				State = 180; cMinorExpression(0);
+				State = 181; Match(T__19);
 				}
 				break;
 			case 7:
 				_localctx = new CMinorStatement_InvokeGenericContext(_localctx);
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 181; cMinorExpression(0);
-				State = 182; Match(T__0);
-				State = 183; cMinorTypeList();
-				State = 184; Match(T__1);
-				State = 185; Match(T__8);
-				State = 187;
+				State = 183; cMinorExpression(0);
+				State = 184; Match(T__0);
+				State = 185; cMinorTypeList();
+				State = 186; Match(T__1);
+				State = 187; Match(T__8);
+				State = 189;
 				_la = TokenStream.La(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
 					{
-					State = 186; cMinorExpressionList();
+					State = 188; cMinorExpressionList();
 					}
 				}
 
-				State = 189; Match(T__9);
-				State = 190; Match(T__19);
+				State = 191; Match(T__9);
+				State = 192; Match(T__19);
 				}
 				break;
 			case 8:
 				_localctx = new CMinorStatement_InvokeContext(_localctx);
 				EnterOuterAlt(_localctx, 8);
 				{
-				State = 192; cMinorExpression(0);
-				State = 193; Match(T__8);
-				State = 195;
+				State = 194; cMinorExpression(0);
+				State = 195; Match(T__8);
+				State = 197;
 				_la = TokenStream.La(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
 					{
-					State = 194; cMinorExpressionList();
+					State = 196; cMinorExpressionList();
 					}
 				}
 
-				State = 197; Match(T__9);
-				State = 198; Match(T__19);
+				State = 199; Match(T__9);
+				State = 200; Match(T__19);
 				}
 				break;
 			case 9:
 				_localctx = new CMinorStatement_BlockContext(_localctx);
 				EnterOuterAlt(_localctx, 9);
 				{
-				State = 200; Match(T__20);
-				State = 204;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.La(1);
-				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << T__20) | (1L << T__22) | (1L << T__24) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
-					{
-					{
-					State = 201; cMinorStatement();
-					}
-					}
-					State = 206;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.La(1);
-				}
-				State = 207; Match(T__21);
+				State = 202; Match(T__20);
+				State = 203; cMinorStatements();
+				State = 204; Match(T__21);
 				}
 				break;
 			case 10:
 				_localctx = new CMinorStatement_IfContext(_localctx);
 				EnterOuterAlt(_localctx, 10);
 				{
-				State = 208; Match(T__22);
-				State = 209; Match(T__8);
-				State = 210; cMinorExpression(0);
-				State = 211; Match(T__9);
-				State = 212; cMinorStatement();
-				State = 215;
-				switch ( Interpreter.AdaptivePredict(TokenStream,17,Context) ) {
+				State = 206; Match(T__22);
+				State = 207; Match(T__8);
+				State = 208; cMinorExpression(0);
+				State = 209; Match(T__9);
+				State = 210; cMinorStatement();
+				State = 213;
+				switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
 				case 1:
 					{
-					State = 213; Match(T__23);
-					State = 214; cMinorStatement();
+					State = 211; Match(T__23);
+					State = 212; cMinorStatement();
 					}
 					break;
 				}
@@ -1492,13 +1477,66 @@ public partial class CMinorParser : Parser {
 				_localctx = new CMinorStatement_WhileContext(_localctx);
 				EnterOuterAlt(_localctx, 11);
 				{
-				State = 217; Match(T__24);
-				State = 218; Match(T__8);
-				State = 219; cMinorExpression(0);
-				State = 220; Match(T__9);
-				State = 221; cMinorStatement();
+				State = 215; Match(T__24);
+				State = 216; Match(T__8);
+				State = 217; cMinorExpression(0);
+				State = 218; Match(T__9);
+				State = 219; cMinorStatement();
 				}
 				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CMinorStatementsContext : ParserRuleContext {
+		public CMinorStatementContext[] cMinorStatement() {
+			return GetRuleContexts<CMinorStatementContext>();
+		}
+		public CMinorStatementContext cMinorStatement(int i) {
+			return GetRuleContext<CMinorStatementContext>(i);
+		}
+		public CMinorStatementsContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_cMinorStatements; } }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICMinorVisitor<TResult> typedVisitor = visitor as ICMinorVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCMinorStatements(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CMinorStatementsContext cMinorStatements() {
+		CMinorStatementsContext _localctx = new CMinorStatementsContext(Context, State);
+		EnterRule(_localctx, 20, RULE_cMinorStatements);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 226;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.La(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__6) | (1L << T__8) | (1L << T__20) | (1L << T__22) | (1L << T__24) | (1L << BOOL) | (1L << INT) | (1L << FLOAT) | (1L << DOUBLE) | (1L << STRING) | (1L << ID))) != 0)) {
+				{
+				{
+				State = 223; cMinorStatement();
+				}
+				}
+				State = 228;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.La(1);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1540,91 +1578,92 @@ public partial class CMinorParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\"\xE4\x4\x2\t\x2"+
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\"\xE8\x4\x2\t\x2"+
 		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
-		"\t\x4\n\t\n\x4\v\t\v\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x5\x2\x1E"+
-		"\n\x2\x3\x2\x3\x2\x3\x2\a\x2#\n\x2\f\x2\xE\x2&\v\x2\x3\x3\x3\x3\x3\x3"+
-		"\a\x3+\n\x3\f\x3\xE\x3.\v\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x5\x4"+
-		"\x36\n\x4\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x5\x5@\n\x5"+
-		"\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3"+
+		"\t\x4\n\t\n\x4\v\t\v\x4\f\t\f\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2"+
+		"\x5\x2 \n\x2\x3\x2\x3\x2\x3\x2\a\x2%\n\x2\f\x2\xE\x2(\v\x2\x3\x3\x3\x3"+
+		"\x3\x3\a\x3-\n\x3\f\x3\xE\x3\x30\v\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3"+
+		"\x4\x5\x4\x38\n\x4\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x5"+
+		"\x5\x42\n\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3"+
 		"\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5"+
-		"\x3\x5\x3\x5\x5\x5[\n\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x5\x5\x62\n\x5"+
-		"\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\a\x5j\n\x5\f\x5\xE\x5m\v\x5\x3\x6"+
-		"\x3\x6\x3\x6\x5\x6r\n\x6\x3\a\x3\a\x5\av\n\a\x3\b\x3\b\x3\b\x3\b\x3\b"+
-		"\x3\b\x3\b\x3\b\x3\b\x3\b\x5\b\x82\n\b\x3\t\x3\t\x5\t\x86\n\t\x3\n\x3"+
-		"\n\x3\n\a\n\x8B\n\n\f\n\xE\n\x8E\v\n\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3"+
+		"\x3\x5\x3\x5\x3\x5\x3\x5\x5\x5]\n\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x5"+
+		"\x5\x64\n\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\a\x5l\n\x5\f\x5\xE\x5"+
+		"o\v\x5\x3\x6\x3\x6\x3\x6\x5\x6t\n\x6\x3\a\x3\a\x5\ax\n\a\x3\b\x3\b\x3"+
+		"\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x5\b\x84\n\b\x3\t\x3\t\x5\t\x88"+
+		"\n\t\x3\n\x3\n\x3\n\a\n\x8D\n\n\f\n\xE\n\x90\v\n\x3\v\x3\v\x3\v\x3\v\x3"+
 		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3"+
 		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3"+
-		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xBE\n\v"+
-		"\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xC6\n\v\x3\v\x3\v\x3\v\x3\v\x3\v\a"+
-		"\v\xCD\n\v\f\v\xE\v\xD0\v\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5"+
-		"\v\xDA\n\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xE2\n\v\x3\v\x2\x4\x2\b"+
-		"\f\x2\x4\x6\b\n\f\xE\x10\x12\x14\x2\x2\x106\x2\x1D\x3\x2\x2\x2\x4\'\x3"+
-		"\x2\x2\x2\x6\x35\x3\x2\x2\x2\b?\x3\x2\x2\x2\nq\x3\x2\x2\x2\fu\x3\x2\x2"+
-		"\x2\xE\x81\x3\x2\x2\x2\x10\x85\x3\x2\x2\x2\x12\x87\x3\x2\x2\x2\x14\xE1"+
-		"\x3\x2\x2\x2\x16\x17\b\x2\x1\x2\x17\x1E\a!\x2\x2\x18\x19\a!\x2\x2\x19"+
-		"\x1A\a\x3\x2\x2\x1A\x1B\x5\x4\x3\x2\x1B\x1C\a\x4\x2\x2\x1C\x1E\x3\x2\x2"+
-		"\x2\x1D\x16\x3\x2\x2\x2\x1D\x18\x3\x2\x2\x2\x1E$\x3\x2\x2\x2\x1F \f\x3"+
-		"\x2\x2 !\a\x5\x2\x2!#\a\x6\x2\x2\"\x1F\x3\x2\x2\x2#&\x3\x2\x2\x2$\"\x3"+
-		"\x2\x2\x2$%\x3\x2\x2\x2%\x3\x3\x2\x2\x2&$\x3\x2\x2\x2\',\x5\x2\x2\x2("+
-		")\a\a\x2\x2)+\x5\x2\x2\x2*(\x3\x2\x2\x2+.\x3\x2\x2\x2,*\x3\x2\x2\x2,-"+
-		"\x3\x2\x2\x2-\x5\x3\x2\x2\x2.,\x3\x2\x2\x2/\x36\a\b\x2\x2\x30\x36\a\x1C"+
-		"\x2\x2\x31\x36\a\x1D\x2\x2\x32\x36\a\x1E\x2\x2\x33\x36\a\x1F\x2\x2\x34"+
-		"\x36\a \x2\x2\x35/\x3\x2\x2\x2\x35\x30\x3\x2\x2\x2\x35\x31\x3\x2\x2\x2"+
-		"\x35\x32\x3\x2\x2\x2\x35\x33\x3\x2\x2\x2\x35\x34\x3\x2\x2\x2\x36\a\x3"+
-		"\x2\x2\x2\x37\x38\b\x5\x1\x2\x38@\x5\x6\x4\x2\x39@\a\t\x2\x2:@\a!\x2\x2"+
-		";<\a\v\x2\x2<=\x5\b\x5\x2=>\a\f\x2\x2>@\x3\x2\x2\x2?\x37\x3\x2\x2\x2?"+
-		"\x39\x3\x2\x2\x2?:\x3\x2\x2\x2?;\x3\x2\x2\x2@k\x3\x2\x2\x2\x41\x42\f\x6"+
-		"\x2\x2\x42\x43\x5\n\x6\x2\x43\x44\x5\b\x5\a\x44j\x3\x2\x2\x2\x45\x46\f"+
-		"\x5\x2\x2\x46G\x5\f\a\x2GH\x5\b\x5\x6Hj\x3\x2\x2\x2IJ\f\x4\x2\x2JK\x5"+
-		"\xE\b\x2KL\x5\b\x5\x5Lj\x3\x2\x2\x2MN\f\x3\x2\x2NO\x5\x10\t\x2OP\x5\b"+
-		"\x5\x4Pj\x3\x2\x2\x2QR\f\v\x2\x2RS\a\n\x2\x2Sj\a!\x2\x2TU\f\n\x2\x2UV"+
-		"\a\x3\x2\x2VW\x5\x4\x3\x2WX\a\x4\x2\x2XZ\a\v\x2\x2Y[\x5\x12\n\x2ZY\x3"+
-		"\x2\x2\x2Z[\x3\x2\x2\x2[\\\x3\x2\x2\x2\\]\a\f\x2\x2]j\x3\x2\x2\x2^_\f"+
-		"\t\x2\x2_\x61\a\v\x2\x2`\x62\x5\x12\n\x2\x61`\x3\x2\x2\x2\x61\x62\x3\x2"+
-		"\x2\x2\x62\x63\x3\x2\x2\x2\x63j\a\f\x2\x2\x64\x65\f\b\x2\x2\x65\x66\a"+
-		"\x5\x2\x2\x66g\x5\b\x5\x2gh\a\x6\x2\x2hj\x3\x2\x2\x2i\x41\x3\x2\x2\x2"+
-		"i\x45\x3\x2\x2\x2iI\x3\x2\x2\x2iM\x3\x2\x2\x2iQ\x3\x2\x2\x2iT\x3\x2\x2"+
-		"\x2i^\x3\x2\x2\x2i\x64\x3\x2\x2\x2jm\x3\x2\x2\x2ki\x3\x2\x2\x2kl\x3\x2"+
-		"\x2\x2l\t\x3\x2\x2\x2mk\x3\x2\x2\x2nr\a\r\x2\x2or\a\xE\x2\x2pr\a\xF\x2"+
-		"\x2qn\x3\x2\x2\x2qo\x3\x2\x2\x2qp\x3\x2\x2\x2r\v\x3\x2\x2\x2sv\a\x10\x2"+
-		"\x2tv\a\x11\x2\x2us\x3\x2\x2\x2ut\x3\x2\x2\x2v\r\x3\x2\x2\x2w\x82\a\x3"+
-		"\x2\x2xy\a\x3\x2\x2y\x82\a\x12\x2\x2z\x82\a\x4\x2\x2{|\a\x4\x2\x2|\x82"+
-		"\a\x12\x2\x2}~\a\x12\x2\x2~\x82\a\x12\x2\x2\x7F\x80\a\x13\x2\x2\x80\x82"+
-		"\a\x12\x2\x2\x81w\x3\x2\x2\x2\x81x\x3\x2\x2\x2\x81z\x3\x2\x2\x2\x81{\x3"+
-		"\x2\x2\x2\x81}\x3\x2\x2\x2\x81\x7F\x3\x2\x2\x2\x82\xF\x3\x2\x2\x2\x83"+
-		"\x86\a\x14\x2\x2\x84\x86\a\x15\x2\x2\x85\x83\x3\x2\x2\x2\x85\x84\x3\x2"+
-		"\x2\x2\x86\x11\x3\x2\x2\x2\x87\x8C\x5\b\x5\x2\x88\x89\a\a\x2\x2\x89\x8B"+
-		"\x5\b\x5\x2\x8A\x88\x3\x2\x2\x2\x8B\x8E\x3\x2\x2\x2\x8C\x8A\x3\x2\x2\x2"+
-		"\x8C\x8D\x3\x2\x2\x2\x8D\x13\x3\x2\x2\x2\x8E\x8C\x3\x2\x2\x2\x8F\x90\a"+
-		"!\x2\x2\x90\x91\a\x12\x2\x2\x91\x92\x5\b\x5\x2\x92\x93\a\x16\x2\x2\x93"+
-		"\xE2\x3\x2\x2\x2\x94\x95\x5\b\x5\x2\x95\x96\a\n\x2\x2\x96\x97\a!\x2\x2"+
-		"\x97\x98\a\x12\x2\x2\x98\x99\x5\b\x5\x2\x99\x9A\a\x16\x2\x2\x9A\xE2\x3"+
-		"\x2\x2\x2\x9B\x9C\a!\x2\x2\x9C\x9D\x5\f\a\x2\x9D\x9E\a\x12\x2\x2\x9E\x9F"+
-		"\x5\b\x5\x2\x9F\xA0\a\x16\x2\x2\xA0\xE2\x3\x2\x2\x2\xA1\xA2\a!\x2\x2\xA2"+
-		"\xA3\x5\n\x6\x2\xA3\xA4\a\x12\x2\x2\xA4\xA5\x5\b\x5\x2\xA5\xA6\a\x16\x2"+
-		"\x2\xA6\xE2\x3\x2\x2\x2\xA7\xA8\x5\b\x5\x2\xA8\xA9\a\n\x2\x2\xA9\xAA\a"+
-		"!\x2\x2\xAA\xAB\x5\f\a\x2\xAB\xAC\a\x12\x2\x2\xAC\xAD\x5\b\x5\x2\xAD\xAE"+
-		"\a\x16\x2\x2\xAE\xE2\x3\x2\x2\x2\xAF\xB0\x5\b\x5\x2\xB0\xB1\a\n\x2\x2"+
-		"\xB1\xB2\a!\x2\x2\xB2\xB3\x5\n\x6\x2\xB3\xB4\a\x12\x2\x2\xB4\xB5\x5\b"+
-		"\x5\x2\xB5\xB6\a\x16\x2\x2\xB6\xE2\x3\x2\x2\x2\xB7\xB8\x5\b\x5\x2\xB8"+
-		"\xB9\a\x3\x2\x2\xB9\xBA\x5\x4\x3\x2\xBA\xBB\a\x4\x2\x2\xBB\xBD\a\v\x2"+
-		"\x2\xBC\xBE\x5\x12\n\x2\xBD\xBC\x3\x2\x2\x2\xBD\xBE\x3\x2\x2\x2\xBE\xBF"+
-		"\x3\x2\x2\x2\xBF\xC0\a\f\x2\x2\xC0\xC1\a\x16\x2\x2\xC1\xE2\x3\x2\x2\x2"+
-		"\xC2\xC3\x5\b\x5\x2\xC3\xC5\a\v\x2\x2\xC4\xC6\x5\x12\n\x2\xC5\xC4\x3\x2"+
-		"\x2\x2\xC5\xC6\x3\x2\x2\x2\xC6\xC7\x3\x2\x2\x2\xC7\xC8\a\f\x2\x2\xC8\xC9"+
-		"\a\x16\x2\x2\xC9\xE2\x3\x2\x2\x2\xCA\xCE\a\x17\x2\x2\xCB\xCD\x5\x14\v"+
-		"\x2\xCC\xCB\x3\x2\x2\x2\xCD\xD0\x3\x2\x2\x2\xCE\xCC\x3\x2\x2\x2\xCE\xCF"+
-		"\x3\x2\x2\x2\xCF\xD1\x3\x2\x2\x2\xD0\xCE\x3\x2\x2\x2\xD1\xE2\a\x18\x2"+
-		"\x2\xD2\xD3\a\x19\x2\x2\xD3\xD4\a\v\x2\x2\xD4\xD5\x5\b\x5\x2\xD5\xD6\a"+
-		"\f\x2\x2\xD6\xD9\x5\x14\v\x2\xD7\xD8\a\x1A\x2\x2\xD8\xDA\x5\x14\v\x2\xD9"+
-		"\xD7\x3\x2\x2\x2\xD9\xDA\x3\x2\x2\x2\xDA\xE2\x3\x2\x2\x2\xDB\xDC\a\x1B"+
-		"\x2\x2\xDC\xDD\a\v\x2\x2\xDD\xDE\x5\b\x5\x2\xDE\xDF\a\f\x2\x2\xDF\xE0"+
-		"\x5\x14\v\x2\xE0\xE2\x3\x2\x2\x2\xE1\x8F\x3\x2\x2\x2\xE1\x94\x3\x2\x2"+
-		"\x2\xE1\x9B\x3\x2\x2\x2\xE1\xA1\x3\x2\x2\x2\xE1\xA7\x3\x2\x2\x2\xE1\xAF"+
-		"\x3\x2\x2\x2\xE1\xB7\x3\x2\x2\x2\xE1\xC2\x3\x2\x2\x2\xE1\xCA\x3\x2\x2"+
-		"\x2\xE1\xD2\x3\x2\x2\x2\xE1\xDB\x3\x2\x2\x2\xE2\x15\x3\x2\x2\x2\x15\x1D"+
-		"$,\x35?Z\x61ikqu\x81\x85\x8C\xBD\xC5\xCE\xD9\xE1";
+		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5"+
+		"\v\xC0\n\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xC8\n\v\x3\v\x3\v\x3\v\x3"+
+		"\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xD8\n\v\x3\v"+
+		"\x3\v\x3\v\x3\v\x3\v\x3\v\x5\v\xE0\n\v\x3\f\a\f\xE3\n\f\f\f\xE\f\xE6\v"+
+		"\f\x3\f\x2\x4\x2\b\r\x2\x4\x6\b\n\f\xE\x10\x12\x14\x16\x2\x2\x109\x2\x1F"+
+		"\x3\x2\x2\x2\x4)\x3\x2\x2\x2\x6\x37\x3\x2\x2\x2\b\x41\x3\x2\x2\x2\ns\x3"+
+		"\x2\x2\x2\fw\x3\x2\x2\x2\xE\x83\x3\x2\x2\x2\x10\x87\x3\x2\x2\x2\x12\x89"+
+		"\x3\x2\x2\x2\x14\xDF\x3\x2\x2\x2\x16\xE4\x3\x2\x2\x2\x18\x19\b\x2\x1\x2"+
+		"\x19 \a!\x2\x2\x1A\x1B\a!\x2\x2\x1B\x1C\a\x3\x2\x2\x1C\x1D\x5\x4\x3\x2"+
+		"\x1D\x1E\a\x4\x2\x2\x1E \x3\x2\x2\x2\x1F\x18\x3\x2\x2\x2\x1F\x1A\x3\x2"+
+		"\x2\x2 &\x3\x2\x2\x2!\"\f\x3\x2\x2\"#\a\x5\x2\x2#%\a\x6\x2\x2$!\x3\x2"+
+		"\x2\x2%(\x3\x2\x2\x2&$\x3\x2\x2\x2&\'\x3\x2\x2\x2\'\x3\x3\x2\x2\x2(&\x3"+
+		"\x2\x2\x2).\x5\x2\x2\x2*+\a\a\x2\x2+-\x5\x2\x2\x2,*\x3\x2\x2\x2-\x30\x3"+
+		"\x2\x2\x2.,\x3\x2\x2\x2./\x3\x2\x2\x2/\x5\x3\x2\x2\x2\x30.\x3\x2\x2\x2"+
+		"\x31\x38\a\b\x2\x2\x32\x38\a\x1C\x2\x2\x33\x38\a\x1D\x2\x2\x34\x38\a\x1E"+
+		"\x2\x2\x35\x38\a\x1F\x2\x2\x36\x38\a \x2\x2\x37\x31\x3\x2\x2\x2\x37\x32"+
+		"\x3\x2\x2\x2\x37\x33\x3\x2\x2\x2\x37\x34\x3\x2\x2\x2\x37\x35\x3\x2\x2"+
+		"\x2\x37\x36\x3\x2\x2\x2\x38\a\x3\x2\x2\x2\x39:\b\x5\x1\x2:\x42\x5\x6\x4"+
+		"\x2;\x42\a\t\x2\x2<\x42\a!\x2\x2=>\a\v\x2\x2>?\x5\b\x5\x2?@\a\f\x2\x2"+
+		"@\x42\x3\x2\x2\x2\x41\x39\x3\x2\x2\x2\x41;\x3\x2\x2\x2\x41<\x3\x2\x2\x2"+
+		"\x41=\x3\x2\x2\x2\x42m\x3\x2\x2\x2\x43\x44\f\x6\x2\x2\x44\x45\x5\n\x6"+
+		"\x2\x45\x46\x5\b\x5\a\x46l\x3\x2\x2\x2GH\f\x5\x2\x2HI\x5\f\a\x2IJ\x5\b"+
+		"\x5\x6Jl\x3\x2\x2\x2KL\f\x4\x2\x2LM\x5\xE\b\x2MN\x5\b\x5\x5Nl\x3\x2\x2"+
+		"\x2OP\f\x3\x2\x2PQ\x5\x10\t\x2QR\x5\b\x5\x4Rl\x3\x2\x2\x2ST\f\v\x2\x2"+
+		"TU\a\n\x2\x2Ul\a!\x2\x2VW\f\n\x2\x2WX\a\x3\x2\x2XY\x5\x4\x3\x2YZ\a\x4"+
+		"\x2\x2Z\\\a\v\x2\x2[]\x5\x12\n\x2\\[\x3\x2\x2\x2\\]\x3\x2\x2\x2]^\x3\x2"+
+		"\x2\x2^_\a\f\x2\x2_l\x3\x2\x2\x2`\x61\f\t\x2\x2\x61\x63\a\v\x2\x2\x62"+
+		"\x64\x5\x12\n\x2\x63\x62\x3\x2\x2\x2\x63\x64\x3\x2\x2\x2\x64\x65\x3\x2"+
+		"\x2\x2\x65l\a\f\x2\x2\x66g\f\b\x2\x2gh\a\x5\x2\x2hi\x5\b\x5\x2ij\a\x6"+
+		"\x2\x2jl\x3\x2\x2\x2k\x43\x3\x2\x2\x2kG\x3\x2\x2\x2kK\x3\x2\x2\x2kO\x3"+
+		"\x2\x2\x2kS\x3\x2\x2\x2kV\x3\x2\x2\x2k`\x3\x2\x2\x2k\x66\x3\x2\x2\x2l"+
+		"o\x3\x2\x2\x2mk\x3\x2\x2\x2mn\x3\x2\x2\x2n\t\x3\x2\x2\x2om\x3\x2\x2\x2"+
+		"pt\a\r\x2\x2qt\a\xE\x2\x2rt\a\xF\x2\x2sp\x3\x2\x2\x2sq\x3\x2\x2\x2sr\x3"+
+		"\x2\x2\x2t\v\x3\x2\x2\x2ux\a\x10\x2\x2vx\a\x11\x2\x2wu\x3\x2\x2\x2wv\x3"+
+		"\x2\x2\x2x\r\x3\x2\x2\x2y\x84\a\x3\x2\x2z{\a\x3\x2\x2{\x84\a\x12\x2\x2"+
+		"|\x84\a\x4\x2\x2}~\a\x4\x2\x2~\x84\a\x12\x2\x2\x7F\x80\a\x12\x2\x2\x80"+
+		"\x84\a\x12\x2\x2\x81\x82\a\x13\x2\x2\x82\x84\a\x12\x2\x2\x83y\x3\x2\x2"+
+		"\x2\x83z\x3\x2\x2\x2\x83|\x3\x2\x2\x2\x83}\x3\x2\x2\x2\x83\x7F\x3\x2\x2"+
+		"\x2\x83\x81\x3\x2\x2\x2\x84\xF\x3\x2\x2\x2\x85\x88\a\x14\x2\x2\x86\x88"+
+		"\a\x15\x2\x2\x87\x85\x3\x2\x2\x2\x87\x86\x3\x2\x2\x2\x88\x11\x3\x2\x2"+
+		"\x2\x89\x8E\x5\b\x5\x2\x8A\x8B\a\a\x2\x2\x8B\x8D\x5\b\x5\x2\x8C\x8A\x3"+
+		"\x2\x2\x2\x8D\x90\x3\x2\x2\x2\x8E\x8C\x3\x2\x2\x2\x8E\x8F\x3\x2\x2\x2"+
+		"\x8F\x13\x3\x2\x2\x2\x90\x8E\x3\x2\x2\x2\x91\x92\a!\x2\x2\x92\x93\a\x12"+
+		"\x2\x2\x93\x94\x5\b\x5\x2\x94\x95\a\x16\x2\x2\x95\xE0\x3\x2\x2\x2\x96"+
+		"\x97\x5\b\x5\x2\x97\x98\a\n\x2\x2\x98\x99\a!\x2\x2\x99\x9A\a\x12\x2\x2"+
+		"\x9A\x9B\x5\b\x5\x2\x9B\x9C\a\x16\x2\x2\x9C\xE0\x3\x2\x2\x2\x9D\x9E\a"+
+		"!\x2\x2\x9E\x9F\x5\f\a\x2\x9F\xA0\a\x12\x2\x2\xA0\xA1\x5\b\x5\x2\xA1\xA2"+
+		"\a\x16\x2\x2\xA2\xE0\x3\x2\x2\x2\xA3\xA4\a!\x2\x2\xA4\xA5\x5\n\x6\x2\xA5"+
+		"\xA6\a\x12\x2\x2\xA6\xA7\x5\b\x5\x2\xA7\xA8\a\x16\x2\x2\xA8\xE0\x3\x2"+
+		"\x2\x2\xA9\xAA\x5\b\x5\x2\xAA\xAB\a\n\x2\x2\xAB\xAC\a!\x2\x2\xAC\xAD\x5"+
+		"\f\a\x2\xAD\xAE\a\x12\x2\x2\xAE\xAF\x5\b\x5\x2\xAF\xB0\a\x16\x2\x2\xB0"+
+		"\xE0\x3\x2\x2\x2\xB1\xB2\x5\b\x5\x2\xB2\xB3\a\n\x2\x2\xB3\xB4\a!\x2\x2"+
+		"\xB4\xB5\x5\n\x6\x2\xB5\xB6\a\x12\x2\x2\xB6\xB7\x5\b\x5\x2\xB7\xB8\a\x16"+
+		"\x2\x2\xB8\xE0\x3\x2\x2\x2\xB9\xBA\x5\b\x5\x2\xBA\xBB\a\x3\x2\x2\xBB\xBC"+
+		"\x5\x4\x3\x2\xBC\xBD\a\x4\x2\x2\xBD\xBF\a\v\x2\x2\xBE\xC0\x5\x12\n\x2"+
+		"\xBF\xBE\x3\x2\x2\x2\xBF\xC0\x3\x2\x2\x2\xC0\xC1\x3\x2\x2\x2\xC1\xC2\a"+
+		"\f\x2\x2\xC2\xC3\a\x16\x2\x2\xC3\xE0\x3\x2\x2\x2\xC4\xC5\x5\b\x5\x2\xC5"+
+		"\xC7\a\v\x2\x2\xC6\xC8\x5\x12\n\x2\xC7\xC6\x3\x2\x2\x2\xC7\xC8\x3\x2\x2"+
+		"\x2\xC8\xC9\x3\x2\x2\x2\xC9\xCA\a\f\x2\x2\xCA\xCB\a\x16\x2\x2\xCB\xE0"+
+		"\x3\x2\x2\x2\xCC\xCD\a\x17\x2\x2\xCD\xCE\x5\x16\f\x2\xCE\xCF\a\x18\x2"+
+		"\x2\xCF\xE0\x3\x2\x2\x2\xD0\xD1\a\x19\x2\x2\xD1\xD2\a\v\x2\x2\xD2\xD3"+
+		"\x5\b\x5\x2\xD3\xD4\a\f\x2\x2\xD4\xD7\x5\x14\v\x2\xD5\xD6\a\x1A\x2\x2"+
+		"\xD6\xD8\x5\x14\v\x2\xD7\xD5\x3\x2\x2\x2\xD7\xD8\x3\x2\x2\x2\xD8\xE0\x3"+
+		"\x2\x2\x2\xD9\xDA\a\x1B\x2\x2\xDA\xDB\a\v\x2\x2\xDB\xDC\x5\b\x5\x2\xDC"+
+		"\xDD\a\f\x2\x2\xDD\xDE\x5\x14\v\x2\xDE\xE0\x3\x2\x2\x2\xDF\x91\x3\x2\x2"+
+		"\x2\xDF\x96\x3\x2\x2\x2\xDF\x9D\x3\x2\x2\x2\xDF\xA3\x3\x2\x2\x2\xDF\xA9"+
+		"\x3\x2\x2\x2\xDF\xB1\x3\x2\x2\x2\xDF\xB9\x3\x2\x2\x2\xDF\xC4\x3\x2\x2"+
+		"\x2\xDF\xCC\x3\x2\x2\x2\xDF\xD0\x3\x2\x2\x2\xDF\xD9\x3\x2\x2\x2\xE0\x15"+
+		"\x3\x2\x2\x2\xE1\xE3\x5\x14\v\x2\xE2\xE1\x3\x2\x2\x2\xE3\xE6\x3\x2\x2"+
+		"\x2\xE4\xE2\x3\x2\x2\x2\xE4\xE5\x3\x2\x2\x2\xE5\x17\x3\x2\x2\x2\xE6\xE4"+
+		"\x3\x2\x2\x2\x15\x1F&.\x37\x41\\\x63kmsw\x83\x87\x8E\xBF\xC7\xD7\xDF\xE4";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

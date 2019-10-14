@@ -277,12 +277,6 @@ namespace CrunchySalt
             Emit_LNot();
         }
 
-        public void Finish()
-        {
-            if (method.HasNoReturn())
-                Emit_Ret();
-        }
-
         public ILCanvasLocal CreateLocal(Type type)
         {
             return locals.GetValue(type).Pop();

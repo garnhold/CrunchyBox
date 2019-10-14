@@ -28,7 +28,7 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
-		[SerializeField][InspectorDisplay][HideInInspector]private string prefab_id;
+		[SerializeField][HideInInspector]private string prefab_id;
 
 		protected virtual void OnValidateInternal() { }
 
@@ -140,7 +140,7 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
-		[SerializeField][InspectorDisplay][HideInInspector]private string prefab_id;
+		[SerializeField][HideInInspector]private string prefab_id;
 
 		protected virtual void OnValidateInternal() { }
 

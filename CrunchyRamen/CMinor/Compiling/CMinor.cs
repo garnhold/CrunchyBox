@@ -16,10 +16,10 @@ namespace CrunchyRamen
 
                 switch (compile_type)
                 {
-                    case CMinorCompileType.Delegate:
-                        return CMinorStatement.DOMify(code).Compile(environment);
+                    case CMinorCompileType.Statements:
+                        return CMinorStatements.DOMify(code).Compile(environment);
 
-                    case CMinorCompileType.Lambda:
+                    case CMinorCompileType.Expression:
                         return new ILReturn(CMinorExpression.DOMify(code).CompileAsValue(environment));
                 }
 
@@ -46,10 +46,10 @@ namespace CrunchyRamen
 
                 switch(compile_type)
                 {
-                    case CMinorCompileType.Delegate:
-                        return CMinorStatement.DOMify(code).Compile(environment);
+                    case CMinorCompileType.Statements:
+                        return CMinorStatements.DOMify(code).Compile(environment);
 
-                    case CMinorCompileType.Lambda:
+                    case CMinorCompileType.Expression:
                         return new ILReturn(CMinorExpression.DOMify(code).CompileAsValue(environment));
                 }
 

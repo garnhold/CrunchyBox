@@ -15,5 +15,15 @@ namespace CrunchySandwich
         {
             return new Vector2(item.width, item.height);
         }
+
+        static public FloatRange GetHorizontalRange(this Rect item)
+        {
+            return new FloatRange(item.xMin, item.yMax);
+        }
+
+        static public FloatRange GetVerticalRange(this Rect item)
+        {
+            return new FloatRange(item.yMin, item.yMax);
+        }
     }
 }

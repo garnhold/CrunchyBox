@@ -10,7 +10,7 @@ namespace CrunchyRamen
 {
     public enum CMinorCompileType
     {
-        Delegate,
-        Lambda
+        Statements,
+        Expression
     }
 }

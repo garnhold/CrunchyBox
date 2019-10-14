@@ -12,12 +12,11 @@ namespace CrunchySandwich
     [AddComponentMenu("Motion/MotionController_SpriteAlpha")]
     public class MotionController_SpriteAlpha : MotionController
     {
-        [SerializeField]private float center;
-        [SerializeField]private float radius;
+        [SerializeFieldEX][Range(0.0f, 1.0f)]private FloatRange range;
 
         protected override void UpdateInternal(float value)
         {
-            this.GetComponent<SpriteRenderer>().SetAlpha(center + radius * value);
+            this.GetComponent<SpriteRenderer>().SetAlpha(value.ConvertFromOffsetToRange(range));
         }
     }
 }

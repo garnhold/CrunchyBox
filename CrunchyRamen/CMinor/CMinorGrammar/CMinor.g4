@@ -77,11 +77,13 @@ cMinorStatement
     | cMinorExpression '<' cMinorTypeList '>' '(' cMinorExpressionList? ')' ';' # cMinorStatement_InvokeGeneric
     | cMinorExpression '(' cMinorExpressionList? ')' ';' # cMinorStatement_Invoke
 
-    | '{' cMinorStatement* '}' # cMinorStatement_Block
+    | '{' cMinorStatements '}' # cMinorStatement_Block
 
     | 'if' '(' cMinorExpression ')' cMinorStatement ('else' cMinorStatement)? # cMinorStatement_If
     | 'while' '(' cMinorExpression ')' cMinorStatement # cMinorStatement_While
     ;
+
+cMinorStatements : cMinorStatement*;
 
 BOOL /*info: type=>bool*/ : ('true' | 'false');
 INT /*info: type=>int*/ : ('-'|'+')? [0-9]+;

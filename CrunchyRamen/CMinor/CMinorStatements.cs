@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: September 08 2019 13:32:01 -07:00
+//Date: October 14 2019 1:47:36 -07:00
 
 using System;
 using System.Collections;
@@ -14,11 +14,13 @@ using CrunchyNoodle;
 
 namespace CrunchyRamen
 {
-	public partial class CMinorStatement_Block : CMinorStatement
+	public partial class CMinorStatements : CMinorElement
 	{
-        public override ILStatement Compile(CMinorEnvironment environment)
+        public ILStatement Compile(CMinorEnvironment environment)
         {
-            return GetCMinorStatements().Compile(environment);
+            return new ILBlock(
+                GetCMinorStatements().Convert(s => s.Compile(environment))
+            );
         }
 	}
 	

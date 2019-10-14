@@ -27,6 +27,11 @@ namespace CrunchyDough
         {
             return state.UpdateState(get_p1(), get_p2(), get_p3(), get_p4());
         }
+
+        public override void DirtyState()
+        {
+            state.DirtyState();
+        }
     }
 
     public class AutoCompoundState<P1, P2, P3> : AutoCompoundState
@@ -50,6 +55,11 @@ namespace CrunchyDough
         {
             return state.UpdateState(get_p1(), get_p2(), get_p3());
         }
+
+        public override void DirtyState()
+        {
+            state.DirtyState();
+        }
     }
 
     public class AutoCompoundState<P1, P2> : AutoCompoundState
@@ -71,6 +81,11 @@ namespace CrunchyDough
         {
             return state.UpdateState(get_p1(), get_p2());
         }
+
+        public override void DirtyState()
+        {
+            state.DirtyState();
+        }
     }
 
     public abstract class AutoCompoundState
@@ -91,5 +106,6 @@ namespace CrunchyDough
         }
 
         public abstract bool UpdateState();
+        public abstract void DirtyState();
     }
 }

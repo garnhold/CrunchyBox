@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace CrunchyDough
 {
-	
 	[Serializable]
     public struct ByteRange
 	{
@@ -16,6 +15,38 @@ namespace CrunchyDough
 			return r.GetVariance();
 		}
 
+	
+		static public implicit operator ShortRange(ByteRange r)
+		{
+			return new ShortRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator IntRange(ByteRange r)
+		{
+			return new IntRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator LongRange(ByteRange r)
+		{
+			return new LongRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator FloatRange(ByteRange r)
+		{
+			return new FloatRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DoubleRange(ByteRange r)
+		{
+			return new DoubleRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DecimalRange(ByteRange r)
+		{
+			return new DecimalRange(r.x1, r.x2);
+		}
+	
+	
 		public ByteRange(byte nx1, byte nx2)
 		{
 			x1 = nx1;
@@ -67,6 +98,38 @@ namespace CrunchyDough
 			return v.GetRange();
 		}
 
+	
+		static public implicit operator ShortVariance(ByteVariance r)
+		{
+			return new ShortVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator IntVariance(ByteVariance r)
+		{
+			return new IntVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator LongVariance(ByteVariance r)
+		{
+			return new LongVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator FloatVariance(ByteVariance r)
+		{
+			return new FloatVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DoubleVariance(ByteVariance r)
+		{
+			return new DoubleVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DecimalVariance(ByteVariance r)
+		{
+			return new DecimalVariance(r.value, r.radius);
+		}
+	
+	
 		public ByteVariance(byte v, byte r)
 		{
 			value = v;
@@ -146,7 +209,6 @@ namespace CrunchyDough
 		}
 	}
 
-	
 	[Serializable]
     public struct ShortRange
 	{
@@ -158,6 +220,38 @@ namespace CrunchyDough
 			return r.GetVariance();
 		}
 
+	
+		static public implicit operator IntRange(ShortRange r)
+		{
+			return new IntRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator LongRange(ShortRange r)
+		{
+			return new LongRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator FloatRange(ShortRange r)
+		{
+			return new FloatRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DoubleRange(ShortRange r)
+		{
+			return new DoubleRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DecimalRange(ShortRange r)
+		{
+			return new DecimalRange(r.x1, r.x2);
+		}
+	
+	
+		static public explicit operator ByteRange(ShortRange r)
+		{
+			return new ByteRange((byte)r.x1, (byte)r.x2);
+		}
+	
 		public ShortRange(short nx1, short nx2)
 		{
 			x1 = nx1;
@@ -209,6 +303,38 @@ namespace CrunchyDough
 			return v.GetRange();
 		}
 
+	
+		static public implicit operator IntVariance(ShortVariance r)
+		{
+			return new IntVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator LongVariance(ShortVariance r)
+		{
+			return new LongVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator FloatVariance(ShortVariance r)
+		{
+			return new FloatVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DoubleVariance(ShortVariance r)
+		{
+			return new DoubleVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DecimalVariance(ShortVariance r)
+		{
+			return new DecimalVariance(r.value, r.radius);
+		}
+	
+	
+		static public explicit operator ByteVariance(ShortVariance r)
+		{
+			return new ByteVariance((byte)r.value, (byte)r.radius);
+		}
+	
 		public ShortVariance(short v, short r)
 		{
 			value = v;
@@ -288,7 +414,6 @@ namespace CrunchyDough
 		}
 	}
 
-	
 	[Serializable]
     public struct IntRange
 	{
@@ -300,6 +425,38 @@ namespace CrunchyDough
 			return r.GetVariance();
 		}
 
+	
+		static public implicit operator LongRange(IntRange r)
+		{
+			return new LongRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator FloatRange(IntRange r)
+		{
+			return new FloatRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DoubleRange(IntRange r)
+		{
+			return new DoubleRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DecimalRange(IntRange r)
+		{
+			return new DecimalRange(r.x1, r.x2);
+		}
+	
+	
+		static public explicit operator ShortRange(IntRange r)
+		{
+			return new ShortRange((short)r.x1, (short)r.x2);
+		}
+	
+		static public explicit operator ByteRange(IntRange r)
+		{
+			return new ByteRange((byte)r.x1, (byte)r.x2);
+		}
+	
 		public IntRange(int nx1, int nx2)
 		{
 			x1 = nx1;
@@ -351,6 +508,38 @@ namespace CrunchyDough
 			return v.GetRange();
 		}
 
+	
+		static public implicit operator LongVariance(IntVariance r)
+		{
+			return new LongVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator FloatVariance(IntVariance r)
+		{
+			return new FloatVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DoubleVariance(IntVariance r)
+		{
+			return new DoubleVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DecimalVariance(IntVariance r)
+		{
+			return new DecimalVariance(r.value, r.radius);
+		}
+	
+	
+		static public explicit operator ShortVariance(IntVariance r)
+		{
+			return new ShortVariance((short)r.value, (short)r.radius);
+		}
+	
+		static public explicit operator ByteVariance(IntVariance r)
+		{
+			return new ByteVariance((byte)r.value, (byte)r.radius);
+		}
+	
 		public IntVariance(int v, int r)
 		{
 			value = v;
@@ -430,7 +619,6 @@ namespace CrunchyDough
 		}
 	}
 
-	
 	[Serializable]
     public struct LongRange
 	{
@@ -442,6 +630,38 @@ namespace CrunchyDough
 			return r.GetVariance();
 		}
 
+	
+		static public implicit operator FloatRange(LongRange r)
+		{
+			return new FloatRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DoubleRange(LongRange r)
+		{
+			return new DoubleRange(r.x1, r.x2);
+		}
+	
+		static public implicit operator DecimalRange(LongRange r)
+		{
+			return new DecimalRange(r.x1, r.x2);
+		}
+	
+	
+		static public explicit operator IntRange(LongRange r)
+		{
+			return new IntRange((int)r.x1, (int)r.x2);
+		}
+	
+		static public explicit operator ShortRange(LongRange r)
+		{
+			return new ShortRange((short)r.x1, (short)r.x2);
+		}
+	
+		static public explicit operator ByteRange(LongRange r)
+		{
+			return new ByteRange((byte)r.x1, (byte)r.x2);
+		}
+	
 		public LongRange(long nx1, long nx2)
 		{
 			x1 = nx1;
@@ -493,6 +713,38 @@ namespace CrunchyDough
 			return v.GetRange();
 		}
 
+	
+		static public implicit operator FloatVariance(LongVariance r)
+		{
+			return new FloatVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DoubleVariance(LongVariance r)
+		{
+			return new DoubleVariance(r.value, r.radius);
+		}
+	
+		static public implicit operator DecimalVariance(LongVariance r)
+		{
+			return new DecimalVariance(r.value, r.radius);
+		}
+	
+	
+		static public explicit operator IntVariance(LongVariance r)
+		{
+			return new IntVariance((int)r.value, (int)r.radius);
+		}
+	
+		static public explicit operator ShortVariance(LongVariance r)
+		{
+			return new ShortVariance((short)r.value, (short)r.radius);
+		}
+	
+		static public explicit operator ByteVariance(LongVariance r)
+		{
+			return new ByteVariance((byte)r.value, (byte)r.radius);
+		}
+	
 		public LongVariance(long v, long r)
 		{
 			value = v;
@@ -572,7 +824,6 @@ namespace CrunchyDough
 		}
 	}
 
-	
 	[Serializable]
     public struct FloatRange
 	{
@@ -584,6 +835,38 @@ namespace CrunchyDough
 			return r.GetVariance();
 		}
 
+	
+		static public implicit operator DoubleRange(FloatRange r)
+		{
+			return new DoubleRange(r.x1, r.x2);
+		}
+	
+	
+		static public explicit operator DecimalRange(FloatRange r)
+		{
+			return new DecimalRange((decimal)r.x1, (decimal)r.x2);
+		}
+	
+		static public explicit operator LongRange(FloatRange r)
+		{
+			return new LongRange((long)r.x1, (long)r.x2);
+		}
+	
+		static public explicit operator IntRange(FloatRange r)
+		{
+			return new IntRange((int)r.x1, (int)r.x2);
+		}
+	
+		static public explicit operator ShortRange(FloatRange r)
+		{
+			return new ShortRange((short)r.x1, (short)r.x2);
+		}
+	
+		static public explicit operator ByteRange(FloatRange r)
+		{
+			return new ByteRange((byte)r.x1, (byte)r.x2);
+		}
+	
 		public FloatRange(float nx1, float nx2)
 		{
 			x1 = nx1;
@@ -635,6 +918,38 @@ namespace CrunchyDough
 			return v.GetRange();
 		}
 
+	
+		static public implicit operator DoubleVariance(FloatVariance r)
+		{
+			return new DoubleVariance(r.value, r.radius);
+		}
+	
+	
+		static public explicit operator DecimalVariance(FloatVariance r)
+		{
+			return new DecimalVariance((decimal)r.value, (decimal)r.radius);
+		}
+	
+		static public explicit operator LongVariance(FloatVariance r)
+		{
+			return new LongVariance((long)r.value, (long)r.radius);
+		}
+	
+		static public explicit operator IntVariance(FloatVariance r)
+		{
+			return new IntVariance((int)r.value, (int)r.radius);
+		}
+	
+		static public explicit operator ShortVariance(FloatVariance r)
+		{
+			return new ShortVariance((short)r.value, (short)r.radius);
+		}
+	
+		static public explicit operator ByteVariance(FloatVariance r)
+		{
+			return new ByteVariance((byte)r.value, (byte)r.radius);
+		}
+	
 		public FloatVariance(float v, float r)
 		{
 			value = v;
@@ -714,7 +1029,6 @@ namespace CrunchyDough
 		}
 	}
 
-	
 	[Serializable]
     public struct DoubleRange
 	{
@@ -726,6 +1040,38 @@ namespace CrunchyDough
 			return r.GetVariance();
 		}
 
+	
+	
+		static public explicit operator DecimalRange(DoubleRange r)
+		{
+			return new DecimalRange((decimal)r.x1, (decimal)r.x2);
+		}
+	
+		static public explicit operator FloatRange(DoubleRange r)
+		{
+			return new FloatRange((float)r.x1, (float)r.x2);
+		}
+	
+		static public explicit operator LongRange(DoubleRange r)
+		{
+			return new LongRange((long)r.x1, (long)r.x2);
+		}
+	
+		static public explicit operator IntRange(DoubleRange r)
+		{
+			return new IntRange((int)r.x1, (int)r.x2);
+		}
+	
+		static public explicit operator ShortRange(DoubleRange r)
+		{
+			return new ShortRange((short)r.x1, (short)r.x2);
+		}
+	
+		static public explicit operator ByteRange(DoubleRange r)
+		{
+			return new ByteRange((byte)r.x1, (byte)r.x2);
+		}
+	
 		public DoubleRange(double nx1, double nx2)
 		{
 			x1 = nx1;
@@ -777,6 +1123,38 @@ namespace CrunchyDough
 			return v.GetRange();
 		}
 
+	
+	
+		static public explicit operator DecimalVariance(DoubleVariance r)
+		{
+			return new DecimalVariance((decimal)r.value, (decimal)r.radius);
+		}
+	
+		static public explicit operator FloatVariance(DoubleVariance r)
+		{
+			return new FloatVariance((float)r.value, (float)r.radius);
+		}
+	
+		static public explicit operator LongVariance(DoubleVariance r)
+		{
+			return new LongVariance((long)r.value, (long)r.radius);
+		}
+	
+		static public explicit operator IntVariance(DoubleVariance r)
+		{
+			return new IntVariance((int)r.value, (int)r.radius);
+		}
+	
+		static public explicit operator ShortVariance(DoubleVariance r)
+		{
+			return new ShortVariance((short)r.value, (short)r.radius);
+		}
+	
+		static public explicit operator ByteVariance(DoubleVariance r)
+		{
+			return new ByteVariance((byte)r.value, (byte)r.radius);
+		}
+	
 		public DoubleVariance(double v, double r)
 		{
 			value = v;
@@ -856,7 +1234,6 @@ namespace CrunchyDough
 		}
 	}
 
-	
 	[Serializable]
     public struct DecimalRange
 	{
@@ -868,6 +1245,8 @@ namespace CrunchyDough
 			return r.GetVariance();
 		}
 
+	
+	
 		public DecimalRange(decimal nx1, decimal nx2)
 		{
 			x1 = nx1;
@@ -919,6 +1298,8 @@ namespace CrunchyDough
 			return v.GetRange();
 		}
 
+	
+	
 		public DecimalVariance(decimal v, decimal r)
 		{
 			value = v;

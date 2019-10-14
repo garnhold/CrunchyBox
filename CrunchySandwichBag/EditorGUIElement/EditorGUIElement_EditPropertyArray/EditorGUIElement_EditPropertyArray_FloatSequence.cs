@@ -63,7 +63,7 @@ namespace CrunchySandwichBag
             }
 
             Vector2 percent;
-            if (GUIExtensions.MousePercentArea(background_rect, out percent, true))
+            if (GUIExtensions.MousePercentArea(background_rect, out percent, true, true))
             {
                 int index = (int)(array_size * percent.x);
                 float magnitude = 1.0f - percent.y;

@@ -26,20 +26,30 @@ namespace CrunchySandwichBag
 	[EditorGUIElementForType(typeof(<#=type.type_name#>), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_<#=type.type_name#> : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<<#=type.type_name#>>
     {
+		private RangeAttribute range_attribute;
+
         protected override <#=type.type_name#> DrawBuiltInInternal(Rect rect, GUIContent label, <#=type.type_name#> value)
         {
-            Rect x1_rect;
-            Rect x2_rect;
+			if(range_attribute != null)
+				return (<#=type.type_name#>)EditorGUIExtensions.RangeSlider(rect, label, (<#=type.type_name#>)value, new FloatRange(range_attribute.min, range_attribute.max));
+			else
+			{
+				Rect x1_rect;
+				Rect x2_rect;
 
-			rect.SplitByXCenter(out x1_rect, out x2_rect);
+				rect.SplitByXCenter(out x1_rect, out x2_rect);
 
-            <#=type.primitive_name#> x1 = EditorGUI.<#=type.function_name#>(x1_rect, label, value.x1);
-            <#=type.primitive_name#> x2 = EditorGUI.<#=type.function_name#>(x2_rect, "->", value.x2);
+				<#=type.primitive_name#> x1 = EditorGUI.<#=type.function_name#>(x1_rect, label, value.x1);
+				<#=type.primitive_name#> x2 = EditorGUI.<#=type.function_name#>(x2_rect, "->", value.x2);
 
-            return new <#=type.type_name#>(x1, x2);
+				return new <#=type.type_name#>(x1, x2);
+			}
         }
 
-        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_<#=type.type_name#>(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_<#=type.type_name#>(EditProperty_Single_Value p) : base(p)
+		{
+			range_attribute = p.GetCustomAttributeOfType<RangeAttribute>(true);
+		}
     }
 
 <#}#>

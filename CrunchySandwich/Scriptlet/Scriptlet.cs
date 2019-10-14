@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using CrunchyDough;
+using CrunchySalt;
 using CrunchyNoodle;
 using CrunchyRamen;
 
@@ -21,6 +22,13 @@ namespace CrunchySandwich
         private string compile_message;
         private AutoCompoundState compile_state;
         private Operation<object, object, object[]> compiled_operation;
+
+        [InspectorAction]
+        private void ForceCompile()
+        {
+            compile_state.DirtyState();
+            Compile();
+        }
 
         [InspectorDisplay]
         private string Compile()
@@ -40,7 +48,7 @@ namespace CrunchySandwich
                 }
                 catch (Exception ex)
                 {
-                    compile_message = ex.InnerException.Message;
+                    compile_message = ex.ToString();
                 }
             }
 

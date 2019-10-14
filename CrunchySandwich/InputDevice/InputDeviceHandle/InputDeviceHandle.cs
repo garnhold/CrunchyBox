@@ -13,6 +13,14 @@ namespace CrunchySandwich
     {
         [SerializeField]private List<InputDeviceComponentHandle> component_handles;
 
+        public InputDeviceHandle(IEnumerable<InputDeviceComponentHandle> c)
+        {
+            component_handles = c.ToList();
+        }
+        public InputDeviceHandle(params InputDeviceComponentHandle[] c) : this((IEnumerable<InputDeviceComponentHandle>)c) { }
+
+        public InputDeviceHandle() : this(null) { }
+
         public void ProcessHandle(InputDeviceBase device, Process process)
         {
             component_handles.Process(h => h.EnterHandleSection(device));

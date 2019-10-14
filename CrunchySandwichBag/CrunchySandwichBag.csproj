@@ -219,6 +219,7 @@
     <Compile Include="EditTarget\EditFunction\EditFunction_Reflected.cs" />
     <Compile Include="EditTarget\EditFunction\EditFunction.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_BurstAudioClip.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_RangeSlider.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DropZone.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextDisplay.cs" />

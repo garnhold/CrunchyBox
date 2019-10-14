@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: September 10 2019 14:17:50 -07:00
+//Date: October 14 2019 1:47:36 -07:00
 
 using System;
 using System.IO;
@@ -3338,7 +3338,7 @@ namespace CrunchyRamen
 	
 	public partial class CMinorStatement_Block : CMinorStatement
 	{
-		[RelatableChild]private List<CMinorStatement> c_minor_statements;
+		[RelatableChild]private CMinorStatements c_minor_statements;
 		static public CMinorStatement_Block DOMify(CMinorParser.CMinorStatement_BlockContext context)
 		{
 			if(context != null)
@@ -3371,55 +3371,29 @@ namespace CrunchyRamen
 		
 		public CMinorStatement_Block()
 		{
-			c_minor_statements = new List<CMinorStatement>();
+			c_minor_statements = null;
 			OnConstructor();
 		}
 		
 		partial void OnConstructor();
 		public CMinorStatement_Block(CMinorParser.CMinorStatement_BlockContext context) : this()
 		{
-			AddCMinorStatements(context.cMinorStatement().Convert(c => CMinorStatement.DOMify(c)));
+			SetCMinorStatements(CMinorStatements.DOMify(context.cMinorStatements()));
 		}
 		
 		public override CMinorStatement Duplicate()
 		{
 			CMinorStatement_Block instance = new CMinorStatement_Block();
-			instance.SetCMinorStatements(GetCMinorStatements().Convert(i => i.IfNotNull(z => z.Duplicate())));
+			instance.SetCMinorStatements(GetCMinorStatements().IfNotNull(z => z.Duplicate()));
 			return instance;
 		}
 		
-		private void ClearCMinorStatements()
+		private void SetCMinorStatements(CMinorStatements input)
 		{
-			c_minor_statements.Clear();
+			c_minor_statements = input;
 		}
 		
-		private void SetCMinorStatements(IEnumerable<CMinorStatement> input)
-		{
-			ClearCMinorStatements();
-			AddCMinorStatements(input);
-		}
-		
-		private void SetCMinorStatements(params CMinorStatement[] input)
-		{
-			SetCMinorStatements((IEnumerable<CMinorStatement>)input);
-		}
-		
-		private void AddCMinorStatement(CMinorStatement input)
-		{
-			c_minor_statements.Add(input);
-		}
-		
-		private void AddCMinorStatements(IEnumerable<CMinorStatement> input)
-		{
-			input.Process(i => AddCMinorStatement(i));
-		}
-		
-		private void AddCMinorStatements(params CMinorStatement[] input)
-		{
-			AddCMinorStatements((IEnumerable<CMinorStatement>)input);
-		}
-		
-		public IEnumerable<CMinorStatement> GetCMinorStatements()
+		public CMinorStatements GetCMinorStatements()
 		{
 			return c_minor_statements;
 		}
@@ -3592,6 +3566,96 @@ namespace CrunchyRamen
 		public CMinorStatement GetCMinorStatement()
 		{
 			return c_minor_statement;
+		}
+		
+	}
+	
+	public partial class CMinorStatements : CMinorElement
+	{
+		[RelatableChild]private List<CMinorStatement> c_minor_statements;
+		static public CMinorStatements DOMify(CMinorParser.CMinorStatementsContext context)
+		{
+			if(context != null)
+			{
+				return new CMinorStatements(context);
+			}
+			
+			return null;
+		}
+		
+		static public CMinorStatements DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as CMinorParser.CMinorStatementsContext);
+		}
+		
+		static public CMinorStatements DOMify(Stream stream)
+		{
+			return DOMify(CMinorDOMinatorUtilities.CreateParser(stream).cMinorStatements());
+		}
+		
+		static public CMinorStatements DOMify(string text)
+		{
+			return DOMify(CMinorDOMinatorUtilities.CreateParser(text).cMinorStatements());
+		}
+		
+		static public CMinorStatements DOMifyFile(string filename)
+		{
+			return DOMify(CMinorDOMinatorUtilities.CreateFileParser(filename).cMinorStatements());
+		}
+		
+		public CMinorStatements()
+		{
+			c_minor_statements = new List<CMinorStatement>();
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public CMinorStatements(CMinorParser.CMinorStatementsContext context) : this()
+		{
+			AddCMinorStatements(context.cMinorStatement().Convert(c => CMinorStatement.DOMify(c)));
+		}
+		
+		public CMinorStatements Duplicate()
+		{
+			CMinorStatements instance = new CMinorStatements();
+			instance.SetCMinorStatements(GetCMinorStatements().Convert(i => i.IfNotNull(z => z.Duplicate())));
+			return instance;
+		}
+		
+		private void ClearCMinorStatements()
+		{
+			c_minor_statements.Clear();
+		}
+		
+		private void SetCMinorStatements(IEnumerable<CMinorStatement> input)
+		{
+			ClearCMinorStatements();
+			AddCMinorStatements(input);
+		}
+		
+		private void SetCMinorStatements(params CMinorStatement[] input)
+		{
+			SetCMinorStatements((IEnumerable<CMinorStatement>)input);
+		}
+		
+		private void AddCMinorStatement(CMinorStatement input)
+		{
+			c_minor_statements.Add(input);
+		}
+		
+		private void AddCMinorStatements(IEnumerable<CMinorStatement> input)
+		{
+			input.Process(i => AddCMinorStatement(i));
+		}
+		
+		private void AddCMinorStatements(params CMinorStatement[] input)
+		{
+			AddCMinorStatements((IEnumerable<CMinorStatement>)input);
+		}
+		
+		public IEnumerable<CMinorStatement> GetCMinorStatements()
+		{
+			return c_minor_statements;
 		}
 		
 	}
@@ -3917,6 +3981,11 @@ namespace CrunchyRamen
 		public override CMinorElement VisitCMinorStatement_While(CMinorParser.CMinorStatement_WhileContext context)
 		{
 			return CMinorStatement_While.DOMify(context);
+		}
+		
+		public override CMinorElement VisitCMinorStatements(CMinorParser.CMinorStatementsContext context)
+		{
+			return CMinorStatements.DOMify(context);
 		}
 		
 	}

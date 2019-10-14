@@ -182,6 +182,7 @@
     <Compile Include="Schedule\ISchedule.cs" />
     <Compile Include="Schedule\TreeSchedule.cs" />
     <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Hertz.cs" />
+    <Compile Include="TimedValue\TimedValue.cs" />
     <Compile Include="UnorderedTuple\UnorderedTuple.cs" />
     <Compile Include="UnorderedTuple\UnorderedTuple_New.cs" />
     <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Timestamp.cs" />

@@ -16,6 +16,14 @@ namespace CrunchySandwich
 
         private int idle_count;
 
+        public InputDeviceComponentHandle(InputDeviceComponentId c, InputDeviceComponentState p)
+        {
+            component = c;
+            permission = p;
+        }
+
+        public InputDeviceComponentHandle() : this(new InputDeviceComponentId(), InputDeviceComponentState.Shared) { }
+
         public bool Idle()
         {
             if (idle_count++ >= 3)

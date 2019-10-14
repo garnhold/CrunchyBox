@@ -356,4 +356,10 @@ public interface ICMinorVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitCMinorStatement_While([NotNull] CMinorParser.CMinorStatement_WhileContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CMinorParser.cMinorStatements"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCMinorStatements([NotNull] CMinorParser.CMinorStatementsContext context);
 }
