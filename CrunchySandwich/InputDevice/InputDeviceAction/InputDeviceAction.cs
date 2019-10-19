@@ -14,7 +14,7 @@ namespace CrunchySandwich
         [SerializeField]private string title;
         [SerializeField]private string command;
 
-        [SerializeField]private GameObject indicator;
+        [SerializeField]private Indicator indicator;
 
         public abstract bool IsOccuringThisFrame(InputDeviceBase device);
 
@@ -28,7 +28,7 @@ namespace CrunchySandwich
             return command;
         }
 
-        public GameObject GetIndicator()
+        public Indicator GetIndicator()
         {
             return indicator;
         }

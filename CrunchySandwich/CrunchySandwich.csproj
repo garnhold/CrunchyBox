@@ -219,12 +219,7 @@
     <Compile Include="Finder\Finder.cs" />
     <Compile Include="GUIControlHandle\GUIControlHandle.cs" />
     <Compile Include="EphemeralPrefab\EphemeralDrawer.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_AnimatedSprite.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_Prefab.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_Sprite.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
+    <Compile Include="Indicator\Indicator.cs" />
     <Compile Include="InspectorActionAttribute\InspectorActionAttribute.cs" />
     <Compile Include="InspectorDisplayAttribute\InspectorDisplayAttribute.cs" />
     <Compile Include="InspectorFunctionAttribute\InspectorFunctionAttribute.cs" />

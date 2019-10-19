@@ -8,8 +8,8 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class StickGestureIndicator : MonoBehaviourEX
+    public abstract class Indicator : MonoBehaviourEX, EphemeralPrefab
     {
-        public abstract void Initialize(InputDeviceAction_StickGesture action);
+        public abstract void Initialize(Vector3 position, float strength);
     }
 }
