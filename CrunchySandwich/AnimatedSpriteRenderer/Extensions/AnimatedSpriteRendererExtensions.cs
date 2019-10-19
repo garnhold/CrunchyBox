@@ -37,5 +37,11 @@ namespace CrunchySandwich
 
             item.StopClear();
         }
+
+        static public void SetAnimatedSpriteAndTimeType(this AnimatedSpriteRenderer item, AnimatedSprite sprite, TimeType type)
+        {
+            item.SetAnimatedSprite(sprite);
+            item.SetTimeType(type);
+        }
     }
 }

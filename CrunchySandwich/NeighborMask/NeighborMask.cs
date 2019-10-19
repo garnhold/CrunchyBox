@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -24,6 +26,11 @@ namespace CrunchySandwich
                 return true;
 
             return false;
+        }
+
+        static public IEnumerable<NeighborMask> GetAllNeighborMasks()
+        {
+            return Ints.Range(0, byte.MaxValue, true).Convert(b => new NeighborMask((byte)b));
         }
 
         public NeighborMask(byte b)

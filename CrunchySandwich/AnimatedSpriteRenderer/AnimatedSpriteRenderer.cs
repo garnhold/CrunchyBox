@@ -18,11 +18,6 @@ namespace CrunchySandwich
 
         private SpriteAnimation current_animation;
 
-        private void Start()
-        {
-            Initialize();
-        }
-
         private void Update()
         {
             if (Application.isPlaying)
@@ -36,18 +31,29 @@ namespace CrunchySandwich
             }
         }
 
-        public void Initialize()
+        private void Start()
         {
             animation_time.Start();
             current_animation = animated_sprite.GetDefaultAnimation();
         }
 
-        public void Initialize(AnimatedSprite s, TimeType t)
+        public AnimatedSpriteRenderer()
         {
-            animated_sprite = s;
-            animation_time = new GameStopwatch(t);
+            animation_time = new GameStopwatch();
+        }
 
-            Initialize();
+        public void SetAnimatedSprite(AnimatedSprite s)
+        {
+            if (animated_sprite != s)
+            {
+                animated_sprite = s;
+                current_animation = animated_sprite.GetDefaultAnimation();
+            }
+        }
+
+        public void SetTimeType(TimeType t)
+        {
+            animation_time.SetTimeType(t);
         }
 
         public void SetRate(float rate)
@@ -84,6 +90,11 @@ namespace CrunchySandwich
         public void StopClear()
         {
             animation_time.StopClear();
+        }
+
+        public TimeType GetTimeType()
+        {
+            return animation_time.GetTimeType();
         }
 
         public float GetRate()

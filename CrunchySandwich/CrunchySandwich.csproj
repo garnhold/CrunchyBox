@@ -136,10 +136,19 @@
     <Compile Include="ComponentsCache\ComponentsCache_Upward.cs" />
     <Compile Include="ComponentsCache\ComponentsCache.cs" />
     <Compile Include="ConversionMethods\GeneralConversionMethods_GameObject.cs" />
+    <Compile Include="EphemeralPrefab\EphemeralDefinition.cs" />
+    <Compile Include="EphemeralPrefab\EphemeralDefinition_Prefab.cs" />
+    <Compile Include="EphemeralPrefab\EphemeralPrefab.cs" />
+    <Compile Include="EphemeralPrefab\EphemeralSystem.cs" />
     <Compile Include="Extensions\Color\ColorExtensions_MoveTowards.cs" />
     <Compile Include="Extensions\Color\ColorExtensions_Towards.cs" />
     <Compile Include="Extensions\EventType\EventTypeExtensions_Compare.cs" />
     <Compile Include="Extensions\EventType\EventTypeExtensions.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.cs">
+      <DependentUpon>GameObjectComponentExtensions_Child_Set.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_IsPlaying.cs">
       <DependentUpon>GameObjectComponentExtensions_IsPlaying.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -209,10 +218,19 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_Vector3Int.cs" />
     <Compile Include="Finder\Finder.cs" />
     <Compile Include="GUIControlHandle\GUIControlHandle.cs" />
+    <Compile Include="EphemeralPrefab\EphemeralDrawer.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_AnimatedSprite.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_Prefab.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_Sprite.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
+    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
     <Compile Include="InspectorActionAttribute\InspectorActionAttribute.cs" />
     <Compile Include="InspectorDisplayAttribute\InspectorDisplayAttribute.cs" />
     <Compile Include="InspectorFunctionAttribute\InspectorFunctionAttribute.cs" />
+    <Compile Include="MountPoint\MountPoint.cs" />
     <Compile Include="PrefabLookup\PrefabLookup.cs" />
+    <Compile Include="Prefab\Prefab.cs" />
     <Compile Include="RepresentationController\RepresentationController.cs" />
     <Compile Include="Scene\Extensions\SceneEXExtensions_Activate.cs" />
     <Compile Include="Scene\Extensions\SceneEXExtensions.cs" />
@@ -250,8 +268,6 @@
     <Compile Include="Time\Alarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\Alarm\GameAlarm.cs" />
     <Compile Include="Time\Stopwatch\GameStopwatch.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_StickGesture.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\StickGestureIndicator.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Native.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Option\InputDeviceComponent_Option.cs" />
@@ -320,10 +336,6 @@
     <Compile Include="Extensions\Vector2\Vector2Extensions_HorizontalDirection.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_Towards.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_MoveTowards.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_Prefab.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_AnimatedSprite.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator_Sprite.cs" />
-    <Compile Include="InputDevice\InputDeviceActionIndicator\InputDeviceActionIndicator.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonRelease.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_StickGesture.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonHold.cs" />
@@ -1222,6 +1234,10 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Child_Set.cs</LastGenOutput>
+    </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_IsPlaying.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_IsPlaying.cs</LastGenOutput>

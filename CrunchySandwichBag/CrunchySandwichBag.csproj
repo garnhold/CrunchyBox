@@ -219,12 +219,16 @@
     <Compile Include="EditTarget\EditFunction\EditFunction_Reflected.cs" />
     <Compile Include="EditTarget\EditFunction\EditFunction.cs" />
     <Compile Include="Extensions\AudioClip\AudioClipExtensions_BurstAudioClip.cs" />
+    <Compile Include="Extensions\EphemeralPrefab\EphemeralPrefabExtensions.cs" />
+    <Compile Include="Extensions\EphemeralPrefab\EphemeralPrefabExtensions_Prefabs.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_RangeSlider.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_DropZone.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextArea.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextDisplay.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions_Size.cs" />
     <Compile Include="Extensions\EditorWindow\EditorWindowExtensions.cs" />
+    <Compile Include="Extensions\Prefab\PrefabExtensions.cs" />
+    <Compile Include="Extensions\Prefab\PrefabExtensions_Prefabs.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_TerrainTile.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
@@ -277,7 +281,6 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites_Collider.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Importer.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_GetValue.cs" />
-    <Compile Include="PrefabsSettings\DeployablePrefabGroup.cs" />
     <Compile Include="PrefabsSettings\PrefabsSettings.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_Complex\EditorSceneElement_Complex_EditGadget.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\Extensions\EditorSceneElementEditGadgetInstanceExtensions_Execute.cs" />

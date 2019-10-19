@@ -9,7 +9,7 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public interface DeployablePrefab : Prefab
+    public interface EphemeralPrefab : Prefab
     {
     }
 }

@@ -14,14 +14,14 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    static public class DeployablePrefabExtensions_Prefabs
+    static public class EphemeralPrefabExtensions_Prefabs
     {
-        static private CSTextDocumentWriter CreateWriter(this DeployablePrefab item, CSTextDocumentBuilder builder)
+        static private CSTextDocumentWriter CreateWriter(this EphemeralPrefab item, CSTextDocumentBuilder builder)
         {
             return builder.CreateWriterWithVariablePairs(
                 "TYPE", item.GetType().Name,
                 "NAME", item.GetPrefabsName(),
-                "FUNCTION", ("Deploy_" + item.name).StyleAsFunctionName()
+                "FUNCTION", ("Draw_" + item.name).StyleAsFunctionName()
             );
         }
         static private CSTextDocumentWriter CreateWriter(Type item, CSTextDocumentBuilder builder)
@@ -31,7 +31,7 @@ namespace CrunchySandwichBag
             );
         }
 
-        static public void GeneratePrefabsMembers(this DeployablePrefab item, CSTextDocumentBuilder builder)
+        static public void GeneratePrefabsMembers(this EphemeralPrefab item, CSTextDocumentBuilder builder)
         {
             CSTextDocumentWriter writer = item.CreateWriter(builder);
 
@@ -49,8 +49,8 @@ namespace CrunchySandwichBag
                     .Convert(p => p.Name)
                     .Join(", ");
 
-                writer.Write("static public ?TYPE ?FUNCTION(" + parameters + ")", delegate() {
-                    writer.Write("return GetInstance().?NAME.Deploy(" + arguments + ");");
+                writer.Write("static public void ?FUNCTION(" + parameters + ")", delegate() {
+                    writer.Write("GetInstance().?NAME.Draw(" + arguments + ");");
                 });
             }
         }
@@ -72,11 +72,8 @@ namespace CrunchySandwichBag
                     .Convert(p => p.Name)
                     .Join(", ");
 
-                writer.Write("static public ?TYPE Deploy(" + parameters + ")", delegate() {
-                    writer.Write("?TYPE instance = item.SpawnInstance<?TYPE>();");
-
-                    writer.Write("instance.Initialize(" + arguments + ");");
-                    writer.Write("return instance;");
+                writer.Write("static public void Draw(" + parameters + ")", delegate() {
+                    writer.Write("EphemeralSystem.Next(item).Initialize(" + arguments + ");");
                 });
             }
         }

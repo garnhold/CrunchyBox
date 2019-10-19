@@ -5,7 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+using UnityEngine.Internal;
+
 using CrunchyDough;
+using CrunchySalt;
+using CrunchyNoodle;
 using CrunchyBun;
 using CrunchySandwich;
 
@@ -20,7 +24,7 @@ namespace CrunchySandwichBag
                 item.Plan(rect.width, state);
                 item.Layout(rect.min);
 
-                item.Draw();
+                item.Draw(rect);
                 item.Unwind();
             }
         }

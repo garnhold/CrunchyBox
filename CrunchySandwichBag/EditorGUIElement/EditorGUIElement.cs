@@ -147,11 +147,6 @@ namespace CrunchySandwichBag
             });
         }
 
-        public void Draw()
-        {
-            Draw(element_rect);
-        }
-
         public void Unwind()
         {
             UnwindInternal();

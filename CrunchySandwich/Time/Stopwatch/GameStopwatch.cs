@@ -49,6 +49,13 @@ namespace CrunchySandwich
             return stopwatch.IsRunning();
         }
 
+        public void SetTimeType(TimeType t)
+        {
+            time_type = t;
+
+            Touch();
+        }
+
         public void SetSpeed(float s)
         {
             Touch();
@@ -68,6 +75,11 @@ namespace CrunchySandwich
             Touch();
 
             return stopwatch.GetElapsedTimeInMilliseconds();
+        }
+
+        public TimeType GetTimeType()
+        {
+            return time_type;
         }
 
         public float GetSpeed()
