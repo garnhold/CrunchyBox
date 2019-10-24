@@ -31,5 +31,10 @@ namespace CrunchyGinger
         {
             return new CSTextDocumentWriter(new CSLine_VariableTable(pairs), this);
         }
+
+        public CSTextDocumentWriter CreateWriterWithVariablePairs()
+        {
+            return CreateWriter();
+        }
     }
 }

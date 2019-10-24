@@ -11,7 +11,7 @@ namespace CrunchySack
     public class ClassLibrary
     {
         private List<ClassProvider> class_providers;
-        private Dictionary<Tuple<Type, string>, CmlEntry_Class> manual_classes;
+        private Dictionary<CrunchyDough.Tuple<Type, string>, CmlEntry_Class> manual_classes;
 
         private OperationCache<CmlEntry_Class, Type, string> class_cache;
 

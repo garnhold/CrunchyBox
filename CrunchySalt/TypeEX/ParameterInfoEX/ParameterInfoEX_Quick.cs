@@ -18,7 +18,7 @@ namespace CrunchySalt
         public override int Position { get { return position; } }
         public override string Name { get { return ""; } }
         public override object DefaultValue { get { return System.DBNull.Value; } }
-        public override object RawDefaultValue { get { return System.DBNull.Value; } }
+        //public override object RawDefaultValue { get { return System.DBNull.Value; } }
 
         public override MemberInfo Member { get { return member; } }
 

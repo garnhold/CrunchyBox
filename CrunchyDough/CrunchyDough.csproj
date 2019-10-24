@@ -132,8 +132,7 @@
     <Compile Include="Filename\Filename_Random.cs" />
     <Compile Include="Filename\Filename_Relative.cs" />
     <Compile Include="Filename\Filename_Type.cs" />
-    <Compile Include="Filename\FileName_Extension.cs" />
-    <Compile Include="Filename\FileName.cs" />
+    <Compile Include="Filename\Filename_Extension.cs" />
     <Compile Include="Files\Files.cs" />
     <Compile Include="Files\Partials\Directory\Files_Directory.cs" />
     <Compile Include="Files\Partials\Directory\Files_Directory_Contents.cs" />
@@ -1170,6 +1169,7 @@
     <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorVisit\GraphNodeNavigatorVisit.cs" />
     <Compile Include="Graph\GraphNode\GraphNode.cs" />
     <Compile Include="Graph\Graph.cs" />
+    <Compile Include="Filename\Filename.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

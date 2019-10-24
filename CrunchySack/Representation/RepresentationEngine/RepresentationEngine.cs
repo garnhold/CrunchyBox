@@ -15,7 +15,7 @@ namespace CrunchySack
         private FragmentLibrary fragment_library;
 
         private Dictionary<string, RepresentationInstancer> instancers;
-        private Dictionary<Tuple<string, int>, RepresentationConstructor> constructors;
+        private Dictionary<CrunchyDough.Tuple<string, int>, RepresentationConstructor> constructors;
         
         private Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>> attribute_infos;
         private TypeDictionary<RepresentationInfo_Children> children_infos;
@@ -29,7 +29,7 @@ namespace CrunchySack
             fragment_library = new FragmentLibrary();
 
             instancers = new Dictionary<string, RepresentationInstancer>();
-            constructors = new Dictionary<Tuple<string, int>, RepresentationConstructor>();
+            constructors = new Dictionary<CrunchyDough.Tuple<string, int>, RepresentationConstructor>();
             
             attribute_infos = new Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>>();
             children_infos = new TypeDictionary<RepresentationInfo_Children>();
