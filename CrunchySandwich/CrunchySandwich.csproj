@@ -1161,6 +1161,7 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_ButtonPair.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
