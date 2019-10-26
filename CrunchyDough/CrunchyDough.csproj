@@ -157,12 +157,6 @@
     <Compile Include="ICatalog\ICatalog.cs" />
     <Compile Include="IndexList\IndexList.cs" />
     <Compile Include="IRegister\IRegister.cs" />
-    <Compile Include="Log\Extensions\LogExtensions.cs" />
-    <Compile Include="Log\Log.cs" />
-    <Compile Include="Log\Logger.cs" />
-    <Compile Include="Log\Log_Text_DataFile.cs" />
-    <Compile Include="Log\Log_Text_File.cs" />
-    <Compile Include="Log\Log_Text.cs" />
     <Compile Include="Operation\Extensions\MultiOperationExtensions_Serial.cs" />
     <Compile Include="Operation\Extensions\MultiOperationExtensions_Parallel.cs" />
     <Compile Include="Operation\Extensions\MultiOperationExtensions.cs" />
@@ -591,7 +585,6 @@
     <Compile Include="TTCS\TTCS_Arguments.cs" />
     <Compile Include="TTCS\TTCS_Parameters.cs" />
     <Compile Include="TTCS\TTCS.cs" />
-    <Compile Include="BackupFile\Extensions\BackupFileExtensions.cs" />
     <Compile Include="BidirectionalDictionary\Extensions\BidirectionalDictionaryExtensions_Pivot.cs" />
     <Compile Include="Bits\Bits.cs">
       <DependentUpon>Bits.tt</DependentUpon>
@@ -820,7 +813,6 @@
     <Compile Include="Strings\Strings.cs" />
     <Compile Include="Table\LabeledTable.cs" />
     <Compile Include="Table\IndexedTable.cs" />
-    <Compile Include="BackupFile\BackupFile.cs" />
     <Compile Include="TextDocument\TextDocument.cs" />
     <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Container\TextDocumentNode_Container.cs" />
     <Compile Include="TextDocument\TextDocumentNode\TextDocumentNodeType.cs" />
