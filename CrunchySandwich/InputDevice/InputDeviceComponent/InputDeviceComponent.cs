@@ -10,8 +10,8 @@ namespace CrunchySandwich
 {
     public abstract class InputDeviceComponent
     {
-        private bool is_in_exclusive_handle_section;
-        private InputDeviceComponentHandle exclusive_handle;
+        private bool is_in_lock_section;
+        private InputDeviceLock current_lock;
 
         protected abstract void FreezeInternal();
         protected abstract void UpdateInternal();
@@ -37,12 +37,12 @@ namespace CrunchySandwich
 
         private InputDeviceComponentState GetInternalState()
         {
-            if (exclusive_handle != null)
+            if (current_lock != null)
             {
-                if (is_in_exclusive_handle_section)
+                if (is_in_lock_section)
                     return InputDeviceComponentState.Shared;
 
-                return exclusive_handle.GetPermission();
+                return current_lock.GetPermission();
             }
 
             return InputDeviceComponentState.Shared;
@@ -50,40 +50,40 @@ namespace CrunchySandwich
 
         public void Update()
         {
-            if (exclusive_handle != null)
+            if (current_lock != null)
             {
-                if (exclusive_handle.Idle())
-                    exclusive_handle = null;
+                if (current_lock.IsActive() == false)
+                    current_lock = null;
             }
 
             UpdateInternal();
         }
 
-        public void EnterHandleSection(InputDeviceComponentHandle handle)
+        public void EnterLockSection(InputDeviceLock @lock)
         {
-            if (exclusive_handle != null)
+            if (current_lock != null)
             {
-                if (handle == exclusive_handle)
-                    is_in_exclusive_handle_section = true;
+                if (@lock == current_lock)
+                    is_in_lock_section = true;
             }
             else
             {
-                if (handle.GetPermission().IsExclusive())
+                if (@lock.GetPermission().IsExclusive())
                 {
-                    exclusive_handle = handle;
+                    current_lock = @lock;
 
-                    if (exclusive_handle.GetPermission() == InputDeviceComponentState.Frozen)
+                    if (current_lock.GetPermission() == InputDeviceComponentState.Frozen)
                         FreezeInternal();
                 }
             }
 
-            handle.Touch();
+            @lock.Touch();
         }
 
-        public void ExitHandleSection(InputDeviceComponentHandle handle)
+        public void ExitLockSection(InputDeviceLock @lock)
         {
-            if (exclusive_handle == handle)
-                is_in_exclusive_handle_section = false;
+            if (current_lock == @lock)
+                is_in_lock_section = false;
         }
     }
 }

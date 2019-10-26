@@ -300,9 +300,7 @@
     <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventHistory.cs" />
     <Compile Include="InputDevice\InputDeviceEvent\InputDeviceEvent.cs" />
     <Compile Include="InputDevice\InputDeviceComponentState\Extensions\InputDeviceComponentStateExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceHandle\InputDeviceComponentHandle.cs" />
     <Compile Include="InputDevice\InputDeviceComponentState\InputDeviceComponentState.cs" />
-    <Compile Include="InputDevice\InputDeviceHandle\InputDeviceHandle.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Typical.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_RampEase.cs" />
     <Compile Include="Signal\Periodic\SignalPeriodicTransform.cs" />
@@ -1162,6 +1160,12 @@
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_ButtonPair.cs" />
+    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock.cs" />
+    <Compile Include="InputDevice\InputDeviceLock\Extensions\InputDeviceLockExtensions.cs" />
+    <Compile Include="InputDevice\InputDeviceLock\Extensions\InputDeviceLockExtensions_Process.cs" />
+    <Compile Include="InputDevice\InputDeviceLock\Extensions\InputDeviceLockExtensions_IEnumerable.cs" />
+    <Compile Include="Frame\Frame.cs" />
+    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_Single.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1426,6 +1430,11 @@
       <Project>{9FEE093F-4200-4E2E-8C52-842B4CC42478}</Project>
       <Name>CrunchySauce</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InputDevice\InputDeviceLock\" />
+    <Folder Include="InputDevice\InputDeviceLock\Extensions\" />
+    <Folder Include="Frame\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
