@@ -8,22 +8,18 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public class InputDeviceAction_StickGesture : InputDeviceAction
+    public abstract class InputDeviceAction_Stick : InputDeviceAction
     {
         [SerializeField]private InputDeviceStickId stick;
-        [SerializeField]private InputDeviceStickGesture gesture;
+
+        protected abstract bool IsOccuringThisFrameInternal(InputDeviceComponent_Stick stick);
 
         public override bool IsOccuringThisFrame(InputDeviceBase device)
         {
-            if(device.GetStick(stick).IsStickGestureOccuringThisFrame(gesture))
+            if (IsOccuringThisFrameInternal(device.GetStick(stick)))
                 return true;
 
             return false;
-        }
-
-        public InputDeviceStickGesture GetStickGesture()
-        {
-            return gesture;
         }
     }
 }

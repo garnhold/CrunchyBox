@@ -263,9 +263,9 @@
     <Compile Include="Extensions\Vector2\Vector2Extensions_HorizontalDirection.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_Towards.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_MoveTowards.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonRelease.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_StickGesture.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonHold.cs" />
+    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Release.cs" />
+    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick_Gesture.cs" />
+    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Hold.cs" />
     <Compile Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -273,7 +273,7 @@
     </Compile>
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_StickGesture.cs" />
     <Compile Include="InputDevice\InputDevice.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_ButtonPress.cs" />
+    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Press.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceEventHistoryStickExtensions_StickGesture.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceEventHistoryStickExtensions.cs" />
@@ -1159,6 +1159,8 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_Planar.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_WithAdjusted.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
+    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button.cs" />
+    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
