@@ -8,14 +8,11 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class InputDeviceLock
+    public class InputDeviceLock
     {
         private InputDeviceComponentState permission;
 
         private Frame touched_frame;
-
-        public abstract void EnterLockSection(InputDeviceBase device);
-        public abstract void ExitLockSection(InputDeviceBase device);
 
         public void Touch()
         {

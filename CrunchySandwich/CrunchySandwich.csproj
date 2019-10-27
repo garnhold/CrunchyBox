@@ -1161,11 +1161,10 @@
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_ButtonPair.cs" />
     <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock.cs" />
-    <Compile Include="InputDevice\InputDeviceLock\Extensions\InputDeviceLockExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceLock\Extensions\InputDeviceLockExtensions_Process.cs" />
-    <Compile Include="InputDevice\InputDeviceLock\Extensions\InputDeviceLockExtensions_IEnumerable.cs" />
     <Compile Include="Frame\Frame.cs" />
-    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_Single.cs" />
+    <Compile Include="InputDevice\Extensions\InputDeviceExtensions.cs" />
+    <Compile Include="InputDevice\Extensions\InputDeviceExtensions_Lock_Single.cs" />
+    <Compile Include="InputDevice\Extensions\InputDeviceExtensions_Lock_Multiple.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1433,8 +1432,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="InputDevice\InputDeviceLock\" />
-    <Folder Include="InputDevice\InputDeviceLock\Extensions\" />
     <Folder Include="Frame\" />
+    <Folder Include="InputDevice\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,7 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    static public class InputDeviceLockExtensions
+    static public class InputDeviceExtensions
     {
     }
 }
