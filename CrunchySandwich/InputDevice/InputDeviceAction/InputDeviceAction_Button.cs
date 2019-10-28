@@ -21,5 +21,10 @@ namespace CrunchySandwich
 
             return false;
         }
+
+        public override IEnumerable<InputDeviceComponentId> GetComponentIds()
+        {
+            yield return button;
+        }
     }
 }

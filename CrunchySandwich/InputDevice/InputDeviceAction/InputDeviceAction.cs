@@ -17,6 +17,7 @@ namespace CrunchySandwich
         [SerializeField]private Indicator indicator;
 
         public abstract bool IsOccuringThisFrame(InputDeviceBase device);
+        public abstract IEnumerable<InputDeviceComponentId> GetComponentIds();
 
         public string GetTitle()
         {

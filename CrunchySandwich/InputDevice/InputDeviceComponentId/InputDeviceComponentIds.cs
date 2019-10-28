@@ -30,7 +30,8 @@ namespace CrunchySandwich
 
             return false;
         }
-
+        
+    
 		static private readonly OperationCache<List<InputDeviceComponentId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
 			return CrunchyNoodle.Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceComponentIds"),
@@ -99,7 +100,13 @@ namespace CrunchySandwich
 
             return false;
         }
-
+        
+            
+        static public implicit operator InputDeviceComponentId(InputDeviceAxisId id)
+        {
+            return new InputDeviceComponentId(id.id);
+        }
+    
 		static private readonly OperationCache<List<InputDeviceAxisId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
 			return CrunchyNoodle.Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceAxisIds"),
@@ -168,7 +175,13 @@ namespace CrunchySandwich
 
             return false;
         }
-
+        
+            
+        static public implicit operator InputDeviceComponentId(InputDeviceButtonId id)
+        {
+            return new InputDeviceComponentId(id.id);
+        }
+    
 		static private readonly OperationCache<List<InputDeviceButtonId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
 			return CrunchyNoodle.Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceButtonIds"),
@@ -237,7 +250,13 @@ namespace CrunchySandwich
 
             return false;
         }
-
+        
+            
+        static public implicit operator InputDeviceComponentId(InputDeviceStickId id)
+        {
+            return new InputDeviceComponentId(id.id);
+        }
+    
 		static private readonly OperationCache<List<InputDeviceStickId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
 			return CrunchyNoodle.Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceStickIds"),
