@@ -299,8 +299,6 @@
     <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventLog.cs" />
     <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventHistory.cs" />
     <Compile Include="InputDevice\InputDeviceEvent\InputDeviceEvent.cs" />
-    <Compile Include="InputDevice\InputDeviceComponentState\Extensions\InputDeviceComponentStateExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceComponentState\InputDeviceComponentState.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Typical.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_RampEase.cs" />
     <Compile Include="Signal\Periodic\SignalPeriodicTransform.cs" />
@@ -1165,6 +1163,10 @@
     <Compile Include="InputDevice\Extensions\InputDeviceExtensions.cs" />
     <Compile Include="InputDevice\Extensions\InputDeviceExtensions_Lock_Single.cs" />
     <Compile Include="InputDevice\Extensions\InputDeviceExtensions_Lock_Multiple.cs" />
+    <Compile Include="InputDevice\InputDeviceLockState\InputDeviceLockState.cs" />
+    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_Blanket.cs" />
+    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_TypeSpecial.cs" />
+    <Compile Include="InputDevice\InputDeviceLockState\Extensions\InputDeviceLockStateExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1434,6 +1436,8 @@
     <Folder Include="InputDevice\InputDeviceLock\" />
     <Folder Include="Frame\" />
     <Folder Include="InputDevice\Extensions\" />
+    <Folder Include="InputDevice\InputDeviceLockState\" />
+    <Folder Include="InputDevice\InputDeviceLockState\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

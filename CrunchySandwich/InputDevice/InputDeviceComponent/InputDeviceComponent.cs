@@ -35,17 +35,17 @@ namespace CrunchySandwich
             return SwitchValues<T>(value, default(T), frozen);
         }
 
-        private InputDeviceComponentState GetInternalState()
+        private InputDeviceLockState GetInternalState()
         {
             if (current_lock != null)
             {
                 if (is_in_lock_section)
-                    return InputDeviceComponentState.Shared;
+                    return InputDeviceLockState.None;
 
-                return current_lock.GetPermission();
+                return current_lock.GetLockState(this);
             }
 
-            return InputDeviceComponentState.Shared;
+            return InputDeviceLockState.None;
         }
 
         public void Update()
@@ -68,11 +68,13 @@ namespace CrunchySandwich
             }
             else
             {
-                if (@lock.GetPermission().IsExclusive())
+                InputDeviceLockState lock_state = @lock.GetLockState(this);
+
+                if (lock_state.IsLocked())
                 {
                     current_lock = @lock;
 
-                    if (current_lock.GetPermission() == InputDeviceComponentState.Frozen)
+                    if (lock_state == InputDeviceLockState.Frozen)
                         FreezeInternal();
                 }
             }

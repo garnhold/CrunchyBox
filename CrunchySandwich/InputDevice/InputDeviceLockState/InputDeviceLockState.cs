@@ -8,9 +8,9 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public enum InputDeviceComponentState
+    public enum InputDeviceLockState
     {
-        Shared,
+        None,
         Zeroed,
         Frozen
     }
