@@ -1162,6 +1162,7 @@
     <Compile Include="Graph\GraphNode\GraphNode.cs" />
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Filename\Filename.cs" />
+    <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions_Assembly.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

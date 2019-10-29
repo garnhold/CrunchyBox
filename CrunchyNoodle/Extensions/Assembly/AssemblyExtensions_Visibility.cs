@@ -11,7 +11,7 @@ namespace CrunchyNoodle
     {
         static public bool IsTypeVisible(this Assembly item, Type type)
         {
-            if (item.DoesReferenceAssembly(type.Assembly))
+            if (type.Assembly == item || item.DoesReferenceAssembly(type.Assembly))
                 return true;
 
             return false;
@@ -19,7 +19,7 @@ namespace CrunchyNoodle
 
         static public bool IsAssemblyVisibleToType(this Assembly item, Type type)
         {
-            if (item.IsReferencedByAssembly(type.Assembly))
+            if (item == type.Assembly || item.IsReferencedByAssembly(type.Assembly))
                 return true;
 
             return false;

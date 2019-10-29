@@ -46,6 +46,11 @@ namespace CrunchySandwich
             return instance;
         }
 
+        public SubsystemManager()
+        {
+            subsystems = new Dictionary<Type, Subsystem>();
+        }
+
         public void Start()
         {
             Refresh();
@@ -70,12 +75,14 @@ namespace CrunchySandwich
 
         public void Refresh()
         {
-            subsystems = SubsystemExtensions_Resource.LoadSubsystemResources().ToDictionaryValues(s => s.GetType());
+            subsystems.Set(
+                SubsystemExtensions_Resource.LoadSubsystemResources().ConvertToValueOfPair(s => s.GetType())
+            );
         }
 
         public Subsystem GetSubsystemInstance(Type type)
         {
-            return subsystems.GetValue(type);
+            return subsystems.GetOrCreateValue(type, t => SubsystemExtensions_Resource.LoadSubsystemResource(t));
         }
         public T GetSubsystemInstance<T>() where T : Subsystem
         {
