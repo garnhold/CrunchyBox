@@ -24,31 +24,40 @@ namespace CrunchyDough
             item.Reset();
         }
 
-        static public bool Repeat(this TemporalEvent item)
+        static public bool TriggerStopClear(this TemporalEvent item)
         {
-            if (item.IsTimeOver() || item.IsStopped())
+            if (item.IsTimeOver())
             {
-                item.Restart();
+                item.StopClear();
+
                 return true;
             }
 
             return false;
         }
-
-        static public bool RepeatIfRunning(this TemporalEvent item)
+        static public bool Fire(this TemporalEvent item)
         {
-            if (item.IsRunning())
-                return item.Repeat();
+            item.Start();
+
+            return item.TriggerStopClear();
+        }
+
+        static public bool TriggerRestart(this TemporalEvent item)
+        {
+            if (item.IsTimeOver())
+            {
+                item.Restart();
+
+                return true;
+            }
 
             return false;
         }
-
-        static public bool RepeatIfStopped(this TemporalEvent item)
+        static public bool Repeat(this TemporalEvent item)
         {
-            if (item.IsStopped())
-                return item.Repeat();
+            item.Start();
 
-            return false;
+            return item.TriggerRestart();
         }
     }
 }
