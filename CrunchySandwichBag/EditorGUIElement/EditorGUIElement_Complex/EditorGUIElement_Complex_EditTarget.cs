@@ -17,6 +17,16 @@ namespace CrunchySandwichBag
     {
         private EditTarget target;
 
+        protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
+        {
+            EditorGUIElementAttachment_Singular_Label_GUIContent_Inline label;
+
+            if (attachment.Convert<EditorGUIElementAttachment_Singular_Label_GUIContent_Inline>(out label))
+                attachment = new EditorGUIElementAttachment_Singular_Label_GUIContent_Block(label.GetLabel());
+
+            return base.HandleAttachment(ref attachment);
+        }
+
         protected override Tuple<bool, bool, Type> PullState()
         {
             return Tuple.New(

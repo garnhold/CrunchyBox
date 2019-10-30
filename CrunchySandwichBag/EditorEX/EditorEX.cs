@@ -12,7 +12,7 @@ namespace CrunchySandwichBag
 {
     public abstract class EditorEX<T> : Editor where T : UnityEngine.Object
     {
-        private Dictionary<SerializedObject, EditorGUIElement> gui_elements;
+        private Dictionary<SerializedObject, EditorGUIView> gui_views;
         private Dictionary<SerializedObject, EditorSceneElement> scene_elements;
 
         private const int MAXIMUM_NUMBER_INSTANCES = 8;
@@ -22,7 +22,7 @@ namespace CrunchySandwichBag
 
         public EditorEX()
         {
-            gui_elements = new Dictionary<SerializedObject, EditorGUIElement>();
+            gui_views = new Dictionary<SerializedObject, EditorGUIView>();
             scene_elements = new Dictionary<SerializedObject, EditorSceneElement>();
         }
 
@@ -31,14 +31,7 @@ namespace CrunchySandwichBag
             T item;
 
             if (target.Convert<T>(out item))
-            {
-                EditorGUIElement root = GetEditorGUIElement(item, serializedObject);
-
-                root.LayoutDrawAndUnwind(
-                    EditorGUILayout.GetControlRect(true, root.GetFootprintHeight()),
-                    EditorGUISettings.GetInstance().GetInitialLayoutState()
-                );
-            }
+                GetEditorGUIView(item, serializedObject).LayoutDrawUnwind();
         }
 
         public virtual void OnSceneGUI()
@@ -46,19 +39,18 @@ namespace CrunchySandwichBag
             T item;
 
             if (target.Convert<T>(out item))
-            {
-                EditorSceneElement root = GetEditorSceneElement(item, serializedObject);
-
-                root.Draw();
-            }
+                GetEditorSceneElement(item, serializedObject).Draw();
         }
 
-        public EditorGUIElement GetEditorGUIElement(T item, SerializedObject serialized_object)
+        public EditorGUIView GetEditorGUIView(T item, SerializedObject serialized_object)
         {
-            if (gui_elements.Count >= MAXIMUM_NUMBER_INSTANCES)
-                gui_elements.Clear();
+            if (gui_views.Count >= MAXIMUM_NUMBER_INSTANCES)
+                gui_views.Clear();
 
-            return gui_elements.GetOrCreateValue(serialized_object, o => CreateRootEditorGUIElement(item, o).InitilizeAndGet());
+            return gui_views.GetOrCreateValue(
+                serialized_object, 
+                o => new EditorGUIView(CreateRootEditorGUIElement(item, o).InitilizeAndGet())
+            );
         }
 
         public EditorSceneElement GetEditorSceneElement(T item, SerializedObject serialized_object)
@@ -66,7 +58,10 @@ namespace CrunchySandwichBag
             if (scene_elements.Count >= MAXIMUM_NUMBER_INSTANCES)
                 scene_elements.Clear();
 
-            return scene_elements.GetOrCreateValue(serialized_object, o => CreateRootEditorSceneElement(item, o).InitilizeAndGet());
+            return scene_elements.GetOrCreateValue(
+                serialized_object,
+                o => CreateRootEditorSceneElement(item, o).InitilizeAndGet()
+            );
         }
     }
 }

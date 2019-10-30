@@ -22,6 +22,7 @@ namespace CrunchySandwichBag
                 width,
                 item.ShouldAutoSizeLabels(),
                 item.GetAutoSizeLabelMargin(),
+                item.ShouldUseVisibility(),
                 item.ShouldAlwaysShowRecoveryFields()
             );
         }
@@ -32,6 +33,7 @@ namespace CrunchySandwichBag
                 item.GetCurrentLabelWidth(),
                 should,
                 item.GetAutoSizeLabelMargin(),
+                item.ShouldUseVisibility(),
                 item.ShouldAlwaysShowRecoveryFields()
             );
         }
@@ -42,6 +44,18 @@ namespace CrunchySandwichBag
                 item.GetCurrentLabelWidth(),
                 item.ShouldAutoSizeLabels(),
                 margin,
+                item.ShouldUseVisibility(),
+                item.ShouldAlwaysShowRecoveryFields()
+            );
+        }
+
+        static public EditorGUILayoutState GetWithShouldUseVisibility(this EditorGUILayoutState item, bool should)
+        {
+            return new EditorGUILayoutState(
+                item.GetCurrentLabelWidth(),
+                item.ShouldAutoSizeLabels(),
+                item.GetAutoSizeLabelMargin(),
+                should,
                 item.ShouldAlwaysShowRecoveryFields()
             );
         }
@@ -52,6 +66,7 @@ namespace CrunchySandwichBag
                 item.GetCurrentLabelWidth(),
                 item.ShouldAutoSizeLabels(),
                 item.GetAutoSizeLabelMargin(),
+                item.ShouldUseVisibility(),
                 should
             );
         }

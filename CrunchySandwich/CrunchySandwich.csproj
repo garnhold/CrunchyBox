@@ -1167,6 +1167,7 @@
     <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_Blanket.cs" />
     <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_TypeSpecial.cs" />
     <Compile Include="InputDevice\InputDeviceLockState\Extensions\InputDeviceLockStateExtensions.cs" />
+    <Compile Include="Extensions\GUIUtility\GUIUtilityExtensions_Visibility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

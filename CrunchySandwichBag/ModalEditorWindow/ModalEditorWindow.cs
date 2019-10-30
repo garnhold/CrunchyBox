@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
-using UnityEditor;
-
+﻿
 using CrunchyDough;
-using CrunchySandwich;
+using UnityEditor;
+using UnityEngine;
 
 namespace CrunchySandwichBag
 {
     public class ModalEditorWindow : EditorWindow
     {
+        private EditorGUIView view;
         private EditorGUIElement_ScrollBox_VerticalStrip element;
 
         static public ModalEditorWindow GetInstance()
@@ -29,11 +25,7 @@ namespace CrunchySandwichBag
             if (element != null)
             {
                 element.SetHeight(this.GetHeight());
-
-                element.LayoutDrawAndUnwind(
-                    EditorGUILayout.GetControlRect(true, this.GetHeight()),
-                    EditorGUISettings.GetInstance().GetInitialLayoutState()
-                );
+                view.LayoutDrawUnwind();
             }
         }
 
@@ -48,6 +40,8 @@ namespace CrunchySandwichBag
 
             process(element.GetElement());
             element.Initialize();
+
+            view = new EditorGUIView(element);
 
             titleContent = new GUIContent(title);
             ShowUtility();

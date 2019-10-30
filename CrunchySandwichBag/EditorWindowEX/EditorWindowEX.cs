@@ -12,18 +12,13 @@ namespace CrunchySandwichBag
 {
     public abstract class EditorWindowEX : EditorWindow
     {
-        private EditorGUIElement element;
+        private EditorGUIView view;
 
         protected abstract EditorGUIElement CreateRootEditorGUIElement();
 
         private void OnGUI()
         {
-            EditorGUIElement root = GetGUIElement();
-
-            root.LayoutDrawAndUnwind(
-                EditorGUILayout.GetControlRect(true, root.GetFootprintHeight()),
-                EditorGUISettings.GetInstance().GetInitialLayoutState()
-            );
+            GetEditorGUIView().LayoutDrawUnwind();
         }
 
         public EditorWindowEX()
@@ -31,12 +26,12 @@ namespace CrunchySandwichBag
             titleContent = new GUIContent(GetType().Name);
         }
 
-        public EditorGUIElement GetGUIElement()
+        public EditorGUIView GetEditorGUIView()
         {
-            if (element == null)
-                element = CreateRootEditorGUIElement().InitilizeAndGet();
+            if (view == null)
+                view = new EditorGUIView(CreateRootEditorGUIElement().InitilizeAndGet());
 
-            return element;
+            return view;
         }
     }
 }

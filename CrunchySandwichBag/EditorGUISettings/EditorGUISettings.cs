@@ -23,6 +23,7 @@ namespace CrunchySandwichBag
         [SerializeField]private bool should_auto_size_labels;
         [SerializeField][Range(0.0f, 64.0f)]private float auto_size_label_margin;
 
+        [SerializeField]private bool should_use_visibility;
         [SerializeField]private bool should_always_show_recovery_fields;
 
         public bool IsCustomGUIEnabled()
@@ -50,6 +51,11 @@ namespace CrunchySandwichBag
             return auto_size_label_margin.BindBetween(0.0f, 64.0f);
         }
 
+        public bool ShouldUseVisibility()
+        {
+            return should_use_visibility;
+        }
+
         public bool ShouldAlwaysShowRecoveryFields()
         {
             return should_always_show_recovery_fields;
@@ -61,6 +67,7 @@ namespace CrunchySandwichBag
                 GetDefaultLabelWidth(),
                 ShouldAutoSizeLabels(),
                 GetAutoSizeLabelMargin(),
+                ShouldUseVisibility(),
                 ShouldAlwaysShowRecoveryFields()
             );
         }

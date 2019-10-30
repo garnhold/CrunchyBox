@@ -473,6 +473,7 @@
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single_Object\EditProperty_Single_Object.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single_Value\EditProperty_Single_Value.cs" />
+    <Compile Include="EditorGUIView\EditorGUIView.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -557,6 +558,9 @@
       <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
       <Name>CrunchySodium</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EditorGUIView\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

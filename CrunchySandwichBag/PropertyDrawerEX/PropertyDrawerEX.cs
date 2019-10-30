@@ -13,7 +13,7 @@ namespace CrunchySandwichBag
 {
     public abstract class PropertyDrawerEX : PropertyDrawer
     {
-        private Dictionary<SerializedProperty, EditorGUIElement> elements;
+        private Dictionary<SerializedProperty, EditorGUIView> views;
 
         private const int MAXIMUM_NUMBER_INSTANCES = 64;
 
@@ -21,31 +21,37 @@ namespace CrunchySandwichBag
 
         public PropertyDrawerEX()
         {
-            elements = new Dictionary<SerializedProperty, EditorGUIElement>();
+            views = new Dictionary<SerializedProperty, EditorGUIView>();
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
-                GetEditorGUIElement(property).LabelWithGUIContent(label).LayoutDrawAndUnwind(
+                EditorGUIView view = GetEditorGUIView(property);
+
+                view.GetElement().LabelWithGUIContent(label);
+                view.LayoutDrawUnwind(
                     position,
                     EditorGUISettings.GetInstance().GetInitialLayoutState()
-                        .GetWithCurrentLabelWidth(EditorGUIUtility.labelWidth)
+                            .GetWithCurrentLabelWidth(EditorGUIUtility.labelWidth)
                 );
             EditorGUI.EndProperty();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return GetEditorGUIElement(property).LabelWithGUIContent(label).GetFootprintHeight();
+            return GetEditorGUIView(property).GetElement().LabelWithGUIContent(label).GetFootprintHeight();
         }
 
-        public EditorGUIElement GetEditorGUIElement(SerializedProperty serialized_property)
+        public EditorGUIView GetEditorGUIView(SerializedProperty serialized_property)
         {
-            if (elements.Count >= MAXIMUM_NUMBER_INSTANCES)
-                elements.Clear();
+            if (views.Count >= MAXIMUM_NUMBER_INSTANCES)
+                views.Clear();
 
-            return elements.GetOrCreateValue(serialized_property, p => CreateEditorGUIElement(p).InitilizeAndGet());
+            return views.GetOrCreateValue(
+                serialized_property,
+                p => new EditorGUIView(CreateEditorGUIElement(p).InitilizeAndGet())
+            );
         }
     }
 }
