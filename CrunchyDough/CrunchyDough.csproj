@@ -1163,6 +1163,8 @@
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Filename\Filename.cs" />
     <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions_Assembly.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Contents.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Compare.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

@@ -20,6 +20,20 @@ namespace CrunchyDough
             }
         }
 
+        static public IEnumerable<T> SkipDuplicates<T, J>(this IEnumerable<T> item, Operation<J, T> operation)
+        {
+            if (item != null)
+            {
+                HashSet<J> returned = new HashSet<J>();
+
+                foreach (T sub_item in item)
+                {
+                    if (returned.Add(operation(sub_item)))
+                        yield return sub_item;
+                }
+            }
+        }
+
         static public IEnumerable<T> SkipNonUnique<T>(this IEnumerable<T> item)
         {
             HashSet<T> set = new HashSet<T>();

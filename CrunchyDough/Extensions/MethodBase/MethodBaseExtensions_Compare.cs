@@ -8,6 +8,17 @@ namespace CrunchyDough
 {
     static public class MethodBaseExtensions_Compare
     {
+        static public bool IsOverridableMethod(this MethodBase item)
+        {
+            if (item.IsAbstract && item.IsFinal == false)
+                return true;
+
+            if (item.IsVirtual && item.IsFinal == false)
+                return true;
+
+            return false;
+        }
+
         static public bool IsEffectivelyStaticMethod(this MethodBase item)
         {
             if (item.IsStatic && item.IsExtensionMethod() == false)

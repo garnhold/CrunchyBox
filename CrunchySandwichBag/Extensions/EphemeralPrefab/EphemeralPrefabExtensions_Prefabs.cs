@@ -38,7 +38,8 @@ namespace CrunchySandwichBag
             writer.Write("[SerializeField]private ?TYPE ?NAME;");
 
             foreach (MethodInfo method in item.GetType().GetFilteredInstanceMethods(
-                    Filterer_MethodInfo.IsNamed("Initialize")
+                    Filterer_MethodInfo.IsNamed("Initialize"),
+                    Filterer_MethodInfo.IsOriginalMethod()
                 ))
             {
                 string parameters = method.GetParameters()
@@ -60,7 +61,8 @@ namespace CrunchySandwichBag
             CSTextDocumentWriter writer = CreateWriter(item, builder);
 
             foreach (MethodInfo method in item.GetFilteredInstanceMethods(
-                    Filterer_MethodInfo.IsNamed("Initialize")
+                    Filterer_MethodInfo.IsNamed("Initialize"),
+                    Filterer_MethodInfo.IsOriginalMethod()
                 ))
             {
                 string parameters = method.GetParameters()
