@@ -184,7 +184,7 @@
     </Compile>
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanGenericParametersHold.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CouldMaybeReturnInto.cs" />
-    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsAnyExtensionMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsExtensionMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNonGenericMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsGenericMethod.cs" />
     <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo.cs" />
@@ -409,7 +409,7 @@
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasCustomAttributeOfType.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasCustomLabeledAttributeOfType.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNoReturn.cs" />
-    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsExtensionMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsExtensionMethodOf.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNamed.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsEffectivelyStaticMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsEffectivelyInstanceMethod.cs" />
@@ -452,6 +452,7 @@
     <Compile Include="Member\Variable\Variable_Operation\Variable_Operation.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsDerivedMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethodOf.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

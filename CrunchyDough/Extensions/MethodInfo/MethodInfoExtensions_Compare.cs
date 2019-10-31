@@ -18,6 +18,13 @@ namespace CrunchyDough
 
             return false;
         }
+        static public bool IsOriginalMethodOf(this MethodInfo item, Type type)
+        {
+            if (item.IsDeclaredWithin(type) && item.IsOriginalMethod())
+                return true;
+
+            return false;
+        }
 
         static public bool IsDerivedMethod(this MethodInfo item)
         {

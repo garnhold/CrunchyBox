@@ -62,7 +62,7 @@ namespace CrunchySandwichBag
 
             foreach (MethodInfo method in item.GetFilteredInstanceMethods(
                     Filterer_MethodInfo.IsNamed("Initialize"),
-                    Filterer_MethodInfo.IsOriginalMethod()
+                    Filterer_MethodInfo.IsOriginalMethodOf(item)
                 ))
             {
                 string parameters = method.GetParameters()

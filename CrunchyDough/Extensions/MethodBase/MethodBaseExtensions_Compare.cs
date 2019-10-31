@@ -61,18 +61,16 @@ namespace CrunchyDough
 
             return false;
         }
-
-        static public bool IsExtensionMethod(this MethodBase item, Type type)
+        static public bool IsExtensionMethodOf(this MethodBase item, Type type)
         {
             if (item.IsExtensionMethod() && item.CanTechnicalParameterHold(0, type))
                 return true;
 
             return false;
         }
-
-        static public bool IsExtensionMethod<T>(this MethodBase item)
+        static public bool IsExtensionMethodOf<T>(this MethodBase item)
         {
-            return item.IsExtensionMethod(typeof(T));
+            return item.IsExtensionMethodOf(typeof(T));
         }
 
         static public bool IsNonExtensionMethod(this MethodBase item)

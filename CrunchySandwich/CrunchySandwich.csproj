@@ -1169,6 +1169,8 @@
     <Compile Include="InputDevice\InputDeviceLockState\Extensions\InputDeviceLockStateExtensions.cs" />
     <Compile Include="Extensions\GUIUtility\GUIUtilityExtensions_Visibility.cs" />
     <Compile Include="Indicator\Indicator_Scaling.cs" />
+    <Compile Include="TextIndicator\TextIndicator.cs" />
+    <Compile Include="TextIndicator\TextIndicator_TextMesh.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1440,6 +1442,7 @@
     <Folder Include="InputDevice\Extensions\" />
     <Folder Include="InputDevice\InputDeviceLockState\" />
     <Folder Include="InputDevice\InputDeviceLockState\Extensions\" />
+    <Folder Include="TextIndicator\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
