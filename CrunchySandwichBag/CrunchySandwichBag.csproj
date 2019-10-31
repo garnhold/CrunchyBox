@@ -474,6 +474,7 @@
     <Compile Include="EditTarget\EditProperty\EditProperty.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single_Value\EditProperty_Single_Value.cs" />
     <Compile Include="EditorGUIView\EditorGUIView.cs" />
+    <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\EditorSceneElement_EditGadgetInstance_OffsetPoint.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
