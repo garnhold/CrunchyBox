@@ -30,5 +30,10 @@ namespace CrunchySandwich
         {
             return scene_asset.name;
         }
+
+        public UnityEngine.Object GetSceneAsset()
+        {
+            return scene_asset;
+        }
     }
 }

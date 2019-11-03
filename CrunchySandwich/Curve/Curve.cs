@@ -12,7 +12,7 @@ namespace CrunchySandwich
     [Serializable]
     public class Curve
     {
-        [SerializeField]private float[] percents;
+        [SerializeField]private List<float> percents;
 
         public float GetValue(float x)
         {

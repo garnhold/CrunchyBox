@@ -11,6 +11,15 @@ namespace CrunchySandwich
 {
     static public class SpriteRendererExtensions_Points
     {
+        static public Vector2 GetLocalCenter(this SpriteRenderer item)
+        {
+            return item.sprite.GetWorldCenter();
+        }
+        static public Vector2 GetWorldCenter(this SpriteRenderer item)
+        {
+            return item.transform.TransformPoint(item.GetLocalCenter());
+        }
+
         static public Vector2 GetLocalBottomCenter(this SpriteRenderer item)
         {
             return item.sprite.GetWorldBottomCenter();

@@ -41,8 +41,13 @@ namespace CrunchySandwich
             }
             else
             {
-                scheduler.Execute();
+                Execute();
             }
+        }
+
+        public void Execute()
+        {
+            scheduler.Execute();
         }
     }
 }

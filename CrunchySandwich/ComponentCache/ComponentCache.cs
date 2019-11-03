@@ -23,6 +23,8 @@ namespace CrunchySandwich
                 () => ComponentCacheManager.GetInstance().GetCacheLifetime(),
                 () => component = GetComponentInternal(parent)
             );
+
+            scheduler.Execute();
         }
 
         public T GetComponent()

@@ -475,6 +475,9 @@
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single_Value\EditProperty_Single_Value.cs" />
     <Compile Include="EditorGUIView\EditorGUIView.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\EditorSceneElement_EditGadgetInstance_OffsetPoint.cs" />
+    <Compile Include="Extensions\SpriteVectorizer\SpriteVectorizerExtensions.cs" />
+    <Compile Include="Extensions\SceneEX\SceneEXExtensions.cs" />
+    <Compile Include="Extensions\SceneEX\SceneEXExtensions_EditorBuildSettingsScene.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -562,6 +565,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EditorGUIView\" />
+    <Folder Include="Extensions\SpriteVectorizer\" />
+    <Folder Include="Extensions\SceneEX\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
