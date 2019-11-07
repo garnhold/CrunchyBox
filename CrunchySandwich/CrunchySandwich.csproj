@@ -181,16 +181,14 @@
     <Compile Include="Signal\Ease\Signal_Ease_InOut.cs" />
     <Compile Include="Signal\Ease\Signal_Ease.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Time.cs" />
-    <Compile Include="Signal\Generator\Signal_Generator_Time_ActualGameTime.cs" />
-    <Compile Include="Signal\Generator\Signal_Generator_Time_ActiveGameTime.cs" />
     <Compile Include="Signal\Generator\Signal_Generator.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic.cs" />
-    <Compile Include="StateSystem\StateSystem.cs" />
-    <Compile Include="StateSystem\Tyon\StateSystemPrefabReference.cs" />
-    <Compile Include="StateSystem\Tyon\StateSystemFieldAttribute.cs" />
-    <Compile Include="StateSystem\Tyon\ExplicitStateSystemTypeAttribute.cs" />
-    <Compile Include="StateSystem\Tyon\StateSystemTyonSettings.cs" />
-    <Compile Include="StateSystem\Tyon\StateSystemTyonDesignatedVariableProvider.cs" />
+    <Compile Include="SaveState\SaveStateSystem.cs" />
+    <Compile Include="SaveState\Tyon\SaveStatePrefabReference.cs" />
+    <Compile Include="SaveState\Tyon\SaveStateFieldAttribute.cs" />
+    <Compile Include="SaveState\Tyon\SaveStateExplicitTypeAttribute.cs" />
+    <Compile Include="SaveState\Tyon\SaveStateTyonSettings.cs" />
+    <Compile Include="SaveState\Tyon\SaveStateTyonDesignatedVariableProvider.cs" />
     <Compile Include="Time\Alarm\GameAlarm_Range.cs" />
     <Compile Include="Time\Alarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\Alarm\GameAlarm.cs" />
@@ -740,8 +738,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Mesh.cs">
-      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Mesh.tt</DependentUpon>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Renderer.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Renderer.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1172,9 +1170,24 @@
     <Compile Include="Signal\Operation\Signal_Smooth.cs" />
     <Compile Include="Signal\Operation\Signal_Quantize.cs" />
     <Compile Include="Signal\Operation\Signal_LimitSlew.cs" />
-    <Compile Include="Signal\Operation\Signal_Simulated_Gravitate.cs" />
-    <Compile Include="Signal\Operation\Signal_Simulated_Spring.cs" />
-    <Compile Include="Signal\Operation\Signal_Simulated.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Renderer.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Planar_Renderer.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Mesh.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Mesh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Renderer.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Renderer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SaveState\SaveState.cs" />
+    <Compile Include="SaveState\Tyon\SaveStateSolidObject.cs" />
+    <Compile Include="Signal\Generator\Signal_Generator_Timer.cs" />
+    <Compile Include="MotionValueProvider\MotionValueProvider.cs" />
+    <Compile Include="MotionConductor\MotionConductor.cs" />
+    <Compile Include="MotionConductor\MotionConductorOrder\MotionConductorOrder.cs" />
+    <Compile Include="MotionConductor\MotionConductorOrder\MotionConductorOrder_EaseTo.cs" />
+    <Compile Include="MotionConductor\Extensions\MotionConductorExtensions.cs" />
+    <Compile Include="MotionConductor\Extensions\MotionConductorExtensions_Orders.cs" />
+    <Compile Include="Signal\Operation\Signal_Clip.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1397,6 +1410,14 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UnityObjectEX.cs</LastGenOutput>
     </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Renderer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Renderer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Renderer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Renderer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -1447,6 +1468,10 @@
     <Folder Include="InputDevice\InputDeviceLockState\" />
     <Folder Include="InputDevice\InputDeviceLockState\Extensions\" />
     <Folder Include="TextIndicator\" />
+    <Folder Include="MotionValueProvider\" />
+    <Folder Include="MotionConductor\" />
+    <Folder Include="MotionConductor\MotionConductorOrder\" />
+    <Folder Include="MotionConductor\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

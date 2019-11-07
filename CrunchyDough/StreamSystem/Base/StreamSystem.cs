@@ -44,5 +44,10 @@ namespace CrunchyDough
         {
             return root;
         }
+
+        public StreamSource GetStreamSource(string path)
+        {
+            return new StreamSource(path, this);
+        }
     }
 }

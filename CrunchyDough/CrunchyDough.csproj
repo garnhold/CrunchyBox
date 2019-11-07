@@ -1165,6 +1165,11 @@
     <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions_Assembly.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Contents.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Compare.cs" />
+    <Compile Include="StreamSource\StreamSource.cs" />
+    <Compile Include="Conductor\Conductor.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Operation.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Wait.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1324,6 +1329,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="StreamSource\" />
+    <Folder Include="Conductor\" />
+    <Folder Include="Conductor\ConductorOrder\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

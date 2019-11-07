@@ -7,7 +7,7 @@ namespace CrunchyDough
 {
     static public partial class Files
     {
-        static public StreamSystem_FileStream GetStreamSystem()
+        static public StreamSystem GetStreamSystem()
         {
             return StreamSystem_FileStream.INSTANCE;
         }

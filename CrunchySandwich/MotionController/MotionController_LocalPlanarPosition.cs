@@ -40,12 +40,12 @@ namespace CrunchySandwich
 
         private Matrix4x4 GetParentMatrix()
         {
-            return this.GetParent().transform.localToWorldMatrix;
+            return GetTarget().GetParent().transform.localToWorldMatrix;
         }
 
         protected override void UpdateInternal(float value)
         {
-            this.SetLocalPlanarPosition(position1.GetInterpolate(position2, value.ConvertFromOffsetToPercent()));
+            GetTarget().SetLocalPlanarPosition(position1.GetInterpolate(position2, value.ConvertFromOffsetToPercent()));
         }
     }
 }

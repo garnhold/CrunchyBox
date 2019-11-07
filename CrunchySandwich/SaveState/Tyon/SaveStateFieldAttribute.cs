@@ -11,8 +11,8 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    [AttributeUsage(AttributeTargets.Class)]
-    public class ExplicitStateSystemTypeAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Field)]
+    public class SaveStateFieldAttribute : Attribute
     {
     }
 }

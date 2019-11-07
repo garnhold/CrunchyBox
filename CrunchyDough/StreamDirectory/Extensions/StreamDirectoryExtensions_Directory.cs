@@ -11,5 +11,14 @@ namespace CrunchyDough
         {
             return new StreamDirectory(name, item);
         }
+
+        static public StreamDirectory GetDirectory(this StreamDirectory item, IEnumerable<string> names)
+        {
+            return names.Apply(item, (d, n) => d.GetDirectory(n));
+        }
+        static public StreamDirectory GetDirectory(this StreamDirectory item, params string[] names)
+        {
+            return item.GetDirectory((IEnumerable<string>)names);
+        }
     }
 }

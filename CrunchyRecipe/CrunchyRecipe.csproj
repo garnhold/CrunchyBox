@@ -101,6 +101,7 @@
     <Compile Include="Tyon\TyonValue_String.cs" />
     <Compile Include="Tyon\TyonValue_Surrogate.cs" />
     <Compile Include="Tyon\TyonVariable.cs" />
+    <Compile Include="Tyon\SolidObject\TyonSolidObject.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -116,6 +117,9 @@
       <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
       <Name>CrunchySalt</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tyon\SolidObject\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

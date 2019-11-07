@@ -19,6 +19,17 @@ namespace CrunchySandwich
             throw new UnaccountedBranchException("item", item);
         }
 
+        static public float GetTime(this TimeType item)
+        {
+            switch (item)
+            {
+                case TimeType.Active: return ActiveGameTime.GetTime();
+                case TimeType.Actual: return ActualGameTime.GetTime();
+            }
+
+            throw new UnaccountedBranchException("item", item);
+        }
+
         static public TimeSource GetTimeSource(this TimeType item)
         {
             switch (item)

@@ -11,31 +11,31 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public class StateSystemPrefabReference
+    public class SaveStatePrefabReference
     {
         [SerializeFieldEX]private string prefab_id;
 
-        static public implicit operator UnityEngine.Object(StateSystemPrefabReference p)
+        static public implicit operator UnityEngine.Object(SaveStatePrefabReference p)
         {
             return p.ResolvePrefab();
         }
 
-        static public implicit operator StateSystemPrefabReference(UnityEngine.Object o)
+        static public implicit operator SaveStatePrefabReference(UnityEngine.Object o)
         {
             UnityObjectEX cast;
 
             if(o.Convert<UnityObjectEX>(out cast))
-                return new StateSystemPrefabReference(cast.GetPrefabId());
+                return new SaveStatePrefabReference(cast.GetPrefabId());
 
             return null;
         }
 
-        public StateSystemPrefabReference(string id)
+        public SaveStatePrefabReference(string id)
         {
             prefab_id = id;
         }
 
-        public StateSystemPrefabReference() : this("") { }
+        public SaveStatePrefabReference() : this("") { }
 
         public UnityEngine.Object ResolvePrefab()
         {

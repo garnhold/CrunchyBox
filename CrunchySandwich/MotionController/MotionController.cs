@@ -11,15 +11,16 @@ namespace CrunchySandwich
 {
     public abstract class MotionController : MonoBehaviourEX
     {
+        [SerializeField]private GameObject target;
         [SerializeFieldEX][PolymorphicField]private Signal signal;
 
-        private ComponentCache_Upward<MotionNode> motion_node;
+        private ComponentCache_Upward<MotionValueProvider> motion_node;
 
         protected abstract void UpdateInternal(float value);
 
         private void Start()
         {
-            motion_node = new ComponentCache_Upward<MotionNode>(this);
+            motion_node = new ComponentCache_Upward<MotionValueProvider>(this);
         }
 
         private void Update()
@@ -30,6 +31,11 @@ namespace CrunchySandwich
                 input = signal.Execute(input);
             
             UpdateInternal(input);
+        }
+
+        public GameObject GetTarget()
+        {
+            return target ?? gameObject;
         }
     }
 }

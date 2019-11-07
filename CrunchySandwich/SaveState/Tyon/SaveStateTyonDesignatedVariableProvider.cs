@@ -12,21 +12,21 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public class StateSystemTyonDesignatedVariableProvider : TyonDesignatedVariableProvider_Fields
+    public class SaveStateTyonDesignatedVariableProvider : TyonDesignatedVariableProvider_Fields
     {
-        static public readonly StateSystemTyonDesignatedVariableProvider INSTANCE = new StateSystemTyonDesignatedVariableProvider();
+        static public readonly SaveStateTyonDesignatedVariableProvider INSTANCE = new SaveStateTyonDesignatedVariableProvider();
 
-        private StateSystemTyonDesignatedVariableProvider() { }
+        private SaveStateTyonDesignatedVariableProvider() { }
 
         protected override Filterer<FieldInfo> GetFieldInfoFilterer(Type type)
         {
-            if (type.HasCustomAttributeOfType<ExplicitStateSystemTypeAttribute>(true))
-                return Filterer_FieldInfo.HasCustomAttributeOfType<StateSystemFieldAttribute>();
+            if (type.HasCustomAttributeOfType<SaveStateExplicitTypeAttribute>(true))
+                return Filterer_FieldInfo.HasCustomAttributeOfType<SaveStateFieldAttribute>();
 
             return Filterer_Utility.Any(
                 Filterer_FieldInfo.HasCustomAttributeOfType<SerializeField>(),
                 Filterer_FieldInfo.HasCustomAttributeOfType<SerializeFieldEX>(),
-                Filterer_FieldInfo.HasCustomAttributeOfType<StateSystemFieldAttribute>(),
+                Filterer_FieldInfo.HasCustomAttributeOfType<SaveStateFieldAttribute>(),
                 Filterer_FieldInfo.IsGetPublic()
             );
         }

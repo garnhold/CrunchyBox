@@ -16,7 +16,7 @@ namespace CrunchySandwich
 
         protected override void UpdateInternal(float value)
         {
-            this.GetComponent<SpriteRenderer>().SetAlpha(value.ConvertFromOffsetToRange(range));
+            GetTarget().GetComponent<SpriteRenderer>().SetAlpha(value.ConvertFromOffsetToRange(range));
         }
     }
 }

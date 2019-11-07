@@ -9,22 +9,26 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class MotionNode : MonoBehaviourEX, MotionValueProvider
+    public abstract class MotionConductor : MonoBehaviourEX, MotionValueProvider
     {
-        [SerializeFieldEX][PolymorphicField]private Signal signal;
-
-        private ComponentCache_UpwardFromParent<MotionValueProvider> parent;
-
+        private Conductor conductor;
         private float motion_value;
+
+        protected abstract IEnumerator<ConductorOrder> TheChoreography();
 
         private void Start()
         {
-            parent = new ComponentCache_UpwardFromParent<MotionValueProvider>(this);
+            conductor = new Conductor(TheChoreography);
         }
 
         private void Update()
         {
-            motion_value = signal.Execute(parent.GetComponent().IfNotNull(p => p.GetMotionValue()));
+            conductor.Update();
+        }
+
+        public void SetMotionValue(float value)
+        {
+            motion_value = value;
         }
 
         public float GetMotionValue()

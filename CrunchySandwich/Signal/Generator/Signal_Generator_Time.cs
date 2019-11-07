@@ -7,13 +7,12 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class Signal_Generator_Time : Signal_Generator
+    public class Signal_Generator_Time : Signal_Generator
     {
+        [SerializeFieldEX]private TimeType time_type;
         [SerializeFieldEX]private bool use_random_offset;
 
         private float random_offset;
-
-        protected abstract float GetTime();
 
         public Signal_Generator_Time()
         {
@@ -22,10 +21,12 @@ namespace CrunchySandwich
 
         protected override float Execute()
         {
-            if (use_random_offset)
-                return GetTime() + random_offset;
+            float time = time_type.GetTime();
 
-            return GetTime();
+            if (use_random_offset)
+                time += random_offset;
+
+            return time;
         }
     }
 }
