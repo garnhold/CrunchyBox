@@ -1181,13 +1181,13 @@
     <Compile Include="SaveState\SaveState.cs" />
     <Compile Include="SaveState\Tyon\SaveStateSolidObject.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Timer.cs" />
-    <Compile Include="MotionValueProvider\MotionValueProvider.cs" />
-    <Compile Include="MotionConductor\MotionConductor.cs" />
-    <Compile Include="MotionConductor\MotionConductorOrder\MotionConductorOrder.cs" />
-    <Compile Include="MotionConductor\MotionConductorOrder\MotionConductorOrder_EaseTo.cs" />
-    <Compile Include="MotionConductor\Extensions\MotionConductorExtensions.cs" />
-    <Compile Include="MotionConductor\Extensions\MotionConductorExtensions_Orders.cs" />
     <Compile Include="Signal\Operation\Signal_Clip.cs" />
+    <Compile Include="Easer\GameEaser.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_EaseToLocalPlanarPosition.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_EaseToPlanarPosition.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_MoveToLocalPlanarPosition.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_MoveToPlanarPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1468,10 +1468,9 @@
     <Folder Include="InputDevice\InputDeviceLockState\" />
     <Folder Include="InputDevice\InputDeviceLockState\Extensions\" />
     <Folder Include="TextIndicator\" />
-    <Folder Include="MotionValueProvider\" />
-    <Folder Include="MotionConductor\" />
-    <Folder Include="MotionConductor\MotionConductorOrder\" />
-    <Folder Include="MotionConductor\Extensions\" />
+    <Folder Include="Conductor\" />
+    <Folder Include="Easer\" />
+    <Folder Include="Conductor\ConductorOrder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

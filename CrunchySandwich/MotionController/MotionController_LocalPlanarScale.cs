@@ -17,7 +17,7 @@ namespace CrunchySandwich
 
         protected override void UpdateInternal(float value)
         {
-            GetTarget().SetLocalPlanarScale(center + radius * value);
+            this.SetLocalPlanarScale(center + radius * value);
         }
     }
 }

@@ -27,6 +27,15 @@ namespace CrunchySandwich
         {
             return item.transform.MoveTowardsLocalPlanarPosition(target, amount);
         }
+        
+        static public bool MoveTowardsPlanarPosition(this <#=type_name#> item, Vector2 target, float amount)
+        {
+            return item.transform.MoveTowardsPlanarPosition(target, amount);
+        }
+        static public bool MoveTowardsLocalPlanarPosition(this <#=type_name#> item, Vector2 target, float amount)
+        {
+            return item.transform.MoveTowardsLocalPlanarPosition(target, amount);
+        }
 
         static public bool MoveTowardsPlanarRotation(this <#=type_name#> item, float target, float amount)
         {

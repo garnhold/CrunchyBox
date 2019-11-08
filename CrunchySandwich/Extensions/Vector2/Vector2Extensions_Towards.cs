@@ -18,5 +18,12 @@ namespace CrunchySandwich
                 item.y.GetTowards(target.y, amount.y)
             );
         }
+        static public Vector2 GetTowards(this Vector2 item, Vector2 target, float amount)
+        {
+            return item.GetTowards(
+                target,
+                item.GetDirection(target) * amount
+            );
+        }
     }
 }

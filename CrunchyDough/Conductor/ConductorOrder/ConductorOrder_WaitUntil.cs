@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace CrunchyDough
 {
-    public class ConductorOrder_Operation : ConductorOrder
+    public class ConductorOrder_WaitUntil : ConductorOrder
     {
         private Operation<bool> operation;
 
-        public ConductorOrder_Operation(Operation<bool> o)
+        public ConductorOrder_WaitUntil(Operation<bool> o)
         {
             operation = o;
         }

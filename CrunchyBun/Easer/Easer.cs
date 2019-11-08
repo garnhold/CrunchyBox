@@ -6,77 +6,65 @@ using CrunchyNoodle;
 
 namespace CrunchyBun
 {
-    public class Easer
+    public class Easer : TemporalDuration
     {
-        private EaseFunction function;
+        private EaseOperation operation;
+        private TemporalDuration timer;
 
-        private bool is_easing;
-        private Stopwatch ease_stopwatch;
-
-        public event MultiProcess<float> OnEase;
-        public event MultiProcess OnDone;
-
-        public Easer(EaseFunction f, Stopwatch s)
+        public Easer(EaseOperation o, TemporalDuration t)
         {
-            function = f;
-
-            is_easing = true;
-            ease_stopwatch = s;
+            operation = o;
+            timer = t;
         }
 
-        public bool Ease()
+        public bool Start()
         {
-            if (is_easing)
-            {
-                OnEase.InvokeAll(GetCurrentValue());
-
-                if (ease_stopwatch.GetElapsedTimeInSeconds() >= function.GetEndTime())
-                    DoDone();
-            }
-
-            return is_easing;
+            return timer.Start();
         }
 
-        public void DoDone()
+        public bool Pause()
         {
-            if (is_easing)
-                ForceDone();
+            return timer.Pause();
         }
 
-        public void ForceDone()
+        public void SetSpeed(float speed)
         {
-            is_easing = false;
-
-            Pause();
-
-            OnDone.InvokeAll();
+            timer.SetSpeed(speed);
         }
 
-        public void StopClear()
+        public void SetDurationInMilliseconds(long d)
         {
-            is_easing = true;
-            ease_stopwatch.StopClear();
+            timer.SetDurationInMilliseconds(d);
         }
 
-        public void Start()
+        public void SetElapsedTimeInMilliseconds(long m)
         {
-            ease_stopwatch.Start();
+            timer.SetElapsedTimeInMilliseconds(m);
         }
 
-        public void Pause()
+        public bool IsRunning()
         {
-            ease_stopwatch.Pause();
+            return timer.IsRunning();
         }
 
-        public void Restart()
+        public float GetSpeed()
         {
-            StopClear();
-            Start();
+            return timer.GetSpeed();
+        }
+
+        public long GetDurationInMilliseconds()
+        {
+            return timer.GetDurationInMilliseconds();
+        }
+
+        public long GetElapsedTimeInMilliseconds()
+        {
+            return timer.GetElapsedTimeInMilliseconds();
         }
 
         public float GetCurrentValue()
         {
-            return function.Evaluate(ease_stopwatch.GetElapsedTimeInSeconds());
+            return operation(timer.GetTimeElapsedInPercent());
         }
     }
 }

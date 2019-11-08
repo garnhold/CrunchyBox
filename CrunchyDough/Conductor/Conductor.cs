@@ -17,11 +17,20 @@ namespace CrunchyDough
             iter.MoveNext();
         }
 
+        public Conductor(IEnumerable<ConductorOrder> e) : this(e.GetEnumerator()) { }
+        public Conductor(params ConductorOrder[] e) : this((IEnumerable<ConductorOrder>)e) { }
+
         public Conductor(Operation<IEnumerator<ConductorOrder>> o) : this(o()) { }
+        public Conductor(Operation<IEnumerable<ConductorOrder>> o) : this(o()) { }
 
         public void Dispose()
         {
             iter.Dispose();
+        }
+
+        public void Reset()
+        {
+            iter.Reset();
         }
 
         public bool Update()

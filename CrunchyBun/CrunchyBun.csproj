@@ -50,7 +50,6 @@
     <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Angle.cs" />
     <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Sequence.cs" />
     <Compile Include="Easer\AutoEaser.cs" />
-    <Compile Include="Easer\EaseFunction.cs" />
     <Compile Include="Easer\Extensions\EaseOperationExtensions.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_CardinalOrdinalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_HorizontalDirection.cs" />
@@ -78,7 +77,6 @@
     <Compile Include="Extensions\TemporalSeries\TemporalSeriesExtensions.cs" />
     <Compile Include="FloatChoreography\FloatChoreographyKeyFrame.cs" />
     <Compile Include="FloatChoreography\FloatChoreography.cs" />
-    <Compile Include="Easer\Easer.cs" />
     <Compile Include="Easer\EaseOperations.cs" />
     <Compile Include="Equation\Equation.cs" />
     <Compile Include="Equation\Equation_Linear.cs" />
@@ -280,6 +278,7 @@
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_With.cs" />
     <Compile Include="VectorI2\VectorI2.cs" />
     <Compile Include="Wave\Wave.cs" />
+    <Compile Include="Easer\Easer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Math\Mathq_IntPow.tt">

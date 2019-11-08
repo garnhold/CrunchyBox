@@ -1168,8 +1168,10 @@
     <Compile Include="StreamSource\StreamSource.cs" />
     <Compile Include="Conductor\Conductor.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Operation.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Wait.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitFor.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Compound.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitUntil.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Do.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

@@ -28,6 +28,23 @@ namespace CrunchySandwich
             return result;
         }
 
+        static public bool MoveTowardsPlanarPosition(this Transform item, Vector2 target, float amount)
+        {
+            Vector2 output;
+            bool result = item.GetPlanarPosition().GetMoveTowards(target, amount, out output);
+
+            item.SetPlanarPosition(output);
+            return result;
+        }
+        static public bool MoveTowardsLocalPlanarPosition(this Transform item, Vector2 target, float amount)
+        {
+            Vector2 output;
+            bool result = item.GetLocalPlanarPosition().GetMoveTowards(target, amount, out output);
+
+            item.SetLocalPlanarPosition(output);
+            return result;
+        }
+
         static public bool MoveTowardsPlanarRotation(this Transform item, float target, float amount)
         {
             float output;

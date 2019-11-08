@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace CrunchyDough
 {
-    public class ConductorOrder_Wait : ConductorOrder
+    public class ConductorOrder_WaitFor : ConductorOrder
     {
         private TemporalDuration temporal_duration;
 
-        public ConductorOrder_Wait(TemporalDuration d)
+        public ConductorOrder_WaitFor(TemporalDuration d)
         {
             temporal_duration = d;
 

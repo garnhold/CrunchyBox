@@ -20,6 +20,15 @@ namespace CrunchySandwich
             item.SetLocalPlanarPosition(item.GetLocalPlanarPosition().GetTowards(target, amount));
         }
 
+        static public void TowardsPlanarPosition(this Transform item, Vector2 target, float amount)
+        {
+            item.SetPlanarPosition(item.GetPlanarPosition().GetTowards(target, amount));
+        }
+        static public void TowardsLocalPlanarPosition(this Transform item, Vector2 target, float amount)
+        {
+            item.SetLocalPlanarPosition(item.GetLocalPlanarPosition().GetTowards(target, amount));
+        }
+
         static public void TowardsPlanarRotation(this Transform item, float target, float amount)
         {
             item.SetPlanarRotation(item.GetPlanarRotation().GetTowardsAngleInDegrees(target, amount));

@@ -9,17 +9,17 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public class MotionNode : MonoBehaviourEX, MotionValueProvider
+    public class MotionNode : MonoBehaviourEX
     {
         [SerializeFieldEX][PolymorphicField]private Signal signal;
 
-        private ComponentCache_UpwardFromParent<MotionValueProvider> parent;
+        private ComponentCache_UpwardFromParent<MotionNode> parent;
 
         private float motion_value;
 
         private void Start()
         {
-            parent = new ComponentCache_UpwardFromParent<MotionValueProvider>(this);
+            parent = new ComponentCache_UpwardFromParent<MotionNode>(this);
         }
 
         private void Update()
