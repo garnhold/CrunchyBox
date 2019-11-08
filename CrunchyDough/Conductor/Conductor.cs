@@ -9,12 +9,22 @@ namespace CrunchyDough
         private bool is_running;
         private IEnumerator<ConductorOrder> iter;
 
+        private bool Advance()
+        {
+            if (iter.MoveNext())
+                iter.Current.Start();
+            else
+                is_running = false;
+
+            return is_running;
+        }
+
         public Conductor(IEnumerator<ConductorOrder> i)
         {
             is_running = true;
             iter = i;
 
-            iter.MoveNext();
+            Advance();
         }
 
         public Conductor(IEnumerable<ConductorOrder> e) : this(e.GetEnumerator()) { }
@@ -38,10 +48,7 @@ namespace CrunchyDough
             if (is_running)
             {
                 if (iter.Current.Fulfill())
-                {
-                    if (iter.MoveNext() == false)
-                        is_running = false;
-                }
+                    Advance();
             }
 
             return is_running;

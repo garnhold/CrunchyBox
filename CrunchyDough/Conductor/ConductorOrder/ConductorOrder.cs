@@ -6,6 +6,8 @@ namespace CrunchyDough
 {
     public abstract class ConductorOrder
     {
+        public virtual void Start() { }
+
         public abstract bool Fulfill();
     }
 }

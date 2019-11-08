@@ -9,14 +9,14 @@ using CrunchyBun;
 
 namespace CrunchySandwich
 {
-    public abstract class ConductorOrder_GameObject_MoveToLocalPlanarPosition : ConductorOrder_GameObject
+    public class ConductorOrder_GameObject_MoveToLocalPlanarRotation : ConductorOrder_GameObject
     {
-        private Vector2 end;
+        private float end;
 
         private float speed;
         private TimeType time_type;
 
-        public ConductorOrder_GameObject_MoveToLocalPlanarPosition(GameObject t, Vector2 e, float s, TimeType tt) : base(t)
+        public ConductorOrder_GameObject_MoveToLocalPlanarRotation(GameObject t, float e, float s, TimeType tt) : base(t)
         {
             end = e;
 
@@ -26,7 +26,7 @@ namespace CrunchySandwich
 
         public override bool Fulfill()
         {
-            return GetTarget().MoveTowardsLocalPlanarPosition(end, speed * time_type.GetDelta());
+            return GetTarget().MoveTowardsLocalPlanarRotation(end, speed * time_type.GetDelta());
         }
     }
 }

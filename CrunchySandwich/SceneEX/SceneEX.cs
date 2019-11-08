@@ -16,21 +16,6 @@ namespace CrunchySandwich
     {
         [SerializeField]private UnityEngine.Object scene_asset;
 
-        public void LoadScene()
-        {
-            SceneManager.LoadScene(GetName());
-        }
-
-        public bool IsSceneLoaded()
-        {
-            return SceneManager.GetSceneByName(GetName()).IfNotNull(s => s.isLoaded);
-        }
-
-        public string GetName()
-        {
-            return scene_asset.name;
-        }
-
         public UnityEngine.Object GetSceneAsset()
         {
             return scene_asset;

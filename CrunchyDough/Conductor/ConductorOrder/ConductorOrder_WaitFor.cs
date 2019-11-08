@@ -11,7 +11,16 @@ namespace CrunchyDough
         public ConductorOrder_WaitFor(TemporalDuration d)
         {
             temporal_duration = d;
+        }
 
+        public ConductorOrder_WaitFor(long d, TimeSource t) : this(new Timer(d, t)) { }
+        public ConductorOrder_WaitFor(long d) : this(d, TimeSource_System.INSTANCE) { }
+
+        public ConductorOrder_WaitFor(Duration d, TimeSource t) : this(new Timer(d, t)) { }
+        public ConductorOrder_WaitFor(Duration d) : this(d, TimeSource_System.INSTANCE) { }
+
+        public override void Start()
+        {
             temporal_duration.Start();
         }
 

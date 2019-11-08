@@ -159,9 +159,8 @@
     <Compile Include="PrefabLookup\PrefabLookup.cs" />
     <Compile Include="Prefab\Prefab.cs" />
     <Compile Include="RepresentationController\RepresentationController.cs" />
-    <Compile Include="Scene\Extensions\SceneEXExtensions_Activate.cs" />
-    <Compile Include="Scene\Extensions\SceneEXExtensions.cs" />
-    <Compile Include="Scene\SceneEX.cs" />
+    <Compile Include="SceneEX\Extensions\SceneEXExtensions.cs" />
+    <Compile Include="SceneEX\SceneEX.cs" />
     <Compile Include="Scriptlet\Extensions\ScriptletExtensions.cs" />
     <Compile Include="Scriptlet\Targeted\Extensions\TargetedScriptletExtensions.cs" />
     <Compile Include="Scriptlet\Targeted\TargetedScriptlet.cs" />
@@ -1183,11 +1182,25 @@
     <Compile Include="Signal\Generator\Signal_Generator_Timer.cs" />
     <Compile Include="Signal\Operation\Signal_Clip.cs" />
     <Compile Include="Easer\GameEaser.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_EaseToLocalPlanarPosition.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_EaseToPlanarPosition.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_MoveToLocalPlanarPosition.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_GameObject_MoveToPlanarPosition.cs" />
+    <Compile Include="SceneEX\Extensions\SceneEXExtensions_Info.cs" />
+    <Compile Include="SceneEX\Extensions\SceneEXExtensions_Load.cs" />
+    <Compile Include="MotionValueProvider\MotionValueProvider.cs" />
+    <Compile Include="MotionManualNode\MotionManualNode.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_EaseToLocalPlanarPosition.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_EaseToLocalPlanarRotation.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_EaseToPlanarPosition.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_EaseToPlanarRotation.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_MoveToLocalPlanarPosition.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_MoveToLocalPlanarRotation.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_MoveToPlanarPosition.cs" />
+    <Compile Include="Conductor\ConductorOrder\GameObject\ConductorOrder_GameObject_MoveToPlanarRotation.cs" />
+    <Compile Include="Conductor\ConductorOrder\MotionManualNode\ConductorOrder_MotionManualNode.cs" />
+    <Compile Include="Conductor\ConductorOrder\MotionManualNode\ConductorOrder_MotionManualNode_EaseTo.cs" />
+    <Compile Include="Conductor\ConductorOrder\MotionManualNode\ConductorOrder_MotionManualNode_MoveTo.cs" />
+    <Compile Include="MotionManualNode\MotionManualNode_Ease.cs" />
+    <Compile Include="MotionManualNode\MotionManualNode_Linear.cs" />
+    <Compile Include="MotionManualNode\MotionManualNode_Instant.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1471,6 +1484,10 @@
     <Folder Include="Conductor\" />
     <Folder Include="Easer\" />
     <Folder Include="Conductor\ConductorOrder\" />
+    <Folder Include="MotionValueProvider\" />
+    <Folder Include="MotionManualNode\" />
+    <Folder Include="Conductor\ConductorOrder\GameObject\" />
+    <Folder Include="Conductor\ConductorOrder\MotionManualNode\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
