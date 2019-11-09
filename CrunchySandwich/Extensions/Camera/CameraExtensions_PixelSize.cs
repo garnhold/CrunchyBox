@@ -11,6 +11,11 @@ namespace CrunchySandwich
 {
     static public class CameraExtensions_PixelSize
     {
+        static public void SetPixelSizeCentered(this Camera item, Vector2 size)
+        {
+            item.pixelRect = RectExtensions.CreateCenterRect(ScreenExtensions.GetCenter(), size);
+        }
+
         static public void SetPixelSize(this Camera item, Vector2 size)
         {
             item.aspect = size.x / size.y;

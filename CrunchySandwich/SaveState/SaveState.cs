@@ -8,7 +8,7 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public abstract class SaveState
+    public abstract class SaveState : HasSaveStateSolidObject
     {
         private SaveStateSolidObject solid_object;
 

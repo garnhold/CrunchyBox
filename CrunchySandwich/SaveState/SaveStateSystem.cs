@@ -9,7 +9,7 @@ using CrunchyRecipe;
 namespace CrunchySandwich
 {
     [SaveStateExplicitType]
-    public abstract class SaveStateSystem<T> : Subsystem<T> where T : SaveStateSystem<T>
+    public abstract class SaveStateSystem<T> : Subsystem<T>, HasSaveStateSolidObject where T : SaveStateSystem<T>
     {
         private SaveStateSolidObject solid_object;
 

@@ -1201,6 +1201,11 @@
     <Compile Include="MotionManualNode\MotionManualNode_Ease.cs" />
     <Compile Include="MotionManualNode\MotionManualNode_Linear.cs" />
     <Compile Include="MotionManualNode\MotionManualNode_Instant.cs" />
+    <Compile Include="SaveState\Extensions\HasSaveStateSolidObjectExtensions.cs" />
+    <Compile Include="SaveState\HasSaveStateSolidObject.cs" />
+    <Compile Include="SaveState\Extensions\HasSaveStateSolidObjectExtensions_SaveLoad.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Fill.cs" />
+    <Compile Include="PixelArtCamera\PixelArtCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1488,6 +1493,8 @@
     <Folder Include="MotionManualNode\" />
     <Folder Include="Conductor\ConductorOrder\GameObject\" />
     <Folder Include="Conductor\ConductorOrder\MotionManualNode\" />
+    <Folder Include="SaveState\Extensions\" />
+    <Folder Include="PixelArtCamera\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

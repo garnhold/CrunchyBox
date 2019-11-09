@@ -17,6 +17,11 @@ namespace CrunchySandwich
             return new Vector2(Screen.width, Screen.height);
         }
 
+        static public Vector2 GetCenter()
+        {
+            return GetSize() * 0.5f;
+        }
+
         static public Rect GetRect()
         {
             return new Rect(Vector2.zero, GetSize());

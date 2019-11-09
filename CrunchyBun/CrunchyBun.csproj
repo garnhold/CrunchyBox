@@ -279,6 +279,7 @@
     <Compile Include="VectorI2\VectorI2.cs" />
     <Compile Include="Wave\Wave.cs" />
     <Compile Include="Easer\Easer.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Fill.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Math\Mathq_IntPow.tt">

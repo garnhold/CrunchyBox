@@ -32,11 +32,14 @@ namespace CrunchyRecipe
         {
             previous_tyon = stream.ReadText();
 
-            settings.CreateContext().DeserializeInto(
-                target,
-                previous_tyon, 
-                mode
-            );
+            if (previous_tyon.IsVisible())
+            {
+                settings.CreateContext().DeserializeInto(
+                    target,
+                    previous_tyon,
+                    mode
+                );
+            }
         }
 
         public void Save()
