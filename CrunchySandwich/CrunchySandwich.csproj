@@ -156,7 +156,6 @@
     <Compile Include="InspectorDisplayAttribute\InspectorDisplayAttribute.cs" />
     <Compile Include="InspectorFunctionAttribute\InspectorFunctionAttribute.cs" />
     <Compile Include="MountPoint\MountPoint.cs" />
-    <Compile Include="PrefabLookup\PrefabLookup.cs" />
     <Compile Include="Prefab\Prefab.cs" />
     <Compile Include="RepresentationController\RepresentationController.cs" />
     <Compile Include="SceneEX\Extensions\SceneEXExtensions.cs" />
@@ -183,7 +182,6 @@
     <Compile Include="Signal\Generator\Signal_Generator.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic.cs" />
     <Compile Include="SaveState\SaveStateSystem.cs" />
-    <Compile Include="SaveState\Tyon\SaveStatePrefabReference.cs" />
     <Compile Include="SaveState\Tyon\SaveStateFieldAttribute.cs" />
     <Compile Include="SaveState\Tyon\SaveStateExplicitTypeAttribute.cs" />
     <Compile Include="SaveState\Tyon\SaveStateTyonSettings.cs" />
@@ -1206,6 +1204,8 @@
     <Compile Include="SaveState\Extensions\HasSaveStateSolidObjectExtensions_SaveLoad.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_Fill.cs" />
     <Compile Include="PixelArtCamera\PixelArtCamera.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Bounds.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Rect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

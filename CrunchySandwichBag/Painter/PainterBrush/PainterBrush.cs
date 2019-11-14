@@ -15,8 +15,7 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [AssetClassCategory("Painter/Brush")]
-    public abstract class PainterBrush : CustomAsset
+    public abstract class PainterBrush
     {
         public abstract Brush<Color> CreateBrush(float size);
     }

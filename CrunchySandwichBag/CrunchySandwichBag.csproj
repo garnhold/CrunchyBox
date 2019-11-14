@@ -165,8 +165,6 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_TerrainTile.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
-    <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions.cs" />
-    <Compile Include="Extensions\UnityObjectEX\UnityObjectEXExtensions_OnValidate.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
     <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
@@ -344,9 +342,6 @@
     <Compile Include="Painter\PainterBrush\PainterBrush_Texture.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_SoftCircle.cs" />
     <Compile Include="Painter\PainterToolType.cs" />
-    <Compile Include="Painter\PainterMixer\PainterMixer_SimpleNormal.cs" />
-    <Compile Include="Painter\PainterMixer\PainterMixer_SimpleOverwrite.cs" />
-    <Compile Include="Painter\PainterMixer\PainterMixer.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_Circle.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush.cs" />
     <Compile Include="Painter\Painter.cs" />
@@ -478,6 +473,12 @@
     <Compile Include="Extensions\SpriteVectorizer\SpriteVectorizerExtensions.cs" />
     <Compile Include="Extensions\SceneEX\SceneEXExtensions.cs" />
     <Compile Include="Extensions\SceneEX\SceneEXExtensions_EditorBuildSettingsScene.cs" />
+    <Compile Include="UnityObjectEX\UnityObjectEXInitializer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnityObjectEXInitializer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project\Project_Sofabs.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -512,6 +513,10 @@
     <Content Include="Extensions\SerializedProperty\SerializedPropertyExtensions_Value.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SerializedPropertyExtensions_Value.cs</LastGenOutput>
+    </Content>
+    <Content Include="UnityObjectEX\UnityObjectEXInitializer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UnityObjectEXInitializer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -567,6 +572,7 @@
     <Folder Include="EditorGUIView\" />
     <Folder Include="Extensions\SpriteVectorizer\" />
     <Folder Include="Extensions\SceneEX\" />
+    <Folder Include="UnityObjectEX\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

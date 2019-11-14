@@ -1,0 +1,68 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+    new TypeInfo("MonoBehaviourEX", "MonoBehaviour", "Prefab"),
+    new TypeInfo("ScriptableObjectEX", "ScriptableObject", "Sofab")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using CrunchyDough;
+using CrunchySalt;
+using CrunchyNoodle;
+using CrunchyRecipe;
+using CrunchySandwich;
+
+namespace CrunchySandwichBag
+{
+<# foreach(TypeInfo info in types){#>
+    [EditorInitializer]
+    static public class <#=info.type#>Initializer
+    {
+        [EditorInitializer]
+        static private void Initilize()
+        {
+            <#=info.lookup_type#> lookup = <#=info.lookup_type#>.GetInstance();
+
+            lookup.Clear();
+            
+            Project.GetAll<#=info.prefab_type#>s<<#=info.type#>>()
+                .Process(delegate(<#=info.type#> item){
+                    string id = item.GetAssetGUID();
+                    
+                    item.ModifyAsset(z => z.SetChildValue("reference_id", id));
+                    lookup.Register(item);
+                });
+    
+        }
+    }
+<#}#>
+}
+<#+
+class TypeInfo
+{
+    public readonly string type;
+    public readonly string base_type;
+    public readonly string prefab_type;
+    
+    public readonly string lookup_type;
+    public readonly string reference_type;
+    
+    public TypeInfo(string t, string bt, string pt)
+    {
+        type = t;
+        base_type = bt;
+        prefab_type = pt;
+        
+        lookup_type = type + "Lookup";
+        reference_type = "SaveState" + type + prefab_type + "Reference";
+    }
+}
+#>

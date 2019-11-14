@@ -19,12 +19,12 @@ namespace CrunchySandwichBag
     {
         [SerializeField]private PainterToolType tool_type;
 
-        [SerializeField]private PainterBrush brush;
-        [SerializeField][Range(0.3f, 128.0f)]private float brush_size;
+        [SerializeFieldEX][PolymorphicField]private PainterBrush brush;
+        [SerializeFieldEX][Range(0.3f, 128.0f)]private float brush_size;
 
-        [SerializeField]private PainterMixer mixer;
-        [SerializeField]private Color primary_color;
-        [SerializeField]private Color secondary_color;
+        [SerializeFieldEX][PolymorphicField]private Mixer_Color mixer;
+        [SerializeFieldEX]private Color primary_color;
+        [SerializeFieldEX]private Color secondary_color;
 
         private Utensil<Color> utensil;
 
@@ -36,7 +36,7 @@ namespace CrunchySandwichBag
                 {
                     case PainterToolType.Brush:
                         return new Utensil_InkedBrush<Color>(
-                            new Ink_Basic<Color>(primary_color, mixer.CreateMixer()),
+                            new Ink_Basic<Color>(primary_color, mixer),
                             brush.CreateBrush(brush_size)
                         );
 
@@ -54,22 +54,16 @@ namespace CrunchySandwichBag
         public void OnBeforeSerialize() { }
         public void OnAfterDeserialize()
         {
-            DirtyUtensil();
-        }
-
-        public void DirtyUtensil()
-        {
             utensil = CreateUtensil();
         }
 
+        [InspectorAction]
         public void SwapColors()
         {
             Color temp = primary_color;
 
             primary_color = secondary_color;
             secondary_color = temp;
-
-            DirtyUtensil();
         }
 
         public float GetBrushSize()

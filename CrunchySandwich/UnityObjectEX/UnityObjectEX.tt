@@ -3,7 +3,10 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-string[] type_names = new string[]{"MonoBehaviour", "ScriptableObject"};
+TypeInfo[] types = new TypeInfo[]{
+    new TypeInfo("MonoBehaviourEX", "MonoBehaviour", "Prefab"),
+    new TypeInfo("ScriptableObjectEX", "ScriptableObject", "Sofab")
+};
 #>
 using System;
 using System.Collections;
@@ -18,15 +21,55 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-	public interface UnityObjectEX
-	{
-		string GetPrefabId();
-	}
+<# foreach(TypeInfo info in types){#>
+    public class <#=info.lookup_type#> : Subsystem<<#=info.lookup_type#>>
+    {
+        [SerializeField]private Dictionary<string, <#=info.type#>> items;
+        
+        public void Clear()
+        {
+            items.Clear();
+        }
+        
+        public void Register(<#=info.type#> item)
+        {
+            items[item.GetReferenceId()] = item;
+        }
+        
+        public <#=info.type#> Lookup(string id)
+        {
+            return items.GetValue(id);
+        }
+    }
+    
+    public class <#=info.reference_type#>
+    {
+        [SerializeFieldEX]private string prefab_id;
 
-	public class UnityObjectEXOnValidateEditDistinctionAttribute : EditDistinctionAttribute { }
+        static public implicit operator <#=info.type#>(<#=info.reference_type#> p)
+        {
+            return p.Resolve();
+        }
 
-<# foreach(string type_name in type_names){#>
-	public class <#=type_name#>EX : <#=type_name#>, ISerializationCallbackReceiver, SerializationCorruptable, UnityObjectEX
+        static public implicit operator <#=info.reference_type#>(<#=info.type#> o)
+        {
+            return o.IfNotNull(z => new <#=info.reference_type#>(z.GetReferenceId()));
+        }
+
+        public <#=info.reference_type#>(string id)
+        {
+            prefab_id = id;
+        }
+
+        public <#=info.reference_type#>() : this("") { }
+
+        public <#=info.type#> Resolve()
+        {
+            return <#=info.lookup_type#>.GetInstance().Lookup(prefab_id);
+        }
+    }
+
+	public class <#=info.type#> : <#=info.base_type#>, ISerializationCallbackReceiver, SerializationCorruptable
     {
 		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
@@ -36,22 +79,12 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
-		[SerializeField][HideInInspector]private string prefab_id;
-
-		protected virtual void OnValidateInternal() { }
+		[SerializeField][HideInInspector]private string reference_id;
 
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
 			UnpackTyon(TyonHydrationMode.Permissive);
-		}
-
-		private void OnValidate()
-		{
-			PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
-				.ExecuteNoReturn(t => { }, this);
-
-			OnValidateInternal();
 		}
 
 		private void PackTyon()
@@ -132,11 +165,32 @@ namespace CrunchySandwich
 			return false;
 		}
 
-		public string GetPrefabId()
+		public string GetReferenceId()
 		{
-			return prefab_id;
+			return reference_id;
 		}
 	}
 
 <# } #>
 }
+<#+
+class TypeInfo
+{
+    public readonly string type;
+    public readonly string base_type;
+    public readonly string prefab_type;
+    
+    public readonly string lookup_type;
+    public readonly string reference_type;
+    
+    public TypeInfo(string t, string bt, string pt)
+    {
+        type = t;
+        base_type = bt;
+        prefab_type = pt;
+        
+        lookup_type = type + "Lookup";
+        reference_type = "SaveState" + type + prefab_type + "Reference";
+    }
+}
+#>

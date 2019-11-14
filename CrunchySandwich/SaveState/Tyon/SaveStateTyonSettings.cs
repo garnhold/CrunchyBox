@@ -18,7 +18,8 @@ namespace CrunchySandwich
         private SaveStateTyonSettings() : base(
             SaveStateTyonDesignatedVariableProvider.INSTANCE,
 
-            TyonTypeHandler_Substitute_ExplicitType<UnityEngine.Object, SaveStatePrefabReference>.INSTANCE
+            TyonTypeHandler_Substitute_ExplicitType<MonoBehaviourEX, SaveStateMonoBehaviourEXPrefabReference>.INSTANCE,
+            TyonTypeHandler_Substitute_ExplicitType<ScriptableObjectEX, SaveStateScriptableObjectEXSofabReference>.INSTANCE
         )
         {
         }

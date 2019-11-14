@@ -14,18 +14,7 @@ namespace CrunchySandwichBag
     {
         protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root)
         {
-            Painter painter = Painter.GetInstance();
-            SerializedObject serialized_object = new SerializedObject(painter);
-
-            root.AddChild(new EditorGUIElement_Complex_SerializedObject(serialized_object));
-            root.AddAttachment(new EditorGUIElementAttachment_SerializedObjectSection(serialized_object));
-            root.AddAttachment(new EditorGUIElementAttachment_ChangeListener(delegate() {
-                painter.DirtyUtensil();
-            }));
-
-            root.AddChild(new EditorGUIElement_Button("Swap Colors", delegate() {
-                painter.SwapColors();
-            }));
+            root.AddChild(new EditorGUIElement_Complex_All(Painter.GetInstance()));
         }
     }
 }

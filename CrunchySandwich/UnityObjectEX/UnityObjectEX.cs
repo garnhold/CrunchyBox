@@ -11,14 +11,54 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-	public interface UnityObjectEX
-	{
-		string GetPrefabId();
-	}
+    public class MonoBehaviourEXLookup : Subsystem<MonoBehaviourEXLookup>
+    {
+        [SerializeField]private Dictionary<string, MonoBehaviourEX> items;
+        
+        public void Clear()
+        {
+            items.Clear();
+        }
+        
+        public void Register(MonoBehaviourEX item)
+        {
+            items[item.GetReferenceId()] = item;
+        }
+        
+        public MonoBehaviourEX Lookup(string id)
+        {
+            return items.GetValue(id);
+        }
+    }
+    
+    public class SaveStateMonoBehaviourEXPrefabReference
+    {
+        [SerializeFieldEX]private string prefab_id;
 
-	public class UnityObjectEXOnValidateEditDistinctionAttribute : EditDistinctionAttribute { }
+        static public implicit operator MonoBehaviourEX(SaveStateMonoBehaviourEXPrefabReference p)
+        {
+            return p.Resolve();
+        }
 
-	public class MonoBehaviourEX : MonoBehaviour, ISerializationCallbackReceiver, SerializationCorruptable, UnityObjectEX
+        static public implicit operator SaveStateMonoBehaviourEXPrefabReference(MonoBehaviourEX o)
+        {
+            return o.IfNotNull(z => new SaveStateMonoBehaviourEXPrefabReference(z.GetReferenceId()));
+        }
+
+        public SaveStateMonoBehaviourEXPrefabReference(string id)
+        {
+            prefab_id = id;
+        }
+
+        public SaveStateMonoBehaviourEXPrefabReference() : this("") { }
+
+        public MonoBehaviourEX Resolve()
+        {
+            return MonoBehaviourEXLookup.GetInstance().Lookup(prefab_id);
+        }
+    }
+
+	public class MonoBehaviourEX : MonoBehaviour, ISerializationCallbackReceiver, SerializationCorruptable
     {
 		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
@@ -28,22 +68,12 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
-		[SerializeField][HideInInspector]private string prefab_id;
-
-		protected virtual void OnValidateInternal() { }
+		[SerializeField][HideInInspector]private string reference_id;
 
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
 			UnpackTyon(TyonHydrationMode.Permissive);
-		}
-
-		private void OnValidate()
-		{
-			PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
-				.ExecuteNoReturn(t => { }, this);
-
-			OnValidateInternal();
 		}
 
 		private void PackTyon()
@@ -124,13 +154,60 @@ namespace CrunchySandwich
 			return false;
 		}
 
-		public string GetPrefabId()
+		public string GetReferenceId()
 		{
-			return prefab_id;
+			return reference_id;
 		}
 	}
 
-	public class ScriptableObjectEX : ScriptableObject, ISerializationCallbackReceiver, SerializationCorruptable, UnityObjectEX
+    public class ScriptableObjectEXLookup : Subsystem<ScriptableObjectEXLookup>
+    {
+        [SerializeField]private Dictionary<string, ScriptableObjectEX> items;
+        
+        public void Clear()
+        {
+            items.Clear();
+        }
+        
+        public void Register(ScriptableObjectEX item)
+        {
+            items[item.GetReferenceId()] = item;
+        }
+        
+        public ScriptableObjectEX Lookup(string id)
+        {
+            return items.GetValue(id);
+        }
+    }
+    
+    public class SaveStateScriptableObjectEXSofabReference
+    {
+        [SerializeFieldEX]private string prefab_id;
+
+        static public implicit operator ScriptableObjectEX(SaveStateScriptableObjectEXSofabReference p)
+        {
+            return p.Resolve();
+        }
+
+        static public implicit operator SaveStateScriptableObjectEXSofabReference(ScriptableObjectEX o)
+        {
+            return o.IfNotNull(z => new SaveStateScriptableObjectEXSofabReference(z.GetReferenceId()));
+        }
+
+        public SaveStateScriptableObjectEXSofabReference(string id)
+        {
+            prefab_id = id;
+        }
+
+        public SaveStateScriptableObjectEXSofabReference() : this("") { }
+
+        public ScriptableObjectEX Resolve()
+        {
+            return ScriptableObjectEXLookup.GetInstance().Lookup(prefab_id);
+        }
+    }
+
+	public class ScriptableObjectEX : ScriptableObject, ISerializationCallbackReceiver, SerializationCorruptable
     {
 		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
 		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
@@ -140,22 +217,12 @@ namespace CrunchySandwich
 
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
-		[SerializeField][HideInInspector]private string prefab_id;
-
-		protected virtual void OnValidateInternal() { }
+		[SerializeField][HideInInspector]private string reference_id;
 
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
 			UnpackTyon(TyonHydrationMode.Permissive);
-		}
-
-		private void OnValidate()
-		{
-			PlayEditDistinction<UnityObjectEXOnValidateEditDistinctionAttribute>
-				.ExecuteNoReturn(t => { }, this);
-
-			OnValidateInternal();
 		}
 
 		private void PackTyon()
@@ -236,9 +303,9 @@ namespace CrunchySandwich
 			return false;
 		}
 
-		public string GetPrefabId()
+		public string GetReferenceId()
 		{
-			return prefab_id;
+			return reference_id;
 		}
 	}
 

@@ -11,17 +11,20 @@ namespace CrunchySandwich
 {
     static public class CameraExtensions_RenderTexture
     {
-        static public RenderTexture CreateRenderTexture(this Camera item, int depth)
+        static public RenderTexture CreateAndAttachRenderTexture(this Camera item, int width, int height, int depth)
         {
-            return new RenderTexture(item.GetPixelWidth(), item.GetPixelHeight(), depth);
-        }
-
-        static public RenderTexture CreateAndAttachRenderTexture(this Camera item, int depth)
-        {
-            RenderTexture render_texture = item.CreateRenderTexture(depth);
+            RenderTexture render_texture = new RenderTexture(width, height, depth);
 
             item.targetTexture = render_texture;
             return render_texture;
+        }
+        static public RenderTexture CreateAndAttachRenderTexture(this Camera item, Vector2 size, int depth)
+        {
+            return item.CreateAndAttachRenderTexture((int)size.x, (int)size.y, depth);
+        }
+        static public RenderTexture CreateAndAttachRenderTexture(this Camera item, int depth)
+        {
+            return item.CreateAndAttachRenderTexture(item.GetPixelSize(), depth);
         }
 
         static public RenderTexture CreateAndTemporarilyAttachRenderTexture(this Camera item, int depth, Process process)
@@ -33,6 +36,14 @@ namespace CrunchySandwich
 
             item.targetTexture = old_target;
             return temp_target;
+        }
+
+        static public bool HasRenderTexture(this Camera item)
+        {
+            if (item.targetTexture != null)
+                return true;
+
+            return false;
         }
     }
 }

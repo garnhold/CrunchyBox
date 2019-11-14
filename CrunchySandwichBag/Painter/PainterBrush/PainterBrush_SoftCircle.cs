@@ -13,8 +13,6 @@ using CrunchyBun;
 using CrunchySauce;
 using CrunchySandwich;
 
-using CrunchyBun;
-
 namespace CrunchySandwichBag
 {
     public class PainterBrush_SoftCircle : PainterBrush
