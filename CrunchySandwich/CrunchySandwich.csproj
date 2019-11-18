@@ -546,11 +546,11 @@
     <Compile Include="MotionController\MotionController_LocalScale.cs" />
     <Compile Include="MotionController\MotionController_LocalRotation.cs" />
     <Compile Include="MotionController\MotionController_LocalPosition.cs" />
-    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Compare.cs" />
-    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_Has.cs" />
-    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions_GetWith.cs" />
-    <Compile Include="NeighborMask\Extensions\NeighborMaskExtensions.cs" />
-    <Compile Include="NeighborMask\NeighborMask.cs" />
+    <Compile Include="OctoMask\Extensions\OctoMaskExtensions_Compare.cs" />
+    <Compile Include="OctoMask\Extensions\OctoMaskExtensions_Has.cs" />
+    <Compile Include="OctoMask\Extensions\OctoMaskExtensions_GetWith.cs" />
+    <Compile Include="OctoMask\Extensions\OctoMaskExtensions.cs" />
+    <Compile Include="OctoMask\OctoMask.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_MExp.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Multiple.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Multiple_Max.cs" />
@@ -585,8 +585,8 @@
     <Compile Include="Time\TimeType\Extensions\TimeTypeExtensions.cs" />
     <Compile Include="Time\TimeType\TimeType.cs" />
     <Compile Include="TrailRendererLimiter\TrailRendererLimiter.cs" />
-    <Compile Include="TerrainTile\TerrainSubTile.cs" />
-    <Compile Include="TerrainTile\TerrainTile.cs" />
+    <Compile Include="OctoTile\OctoSubTile.cs" />
+    <Compile Include="OctoTile\OctoTile.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Split.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Area.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Fantize.cs" />
@@ -1206,6 +1206,8 @@
     <Compile Include="PixelArtCamera\PixelArtCamera.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Bounds.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Rect.cs" />
+    <Compile Include="CustomTile\CustomTile_MultiSprite_NeighborRuled.cs" />
+    <Compile Include="CustomTile\CustomTile_MultiSprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

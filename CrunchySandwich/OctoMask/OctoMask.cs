@@ -9,18 +9,18 @@ using CrunchyDough;
 namespace CrunchySandwich
 {
     [Serializable]
-    public struct NeighborMask
+    public struct OctoMask
     {
         [SerializeField]private byte bits;
 
-        static public bool operator ==(NeighborMask m1, NeighborMask m2)
+        static public bool operator ==(OctoMask m1, OctoMask m2)
         {
             if (m1.bits == m2.bits)
                 return true;
 
             return false;
         }
-        static public bool operator !=(NeighborMask m1, NeighborMask m2)
+        static public bool operator !=(OctoMask m1, OctoMask m2)
         {
             if (m1.bits != m2.bits)
                 return true;
@@ -28,12 +28,12 @@ namespace CrunchySandwich
             return false;
         }
 
-        static public IEnumerable<NeighborMask> GetAllNeighborMasks()
+        static public IEnumerable<OctoMask> GetAll()
         {
-            return Ints.Range(0, byte.MaxValue, true).Convert(b => new NeighborMask((byte)b));
+            return Ints.Range(0, ByteBits.ALL_BITS, true).Convert(b => new OctoMask((byte)b));
         }
 
-        public NeighborMask(byte b)
+        public OctoMask(byte b)
         {
             bits = b;
         }
@@ -50,9 +50,9 @@ namespace CrunchySandwich
 
         public override bool Equals(object obj)
         {
-            NeighborMask mask;
+            OctoMask mask;
 
-            if (obj.Convert<NeighborMask>(out mask))
+            if (obj.Convert<OctoMask>(out mask))
             {
                 if (mask.bits == bits)
                     return true;

@@ -34,12 +34,12 @@ namespace CrunchySandwichBag
             lookup.Clear();
             
             Project.GetAll<#=info.prefab_type#>s<<#=info.type#>>()
-                .Process(delegate(<#=info.type#> item){
+                .ProcessSandboxed(delegate(<#=info.type#> item){
                     string id = item.GetAssetGUID();
                     
                     item.ModifyAsset(z => z.SetChildValue("reference_id", id));
                     lookup.Register(item);
-                });
+                }, e => Debug.LogException(e));
     
         }
     }
@@ -61,7 +61,7 @@ class TypeInfo
         base_type = bt;
         prefab_type = pt;
         
-        lookup_type = type + "Lookup";
+        lookup_type = type + prefab_type + "Lookup";
         reference_type = "SaveState" + type + prefab_type + "Reference";
     }
 }

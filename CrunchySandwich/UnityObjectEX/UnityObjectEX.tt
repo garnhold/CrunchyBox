@@ -24,7 +24,12 @@ namespace CrunchySandwich
 <# foreach(TypeInfo info in types){#>
     public class <#=info.lookup_type#> : Subsystem<<#=info.lookup_type#>>
     {
-        [SerializeField]private Dictionary<string, <#=info.type#>> items;
+        [SerializeFieldEX]private Dictionary<string, <#=info.type#>> items;
+        
+        public <#=info.lookup_type#>()
+        {
+            items = new Dictionary<string, <#=info.type#>>();
+        }
         
         public void Clear()
         {
@@ -80,7 +85,7 @@ namespace CrunchySandwich
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
 		[SerializeField][HideInInspector]private string reference_id;
-
+        
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -169,6 +174,11 @@ namespace CrunchySandwich
 		{
 			return reference_id;
 		}
+        
+        public <#=info.type#> Get<#=info.prefab_type#>()
+        {
+            return <#=info.lookup_type#>.GetInstance().Lookup(reference_id);
+        }
 	}
 
 <# } #>
@@ -189,7 +199,7 @@ class TypeInfo
         base_type = bt;
         prefab_type = pt;
         
-        lookup_type = type + "Lookup";
+        lookup_type = type + prefab_type + "Lookup";
         reference_type = "SaveState" + type + prefab_type + "Reference";
     }
 }

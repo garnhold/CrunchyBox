@@ -11,18 +11,18 @@ using CrunchySandwich;
 
 namespace CrunchySandwichBag
 {
-    [EditorGUIElementForType(typeof(TerrainSubTile), true)]
-    public class EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile : EditorGUIElement_EditPropertySingleValue_Basic<TerrainSubTile>
+    [EditorGUIElementForType(typeof(OctoSubTile), true)]
+    public class EditorGUIElement_EditPropertySingleValue_Basic_OctoSubTile : EditorGUIElement_EditPropertySingleValue_Basic<OctoSubTile>
     {
         protected override float DoPlanInternal()
         {
             return LINE_HEIGHT * 8.0f;
         }
 
-        protected override TerrainSubTile DrawValueInternal(Rect rect, TerrainSubTile value)
+        protected override OctoSubTile DrawValueInternal(Rect rect, OctoSubTile value)
         {
             Sprite sprite = value.GetSprite();
-            NeighborMask mask = value.GetMask();
+            OctoMask mask = value.GetMask();
             float weight = value.GetWeight();
 
             Rect left_rect;
@@ -60,9 +60,9 @@ namespace CrunchySandwichBag
                     }
                 });
 
-            return new TerrainSubTile(mask, sprite, weight);
+            return new OctoSubTile(mask, sprite, weight);
         }
 
-        public EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValue_Basic_OctoSubTile(EditProperty_Single_Value p) : base(p) { }
     }
 }

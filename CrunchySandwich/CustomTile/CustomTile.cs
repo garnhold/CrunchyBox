@@ -10,6 +10,7 @@ using CrunchyDough;
 namespace CrunchySandwich
 {
     [AssetClass]
+    [AssetClassCategory("Tile")]
     public abstract class CustomTile : TileBase
     {
     }

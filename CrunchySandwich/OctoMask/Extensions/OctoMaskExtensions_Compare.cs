@@ -6,14 +6,14 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    static public class NeighborMaskExtensions_Compare
+    static public class OctoMaskExtensions_Compare
     {
-        static public byte GetComplexity(this NeighborMask item)
+        static public byte GetComplexity(this OctoMask item)
         {
             return item.GetBits().GetNumberBits();
         }
 
-        static public bool CanBeUsedFor(this NeighborMask item, NeighborMask target)
+        static public bool HasNoOtherBits(this OctoMask item, OctoMask target)
         {
             if (item.GetBits().HasNoOtherBits(target.GetBits()))
                 return true;

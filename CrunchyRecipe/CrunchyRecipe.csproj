@@ -102,6 +102,8 @@
     <Compile Include="Tyon\TyonValue_Surrogate.cs" />
     <Compile Include="Tyon\TyonVariable.cs" />
     <Compile Include="Tyon\SolidObject\TyonSolidObject.cs" />
+    <Compile Include="Tyon\Settings\Extensions\TyonSettingsExtensions.cs" />
+    <Compile Include="Tyon\Settings\Extensions\TyonSettingsExtensions_Convience.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -120,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tyon\SolidObject\" />
+    <Folder Include="Tyon\Settings\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

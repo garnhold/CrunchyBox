@@ -90,7 +90,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditDisplay\EditorGUIElement_EditDisplay.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditFunction\EditorGUIElement_EditFunction_Button.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditFunction\EditorGUIElement_EditFunction.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_TerrainSubTile.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_OctoSubTile.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValue_Browse.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_AudioClip.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Combo\EditorGUIElement_EditPropertySingleValue_Combo.cs" />
@@ -179,7 +179,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_Generic.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_NeighborMask.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_SpriteVectorizerTest\EditorGUIElement_SpriteVectorizerTest.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions_Reserialize.cs" />
     <Compile Include="Extensions\AssetImporter\AssetImporterExtensions.cs" />
@@ -479,6 +478,7 @@
       <DependentUpon>UnityObjectEXInitializer.tt</DependentUpon>
     </Compile>
     <Compile Include="Project\Project_Sofabs.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_AntiDisabled.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

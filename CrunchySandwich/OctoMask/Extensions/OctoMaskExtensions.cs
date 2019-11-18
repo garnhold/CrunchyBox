@@ -6,7 +6,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    static public class NeighborMaskExtensions
+    static public class OctoMaskExtensions
     {
         static public int GetBitIndex(int dx, int dy)
         {

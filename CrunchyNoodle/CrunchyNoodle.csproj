@@ -453,6 +453,7 @@
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsDerivedMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethodOf.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Regurgitate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

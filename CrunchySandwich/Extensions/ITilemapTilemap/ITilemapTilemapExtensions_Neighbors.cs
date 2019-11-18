@@ -12,7 +12,6 @@ namespace CrunchySandwich
 {
 	static public class ITilemapTilemapExtensions_Neighbors
     {
-
         static public IEnumerable<TileBase> GetCardinalNeighbors(this Tilemap item, Vector3Int position)
         {
             yield return item.GetTile(position + new Vector3Int(0, 1, 0));
@@ -45,15 +44,15 @@ namespace CrunchySandwich
             yield return item.GetTile(position + new Vector3Int(0, -1, 0));
             yield return item.GetTile(position + new Vector3Int(1, -1, 0));
         }
-        static public NeighborMask GetNeighborMask(this Tilemap item, Vector3Int position, Predicate<TileBase> predicate)
+        
+        static public OctoMask GetOctoMask(this Tilemap item, Vector3Int position, Predicate<TileBase> predicate)
         {
-            return new NeighborMask(
+            return new OctoMask(
                 item.GetNeighbors(position)
                     .Convert(t => predicate(t))
                     .PackBitsToByte()
             );
         }
-
         static public IEnumerable<TileBase> GetCardinalNeighbors(this ITilemap item, Vector3Int position)
         {
             yield return item.GetTile(position + new Vector3Int(0, 1, 0));
@@ -86,9 +85,10 @@ namespace CrunchySandwich
             yield return item.GetTile(position + new Vector3Int(0, -1, 0));
             yield return item.GetTile(position + new Vector3Int(1, -1, 0));
         }
-        static public NeighborMask GetNeighborMask(this ITilemap item, Vector3Int position, Predicate<TileBase> predicate)
+        
+        static public OctoMask GetOctoMask(this ITilemap item, Vector3Int position, Predicate<TileBase> predicate)
         {
-            return new NeighborMask(
+            return new OctoMask(
                 item.GetNeighbors(position)
                     .Convert(t => predicate(t))
                     .PackBitsToByte()

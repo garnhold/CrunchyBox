@@ -8,6 +8,7 @@ using UnityEditor;
 using CrunchyDough;
 using CrunchyNoodle;
 using CrunchyBun;
+using CrunchyRecipe;
 using CrunchySandwich;
 
 namespace CrunchySandwichBag
@@ -23,18 +24,12 @@ namespace CrunchySandwichBag
 
         protected override EditorGUIElement PushState()
         {
-            EditorGUIElement_Container_Auto children;
             EditorGUIElement_Container_Auto container = new EditorGUIElement_Container_Auto_Simple_VerticalStrip();
 
             container.AddChild(new EditorGUIElement_SerializedProperty_Field(serialized_object.FindProperty("m_Script")))
                 .LabelWithGUIContent("Missing Script");
 
-            children = container.AddChild(new EditorGUIElement_Container_Auto_Simple_VerticalStrip());
-            children.AddAttachment(new EditorGUIElementAttachment_Disabled());
-
-            serialized_object.GetImmediateChildren(true)
-                .Process(p => children.AddChild(new EditorGUIElement_SerializedProperty_Field(p)).LabelWithGUIContent(p.GetGUIContentLabel()));
-
+            container.AddAttachment(new EditorGUIElementAttachment_AntiDisabled());
             return container;
         }
 

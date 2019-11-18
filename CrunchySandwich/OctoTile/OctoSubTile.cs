@@ -10,14 +10,14 @@ using CrunchyDough;
 namespace CrunchySandwich
 {
     [Serializable]
-    public class TerrainSubTile
+    public class OctoSubTile
     {
-        [SerializeField]private NeighborMask mask;
+        [SerializeField]private OctoMask mask;
         [SerializeField]private Sprite sprite;
 
         [SerializeField]private float weight = 1.0f;
 
-        public TerrainSubTile(NeighborMask m, Sprite s, float w)
+        public OctoSubTile(OctoMask m, Sprite s, float w)
         {
             mask = m;
             sprite = s;
@@ -25,10 +25,10 @@ namespace CrunchySandwich
             weight = w;
         }
 
-        public TerrainSubTile(Sprite s) : this(new NeighborMask(), s, 1.0f) { }
-        public TerrainSubTile() : this(null) { }
+        public OctoSubTile(Sprite s) : this(new OctoMask(), s, 1.0f) { }
+        public OctoSubTile() : this(null) { }
 
-        public NeighborMask GetMask()
+        public OctoMask GetMask()
         {
             return mask;
         }
@@ -58,9 +58,9 @@ namespace CrunchySandwich
 
         public override bool Equals(object obj)
         {
-            TerrainSubTile cast;
+            OctoSubTile cast;
 
-            if (obj.Convert<TerrainSubTile>(out cast))
+            if (obj.Convert<OctoSubTile>(out cast))
             {
                 if (cast.mask.EqualsEX(mask))
                 {

@@ -14,9 +14,9 @@ namespace CrunchySandwichBag
 {
     static public class Texture2DExtensions_TerrainTile
     {
-        static public TerrainTile CreateSimpleTerrainTile(this Texture2D item)
+        static public OctoTile CreateSimpleTerrainTile(this Texture2D item)
         {
-            return CustomAssets.CreateExternalCustomAsset<TerrainTile>(
+            return CustomAssets.CreateExternalCustomAsset<OctoTile>(
                 Filename.SetExtension(item.GetAssetPath(), "asset"),
                 s => s.Initialize(item.GetSprites())
             );

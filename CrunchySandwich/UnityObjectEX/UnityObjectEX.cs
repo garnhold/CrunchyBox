@@ -11,9 +11,14 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public class MonoBehaviourEXLookup : Subsystem<MonoBehaviourEXLookup>
+    public class MonoBehaviourEXPrefabLookup : Subsystem<MonoBehaviourEXPrefabLookup>
     {
-        [SerializeField]private Dictionary<string, MonoBehaviourEX> items;
+        [SerializeFieldEX]private Dictionary<string, MonoBehaviourEX> items;
+        
+        public MonoBehaviourEXPrefabLookup()
+        {
+            items = new Dictionary<string, MonoBehaviourEX>();
+        }
         
         public void Clear()
         {
@@ -54,7 +59,7 @@ namespace CrunchySandwich
 
         public MonoBehaviourEX Resolve()
         {
-            return MonoBehaviourEXLookup.GetInstance().Lookup(prefab_id);
+            return MonoBehaviourEXPrefabLookup.GetInstance().Lookup(prefab_id);
         }
     }
 
@@ -69,7 +74,7 @@ namespace CrunchySandwich
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
 		[SerializeField][HideInInspector]private string reference_id;
-
+        
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -158,11 +163,21 @@ namespace CrunchySandwich
 		{
 			return reference_id;
 		}
+        
+        public MonoBehaviourEX GetPrefab()
+        {
+            return MonoBehaviourEXPrefabLookup.GetInstance().Lookup(reference_id);
+        }
 	}
 
-    public class ScriptableObjectEXLookup : Subsystem<ScriptableObjectEXLookup>
+    public class ScriptableObjectEXSofabLookup : Subsystem<ScriptableObjectEXSofabLookup>
     {
-        [SerializeField]private Dictionary<string, ScriptableObjectEX> items;
+        [SerializeFieldEX]private Dictionary<string, ScriptableObjectEX> items;
+        
+        public ScriptableObjectEXSofabLookup()
+        {
+            items = new Dictionary<string, ScriptableObjectEX>();
+        }
         
         public void Clear()
         {
@@ -203,7 +218,7 @@ namespace CrunchySandwich
 
         public ScriptableObjectEX Resolve()
         {
-            return ScriptableObjectEXLookup.GetInstance().Lookup(prefab_id);
+            return ScriptableObjectEXSofabLookup.GetInstance().Lookup(prefab_id);
         }
     }
 
@@ -218,7 +233,7 @@ namespace CrunchySandwich
 		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
 		[SerializeField][HideInInspector]private string reference_id;
-
+        
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -307,6 +322,11 @@ namespace CrunchySandwich
 		{
 			return reference_id;
 		}
+        
+        public ScriptableObjectEX GetSofab()
+        {
+            return ScriptableObjectEXSofabLookup.GetInstance().Lookup(reference_id);
+        }
 	}
 
 }
