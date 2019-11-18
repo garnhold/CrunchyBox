@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace CrunchyDough
 {
-    public class ConductorOrder_Compound : ConductorOrder
+    public class ConductorOrder_Concurrent : ConductorOrder
     {
         private List<ConductorOrder> orders;
 
-        public ConductorOrder_Compound(IEnumerable<ConductorOrder> o)
+        public ConductorOrder_Concurrent(IEnumerable<ConductorOrder> o)
         {
             orders = o.ToList();
         }
 
-        public ConductorOrder_Compound(params ConductorOrder[] o) : this((IEnumerable<ConductorOrder>)o) { }
+        public ConductorOrder_Concurrent(params ConductorOrder[] o) : this((IEnumerable<ConductorOrder>)o) { }
 
         public override bool Fulfill()
         {

@@ -174,12 +174,30 @@ namespace CrunchySandwich
 		{
 			return reference_id;
 		}
-        
-        public <#=info.type#> Get<#=info.prefab_type#>()
-        {
-            return <#=info.lookup_type#>.GetInstance().Lookup(reference_id);
-        }
 	}
+    
+    static public class <#=info.type#>Extensions
+    {
+        static public T Get<#=info.prefab_type#><T>(this T item) where T : <#=info.type#>
+        {
+            return <#=info.lookup_type#>.GetInstance().Lookup(item.GetReferenceId()).Convert<T>();
+        }
+        
+        static public bool Is<#=info.prefab_type#>(this <#=info.type#> item)
+        {
+            if (item == item.Get<#=info.prefab_type#>())
+                return true;
+                
+            return false;
+        }
+        static public bool IsInstance(<#=info.type#> item)
+        {
+            if (item.Is<#=info.prefab_type#>() == false)
+                return true;
+                
+            return false;
+        }
+    }
 
 <# } #>
 }

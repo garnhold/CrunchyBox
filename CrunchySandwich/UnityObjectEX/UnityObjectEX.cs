@@ -163,12 +163,30 @@ namespace CrunchySandwich
 		{
 			return reference_id;
 		}
-        
-        public MonoBehaviourEX GetPrefab()
-        {
-            return MonoBehaviourEXPrefabLookup.GetInstance().Lookup(reference_id);
-        }
 	}
+    
+    static public class MonoBehaviourEXExtensions
+    {
+        static public T GetPrefab<T>(this T item) where T : MonoBehaviourEX
+        {
+            return MonoBehaviourEXPrefabLookup.GetInstance().Lookup(item.GetReferenceId()).Convert<T>();
+        }
+        
+        static public bool IsPrefab(this MonoBehaviourEX item)
+        {
+            if (item == item.GetPrefab())
+                return true;
+                
+            return false;
+        }
+        static public bool IsInstance(MonoBehaviourEX item)
+        {
+            if (item.IsPrefab() == false)
+                return true;
+                
+            return false;
+        }
+    }
 
     public class ScriptableObjectEXSofabLookup : Subsystem<ScriptableObjectEXSofabLookup>
     {
@@ -322,11 +340,29 @@ namespace CrunchySandwich
 		{
 			return reference_id;
 		}
-        
-        public ScriptableObjectEX GetSofab()
-        {
-            return ScriptableObjectEXSofabLookup.GetInstance().Lookup(reference_id);
-        }
 	}
+    
+    static public class ScriptableObjectEXExtensions
+    {
+        static public T GetSofab<T>(this T item) where T : ScriptableObjectEX
+        {
+            return ScriptableObjectEXSofabLookup.GetInstance().Lookup(item.GetReferenceId()).Convert<T>();
+        }
+        
+        static public bool IsSofab(this ScriptableObjectEX item)
+        {
+            if (item == item.GetSofab())
+                return true;
+                
+            return false;
+        }
+        static public bool IsInstance(ScriptableObjectEX item)
+        {
+            if (item.IsSofab() == false)
+                return true;
+                
+            return false;
+        }
+    }
 
 }

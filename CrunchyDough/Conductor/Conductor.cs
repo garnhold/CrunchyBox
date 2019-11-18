@@ -30,14 +30,6 @@ namespace CrunchyDough
             iter.Dispose();
         }
 
-        public void Reset()
-        {
-            is_running = true;
-            has_started = false;
-
-            iter.Reset();
-        }
-
         public bool Update()
         {
             if (is_running)
@@ -57,6 +49,11 @@ namespace CrunchyDough
                 }
             }
 
+            return is_running;
+        }
+
+        public bool IsRunning()
+        {
             return is_running;
         }
     }
