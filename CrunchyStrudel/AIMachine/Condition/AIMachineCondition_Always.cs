@@ -8,11 +8,11 @@ using CrunchyBun;
 
 namespace CrunchyStrudel
 {
-    static public class AIRuleSystemExtensions
+    public class AIMachineCondition_Always : AIMachineCondition
     {
-        static public void Add<T>(this AIRuleSystem<T> item, IEnumerable<AIRule<T>> to_add)
+        public override bool IsSatisfied()
         {
-            to_add.Process(r => item.Add(r));
+            return true;
         }
     }
 }

@@ -34,13 +34,19 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AIRuleSystem\AIRule\AIRule_SubSystem.cs" />
-    <Compile Include="AIRuleSystem\Extensions\AIRuleSystemExtensions.cs" />
     <Compile Include="MarkDefinition\MarkDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AIRuleSystem\AIRule\AIRule.cs" />
-    <Compile Include="AIRuleSystem\AIRuleSystem.cs" />
     <Compile Include="ThisAssembly.cs" />
+    <Compile Include="AIMachine\AIMachine.cs" />
+    <Compile Include="AIMachine\Behaviour\AIMachineBehaviour.cs" />
+    <Compile Include="AIMachine\Behaviour\AIMachineBehaviour_Process.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition_Predicate.cs" />
+    <Compile Include="AIMachine\Transition\AIMachineTransition.cs" />
+    <Compile Include="AIMachine\Node\AIMachineNode.cs" />
+    <Compile Include="AIMachine\Behaviour\AIMachineBehaviour_Idle.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition_TemporalEvent.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition_Always.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">
@@ -59,6 +65,13 @@
       <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
       <Name>CrunchySalt</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AIMachine\" />
+    <Folder Include="AIMachine\Condition\" />
+    <Folder Include="AIMachine\Behaviour\" />
+    <Folder Include="AIMachine\Node\" />
+    <Folder Include="AIMachine\Transition\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
