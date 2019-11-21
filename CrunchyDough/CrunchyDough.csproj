@@ -1168,6 +1168,8 @@
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitUntil.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Do.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Sequential.cs" />
+    <Compile Include="TemporalEvent\TemporalEvent_Duration.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Event.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

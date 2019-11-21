@@ -6,12 +6,14 @@ namespace CrunchyDough
 {
     public class ConductorOrder_WaitFor : ConductorOrder
     {
-        private TemporalDuration temporal_duration;
+        private TemporalEvent temporal_event;
 
-        public ConductorOrder_WaitFor(TemporalDuration d)
+        public ConductorOrder_WaitFor(TemporalEvent e)
         {
-            temporal_duration = d;
+            temporal_event = e;
         }
+
+        public ConductorOrder_WaitFor(TemporalDuration d) : this(d.GetAsTemporalEvent()) { }
 
         public ConductorOrder_WaitFor(long d, TimeSource t) : this(new Timer(d, t)) { }
         public ConductorOrder_WaitFor(long d) : this(d, TimeSource_System.INSTANCE) { }
@@ -21,12 +23,12 @@ namespace CrunchyDough
 
         public override void Start()
         {
-            temporal_duration.Start();
+            temporal_event.Start();
         }
 
         public override bool Fulfill()
         {
-            if (temporal_duration.IsTimeOver())
+            if (temporal_event.IsTimeOver())
                 return true;
 
             return false;
