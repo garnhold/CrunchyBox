@@ -15,6 +15,11 @@ namespace CrunchyDough
 
         public ConductorOrder_Concurrent(params ConductorOrder[] o) : this((IEnumerable<ConductorOrder>)o) { }
 
+        public override void Start()
+        {
+            orders.Process(o => o.Start());
+        }
+
         public override bool Fulfill()
         {
             orders.RemoveAll(o => o.Fulfill());
