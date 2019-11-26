@@ -20,6 +20,7 @@ namespace CrunchySandwich
         {
             component = default(T);
             scheduler = new PeriodicWorkScheduler(
+                parent,
                 () => ComponentCacheManager.GetInstance().GetCacheLifetime(),
                 () => component = GetComponentInternal(parent)
             );

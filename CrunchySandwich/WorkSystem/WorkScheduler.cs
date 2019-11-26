@@ -10,14 +10,16 @@ namespace CrunchySandwich
 {
     public class WorkScheduler
     {
+        private UnityEngine.Object requester;
         private Process process;
-        
+
         private bool need_process;
         private bool has_scheduled;
         private long scheduled_delay;
 
-        public WorkScheduler(Process p)
+        public WorkScheduler(UnityEngine.Object r, Process p)
         {
+            requester = r;
             process = p;
 
             need_process = false;
@@ -41,7 +43,7 @@ namespace CrunchySandwich
                 has_scheduled = true;
                 scheduled_delay = delay;
 
-                WorkSystem.GetInstance().Schedule(scheduled_delay, delegate() {
+                WorkSystem.GetInstance().Schedule(requester, scheduled_delay, delegate() {
                     has_scheduled = false;
 
                     if (need_process)

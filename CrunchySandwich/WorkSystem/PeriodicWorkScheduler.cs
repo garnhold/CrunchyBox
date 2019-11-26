@@ -16,15 +16,15 @@ namespace CrunchySandwich
 
         private WorkScheduler scheduler;
 
-        public PeriodicWorkScheduler(Operation<long> w, Process p)
+        public PeriodicWorkScheduler(UnityEngine.Object r, Operation<long> w, Process p)
         {
             timer = new Stopwatch().StartAndGet();
             operation = w;
 
-            scheduler = new WorkScheduler(p);
+            scheduler = new WorkScheduler(r, p);
         }
 
-        public PeriodicWorkScheduler(Operation<Duration> w, Process p) : this(() => w().GetWholeMilliseconds(), p) { }
+        public PeriodicWorkScheduler(UnityEngine.Object r, Operation<Duration> w, Process p) : this(r, () => w().GetWholeMilliseconds(), p) { }
 
         public void Update()
         {

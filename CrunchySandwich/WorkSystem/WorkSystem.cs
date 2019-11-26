@@ -32,12 +32,13 @@ namespace CrunchySandwich
                 scheduler.Update(target_frame_length);
         }
 
-        public void Schedule(long delay, Process process)
+        public void Schedule(UnityEngine.Object requester, long delay, Process process)
         {
             scheduler.ScheduleIn(delay, delegate() {
                 try
                 {
-                    process();
+                    if (requester.IsNotNull())
+                        process();
                 }
                 catch (Exception ex)
                 {
