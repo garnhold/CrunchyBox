@@ -29,6 +29,7 @@ namespace CrunchySandwich
         {
             Debug.Log("Awa Check " + check_interval);
             scheduler = new PeriodicWorkScheduler(
+                this,
                 () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
@@ -39,6 +40,7 @@ namespace CrunchySandwich
         {
             Debug.Log("start Check " + check_interval);
             scheduler = new PeriodicWorkScheduler(
+                this,
                 () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
@@ -51,6 +53,7 @@ namespace CrunchySandwich
         {
             Debug.Log("ContCheck " + check_interval);
             scheduler = new PeriodicWorkScheduler(
+                this,
                 () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
