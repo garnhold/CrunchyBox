@@ -1218,6 +1218,12 @@
     <Compile Include="Walker2D\WalkerSystem2D.cs" />
     <Compile Include="Walker2D\WalkerBehaviour2D_Towards.cs" />
     <Compile Include="Extensions\Collider2D\Collider2DExtensions_Center.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Text.cs" />
+    <Compile Include="Extensions\TextGenerationSettings\TextGenerationSettingsExtensions.cs" />
+    <Compile Include="Extensions\Mesh\MeshExtensions_CalculateTriangles.cs" />
+    <Compile Include="Extensions\TextGenerator\TextGeneratorExtensions.cs" />
+    <Compile Include="Extensions\TextGenerationSettings\TextGenerationSettingsExtensions_Mesh.cs" />
+    <Compile Include="Extensions\TextGenerator\TextGeneratorExtensions_Mesh.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1509,6 +1515,8 @@
     <Folder Include="PixelArtCamera\" />
     <Folder Include="Pathfinding2D\PathNavigator2D\" />
     <Folder Include="Walker2D\" />
+    <Folder Include="Extensions\TextGenerationSettings\" />
+    <Folder Include="Extensions\TextGenerator\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
