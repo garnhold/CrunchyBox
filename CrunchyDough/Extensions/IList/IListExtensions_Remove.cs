@@ -19,12 +19,12 @@ namespace CrunchyDough
 
         static public void RemoveBeginning<T>(this IList<T> item, int start)
         {
-            item.RemoveSubSection(start, item.Count);
+            item.RemoveSubSection(0, start);
         }
 
         static public void RemoveEnding<T>(this IList<T> item, int end)
         {
-            item.RemoveSubSection(0, end);
+            item.RemoveSubSection(end, item.Count);
         }
 
         static public void RemoveTrim<T>(this IList<T> item, int amount)
