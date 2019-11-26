@@ -19,16 +19,24 @@ namespace CrunchySandwich
         [Tooltip("The maximum node radius to attempt. Higher values will yield better results, but slower generation times.")]
         [SerializeField]private float max_clearing_radius;
 
+        [Tooltip("The maximum distance that connections may span.")]
+        [SerializeField]private float max_connection_distance;
+
         [SerializeField]private LayerEX node_layer;
         [SerializeField]private LayerMask dynamic_obstacle_layer_mask;
         [SerializeField]private LayerMask static_obstacle_layer_mask;
 
         private bool IsConnection(Vector2 position1, Vector2 position2, int layer_mask)
         {
-            LineSegment2 line = new LineSegment2(position1, position2);
+            float distance;
+            LineSegment2 line = new LineSegment2(position1, position2)
+                .GetTrimmed(connection_radius, out distance);
 
-            if (line.CircleCast(connection_radius, layer_mask) == false)
-                return true;
+            if (distance <= max_connection_distance)
+            {
+                if (line.CircleCast(connection_radius, layer_mask) == false)
+                    return true;
+            }
 
             return false;
         }
@@ -77,15 +85,27 @@ namespace CrunchySandwich
         {
             return GetPathNodes(position, maximum_distance).GetPlanarClosest(position);
         }
+        public PathNode2D GetPathNodeNear(Vector2 position)
+        {
+            return GetPathNodeNear(position, max_connection_distance);
+        }
 
         public PathNode2D GetConnectionNear(Vector2 position, float maximum_distance)
         {
             return GetConnections(position, maximum_distance).GetPlanarClosest(position);
         }
+        public PathNode2D GetConnectionNear(Vector2 position)
+        {
+            return GetConnectionNear(position, max_connection_distance);
+        }
 
         public PathNode2D GetPotentialConnectionNear(Vector2 position, float maximum_distance)
         {
             return GetPotentialConnections(position, maximum_distance).GetPlanarClosest(position);
+        }
+        public PathNode2D GetPotentialConnectionNear(Vector2 position)
+        {
+            return GetPotentialConnectionNear(position, max_connection_distance);
         }
 
         public IEnumerable<PathNode2D> GetPathNodes(Vector2 position, float radius)
@@ -97,13 +117,13 @@ namespace CrunchySandwich
         public IEnumerable<PathNode2D> GetConnections(Vector2 position, float radius)
         {
             return GetPathNodes(position, radius)
-                .Narrow(p => p.IsConnection(position));
+                .Narrow(p => this.IsConnection(position, p));
         }
 
         public IEnumerable<PathNode2D> GetPotentialConnections(Vector2 position, float radius)
         {
             return GetPathNodes(position, radius)
-                .Narrow(p => p.IsPotentialConnection(position));
+                .Narrow(p => this.IsPotentialConnection(position, p));
         }
 
         public LayerEX GetNodeLayer()
