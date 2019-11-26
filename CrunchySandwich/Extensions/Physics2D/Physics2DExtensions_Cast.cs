@@ -16,6 +16,13 @@ namespace CrunchySandwich
                 return Physics2D.RaycastNonAlloc(position, direction, hits, max_distance, layer_mask);
             });
         }
+        static public IEnumerable<RaycastHit2D> LinecastAll(Vector2 position, Vector2 target, int layer_mask = IntBits.ALL_BITS)
+        {
+            float distance;
+            Vector2 direction = position.GetDirection(target, out distance);
+
+            return RaycastAll(position, direction, distance, layer_mask);
+        }
 
         static public IEnumerable<RaycastHit2D> BoxCastAll(Vector2 position, Vector2 direction, Vector2 size, float angle, float max_distance = float.PositiveInfinity, int layer_mask = IntBits.ALL_BITS)
         {

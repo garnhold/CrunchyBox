@@ -1208,6 +1208,16 @@
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Rect.cs" />
     <Compile Include="CustomTile\CustomTile_MultiSprite_NeighborRuled.cs" />
     <Compile Include="CustomTile\CustomTile_MultiSprite.cs" />
+    <Compile Include="Extensions\Physics2D\Physics2DExtensions_Visible.cs" />
+    <Compile Include="Pathfinding2D\PathNavigator2D\PathNavigator2D.cs" />
+    <Compile Include="Pathfinding2D\Extensions\Pathfinding2DExtensions_PathNavigator.cs" />
+    <Compile Include="Walker2D\Walker2D.cs" />
+    <Compile Include="Walker2D\WalkerBehaviour2D.cs" />
+    <Compile Include="Walker2D\WalkerBehaviour2D_Direction.cs" />
+    <Compile Include="Walker2D\WalkerBehaviour2D_Destination.cs" />
+    <Compile Include="Walker2D\WalkerSystem2D.cs" />
+    <Compile Include="Walker2D\WalkerBehaviour2D_Towards.cs" />
+    <Compile Include="Extensions\Collider2D\Collider2DExtensions_Center.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1497,6 +1507,8 @@
     <Folder Include="Conductor\ConductorOrder\MotionManualNode\" />
     <Folder Include="SaveState\Extensions\" />
     <Folder Include="PixelArtCamera\" />
+    <Folder Include="Pathfinding2D\PathNavigator2D\" />
+    <Folder Include="Walker2D\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
