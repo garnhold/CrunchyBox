@@ -8,10 +8,10 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class PathGraph2D : MonoBehaviour, Graph<PathNode2D>
+    public abstract class PathGraph2D : MonoBehaviourEX, Graph<PathNode2D>
     {
         [SerializeField]private Vector2 size;
-        [SerializeField]private PathGraphInfo2D path_graph_info;
+        [SerializeFieldEX][PolymorphicField]private PathGraphInfo2D path_graph_info;
 
         [SerializeField][HideInInspector]private List<PathNode2D> graph_nodes;
 

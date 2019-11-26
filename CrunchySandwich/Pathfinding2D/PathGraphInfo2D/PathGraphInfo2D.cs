@@ -8,7 +8,7 @@ using CrunchyDough;
 
 namespace CrunchySandwich
 {
-    public abstract class PathGraphInfo2D : CustomAsset
+    public abstract class PathGraphInfo2D
     {
         public abstract PathNode2D CreatePathNode();
     }

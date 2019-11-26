@@ -18,7 +18,7 @@ namespace CrunchySandwich
         public virtual void OnAddedToPathGraph() { }
         public abstract IEnumerable<PathNode2D> GetConnections();
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             GetConnections().Process(n => Gizmos.DrawLine(this.GetPlanarPosition(), n.GetPlanarPosition()));
