@@ -10,11 +10,15 @@ namespace CrunchyStrudel
 {
     public class AIMachineNode
     {
+        private string name;
+
         private AIMachineBehaviour behaviour;
         private List<AIMachineTransition> transitions;
 
-        public AIMachineNode()
+        public AIMachineNode(string n)
         {
+            name = n;
+
             transitions = new List<AIMachineTransition>();
         }
 
@@ -48,7 +52,12 @@ namespace CrunchyStrudel
 
             return transitions
                 .Convert(t => t.Update())
-                .GetFirst() ?? this;
+                .GetFirstNonNull() ?? this;
+        }
+
+        public string GetName()
+        {
+            return name;
         }
     }
 }

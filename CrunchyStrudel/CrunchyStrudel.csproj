@@ -47,6 +47,10 @@
     <Compile Include="AIMachine\Behaviour\AIMachineBehaviour_Idle.cs" />
     <Compile Include="AIMachine\Condition\AIMachineCondition_TemporalEvent.cs" />
     <Compile Include="AIMachine\Condition\AIMachineCondition_Always.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition_SustainedPredicate.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition_Binary.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition_Binary_And.cs" />
+    <Compile Include="AIMachine\Condition\AIMachineCondition_Binary_Or.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">

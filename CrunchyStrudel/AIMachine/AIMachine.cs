@@ -15,6 +15,7 @@ namespace CrunchyStrudel
         public AIMachine(AIMachineNode n)
         {
             current_node = n;
+            current_node.IfNotNull(z => z.Resume());
         }
 
         public void Update()
@@ -24,6 +25,11 @@ namespace CrunchyStrudel
                 n => n.Resume(),
                 n => n.Suspend()
             );
+        }
+
+        public override string ToString()
+        {
+            return "AIMachine(" + current_node.IfNotNull(n => n.GetName()) + ")";
         }
     }
 }
