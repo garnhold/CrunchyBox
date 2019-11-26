@@ -16,7 +16,7 @@ namespace CrunchySalt
                 return match.Value[0] + " " + match.Value[1];
             });
 
-            item = item.RegexReplace("([A-Z]{2,})([a-z])", delegate(Match match) {
+            item = item.RegexReplace("([A-Z])([A-Z][a-z])", delegate(Match match) {
                 return match.Groups[1] + " " + match.Groups[2];
             });
 
