@@ -1170,6 +1170,7 @@
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Sequential.cs" />
     <Compile Include="TemporalEvent\TemporalEvent_Duration.cs" />
     <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Event.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Approximate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
