@@ -51,6 +51,9 @@
     <Compile Include="AIMachine\Condition\AIMachineCondition_Binary.cs" />
     <Compile Include="AIMachine\Condition\AIMachineCondition_Binary_And.cs" />
     <Compile Include="AIMachine\Condition\AIMachineCondition_Binary_Or.cs" />
+    <Compile Include="AIMorpher\AIMorpher.cs" />
+    <Compile Include="AIMorpher\Node\AIMorpherNode.cs" />
+    <Compile Include="AIMorpher\Node\AIMorpherNode_Process.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">
@@ -76,6 +79,8 @@
     <Folder Include="AIMachine\Behaviour\" />
     <Folder Include="AIMachine\Node\" />
     <Folder Include="AIMachine\Transition\" />
+    <Folder Include="AIMorpher\" />
+    <Folder Include="AIMorpher\Node\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
