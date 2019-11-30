@@ -14,13 +14,16 @@ namespace CrunchySandwich
 
             settings.font = GUI.skin.font;
             settings.color = color;
-            settings.fontSize = 32;
-            settings.textAnchor = text_anchor;
             settings.fontStyle = FontStyle.Normal;
+
+            settings.fontSize = 32;
+            settings.lineSpacing = 1.0f;
+            settings.scaleFactor = 1.0f;
+            settings.textAnchor = text_anchor;
+
             settings.verticalOverflow = VerticalWrapMode.Overflow;
             settings.horizontalOverflow = HorizontalWrapMode.Overflow;
             settings.generateOutOfBounds = true;
-            settings.scaleFactor = 1.0f;
 
             settings.font.material.SetPass(0);
 
