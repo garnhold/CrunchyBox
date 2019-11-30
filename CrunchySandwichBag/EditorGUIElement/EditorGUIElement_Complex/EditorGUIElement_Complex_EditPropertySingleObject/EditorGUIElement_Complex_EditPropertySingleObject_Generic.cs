@@ -45,14 +45,17 @@ namespace CrunchySandwichBag
                 );
 
                 strip.AddFixedChild(20.0f,
-                    new EditorGUIElement_Button("X", delegate() {
+                    new EditorGUIElement_Button("X", delegate () {
                         property.ClearContents();
                     })
                 );
             }
-            else
+            else if (property.HasCustomAttributeOfType<MonomorphicFieldAttribute>(true))
             {
-                property.EnsureContents(property.GetPropertyType());
+                property.EnsureContents(
+                    property.GetCustomAttributeOfType<MonomorphicFieldAttribute>(true)
+                        .GetTargetType()
+                );
             }
 
             if (property.TryGetContents(out value))

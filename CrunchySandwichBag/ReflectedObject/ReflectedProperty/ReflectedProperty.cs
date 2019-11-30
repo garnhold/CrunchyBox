@@ -27,7 +27,7 @@ namespace CrunchySandwichBag
             else
             {
                 if (
-                    variable.HasCustomAttributeOfType<PolymorphicFieldAttribute>(true) &&
+                    variable.HasCustomAttributeOfType<ObjectSignifyFieldAttribute>(true) &&
                     variable_type.IsTypicalValueType() == false &&
                     variable_type.CanBeTreatedAs<UnityEngine.Object>() == false
                     )

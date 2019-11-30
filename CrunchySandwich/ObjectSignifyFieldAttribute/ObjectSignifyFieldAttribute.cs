@@ -11,7 +11,8 @@ using CrunchyRecipe;
 
 namespace CrunchySandwich
 {
-    public class PolymorphicFieldAttribute : ObjectSignifyFieldAttribute
+    [AttributeUsage(AttributeTargets.Field)]
+    public abstract class ObjectSignifyFieldAttribute : Attribute
     {
     }
 }
