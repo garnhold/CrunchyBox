@@ -1521,6 +1521,7 @@
     <Folder Include="Extensions\TextGenerator\" />
     <Folder Include="MonomorphicFieldAttribute\" />
     <Folder Include="ObjectSignifyFieldAttribute\" />
+    <Folder Include="LibrarySettings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
