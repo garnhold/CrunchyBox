@@ -87,24 +87,6 @@ namespace CrunchySandwichBag
             });
         }
 
-        private void GenerateInputDeviceIds<T>(CSTextDocumentBuilder builder, string type) where T : InputDeviceDefinitionComponent
-        {
-            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                "CLASS", type + "s",
-                "TYPE", type
-            );
-
-            writer.Write("static public class ?CLASS", delegate() {
-                components.Convert<T>().Process(c => c.GenerateIdsMember(builder, type));
-
-                writer.Write("static public IEnumerable<?TYPE> GetAll()", delegate() {
-                    components.Convert<T>().Process(c => c.GenerateIdsYield(builder));
-
-                    writer.Write("yield break;");
-                });
-            });
-        }
-
         private void GenerateGetComponentAllFunction(CSTextDocumentBuilder builder)
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
@@ -146,6 +128,24 @@ namespace CrunchySandwichBag
             axises.ClearArray();
             for (int i = 1; i <= max_number_devices; i++)
                 components.Process(c => c.GenerateInternalAxises(i, axises));
+        }
+
+        private void GenerateInputDeviceIds<T>(CSTextDocumentBuilder builder, string type) where T : InputDeviceDefinitionComponent
+        {
+            CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                "CLASS", type + "s",
+                "TYPE", type
+            );
+
+            writer.Write("static public class ?CLASS", delegate() {
+                components.Convert<T>().Process(c => c.GenerateIdsMember(builder, type));
+
+                writer.Write("static public IEnumerable<?TYPE> GetAll()", delegate() {
+                    components.Convert<T>().Process(c => c.GenerateIdsYield(builder));
+
+                    writer.Write("yield break;");
+                });
+            });
         }
 
         public void GenerateCode(CSTextDocumentBuilder builder)
