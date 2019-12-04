@@ -24,7 +24,7 @@ namespace CrunchySandwich
             return new Vector2(
                 horizontal_axis.GetValue(),
                 vertical_axis.GetValue()
-            );
+            ).BindMagnitudeBelow(1.0f);
         }
     }
 }

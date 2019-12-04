@@ -22,6 +22,14 @@ namespace CrunchySandwich
             frame = f;
         }
 
+        public bool IsCurrent()
+        {
+            if (GetNumberFramesPast() <= 0)
+                return true;
+
+            return false;
+        }
+
         public bool IsRecent()
         {
             if (GetNumberFramesPast() <= 3)
