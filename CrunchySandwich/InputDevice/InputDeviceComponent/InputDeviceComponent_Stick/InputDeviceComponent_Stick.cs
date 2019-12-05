@@ -38,7 +38,7 @@ namespace CrunchySandwich
             if (magnitude != 0.0f)
                 angle_in_degrees = value.GetAngleInDegrees();
 
-            if (magnitude < 0.4f)
+            if (magnitude < 0.8f)
                 stick_zones.LogValue(InputDeviceStickZone.Center);
             else
             {

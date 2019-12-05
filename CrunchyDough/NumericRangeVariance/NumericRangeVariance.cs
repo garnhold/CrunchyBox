@@ -207,6 +207,21 @@ namespace CrunchyDough
 		{
 			return new ByteRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public ByteRange GetExpanded(this ByteRange item, byte value)
+        {
+            return new ByteRange(
+                item.x1.Min(value),
+                item.x2.Max(value)
+            );
+        }
+        static public ByteVariance GetExpanded(this ByteVariance item, byte value)
+        {
+            return new ByteVariance(
+                item.value,
+                item.radius.Max((byte)((item.value - value).GetAbs()))
+            );
+        }
 	}
 
 	[Serializable]
@@ -412,6 +427,21 @@ namespace CrunchyDough
 		{
 			return new ShortRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public ShortRange GetExpanded(this ShortRange item, short value)
+        {
+            return new ShortRange(
+                item.x1.Min(value),
+                item.x2.Max(value)
+            );
+        }
+        static public ShortVariance GetExpanded(this ShortVariance item, short value)
+        {
+            return new ShortVariance(
+                item.value,
+                item.radius.Max((short)((item.value - value).GetAbs()))
+            );
+        }
 	}
 
 	[Serializable]
@@ -617,6 +647,21 @@ namespace CrunchyDough
 		{
 			return new IntRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public IntRange GetExpanded(this IntRange item, int value)
+        {
+            return new IntRange(
+                item.x1.Min(value),
+                item.x2.Max(value)
+            );
+        }
+        static public IntVariance GetExpanded(this IntVariance item, int value)
+        {
+            return new IntVariance(
+                item.value,
+                item.radius.Max((int)((item.value - value).GetAbs()))
+            );
+        }
 	}
 
 	[Serializable]
@@ -822,6 +867,21 @@ namespace CrunchyDough
 		{
 			return new LongRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public LongRange GetExpanded(this LongRange item, long value)
+        {
+            return new LongRange(
+                item.x1.Min(value),
+                item.x2.Max(value)
+            );
+        }
+        static public LongVariance GetExpanded(this LongVariance item, long value)
+        {
+            return new LongVariance(
+                item.value,
+                item.radius.Max((long)((item.value - value).GetAbs()))
+            );
+        }
 	}
 
 	[Serializable]
@@ -1027,6 +1087,21 @@ namespace CrunchyDough
 		{
 			return new FloatRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public FloatRange GetExpanded(this FloatRange item, float value)
+        {
+            return new FloatRange(
+                item.x1.Min(value),
+                item.x2.Max(value)
+            );
+        }
+        static public FloatVariance GetExpanded(this FloatVariance item, float value)
+        {
+            return new FloatVariance(
+                item.value,
+                item.radius.Max((float)((item.value - value).GetAbs()))
+            );
+        }
 	}
 
 	[Serializable]
@@ -1232,6 +1307,21 @@ namespace CrunchyDough
 		{
 			return new DoubleRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public DoubleRange GetExpanded(this DoubleRange item, double value)
+        {
+            return new DoubleRange(
+                item.x1.Min(value),
+                item.x2.Max(value)
+            );
+        }
+        static public DoubleVariance GetExpanded(this DoubleVariance item, double value)
+        {
+            return new DoubleVariance(
+                item.value,
+                item.radius.Max((double)((item.value - value).GetAbs()))
+            );
+        }
 	}
 
 	[Serializable]
@@ -1377,6 +1467,21 @@ namespace CrunchyDough
 		{
 			return new DecimalRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public DecimalRange GetExpanded(this DecimalRange item, decimal value)
+        {
+            return new DecimalRange(
+                item.x1.Min(value),
+                item.x2.Max(value)
+            );
+        }
+        static public DecimalVariance GetExpanded(this DecimalVariance item, decimal value)
+        {
+            return new DecimalVariance(
+                item.value,
+                item.radius.Max((decimal)((item.value - value).GetAbs()))
+            );
+        }
 	}
 
 }

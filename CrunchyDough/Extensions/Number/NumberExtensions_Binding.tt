@@ -4,13 +4,13 @@
 <#@ output extension=".cs" #>
 <#
 NumericInfo[] infos = new NumericInfo[]{
-	new NumericInfo("byte", "ByteRange"),
-	new NumericInfo("short", "ShortRange"),
-	new NumericInfo("int", "IntRange"),
-	new NumericInfo("long", "LongRange"),
-	new NumericInfo("float", "FloatRange"),
-	new NumericInfo("double", "DoubleRange"),
-	new NumericInfo("decimal", "DecimalRange")
+	new NumericInfo("byte", "ByteRange", "ByteVariance", "0"),
+	new NumericInfo("short", "ShortRange", "ShortVariance", "0"),
+	new NumericInfo("int", "IntRange", "IntVariance", "0"),
+	new NumericInfo("long", "LongRange", "LongVariance", "0L"),
+	new NumericInfo("float", "FloatRange", "FloatVariance", "0.0f"),
+	new NumericInfo("double", "DoubleRange", "DoubleVariance", "0.0"),
+	new NumericInfo("decimal", "DecimalRange", "DecimalVariance", "0.0m")
 };
 #>
 using System;
@@ -58,16 +58,14 @@ namespace CrunchyDough
             <#=info.type_name#> upper;
 
             value1.Order(value2, out lower, out upper);
-
-            if (item > lower)
-            {
-                if (item < upper)
-                    return item;
-
+            
+            if(item < lower)
+                return lower;
+                
+            if(item > upper)
                 return upper;
-            }
-
-            return lower;
+                
+            return item;
         }
 		static public <#=info.type_name#> BindBetween(this <#=info.type_name#> item, <#=info.range_name#> range)
 		{
@@ -90,6 +88,47 @@ namespace CrunchyDough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public <#=info.type_name#> BindAround(this <#=info.type_name#> item, <#=info.type_name#> value, <#=info.type_name#> radius)
+        {
+            if(radius > <#=info.zero#>)
+            {
+                <#=info.type_name#> lower = (<#=info.type_name#>)(value - radius);
+                <#=info.type_name#> upper = (<#=info.type_name#>)(value + radius);
+                
+                if(item < lower)
+                    return lower;
+                    
+                if(item > upper)
+                    return upper;
+                    
+                return item;
+            }
+            
+            return value;
+        }
+        static public <#=info.type_name#> BindAround(this <#=info.type_name#> item, <#=info.variance_name#> variance)
+        {
+            return item.BindAround(variance.value, variance.radius);
+        }
+        
+        static public bool IsBoundAround(this <#=info.type_name#> item, <#=info.type_name#> value, <#=info.type_name#> radius)
+        {
+            if(radius >= <#=info.zero#>)
+            {
+                <#=info.type_name#> lower = (<#=info.type_name#>)(value - radius);
+                <#=info.type_name#> upper = (<#=info.type_name#>)(value + radius);
+                
+                if(item >= lower && item <= upper)
+                    return true;
+            }
+            
+            return false;
+        }
+        static public bool IsBoundAround(this <#=info.type_name#> item, <#=info.variance_name#> variance)
+        {
+            return item.IsBoundAround(variance.value, variance.radius);
+        }
 <# } #>
 	}
 }
@@ -98,11 +137,17 @@ public class NumericInfo
 {
 	public readonly string type_name;
 	public readonly string range_name;
+    public readonly string variance_name;
+    
+    public readonly string zero;
 
-	public NumericInfo(string t, string r)
+	public NumericInfo(string t, string r, string v, string z)
 	{
 		type_name = t;
 		range_name = r;
+        variance_name = v;
+        
+        zero = z;
 	}
 }
 #>

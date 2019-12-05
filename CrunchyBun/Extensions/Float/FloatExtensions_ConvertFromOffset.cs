@@ -19,5 +19,14 @@ namespace CrunchyBun
         {
             return item.ConvertFromOffsetToRange(range.x1, range.x2);
         }
+
+        static public float ConvertFromOffsetToVariance(this float item, float value, float radius)
+        {
+            return item * radius + value;
+        }
+        static public float ConvertFromOffsetToVariance(this float item, FloatVariance variance)
+        {
+            return item.ConvertFromVarianceToOffset(variance.value, variance.radius);
+        }
     }
 }

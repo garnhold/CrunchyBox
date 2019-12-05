@@ -37,10 +37,11 @@ namespace CrunchySandwichBag
                 "VARIABLE", GetName().StyleAsVariableName(),
                 "INTERNAL_HORIZONTAL_AXIS_NAME", (GetName() + "Horizontal").StyleAsLiteralString(),
                 "INTERNAL_VERTICAL_AXIS_NAME", (GetName() + "Vertical").StyleAsLiteralString(),
+                "DEAD_ZONE", dead.ToString().StyleAsLiteralFloat(),
                 "DEVICE_ID", device_id
             );
 
-            writer.Write("?VARIABLE = new InputDeviceComponent_Stick(new InputDeviceRawStick_Axises(new InputDeviceRawAxis_Native(?INTERNAL_HORIZONTAL_AXIS_NAME + ?DEVICE_ID), new InputDeviceRawAxis_Native(?INTERNAL_VERTICAL_AXIS_NAME + ?DEVICE_ID)));");
+            writer.Write("?VARIABLE = new InputDeviceComponent_Stick(new InputDeviceRawStick_Axises(new InputDeviceRawAxis_Native(?INTERNAL_HORIZONTAL_AXIS_NAME + ?DEVICE_ID), new InputDeviceRawAxis_Native(?INTERNAL_VERTICAL_AXIS_NAME + ?DEVICE_ID, ?DEAD_ZONE)));");
         }
     }
 }

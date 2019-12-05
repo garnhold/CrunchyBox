@@ -46,7 +46,7 @@ namespace CrunchySandwichBag
             property.SetChildValue("snap", snap);
 
             property.SetChildValue("gravity", gravity);
-            property.SetChildValue("dead", dead);
+            property.SetChildValue("dead", 0.0f);
             property.SetChildValue("sensitivity", sensitivity);
         }
 

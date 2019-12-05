@@ -22,6 +22,11 @@ namespace CrunchySalt
             return item.ParseLong().ToString().StyleAsLiteral();
         }
 
+        static public string StyleAsLiteralFloat(this string item)
+        {
+            return item.ParseFloat().ToString().StyleAsLiteral() + "f";
+        }
+
         static public string StyleAsLiteralDouble(this string item)
         {
             return item.ParseDouble().ToString().StyleAsLiteral();

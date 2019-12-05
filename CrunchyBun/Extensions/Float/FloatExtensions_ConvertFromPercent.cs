@@ -19,5 +19,14 @@ namespace CrunchyBun
         {
             return item.ConvertFromPercentToRange(range.x1, range.x2);
         }
+
+        static public float ConvertFromPercentToVariance(this float item, float value, float radius)
+        {
+            return item.ConvertFromPercentToOffset().ConvertFromOffsetToVariance(value, radius);
+        }
+        static public float ConvertFromPercentToVariance(this float item, FloatVariance variance)
+        {
+            return item.ConvertFromPercentToVariance(variance.value, variance.radius);
+        }
     }
 }

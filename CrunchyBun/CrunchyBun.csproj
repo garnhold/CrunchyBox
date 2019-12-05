@@ -280,6 +280,7 @@
     <Compile Include="Wave\Wave.cs" />
     <Compile Include="Easer\Easer.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Fill.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromVariance.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Math\Mathq_IntPow.tt">

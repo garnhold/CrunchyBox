@@ -694,8 +694,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\Number\NumberExtensions_Quantized.cs">
-      <DependentUpon>NumberExtensions_Quantized.tt</DependentUpon>
+    <Compile Include="Extensions\Number\NumberExtensions_Heavyside.cs">
+      <DependentUpon>NumberExtensions_Heavyside.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1171,6 +1171,9 @@
     <Compile Include="TemporalEvent\TemporalEvent_Duration.cs" />
     <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Event.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Approximate.cs" />
+    <Compile Include="Extensions\Number\NumberExtensions_Quantized.cs">
+      <DependentUpon>NumberExtensions_Quantized.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1324,6 +1327,10 @@
     <Content Include="NumericRangeVariance\NumericRangeVariance.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumericRangeVariance.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Heavyside.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Heavyside.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

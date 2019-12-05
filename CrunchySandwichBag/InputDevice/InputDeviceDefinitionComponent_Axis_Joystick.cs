@@ -33,10 +33,11 @@ namespace CrunchySandwichBag
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "VARIABLE", GetName().StyleAsVariableName(),
                 "INTERNAL_AXIS_NAME", GetName().StyleAsLiteralString(),
+                "DEAD_ZONE", dead.ToString().StyleAsLiteralFloat(),
                 "DEVICE_ID", device_id
             );
 
-            writer.Write("?VARIABLE = new InputDeviceComponent_Axis(new InputDeviceRawAxis_Native(?INTERNAL_AXIS_NAME + ?DEVICE_ID));");
+            writer.Write("?VARIABLE = new InputDeviceComponent_Axis(new InputDeviceRawAxis_Native(?INTERNAL_AXIS_NAME + ?DEVICE_ID, ?DEAD_ZONE));");
         }
     }
 }
