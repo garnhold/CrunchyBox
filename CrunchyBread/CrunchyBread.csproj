@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D5A203B-A23F-4AE5-A85F-5894BF6D9A4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrunchyBread</RootNamespace>
+    <AssemblyName>CrunchyBread</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="OpenTK">
+      <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="Input\AxisFilter\AxisFilter.cs" />
+    <Compile Include="Input\AxisFilter\AxisFilter_Series.cs" />
+    <Compile Include="Input\AxisFilter\AxisFilter_DeadZone.cs" />
+    <Compile Include="Input\AxisFilter\AxisFilter_AdaptiveLimit.cs" />
+    <Compile Include="Input\AxisFilter\AxisFilter_Invert.cs" />
+    <Compile Include="Input\AxisFilter\AxisFilter_CenterCalibrating.cs" />
+    <Compile Include="Input\AxisFilter\AxisFilters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySodium\CrunchySodium.csproj">
+      <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
+      <Name>CrunchySodium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">
+      <Project>{EBB3AD40-1BB3-476C-B093-225045332242}</Project>
+      <Name>CrunchyBun</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Input\" />
+    <Folder Include="Input\AxisFilter\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
