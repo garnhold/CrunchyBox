@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 
@@ -34,11 +34,11 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using Crunchy.Dough;
-
 namespace Crunchy.Salt
 {
-	public abstract partial class ILLiteral : ILValue
+    using Dough;
+    
+    public abstract partial class ILLiteral : ILValue
 	{
 		public abstract object GetLiteralValue();
 

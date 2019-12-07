@@ -1174,6 +1174,9 @@
     <Compile Include="Extensions\Number\NumberExtensions_Quantized.cs">
       <DependentUpon>NumberExtensions_Quantized.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions.cs">
+      <DependentUpon>NumberRealExtensions.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

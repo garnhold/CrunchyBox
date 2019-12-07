@@ -42,13 +42,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using Crunchy.Dough;
-using Crunchy.Noodle;
-using Crunchy.Bun;
-using Crunchy.Sandwich;
-
 namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
     static public partial class SerializedPropertyExtensions_Value
     {
 		static public void ClearValue(this SerializedProperty item)

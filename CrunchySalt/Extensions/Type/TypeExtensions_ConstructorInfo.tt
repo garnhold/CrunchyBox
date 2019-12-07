@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 int max_number_parameters = 10;
@@ -14,11 +14,11 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using Crunchy.Dough;
-
 namespace Crunchy.Salt
 {
-	static public class TypeExtensions_ConstructorInfo
+    using Dough;
+    
+    static public class TypeExtensions_ConstructorInfo
 	{
 		static private OperationCache<List<ConstructorInfo>, Type> GET_NATIVE_INSTANCE_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_INSTANCE_CONSTRUCTORS", delegate(Type item){
 			return item.GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)

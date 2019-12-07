@@ -11,12 +11,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Spacar
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar
     {
 <# foreach(string type_name in type_names){#>
 		static public void SetSpacarPosition(this <#=type_name#> item, Vector3 position)

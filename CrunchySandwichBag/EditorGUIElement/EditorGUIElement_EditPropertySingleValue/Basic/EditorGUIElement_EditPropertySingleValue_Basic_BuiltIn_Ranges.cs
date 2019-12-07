@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    [EditorGUIElementForType(typeof(IntRange), true)]
+    	[EditorGUIElementForType(typeof(IntRange), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_IntRange : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<IntRange>
     {
 		private RangeAttribute range_attribute;

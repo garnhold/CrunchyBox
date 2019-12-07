@@ -11,12 +11,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Spacar_Mesh
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Mesh
     {
 <# foreach(string type_name in type_names){#>
 		static public void SetSpacarMeshSize(this <#=type_name#> item, Vector3 size)

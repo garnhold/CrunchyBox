@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +8,8 @@ namespace Crunchy.Noodle
     using Dough;
     using Salt;
     
-    static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O>
+    			
+		static public class TypeExtensions_MethodInfo_Specialization_Generic_Void<O>
 		{
 			static private OperationCache<MethodInfoEX, Type, string, Type> GET_SPECIALIZATION_METHOD = ReflectionCache.Get().NewOperationCache("GET_SPECIALIZATION_METHOD", delegate(Type self, string name, Type other) {
 				return self.GetFilteredInstanceMethods(Filterer_MethodInfo.IsNamed(name))

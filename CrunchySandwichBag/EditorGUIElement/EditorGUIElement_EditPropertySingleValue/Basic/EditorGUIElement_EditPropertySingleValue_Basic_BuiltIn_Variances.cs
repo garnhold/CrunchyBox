@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    [EditorGUIElementForType(typeof(IntVariance), true)]
+    	[EditorGUIElementForType(typeof(IntVariance), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_IntVariance : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<IntVariance>
     {
         protected override IntVariance DrawBuiltInInternal(Rect rect, GUIContent label, IntVariance value)

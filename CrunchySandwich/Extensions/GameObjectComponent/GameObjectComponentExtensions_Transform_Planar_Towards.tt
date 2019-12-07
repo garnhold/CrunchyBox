@@ -11,12 +11,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Planar_Towards
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Planar_Towards
     {
 <# foreach(string type_name in type_names){#>
 		static public void TowardsPlanarPosition(this <#=type_name#> item, Vector2 target, Vector2 amount)

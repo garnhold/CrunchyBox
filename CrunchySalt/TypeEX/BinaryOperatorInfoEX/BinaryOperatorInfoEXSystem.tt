@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 
@@ -78,12 +78,12 @@ using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using Crunchy.Dough;
-using Crunchy.Salt;
-
 namespace Crunchy.Salt
 {
-	public enum BinaryOperatorType
+    using Dough;
+    using Salt;
+    
+    public enum BinaryOperatorType
 	{
 <#foreach(OperatorTypeInfo info in operator_type_infos){#>
 		<#=info.name#>,

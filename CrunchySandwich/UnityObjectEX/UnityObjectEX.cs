@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     using Noodle;
     using Recipe;
     
-    public class MonoBehaviourEXPrefabLookup : Subsystem<MonoBehaviourEXPrefabLookup>
+        public class MonoBehaviourEXPrefabLookup : Subsystem<MonoBehaviourEXPrefabLookup>
     {
         [SerializeFieldEX]private Dictionary<string, MonoBehaviourEX> items;
         

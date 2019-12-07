@@ -12,12 +12,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 namespace Crunchy.Sandwich
 {
-	static public class ITilemapTilemapExtensions_Neighbors
+    using Dough;
+    using Bun;
+    
+    static public class ITilemapTilemapExtensions_Neighbors
     {
 <# foreach(string type_name in type_names){#>
         static public IEnumerable<TileBase> GetCardinalNeighbors(this <#=type_name#> item, Vector3Int position)

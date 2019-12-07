@@ -22,12 +22,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 namespace Crunchy.Sandwich
 {
-	static public class HasColorExtensions
+    using Dough;
+    using Bun;
+    
+    static public class HasColorExtensions
     {
 
 <#foreach(TypeInfo type in types){#>

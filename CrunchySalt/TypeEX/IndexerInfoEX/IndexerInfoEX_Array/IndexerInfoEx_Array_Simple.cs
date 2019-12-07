@@ -1,4 +1,4 @@
-
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using System.Reflection.Emit;
 namespace Crunchy.Salt
 {
     using Dough;
+    
     
     public class IndexerInfoEX_Array_Byte : IndexerInfoEX_Array
     {

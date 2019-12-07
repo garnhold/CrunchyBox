@@ -1,9 +1,9 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(MSBuildProjectDirectory)\..\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 int max_number_parameters = 10;
@@ -14,13 +14,13 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Salt;
-using Crunchy.Noodle;
-
 namespace Crunchy.Sandwich
 {
-	static public class PlayEditDistinction<ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : EditDistinctionAttribute
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    static public class PlayEditDistinction<ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : EditDistinctionAttribute
 	{
 	<#for(int i = 0; i < max_number_parameters; i++){#>
 		<#

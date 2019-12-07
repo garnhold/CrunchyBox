@@ -14,14 +14,14 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Salt;
-using Crunchy.Noodle;
-using Crunchy.Recipe;
-
 namespace Crunchy.Sandwich
 {
-<# foreach(TypeInfo info in types){#>
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Recipe;
+    
+    <# foreach(TypeInfo info in types){#>
     public class <#=info.lookup_type#> : Subsystem<<#=info.lookup_type#>>
     {
         [SerializeFieldEX]private Dictionary<string, <#=info.type#>> items;

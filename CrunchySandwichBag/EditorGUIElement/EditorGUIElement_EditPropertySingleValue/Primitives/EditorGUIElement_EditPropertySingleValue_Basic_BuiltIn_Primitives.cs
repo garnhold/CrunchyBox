@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    [EditorGUIElementForType(typeof(bool), true)]
+    	[EditorGUIElementForType(typeof(bool), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Bool : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<bool>
     {
 		protected override float DoPlanInternal()

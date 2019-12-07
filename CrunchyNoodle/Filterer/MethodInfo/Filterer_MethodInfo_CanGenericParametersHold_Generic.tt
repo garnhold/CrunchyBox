@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(MSBuildProjectDirectory)\..\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 int max_number_parameters = 10;
@@ -14,11 +14,11 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using Crunchy.Dough;
-
 namespace Crunchy.Noodle
 {
-<#for(int i = 1; i <= max_number_parameters; i++){#>
+    using Dough;
+    
+    <#for(int i = 1; i <= max_number_parameters; i++){#>
     public class Filterer_MethodInfo_CanGenericParametersHold<#=TTCS.ArgumentsForGeneric("P#", i)#> : Filterer_MethodInfo_CanGenericParametersHold
     {
         static public readonly Filterer_MethodInfo_CanGenericParametersHold<#=TTCS.ArgumentsForGeneric("P#", i)#> INSTANCE = new Filterer_MethodInfo_CanGenericParametersHold<#=TTCS.ArgumentsForGeneric("P#", i)#>();

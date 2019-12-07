@@ -1,10 +1,8 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(MSBuildProjectDirectory)\..\CrunchyDough\bin\Release\CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
 <#@ output extension=".cs" #>
 <#
 string[] parameter_types = new string[]{ "Technical", "Effective" };

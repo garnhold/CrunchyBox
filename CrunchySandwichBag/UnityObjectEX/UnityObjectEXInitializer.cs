@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ namespace Crunchy.SandwichBag
     using Recipe;
     using Sandwich;
     
-    [EditorInitializer]
+        [EditorInitializer]
     static public class MonoBehaviourEXInitializer
     {
         [EditorInitializer]

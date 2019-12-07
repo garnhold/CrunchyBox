@@ -11,12 +11,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_IEnumerable_Distance
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_IEnumerable_Distance
     {
 		static public GameObject GetSpacarClosest(this IEnumerable<GameObject> item, Vector3 position)
 		{

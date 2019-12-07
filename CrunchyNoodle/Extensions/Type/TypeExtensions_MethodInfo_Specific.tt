@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 int max_number_parameters = 10;
@@ -14,12 +14,12 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using Crunchy.Dough;
-using Crunchy.Salt;
-
 namespace Crunchy.Noodle
 {
-	static public class TypeExtensions_MethodInfo_Specific
+    using Dough;
+    using Salt;
+    
+    static public class TypeExtensions_MethodInfo_Specific
 	{
 		static private OperationCache<MethodInfoEX, Type, string, ContentsEnumerable<Type>> GET_INSTANCE_METHOD = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_METHOD", delegate(Type item, string name, ContentsEnumerable<Type> parameter_types){
 			return item.GetFilteredInstanceMethods(

@@ -23,13 +23,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-using Crunchy.Sandwich;
-
 namespace Crunchy.SandwichBag
 {
-<#foreach(TypeInfo type in types){#>
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
+    <#foreach(TypeInfo type in types){#>
 	[EditorGUIElementForType(typeof(<#=type.type_name#>), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_<#=type.class_name#> : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<<#=type.type_name#>>
     {

@@ -9,12 +9,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Crunchy.Dough;
-using Crunchy.Salt;
-
 namespace Crunchy.Noodle
 {
-<#foreach(string flavor in flavors){#>
+    using Dough;
+    using Salt;
+    
+    <#foreach(string flavor in flavors){#>
 	static public class ObjectExtensions_MemberInstance_ActionInstance_<#=flavor#>
     {
         static public ActionInstance Get<#=flavor#>ActionInstanceByComponent(this object item, string component, IEnumerable<object> arguments)

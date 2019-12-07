@@ -11,12 +11,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_HasComponent
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_HasComponent
     {
 <# foreach(string type_name in type_names){#>
 		static public bool HasComponent(this <#=type_name#> item, Type type)
