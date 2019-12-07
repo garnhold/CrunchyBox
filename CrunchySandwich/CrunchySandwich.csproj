@@ -41,6 +41,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\..\..\Unity3D\2019.1.14f1\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedSpriteRenderer\AnimatedSpriteRenderer.cs" />
@@ -190,7 +193,7 @@
     <Compile Include="Time\Alarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\Alarm\GameAlarm.cs" />
     <Compile Include="Time\Stopwatch\GameStopwatch.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Native.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered_Unity.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Option\InputDeviceComponent_Option.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickSpriteMap\InputDeviceStickSpriteMap.cs" />
@@ -1226,6 +1229,8 @@
     <Compile Include="Extensions\TextGenerator\TextGeneratorExtensions_Mesh.cs" />
     <Compile Include="MonomorphicFieldAttribute\MonomorphicFieldAttribute.cs" />
     <Compile Include="ObjectSignifyFieldAttribute\ObjectSignifyFieldAttribute.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered_OpenTK.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1498,6 +1503,10 @@
       <Project>{9FEE093F-4200-4E2E-8C52-842B4CC42478}</Project>
       <Name>CrunchySauce</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CrunchyBread\CrunchyBread.csproj">
+      <Project>{7D5A203B-A23F-4AE5-A85F-5894BF6D9A4A}</Project>
+      <Name>CrunchyBread</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="InputDevice\InputDeviceLock\" />
@@ -1522,6 +1531,10 @@
     <Folder Include="MonomorphicFieldAttribute\" />
     <Folder Include="ObjectSignifyFieldAttribute\" />
     <Folder Include="LibrarySettings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

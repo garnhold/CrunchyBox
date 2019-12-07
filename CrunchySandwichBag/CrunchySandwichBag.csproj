@@ -41,9 +41,6 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\Unity3D\2019.1.14f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\Unity3D\2019.1.14f1\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEX\ApplicationEXEditorInitilizer.cs" />

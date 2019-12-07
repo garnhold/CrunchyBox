@@ -26,7 +26,8 @@ using CrunchyNoodle;
     typeof(CrunchyCheese.ThisAssembly),
     typeof(CrunchySauce.ThisAssembly),
     typeof(CrunchyRecipe.ThisAssembly),
-    typeof(CrunchyRamen.ThisAssembly)
+    typeof(CrunchyRamen.ThisAssembly),
+    typeof(CrunchyBread.ThisAssembly)
 )]
 
 [assembly: InspectedTypes(
