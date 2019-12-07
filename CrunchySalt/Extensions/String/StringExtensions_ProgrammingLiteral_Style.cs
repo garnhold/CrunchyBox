@@ -13,6 +13,11 @@ namespace CrunchySalt
             return item;
         }
 
+        static public string StyleAsLiteralBool(this string item)
+        {
+            return item.ParseBool().ToString().ToLower().StyleAsLiteral();
+        }
+
         static public string StyleAsLiteralByte(this string item)
         {
             return item.ParseByte().ToString().StyleAsLiteral();
