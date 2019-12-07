@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Mono.Cecil;
 
-using CrunchyDough;
-
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
+    using Dough;
+    
     static public class AssemblyDefinitionExtensions_Initilizer
     {
         static public MethodDefinition GetInitilizer(this AssemblyDefinition item)

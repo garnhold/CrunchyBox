@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public partial class ExtensionMethods
     {
         static private CompileTimeCache<List<MethodInfoEX>> GET_ALL_EXTENSION_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_ALL_EXTENSION_METHODS", MethodInfoEXListHusker.INSTANCE, delegate() {

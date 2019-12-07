@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Filterer_PropertyInfo_CanBeTreatedAs<T> : Filterer_PropertyInfo_CanBeTreatedAs
     {
         static public readonly Filterer_PropertyInfo_CanBeTreatedAs<T> INSTANCE = new Filterer_PropertyInfo_CanBeTreatedAs<T>();

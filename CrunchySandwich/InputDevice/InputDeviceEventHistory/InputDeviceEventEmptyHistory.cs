@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public class InputDeviceEventEmptyHistory<T> : InputDeviceEventHistory<T>
     {
         static public readonly InputDeviceEventEmptyHistory<T> INSTANCE = new InputDeviceEventEmptyHistory<T>();

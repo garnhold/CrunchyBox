@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Collections;
@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 using System.Security.Cryptography;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class VersionInfo
     {
         static private OperationCache<ByteSequence> GET_ID = ReflectionCache.Get().NewOperationCache("GET_ID", delegate() {

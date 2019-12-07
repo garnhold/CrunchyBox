@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,12 +7,12 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Sandwich;
+    
     [CustomEditor(typeof(MonoBehaviour), true)]
     public class DefaultEditor_MonoBehaviour : DefaultEditor<MonoBehaviour> { }
 

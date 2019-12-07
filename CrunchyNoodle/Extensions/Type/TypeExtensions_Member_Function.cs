@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Text.RegularExpressions;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_Member_Function
     {
         static private OperationCache<Function, Type, string, ContentsEnumerable<Type>> GET_FUNCTION_BY_COMPONENT = ReflectionCache.Get().NewOperationCache<Function, Type, string, ContentsEnumerable<Type>>("GET_FUNCTION_BY_COMPONENT", delegate(Type type, string component, ContentsEnumerable<Type> parameter_types) {

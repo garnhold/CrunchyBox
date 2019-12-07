@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCup
+namespace Crunchy.Cup
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class SolidObjectPrimaryKeyAttributeExtensions_Create
     {
         static public SolidObjectPrimaryKey CreatePrimaryKey(this SolidObjectPrimaryKeyAttribute item, FieldInfo field)

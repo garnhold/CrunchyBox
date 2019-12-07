@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Filterer_MethodInfo_IsPropCompatible : Filterer_Simple<MethodInfo>
     {
         static public readonly Filterer_MethodInfo_IsPropCompatible INSTANCE = new Filterer_MethodInfo_IsPropCompatible();

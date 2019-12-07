@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBaker
+namespace Crunchy.Baker
 {
+    using Dough;
+    
     public class TimedTaskComparer_Simple_RepeatingProcess : TimedTaskComparer_Simple
     {
         public TimedTaskComparer_Simple_RepeatingProcess(int f, int p, Process a, Process b, int i)

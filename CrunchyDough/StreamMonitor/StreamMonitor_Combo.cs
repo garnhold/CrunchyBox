@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class StreamMonitor_Combo<T1, T2> : StreamMonitor
         where T1 : StreamMonitor

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class HoldingIndexedItemSet<P, T> : HoldingLabeledItemSet<P, int, T> where T : Holdable<P>, IndexedItem
     {
         public HoldingIndexedItemSet(P p) : base(p) { }

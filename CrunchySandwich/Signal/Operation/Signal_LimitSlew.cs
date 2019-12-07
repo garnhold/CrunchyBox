@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public class Signal_LimitSlew : Signal
     {
         [SerializeFieldEX]private float max_speed = 0.1f;

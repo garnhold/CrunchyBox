@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_ConvertFromOffset
     {
         static public float ConvertFromOffsetToPercent(this float item)

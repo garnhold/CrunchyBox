@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Bun;
+    
     static public class VectorF2Extensions
     {
     }

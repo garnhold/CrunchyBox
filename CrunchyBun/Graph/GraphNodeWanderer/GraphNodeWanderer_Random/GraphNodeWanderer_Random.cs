@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public class GraphNodeWanderer_Random<T> : GraphNodeWanderer<T> where T : GraphNode<T>
     {
         private HashSet<T> node_set;

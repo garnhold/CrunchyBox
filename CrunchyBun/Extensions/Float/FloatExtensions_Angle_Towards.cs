@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_Angle_Towards
     {
         static public float GetTowardsAngle(this float item, float target, float period, float amount)

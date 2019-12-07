@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class FiltererExtensions
     {
         static public bool Filter<T>(this IEnumerable<Filterer<T>> item, T to_check, out T adjusted)

@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Spacar_Scale
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Scale
     {
 		
 		static public void ScaleSpacarScale(this GameObject item, float scale)

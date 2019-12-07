@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     static public class RepresentationEngineExtensions
     {
     }

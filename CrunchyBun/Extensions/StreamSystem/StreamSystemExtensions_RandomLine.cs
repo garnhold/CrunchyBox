@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class StreamSystemExtensions_RandomLine
     {
         static public AttemptResult AttemptReadRandomLine(this StreamSystem item, string path, Process<string> process, RandIntSource source, long milliseconds = StreamSystem.DEFAULT_WAIT)

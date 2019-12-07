@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public class TapTimer : GameStopwatch
     {
         static private readonly SpectrumLookup<TapType> TAP_SPECTRUM = new Spectrum<TapType>(

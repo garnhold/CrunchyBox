@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_Angle_CardinalDirection
     {
         static public CardinalDirection GetAngleClosestCardinalDirection(this float item, float period)

@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Ginger;
+    using Sandwich;
+    
     public class InputDeviceDefinitionComponent_Button_Basic : InputDeviceDefinitionComponent_Button
     {
         [SerializeField]private string button_pattern;

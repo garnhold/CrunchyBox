@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
-	[EditorGUIElementForType(typeof(IntRange), true)]
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
+    [EditorGUIElementForType(typeof(IntRange), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_IntRange : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<IntRange>
     {
 		private RangeAttribute range_attribute;

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Bun;
+    
     public class Brush_Stamp<T> : Brush<T>
     {
         private Stamp<float> stamp;

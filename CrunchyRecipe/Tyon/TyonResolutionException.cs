@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public class TyonResolutionException : Exception
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class TyonResolutionException : Exception
 	{
         public TyonResolutionException(string m) : base(m) { }
 	}

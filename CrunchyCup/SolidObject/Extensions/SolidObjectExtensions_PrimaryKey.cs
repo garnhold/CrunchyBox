@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCup
+namespace Crunchy.Cup
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class SolidObjectExtensions_PrimaryKey
     {
         static private readonly Cache<Type, SolidObjectPrimaryKey> SOLID_OBJECT_PRIMARY_KEY = new Cache<Type, SolidObjectPrimaryKey>(delegate(Type type) {

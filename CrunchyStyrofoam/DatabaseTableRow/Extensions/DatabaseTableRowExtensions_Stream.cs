@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyStyrofoam
+namespace Crunchy.Styrofoam
 {
+    using Dough;
+    using Salt;
+    
     static public class DatabaseTableRowExtensions_Stream
     {
         static public Stream GetReadStream(this DatabaseTableRow item, DatabaseTableField field)

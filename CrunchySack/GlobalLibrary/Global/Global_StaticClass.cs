@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class Global_StaticClass<T> : Global_StaticClass
     {
         static public readonly Global_StaticClass<T> INSTANCE = new Global_StaticClass<T>();

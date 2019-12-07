@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class DistributedInitilizationInstance<INSTANCE_TYPE, ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : Attribute
     {
         private INSTANCE_TYPE instance;

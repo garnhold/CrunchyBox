@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public delegate int FingerPrintOperation(object obj);
     public delegate bool IsFingerEquivolentOperation(object obj1, object obj2);
 

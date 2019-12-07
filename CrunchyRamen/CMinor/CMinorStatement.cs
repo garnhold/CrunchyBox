@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public abstract partial class CMinorStatement : CMinorElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract partial class CMinorStatement : CMinorElement
 	{
         public abstract ILStatement Compile(CMinorEnvironment environment);
 	}

@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public abstract class CMinorBinaryOperator : CMinorElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract class CMinorBinaryOperator : CMinorElement
 	{
         public abstract BinaryOperatorType GetBinaryOperatorType();
 	}

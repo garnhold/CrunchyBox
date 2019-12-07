@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class ConfigurationVariable_InterpretAttribute : ConfigurationVariableAttribute
     {
         protected override bool TryHydrateSettingInternal(string option_string, Type option_type, out object option_value)

@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyGinger;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Ginger;
+    
     public abstract class LibrarySettings
     {
         public abstract string GetLibraryName();

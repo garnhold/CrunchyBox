@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Noodle;
+    
     static public class VectorF2Extensions_IEnumerable_PathReduction
     {
         static public IEnumerable<VectorF2> CollapsePathPoints(this IEnumerable<VectorF2> item, float minimum_distance)

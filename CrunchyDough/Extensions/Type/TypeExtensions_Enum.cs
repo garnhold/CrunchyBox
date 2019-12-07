@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class TypeExtensions_Enum
     {

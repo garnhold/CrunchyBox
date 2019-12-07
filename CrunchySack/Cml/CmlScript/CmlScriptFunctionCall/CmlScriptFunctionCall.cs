@@ -8,14 +8,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlScriptFunctionCall : CmlElement, CmlScriptElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
+    public partial class CmlScriptFunctionCall : CmlElement, CmlScriptElement
 	{
         private CmlScriptValue value;
 

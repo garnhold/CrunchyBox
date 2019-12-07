@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class ComponentExtensions_IEnumerable_GameObject
     {
         static public IEnumerable<GameObject> ConvertToGameObjects<T>(this IEnumerable<T> item) where T : Component

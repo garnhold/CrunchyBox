@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Text.RegularExpressions;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_Member_Variable
     {
         static private OperationCache<Variable, Type, string> GET_VARIABLE_BY_COMPONENT = ReflectionCache.Get().NewOperationCache<Variable, Type, string>("GET_VARIABLE_BY_COMPONENT", delegate(Type type, string component) {

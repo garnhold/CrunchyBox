@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_IEnumerableType
     {
         static private OperationCache<Type, Type> GET_IENUMERABLE_TYPE = ReflectionCache.Get().NewOperationCache("GET_IENUMERABLE_TYPE", delegate(Type item) {

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class EffigyDestination_Single : EffigyDestination
     {
         private EffigyInfo_Single single_info;

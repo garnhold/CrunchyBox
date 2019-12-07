@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,10 +7,10 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public delegate void BasicEventRegister(object obj, object evt);
     public delegate void EventRegister<T>(object obj, T evt);
 

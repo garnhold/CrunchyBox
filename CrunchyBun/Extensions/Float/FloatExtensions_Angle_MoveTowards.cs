@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_Angle_MoveTowards
     {
         static public bool GetMoveTowardsAngle(this float item, float target, float period, float amount, out float output)

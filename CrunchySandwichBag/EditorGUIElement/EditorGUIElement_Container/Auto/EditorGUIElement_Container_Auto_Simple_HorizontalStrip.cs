@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public class EditorGUIElement_Container_Auto_Simple_HorizontalStrip : EditorGUIElement_Container_Auto_Simple
     {
         private float child_width;

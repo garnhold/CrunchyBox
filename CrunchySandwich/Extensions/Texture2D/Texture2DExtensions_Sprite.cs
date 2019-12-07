@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     static public class Texture2DExtensions_Sprite
     {

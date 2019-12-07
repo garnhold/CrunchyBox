@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public abstract class PathGraph2D : MonoBehaviourEX, Graph<PathNode2D>
     {
         [SerializeField]private Vector2 size;

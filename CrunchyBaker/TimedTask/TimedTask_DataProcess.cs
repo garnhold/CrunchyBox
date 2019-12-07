@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBaker
+namespace Crunchy.Baker
 {
+    using Dough;
+    
     public class TimedTask_DataProcess<T> : TimedTask
     {
         private List<T> data;

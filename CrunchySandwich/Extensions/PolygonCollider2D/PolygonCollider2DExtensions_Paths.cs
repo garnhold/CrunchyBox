@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class PolygonCollider2DExtensions_Paths
     {
         static public IEnumerable<Vector2[]> GetPaths(this PolygonCollider2D item)

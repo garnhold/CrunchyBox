@@ -13,9 +13,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
     static public class VectorF2s
 	{

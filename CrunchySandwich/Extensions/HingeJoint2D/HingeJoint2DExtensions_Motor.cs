@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
+using Crunchy.Dough;
+using Crunchy.Bun;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     static public class HingeJoint2DExtensions_Motor
     {

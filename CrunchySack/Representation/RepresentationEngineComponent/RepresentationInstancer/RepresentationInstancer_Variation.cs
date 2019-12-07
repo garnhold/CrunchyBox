@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     public abstract class RepresentationCreator_Variation<REPRESENTATION_TYPE> : RepresentationInstancer
     {
         private string base_tag;

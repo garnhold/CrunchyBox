@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class AssemblyExtensions
     {

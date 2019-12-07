@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class PlaneSpaceExtensions_Intersect_Plane
     {
         static public bool IsIntersecting(this PlaneSpace item, Plane plane, out Plane2 output)

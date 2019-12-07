@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class PlayEditDistinction<ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : EditDistinctionAttribute
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    static public class PlayEditDistinction<ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : EditDistinctionAttribute
 	{
 			
 		static public void ExecuteNoReturn(Process process)

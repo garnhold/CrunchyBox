@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class TypeExtensions_Interface
     {
         static private OperationCache<HashSet<Type>, Type, bool> GET_IMMEDIATE_INTERFACES = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_INTERFACES", delegate(Type item, bool flatten_interfaces) {

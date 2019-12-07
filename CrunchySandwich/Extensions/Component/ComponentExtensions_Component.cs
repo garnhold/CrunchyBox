@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class ComponentExtensions_Component
     {
         static public Component AddComponent(this Component item, Type type)

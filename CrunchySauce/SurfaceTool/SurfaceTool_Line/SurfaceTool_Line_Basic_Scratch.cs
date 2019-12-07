@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    
     public class SurfaceTool_Line_Basic_Scratch<T> : SurfaceTool_Line_Basic<T>
     {
         private RandFloatBox margin_rand;

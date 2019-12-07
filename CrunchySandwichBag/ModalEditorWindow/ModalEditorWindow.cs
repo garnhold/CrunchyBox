@@ -1,9 +1,9 @@
-﻿
-using CrunchyDough;
+
+using Crunchy.Dough;
 using UnityEditor;
 using UnityEngine;
 
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
     public class ModalEditorWindow : EditorWindow
     {

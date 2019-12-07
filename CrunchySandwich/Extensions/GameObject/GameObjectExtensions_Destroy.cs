@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Noodle;
+    
     static public class GameObjectExtensions_Destroy
     {
         static public void Destroy(this GameObject item)

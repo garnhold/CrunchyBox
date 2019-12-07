@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
@@ -7,11 +7,11 @@ using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Sack;
+    
     static public class StreamSystemStreamExtensions_Bitmap
     {
         static public AttemptResult AttemptReadBitmap(this StreamSystemStream item, out Bitmap bitmap, long milliseconds = StreamSystem.DEFAULT_WAIT)

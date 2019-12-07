@@ -12,10 +12,10 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
+using Crunchy.Dough;
+using Crunchy.Bun;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
 	static public class GameObjectComponentExtensions_Children_Set
     {

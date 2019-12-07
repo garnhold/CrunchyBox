@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     public enum TapType
     {

@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public sealed class Unknown
     {

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class GridExtensions_VectorF2
     {
         static public VectorF2 GetDimensionsF2<T>(this Grid<T> item)

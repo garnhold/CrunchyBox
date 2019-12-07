@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Sandwich;
+    
     [EditorInitializer]
     static public class ScriptExecutionOrderAttributeInitializer
     {

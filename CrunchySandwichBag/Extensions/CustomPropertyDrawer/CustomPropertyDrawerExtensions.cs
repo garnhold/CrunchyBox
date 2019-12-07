@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySalt;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Salt;
+    using Bun;
+    using Sandwich;
+    
     static public partial class CustomPropertyDrawerExtensions
     {
         static private OperationCache<ValueGetter<Type>> GET_HANDLED_TYPE_GETTER = ReflectionCache.Get().NewOperationCache("GET_HANDLED_TYPE_GETTER", delegate() {

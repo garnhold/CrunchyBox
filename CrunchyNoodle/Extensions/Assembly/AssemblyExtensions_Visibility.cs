@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class AssemblyExtensions_Visibility
     {
         static public bool IsTypeVisible(this Assembly item, Type type)

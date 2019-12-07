@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public partial class CMinorLiteral_Null : CMinorLiteral
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CMinorLiteral_Null : CMinorLiteral
 	{
         public override object GetSystemValue()
         {

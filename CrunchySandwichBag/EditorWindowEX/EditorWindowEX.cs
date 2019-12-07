@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Sandwich;
+    
     public abstract class EditorWindowEX : EditorWindow
     {
         private EditorGUIView view;

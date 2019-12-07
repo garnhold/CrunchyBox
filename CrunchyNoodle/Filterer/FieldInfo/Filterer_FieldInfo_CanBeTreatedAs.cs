@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_FieldInfo_CanBeTreatedAs<T> : Filterer_FieldInfo_CanBeTreatedAs
     {
         static public readonly Filterer_FieldInfo_CanBeTreatedAs<T> INSTANCE = new Filterer_FieldInfo_CanBeTreatedAs<T>();

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
-	static public class MIMEType
+    using Dough;
+    
+    static public class MIMEType
 	{
         static private OperationCache<OptionTable<string>> MIME_TYPE_DICTIONARY = ReflectionCache.Get().NewOperationCache("MIME_TYPE_DICTIONARY", delegate() {
 			return new OptionTable<string>(

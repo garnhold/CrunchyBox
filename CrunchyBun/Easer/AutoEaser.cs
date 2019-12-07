@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public class AutoEaser<T> : AutoEaser where T : PeriodicProcess
     {
         public AutoEaser(Easer t, long update_milliseconds) : base(typeof(T), t, update_milliseconds) { }

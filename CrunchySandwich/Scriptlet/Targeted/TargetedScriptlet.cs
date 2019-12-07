@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyRamen;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Noodle;
+    using Ramen;
+    
     public class TargetedScriptlet
     {
         [SerializeFieldEX]private GameObject target;

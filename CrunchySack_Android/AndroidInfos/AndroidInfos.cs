@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
 using Android.App;
 using Android.Views;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Sack;
+    
     public partial class AndroidInfos : RepresentationInfos
     {
         static public RepresentationInfo AttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r) where REPRESENTATION_TYPE : View

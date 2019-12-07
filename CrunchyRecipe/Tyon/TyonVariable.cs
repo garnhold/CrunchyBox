@@ -9,13 +9,13 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonVariable : TyonElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonVariable : TyonElement
 	{
         public TyonVariable(VariableInstance variable, TyonDehydrater dehydrater) : this()
         {

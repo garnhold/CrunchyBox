@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,15 +11,15 @@ using Google.Apis.Util.Store;
 using Google.Apis.Upload;
 using Google.Apis.Download;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
+using Crunchy.Dough;
+using Crunchy.Salt;
+using Crunchy.Noodle;
 
-using CrunchyPantry;
+using Crunchy.Pantry;
 using CrunchyPantry_GoogleDrive.GoogleEX;
 using CrunchyPantry_GoogleDrive.GoogleEX.Storage;
 
-namespace CrunchyPantry_GoogleDrive
+namespace Crunchy.Pantry_GoogleDrive
 {
     static public class FileExtensions
     {

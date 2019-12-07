@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class TyonTypeHandler_Substitute_ExplicitType<INPUT_TYPE, OUTPUT_TYPE> : TyonTypeHandler_Substitute_ExplicitType<INPUT_TYPE>
     {
         static public readonly TyonTypeHandler_Substitute_ExplicitType<INPUT_TYPE, OUTPUT_TYPE> INSTANCE = new TyonTypeHandler_Substitute_ExplicitType<INPUT_TYPE, OUTPUT_TYPE>();

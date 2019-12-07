@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    
     static public class Vector2Extensions_Triangle
     {
         static public float CalculateTriangleArea(this Vector2 point1, Vector2 point2, Vector2 point3)

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    
     public class Terminal_Console : Terminal
     {
         static private Terminal_Console INSTANCE;

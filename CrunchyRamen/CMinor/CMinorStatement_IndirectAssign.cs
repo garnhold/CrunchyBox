@@ -8,14 +8,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public partial class CMinorStatement_IndirectAssign : CMinorStatement
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
+    public partial class CMinorStatement_IndirectAssign : CMinorStatement
 	{
         public override ILStatement Compile(CMinorEnvironment environment)
         {

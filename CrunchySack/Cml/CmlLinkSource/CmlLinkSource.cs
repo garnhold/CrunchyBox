@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlLinkSource : CmlElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CmlLinkSource : CmlElement
 	{
         public const string DEFAULT_GROUP = "normal";
         public const string DEFAULT_LAYOUT = "normal";

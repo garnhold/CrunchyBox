@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    using Bun;
+    
     public class TerminalBlock_Progress : TerminalBlock
     {
         private int bar_width;

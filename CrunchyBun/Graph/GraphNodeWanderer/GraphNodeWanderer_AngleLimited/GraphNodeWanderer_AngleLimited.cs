@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public abstract class GraphNodeWanderer_AngleLimited<T> : GraphNodeWanderer<T> where T : GraphNode_AngleAware<T>
     {
         private float maximum_angle_delta;

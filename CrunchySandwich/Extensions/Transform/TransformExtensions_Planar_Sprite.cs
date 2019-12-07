@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class TransformExtensions_Planar_Sprite
     {
         static public void SetPlanarSpriteAsLine(this Transform item, Vector2 point1, Vector2 point2)

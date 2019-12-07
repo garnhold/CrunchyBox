@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class StringExtensions_Save
     {
         static public string GetFilenameFromClassName(this string item)

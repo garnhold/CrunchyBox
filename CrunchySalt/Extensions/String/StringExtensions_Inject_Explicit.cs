@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class StringExtensions_Inject_Explicit
+    using Dough;
+    
+    static public class StringExtensions_Inject_Explicit
 	{
 			
 		static private readonly OperationCache<Operation<string, object>, string> INJECT_EXPLICIT1 = TextParsingCache.Get().NewOperationCache("INJECT_EXPLICIT1", delegate(string format) {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,10 +7,10 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class TypeExtensions_Resolve
     {
         static private readonly OperationCache<Dictionary<int, FieldInfoEX>, Type> FIELDS_BY_METADATA_TOKEN = ReflectionCache.Get().NewOperationCache("FIELDS_BY_METADATA_TOKEN", delegate(Type type) {

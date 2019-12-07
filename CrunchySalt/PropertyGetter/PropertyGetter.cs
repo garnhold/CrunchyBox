@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,10 +7,10 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public delegate object BasicPropertyGetter(object obj, object[] index);
     public delegate T PropertyGetter<T>(object obj, object[] index);
 

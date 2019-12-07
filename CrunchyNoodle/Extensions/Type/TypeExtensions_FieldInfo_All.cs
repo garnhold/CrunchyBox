@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_FieldInfo_All
     {
         static private OperationCache<List<FieldInfoEX>, Type> GET_ALL_FIELDS = ReflectionCache.Get().NewOperationCache("GET_ALL_FIELDS", delegate(Type item) {

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyKitchen
+namespace Crunchy.Kitchen
 {
+    using Dough;
+    using Noodle;
+    
     public abstract class Project<FILE, DIRECTORY, PROJECT>
         where FILE : ProjectFile<FILE, DIRECTORY, PROJECT>
         where DIRECTORY : ProjectDirectory<FILE, DIRECTORY, PROJECT>

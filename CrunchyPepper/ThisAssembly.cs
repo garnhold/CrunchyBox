@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
     public class ThisAssembly
     {

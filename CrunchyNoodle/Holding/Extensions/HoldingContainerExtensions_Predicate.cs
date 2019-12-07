@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class HoldingContainerExtensions_Predicate
     {
         static public Predicate<T> CanAdd<P, T>(HoldingContainer<P> holding_container) where T : Holdable<P>

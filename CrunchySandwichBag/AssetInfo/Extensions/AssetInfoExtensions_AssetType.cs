@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Sandwich;
+    
     static public class AssetInfoExtensions_AssetType
     {
         static public bool IsInternalAsset(this AssetInfo item)

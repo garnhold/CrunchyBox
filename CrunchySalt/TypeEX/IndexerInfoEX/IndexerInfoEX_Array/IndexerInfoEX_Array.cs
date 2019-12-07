@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public abstract class IndexerInfoEX_Array : IndexerInfoEX
     {
         public IndexerInfoEX_Array(Type e) : base(e.MakeArrayType(), typeof(int), e)

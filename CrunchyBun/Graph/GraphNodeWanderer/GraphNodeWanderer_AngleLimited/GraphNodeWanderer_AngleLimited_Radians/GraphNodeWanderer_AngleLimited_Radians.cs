@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public class GraphNodeWanderer_AngleLimited_Radians<T> : GraphNodeWanderer_AngleLimited<T> where T : GraphNode_AngleAware_Radians<T>
     {
         protected override float GetAngleBetweenGraphNodes(T node1, T node2)

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class AssemblyExtensions_ReferencedAssemblys
     {
         static private OperationCache<List<Assembly>, Assembly> GET_IMMEDIATE_REFERENCED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_REFERENCED_ASSEMBLYS", delegate (Assembly item) {

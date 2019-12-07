@@ -8,12 +8,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public partial class CMinorBinaryOperator_Multiplicative_Divide : CMinorBinaryOperator_Multiplicative
 	{
         public override BinaryOperatorType GetBinaryOperatorType()

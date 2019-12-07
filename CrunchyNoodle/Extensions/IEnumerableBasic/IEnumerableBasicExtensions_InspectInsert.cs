@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class IEnumerableBasicExtensions_InspectInsert
     {
         static public bool InspectInsert(this IEnumerable item, int index, object value)

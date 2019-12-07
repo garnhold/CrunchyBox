@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
     public abstract class EditProperty_Single_Value : EditProperty_Single
     {
         public abstract bool TryGetContentValues(out object value);

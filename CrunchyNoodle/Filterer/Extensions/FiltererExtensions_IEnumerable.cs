@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class FiltererExtensions_IEnumerable
     {
         static public IEnumerable<T> FilterBy<T, J>(this IEnumerable<J> item, IEnumerable<Filterer<T>> filters) where J : T

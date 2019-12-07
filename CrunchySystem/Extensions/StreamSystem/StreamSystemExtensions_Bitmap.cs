@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 
 using System.Windows;
 using System.Drawing;
 
-using CrunchyDough;
-
-namespace CrunchySystem
+namespace Crunchy.System
 {
+    using Dough;
+    
     static public class StreamSystemExtensions_Bitmap
     {
         static public AttemptResult AttemptReadBitmap(this StreamSystem item, string path, out Bitmap bitmap, long milliseconds = StreamSystem.DEFAULT_WAIT)

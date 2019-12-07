@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class PlaneExtensions_Intersect_LineSegment
     {
         static public bool IsIntersecting(this Plane item, LineSegment3 line_segment, out float distance)

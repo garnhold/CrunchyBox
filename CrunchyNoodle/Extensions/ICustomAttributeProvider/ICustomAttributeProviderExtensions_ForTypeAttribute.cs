@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class ICustomAttributeProviderExtensions_ForTypeAttribute
     {
         static public bool TryGetCustomForTypeAttributeOfTypeTypeDistance(this ICustomAttributeProvider item, Type attribute_type, Type type, out int distance)

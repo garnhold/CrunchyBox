@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Data;
 using System.Data.SQLite;
 
-using CrunchyDough;
-
-namespace CrunchyStyrofoam
+namespace Crunchy.Styrofoam
 {
+    using Dough;
+    
     public class DatabaseConnectionCommissioner_Lazy<T> : DatabaseConnectionCommissioner_Lazy where T : PeriodicProcess
     {
         public DatabaseConnectionCommissioner_Lazy(DatabaseConnectionCreator c, long life_milliseconds) : base(typeof(T), c, life_milliseconds) { }

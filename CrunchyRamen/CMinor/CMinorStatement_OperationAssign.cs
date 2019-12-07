@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public abstract class CMinorStatement_OperationAssign : CMinorStatement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract class CMinorStatement_OperationAssign : CMinorStatement
 	{
         public abstract CMinorExpression GetAssignmentExpression();
         public abstract CMinorBinaryOperator GetCMinorBinaryOperator();

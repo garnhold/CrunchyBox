@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	public enum BinaryOperatorType
+    using Dough;
+    using Salt;
+    
+    public enum BinaryOperatorType
 	{
 		Multiply,
 		Divide,

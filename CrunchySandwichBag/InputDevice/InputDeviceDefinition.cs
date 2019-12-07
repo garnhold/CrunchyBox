@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
     [AssetClassCategory("Input")]
     public class InputDeviceDefinition : CustomAsset
     {

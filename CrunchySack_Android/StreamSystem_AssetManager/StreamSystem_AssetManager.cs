@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,13 +8,13 @@ using Android.App;
 using Android.Content;
 using Android.Content.Res;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sack;
+    
     public class StreamSystem_AssetManager : StreamSystem_ReadOnly
     {
         private AssetManager asset_manager;

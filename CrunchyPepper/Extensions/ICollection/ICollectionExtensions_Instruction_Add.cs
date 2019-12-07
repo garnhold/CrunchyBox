@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
-using CrunchyDough;
-
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
-	static public class ICollectionExtensions_Instruction_Add
+    using Dough;
+    
+    static public class ICollectionExtensions_Instruction_Add
     {
 		static public Instruction Add(this ICollection<Instruction> item, OpCode opcode)
 		{

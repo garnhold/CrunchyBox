@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class HoldingLabeledItemSet<P, LABEL_TYPE, ELEMENT_TYPE> : SignalingLabeledItemSet<LABEL_TYPE, ELEMENT_TYPE>, HoldingContainer<P> where ELEMENT_TYPE : Holdable<P>, LabeledItem<LABEL_TYPE>
     {
         private P parent;

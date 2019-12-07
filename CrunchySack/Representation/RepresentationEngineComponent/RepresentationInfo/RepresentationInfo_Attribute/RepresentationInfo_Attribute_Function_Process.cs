@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class RepresentationInfo_Attribute_Function_Process<REPRESENTATION_TYPE> : RepresentationInfo_Attribute_Function<REPRESENTATION_TYPE>
     {
         private Process<REPRESENTATION_TYPE, FunctionSyncro> process;

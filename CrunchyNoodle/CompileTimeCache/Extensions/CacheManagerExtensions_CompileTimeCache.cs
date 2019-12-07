@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class CacheManagerExtensions_CompileTimeCache
     {
         static public CompileTimeCache<T> NewCompileTimeCache<T>(this CacheManager item, string i, Husker<T> h, Operation<T> o)

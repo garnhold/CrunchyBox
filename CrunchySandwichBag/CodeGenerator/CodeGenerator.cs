@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,14 +6,14 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
     static public class CodeGenerator
     {
         static private int REGENERATION_COUNT;
@@ -51,15 +51,15 @@ namespace CrunchySandwichBag
 
             writer.Write("#if UNITY_EDITOR");
             writer.Write("using UnityEditor;");
-            writer.Write("using CrunchySandwichBag;");
+            writer.Write("using Crunchy.SandwichBag;");
             writer.Write("#endif");
 
-            writer.Write("using CrunchyDough;");
-            writer.Write("using CrunchySalt;");
-            writer.Write("using CrunchyNoodle;");
-            writer.Write("using CrunchyBun;");
-            writer.Write("using CrunchyBread;");
-            writer.Write("using CrunchySandwich;");
+            writer.Write("using Crunchy.Dough;");
+            writer.Write("using Crunchy.Salt;");
+            writer.Write("using Crunchy.Noodle;");
+            writer.Write("using Crunchy.Bun;");
+            writer.Write("using Crunchy.Bread;");
+            writer.Write("using Crunchy.Sandwich;");
 
             process(builder);
 

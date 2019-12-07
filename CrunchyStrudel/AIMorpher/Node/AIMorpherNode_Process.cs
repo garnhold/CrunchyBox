@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchyStrudel
+namespace Crunchy.Strudel
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    
     public class AIMorpherNode_Process : AIMorpherNode
     {
         private Operation<float> upkeep_operation;

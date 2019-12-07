@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class TypeExtensions_FieldInfo
+    using Dough;
+    
+    static public class TypeExtensions_FieldInfo
 	{
 	
 		static private OperationCache<List<FieldInfo>, Type> GET_IMMEDIATE_NATIVE_Member_FIELDS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_NATIVE_Member_FIELDS", delegate(Type item){

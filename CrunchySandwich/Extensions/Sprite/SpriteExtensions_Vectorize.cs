@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class SpriteExtensions_Vectorize
     {
         static public IEnumerable<List<Vector2>> ScaledVectorize(this Sprite item, float alpha_threshold, int maximum_gap, float pre_scale)

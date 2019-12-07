@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public partial class AssemblyCreator
     {
         static public AssemblyBuilder CreateAssemblyBuilder(string assembly_name, AssemblyBuilderAccess assembly_builder_access)

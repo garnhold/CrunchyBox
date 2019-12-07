@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public partial class Physics2DExtensions
     {
         static public IEnumerable<Collider2D> ObserveAll(Vector2 position, float radius, int layer_mask, int block_mask)

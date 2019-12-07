@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class WorkSystemExtensions_Schedule
     {
         static public void Schedule(this WorkSystem item, UnityEngine.Object requester, Duration max_delay, Process process)

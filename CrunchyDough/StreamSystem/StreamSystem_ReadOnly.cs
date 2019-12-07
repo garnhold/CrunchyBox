@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Resources;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 using System.Globalization;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public abstract class StreamSystem_ReadOnly : StreamSystem
     {

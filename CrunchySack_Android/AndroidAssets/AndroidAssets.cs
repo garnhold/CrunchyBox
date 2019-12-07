@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,11 +7,11 @@ using Android.App;
 using Android.Views;
 using Android.Widget;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Sack;
+    
     static public class AndroidAssets
     {
         static public StreamSystem GetStreamSystem()

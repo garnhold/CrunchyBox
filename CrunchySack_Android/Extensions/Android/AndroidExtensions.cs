@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
@@ -7,10 +7,10 @@ using Android.Content;
 using Android.Content.Res;
 using Android.OS;
 
-using CrunchyDough;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    
     static public class AndroidExtensions
     {
         static private readonly OperationCache<Handler> AUX_HANDLER = new OperationCache<Handler>("AUX_HANDLER", delegate() {

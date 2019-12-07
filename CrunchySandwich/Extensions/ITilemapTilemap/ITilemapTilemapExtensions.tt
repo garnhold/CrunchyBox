@@ -12,10 +12,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-using CrunchyDough;
-using CrunchyBun;
+using Crunchy.Dough;
+using Crunchy.Bun;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
 	static public class ITilemapTilemapExtensions
     {

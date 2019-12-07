@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class ObjectExtensions_Convert
     {
         static public bool ConvertEX(this object item, Type type, out object output, bool allow_null_object = false)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,10 +6,10 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using CrunchyDough;
-
-namespace CrunchyGinger
+namespace Crunchy.Ginger
 {
+    using Dough;
+    
     public class CSLine_VariableTable : CSLine
     {
         private StringTable variables;

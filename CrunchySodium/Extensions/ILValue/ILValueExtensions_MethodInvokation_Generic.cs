@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,12 +6,12 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySodium
+namespace Crunchy.Sodium
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class ILValueExtensions_MethodInvokation_Generic
     {
         static public ILMethodInvokation GetInstanceILGenericMethodInvokation(this ILValue item, string name, IEnumerable<Type> generic_arguments, IEnumerable<ILValue> arguments)

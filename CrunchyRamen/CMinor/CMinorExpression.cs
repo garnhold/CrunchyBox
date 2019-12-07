@@ -8,14 +8,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public partial class CMinorExpression : CMinorElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
+    public partial class CMinorExpression : CMinorElement
 	{
         public abstract ILValue CompileAsValue(CMinorEnvironment environment);
 

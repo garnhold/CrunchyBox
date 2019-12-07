@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_IEnumerable_Distance
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_IEnumerable_Distance
     {
 		static public GameObject GetSpacarClosest(this IEnumerable<GameObject> item, Vector3 position)
 		{

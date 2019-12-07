@@ -8,12 +8,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public interface TyonAddressable
     {
         TyonAddress RequestAddress(TyonDehydrater dehydrater);

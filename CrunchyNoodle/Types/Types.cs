@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public partial class Types
     {
          static private CompileTimeCache<List<Type>, TypeFilters> GET_FILTERED_TYPES = ReflectionCache.Get().NewCompileTimeCache("GET_FILTERED_TYPES", TypeListHusker.INSTANCE, delegate(TypeFilters filters) {

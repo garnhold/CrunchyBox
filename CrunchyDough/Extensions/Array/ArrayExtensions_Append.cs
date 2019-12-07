@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ArrayExtensions_Append
     {

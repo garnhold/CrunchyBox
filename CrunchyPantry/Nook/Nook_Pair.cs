@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     public abstract class Nook_Pair : Nook
     {
         private Nook_Monitored dominate_nook;

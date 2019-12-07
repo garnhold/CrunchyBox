@@ -8,12 +8,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public partial class CmlLinkSource_Normal : CmlLinkSource, HasInfo
 	{
         static private LookupSet<string, string> DEFAULT_ATTRIBUTE_INFO_VALUES = new StringTable(

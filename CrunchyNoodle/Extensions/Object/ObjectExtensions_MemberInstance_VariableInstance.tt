@@ -9,10 +9,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
+using Crunchy.Dough;
+using Crunchy.Salt;
 
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
 <#foreach(string flavor in flavors){#>
 	static public class ObjectExtensions_MemberInstance_VariableInstance_<#=flavor#>

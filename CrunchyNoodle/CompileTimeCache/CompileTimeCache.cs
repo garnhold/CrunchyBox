@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class CompileTimeCache<T, P1, P2, P3, P4> : CompileTimeCache<T, IdentifiableTuple<P1, P2, P3, P4>>
         where P1 : Identifiable
         where P2 : Identifiable

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,10 +7,10 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public delegate object BasicMethodInvoker(object obj, object[] parameters);
 
     public delegate void MethodInvoker(object obj, object[] parameters);

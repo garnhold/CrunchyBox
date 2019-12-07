@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
     public enum AssetType
     {

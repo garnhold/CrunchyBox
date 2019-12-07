@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_Convert
     {
         static private CompileTimeCache<MethodInfoEX, IdentifiableType, IdentifiableType> GET_CONVERSION_METHOD = ReflectionCache.Get().NewCompileTimeCache("GET_CONVERSION_METHOD", MethodInfoEXHusker.INSTANCE, delegate(IdentifiableType item, IdentifiableType type) {

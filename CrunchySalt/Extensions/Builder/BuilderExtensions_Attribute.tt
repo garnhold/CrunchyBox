@@ -21,9 +21,9 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
 	static public class BuilderExtensions_Attribute
 	{

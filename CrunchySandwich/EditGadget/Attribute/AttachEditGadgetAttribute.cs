@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    
     [AttributeUsage(AttributeTargets.Field)]
     public class AttachEditGadgetAttribute : Attribute
     {

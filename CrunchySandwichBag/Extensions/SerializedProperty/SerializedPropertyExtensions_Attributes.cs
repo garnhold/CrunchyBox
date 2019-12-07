@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    
     static public class SerializedPropertyExtensions_Attributes
     {
         static public IEnumerable<Attribute> GetAllCustomAttributes(this SerializedProperty item, bool inherit)

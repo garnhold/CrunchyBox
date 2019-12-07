@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
+    using Dough;
+    using Noodle;
+    
     public abstract class MidiNode : MidiPort
     {
         private MidiPort port;

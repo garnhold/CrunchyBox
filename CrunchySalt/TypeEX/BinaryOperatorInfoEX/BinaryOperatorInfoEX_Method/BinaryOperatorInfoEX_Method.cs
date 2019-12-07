@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    using Salt;
+    
     public class BinaryOperatorInfoEX_Method : BinaryOperatorInfoEX
     {
         private MethodInfoEX method;

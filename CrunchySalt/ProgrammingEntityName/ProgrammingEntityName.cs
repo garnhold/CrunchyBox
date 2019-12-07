@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
     static public class ProgrammingEntityName
     {

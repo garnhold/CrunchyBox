@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    
     public class SurfaceTool_Line_Basic_Wobbly<T> : SurfaceTool_Line_Basic<T>
     {
         private float angle_delta;

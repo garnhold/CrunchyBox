@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class IEnumerableExtensions_Loop_VariableSweepApproximate
     {
         static public IEnumerable<T> VariableSweepApproximateLoop<T>(this IEnumerable<T> item, int maximum_length, double threshold, Operation<double, T, T, T> operation)

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Bun;
+    
     public class SurfaceTool_Line_Basic_Straight<T> : SurfaceTool_Line_Basic<T>
     {
         private float spacing_in_brush_width_percent;

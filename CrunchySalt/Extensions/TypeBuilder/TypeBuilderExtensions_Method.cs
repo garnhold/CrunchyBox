@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class TypeBuilderExtensions_Method
     {
         static public MethodBuilderEX CreateMethod(this TypeBuilder item, string name, MethodAttributes method_attributes, Type return_type, Operation<ILStatement, MethodBuilderEX> operation, IEnumerable<Type> parameter_types)

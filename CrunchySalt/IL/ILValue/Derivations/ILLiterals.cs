@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,11 +7,11 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	public abstract partial class ILLiteral : ILValue
+    using Dough;
+    
+    public abstract partial class ILLiteral : ILValue
 	{
 		public abstract object GetLiteralValue();
 

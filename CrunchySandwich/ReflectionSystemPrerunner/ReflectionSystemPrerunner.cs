@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Noodle;
+    
     [ApplicationEXSatellite]
     static public class ReflectionSystemPrerunner
     {
         static public void Start()
         {
-            CrunchyNoodle.ReflectionSystem.Prerun();
+            ReflectionSystem.Prerun();
         }
     }
 }

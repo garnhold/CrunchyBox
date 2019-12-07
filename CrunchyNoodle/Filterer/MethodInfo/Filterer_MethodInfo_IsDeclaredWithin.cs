@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_MethodInfo_IsDeclaredWithin : Filterer_General<MethodInfo, IdentifiableType>
     {
         public Filterer_MethodInfo_IsDeclaredWithin(Type l) : base(l)

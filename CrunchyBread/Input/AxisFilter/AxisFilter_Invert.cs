@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBread
+namespace Crunchy.Bread
 {
+    using Dough;
+    
     public class AxisFilter_Invert : AxisFilter
     {
         public override float Filter(float value)

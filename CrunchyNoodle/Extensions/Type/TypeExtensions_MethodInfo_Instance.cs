@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_MethodInfo_Instance
     {
         static private CompileTimeCache<List<MethodInfoEX>, IdentifiableType> GET_ALL_INSTANCE_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_ALL_INSTANCE_METHODS", MethodInfoEXListHusker.INSTANCE, delegate(IdentifiableType item) {

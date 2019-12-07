@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class RectF2Extensions_GridChunk
     {
         static public RectF2 GetOverflownGridChunk(this RectF2 item, int x, int y, VectorF2 cell_size)

@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchyCheese
+namespace Crunchy.Cheese
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    
     [MExpFunction]
     static public class MExpFunctions
     {

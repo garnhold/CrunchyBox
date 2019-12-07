@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class StreamMonitor_IdentityAndHash : StreamMonitor_Combo<StreamMonitor_Identity, StreamMonitor_Value_Hash>
     {

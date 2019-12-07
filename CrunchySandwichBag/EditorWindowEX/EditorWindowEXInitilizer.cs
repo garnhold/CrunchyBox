@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,14 +6,14 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
     [CodeGenerator]
     static public class EditorWindowEXInitilizer
     {
@@ -21,7 +21,7 @@ namespace CrunchySandwichBag
         static private void GenerateEditorWindowEXMenuItems()
         {
             CodeGenerator.GenerateStaticClass("EditorWindowEXMenuItems", delegate(CSTextDocumentBuilder builder) {
-                foreach (Type type in CrunchyNoodle.Types.GetFilteredTypes(
+                foreach (Type type in Types.GetFilteredTypes(
                     Filterer_Type.CanBeTreatedAs<EditorWindowEX>(),
                     Filterer_Type.IsConcreteClass()
                 ))

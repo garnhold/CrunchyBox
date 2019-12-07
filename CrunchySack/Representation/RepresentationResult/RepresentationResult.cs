@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     public class RepresentationResult
     {
         private object representation;

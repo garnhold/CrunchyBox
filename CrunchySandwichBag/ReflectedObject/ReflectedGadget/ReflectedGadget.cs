@@ -1,23 +1,23 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+
     public partial class ReflectedGadget : IDynamicCustomAttributeProvider
     {
         private ReflectedObject reflected_object;
 
         private Variable variable;
 
-        private Dictionary<string, CrunchyNoodle.Action> aux_actions;
+        private Dictionary<string, Action> aux_actions;
         private Dictionary<string, Variable> aux_variables;
 
         static public ReflectedGadget New(ReflectedObject reflected_object, Variable variable, AttachEditGadgetAttribute attribute)
@@ -66,7 +66,7 @@ namespace CrunchySandwichBag
             reflected_object.Touch(label, process);
         }
 
-        public ReflectedGadget(ReflectedObject o, Variable v, IEnumerable<KeyValuePair<string, CrunchyNoodle.Action>> ae, IEnumerable<KeyValuePair<string, Variable>> ve)
+        public ReflectedGadget(ReflectedObject o, Variable v, IEnumerable<KeyValuePair<string, Action>> ae, IEnumerable<KeyValuePair<string, Variable>> ve)
         {
             reflected_object = o;
 

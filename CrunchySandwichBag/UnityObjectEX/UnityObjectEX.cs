@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyRecipe;
-
-namespace CrunchySandwich
+namespace Crunchy.andwich
 {
+    using ough;
+    using alt;
+    using oodle;
+    using ecipe;
+    
     [EditorInitializer]
     static public class UnityObjectEXInitializer
     {

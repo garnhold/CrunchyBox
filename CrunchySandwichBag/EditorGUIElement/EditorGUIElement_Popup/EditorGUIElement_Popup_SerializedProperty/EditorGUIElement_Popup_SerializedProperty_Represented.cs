@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public abstract class EditorGUIElement_Popup_SerializedProperty_Represented<ELEMENT_TYPE, SURROGATE_TYPE> : EditorGUIElement_Popup_SerializedProperty<ELEMENT_TYPE>
     {
         private Operation<SURROGATE_TYPE, ELEMENT_TYPE> operation;

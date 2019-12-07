@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ParameterInfoEX_Quick : ParameterInfoEX
     {
         private Type parameter_type;

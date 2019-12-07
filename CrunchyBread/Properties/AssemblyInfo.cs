@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-using CrunchyNoodle;
+using Crunchy.Noodle;
 
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
@@ -19,11 +19,11 @@ using CrunchyNoodle;
 
 [assembly: InspectedAssembly]
 [assembly: InspectAssemblys_ByType(
-    typeof(CrunchyDough.ThisAssembly),
-    typeof(CrunchySalt.ThisAssembly),
-    typeof(CrunchyNoodle.ThisAssembly),
-    typeof(CrunchySodium.ThisAssembly),
-    typeof(CrunchyBun.ThisAssembly)
+    typeof(Crunchy.Dough.ThisAssembly),
+    typeof(Crunchy.Salt.ThisAssembly),
+    typeof(Crunchy.Noodle.ThisAssembly),
+    typeof(Crunchy.Sodium.ThisAssembly),
+    typeof(Crunchy.Bun.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class TypeExtensions_MethodInfo
+    using Dough;
+    
+    static public class TypeExtensions_MethodInfo
 	{
 	
 		static private OperationCache<List<MethodInfo>, Type> GET_IMMEDIATE_NATIVE_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_NATIVE_TechnicalMember_METHODS", delegate(Type item){

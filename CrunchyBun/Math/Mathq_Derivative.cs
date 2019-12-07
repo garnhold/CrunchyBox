@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public partial class Mathq
     {
         static public Operation<float, float> GetDerivative(Operation<float, float> function, float delta)

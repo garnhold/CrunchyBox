@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Size
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Size
     {
 
 		static public Vector2 GetPlanarSize(this GameObject item)

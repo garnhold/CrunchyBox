@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public class EditorGUIElement_Single_SerializedProperty_ObjectField : EditorGUIElement_Single_SerializedProperty
     {
         protected override bool DrawSingleInternal(Rect rect)

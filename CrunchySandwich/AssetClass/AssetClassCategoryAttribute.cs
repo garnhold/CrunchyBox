@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     [AttributeUsage(AttributeTargets.Class)]
     public class AssetClassCategoryAttribute : LabeledAttribute
     {

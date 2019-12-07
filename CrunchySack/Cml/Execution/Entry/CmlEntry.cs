@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public abstract class CmlEntry
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract class CmlEntry
 	{
         protected abstract void SolidifyIntoInternal(CmlExecution execution, CmlContainer container);
 

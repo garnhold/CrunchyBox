@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public class AutoAffectedValue<VALUE_TYPE, PERIODIC_TYPE> : AutoAffectedValue<VALUE_TYPE> where PERIODIC_TYPE : PeriodicProcess
     {
         public AutoAffectedValue(AffectedValue<VALUE_TYPE> a, long update_milliseconds) : base(typeof(PERIODIC_TYPE), a, update_milliseconds) { }

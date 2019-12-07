@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyRecipe;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Recipe;
+    
     static public class HasSaveStateSolidObjectExtensions_SaveLoad
     {
         static public void Save(this HasSaveStateSolidObject item)

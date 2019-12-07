@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public abstract class Signal_Generator : Signal
     {
         [SerializeFieldEX][PolymorphicField]private Signal signal;

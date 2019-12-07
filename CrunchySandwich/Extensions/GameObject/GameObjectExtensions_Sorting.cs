@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     static public class GameObjectExtensions_Sorting
     {

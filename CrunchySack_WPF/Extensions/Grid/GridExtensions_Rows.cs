@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.IO;
 
 using System.Windows;
 using System.Windows.Controls;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack_WPF
 {
+    using Dough;
+    using Sack;
+    
     static public class GridExtensions_Rows
     {
         static public void SetRowDefinitionString(this Grid item, string input)

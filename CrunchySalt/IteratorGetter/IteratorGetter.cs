@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public delegate IEnumerable IteratorGetter(object obj);
     public delegate IEnumerable<T> IteratorGetter<T>(object obj);
 

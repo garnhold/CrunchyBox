@@ -1,22 +1,22 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
     static public class CustomPropertyDrawers
     {
         static private IEnumerable<Type> GetAllCustomPropertyDrawerTypes()
         {
-            return CrunchyNoodle.Types.GetFilteredTypes(
+            return Types.GetFilteredTypes(
                 Filterer_Type.CanBeTreatedAs<PropertyDrawer>(),
                 Filterer_Type.HasCustomAttributeOfType<CustomPropertyDrawer>(false)
             );

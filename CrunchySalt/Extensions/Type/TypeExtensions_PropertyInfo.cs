@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class TypeExtensions_PropertyInfo
+    using Dough;
+    
+    static public class TypeExtensions_PropertyInfo
 	{
 	
 		static private OperationCache<List<PropertyInfo>, Type> GET_IMMEDIATE_NATIVE_Member_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_NATIVE_Member_PROPERTYS", delegate(Type item){

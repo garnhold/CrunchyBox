@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     [EditorGUIElementForType(typeof(AudioClip), true)]
     public class EditorGUIElement_EditPropertySingleValue_Browse_AudioClip : EditorGUIElement_EditPropertySingleValue_Browse<AudioClip>
     {

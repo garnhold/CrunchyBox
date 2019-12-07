@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class VectorF2Extensions_IEnumerable_Floats
     {
         static public IEnumerable<float> ConvertToFloats(this IEnumerable<VectorF2> item)

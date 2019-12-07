@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public class EditorGUIElement_Foldout_EditPropertySingleValue<T> : EditorGUIElement_Foldout<T> where T : EditorGUIElement_Container
     {
         private EditProperty_Single_Value edit_property_value;

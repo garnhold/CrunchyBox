@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public delegate object BasicConstructorInvoker(params object[] parameters);
     public delegate T ConstructorInvoker<T>(params object[] parameters);
 

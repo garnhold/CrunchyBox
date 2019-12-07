@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Bun;
+    
     static public class VectorF2Extensions_MinMax
     {
         static public VectorF2 GetMin(this VectorF2 item, VectorF2 input)

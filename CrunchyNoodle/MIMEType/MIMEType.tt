@@ -28,9 +28,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
 	static public class MIMEType
 	{

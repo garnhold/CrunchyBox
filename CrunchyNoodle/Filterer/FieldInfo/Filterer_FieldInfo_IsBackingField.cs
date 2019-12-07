@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Filterer_FieldInfo_IsBackingField : Filterer_Simple<FieldInfo>
     {
         static public readonly Filterer_FieldInfo_IsBackingField INSTANCE = new Filterer_FieldInfo_IsBackingField();

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    
     static public class ProjectSettings
     {
         static public string GetProjectSettingsDirectory()

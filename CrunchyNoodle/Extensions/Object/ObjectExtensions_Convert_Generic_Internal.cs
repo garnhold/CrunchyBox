@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class ObjectExtensions_Convert_Generic_Internal<T>
     {
         static public bool ConvertEX(object item, out T output, bool allow_null_object = false)

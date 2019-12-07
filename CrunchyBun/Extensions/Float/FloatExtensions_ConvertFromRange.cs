@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_ConvertFromRange
     {
         static public float ConvertFromRangeToOffset(this float item, float lower, float upper)

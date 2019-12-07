@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public class EditorGUIElement_Popup_SerializedProperty_Int : EditorGUIElement_Popup_SerializedProperty<int>
     {
         public EditorGUIElement_Popup_SerializedProperty_Int(SerializedProperty s, IEnumerable<int> es, Operation<string, int> o, float h) : base(s, es, o, h) { }

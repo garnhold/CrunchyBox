@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class TypeExtensions_ConstructorInfo
+    using Dough;
+    
+    static public class TypeExtensions_ConstructorInfo
 	{
 		static private OperationCache<List<ConstructorInfo>, Type> GET_NATIVE_INSTANCE_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_INSTANCE_CONSTRUCTORS", delegate(Type item){
 			return item.GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)

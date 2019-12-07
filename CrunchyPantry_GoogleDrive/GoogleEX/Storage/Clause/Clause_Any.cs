@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,12 +11,12 @@ using Google.Apis.Util.Store;
 using Google.Apis.Upload;
 using Google.Apis.Download;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyPantry_GoogleDrive
+namespace Crunchy.Pantry_GoogleDrive
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     namespace GoogleEX
     {
         namespace Storage

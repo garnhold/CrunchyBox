@@ -1,22 +1,22 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
+using Crunchy.Dough;
+using Crunchy.Sandwich;
 
-using Column = CrunchySandwichBag.EditorGUIElement_Container_Auto_Simple_VerticalStrip;
-using Row = CrunchySandwichBag.EditorGUIElement_Container_Flow_Line;
-using Grid = CrunchySandwichBag.EditorGUIElement_Container_Auto_Simple_Grid;
-using Field = CrunchySandwichBag.EditorGUIElement_Complex_SerializedProperty_FieldEX;
-using FloatSequence = CrunchySandwichBag.EditorGUIElement_SerializedProperty_FloatSequence;
-using Slider = CrunchySandwichBag.EditorGUIElement_Single_SerializedProperty_Slider;
-using Foldout = CrunchySandwichBag.EditorGUIElement_Foldout_SerializedProperty<CrunchySandwichBag.EditorGUIElement_Container_Auto_Simple_VerticalStrip>;
+using Column = Crunchy.SandwichBag.EditorGUIElement_Container_Auto_Simple_VerticalStrip;
+using Row = Crunchy.SandwichBag.EditorGUIElement_Container_Flow_Line;
+using Grid = Crunchy.SandwichBag.EditorGUIElement_Container_Auto_Simple_Grid;
+using Field = Crunchy.SandwichBag.EditorGUIElement_Complex_SerializedProperty_FieldEX;
+using FloatSequence = Crunchy.SandwichBag.EditorGUIElement_SerializedProperty_FloatSequence;
+using Slider = Crunchy.SandwichBag.EditorGUIElement_Single_SerializedProperty_Slider;
+using Foldout = Crunchy.SandwichBag.EditorGUIElement_Foldout_SerializedProperty<Crunchy.SandwichBag.EditorGUIElement_Container_Auto_Simple_VerticalStrip>;
 
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
     [CustomPropertyDrawer(typeof(ValueCurve))]
     public class ValueCurveDrawer : PropertyDrawerEX_Simple

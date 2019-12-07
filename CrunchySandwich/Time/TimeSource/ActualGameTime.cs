@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     [ApplicationEXSatellite]
     static public class ActualGameTimeStepper
     {

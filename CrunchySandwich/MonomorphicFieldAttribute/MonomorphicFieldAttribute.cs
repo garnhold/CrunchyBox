@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyRecipe;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Recipe;
+    
     public class MonomorphicFieldAttribute : ObjectSignifyFieldAttribute
     {
         private Type target_type;

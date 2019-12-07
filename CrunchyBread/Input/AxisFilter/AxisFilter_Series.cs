@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBread
+namespace Crunchy.Bread
 {
+    using Dough;
+    
     public class AxisFilter_Series : AxisFilter
     {
         private List<AxisFilter> filters;

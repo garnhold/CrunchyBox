@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCheese
+namespace Crunchy.Cheese
 {
-	public partial class MExpEntry : MExpElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class MExpEntry : MExpElement
 	{
         private Dictionary<string, int> terms;
 

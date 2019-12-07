@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 
 using System.Windows;
 using System.Windows.Controls;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack_WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    
     static public class FunctionSyncroExtensions_EventHandler
     {
         static public EventHandler GetEventHandler(this FunctionSyncro item, Predicate<EventArgs> predicate)

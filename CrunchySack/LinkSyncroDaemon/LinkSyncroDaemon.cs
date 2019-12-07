@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Noodle;
+    
     public class LinkSyncroDaemon<PERIODIC_PROCESS_TYPE> : LinkSyncroDaemon where PERIODIC_PROCESS_TYPE : PeriodicProcess
     {
         private LinkManager link_manager;

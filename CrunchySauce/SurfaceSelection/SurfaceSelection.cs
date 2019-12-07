@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    
     public class SurfaceSelection<T> : Surface<T>
     {
         private Surface<T> surface;

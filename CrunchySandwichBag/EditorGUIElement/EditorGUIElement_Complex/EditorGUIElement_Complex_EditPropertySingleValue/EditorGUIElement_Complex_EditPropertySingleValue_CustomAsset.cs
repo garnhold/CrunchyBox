@@ -1,23 +1,23 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
     [EditorGUIElementForType(typeof(CustomAsset), true)]
     public class EditorGUIElement_Complex_EditPropertySingleValue_CustomAsset : EditorGUIElement_Complex_EditPropertySingleValue<CustomAsset>
     {
         static private IEnumerable<Type> GetInternalCustomAssetTypes(Type field_type)
         {
-            return CrunchyNoodle.Types.GetFilteredTypes(
+            return Types.GetFilteredTypes(
                 Filterer_Type.CanBeTreatedAs(field_type),
                 Filterer_Type.CanBeTreatedAs<CustomAsset>(),
                 Filterer_Type.IsConcreteClass()

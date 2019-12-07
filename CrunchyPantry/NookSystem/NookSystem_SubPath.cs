@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     public class NookSystem_SubPath : NookSystem
     {
         private string sub_path;

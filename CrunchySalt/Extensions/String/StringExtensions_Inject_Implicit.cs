@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class StringExtensions_Inject_Implicit
     {
         static private readonly OperationCache<Operation<string, object[]>, string> INJECT_IMPLICIT = TextParsingCache.Get().NewOperationCache("INJECT_IMPLICIT", delegate(string format) {

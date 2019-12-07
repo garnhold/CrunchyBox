@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
     [CodeGenerator]
     [EditorInitializer]
     static public class LibraryInitializer
@@ -31,7 +31,7 @@ namespace CrunchySandwichBag
 
         static private IEnumerable<LibrarySettings> InstanceLibrarySettings()
         {
-            return CrunchyNoodle.Types.GetFilteredTypes(
+            return Types.GetFilteredTypes(
                 Filterer_Type.CanBeTreatedAs<LibrarySettings>(),
                 Filterer_Type.IsConcreteClass()
             ).Convert(t => t.CreateInstance<LibrarySettings>());

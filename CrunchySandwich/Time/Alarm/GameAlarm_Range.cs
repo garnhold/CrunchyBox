@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public class GameAlarm_Range : GameAlarm
     {
         [SerializeField]private FloatRange range;

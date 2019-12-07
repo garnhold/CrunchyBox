@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     [EditorGUIElementForType(typeof(LayerMask), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_LayerMask : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<LayerMask>
     {

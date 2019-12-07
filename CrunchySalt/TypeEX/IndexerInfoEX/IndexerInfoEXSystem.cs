@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class TypeExtensions_IndexerInfoEX
     {
         static private OperationCache<MethodInfoEX, Type, Type> GET_INDEXER_SET_METHOD = ReflectionCache.Get().NewOperationCache("GET_INDEXER_SET_METHOD", delegate(Type target_type, Type index_type) {

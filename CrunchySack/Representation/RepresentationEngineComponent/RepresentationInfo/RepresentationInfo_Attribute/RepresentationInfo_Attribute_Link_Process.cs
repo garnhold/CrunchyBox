@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class RepresentationInfo_Attribute_Link_Process<REPRESENTATION_TYPE> : RepresentationInfo_Attribute_Link
     {
         public RepresentationInfo_Attribute_Link_Process(string n, Variable v, Operation<bool, REPRESENTATION_TYPE> i)

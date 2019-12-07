@@ -3,13 +3,13 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public class TyonDehydrater
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class TyonDehydrater
 	{
         private long next_internal_address;
         private Dictionary<object, TyonAddressable> object_to_tyon_addressable;

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class AnimatedFloat
     {
         private float current_value;

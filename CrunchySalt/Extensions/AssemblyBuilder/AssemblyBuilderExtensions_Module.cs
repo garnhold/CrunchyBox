@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class AssemblyBuilderExtensions_Module
     {
         static public ModuleBuilder CreateInternalModuleBuilder(this AssemblyBuilder item)

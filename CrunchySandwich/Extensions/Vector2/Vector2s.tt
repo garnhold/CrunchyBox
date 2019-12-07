@@ -15,9 +15,9 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     static public class Vector2s
 	{

@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyGinger
+namespace Crunchy.Ginger
 {
+    using Dough;
+    
     public abstract class CSLine
     {
         public abstract string Translate(string input);

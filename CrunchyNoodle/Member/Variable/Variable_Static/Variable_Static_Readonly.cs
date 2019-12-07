@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public abstract class Variable_Static_Readonly : Variable_Static
     {
         protected override void SetStaticContentsInternal(object value)

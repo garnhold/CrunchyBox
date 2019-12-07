@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     static public class RepresentationResultExtensions_LinkSyncroDaemon
     {
         static public LinkSyncroDaemon CreateLinkSyncroDaemon<PERIODIC_PROCESS_TYPE>(this RepresentationResult item, long li, long si, IEnumerable<KeyValuePair<string, long>> g) where PERIODIC_PROCESS_TYPE : PeriodicProcess

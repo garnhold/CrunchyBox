@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public partial class GizmosExtensions
     {
         static public void DrawText(Vector3 position, Quaternion rotation, string text, float size, TextAnchor text_anchor, Color color)

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class GridExtensions_Scale
     {
         static public Grid<T> GetScaledToDimensions<T>(this Grid<T> item, int new_width, int new_height)

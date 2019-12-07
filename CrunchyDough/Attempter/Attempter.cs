@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Threading;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class Attempter
     {

@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlContainer_EndPoint_Attribute : CmlContainer_EndPoint
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlContainer_EndPoint_Attribute : CmlContainer_EndPoint
 	{
         private object representation;
         private RepresentationInfo_Attribute attribute_info;

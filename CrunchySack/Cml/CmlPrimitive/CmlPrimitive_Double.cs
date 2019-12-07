@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlPrimitive_Double : CmlPrimitive
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CmlPrimitive_Double : CmlPrimitive
 	{
         public override object GetSystemValue()
         {

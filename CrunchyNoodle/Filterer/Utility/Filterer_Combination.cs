@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Combination_All<T> : Filterer_Combination<T>
     {
         public Filterer_Combination_All(IEnumerable<Filterer<T>> f) : base(f) { }

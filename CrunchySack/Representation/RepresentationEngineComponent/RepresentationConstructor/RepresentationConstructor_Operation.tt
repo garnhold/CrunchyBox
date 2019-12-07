@@ -13,10 +13,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
+using Crunchy.Dough;
+using Crunchy.Noodle;
 
-namespace CrunchySack
+namespace Crunchy.Sack
 {
 <#for(int number_arguments = 0; number_arguments <= max_number_arguments; number_arguments++){#>
 	<#

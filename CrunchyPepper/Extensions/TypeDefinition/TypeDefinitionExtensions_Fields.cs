@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
-using CrunchyDough;
-
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
+    using Dough;
+    
     static public class TypeDefinitionExtensions_Fields
     {
         static public FieldDefinition AddField(this TypeDefinition item, FieldDefinition field, IEnumerable<Instruction> instructions = null)

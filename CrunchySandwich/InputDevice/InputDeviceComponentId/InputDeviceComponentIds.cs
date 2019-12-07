@@ -1,15 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
 
 	[Serializable]
     public struct InputDeviceComponentId
@@ -33,7 +32,7 @@ namespace CrunchySandwich
         
     
 		static private readonly OperationCache<List<InputDeviceComponentId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
-			return CrunchyNoodle.Types.GetFilteredTypes(
+			return Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceComponentIds"),
 				Filterer_Type.IsStaticClass()
 			).GetFirst()
@@ -108,7 +107,7 @@ namespace CrunchySandwich
         }
     
 		static private readonly OperationCache<List<InputDeviceAxisId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
-			return CrunchyNoodle.Types.GetFilteredTypes(
+			return Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceAxisIds"),
 				Filterer_Type.IsStaticClass()
 			).GetFirst()
@@ -183,7 +182,7 @@ namespace CrunchySandwich
         }
     
 		static private readonly OperationCache<List<InputDeviceButtonId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
-			return CrunchyNoodle.Types.GetFilteredTypes(
+			return Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceButtonIds"),
 				Filterer_Type.IsStaticClass()
 			).GetFirst()
@@ -258,7 +257,7 @@ namespace CrunchySandwich
         }
     
 		static private readonly OperationCache<List<InputDeviceStickId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
-			return CrunchyNoodle.Types.GetFilteredTypes(
+			return Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDeviceStickIds"),
 				Filterer_Type.IsStaticClass()
 			).GetFirst()

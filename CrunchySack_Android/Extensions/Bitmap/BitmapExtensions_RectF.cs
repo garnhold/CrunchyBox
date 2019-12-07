@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
 using Android.App;
 using Android.Graphics;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Bun;
+    using Sack;
+    
     static public class BitmapExtensions_RectF
     {
         static public RectF GetRectF(this Bitmap item)

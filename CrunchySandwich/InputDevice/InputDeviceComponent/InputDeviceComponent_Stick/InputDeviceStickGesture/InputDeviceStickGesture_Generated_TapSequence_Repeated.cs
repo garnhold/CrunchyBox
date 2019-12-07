@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public class InputDeviceStickGesture_Generated_TapSequence_Repeated : InputDeviceStickGesture_Generated_TapSequence
     {
         [SerializeField]private int times;

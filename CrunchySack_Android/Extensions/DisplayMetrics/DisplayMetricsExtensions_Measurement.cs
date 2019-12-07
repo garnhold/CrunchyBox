@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
@@ -8,11 +8,11 @@ using Android.Content;
 using Android.Content.Res;
 using Android.Util;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Sack;
+    
     static public class DisplayMetricsExtensions_Measurement
     {
         static public int ParseMeasurement(this DisplayMetrics item, string measurement, double world = 1.0)

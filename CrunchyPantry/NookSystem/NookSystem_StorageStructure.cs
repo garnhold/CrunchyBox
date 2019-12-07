@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    using Noodle;
+    
     public abstract class NookSystem_StorageStructure<STRUCTURE_TYPE, FILE_TYPE> : NookSystem where FILE_TYPE : FileSnapshot where STRUCTURE_TYPE : StorageStructure<FILE_TYPE>
     {
         private STRUCTURE_TYPE structure;

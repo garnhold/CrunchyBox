@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_CanGenericParametersHold<P1> : Filterer_Type_CanGenericParametersHold
     {
         static public readonly Filterer_Type_CanGenericParametersHold<P1> INSTANCE = new Filterer_Type_CanGenericParametersHold<P1>();

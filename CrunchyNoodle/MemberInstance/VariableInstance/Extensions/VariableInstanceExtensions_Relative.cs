@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class VariableInstanceExtensions_Relative
     {
         static public VariableInstance GetRelativeVariableInstanceByComponent(this VariableInstance item, string component)

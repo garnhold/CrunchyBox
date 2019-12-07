@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
     public class EditorGUIElement_EditPropertySingleValue_Combo_TypeMethodInfo : EditorGUIElement_EditPropertySingleValue_Combo<MethodInfo>
     {
         private EditProperty_Single_Value type_property;

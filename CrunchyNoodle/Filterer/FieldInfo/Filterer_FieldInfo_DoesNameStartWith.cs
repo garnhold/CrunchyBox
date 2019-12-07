@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_FieldInfo_DoesNameStartWith : Filterer_General<FieldInfo, IdentifiableString>
     {
         public Filterer_FieldInfo_DoesNameStartWith(string l) : base(l)

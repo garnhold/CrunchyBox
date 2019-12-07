@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public abstract class EphemeralDefinition_Prefab : EphemeralDefinition
     {
         [SerializeFieldEX]private GameObject prefab;

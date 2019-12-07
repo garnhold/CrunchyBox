@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class WeakKey<T> : WeakReference<T> where T : class
     {

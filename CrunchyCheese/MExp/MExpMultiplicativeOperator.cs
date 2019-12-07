@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCheese
+namespace Crunchy.Cheese
 {
-	public partial class MExpMultiplicativeOperator : MExpElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class MExpMultiplicativeOperator : MExpElement
 	{
 	}
 	

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_PropInfo
     {
         static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_PROP = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_PROP", delegate(Type item, string name) {

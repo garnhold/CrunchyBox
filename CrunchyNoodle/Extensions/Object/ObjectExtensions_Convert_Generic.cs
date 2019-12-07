@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class ObjectExtensions_Convert_Generic
     {
         static public bool ConvertEX<T>(this object item, out T output, bool allow_null_object = false)

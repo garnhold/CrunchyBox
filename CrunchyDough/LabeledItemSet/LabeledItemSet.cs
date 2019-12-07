@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class LabeledItemSet<LABEL_TYPE, ELEMENT_TYPE> : EnumerableLookupSet<LABEL_TYPE, ELEMENT_TYPE>, ICollection<ELEMENT_TYPE> where ELEMENT_TYPE : LabeledItem<LABEL_TYPE>
     {

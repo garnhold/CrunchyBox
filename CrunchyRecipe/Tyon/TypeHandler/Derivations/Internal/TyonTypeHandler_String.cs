@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class TyonTypeHandler_String : TyonTypeHandler
     {
         static public readonly TyonTypeHandler_String INSTANCE = new TyonTypeHandler_String();

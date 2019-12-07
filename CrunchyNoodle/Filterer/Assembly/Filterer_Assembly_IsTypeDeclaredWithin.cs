@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Assembly_IsTypeDeclaredWithin : Filterer_General<Assembly, IdentifiableType>
     {
         public Filterer_Assembly_IsTypeDeclaredWithin(Type t) : base(t)

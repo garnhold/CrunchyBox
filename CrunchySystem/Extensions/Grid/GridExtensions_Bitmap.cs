@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySauce;
-
-namespace CrunchySystem
+namespace Crunchy.System
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    using Sauce;
+    
     static public class GridExtensions_Bitmap
     {
         static public Bitmap CreateBitmap<T>(this Grid<T> item, Operation<Color, T> operation)

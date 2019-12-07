@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBaker
+namespace Crunchy.Baker
 {
+    using Dough;
+    
     public class TimedTask_RepeatingProcess : TimedTask
     {
         private Process process;

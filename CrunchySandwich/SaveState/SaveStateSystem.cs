@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyRecipe;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Recipe;
+    
     [SaveStateExplicitType]
     public abstract class SaveStateSystem<T> : Subsystem<T>, HasSaveStateSolidObject where T : SaveStateSystem<T>
     {

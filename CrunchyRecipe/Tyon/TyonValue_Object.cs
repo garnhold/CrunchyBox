@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonValue_Object : TyonValue
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonValue_Object : TyonValue
 	{
         public TyonValue_Object(object value, TyonDehydrater dehydrater) : this()
         {

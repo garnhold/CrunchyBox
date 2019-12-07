@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class ClassLibrary
     {
         private List<ClassProvider> class_providers;
-        private Dictionary<CrunchyDough.Tuple<Type, string>, CmlEntry_Class> manual_classes;
+        private Dictionary<Tuple<Type, string>, CmlEntry_Class> manual_classes;
 
         private OperationCache<CmlEntry_Class, Type, string> class_cache;
 

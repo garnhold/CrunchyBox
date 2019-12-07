@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class CachedRegexReplaceMatchCollection : IEnumerable<CachedRegexReplaceMatch>
     {

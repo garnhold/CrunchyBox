@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_ConstructorInfo
     {
         static private OperationCache<List<ConstructorInfoEX>, Type, ConstructorInfoFilters> GET_FILTERED_CONSTRUCTORS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_CONSTRUCTORS", delegate(Type item, ConstructorInfoFilters filters) {

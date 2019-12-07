@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBread
+namespace Crunchy.Bread
 {
+    using Dough;
+    
     static public class AxisFilters
     {
         static public AxisFilter General(float dead_zone, bool invert, bool adaptive_limit = true, bool center_calibrating = false)

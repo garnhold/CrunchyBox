@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public struct GUIControlHandle
     {
         private int control_id;

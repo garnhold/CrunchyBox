@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySauce;
-
-namespace CrunchySystem
+namespace Crunchy.System
 {
+    using Dough;
+    using Sauce;
+    
     public class Surface_Bitmap : Surface<Color>
     {
         private Bitmap bitmap;

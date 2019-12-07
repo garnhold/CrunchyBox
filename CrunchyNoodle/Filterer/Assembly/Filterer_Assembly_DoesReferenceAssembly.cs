@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Assembly_DoesReferenceAssembly : Filterer_General<Assembly, IdentifiableAssembly>
     {
         public Filterer_Assembly_DoesReferenceAssembly(Assembly a) : base(a)

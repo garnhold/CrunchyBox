@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_MethodInfo_IsGenericMethod : Filterer_Simple<MethodInfo>
     {
         static public readonly Filterer_MethodInfo_IsGenericMethod INSTANCE = new Filterer_MethodInfo_IsGenericMethod();

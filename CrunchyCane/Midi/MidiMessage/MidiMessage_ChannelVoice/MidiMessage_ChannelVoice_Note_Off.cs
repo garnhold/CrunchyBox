@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
+    using Dough;
+    
     public class MidiMessage_ChannelVoice_Note_Off : MidiMessage_ChannelVoice_Note
     {
         public MidiMessage_ChannelVoice_Note_Off(int n, int v, int c) : base(n, v, c) { }

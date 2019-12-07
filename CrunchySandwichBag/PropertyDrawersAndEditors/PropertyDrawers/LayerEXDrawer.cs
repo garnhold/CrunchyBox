@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
-using CrunchySandwichBag;
+using Crunchy.Dough;
+using Crunchy.Sandwich;
+using Crunchy.SandwichBag;
 
-using LayerPopup = CrunchySandwichBag.EditorGUIElement_Popup_SerializedProperty_Represented_Int<CrunchySandwich.LayerEX>;
+using LayerPopup = Crunchy.SandwichBag.EditorGUIElement_Popup_SerializedProperty_Represented_Int<Crunchy.Sandwich.LayerEX>;
 
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
     [CustomPropertyDrawer(typeof(LayerEX))]
     public class LayerEXDrawer : PropertyDrawerEX_Simple

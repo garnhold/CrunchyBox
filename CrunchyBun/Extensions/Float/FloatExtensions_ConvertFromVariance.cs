@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_ConvertFromVariance
     {
         static public float ConvertFromVarianceToOffset(this float item, float value, float radius)

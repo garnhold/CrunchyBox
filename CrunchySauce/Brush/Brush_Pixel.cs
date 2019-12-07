@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Bun;
+    
     public class Brush_Pixel<T> : Brush<T>
     {
         static public readonly Brush_Pixel<T> INSTANCE = new Brush_Pixel<T>();

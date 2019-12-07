@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public partial class Filterer_FieldInfo
     {
     }

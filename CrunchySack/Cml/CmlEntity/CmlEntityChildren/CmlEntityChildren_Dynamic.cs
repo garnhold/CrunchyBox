@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlEntityChildren_Dynamic : CmlEntityChildren
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CmlEntityChildren_Dynamic : CmlEntityChildren
 	{
         public override void SolidifyInto(CmlExecution execution, CmlContainer container)
         {

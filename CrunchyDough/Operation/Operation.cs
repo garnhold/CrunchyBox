@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public delegate T Operation<T>();
     public delegate T Operation<T, P1>(P1 p1);

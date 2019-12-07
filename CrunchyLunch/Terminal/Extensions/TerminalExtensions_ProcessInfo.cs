@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    
     static public class TerminalExtensions_ProcessInfo
     {
         static public TerminalBlock_ProcessInfo WriteProcessInfo(this Terminal item, string process_name)

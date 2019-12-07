@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Globalization;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class DateTimeExtensions_Age
     {

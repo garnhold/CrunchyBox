@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class FieldInfoEXHusker : Husker<FieldInfoEX>
     {
         static public readonly FieldInfoEXHusker INSTANCE = new FieldInfoEXHusker();

@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Planar_Orient
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Planar_Orient
     {
 		
 		static public void OrientPlanarLocalToWorld(this GameObject item, Vector2 l1, Vector2 l2, Vector2 w1, Vector2 w2)

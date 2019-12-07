@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
-	static public class GameObjectComponentExtensions_Focus
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
+    static public class GameObjectComponentExtensions_Focus
     {
 		static public void Focus(this GameObject item)
 		{

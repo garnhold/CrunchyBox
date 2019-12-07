@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlEntry_Fragment_BuiltIn_Layout : CmlEntry_Fragment_BuiltIn
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlEntry_Fragment_BuiltIn_Layout : CmlEntry_Fragment_BuiltIn
 	{
         protected override void SolidifyIntoInternalFragment(CmlExecution execution, CmlContainer container)
         {

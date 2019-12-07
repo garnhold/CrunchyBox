@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class TargetInstanceExtensions_Action
     {
         static public ActionInstance GetActionInstanceByComponent(this TargetInstance item, string component, IEnumerable<object> arguments)

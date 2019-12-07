@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_HasCustomAttributeOfType<T> : Filterer_Type_HasCustomAttributeOfType where T : Attribute
     {
         static public readonly Filterer_Type_HasCustomAttributeOfType<T> INSTANCE_INHERIT_FALSE = new Filterer_Type_HasCustomAttributeOfType<T>(false);

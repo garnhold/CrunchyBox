@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StringExtensions_Save
     {

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class CardinalOrdinalDirectionExtensions_Sequence
     {
         static public IEnumerable<CardinalOrdinalDirection> GetSequenceTo(this CardinalOrdinalDirection item, CardinalOrdinalDirection target, RotationDirection direction)

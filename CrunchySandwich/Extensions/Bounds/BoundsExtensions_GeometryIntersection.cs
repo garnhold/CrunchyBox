@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class BoundsExtensions_GeometryIntersection
     {
         static public IEnumerable<Vector3> GetPlaneIntersection(this Bounds item, Plane plane)

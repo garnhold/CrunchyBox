@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Noodle;
+    
     static public class VectorI2Extensions_Component
     {
         static public VectorI2 GetComponentMultiply(this VectorI2 item, int x, int y)

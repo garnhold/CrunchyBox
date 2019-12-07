@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
     public interface ForeignFieldInfo
     {

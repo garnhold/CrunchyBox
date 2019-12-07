@@ -20,12 +20,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
+using Crunchy.Dough;
+using Crunchy.Noodle;
+using Crunchy.Bun;
+using Crunchy.Sandwich;
 
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
 	public abstract class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Number<T> : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<T>
 	{

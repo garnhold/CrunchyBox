@@ -9,14 +9,14 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
+using Crunchy.Dough;
+using Crunchy.Salt;
+using Crunchy.Noodle;
 
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 
-namespace CrunchyCheese
+namespace Crunchy.Cheese
 {
 	public partial class MExpEntry : MExpElement
 	{

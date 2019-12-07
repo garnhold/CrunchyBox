@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class OperationCache<T, P1, P2, P3, P4, P5> : OperationCache<T, Tuple<P1, P2, P3, P4, P5>>
     {

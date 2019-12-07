@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 
 using System.Windows;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack_WPF
 {
+    using Dough;
+    using Sack;
+    
     public partial class WPFModifiers : RepresentationModifiers
     {
     }

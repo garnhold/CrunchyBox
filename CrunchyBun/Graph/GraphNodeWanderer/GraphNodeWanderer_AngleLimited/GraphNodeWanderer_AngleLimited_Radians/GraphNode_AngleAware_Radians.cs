@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public interface GraphNode_AngleAware_Radians<T> : GraphNode_AngleAware<T> where T : GraphNode_AngleAware_Radians<T>
     {
         float GetAngleInRadiansToGraphNode(T node);

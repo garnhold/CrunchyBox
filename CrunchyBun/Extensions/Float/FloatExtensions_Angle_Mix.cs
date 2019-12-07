@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_Angle_Mix
     {
         static public float GetAngleMix(this float item, float angle_a, float angle_b, float period)

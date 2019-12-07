@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
+    using Dough;
+    
     public abstract class MidiMessage_ChannelVoice_Note : MidiMessage_ChannelVoice
     {
         private byte note_id;

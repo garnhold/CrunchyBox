@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Mono.Cecil;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeDefinitionExtensions_Compare
     {
         static public bool IsSpecial(this TypeDefinition item)

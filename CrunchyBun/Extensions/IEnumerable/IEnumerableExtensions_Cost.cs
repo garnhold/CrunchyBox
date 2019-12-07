@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class IEnumerableExtensions_Cost
     {
         static public double GetCost<T>(this IEnumerable<T> item, Operation<double, T> operation)

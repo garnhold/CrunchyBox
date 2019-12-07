@@ -42,12 +42,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
+using Crunchy.Dough;
+using Crunchy.Noodle;
+using Crunchy.Bun;
+using Crunchy.Sandwich;
 
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
     static public partial class SerializedPropertyExtensions_Value
     {

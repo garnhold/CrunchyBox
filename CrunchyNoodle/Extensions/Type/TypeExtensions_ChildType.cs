@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class TypeExtensions_ChildType
     {
         static private OperationCache<Dictionary<Type, List<Type>>> GET_TYPE_HEIRARCHY = ReflectionCache.Get().NewOperationCache("GET_TYPE_HEIRARCHY", delegate() {

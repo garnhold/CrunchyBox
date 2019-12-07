@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_Angle_HorizontalDirection
     {
         static public HorizontalDirection GetAngleClosestHorizontalDirection(this float item, float period)

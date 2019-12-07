@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Security;
 using System.Security.Cryptography;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ByteSequenceExtensions
     {

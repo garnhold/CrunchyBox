@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public partial class GUIUtilityExtensions
     {
         static private OperationCache<ValueGetter<Rect>> GET_VISIBLE_RECT_VALUE_GETTER = ReflectionCache.Get().NewOperationCache("GET_VISIBLE_RECT_VALUE_GETTER", delegate () {

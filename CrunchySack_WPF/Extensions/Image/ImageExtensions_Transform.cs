@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Drawing;
 
@@ -7,13 +7,13 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-using CrunchySystem;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack_WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    using System;
+    
     static public class ImageExtensions_Transform
     {
         static public System.Drawing.PointF TransformElementPointToImagePointF(this System.Windows.Controls.Image item, System.Windows.Point point)

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Filterer_PropInfo_IsSetAndGetPublic : Filterer_Simple<PropInfoEX>
     {
         static public readonly Filterer_PropInfo_IsSetAndGetPublic INSTANCE = new Filterer_PropInfo_IsSetAndGetPublic();

@@ -9,12 +9,12 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public partial class TyonValue_Array : TyonValue
     {
         public TyonValue_Array(Type element_type, object value, TyonDehydrater dehydrater) : this()

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class OctoMaskExtensions_GetWith
     {
         static public OctoMask GetWithBitAt(this OctoMask item, int dx, int dy)

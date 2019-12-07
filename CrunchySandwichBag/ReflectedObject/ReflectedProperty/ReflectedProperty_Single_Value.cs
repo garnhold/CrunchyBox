@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchyRecipe;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    using Recipe;
+    using Sandwich;
+    
     public class ReflectedProperty_Single_Value : ReflectedProperty_Single
     {
         public ReflectedProperty_Single_Value(ReflectedObject o, Variable v) : base(o, v)

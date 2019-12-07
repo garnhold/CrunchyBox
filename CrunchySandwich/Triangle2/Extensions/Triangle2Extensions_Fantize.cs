@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class Triangle2Extensions_Fantize
     {
         static public IEnumerable<Triangle2> Fantize(this Triangle2 item, Vector2 point)

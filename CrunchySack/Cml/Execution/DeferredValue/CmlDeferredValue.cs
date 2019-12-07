@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlDeferredValue
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlDeferredValue
 	{
         private CmlCallContext call_context;
         private CmlValueSource value_source;

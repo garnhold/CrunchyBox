@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyGinger
+namespace Crunchy.Ginger
 {
+    using Dough;
+    
     public class CSTextDocumentBuilder : DocumentBuilder<TextDocumentNode, TextDocumentCanvas>
     {
         public CSTextDocumentBuilder(TextDocumentNode_Container c) : base(c) { }

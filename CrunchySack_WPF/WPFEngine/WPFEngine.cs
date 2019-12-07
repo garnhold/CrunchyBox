@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack_WPF
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sack;
+    
     public abstract partial class WPFEngine : RepresentationEngine
     {
         public WPFEngine()

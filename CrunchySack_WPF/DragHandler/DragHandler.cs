@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.IO;
 
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-using CrunchySystem;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack_WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    using System;
+    
     public abstract class DragHandler
     {
         private UIElement element;

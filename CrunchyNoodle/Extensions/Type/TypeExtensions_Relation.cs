@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class TypeExtensions_Relation
     {
         static public bool IsImmediateParentOf(this Type item, Type type, bool flatten_interfaces = false)

@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public class CMinorCompileException : Exception
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CMinorCompileException : Exception
 	{
         public CMinorCompileException(string m) : base(m) { }
 	}

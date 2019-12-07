@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class Pin
     {

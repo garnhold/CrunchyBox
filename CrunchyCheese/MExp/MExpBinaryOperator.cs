@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCheese
+namespace Crunchy.Cheese
 {
-	public abstract class MExpBinaryOperator : MExpElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract class MExpBinaryOperator : MExpElement
 	{
         public abstract BinaryOperatorType GetBinaryOperatorType();
 	}

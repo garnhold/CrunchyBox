@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_Finger_Get
     {
         static private OperationCache<FingerPrintOperation, Type> GET_FINGER_PRINT_OPERATION = ReflectionCache.Get().NewOperationCache("GET_FINGER_PRINT_OPERATION", delegate(Type item) {

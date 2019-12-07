@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Text.RegularExpressions;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_MemberAttributes_Field
     {
         static private CompileTimeCache<bool, IdentifiableType, IdentifiableType> HAS_CUSTOM_ATTRIBUTE_OF_TYPE_ON_AN_INSTANCE_FIELD = ReflectionCache.Get().NewCompileTimeCache("HAS_CUSTOM_ATTRIBUTE_OF_TYPE_ON_AN_INSTANCE_FIELD", BoolHusker.INSTANCE, delegate(IdentifiableType item, IdentifiableType attribute_type) {

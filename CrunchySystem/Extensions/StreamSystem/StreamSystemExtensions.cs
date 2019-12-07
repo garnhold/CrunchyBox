@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 
 using System.Windows;
 
-using CrunchyDough;
-
-namespace CrunchySystem
+namespace Crunchy.System
 {
+    using Dough;
+    
     static public class StreamSystemExtensions
     {
     }

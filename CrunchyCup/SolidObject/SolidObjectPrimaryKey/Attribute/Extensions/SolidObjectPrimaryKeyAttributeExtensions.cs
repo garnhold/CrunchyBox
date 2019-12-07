@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCup
+namespace Crunchy.Cup
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class SolidObjectPrimaryKeyAttributeExtensions
     {
     }

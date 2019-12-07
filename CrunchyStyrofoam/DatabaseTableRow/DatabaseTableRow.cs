@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Data;
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyStyrofoam
+namespace Crunchy.Styrofoam
 {
+    using Dough;
+    using Salt;
+    
     public class DatabaseTableRow
     {
         private Dictionary<DatabaseTableField, object> values;

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class ReferenceInstances<T>
     {
         static private OperationCache<List<Type>> GET_ALL_TYPES = ReflectionCache.Get().NewOperationCache("GET_ALL_TYPES", delegate() {

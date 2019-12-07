@@ -1,22 +1,26 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+
     public class ReflectedAction : IDynamicCustomAttributeProvider
     {
         private ReflectedObject reflected_object;
-        private CrunchyNoodle.Action action;
+        private Action action;
 
-        static public ReflectedAction New(ReflectedObject reflected_object, CrunchyNoodle.Action action)
+        static public ReflectedAction New(ReflectedObject reflected_object, Action action)
         {
             return new ReflectedAction(reflected_object, action);
         }
@@ -26,7 +30,7 @@ namespace CrunchySandwichBag
             reflected_object.Touch(label, process);
         }
 
-        public ReflectedAction(ReflectedObject o, CrunchyNoodle.Action a)
+        public ReflectedAction(ReflectedObject o, Action a)
         {
             reflected_object = o;
             action = a;
@@ -44,7 +48,7 @@ namespace CrunchySandwichBag
             return reflected_object;
         }
 
-        public CrunchyNoodle.Action GetAction()
+        public Action GetAction()
         {
             return action;
         }

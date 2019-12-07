@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_IsImmediateChildOf<T> : Filterer_Type_IsImmediateChildOf
     {
         static public readonly Filterer_Type_IsImmediateChildOf<T> INSTANCE = new Filterer_Type_IsImmediateChildOf<T>();

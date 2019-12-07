@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class IEnumerableExtensions_Curve
     {
         static public IEnumerable<VectorF2> InferCurveByInterval(this IEnumerable<float> item, float x, float x_interval)

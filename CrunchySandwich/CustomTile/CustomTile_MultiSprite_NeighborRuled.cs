@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public abstract class CustomTile_MultiSprite_NeighborRuled : CustomTile_MultiSprite
     {
         public abstract Sprite GetApplicableSprite(Vector3Int position, ITilemap tilemap);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,11 +6,11 @@ using UnityEngine;
 
 using OpenTK.Input;
 
-using CrunchyDough;
-using CrunchyBread;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bread;
+    
     public class InputDeviceRawAxis_Filtered_OpenTK : InputDeviceRawAxis_Filtered
     {
         private int device_index;

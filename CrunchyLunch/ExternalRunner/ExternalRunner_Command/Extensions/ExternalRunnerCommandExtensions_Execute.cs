@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    
     static public class ExternalRunnerCommandExtensions_Execute
     {
         static public Stream ExecuteToStream(this ExternalRunner_Command item, string arguments)

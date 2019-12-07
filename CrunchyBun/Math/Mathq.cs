@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public partial class Mathq
     {
         public const float E = 2.71828182845904523536028747135266249775724709369995957496f;

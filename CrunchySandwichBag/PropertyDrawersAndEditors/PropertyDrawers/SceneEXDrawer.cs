@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
-using CrunchySandwichBag;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Sandwich;
+    using SandwichBag;
+    
     [CustomPropertyDrawer(typeof(SceneEX))]
     public class SceneEXDrawer : PropertyDrawerEX_Simple
     {

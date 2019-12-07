@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public partial class Physics2DExtensions
     {
         static public IEnumerable<ContactPoint2D> GetContacts(Collider2D collider1, Collider2D collider2)

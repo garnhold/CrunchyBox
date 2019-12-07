@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonAddress_Identifier : TyonAddress
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonAddress_Identifier : TyonAddress
 	{
         public TyonAddress_Identifier(string i) : this()
         {

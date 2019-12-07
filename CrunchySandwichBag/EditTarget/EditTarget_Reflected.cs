@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,13 +6,13 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
     public class EditTarget_Reflected : EditTarget
     {
         private ReflectedObject reflected_object;

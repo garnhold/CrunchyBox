@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class TemporalSeriesExtensions_Start
     {
         static public bool StartWithRandomElapsedTimeInMilliseconds(this TemporalSeries item, long milliseconds)

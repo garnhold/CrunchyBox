@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ICustomAttributeProviderExtensions_Internal<ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : Attribute
     {

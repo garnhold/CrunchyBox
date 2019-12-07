@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class TypeExtensions_DynamicMethod_Convience
+    using Dough;
+    
+    static public class TypeExtensions_DynamicMethod_Convience
 	{
 			
 		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Operation<ILStatement, ILValue> operation)

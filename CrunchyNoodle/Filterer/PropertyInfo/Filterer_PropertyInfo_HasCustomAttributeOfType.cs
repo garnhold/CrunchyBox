@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Filterer_PropertyInfo_HasCustomAttributeOfType<T> : Filterer_PropertyInfo_HasCustomAttributeOfType where T : Attribute
     {
         static public readonly Filterer_PropertyInfo_HasCustomAttributeOfType<T> INSTANCE = new Filterer_PropertyInfo_HasCustomAttributeOfType<T>();

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    
     public class Surface_Grid<T> : Surface<T>
     {
         private Grid<T> grid;

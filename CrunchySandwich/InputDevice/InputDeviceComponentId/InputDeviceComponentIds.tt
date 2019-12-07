@@ -18,12 +18,11 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
 <#foreach(string type in types){#>
 
 	[Serializable]
@@ -55,7 +54,7 @@ namespace CrunchySandwich
     <#}#>
 
 		static private readonly OperationCache<List<InputDevice<#=type#>Id>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
-			return CrunchyNoodle.Types.GetFilteredTypes(
+			return Types.GetFilteredTypes(
 				Filterer_Type.IsNamed("InputDevice<#=type#>Ids"),
 				Filterer_Type.IsStaticClass()
 			).GetFirst()

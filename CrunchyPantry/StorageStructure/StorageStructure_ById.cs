@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     public partial class StorageStructure_ById : StorageStructure<FileSnapshot_ById>
     {
         private string root_folder_id;

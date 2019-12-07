@@ -3,13 +3,13 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public class TyonHydrater
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class TyonHydrater
 	{
         private TyonHydrationMode mode;
 

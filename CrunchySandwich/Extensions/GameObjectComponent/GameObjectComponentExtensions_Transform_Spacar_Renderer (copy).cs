@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.andwich
 {
-	static public class GameObjectComponentExtensions_Transform_Spacar_Renderer
+    using ough;
+    using un;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Renderer
     {
 		static public Bounds GetSpacarRendererBounds(this GameObject item)
 		{

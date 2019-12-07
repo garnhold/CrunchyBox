@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Sandwich;
+    
     [EditorInitializer]
     static public class ApplicationEXEditorInitilizer
     {

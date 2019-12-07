@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class ObjectExtensions_Regurgitate
     {
         static private void Regurgitate_Null(object item, TextDocumentCanvas canvas, int max_depth, bool verbose_exceptions)

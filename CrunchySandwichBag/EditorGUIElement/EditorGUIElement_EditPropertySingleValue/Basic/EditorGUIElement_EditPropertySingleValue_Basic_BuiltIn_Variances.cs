@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
-	[EditorGUIElementForType(typeof(IntVariance), true)]
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
+    [EditorGUIElementForType(typeof(IntVariance), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_IntVariance : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<IntVariance>
     {
         protected override IntVariance DrawBuiltInInternal(Rect rect, GUIContent label, IntVariance value)

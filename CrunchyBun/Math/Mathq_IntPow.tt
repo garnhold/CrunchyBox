@@ -8,9 +8,9 @@
 <#@ output extension=".cs" #>
 using System;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
     static public partial class Mathq
     {

@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonValue_ExternalAddress : TyonValue
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonValue_ExternalAddress : TyonValue
 	{
         public TyonValue_ExternalAddress(TyonAddress a, TyonDehydrater dehydrater) : this()
         {

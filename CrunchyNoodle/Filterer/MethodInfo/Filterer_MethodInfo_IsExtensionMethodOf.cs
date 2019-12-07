@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_MethodInfo_IsExtensionMethodOf<T> : Filterer_MethodInfo_IsExtensionMethodOf
     {
         static public readonly Filterer_MethodInfo_IsExtensionMethodOf<T> INSTANCE = new Filterer_MethodInfo_IsExtensionMethodOf<T>();

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class RandFloat
     {
         static public readonly RandFloatSource SOURCE = new RandFloatSource_IntSource(RandInt.SOURCE);

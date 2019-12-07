@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Sandwich;
+    
     static public class UnityObjectExtensions_Asset_Save
     {
         static public void SaveNewAsset(this UnityEngine.Object item, string filename)

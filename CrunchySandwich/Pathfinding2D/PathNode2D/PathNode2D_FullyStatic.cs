@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     [AddComponentMenu("Pathfinding2D/PathNode2D/PathNode2D_FullyStatic")]
     public class PathNode2D_FullyStatic : PathNode2D
     {

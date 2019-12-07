@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     static public class NookExtensions_Monitor
     {
         static public NookMonitor CreateNookMonitor(this Nook item)

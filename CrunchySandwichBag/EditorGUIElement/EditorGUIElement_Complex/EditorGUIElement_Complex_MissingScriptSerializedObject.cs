@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchyRecipe;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Recipe;
+    using Sandwich;
+    
     public class EditorGUIElement_Complex_MissingScriptSerializedObject : EditorGUIElement_Complex<UnityEngine.Object>
     {
         private SerializedObject serialized_object;

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public class LandRegionPopulater_Basic_Multi : LandRegionPopulater_Basic
     {
         [SerializeField]private List<LandRegionPrefabPopulater> land_region_prefab_populaters;

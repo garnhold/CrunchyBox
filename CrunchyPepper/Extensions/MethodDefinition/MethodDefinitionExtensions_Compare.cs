@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
+    using Dough;
+    using Salt;
+    
     static public class MethodDefinitionExtensions_Compare
     {
         static public bool HasReturn(this MethodDefinition item)

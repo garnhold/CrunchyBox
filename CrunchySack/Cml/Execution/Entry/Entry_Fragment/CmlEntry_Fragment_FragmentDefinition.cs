@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlEntry_Fragment_FragmentDefinition : CmlEntry_Fragment
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlEntry_Fragment_FragmentDefinition : CmlEntry_Fragment
 	{
         private string name;
         private CmlFragmentDefinition fragment_definition;

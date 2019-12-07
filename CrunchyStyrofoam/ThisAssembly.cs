@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyStyrofoam
+namespace Crunchy.Styrofoam
 {
     public class ThisAssembly
     {

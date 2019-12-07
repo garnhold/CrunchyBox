@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
     static public class MethodAttributesExtensions
     {

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class SpectrumExtensions_Add
     {
         static public void Add<T>(this Spectrum<T> item, IEnumerable<SpectrumBand<T>> to_add)

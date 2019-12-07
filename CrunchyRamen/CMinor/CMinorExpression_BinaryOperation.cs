@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public abstract class CMinorExpression_BinaryOperation : CMinorExpression
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract class CMinorExpression_BinaryOperation : CMinorExpression
 	{
         public abstract CMinorExpression GetCMinorExpression1();
         public abstract CMinorExpression GetCMinorExpression2();

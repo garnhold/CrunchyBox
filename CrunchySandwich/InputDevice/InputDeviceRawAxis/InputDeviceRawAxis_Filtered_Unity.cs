@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBread;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bread;
+    
     public class InputDeviceRawAxis_Filtered_Unity : InputDeviceRawAxis_Filtered
     {
         private string internal_axis_name;

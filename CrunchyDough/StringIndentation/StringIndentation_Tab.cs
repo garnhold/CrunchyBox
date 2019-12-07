@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class StringIndentation_Tab : StringIndentation_TabAndSpace
     {

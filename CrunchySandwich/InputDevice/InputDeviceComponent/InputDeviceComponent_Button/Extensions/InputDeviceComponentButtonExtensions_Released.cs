@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class InputDeviceComponentButtonExtensions_Released
     {
         static public bool IsButtonReleasedTapped(this InputDeviceComponent_Button item, float max_duration)

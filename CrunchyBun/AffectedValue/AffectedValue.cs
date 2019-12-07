@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public abstract class AffectedValue<VALUE_TYPE>
     {
         private VALUE_TYPE current_value;

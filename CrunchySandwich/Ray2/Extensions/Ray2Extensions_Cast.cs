@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class Ray2Extensions_Cast
     {
         static public bool Cast(this Ray2 item, out RaycastHit2D hit, float max_distance = float.PositiveInfinity, int layer_mask = IntBits.ALL_BITS)

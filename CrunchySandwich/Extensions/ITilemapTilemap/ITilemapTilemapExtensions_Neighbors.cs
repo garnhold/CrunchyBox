@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class ITilemapTilemapExtensions_Neighbors
+    using Dough;
+    using Bun;
+    
+    static public class ITilemapTilemapExtensions_Neighbors
     {
         static public IEnumerable<TileBase> GetCardinalNeighbors(this Tilemap item, Vector3Int position)
         {

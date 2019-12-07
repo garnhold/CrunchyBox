@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	static public class CMinorEnvironmentExtensions
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
+    static public class CMinorEnvironmentExtensions
 	{
 	}
 	

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class TargetInstance_Static : TargetInstance
     {
         static public readonly TargetInstance_Static INSTANCE = new TargetInstance_Static();

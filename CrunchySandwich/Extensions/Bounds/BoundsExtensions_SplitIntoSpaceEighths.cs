@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class BoundsExtensions_SplitIntoSpaceEighths
     {
         static public void SplitIntoSpaceEighths(this Bounds item, out Bounds b1, out Bounds b2, out Bounds b3, out Bounds b4, out Bounds b5, out Bounds b6, out Bounds b7, out Bounds b8)

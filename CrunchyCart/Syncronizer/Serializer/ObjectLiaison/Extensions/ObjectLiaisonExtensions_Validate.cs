@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     static public class ObjectLiaisonExtensions_Validate
     {
         static public bool ValidateEX(this Syncronizer.ObjectLiaison item, object target)

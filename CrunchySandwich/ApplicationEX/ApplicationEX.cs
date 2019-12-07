@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Reflection;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+
     public class ApplicationEX
     {
         private bool is_playing;
@@ -38,7 +38,7 @@ namespace CrunchySandwich
 
         private IEnumerable<Type> GetApplicationEXMarkedTypes()
         {
-            return CrunchyNoodle.Types.GetFilteredTypes(
+            return Types.GetFilteredTypes(
                 Filterer_Type.HasCustomAttributeOfType<ApplicationEXSatelliteAttribute>(false),
                 Filterer_Type.IsStaticClass()
             );

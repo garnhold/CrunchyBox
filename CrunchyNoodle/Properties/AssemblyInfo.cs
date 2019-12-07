@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-using CrunchyNoodle;
+using Crunchy.Noodle;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -19,8 +19,8 @@ using CrunchyNoodle;
 
 [assembly: InspectedAssembly]
 [assembly: InspectAssemblys_ByType(
-    typeof(CrunchyDough.ThisAssembly),
-    typeof(CrunchySalt.ThisAssembly)
+    typeof(Crunchy.Dough.ThisAssembly),
+    typeof(Crunchy.Salt.ThisAssembly)
 )]
 
 [assembly: InspectedTypes(

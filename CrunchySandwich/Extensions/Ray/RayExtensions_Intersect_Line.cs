@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class RayExtensions_Intersect_Line
     {
         static public bool IsIntersectingLine(this Ray item, Vector3 point, Vector3 normal, out float offset)

@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlRuntimeErrorException : Exception
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlRuntimeErrorException : Exception
 	{
         public CmlRuntimeErrorException(string error) : base(error) { }
 	}

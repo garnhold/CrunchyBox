@@ -20,7 +20,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
 <# foreach(NumericInfo type in types){#>
     static public class <#=type.class_name#>Bits

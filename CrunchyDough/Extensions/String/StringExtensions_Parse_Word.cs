@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StringExtensions_Parse_Word
     {

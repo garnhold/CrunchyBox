@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCup
+namespace Crunchy.Cup
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class SolidObjectPropertyAttributeExtensions_Create
     {
         static public SolidObjectProperty CreateProperty(this SolidObjectPropertyAttribute item, FieldInfo field)

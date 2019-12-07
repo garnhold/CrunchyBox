@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StringExtensions_Regex_Remove
     {

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_Values_Instance_OfTypeOrIEnumerable_Marked_Internal<T, ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : Attribute
     {
         static private OperationCache<List<FieldInfoEX>, Type> GET_MARKED_INSTANCE_FIELDS_OF_TYPE_OR_IENUMERABLE = ReflectionCache.Get().NewOperationCache("GET_MARKED_INSTANCE_FIELDS_OF_TYPE_OR_IENUMERABLE", delegate(Type item) {

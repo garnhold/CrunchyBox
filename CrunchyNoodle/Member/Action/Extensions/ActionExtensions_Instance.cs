@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class ActionExtensions_Instance
     {
         static public ActionInstance CreateInstance(this Action item, TargetInstance target)

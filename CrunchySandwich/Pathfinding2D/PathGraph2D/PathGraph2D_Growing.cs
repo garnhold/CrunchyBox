@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     [AddComponentMenu("Pathfinding2D/PathGraph2D/PathGraph2D_Growing")]
     public class PathGraph2D_Growing : PathGraph2D
     {

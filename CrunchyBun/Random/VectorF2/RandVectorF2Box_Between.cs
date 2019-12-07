@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
     public class RandVectorF2Box_Between : RandVectorF2Box
     {

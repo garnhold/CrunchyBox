@@ -14,12 +14,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyRecipe;
+using Crunchy.Dough;
+using Crunchy.Salt;
+using Crunchy.Noodle;
+using Crunchy.Recipe;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
 <# foreach(TypeInfo info in types){#>
     public class <#=info.lookup_type#> : Subsystem<<#=info.lookup_type#>>

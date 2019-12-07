@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class TyonDesignatedVariableProvider_PermissivePropertys_Public : TyonDesignatedVariableProvider_PermissivePropertys
     {
         static public readonly TyonDesignatedVariableProvider_PermissivePropertys_Public INSTANCE = new TyonDesignatedVariableProvider_PermissivePropertys_Public();

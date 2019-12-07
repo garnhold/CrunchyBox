@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    
     public struct SurfacePoint
     {
         public readonly int x;

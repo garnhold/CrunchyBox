@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlReturnSpace
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlReturnSpace
 	{
         private Dictionary<string, CmlContainer> returns;
 

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public partial class MarkedMethods<T> where T : Attribute
     {
         static private CompileTimeCache<List<MethodInfoEX>> GET_ALL_MARKED_STATIC_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_ALL_MARKED_STATIC_METHODS_" + typeof(T).Name, MethodInfoEXListHusker.INSTANCE, delegate() {

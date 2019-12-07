@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public partial class Filename
     {

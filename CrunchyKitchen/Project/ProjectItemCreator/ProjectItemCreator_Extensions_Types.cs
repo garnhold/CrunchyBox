@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyKitchen
+namespace Crunchy.Kitchen
 {
+    using Dough;
+    using Noodle;
+    
     public class ProjectItemCreator_Extensions_Types<ITEM_TYPE> : ProjectItemCreator_Extensions<ITEM_TYPE>
     {
         private Dictionary<string, Type> types;

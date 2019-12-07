@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Bun;
+    
     public abstract class SurfaceTool_Line_Basic<T> : SurfaceTool_Line<T>
     {
         protected abstract void MarkLineInternal(Surface<T> surface, Utensil<T> utensil, VectorF2 point1, VectorF2 point2);

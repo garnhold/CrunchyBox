@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
+    using Dough;
+    using Noodle;
+    
     public class MidiNode_Channel : MidiNode
     {
         private int channel_id;

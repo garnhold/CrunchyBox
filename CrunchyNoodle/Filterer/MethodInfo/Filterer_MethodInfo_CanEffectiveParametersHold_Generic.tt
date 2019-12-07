@@ -14,9 +14,9 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
 <#for(int i = 1; i <= max_number_parameters; i++){#>
     public class Filterer_MethodInfo_CanEffectiveParametersHold<#=TTCS.ArgumentsForGeneric("P#", i)#> : Filterer_MethodInfo_CanEffectiveParametersHold

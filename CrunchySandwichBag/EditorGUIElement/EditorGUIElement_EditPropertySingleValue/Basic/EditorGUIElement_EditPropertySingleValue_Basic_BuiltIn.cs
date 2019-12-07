@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public abstract class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<T> : EditorGUIElement_EditPropertySingleValue_Basic<T>
     {
         private EditorGUIElementAttachment_Singular_Label_GUIContent label;

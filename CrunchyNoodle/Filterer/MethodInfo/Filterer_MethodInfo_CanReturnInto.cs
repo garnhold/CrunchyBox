@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_MethodInfo_CanReturnInto<T> : Filterer_MethodInfo_CanReturnInto
     {
         static public readonly Filterer_MethodInfo_CanReturnInto<T> INSTANCE = new Filterer_MethodInfo_CanReturnInto<T>();

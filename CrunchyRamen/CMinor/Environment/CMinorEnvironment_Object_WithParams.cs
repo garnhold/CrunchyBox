@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	public class CMinorEnvironment_Object_WithParams : CMinorEnvironment_Object
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
+    public class CMinorEnvironment_Object_WithParams : CMinorEnvironment_Object
 	{
         private Dictionary<string, ILValue> parameters;
 

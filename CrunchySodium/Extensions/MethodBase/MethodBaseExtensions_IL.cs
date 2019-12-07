@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,12 +7,12 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySodium
+namespace Crunchy.Sodium
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class MethodBaseExtensions_IL
     {
         static public ILMethodInvokation GetILInvoke(this MethodBase item, string name, IEnumerable<ILValue> arguments)

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class RectF2Extensions_SplitIntoQuarters
     {
         static public void SplitIntoQuarters(this RectF2 item, out RectF2 r1, out RectF2 r2, out RectF2 r3, out RectF2 r4)

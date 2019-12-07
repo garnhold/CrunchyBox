@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StretchedHashExtensions
     {

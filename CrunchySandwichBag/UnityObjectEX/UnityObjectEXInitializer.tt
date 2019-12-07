@@ -14,13 +14,13 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyRecipe;
-using CrunchySandwich;
+using Crunchy.Dough;
+using Crunchy.Salt;
+using Crunchy.Noodle;
+using Crunchy.Recipe;
+using Crunchy.Sandwich;
 
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
 <# foreach(TypeInfo info in types){#>
     [EditorInitializer]

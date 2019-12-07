@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     static public class GUIContentExtensions_Layout
     {

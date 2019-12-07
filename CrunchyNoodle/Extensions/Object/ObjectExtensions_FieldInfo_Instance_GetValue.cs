@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class ObjectExtensions_FieldInfo_Instance_GetValue
     {
         static public IEnumerable<T> GetFilteredInstanceFieldValues<T>(this Object item, IEnumerable<Filterer<FieldInfo>> filters)

@@ -34,9 +34,9 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
 	public abstract partial class ILLiteral : ILValue
 	{

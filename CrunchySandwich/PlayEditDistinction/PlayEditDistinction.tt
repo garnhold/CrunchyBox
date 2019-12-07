@@ -14,11 +14,11 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
+using Crunchy.Dough;
+using Crunchy.Salt;
+using Crunchy.Noodle;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
 	static public class PlayEditDistinction<ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : EditDistinctionAttribute
 	{

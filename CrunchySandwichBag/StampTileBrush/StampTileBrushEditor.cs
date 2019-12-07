@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,11 +6,11 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Sandwich;
+    
     [CustomEditor(typeof(StampTileBrush), true)]
     public class StampTileBrushEditor : GridBrushEditor
     {

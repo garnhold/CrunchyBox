@@ -8,12 +8,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCheese
+namespace Crunchy.Cheese
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class MExpFunctionAttribute : Attribute
     {

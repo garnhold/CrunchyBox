@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Noodle;
+    
     public class SyncroManager
     {
         private object update_lock;

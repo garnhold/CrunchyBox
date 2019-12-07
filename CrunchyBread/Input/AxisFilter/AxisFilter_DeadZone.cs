@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchyBread
+namespace Crunchy.Bread
 {
+    using Dough;
+    using Bun;
+    
     public class AxisFilter_DeadZone : AxisFilter
     {
         private float lower_bound;

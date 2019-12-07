@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class ConstructorInfoExtensions_ConstructorInvoker
     {
         static public T CreateDynamicConstructorInvokerDelegate<T>(this ConstructorInfo item)

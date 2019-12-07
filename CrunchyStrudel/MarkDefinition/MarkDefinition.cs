@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchyStrudel
+namespace Crunchy.Strudel
 {
+    using Dough;
+    using Bun;
+    
     public class MarkDefinition
     {
         private int[] intersections;

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class RectF2Extensions
     {
         static public bool TryCreateStrictMinMaxRectF2(VectorF2 min, VectorF2 max, out RectF2 rect)

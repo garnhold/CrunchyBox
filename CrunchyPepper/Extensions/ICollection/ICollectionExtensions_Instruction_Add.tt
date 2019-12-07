@@ -29,9 +29,9 @@ using System.Collections.Generic;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
 	static public class ICollectionExtensions_Instruction_Add
     {

@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public struct Tuple<T1, T2, T3, T4, T5>
     {

@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Text.RegularExpressions;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_Member_PathResolver
     {
         static private OperationCache<PathResolver, Type, string> GET_PATH_RESOLVER = ReflectionCache.Get().NewOperationCache("GET_PATH_RESOLVER", delegate(Type type, string path) {

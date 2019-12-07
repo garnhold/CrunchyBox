@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
     public abstract class RandFloatBox : RandBox<float>
     {

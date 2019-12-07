@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchyCheese;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    using Cheese;
+    
     public class Signal_Periodic_MExp : Signal_Periodic_Typical
     {
         [SerializeFieldEX]private string equation;

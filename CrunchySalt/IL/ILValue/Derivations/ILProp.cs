@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,11 +6,11 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    using Salt;
+    
     public class ILProp : ILValue, ILAddressable
     {
         private ILValue target;

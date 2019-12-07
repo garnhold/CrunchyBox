@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     public class Nook_Pair_Shadowed : Nook_Pair
     {
         public Nook_Pair_Shadowed(Nook d, Nook s) : base(d, s)

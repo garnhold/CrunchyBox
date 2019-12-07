@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class LineSegment3Extensions_Cast
     {
         static public bool Cast(this LineSegment3 item, out RaycastHit hit, int layer_mask = IntBits.ALL_BITS)

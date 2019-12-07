@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,15 +6,15 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySauce;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    using Sauce;
+    using Sandwich;
+    
     public class PainterBrush_SoftCircle : PainterBrush
     {
         [SerializeField][Range(0.0f, 1.0f)]private float hardness;

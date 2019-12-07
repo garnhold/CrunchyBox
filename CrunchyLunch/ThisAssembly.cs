@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
     public class ThisAssembly
     {

@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	static public class CMinorEnvironmentExtensions_Indirect
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
+    static public class CMinorEnvironmentExtensions_Indirect
 	{
         static public ILValue ResolveIndirectIdentifierAsValue(this CMinorEnvironment item, ILValue context, string id)
         {

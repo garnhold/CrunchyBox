@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     public abstract class NookSystem_StorageStructure_Id : NookSystem_StorageStructure<StorageStructure_ById, FileSnapshot_ById>
     {
         protected abstract bool CreateInternalViaParentId(string parent_id, string name, string mime_type, Process<Stream> process, out FileSnapshot_ById snapshot);

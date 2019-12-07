@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class ForTypes
     {
         static private OperationCache<List<Type>, Type, Type> GET_ALL_TYPES_FOR_TYPE = ReflectionCache.Get().NewOperationCache("GET_ALL_TYPES_FOR_TYPE", delegate(Type attribute_type, Type type) {

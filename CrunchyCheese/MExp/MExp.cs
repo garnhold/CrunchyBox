@@ -8,12 +8,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCheese
+namespace Crunchy.Cheese
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class MExp
     {
         static private OperationCache<Operation<float, float>, string, string> CREATE_OPERATION1 = ReflectionCache.Get().NewOperationCache("CREATE_OPERATION1", delegate(string text, string term) {

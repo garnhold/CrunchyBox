@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_HasCustomForTypeAttributeOfType<T> : Filterer_Type_HasCustomForTypeAttributeOfType where T : ForTypeAttribute
     {
         public Filterer_Type_HasCustomForTypeAttributeOfType(Type t) : base(typeof(T), t)

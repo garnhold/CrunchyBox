@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class TimeSource_System : TimeSource
     {

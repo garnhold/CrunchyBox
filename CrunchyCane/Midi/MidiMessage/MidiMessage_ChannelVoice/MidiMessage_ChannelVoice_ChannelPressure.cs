@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
+    using Dough;
+    
     public class MidiMessage_ChannelVoice_ChannelPressure : MidiMessage_ChannelVoice
     {
         private byte pressure;

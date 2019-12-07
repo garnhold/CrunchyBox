@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_IsNestedClass : Filterer_Simple<Type>
     {
         static public readonly Filterer_Type_IsNestedClass INSTANCE = new Filterer_Type_IsNestedClass();

@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     [ExecuteInEditMode]
     [AddComponentMenu("Pathfinding2D/PathNode2D/PathNode2D_BlockableStatic")]
     public class PathNode2D_BlockableStatic : PathNode2D

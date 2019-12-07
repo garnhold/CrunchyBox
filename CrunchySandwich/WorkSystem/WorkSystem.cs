@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    
     public class WorkSystem : Subsystem<WorkSystem>
     {
         [SerializeFieldEX]private Duration target_frame_length = Duration.Hertz(60.0f);

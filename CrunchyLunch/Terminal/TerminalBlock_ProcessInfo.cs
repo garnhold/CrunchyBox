@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    
     public class TerminalBlock_ProcessInfo : TerminalBlock_Text
     {
         private string process_name;

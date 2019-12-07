@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     static public partial class EditorGUIExtensions
     {
         static public string TextArea(Rect rect, GUIContent label, string value, bool use_word_wrap)

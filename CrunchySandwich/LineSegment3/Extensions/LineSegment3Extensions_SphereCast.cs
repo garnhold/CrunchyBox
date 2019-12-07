@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class LineSegment3Extensions_SphereCast
     {
         static public bool SphereCast(this LineSegment3 item, float radius, out RaycastHit hit, int layer_mask = IntBits.ALL_BITS)

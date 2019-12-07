@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRamen
+namespace Crunchy.Ramen
 {
-	static public partial class CMinor
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    static public partial class CMinor
 	{
         static private OperationCache<Operation<object, object>, Type, string, CMinorCompileType> COMPILE_FOR_OBJECT = ReflectionCache.Get().NewOperationCache("COMPILE_FOR_OBJECT", delegate(Type object_type, string code, CMinorCompileType compile_type) {
             return object_type.CreateDynamicMethodDelegateWithForcedParameterTypes<Operation<object, object>>(delegate(ILValue value) {

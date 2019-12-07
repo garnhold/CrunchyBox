@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_HasCustomLabeledAttributeOfType<T> : Filterer_Type_HasCustomLabeledAttributeOfType where T : LabeledAttribute
     {
         public Filterer_Type_HasCustomLabeledAttributeOfType(string l, bool i) : base(typeof(T), l, i)

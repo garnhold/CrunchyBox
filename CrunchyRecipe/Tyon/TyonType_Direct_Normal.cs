@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonType_Direct_Normal : TyonType_Direct
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonType_Direct_Normal : TyonType_Direct
 	{
         public TyonType_Direct_Normal(Type type) : this()
         {

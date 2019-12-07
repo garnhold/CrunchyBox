@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyRecipe;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Recipe;
+    
     public class UnityTyonDesignatedVariableProvider : TyonDesignatedVariableProvider_Fields
     {
         static public readonly UnityTyonDesignatedVariableProvider INSTANCE = new UnityTyonDesignatedVariableProvider();

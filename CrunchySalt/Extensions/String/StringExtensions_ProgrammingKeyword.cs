@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class StringExtensions_ProgrammingKeyword
     {
         static private HashSet<string> RESERVED_KEYWORDS = new HashSet<string>(new string[] {

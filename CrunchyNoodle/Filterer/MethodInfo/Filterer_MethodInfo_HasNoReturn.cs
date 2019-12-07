@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_MethodInfo_HasNoReturn : Filterer_Simple<MethodInfo>
     {
         static public readonly Filterer_MethodInfo_HasNoReturn INSTANCE = new Filterer_MethodInfo_HasNoReturn();
