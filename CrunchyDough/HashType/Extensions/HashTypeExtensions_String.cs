@@ -12,5 +12,10 @@ namespace Crunchy.Dough
         {
             return item.Calculate(input.ToUnicodeBytes());
         }
+
+        static public ByteSequence CalculateAsASCII(this HashType item, string input)
+        {
+            return item.Calculate(input.ToAsciiBytes());
+        }
     }
 }

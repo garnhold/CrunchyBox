@@ -14,6 +14,11 @@ namespace Crunchy.Dough
             return Encoding.Unicode.GetBytes(item);
         }
 
+        static public byte[] ToUTF8Bytes(this string item)
+        {
+            return Encoding.UTF8.GetBytes(item);
+        }
+
         static public byte[] ToAsciiBytes(this string item)
         {
             return Encoding.ASCII.GetBytes(item);

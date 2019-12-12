@@ -1177,6 +1177,8 @@
     <Compile Include="Extensions\Number_Real\NumberRealExtensions.cs">
       <DependentUpon>NumberRealExtensions.tt</DependentUpon>
     </Compile>
+    <Compile Include="HashType\Extensions\HashTypeExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_UInt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

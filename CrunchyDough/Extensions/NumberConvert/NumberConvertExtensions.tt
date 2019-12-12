@@ -4,16 +4,17 @@
 <#@ output extension=".cs" #>
 <#
 NumericInfo[] real_infos = new NumericInfo[]{
-	new NumericInfo("float", "Float", "0.0f", "float.MaxValue"),
-	new NumericInfo("double", "Double", "0.0", "double.MaxValue"),
-	new NumericInfo("decimal", "Decimal", "0.0m", "decimal.MaxValue")
+	new NumericInfo("float", "Float", "0.0f", "float.MaxValue", 32),
+	new NumericInfo("double", "Double", "0.0", "double.MaxValue", 64),
+	new NumericInfo("decimal", "Decimal", "0.0m", "decimal.MaxValue", 128)
 };
 
 NumericInfo[] infos = new NumericInfo[]{
-	new NumericInfo("byte", "Byte", "0", "byte.MaxValue"),
-	new NumericInfo("short", "Short", "0", "short.MaxValue"),
-	new NumericInfo("int", "Int", "0", "int.MaxValue"),
-	new NumericInfo("long", "Long", "0", "long.MaxValue")
+	new NumericInfo("byte", "Byte", "0", "byte.MaxValue", 8),
+	new NumericInfo("short", "Short", "0", "short.MaxValue", 16),
+	new NumericInfo("int", "Int", "0", "int.MaxValue", 32),
+    new NumericInfo("uint", "UInt", "0", "uint.MaxValue", 32),
+	new NumericInfo("long", "Long", "0", "long.MaxValue", 64)
 };
 #>
 using System;
@@ -42,6 +43,45 @@ namespace Crunchy.Dough
 		}
 	<# } #>
 <# } #>
+
+
+<# for(int i = 0; i < infos.Length; i++){#>
+    <# for(int j = i + 1; j < infos.Length; j++){#>
+        <#NumericInfo src_info = infos[i];#>
+        <#NumericInfo dst_info = infos[j];#>
+        <#int count = dst_info.bits / src_info.bits;#>
+        <#if(count >= 2){#>
+            static public IEnumerable<<#=src_info.type_name#>> GetComposite<#=src_info.class_name#>s(this <#=dst_info.type_name#> item)
+            {
+                <#for(int q = 0; q < count; q++){#>
+                    yield return (<#=src_info.type_name#>)(item >> <#=q * src_info.bits#>);
+                <#}#>
+            }
+        
+            static public <#=dst_info.type_name#> GetComposite<#=dst_info.class_name#>(this <#=src_info.type_name#> item0<#for(int q = 1; q < count; q++){#>, <#=src_info.type_name#> item<#=q#> <#}#>)
+            {
+                <#=dst_info.type_name#> dst = <#=dst_info.minimum#>;
+            
+                <#for(int q = 0; q < count; q++){#>
+                    dst |= (<#=dst_info.type_name#>)((<#=dst_info.type_name#>)item<#=q#> << <#=q * src_info.bits#>);
+                <#}#>
+                
+                return dst;
+            }
+            
+            static public <#=dst_info.type_name#> GetComposite<#=dst_info.class_name#>(this IEnumerable<<#=src_info.type_name#>> item)
+            {
+                <#for(int q = 0; q < count; q++){#>
+                    <#=src_info.type_name#> src<#=q#>;
+                <#}#>
+                
+                item.PartOut(out src0<#for(int q = 1; q < count; q++){#>, out src<#=q#><#}#>);
+                
+                return src0.GetComposite<#=dst_info.class_name#>(src1<#for(int q = 2; q < count; q++){#>, src<#=q#><#}#>);
+            }
+        <# } #>
+    <# } #>
+<# } #>
 	}
 }
 <#+
@@ -52,14 +92,18 @@ public class NumericInfo
 
 	public readonly string minimum;
 	public readonly string maximum;
+    
+    public readonly int bits;
 
-	public NumericInfo(string t, string c, string min, string max)
+	public NumericInfo(string t, string c, string min, string max, int b)
 	{
 		type_name = t;
 		class_name = c;
 
 		minimum = min;
 		maximum = max;
+        
+        bits = b;
 	}
 }
 #>

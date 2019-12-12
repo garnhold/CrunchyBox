@@ -3,6 +3,8 @@ using System.IO;
 using System.Reflection;
 using System.Security;
 using System.Security.Cryptography;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
