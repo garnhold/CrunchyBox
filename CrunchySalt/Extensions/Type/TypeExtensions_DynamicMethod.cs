@@ -16,7 +16,7 @@ namespace Crunchy.Salt
             if (name.IsBlank())
                 name = ProgrammingEntityName.GenerateFunctionName();
 
-            return "CrunchySalt.DynamicMethod[" + name + "]";
+            return "Crunchy.Salt.DynamicMethod[" + name + "]";
         }
 
         static public DynamicMethod CreateDynamicMethod(this Type item, string name, Type return_type, params Type[] parameter_types)

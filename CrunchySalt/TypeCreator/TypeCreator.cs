@@ -12,7 +12,7 @@ namespace Crunchy.Salt
         static private ModuleBuilder GetModuleBuilder()
         {
             if (MODULE_BUILDER == null)
-                MODULE_BUILDER = AssemblyCreator.CreateInternalSingleModuleAssemblyBuilder("CrunchySalt.DynamicTypes");
+                MODULE_BUILDER = AssemblyCreator.CreateInternalSingleModuleAssemblyBuilder("Crunchy.Salt.DynamicTypes");
 
             return MODULE_BUILDER;
         }

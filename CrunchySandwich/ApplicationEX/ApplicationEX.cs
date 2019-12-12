@@ -19,10 +19,10 @@ namespace Crunchy.Sandwich
         private Thread unity_main_thread;
 
         private List<Process> start_processes;
-        private List<Process> start_in_editor_processes; //These will only be called if CrunchySandwichBag is also used
+        private List<Process> start_in_editor_processes; //These will only be called if Crunchy.SandwichBag is also used
 
         private List<Process> update_processes;
-        private List<Process> update_in_editor_processes; //These will only be called if CrunchySandwichBag is also used
+        private List<Process> update_in_editor_processes; //These will only be called if Crunchy.SandwichBag is also used
 
         private List<Process> draw_gizmos_processes;
         private List<Process> deferred_processes;

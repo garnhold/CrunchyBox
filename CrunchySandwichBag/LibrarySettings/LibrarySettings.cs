@@ -44,7 +44,7 @@ namespace Crunchy.SandwichBag
                 "EXTRA_CLASS", GetLibraryName() + "Extensions"
             );
 
-            writer.Write("public class ?CLASS : CrunchySandwich.Subsystem<?CLASS>", delegate() {
+            writer.Write("public class ?CLASS : Crunchy.Sandwich.Subsystem<?CLASS>", delegate() {
                 GetObjects().Process(o => GenerateObjectMembers(o, builder));
             });
 
