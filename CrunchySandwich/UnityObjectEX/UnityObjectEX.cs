@@ -107,7 +107,7 @@ namespace Crunchy.Sandwich
 					tyon_data = old_tyon_data;
 					tyon_unity_objects = old_tyon_unity_objects;
 
-					pack_error = ex.ToString();
+					pack_error = ex.Message + "\n\n" + ex;
 				}
 			}
 		}
@@ -133,7 +133,7 @@ namespace Crunchy.Sandwich
 				}
 				catch(Exception ex)
 				{
-					unpack_error = ex.ToString();
+					unpack_error = ex.Message + "\n\n" + ex;
 				}
 			}
 		}
@@ -284,7 +284,7 @@ namespace Crunchy.Sandwich
 					tyon_data = old_tyon_data;
 					tyon_unity_objects = old_tyon_unity_objects;
 
-					pack_error = ex.ToString();
+					pack_error = ex.Message + "\n\n" + ex;
 				}
 			}
 		}
@@ -310,7 +310,7 @@ namespace Crunchy.Sandwich
 				}
 				catch(Exception ex)
 				{
-					unpack_error = ex.ToString();
+					unpack_error = ex.Message + "\n\n" + ex;
 				}
 			}
 		}

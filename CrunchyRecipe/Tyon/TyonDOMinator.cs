@@ -1730,8 +1730,11 @@ namespace Crunchy.Recipe
 	{
 		private int line;
 		private int column;
-		private string base_message;
-		public TyonSyntaxException(int l, int c, string m) : base()
+        private string base_message;
+
+        public override string Message { get{ return GetMessage(); } }
+
+        public TyonSyntaxException(int l, int c, string m) : base()
 		{
 			line = l;
 			column = c;
