@@ -39,7 +39,7 @@ namespace Crunchy.SandwichBag
             }
             else
             {
-                container.AddChild(new EditorGUIElement_Complex_MissingScriptSerializedObject(serialized_object));
+                container.AddChild(new EditorGUIElement_Text("Missing Script"));
             }
 
             return container;
