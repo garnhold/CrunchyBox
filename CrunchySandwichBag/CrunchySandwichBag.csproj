@@ -73,7 +73,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElementPlan\EditorGUIElementPlan.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_TypedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_ScriptletArgument.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_MissingScriptSerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_SerializedObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_UnityObject.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Container\EditorGUIElementDimension\EditorGUIElementDimension.cs" />
@@ -467,7 +466,6 @@
       <DependentUpon>UnityObjectEXInitializer.tt</DependentUpon>
     </Compile>
     <Compile Include="Project\Project_Sofabs.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElementAttachment\EditorGUIElementAttachment_AntiDisabled.cs" />
     <Compile Include="LibrarySettings\LibraryInitializer.cs" />
     <Compile Include="LibrarySettings\LibrarySettings.cs" />
     <Compile Include="Prefabs\DeployablePrefabsSettings.cs" />
