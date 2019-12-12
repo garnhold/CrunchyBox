@@ -17,5 +17,14 @@ namespace Crunchy.SandwichBag
             if (order != MonoImporter.GetExecutionOrder(item))
                 MonoImporter.SetExecutionOrder(item, order);
         }
+
+        static public long GetFileId(this MonoScript item)
+        {
+            string guid;
+            long file_id;
+
+            AssetDatabase.TryGetGUIDAndLocalFileIdentifier(item, out guid, out file_id);
+            return file_id;
+        }
     }
 }
