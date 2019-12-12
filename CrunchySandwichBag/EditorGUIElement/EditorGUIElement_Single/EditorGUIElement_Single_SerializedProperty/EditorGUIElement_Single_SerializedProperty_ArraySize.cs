@@ -22,7 +22,7 @@ namespace Crunchy.SandwichBag
             return true;
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
             GetSerializedProperty().SetArraySize(new_array_size);
         }

@@ -23,14 +23,14 @@ namespace Crunchy.SandwichBag
             GetChildren().Process(c => c.Initialize());
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
-            GetChildren().Process(c => c.Draw(view));
+            GetChildren().Process(c => c.Draw(draw_id, view));
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
-            GetChildren().Process(c => c.Unwind());
+            GetChildren().Process(c => c.Unwind(draw_id));
         }
 
         public EditorGUIElement_Container()

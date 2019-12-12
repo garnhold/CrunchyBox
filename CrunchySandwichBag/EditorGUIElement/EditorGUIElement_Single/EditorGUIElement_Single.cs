@@ -33,7 +33,7 @@ namespace Crunchy.SandwichBag
             return rect;
         }
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             if (DrawSingleInternal(element_rect) == false)
                 EditorGUI.LabelField(element_rect, "--Disabled--");

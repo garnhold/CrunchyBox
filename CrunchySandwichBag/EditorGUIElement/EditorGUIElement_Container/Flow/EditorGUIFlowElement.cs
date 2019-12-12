@@ -32,8 +32,8 @@ namespace Crunchy.SandwichBag
 
         public void Initialize() { element.Initialize(); }
         public void Layout(Vector2 position) { element.Layout(position); }
-        public void Draw(Rect view) { element.Draw(view); }
-        public void Unwind() { element.Unwind(); }
+        public void Draw(int draw_id, Rect view) { element.Draw(draw_id, view); }
+        public void Unwind(int draw_id) { element.Unwind(draw_id); }
 
         public void Invalidate() { element.Invalidate(); }
         public void InvalidatePlan() { element.InvalidatePlan(); }

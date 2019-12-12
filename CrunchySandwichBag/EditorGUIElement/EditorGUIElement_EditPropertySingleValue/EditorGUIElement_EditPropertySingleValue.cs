@@ -17,7 +17,7 @@ namespace Crunchy.SandwichBag
 
         protected abstract void DrawUnifiedElementInternal(Rect rect, T old_value);
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             T old_value;
 

@@ -64,16 +64,16 @@ namespace Crunchy.SandwichBag
             }
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
-            main_element.Draw(view);
-            auxillary_element.Draw(view);
+            main_element.Draw(draw_id, view);
+            auxillary_element.Draw(draw_id, view);
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
-            main_element.Unwind();
-            auxillary_element.Unwind();
+            main_element.Unwind(draw_id);
+            auxillary_element.Unwind(draw_id);
         }
 
         public EditorGUIElement_Sideboard(EditorGUIFlowElement m, EditorGUIFlowElement a)

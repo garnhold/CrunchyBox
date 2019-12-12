@@ -21,6 +21,8 @@ namespace Crunchy.SandwichBag
         private EditorGUIElementPlan element_plan;
         private EditorGUIElementPlan contents_plan;
 
+        private int last_draw_id;
+
         private float footprint_height;
 
         private Vector2 layout_position;
@@ -42,10 +44,10 @@ namespace Crunchy.SandwichBag
         protected virtual Rect LayoutElementInternal(Rect rect) { return rect; }
         protected virtual void LayoutContentsInternal(Vector2 position) { }
 
-        protected virtual void DrawElementInternal(Rect view) { }
-        protected virtual void DrawContentsInternal(Rect view) { }
+        protected virtual void DrawElementInternal(int draw_id, Rect view) { }
+        protected virtual void DrawContentsInternal(int draw_id, Rect view) { }
 
-        protected virtual void UnwindInternal() { }
+        protected virtual void UnwindInternal(int draw_id) { }
 
         public const float LINE_HEIGHT = 16.0f;
 
@@ -132,34 +134,39 @@ namespace Crunchy.SandwichBag
             }
         }
 
-        public void Draw(Rect view)
+        public void Draw(int draw_id, Rect view)
         {
             EditorGUIUtilityExtensions.UseLabelWidth(layout_state.GetCurrentLabelWidth(), delegate() {
                 attachments.Process(a => a.PreDrawInternal());
                     if (view.Overlaps(element_rect))
                     {
-                        DrawElementInternal(view);
-                        DrawContentsInternal(view);
+                        DrawElementInternal(draw_id, view);
+                        DrawContentsInternal(draw_id, view);
 
                         attachments.Process(a => a.DrawInternal(view));
                     }
                 attachments.Process(a => a.PostDrawInternal());
             });
+
+            last_draw_id = draw_id;
         }
 
-        public void Unwind()
+        public void Unwind(int draw_id)
         {
-            UnwindInternal();
-            attachments.Process(a => a.UnwindInternal());
-
-            if (is_plan_invalid)
+            if (draw_id == last_draw_id)
             {
-                if (DoPlan())
-                    parent.IfNotNull(p => p.Invalidate());
-            }
+                UnwindInternal(draw_id);
+                attachments.Process(a => a.UnwindInternal());
 
-            if (is_layout_invalid)
-                DoLayout();
+                if (is_plan_invalid)
+                {
+                    if (DoPlan())
+                        parent.IfNotNull(p => p.Invalidate());
+                }
+
+                if (is_layout_invalid)
+                    DoLayout();
+            }
         }
 
         public void Invalidate()

@@ -21,7 +21,7 @@ namespace Crunchy.SandwichBag
         private bool is_dropped;
         private IList<T> dragged;
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             GUIExtensions.DrawOutlinedRect(GetElementRect(), Color.gray);
             GUI.Label(GetElementRect(), label);
@@ -29,7 +29,7 @@ namespace Crunchy.SandwichBag
             is_dropped = EditorGUIExtensions.DropZone(GetElementRect(), predicate, out dragged);
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
             if (is_dropped)
                 process(dragged);

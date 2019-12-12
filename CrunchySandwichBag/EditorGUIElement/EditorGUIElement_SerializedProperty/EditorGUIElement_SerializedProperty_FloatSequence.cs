@@ -34,7 +34,7 @@ namespace Crunchy.SandwichBag
             return background_rect;
         }
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             EditorGUI.DrawRect(border_rect, Color.black);
             EditorGUI.DrawRect(background_rect, Color.gray);

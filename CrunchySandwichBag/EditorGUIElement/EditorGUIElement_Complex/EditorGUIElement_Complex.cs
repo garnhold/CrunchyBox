@@ -52,20 +52,20 @@ namespace Crunchy.SandwichBag
 
         protected override void LayoutContentsInternal(Vector2 position)
         {
-            if (element != null)
-                element.Layout(position);
+            element.IfNotNull(e => e.Layout(position));
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
-            if (element != null)
-            {
-                element.Draw(view);
-                element.Unwind();
-            }
+            element.IfNotNull(e => e.Draw(draw_id, view));
+        }
 
+        protected override void UnwindInternal(int draw_id)
+        {
             if (NeedRecreation())
                 Initialize();
+            else
+                element.IfNotNull(e => e.Unwind(draw_id));
         }
 
         public EditorGUIElement_Complex()

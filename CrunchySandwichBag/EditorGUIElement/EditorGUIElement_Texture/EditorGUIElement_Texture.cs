@@ -15,7 +15,7 @@ namespace Crunchy.SandwichBag
     {
         private Texture2D texture;
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             if (texture != null)
                 EditorGUI.DrawTextureTransparent(GetElementRect(), texture);

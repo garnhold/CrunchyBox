@@ -20,7 +20,7 @@ namespace Crunchy.SandwichBag
             return text.GetNumberLines() * LINE_HEIGHT;
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
             GUI.Label(GetContentsRect(), text);
         }

@@ -18,12 +18,12 @@ namespace Crunchy.SandwichBag
 
         private bool is_pressed;
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             is_pressed = GUI.Button(GetElementRect(), label);
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
             if (is_pressed)
                 process();

@@ -20,7 +20,7 @@ namespace Crunchy.SandwichBag
             new_array_size = EditorGUI.DelayedIntField(GetElementRect(), array_size);
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
             GetProperty().Resize(new_array_size);
         }

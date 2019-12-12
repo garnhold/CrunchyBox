@@ -41,7 +41,7 @@ namespace Crunchy.SandwichBag
             return rect;
         }
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             EditorGUI.PropertyField(element_rect, GetSerializedProperty(), label.GetLabel());
         }

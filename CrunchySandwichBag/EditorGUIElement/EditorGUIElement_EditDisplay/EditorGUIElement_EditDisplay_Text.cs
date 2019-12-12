@@ -19,7 +19,7 @@ namespace Crunchy.SandwichBag
             return LINE_HEIGHT * 1.2f;
         }
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             object value;
 

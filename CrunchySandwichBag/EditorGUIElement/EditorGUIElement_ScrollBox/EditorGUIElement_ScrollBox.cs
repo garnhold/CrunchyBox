@@ -46,19 +46,19 @@ namespace Crunchy.SandwichBag
             element.Layout(new Vector2(0.0f, 0.0f));
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
             Rect visible_box_rect = scroll_box_rect.GetIntersection(view);
             Rect visible_space_rect = visible_box_rect.GetShifted(scroll_position - scroll_box_rect.min);
 
             scroll_position = GUI.BeginScrollView(scroll_box_rect, scroll_position, element.GetElementRect());
-                element.Draw(visible_space_rect);
+                element.Draw(draw_id, visible_space_rect);
             GUI.EndScrollView(IsOverflown());
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
-            element.Unwind();
+            element.Unwind(draw_id);
         }
 
         public EditorGUIElement_ScrollBox(T e, float h)

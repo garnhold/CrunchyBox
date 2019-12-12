@@ -16,12 +16,12 @@ namespace Crunchy.SandwichBag
         private Process<Rect> draw_process;
         private Process unwind_process;
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             draw_process(GetElementRect());
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
             if (unwind_process != null)
                 unwind_process();

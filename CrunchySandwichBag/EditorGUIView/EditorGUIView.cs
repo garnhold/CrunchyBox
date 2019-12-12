@@ -16,9 +16,13 @@ namespace Crunchy.SandwichBag
         private Rect visible_rect;
         private EditorGUIElement element;
 
+        private int next_draw_id;
+
         public EditorGUIView(EditorGUIElement e)
         {
             element = e;
+
+            next_draw_id = 1;
         }
 
         public void LayoutDrawUnwind(Rect rect, EditorGUILayoutState state)
@@ -37,11 +41,13 @@ namespace Crunchy.SandwichBag
 
             if (rect.width > 16.0f)
             {
+                int draw_id = next_draw_id++;
+
                 element.Plan(rect.width, state);
                 element.Layout(rect.min);
 
-                element.Draw(visible_rect);
-                element.Unwind();
+                element.Draw(draw_id, visible_rect);
+                element.Unwind(draw_id);
             }
         }
 

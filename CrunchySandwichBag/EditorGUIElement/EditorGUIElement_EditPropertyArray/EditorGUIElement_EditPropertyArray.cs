@@ -17,18 +17,14 @@ namespace Crunchy.SandwichBag
 
         protected abstract void DrawArrayInternal(Rect rect, int array_size);
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             int array_size;
 
             if (property.TryGetNumberElements(out array_size))
-            {
                 DrawArrayInternal(GetElementRect(), array_size);
-            }
             else
-            {
                 GUI.Label(GetElementRect(), "(Non-Unified Array Length)");
-            }
         }
 
         public EditorGUIElement_EditPropertyArray(EditProperty_Array p)

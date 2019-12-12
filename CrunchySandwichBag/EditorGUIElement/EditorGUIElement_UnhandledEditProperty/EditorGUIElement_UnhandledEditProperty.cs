@@ -15,7 +15,7 @@ namespace Crunchy.SandwichBag
     {
         private EditProperty property;
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             GUI.Label(GetElementRect(), "--Unable to create GUI element for " + property + "--");
         }

@@ -49,21 +49,21 @@ namespace Crunchy.SandwichBag
             container.Layout(position);
         }
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             SetIsOpen(EditorGUI.Foldout(label_rect, IsOpen(), text, true));
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
             if (IsOpen())
-                container.Draw(view);
+                container.Draw(draw_id, view);
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
             if(IsOpen())
-                container.Unwind();
+                container.Unwind(draw_id);
         }
 
         public EditorGUIElement_Foldout(string t, T c, float h)

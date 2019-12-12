@@ -13,7 +13,7 @@ namespace Crunchy.SandwichBag
     
     public class EditorGUIElement_HorizontalRule : EditorGUIElement
     {
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             Rect rect = GetElementRect();
 
