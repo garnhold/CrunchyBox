@@ -196,7 +196,6 @@
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered_Unity.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Option\InputDeviceComponent_Option.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickSpriteMap\InputDeviceStickSpriteMap.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_Axis.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_Native.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton.cs" />
