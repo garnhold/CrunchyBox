@@ -37,5 +37,15 @@ namespace Crunchy.Noodle
             variable = v;
             index = i;
         }
+
+        public void SetElementIndex(int i)
+        {
+            index = i;
+        }
+
+        public int GetElementIndex()
+        {
+            return index;
+        }
     }
 }
