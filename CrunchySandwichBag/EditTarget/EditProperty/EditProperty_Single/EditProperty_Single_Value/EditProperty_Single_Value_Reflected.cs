@@ -11,7 +11,7 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public class EditProperty_Single_Value_Reflected : EditProperty_Single_Value
+    public class EditProperty_Single_Value_Reflected : EditProperty_Single_Value, EditPropertyReflected
     {
         private ReflectedProperty_Single_Value property;
 
@@ -77,6 +77,11 @@ namespace Crunchy.SandwichBag
         public override IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
         {
             return property.GetAllCustomAttributes(inherit);
+        }
+
+        public ReflectedProperty GetReflectedProperty()
+        {
+            return property;
         }
     }
 }

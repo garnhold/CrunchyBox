@@ -12,7 +12,7 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public class EditProperty_Array_Serialized : EditProperty_Array
+    public class EditProperty_Array_Serialized : EditProperty_Array, EditPropertySerialized
     {
         private SerializedProperty property;
 
@@ -84,6 +84,16 @@ namespace Crunchy.SandwichBag
             return false;
         }
 
+        public override int GetIndexOfElement(EditProperty element)
+        {
+            EditPropertySerialized cast;
+
+            if (element.Convert<EditPropertySerialized>(out cast))
+                return property.FindIndexOfArrayElement(cast.GetSerializedProperty());
+
+            return -1;
+        }
+
         public override string GetName()
         {
             return property.name;
@@ -102,6 +112,11 @@ namespace Crunchy.SandwichBag
         public override IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
         {
             return property.GetAllCustomAttributes(inherit);
+        }
+
+        public SerializedProperty GetSerializedProperty()
+        {
+            return property;
         }
     }
 }

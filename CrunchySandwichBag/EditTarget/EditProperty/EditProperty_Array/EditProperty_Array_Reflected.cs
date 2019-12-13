@@ -11,7 +11,7 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public class EditProperty_Array_Reflected : EditProperty_Array
+    public class EditProperty_Array_Reflected : EditProperty_Array, EditPropertyReflected
     {
         private ReflectedProperty_Array property;
 
@@ -70,6 +70,16 @@ namespace Crunchy.SandwichBag
             return property.TryGetNumberElements(out number);
         }
 
+        public override int GetIndexOfElement(EditProperty element)
+        {
+            EditPropertyReflected cast;
+
+            if (element.Convert<EditPropertyReflected>(out cast))
+                return property.GetIndexOfElement(cast.GetReflectedProperty());
+
+            return -1;
+        }
+
         public override string GetName()
         {
             return property.GetVariableName();
@@ -88,6 +98,11 @@ namespace Crunchy.SandwichBag
         public override IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
         {
             return property.GetAllCustomAttributes(inherit);
+        }
+
+        public ReflectedProperty GetReflectedProperty()
+        {
+            return property;
         }
     }
 }

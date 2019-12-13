@@ -422,11 +422,7 @@
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadget.cs" />
     <Compile Include="ReflectedObject\ReflectedGadget\ReflectedGadgetInstance.cs" />
     <Compile Include="ReflectedObject\ReflectedObject.cs" />
-    <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Single.cs" />
     <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty.cs" />
-    <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Array.cs" />
-    <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Single_Object.cs" />
-    <Compile Include="ReflectedObject\ReflectedProperty\ReflectedProperty_Single_Value.cs" />
     <Compile Include="ScriptExecutionOrderAttribute\ScriptExecutionOrderAttributeInitilizer.cs" />
     <Compile Include="SequencedSprite\SequencedSpriteFormat.cs" />
     <Compile Include="SequencedSprite\SequencedSpriteMenuInitilizer.cs" />
@@ -471,6 +467,13 @@
     <Compile Include="Prefabs\DeployablePrefabsSettings.cs" />
     <Compile Include="Prefabs\EphemeralPrefabsSettings.cs" />
     <Compile Include="InputDevice\InputDeviceActionSettings.cs" />
+    <Compile Include="ReflectedObject\ReflectedProperty\Single\ReflectedProperty_Single.cs" />
+    <Compile Include="ReflectedObject\ReflectedProperty\Single\ReflectedProperty_Single_Object.cs" />
+    <Compile Include="ReflectedObject\ReflectedProperty\Single\ReflectedProperty_Single_Value.cs" />
+    <Compile Include="ReflectedObject\ReflectedProperty\Array\ReflectedProperty_Array.cs" />
+    <Compile Include="ReflectedObject\ReflectedProperty\Array\ReflectedPropertyArrayElement.cs" />
+    <Compile Include="EditTarget\EditProperty\EditPropertyReflected.cs" />
+    <Compile Include="EditTarget\EditProperty\EditPropertySerialized.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -566,6 +569,8 @@
     <Folder Include="Extensions\SceneEX\" />
     <Folder Include="UnityObjectEX\" />
     <Folder Include="LibrarySettings\" />
+    <Folder Include="ReflectedObject\ReflectedProperty\Single\" />
+    <Folder Include="ReflectedObject\ReflectedProperty\Array\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

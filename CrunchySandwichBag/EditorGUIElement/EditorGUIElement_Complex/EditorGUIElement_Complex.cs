@@ -30,8 +30,7 @@ namespace Crunchy.SandwichBag
                 }
             }
 
-            if (element != null)
-                element.Initialize();
+            element.IfNotNull(e => e.Initialize());
         }
 
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
@@ -62,10 +61,10 @@ namespace Crunchy.SandwichBag
 
         protected override void UnwindInternal(int draw_id)
         {
+            element.IfNotNull(e => e.Unwind(draw_id));
+
             if (NeedRecreation())
                 Initialize();
-            else
-                element.IfNotNull(e => e.Unwind(draw_id));
         }
 
         public EditorGUIElement_Complex()

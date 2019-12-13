@@ -12,7 +12,7 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public class EditProperty_Value_Serialized : EditProperty_Single_Value
+    public class EditProperty_Value_Serialized : EditProperty_Single_Value, EditPropertySerialized
     {
         private SerializedProperty property;
 
@@ -103,6 +103,11 @@ namespace Crunchy.SandwichBag
                 .IfNotNull(d => d.CreateEditorGUIElement(property))
                 ??
                 base.CreateEditorGUIElementInternal();
+        }
+
+        public SerializedProperty GetSerializedProperty()
+        {
+            return property;
         }
     }
 }

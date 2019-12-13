@@ -20,6 +20,8 @@ namespace Crunchy.SandwichBag
         public abstract EditProperty GetElement(int index);
         public abstract bool TryGetNumberElements(out int number);
 
+        public abstract int GetIndexOfElement(EditProperty element);
+
         public abstract Type GetElementType();
 
         protected override EditorGUIElement CreateEditorGUIElementInternal()
@@ -29,6 +31,26 @@ namespace Crunchy.SandwichBag
 
         public EditProperty_Array(EditTarget t) : base(t)
         {
+        }
+
+        public void InsertElementBefore(EditProperty element)
+        {
+            InsertElement(GetIndexOfElement(element));
+        }
+
+        public void InsertElementAfter(EditProperty element)
+        {
+            InsertElement(GetIndexOfElement(element) + 1);
+        }
+
+        public void RemoveElement(EditProperty element)
+        {
+            RemoveElement(GetIndexOfElement(element));
+        }
+
+        public void MoveElement(EditProperty element, int index)
+        {
+            MoveElement(GetIndexOfElement(element), index);
         }
     }
 }
