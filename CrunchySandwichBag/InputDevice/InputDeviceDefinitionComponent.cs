@@ -11,16 +11,15 @@ namespace Crunchy.SandwichBag
     using Salt;
     using Ginger;
     using Sandwich;
-    
-    [AssetClassCategory("Input")]
-    public abstract class InputDeviceDefinitionComponent : CustomAsset
+
+    public abstract class InputDeviceDefinitionComponent
     {
+        [SerializeField] private string name;
+
         public abstract void GenerateInternalAxises(int device_id, SerializedProperty axises);
 
         public abstract void GenerateClassConstructor(CSTextDocumentBuilder builder, string device_id);
         public abstract void GenerateClassMembers(CSTextDocumentBuilder builder);
-
-        [SerializeField]private string name;
 
         protected void PushInternalButton(SerializedProperty property, string name, int device_id, string button)
         {

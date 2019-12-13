@@ -17,7 +17,7 @@ namespace Crunchy.SandwichBag
     public class InputDeviceDefinition : CustomAsset
     {
         [SerializeField]private int max_number_devices;
-        [SerializeField]private InputDeviceDefinitionComponent[] components;
+        [SerializeFieldEX][PolymorphicField]private List<InputDeviceDefinitionComponent> components;
 
         [ContextMenu("Use")]
         private void Use()
@@ -114,7 +114,7 @@ namespace Crunchy.SandwichBag
 
             writer.Write("public override ?TYPE ?FUNCTION(?ID_TYPE value)", delegate() {
                 writer.Write("switch(value.GetValue())", delegate() {
-                    components.Convert<T>().Process(c => c.GenerateGetVariableCase(builder));
+                    components.Convert<InputDeviceDefinitionComponent, T>().Process(c => c.GenerateGetVariableCase(builder));
                 });
 
                 writer.Write("throw new UnaccountedBranchException(\"value\", value);");
@@ -138,10 +138,10 @@ namespace Crunchy.SandwichBag
             );
 
             writer.Write("static public class ?CLASS", delegate() {
-                components.Convert<T>().Process(c => c.GenerateIdsMember(builder, type));
+                components.Convert<InputDeviceDefinitionComponent, T>().Process(c => c.GenerateIdsMember(builder, type));
 
                 writer.Write("static public IEnumerable<?TYPE> GetAll()", delegate() {
-                    components.Convert<T>().Process(c => c.GenerateIdsYield(builder));
+                    components.Convert<InputDeviceDefinitionComponent, T>().Process(c => c.GenerateIdsYield(builder));
 
                     writer.Write("yield break;");
                 });
