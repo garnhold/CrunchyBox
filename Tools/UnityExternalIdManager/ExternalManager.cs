@@ -12,6 +12,8 @@ using Crunchy.Salt;
 using Crunchy.Pepper;
 using Crunchy.Recipe;
 
+using UnityUtilities;
+
 public class ExternalManager
 {
     private ExternalTypeDatabase working_database;
@@ -77,8 +79,7 @@ public class ExternalManager
 
     public void ValidateFiles(string filepath)
     {
-        Directory.GetFiles(filepath, "*", SearchOption.AllDirectories)
-            .Narrow(p => p.EndsWithAny(".asset", ".prefab"))
+        UnityAssetFile.GetUnityAssetFiles(filepath)
             .Process(p => ValidateFile(p));
     }
     public void ValidateFile(string filepath)
@@ -107,7 +108,7 @@ public class ExternalManager
 
         if (modified_text != text)
         {
-            //File.WriteAllText(filepath, modified_text);
+            File.WriteAllText(filepath, modified_text);
             Console.WriteLine(filepath + " was modified.");
         }
     }

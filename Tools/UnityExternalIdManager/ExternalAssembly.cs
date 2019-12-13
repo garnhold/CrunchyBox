@@ -11,6 +11,8 @@ using Crunchy.Dough;
 using Crunchy.Salt;
 using Crunchy.Pepper;
 
+using UnityUtilities;
+
 public class ExternalAssembly
 {
     [SerializeField]private string path;
@@ -35,11 +37,6 @@ public class ExternalAssembly
         return path;
     }
 
-    public string GetMetaPath()
-    {
-        return GetPath() + ".meta";
-    }
-
     public AssemblyDefinition GetAssemblyDefinition()
     {
         if (assembly == null)
@@ -51,11 +48,7 @@ public class ExternalAssembly
     public string GetGUID()
     {
         if (guid.IsBlank())
-        {
-            guid = File.ReadAllText(GetMetaPath())
-               .RegexMatches("guid\\s*:\\s*([A-Za-z0-9_]+)")[0]
-                .Groups[1].Value;
-        }
+            guid = UnityAssetFile.GetGUID(GetPath());
 
         return guid;
     }

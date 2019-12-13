@@ -75,6 +75,10 @@
       <Project>{3E2B2475-732C-41E1-A746-552A07B2F283}</Project>
       <Name>CrunchyRecipe</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityUtilities\UnityUtilities.csproj">
+      <Project>{70E354FE-8451-40CB-8539-A2DBA15E8F4A}</Project>
+      <Name>UnityUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
