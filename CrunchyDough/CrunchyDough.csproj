@@ -1179,6 +1179,8 @@
     </Compile>
     <Compile Include="HashType\Extensions\HashTypeExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\String\StringExtensions_Parse_UInt.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ChainProcess.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_RemoveGet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

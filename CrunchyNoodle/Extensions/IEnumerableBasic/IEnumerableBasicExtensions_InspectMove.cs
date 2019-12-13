@@ -17,9 +17,11 @@ namespace Crunchy.Noodle
             {
                 object value = item.InspectGet(src_index);
 
-                item.InspectRemoveAt(src_index);
-                item.InspectInsert(dst_index, value);
-                return true;
+                if (item.InspectRemoveAt(src_index))
+                {
+                    if (item.InspectInsert(dst_index, value))
+                        return true;
+                }
             }
 
             return false;
