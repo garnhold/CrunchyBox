@@ -26,7 +26,7 @@ namespace Crunchy.SandwichBag
             EditorGUI.BeginChangeCheck();
         }
 
-        public override void PostDrawInternal()
+        public override void UnwindInternal()
         {
             if (EditorGUI.EndChangeCheck())
                 serialized_object.ApplyModifiedProperties();
