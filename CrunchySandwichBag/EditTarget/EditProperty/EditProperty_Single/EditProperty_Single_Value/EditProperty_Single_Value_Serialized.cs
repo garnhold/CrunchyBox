@@ -12,11 +12,11 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public class EditProperty_Value_Serialized : EditProperty_Single_Value, EditPropertySerialized
+    public class EditProperty_Single_Value_Serialized : EditProperty_Single_Value, EditPropertySerialized
     {
         private SerializedProperty property;
 
-        public EditProperty_Value_Serialized(EditTarget t, SerializedProperty p) : base(t)
+        public EditProperty_Single_Value_Serialized(EditTarget t, SerializedProperty p) : base(t)
         {
             property = p;
         }
