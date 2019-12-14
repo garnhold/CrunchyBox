@@ -22,8 +22,7 @@ using Crunchy.Noodle;
     typeof(Crunchy.Dough.ThisAssembly),
     typeof(Crunchy.Salt.ThisAssembly),
     typeof(Crunchy.Noodle.ThisAssembly),
-    typeof(Crunchy.Sodium.ThisAssembly),
-    typeof(Crunchy.Recipe.ThisAssembly)
+    typeof(Crunchy.Sodium.ThisAssembly)
 )]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".

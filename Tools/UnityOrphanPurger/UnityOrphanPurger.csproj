@@ -28,9 +28,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Antlr4.Runtime">
-      <HintPath>..\..\..\Antlr4.Runtime.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -38,25 +35,21 @@
     <Compile Include="OrphanPurger.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CrunchyDough\CrunchyDough.csproj">
+    <ProjectReference Include="..\..\CrunchyDough\CrunchyDough.csproj">
       <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
       <Name>CrunchyDough</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\CrunchyNoodle\CrunchyNoodle.csproj">
-      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
-      <Name>CrunchyNoodle</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\CrunchyRecipe\CrunchyRecipe.csproj">
-      <Project>{3E2B2475-732C-41E1-A746-552A07B2F283}</Project>
-      <Name>CrunchyRecipe</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\CrunchySalt\CrunchySalt.csproj">
+    <ProjectReference Include="..\..\CrunchySalt\CrunchySalt.csproj">
       <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
       <Name>CrunchySalt</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\CrunchySodium\CrunchySodium.csproj">
+    <ProjectReference Include="..\..\CrunchySodium\CrunchySodium.csproj">
       <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
       <Name>CrunchySodium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
     </ProjectReference>
     <ProjectReference Include="..\UnityUtilities\UnityUtilities.csproj">
       <Project>{70E354FE-8451-40CB-8539-A2DBA15E8F4A}</Project>
