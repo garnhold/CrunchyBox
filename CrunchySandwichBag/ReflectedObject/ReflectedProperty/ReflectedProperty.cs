@@ -39,18 +39,14 @@ namespace Crunchy.SandwichBag
             }
         }
 
-        protected void SetContents(object obj, object value)
+        protected IEnumerable<VariableInstance> GetVariables()
         {
-            variable.SetContents(obj, value);
-        }
-        protected object GetContents(object obj)
-        {
-            return variable.GetContents(obj);
+            return GetObjects().Convert(o => variable.CreateStrongInstance(o));
         }
 
         protected IEnumerable<object> GetAllContents()
         {
-            return GetObjects().Convert(o => GetContents(o));
+            return GetObjects().Convert(o => variable.GetContents(o));
         }
 
         protected IEnumerable<Type> GetAllContentTypes()
@@ -77,24 +73,21 @@ namespace Crunchy.SandwichBag
         public void ClearContents()
         {
             Touch("Clearing " + GetVariableName(), delegate() {
-                GetObjects().Process(o => SetContents(o, null));
+                GetVariables().Process(v => v.ClearContents());
             });
         }
 
         public void CreateContents(Type type)
         {
             Touch("Creating " + GetVariableName(), delegate() {
-                GetObjects().Process(o => SetContents(o, type.CreateBlankValue()));
+                GetVariables().Process(v => v.CreateContents(type));
             });
         }
 
         public void EnsureContents(Type type)
         {
             Touch("Creating " + GetVariableName(), delegate() {
-                GetObjects().Process(o => {
-                    if (GetContents(o).GetTypeEX() != type)
-                        SetContents(o, GetContents(o).ConvertEX(type) ?? type.CreateBlankValue());
-                });
+                GetVariables().Process(v => v.EnsureContents(type));
             });
         }
         public void EnsureContents()
@@ -106,12 +99,12 @@ namespace Crunchy.SandwichBag
         {
             Touch("Setting " + GetVariableName(), delegate() {
                 if (GetVariableType().IsPrimitive())
-                    GetObjects().Process(o => SetContents(o, value));
+                    GetVariables().Process(v => v.SetContents(value));
                 else
                 {
                     UnityTyonReplayer replayer = new UnityTyonReplayer(value);
 
-                    GetObjects().Process(o => SetContents(o, replayer.CreateInstance()));
+                    GetVariables().Process(v => v.SetContents(replayer.CreateInstance()));
                 }
             });
         }

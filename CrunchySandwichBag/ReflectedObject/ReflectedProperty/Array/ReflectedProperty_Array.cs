@@ -17,12 +17,7 @@ namespace Crunchy.SandwichBag
 
         private IEnumerable<int> GetAllCounts()
         {
-            return GetAllIEnumerables().Convert(i => i.InspectCount());
-        }
-
-        private IEnumerable<IEnumerable> GetAllIEnumerables()
-        {
-            return GetAllContents().Convert<IEnumerable>();
+            return GetVariables().Convert(v => v.GetVariableInstanceNumberElements());
         }
 
         private void ShiftIndexs(int start_index, int final_index, int amount)
@@ -57,7 +52,7 @@ namespace Crunchy.SandwichBag
         public void InsertElement(int index)
         {
             Touch("Inserting Element Into " + GetVariableName(), delegate() {
-                GetAllIEnumerables().Process(i => i.InspectInsert(index));
+                GetVariables().Process(v => v.InsertElementIntoVariableInstanceAt(index));
 
                 ShiftIndexs(index, 1);
             });
@@ -74,7 +69,7 @@ namespace Crunchy.SandwichBag
         public void RemoveElement(int index)
         {
             Touch("Removing Element From " + GetVariableName(), delegate() {
-                GetAllIEnumerables().Process(i => i.InspectRemoveAt(index));
+                GetVariables().Process(v => v.RemoveElementInVariableInstanceAt(index));
 
                 elements_by_index.Remove(index);
                 ShiftIndexs(index, -1);
@@ -88,7 +83,7 @@ namespace Crunchy.SandwichBag
         public void MoveElement(int src, int dst)
         {
             Touch("Moving Element Within " + GetVariableName() + " From " + src + " to " + dst, delegate() {
-                GetAllIEnumerables().Process(i => i.InspectMove(src, dst));
+                GetVariables().Process(v => v.MoveElementInVariableInstance(src, dst));
 
                 ReflectedPropertyArrayElement element = elements_by_index.RemoveAndGet(src);
 
