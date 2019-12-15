@@ -454,6 +454,13 @@
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethodOf.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_Regurgitate.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Elements_Get.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Elements_Modify.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Treatment.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Elements_Get.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Elements_Modify.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Contents.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Contents.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
