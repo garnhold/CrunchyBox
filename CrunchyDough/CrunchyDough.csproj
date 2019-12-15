@@ -886,7 +886,7 @@
     <Compile Include="Extensions\Array2D\Array2DExtensions_Convert.cs" />
     <Compile Include="Extensions\Array2D\Array2DExtensions_Dimensions.cs" />
     <Compile Include="Extensions\Array\ArrayExtensions.cs" />
-    <Compile Include="Extensions\Array\ArrayExtensions_Append.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy_Append.cs" />
     <Compile Include="Extensions\Array\ArrayExtensions_Copy.cs" />
     <Compile Include="Extensions\Byte\ByteExtensions.cs" />
     <Compile Include="Extensions\Array2D\Array2DExtensions.cs" />
@@ -1181,6 +1181,19 @@
     <Compile Include="Extensions\String\StringExtensions_Parse_UInt.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ChainProcess.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_RemoveGet.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy_Insert.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Append.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Insert.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Resize.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Length.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Index.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Type.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Create.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Index.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Remove.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy_Remove.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1348,6 +1361,7 @@
     <Folder Include="StreamSource\" />
     <Folder Include="Conductor\" />
     <Folder Include="Conductor\ConductorOrder\" />
+    <Folder Include="Extensions\BasicArray\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    static public class ArrayExtensions_Append
+    static public class ArrayExtensions_Copy_Append
     {
-        static public T[] Append<T>(this T[] item, params T[] array)
+        static public T[] CopyAppend<T>(this T[] item, params T[] array)
         {
             T[] new_array = new T[item.GetLength() + array.GetLength()];
 
@@ -14,9 +14,9 @@ namespace Crunchy.Dough
             return new_array;
         }
 
-        static public T[] Prepend<T>(this T[] item, params T[] array)
+        static public T[] CopyPrepend<T>(this T[] item, params T[] array)
         {
-            return array.Append<T>(item);
+            return array.CopyAppend<T>(item);
         }
     }
 }
