@@ -1194,6 +1194,9 @@
     <Compile Include="Extensions\Array\ArrayExtensions_Index.cs" />
     <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Remove.cs" />
     <Compile Include="Extensions\Array\ArrayExtensions_Copy_Remove.cs" />
+    <Compile Include="ValueChangeResult\ValueChangeResult.cs" />
+    <Compile Include="ValueChangeResult\Extensions\ValueChangeResultExtensions.cs" />
+    <Compile Include="ValueChangeResult\Extensions\ValueChangeResultExtensions_Compare.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1362,6 +1365,8 @@
     <Folder Include="Conductor\" />
     <Folder Include="Conductor\ConductorOrder\" />
     <Folder Include="Extensions\BasicArray\" />
+    <Folder Include="ValueChangeResult\" />
+    <Folder Include="ValueChangeResult\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
