@@ -24,10 +24,12 @@ namespace Crunchy.Dough
 
                 case BasicType.Float: return (float)0.0f;
                 case BasicType.Double: return (double)0.0;
-                case BasicType.Decimal: return (decimal)0.0;
+                case BasicType.Decimal: return (decimal)0.0m;
 
                 case BasicType.Char: return (char)0;
                 case BasicType.String: return (string)null;
+
+                case BasicType.Array: return null;
 
                 case BasicType.Enum: return item.GetEnumValueByLongValue(0);
                 case BasicType.Struct: return item.CreateInstance();
@@ -54,10 +56,12 @@ namespace Crunchy.Dough
 
                 case BasicType.Float: return (float)0.0f;
                 case BasicType.Double: return (double)0.0;
-                case BasicType.Decimal: return (decimal)0.0;
+                case BasicType.Decimal: return (decimal)0.0m;
 
                 case BasicType.Char: return (char)0;
                 case BasicType.String: return (string)"";
+
+                case BasicType.Array: return item.CreateInstance(0);
 
                 case BasicType.Enum: return item.GetEnumValueByLongValue(0);
                 case BasicType.Struct: return item.CreateInstance();

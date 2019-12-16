@@ -278,7 +278,7 @@
     <Compile Include="IL\ILValue\Extensions\ILValueExtensions_Cast.cs" />
     <Compile Include="IL\ILValue\ILValue.cs" />
     <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEXSystem.cs" />
-    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Class.cs" />
+    <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Reference.cs" />
     <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array_Struct.cs" />
     <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX_Array\IndexerInfoEX_Array.cs" />
     <Compile Include="TypeEX\IndexerInfoEX\IndexerInfoEX.cs" />

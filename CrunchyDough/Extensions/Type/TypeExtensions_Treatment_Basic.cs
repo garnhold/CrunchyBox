@@ -58,6 +58,14 @@ namespace Crunchy.Dough
             return false;
         }
 
+        static public bool IsArray(this Type item)
+        {
+            if (item.IsArray)
+                return true;
+
+            return false;
+        }
+
         static public bool IsStruct(this Type item)
         {
             if (item.IsValueType())

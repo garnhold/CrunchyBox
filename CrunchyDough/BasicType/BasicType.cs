@@ -20,6 +20,8 @@ namespace Crunchy.Dough
         Char,
         String,
 
+        Array,
+
         Enum,
         Struct,
         Class

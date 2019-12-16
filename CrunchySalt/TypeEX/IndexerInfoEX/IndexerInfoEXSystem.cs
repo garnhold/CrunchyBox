@@ -49,8 +49,10 @@ namespace Crunchy.Salt
                     case BasicType.Float: return IndexerInfoEX_Array_Float.INSTANCE;
                     case BasicType.Double: return IndexerInfoEX_Array_Double.INSTANCE;
 
+                    case BasicType.Array: return new IndexerInfoEX_Array_Reference(element_type);
+
                     case BasicType.Struct: return new IndexerInfoEX_Array_Struct(element_type);
-                    case BasicType.Class: return new IndexerInfoEX_Array_Class(element_type);
+                    case BasicType.Class: return new IndexerInfoEX_Array_Reference(element_type);
                 }
 
                 throw new UnaccountedBranchException("element_basic_type", element_basic_type);

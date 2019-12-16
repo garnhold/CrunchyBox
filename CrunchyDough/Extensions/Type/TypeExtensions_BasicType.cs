@@ -25,6 +25,8 @@ namespace Crunchy.Dough
             if (type == typeof(char)) return BasicType.Char;
             if (type == typeof(string)) return BasicType.String;
 
+            if (type.IsArray()) return BasicType.Array;
+
             if (type.IsEnum()) return BasicType.Enum;
             if (type.IsStruct()) return BasicType.Struct;
             if (type.IsReferenceType()) return BasicType.Class;

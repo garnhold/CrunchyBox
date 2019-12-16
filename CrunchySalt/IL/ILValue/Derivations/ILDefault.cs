@@ -39,6 +39,8 @@ namespace Crunchy.Salt
                 case BasicType.Char: canvas.Emit_Ldc_I4(0); break;
                 case BasicType.String: canvas.Emit_Ldstr(""); break;
 
+                case BasicType.Array: canvas.Emit_Ldnull(); break;
+
                 case BasicType.Enum: canvas.Emit_Ldc_I4(0); break;
                 case BasicType.Class: canvas.Emit_Ldnull(); break;
 

@@ -22,6 +22,8 @@ namespace Crunchy.Dough
                 case BasicType.Char: return false;
                 case BasicType.String: return false;
 
+                case BasicType.Array: return false;
+
                 case BasicType.Class: return false;
                 case BasicType.Enum: return false;
                 case BasicType.Struct: return false;
@@ -47,6 +49,8 @@ namespace Crunchy.Dough
 
                 case BasicType.Char: return false;
                 case BasicType.String: return false;
+
+                case BasicType.Array: return false;
 
                 case BasicType.Class: return false;
                 case BasicType.Enum: return false;
@@ -74,6 +78,8 @@ namespace Crunchy.Dough
                 case BasicType.Char: return false;
                 case BasicType.String: return false;
 
+                case BasicType.Array: return false;
+
                 case BasicType.Class: return false;
                 case BasicType.Enum: return false;
                 case BasicType.Struct: return false;
@@ -99,6 +105,8 @@ namespace Crunchy.Dough
 
                 case BasicType.Char: return true;
                 case BasicType.String: return true;
+
+                case BasicType.Array: return false;
 
                 case BasicType.Class: return false;
                 case BasicType.Enum: return true;

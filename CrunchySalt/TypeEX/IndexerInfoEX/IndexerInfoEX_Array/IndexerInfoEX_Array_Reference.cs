@@ -9,9 +9,9 @@ namespace Crunchy.Salt
 {
     using Dough;
     
-    public class IndexerInfoEX_Array_Class : IndexerInfoEX_Array
+    public class IndexerInfoEX_Array_Reference : IndexerInfoEX_Array
     {
-        public IndexerInfoEX_Array_Class(Type e) : base(e) { }
+        public IndexerInfoEX_Array_Reference(Type e) : base(e) { }
 
         public override void RenderIL_Load(ILCanvas canvas, ILValue target, ILValue index)
         {
