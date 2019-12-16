@@ -7,7 +7,10 @@ namespace Crunchy.Dough
     {
         static public Type GetElementType(this Array item)
         {
-            return item.GetType().GetElementType();
+            if (item != null)
+                return item.GetType().GetElementType();
+
+            return null;
         }
     }
 }

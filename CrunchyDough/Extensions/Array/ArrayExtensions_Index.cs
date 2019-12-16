@@ -130,7 +130,7 @@ namespace Crunchy.Dough
 
         static public int GetFinalIndex<T>(this T[] item)
         {
-            return item.Length - 1;
+            return item.GetLength() - 1;
         }
     }
 }

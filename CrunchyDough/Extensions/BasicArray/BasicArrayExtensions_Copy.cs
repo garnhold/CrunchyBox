@@ -24,7 +24,7 @@ namespace Crunchy.Dough
 
         static public int CopyFrom(this Array item, Array array, int dst, int src)
         {
-            return item.CopySub(array, dst, src, array.Length - src);
+            return item.CopySub(array, dst, src, array.GetLength() - src);
         }
         static public int CopyFrom(this Array item, Array array, int dst)
         {

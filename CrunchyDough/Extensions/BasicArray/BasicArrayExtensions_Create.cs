@@ -7,7 +7,10 @@ namespace Crunchy.Dough
     {
         static public Array CreateInstance(this Array item, int length)
         {
-            return Array.CreateInstance(item.GetElementType(), length);
+            if (item != null)
+                return Array.CreateInstance(item.GetElementType(), length);
+
+            return null;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Crunchy.Dough
         {
             Array resized = item.CreateInstance(size);
 
-            Array.Copy(item, 0, resized, 0, size.Min(item.Length));
+            Array.Copy(item, 0, resized, 0, size.Min(item.GetLength()));
             return resized;
         }
 
