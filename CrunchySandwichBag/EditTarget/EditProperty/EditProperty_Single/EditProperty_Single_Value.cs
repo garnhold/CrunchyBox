@@ -7,15 +7,18 @@ using UnityEngine;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Salt;
     using Noodle;
     using Bun;
-    using Recipe;
     using Sandwich;
     
-    public class ReflectedProperty_Single_Value : ReflectedProperty_Single
+    public class EditProperty_Single_Value : EditProperty_Single
     {
-        public ReflectedProperty_Single_Value(ReflectedObject o, Variable v) : base(o, v)
+        protected override EditorGUIElement CreateEditorGUIElementInternal()
+        {
+            return new EditorGUIElement_Composite_EditPropertySingleValue_Generic(this);
+        }
+
+        public EditProperty_Single_Value(EditTarget t, Variable v) : base(t, v)
         {
         }
 
@@ -33,7 +36,6 @@ namespace Crunchy.SandwichBag
             value = null;
             return false;
         }
-
         public bool TryGetContentValues<T>(out T value, bool allow_null_object = false)
         {
             object temp;
@@ -48,9 +50,9 @@ namespace Crunchy.SandwichBag
             return false;
         }
 
-        public ReflectedObject GetContents()
+        public EditTarget GetContents()
         {
-            ReflectedObject value;
+            EditTarget value;
 
             EnsureContents();
             TryGetContents(out value);

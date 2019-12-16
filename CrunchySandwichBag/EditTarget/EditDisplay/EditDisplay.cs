@@ -12,18 +12,44 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public abstract class EditDisplay : IDynamicCustomAttributeProvider
+    public class EditDisplay : IDynamicCustomAttributeProvider
     {
         private EditTarget target;
+        private Variable variable;
 
-        public abstract string GetName();
-        public abstract IEnumerable<object> GetValues();
-        public abstract bool TryGetValue(out object value);
-        public abstract IEnumerable<Attribute> GetAllCustomAttributes(bool inherit);
+        static public EditDisplay New(EditTarget target, Variable variable)
+        {
+            return new EditDisplay(target, variable);
+        }
 
-        public EditDisplay(EditTarget t)
+        public EditDisplay(EditTarget t, Variable v)
         {
             target = t;
+            variable = v;
+        }
+
+        public string GetName()
+        {
+            return variable.GetVariableName();
+        }
+
+        public IEnumerable<object> GetValues()
+        {
+            return target.GetObjects().Convert(delegate (object obj) {
+                try
+                {
+                    return variable.GetContents(obj);
+                }
+                catch (Exception ex)
+                {
+                    return ex;
+                }
+            });
+        }
+
+        public bool TryGetValue(out object value)
+        {
+            return GetValues().AreAllSame(out value);
         }
 
         public EditTarget GetTarget()
@@ -42,6 +68,11 @@ namespace Crunchy.SandwichBag
         public EditorGUIElement CreateEditorGUIElement()
         {
             return new EditorGUIElement_EditDisplay_Text(this);
+        }
+
+        public IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
+        {
+            return variable.GetAllCustomAttributes(inherit);
         }
     }
 }

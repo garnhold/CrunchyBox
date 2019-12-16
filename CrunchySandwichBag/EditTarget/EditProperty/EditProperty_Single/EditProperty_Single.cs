@@ -13,11 +13,18 @@ namespace Crunchy.SandwichBag
     
     public abstract class EditProperty_Single : EditProperty
     {
-        public abstract bool TryGetContents(out EditTarget value);
-        public abstract bool TryGetContentsType(out Type type);
-
-        public EditProperty_Single(EditTarget t) : base(t)
+        public EditProperty_Single(EditTarget t, Variable v) : base(t, v)
         {
+        }
+
+        public bool TryGetContents(out EditTarget value)
+        {
+            value = new EditTarget(GetAllContents(), GetTarget());
+
+            if (value.IsValid())
+                return true;
+
+            return false;
         }
     }
 }

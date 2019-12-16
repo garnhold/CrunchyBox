@@ -17,21 +17,21 @@ namespace Crunchy.SandwichBag
         {
             return item.ForceProperty(path)
                 .Convert<EditProperty_Single>()
-                .AssertNotNull(() => new MissingFieldException("No the property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as a single."));
+                .AssertNotNull(() => new MissingFieldException("The property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as a single."));
         }
 
         static public EditProperty_Single_Value ForcePropertyValue(this EditTarget item, string path)
         {
             return item.ForceProperty(path)
                 .Convert<EditProperty_Single_Value>()
-                .AssertNotNull(() => new MissingFieldException("No the property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as a value."));
+                .AssertNotNull(() => new MissingFieldException("The property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as a value."));
         }
 
         static public EditProperty_Single_Object ForcePropertyObject(this EditTarget item, string path)
         {
             return item.ForceProperty(path)
                 .Convert<EditProperty_Single_Object>()
-                .AssertNotNull(() => new MissingFieldException("No the property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as an object."));
+                .AssertNotNull(() => new MissingFieldException("The property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as an object."));
         }
     }
 }

@@ -11,19 +11,53 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public abstract class EditFunction : IDynamicCustomAttributeProvider
+    public class EditFunction : IDynamicCustomAttributeProvider
     {
         private EditTarget target;
+        private Function function;
 
-        public abstract void Execute();
-        public abstract IEnumerable<EditProperty> GetParameters();
+        private Variable_Static arguments;
 
-        public abstract string GetName();
-        public abstract IEnumerable<Attribute> GetAllCustomAttributes(bool inherit);
+        static public readonly EditTarget STATIC_TARGET = new EditTarget(new object());
 
-        public EditFunction(EditTarget t)
+        static public EditFunction New(EditTarget target, Function function)
+        {
+            return new EditFunction(target, function);
+        }
+
+        protected void Touch(string label, Process process)
+        {
+            target.Touch(label, process);
+        }
+
+        public EditFunction(EditTarget t, Function f)
         {
             target = t;
+            function = f;
+
+            arguments = Variable_Static_Readonly_Value.New(new object[function.GetNumberParameters()]);
+        }
+
+        public void Execute()
+        {
+            Touch(GetName(), delegate () {
+                target.GetObjects().Process(o => function.Execute(o, arguments.GetContents<object[]>()));
+            });
+        }
+
+        public string GetName()
+        {
+            return function.GetFunctionName();
+        }
+
+        public IEnumerable<EditProperty> GetParameters()
+        {
+            return function.GetParameters().ConvertWithIndex(
+                (i, p) => EditProperty.New(
+                    STATIC_TARGET,
+                    new Variable_Element(arguments, i).GetOverridenTypeAndNameVariable(p.Value, p.Key)
+                )
+            );
         }
 
         public EditTarget GetTarget()
@@ -34,6 +68,11 @@ namespace Crunchy.SandwichBag
         public EditorGUIElement CreateEditorGUIElement()
         {
             return new EditorGUIElement_EditFunction_Button(this);
+        }
+
+        public IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
+        {
+            return function.GetAllCustomAttributes(inherit);
         }
     }
 }

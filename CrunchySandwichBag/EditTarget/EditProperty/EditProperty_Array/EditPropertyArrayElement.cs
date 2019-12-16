@@ -11,15 +11,15 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public class ReflectedPropertyArrayElement
+    public class EditPropertyArrayElement
     {
-        private ReflectedProperty property;
+        private EditProperty property;
         private Variable_Element variable;
 
-        public ReflectedPropertyArrayElement(ReflectedObject o, Variable v, int i)
+        public EditPropertyArrayElement(EditTarget t, Variable v, int i)
         {
             variable = v.GetVariableElement(i);
-            property = ReflectedProperty.New(o, variable);
+            property = EditProperty.New(t, variable);
         }
 
         public void SetIndex(int index)
@@ -37,7 +37,7 @@ namespace Crunchy.SandwichBag
             return variable.GetElementIndex();
         }
 
-        public ReflectedProperty GetProperty()
+        public EditProperty GetProperty()
         {
             return property;
         }

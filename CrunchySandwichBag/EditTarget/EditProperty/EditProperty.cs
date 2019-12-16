@@ -15,35 +15,124 @@ namespace Crunchy.SandwichBag
     public abstract class EditProperty : IDynamicCustomAttributeProvider
     {
         private EditTarget target;
+        private Variable variable;
+
+        public abstract bool IsUnified();
 
         protected virtual GUIContent CreateGUIContentLabelInternal() { return null; }
         protected virtual EditorGUIElement CreateEditorGUIElementInternal() { return null; }
 
-        public abstract void ClearContents();
-        public abstract void CreateContents(Type type);
-        public abstract void EnsureContents(Type type);
-        public abstract void ForceContentValues(object value);
+        static public EditProperty New(EditTarget target, Variable variable)
+        {
+            Type variable_type = variable.GetVariableType();
 
-        public abstract bool IsUnified();
+            if (variable_type.IsTypicalIEnumerable())
+                return new EditProperty_Array(target, variable);
 
-        public abstract string GetName();
-        public abstract Type GetPropertyType();
+            if (
+                variable.HasCustomAttributeOfType<ObjectSignifyFieldAttribute>(true) &&
+                variable_type.IsTypicalValueType() == false &&
+                variable_type.CanBeTreatedAs<UnityEngine.Object>() == false
+                )
+            {
+                return new EditProperty_Single_Object(target, variable);
+            }
 
-        public abstract IEnumerable<Attribute> GetAllCustomAttributes(bool inherit);
+            return new EditProperty_Single_Value(target, variable);
+        }
 
-        public EditProperty(EditTarget t)
+        protected IEnumerable<object> GetObjects()
+        {
+            return target.GetObjects();
+        }
+
+        protected IEnumerable<object> GetAllContents()
+        {
+            return GetObjects().Convert(o => variable.GetContents(o));
+        }
+
+        protected IEnumerable<Type> GetAllContentTypes()
+        {
+            return GetAllContents().Convert(o => o.GetTypeEX());
+        }
+
+        protected IEnumerable<VariableInstance> GetVariables()
+        {
+            return GetObjects().Convert(o => variable.CreateStrongInstance(o));
+        }
+
+        protected void Touch(string label, Process process)
+        {
+            target.Touch(label, process);
+        }
+
+        public EditProperty(EditTarget t, Variable v)
         {
             target = t;
+            variable = v;
         }
 
-        public void CreateContents()
+        public void ClearContents()
         {
-            CreateContents(GetPropertyType());
+            Touch("Clearing " + GetName(), delegate () {
+                GetVariables().Process(v => v.ClearContents());
+            });
         }
 
+        public void CreateContents(Type type)
+        {
+            Touch("Creating " + GetName(), delegate () {
+                GetVariables().Process(v => v.CreateContents(type));
+            });
+        }
+
+        public void EnsureContents(Type type)
+        {
+            Touch("Creating " + GetName(), delegate () {
+                GetVariables().Process(v => v.EnsureContents(type));
+            });
+        }
         public void EnsureContents()
         {
             EnsureContents(GetPropertyType());
+        }
+
+        public void ForceContentValues(object value)
+        {
+            Touch("Setting " + GetName(), delegate () {
+                if (GetPropertyType().IsPrimitive())
+                    GetVariables().Process(v => v.SetContents(value));
+                else
+                {
+                    UnityTyonReplayer replayer = new UnityTyonReplayer(value);
+
+                    GetVariables().Process(v => v.SetContents(replayer.CreateInstance()));
+                }
+            });
+        }
+
+        public string GetName()
+        {
+            return variable.GetVariableName();
+        }
+
+        public Type GetPropertyType()
+        {
+            return variable.GetVariableType();
+        }
+
+        public Variable GetVariable()
+        {
+            return variable;
+        }
+
+        public bool TryGetContentsType(out Type type)
+        {
+            if (GetAllContentTypes().AreAllSame(out type))
+                return true;
+
+            type = null;
+            return false;
         }
 
         public EditTarget GetTarget()
@@ -73,6 +162,11 @@ namespace Crunchy.SandwichBag
         public override string ToString()
         {
             return GetPropertyType() + " " + GetName();
+        }
+
+        public IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
+        {
+            return variable.GetAllCustomAttributes(inherit);
         }
     }
 }

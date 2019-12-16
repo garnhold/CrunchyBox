@@ -11,18 +11,37 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public abstract class EditAction : IDynamicCustomAttributeProvider
+    public class EditAction : IDynamicCustomAttributeProvider
     {
         private EditTarget target;
+        private Action action;
 
-        public abstract void Execute();
-
-        public abstract string GetName();
-        public abstract IEnumerable<Attribute> GetAllCustomAttributes(bool inherit);
-
-        public EditAction(EditTarget t)
+        static public EditAction New(EditTarget target, Action action)
         {
-            target = t;
+            return new EditAction(target, action);
+        }
+
+        protected void Touch(string label, Process process)
+        {
+            target.Touch(label, process);
+        }
+
+        public EditAction(EditTarget o, Action a)
+        {
+            target = o;
+            action = a;
+        }
+
+        public void Execute()
+        {
+            Touch(GetName(), delegate () {
+                target.GetObjects().Process(o => action.Execute(o));
+            });
+        }
+
+        public string GetName()
+        {
+            return action.GetActionName();
         }
 
         public EditTarget GetTarget()
@@ -33,6 +52,11 @@ namespace Crunchy.SandwichBag
         public EditorGUIElement CreateEditorGUIElement()
         {
             return new EditorGUIElement_EditAction_Button(this);
+        }
+
+        public IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
+        {
+            return action.GetAllCustomAttributes(inherit);
         }
     }
 }
