@@ -31,19 +31,22 @@ namespace Crunchy.Noodle
             return false;
         }
 
-        public bool UpdateContents(object target, object value)
+        public ValueChangeResult ChangeContents(object target, object value)
         {
             if (target.CanObjectBeTreatedAs(GetDeclaringType()))
             {
                 object prepared_value = PrepareValue(value);
 
                 if (prepared_value.NotEqualsEX(GetContentsInternal(target)))
-                    return SetContentsInternal(target, prepared_value);
+                {
+                    if (SetContentsInternal(target, prepared_value))
+                        return ValueChangeResult.SuccessChanged;
+                }
 
-                return true;
+                return ValueChangeResult.SuccessUnchanged;
             }
 
-            return false;
+            return ValueChangeResult.Failure;
         }
 
         public object GetContents(object target)

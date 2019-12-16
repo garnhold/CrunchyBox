@@ -6,24 +6,24 @@ namespace Crunchy.Noodle
     
     static public class VariableExtensions_Contents
     {
-        static public bool ClearContents(this Variable item, object target)
+        static public ValueChangeResult ClearContents(this Variable item, object target)
         {
-            return item.SetContents(target, null);
+            return item.ChangeContents(target, null);
         }
 
-        static public bool CreateContents(this Variable item, object target, Type type)
+        static public ValueChangeResult CreateContents(this Variable item, object target, Type type)
         {
-            return item.SetContents(target, type.CreateBlankValue());
+            return item.ChangeContents(target, type.CreateBlankValue());
         }
 
-        static public bool EnsureContents(this Variable item, object target, Type type)
+        static public ValueChangeResult EnsureContents(this Variable item, object target, Type type)
         {
             object current_contents = item.GetContents(target);
 
             if (current_contents.GetTypeEX() != type)
-                return item.SetContents(target, current_contents.ConvertEX(type) ?? type.CreateBlankValue());
+                return item.ChangeContents(target, current_contents.ConvertEX(type) ?? type.CreateBlankValue());
 
-            return true;
+            return ValueChangeResult.SuccessUnchanged;
         }
     }
 }

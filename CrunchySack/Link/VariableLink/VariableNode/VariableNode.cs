@@ -32,7 +32,7 @@ namespace Crunchy.Sack
 
         public bool PushValue(object value)
         {
-            if (variable_instance.UpdateContents(value))
+            if (variable_instance.ChangeContents(value).IsSuccess())
             {
                 if (UpdateState())
                     return true;
