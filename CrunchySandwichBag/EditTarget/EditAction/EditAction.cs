@@ -21,11 +21,6 @@ namespace Crunchy.SandwichBag
             return new EditAction(target, action);
         }
 
-        protected void Touch(string label, Process process)
-        {
-            target.Touch(label, process);
-        }
-
         public EditAction(EditTarget o, Action a)
         {
             target = o;
@@ -34,7 +29,7 @@ namespace Crunchy.SandwichBag
 
         public void Execute()
         {
-            Touch(GetName(), delegate () {
+            target.TouchWithUndo(GetName(), delegate () {
                 target.GetObjects().Process(o => action.Execute(o));
             });
         }

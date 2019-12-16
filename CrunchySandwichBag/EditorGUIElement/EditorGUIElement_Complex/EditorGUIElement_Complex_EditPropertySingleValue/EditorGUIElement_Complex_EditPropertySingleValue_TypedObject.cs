@@ -32,7 +32,7 @@ namespace Crunchy.SandwichBag
 
             if (type_property.TryGetContentValues<Type>(out type))
             {
-                GetProperty().EnsureContents(type);
+                GetProperty().EnsureContents(type, false);
 
                 container.AddChild(type.CreateBestEditorGUIElementForType(GetProperty()));
             }

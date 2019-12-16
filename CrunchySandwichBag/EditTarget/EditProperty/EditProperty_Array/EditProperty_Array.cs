@@ -56,7 +56,7 @@ namespace Crunchy.SandwichBag
 
         public void InsertElement(int index)
         {
-            Touch("Inserting Element Into " + GetName(), delegate () {
+            GetTarget().TouchWithUndo("Inserting Element Into " + GetName(), delegate () {
                 GetVariables().Process(v => v.InsertElementIntoVariableInstanceAt(index));
 
                 ShiftIndexs(index, 1);
@@ -65,7 +65,7 @@ namespace Crunchy.SandwichBag
 
         public void RemoveElement(int index)
         {
-            Touch("Removing Element From " + GetName(), delegate () {
+            GetTarget().TouchWithUndo("Removing Element From " + GetName(), delegate () {
                 GetVariables().Process(v => v.RemoveElementInVariableInstanceAt(index));
 
                 elements_by_index.Remove(index);
@@ -75,7 +75,7 @@ namespace Crunchy.SandwichBag
 
         public void MoveElement(int src, int dst)
         {
-            Touch("Moving Element Within " + GetName() + " From " + src + " to " + dst, delegate () {
+            GetTarget().TouchWithUndo("Moving Element Within " + GetName() + " From " + src + " to " + dst, delegate () {
                 GetVariables().Process(v => v.MoveElementInVariableInstance(src, dst));
 
                 EditPropertyArrayElement element = elements_by_index.RemoveAndGet(src);
@@ -89,7 +89,7 @@ namespace Crunchy.SandwichBag
 
         public EditProperty GetElement(int index)
         {
-            EnsureContents();
+            EnsureContents(false);
 
             return elements_by_index.GetOrCreateValue(index,
                 i => new EditPropertyArrayElement(GetTarget(), GetVariable(), i)
@@ -106,7 +106,7 @@ namespace Crunchy.SandwichBag
 
         public bool TryGetNumberElements(out int number)
         {
-            EnsureContents();
+            EnsureContents(false);
 
             if (IsUnified())
                 return GetAllCounts().TryGetFirst(out number);

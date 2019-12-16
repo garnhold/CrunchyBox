@@ -61,45 +61,40 @@ namespace Crunchy.SandwichBag
             return GetObjects().Convert(o => variable.CreateStrongInstance(o));
         }
 
-        protected void Touch(string label, Process process)
-        {
-            target.Touch(label, process);
-        }
-
         public EditProperty(EditTarget t, Variable v)
         {
             target = t;
             variable = v;
         }
 
-        public void ClearContents()
+        public void ClearContents(bool create_undo_state)
         {
-            Touch("Clearing " + GetName(), delegate () {
-                GetVariables().Process(v => v.ClearContents());
+            target.Touch("Clearing " + GetName(), create_undo_state, delegate() {
+                return GetVariables().ProcessOR(v => v.ClearContents().IsChange());
             });
         }
 
-        public void CreateContents(Type type)
+        public void CreateContents(Type type, bool create_undo_state)
         {
-            Touch("Creating " + GetName(), delegate () {
-                GetVariables().Process(v => v.CreateContents(type));
+            target.Touch("Creating " + GetName(), create_undo_state, delegate() {
+                return GetVariables().ProcessOR(v => v.CreateContents(type).IsChange());
             });
         }
 
-        public void EnsureContents(Type type)
+        public void EnsureContents(Type type, bool create_undo_state)
         {
-            Touch("Creating " + GetName(), delegate () {
-                GetVariables().Process(v => v.EnsureContents(type));
+            target.Touch("Creating " + GetName(), create_undo_state, delegate() {
+                return GetVariables().ProcessOR(v => v.EnsureContents(type).IsChange());
             });
         }
-        public void EnsureContents()
+        public void EnsureContents(bool create_undo_state)
         {
-            EnsureContents(GetPropertyType());
+            EnsureContents(GetPropertyType(), create_undo_state);
         }
 
         public void ForceContentValues(object value)
         {
-            Touch("Setting " + GetName(), delegate () {
+            target.TouchWithUndo("Setting " + GetName(), delegate () {
                 if (GetPropertyType().IsPrimitive())
                     GetVariables().Process(v => v.SetContents(value));
                 else

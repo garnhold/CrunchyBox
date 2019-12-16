@@ -30,11 +30,6 @@ namespace Crunchy.SandwichBag
             );
         }
 
-        protected void Touch(string label, Process process)
-        {
-            target.Touch(label, process);
-        }
-
         public EditGadget(EditTarget t, Variable v, IEnumerable<KeyValuePair<string, Action>> ae, IEnumerable<KeyValuePair<string, Variable>> ve)
         {
             target = t;
@@ -45,24 +40,24 @@ namespace Crunchy.SandwichBag
             aux_variables = ve.ToDictionary();
         }
 
-        public void Execute(object target, string name)
+        public void Execute(object gadget_target, string name)
         {
-            Touch(name, delegate () {
-                aux_actions.GetValue(name).IfNotNull(a => a.Execute(target));
+            target.TouchWithUndo(name, delegate () {
+                aux_actions.GetValue(name).IfNotNull(a => a.Execute(gadget_target));
             });
         }
 
-        public void SetContents(object target, object value)
+        public void SetContents(object gadget_target, object value)
         {
-            Touch("Setting " + GetName(), delegate () {
-                variable.SetContents(target, value);
+            target.TouchWithUndo("Setting " + GetName(), delegate () {
+                variable.SetContents(gadget_target, value);
             });
         }
 
-        public void SetAuxContents(object target, string name, object value)
+        public void SetAuxContents(object gadget_target, string name, object value)
         {
-            Touch("Setting " + name, delegate () {
-                aux_variables.GetValue(name).IfNotNull(v => v.SetContents(target, value));
+            target.TouchWithUndo("Setting " + name, delegate () {
+                aux_variables.GetValue(name).IfNotNull(v => v.SetContents(gadget_target, value));
             });
         }
 

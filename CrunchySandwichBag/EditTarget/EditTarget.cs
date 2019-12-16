@@ -19,15 +19,19 @@ namespace Crunchy.SandwichBag
 
         private EditTarget parent;
 
-        public void Touch(string label, Process process)
+        private void Touch(Process process)
         {
             if (target_type.CanBeTreatedAs<UnityEngine.Object>())
             {
-                objects
-                    .Convert<UnityEngine.Object>()
-                    .Process(o => Undo.RecordObject(o, label));
-
                 process();
+
+                objects
+                    .Convert<ISerializationCallbackReceiver>()
+                    .Process(r => r.OnBeforeSerialize());
+
+                objects
+                    .Convert<ISerializationCallbackReceiver>()
+                    .Process(r => r.OnAfterDeserialize());
 
                 objects
                     .Convert<UnityEngine.Object>()
@@ -42,7 +46,7 @@ namespace Crunchy.SandwichBag
             else
             {
                 if (parent != null)
-                    parent.Touch(label, process);
+                    parent.Touch(process);
                 else
                     process();
             }
@@ -60,6 +64,31 @@ namespace Crunchy.SandwichBag
         public EditTarget(params object[] o) : this((IEnumerable<object>)o) { }
 
         public EditTarget(SerializedObject o) : this(o.targetObjects) { }
+
+        public void Touch()
+        {
+            Touch(() => { });
+        }
+        public void TouchWithUndo(string label, Process process)
+        {
+            Touch(delegate () {
+                objects
+                    .Convert<UnityEngine.Object>()
+                    .Process(o => Undo.RecordObject(o, label));
+
+                process();
+            });
+        }
+        public void Touch(string label, bool create_undo_state, Operation<bool> process)
+        {
+            if (create_undo_state)
+                TouchWithUndo(label, () => process());
+            else
+            {
+                if (process())
+                    Touch();
+            }
+        }
 
         public Type GetTargetType()
         {

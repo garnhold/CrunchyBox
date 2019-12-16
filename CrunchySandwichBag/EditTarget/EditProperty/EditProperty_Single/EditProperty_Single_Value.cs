@@ -54,7 +54,7 @@ namespace Crunchy.SandwichBag
         {
             EditTarget value;
 
-            EnsureContents();
+            EnsureContents(false);
             TryGetContents(out value);
             return value;
         }

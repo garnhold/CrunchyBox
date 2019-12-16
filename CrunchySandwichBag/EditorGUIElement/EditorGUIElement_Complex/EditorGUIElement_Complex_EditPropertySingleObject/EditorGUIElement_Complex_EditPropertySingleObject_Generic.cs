@@ -39,14 +39,14 @@ namespace Crunchy.SandwichBag
                             Filterer_Type.CanBeTreatedAs(property.GetPropertyType()),
                             Filterer_Type.IsConcreteClass()
                         ),
-                        t => property.CreateContents(t),
+                        t => property.CreateContents(t, true),
                         (out Type t) => property.TryGetContentsType(out t)
                     )
                 );
 
                 strip.AddFixedChild(20.0f,
                     new EditorGUIElement_Button("X", delegate () {
-                        property.ClearContents();
+                        property.ClearContents(true);
                     })
                 );
             }
@@ -54,7 +54,8 @@ namespace Crunchy.SandwichBag
             {
                 property.EnsureContents(
                     property.GetCustomAttributeOfType<MonomorphicFieldAttribute>(true)
-                        .GetTargetType()
+                        .GetTargetType(),
+                    false
                 );
             }
 
