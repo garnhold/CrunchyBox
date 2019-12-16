@@ -100,6 +100,8 @@ namespace Crunchy.SandwichBag
 
         public ReflectedProperty GetElement(int index)
         {
+            EnsureContents();
+
             return elements_by_index.GetOrCreateValue(index, 
                 i => new ReflectedPropertyArrayElement(GetReflectedObject(), GetVariable(), i)
             )
@@ -115,6 +117,8 @@ namespace Crunchy.SandwichBag
 
         public bool TryGetNumberElements(out int number)
         {
+            EnsureContents();
+
             if (IsUnified())
                 return GetAllCounts().TryGetFirst(out number);
 

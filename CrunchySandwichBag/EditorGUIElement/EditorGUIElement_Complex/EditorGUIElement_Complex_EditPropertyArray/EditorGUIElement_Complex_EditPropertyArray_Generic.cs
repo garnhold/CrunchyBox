@@ -90,7 +90,6 @@ namespace Crunchy.SandwichBag
             else
             {
                 container.AddChild(new EditorGUIElement_Text("--Disabled(Array lengths are not unified)--"));
-                property.EnsureContents();
             }
 
             return container;
