@@ -95,13 +95,5 @@ namespace Crunchy.SandwichBag
         {
             target = t;
         }
-
-        public EditorGUIElement_Complex_EditTarget(SerializedObject o) : this(new EditTarget_Serialized_Object(o))
-        {
-            AddAttachment(new EditorGUIElementAttachment_SerializedObjectSection(o));
-        }
-
-        public EditorGUIElement_Complex_EditTarget(SerializedProperty p) : this(new EditTarget_Serialized_Property(p)) { }
-        public EditorGUIElement_Complex_EditTarget(ReflectedObject o) : this(new EditTarget_Reflected(o)) { }
     }
 }

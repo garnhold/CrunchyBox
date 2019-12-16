@@ -21,14 +21,14 @@ namespace Crunchy.SandwichBag
 
     public abstract class DefaultEditor<T> : EditorEX_Simple<T> where T : UnityEngine.Object
     {
-        protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, T item, SerializedObject serialized_object)
+        protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, EditTarget target)
         {
-            root.AddChild(new EditorGUIElement_Complex_All(serialized_object));
+            root.AddChild(new EditorGUIElement_Complex_EditTarget(target));
         }
 
-        protected override void InitilizeRootEditorSceneElement(EditorSceneElement_Container_Auto root, T item, SerializedObject serialized_object)
+        protected override void InitilizeRootEditorSceneElement(EditorSceneElement_Container_Auto root, EditTarget target)
         {
-            root.AddChild(new EditorSceneElement_Complex_All(serialized_object));
+            root.AddChild(new EditorSceneElement_Complex_EditTarget(target));
         }
 
         public override void OnInspectorGUI()

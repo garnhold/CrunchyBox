@@ -13,13 +13,13 @@ namespace Crunchy.SandwichBag
     using Bun;
     using Sandwich;
     
-    public class EditorGUIElement_Composite_EditPropertySingleValue_EditTarget_Generic : EditorGUIElement_Composite_EditPropertySingleValue
+    public class EditorGUIElement_Composite_EditPropertySingleValue_Generic : EditorGUIElement_Composite_EditPropertySingleValue
     {
         protected override EditorGUIElement CreateElement()
         {
  	        return new EditorGUIElement_Complex_EditTarget(GetProperty().GetContents());
         }
 
-        public EditorGUIElement_Composite_EditPropertySingleValue_EditTarget_Generic(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_Composite_EditPropertySingleValue_Generic(EditProperty_Single_Value p) : base(p) { }
     }
 }

@@ -59,6 +59,8 @@ namespace Crunchy.SandwichBag
         public EditTarget(IEnumerable<object> o) : this(o, null) { }
         public EditTarget(params object[] o) : this((IEnumerable<object>)o) { }
 
+        public EditTarget(SerializedObject o) : this(o.targetObjects) { }
+
         public Type GetTargetType()
         {
             return target_type;

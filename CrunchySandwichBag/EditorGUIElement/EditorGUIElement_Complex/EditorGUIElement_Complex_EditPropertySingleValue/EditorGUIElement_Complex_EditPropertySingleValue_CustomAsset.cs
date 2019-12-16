@@ -95,7 +95,7 @@ namespace Crunchy.SandwichBag
                 }));
 
                 if (asset != null && asset.IsInternalAsset())
-                    container.AddChild(new EditorGUIElement_Complex_All(asset));
+                    container.AddChild(new EditorGUIElement_Complex_EditTarget(new EditTarget(asset)));
             }
 
             return container;

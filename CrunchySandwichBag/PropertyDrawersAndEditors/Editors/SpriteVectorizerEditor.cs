@@ -16,10 +16,13 @@ namespace Crunchy.SandwichBag
     [CustomEditor(typeof(SpriteVectorizer), true)]
     public class SpriteVectorizerEditor : EditorEX_Simple<SpriteVectorizer>
     {
-        protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, SpriteVectorizer item, SerializedObject serialized_object)
+        protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, EditTarget target)
         {
-            root.AddChild(new EditorGUIElement_Complex_All(serialized_object));
-            root.AddChild(new EditorGUIElement_SpriteVectorizerTest(item));
+            root.AddChild(new EditorGUIElement_Complex_EditTarget(target));
+
+            SpriteVectorizer sprite_vectorizer;
+            if (target.TryGetObject<SpriteVectorizer>(out sprite_vectorizer))
+                root.AddChild(new EditorGUIElement_SpriteVectorizerTest(sprite_vectorizer));
         }
     }
 }

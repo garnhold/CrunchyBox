@@ -14,7 +14,7 @@ namespace Crunchy.SandwichBag
     {
         protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root)
         {
-            root.AddChild(new EditorGUIElement_Complex_All(Painter.GetInstance()));
+            root.AddChild(new EditorGUIElement_Complex_EditTarget(new EditTarget(Painter.GetInstance())));
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Crunchy.SandwichBag
             if(item.IsTypicalIEnumerable())
                 return new EditorGUIElement_Complex_EditPropertyArray_Generic((EditProperty_Array)property);
 
-            return new EditorGUIElement_Composite_EditPropertySingleValue_EditTarget_Generic((EditProperty_Single_Value)property);
+            return new EditorGUIElement_Composite_EditPropertySingleValue_Generic((EditProperty_Single_Value)property);
         }
     }
 }

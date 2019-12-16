@@ -15,10 +15,10 @@ namespace Crunchy.SandwichBag
         private Dictionary<SerializedObject, EditorGUIView> gui_views;
         private Dictionary<SerializedObject, EditorSceneElement> scene_elements;
 
-        private const int MAXIMUM_NUMBER_INSTANCES = 8;
+        private const int MAXIMUM_NUMBER_INSTANCES = 32;
 
-        protected virtual EditorGUIElement CreateRootEditorGUIElement(T item, SerializedObject serialized_object) { return null; }
-        protected virtual EditorSceneElement CreateRootEditorSceneElement(T item, SerializedObject serialized_object) { return null; }
+        protected virtual EditorGUIElement CreateRootEditorGUIElement(EditTarget target) { return null; }
+        protected virtual EditorSceneElement CreateRootEditorSceneElement(EditTarget target) { return null; }
 
         public EditorEX()
         {
@@ -49,7 +49,7 @@ namespace Crunchy.SandwichBag
 
             return gui_views.GetOrCreateValue(
                 serialized_object, 
-                o => new EditorGUIView(CreateRootEditorGUIElement(item, o).InitilizeAndGet())
+                o => new EditorGUIView(CreateRootEditorGUIElement(new EditTarget(o)).InitilizeAndGet())
             );
         }
 
@@ -60,7 +60,7 @@ namespace Crunchy.SandwichBag
 
             return scene_elements.GetOrCreateValue(
                 serialized_object,
-                o => CreateRootEditorSceneElement(item, o).InitilizeAndGet()
+                o => CreateRootEditorSceneElement(new EditTarget(o)).InitilizeAndGet()
             );
         }
     }
