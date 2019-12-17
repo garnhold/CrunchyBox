@@ -55,7 +55,7 @@ namespace Crunchy.SandwichBag
                 return new_value;
             }
 
-            return EditorGUI.TextField(rect, label, value);
+            return EditorGUIExtensions.TextField(rect, label, value);
         }
 
         public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_String(EditProperty_Single_Value p) : base(p)

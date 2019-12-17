@@ -411,6 +411,7 @@
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single_Value.cs" />
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_Object.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_Modify.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextField.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -21,7 +21,7 @@ namespace Crunchy.SandwichBag
             rect.SplitByXLeftOffset(EditorGUIUtility.labelWidth, out label_rect, out rect);
 
             GUI.Label(label_rect, label);
-            return EditorGUI.TextArea(rect, value, style);
+            return EditorGUI.TextArea(rect, value, style).RemoveNonPrintable();
         }
         static public int CalculateTextAreaNumberLines(float width, string value, bool use_word_wrap)
         {
