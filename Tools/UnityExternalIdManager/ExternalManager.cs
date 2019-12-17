@@ -30,7 +30,7 @@ public class ExternalManager
         Console.WriteLine("----------------Missing Type---------------");
         Console.WriteLine(reference.GetYAML());
         Console.WriteLine("-------------------------------------------");
-        Console.WriteLine(hint);
+        Console.WriteLine(hint.Truncate(512));
         Console.WriteLine("-------------------------------------------");
 
         do
@@ -75,6 +75,7 @@ public class ExternalManager
     public void LoadCurrentTypes(string filepath)
     {
         working_database.Create(filepath);
+        working_database.Save(filepath + "/external_types.tyon");
     }
 
     public void ValidateFiles(string filepath)
@@ -86,13 +87,13 @@ public class ExternalManager
     {
         string text = File.ReadAllText(filepath);
 
-        string modified_text = text.RegexReplace("m_Script\\s*:\\s*{\\s*fileID\\s*:\\s*([-0-9]+)\\s*,\\s*guid\\s*:\\s*([A-Za-z0-9_]+)\\s*,\\s*type\\s*:\\s*3\\s*}(.{0,512})", delegate (Match match) {
+        string modified_text = text.RegexReplace("m_Script\\s*:\\s*{\\s*fileID\\s*:\\s*([-0-9]+)\\s*,\\s*guid\\s*:\\s*([A-Za-z0-9_]+)\\s*,\\s*type\\s*:\\s*3\\s*}(.*?)(?=m_Script|$)", delegate (Match match) {
             string trailing = match.Groups[3].Value;
             ExternalTypeReference reference = new ExternalTypeReference(match.Groups[1].Value, match.Groups[2].Value);
 
             if (reference.IsValid())
             {
-                ExternalType resolved = Resolve(reference, trailing);
+                ExternalType resolved = Resolve(reference, filepath + "\n\n" + trailing);
 
                 if (resolved != null)
                 {
@@ -113,12 +114,12 @@ public class ExternalManager
         }
     }
 
-    public ExternalType Resolve(ExternalTypeReference reference, string trailing)
+    public ExternalType Resolve(ExternalTypeReference reference, string hint)
     {
         return working_database.Resolve(reference, delegate() {
             return Migrate(
                 reference,
-                reference_database.Resolve(reference).IfNotNull(r => r.GetFullName()) ?? trailing
+                reference_database.Resolve(reference).IfNotNull(r => r.GetFullName()) ?? hint
             );
         });
     }
