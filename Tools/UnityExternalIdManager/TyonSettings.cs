@@ -22,6 +22,7 @@ public class TyonSettings : Crunchy.Recipe.TyonSettings
     static public readonly TyonSettings INSTANCE = new TyonSettings();
 
     private TyonSettings() : base(
-        TyonDesignatedVariableProvider_Fields_Marked<SerializeFieldAttribute>.INSTANCE
+        TyonDesignatedVariableProvider_Fields_Marked<SerializeFieldAttribute>.INSTANCE,
+        TyonDesignatedVariableProvider_PermissivePropertys_Public.INSTANCE
     ) { }
 }
