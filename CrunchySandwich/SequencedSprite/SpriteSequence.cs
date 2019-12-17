@@ -60,6 +60,9 @@ namespace Crunchy.Sandwich
                     return frame.GetSprite();
             }
 
+            if (total_value <= 0.0f)
+                return GetFirstFrame();
+
             return GetFrameByValue(value.GetLooped(total_value));
         }
 
