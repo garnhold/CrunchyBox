@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public string CompressEscapeSequences(this string item)
         {
-            return item.RegexReplace("([^\\P{C}]|\'|\"|\\\\|\\?)", delegate(Match match) {
+            return item.RegexReplace("(\\p{C}|\'|\"|\\\\|\\?)", delegate(Match match) {
                 char character = match.Value[0];
 
                 switch (character)
