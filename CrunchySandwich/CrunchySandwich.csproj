@@ -193,11 +193,9 @@
     <Compile Include="Time\Alarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\Alarm\GameAlarm.cs" />
     <Compile Include="Time\Stopwatch\GameStopwatch.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered_Unity.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis.cs" />
     <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Option\InputDeviceComponent_Option.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_Axis.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_Native.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton.cs" />
     <Compile Include="InputDevice\InputDeviceRawOption\InputDeviceRawOption_Button.cs" />
     <Compile Include="InputDevice\InputDeviceRawOption\InputDeviceRawOption.cs" />
@@ -1228,8 +1226,12 @@
     <Compile Include="Extensions\TextGenerator\TextGeneratorExtensions_Mesh.cs" />
     <Compile Include="MonomorphicFieldAttribute\MonomorphicFieldAttribute.cs" />
     <Compile Include="ObjectSignifyFieldAttribute\ObjectSignifyFieldAttribute.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered_OpenTK.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_OpenTKJoystickAxis.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_GridChunk_Cropped.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_GridChunk_Overflown.cs" />
+    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_OpenTKJoystickButton.cs" />
+    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_OpenTKKeyboardButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

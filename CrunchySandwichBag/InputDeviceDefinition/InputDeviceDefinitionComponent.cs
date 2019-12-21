@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,38 +16,8 @@ namespace Crunchy.SandwichBag
     {
         [SerializeField] private string name;
 
-        public abstract void GenerateInternalAxises(int device_id, SerializedProperty axises);
-
-        public abstract void GenerateClassConstructor(CSTextDocumentBuilder builder, string device_id);
+        public abstract void GenerateClassConstructor(CSTextDocumentBuilder builder, string device_index_variable);
         public abstract void GenerateClassMembers(CSTextDocumentBuilder builder);
-
-        protected void PushInternalButton(SerializedProperty property, string name, int device_id, string button)
-        {
-            property.SetChildValue("m_Name", GetName() + device_id);
-
-            property.SetChildValue("positiveButton", button);
-
-            property.SetChildValue("gravity", 3.0f);
-            property.SetChildValue("dead", 0.1f);
-            property.SetChildValue("sensitivity", 1.0f);
-            property.SetChildValue("snap", true);
-        }
-
-        protected void PushInternalJoystickAxis(SerializedProperty property, string name, int device_id, int axis_id, bool invert = false, bool snap = false, float gravity = 3.0f, float dead = 0.1f, float sensitivity = 1.0f)
-        {
-            property.SetChildValue("m_Name", name + device_id);
-
-            property.SetChildValue("type", 2);
-            property.SetChildValue("joyNum", device_id);
-            property.SetChildValue("axis", axis_id);
-
-            property.SetChildValue("invert", invert);
-            property.SetChildValue("snap", snap);
-
-            property.SetChildValue("gravity", gravity);
-            property.SetChildValue("dead", 0.0f);
-            property.SetChildValue("sensitivity", sensitivity);
-        }
 
         public string GetName()
         {
@@ -59,7 +29,7 @@ namespace Crunchy.SandwichBag
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "TYPE", id_type,
                 "NAME", GetName().StyleAsEnumName(),
-                "VALUE", GetName().StyleAsLiteralString()
+                "VALUE", GetName().StyleAsDoubleQuoteLiteral()
             );
 
             writer.Write("static public readonly ?TYPE ?NAME = new ?TYPE(?VALUE);");
@@ -78,7 +48,7 @@ namespace Crunchy.SandwichBag
         {
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                 "VARIABLE", GetName().StyleAsVariableName(),
-                "VALUE", GetName().StyleAsLiteralString()
+                "VALUE", GetName().StyleAsDoubleQuoteLiteral()
             );
 
             writer.Write("case ?VALUE: return ?VARIABLE;");

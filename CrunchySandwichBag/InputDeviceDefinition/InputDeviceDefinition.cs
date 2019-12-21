@@ -22,7 +22,6 @@ namespace Crunchy.SandwichBag
         [ContextMenu("Use")]
         private void Use()
         {
-            ProjectSettings.ModifySettings("InputManager.asset", o => GenerateInternalAxises(o));
             CodeGenerator.GenerateCode("InputDevice", b => GenerateCode(b), GeneratedCodeType.RuntimeDefinition);
         }
 
@@ -45,29 +44,29 @@ namespace Crunchy.SandwichBag
             );
 
             writer.Write("public class InputDevice : InputDeviceBase", delegate() {
-                writer.Write("private readonly int device_id;");
+                writer.Write("private readonly int device_index;");
 
-                for (int i = 1; i <= max_number_devices; i++)
+                for (int i = 0; i < max_number_devices; i++)
                     writer.Write("static public readonly InputDevice Device" + i + " = new InputDevice(" + i + ");");
 
-                writer.Write("static public InputDevice GetInputDevice(int device_id)", delegate() {
-                    writer.Write("switch(device_id)", delegate() {
-                        for (int i = 1; i <= max_number_devices; i++)
+                writer.Write("static public InputDevice GetInputDevice(int device_index)", delegate() {
+                    writer.Write("switch(device_index)", delegate() {
+                        for (int i = 0; i < max_number_devices; i++)
                             writer.Write("case " + i + ": return Device" + i + ";");
                     });
 
-                    writer.Write("throw new UnaccountedBranchException(\"device_id\", device_id);");
+                    writer.Write("throw new UnaccountedBranchException(\"device_index\", device_index);");
                 });
 
                 writer.Write("static public IEnumerable<InputDevice> GetInputDevices()", delegate() {
-                    for (int i = 1; i <= max_number_devices; i++)
+                    for (int i = 0; i < max_number_devices; i++)
                         writer.Write("yield return Device" + i + ";");
                 });
 
-                writer.Write("private InputDevice(int id)", delegate() {
-                    writer.Write("device_id = id;");
+                writer.Write("private InputDevice(int index)", delegate() {
+                    writer.Write("device_index = index;");
 
-                    components.Process(c => c.GenerateClassConstructor(builder, "device_id"));
+                    components.Process(c => c.GenerateClassConstructor(builder, "device_index"));
                 });
 
                 writer.Write("public override void Update()", delegate() {
@@ -82,7 +81,7 @@ namespace Crunchy.SandwichBag
                 components.Process(c => c.GenerateClassMembers(builder));
 
                 writer.Write("public int GetDeviceId()", delegate() {
-                    writer.Write("return device_id;");
+                    writer.Write("return device_index;");
                 });
             });
         }
@@ -119,15 +118,6 @@ namespace Crunchy.SandwichBag
 
                 writer.Write("throw new UnaccountedBranchException(\"value\", value);");
             });
-        }
-
-        public void GenerateInternalAxises(SerializedObject obj)
-        {
-            SerializedProperty axises = obj.FindProperty("m_Axes");
-
-            axises.ClearArray();
-            for (int i = 1; i <= max_number_devices; i++)
-                components.Process(c => c.GenerateInternalAxises(i, axises));
         }
 
         private void GenerateInputDeviceIds<T>(CSTextDocumentBuilder builder, string type) where T : InputDeviceDefinitionComponent

@@ -154,7 +154,7 @@
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_Labeled.cs" />
@@ -292,14 +292,14 @@
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Save.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Spawn.cs" />
     <Compile Include="CodeGenerator\CodeGenerator.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinition.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Stick_Joystick.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Stick.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button_Basic.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Axis.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Axis_Joystick.cs" />
-    <Compile Include="InputDevice\InputDeviceDefinitionComponent_Button.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinition.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Stick_Joystick.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Stick.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_JoystickButton.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_JoystickAxis.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button.cs" />
     <Compile Include="Layer\LayerInitilizer.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_Texture.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_SoftCircle.cs" />
@@ -402,7 +402,6 @@
     <Compile Include="LibrarySettings\LibrarySettings.cs" />
     <Compile Include="Prefabs\DeployablePrefabsSettings.cs" />
     <Compile Include="Prefabs\EphemeralPrefabsSettings.cs" />
-    <Compile Include="InputDevice\InputDeviceActionSettings.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Single\EditorGUIElement_Single.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Composite\EditorGUIElement_Composite_EditPropertySingleValue\EditorGUIElement_Composite_EditPropertySingleValue_SceneEX.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\EditPropertyArrayElement.cs" />
@@ -412,6 +411,7 @@
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_Object.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_Modify.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextField.cs" />
+    <Compile Include="InputDeviceActionSettings\InputDeviceActionSettings.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -508,6 +508,7 @@
     <Folder Include="UnityObjectEX\" />
     <Folder Include="LibrarySettings\" />
     <Folder Include="EditorGUIElement\EditorGUIElement_Single\" />
+    <Folder Include="InputDeviceActionSettings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

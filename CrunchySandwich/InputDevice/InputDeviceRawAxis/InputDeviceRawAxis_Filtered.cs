@@ -9,20 +9,20 @@ namespace Crunchy.Sandwich
     using Dough;
     using Bread;
     
-    public abstract class InputDeviceRawAxis_Filtered : InputDeviceRawAxis
+    public class InputDeviceRawAxis_Filtered : InputDeviceRawAxis
     {
+        private InputDeviceRawAxis axis;
         private AxisFilter filter;
 
-        protected abstract float GetRawValue();
-
-        public InputDeviceRawAxis_Filtered(AxisFilter f)
+        public InputDeviceRawAxis_Filtered(InputDeviceRawAxis a, AxisFilter f)
         {
+            axis = a;
             filter = f;
         }
 
         public override float GetValue()
         {
-            return filter.Filter(GetRawValue());
+            return filter.Filter(axis.GetValue());
         }
     }
 }
