@@ -5,46 +5,80 @@ using System.Text.RegularExpressions;
 namespace Crunchy.Salt
 {
     using Dough;
-    
+
     static public class StringExtensions_ProgrammingLiteral_Style
     {
-        static public string StyleAsLiteral(this string item)
+        static public string StyleAsLiteral(this bool item)
         {
-            return item;
+            return item.ToString().ToLower();
         }
-
         static public string StyleAsLiteralBool(this string item)
         {
-            return item.ParseBool().ToString().ToLower().StyleAsLiteral();
+            return item.ParseBool().StyleAsLiteral();
         }
 
+        static public string StyleAsLiteral(this byte item)
+        {
+            return item.ToString();
+        }
         static public string StyleAsLiteralByte(this string item)
         {
-            return item.ParseByte().ToString().StyleAsLiteral();
+            return item.ParseByte().StyleAsLiteral();
+        }
+
+        static public string StyleAsLiteral(this short item)
+        {
+            return item.ToString();
+        }
+        static public string StyleasLiteralShort(this string item)
+        {
+            return item.ParseShort().StyleAsLiteral();
+        }
+
+        static public string StyleAsLiteral(this int item)
+        {
+            return item.ToString();
+        }
+        static public string StyleAsLiteralInt(this string item)
+        {
+            return item.ParseInt().StyleAsLiteral();
+        }
+
+        static public string StyleAsLiteral(this long item)
+        {
+            return item.ToString() + "L";
         }
         static public string StyleAsLiteralLong(this string item)
         {
-            return item.ParseLong().ToString().StyleAsLiteral();
+            return item.ParseLong().StyleAsLiteral();
         }
 
+        static public string StyleAsLiteral(this float item)
+        {
+            return item.ToString() + "f";
+        }
         static public string StyleAsLiteralFloat(this string item)
         {
-            return item.ParseFloat().ToString().StyleAsLiteral() + "f";
+            return item.ParseFloat().StyleAsLiteral();
         }
 
+        static public string StyleAsLiteral(this double item)
+        {
+            return item.ToString();
+        }
         static public string StyleAsLiteralDouble(this string item)
         {
-            return item.ParseDouble().ToString().StyleAsLiteral();
+            return item.ParseDouble().StyleAsLiteral();
         }
 
-        static public string StyleAsLiteralString(this string item)
+        static public string StyleAsDoubleQuoteLiteral(this string item)
         {
-            return item.CompressEscapeSequences().Surround("\"").StyleAsLiteral();
+            return item.CompressEscapeSequences().Surround("\"");
         }
 
-        static public string StyleAsLiteralSingleQuoteString(this string item)
+        static public string StyleAsSingleQuoteLiteral(this string item)
         {
-            return item.CompressEscapeSequences().Surround("'").StyleAsLiteral();
+            return item.CompressEscapeSequences().Surround("'");
         }
     }
 }

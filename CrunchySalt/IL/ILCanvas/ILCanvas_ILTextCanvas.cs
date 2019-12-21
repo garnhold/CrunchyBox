@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -101,7 +101,7 @@ namespace Crunchy.Salt
         public override void Emit_Conv_R8() { canvas.AppendInstruction("Conv.R8"); }
 
         public override void Emit_Ldnull() { canvas.AppendInstruction("Ldnull"); }
-        public override void Emit_Ldstr(string value) { canvas.AppendInstruction("Ldstr", value.StyleAsLiteralString()); }
+        public override void Emit_Ldstr(string value) { canvas.AppendInstruction("Ldstr", value.StyleAsDoubleQuoteLiteral()); }
 
         public override void Emit_Ldfld(FieldInfo field) { canvas.AppendInstruction("Ldfld", field.ToString()); }
         public override void Emit_Ldsfld(FieldInfo field) { canvas.AppendInstruction("Ldsfld", field.ToString()); }

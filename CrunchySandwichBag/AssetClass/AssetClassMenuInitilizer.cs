@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -30,7 +30,7 @@ namespace Crunchy.SandwichBag
                     string category = type.GetCustomLabeledAttributeOfTypeLabel<AssetClassCategoryAttribute>(true);
 
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "PATH", ("Assets/Create Custom/" + category.AppendToVisible("/") + type.Name.Replace("_", "/")).StyleAsLiteralString(),
+                        "PATH", ("Assets/Create Custom/" + category.AppendToVisible("/") + type.Name.Replace("_", "/")).StyleAsDoubleQuoteLiteral(),
                         "FUNCTION", ("Create" + type.Name).StyleAsFunctionName(),
                         "TYPENAME", type.Namespace.AppendToVisible(".") + type.Name
                     );

@@ -394,7 +394,7 @@ namespace Crunchy.Salt
 
 		public override void RenderText_Value(ILTextCanvas canvas)
 		{
-			canvas.AppendToLine(constant.StyleAsLiteralString());
+			canvas.AppendToLine(constant.StyleAsDoubleQuoteLiteral());
 		}
 
 		public override Type GetValueType()

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -24,13 +24,13 @@ namespace Crunchy.SandwichBag
                 foreach (SpriteVectorizer vectorizer in CustomAssets.GetExternalCustomAssetsOfType<SpriteVectorizer>())
                 {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "SPRITE_PATH", ("Assets/Sprite/Generate/Collider/" + vectorizer.name).StyleAsLiteralString(),
-                        "TEXTURE_PATH", ("Assets/Sprite/Generate/Colliders/" + vectorizer.name).StyleAsLiteralString(),
+                        "SPRITE_PATH", ("Assets/Sprite/Generate/Collider/" + vectorizer.name).StyleAsDoubleQuoteLiteral(),
+                        "TEXTURE_PATH", ("Assets/Sprite/Generate/Colliders/" + vectorizer.name).StyleAsDoubleQuoteLiteral(),
                         "FUNCTION_SPRITE_EXECUTE", ("ExecuteSprite" + vectorizer.name).StyleAsFunctionName(),
                         "FUNCTION_SPRITE_VALIDATE", ("ValidateSprite" + vectorizer.name).StyleAsFunctionName(),
                         "FUNCTION_TEXTURE_EXECUTE", ("ExecuteTexture" + vectorizer.name).StyleAsFunctionName(),
                         "FUNCTION_TEXTURE_VALIDATE", ("ValidateTexture" + vectorizer.name).StyleAsFunctionName(),
-                        "VECTORIZER_PATH", vectorizer.GetAssetPath().StyleAsLiteralString()
+                        "VECTORIZER_PATH", vectorizer.GetAssetPath().StyleAsDoubleQuoteLiteral()
                     );
 
                     writer.Write("[MenuItem(?SPRITE_PATH)]");

@@ -1,4 +1,4 @@
-
+﻿
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
@@ -29,7 +29,7 @@ namespace Crunchy.Recipe
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetString().StyleAsLiteralString());
+            canvas.AppendToLine(GetString().StyleAsDoubleQuoteLiteral());
         }
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)

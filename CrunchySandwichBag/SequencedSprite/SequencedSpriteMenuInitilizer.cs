@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -24,10 +24,10 @@ namespace Crunchy.SandwichBag
                 foreach (SequencedSpriteFormat format in CustomAssets.GetExternalCustomAssetsOfType<SequencedSpriteFormat>())
                 {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "PATH", ("Assets/Sprite/Create/Sequenced/" + format.name).StyleAsLiteralString(),
+                        "PATH", ("Assets/Sprite/Create/Sequenced/" + format.name).StyleAsDoubleQuoteLiteral(),
                         "FUNCTION_EXECUTE", ("Execute" + format.name).StyleAsFunctionName(),
                         "FUNCTION_VALIDATE", ("Validate" + format.name).StyleAsFunctionName(),
-                        "FORMAT_PATH", format.GetAssetPath().StyleAsLiteralString()
+                        "FORMAT_PATH", format.GetAssetPath().StyleAsDoubleQuoteLiteral()
                     );
 
                     writer.Write("[MenuItem(?PATH)]");

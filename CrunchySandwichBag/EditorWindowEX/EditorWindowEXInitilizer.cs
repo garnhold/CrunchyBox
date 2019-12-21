@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -27,7 +27,7 @@ namespace Crunchy.SandwichBag
                 ))
                 {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                        "PATH", ("Window/" + type.Name).StyleAsLiteralString(),
+                        "PATH", ("Window/" + type.Name).StyleAsDoubleQuoteLiteral(),
                         "FUNCTION", ("Open" + type.Name).StyleAsFunctionName(),
                         "TYPE", type.Namespace.AppendToVisible(".") + type.Name
                     );

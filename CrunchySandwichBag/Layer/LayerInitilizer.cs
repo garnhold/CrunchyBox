@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -24,7 +24,7 @@ namespace Crunchy.SandwichBag
                 LayerEXExtensions.GetAllLayers().Process(delegate(LayerEX layer) {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "NAME", layer.GetName().StyleAsConstantName(),
-                        "VALUE", layer.GetName().StyleAsLiteralString()
+                        "VALUE", layer.GetName().StyleAsDoubleQuoteLiteral()
                     );
 
                     writer.Write("static public readonly LayerEX ?NAME = new LayerEX(?VALUE);");

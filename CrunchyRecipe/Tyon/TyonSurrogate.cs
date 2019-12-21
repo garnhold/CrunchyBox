@@ -1,4 +1,4 @@
-
+﻿
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
@@ -46,7 +46,7 @@ namespace Crunchy.Recipe
             canvas.AppendToLine("$");
             GetTyonType().Render(canvas);
             canvas.AppendToLine(":");
-            canvas.AppendToLine(GetString().StyleAsLiteralString());
+            canvas.AppendToLine(GetString().StyleAsDoubleQuoteLiteral());
         }
 
         public override string ToString()
