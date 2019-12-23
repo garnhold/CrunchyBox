@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     
     [AssetClass]
     [AssetClassCategory("Tile")]
-    public abstract class CustomTile : TileBase
+    public abstract class CustomTile : TileBaseEX
     {
     }
 }

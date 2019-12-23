@@ -5,7 +5,8 @@
 <#
 TypeInfo[] types = new TypeInfo[]{
     new TypeInfo("MonoBehaviourEX", "MonoBehaviour", "Prefab"),
-    new TypeInfo("ScriptableObjectEX", "ScriptableObject", "Sofab")
+    new TypeInfo("ScriptableObjectEX", "ScriptableObject", "Sofab"),
+    new TypeInfo("TileBaseEX", "TileBase", "Sofab")
 };
 #>
 using System;
@@ -13,6 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Crunchy.Sandwich
 {
