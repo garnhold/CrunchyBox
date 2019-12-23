@@ -1199,6 +1199,7 @@
     <Compile Include="ValueChangeResult\Extensions\ValueChangeResultExtensions_Compare.cs" />
     <Compile Include="Extensions\String\StringExtensions_Remove_Category.cs" />
     <Compile Include="TemporalOperationCache\TemporalOperationCache.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Split.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
