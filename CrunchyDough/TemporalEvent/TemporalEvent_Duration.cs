@@ -12,6 +12,12 @@ namespace Crunchy.Dough
             temporal_duration = d;
         }
 
+        public TemporalEvent_Duration(long d, TimeSource t) : this(new Timer(d, t)) { }
+        public TemporalEvent_Duration(long d) : this(d, TimeSource_System.INSTANCE) { }
+
+        public TemporalEvent_Duration(Duration d, TimeSource t) : this(new Timer(d, t)) { }
+        public TemporalEvent_Duration(Duration d) : this(d, TimeSource_System.INSTANCE) { }
+
         public bool Start()
         {
             return temporal_duration.Start();
