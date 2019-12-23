@@ -1198,6 +1198,7 @@
     <Compile Include="ValueChangeResult\Extensions\ValueChangeResultExtensions.cs" />
     <Compile Include="ValueChangeResult\Extensions\ValueChangeResultExtensions_Compare.cs" />
     <Compile Include="Extensions\String\StringExtensions_Remove_Category.cs" />
+    <Compile Include="TemporalOperationCache\TemporalOperationCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1368,6 +1369,7 @@
     <Folder Include="Extensions\BasicArray\" />
     <Folder Include="ValueChangeResult\" />
     <Folder Include="ValueChangeResult\Extensions\" />
+    <Folder Include="TemporalOperationCache\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
