@@ -4,33 +4,33 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class DecaySet<T> : IEnumerable<T>
+    public class DecayTimeSet<T> : IEnumerable<T>
     {
-        private int lifetime;
-        private Dictionary<T, DecayCounter> elements;
+        private Dictionary<T, TemporalEvent> elements;
 
-        public DecaySet(int l)
+        public DecayTimeSet()
         {
-            lifetime = l;
-            elements = new Dictionary<T, DecayCounter>();
+            elements = new Dictionary<T, TemporalEvent>();
         }
 
         public void Decay()
         {
-            elements.RemoveAll(p => p.Value.Decay());
+            elements.RemoveAll(p => p.Value.IsTimeOver());
         }
 
-        public bool Add(T to_add)
+        public bool Add(T to_add, Operation<TemporalEvent> operation, bool recharge)
         {
-            DecayCounter decay_counter;
+            TemporalEvent timer;
 
-            if (elements.TryGetValue(to_add, out decay_counter))
+            if (elements.TryGetValue(to_add, out timer) && timer.IsTimeUnder())
             {
-                decay_counter.Reset(lifetime);
+                if (recharge)
+                    timer.Restart();
+
                 return false;
             }
 
-            elements.Add(to_add, new DecayCounter(lifetime));
+            elements[to_add] = operation().StartAndGet();
             return true;
         }
 

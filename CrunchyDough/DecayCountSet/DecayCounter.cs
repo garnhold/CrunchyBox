@@ -6,24 +6,24 @@ namespace Crunchy.Dough
 {
     public class DecayCounter
     {
-        private int life;
+        private int lifetime;
 
         public DecayCounter(int l)
         {
-            life = l;
+            Reset(l);
         }
 
         public void Reset(int l)
         {
-            life = l;
+            lifetime = l;
         }
 
         public bool Decay()
         {
-            if (life <= 0)
+            if (lifetime <= 0)
                 return true;
 
-            life--;
+            lifetime--;
             return false;
         }
     }

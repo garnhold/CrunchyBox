@@ -51,8 +51,7 @@
     <Compile Include="ByteSequence\ByteSequence.cs" />
     <Compile Include="CompoundState\AutoCompoundState.cs" />
     <Compile Include="CompoundState\CompoundState.cs" />
-    <Compile Include="DecaySet\DecayCounter.cs" />
-    <Compile Include="DecaySet\DecaySet.cs" />
+    <Compile Include="DecayCountSet\DecayCountSet.cs" />
     <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Order.cs" />
     <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Suffix.cs" />
     <Compile Include="Duration\Extensions\DurationExtensions_PartOut.cs" />
@@ -1200,6 +1199,10 @@
     <Compile Include="Extensions\String\StringExtensions_Remove_Category.cs" />
     <Compile Include="TemporalOperationCache\TemporalOperationCache.cs" />
     <Compile Include="Extensions\String\StringExtensions_Regex_Split.cs" />
+    <Compile Include="DecayTimeSet\DecayTimeSet.cs" />
+    <Compile Include="DecayCountSet\DecayCounter.cs" />
+    <Compile Include="DecayTimeSet\Extensions\DecayTimeSetExtensions.cs" />
+    <Compile Include="DecayTimeSet\Extensions\DecayTimeSetExtensions_Add.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1371,6 +1374,8 @@
     <Folder Include="ValueChangeResult\" />
     <Folder Include="ValueChangeResult\Extensions\" />
     <Folder Include="TemporalOperationCache\" />
+    <Folder Include="DecayTimeSet\" />
+    <Folder Include="DecayTimeSet\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
