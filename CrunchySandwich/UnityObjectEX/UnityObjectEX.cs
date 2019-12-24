@@ -76,6 +76,8 @@ namespace Crunchy.Sandwich
 
 		[SerializeField][HideInInspector]private string reference_id;
         
+        protected virtual void LateConstruct() { }
+        
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -124,9 +126,6 @@ namespace Crunchy.Sandwich
                     did_unpack_tyon_data = false;
                     context.DeserializeInto(this, tyon_data, mode);
 
-					if (ApplicationEX.GetInstance().IsEditing() && this.ShouldExecuteInEditMode())
-						GetType().GetInstanceMethod("Start").IfNotNull(m => m.Invoke(this, null));
-
 					did_unpack_tyon_data = true;
 					unpack_error = null;
 
@@ -147,6 +146,8 @@ namespace Crunchy.Sandwich
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
 			UnpackTyon();
+            
+            LateConstruct();
         }
 
 		public bool IsSerializationCorrupt()
@@ -253,6 +254,8 @@ namespace Crunchy.Sandwich
 
 		[SerializeField][HideInInspector]private string reference_id;
         
+        protected virtual void LateConstruct() { }
+        
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -301,9 +304,6 @@ namespace Crunchy.Sandwich
                     did_unpack_tyon_data = false;
                     context.DeserializeInto(this, tyon_data, mode);
 
-					if (ApplicationEX.GetInstance().IsEditing() && this.ShouldExecuteInEditMode())
-						GetType().GetInstanceMethod("Start").IfNotNull(m => m.Invoke(this, null));
-
 					did_unpack_tyon_data = true;
 					unpack_error = null;
 
@@ -324,6 +324,8 @@ namespace Crunchy.Sandwich
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
 			UnpackTyon();
+            
+            LateConstruct();
         }
 
 		public bool IsSerializationCorrupt()
@@ -430,6 +432,8 @@ namespace Crunchy.Sandwich
 
 		[SerializeField][HideInInspector]private string reference_id;
         
+        protected virtual void LateConstruct() { }
+        
 		[RecoveryFunction]
 		private void ForcePermissiveUnpackTyon()
 		{
@@ -478,9 +482,6 @@ namespace Crunchy.Sandwich
                     did_unpack_tyon_data = false;
                     context.DeserializeInto(this, tyon_data, mode);
 
-					if (ApplicationEX.GetInstance().IsEditing() && this.ShouldExecuteInEditMode())
-						GetType().GetInstanceMethod("Start").IfNotNull(m => m.Invoke(this, null));
-
 					did_unpack_tyon_data = true;
 					unpack_error = null;
 
@@ -501,6 +502,8 @@ namespace Crunchy.Sandwich
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
 			UnpackTyon();
+            
+            LateConstruct();
         }
 
 		public bool IsSerializationCorrupt()

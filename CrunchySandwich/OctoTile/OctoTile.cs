@@ -10,16 +10,17 @@ namespace Crunchy.Sandwich
     using Dough;
     using Bun;
 
-    [ExecuteAlways]
     public class OctoTile : CustomTile_MultiSprite_NeighborRuled
     {
         [SerializeField]private OctoSubTile[] sub_tiles;
 
         private OperationCache<List<OctoSubTile>, OctoMask> cache;
 
-        private void Start()
+        protected override void LateConstruct()
         {
-            cache = new OperationCache<List<OctoSubTile>, OctoMask>("CACHE", delegate (OctoMask mask) {
+            base.LateConstruct();
+
+            cache = new OperationCache<List<OctoSubTile>, OctoMask>("cache", delegate (OctoMask mask) {
                 return sub_tiles
                     .Narrow(t => t.GetMask().HasNoOtherBits(mask))
                     .FindAllHighestRated(t => t.GetMask().GetComplexity())
