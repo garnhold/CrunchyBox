@@ -1232,6 +1232,7 @@
     <Compile Include="Extensions\Rect\RectExtensions_GridChunk_Overflown.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_OpenTKJoystickButton.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_OpenTKKeyboardButton.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_EditProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
