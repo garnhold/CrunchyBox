@@ -18,12 +18,12 @@ using Crunchy.Noodle;
 
 [assembly: InspectedAssembly]
 [assembly: InspectAssemblys_ByType(
-    typeof(CrunchyDough.ThisAssembly),
-    typeof(CrunchySalt.ThisAssembly),
-    typeof(CrunchyNoodle.ThisAssembly),
-    typeof(CrunchySodium.ThisAssembly),
-    typeof(CrunchySystem.ThisAssembly),
-    typeof(CrunchySack.ThisAssembly)
+    typeof(Crunchy.Dough.ThisAssembly),
+    typeof(Crunchy.Salt.ThisAssembly),
+    typeof(Crunchy.Noodle.ThisAssembly),
+    typeof(Crunchy.Sodium.ThisAssembly),
+    typeof(Crunchy.System.ThisAssembly),
+    typeof(Crunchy.Sack.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

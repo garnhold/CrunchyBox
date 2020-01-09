@@ -153,7 +153,7 @@
     </ProjectReference>
     <ProjectReference Include="..\CrunchySystem\CrunchySystem.csproj">
       <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
-      <Name>CrunchySystem</Name>
+      <Name>CrunchyWinsys</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

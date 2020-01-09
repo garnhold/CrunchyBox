@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Drawing;
 
@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Crunchy.Sack_WPF
+namespace Crunchy.Sack.WPF
 {
     using Dough;
     using Noodle;

@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Windows;
 
-namespace Crunchy.Sack_WPF
+namespace Crunchy.Sack.WPF
 {
     using Dough;
     using Noodle;
@@ -13,18 +13,20 @@ namespace Crunchy.Sack_WPF
     
     static public class WindowExtensions_LinkSyncroDaemon
     {
-        static public void AttachLinkSyncroDaemon(this Window item, LinkSyncroDaemon to_attach)
+        static public void SyncronizeLinkSyncroDaemon(this Window item, LinkSyncroDaemon to_attach)
         {
             if (item.IsVisible)
                 to_attach.Start();
             else
                 to_attach.StopClear();
+        }
+
+        static public void AttachLinkSyncroDaemon(this Window item, LinkSyncroDaemon to_attach)
+        {
+            item.SyncronizeLinkSyncroDaemon(to_attach);
 
             item.IsVisibleChanged += delegate(object sender, DependencyPropertyChangedEventArgs e) {
-                if ((bool)e.NewValue)
-                    to_attach.Start();
-                else
-                    to_attach.StopClear();
+                item.SyncronizeLinkSyncroDaemon(to_attach);
             };
 
             item.Closed += delegate(object sender, EventArgs e) {

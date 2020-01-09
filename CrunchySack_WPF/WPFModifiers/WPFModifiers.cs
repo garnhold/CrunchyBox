@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using System.IO;
 
 using System.Windows;
 
-namespace Crunchy.Sack_WPF
+namespace Crunchy.Sack.WPF
 {
     using Dough;
     using Sack;
