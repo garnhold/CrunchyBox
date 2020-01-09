@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IEnumerableExtensions_PairTandem
     {
@@ -31,6 +31,15 @@ namespace CrunchyDough
             });
         }
 
+        static public IEnumerable<OUTPUT_TYPE> PairStrictWithIndex<OUTPUT_TYPE, INPUT_TYPE1, INPUT_TYPE2>(this IEnumerable<INPUT_TYPE1> item, IEnumerable<INPUT_TYPE2> to_pair, Operation<OUTPUT_TYPE, int, INPUT_TYPE1, INPUT_TYPE2> operation)
+        {
+            int i = 0;
+
+            return item.PairStrict(to_pair, delegate(INPUT_TYPE1 input1, INPUT_TYPE2 input2) {
+                return operation(i++, input1, input2);
+            });
+        }
+
         static public IEnumerable<OUTPUT_TYPE> PairPermissive<OUTPUT_TYPE, INPUT_TYPE1, INPUT_TYPE2>(this IEnumerable<INPUT_TYPE1> item, IEnumerable<INPUT_TYPE2> to_pair, Operation<OUTPUT_TYPE, INPUT_TYPE1, INPUT_TYPE2> operation)
         {
             INPUT_TYPE1 input1;
@@ -53,6 +62,15 @@ namespace CrunchyDough
         {
             return item.PairPermissive(to_pair, delegate(INPUT_TYPE1 input1, INPUT_TYPE2 input2) {
                 return Tuple.New(input1, input2);
+            });
+        }
+
+        static public IEnumerable<OUTPUT_TYPE> PairPermissiveWithIndex<OUTPUT_TYPE, INPUT_TYPE1, INPUT_TYPE2>(this IEnumerable<INPUT_TYPE1> item, IEnumerable<INPUT_TYPE2> to_pair, Operation<OUTPUT_TYPE, int, INPUT_TYPE1, INPUT_TYPE2> operation)
+        {
+            int i = 0;
+
+            return item.PairPermissive(to_pair, delegate(INPUT_TYPE1 input1, INPUT_TYPE2 input2) {
+                return operation(i++, input1, input2);
             });
         }
     }

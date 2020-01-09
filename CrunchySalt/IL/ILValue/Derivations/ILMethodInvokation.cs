@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,11 +6,11 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    using Salt;
+    
     public class ILMethodInvokation : ILValue
     {
         private ILValue caller;
@@ -37,9 +37,8 @@ namespace CrunchySalt
                 caller.GetILImplicitCast(method.GetILMethodInvokationType())
                     .RenderIL_Load(canvas);
 
-                method.GetEffectiveParameterTypes().ProcessTandemStrict(arguments,
-                    (t, a) => a.GetILImplicitCast(t).RenderIL_Load(canvas)
-                );
+                arguments.GetILImplicitCasts(method.GetEffectiveParameterTypes())
+                    .RenderIL_Load(canvas);
 
                 if (method.IsTechnicallyInstanceMethod() && method.DeclaringType.IsReferenceType())
                     canvas.Emit_Callvirt(method);
@@ -48,17 +47,11 @@ namespace CrunchySalt
             }
             else
             {
-                method.GetTechnicalParameterTypes().ProcessTandemStrict(arguments,
-                    (t, a) => a.GetILImplicitCast(t).RenderIL_Load(canvas)
-                );
+                arguments.GetILImplicitCasts(method.GetTechnicalParameterTypes())
+                    .RenderIL_Load(canvas);
 
                 canvas.Emit_Call(method);
             }
-        }
-
-        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
         }
 
         public override void RenderText_Value(ILTextCanvas canvas)
@@ -88,11 +81,6 @@ namespace CrunchySalt
         public override bool CanLoad()
         {
             return true;
-        }
-
-        public override bool CanStore()
-        {
-            return false;
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    
     public abstract class Utensil<T>
     {
         public abstract void Mark(Surface<T> surface, VectorF2 point);

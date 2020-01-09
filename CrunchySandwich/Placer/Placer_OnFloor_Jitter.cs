@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public class Placer_OnFloor_Jitter : Placer_OnFloor
     {
         [SerializeField]private Bounds translation_jitter;

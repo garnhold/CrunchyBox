@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class RectExtensions_SplitIntoQuarters
     {
         static public void SplitIntoQuarters(this Rect item, out Rect r1, out Rect r2, out Rect r3, out Rect r4)

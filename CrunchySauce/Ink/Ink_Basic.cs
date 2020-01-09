@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    
     public class Ink_Basic<T> : Ink<T>
     {
         private T pigment;

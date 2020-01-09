@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
 	static public class NumberExtensions_Operations
     {
@@ -48,6 +48,33 @@ namespace CrunchyDough
 
 			return target;
 		}
+
+		static public bool GetMoveTowards(this int item, int target, int amount, out int output)
+		{
+			if(item < target)
+			{
+				item += amount;
+
+				if(item < target)
+				{
+					output = item;
+					return false;
+				}
+			}
+			else
+			{
+				item -= amount;
+
+				if(item > target)
+				{
+					output = item;
+					return false;
+				}
+			}
+
+			output = target;
+			return true;
+		}
 		static public long GetAbs(this long item)
 		{
 			if(item < 0)
@@ -89,6 +116,33 @@ namespace CrunchyDough
 			}
 
 			return target;
+		}
+
+		static public bool GetMoveTowards(this long item, long target, long amount, out long output)
+		{
+			if(item < target)
+			{
+				item += amount;
+
+				if(item < target)
+				{
+					output = item;
+					return false;
+				}
+			}
+			else
+			{
+				item -= amount;
+
+				if(item > target)
+				{
+					output = item;
+					return false;
+				}
+			}
+
+			output = target;
+			return true;
 		}
 		static public float GetAbs(this float item)
 		{
@@ -132,6 +186,33 @@ namespace CrunchyDough
 
 			return target;
 		}
+
+		static public bool GetMoveTowards(this float item, float target, float amount, out float output)
+		{
+			if(item < target)
+			{
+				item += amount;
+
+				if(item < target)
+				{
+					output = item;
+					return false;
+				}
+			}
+			else
+			{
+				item -= amount;
+
+				if(item > target)
+				{
+					output = item;
+					return false;
+				}
+			}
+
+			output = target;
+			return true;
+		}
 		static public double GetAbs(this double item)
 		{
 			if(item < 0)
@@ -174,6 +255,33 @@ namespace CrunchyDough
 
 			return target;
 		}
+
+		static public bool GetMoveTowards(this double item, double target, double amount, out double output)
+		{
+			if(item < target)
+			{
+				item += amount;
+
+				if(item < target)
+				{
+					output = item;
+					return false;
+				}
+			}
+			else
+			{
+				item -= amount;
+
+				if(item > target)
+				{
+					output = item;
+					return false;
+				}
+			}
+
+			output = target;
+			return true;
+		}
 		static public decimal GetAbs(this decimal item)
 		{
 			if(item < 0)
@@ -215,6 +323,33 @@ namespace CrunchyDough
 			}
 
 			return target;
+		}
+
+		static public bool GetMoveTowards(this decimal item, decimal target, decimal amount, out decimal output)
+		{
+			if(item < target)
+			{
+				item += amount;
+
+				if(item < target)
+				{
+					output = item;
+					return false;
+				}
+			}
+			else
+			{
+				item -= amount;
+
+				if(item > target)
+				{
+					output = item;
+					return false;
+				}
+			}
+
+			output = target;
+			return true;
 		}
 	}
 }

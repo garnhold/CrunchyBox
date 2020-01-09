@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
     static public class SurfaceSelectionExtensions
     {

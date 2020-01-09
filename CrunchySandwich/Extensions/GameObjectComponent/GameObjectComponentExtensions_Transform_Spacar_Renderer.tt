@@ -1,0 +1,29 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Renderer
+    {
+<# foreach(string type_name in type_names){#>
+		static public Bounds GetSpacarRendererBounds(this <#=type_name#> item)
+		{
+			return item.transform.GetSpacarRendererBounds();
+		}
+
+<# } #>
+	}
+}

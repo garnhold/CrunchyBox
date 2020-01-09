@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Spacar_Mesh
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Mesh
     {
 		static public void SetSpacarMeshSize(this GameObject item, Vector3 size)
 		{

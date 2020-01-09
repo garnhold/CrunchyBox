@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Function_Operation : Function
     {
         private string name;
@@ -26,7 +26,7 @@ namespace CrunchyNoodle
             return name;
         }
 
-        public Function_Operation(Type t, Type r, string n, IEnumerable<Type> p, Operation<object, object, object[]> o) : base(t, r, p)
+        public Function_Operation(Type t, Type r, string n, IEnumerable<Type> p, Operation<object, object, object[]> o) : base(t, r, p.Convert(z => KeyValuePair.New("parameter", z)))
         {
             name = n;
 

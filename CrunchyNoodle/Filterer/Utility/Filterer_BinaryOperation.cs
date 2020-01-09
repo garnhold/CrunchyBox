@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_BinaryOperation_And<T> : Filterer_BinaryOperation<T>
     {
         protected override bool FilterInternal(T item, Filterer<T> f1, Filterer<T> f2)

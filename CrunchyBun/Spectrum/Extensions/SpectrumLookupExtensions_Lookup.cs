@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class SpectrumLookupExtensions_Lookup
     {
         static public SpectrumBand<T> LookupFirst<T>(this SpectrumLookup<T> item, float value)

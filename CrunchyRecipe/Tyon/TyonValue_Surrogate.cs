@@ -8,17 +8,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonValue_Surrogate : TyonValue
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonValue_Surrogate : TyonValue
 	{
-        public TyonValue_Surrogate(object value, TyonContext_Dehydration context) : this()
+        public TyonValue_Surrogate(object value, TyonDehydrater dehydrater) : this()
         {
-            SetTyonSurrogate(new TyonSurrogate(value, context));
+            SetTyonSurrogate(new TyonSurrogate(value, dehydrater));
         }
 
         public override void Render(TextDocumentCanvas canvas)
@@ -26,11 +26,11 @@ namespace CrunchyRecipe
             GetTyonSurrogate().Render(canvas);
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            object value = GetTyonSurrogate().InstanceSystemObject(context);
+            object value = GetTyonSurrogate().ResolveSystemObject(hydrater);
 
-            context.DeferProcess(delegate() {
+            hydrater.DeferProcess(delegate() {
                 variable.SetContents(value);
             });
         }

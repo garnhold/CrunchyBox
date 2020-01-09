@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
     public interface Surface<T>
     {

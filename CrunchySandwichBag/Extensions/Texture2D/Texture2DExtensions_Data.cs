@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,17 +6,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
+    [SideloadEditDistinctionAttribute]
     static public class Texture2DExtensions_Data
     {
-        static public Texture2D Sideload(this Texture2D item)
+        [SideloadEditDistinctionAttribute]
+        static public Texture2D Sideload(Texture2D item)
         {
-            return CrunchySandwich.Texture2DExtensions.Create(item.GetAssetBytes());
+            return Crunchy.Sandwich.Texture2DExtensions.Create(item.GetAssetInfo().GetBytes());
         }
     }
 }

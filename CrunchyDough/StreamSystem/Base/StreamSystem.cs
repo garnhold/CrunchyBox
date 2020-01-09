@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public abstract partial class StreamSystem
     {
@@ -43,6 +43,11 @@ namespace CrunchyDough
         public StreamDirectory GetRoot()
         {
             return root;
+        }
+
+        public StreamSource GetStreamSource(string path)
+        {
+            return new StreamSource(path, this);
         }
     }
 }

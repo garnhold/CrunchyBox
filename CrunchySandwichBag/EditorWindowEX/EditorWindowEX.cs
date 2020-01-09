@@ -1,29 +1,24 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Sandwich;
+    
     public abstract class EditorWindowEX : EditorWindow
     {
-        private EditorGUIElement element;
+        private EditorGUIView view;
 
         protected abstract EditorGUIElement CreateRootEditorGUIElement();
 
         private void OnGUI()
         {
-            EditorGUIElement root = GetGUIElement();
-
-            root.LayoutDrawAndUnwind(
-                EditorGUILayout.GetControlRect(true, root.GetHeight()),
-                EditorGUISettings.GetInstance().GetDefaultLabelWidth()
-            );
+            GetEditorGUIView().LayoutDrawUnwind();
         }
 
         public EditorWindowEX()
@@ -31,12 +26,12 @@ namespace CrunchySandwichBag
             titleContent = new GUIContent(GetType().Name);
         }
 
-        public EditorGUIElement GetGUIElement()
+        public EditorGUIView GetEditorGUIView()
         {
-            if (element == null)
-                element = CreateRootEditorGUIElement().InitilizeAndGet();
+            if (view == null)
+                view = new EditorGUIView(CreateRootEditorGUIElement().InitilizeAndGet());
 
-            return element;
+            return view;
         }
     }
 }

@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StringExtensions_Parse_HexInt
     {
         static public bool TryParseHexInt(this string item, out int value)
         {
             return int.TryParse(
-                item,
+                item.TrimAnyPrefix("0x", "0X"),
                 System.Globalization.NumberStyles.HexNumber,
                 System.Globalization.CultureInfo.InvariantCulture,
                 out value

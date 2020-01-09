@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class PlaneExtensions_Triangle
     {
         static public bool FullyContains(this Plane item, Triangle3 triangle)
@@ -24,7 +24,7 @@ namespace CrunchySandwich
             return false;
         }
 
-        static public bool TryGetTriangleCoplanarEdge(this Plane item, Triangle3 triangle, float tolerance, out Edge3 edge)
+        static public bool TryGetTriangleCoplanarEdge(this Plane item, Triangle3 triangle, float tolerance, out LineSegment3 edge)
         {
             bool is_v0_near = item.GetAbsoluteDistanceToPoint(triangle.v0) <= tolerance;
             bool is_v1_near = item.GetAbsoluteDistanceToPoint(triangle.v1) <= tolerance;
@@ -34,7 +34,6 @@ namespace CrunchySandwich
             {
                 edge = triangle.GetEdge01();
                 return true;
-
             }
 
             if (is_v1_near && is_v2_near && is_v0_near == false)
@@ -49,7 +48,7 @@ namespace CrunchySandwich
                 return true;
             }
 
-            edge = default(Edge3);
+            edge = default(LineSegment3);
             return false;
         }
     }

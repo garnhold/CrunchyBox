@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public class RandVector2Source
     {
         private RandFloatSource source;
@@ -74,6 +74,96 @@ namespace CrunchySandwich
         public Vector2 GetNearLine(Vector2 point1, Vector2 point2, float radius)
         {
             return point1.GetPointNearLineByPercent(point2, source.GetBetween(0.0f, 1.0f), source.GetOffset(radius));
+        }
+
+        public Vector2 GetOnArc(float low_angle, float high_angle, float radius)
+        {
+            return Vector2Extensions.CreateDirectionFromDegrees(source.GetBetween(low_angle, high_angle)) * radius;
+        }
+        public Vector2 GetOnArc(FloatRange angle, float radius)
+        {
+            return GetOnArc(angle.x1, angle.x2, radius);
+        }
+
+        public Vector2 GetOnCircle(float radius)
+        {
+            return GetOnArc(0.0f, 360.0f, radius);
+        }
+
+        public Vector2 GetInArc(float low_angle, float high_angle, float low_radius, float high_radius)
+        {
+            return GetOnArc(low_angle, high_angle, source.GetBetween(low_radius, high_radius));
+        }
+        public Vector2 GetInArc(FloatRange angle, float low_radius, float high_radius)
+        {
+            return GetInArc(angle.x1, angle.x2, low_radius, high_radius);
+        }
+        public Vector2 GetInArc(float low_angle, float high_angle, FloatRange radius)
+        {
+            return GetInArc(low_angle, high_angle, radius.x1, radius.x2);
+        }
+        public Vector2 GetInArc(FloatRange angle, FloatRange radius)
+        {
+            return GetInArc(angle.x1, angle.x2, radius.x1, radius.x2);
+        }
+
+        public Vector2 GetInCircle(float low_radius, float high_radius)
+        {
+            return GetInArc(0.0f, 360.0f, low_radius, high_radius);
+        }
+        public Vector2 GetInCircle(FloatRange radius)
+        {
+            return GetInCircle(radius.x1, radius.x2);
+        }
+
+        public Vector2 GetInCircle(float radius)
+        {
+            return GetInCircle(0.0f, radius);
+        }
+
+        public Vector2 GetOnArc(Vector2 center, float low_angle, float high_angle, float radius)
+        {
+            return GetOnArc(low_angle, high_angle, radius) + center;
+        }
+        public Vector2 GetOnArc(Vector2 center, FloatRange angle, float radius)
+        {
+            return GetOnArc(center, angle.x1, angle.x2, radius);
+        }
+
+        public Vector2 GetOnCircle(Vector2 center, float radius)
+        {
+            return GetOnArc(center, 0.0f, 360.0f, radius);
+        }
+
+        public Vector2 GetInArc(Vector2 center, float low_angle, float high_angle, float low_radius, float high_radius)
+        {
+            return GetOnArc(center, low_angle, high_angle, source.GetBetween(low_radius, high_radius));
+        }
+        public Vector2 GetInArc(Vector2 center, FloatRange angle, float low_radius, float high_radius)
+        {
+            return GetInArc(center, angle.x1, angle.x2, low_radius, high_radius);
+        }
+        public Vector2 GetInArc(Vector2 center, float low_angle, float high_angle, FloatRange radius)
+        {
+            return GetInArc(center, low_angle, high_angle, radius.x1, radius.x2);
+        }
+        public Vector2 GetInArc(Vector2 center, FloatRange angle, FloatRange radius)
+        {
+            return GetInArc(center, angle.x1, angle.x2, radius.x1, radius.x2);
+        }
+
+        public Vector2 GetInCircle(Vector2 center, float low_radius, float high_radius)
+        {
+            return GetInArc(center, 0.0f, 360.0f, low_radius, high_radius);
+        }
+        public Vector2 GetInCircle(Vector2 center, FloatRange radius)
+        {
+            return GetInCircle(center, radius.x1, radius.x2);
+        }
+
+        public Vector2 GetInCircle(Vector2 center, float radius)
+        {
+            return GetInCircle(center, 0.0f, radius);
         }
     }
 }

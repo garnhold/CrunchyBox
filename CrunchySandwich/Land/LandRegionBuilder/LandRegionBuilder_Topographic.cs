@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public abstract class LandRegionBuilder_Topographic : LandRegionBuilder
     {
         public abstract float CalculateLandRegionTypeStrength(TerrainSample terrain_sample);

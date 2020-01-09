@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlScriptSingleStatement_IndirectFunctionCall : CmlScriptSingleStatement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CmlScriptSingleStatement_IndirectFunctionCall : CmlScriptSingleStatement
 	{
         protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
         {

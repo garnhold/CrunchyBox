@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Data;
 using System.Data.SQLite;
 
-using CrunchyDough;
-
-namespace CrunchyStyrofoam
+namespace Crunchy.Styrofoam
 {
+    using Dough;
+    
     public class DatabaseTableExpression_Operation_Binary_Equals : DatabaseTableExpression_Operation_Binary
     {
         public DatabaseTableExpression_Operation_Binary_Equals(DatabaseTableExpression l, DatabaseTableExpression r)

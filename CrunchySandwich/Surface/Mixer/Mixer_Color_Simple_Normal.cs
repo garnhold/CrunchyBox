@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchySauce;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Sauce;
+    
     public class Mixer_Color_Simple_Normal : Mixer_Color_Simple
     {
         protected override Color MixSimple(Color src_pm, Color dst_pm, float weight)

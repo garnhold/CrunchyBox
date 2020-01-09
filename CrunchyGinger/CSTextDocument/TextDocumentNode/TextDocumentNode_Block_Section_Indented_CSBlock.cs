@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Text;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyGinger
+namespace Crunchy.Ginger
 {
+    using Dough;
+    
     public class TextDocumentNode_Block_Section_Indented_CSBlock : TextDocumentNode_Block_Section_Indented
     {
         private string text;

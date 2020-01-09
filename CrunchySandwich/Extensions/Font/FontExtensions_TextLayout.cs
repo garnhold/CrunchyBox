@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
+using Crunchy.Dough;
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     static public class FontExtensions_TextLayout
     {
-        static private readonly float TYPE_UNITS_PER_SPACE_UNIT = 10.0f;
-
         static public float GetTextLayoutWidth(this Font item, string text, int size)
         {
             CharacterInfo info;
@@ -21,14 +19,14 @@ namespace CrunchySandwich
         }
         static public float GetTextLayoutWidth(this Font item, string text)
         {
-            return item.GetTextLayoutWidth(text, 0);
+            return item.GetTextLayoutWidth(text, item.fontSize);
         }
 
         static public string LayoutText(this Font item, string text, float max_width, int size)
         {
             CharacterInfo info;
 
-            return text.Layout(max_width * TYPE_UNITS_PER_SPACE_UNIT, delegate(char character) {
+            return text.Layout(max_width, delegate(char character) {
                 item.GetCharacterInfo(character, out info, size);
 
                 return info.advance;
@@ -36,7 +34,7 @@ namespace CrunchySandwich
         }
         static public string LayoutText(this Font item, string text, float max_width)
         {
-            return item.LayoutText(text, max_width, 0);
+            return item.LayoutText(text, max_width, item.fontSize);
         }
     }
 }

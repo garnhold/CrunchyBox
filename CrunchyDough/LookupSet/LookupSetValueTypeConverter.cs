@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class LookupSetValueTypeConverter<KEY_TYPE, INPUT_TYPE, OUTPUT_TYPE> : LookupSet<KEY_TYPE, OUTPUT_TYPE>
     {

@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 using System.Windows;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    
     static public class WindowExtensions
     {
     }

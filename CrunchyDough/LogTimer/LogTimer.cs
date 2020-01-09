@@ -1,21 +1,21 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class LogTimer
     {
-        private Timer timer;
+        private Stopwatch timer;
         private List<long> times_in_milliseconds;
 
         public LogTimer(TimeSource t)
         {
-            timer = new Timer(t);
+            timer = new Stopwatch(t);
             times_in_milliseconds = new List<long>();
         }
 
-        public LogTimer() : this(TimeSource_Stopwatch.INSTANCE) { }
+        public LogTimer() : this(TimeSource_System.INSTANCE) { }
 
         public void Clear()
         {

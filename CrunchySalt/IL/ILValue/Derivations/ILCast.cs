@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,11 +6,11 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    using Salt;
+    
     public class ILCast : ILValue, ILAddressable
     {
         private ILCastInfo cast;
@@ -50,11 +50,6 @@ namespace CrunchySalt
             cast.EmitCastAddress(canvas, value);
         }
 
-        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
-        }
-
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             canvas.AppendToLine("(");
@@ -79,11 +74,6 @@ namespace CrunchySalt
         public override bool CanLoad()
         {
             return true;
-        }
-
-        public override bool CanStore()
-        {
-            return false;
         }
     }
 }

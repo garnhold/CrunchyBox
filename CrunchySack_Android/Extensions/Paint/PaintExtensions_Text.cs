@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
@@ -8,12 +8,12 @@ using Android.Content;
 using Android.Graphics;
 using Android.Content.Res;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Bun;
+    using Sack;
+    
     static public class PaintExtensions_Text
     {
         private const float FIT_TEXT_TEST_SIZE = 1024.0f;

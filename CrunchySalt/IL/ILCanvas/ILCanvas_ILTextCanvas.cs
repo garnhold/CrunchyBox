@@ -6,10 +6,10 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILCanvas_ILTextCanvas : ILCanvas
     {
         private ILTextCanvas canvas;
@@ -30,7 +30,26 @@ namespace CrunchySalt
             return new ILCanvasLabel_ILTextCanvas(canvas);
         }
 
+        public override ILCanvasLabel BeginExceptionBlock()
+        {
+            canvas.AppendToNewline("BeginExceptionBlock");
+
+            return CreateLabel();
+        }
+
+        public override void BeginCatchBlock(Type type)
+        {
+            canvas.AppendToNewline("BeginCatchBlock(" + type + ")");
+        }
+
+        public override void EndExceptionBlock()
+        {
+            canvas.AppendToNewline("EndExceptionBlock");
+        }
+        
         public override void Emit_Nop() { canvas.AppendInstruction("Nop"); }
+        public override void Emit_Throw() { canvas.AppendToNewline("Throw"); }
+        public override void Emit_Rethrow() { canvas.AppendToNewline("Rethrow"); }
 
         public override void Emit_Dup() { canvas.AppendInstruction("Dup"); }
         public override void Emit_Pop() { canvas.AppendInstruction("Pop"); }
@@ -54,6 +73,7 @@ namespace CrunchySalt
         public override void Emit_Initobj(Type type) { canvas.AppendInstruction("Initobj", type.Name); }
 
         public override void Emit_Call(MethodInfo method) { canvas.AppendInstruction("Call", method.ToString()); }
+        public override void Emit_Call(ConstructorInfo method) { canvas.AppendInstruction("Call", method.ToString()); }
         public override void Emit_Callvirt(MethodInfo method) { canvas.AppendInstruction("Callvirt", method.ToString()); }
 
         public override void Emit_Ldc_I4_M1_Direct() { canvas.AppendInstruction("Ldc.I4.M1"); }
@@ -81,7 +101,7 @@ namespace CrunchySalt
         public override void Emit_Conv_R8() { canvas.AppendInstruction("Conv.R8"); }
 
         public override void Emit_Ldnull() { canvas.AppendInstruction("Ldnull"); }
-        public override void Emit_Ldstr(string value) { canvas.AppendInstruction("Ldstr", value.StyleAsLiteralString()); }
+        public override void Emit_Ldstr(string value) { canvas.AppendInstruction("Ldstr", value.StyleAsDoubleQuoteLiteral()); }
 
         public override void Emit_Ldfld(FieldInfo field) { canvas.AppendInstruction("Ldfld", field.ToString()); }
         public override void Emit_Ldsfld(FieldInfo field) { canvas.AppendInstruction("Ldsfld", field.ToString()); }
@@ -151,6 +171,7 @@ namespace CrunchySalt
         public override void Emit_And() { canvas.AppendInstruction("And"); }
         public override void Emit_Or() { canvas.AppendInstruction("Or"); }
         public override void Emit_Not() { canvas.AppendInstruction("Not"); }
+        public override void Emit_Xor() { canvas.AppendInstruction("Xor"); }
 
         public override void Emit_Ceq() { canvas.AppendInstruction("Ceq"); }
         public override void Emit_Clt() { canvas.AppendInstruction("Clt"); }

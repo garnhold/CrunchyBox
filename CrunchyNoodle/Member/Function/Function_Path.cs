@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Function_Path : Function
     {
         private Function function;
@@ -21,7 +21,7 @@ namespace CrunchyNoodle
             return path_resolver + "." + function.ToString(false, false, true);
         }
 
-        public Function_Path(Function f, PathResolver p) : base(p.GetInputType(), f.GetReturnType(), f.GetParameterTypes())
+        public Function_Path(Function f, PathResolver p) : base(p.GetInputType(), f.GetReturnType(), f.GetParameters())
         {
             function = f;
             path_resolver = p;

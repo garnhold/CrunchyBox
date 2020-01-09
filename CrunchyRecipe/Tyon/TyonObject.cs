@@ -8,37 +8,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonObject : TyonElement, TyonAddressable
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonObject : TyonElement, TyonAddressable
 	{
-        public TyonObject(object obj, TyonContext_Dehydration context) : this()
+        public TyonObject(object obj, TyonDehydrater dehydrater) : this()
         {
-            context.RegisterInternalObject(obj, this);
+            dehydrater.RegisterInternalObject(obj, this);
 
             SetTyonType(TyonType.CreateTyonType(obj.GetType()));
             SetTyonVariables(
-                context.GetDesignatedVariables(obj.GetType())
-                    .Convert(v => new TyonVariable(obj, v, context))
+                dehydrater.GetDesignatedVariables(obj.GetType())
+                    .Convert(v => new TyonVariable(v.CreateStrongInstance(obj), dehydrater))
             );
         }
 
-        public void PushToSystemObject(object obj, TyonContext_Hydration context)
+        public void PushToSystemObject(object obj, TyonHydrater hydrater)
         {
-            context.RegisterInternalObject(obj, GetTyonAddress());
-            GetTyonVariables().Process(v => v.PushToSystemObject(obj, context));
+            hydrater.RegisterInternalObject(obj, GetTyonAddress());
+            GetTyonVariables().Process(v => v.PushToSystemObject(obj, hydrater));
         }
 
-        public object InstanceSystemObject(TyonContext_Hydration context)
+        public object InstanceSystemObject(TyonHydrater hydrater)
         {
-            object obj = GetTyonType().InstanceSystemType();
-
-            PushToSystemObject(obj, context);
-            return obj;
+            return GetTyonType().InstanceSystemType(hydrater)
+                .ChainIfNotNull(o => PushToSystemObject(o, hydrater));
         }
 
         public string Render()
@@ -67,12 +65,22 @@ namespace CrunchyRecipe
             canvas.AppendToNewline("}");
         }
 
-        public TyonAddress RequestAddress(TyonContext_Dehydration context)
+        public TyonAddress RequestAddress(TyonDehydrater dehydrater)
         {
             if (GetTyonAddress() == null)
-                SetTyonAddress(context.GetNewInternalAddress());
+                SetTyonAddress(dehydrater.GetNewInternalAddress());
 
             return GetTyonAddress();
+        }
+
+        public Type GetSystemType(TyonHydrater hydrater)
+        {
+            return GetTyonType().GetSystemType(hydrater);
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

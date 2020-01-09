@@ -1,18 +1,30 @@
-﻿using System;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class TypeExtensions_Enum
     {
+        static public Enum MakeEnumValue(this Type item, long value)
+        {
+            return (Enum)Enum.ToObject(item, value);
+        }
+
         static public bool IsEnumType(this Type item)
         {
             if (item.IsEnum)
                 return true;
 
             return false;
+        }
+
+        static public Type GetEnumUnderlyingType(this Type item)
+        {
+            return Enum.GetUnderlyingType(item);
         }
 
         static public bool IsEnumFlagType(this Type item)
@@ -29,6 +41,47 @@ namespace CrunchyDough
         static public EnumInfo GetEnumInfo(this Type item)
         {
             return EnumInfo.GetEnumInfo(item);
+        }
+
+        static public EnumValueInfo GetEnumValueInfoByIndex(this Type item, int index)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfoByIndex(index));
+        }
+        static public Enum GetEnumValueByIndex(this Type item, int index)
+        {
+            return item.GetEnumValueInfoByIndex(index).IfNotNull(i => i.GetValue());
+        }
+
+        static public EnumValueInfo GetEnumValueInfoByName(this Type item, string name)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfoByName(name));
+        }
+        static public Enum GetEnumValueByName(this Type item, string name)
+        {
+            return item.GetEnumValueInfoByName(name).IfNotNull(i => i.GetValue());
+        }
+
+        static public EnumValueInfo GetEnumValueInfoByLongValue(this Type item, long value)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfoByLongValue(value));
+        }
+        static public Enum GetEnumValueByLongValue(this Type item, long value)
+        {
+            return item.GetEnumValueInfoByLongValue(value).IfNotNull(i => i.GetValue());
+        }
+
+        static public EnumValueInfo GetEnumValueInfoByValue(this Type item, Enum value)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfoByValue(value));
+        }
+
+        static public IEnumerable<EnumValueInfo> GetEnumValueInfos(this Type item)
+        {
+            return item.GetEnumInfo().IfNotNull(i => i.GetEnumValueInfos());
+        }
+        static public IEnumerable<Enum> GetEnumValues(this Type item)
+        {
+            return item.GetEnumValueInfos().Convert(i => i.GetValue());
         }
     }
 }

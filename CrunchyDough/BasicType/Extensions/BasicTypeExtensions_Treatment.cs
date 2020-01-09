@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class BasicTypeExtensions_Treatment
     {
@@ -21,6 +21,8 @@ namespace CrunchyDough
 
                 case BasicType.Char: return false;
                 case BasicType.String: return false;
+
+                case BasicType.Array: return false;
 
                 case BasicType.Class: return false;
                 case BasicType.Enum: return false;
@@ -48,6 +50,8 @@ namespace CrunchyDough
                 case BasicType.Char: return false;
                 case BasicType.String: return false;
 
+                case BasicType.Array: return false;
+
                 case BasicType.Class: return false;
                 case BasicType.Enum: return false;
                 case BasicType.Struct: return false;
@@ -74,6 +78,8 @@ namespace CrunchyDough
                 case BasicType.Char: return false;
                 case BasicType.String: return false;
 
+                case BasicType.Array: return false;
+
                 case BasicType.Class: return false;
                 case BasicType.Enum: return false;
                 case BasicType.Struct: return false;
@@ -99,6 +105,8 @@ namespace CrunchyDough
 
                 case BasicType.Char: return true;
                 case BasicType.String: return true;
+
+                case BasicType.Array: return false;
 
                 case BasicType.Class: return false;
                 case BasicType.Enum: return true;

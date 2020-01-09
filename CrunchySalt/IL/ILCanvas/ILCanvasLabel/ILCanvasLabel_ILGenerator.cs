@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,19 +6,19 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILCanvasLabel_ILGenerator : ILCanvasLabel
     {
         private Label label;
         private ILGenerator generator;
 
-        public ILCanvasLabel_ILGenerator(ILGenerator g)
+        public ILCanvasLabel_ILGenerator(ILGenerator g, Label l)
         {
             generator = g;
-            label = generator.DefineLabel();
+            label = l;
         }
 
         public override void Emit_Label()
@@ -39,6 +39,11 @@ namespace CrunchySalt
         public override void Emit_Brfalse()
         {
             generator.Emit(OpCodes.Brfalse, label);
+        }
+
+        public override void Emit_Leave()
+        {
+            generator.Emit(OpCodes.Leave, label);
         }
     }
 }

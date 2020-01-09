@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
+using Crunchy.Dough;
+using Crunchy.Noodle;
+using Crunchy.Bun;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     static public partial class MeshExtensions
     {
@@ -20,11 +20,8 @@ namespace CrunchySandwich
                 .Convert(a => Vector2Extensions.CreateDirectionFromDegrees(a).GetSpacar() * 0.5f)
                 .Prepend(new Vector3(0.0f, 0.0f, 0.0f))
                 .ToArray();
-
-            mesh.triangles = Ints.Range(1, number_vertexs, false)
-                .ConvertConnections((p1, p2) => Enumerable.New(0, p2, p1))
-                .Flatten()
-                .ToArray();
+                
+            mesh.CalculateTrianglesAsFan();
 
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();

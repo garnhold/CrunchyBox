@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class Texture2DExtensions
     {
         static public Texture2D Create(int width, int height, TextureFormat format, bool mipmaps)
@@ -20,6 +20,11 @@ namespace CrunchySandwich
         static public Texture2D Create(int width, int height)
         {
             return new Texture2D(width, height);
+        }
+
+        static public Texture2D Create(int width, int height, Operation<Color, int, int> operation)
+        {
+            return new Grid<Color>(width, height, operation).CreateTexture2D();
         }
 
         static public Texture2D Create(int width, int height, Color[] colors)

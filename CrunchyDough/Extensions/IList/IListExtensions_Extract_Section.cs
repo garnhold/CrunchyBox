@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IListExtensions_Extract_Section
     {
@@ -19,19 +19,14 @@ namespace CrunchyDough
             return item.ExtractSubSection(start, start + length);
         }
 
-        static public IEnumerable<T> ExtractBeginning<T>(this IList<T> item, int start)
+        static public IEnumerable<T> ExtractFront<T>(this IList<T> item, int count)
         {
-            return item.ExtractSubSection(start, item.Count);
+            return item.ExtractSubSection(0, count);
         }
 
-        static public IEnumerable<T> ExtractEnding<T>(this IList<T> item, int end)
+        static public IEnumerable<T> ExtractBack<T>(this IList<T> item, int count)
         {
-            return item.ExtractSubSection(0, end);
-        }
-
-        static public IEnumerable<T> ExtractTrim<T>(this IList<T> item, int amount)
-        {
-            return item.ExtractEnding(item.Count - amount);
+            return item.ExtractSubSection(item.Count - count, item.Count);
         }
     }
 }

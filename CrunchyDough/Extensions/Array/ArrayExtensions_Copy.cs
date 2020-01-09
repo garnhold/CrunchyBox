@@ -1,29 +1,45 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ArrayExtensions_Copy
     {
-        static public void CopyFrom<T>(this T[] item, T[] array, int dst, int src, int length)
+        static public int CopySub<T>(this T[] item, T[] array, int dst, int src, int length)
         {
             if (item.IsSubValid(dst, length) && array.IsSubValid(src, length))
+            {
                 Array.Copy(array, src, item, dst, length);
+
+                return dst + length;
+            }
+
+            return dst;
         }
-        static public void CopyFrom<T>(this T[] item, T[] array, int dst)
+
+        static public int CopySubsection<T>(this T[] item, T[] array, int dst, int src_start, int src_end)
         {
-            item.CopyFrom<T>(array, dst, 0, array.GetLength());
+            return item.CopySub(array, dst, src_start, src_end - src_start);
         }
-        static public void CopyFrom<T>(this T[] item, T[] array)
+
+        static public int CopyFrom<T>(this T[] item, T[] array, int dst, int src)
         {
-            item.CopyFrom<T>(array, 0);
+            return item.CopySub(array, dst, src, array.Length - src);
+        }
+        static public int CopyFrom<T>(this T[] item, T[] array, int dst)
+        {
+            return item.CopyFrom(array, dst, 0);
+        }
+        static public int CopyFrom<T>(this T[] item, T[] array)
+        {
+            return item.CopyFrom(array, 0);
         }
 
         static public T[] Copy<T>(this T[] item)
         {
             T[] copy = new T[item.GetLength()];
 
-            copy.CopyFrom<T>(item);
+            copy.CopyFrom(item);
             return copy;
         }
     }

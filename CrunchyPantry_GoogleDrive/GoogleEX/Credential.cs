@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,11 +10,11 @@ using Google.Apis.Drive.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyPantry_GoogleDrive
+namespace Crunchy.Pantry_GoogleDrive
 {
+    using Dough;
+    using Noodle;
+    
     namespace GoogleEX
     {
         public class Credential

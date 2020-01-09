@@ -4,12 +4,12 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    
     [Conversion]
     static public class ColumnDefinitionExtensions
     {

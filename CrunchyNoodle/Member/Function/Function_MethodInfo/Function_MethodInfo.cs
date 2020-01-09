@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Function_MethodInfo : Function
     {
         private string name;
@@ -65,7 +65,7 @@ namespace CrunchyNoodle
             : base(
                 m.IfNotNull(z => z.DeclaringType),
                 m.IfNotNull(z => z.ReturnType),
-                m.IfNotNull(z => z.GetEffectiveParameterTypes())
+                m.IfNotNull(z => z.GetEffectiveParameters().Convert(p => KeyValuePair.New(p.Name, p.ParameterType)))
             )
         {
             name = m.IfNotNull(z => z.Name);

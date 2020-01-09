@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_EvtInfo_Method
     {
-        static private OperationCache<EvtInfoEX, Type, string, string> GET_INSTANCE_METHOD_EVT_INTERNAL = ReflectionCache.Get().NewOperationCache(delegate(Type item, string add_method, string remove_method) {
+        static private OperationCache<EvtInfoEX, Type, string, string> GET_INSTANCE_METHOD_EVT_INTERNAL = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_METHOD_EVT_INTERNAL", delegate(Type item, string add_method, string remove_method) {
             MethodInfoEX add = item.GetFilteredInstanceMethods(
                 Filterer_MethodInfo.HasNoReturn(),
                 Filterer_MethodInfo.IsNamed(add_method.TrimSuffix("()")),

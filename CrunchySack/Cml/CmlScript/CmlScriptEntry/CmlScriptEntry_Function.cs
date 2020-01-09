@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlScriptEntry_Function : CmlScriptEntry
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CmlScriptEntry_Function : CmlScriptEntry
 	{
         private Dictionary<CmlScriptSignature, CmlScriptDefinition_Function> definitions;
 

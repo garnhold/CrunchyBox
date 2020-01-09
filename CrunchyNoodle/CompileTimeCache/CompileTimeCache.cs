@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class CompileTimeCache<T, P1, P2, P3, P4> : CompileTimeCache<T, IdentifiableTuple<P1, P2, P3, P4>>
         where P1 : Identifiable
         where P2 : Identifiable
@@ -51,14 +51,12 @@ namespace CrunchyNoodle
 
     public class CompileTimeCache<T, P> : CompileTimeCacheBase<T> where P : Identifiable
     {
-        private string id;
         private Operation<T, P> operation;
 
         private Dictionary<P, T> data;
 
-        public CompileTimeCache(string i, Husker<T> h, Operation<T, P> o) : base(h)
+        public CompileTimeCache(string i, Husker<T> h, Operation<T, P> o) : base(i, h)
         {
-            id = i;
             operation = o;
 
             data = new Dictionary<P, T>();
@@ -77,9 +75,10 @@ namespace CrunchyNoodle
 
                 if (data.TryGetValue(parameter, out item) == false)
                 {
-                    item = FetchInternal(GetFilename(parameter), () => operation(parameter));
-
-                    data.Add(parameter, item);
+                    item = data.AddAndGet(
+                        parameter,
+                        FetchInternal(GetFilename(parameter), () => operation(parameter))
+                    );
                 }
 
                 return item;
@@ -90,21 +89,19 @@ namespace CrunchyNoodle
 
         public string GetFilename(P parameter)
         {
-            return Filename.MakeObfuscatedDataFilename("Cache", id + parameter.GetIdentityEX(), "data");
+            return Filename.MakeObfuscatedDataFilename("Cache", GetId() + parameter.GetIdentityEX(), "data");
         }
     }
 
     public class CompileTimeCache<T> : CompileTimeCacheBase<T>
     {
-        private string id;
         private Operation<T> operation;
 
         private T item;
         private bool has_item;
 
-        public CompileTimeCache(string i, Husker<T> h, Operation<T> o) : base(h)
+        public CompileTimeCache(string i, Husker<T> h, Operation<T> o) : base(i, h)
         {
-            id = i;
             operation = o;
         }
 
@@ -118,7 +115,10 @@ namespace CrunchyNoodle
             if (IsActive())
             {
                 if (has_item == false)
+                {
                     item = FetchInternal(GetFilename(), operation);
+                    has_item = true;
+                }
 
                 return item;
             }
@@ -128,7 +128,7 @@ namespace CrunchyNoodle
 
         public string GetFilename()
         {
-            return Filename.MakeObfuscatedDataFilename("Cache", id, "data");
+            return Filename.MakeObfuscatedDataFilename("Cache", GetId(), "data");
         }
     }
 
@@ -172,11 +172,11 @@ namespace CrunchyNoodle
 
                 if (Read(filename, out data).IsUndesired())
                 {
-                    long operation_time = TimeSource_Stopwatch.INSTANCE.TimeProcessInMilliseconds(delegate() {
+                    long operation_time = TimeSource_System.INSTANCE.TimeProcessInMilliseconds(delegate() {
                         data = operation();
                     });
-
-                    if (operation_time > 1)
+                    
+                    if (operation_time > 10)
                         Write(filename, data);
                 }
 
@@ -186,7 +186,7 @@ namespace CrunchyNoodle
             return operation();
         }
 
-        public CompileTimeCacheBase(Husker<T> h)
+        public CompileTimeCacheBase(string i, Husker<T> h) : base(i)
         {
             husker = h;
         }

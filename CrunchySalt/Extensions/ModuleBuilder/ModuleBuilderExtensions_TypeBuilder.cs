@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class ModuleBuilderExtensions_TypeBuilder
     {
         static public TypeBuilder CreateTypeBuilder(this ModuleBuilder item, string name, TypeAttributes type_attributes)

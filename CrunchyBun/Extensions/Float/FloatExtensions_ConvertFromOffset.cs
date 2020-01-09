@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_ConvertFromOffset
     {
         static public float ConvertFromOffsetToPercent(this float item)
@@ -14,6 +14,19 @@ namespace CrunchyBun
         static public float ConvertFromOffsetToRange(this float item, float lower, float upper)
         {
             return item.ConvertFromOffsetToPercent().ConvertFromPercentToRange(lower, upper);
+        }
+        static public float ConvertFromOffsetToRange(this float item, FloatRange range)
+        {
+            return item.ConvertFromOffsetToRange(range.x1, range.x2);
+        }
+
+        static public float ConvertFromOffsetToVariance(this float item, float value, float radius)
+        {
+            return item * radius + value;
+        }
+        static public float ConvertFromOffsetToVariance(this float item, FloatVariance variance)
+        {
+            return item.ConvertFromVarianceToOffset(variance.value, variance.radius);
         }
     }
 }

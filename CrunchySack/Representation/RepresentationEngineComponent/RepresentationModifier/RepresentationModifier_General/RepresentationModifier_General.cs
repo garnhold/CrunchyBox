@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     public abstract class RepresentationModifier_General<REPRESENTATION_TYPE> : RepresentationModifier_General
     {
         protected abstract void ApplyInternal(CmlExecution execution, REPRESENTATION_TYPE representation);

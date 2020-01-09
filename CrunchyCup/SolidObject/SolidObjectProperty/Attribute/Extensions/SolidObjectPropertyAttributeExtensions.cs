@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCup
+namespace Crunchy.Cup
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class SolidObjectPropertyAttributeExtensions
     {
     }

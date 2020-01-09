@@ -8,19 +8,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonArray : TyonElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonArray : TyonElement
 	{
-        public TyonArray(object array, Variable variable, TyonContext_Dehydration context) : this()
+        public TyonArray(Type element_type, object value, TyonDehydrater dehydrater) : this()
         {
-            SetTyonType(TyonType.CreateTyonType(array.GetType().GetIEnumerableType()));
+            SetTyonType(TyonType.CreateTyonType(element_type));
             SetTyonValues(
-                array.Convert<IEnumerable>().Bridge<object>().Convert(v => context.CreateTyonValue(v, variable))
+                value.ToEnumerable<object>().Convert(v => dehydrater.CreateTyonValue(element_type, v))
             );
         }
 
@@ -46,6 +46,11 @@ namespace CrunchyRecipe
         public int GetNumberTyonValues()
         {
             return tyon_values.Count;
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

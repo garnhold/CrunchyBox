@@ -31,18 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrunchyBun">
-      <HintPath>..\CrunchyBun\bin\Release\CrunchyBun.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchyDough">
-      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchyNoodle">
-      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchySalt">
-      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +60,24 @@
     <Compile Include="Terminal\Extensions\TerminalExtensions.cs" />
     <Compile Include="Terminal\Terminal_Console.cs" />
     <Compile Include="ThisAssembly.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">
+      <Project>{EBB3AD40-1BB3-476C-B093-225045332242}</Project>
+      <Name>CrunchyBun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class IEnumerableBasicExtensions_InspectGet
     {
         static public object InspectGet(this IEnumerable item, int index)

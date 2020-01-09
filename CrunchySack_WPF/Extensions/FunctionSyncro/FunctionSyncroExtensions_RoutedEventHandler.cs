@@ -4,12 +4,12 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    
     static public class FunctionSyncroExtensions_RoutedEventHandler
     {
         static public RoutedEventHandler GetRoutedEventHandler(this FunctionSyncro item, Predicate<RoutedEventArgs> predicate)

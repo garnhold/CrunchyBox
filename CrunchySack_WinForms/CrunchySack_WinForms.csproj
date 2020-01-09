@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B0BAD98-7EF4-4D93-B79F-D8C12DD4DDCC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrunchySack_WinForms</RootNamespace>
+    <AssemblyName>CrunchySack_WinForms</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="WinFormsModifiers\WinFormsModifiers.cs" />
+    <Compile Include="WinFormsInstancers\WinFormsInstancers.cs" />
+    <Compile Include="WinFormsInfos\WinFormsInfos.cs" />
+    <Compile Include="WinFormsEngine\WinFormsEngine.cs" />
+    <Compile Include="WinFormsEngine\WinFormsEngine_Application.cs" />
+    <Compile Include="WinFormsEngine\WinFormsEngine_Auto.cs" />
+    <Compile Include="WinFormsEngine\WinFormsEngine_Window.cs" />
+    <Compile Include="WinFormsConstructors\WinFormsConstructors.cs" />
+    <Compile Include="PeriodicProcess_WinForms\PeriodicProcess_WinForms.cs" />
+    <Compile Include="Basic\BasicWinFormsEngine.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Window.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizerAttribute.cs" />
+    <Compile Include="Extensions\Form\FormExtensions.cs" />
+    <Compile Include="Extensions\Form\FormExtensions_LinkSyncroDaemon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
+      <Project>{922C960D-F9BC-4E6C-92CC-DB980C4BC21B}</Project>
+      <Name>CrunchySack</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySodium\CrunchySodium.csproj">
+      <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
+      <Name>CrunchySodium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyWinsys\CrunchyWinsys.csproj">
+      <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
+      <Name>CrunchyWinsys</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WinFormsModifiers\" />
+    <Folder Include="WinFormsInstancers\" />
+    <Folder Include="WinFormsInfos\" />
+    <Folder Include="WinFormsEngine\" />
+    <Folder Include="WinFormsConstructors\" />
+    <Folder Include="PeriodicProcess_WinForms\" />
+    <Folder Include="Basic\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Extensions\Form\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,23 +1,29 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    public abstract class Subsystem : ScriptableObject
+    using Dough;
+    
+    public abstract class Subsystem : ScriptableObjectEX
     {
+        public virtual void Start() { }
+        public virtual void StartInEditor() { }
+
         public virtual void Update() { }
         public virtual void UpdateInEditor() { }
+    }
 
-        static public Subsystem GetInstance(Type type)
+    public abstract class Subsystem<T> : Subsystem where T : Subsystem<T>
+    {
+        static private T INSTANCE;
+        static public T GetInstance()
         {
-            return SubsystemManager.GetInstance().GetSubsystemInstance(type);
-        }
-        static public T GetInstance<T>() where T : Subsystem
-        {
-            return SubsystemManager.GetInstance().GetSubsystemInstance<T>();
+            if (INSTANCE == null)
+                INSTANCE = SubsystemManager.GetInstance().GetSubsystemInstance<T>();
+
+            return INSTANCE;
         }
     }
 }

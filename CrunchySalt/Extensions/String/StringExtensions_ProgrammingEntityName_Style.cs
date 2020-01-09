@@ -1,16 +1,18 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class StringExtensions_ProgrammingEntityName_Style
     {
         static public string StyleAsEntity(this string item)
         {
-            return item.RegexRemove("(^[0-9_]+|[^A-Za-z0-9_]|[_]+$)")
+            return item
+                .RegexReplace("([^A-Za-z0-9_]+)", "_")
+                .RegexRemove("(^[0-9_]+|[^A-Za-z0-9_]|[_]+$)")
                 .CoalesceBlank(() => ProgrammingEntityName.GenerateEntityName());
         }
 
@@ -67,9 +69,19 @@ namespace CrunchySalt
             return variable_name;
         }
 
+        static public string StyleAsPropertyName(this string item)
+        {
+            return item.StyleAsUppercasedEntity();
+        }
+
         static public string StyleAsConstantName(this string item)
         {
             return item.StyleAsVariableName().ToUpper();
+        }
+
+        static public string StyleAsEnumName(this string item)
+        {
+            return item.StyleAsUppercasedEntity();
         }
     }
 }

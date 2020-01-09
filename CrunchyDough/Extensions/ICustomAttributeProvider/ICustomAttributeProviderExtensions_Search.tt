@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
 <# foreach(string flavor in flavors){#>
 	static public class I<#=flavor#>CustomAttributeProviderExtensions_Search

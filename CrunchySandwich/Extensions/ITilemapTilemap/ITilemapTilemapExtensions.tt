@@ -1,0 +1,25 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"Tilemap", "ITilemap"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    using Bun;
+    
+    static public class ITilemapTilemapExtensions
+    {
+<# foreach(string type_name in type_names){#>
+<#}#>
+	}
+}

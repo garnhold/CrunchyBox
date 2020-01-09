@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sack;
+    
     public abstract partial class WPFEngine : RepresentationEngine
     {
         public void AddInspectedComponentsForType(Type type)

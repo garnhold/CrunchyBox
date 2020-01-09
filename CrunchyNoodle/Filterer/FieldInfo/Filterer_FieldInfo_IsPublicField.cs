@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_FieldInfo_IsPublicField : Filterer_Simple<FieldInfo>
     {
         static public readonly Filterer_FieldInfo_IsPublicField INSTANCE = new Filterer_FieldInfo_IsPublicField();

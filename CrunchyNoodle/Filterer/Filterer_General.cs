@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public abstract class Filterer_General<T, P1, P2, P3, P4> : Filterer_General<T, IdentifiableTuple<P1, P2, P3, P4>>
         where P1 : Identifiable
         where P2 : Identifiable

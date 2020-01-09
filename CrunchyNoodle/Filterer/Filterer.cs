@@ -1,15 +1,22 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public abstract class Filterer<T> : IdentifiableObject
     {
         public abstract bool Filter(T item);
+
+        public virtual bool Filter(T item, out T adjusted)
+        {
+            adjusted = item;
+
+            return Filter(item);
+        }
 
         static public Filterer<T> operator |(Filterer<T> f1, Filterer<T> f2)
         {

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBaker
+namespace Crunchy.Baker
 {
+    using Dough;
+    
     public abstract class TimedTaskComparer_Simple : TimedTaskComparer
     {
         protected override void RunIterationInternal()

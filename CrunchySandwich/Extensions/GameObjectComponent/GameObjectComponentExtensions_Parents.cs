@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Parents
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Parents
     {
 		static public void ClearParent(this GameObject item)
 		{
-			item.SetParent(null);
+			item.SetParent((GameObject)null);
 		}
 
 		static public bool HasParent(this GameObject item)
@@ -28,6 +28,10 @@ namespace CrunchySandwich
 		{
 			item.transform.parent = parent.IfNotNull(p => p.transform);
 		}
+		static public void SetParent(this GameObject item, Component parent)
+		{
+			item.SetParent(parent.gameObject);
+		}
 
         static public GameObject GetParent(this GameObject item)
         {
@@ -38,6 +42,11 @@ namespace CrunchySandwich
 
             return null;
         }
+
+		static public GameObject GetRoot(this GameObject item)
+		{
+			return item.GetSelfAndParents().GetLast();
+		}
 
 		static public IEnumerable<GameObject> GetParents(this GameObject item)
         {
@@ -51,7 +60,7 @@ namespace CrunchySandwich
 
 		static public void ClearParent(this Component item)
 		{
-			item.SetParent(null);
+			item.SetParent((GameObject)null);
 		}
 
 		static public bool HasParent(this Component item)
@@ -66,6 +75,10 @@ namespace CrunchySandwich
 		{
 			item.transform.parent = parent.IfNotNull(p => p.transform);
 		}
+		static public void SetParent(this Component item, Component parent)
+		{
+			item.SetParent(parent.gameObject);
+		}
 
         static public GameObject GetParent(this Component item)
         {
@@ -76,6 +89,11 @@ namespace CrunchySandwich
 
             return null;
         }
+
+		static public GameObject GetRoot(this Component item)
+		{
+			return item.GetSelfAndParents().GetLast();
+		}
 
 		static public IEnumerable<GameObject> GetParents(this Component item)
         {

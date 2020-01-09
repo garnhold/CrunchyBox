@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections;
@@ -6,40 +6,36 @@ using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public partial class Syncronizer
     {
-        public class Method_CommandAttribute : MethodAttribute
+        public class EntityMethod_CommandAttribute : EntityMethodAttribute
         {
-            private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public Method_CommandAttribute(int dc, NetDeliveryMethod dm)
+            public EntityMethod_CommandAttribute(NetDeliveryMethod dm)
             {
-                delivery_channel = dc;
                 delivery_method = dm;
             }
 
             public override EntityMethod CreateEntityMethod(MethodInfo method)
             {
-                return new EntityMethod_Command(method, delivery_channel, delivery_method);
+                return new EntityMethod_Command(method, delivery_method);
             }
         }
 
         public class EntityMethod_Command : EntityMethod
         {
-            private int delivery_channel;
             private NetDeliveryMethod delivery_method;
 
-            public EntityMethod_Command(MethodInfo m, int dc, NetDeliveryMethod dm) : base(m)
+            public EntityMethod_Command(MethodInfo m, NetDeliveryMethod dm) : base(m)
             {
-                delivery_channel = dc;
                 delivery_method = dm;
             }
 
@@ -63,12 +59,12 @@ namespace CrunchyCart
                     Invoke(entity.GetTarget(), arguments);
                 else
                 {
-                    syncronizer.Send(NetworkRecipient_All.INSTANCE, MessageType.InvokeEntityMethod, delivery_method, delivery_channel, delegate(Buffer buffer) {
+                    syncronizer.CreateMessage(MessageType.InvokeEntityMethod, delivery_method, delegate(Buffer buffer) {
                         buffer.WriteEntityReference(entity);
                         buffer.WriteEntityMethod(this);
 
                         WriteArguments(arguments, buffer);
-                    });
+                    }).Send();
                 }
             }
         }

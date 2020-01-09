@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public delegate int FingerPrintOperation(object obj);
     public delegate bool IsFingerEquivolentOperation(object obj1, object obj2);
 
@@ -26,11 +26,8 @@ namespace CrunchyNoodle
             return item.CreateDynamicMethodDelegate<FingerPrintOperation>("FingerPrint_" + item.Name, delegate(MethodBase method){
                 ILBlock body = new ILBlock();
 
-                ILLocal obj = body.CreateLocal(item, "this");
-                ILLocal hash = body.CreateLocal(typeof(int), "hash");
-
-                body.AddStatement(new ILAssign(obj, method.GetTechnicalILParameter(0)));
-                body.AddStatement(new ILAssign(hash, 17));
+                ILLocal obj = body.CreateNamedLocal(item, "this", method.GetTechnicalILParameter(0));
+                ILLocal hash = body.CreateNamedLocal(typeof(int), "hash", 17);
 
                 foreach (FieldInfo field in item.GetAllInstanceFields())
                 {
@@ -58,8 +55,8 @@ namespace CrunchyNoodle
             return item.CreateDynamicMethodDelegate<IsFingerEquivolentOperation>("IsFingerEquivolent_" + item.Name, delegate(MethodBase method) {
                 ILBlock body = new ILBlock();
 
-                ILLocal obj1 = body.CreateLocal(item, "obj1", method.GetTechnicalILParameter(0), true);
-                ILLocal obj2 = body.CreateLocal(item, "obj2", method.GetTechnicalILParameter(1), true);
+                ILLocal obj1 = body.CreateNamedLocal(item, "obj1", method.GetTechnicalILParameter(0));
+                ILLocal obj2 = body.CreateNamedLocal(item, "obj2", method.GetTechnicalILParameter(1));
 
                 body.AddStatement(new ILIf(
                     obj1.GetILIsNotNull() & obj2.GetILIsNotNull(),

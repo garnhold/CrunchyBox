@@ -49,10 +49,151 @@
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions.cs" />
     <Compile Include="ByteSequence\Extensions\ByteSequenceExtensions_String.cs" />
     <Compile Include="ByteSequence\ByteSequence.cs" />
+    <Compile Include="CompoundState\AutoCompoundState.cs" />
+    <Compile Include="CompoundState\CompoundState.cs" />
+    <Compile Include="DecayCountSet\DecayCountSet.cs" />
+    <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Order.cs" />
+    <Compile Include="DurationUnit\Extensions\DurationUnitExtensions_Suffix.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions_PartOut.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions_Whole.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions_String.cs" />
+    <Compile Include="Duration\Extensions\DurationExtensions.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Treatment_Basic.cs" />
+    <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Convert.cs" />
+    <Compile Include="EnumInfo\Extensions\EnumInfoExtensions_Get.cs" />
+    <Compile Include="EnumValueInfo\EnumValueInfo.cs" />
+    <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions_Value.cs" />
+    <Compile Include="EnumValueInfo\Extensions\EnumValueInfoExtensions.cs" />
+    <Compile Include="EqualityRelation\EqualityRelation.cs" />
+    <Compile Include="EqualityRelation\Extensions\EqualityRelationExtensions.cs" />
+    <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable_Bits.cs" />
+    <Compile Include="Extensions\Bool\IEnumerable\BoolExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\DateTime\DateTimeExtensions_Age.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Combine.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions_Convert.cs" />
     <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
+    <Compile Include="Extensions\Enum\IEnumerable\EnumIEnumerableExtensions.cs" />
+    <Compile Include="Extensions\FieldInfo\FieldInfoExtensions_Generic.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Skip_FirstLast.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Branch.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Divvy.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_AppendIfNot.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Interleave.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertCenterConnections.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertLoopedNeighbors.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Prepare.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Group.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessSandboxed.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_FindType.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_RatingAll.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_SkipNotify.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Congruent.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Change.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Percent.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_PercentDropped.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_PercentCapped.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_IRegister.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_ICatalog.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_PercentLooped.cs" />
+    <Compile Include="Extensions\Int\IntExtensions_Congruent.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Parameters.cs">
+      <DependentUpon>MethodBaseExtensions_Parameters.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Approximate.cs">
+      <DependentUpon>NumberExtensions_Approximate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_PingPonged.cs">
+      <DependentUpon>NumberExtensions_PingPonged.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Can.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Access.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions.cs" />
+    <Compile Include="Extensions\Stack\StackExtensions_PeekEX.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Count_Any.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_Duration.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Namespace.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Treatment_Common.cs" />
+    <Compile Include="Filename\Filename_Absolute.cs" />
+    <Compile Include="Filename\Filename_Clean.cs" />
+    <Compile Include="Filename\Filename_Combine.cs" />
+    <Compile Include="Filename\Filename_Compare.cs" />
+    <Compile Include="Filename\Filename_Directory.cs" />
+    <Compile Include="Filename\Filename_Filename.cs" />
+    <Compile Include="Filename\Filename_Make.cs" />
+    <Compile Include="Filename\Filename_MakeData.cs" />
+    <Compile Include="Filename\Filename_Random.cs" />
+    <Compile Include="Filename\Filename_Relative.cs" />
+    <Compile Include="Filename\Filename_Type.cs" />
+    <Compile Include="Filename\Filename_Extension.cs" />
+    <Compile Include="Files\Files.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Contents.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Copy.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Create.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Current.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Delete.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Exists.cs" />
+    <Compile Include="Files\Partials\Directory\Files_Directory_Move.cs" />
+    <Compile Include="Files\Partials\FileAndDirectory\Files_FileAndDirectory.cs" />
+    <Compile Include="Files\Partials\FileAndDirectory\Files_FileAndDirectory_Copy.cs" />
+    <Compile Include="Files\Partials\Files_StreamSystem.cs" />
+    <Compile Include="Files\Partials\File\Files_File.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Copy.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Delete.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Directory.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Exists.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Move.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Rename.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Stream.cs" />
+    <Compile Include="Files\Partials\File\Files_File_Timestamp.cs" />
+    <Compile Include="ICatalog\ICatalog.cs" />
+    <Compile Include="IndexList\IndexList.cs" />
+    <Compile Include="IRegister\IRegister.cs" />
+    <Compile Include="Operation\Extensions\MultiOperationExtensions_Serial.cs" />
+    <Compile Include="Operation\Extensions\MultiOperationExtensions_Parallel.cs" />
+    <Compile Include="Operation\Extensions\MultiOperationExtensions.cs" />
+    <Compile Include="Operation\MultiOperation.cs" />
+    <Compile Include="NumericRangeVariance\NumericRangeVariance.cs">
+      <DependentUpon>NumericRangeVariance.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EqualityComparerOperation\EqualityComparerOperation.cs" />
+    <Compile Include="Pool\QueuePool.cs" />
+    <Compile Include="Scheduler\Extensions\LazySchedulerExtensions.cs" />
+    <Compile Include="Scheduler\LazyScheduler.cs" />
+    <Compile Include="Schedule\BinSchedule.cs" />
+    <Compile Include="Scheduler\Scheduler.cs" />
+    <Compile Include="Schedule\ISchedule.cs" />
+    <Compile Include="Schedule\TreeSchedule.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Hertz.cs" />
+    <Compile Include="TimedValue\TimedValue.cs" />
+    <Compile Include="UnorderedTuple\UnorderedTuple.cs" />
+    <Compile Include="UnorderedTuple\UnorderedTuple_New.cs" />
+    <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_Timestamp.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Duration.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Percent.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Restart.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Seconds.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Start.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_State.cs" />
+    <Compile Include="TemporalDuration\TemporalDuration.cs" />
+    <Compile Include="TemporalEvent\Extensions\TemporalEventExtensions_State.cs" />
+    <Compile Include="TemporalEvent\Extensions\TemporalEventExtensions.cs" />
+    <Compile Include="TemporalEvent\TemporalEvent.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions.cs" />
+    <Compile Include="TemporalSeries\TemporalSeries.cs" />
+    <Compile Include="Temporal\Temporal.cs" />
+    <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions_Seconds.cs" />
+    <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions_Duration.cs" />
     <Compile Include="Worker\Worker_SimpleAmortize.cs" />
     <Compile Include="Worker\Worker.cs" />
     <Compile Include="WorkCollection\WorkCollection.cs" />
@@ -72,7 +213,6 @@
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Reduce.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_HashSet.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_SetRange.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Force.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Has_IEnumerable.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Island_Section.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Island_Remove.cs" />
@@ -98,19 +238,6 @@
     <Compile Include="Extensions\String\StringExtensions_Trim_Whitespace.cs" />
     <Compile Include="Extensions\String\StringExtensions_Trim_Prefix.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_BasicType.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory_Current.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory_Exists.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory_Move.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory_Create.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory_Copy.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory_Delete.cs" />
-    <Compile Include="Files\Partials\FileAndDirectory\Files_FileAndDirectory_Copy.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Exists.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Move.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Delete.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Copy.cs" />
-    <Compile Include="Files\Partials\File\Files_File.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Stream.cs" />
     <Compile Include="HashType\Extensions\HashTypeExtensions_String.cs" />
     <Compile Include="HashType\Extensions\HashTypeExtensions.cs" />
     <Compile Include="HashType\HashTypes.cs" />
@@ -173,7 +300,6 @@
     <Compile Include="Extensions\String\StringExtensions_Regex_Pattern.cs" />
     <Compile Include="Extensions\WeakReference\WeakReferenceExtensions_Get.cs" />
     <Compile Include="Extensions\WeakReference\WeakReferenceExtensions_State.cs" />
-    <Compile Include="Files\Partials\Files_StreamSystem.cs" />
     <Compile Include="GCNotifier\GCNotifier_Process.cs" />
     <Compile Include="GCNotifier\GCNotifierGarbage.cs" />
     <Compile Include="GCNotifier\GCNotifier.cs" />
@@ -208,8 +334,7 @@
     <Compile Include="ProgramInfo\ProgramInfo.cs" />
     <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions_SimpleName.cs" />
     <Compile Include="Extensions\Assembly\AssemblyExtensions_SimpleName.cs" />
-    <Compile Include="Extensions\Enum\EnumExtensions_EnumInfo.cs" />
-    <Compile Include="Extensions\Enum\EnumExtensions_Index.cs" />
+    <Compile Include="Extensions\Enum\EnumExtensions_Info.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions_Contains.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Count.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_CopyTo.cs" />
@@ -263,7 +388,6 @@
     <Compile Include="Extensions\IList\IListExtensions_Remove.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Extract_Section.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Swap.cs" />
-    <Compile Include="Extensions\Int\IntExtensions_Enum.cs" />
     <Compile Include="Extensions\LinkedList\LinkedListExtensions_Nodes_Search.cs" />
     <Compile Include="Extensions\LinkedList\LinkedListExtensions_Nodes.cs" />
     <Compile Include="Extensions\LinkedList\LinkedListExtensions_Insert.cs" />
@@ -313,11 +437,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\Number_Real\NumberRealExtensions.cs">
-      <DependentUpon>NumberRealExtensions.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Extensions\Object\IEnumerable\ObjectExtensions_IEnumerable_Append.cs" />
     <Compile Include="Extensions\Object\IEnumerable\ObjectExtensions_IEnumerable_Types.cs" />
     <Compile Include="Extensions\Object\IEnumerable\ObjectExtensions_IEnumerable.cs" />
@@ -332,11 +451,9 @@
     <Compile Include="Extensions\Type\IEnumerable\TypeExtensionsIEnumerable_AncestorType.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_AncestorType.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_BaseType.cs" />
-    <Compile Include="Extensions\Type\TypeExtensions_Instancing_Forced.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Interface.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Treatment_Basic.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Default.cs" />
-    <Compile Include="Filename\Filename_MakeData.cs" />
     <Compile Include="Graph\GraphNodeTraverser.cs" />
     <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorGoal\GraphNodeNavigatorGoal_MinimumDistance.cs" />
     <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorGoal\GraphNodeNavigatorGoal_GraphNode.cs" />
@@ -345,8 +462,6 @@
     <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Looped.cs" />
     <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Looped.cs" />
     <Compile Include="IDynamicCustomAttributeProvider\IDynamicCustomAttributeProvider.cs" />
-    <Compile Include="LazySchedule\Extensions\LazyScheduleExtensions_Add.cs" />
-    <Compile Include="LazySchedule\Extensions\LazyScheduleExtensions.cs" />
     <Compile Include="OperationCache\Extensions\CacheManagerExtensions_OperationCache.cs" />
     <Compile Include="OrderedCollection\OrderedList.cs">
       <AutoGen>True</AutoGen>
@@ -358,9 +473,6 @@
     <Compile Include="PeriodicProcess\Extensions\PeriodicProcessExtensions_Restart.cs" />
     <Compile Include="PeriodicProcess\Extensions\PeriodicProcessExtensions.cs" />
     <Compile Include="ReflectionCache\ReflectionCache.cs" />
-    <Compile Include="Scheduler\Extensions\SchedulerExtensions_Work.cs" />
-    <Compile Include="Scheduler\Extensions\SchedulerExtensions_Add.cs" />
-    <Compile Include="Scheduler\Extensions\SchedulerExtensions.cs" />
     <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions_File.cs" />
     <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions_Directory.cs" />
     <Compile Include="StreamDirectory\Extensions\StreamDirectoryExtensions.cs" />
@@ -444,41 +556,29 @@
     <Compile Include="ObjectTable\ObjectTable.cs" />
     <Compile Include="WeakKey\WeakKey.cs" />
     <Compile Include="WeakReference\WeakReference.cs" />
-    <Compile Include="Schedule\Extensions\ScheduleExtensions_Add.cs" />
-    <Compile Include="Schedule\Extensions\ScheduleExtensions.cs" />
-    <Compile Include="LazySchedule\LazySchedule.cs" />
-    <Compile Include="Schedule\Schedule.cs" />
-    <Compile Include="Pool\ArrayPool.cs" />
-    <Compile Include="Pool\ContainerPool.cs" />
-    <Compile Include="Pool\Extensions\ArrayPool\ArrayPoolExtensions_UseEnumerate.cs" />
-    <Compile Include="Pool\Extensions\ArrayPool\ArrayPoolExtensions.cs" />
-    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions_Use.cs" />
-    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions_UseEnumerate.cs" />
-    <Compile Include="Pool\Extensions\ListPool\ListPoolExtensions.cs" />
-    <Compile Include="Pool\ListPool.cs" />
+    <Compile Include="Pool\ArrayPool\ArrayPool.cs" />
+    <Compile Include="Pool\ArrayPool\Extensions\ArrayPoolExtensions_UseEnumerate.cs" />
+    <Compile Include="Pool\ArrayPool\Extensions\ArrayPoolExtensions.cs" />
+    <Compile Include="Pool\ListPool\Extensions\ListPoolExtensions_Use.cs" />
+    <Compile Include="Pool\ListPool\Extensions\ListPoolExtensions_UseEnumerate.cs" />
+    <Compile Include="Pool\ListPool\Extensions\ListPoolExtensions.cs" />
+    <Compile Include="Pool\ListPool\ListPool.cs" />
     <Compile Include="Pool\Pooled.cs" />
-    <Compile Include="Scheduler\SchedulerItem.cs" />
-    <Compile Include="Scheduler\Scheduler.cs" />
-    <Compile Include="Time\StepTimer\Extensions\StepTimerExtensions_Duration.cs" />
-    <Compile Include="Time\StepTimer\Extensions\StepTimerExtensions_Seconds.cs" />
-    <Compile Include="Time\StepTimer\StepTimer.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_General.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Duration.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Milliseconds.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions_Seconds.cs" />
-    <Compile Include="Time\TimePiece\Extensions\TimePieceExtensions.cs" />
-    <Compile Include="Time\TimePiece\TimePiece.cs" />
-    <Compile Include="Time\Timer\Extensions\TimerExtensions_Restart.cs" />
-    <Compile Include="Time\Timer\Extensions\TimerExtensions_Start.cs" />
-    <Compile Include="Time\Timer\Extensions\TimerExtensions.cs" />
-    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Restart.cs" />
-    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Start.cs" />
+    <Compile Include="Time\StepStopwatch\Extensions\StepStopwatchExtensions_Duration.cs" />
+    <Compile Include="Time\StepStopwatch\Extensions\StepStopwatchExtensions_Seconds.cs" />
+    <Compile Include="Time\StepStopwatch\StepStopwatch.cs" />
+    <Compile Include="Temporal\Extensions\TemporalExtensions_General.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Duration.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Milliseconds.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Seconds.cs" />
+    <Compile Include="Temporal\Extensions\TemporalExtensions.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Restart.cs" />
+    <Compile Include="TemporalSeries\Extensions\TemporalSeriesExtensions_Start.cs" />
     <Compile Include="TTCS\TTCS_Function.cs" />
     <Compile Include="TTCS\TTCS_Utility.cs" />
     <Compile Include="TTCS\TTCS_Arguments.cs" />
     <Compile Include="TTCS\TTCS_Parameters.cs" />
     <Compile Include="TTCS\TTCS.cs" />
-    <Compile Include="BackupFile\Extensions\BackupFileExtensions.cs" />
     <Compile Include="BidirectionalDictionary\Extensions\BidirectionalDictionaryExtensions_Pivot.cs" />
     <Compile Include="Bits\Bits.cs">
       <DependentUpon>Bits.tt</DependentUpon>
@@ -515,9 +615,9 @@
     <Compile Include="Extensions\Value\ValueExtensions_TraverseWeb.cs" />
     <Compile Include="Grid\Extensions\Data\GridExtensions_Data_GetOrCreate.cs" />
     <Compile Include="MipMask\MipMask.cs" />
-    <Compile Include="OperationProcess\Extensions\MultiProcessExtensions.cs" />
-    <Compile Include="OperationProcess\MultiProcess.cs" />
-    <Compile Include="OperationProcess\Operation.cs" />
+    <Compile Include="Process\Extensions\MultiProcessExtensions.cs" />
+    <Compile Include="Process\MultiProcess.cs" />
+    <Compile Include="Operation\Operation.cs" />
     <Compile Include="Palette\Extensions\PaletteExtensions_Add.cs" />
     <Compile Include="Palette\Extensions\PaletteExtensions_AtIndexs.cs" />
     <Compile Include="Duration\Duration.cs" />
@@ -533,14 +633,12 @@
     <Compile Include="Extensions\DateTime\DateTimeExtensions_To.cs" />
     <Compile Include="Extensions\DateTime\DateTimeExtensions_TimeZone.cs" />
     <Compile Include="Extensions\DateTime\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\Enum\EnumExtensions_Int.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_List.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions_CalculateRelations.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Ensure.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Alter.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_To.cs" />
-    <Compile Include="Extensions\IComparable\IComparableExtensions_Is.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_CalculateKeyRelations.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_FollowInferences_Same.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_FollowInferences.cs" />
@@ -595,8 +693,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\Number\NumberExtensions_Quantized.cs">
-      <DependentUpon>NumberExtensions_Quantized.tt</DependentUpon>
+    <Compile Include="Extensions\Number\NumberExtensions_Heavyside.cs">
+      <DependentUpon>NumberExtensions_Heavyside.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -649,17 +747,6 @@
     <Compile Include="Extensions\Type\TypeExtensions_Treatment_Primitive.cs" />
     <Compile Include="Extensions\Value\ValueExtensions_Chain.cs" />
     <Compile Include="Extensions\Value\ValueExtensions_TraverseTree.cs" />
-    <Compile Include="Filename\Filename_Combine.cs" />
-    <Compile Include="Filename\Filename_Compare.cs" />
-    <Compile Include="Filename\Filename_Random.cs" />
-    <Compile Include="Filename\Filename_Absolute.cs" />
-    <Compile Include="Filename\Filename_Relative.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Timestamp.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory_Contents.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Directory.cs" />
-    <Compile Include="Files\Partials\FileAndDirectory\Files_FileAndDirectory.cs" />
-    <Compile Include="Files\Partials\Directory\Files_Directory.cs" />
-    <Compile Include="Files\Partials\File\Files_File_Rename.cs" />
     <Compile Include="Grid\Extensions\Special\GridExtensions_TraverseEdges.cs" />
     <Compile Include="ForTypeAttribute\ForTypeAttribute.cs" />
     <Compile Include="Latch\Latch.cs" />
@@ -702,19 +789,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="OperationProcess\Process.cs" />
+    <Compile Include="Process\Process.cs" />
     <Compile Include="PeriodicProcess\PeriodicProcess_Timer.cs" />
     <Compile Include="Pinned\Pinned.cs" />
     <Compile Include="Pinned\Pin.cs" />
     <Compile Include="PixelMeasurer\PixelMeasurer.cs" />
-    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions.cs" />
-    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions_Hertz.cs" />
-    <Compile Include="RateLimiter\Extensions\RateLimiterExtensions_Seconds.cs" />
-    <Compile Include="RateLimiter\RateLimiter.cs" />
-    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions.cs" />
-    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions_Hertz.cs" />
-    <Compile Include="RefreshingValue\Extensions\RefreshingValueExtensions_Seconds.cs" />
-    <Compile Include="RefreshingValue\RefreshingValue.cs" />
     <Compile Include="ResolveState\Extensions\IEnumerableExtensions_Resolve.cs" />
     <Compile Include="ResolveState\ResolveState.cs" />
     <Compile Include="SanityCheckException\SanityCheckException.cs" />
@@ -728,7 +807,6 @@
     <Compile Include="Strings\Strings.cs" />
     <Compile Include="Table\LabeledTable.cs" />
     <Compile Include="Table\IndexedTable.cs" />
-    <Compile Include="BackupFile\BackupFile.cs" />
     <Compile Include="TextDocument\TextDocument.cs" />
     <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode_Container\TextDocumentNode_Container.cs" />
     <Compile Include="TextDocument\TextDocumentNode\TextDocumentNodeType.cs" />
@@ -802,20 +880,12 @@
     <Compile Include="LookupSet\LookupSet.cs" />
     <Compile Include="Instance\Instance.cs" />
     <Compile Include="PeriodicProcess\PeriodicProcess.cs" />
-    <Compile Include="Filename\Filename_Filename.cs" />
-    <Compile Include="Filename\Filename_Extension.cs" />
-    <Compile Include="Filename\Filename_Directory.cs" />
-    <Compile Include="Filename\Filename_Make.cs" />
-    <Compile Include="Filename\Filename_Type.cs" />
-    <Compile Include="Filename\Filename.cs" />
-    <Compile Include="Filename\Filename_Clean.cs" />
-    <Compile Include="Files\Files.cs" />
     <Compile Include="TextDocument\TextDocumentNode\TextDocumentNode.cs" />
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="Extensions\Array2D\Array2DExtensions_Convert.cs" />
     <Compile Include="Extensions\Array2D\Array2DExtensions_Dimensions.cs" />
     <Compile Include="Extensions\Array\ArrayExtensions.cs" />
-    <Compile Include="Extensions\Array\ArrayExtensions_Append.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy_Append.cs" />
     <Compile Include="Extensions\Array\ArrayExtensions_Copy.cs" />
     <Compile Include="Extensions\Byte\ByteExtensions.cs" />
     <Compile Include="Extensions\Array2D\Array2DExtensions.cs" />
@@ -885,7 +955,7 @@
     <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get.cs" />
     <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set.cs" />
     <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Spiral.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_CloseLoop.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Loop.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Add.cs" />
     <Compile Include="Extensions\IComparable\IComparableExtensions.cs" />
@@ -920,10 +990,6 @@
     <Compile Include="Circular\CircularList.cs" />
     <Compile Include="SignalingContainer\SignalingLabeledItemSet.cs" />
     <Compile Include="SignalingContainer\SignalingLabeledItemSet_Basic.cs" />
-    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions.cs" />
-    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Duration.cs" />
-    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Percent.cs" />
-    <Compile Include="Time\Timer\Timer_Duration\Extensions\TimerDurationExtensions_Seconds.cs" />
     <Compile Include="LogTimer\LogTimer.cs" />
     <Compile Include="Extensions\String\StringExtensions_EndsWith.cs" />
     <Compile Include="Extensions\String\StringExtensions_Escape.cs" />
@@ -986,19 +1052,16 @@
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions.cs" />
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Consecutive.cs" />
     <Compile Include="Extensions\IList\IListExtensions.cs" />
-    <Compile Include="Extensions\IList\IListExtensions_Count.cs" />
     <Compile Include="LabeledAttribute\LabeledAttribute.cs" />
     <Compile Include="LabeledItemSet\LabeledItem.cs" />
     <Compile Include="LabeledItemSet\LabeledItemSet.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Compare.cs" />
-    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_EffectiveParameter.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Name.cs" />
-    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_TechnicalParameter.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Shadow.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_Type.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_Compare.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_String.cs" />
-    <Compile Include="OperationProcess\Extensions\OperationExtensions.cs" />
+    <Compile Include="Operation\Extensions\OperationExtensions.cs" />
     <Compile Include="Extensions\ParameterInfo\ParameterInfoExtensions_Treatment.cs" />
     <Compile Include="Extensions\Predicate\PredicateExtensions.cs" />
     <Compile Include="Extensions\Queue\QueueExtensions_Count.cs" />
@@ -1021,7 +1084,6 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Process.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search.cs" />
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Tandem.cs" />
-    <Compile Include="OperationCache\OperationCacheItem.cs" />
     <Compile Include="Extensions\FieldInfo\FieldInfoExtensions.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\String\StringExtensions_Join.cs" />
@@ -1051,11 +1113,11 @@
     <Compile Include="Table\OptionTable.cs" />
     <Compile Include="Table\SettingTable.cs" />
     <Compile Include="Table\StringTable.cs" />
+    <Compile Include="Time\Stopwatch\Stopwatch.cs" />
     <Compile Include="Time\Timer\Timer.cs" />
-    <Compile Include="Time\Timer\Timer_Duration\Timer_Duration.cs" />
     <Compile Include="Time\TimeSource\Extensions\TimeSourceExtensions.cs" />
     <Compile Include="Time\TimeSource\TimeSource.cs" />
-    <Compile Include="Time\TimeSource\TimeSource_Stopwatch.cs" />
+    <Compile Include="Time\TimeSource\TimeSource_System.cs" />
     <Compile Include="Transfer\Transfer.cs" />
     <Compile Include="Tuple\Extensions\TupleExtensions.cs" />
     <Compile Include="Tuple\Tuple_New.cs" />
@@ -1093,6 +1155,54 @@
     <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorVisit\GraphNodeNavigatorVisit.cs" />
     <Compile Include="Graph\GraphNode\GraphNode.cs" />
     <Compile Include="Graph\Graph.cs" />
+    <Compile Include="Filename\Filename.cs" />
+    <Compile Include="Extensions\AssemblyName\AssemblyNameExtensions_Assembly.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Contents.cs" />
+    <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Compare.cs" />
+    <Compile Include="StreamSource\StreamSource.cs" />
+    <Compile Include="Conductor\Conductor.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitFor.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Concurrent.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitUntil.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Do.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Sequential.cs" />
+    <Compile Include="TemporalEvent\TemporalEvent_Duration.cs" />
+    <Compile Include="TemporalDuration\Extensions\TemporalDurationExtensions_Event.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Approximate.cs" />
+    <Compile Include="Extensions\Number\NumberExtensions_Quantized.cs">
+      <DependentUpon>NumberExtensions_Quantized.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions.cs">
+      <DependentUpon>NumberRealExtensions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HashType\Extensions\HashTypeExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Parse_UInt.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ChainProcess.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_RemoveGet.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy_Insert.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Append.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Insert.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Resize.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Length.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Index.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Type.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Create.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Index.cs" />
+    <Compile Include="Extensions\BasicArray\BasicArrayExtensions_Copy_Remove.cs" />
+    <Compile Include="Extensions\Array\ArrayExtensions_Copy_Remove.cs" />
+    <Compile Include="ValueChangeResult\ValueChangeResult.cs" />
+    <Compile Include="ValueChangeResult\Extensions\ValueChangeResultExtensions.cs" />
+    <Compile Include="ValueChangeResult\Extensions\ValueChangeResultExtensions_Compare.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Remove_Category.cs" />
+    <Compile Include="TemporalOperationCache\TemporalOperationCache.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Regex_Split.cs" />
+    <Compile Include="DecayTimeSet\DecayTimeSet.cs" />
+    <Compile Include="DecayCountSet\DecayCounter.cs" />
+    <Compile Include="DecayTimeSet\Extensions\DecayTimeSetExtensions.cs" />
+    <Compile Include="DecayTimeSet\Extensions\DecayTimeSetExtensions_Add.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1122,6 +1232,10 @@
     <Content Include="Extensions\IEnumerable\IEnumerableExtensions_PartOut.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IEnumerableExtensions_PartOut.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\MethodBase\MethodBaseExtensions_Parameters.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MethodBaseExtensions_Parameters.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\NumberFit\NumberFitExtensions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1159,9 +1273,17 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberExtensions_IEnumerable.cs</LastGenOutput>
     </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Approximate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Approximate.cs</LastGenOutput>
+    </Content>
     <Content Include="Extensions\Number\NumberExtensions_Length.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberExtensions_Length.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_PingPonged.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_PingPonged.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\Number\NumberExtensions_Quantized.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1231,11 +1353,30 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>OrderedList.cs</LastGenOutput>
     </Content>
+    <Content Include="NumericRangeVariance\NumericRangeVariance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumericRangeVariance.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Heavyside.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Heavyside.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="StreamSource\" />
+    <Folder Include="Conductor\" />
+    <Folder Include="Conductor\ConductorOrder\" />
+    <Folder Include="Extensions\BasicArray\" />
+    <Folder Include="ValueChangeResult\" />
+    <Folder Include="ValueChangeResult\Extensions\" />
+    <Folder Include="TemporalOperationCache\" />
+    <Folder Include="DecayTimeSet\" />
+    <Folder Include="DecayTimeSet\Extensions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

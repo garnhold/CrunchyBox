@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ICustomAttributeProviderExtensions
     {
-        static private OperationCache<List<Attribute>, ICustomAttributeProvider, bool> GET_ALL_CUSTOM_ATTRIBUTES = ReflectionCache.Get().NewOperationCache(delegate(ICustomAttributeProvider item, bool inherit) {
+        static private OperationCache<List<Attribute>, ICustomAttributeProvider, bool> GET_ALL_CUSTOM_ATTRIBUTES = ReflectionCache.Get().NewOperationCache("GET_ALL_CUSTOM_ATTRIBUTES", delegate(ICustomAttributeProvider item, bool inherit) {
             return item.GetCustomAttributes(inherit)
                 .Convert<object, Attribute>()
                 .ToList();
@@ -18,7 +18,7 @@ namespace CrunchyDough
             return GET_ALL_CUSTOM_ATTRIBUTES.Fetch(item, inherit);
         }
 
-        static private OperationCache<List<Attribute>, ICustomAttributeProvider, Type, bool> GET_ALL_CUSTOM_ATTRIBUTES_OF_TYPE = ReflectionCache.Get().NewOperationCache(delegate(ICustomAttributeProvider item, Type attribute_type, bool inherit) {
+        static private OperationCache<List<Attribute>, ICustomAttributeProvider, Type, bool> GET_ALL_CUSTOM_ATTRIBUTES_OF_TYPE = ReflectionCache.Get().NewOperationCache("GET_ALL_CUSTOM_ATTRIBUTES_OF_TYPE", delegate(ICustomAttributeProvider item, Type attribute_type, bool inherit) {
             return item.GetAllCustomAttributes(inherit)
                 .Narrow(a => a.CanObjectBeTreatedAs(attribute_type))
                 .ToList();

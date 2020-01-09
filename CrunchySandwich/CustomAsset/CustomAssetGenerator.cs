@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
     [Serializable]
     public abstract class CustomAssetGenerator<T> where T : CustomAsset

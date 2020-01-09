@@ -1,0 +1,53 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Crunchy.Dough" #>
+<#@ output extension=".cs" #>
+<#
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Salt
+{
+    using Dough;
+    
+    static public class TypeExtensions_DynamicMethod_Convience
+	{
+	<#for(int i = 1; i < 10; i++){#>
+		<#string operation_type = "Operation" + TTCS.ArgumentsForGeneric("ILValue", i, "ILStatement");#>
+
+		static public T CreateDynamicMethodDelegate<T>(this Type item, string name, <#=operation_type#> operation)
+        {
+            return item.CreateDynamicMethodDelegate<T>(name, (Delegate)operation);
+        }
+        static public T CreateDynamicMethodDelegate<T>(this Type item, <#=operation_type#> operation)
+        {
+            return item.CreateDynamicMethodDelegate<T>((Delegate)operation);
+        }
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, <#=operation_type#> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, <#=operation_type#> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, (Delegate)operation, parameter_types);
+		}
+
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, <#=operation_type#> operation, IEnumerable<Type> parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+		static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, <#=operation_type#> operation, params Type[] parameter_types)
+		{
+			return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>((Delegate)operation, parameter_types);
+		}
+	<#}#>
+	}
+}

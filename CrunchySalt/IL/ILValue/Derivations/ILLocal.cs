@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,10 +6,10 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILLocal : ILValue, ILAddressable
     {
         private Type local_type;
@@ -121,6 +121,11 @@ namespace CrunchySalt
         public override Type GetValueType()
         {
             return local_type;
+        }
+
+        public string GetName()
+        {
+            return local_name;
         }
 
         public override bool IsILCostTrivial()

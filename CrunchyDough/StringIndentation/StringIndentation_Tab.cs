@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class StringIndentation_Tab : StringIndentation_TabAndSpace
     {
-        static private OperationCache<string, int> GET_STRING = new OperationCache<string, int>(delegate(int level) {
+        static private OperationCache<string, int> GET_STRING = new OperationCache<string, int>("GET_STRING", delegate(int level) {
             return "\t".Repeat(level);
         });
         static public string GetString(int level)

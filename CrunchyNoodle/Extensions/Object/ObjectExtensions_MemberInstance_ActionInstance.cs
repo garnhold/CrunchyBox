@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
-	static public class ObjectExtensions_MemberInstance_ActionInstance_Weak
+    using Dough;
+    using Salt;
+    
+    	static public class ObjectExtensions_MemberInstance_ActionInstance_Weak
     {
         static public ActionInstance GetWeakActionInstanceByComponent(this object item, string component, IEnumerable<object> arguments)
         {

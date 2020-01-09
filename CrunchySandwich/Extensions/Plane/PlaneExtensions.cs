@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class PlaneExtensions
     {
         static public Plane CreateNormalAndDistance(Vector3 normal, float distance)
@@ -24,7 +24,7 @@ namespace CrunchySandwich
 
         static public Plane CreatePoints(Vector3 v0, Vector3 v1, Vector3 v2)
         {
-            return CreateNormalAndPoint((v1 - v0).GetCross(v2 - v1), v0);
+            return CreateNormalAndPoint(v0.GetNormal(v1, v2), v0);
         }
 
         static public Plane CreatePointsAndInsidePoint(Vector3 v0, Vector3 v1, Vector3 v2, Vector3 inside)

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public abstract class PathGraphInfo2D_Simple<T> : PathGraphInfo2D where T : PathNode2D
     {
         protected virtual void InitializePathNodeInternal(T path_node) { }

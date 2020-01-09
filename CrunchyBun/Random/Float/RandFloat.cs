@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class RandFloat
     {
         static public readonly RandFloatSource SOURCE = new RandFloatSource_IntSource(RandInt.SOURCE);
@@ -36,6 +36,11 @@ namespace CrunchyBun
         static public float GetBetween(float a, float b)
         {
             return SOURCE.GetBetween(a, b);
+        }
+
+        static public float GetBetween(FloatRange range)
+        {
+            return SOURCE.GetBetween(range);
         }
     }
 }

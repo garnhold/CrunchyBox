@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
-using CrunchyDough;
-
-namespace CrunchyPepper
+namespace Crunchy.Pepper
 {
+    using Dough;
+    
     static public class ICollectionExtensions_Instruction_Try
     {
         static public void AlterForTry(this ICollection<Instruction> item, MethodDefinition method, IList<Instruction> exit_output)

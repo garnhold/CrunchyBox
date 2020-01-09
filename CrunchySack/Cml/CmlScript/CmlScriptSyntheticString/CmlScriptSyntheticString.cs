@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlScriptSyntheticString : CmlElement, CmlScriptElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CmlScriptSyntheticString : CmlElement, CmlScriptElement
 	{
         private CmlScriptValue value;
 

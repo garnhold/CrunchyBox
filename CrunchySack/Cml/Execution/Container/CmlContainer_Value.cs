@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlContainer_Value : CmlContainer
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlContainer_Value : CmlContainer
 	{
         private CmlValue value;
 

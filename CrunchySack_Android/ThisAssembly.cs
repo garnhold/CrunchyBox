@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
     public class ThisAssembly
     {

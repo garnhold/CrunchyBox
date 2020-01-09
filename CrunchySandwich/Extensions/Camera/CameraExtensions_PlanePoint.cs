@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class CameraExtensions_PlanePoint
     {
         static private readonly Plane PLANAR_WORLD_PLANE = PlaneExtensions.CreateNormalAndDistance(new Vector3(0.0f, 0.0f, 1.0f), -0.1f);
@@ -16,7 +16,7 @@ namespace CrunchySandwich
 
         static public Vector3 ScreenToWorldPlanePoint(this Camera item, Plane plane, Vector2 point)
         {
-            return plane.IntersectRay(item.ScreenPointToRay(point));
+            return plane.Intersect(item.ScreenPointToRay(point));
         }
 
         static public Vector2 ScreenToWorldPlanarPoint(this Camera item, Vector2 point)

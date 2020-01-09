@@ -6,30 +6,30 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
+    [CodeGenerator]
     static public class LayerInitilizer
     {
-        [MenuItem("Edit/Force Layers Class Regeneration")]
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [CodeGenerator]
         static private void GenerateLayersClass()
         {
-            CodeGenerator.GenerateStandardClass("Layers", delegate(CSTextDocumentBuilder builder) {
-                LayerEX.GetAllLayers().Process(delegate(LayerEX layer) {
+            CodeGenerator.GenerateStaticClass("Layers", delegate(CSTextDocumentBuilder builder) {
+                LayerEXExtensions.GetAllLayers().Process(delegate(LayerEX layer) {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "NAME", layer.GetName().StyleAsConstantName(),
-                        "VALUE", layer.GetName().StyleAsLiteralString()
+                        "VALUE", layer.GetName().StyleAsDoubleQuoteLiteral()
                     );
 
                     writer.Write("static public readonly LayerEX ?NAME = new LayerEX(?VALUE);");
                 });
-            });
+            }, GeneratedCodeType.RuntimeDefinition);
         }
     }
 }

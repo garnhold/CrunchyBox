@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 
-using CrunchyDough;
-
-namespace CrunchyGinger
+namespace Crunchy.Ginger
 {
+    using Dough;
+    
     public class CSTextDocument : TextDocument
     {
         private CSHeader header;

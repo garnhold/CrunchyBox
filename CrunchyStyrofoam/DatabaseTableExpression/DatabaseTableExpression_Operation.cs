@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -6,10 +6,10 @@ using System.Text.RegularExpressions;
 using System.Data;
 using System.Data.SQLite;
 
-using CrunchyDough;
-
-namespace CrunchyStyrofoam
+namespace Crunchy.Styrofoam
 {
+    using Dough;
+    
     public abstract class DatabaseTableExpression_Operation : DatabaseTableExpression
     {
         private string layout;

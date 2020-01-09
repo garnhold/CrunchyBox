@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class VectorF2Extensions_Interpolate
     {
         static public VectorF2 GetInterpolate(this VectorF2 item, VectorF2 target, float amount)

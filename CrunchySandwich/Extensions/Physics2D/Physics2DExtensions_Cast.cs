@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public partial class Physics2DExtensions
     {
         static public IEnumerable<RaycastHit2D> RaycastAll(Vector2 position, Vector2 direction, float max_distance = float.PositiveInfinity, int layer_mask = IntBits.ALL_BITS)
@@ -15,6 +15,13 @@ namespace CrunchySandwich
             return RAYCAST_HIT_POOL.UseEnumerateExpand(delegate(RaycastHit2D[] hits) {
                 return Physics2D.RaycastNonAlloc(position, direction, hits, max_distance, layer_mask);
             });
+        }
+        static public IEnumerable<RaycastHit2D> LinecastAll(Vector2 position, Vector2 target, int layer_mask = IntBits.ALL_BITS)
+        {
+            float distance;
+            Vector2 direction = position.GetDirection(target, out distance);
+
+            return RaycastAll(position, direction, distance, layer_mask);
         }
 
         static public IEnumerable<RaycastHit2D> BoxCastAll(Vector2 position, Vector2 direction, Vector2 size, float angle, float max_distance = float.PositiveInfinity, int layer_mask = IntBits.ALL_BITS)

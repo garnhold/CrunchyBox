@@ -11,12 +11,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Planar_Interpolate
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Planar_Interpolate
     {
 <# foreach(string type_name in type_names){#>
 		static public void InterpolatePlanarPosition(this <#=type_name#> item, Vector2 target, float amount)
@@ -42,6 +42,15 @@ namespace CrunchySandwich
             item.transform.InterpolatePlanarScale(target, amount);
         }
         static public void InterpolateLocalPlanarScale(this <#=type_name#> item, Vector2 target, float amount)
+        {
+            item.transform.InterpolateLocalPlanarScale(target, amount);
+        }
+
+		static public void InterpolatePlanarScale(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.InterpolatePlanarScale(target, amount);
+        }
+        static public void InterpolateLocalPlanarScale(this <#=type_name#> item, float target, float amount)
         {
             item.transform.InterpolateLocalPlanarScale(target, amount);
         }

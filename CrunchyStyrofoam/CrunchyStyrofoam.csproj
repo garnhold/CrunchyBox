@@ -31,21 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrunchyDough">
-      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchySalt">
-      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\..\..\..\..\C#\System.Data.SQLite.Core.1.0.106.0\lib\net20\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.111.0\lib\net20\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.111.0\lib\net20\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StreamSource_FileDatabase\StreamSource_FileDatabase.cs" />
-    <Compile Include="ApplicationFileDatabase\ApplicationFileDatabase.cs" />
     <Compile Include="DatabaseConnectionCommissioner\DatabaseConnectionCommissioner_Permanent.cs" />
     <Compile Include="DatabaseConnectionCommissioner\DatabaseConnectionCommissioner_Aggressive.cs" />
     <Compile Include="DatabaseConnectionCommissioner\DatabaseConnectionCommissioner_Lazy.cs" />
@@ -66,6 +61,9 @@
     <Compile Include="DatabaseTableFieldType\DatabaseTableFieldType.cs" />
     <Compile Include="DatabaseTableFieldType\Extensions\DatabaseTableFieldTypeExtensions_Type.cs" />
     <Compile Include="DatabaseTableFieldType\Extensions\DatabaseTableFieldTypeExtensions.cs" />
+    <Compile Include="DatabaseTableField\DatabaseTableField_ForeignKey.cs" />
+    <Compile Include="DatabaseTableField\DatabaseTableField_Normal.cs" />
+    <Compile Include="DatabaseTableField\DatabaseTableField_PrimaryKey.cs" />
     <Compile Include="DatabaseTableField\Extensions\DatabaseTableFieldExtensions_Expressions.cs" />
     <Compile Include="DatabaseTableField\Extensions\DatabaseTableFieldExtensions.cs" />
     <Compile Include="DatabaseTableIndex\DatabaseTableIndex.cs" />
@@ -88,10 +86,23 @@
     <Compile Include="Extensions\SQLiteParameterCollection\SQLiteParameterCollectionExtensions_Add.cs" />
     <Compile Include="Extensions\SQLiteParameterCollection\SQLiteParameterCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StreamSource_Simple_DatabaseFileTable\StreamSource_DatabaseFileTable.cs" />
     <Compile Include="ThisAssembly.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="app.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -100,4 +111,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net20\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net20\System.Data.SQLite.Core.targets')" />
 </Project>

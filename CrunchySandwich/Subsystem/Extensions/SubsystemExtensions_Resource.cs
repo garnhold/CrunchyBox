@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class SubsystemExtensions_Resource
     {
         static public string GetSubsystemDirectoryResourcePath()
@@ -18,7 +18,11 @@ namespace CrunchySandwich
 
         static public string GetSubsystemResourcePath(Type type)
         {
-            return Filename.MakeFilename(GetSubsystemDirectoryResourcePath(), type.Name, "asset");
+            return GetSubsystemResourcePath(type.Name);
+        }
+        static public string GetSubsystemResourcePath(string type_name)
+        {
+            return Filename.MakeFilename(GetSubsystemDirectoryResourcePath(), type_name, "asset");
         }
 
         static public IEnumerable<Subsystem> LoadSubsystemResources()

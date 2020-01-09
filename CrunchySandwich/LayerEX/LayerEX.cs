@@ -1,32 +1,19 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     [Serializable]
-    public class LayerEX
+    public struct LayerEX
     {
         [SerializeField]private int id;
-
-        static private CacheManager CACHE_MANAGER = new CacheManager(Application.isPlaying);
-
-        static private OperationCache<List<LayerEX>> GET_ALL_LAYERS = CACHE_MANAGER.NewOperationCache(delegate() {
-            return Ints.Range(0, 31, true)
-                .Convert(n => new LayerEX(n))
-                .Narrow(l => l.GetName().IsVisible())
-                .ToList();
-        });
-        static public IEnumerable<LayerEX> GetAllLayers()
-        {
-            return GET_ALL_LAYERS.Fetch();
-        }
 
         static public int operator |(LayerEX l1, LayerEX l2)
         {

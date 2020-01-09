@@ -1,19 +1,19 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class Delay
     {
         private bool can_fire;
-        private Timer_Duration timer;
+        private Timer timer;
 
         public Delay(long d, TimeSource t)
         {
             can_fire = false;
-            timer = new Timer_Duration(d, t);
+            timer = new Timer(d, t);
         }
 
-        public Delay(long d) : this(d, TimeSource_Stopwatch.INSTANCE) { }
+        public Delay(long d) : this(d, TimeSource_System.INSTANCE) { }
 
         public Delay(Duration d, TimeSource t) : this(d.GetWholeMilliseconds(), t) { }
         public Delay(Duration d) : this(d.GetWholeMilliseconds()) { }

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class HoldingSingle<P, T> : SignalingSingle<T>, HoldingContainer<P> where T : Holdable<P>
     {
         private P parent;

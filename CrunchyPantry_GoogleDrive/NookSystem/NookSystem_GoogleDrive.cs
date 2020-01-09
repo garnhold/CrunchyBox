@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyPantry;
+using Crunchy.Dough;
+using Crunchy.Noodle;
+using Crunchy.Pantry;
 
 using CrunchyPantry_GoogleDrive.GoogleEX;
 using CrunchyPantry_GoogleDrive.GoogleEX.Storage;
 
-namespace CrunchyPantry_GoogleDrive
+namespace Crunchy.Pantry_GoogleDrive
 {
     public class NookSystem_GoogleDrive : NookSystem_StorageStructure_Id
     {

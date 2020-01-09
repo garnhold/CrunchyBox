@@ -8,15 +8,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonAddress_Identifier : TyonAddress
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonAddress_Identifier : TyonAddress
 	{
-        public TyonAddress_Identifier(string i, TyonContext_Dehydration context) : this()
+        public TyonAddress_Identifier(string i) : this()
         {
             SetId(i);
         }
@@ -26,9 +26,29 @@ namespace CrunchyRecipe
             canvas.AppendToLine(GetId());
         }
 
-        public override object GetAddressValue(TyonContext_Hydration context)
+        public override int GetHashCode()
         {
-            return GetId();
+            unchecked
+            {
+                int hash = 17;
+
+                hash = hash * 23 + GetId().GetHashCode();
+                hash = hash * 23 + typeof(TyonAddress_Identifier).GetHashCode();
+                return hash;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            TyonAddress_Identifier cast;
+
+            if (obj.Convert<TyonAddress_Identifier>(out cast))
+            {
+                if (cast.GetId().EqualsEX(GetId()))
+                    return true;
+            }
+
+            return false;
         }
 	}
 	

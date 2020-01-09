@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public struct Duration
     {
@@ -61,6 +61,21 @@ namespace CrunchyDough
             throw new UnaccountedBranchException("unit", unit);
         }
 
+        static public bool TryParse(string value, out Duration output)
+        {
+            double number;
+            string units;
+
+            if (value.TryParseMeasurement(out number, out units))
+            {
+                output = Length(DurationUnitExtensions_Suffix.GetUnitBySuffix(units), (float)number);
+                return true;
+            }
+
+            output = default(Duration);
+            return false;
+        }
+
         static public Duration MinutesSeconds(float minutes, float seconds)
         {
             return Minutes(minutes) + Seconds(seconds);
@@ -81,6 +96,13 @@ namespace CrunchyDough
 
         static public Duration operator *(Duration d1, float s) { return new Duration(d1.milliseconds * s); }
         static public Duration operator /(Duration d1, float s) { return new Duration(d1.milliseconds / s); }
+
+        static public bool operator ==(Duration d1, Duration d2) { return d1.milliseconds == d2.milliseconds; }
+        static public bool operator !=(Duration d1, Duration d2) { return d1.milliseconds != d2.milliseconds; }
+        static public bool operator <(Duration d1, Duration d2) { return d1.milliseconds < d2.milliseconds; }
+        static public bool operator <=(Duration d1, Duration d2) { return d1.milliseconds <= d2.milliseconds; }
+        static public bool operator >(Duration d1, Duration d2) { return d1.milliseconds > d2.milliseconds; }
+        static public bool operator >=(Duration d1, Duration d2) { return d1.milliseconds >= d2.milliseconds; }
 
         private Duration(float m)
         {
@@ -178,13 +200,7 @@ namespace CrunchyDough
 
         public override string ToString()
         {
-            DurationUnit unit = GetComfortableDurationUnit();
-            float length = GetLength(unit);
-
-            if(length < float.MaxValue)
-                return length.ToString("F2") + unit.GetUnitSuffix();
-
-            return "forever";
+            return this.ToComfortableString();
         }
     }
 }

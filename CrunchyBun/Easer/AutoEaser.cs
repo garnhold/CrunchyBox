@@ -1,17 +1,13 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public class AutoEaser<T> : AutoEaser where T : PeriodicProcess
     {
         public AutoEaser(Easer t, long update_milliseconds) : base(typeof(T), t, update_milliseconds) { }
-
         public AutoEaser(Easer t) : this(t, 16) { }
-
-        public AutoEaser(EaseFunction f, Timer t) : this(new Easer(f, t)) { }
-        public AutoEaser(EaseFunction f) : this(f, new Timer()) { }
     }
 
     public class AutoEaser
@@ -19,40 +15,36 @@ namespace CrunchyBun
         private Easer easer;
         private PeriodicProcess periodic_process;
 
-        public event MultiProcess<float> OnEase
-        {
-            add { easer.OnEase += value; }
-            remove { easer.OnEase -= value; }
-        }
-
-        public event MultiProcess OnDone
-        {
-            add{ easer.OnDone += value; }
-            remove { easer.OnDone -= value; }
-        }
+        public event MultiProcess<float> OnEase;
+        public event MultiProcess OnDone;
 
         public AutoEaser(Type pt, Easer t, long update_milliseconds)
         {
             easer = t;
 
             periodic_process = PeriodicProcess.Create(pt, update_milliseconds, delegate() {
-                if(easer.Ease() == false)
-                    Pause();
+                if (easer.IsRunning() == false)
+                    periodic_process.StopClear();
+
+                OnEase.InvokeAll(easer.GetCurrentValue());
+
+                if (easer.IsTimeOver())
+                    DoDone();
             });
         }
 
         public AutoEaser(Type pt, Easer t) : this(pt, t, 16) { }
-        public AutoEaser(Type pt, EaseFunction f, Timer t) : this(pt, new Easer(f, t)) { }
-        public AutoEaser(Type pt, EaseFunction f) : this(pt, f, new Timer()) { }
 
         public void DoDone()
         {
-            easer.DoDone();
+            if (easer.IsRunning())
+                ForceDone();
         }
 
         public void ForceDone()
         {
-            easer.ForceDone();
+            OnDone.InvokeAll();
+            easer.Pause();
         }
 
         public void StopClear()
@@ -69,7 +61,6 @@ namespace CrunchyBun
         public void Pause()
         {
             easer.Pause();
-            periodic_process.StopClear();
         }
 
         public void Restart()

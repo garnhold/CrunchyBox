@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Bun;
+    
     static public class RandVector3
     {
         static public readonly RandVector3Source SOURCE = new RandVector3Source(RandFloat.SOURCE);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,10 +7,10 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class TypeExtensions_IL
     {
         static public ILField GetStaticILField(this Type item, string name)
@@ -21,7 +21,7 @@ namespace CrunchySalt
 
         static public ILMethodInvokation GetStaticILMethodInvokation(this Type item, string name, IEnumerable<ILValue> arguments)
         {
-            return item.GetStaticMethod(name, arguments.Convert(a => a.GetValueType()))
+            return item.GetStaticMethod(name, arguments.GetValueTypes())
                 .IfNotNull(m => new ILMethodInvokation(null, m, arguments));
         }
         static public ILMethodInvokation GetStaticILMethodInvokation(this Type item, string name, params ILValue[] arguments)

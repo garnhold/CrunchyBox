@@ -1,9 +1,11 @@
-﻿using System;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_ConvertFromDensity
     {
         static public int ConvertFromDensityToCount(this float item, float size)
@@ -16,6 +18,16 @@ namespace CrunchyBun
                 int_count++;
 
             return int_count;
+        }
+
+        static public IEnumerable<T> ConvertDensity<T>(this float item, float size, Operation<T> operation)
+        {
+            return item.ConvertFromDensityToCount(size).RepeatOperation(operation);
+        }
+
+        static public void ProcessDensity(this float item, float size, Process process)
+        {
+            item.ConvertFromDensityToCount(size).RepeatProcess(process);
         }
     }
 }

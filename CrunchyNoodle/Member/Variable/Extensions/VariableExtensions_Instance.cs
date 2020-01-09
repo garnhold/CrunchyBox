@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class VariableExtensions_Instance
     {
         static public VariableInstance CreateInstance(this Variable item, TargetInstance target)

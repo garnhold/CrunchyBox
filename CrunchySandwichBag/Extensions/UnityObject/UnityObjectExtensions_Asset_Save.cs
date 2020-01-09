@@ -1,18 +1,21 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Sandwich;
+    
     static public class UnityObjectExtensions_Asset_Save
     {
-        static public void SaveAsset(this UnityEngine.Object item, string filename)
+        static public void SaveNewAsset(this UnityEngine.Object item, string filename)
         {
-            AssetDatabase.CreateAsset(item, filename);
+            if (Filename.HasExtension(filename) == false)
+                filename = Filename.SetExtension(filename, "asset");
+
+            AssetDatabase.CreateAsset(item, Files.GetUnusedFilename(filename));
             AssetDatabase.SaveAssets();
         }
 
@@ -20,17 +23,6 @@ namespace CrunchySandwichBag
         {
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = item;
-        }
-
-        static public void SaveAndFocusAsset(this UnityEngine.Object item, string filename)
-        {
-            item.SaveAsset(filename);
-            item.FocusAsset();
-        }
-
-        static public void DeleteAsset(this UnityEngine.Object item)
-        {
-            AssetDatabase.DeleteAsset(item.GetAssetPath());
         }
     }
 }

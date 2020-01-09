@@ -3,11 +3,11 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
-    public class Filterer_MethodInfo_CanGenericParametersHold<P1> : Filterer_MethodInfo_CanGenericParametersHold
+    using Dough;
+    
+        public class Filterer_MethodInfo_CanGenericParametersHold<P1> : Filterer_MethodInfo_CanGenericParametersHold
     {
         static public readonly Filterer_MethodInfo_CanGenericParametersHold<P1> INSTANCE = new Filterer_MethodInfo_CanGenericParametersHold<P1>();
 

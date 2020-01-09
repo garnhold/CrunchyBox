@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class TypeExtensions_DynamicMethod
     {
         static public string GenerateDynamicMethodName(string name)
@@ -16,7 +16,7 @@ namespace CrunchySalt
             if (name.IsBlank())
                 name = ProgrammingEntityName.GenerateFunctionName();
 
-            return "CrunchySalt.DynamicMethod[" + name + "]";
+            return "Crunchy.Salt.DynamicMethod[" + name + "]";
         }
 
         static public DynamicMethod CreateDynamicMethod(this Type item, string name, Type return_type, params Type[] parameter_types)
@@ -45,7 +45,13 @@ namespace CrunchySalt
         }
         static public T CreateDynamicMethodDelegate<T>(this Type item, string name, ILStatement statement)
         {
-            return item.CreateDynamicMethodDelegate<T>(name, m => statement);
+            return item.CreateDynamicMethodDelegate<T>(name, delegate(MethodBase method) {
+                return statement;
+            });
+        }
+        static public T CreateDynamicMethodDelegate<T>(this Type item, ILStatement statement)
+        {
+            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, statement);
         }
 
         static public T CreateDynamicMethodDelegate<T>(this Type item, string name, Delegate operation)
@@ -53,6 +59,38 @@ namespace CrunchySalt
             return item.CreateDynamicMethodDelegate<T>(name, delegate(MethodBase method) {
                 return operation.DynamicInvoke(method.GetAllTechnicalILParameters().ToArray()).Convert<ILStatement>();
             });
+        }
+        static public T CreateDynamicMethodDelegate<T>(this Type item, Delegate operation)
+        {
+            return item.CreateDynamicMethodDelegate<T>(typeof(T).Name, operation);
+        }
+
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Delegate operation, IEnumerable<Type> parameter_types)
+        {
+            return item.CreateDynamicMethodDelegate<T>(name, delegate(MethodBase method) {
+                ILBlock block = new ILBlock();
+
+                ILValue[] arguments = method.GetAllTechnicalILParameters()
+                    .GetILImplicitCasts(parameter_types)
+                    .Convert(v => block.CreateTrivial(v))
+                    .ToArray();
+
+                block.AddStatement(operation.DynamicInvoke(arguments).Convert<ILStatement>());
+                return block;
+            });
+        }
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, string name, Delegate operation, params Type[] parameter_types)
+        {
+            return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(name, operation, (IEnumerable<Type>)parameter_types);
+        }
+
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Delegate operation, IEnumerable<Type> parameter_types)
+        {
+            return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(typeof(T).Name, operation, parameter_types);
+        }
+        static public T CreateDynamicMethodDelegateWithForcedParameterTypes<T>(this Type item, Delegate operation, params Type[] parameter_types)
+        {
+            return item.CreateDynamicMethodDelegateWithForcedParameterTypes<T>(operation, (IEnumerable<Type>)parameter_types);
         }
 
         static private readonly Dictionary<object, ILBody> DYNAMIC_IL_BODY = new Dictionary<object, ILBody>();

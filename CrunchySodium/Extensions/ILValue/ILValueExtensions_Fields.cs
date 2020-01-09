@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,12 +6,12 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySalt;
-
-namespace CrunchySodium
+namespace Crunchy.Sodium
 {
+    using Dough;
+    using Noodle;
+    using Salt;
+    
     static public class ILValueExtensions_Fields
     {
         static public IEnumerable<ILField> GetAllInstanceILFields(this ILValue item)

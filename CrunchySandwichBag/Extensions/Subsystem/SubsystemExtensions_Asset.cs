@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     static public class SubsystemExtensions_Asset
     {
         static public void CreateSubsystemAsset(Type type)
@@ -40,7 +40,20 @@ namespace CrunchySandwichBag
 
         static public string GetSubsystemAssetPath(Type type)
         {
-            return Path.Combine(Project.GetResourcesDirectory(), SubsystemExtensions_Resource.GetSubsystemResourcePath(type));
+            return GetSubsystemAssetPath(type.Name);
+        }
+        static public string GetSubsystemAssetPath(string type_name)
+        {
+            return Path.Combine(Project.GetResourcesDirectory(), SubsystemExtensions_Resource.GetSubsystemResourcePath(type_name));
+        }
+
+        static public Subsystem GetSubsystemAsset(Type type)
+        {
+            return GetSubsystemAsset(type.Name);
+        }
+        static public Subsystem GetSubsystemAsset(string type_name)
+        {
+            return AssetDatabase.LoadAssetAtPath<Subsystem>(GetSubsystemAssetPath(type_name));
         }
     }
 }

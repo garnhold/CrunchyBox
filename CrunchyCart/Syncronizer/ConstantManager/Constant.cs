@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public partial class Syncronizer
     {
         public class Constant<T>
@@ -19,13 +19,13 @@ namespace CrunchyCart
             private T value;
             private int compressed_id;
 
-            private Timer_Duration activation_timer;
+            private Timer activation_timer;
 
             static private int NEXT_COMPRESSED_ID = 1;
 
             public Constant()
             {
-                activation_timer = new Timer_Duration(Duration.Seconds(1.5f));
+                activation_timer = new Timer(Duration.Seconds(1.5f));
             }
 
             public Constant(T v) : this()

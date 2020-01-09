@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,13 +13,13 @@ using Android.Views;
 using Android.Widget;
 using Android.Animation;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sack;
+    
     public abstract class SimpleView : View
     {
         private RectF padded_rect;

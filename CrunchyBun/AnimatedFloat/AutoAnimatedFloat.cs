@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public class AutoAnimatedFloat<T> : AutoAnimatedFloat where T : PeriodicProcess
     {
         public AutoAnimatedFloat(AnimatedFloat a, long update_milliseconds) : base(typeof(T), a, update_milliseconds) { }

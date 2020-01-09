@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     static public class StreamSystemExtensions_Cml
     {
         static public AttemptResult AttemptReadCmlClassDefinition(this StreamSystem item, string path, out CmlClassDefinition class_definition, long milliseconds = StreamSystem.DEFAULT_WAIT)

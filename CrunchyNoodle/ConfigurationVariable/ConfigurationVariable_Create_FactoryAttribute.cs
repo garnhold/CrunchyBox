@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class ConfigurationVariable_Create_FactoryAttribute : ConfigurationVariable_CreateAttribute
     {
         protected override bool TryHydrateSettingInternal(string option_string, Type option_type, out object option_value)

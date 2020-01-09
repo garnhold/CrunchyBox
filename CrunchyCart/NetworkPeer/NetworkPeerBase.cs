@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public abstract class NetworkPeerBase
     {
         protected virtual bool ProcessStatusInitiatedConnect(NetIncomingMessage message) { return true; }
@@ -89,12 +89,9 @@ namespace CrunchyCart
         {
         }
 
-        public void SendMessage(NetworkRecipient recipient, NetDeliveryMethod delivery_method, int delivery_channel, Process<NetOutgoingMessage> process)
+        public NetworkEnvelope CreateEnvelope(NetDeliveryMethod delivery_method, int delivery_channel)
         {
-            NetOutgoingMessage message = GetNetPeer().CreateMessage();
-
-            process(message);
-            recipient.Send(delivery_method, delivery_channel, message, GetNetPeer());
+            return new NetworkEnvelope(delivery_method, delivery_channel, GetNetPeer());
         }
 
         public void Flush()

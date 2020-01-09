@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class MeshBuilderExtensions_Chunk_Bounds
     {
         static public void AddChunk(this MeshBuilder item, IEnumerable<Triangle3> triangles, Bounds bounds)

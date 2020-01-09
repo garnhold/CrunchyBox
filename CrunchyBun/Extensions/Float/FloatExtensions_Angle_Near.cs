@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class FloatExtensions_Angle_Near
     {
         static public void GetAsNearAngles(this float item, float angle, float period, out float item_output, out float angle_output)

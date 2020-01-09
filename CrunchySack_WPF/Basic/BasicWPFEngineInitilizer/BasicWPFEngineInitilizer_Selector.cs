@@ -6,11 +6,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Controls.Primitives;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Sack;
+    
     [BasicWPFEngineInitilizer]
     static public class BasicWPFEngineInitilizer_Selector
     {

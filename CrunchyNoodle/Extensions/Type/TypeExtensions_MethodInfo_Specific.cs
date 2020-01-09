@@ -3,14 +3,14 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
-	static public class TypeExtensions_MethodInfo_Specific
+    using Dough;
+    using Salt;
+    
+    static public class TypeExtensions_MethodInfo_Specific
 	{
-		static private OperationCache<MethodInfoEX, Type, string, ContentsEnumerable<Type>> GET_INSTANCE_METHOD = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name, ContentsEnumerable<Type> parameter_types){
+		static private OperationCache<MethodInfoEX, Type, string, ContentsEnumerable<Type>> GET_INSTANCE_METHOD = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_METHOD", delegate(Type item, string name, ContentsEnumerable<Type> parameter_types){
 			return item.GetFilteredInstanceMethods(
                 Filterer_MethodInfo.IsNamed(name),
                 Filterer_MethodInfo.CanEffectiveParametersHold(parameter_types)

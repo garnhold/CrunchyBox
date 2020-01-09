@@ -6,30 +6,30 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
+    [CodeGenerator]
     static public class SortingLayerInitilizer
     {
-        [MenuItem("Edit/Force SortingLayers Class Regeneration")]
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [CodeGenerator]
         static private void GenerateSortingLayersClass()
         {
-            CodeGenerator.GenerateStandardClass("SortingLayers", delegate(CSTextDocumentBuilder builder) {
-                SortingLayerEX.GetAllSortingLayers().Process(delegate(SortingLayerEX layer) {
+            CodeGenerator.GenerateStaticClass("SortingLayers", delegate(CSTextDocumentBuilder builder) {
+                SortingLayerEXExtensions.GetAllSortingLayers().Process(delegate(SortingLayerEX layer) {
                     CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
                         "NAME", layer.GetName().StyleAsConstantName(),
-                        "VALUE", layer.GetName().StyleAsLiteralString()
+                        "VALUE", layer.GetName().StyleAsDoubleQuoteLiteral()
                     );
 
                     writer.Write("static public readonly SortingLayerEX ?NAME = new SortingLayerEX(?VALUE);");
                 });
-            });
+            }, GeneratedCodeType.RuntimeDefinition);
         }
     }
 }

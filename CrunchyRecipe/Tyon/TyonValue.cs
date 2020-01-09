@@ -9,16 +9,16 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public abstract partial class TyonValue : TyonElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract partial class TyonValue : TyonElement
 	{
         public abstract void Render(TextDocumentCanvas canvas);
-        public abstract void PushToVariable(VariableInstance variable, TyonContext_Hydration context);
+        public abstract void PushToVariable(VariableInstance variable, TyonHydrater hydrater);
 
         public string Render()
         {
@@ -26,6 +26,11 @@ namespace CrunchyRecipe
 
             Render(canvas);
             return canvas.ToString();
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

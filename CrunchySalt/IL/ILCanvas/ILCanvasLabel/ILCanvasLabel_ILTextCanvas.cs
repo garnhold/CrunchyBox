@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,10 +6,10 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILCanvasLabel_ILTextCanvas : ILCanvasLabel
     {
         private int id;
@@ -41,6 +41,11 @@ namespace CrunchySalt
         public override void Emit_Brfalse()
         {
             canvas.AppendInstruction("Brfalse", id.ToString());
+        }
+
+        public override void Emit_Leave()
+        {
+            canvas.AppendInstruction("Leave", id.ToString());
         }
     }
 }

@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class AssemblyExtensions_Visibility
     {
         static public bool IsTypeVisible(this Assembly item, Type type)
         {
-            if (item.DoesReferenceAssembly(type.Assembly))
+            if (type.Assembly == item || item.DoesReferenceAssembly(type.Assembly))
                 return true;
 
             return false;
@@ -19,7 +19,7 @@ namespace CrunchyNoodle
 
         static public bool IsAssemblyVisibleToType(this Assembly item, Type type)
         {
-            if (item.IsReferencedByAssembly(type.Assembly))
+            if (item == type.Assembly || item.IsReferencedByAssembly(type.Assembly))
                 return true;
 
             return false;

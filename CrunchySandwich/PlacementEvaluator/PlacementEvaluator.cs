@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    [CustomAssetCategory("Utility")]
+    [AssetClassCategory("Utility")]
     public abstract class PlacementEvaluator : CustomAsset
     {
         public abstract bool IsGameObjectPlacementValid(GameObject game_object);

@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyCup
+namespace Crunchy.Cup
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class SolidObjectExtensions_Table
     {
         static private readonly Cache<Type, SolidObjectTable> SOLID_OBJECT_TABLE = new Cache<Type, SolidObjectTable>(delegate(Type type) {

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyKitchen
+namespace Crunchy.Kitchen
 {
+    using Dough;
+    using Noodle;
+    
     public class ProjectItemCreator_Operation<ITEM_TYPE> : ProjectItemCreator<ITEM_TYPE>
     {
         private Operation<ITEM_TYPE, string> operation;

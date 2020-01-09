@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class AssemblyNameExtensions_SimpleName
     {

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Threading;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class Attempter
     {
@@ -9,7 +9,7 @@ namespace CrunchyDough
         {
             if (milliseconds > 0)
             {
-                Timer_Duration timer = new Timer_Duration(milliseconds).StartAndGet();
+                Timer timer = new Timer(milliseconds).StartAndGet();
 
                 do
                 {

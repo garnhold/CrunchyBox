@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySauce;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    using Sauce;
+    
     static public class Texture2DExtensions_Surface
     {
         static public Surface<Color> GetSurface(this Texture2D item)

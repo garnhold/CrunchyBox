@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Child_Get
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Child_Get
     {
 		static public GameObject GetChildByName(this GameObject item, string name)
         {

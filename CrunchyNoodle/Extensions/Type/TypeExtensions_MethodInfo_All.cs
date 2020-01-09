@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_MethodInfo_All
     {
-        static private OperationCache<List<MethodInfoEX>, Type> GET_ALL_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item) {
+        static private OperationCache<List<MethodInfoEX>, Type> GET_ALL_METHODS = ReflectionCache.Get().NewOperationCache("GET_ALL_METHODS", delegate(Type item) {
             return item.GetAllInstanceMethods()
                 .Append(item.GetStaticMethods())
                 .ToList();
@@ -19,7 +19,7 @@ namespace CrunchyNoodle
             return GET_ALL_METHODS.Fetch(item);
         }
 
-        static private OperationCache<List<MethodInfoEX>, Type, MethodInfoFilters> GET_FILTERED_METHODS = ReflectionCache.Get().NewOperationCache(delegate(Type item, MethodInfoFilters filters) {
+        static private OperationCache<List<MethodInfoEX>, Type, MethodInfoFilters> GET_FILTERED_METHODS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_METHODS", delegate(Type item, MethodInfoFilters filters) {
             return item.GetFilteredInstanceMethods(filters)
                 .Append(item.GetFilteredStaticMethods(filters))
                 .ToList();

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Text;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public partial class Strings
     {

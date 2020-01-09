@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Security.Cryptography;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    using Noodle;
+    
     public class NookSystem_Local : NookSystem
     {
         public override bool Delete(string path)

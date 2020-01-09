@@ -9,26 +9,28 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonVariable : TyonElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonVariable : TyonElement
 	{
-        public TyonVariable(object obj, Variable variable, TyonContext_Dehydration context) : this()
+        public TyonVariable(VariableInstance variable, TyonDehydrater dehydrater) : this()
         {
-            SetId(variable.GetVariableName());
-            SetTyonValue(context.CreateTyonValue(variable.GetContents(obj), variable));
+            SetId(variable.GetVariable().GetVariableName());
+            SetTyonValue(dehydrater.CreateTyonValue(variable.GetVariableType(), variable.GetContents()));
         }
 
-        public void PushToSystemObject(object obj, TyonContext_Hydration context)
+        public void PushToSystemObject(object obj, TyonHydrater hydrater)
         {
             Variable variable;
 
-            if (context.TryGetDesignatedVariable(obj.GetType(), GetId(), out variable))
-                GetTyonValue().PushToVariable(variable.CreateStrongInstance(obj), context);
+            if (hydrater.TryGetDesignatedVariable(obj.GetType(), GetId(), out variable))
+                GetTyonValue().PushToVariable(variable.CreateStrongInstance(obj), hydrater);
+            else
+                hydrater.LogMissingField(obj.GetType(), GetId());
         }
 
         public string Render()
@@ -45,6 +47,11 @@ namespace CrunchyRecipe
             canvas.AppendToLine(" = ");
             GetTyonValue().Render(canvas);
             canvas.AppendToLine(";");
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

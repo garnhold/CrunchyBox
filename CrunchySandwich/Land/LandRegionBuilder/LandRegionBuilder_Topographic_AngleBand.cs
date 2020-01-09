@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     public class LandRegionBuilder_Topographic_AngleBand : LandRegionBuilder_Topographic
     {
         [SerializeField]ValueCurve strength_curve;

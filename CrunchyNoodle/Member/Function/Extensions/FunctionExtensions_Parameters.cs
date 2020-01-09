@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class FunctionExtensions_Parameters
     {
         static public bool HasNoParameters(this Function item)
@@ -21,6 +21,16 @@ namespace CrunchyNoodle
                 return true;
 
             return false;
+        }
+
+        static public Type GetParameterType(this Function item, int index)
+        {
+            return item.GetParameter(index).Value;
+        }
+
+        static public IEnumerable<Type> GetParameterTypes(this Function item)
+        {
+            return item.GetParameters().Convert(p => p.Value);
         }
 
         static public bool CanParametersHold(this Function item, IEnumerable<Type> types)

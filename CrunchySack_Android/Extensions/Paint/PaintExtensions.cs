@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
@@ -8,11 +8,11 @@ using Android.Content;
 using Android.Graphics;
 using Android.Content.Res;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Sack;
+    
     static public class PaintExtensions
     {
         static public Paint Create(Color color, Paint.Style style, PaintFlags paint_flags)

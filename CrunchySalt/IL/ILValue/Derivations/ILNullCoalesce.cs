@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,11 +6,11 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    using Salt;
+    
     public class ILNullCoalesce : ILValue
     {
         private List<ILValue> values;
@@ -39,11 +39,6 @@ namespace CrunchySalt
             label.Emit_Label();
         }
 
-        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
-        }
-
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             values.RenderText_Value(canvas, " ?? ");
@@ -51,7 +46,7 @@ namespace CrunchySalt
 
         public override Type GetValueType()
         {
-            return values.Convert(v => v.GetValueType()).GetCommonAncestor();
+            return values.GetValueTypes().GetCommonAncestor();
         }
 
         public override bool IsILCostTrivial()
@@ -62,11 +57,6 @@ namespace CrunchySalt
         public override bool CanLoad()
         {
             return true;
-        }
-
-        public override bool CanStore()
-        {
-            return false;
         }
     }
 }

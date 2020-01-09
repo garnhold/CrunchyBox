@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class RandInt
     {
         static public readonly RandIntSource SOURCE = new RandIntSource_System(new Random());
@@ -32,10 +32,18 @@ namespace CrunchyBun
         {
             return SOURCE.GetVariance(center, radius);
         }
+        static public int GetVariance(IntVariance variance)
+        {
+            return SOURCE.GetVariance(variance);
+        }
 
         static public int GetBetween(int a, int b)
         {
             return SOURCE.GetBetween(a, b);
+        }
+        static public int GetBetween(IntRange range)
+        {
+            return SOURCE.GetBetween(range);
         }
     }
 }

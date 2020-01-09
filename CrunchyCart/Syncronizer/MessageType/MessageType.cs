@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public partial class Syncronizer
     {
         public enum MessageType
@@ -17,11 +17,12 @@ namespace CrunchyCart
             UpdateConstant,
             FullUpdateConstant,
 
-            InvokeEntityConstructor,
             InvokeEntityMethod,
             ChangeEntityAuthority,
             UpdateEntity,
-            DestroyEntity
+            DestroyEntity,
+
+            InvokeSystemMethod
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IListExtensions_Looped
     {
@@ -13,12 +13,12 @@ namespace CrunchyDough
 
         static public void SetLooped<T>(this IList<T> item, int index, T value)
         {
-            item[item.GetLoopedIndex(index)] = value;
+            item.SetDropped(item.GetLoopedIndex(index), value);
         }
 
         static public T GetLooped<T>(this IList<T> item, int index)
         {
-            return item[item.GetLoopedIndex(index)];
+            return item.GetDropped(item.GetLoopedIndex(index));
         }
     }
 }

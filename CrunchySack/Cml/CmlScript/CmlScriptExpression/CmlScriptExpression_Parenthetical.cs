@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public partial class CmlScriptExpression_Parenthetical : CmlScriptExpression
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class CmlScriptExpression_Parenthetical : CmlScriptExpression
 	{
         protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
         {

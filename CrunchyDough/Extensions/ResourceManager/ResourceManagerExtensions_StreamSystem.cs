@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Resources;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ResourceManagerExtensions_StreamSystem
     {

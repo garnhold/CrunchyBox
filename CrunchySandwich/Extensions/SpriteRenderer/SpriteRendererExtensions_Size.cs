@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class SpriteRendererExtensions_Size
     {
         static public void SetSize(this SpriteRenderer item, Vector2 size)
@@ -35,7 +35,7 @@ namespace CrunchySandwich
             Sprite sprite = item.sprite;
 
             if (sprite != null)
-                return sprite.bounds.GetPlanarSize();
+                return sprite.GetWorldSize();
 
             return Vector2.zero;
         }

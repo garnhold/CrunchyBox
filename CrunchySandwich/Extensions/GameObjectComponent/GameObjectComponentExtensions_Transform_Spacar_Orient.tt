@@ -1,0 +1,29 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Orient
+    {
+<# foreach(string type_name in type_names){#>
+		
+		static public void OrientSpacarLocalToWorld(this <#=type_name#> item, Vector3 l1, Vector3 l2, Vector3 l3, Vector3 w1, Vector3 w2, Vector3 w3)
+		{
+			item.transform.OrientSpacarLocalToWorld(l1, l2, l3, w1, w2, w3);
+		}
+<# } #>
+	}
+}

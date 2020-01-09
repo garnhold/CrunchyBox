@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public abstract class SignalingContainer_Collection_LabeledItemSet<LABEL_TYPE, ELEMENT_TYPE> : SignalingContainer_Collection<ELEMENT_TYPE>, EnumerableLookupSet<LABEL_TYPE, ELEMENT_TYPE> where ELEMENT_TYPE : LabeledItem<LABEL_TYPE>
     {

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Bun;
+    
     static public class SurfaceSelectionExtensions_Add
     {
         static public bool Add<T>(this SurfaceSelection<T> item, VectorF2 point)

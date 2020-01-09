@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ObjectExtensions_Convert
     {
@@ -32,12 +32,18 @@ namespace CrunchyDough
             return output;
         }
 
-        static public bool CanConvert(this object item, Type type)
+        static public bool CanConvert(this object item, Type type, bool allow_null_object = false)
         {
-            if (item != null)
+            if (type != null)
             {
-                if (type.IsAssignableFrom(item.GetType()))
+                if (type.IsAssignableFrom(item.GetTypeEX()))
                     return true;
+
+                if (allow_null_object)
+                {
+                    if (item == null)
+                        return true;
+                }
             }
 
             return false;

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Resources;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ResourceManagerExtensions_Get
     {

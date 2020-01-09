@@ -1,22 +1,22 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class ObjectExtensions_Convert
     {
-        static public bool ConvertEX(this object item, Type type, out object output)
+        static public bool ConvertEX(this object item, Type type, out object output, bool allow_null_object = false)
         {
+            if (item.CanConvert(type, allow_null_object))
+            {
+                output = item;
+                return true;
+            }
+
             if (item != null)
             {
-                if (item.CanConvert(type))
-                {
-                    output = item;
-                    return true;
-                }
-
                 BasicMethodInvoker invoker = item.GetType().GetConversionInvoker(type);
                 if (invoker != null)
                 {

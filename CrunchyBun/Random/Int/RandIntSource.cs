@@ -1,16 +1,19 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public abstract class RandIntSource
     {
         public abstract int Get();
 
         public int GetMagnitude(int m)
         {
-            return Get() % m;
+            if (m != 0)
+                return Get() % m;
+
+            return 0;
         }
 
         public int GetIndex(int count)
@@ -27,6 +30,10 @@ namespace CrunchyBun
         {
             return x + GetMagnitude(radius);
         }
+        public int GetVariance(IntVariance variance)
+        {
+            return GetVariance(variance.value, variance.radius);
+        }
 
         public int GetBetween(int a, int b)
         {
@@ -35,6 +42,10 @@ namespace CrunchyBun
 
             a.Order(b, out low, out high);
             return low + GetMagnitude(high - low);
+        }
+        public int GetBetween(IntRange range)
+        {
+            return GetBetween(range.x1, range.x2);
         }
     }
 }

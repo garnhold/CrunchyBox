@@ -1,60 +1,37 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public partial class Syncronizer
     {
         private NetworkPeer peer;
-
-        private List<Buffer> message_queue;
-        private Dictionary<int, Buffer> sequenced_message_queue;
-        private Dictionary<int, List<Buffer>> ordered_message_queue;
+        private MessageProcessor message_processor;
 
         private EntityManager entity_manager;
+        private SystemManager system_manager;
         private ConstantManager constant_manager;
 
-        private bool ProcessDataUnordered(Buffer buffer, int channel)
-        {
-            if (ReadBuffer(buffer))
-                return true;
+        public event MultiProcess<NetConnection> OnNewClient;
 
-            message_queue.Add(buffer);
-            return false;
+        public event MultiProcess<Entity> OnGainAuthority
+        {
+            add { entity_manager.OnGainAuthority += value; }
+            remove { entity_manager.OnGainAuthority -= value; }
         }
 
-        private bool ProcessDataSequenced(Buffer buffer, int channel)
+        public event MultiProcess<Entity> OnLoseAuthority
         {
-            if (ReadBuffer(buffer))
-            {
-                sequenced_message_queue.Remove(channel);
-                return true;
-            }
-
-            sequenced_message_queue[channel] = buffer;
-            return false;
-        }
-
-        private bool ProcessDataOrdered(Buffer buffer, int channel)
-        {
-            List<Buffer> queue = ordered_message_queue.GetOrCreateDefaultValue(channel);
-
-            if (queue.IsEmpty())
-            {
-                if (ReadBuffer(buffer))
-                    return true;
-            }
-
-            queue.Add(buffer);
-            return false;
+            add { entity_manager.OnLoseAuthority += value; }
+            remove { entity_manager.OnLoseAuthority -= value; }
         }
 
         private bool ReadBuffer(Buffer buffer)
@@ -71,71 +48,76 @@ namespace CrunchyCart
                     case MessageType.DestroyEntity: entity_manager.ReadDestroy(buffer); break;
                     case MessageType.UpdateEntity: entity_manager.ReadUpdate(buffer); break;
 
+                    case MessageType.InvokeSystemMethod: system_manager.ReadMethodInvoke(buffer); break;
+
                     default: throw new UnaccountedBranchException("message_type", message_type);
                 }
             });
         }
 
-        protected void Send(NetworkRecipient recipient, MessageType message_type, NetDeliveryMethod delivery_method, int channel, Process<Buffer> process)
+        protected Message CreateMessage(NetDeliveryMethod delivery_method, int delivery_channel)
         {
-            peer.SendMessage(recipient, delivery_method, channel, delegate(NetOutgoingMessage message) {
-                Buffer buffer = new Buffer(message, GetNetworkActor(), this);
-
-                buffer.ExecuteWrite(message_type, delegate() {
-                    process(buffer);
-                });
-            });
-        }
-        protected T Send<T>(NetworkRecipient recipient, MessageType message_type, NetDeliveryMethod delivery_method, int channel, Operation<T, Buffer> operation)
-        {
-            T to_return = default(T);
-
-            Send(recipient, message_type, delivery_method, channel, delegate(Buffer buffer) {
-                to_return = operation(buffer);
-            });
-
-            return to_return;
+            return new Message(peer.CreateEnvelope(delivery_method, delivery_channel), this);
         }
 
-        public Syncronizer(NetworkPeer p)
+        protected Message CreateMessage(MessageType type, NetDeliveryMethod delivery_method, Process<Buffer> process)
+        {
+            Message message = CreateMessage(delivery_method, type.GetDeliveryChannel());
+            Buffer buffer = message.GetBuffer();
+
+            buffer.ExecuteWrite(type);
+            process(buffer);
+
+            return message;
+        }
+
+        protected Message CreateMessage(MessageType type, NetDeliveryMethod delivery_method, TryProcess<Buffer> process)
+        {
+            bool is_valid = false;
+
+            Message message = CreateMessage(type, delivery_method, delegate(Buffer buffer) {
+                is_valid = process(buffer);
+            });
+
+            if (is_valid)
+                return message;
+
+            return null;
+        }
+
+        public Syncronizer(NetworkPeer p, IEnumerable<object> ts)
         {
             peer = p;
-
-            message_queue = new List<Buffer>();
-            sequenced_message_queue = new Dictionary<int, Buffer>();
-            ordered_message_queue = new Dictionary<int, List<Buffer>>();
+            message_processor = new MessageProcessor(this, b => ReadBuffer(b));
 
             entity_manager = new EntityManager(this);
+            system_manager = new SystemManager(this, ts);
             constant_manager = new ConstantManager(this);
 
-            peer.OnConnect += delegate(NetIncomingMessage message) {
-                constant_manager.SendFullUpdate(new NetworkRecipient_Single(message.SenderConnection));
-                entity_manager.InitializeRecipient(new NetworkRecipient_Single(message.SenderConnection));
-                return true;
-            };
+            if (GetNetworkActor().IsServer())
+            {
+                peer.OnConnect += delegate(NetIncomingMessage message) {
+                    constant_manager.SendFullUpdate(new NetworkRecipient_Single(message.SenderConnection));
+                    entity_manager.InitializeRecipient(new NetworkRecipient_Single(message.SenderConnection));
+
+                    OnNewClient.InvokeAll(message.SenderConnection);
+                    return true;
+                };
+            }
 
             peer.OnData += delegate(NetIncomingMessage message) {
-                Buffer buffer = new Buffer(message, message.SenderConnection.GetNetworkActor(), this);
-
-                switch (message.DeliveryMethod)
-                {
-                    case NetDeliveryMethod.ReliableOrdered: return ProcessDataOrdered(buffer, message.SequenceChannel);
-                    case NetDeliveryMethod.ReliableSequenced: return ProcessDataSequenced(buffer, message.SequenceChannel);
-                    case NetDeliveryMethod.ReliableUnordered: return ProcessDataUnordered(buffer, message.SequenceChannel);
-                }
-
-                ReadBuffer(buffer);
-                return true;
+                return message_processor.ProcessMessage(message);
             };
         }
+
+        public Syncronizer(NetworkPeer p, params object[] ts) : this(p, (IEnumerable<object>)ts) { }
 
         public void Update()
         {
             peer.ProcessMessages();
+            message_processor.ProcessBacklog();
 
-            message_queue.RemoveAll(m => ReadBuffer(m));
-            sequenced_message_queue.RemoveAll(p => ReadBuffer(p.Value));
-            ordered_message_queue.Process(p => p.Value.RemoveAllUntil(b => ReadBuffer(b) == false, false));
+            entity_manager.Update();
 
             peer.Flush();
         }
@@ -143,6 +125,11 @@ namespace CrunchyCart
         public Entity GetEntity(object target)
         {
             return entity_manager.ReferenceObject(target);
+        }
+
+        public System GetSystem(object target)
+        {
+            return system_manager.ReferenceObject(target);
         }
 
         public NetworkActor GetNetworkActor()

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public partial class Mathq
     {
         public const float DEFAULT_SOLVE_MARGIN = 1e-5f;

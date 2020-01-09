@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public abstract class EditorGUIElement_Foldout<T> : EditorGUIElement where T : EditorGUIElement_Container
     {
         private Rect label_rect;
@@ -22,48 +22,48 @@ namespace CrunchySandwichBag
         protected abstract void SetIsOpenInternal(bool is_open);
         protected abstract bool GetIsOpenInternal();
 
-        protected override void InitilizeInternal()
+        protected override void InitializeInternal()
         {
-            container.Initilize();
+            container.Initialize();
         }
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override float DoPlanInternal()
+        {
+            float height = single_height;
+
+            if (IsOpen())
+                height += container.Plan(GetContentsWidth(), GetLayoutState());
+
+            return height;
+        }
+
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             rect.SplitByYBottomOffset(single_height, out label_rect, out rect);
 
             return rect;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override void LayoutContentsInternal(Vector2 position)
         {
-            container.Layout(rect, label_width);
+            container.Layout(position);
         }
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             SetIsOpen(EditorGUI.Foldout(label_rect, IsOpen(), text, true));
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
             if (IsOpen())
-                container.Draw(view);
+                container.Draw(draw_id, view);
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
             if(IsOpen())
-                container.Unwind();
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            float height = single_height;
-
-            if (IsOpen())
-                height += container.GetHeight();
-
-            return height;
+                container.Unwind(draw_id);
         }
 
         public EditorGUIElement_Foldout(string t, T c, float h)
@@ -83,7 +83,7 @@ namespace CrunchySandwichBag
             if (IsOpen() != is_open)
             {
                 SetIsOpenInternal(is_open);
-                InvalidateHeight();
+                InvalidatePlan();
             }
         }
 

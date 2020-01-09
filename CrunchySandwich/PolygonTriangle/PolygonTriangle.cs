@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public class PolygonTriangle
     {
         public readonly Triangle2 triangle;
@@ -21,9 +21,9 @@ namespace CrunchySandwich
         {
             triangle = t;
 
-            f1 = FaceExtensions.CreatePoints(triangle.v0, triangle.v1);
-            f2 = FaceExtensions.CreatePoints(triangle.v1, triangle.v2);
-            f3 = FaceExtensions.CreatePoints(triangle.v2, triangle.v0);
+            f1 = triangle.GetEdge01().GetFace();
+            f2 = triangle.GetEdge12().GetFace();
+            f3 = triangle.GetEdge20().GetFace();
         }
     }
 }

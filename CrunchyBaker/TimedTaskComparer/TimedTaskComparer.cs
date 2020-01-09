@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Text;
 
-using CrunchyDough;
-
-namespace CrunchyBaker
+namespace Crunchy.Baker
 {
+    using Dough;
+    
     public abstract class TimedTaskComparer
     {
         private int number_full_iterations;

@@ -31,19 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr4.Runtime">
-      <HintPath>..\..\..\..\..\..\..\C#\AntlrRuntime4.5.1\Antlr4.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchyDough">
-      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchyNoodle">
-      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchySalt">
-      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\Antlr4.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,52 +43,87 @@
     <Compile Include="Tyon\antlr4\TyonLexer.cs" />
     <Compile Include="Tyon\antlr4\TyonParser.cs" />
     <Compile Include="Tyon\antlr4\TyonVisitor.cs" />
+    <Compile Include="Tyon\Settings\Derivations\TyonSettings_Distributed.cs" />
+    <Compile Include="Tyon\TyonValue_Real.cs" />
+    <Compile Include="Tyon\TyonValue_Integer.cs" />
+    <Compile Include="Tyon\TyonValue_Type.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Fallback.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Real.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Reflection\TyonTypeHandler_MethodInfo.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Type.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\TyonTypeHandler_Externalize_ExplicitType.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\TyonTypeHandler_Substitute_ExplicitType.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\TyonTypeHandler_Substitute.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\TyonTypeHandler_Externalize.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_IEnumerable.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Enum.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Object.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Integer.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_String.cs" />
+    <Compile Include="Tyon\TypeHandler\TyonTypeHandler.cs" />
     <Compile Include="Tyon\TyonAddress.cs" />
     <Compile Include="Tyon\TyonAddress_Identifier.cs" />
-    <Compile Include="Tyon\TyonAddress_Int.cs" />
-    <Compile Include="Tyon\TyonAddress_Object.cs" />
+    <Compile Include="Tyon\TyonAddress_Integer.cs" />
     <Compile Include="Tyon\TyonAddress_String.cs" />
-    <Compile Include="Tyon\TyonBridge.cs" />
-    <Compile Include="Tyon\TyonBridge_CalculateExternal_Type_Operation.cs" />
-    <Compile Include="Tyon\TyonBridge_CalculateExternal_Type.cs" />
-    <Compile Include="Tyon\TyonBridge_CalculateExternal.cs" />
-    <Compile Include="Tyon\TyonBridge_RegisterExternal_Type.cs" />
-    <Compile Include="Tyon\TyonBridge_RegisterExternal.cs" />
-    <Compile Include="Tyon\TyonBridge_Default.cs" />
-    <Compile Include="Tyon\Tyon.cs" />
+    <Compile Include="Tyon\TyonHydrationMode.cs" />
     <Compile Include="Tyon\TyonArray.cs" />
     <Compile Include="Tyon\TyonContext.cs" />
+    <Compile Include="Tyon\TyonDehydrater.cs" />
     <Compile Include="Tyon\TyonSurrogate.cs" />
     <Compile Include="Tyon\TyonAddressable.cs" />
-    <Compile Include="Tyon\TyonDesignatedVariableProvider_Fields.cs" />
-    <Compile Include="Tyon\TyonDesignatedVariableProvider_Fields_Public.cs" />
+    <Compile Include="Tyon\TyonResolutionException.cs" />
+    <Compile Include="Tyon\TyonType_Direct.cs" />
+    <Compile Include="Tyon\TyonType_Array.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_PermissivePropertys_Public.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_PermissivePropertys.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Fields.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Fields_Public.cs" />
     <Compile Include="Tyon\TyonDOMinator.cs" />
     <Compile Include="Tyon\TyonElement.cs" />
-    <Compile Include="Tyon\TyonContext_Dehydration.cs" />
-    <Compile Include="Tyon\TyonContext_Hydration.cs" />
+    <Compile Include="Tyon\TyonHydrater.cs" />
     <Compile Include="Tyon\TyonObject.cs" />
     <Compile Include="Tyon\TyonResolver.cs" />
-    <Compile Include="Tyon\TyonDesignatedVariableProvider_Manual.cs" />
-    <Compile Include="Tyon\TyonDesignatedVariableProvider_Fields_Marked.cs" />
-    <Compile Include="Tyon\TyonDesignatedVariableProvider.cs" />
-    <Compile Include="Tyon\TyonSerializationComponent.cs" />
-    <Compile Include="Tyon\TyonSerializationSettings.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Manual.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider_Fields_Marked.cs" />
+    <Compile Include="Tyon\VariableProviders\TyonDesignatedVariableProvider.cs" />
+    <Compile Include="Tyon\Settings\TyonSettingsComponent.cs" />
+    <Compile Include="Tyon\Settings\TyonSettings.cs" />
     <Compile Include="Tyon\TyonSyntaxException.cs" />
     <Compile Include="Tyon\TyonType.cs" />
-    <Compile Include="Tyon\TyonType_Normal.cs" />
-    <Compile Include="Tyon\TyonType_Templated.cs" />
+    <Compile Include="Tyon\TyonType_Direct_Normal.cs" />
+    <Compile Include="Tyon\TyonType_Direct_Templated.cs" />
     <Compile Include="Tyon\TyonValue.cs" />
     <Compile Include="Tyon\TyonValue_Array.cs" />
     <Compile Include="Tyon\TyonValue_ExternalAddress.cs" />
     <Compile Include="Tyon\TyonValue_InternalAddress.cs" />
     <Compile Include="Tyon\TyonValue_Null.cs" />
-    <Compile Include="Tyon\TyonValue_Number.cs" />
     <Compile Include="Tyon\TyonValue_Object.cs" />
     <Compile Include="Tyon\TyonValue_String.cs" />
     <Compile Include="Tyon\TyonValue_Surrogate.cs" />
     <Compile Include="Tyon\TyonVariable.cs" />
+    <Compile Include="Tyon\SolidObject\TyonSolidObject.cs" />
+    <Compile Include="Tyon\Settings\Extensions\TyonSettingsExtensions.cs" />
+    <Compile Include="Tyon\Settings\Extensions\TyonSettingsExtensions_Convience.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tyon\SolidObject\" />
+    <Folder Include="Tyon\Settings\Extensions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

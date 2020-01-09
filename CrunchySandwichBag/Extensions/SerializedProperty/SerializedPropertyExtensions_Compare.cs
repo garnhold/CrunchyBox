@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    
     static public class SerializedPropertyExtensions_Compare
     {
         static public bool AreSerializedPropertysEqual(this SerializedProperty item, SerializedProperty other)
@@ -24,15 +24,8 @@ namespace CrunchySandwichBag
         {
             if (item != null)
             {
-                try
-                {
-                    if (item.serializedObject.FindProperty(item.propertyPath) != null)
-                        return true;
-                }
-                catch (Exception ex)
-                {
-                    Debug.Log("d: "+ item);
-                }
+                if (item.serializedObject.FindProperty(item.propertyPath) != null)
+                    return true;
             }
 
             return false;

@@ -12,24 +12,24 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Child_Add
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Child_Add
     {
 <# foreach(string type_name in type_names){#>
 	<# foreach(string function_suffix in function_suffixes){#>
 		static public GameObject AddChild<#=function_suffix#>(this <#=type_name#> item, GameObject child)
         {
-            item.transform.AddChild<#=function_suffix#>(child.transform);
+            item.transform.AddChild<#=function_suffix#>(child.IfNotNull(c => c.transform));
             return child;
         }
 
         static public T AddChild<#=function_suffix#><T>(this <#=type_name#> item, T child) where T : Component
         {
-            item.AddChild<#=function_suffix#>(child.gameObject);
+            item.AddChild<#=function_suffix#>(child.IfNotNull(c => c.gameObject));
             return child;
         }
 

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    
     static public class TerminalExtensions_Progress
     {
         static public TerminalBlock_Progress WriteProgress(this Terminal item, int bar_width)

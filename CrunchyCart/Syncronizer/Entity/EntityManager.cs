@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public partial class Syncronizer
     {
         public class EntityManager
@@ -23,6 +23,9 @@ namespace CrunchyCart
 
             private Syncronizer syncronizer;
 
+            public event MultiProcess<Entity> OnGainAuthority;
+            public event MultiProcess<Entity> OnLoseAuthority;
+
             public EntityManager(Syncronizer s)
             {
                 next_entity_id = 1;
@@ -33,24 +36,38 @@ namespace CrunchyCart
                 syncronizer = s;
             }
 
-            public Entity RegisterEntityTarget(int id, object target, EntityConstructor constructor, object[] constructor_arguments)
+            public void Update()
             {
-                Entity entity = new Entity(id, target, constructor, constructor_arguments, this);
+                entitys_by_id.Values.Process(e => e.Update());
+            }
+
+            public Entity RegisterEntityTarget(int id, object target, System constructor_system, SystemMethod_Constructor constructor, object[] constructor_arguments)
+            {
+                Entity entity = new Entity(id, target, constructor_system, constructor, constructor_arguments, this);
 
                 entitys_by_id.Add(entity.GetId(), entity);
                 entitys_by_target.Add(entity.GetTarget(), entity);
 
                 return entity;
             }
-            public Entity RegisterEntityTarget(object target, EntityConstructor constructor, object[] constructor_arguments)
+            public Entity RegisterEntityTarget(object target, System constructor_system, SystemMethod_Constructor constructor, object[] constructor_arguments)
             {
-                return RegisterEntityTarget(next_entity_id++, target, constructor, constructor_arguments);
+                return RegisterEntityTarget(next_entity_id++, target, constructor_system, constructor, constructor_arguments);
             }
 
             public void UnregisterEntity(Entity entity)
             {
                 entitys_by_id.Remove(entity.GetId());
                 entitys_by_target.Remove(entity.GetTarget());
+            }
+
+            public void NotifyGainedAuthority(Entity entity)
+            {
+                OnGainAuthority.InvokeAll(entity);
+            }
+            public void NotifyLostAuthority(Entity entity)
+            {
+                OnLoseAuthority.InvokeAll(entity);
             }
 
             public void ReadMethodInvoke(Buffer buffer)
@@ -65,10 +82,7 @@ namespace CrunchyCart
 
             public void ReadDestroy(Buffer buffer)
             {
-                Entity entity = buffer.ReadEntityReference();
-
-                if (entity.ReadDestroy(buffer))
-                    UnregisterEntity(entity);
+                buffer.ReadEntityReference().ReadDestroy(buffer);
             }
 
             public void ReadUpdate(Buffer buffer)

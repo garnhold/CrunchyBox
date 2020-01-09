@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Function_Relative : Function
     {
         private Variable target_variable;
@@ -21,7 +21,7 @@ namespace CrunchyNoodle
             return target_variable.ToString(false, false) + "." + function.ToString(false, false, false);
         }
 
-        public Function_Relative(Variable t, Function f) : base(t.GetDeclaringType(), f.GetReturnType(), f.GetParameterTypes())
+        public Function_Relative(Variable t, Function f) : base(t.GetDeclaringType(), f.GetReturnType(), f.GetParameters())
         {
             target_variable = t;
             function = f;

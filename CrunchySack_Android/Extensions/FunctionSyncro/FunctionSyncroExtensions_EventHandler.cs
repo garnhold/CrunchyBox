@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
@@ -7,12 +7,12 @@ using Android.Views;
 using Android.Content;
 using Android.Content.Res;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    
     static public class FunctionSyncroExtensions_EventHandler
     {
         static public EventHandler GetEventHandler(this FunctionSyncro item)

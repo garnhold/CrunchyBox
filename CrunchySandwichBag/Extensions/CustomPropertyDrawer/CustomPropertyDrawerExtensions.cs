@@ -1,19 +1,19 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySalt;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Salt;
+    using Bun;
+    using Sandwich;
+    
     static public partial class CustomPropertyDrawerExtensions
     {
-        static private OperationCache<ValueGetter<Type>> GET_HANDLED_TYPE_GETTER = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<ValueGetter<Type>> GET_HANDLED_TYPE_GETTER = ReflectionCache.Get().NewOperationCache("GET_HANDLED_TYPE_GETTER", delegate() {
             return typeof(CustomPropertyDrawer)
                 .GetFilteredInstanceFieldsOfTypeValueGetters<Type>()
                 .GetFirst();
@@ -23,7 +23,7 @@ namespace CrunchySandwichBag
             return GET_HANDLED_TYPE_GETTER.Fetch()(item);
         }
 
-        static private OperationCache<ValueGetter<bool>> DOES_HANDLE_CHILD_TYPES_GETTER = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<ValueGetter<bool>> DOES_HANDLE_CHILD_TYPES_GETTER = ReflectionCache.Get().NewOperationCache("DOES_HANDLE_CHILD_TYPES_GETTER", delegate() {
             return typeof(CustomPropertyDrawer)
                 .GetFilteredInstanceFieldsOfTypeValueGetters<bool>()
                 .GetFirst();

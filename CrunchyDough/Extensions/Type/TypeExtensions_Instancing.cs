@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class TypeExtensions_Instancing
     {
@@ -13,7 +13,12 @@ namespace CrunchyDough
             {
                 try
                 {
-                    return Activator.CreateInstance(item, arguments);
+                    return Activator.CreateInstance(item,
+                        BindingFlags.Instance |
+                        BindingFlags.NonPublic |
+                        BindingFlags.Public |
+                        BindingFlags.DeclaredOnly,
+                    null, arguments, null, null);
                 }
                 catch (TargetInvocationException ex)
                 {

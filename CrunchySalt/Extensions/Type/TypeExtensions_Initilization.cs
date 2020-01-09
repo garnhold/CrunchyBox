@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,22 +7,15 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class TypeExtensions_Initilization
     {
         static public void PrepareForDynamicUse(this Type item)
         {
-            try
-            {
-                System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(item.TypeHandle);
-            }
-            catch (TypeInitializationException ex)
-            {
-                throw ex.InnerException;
-            }
+            System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(item.TypeHandle);
         }
     }
 }

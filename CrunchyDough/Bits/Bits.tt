@@ -4,9 +4,9 @@
 <#@ output extension=".cs" #>
 <#
 NumericInfo[] types = new NumericInfo[]{
-	new NumericInfo("byte", "Byte", "1", "0", "BYTE0", 8),
-	new NumericInfo("int", "Int", "1", "0", "BYTE0_BYTE1_BYTE2_BYTE3", 32),
-	new NumericInfo("long", "Long", "1L", "0L", "BYTE0_BYTE1_BYTE2_BYTE3 | BYTE4_BYTE5_BYTE6_BYTE7", 64)
+	new NumericInfo("byte", "Byte", "1", "0", "BYTE0", 8, true),
+	new NumericInfo("int", "Int", "1", "0", "BYTE0_BYTE1_BYTE2_BYTE3", 32, false),
+	new NumericInfo("long", "Long", "1L", "0L", "BYTE0_BYTE1_BYTE2_BYTE3 | BYTE4_BYTE5_BYTE6_BYTE7", 64, false)
 };
 
 BitwiseOperationInfo[] operations = new BitwiseOperationInfo[]{
@@ -20,7 +20,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
 <# foreach(NumericInfo type in types){#>
     static public class <#=type.class_name#>Bits
@@ -113,6 +113,73 @@ namespace CrunchyDough
             return false;
         }
 
+		static public bool HasNoOtherBits(this <#=type.type_name#> item, <#=type.type_name#> bits)
+		{
+			if ((item & (~bits)) == 0)
+				return true;
+
+			return false;
+		}
+
+		static public bool HasNthBit(this <#=type.type_name#> item, int n)
+		{
+			if(item.HasAllBits(<#=type.class_name#>Bits.GetNthBitValue(n)))
+				return true;
+
+			return false;
+		}
+
+	<#if(type.can_cache){#>
+
+		static private byte[] LOWEST_BIT_INDEX_TABLE;
+		static private byte GetLowestBitIndexInternal(this <#=type.type_name#> item)
+		{
+			unchecked
+			{
+				<#=type.GenerateGetLowestBitIndexCode("item")#>
+			}
+		}
+		static public byte GetLowestBitIndex(this <#=type.type_name#> item)
+		{
+			if(LOWEST_BIT_INDEX_TABLE == null)
+				LOWEST_BIT_INDEX_TABLE = Ints.Range(0, <#=type.type_name#>.MaxValue, true).Convert(i => GetLowestBitIndexInternal((<#=type.type_name#>)i)).ToArray();
+
+			return LOWEST_BIT_INDEX_TABLE[item];
+		}
+
+		static private byte[] HIGHEST_BIT_INDEX_TABLE;
+		static private byte GetHighestBitIndexInternal(this <#=type.type_name#> item)
+		{
+			unchecked
+			{
+				<#=type.GenerateGetHighestBitIndexCode("item")#>
+			}
+		}
+		static public byte GetHighestBitIndex(this <#=type.type_name#> item)
+		{
+			if(HIGHEST_BIT_INDEX_TABLE == null)
+				HIGHEST_BIT_INDEX_TABLE = Ints.Range(0, <#=type.type_name#>.MaxValue, true).Convert(i => GetHighestBitIndexInternal((<#=type.type_name#>)i)).ToArray();
+
+			return HIGHEST_BIT_INDEX_TABLE[item];
+		}
+
+		static private byte[] NUMBER_BITS_TABLE;
+		static private byte GetNumberBitsInternal(this <#=type.type_name#> item)
+		{
+			unchecked
+			{
+				<#=type.GenerateGetNumberBitsCode("item")#>
+			}
+		}
+		static public byte GetNumberBits(this <#=type.type_name#> item)
+		{
+			if(NUMBER_BITS_TABLE == null)
+				 NUMBER_BITS_TABLE = Ints.Range(0, <#=type.type_name#>.MaxValue, true).Convert(i => GetNumberBitsInternal((<#=type.type_name#>)i)).ToArray();
+
+			return NUMBER_BITS_TABLE[item];
+		}
+	<#}else{#>
+
 		static public byte GetLowestBitIndex(this <#=type.type_name#> item)
 		{
 			unchecked
@@ -120,10 +187,6 @@ namespace CrunchyDough
 				<#=type.GenerateGetLowestBitIndexCode("item")#>
 			}
 		}
-		static public <#=type.type_name#> GetLowestBitValue(this <#=type.type_name#> item)
-        {
-            return <#=type.class_name#>Bits.GetNthBitValue(item.GetLowestBitIndex());
-        }
 
 		static public byte GetHighestBitIndex(this <#=type.type_name#> item)
 		{
@@ -132,10 +195,15 @@ namespace CrunchyDough
 				<#=type.GenerateGetHighestBitIndexCode("item")#>
 			}
 		}
-		static public <#=type.type_name#> GetHighestBitValue(this <#=type.type_name#> item)
-        {
-            return <#=type.class_name#>Bits.GetNthBitValue(item.GetHighestBitIndex());
-        }
+
+		static public byte GetNumberBits(this <#=type.type_name#> item)
+		{
+			unchecked
+			{
+				<#=type.GenerateGetNumberBitsCode("item")#>
+			}
+		}
+	<#}#>
 
 		static public IEnumerable<byte> GetBitIndexs(this <#=type.type_name#> item)
 		{
@@ -144,6 +212,16 @@ namespace CrunchyDough
 				<#=type.GenerateGetBitIndexsCode("item")#>
 			}
 		}
+	
+		static public <#=type.type_name#> GetLowestBitValue(this <#=type.type_name#> item)
+        {
+            return <#=type.class_name#>Bits.GetNthBitValue(item.GetLowestBitIndex());
+        }
+
+		static public <#=type.type_name#> GetHighestBitValue(this <#=type.type_name#> item)
+        {
+            return <#=type.class_name#>Bits.GetNthBitValue(item.GetHighestBitIndex());
+        }
 
 	<#if(type.type_name != "byte"){#>
 		static public byte GetNthByte(this <#=type.type_name#> item, int n)
@@ -188,7 +266,9 @@ public class NumericInfo
 	public readonly int number_bits;
 	public readonly int number_bytes;
 
-	public NumericInfo(string t, string c, string o, string z, string a, int n)
+	public readonly bool can_cache;
+
+	public NumericInfo(string t, string c, string o, string z, string a, int n, bool cc)
 	{
 		type_name = t;
 		class_name = c;
@@ -200,6 +280,8 @@ public class NumericInfo
 
 		number_bits = n;
 		number_bytes = number_bits / 8;
+
+		can_cache = cc;
 	}
 
 	public string GenerateGetLowestBitIndexCode(string variable, int index, int size)
@@ -256,7 +338,7 @@ public class NumericInfo
 		return GenerateGetHighestBitIndexCode(variable, 0, number_bits);
 	}
 
-	public string GenerateGetBitIndexsCode(string variable, int index, int size)
+	public string GenerateWalkBitIndexsCode(string variable, int index, int size, Func<int, string> func)
 	{
 		int half_size = size / 2;
 
@@ -268,20 +350,28 @@ public class NumericInfo
 			return 
 			"if(" + variable + ".HasAnyBits(" + GetBlockMask(low_index, half_size) + "))\n" +
 			"{\n" +
-				GenerateGetBitIndexsCode(variable, low_index, half_size) +
+				GenerateWalkBitIndexsCode(variable, low_index, half_size, func) +
 			"}\n" +
 
 			"if(" + variable + ".HasAnyBits(" + GetBlockMask(high_index, half_size) + "))\n" +
 			"{\n" +
-				GenerateGetBitIndexsCode(variable, high_index, half_size) +
+				GenerateWalkBitIndexsCode(variable, high_index, half_size, func) +
 			"}\n";
 		}
 
-		return "yield return " + index + ";";
+		return func(index);
 	}
+
+	public string GenerateGetNumberBitsCode(string variable)
+	{
+		return "byte count = 0;\n" +
+			GenerateWalkBitIndexsCode(variable, 0, number_bits, i => "count++;") + "\n" +
+			"return count;";
+	}
+
 	public string GenerateGetBitIndexsCode(string variable)
 	{
-		return GenerateGetBitIndexsCode(variable, 0, number_bits);
+		return GenerateWalkBitIndexsCode(variable, 0, number_bits, i => "yield return " + i + ";");
 	}
 
 	public string GetBlockMask(int index, int size)

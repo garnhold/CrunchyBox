@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
+using Crunchy.Dough;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    [CustomAssetCategory("Utility")]
+    [AssetClassCategory("Utility")]
     public class Placer : CustomAsset
     {
         [SerializeField]private List<PlacementEvaluator> placement_evaluators;
@@ -22,8 +22,11 @@ namespace CrunchySandwich
         {
             ForcePlaceGameObjectAt(game_object, position);
 
-            if (placement_evaluators.AreAll(e => e.IsGameObjectPlacementValid(game_object)))
-                return true;
+            if (placement_evaluators != null)
+            {
+                if (placement_evaluators.AreAll(e => e.IsGameObjectPlacementValid(game_object)))
+                    return true;
+            }
             
             if(handle_destroy)
                 game_object.DestroyAdvisory();

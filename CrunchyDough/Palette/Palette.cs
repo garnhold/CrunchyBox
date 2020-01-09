@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class Palette<T> : IEnumerable<KeyValuePair<int, T>>
     {
@@ -52,13 +52,12 @@ namespace CrunchyDough
             return values.Get(index);
         }
 
-        public IEnumerable<int> GetIndexs()
+        public ICatalog<int> GetIndexs()
         {
-            for (int i = 0; i < values.Count; i++)
-                yield return i;
+            return new IndexList(values.Count).AsCatalog();
         }
 
-        public IEnumerable<T> GetValues()
+        public ICatalog<T> GetValues()
         {
             return values;
         }

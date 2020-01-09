@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public class FunctionTableSegmentEntry : QuadraticEquation
     {
         public FunctionTableSegmentEntry(float x, float dx, Operation<float, float> o) 

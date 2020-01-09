@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class MethodBaseExtensions_GenericParameter
     {
@@ -14,6 +14,11 @@ namespace CrunchyDough
                 return item.GetGenericArguments();
 
             return Empty.IEnumerable<Type>();
+        }
+
+        static public int GetNumberGenericParameters(this MethodBase item)
+        {
+            return item.GetGenericParameterTypes().Count();
         }
 
         static public bool CanGenericParametersHold(this MethodBase item, IEnumerable<Type> parameter_types)

@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     [Serializable]
     public class ValueCurve
     {
@@ -44,11 +44,6 @@ namespace CrunchySandwich
         {
             return curve.GetValue(x.ConvertFromRangeToPercent(domain_start, domain_end))
                 .ConvertFromPercentToRange(range_start, range_end);
-        }
-
-        public float GetLoopedValue(float x)
-        {
-            return GetValue(x.GetLooped(1.0f));
         }
     }
 }

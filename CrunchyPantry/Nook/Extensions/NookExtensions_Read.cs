@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     static public class NookExtensions_Read
     {
         static public bool ReadIntoStream(this Nook item, Stream dst_stream)

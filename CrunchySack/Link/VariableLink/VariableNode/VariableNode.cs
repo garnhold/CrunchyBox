@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class VariableNode
     {
         private object transition_value;
@@ -32,7 +32,7 @@ namespace CrunchySack
 
         public bool PushValue(object value)
         {
-            if (variable_instance.UpdateContents(value))
+            if (variable_instance.ChangeContents(value).IsSuccess())
             {
                 if (UpdateState())
                     return true;

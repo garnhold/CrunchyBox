@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
+    using Dough;
+    using Noodle;
+    
     public abstract class MidiMessage_ChannelVoice : MidiMessage
     {
         private byte channel_id;

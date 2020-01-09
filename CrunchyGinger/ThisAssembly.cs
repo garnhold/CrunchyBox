@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyGinger
+namespace Crunchy.Ginger
 {
     public class ThisAssembly
     {

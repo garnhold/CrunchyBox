@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Assembly_ContainsExtensionTypes : Filterer_Simple<Assembly>
     {
         static public readonly Filterer_Assembly_ContainsExtensionTypes INSTANCE = new Filterer_Assembly_ContainsExtensionTypes();

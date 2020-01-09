@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
     public abstract class Filterer_Simple<T> : Filterer<T>
     {

@@ -8,17 +8,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonValue_InternalAddress : TyonValue
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonValue_InternalAddress : TyonValue
 	{
-        public TyonValue_InternalAddress(object a, TyonContext_Dehydration context) : this()
+        public TyonValue_InternalAddress(TyonAddress address, TyonDehydrater dehydrater) : this()
         {
-            SetTyonAddress(context.CreateTyonAddress(a));
+            SetTyonAddress(address);
         }
 
         public override void Render(TextDocumentCanvas canvas)
@@ -27,10 +27,10 @@ namespace CrunchyRecipe
             GetTyonAddress().Render(canvas);
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            context.DeferProcess(delegate() {
-                variable.SetContents(context.ResolveInternalAddress(GetTyonAddress()));
+            hydrater.DeferProcess(delegate() {
+                variable.SetContents(hydrater.ResolveInternalAddress(GetTyonAddress()));
             });
         }
 	}

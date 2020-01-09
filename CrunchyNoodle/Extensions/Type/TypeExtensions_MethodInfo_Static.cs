@@ -1,18 +1,19 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_MethodInfo_Static
     {
         static private CompileTimeCache<List<MethodInfoEX>, IdentifiableType, MethodInfoFilters> GET_FILTERED_STATIC_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_FILTERED_STATIC_METHODS", MethodInfoEXListHusker.INSTANCE, delegate(IdentifiableType item, MethodInfoFilters filters) {
             return item.GetValue().GetStaticMethods()
                 .FilterBy(filters)
+                .Convert(m => m.GetMethodInfoEX())
                 .ToList();
         });
         static public IEnumerable<MethodInfoEX> GetFilteredStaticMethods(this Type item, IEnumerable<Filterer<MethodInfo>> filters)

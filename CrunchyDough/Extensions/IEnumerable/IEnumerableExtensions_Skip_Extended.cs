@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IEnumerableExtensions_Skip_Extended
     {
@@ -15,6 +15,20 @@ namespace CrunchyDough
                 foreach (T sub_item in item)
                 {
                     if (returned.Add(sub_item))
+                        yield return sub_item;
+                }
+            }
+        }
+
+        static public IEnumerable<T> SkipDuplicates<T, J>(this IEnumerable<T> item, Operation<J, T> operation)
+        {
+            if (item != null)
+            {
+                HashSet<J> returned = new HashSet<J>();
+
+                foreach (T sub_item in item)
+                {
+                    if (returned.Add(operation(sub_item)))
                         yield return sub_item;
                 }
             }

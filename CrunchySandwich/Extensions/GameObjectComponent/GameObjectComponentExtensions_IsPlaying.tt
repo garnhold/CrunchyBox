@@ -1,0 +1,40 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_IsPlaying
+    {
+<# foreach(string type_name in type_names){#>
+
+		static public bool IsPlaying(this <#=type_name#> item)
+		{
+			if(Application.IsPlaying(item))
+				return true;
+
+			return false;
+		}
+
+		static public bool IsEditing(this <#=type_name#> item)
+		{
+			if(item.IsPlaying() == false)
+				return true;
+
+			return false;
+		}
+<#}#>
+	}
+}

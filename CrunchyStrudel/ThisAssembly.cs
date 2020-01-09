@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyStrudel
+namespace Crunchy.Strudel
 {
     public class ThisAssembly
     {

@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public abstract class EditorGUIElement_Single : EditorGUIElement
     {
         private Rect element_rect;
@@ -21,22 +21,22 @@ namespace CrunchySandwichBag
 
         protected abstract bool DrawSingleInternal(Rect rect);
 
-        protected override Rect LayoutElementInternal(Rect rect, float label_width)
+        protected override float DoPlanInternal()
+        {
+            return single_height;
+        }
+
+        protected override Rect LayoutElementInternal(Rect rect)
         {
             element_rect = rect;
 
             return rect;
         }
 
-        protected override void DrawElementInternal(Rect view)
+        protected override void DrawElementInternal(int draw_id, Rect view)
         {
             if (DrawSingleInternal(element_rect) == false)
                 EditorGUI.LabelField(element_rect, "--Disabled--");
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            return single_height;
         }
 
         public EditorGUIElement_Single(float h)

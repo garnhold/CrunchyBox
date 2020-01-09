@@ -8,16 +8,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public abstract partial class TyonAddress : TyonElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract partial class TyonAddress : TyonElement
 	{
         public abstract void Render(TextDocumentCanvas canvas);
-        public abstract object GetAddressValue(TyonContext_Hydration context);
 
         public string Render()
         {
@@ -25,6 +24,11 @@ namespace CrunchyRecipe
 
             Render(canvas);
             return canvas.ToString();
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

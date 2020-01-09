@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Bun;
+    
     static public class VectorI2Extensions_IEnumerable_CardinallyAdjacent
     {
         static public IEnumerable<VectorI2> GetCardinallyAdjacent(this IEnumerable<VectorI2> item, VectorI2 point)

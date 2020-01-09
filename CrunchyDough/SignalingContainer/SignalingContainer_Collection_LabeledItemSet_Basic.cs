@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public abstract class SignalingContainer_Collection_IndexedItemSet<T> : SignalingContainer_Collection_LabeledItemSet<int, T> where T : IndexedItem
     {

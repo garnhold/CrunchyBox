@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IEnumerableExtensions_Get
     {
@@ -148,7 +148,7 @@ namespace CrunchyDough
 
         static public bool TryGetBefore<T>(this IEnumerable<T> item, T value, out T output)
         {
-            return item.EndBefore(value).TryGetFirst(out output);
+            return item.EndBefore(value).TryGetLast(out output);
         }
         static public T GetBefore<T>(this IEnumerable<T> item, T value)
         {
@@ -160,7 +160,7 @@ namespace CrunchyDough
 
         static public bool TryGetAfter<T>(this IEnumerable<T> item, T value, out T output)
         {
-            return item.EndAfter(value).TryGetFirst(out output);
+            return item.StartAfter(value).TryGetFirst(out output);
         }
         static public T GetAfter<T>(this IEnumerable<T> item, T value)
         {

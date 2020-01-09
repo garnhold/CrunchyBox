@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class StringExtensions_ProgrammingLiteral_Extract
     {
         static public string ExtractStringValueFromLiteralString(this string item, string delimiter)

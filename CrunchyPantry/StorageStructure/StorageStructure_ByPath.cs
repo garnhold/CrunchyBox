@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    
     public class StorageStructure_ByPath : StorageStructure<FileSnapshot_ByPath>
     {
         private SortedList<string, FileSnapshot_ByPath> files_by_path;

@@ -1,9 +1,11 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public enum BasicType
     {
+        Void,
+
         Bool,
 
         Byte,
@@ -18,8 +20,10 @@ namespace CrunchyDough
         Char,
         String,
 
-        Class,
+        Array,
+
         Enum,
-        Struct
+        Struct,
+        Class
     }
 }

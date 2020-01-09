@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,15 +7,15 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class MethodBaseExtensions_IL
     {
         static public ILValue GetILThis(this MethodBase item)
         {
-            return item.GetTechnicalILParameter(0);
+            return new ILThis(item.DeclaringType);
         }
 
         static public ILField GetILField(this MethodBase item, FieldInfo field)

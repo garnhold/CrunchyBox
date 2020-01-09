@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IEnumeratorExtensions_Tandem
     {
@@ -30,10 +30,15 @@ namespace CrunchyDough
 
             try
             {
-                if ((did_move |= item.MoveNext()))
+                if (item.MoveNext())
+                {
                     value1 = item.Current;
+                    did_move = true;
+                }
                 else
+                {
                     value1 = default(T);
+                }
             }
             catch (InvalidOperationException)
             {
@@ -42,10 +47,15 @@ namespace CrunchyDough
 
             try
             {
-                if ((did_move |= other.MoveNext()))
+                if (other.MoveNext())
+                {
                     value2 = other.Current;
+                    did_move = true;
+                }
                 else
+                {
                     value2 = default(J);
+                }
             }
             catch (InvalidOperationException)
             {

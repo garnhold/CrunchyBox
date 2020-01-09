@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     public class RepresentationInstancer_Variation_Process<REPRESENTATION_TYPE> : RepresentationCreator_Variation<REPRESENTATION_TYPE>
     {
         private Process<REPRESENTATION_TYPE> process;

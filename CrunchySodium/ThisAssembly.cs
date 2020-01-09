@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchySodium
+namespace Crunchy.Sodium
 {
     public class ThisAssembly
     {

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Bun;
+    
     static public class GridCellExtensions_SurfacePoint
     {
         static public SurfacePoint GetSurfacePoint<T>(this GridCell<T> item)

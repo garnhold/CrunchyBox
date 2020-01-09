@@ -1,20 +1,20 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    
     static public class SerializedPropertyExtensions_Array_PushPop
     {
-        static public void PushArrayElement(this SerializedProperty item)
+        static public SerializedProperty PushArrayElement(this SerializedProperty item)
         {
-            item.InsertAndNullArrayElementAtIndex(item.GetArrayFinalIndex() + 1);
+            return item.InsertAndNullArrayElementAtIndex(item.GetArrayFinalIndex() + 1);
         }
 
         static public void PopArrayElement(this SerializedProperty item)

@@ -22,29 +22,39 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
 	static public class NumberExtensions_IDictionary_Operate
     {
 <# foreach(NumericInfo info in numeric_infos){#>
 	<#foreach(OperationInfo operation in operations_type1){#>
 
-		static public void <#=operation.name#>Values<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+		static public <#=info.type#> Get<#=operation.name_past#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, KEY_TYPE key, <#=info.type#> value)
+		{
+			return item.GetValue(key, <#=info.zero#>) <#=operation.symbol#> value;
+		}
+
+		static public void <#=operation.name#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, KEY_TYPE key, <#=info.type#> value)
+		{
+			item[key] = item.Get<#=operation.name_past#>NumericValues(key, value);
+		}
+
+		static public void <#=operation.name#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
 		{
 			foreach(KeyValuePair<KEY_TYPE, <#=info.type#>> pair in other)
-				item[pair.Key] = item.GetValue(pair.Key, <#=info.zero#>) <#=operation.symbol#> pair.Value;
+				item.<#=operation.name#>NumericValues(pair.Key, pair.Value);
 		}
-		static public Dictionary<KEY_TYPE, <#=info.type#>> Get<#=operation.name_past#>Values<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+		static public Dictionary<KEY_TYPE, <#=info.type#>> Get<#=operation.name_past#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
 		{
 			Dictionary<KEY_TYPE, <#=info.type#>> result = new Dictionary<KEY_TYPE, <#=info.type#>>(item);
 
-			result.<#=operation.name#>Values(other);
+			result.<#=operation.name#>NumericValues(other);
 			return result;
 		}
 	<#}#>
 	<#foreach(OperationInfo operation in operations_type2){#>
 
-		static public Dictionary<KEY_TYPE, <#=info.type#>> Get<#=operation.name_past#>Values<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+		static public Dictionary<KEY_TYPE, <#=info.type#>> Get<#=operation.name_past#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
 		{
 			Dictionary<KEY_TYPE, <#=info.type#>> result = new Dictionary<KEY_TYPE, <#=info.type#>>();
 
@@ -60,7 +70,7 @@ namespace CrunchyDough
 		}
 	<#}#>
 
-	static public <#=info.type#> GetSumOfSquaredValueDifferences<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
+	static public <#=info.type#> GetSumOfSquaredNumericValueDifferences<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)
 	{
 		<#=info.type#> sum_of_squared_differences = <#=info.zero#>;
 

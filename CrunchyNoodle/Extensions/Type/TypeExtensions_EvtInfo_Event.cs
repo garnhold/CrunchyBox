@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_EvtInfo_Event
     {
-        static private OperationCache<EvtInfoEX, Type, string> GET_INSTANCE_EVENT_EVT = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name) {
+        static private OperationCache<EvtInfoEX, Type, string> GET_INSTANCE_EVENT_EVT = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_EVENT_EVT", delegate(Type item, string name) {
             return item.GetInstanceMethodEvtInternal(
                 name.GetEntityEventAddMethodName(),
                 name.GetEntityEventRemoveMethodName()

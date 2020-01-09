@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_ConstructorInfo_HasCustomAttributeOfType<T> : Filterer_ConstructorInfo_HasCustomAttributeOfType where T : Attribute
     {
         static public readonly Filterer_ConstructorInfo_HasCustomAttributeOfType<T> INSTANCE = new Filterer_ConstructorInfo_HasCustomAttributeOfType<T>();

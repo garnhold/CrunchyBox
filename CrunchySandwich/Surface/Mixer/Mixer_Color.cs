@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchySauce;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Sauce;
+    
     public abstract class Mixer_Color : Mixer<Color>
     {
     }

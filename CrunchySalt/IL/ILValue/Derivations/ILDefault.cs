@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,11 +6,11 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    using Salt;
+    
     public class ILDefault : ILValue
     {
         private Type value_type;
@@ -39,6 +39,8 @@ namespace CrunchySalt
                 case BasicType.Char: canvas.Emit_Ldc_I4(0); break;
                 case BasicType.String: canvas.Emit_Ldstr(""); break;
 
+                case BasicType.Array: canvas.Emit_Ldnull(); break;
+
                 case BasicType.Enum: canvas.Emit_Ldc_I4(0); break;
                 case BasicType.Class: canvas.Emit_Ldnull(); break;
 
@@ -52,11 +54,6 @@ namespace CrunchySalt
 
                 default: throw new UnaccountedBranchException("basic_type", basic_type);
             }
-        }
-
-        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
         }
 
         public override void RenderText_Value(ILTextCanvas canvas)
@@ -77,11 +74,6 @@ namespace CrunchySalt
         public override bool CanLoad()
         {
             return true;
-        }
-
-        public override bool CanStore()
-        {
-            return false;
         }
     }
 }

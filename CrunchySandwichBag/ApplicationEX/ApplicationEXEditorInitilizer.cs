@@ -1,27 +1,23 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
-    [InitializeOnLoad]
+    using Sandwich;
+    
+    [EditorInitializer]
     static public class ApplicationEXEditorInitilizer
     {
+        [EditorInitializer]
         static private void Initilize()
         {
-            ApplicationEX.GetInstance().Start();
+            ApplicationEX.GetInstance().StartInEditor();
 
             EditorApplication.update += delegate() {
-                ApplicationEX.GetInstance().Update();
+                ApplicationEX.GetInstance().UpdateInEditor();
             };
-        }
-
-        static ApplicationEXEditorInitilizer()
-        {
-            Initilize();
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class TargetInstance_Static : TargetInstance
     {
         static public readonly TargetInstance_Static INSTANCE = new TargetInstance_Static();
@@ -17,7 +17,7 @@ namespace CrunchyNoodle
 
         public override object GetTarget()
         {
-            return this;
+            return Variable_Static.TARGET_INSTANCE;
         }
 
         public override string ToString()

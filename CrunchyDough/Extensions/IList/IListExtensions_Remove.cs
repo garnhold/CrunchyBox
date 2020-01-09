@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IListExtensions_Remove
     {
@@ -19,12 +19,12 @@ namespace CrunchyDough
 
         static public void RemoveBeginning<T>(this IList<T> item, int start)
         {
-            item.RemoveSubSection(start, item.Count);
+            item.RemoveSubSection(0, start);
         }
 
         static public void RemoveEnding<T>(this IList<T> item, int end)
         {
-            item.RemoveSubSection(0, end);
+            item.RemoveSubSection(end, item.Count);
         }
 
         static public void RemoveTrim<T>(this IList<T> item, int amount)

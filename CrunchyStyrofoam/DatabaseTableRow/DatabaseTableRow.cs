@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Data;
 using System.Data.SQLite;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyStyrofoam
+namespace Crunchy.Styrofoam
 {
+    using Dough;
+    using Salt;
+    
     public class DatabaseTableRow
     {
         private Dictionary<DatabaseTableField, object> values;
@@ -84,7 +84,7 @@ namespace CrunchyStyrofoam
         public void SetValue(DatabaseTableField field, object value)
         {
             if (field.GetTable() == table)
-                values[field] = value;
+                values[field] = field.TransformToInternal(value);
         }
 
         public void SetPrimaryValue(object value)
@@ -95,7 +95,7 @@ namespace CrunchyStyrofoam
         public object GetValue(DatabaseTableField field)
         {
             if (field.GetTable() == table)
-                return values.GetValue(field);
+                return field.TransformFromInternal(values.GetValue(field));
 
             return null;
         }

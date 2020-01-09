@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public partial class MarkedMethods<T> where T : Attribute
     {
         static private CompileTimeCache<List<MethodInfoEX>> GET_ALL_MARKED_STATIC_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_ALL_MARKED_STATIC_METHODS_" + typeof(T).Name, MethodInfoEXListHusker.INSTANCE, delegate() {
@@ -23,9 +23,10 @@ namespace CrunchyNoodle
             return GET_ALL_MARKED_STATIC_METHODS.Fetch();
         }
 
-        static private OperationCache<List<MethodInfoEX>, MethodInfoFilters> GET_FILTERED_MARKED_STATIC_METHODS = ReflectionCache.Get().NewOperationCache(delegate(MethodInfoFilters filters) {
+        static private OperationCache<List<MethodInfoEX>, MethodInfoFilters> GET_FILTERED_MARKED_STATIC_METHODS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_MARKED_STATIC_METHODS", delegate(MethodInfoFilters filters) {
             return GetAllMarkedStaticMethods()
                 .FilterBy(filters)
+                .Convert(m => m.GetMethodInfoEX())
                 .ToList();
         });
         static public IEnumerable<MethodInfoEX> GetFilteredMarkedStaticMethods(IEnumerable<Filterer<MethodInfo>> filters)

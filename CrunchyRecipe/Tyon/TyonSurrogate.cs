@@ -1,4 +1,4 @@
-
+﻿
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
@@ -8,33 +8,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonSurrogate : TyonElement, TyonAddressable
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonSurrogate : TyonElement
 	{
         private void LoadContextIntermediateString(string input)
         {
             SetString(input.ExtractStringValueFromLiteralString());
         }
 
-        public TyonSurrogate(object obj, TyonContext_Dehydration context) : this()
+        public TyonSurrogate(object value, TyonDehydrater dehydrater) : this()
         {
-            context.RegisterInternalObject(obj, this);
-
-            SetTyonType(TyonType.CreateTyonType(obj.GetType()));
-            SetString(obj.ToStringEX());
+            SetTyonType(TyonType.CreateTyonType(value.GetTypeEX()));
+            SetString(value.ConvertEX<string>());
         }
 
-        public object InstanceSystemObject(TyonContext_Hydration context)
+        public object ResolveSystemObject(TyonHydrater hydrater)
         {
-            object obj = GetString().ConvertEX(GetTyonType().GetSystemType());
-
-            context.RegisterInternalObject(obj, GetTyonAddress());
-            return obj;
+            return GetString().ConvertEX(GetTyonType().GetSystemType(hydrater)) ??
+                GetTyonType().InstanceSystemType(hydrater);
         }
 
         public string Render()
@@ -47,26 +43,15 @@ namespace CrunchyRecipe
 
         public void Render(TextDocumentCanvas canvas)
         {
+            canvas.AppendToLine("$");
             GetTyonType().Render(canvas);
-
-            if (GetTyonAddress() != null)
-            {
-                canvas.AppendToLine("(&");
-                GetTyonAddress().Render(canvas);
-                canvas.AppendToLine(")");
-            }
-
-            canvas.AppendToLine(" {");
-                canvas.AppendToLine(GetString().StyleAsLiteralString());
-            canvas.AppendToLine("}");
+            canvas.AppendToLine(":");
+            canvas.AppendToLine(GetString().StyleAsDoubleQuoteLiteral());
         }
 
-        public TyonAddress RequestAddress(TyonContext_Dehydration context)
+        public override string ToString()
         {
-            if (GetTyonAddress() == null)
-                SetTyonAddress(context.GetNewInternalAddress());
-
-            return GetTyonAddress();
+            return Render();
         }
 	}
 	

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,21 +6,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    
     static public class UnityObjectExtensions_Asset_AssetType
     {
         static public AssetType GetAssetType(this UnityEngine.Object item)
         {
             if (item.IsNotNull())
             {
-                if (Filename.ArePathsEquivalent(item.GetAssetDirectory(), Project.GetInternalAssetDirectory()))
+                AssetInfo info = item.GetAssetInfo();
+
+                if(info.IsInternalAsset())
                     return AssetType.Internal;
 
-                return AssetType.External;
+                if (info.IsExternalAsset())
+                    return AssetType.External;
             }
 
             return AssetType.None;

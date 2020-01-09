@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_PropInfo
     {
-        static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_PROP = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name) {
+        static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_PROP = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_PROP", delegate(Type item, string name) {
             if (name.EndsWith("()"))
                 return item.GetInstanceMethodProp(name);
 
@@ -22,7 +22,7 @@ namespace CrunchyNoodle
             return GET_INSTANCE_PROP.Fetch(item, name);
         }
 
-        static private OperationCache<List<PropInfoEX>, Type> GET_ALL_INSTANCE_PROPS = ReflectionCache.Get().NewOperationCache(delegate(Type type) {
+        static private OperationCache<List<PropInfoEX>, Type> GET_ALL_INSTANCE_PROPS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSTANCE_PROPS", delegate(Type type) {
             return type.GetAllInstanceMethodProps()
                 .Append(type.GetAllInstanceFieldProps())
                 .ToList();
@@ -32,7 +32,7 @@ namespace CrunchyNoodle
             return GET_ALL_INSTANCE_PROPS.Fetch(item);
         }
 
-        static private OperationCache<List<PropInfoEX>, Type, PropInfoFilters> GET_FILTERED_INSTANCE_PROPS = ReflectionCache.Get().NewOperationCache(delegate(Type type, PropInfoFilters filters) {
+        static private OperationCache<List<PropInfoEX>, Type, PropInfoFilters> GET_FILTERED_INSTANCE_PROPS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_INSTANCE_PROPS", delegate(Type type, PropInfoFilters filters) {
             return type.GetAllInstanceProps()
                 .FilterBy(filters)
                 .ToList();

@@ -1,19 +1,24 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class GridExtensions_Texture2D
     {
         static public Texture2D CreateTexture2D<T>(this Grid<T> item, Operation<Color, T> operation)
         {
             return Texture2DExtensions.Create(item.GetWidth(), item.GetHeight(), item.GetData().Convert(operation).ToArray());
+        }
+
+        static public Texture2D CreateTexture2D(this Grid<Color> item)
+        {
+            return item.CreateTexture2D(c => c);
         }
 
         static public Texture2D CreateTexture2D(this Grid<float> item)

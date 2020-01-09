@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class ComponentExtensions_IEnumerable_GameObject
     {
         static public IEnumerable<GameObject> ConvertToGameObjects<T>(this IEnumerable<T> item) where T : Component
@@ -17,17 +17,17 @@ namespace CrunchySandwich
 
         static public void DestroyGameObjects<T>(this IEnumerable<T> item) where T : Component
         {
-            item.ConvertToGameObjects().Destroy();
+            item.ConvertToGameObjects().SkipNull().Destroy();
         }
 
         static public void DestroyGameObjectsImmediate<T>(this IEnumerable<T> item, bool is_asset = false) where T : Component
         {
-            item.ConvertToGameObjects().DestroyImmediate(is_asset);
+            item.ConvertToGameObjects().SkipNull().DestroyImmediate(is_asset);
         }
 
         static public void DestroyGameObjectsAdvisory<T>(this IEnumerable<T> item, bool is_asset = false) where T : Component
         {
-            item.ConvertToGameObjects().DestroyAdvisory(is_asset);
+            item.ConvertToGameObjects().SkipNull().DestroyAdvisory(is_asset);
         }
     }
 }

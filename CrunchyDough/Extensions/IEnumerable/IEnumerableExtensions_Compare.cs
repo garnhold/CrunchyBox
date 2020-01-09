@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IEnumerableExtensions_Compare
     {
@@ -24,10 +24,7 @@ namespace CrunchyDough
         {
             unchecked
             {
-                int hash_code = 17;
-
-                item.Process(i => hash_code = hash_code * 23 + i.GetHashCodeEX());
-                return hash_code;
+                return item.Apply(17, (h, i) => h * 23 + i.GetHashCodeEX());
             }
         }
     }

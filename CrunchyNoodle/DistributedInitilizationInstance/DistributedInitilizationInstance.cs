@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class DistributedInitilizationInstance<INSTANCE_TYPE, ATTRIBUTE_TYPE> where ATTRIBUTE_TYPE : Attribute
     {
         private INSTANCE_TYPE instance;
@@ -21,7 +21,7 @@ namespace CrunchyNoodle
         {
             if (instance == null)
             {
-                instance = typeof(INSTANCE_TYPE).CreateForcedInstance<INSTANCE_TYPE>();
+                instance = typeof(INSTANCE_TYPE).CreateInstance<INSTANCE_TYPE>();
 
                 MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
                     Filterer_MethodInfo.CanEffectiveParametersHold<INSTANCE_TYPE>()

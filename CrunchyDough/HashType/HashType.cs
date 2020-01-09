@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Security;
 using System.Security.Cryptography;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public abstract class HashType
     {

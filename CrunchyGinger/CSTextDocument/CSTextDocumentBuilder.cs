@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyGinger
+namespace Crunchy.Ginger
 {
+    using Dough;
+    
     public class CSTextDocumentBuilder : DocumentBuilder<TextDocumentNode, TextDocumentCanvas>
     {
         public CSTextDocumentBuilder(TextDocumentNode_Container c) : base(c) { }
@@ -30,6 +30,11 @@ namespace CrunchyGinger
         public CSTextDocumentWriter CreateWriterWithVariablePairs(params string[] pairs)
         {
             return new CSTextDocumentWriter(new CSLine_VariableTable(pairs), this);
+        }
+
+        public CSTextDocumentWriter CreateWriterWithVariablePairs()
+        {
+            return CreateWriter();
         }
     }
 }

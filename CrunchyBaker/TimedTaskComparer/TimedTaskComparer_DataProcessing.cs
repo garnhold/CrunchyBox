@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBaker
+namespace Crunchy.Baker
 {
+    using Dough;
+    
     public abstract class TimedTaskComparer_DataProcessing<T> : TimedTaskComparer
     {
         private TimedTask_DataProcess<T> process_a;

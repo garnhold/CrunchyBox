@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    
     public abstract class TerminalBlock
     {
         private int x;
         private int y;
         private int width;
 
-        private RateLimiter refresh_limiter;
+        private Timer refresh_timer;
 
         private Terminal terminal;
 
@@ -22,17 +22,18 @@ namespace CrunchyLunch
         {
             width = nw;
 
-            refresh_limiter = new RateLimiter(MIN_MILLISECONDS_BETWEEN_REFRESHES);
+            refresh_timer = new Timer(MIN_MILLISECONDS_BETWEEN_REFRESHES);
         }
 
         public void Render()
         {
             if (terminal != null)
             {
-                refresh_limiter.Process(delegate() {
+                if (refresh_timer.Repeat())
+                {
                     terminal.Raster(x, y, width, " ".Repeat(width));
                     RenderInternal(x, y, width, terminal);
-                });
+                }
             }
         }
 

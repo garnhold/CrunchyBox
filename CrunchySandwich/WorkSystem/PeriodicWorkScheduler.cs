@@ -1,35 +1,53 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public class PeriodicWorkScheduler
     {
-        private Timer_Duration timer;
+        private Stopwatch timer;
+        private Operation<long> operation;
+
         private WorkScheduler scheduler;
 
-        public PeriodicWorkScheduler(long i, long a, Process p)
+        public PeriodicWorkScheduler(UnityEngine.Object r, Operation<long> w, Process p)
         {
-            timer = new Timer_Duration(i).StartAndGet();
+            timer = new Stopwatch().StartAndGet();
+            operation = w;
 
-            scheduler = new WorkScheduler(a, delegate() {
-                timer.Restart();
-
-                p();
-            });
+            scheduler = new WorkScheduler(r, p);
         }
 
-        public PeriodicWorkScheduler(Duration i, Duration a, Process p) : this(i.GetWholeMilliseconds(), a.GetWholeMilliseconds(), p) { }
+        public PeriodicWorkScheduler(UnityEngine.Object r, Operation<Duration> w, Process p) : this(r, () => w().GetWholeMilliseconds(), p) { }
 
         public void Update()
         {
-            if (timer.IsTimeOver())
-                scheduler.Schedule();
+            if (Application.isPlaying)
+            {
+                long work_interval = operation();
+
+                if (timer.GetElapsedTimeInMilliseconds() >= work_interval)
+                {
+                    scheduler.Request(work_interval);
+
+                    timer.Restart();
+                }
+            }
+            else
+            {
+                Execute();
+            }
+        }
+
+        public void Execute()
+        {
+            scheduler.Execute();
         }
     }
 }

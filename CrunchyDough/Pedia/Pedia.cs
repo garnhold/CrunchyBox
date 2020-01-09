@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class Pedia<KEY_TYPE, VALUE_TYPE> : IEnumerable<KeyValuePair<KEY_TYPE, VALUE_TYPE>>
     {

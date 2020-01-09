@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public abstract class SignalingContainer_Collection_List<T> : SignalingContainer_Collection<T>, IList<T>
     {

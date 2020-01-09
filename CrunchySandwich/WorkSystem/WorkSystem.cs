@@ -1,40 +1,70 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    public class WorkSystem : Subsystem
+    using Dough;
+    using Salt;
+    
+    public class WorkSystem : Subsystem<WorkSystem>
     {
-        private LazySchedule<Process> processes;
+        [SerializeFieldEX]private Duration target_frame_length = Duration.Hertz(60.0f);
 
-        static public WorkSystem GetInstance()
+        private LazyScheduler scheduler;
+        private DecayTimeSet<Tuple<UnityEngine.Object, string>> registered_named_work_ids;
+
+        private void UpdateInternal()
         {
-            return Subsystem.GetInstance<WorkSystem>();
+            scheduler.Update(target_frame_length);
+            registered_named_work_ids.Decay();
         }
 
         public WorkSystem()
         {
-            processes = new LazySchedule<Process>(Duration.Hertz(70.0f), Duration.Minutes(0.5f), p => p());
+            scheduler = new LazyScheduler(new BinSchedule(4096, Duration.Seconds(0.050f)));
+            registered_named_work_ids = new DecayTimeSet<Tuple<UnityEngine.Object, string>>();
         }
 
         public override void Update()
         {
-            processes.Work();
+            if (Application.isPlaying)
+                UpdateInternal();
         }
 
         public override void UpdateInEditor()
         {
-            processes.Work();
+            if (Application.isPlaying == false)
+                UpdateInternal();
         }
 
-        public void Schedule(long allowance, Process process)
+        public void Schedule(UnityEngine.Object requester, long delay, Process process)
         {
-            processes.AddIn(allowance, process);
+            scheduler.ScheduleIn(delay, delegate() {
+                try
+                {
+                    if (requester.IsNotNull())
+                        process();
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogException(ex);
+                }
+            });
+        }
+
+        public void ScheduleNamed(UnityEngine.Object requester, string name, long delay, Process process)
+        {
+            Tuple<UnityEngine.Object, string> id = new Tuple<UnityEngine.Object, string>(requester, name);
+
+            if(registered_named_work_ids.Add(id, delay, false))
+            {
+                Schedule(requester, delay, delegate () {
+                    process();
+                });
+            }
         }
     }
 }

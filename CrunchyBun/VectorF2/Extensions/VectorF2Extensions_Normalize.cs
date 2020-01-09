@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Noodle;
+    
     static public class VectorF2Extensions_Normalize
     {
         static public VectorF2 GetNormalized(this VectorF2 item)

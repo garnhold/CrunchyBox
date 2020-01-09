@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class HuskWriter
     {
@@ -35,6 +35,13 @@ namespace CrunchyDough
         public void WriteDecimal(decimal value) { writer.Write(value); }
 
         public void WriteString(string value) { writer.Write(value); }
+
+        public bool WriteBoolBranch(bool value)
+        {
+            WriteBool(value);
+
+            return value;
+        }
 
         public void WriteRecurrant<T>(T value, Husker<T> husker)
         {

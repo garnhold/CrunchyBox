@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class EnumExtensions_Flags
     {
         static public bool HasAllOfTheFlags(this Enum item, Enum value)
         {
-            return item.GetInt().HasAllBits(value.GetInt());
+            return item.GetLongValue().HasAllBits(value.GetLongValue());
         }
         static public bool HasTheFlag(this Enum item, Enum value)
         {
@@ -16,7 +16,7 @@ namespace CrunchyDough
 
         static public bool HasNoneOfTheFlags(this Enum item, Enum value)
         {
-            return item.GetInt().HasNoBits(value.GetInt());
+            return item.GetLongValue().HasNoBits(value.GetLongValue());
         }
         static public bool DoesNotHaveTheFlag(this Enum item, Enum value)
         {
@@ -25,7 +25,7 @@ namespace CrunchyDough
 
         static public bool HasSomeOfTheFlags(this Enum item, Enum value)
         {
-            return item.GetInt().HasAnyBits(value.GetInt());
+            return item.GetLongValue().HasAnyBits(value.GetLongValue());
         }
     }
 }

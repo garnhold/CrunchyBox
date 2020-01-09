@@ -1,20 +1,19 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     [ExecuteInEditMode]
     [AddComponentMenu("Pathfinding2D/PathNode2D/PathNode2D_BlockableStatic")]
     public class PathNode2D_BlockableStatic : PathNode2D
     {
         [SerializeField]private float check_interval;
-        [SerializeField]private float scheduler_allowance;
 
         [SerializeField][HideInInspector]private List<PathNode2D> connections;
 
@@ -30,8 +29,8 @@ namespace CrunchySandwich
         {
             Debug.Log("Awa Check " + check_interval);
             scheduler = new PeriodicWorkScheduler(
-                Duration.Seconds(check_interval),
-                Duration.Seconds(scheduler_allowance),
+                this,
+                () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
             current_connections = new List<PathNode2D>();
@@ -41,8 +40,8 @@ namespace CrunchySandwich
         {
             Debug.Log("start Check " + check_interval);
             scheduler = new PeriodicWorkScheduler(
-                Duration.Seconds(check_interval),
-                Duration.Seconds(scheduler_allowance),
+                this,
+                () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
             current_connections = new List<PathNode2D>();
@@ -54,17 +53,16 @@ namespace CrunchySandwich
         {
             Debug.Log("ContCheck " + check_interval);
             scheduler = new PeriodicWorkScheduler(
-                Duration.Seconds(check_interval),
-                Duration.Seconds(scheduler_allowance),
+                this,
+                () => Duration.Seconds(check_interval),
                 () => UpdateConnections()
             );
             current_connections = new List<PathNode2D>();
         }
 
-        public void InitializePathNodeBlockableStatic(float c, float s)
+        public void InitializePathNodeBlockableStatic(float c)
         {
             check_interval = c;
-            scheduler_allowance = s;
         }
 
         public void UpdateConnections()

@@ -1,20 +1,25 @@
 grammar Tyon;
 
 tyonType
-    : ID # tyonType_Normal
-    | ID '<' /*group:{*/ tyonType (',' tyonType)* /*group:}*/ '>' # tyonType_Templated
+    : ID /*info: get_override*/ # tyonType_Normal /*info: base_type=>TyonType_Direct*/
+    | ID /*info: get_override*/ '<' /*group:{*/ tyonType (',' tyonType)* /*group:}*/ '>' # tyonType_Templated /*info: base_type=>TyonType_Direct*/
+
+    | tyonType '[' ']' # tyonType_Array
     ;
 
-tyonObject : tyonType ('(' '&' tyonAddress ')')? ('{' tyonVariable* '}')?;
-tyonSurrogate : tyonType ('(' '&' tyonAddress ')')? '{' STRING /*info: custom_load_context*/ '}';
+tyonObject : tyonType ('(' '&' tyonAddress ')')? '{' tyonVariable* '}';
+tyonSurrogate : '$' tyonType ':' STRING /*info: custom_load_context*/;
 
 tyonArray : tyonType '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
 
 tyonValue
-    : NUMBER # tyonValue_Number
+    : INTEGER # tyonValue_Integer
+    | REAL # tyonValue_Real
     | STRING /*info: custom_load_context*/ # tyonValue_String
 
     | 'null' # tyonValue_Null
+    | 'typeof' '(' tyonType ')' # tyonValue_Type
+
     | '&' tyonAddress # tyonValue_InternalAddress
     | '@' tyonAddress # tyonValue_ExternalAddress
 
@@ -27,16 +32,16 @@ tyonValue
 tyonAddress
     : ID # tyonAddress_Identifier
 
-    | NUMBER /*info: type=>int*/ # tyonAddress_Int
+    | INTEGER # tyonAddress_Integer
     | STRING /*info: custom_load_context*/ # tyonAddress_String
-
-    | tyonObject # tyonAddress_Object
     ;
 
 tyonVariable : ID '=' tyonValue ';';
 
-NUMBER : ('-'|'+')? [0-9]+ ('.' [0-9]*)?;
+
+REAL /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]+;
+INTEGER /*info: type=>long*/ : ('-'|'+')? [0-9]+;
 STRING : '"' ('\\"'|.)*? '"';
-ID : [A-Za-z_][A-Za-z0-9_]*;
+ID : [A-Za-z_][A-Za-z0-9_\.]*;
 
 WHITESPACE : [ \r\n\t]+ -> skip;

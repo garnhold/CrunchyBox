@@ -31,15 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrunchyDough">
-      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchyNoodle">
-      <HintPath>..\CrunchyNoodle\bin\Release\CrunchyNoodle.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchySalt">
-      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -49,25 +40,43 @@
     <Compile Include="AnimatedFloat\AutoAnimatedFloat.cs" />
     <Compile Include="AnimatedFloat\AnimatedFloat.cs" />
     <Compile Include="AnimatedFloat\AnimateOperations.cs" />
+    <Compile Include="CardinalDirection\CardinalDirection.cs" />
+    <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_VectorF2.cs" />
+    <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions.cs" />
+    <Compile Include="CardinalOrdinalDirection\CardinalOrdinalDirection.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_VectorF2.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Adjacent.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Angle.cs" />
+    <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Sequence.cs" />
     <Compile Include="Easer\AutoEaser.cs" />
-    <Compile Include="Easer\EaseFunction.cs" />
     <Compile Include="Easer\Extensions\EaseOperationExtensions.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_CardinalOrdinalDirection.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_HorizontalDirection.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_CardinalDirection.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Mix.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Distance.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Difference.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_MoveTowards.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Angle_Towards.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromRate.cs" />
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions_Path.cs" />
     <Compile Include="Extensions\GraphNode\GraphNodeExtensions.cs" />
     <Compile Include="Extensions\GridCell\GridCellExtensions_VectorI2.cs" />
+    <Compile Include="Extensions\Grid\GridExtensions_Scale.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Stamp.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Get.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_VectorI2.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Path_Subdivide.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Congruent.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_RandomLine.cs" />
     <Compile Include="Extensions\Stream\StreamExtensions_Text.cs" />
     <Compile Include="Extensions\Stream\StreamExtensions.cs" />
+    <Compile Include="Extensions\TemporalSeries\TemporalSeriesExtensions_Start.cs" />
+    <Compile Include="Extensions\TemporalSeries\TemporalSeriesExtensions.cs" />
     <Compile Include="FloatChoreography\FloatChoreographyKeyFrame.cs" />
     <Compile Include="FloatChoreography\FloatChoreography.cs" />
-    <Compile Include="Easer\Easer.cs" />
     <Compile Include="Easer\EaseOperations.cs" />
     <Compile Include="Equation\Equation.cs" />
     <Compile Include="Equation\Equation_Linear.cs" />
@@ -89,10 +98,8 @@
     <Compile Include="Extensions\IList\IListExtensions_Get.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Shuffle.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Random.cs" />
-    <Compile Include="Extensions\Timer\TimerExtensions.cs" />
-    <Compile Include="Extensions\Timer\TimerExtensions_Start.cs" />
-    <Compile Include="Extensions\Timer_Duration\TimerDurationExtensions.cs" />
-    <Compile Include="Extensions\Timer_Duration\TimerDurationExtensions_Start.cs" />
+    <Compile Include="Extensions\TemporalDuration\TemporalDurationExtensions.cs" />
+    <Compile Include="Extensions\TemporalDuration\TemporalDurationExtensions_Start.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Degrees\GraphNodeWanderer_AngleLimited_Degrees.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Degrees\GraphNode_AngleAware_Degrees.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Percent\GraphNodeWanderer_AngleLimited_Percent.cs" />
@@ -103,6 +110,9 @@
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer_AngleLimited\GraphNodeWanderer_AngleLimited_Radians\GraphNode_AngleAware_Radians.cs" />
     <Compile Include="Graph\GraphNodeWanderer\GraphNodeWanderer.cs" />
+    <Compile Include="HorizontalDirection\Extensions\HorizontalDirectionExtensions.cs" />
+    <Compile Include="HorizontalDirection\Extensions\HorizontalDirectionExtensions_VectorF2.cs" />
+    <Compile Include="HorizontalDirection\HorizontalDirection.cs" />
     <Compile Include="LineF2\Extensions\LineF2Extensions_Point.cs" />
     <Compile Include="LineF2\Extensions\LineF2Extensions_Intersection.cs" />
     <Compile Include="LineF2\Extensions\LineF2Extensions.cs" />
@@ -127,7 +137,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mathq_IntPow.tt</DependentUpon>
     </Compile>
+    <Compile Include="RotationDirection\RotationDirection.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_MoveTowards.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Towards.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalDirection.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Compare.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Normal.cs" />
     <Compile Include="VectorF2\VectorF2s.cs">
       <DependentUpon>VectorF2s.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -205,9 +222,9 @@
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Dot.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line_Point.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Loop.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_LoopReduction.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Binding.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Path.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathReduction.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Triangle.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_MinMax.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_With.cs" />
@@ -261,6 +278,9 @@
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_With.cs" />
     <Compile Include="VectorI2\VectorI2.cs" />
     <Compile Include="Wave\Wave.cs" />
+    <Compile Include="Easer\Easer.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_Fill.cs" />
+    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromVariance.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Math\Mathq_IntPow.tt">
@@ -276,6 +296,20 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

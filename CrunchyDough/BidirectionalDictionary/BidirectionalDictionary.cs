@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class BidirectionalDictionary<LEFT_TYPE, RIGHT_TYPE> : ICollection<KeyValuePair<LEFT_TYPE, RIGHT_TYPE>>
     {

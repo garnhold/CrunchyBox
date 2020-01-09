@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Text;
 
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class TextDocumentNode_Block_LineText : TextDocumentNode
     {

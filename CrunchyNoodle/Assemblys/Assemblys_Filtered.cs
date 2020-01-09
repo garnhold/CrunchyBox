@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public partial class Assemblys
     {
-        static private OperationCache<List<Assembly>, AssemblyFilters> GET_FILTERED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache(delegate(AssemblyFilters filters) {
+        static private OperationCache<List<Assembly>, AssemblyFilters> GET_FILTERED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_ASSEMBLYS", delegate(AssemblyFilters filters) {
             return GetAllInspectedAssemblys()
                 .FilterBy(filters)
                 .ToList();

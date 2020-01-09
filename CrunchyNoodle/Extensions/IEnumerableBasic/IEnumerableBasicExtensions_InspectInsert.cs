@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class IEnumerableBasicExtensions_InspectInsert
     {
         static public bool InspectInsert(this IEnumerable item, int index, object value)
@@ -17,7 +17,6 @@ namespace CrunchyNoodle
             {
                 MethodInfoEX method = item.GetType().GetFilteredInstanceMethods(
                     Filterer_MethodInfo.IsNamed("Insert"),
-                    Filterer_MethodInfo.HasNoReturn(),
                     Filterer_MethodInfo.CanNthEffectiveParameterHold(0, typeof(int)),
                     Filterer_MethodInfo.HasTwoEffectiveParameters()
                 ).GetFirst();

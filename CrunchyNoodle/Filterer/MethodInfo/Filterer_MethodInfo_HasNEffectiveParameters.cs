@@ -1,12 +1,54 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
+    public class Filterer_MethodInfo_HasNoEffectiveParameters : Filterer_Simple<MethodInfo>
+    {
+        static public readonly Filterer_MethodInfo_HasNoEffectiveParameters INSTANCE = new Filterer_MethodInfo_HasNoEffectiveParameters();
+
+        private Filterer_MethodInfo_HasNoEffectiveParameters()
+        {
+        }
+
+        public override bool Filter(MethodInfo item)
+        {
+            return item.HasNoEffectiveParameters();
+        }
+    }
+    static public partial class Filterer_MethodInfo
+    {
+        static public Filterer<MethodInfo> HasNoEffectiveParameters()
+        {
+            return Filterer_MethodInfo_HasNoEffectiveParameters.INSTANCE;
+        }
+    }
+
+    public class Filterer_MethodInfo_HasEffectiveParameters : Filterer_Simple<MethodInfo>
+    {
+        static public readonly Filterer_MethodInfo_HasEffectiveParameters INSTANCE = new Filterer_MethodInfo_HasEffectiveParameters();
+
+        private Filterer_MethodInfo_HasEffectiveParameters()
+        {
+        }
+
+        public override bool Filter(MethodInfo item)
+        {
+            return item.HasEffectiveParameters();
+        }
+    }
+    static public partial class Filterer_MethodInfo
+    {
+        static public Filterer<MethodInfo> HasEffectiveParameters()
+        {
+            return Filterer_MethodInfo_HasEffectiveParameters.INSTANCE;
+        }
+    }
+
     public class Filterer_MethodInfo_HasNEffectiveParameters : Filterer_General<MethodInfo, IdentifiableInt>
     {
         static public readonly Filterer_MethodInfo_HasNEffectiveParameters INSTANCE_ONE = new Filterer_MethodInfo_HasNEffectiveParameters(1);

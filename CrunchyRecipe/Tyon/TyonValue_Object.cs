@@ -8,17 +8,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonValue_Object : TyonValue
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonValue_Object : TyonValue
 	{
-        public TyonValue_Object(object value, TyonContext_Dehydration context) : this()
+        public TyonValue_Object(object value, TyonDehydrater dehydrater) : this()
         {
-            SetTyonObject(new TyonObject(value, context));
+            SetTyonObject(new TyonObject(value, dehydrater));
         }
 
         public override void Render(TextDocumentCanvas canvas)
@@ -26,7 +26,7 @@ namespace CrunchyRecipe
             GetTyonObject().Render(canvas);
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             if (variable.GetVariableType().IsTypicalReferenceType())
             {
@@ -34,14 +34,17 @@ namespace CrunchyRecipe
 
                 if (current_value != null)
                 {
-                    GetTyonObject().PushToSystemObject(current_value, context);
-                    return;
+                    if (GetTyonObject().GetSystemType(hydrater) == current_value.GetType())
+                    {
+                        GetTyonObject().PushToSystemObject(current_value, hydrater);
+                        return;
+                    }
                 }
             }
 
-            object value = GetTyonObject().InstanceSystemObject(context);
+            object value = GetTyonObject().InstanceSystemObject(hydrater);
 
-            context.DeferProcess(delegate() {
+            hydrater.DeferProcess(delegate() {
                 variable.SetContents(value);
             });
         }

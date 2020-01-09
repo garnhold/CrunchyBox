@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
+    using Dough;
+    
     static public class PitchExtensions_Semitone
     {
         static public Pitch GetShiftedSemitones(this Pitch item, double amount)

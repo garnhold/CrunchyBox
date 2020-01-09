@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class ReferenceInstances<T>
     {
-        static private OperationCache<List<Type>> GET_ALL_TYPES = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<List<Type>> GET_ALL_TYPES = ReflectionCache.Get().NewOperationCache("GET_ALL_TYPES", delegate() {
             return Types.GetFilteredTypes(
                 Filterer_Type.CanBeTreatedAs<T>(),
                 Filterer_Type.IsConcreteClass()
@@ -20,7 +20,7 @@ namespace CrunchyNoodle
             return GET_ALL_TYPES.Fetch();
         }
 
-        static private OperationCache<List<T>> GET_ALL = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<List<T>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
             return GetAllTypes()
                 .CreateInstances<T>()
                 .ToList();

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class PlaneSpaceExtensions_Inflate
     {
         static public Vector3 InflatePoint(this PlaneSpace item, Vector2 point)
@@ -28,6 +28,15 @@ namespace CrunchySandwich
             return vectors.Convert(v => item.InflateVector(v));
         }
 
+        static public LineSegment3 InflateLineSegment(this PlaneSpace item, LineSegment2 line_segment)
+        {
+            return new LineSegment3(item.InflatePoint(line_segment.v0), item.InflatePoint(line_segment.v1));
+        }
+        static public IEnumerable<LineSegment3> InflateLineSegments(this PlaneSpace item, IEnumerable<LineSegment2> line_segments)
+        {
+            return line_segments.Convert(l => item.InflateLineSegment(l));
+        }
+
         static public Triangle3 InflateTriangle(this PlaneSpace item, Triangle2 triangle)
         {
             return new Triangle3(
@@ -37,6 +46,15 @@ namespace CrunchySandwich
             );
         }
         static public IEnumerable<Triangle3> InflateTriangles(this PlaneSpace item, IEnumerable<Triangle2> triangles)
+        {
+            return triangles.Convert(t => item.InflateTriangle(t));
+        }
+
+        static public Triangle3 InflateTriangle(this PlaneSpace item, PolygonTriangle triangle)
+        {
+            return item.InflateTriangle(triangle.triangle);
+        }
+        static public IEnumerable<Triangle3> InflateTriangles(this PlaneSpace item, IEnumerable<PolygonTriangle> triangles)
         {
             return triangles.Convert(t => item.InflateTriangle(t));
         }

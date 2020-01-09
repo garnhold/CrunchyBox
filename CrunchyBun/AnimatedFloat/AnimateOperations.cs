@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public delegate float AnimateOperation(float current, float target, float delta_time);
 
     static public class AnimateOperations

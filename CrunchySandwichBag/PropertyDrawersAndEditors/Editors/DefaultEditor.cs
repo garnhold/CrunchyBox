@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,31 +7,28 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Sandwich;
+    
     [CustomEditor(typeof(MonoBehaviour), true)]
     public class DefaultEditor_MonoBehaviour : DefaultEditor<MonoBehaviour> { }
-
-    [CustomEditor(typeof(NetworkBehaviour), true)]
-    public class DefaultEditor_NetworkBehaviour : DefaultEditor<NetworkBehaviour> { }
 
     [CustomEditor(typeof(ScriptableObject), true)]
     public class DefaultEditor_ScriptableObject : DefaultEditor<ScriptableObject> { }
 
     public abstract class DefaultEditor<T> : EditorEX_Simple<T> where T : UnityEngine.Object
     {
-        protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, T item, SerializedObject serialized_object)
+        protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root, EditTarget target)
         {
-            root.AddChild(new EditorGUIElement_Complex_All(serialized_object));
+            root.AddChild(new EditorGUIElement_Complex_EditTarget(target));
         }
 
-        protected override void InitilizeRootEditorSceneElement(EditorSceneElement_Container_Auto root, T item, SerializedObject serialized_object)
+        protected override void InitilizeRootEditorSceneElement(EditorSceneElement_Container_Auto root, EditTarget target)
         {
-            root.AddChild(new EditorSceneElement_Complex_All(serialized_object));
+            root.AddChild(new EditorSceneElement_Complex_EditTarget(target));
         }
 
         public override void OnInspectorGUI()

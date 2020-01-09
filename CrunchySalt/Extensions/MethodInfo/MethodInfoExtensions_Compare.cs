@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,18 +7,30 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class MethodInfoExtensions_Compare
     {
-        static public bool IsPropCompatible(this MethodInfo item)
+        static public bool IsPropSetCompatible(this MethodInfo item)
+        {
+            if (item.HasNoReturn() && item.GetNumberEffectiveParameters() == 1)
+                return true;
+
+            return false;
+        }
+        static public bool IsPropGetCompatible(this MethodInfo item)
         {
             if (item.HasReturn() && item.HasNoEffectiveParameters())
                 return true;
 
-            if (item.HasNoReturn() && item.GetNumberEffectiveParameters() == 1)
+            return false;
+        }
+
+        static public bool IsPropCompatible(this MethodInfo item)
+        {
+            if (item.IsPropSetCompatible() || item.IsPropGetCompatible())
                 return true;
 
             return false;

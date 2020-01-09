@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Noodle;
+    using Sandwich;
+    
     static public partial class CustomAssets
     {
         static public IEnumerable<string> GetExternalCustomAssetPathsOfType(Type type)
@@ -33,6 +33,10 @@ namespace CrunchySandwichBag
         static public IEnumerable<CustomAsset> GetExternalCustomAssetsOfType(Type type)
         {
             return GetExternalCustomAssetPathsOfType(type).Convert(p => AssetDatabase.LoadMainAssetAtPath(p) as CustomAsset);
+        }
+        static public IEnumerable<T> GetExternalCustomAssetsOfType<T>() where T : CustomAsset
+        {
+            return GetExternalCustomAssetsOfType(typeof(T)).Convert<CustomAsset, T>();
         }
 
         static public IEnumerable<CustomAsset> GetAllExternalCustomAssets()

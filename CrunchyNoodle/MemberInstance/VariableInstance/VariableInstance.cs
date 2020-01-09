@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+
     public class VariableInstance : MemberInstance
     {
         private Variable variable;
@@ -16,9 +18,9 @@ namespace CrunchyNoodle
             return variable.SetContents(GetTarget(), value);
         }
 
-        public bool UpdateContents(object value)
+        public ValueChangeResult ChangeContents(object value)
         {
-            return variable.UpdateContents(GetTarget(), value);
+            return variable.ChangeContents(GetTarget(), value);
         }
 
         public object GetContents()

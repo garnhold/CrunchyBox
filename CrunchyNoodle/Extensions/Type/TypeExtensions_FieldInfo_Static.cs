@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_FieldInfo_Static
     {
         static public IEnumerable<FieldInfoEX> GetAllStaticFields(this Type item)
@@ -18,6 +18,7 @@ namespace CrunchyNoodle
         static private CompileTimeCache<List<FieldInfoEX>, IdentifiableType, FieldInfoFilters> GET_FILTERED_STATIC_FIELDS = ReflectionCache.Get().NewCompileTimeCache("GET_FILTERED_STATIC_FIELDS", FieldInfoEXListHusker.INSTANCE, delegate(IdentifiableType item, FieldInfoFilters filters) {
             return item.GetValue().GetStaticFields()
                 .FilterBy(filters)
+                .Convert(f => f.GetFieldInfoEX())
                 .ToList();
         });
         static public IEnumerable<FieldInfoEX> GetFilteredStaticFields(this Type item, IEnumerable<Filterer<FieldInfo>> filters)

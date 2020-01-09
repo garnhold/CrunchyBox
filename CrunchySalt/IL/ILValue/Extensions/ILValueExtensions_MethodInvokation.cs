@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,10 +6,10 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class ILValueExtensions_MethodInvokation
     {
         static public ILMethodInvokation GetILMethodInvokation(this ILValue item, MethodInfo method, IEnumerable<ILValue> arguments)
@@ -24,7 +24,8 @@ namespace CrunchySalt
         static public ILMethodInvokation GetTechnicalInstanceILMethodInvokation(this ILValue item, string name, IEnumerable<ILValue> arguments)
         {
             return item.GetILMethodInvokation(
-                item.GetValueType().GetTechnicalInstanceMethod(name, arguments.Convert(a => a.GetValueType()))
+                item.GetValueType().GetTechnicalInstanceMethod(name, arguments.GetValueTypes()),
+                arguments
             );
         }
         static public ILMethodInvokation GetTechnicalInstanceILMethodInvokation(this ILValue item, string name, params ILValue[] arguments)

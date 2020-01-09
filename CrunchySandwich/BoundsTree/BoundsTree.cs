@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public partial class BoundsTree<T> : IEnumerable<T>
     {
         private Bounds bounds;
@@ -78,7 +78,7 @@ namespace CrunchySandwich
         {
             Bounds item_bounds = get_bounds_operation(item);
 
-            if (bounds.Intersects(item_bounds))
+            if (bounds.IsIntersecting(item_bounds))
             {
                 if (is_subdivided)
                     return AddToChildBounds(item);

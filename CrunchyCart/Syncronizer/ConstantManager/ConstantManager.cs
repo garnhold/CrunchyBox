@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public partial class Syncronizer
     {
         public class ConstantManager
@@ -21,7 +21,7 @@ namespace CrunchyCart
             private ConstantSubManager_String string_sub_manager;
             private ConstantSubManager_Type type_sub_manager;
             private ConstantSubManager_EntityMethod entity_method_sub_manager;
-            private ConstantSubManager_EntityConstructor entity_constructor_sub_manager;
+            private ConstantSubManager_SystemMethod system_method_sub_manager;
 
             private Syncronizer syncronizer;
 
@@ -39,7 +39,7 @@ namespace CrunchyCart
                 string_sub_manager = AddSubManager(new ConstantSubManager_String(this));
                 type_sub_manager = AddSubManager(new ConstantSubManager_Type(this));
                 entity_method_sub_manager = AddSubManager(new ConstantSubManager_EntityMethod(this));
-                entity_constructor_sub_manager = AddSubManager(new ConstantSubManager_EntityConstructor(this));
+                system_method_sub_manager = AddSubManager(new ConstantSubManager_SystemMethod(this));
 
                 syncronizer = s;
             }
@@ -78,9 +78,9 @@ namespace CrunchyCart
                 return entity_method_sub_manager;
             }
 
-            public ConstantSubManager_EntityConstructor GetEntityConstructorSubManager()
+            public ConstantSubManager_SystemMethod GetSystemMethodSubManager()
             {
-                return entity_constructor_sub_manager;
+                return system_method_sub_manager;
             }
 
             public Syncronizer GetSyncronizer()

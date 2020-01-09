@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
     public class EditorSceneElement_Complex_EditTarget : EditorSceneElement_Complex<Type>
     {
         private EditTarget target;
@@ -39,13 +39,5 @@ namespace CrunchySandwichBag
         {
             target = t;
         }
-
-        public EditorSceneElement_Complex_EditTarget(SerializedObject o) : this(new EditTarget_Serialized_Object(o))
-        {
-            AddAttachment(new EditorSceneElementAttachment_SerializedObjectSection(o));
-        }
-
-        public EditorSceneElement_Complex_EditTarget(SerializedProperty p) : this(new EditTarget_Serialized_Property(p)) { }
-        public EditorSceneElement_Complex_EditTarget(ReflectedObject o) : this(new EditTarget_Reflected(o)) { }
     }
 }

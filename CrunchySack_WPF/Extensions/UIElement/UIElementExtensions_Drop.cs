@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-using CrunchySystem;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    using System;
+    
     static public class UIElementExtensions_Drop
     {
         static private readonly AttachedObjectField<UIElement, List<DropHandler>> DROP_HANDLER_LIST_FIELD = new AttachedObjectField<UIElement, List<DropHandler>>();

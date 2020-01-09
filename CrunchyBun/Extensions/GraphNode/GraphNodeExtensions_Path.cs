@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class GraphNodeExtensions_Path
     {
         static public IEnumerable<T> GetWanderingRandomPath<T>(this T item, float target_distance) where T : GraphNode<T>

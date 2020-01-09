@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    public abstract class PathGraphInfo2D : CustomAsset
+    using Dough;
+    
+    public abstract class PathGraphInfo2D
     {
         public abstract PathNode2D CreatePathNode();
     }

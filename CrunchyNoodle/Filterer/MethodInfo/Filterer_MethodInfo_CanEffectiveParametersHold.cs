@@ -1,28 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
-    public class Filterer_MethodInfo_HasNoEffectiveParameters : Filterer_MethodInfo_CanEffectiveParametersHold
-    {
-        static public readonly Filterer_MethodInfo_HasNoEffectiveParameters INSTANCE = new Filterer_MethodInfo_HasNoEffectiveParameters();
-
-        private Filterer_MethodInfo_HasNoEffectiveParameters() : base(Empty.IEnumerable<Type>())
-        {
-        }
-    }
-    static public partial class Filterer_MethodInfo
-    {
-        static public Filterer<MethodInfo> HasNoEffectiveParameters()
-        {
-            return Filterer_MethodInfo_HasNoEffectiveParameters.INSTANCE;
-        }
-    }
-
+    using Dough;
+    using Salt;
+    
     public class Filterer_MethodInfo_CanEffectiveParametersHold : Filterer_General<MethodInfo, IdentifiableEnumerable<IdentifiableType>>
     {
         public Filterer_MethodInfo_CanEffectiveParametersHold(IEnumerable<Type> p) : base(p.MakeIdentifiable())
@@ -39,6 +24,11 @@ namespace CrunchyNoodle
         public override bool Filter(MethodInfo item)
         {
             return item.CanEffectiveParametersHold(GetId().GetValues());
+        }
+
+        public override bool Filter(MethodInfo item, out MethodInfo adjusted)
+        {
+            return item.CanEffectiveParametersHold(out adjusted, GetId().GetValues());
         }
 
         public override IEnumerable<Filterer<Assembly>> GetAssemblyFilters()

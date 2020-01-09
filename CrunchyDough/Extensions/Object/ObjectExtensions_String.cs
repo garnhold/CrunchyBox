@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class ObjectExtensions_String
     {
-        static public string ToStringEX(this Object item)
+        static public string ToStringEX(this Object item, string null_string = "")
         {
             if (item != null)
                 return item.ToString();
 
-            return "";
+            return null_string;
         }
     }
 }

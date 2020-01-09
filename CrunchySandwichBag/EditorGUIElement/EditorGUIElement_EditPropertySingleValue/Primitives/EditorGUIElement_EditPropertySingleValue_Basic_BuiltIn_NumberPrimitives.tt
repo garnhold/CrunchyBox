@@ -1,0 +1,87 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+	new TypeInfo("byte", "Byte", "IntField"),
+	new TypeInfo("short", "Short", "IntField"),
+	new TypeInfo("int", "Int", "IntField"),
+	new TypeInfo("long", "Long", "LongField"),
+	new TypeInfo("float", "Float", "FloatField"),
+	new TypeInfo("double", "Double", "DoubleField")
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+using UnityEditor;
+
+namespace Crunchy.SandwichBag
+{
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
+    public abstract class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Number<T> : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<T>
+	{
+		private RangeAttribute range_attribute;
+
+		protected abstract T DrawNumberInternal(Rect rect, GUIContent label, T value);
+
+		protected override T DrawBuiltInInternal(Rect rect, GUIContent label, T value)
+		{
+			if(range_attribute != null)
+			{
+				return EditorGUI.Slider(
+					rect,
+					label,
+					value.ConvertEX<float>(),
+					range_attribute.min, 
+					range_attribute.max
+				).ConvertEX<T>();
+			}
+
+            return DrawNumberInternal(rect, label, value);
+        }
+
+        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Number(EditProperty_Single_Value p) : base(p)
+		{
+			range_attribute = p.GetCustomAttributeOfType<RangeAttribute>(true);
+		}
+	}
+
+<#foreach(TypeInfo type in types){#>
+	[EditorGUIElementForType(typeof(<#=type.type_name#>), true)]
+    public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Number_<#=type.class_name#> : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Number<<#=type.type_name#>>
+    {
+        protected override <#=type.type_name#> DrawNumberInternal(Rect rect, GUIContent label, <#=type.type_name#> value)
+        {
+            return (<#=type.type_name#>)EditorGUI.<#=type.function_name#>(rect, label, value);
+        }
+
+        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Number_<#=type.class_name#>(EditProperty_Single_Value p) : base(p) { }
+    }
+
+<#}#>
+}
+
+<#+
+public class TypeInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+	public readonly string function_name;
+
+	public TypeInfo(string t, string c, string f)
+	{
+		type_name = t;
+		class_name = c;
+		function_name = f;
+	}
+}
+#>

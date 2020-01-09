@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    [CustomAssetCategory("Land")]
+    using Dough;
+    
+    [AssetClassCategory("Land")]
     public class LandRegionType : CustomAsset
     {
         [SerializeField]private int ground_offset;

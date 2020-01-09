@@ -1,19 +1,21 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public class EditorGUIElementAttachment_Box : EditorGUIElementAttachment
     {
         private Color color;
+
+        private EditorGUIElementPlan box_plan;
         private Rect box_rect;
 
         public EditorGUIElementAttachment_Box(Color c)
@@ -23,11 +25,16 @@ namespace CrunchySandwichBag
 
         public EditorGUIElementAttachment_Box() : this(Color.gray) { }
 
-        public override Rect LayoutElementInternal(Rect rect, float label_width)
+        public override EditorGUIElementPlan PlanElementInternal(EditorGUIElementPlan plan, EditorGUILayoutState state)
         {
-            box_rect = rect;
+            box_plan = plan;
 
-            return rect;
+            return plan;
+        }
+
+        public override void LayoutInternal(Vector2 position, float footprint_height)
+        {
+            box_rect = box_plan.Layout(position, footprint_height);
         }
 
         public override void PreDrawInternal()

@@ -1,0 +1,48 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+string[] function_suffixes = new string[]{"", "AtSelf"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Children_Set
+    {
+<# foreach(string type_name in type_names){#>
+	<# foreach(string function_suffix in function_suffixes){#>
+
+		static public void SetChildren<#=function_suffix#>(this <#=type_name#> item, IEnumerable<GameObject> children)
+		{
+			item.DestroyChildren();
+			item.AddChildren<#=function_suffix#>(children);
+		}
+		static public void SetChildren<#=function_suffix#>(this <#=type_name#> item, params GameObject[] children)
+		{
+			item.SetChildren<#=function_suffix#>((IEnumerable<GameObject>)children);
+		}
+
+		static public void SetChildren<#=function_suffix#><T>(this <#=type_name#> item, IEnumerable<T> children) where T : Component
+		{
+			item.DestroyChildren();
+			item.AddChildren<#=function_suffix#>(children);
+		}
+		static public void SetChildren<#=function_suffix#><T>(this <#=type_name#> item, params T[] children) where T : Component
+		{
+			item.SetChildren<#=function_suffix#>((IEnumerable<T>)children);
+		}
+
+	<# } #>
+<# } #>
+	}
+}

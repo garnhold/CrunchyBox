@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     public class RepresentationInstancer_Operation : RepresentationInstancer
     {
         private Operation<object> operation;

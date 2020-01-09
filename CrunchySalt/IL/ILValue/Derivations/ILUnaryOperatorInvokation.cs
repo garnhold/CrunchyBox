@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,10 +6,10 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILUnaryOperatorInvokation : ILValue
     {
         private UnaryOperatorInfoEX operator_info;
@@ -28,11 +28,6 @@ namespace CrunchySalt
         public override void RenderIL_Load(ILCanvas canvas)
         {
             operator_info.RenderIL_Operate(canvas, input);
-        }
-
-        public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
         }
 
         public override void RenderText_Value(ILTextCanvas canvas)
@@ -56,11 +51,6 @@ namespace CrunchySalt
         public override bool CanLoad()
         {
             return true;
-        }
-
-        public override bool CanStore()
-        {
-            return false;
         }
     }
 }

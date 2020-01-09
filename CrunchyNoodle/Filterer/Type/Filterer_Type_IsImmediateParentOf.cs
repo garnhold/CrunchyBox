@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_IsImmediateParentOf<T> : Filterer_Type_IsImmediateParentOf
     {
         static public readonly Filterer_Type_IsImmediateParentOf<T> INSTANCE = new Filterer_Type_IsImmediateParentOf<T>();

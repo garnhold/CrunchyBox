@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,10 +6,10 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILLabel : ILStatement
     {
         private string name;
@@ -38,6 +38,11 @@ namespace CrunchySalt
         public void RenderIL_Break(ILCanvas canvas)
         {
             FetchLabel(canvas).Emit_Br();
+        }
+
+        public void RenderIL_Leave(ILCanvas canvas)
+        {
+            FetchLabel(canvas).Emit_Leave();
         }
 
         public override void RenderIL_Execute(ILCanvas canvas)

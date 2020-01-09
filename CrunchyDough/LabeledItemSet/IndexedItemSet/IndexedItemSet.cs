@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public interface IndexedItemLookup<T> : LookupSet<int, T> where T : IndexedItem { }
     public class IndexedItemSet<T> : LabeledItemSet<int, T>, IndexedItemLookup<T> where T : IndexedItem

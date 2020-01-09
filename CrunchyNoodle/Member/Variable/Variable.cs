@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public abstract class Variable : Member, IDynamicCustomAttributeProvider
     {
         private Type variable_type;
@@ -25,32 +25,35 @@ namespace CrunchyNoodle
 
         public bool SetContents(object target, object value)
         {
-            if (target != null)
+            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
                 return SetContentsInternal(target, PrepareValue(value));
 
             return false;
         }
 
-        public bool UpdateContents(object target, object value)
+        public ValueChangeResult ChangeContents(object target, object value)
         {
-            if (target != null)
+            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
             {
                 object prepared_value = PrepareValue(value);
 
                 if (prepared_value.NotEqualsEX(GetContentsInternal(target)))
-                    return SetContentsInternal(target, prepared_value);
+                {
+                    if (SetContentsInternal(target, prepared_value))
+                        return ValueChangeResult.SuccessChanged;
+                }
 
-                return true;
+                return ValueChangeResult.SuccessUnchanged;
             }
 
-            return false;
+            return ValueChangeResult.Failure;
         }
 
         public object GetContents(object target)
         {
             object value = null;
 
-            if (target != null)
+            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
                 value = GetContentsInternal(target);
 
             return value;

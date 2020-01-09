@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class Worker_SimpleAmortize<T> : Worker<T>
     {
-        private Timer frame_timer;
+        private Stopwatch frame_timer;
 
         protected override void WorkInternal(WorkCollection<T> work_collection)
         {
@@ -19,12 +19,12 @@ namespace CrunchyDough
 
         public Worker_SimpleAmortize(long i, Process<T> p, TimeSource t) : base(i, p, t)
         {
-            frame_timer = new Timer(t);
+            frame_timer = new Stopwatch(t);
         }
 
-        public Worker_SimpleAmortize(long i, Process<T> p) : this(i, p, TimeSource_Stopwatch.INSTANCE) { }
+        public Worker_SimpleAmortize(long i, Process<T> p) : this(i, p, TimeSource_System.INSTANCE) { }
 
         public Worker_SimpleAmortize(Duration i, Process<T> p, TimeSource t) : this(i.GetWholeMilliseconds(), p, t) { }
-        public Worker_SimpleAmortize(Duration i, Process<T> p) : this(i, p, TimeSource_Stopwatch.INSTANCE) { }
+        public Worker_SimpleAmortize(Duration i, Process<T> p) : this(i, p, TimeSource_System.INSTANCE) { }
     }
 }

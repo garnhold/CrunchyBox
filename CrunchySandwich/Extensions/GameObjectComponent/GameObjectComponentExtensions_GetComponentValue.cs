@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_GetComponentValue
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_GetComponentValue
     {
 		static public J GetComponentValue<T, J>(this GameObject item, Operation<J, T> operation)
         {

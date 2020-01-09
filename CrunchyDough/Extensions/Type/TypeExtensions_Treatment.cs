@@ -1,17 +1,23 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class TypeExtensions_Treatment
     {
         static public bool CanBeTreatedAs(this Type item, Type type)
         {
-            if (item != null)
+            if (item != null && type != null)
             {
                 if (type.IsAssignableFrom(item))
                     return true;
+
+                if (type.IsGenericParameter)
+                {
+                    if (type.GetGenericParameterConstraints().AreAll(t => item.CanBeTreatedAs(t)))
+                        return true;
+                }
             }
 
             return false;

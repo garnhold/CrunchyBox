@@ -1,28 +1,42 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
-    public abstract class EditAction : IDynamicCustomAttributeProvider
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
+    public class EditAction : IDynamicCustomAttributeProvider
     {
         private EditTarget target;
+        private Action action;
 
-        public abstract void Execute();
-
-        public abstract string GetName();
-        public abstract IEnumerable<Attribute> GetAllCustomAttributes(bool inherit);
-
-        public EditAction(EditTarget t)
+        static public EditAction New(EditTarget target, Action action)
         {
-            target = t;
+            return new EditAction(target, action);
+        }
+
+        public EditAction(EditTarget o, Action a)
+        {
+            target = o;
+            action = a;
+        }
+
+        public void Execute()
+        {
+            target.TouchWithUndo(GetName(), delegate () {
+                target.GetObjects().Process(o => action.Execute(o));
+            });
+        }
+
+        public string GetName()
+        {
+            return action.GetActionName();
         }
 
         public EditTarget GetTarget()
@@ -32,7 +46,12 @@ namespace CrunchySandwichBag
 
         public EditorGUIElement CreateEditorGUIElement()
         {
-            return new EditorGUIElement_Single_EditAction_Button(this);
+            return new EditorGUIElement_EditAction_Button(this);
+        }
+
+        public IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
+        {
+            return action.GetAllCustomAttributes(inherit);
         }
     }
 }

@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    
     static public class SerializedObjectExtensions_SerializedProperty
     {
         static public IEnumerable<SerializedProperty> GetImmediateChildren(this SerializedObject item, bool only_visible)

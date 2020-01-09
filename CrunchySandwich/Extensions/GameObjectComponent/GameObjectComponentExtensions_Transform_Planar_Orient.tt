@@ -1,0 +1,29 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Planar_Orient
+    {
+<# foreach(string type_name in type_names){#>
+		
+		static public void OrientPlanarLocalToWorld(this <#=type_name#> item, Vector2 l1, Vector2 l2, Vector2 w1, Vector2 w2)
+		{
+			item.transform.OrientPlanarLocalToWorld(l1, l2, w1, w2);
+		}
+<# } #>
+	}
+}

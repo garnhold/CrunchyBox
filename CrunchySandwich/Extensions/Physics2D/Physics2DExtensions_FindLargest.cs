@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public partial class Physics2DExtensions
     {
         static public float FindLargestCircleFit(Vector2 position, float maximum, int layer_mask = IntBits.ALL_BITS, float margin = Mathq.DEFAULT_SOLVE_MARGIN, int max_iterations = Mathq.DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS)

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class ICollectionExtensions_Random
     {
         static public T GetRandom<T>(this ICollection<T> item, RandIntSource source)

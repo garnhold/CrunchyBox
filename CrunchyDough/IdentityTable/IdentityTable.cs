@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class IdentityTable<ID_TYPE, OBJECT_TYPE> : LookupSet<ID_TYPE, OBJECT_TYPE> where OBJECT_TYPE : class
     {

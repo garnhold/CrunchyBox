@@ -5,26 +5,28 @@ using System.Collections.Generic;
 
 using System.Windows;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Noodle;
+    using Sack;
+    
     static public class WindowExtensions_LinkSyncroDaemon
     {
-        static public void AttachLinkSyncroDaemon(this Window item, LinkSyncroDaemon to_attach)
+        static public void SyncronizeLinkSyncroDaemon(this Window item, LinkSyncroDaemon to_attach)
         {
             if (item.IsVisible)
                 to_attach.Start();
             else
                 to_attach.StopClear();
+        }
+
+        static public void AttachLinkSyncroDaemon(this Window item, LinkSyncroDaemon to_attach)
+        {
+            item.SyncronizeLinkSyncroDaemon(to_attach);
 
             item.IsVisibleChanged += delegate(object sender, DependencyPropertyChangedEventArgs e) {
-                if ((bool)e.NewValue)
-                    to_attach.Start();
-                else
-                    to_attach.StopClear();
+                item.SyncronizeLinkSyncroDaemon(to_attach);
             };
 
             item.Closed += delegate(object sender, EventArgs e) {

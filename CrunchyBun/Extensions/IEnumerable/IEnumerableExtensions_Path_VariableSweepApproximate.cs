@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class IEnumerableExtensions_Path_VariableSweepApproximate
     {
         static public IEnumerable<T> VariableSweepApproximatePath<T>(this IEnumerable<T> item, int maximum_length, double threshold, Operation<double, T, T, T> operation)
@@ -14,7 +14,7 @@ namespace CrunchyBun
         }
         static public IEnumerable<T> VariableSweepApproximatePath<T>(this IList<T> item, int maximum_length, double threshold, Operation<double, T, T, T> operation)
         {
-            for (int length = item.Count.Min(maximum_length); length >= 3; length--)
+            for (int length = maximum_length.Min(item.Count); length >= 3; length--)
             {
                 List<T> lowest_rated;
                 double lowest_rating;

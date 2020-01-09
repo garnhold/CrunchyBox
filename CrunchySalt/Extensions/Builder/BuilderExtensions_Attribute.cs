@@ -4,11 +4,11 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class BuilderExtensions_Attribute
+    using Dough;
+    
+    static public class BuilderExtensions_Attribute
 	{
 			static public void AddCustomAttribute(this AssemblyBuilder item, ConstructorInfo constructor_info, params object[] arguments)
         {

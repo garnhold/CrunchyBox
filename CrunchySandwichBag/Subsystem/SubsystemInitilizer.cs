@@ -6,37 +6,40 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
+    [CodeGenerator]
     static public class SubsystemInitilizer
     {
-        [MenuItem("Edit/Force Subsystem Generation")]
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [CodeGenerator]
         static private void GenerateSubsystems()
         {
-            CrunchyNoodle.Types.GetFilteredTypes(
-                Filterer_Type.CanBeTreatedAs<Subsystem>(),
-                Filterer_Type.IsConcreteClass()
-            ).Process(t => SubsystemExtensions_Asset.CreateSubsystemAssetIfMissing(t));
+            CodeGenerator.GenerateStaticClass("SubsystemMenuItems", delegate(CSTextDocumentBuilder builder) {
+                foreach (Type type in Types.GetFilteredTypes(
+                    Filterer_Type.CanBeTreatedAs<Subsystem>(),
+                    Filterer_Type.IsConcreteClass()
+                ))
+                {
+                    CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
+                        "PATH", ("Edit/Project Settings/" + type.Name).StyleAsDoubleQuoteLiteral(),
+                        "FUNCTION", ("Focus" + type.Name).StyleAsFunctionName(),
+                        "TYPE", type.Namespace.AppendToVisible(".") + type.Name
+                    );
 
-            CodeGenerator.GenerateEditorClassFromTypes<Subsystem>("SubsystemMenuItems", delegate(Type type, CSTextDocumentBuilder builder) {
-                CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                    "PATH", ("Edit/Project Settings/" + type.Name).StyleAsLiteralString(),
-                    "FUNCTION", ("Focus" + type.Name).StyleAsFunctionName(),
-                    "TYPE", type.Namespace.AppendToVisible(".") + type.Name
-                );
+                    writer.Write("[MenuItem(?PATH)]");
+                    writer.Write("static public void ?FUNCTION()", delegate() {
+                        writer.Write("?TYPE.GetInstance().FocusAsset();");
+                    });
 
-                writer.Write("[MenuItem(?PATH)]");
-                writer.Write("static public void ?FUNCTION()", delegate() {
-                    writer.Write("Subsystem.GetInstance<?TYPE>().FocusAsset();");
-                });
-            });
+                    SubsystemExtensions_Asset.CreateSubsystemAssetIfMissing(type);
+                }
+            }, GeneratedCodeType.EditorOnlyLeaf);
         }
     }
 }

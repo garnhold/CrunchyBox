@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class CachedRegex
     {
@@ -13,25 +13,29 @@ namespace CrunchyDough
 
         private OperationCache<bool, string> is_match_cache;
         private OperationCache<Match, string> match_cache;
-
         private OperationCache<MatchCollection, string> matches_cache;
+
+        private OperationCache<string[], string> split_cache;
         private OperationCache<CachedRegexReplaceMatchCollection, string> replace_cache;
 
         public CachedRegex(Regex r)
         {
             regex = r;
 
-            is_match_cache = new OperationCache<bool, string>(delegate(string input) {
+            is_match_cache = new OperationCache<bool, string>("is_match_cache", delegate (string input) {
                 return input.RegexIsMatch(regex);
             });
-            match_cache = new OperationCache<Match, string>(delegate(string input) {
+            match_cache = new OperationCache<Match, string>("match_cache", delegate (string input) {
                 return input.RegexMatch(regex);
             });
-
-            matches_cache = new OperationCache<MatchCollection, string>(delegate(string input) {
+            matches_cache = new OperationCache<MatchCollection, string>("matches_cache", delegate (string input) {
                 return input.RegexMatches(regex);
             });
-            replace_cache = new OperationCache<CachedRegexReplaceMatchCollection, string>(delegate(string input) {
+
+            split_cache = new OperationCache<string[], string>("split_cache", delegate (string input) {
+                return input.RegexSplit(regex);
+            });
+            replace_cache = new OperationCache<CachedRegexReplaceMatchCollection, string>("replace_cache", delegate (string input) {
                 return new CachedRegexReplaceMatchCollection(input, Matches(input));
             });
         }
@@ -40,8 +44,9 @@ namespace CrunchyDough
         {
             is_match_cache.Clear();
             match_cache.Clear();
-
             matches_cache.Clear();
+
+            split_cache.Clear();
             replace_cache.Clear();
         }
 
@@ -58,6 +63,11 @@ namespace CrunchyDough
         public MatchCollection Matches(string input)
         {
             return matches_cache.Fetch(input);
+        }
+
+        public string[] Split(string input)
+        {
+            return split_cache.Fetch(input);
         }
 
         public string Replace(string input, string replacement)

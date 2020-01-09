@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class SimulatableExtensions_IEnumerable
     {
         static public void UpdateSimulatables<T>(this IEnumerable<T> item, float step) where T : Simulatable

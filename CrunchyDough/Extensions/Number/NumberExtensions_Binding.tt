@@ -3,58 +3,151 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-string[] type_names = new string[]{
-	"byte",
-	"short",
-	"int",
-	"long",
-	"float",
-	"double",
-	"decimal"
+NumericInfo[] infos = new NumericInfo[]{
+	new NumericInfo("byte", "ByteRange", "ByteVariance", "0"),
+	new NumericInfo("short", "ShortRange", "ShortVariance", "0"),
+	new NumericInfo("int", "IntRange", "IntVariance", "0"),
+	new NumericInfo("long", "LongRange", "LongVariance", "0L"),
+	new NumericInfo("float", "FloatRange", "FloatVariance", "0.0f"),
+	new NumericInfo("double", "DoubleRange", "DoubleVariance", "0.0"),
+	new NumericInfo("decimal", "DecimalRange", "DecimalVariance", "0.0m")
 };
 #>
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
 	static public class NumberExtensions_Binding
     {
-<# foreach(string type_name in type_names){#>
-		static public <#=type_name#> BindAbove(this <#=type_name#> item, <#=type_name#> lower)
+<# foreach(NumericInfo info in infos){#>
+		static public <#=info.type_name#> BindAbove(this <#=info.type_name#> item, <#=info.type_name#> lower)
         {
             if (item > lower)
                 return item;
 
             return lower;
         }
+		static public bool IsBoundAbove(this <#=info.type_name#> item, <#=info.type_name#> lower)
+		{
+			if (item >= lower)
+				return true;
 
-        static public <#=type_name#> BindBelow(this <#=type_name#> item, <#=type_name#> upper)
+			return false;
+		}
+
+        static public <#=info.type_name#> BindBelow(this <#=info.type_name#> item, <#=info.type_name#> upper)
         {
             if (item < upper)
                 return item;
 
             return upper;
         }
+		static public bool IsBoundBelow(this <#=info.type_name#> item, <#=info.type_name#> upper)
+		{
+			if (item <= upper)
+				return true;
 
-        static public <#=type_name#> BindBetween(this <#=type_name#> item, <#=type_name#> value1, <#=type_name#> value2)
+			return false;
+		}
+
+        static public <#=info.type_name#> BindBetween(this <#=info.type_name#> item, <#=info.type_name#> value1, <#=info.type_name#> value2)
         {
-            <#=type_name#> lower;
-            <#=type_name#> upper;
+            <#=info.type_name#> lower;
+            <#=info.type_name#> upper;
 
             value1.Order(value2, out lower, out upper);
-
-            if (item > lower)
-            {
-                if (item < upper)
-                    return item;
-
+            
+            if(item < lower)
+                return lower;
+                
+            if(item > upper)
                 return upper;
-            }
+                
+            return item;
+        }
+		static public <#=info.type_name#> BindBetween(this <#=info.type_name#> item, <#=info.range_name#> range)
+		{
+			return item.BindBetween(range.x1, range.x2);
+		}
 
-            return lower;
+		static public bool IsBoundBetween(this <#=info.type_name#> item, <#=info.type_name#> value1, <#=info.type_name#> value2)
+		{
+			<#=info.type_name#> low;
+            <#=info.type_name#> high;
+
+            value1.Order(value2, out low, out high);
+
+            if (item.IsBoundAbove(low) && item.IsBoundBelow(high))
+                return true;
+
+            return false;
+		}
+		static public bool IsBoundBetween(this <#=info.type_name#> item, <#=info.range_name#> range)
+		{
+			return item.IsBoundBetween(range.x1, range.x2);
+		}
+        
+        static public <#=info.type_name#> BindAround(this <#=info.type_name#> item, <#=info.type_name#> value, <#=info.type_name#> radius)
+        {
+            if(radius > <#=info.zero#>)
+            {
+                <#=info.type_name#> lower = (<#=info.type_name#>)(value - radius);
+                <#=info.type_name#> upper = (<#=info.type_name#>)(value + radius);
+                
+                if(item < lower)
+                    return lower;
+                    
+                if(item > upper)
+                    return upper;
+                    
+                return item;
+            }
+            
+            return value;
+        }
+        static public <#=info.type_name#> BindAround(this <#=info.type_name#> item, <#=info.variance_name#> variance)
+        {
+            return item.BindAround(variance.value, variance.radius);
+        }
+        
+        static public bool IsBoundAround(this <#=info.type_name#> item, <#=info.type_name#> value, <#=info.type_name#> radius)
+        {
+            if(radius >= <#=info.zero#>)
+            {
+                <#=info.type_name#> lower = (<#=info.type_name#>)(value - radius);
+                <#=info.type_name#> upper = (<#=info.type_name#>)(value + radius);
+                
+                if(item >= lower && item <= upper)
+                    return true;
+            }
+            
+            return false;
+        }
+        static public bool IsBoundAround(this <#=info.type_name#> item, <#=info.variance_name#> variance)
+        {
+            return item.IsBoundAround(variance.value, variance.radius);
         }
 <# } #>
 	}
 }
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string range_name;
+    public readonly string variance_name;
+    
+    public readonly string zero;
+
+	public NumericInfo(string t, string r, string v, string z)
+	{
+		type_name = t;
+		range_name = r;
+        variance_name = v;
+        
+        zero = z;
+	}
+}
+#>

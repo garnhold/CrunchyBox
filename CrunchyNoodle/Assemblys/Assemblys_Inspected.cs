@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public partial class Assemblys
     {
         static private void AbsorbInspectedAssemblys(Assembly target, HashSet<Assembly> absorbed, HashSet<Assembly> visited)
@@ -26,7 +26,7 @@ namespace CrunchyNoodle
             }
         }
 
-        static private OperationCache<HashSet<Assembly>> GET_ALL_INSPECTED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache(delegate() {
+        static private OperationCache<HashSet<Assembly>> GET_ALL_INSPECTED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSPECTED_ASSEMBLYS", delegate() {
             HashSet<Assembly> absorbed = new HashSet<Assembly>();
             HashSet<Assembly> visited = new HashSet<Assembly>();
 

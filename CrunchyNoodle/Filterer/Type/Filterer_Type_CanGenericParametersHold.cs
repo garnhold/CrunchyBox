@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_Type_CanGenericParametersHold<P1> : Filterer_Type_CanGenericParametersHold
     {
         static public readonly Filterer_Type_CanGenericParametersHold<P1> INSTANCE = new Filterer_Type_CanGenericParametersHold<P1>();
@@ -54,11 +54,6 @@ namespace CrunchyNoodle
         public override bool Filter(Type item)
         {
             return item.CanGenericParametersHold(GetId().GetValues());
-        }
-
-        public override IEnumerable<Filterer<Assembly>> GetAssemblyFilters()
-        {
-            return GetId().Convert(t => Filterer_Assembly.IsTypeVisible(t));
         }
     }
     static public partial class Filterer_Type

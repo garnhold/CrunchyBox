@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchySack
+namespace Crunchy.Sack
 {
     public abstract class RepresentationEngineComponent
     {

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    using Bun;
+    
     static public class VectorI2Extensions_VectorF2
     {
         static public VectorF2 GetVectorF2(this VectorI2 item)

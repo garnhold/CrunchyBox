@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    [CustomAssetCategory("Land")]
+    using Dough;
+    
+    [AssetClassCategory("Land")]
     public abstract class LandRegionBuilder : CustomAsset
     {
         public abstract void InitilizeLandRegion(Land land, LandRegionType land_region_type);

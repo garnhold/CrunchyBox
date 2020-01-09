@@ -1,0 +1,149 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+TypeInfo[] types = new TypeInfo[]{
+	new TypeInfo("SpriteRenderer", "color"),
+	new TypeInfo("TextMesh", "color")
+};
+
+ComponentInfo[] components = new ComponentInfo[]{
+	new ComponentInfo("Red", "r"),
+	new ComponentInfo("Green", "g"),
+	new ComponentInfo("Blue", "b"),
+	new ComponentInfo("Alpha", "a")
+};
+
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    using Bun;
+    
+    static public class HasColorExtensions
+    {
+
+<#foreach(TypeInfo type in types){#>
+		static public void InterpolateColor(this <#=type.name#> item, Color target, float amount)
+        {
+            item.color = item.color.GetInterpolate(target, amount);
+        }
+
+		static public void TowardsColor(this <#=type.name#> item, Color target, Color amount)
+		{
+			item.color = item.color.GetTowards(target, amount);
+		}
+
+		static public bool MoveTowardsColor(this <#=type.name#> item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.color.GetMoveTowards(target, amount, out output);
+
+			item.color = output;
+			return result;
+		}
+
+	<#foreach(ComponentInfo component in components){#>
+
+		static public void Set<#=component.name#>(this <#=type.name#> item, float value)
+        {
+            item.color = item.color.GetWith<#=component.name#>(value);
+        }
+
+		static public void Adjust<#=component.name#>(this <#=type.name#> item, float amount)
+        {
+            item.Set<#=component.name#>(item.Get<#=component.name#>() + amount);
+        }
+
+		static public void Interpolate<#=component.name#>(this <#=type.name#> item, float target, float amount)
+        {
+            item.Set<#=component.name#>(item.Get<#=component.name#>().GetInterpolate(target, amount));
+        }
+
+		static public void Towards<#=component.name#>(this <#=type.name#> item, float target, float amount)
+		{
+			item.Set<#=component.name#>(item.Get<#=component.name#>().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowards<#=component.name#>(this <#=type.name#> item, float target, float amount)
+		{
+			float output;
+			bool result = item.Get<#=component.name#>().GetMoveTowards(target, amount, out output);
+
+			item.Set<#=component.name#>(output);
+			return result;
+		}
+
+		static public float Get<#=component.name#>(this <#=type.name#> item)
+        {
+            return item.<#=type.color_code#>.<#=component.variable#>;
+        }
+	<#}#>
+
+		static public void SetRGB(this <#=type.name#> item, float r, float g, float b)
+		{
+			item.color = item.color.GetWithRGB(r, g, b);
+		}
+		static public void SetRGB(this <#=type.name#> item, Color rgb)
+		{
+			item.color = item.color.GetWithRGB(rgb);
+		}
+
+		static public void InterpolateRGB(this <#=type.name#> item, Color target, float amount)
+        {
+            item.SetRGB(item.GetRGB().GetInterpolate(target, amount));
+        }
+
+		static public void TowardsRGB(this <#=type.name#> item, Color target, Color amount)
+		{
+			item.SetRGB(item.GetRGB().GetTowards(target, amount));
+		}
+
+		static public bool MoveTowardsRGB(this <#=type.name#> item, Color target, Color amount)
+		{
+			Color output;
+			bool result = item.GetRGB().GetMoveTowards(target, amount, out output);
+
+			item.SetRGB(output);
+			return result;
+		}
+
+		static public Color GetRGB(this <#=type.name#> item)
+        {
+            return item.color.GetWithAlpha(1.0f);
+        }
+<#}#>
+	}
+}
+<#+
+class TypeInfo
+{
+	public readonly string name;
+	public readonly string color_code;
+
+	public TypeInfo(string n, string cc)
+	{
+		name = n;
+		color_code = cc;
+	}
+}
+
+class ComponentInfo
+{
+	public readonly string name;
+	public readonly string variable;
+
+	public ComponentInfo(string n, string v)
+	{
+		name = n;
+		variable = v;
+	}
+}
+#>

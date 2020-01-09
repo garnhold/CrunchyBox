@@ -3,45 +3,225 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-string[] type_names = new string[]{"MonoBehaviour", "ScriptableObject"};
+TypeInfo[] types = new TypeInfo[]{
+    new TypeInfo("MonoBehaviourEX", "MonoBehaviour", "Prefab"),
+    new TypeInfo("ScriptableObjectEX", "ScriptableObject", "Sofab"),
+    new TypeInfo("TileBaseEX", "TileBase", "Sofab")
+};
 #>
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyRecipe;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-<# foreach(string type_name in type_names){#>
-	public class <#=type_name#>EX : <#=type_name#>, ISerializationCallbackReceiver
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Recipe;
+    
+    <# foreach(TypeInfo info in types){#>
+    public class <#=info.lookup_type#> : Subsystem<<#=info.lookup_type#>>
     {
-		[SerializeField][HideInInspector][Multiline(12)]private string tyon_data = "";
-		[SerializeField][HideInInspector]private List<UnityEngine.Object> tyon_unity_objects;
-
-		protected virtual void Construct() { }
-
-        public void OnBeforeSerialize()
+        [SerializeFieldEX]private Dictionary<string, <#=info.type#>> items;
+        
+        public <#=info.lookup_type#>()
         {
-			List<object> external_objects = new List<object>();
+            items = new Dictionary<string, <#=info.type#>>();
+        }
+        
+        public void Clear()
+        {
+            items.Clear();
+        }
+        
+        public void Register(<#=info.type#> item)
+        {
+            items[item.GetReferenceId()] = item;
+        }
+        
+        public <#=info.type#> Lookup(string id)
+        {
+            return items.GetValue(id);
+        }
+    }
+    
+    public class <#=info.reference_type#>
+    {
+        [SerializeFieldEX]private string prefab_id;
 
-			tyon_data = Tyon.Serialize(this, UnityTyonSerializationSettings.INSTANCE, external_objects);
-			tyon_unity_objects = external_objects.Convert<object, UnityEngine.Object>().ToList();
+        static public implicit operator <#=info.type#>(<#=info.reference_type#> p)
+        {
+            return p.Resolve();
         }
 
-        public void OnAfterDeserialize()
+        static public implicit operator <#=info.reference_type#>(<#=info.type#> o)
         {
-			List<object> external_objects = tyon_unity_objects.Convert<UnityEngine.Object, object>().ToList();
-
-			Construct();
-			Tyon.DeserializeInto(tyon_data, this, UnityTyonSerializationSettings.INSTANCE, external_objects);
+            return o.IfNotNull(z => new <#=info.reference_type#>(z.GetReferenceId()));
         }
+
+        public <#=info.reference_type#>(string id)
+        {
+            prefab_id = id;
+        }
+
+        public <#=info.reference_type#>() : this("") { }
+
+        public <#=info.type#> Resolve()
+        {
+            return <#=info.lookup_type#>.GetInstance().Lookup(prefab_id);
+        }
+    }
+
+	public class <#=info.type#> : <#=info.base_type#>, ISerializationCallbackReceiver, SerializationCorruptable
+    {
+		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
+		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
+
+		[SerializeField][RecoveryField][AutoMultiline]private string pack_error;
+        [SerializeField][RecoveryField][AutoMultiline]private string unpack_error;
+
+		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
+
+		[SerializeField][HideInInspector]private string reference_id;
+        
+        protected virtual void LateConstruct() { }
+        
+		[RecoveryFunction]
+		private void ForcePermissiveUnpackTyon()
+		{
+			UnpackTyon(TyonHydrationMode.Permissive);
+		}
+
+		private void PackTyon()
+		{
+			if (did_unpack_tyon_data || tyon_data.IsBlank())
+			{
+				string old_tyon_data = tyon_data;
+				List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
+
+				try
+				{
+					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
+
+                    tyon_data = context.Serialize(this);
+                    tyon_unity_objects = context.GetRegisteredExternalObjects()
+						.Convert<object, UnityEngine.Object>()
+						.ToList();
+
+					pack_error = null;
+
+					if (tyon_data != old_tyon_data)
+						UnpackTyon();
+				}
+				catch(Exception ex)
+				{
+					tyon_data = old_tyon_data;
+					tyon_unity_objects = old_tyon_unity_objects;
+
+					pack_error = ex.Message + "\n\n" + ex;
+				}
+			}
+		}
+
+		private void UnpackTyon(TyonHydrationMode mode = TyonHydrationMode.Strict)
+		{
+			if (tyon_data.IsVisible())
+			{
+				try
+				{
+					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
+
+                    did_unpack_tyon_data = false;
+                    context.DeserializeInto(this, tyon_data, mode);
+
+					did_unpack_tyon_data = true;
+					unpack_error = null;
+
+					PackTyon();
+				}
+				catch(Exception ex)
+				{
+					unpack_error = ex.Message + "\n\n" + ex;
+				}
+			}
+		}
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+			PackTyon();
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+			UnpackTyon();
+            
+            LateConstruct();
+        }
+
+		public bool IsSerializationCorrupt()
+		{
+			if (unpack_error.IsVisible())
+				return true;
+
+			if (pack_error.IsVisible())
+				return true;
+
+			return false;
+		}
+
+		public string GetReferenceId()
+		{
+			return reference_id;
+		}
 	}
+    
+    static public class <#=info.type#>Extensions
+    {
+        static public T Get<#=info.prefab_type#><T>(this T item) where T : <#=info.type#>
+        {
+            return <#=info.lookup_type#>.GetInstance().Lookup(item.GetReferenceId()).Convert<T>();
+        }
+        
+        static public bool Is<#=info.prefab_type#>(this <#=info.type#> item)
+        {
+            if (item == item.Get<#=info.prefab_type#>())
+                return true;
+                
+            return false;
+        }
+        static public bool IsInstance(<#=info.type#> item)
+        {
+            if (item.Is<#=info.prefab_type#>() == false)
+                return true;
+                
+            return false;
+        }
+    }
 
 <# } #>
 }
+<#+
+class TypeInfo
+{
+    public readonly string type;
+    public readonly string base_type;
+    public readonly string prefab_type;
+    
+    public readonly string lookup_type;
+    public readonly string reference_type;
+    
+    public TypeInfo(string t, string bt, string pt)
+    {
+        type = t;
+        base_type = bt;
+        prefab_type = pt;
+        
+        lookup_type = type + prefab_type + "Lookup";
+        reference_type = "SaveState" + type + prefab_type + "Reference";
+    }
+}
+#>

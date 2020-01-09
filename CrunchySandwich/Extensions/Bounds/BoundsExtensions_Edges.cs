@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class BoundsExtensions_Edges
     {
         static public IEnumerable<Tuple<Vector3, Vector3>> GetEdges(this Bounds item)

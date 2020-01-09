@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public struct IdentifiableTuple<T1, T2, T3, T4> : Identifiable
         where T1 : Identifiable

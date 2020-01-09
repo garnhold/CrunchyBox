@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StringExtensions_Compare
     {
@@ -38,23 +38,7 @@ namespace CrunchyDough
 
         static public bool IsBlank(this string item)
         {
-            if(item.IsEmpty() || item.AreAll(c => char.IsWhiteSpace(c) || char.IsControl(c)))
-                return true;
-
-            return false;
-        }
-
-        static public bool IsMultiLine(this string item)
-        {
-            if(item.HasAny(CharExtensions_Category.NEWLINE))
-                return true;
-
-            return false;
-        }
-
-        static public bool IsSingleLine(this string item)
-        {
-            if (item.IsMultiLine() == false)
+            if (item == null || item.RegexIsMatch("^[\\s\\p{C}]*$"))
                 return true;
 
             return false;
@@ -89,7 +73,7 @@ namespace CrunchyDough
 
         static public bool HasTrailingWhitespace(this string item)
         {
-            if (item.RegexIsMatch("[ \t\r\n]$"))
+            if (item.RegexIsMatch("\\s$"))
                 return true;
 
             return false;

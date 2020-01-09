@@ -8,13 +8,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-	public class CmlRepresentationSpace
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public class CmlRepresentationSpace
 	{
         private List<object> representation_stack;
         private Dictionary<string, object> representations;

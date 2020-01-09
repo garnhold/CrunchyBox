@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class GridExtensions_Stamp
     {
         static public Stamp<T> CreateStamp<T>(this Grid<T> item)

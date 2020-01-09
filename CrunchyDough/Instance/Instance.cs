@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class Instance<T>
     {
@@ -15,7 +15,7 @@ namespace CrunchyDough
         public T Get()
         {
             if (instance == null)
-                instance = typeof(T).CreateForcedInstance<T>();
+                instance = typeof(T).CreateInstance<T>();
 
             return instance;
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Reflection;
 using System.Collections;
@@ -6,19 +6,22 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Bun;
+
     public class ApplicationEX
     {
         private Thread unity_main_thread;
 
+        private List<Process> start_processes;
+        private List<Process> start_in_editor_processes; //These will only be called if Crunchy.SandwichBag is also used
+
         private List<Process> update_processes;
-        private List<Process> update_in_editor_processes; //These will only be called if CrunchySandwichBag is also used
+        private List<Process> update_in_editor_processes; //These will only be called if Crunchy.SandwichBag is also used
 
         private List<Process> draw_gizmos_processes;
         private List<Process> deferred_processes;
@@ -34,7 +37,7 @@ namespace CrunchySandwich
 
         private IEnumerable<Type> GetApplicationEXMarkedTypes()
         {
-            return CrunchyNoodle.Types.GetFilteredTypes(
+            return Types.GetFilteredTypes(
                 Filterer_Type.HasCustomAttributeOfType<ApplicationEXSatelliteAttribute>(false),
                 Filterer_Type.IsStaticClass()
             );
@@ -55,8 +58,22 @@ namespace CrunchySandwich
                 .Convert<MethodInfoEX, Process>(m => delegate() { m.Invoke(null, Empty.Array<object>()); });
         }
 
+        private void StartGeneral()
+        {
+            unity_main_thread = System.Threading.Thread.CurrentThread;
+        }
+
+        private void UpdateGeneral()
+        {
+            deferred_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
+            deferred_processes.Clear();
+        }
+
         private ApplicationEX()
         {
+            start_processes = GetApplicationEXMarkedTypeMethodProcesses("Start").ToList();
+            start_in_editor_processes = GetApplicationEXMarkedTypeMethodProcesses("StartInEditor").ToList();
+
             update_processes = GetApplicationEXMarkedTypeMethodProcesses("Update").ToList();
             update_in_editor_processes = GetApplicationEXMarkedTypeMethodProcesses("UpdateInEditor").ToList();
 
@@ -66,25 +83,31 @@ namespace CrunchySandwich
 
         public void Start()
         {
-            unity_main_thread = System.Threading.Thread.CurrentThread;
+            StartGeneral();
+            start_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
+        }
 
-            GetApplicationEXMarkedTypeMethodProcesses("Start").Process(p => p());
+        public void StartInEditor()
+        {
+            StartGeneral();
+            start_in_editor_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
         }
 
         public void Update()
         {
-            if (Application.isPlaying)
-                update_processes.Process(p => p());
-            else
-                update_in_editor_processes.Process(p => p());
+            UpdateGeneral();
+            update_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
+        }
 
-            deferred_processes.Process(p => p());
-            deferred_processes.Clear();
+        public void UpdateInEditor()
+        {
+            UpdateGeneral();
+            update_in_editor_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
         }
 
         public void DrawGizmos()
         {
-            draw_gizmos_processes.Process(p => p());
+            draw_gizmos_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
             draw_gizmos_processes.Clear();
         }
 

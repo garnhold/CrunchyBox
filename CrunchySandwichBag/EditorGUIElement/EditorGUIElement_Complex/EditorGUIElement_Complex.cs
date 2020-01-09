@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public abstract class EditorGUIElement_Complex : EditorGUIElement
     {
         private EditorGUIElement element;
@@ -18,7 +18,7 @@ namespace CrunchySandwichBag
         protected abstract bool NeedRecreation();
         protected abstract EditorGUIElement Recreate();
 
-        protected override void InitilizeInternal()
+        protected override void InitializeInternal()
         {
             if (NeedRecreation())
             {
@@ -30,8 +30,7 @@ namespace CrunchySandwichBag
                 }
             }
 
-            if (element != null)
-                element.Initilize();
+            element.IfNotNull(e => e.Initialize());
         }
 
         protected override bool HandleAttachment(ref EditorGUIElementAttachment attachment)
@@ -42,30 +41,30 @@ namespace CrunchySandwichBag
             return false;
         }
 
-        protected override void LayoutContentsInternal(Rect rect, float label_width)
+        protected override float DoPlanInternal()
         {
             if (element != null)
-                element.Layout(rect, label_width);
-        }
-
-        protected override void DrawContentsInternal(Rect view)
-        {
-            if (element != null)
-            {
-                element.Draw(view);
-                element.Unwind();
-            }
-
-            if (NeedRecreation())
-                Initilize();
-        }
-
-        protected override float CalculateElementHeightInternal()
-        {
-            if (element != null)
-                return element.GetHeight();
+                return element.Plan(GetContentsWidth(), GetLayoutState());
 
             return 0.0f;
+        }
+
+        protected override void LayoutContentsInternal(Vector2 position)
+        {
+            element.IfNotNull(e => e.Layout(position));
+        }
+
+        protected override void DrawContentsInternal(int draw_id, Rect view)
+        {
+            element.IfNotNull(e => e.Draw(draw_id, view));
+        }
+
+        protected override void UnwindInternal(int draw_id)
+        {
+            element.IfNotNull(e => e.Unwind(draw_id));
+
+            if (NeedRecreation())
+                Initialize();
         }
 
         public EditorGUIElement_Complex()

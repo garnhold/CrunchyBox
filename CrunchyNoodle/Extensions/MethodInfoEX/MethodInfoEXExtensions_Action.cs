@@ -1,26 +1,21 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class MethodInfoEXExtensions_Action
     {
-        static public Action CreateAction(this MethodInfoEX item, bool convert, IEnumerable<object> arguments)
+        static public Action CreateAction(this MethodInfoEX item, IEnumerable<object> arguments)
         {
-            return item.CreateFunction().CreateAction(convert, arguments);
+            return item.CreateFunction().CreateAction(arguments);
         }
-        static public Action CreateAction(this MethodInfoEX item, bool convert, params object[] arguments)
+        static public Action CreateAction(this MethodInfoEX item, params object[] arguments)
         {
-            return item.CreateAction(convert, (IEnumerable<object>)arguments);
-        }
-
-        static public Action CreateAction(this MethodInfoEX item)
-        {
-            return item.CreateAction(false);
+            return item.CreateAction((IEnumerable<object>)arguments);
         }
     }
 }

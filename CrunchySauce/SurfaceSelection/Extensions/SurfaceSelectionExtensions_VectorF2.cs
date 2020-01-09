@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Bun;
+    
     static public class SurfaceSelectionExtensions_VectorF2
     {
         static public VectorF2 GetDimensions<T>(this SurfaceSelection<T> item)

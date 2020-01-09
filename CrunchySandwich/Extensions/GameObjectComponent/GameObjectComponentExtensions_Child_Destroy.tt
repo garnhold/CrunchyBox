@@ -12,12 +12,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Child_Destroy
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Child_Destroy
     {
 <# foreach(string destroy_flavor in destroy_flavors){#>
 <# foreach(string type_name in type_names){#>

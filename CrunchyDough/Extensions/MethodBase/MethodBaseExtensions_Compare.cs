@@ -1,13 +1,24 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class MethodBaseExtensions_Compare
     {
+        static public bool IsOverridableMethod(this MethodBase item)
+        {
+            if (item.IsAbstract && item.IsFinal == false)
+                return true;
+
+            if (item.IsVirtual && item.IsFinal == false)
+                return true;
+
+            return false;
+        }
+
         static public bool IsEffectivelyStaticMethod(this MethodBase item)
         {
             if (item.IsStatic && item.IsExtensionMethod() == false)
@@ -50,18 +61,46 @@ namespace CrunchyDough
 
             return false;
         }
-
-        static public bool IsExtensionMethod(this MethodBase item, Type type)
+        static public bool IsExtensionMethodOf(this MethodBase item, Type type)
         {
             if (item.IsExtensionMethod() && item.CanTechnicalParameterHold(0, type))
                 return true;
 
             return false;
         }
-
-        static public bool IsExtensionMethod<T>(this MethodBase item)
+        static public bool IsExtensionMethodOf<T>(this MethodBase item)
         {
-            return item.IsExtensionMethod(typeof(T));
+            return item.IsExtensionMethodOf(typeof(T));
+        }
+
+        static public bool IsNonExtensionMethod(this MethodBase item)
+        {
+            if (item.IsExtensionMethod() == false)
+                return true;
+
+            return false;
+        }
+
+        static public bool IsPropertySetMethod(this MethodBase item)
+        {
+            if (item.Name.StartsWith("set_"))
+                return true;
+
+            return false;
+        }
+        static public bool IsPropertyGetMethod(this MethodBase item)
+        {
+            if (item.Name.StartsWith("get_"))
+                return true;
+
+            return false;
+        }
+        static public bool IsPropertyMethod(this MethodBase item)
+        {
+            if (item.IsPropertySetMethod() || item.IsPropertyGetMethod())
+                return true;
+
+            return false;
         }
 
         static public bool IsGenericMethod(this MethodBase item)

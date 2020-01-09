@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_PropInfo_Property
     {
-		static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_PROPERTY_PROP = ReflectionCache.Get().NewOperationCache(delegate(Type item, string name){
+        static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_PROPERTY_PROP = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_PROPERTY_PROP", delegate(Type item, string name) {
             return item.GetInstanceMethodPropInternal(
                 name.GetEntityPropertySetMethodName(),
                 name.GetEntityPropertyGetMethodName()

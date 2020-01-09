@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,17 +6,37 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchyGinger;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
-    static public partial class CodeGenerator
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Ginger;
+    using Sandwich;
+    
+    static public class CodeGenerator
     {
-        static private void GenerateCode(string directory, string filename, Process<CSTextDocumentBuilder> process)
+        static private int REGENERATION_COUNT;
+
+        [MenuItem("Edit/Force Code Generation")]
+        [UnityEditor.Callbacks.DidReloadScripts]
+        static private void GenerateCode()
+        {
+            REGENERATION_COUNT = 0;
+
+            MarkedMethods<CodeGeneratorAttribute>
+                .GetFilteredMarkedStaticMethods(
+                    Filterer_MethodInfo.HasNoEffectiveParameters()
+                ).ProcessSandboxed(
+                    m => m.Invoke(null, Empty.Array<object>()),
+                    e => Debug.LogException(e)
+                );
+
+            if(REGENERATION_COUNT >= 1)
+                AssetDatabase.Refresh();
+        }
+
+        static public void GenerateCode(string base_filename, Process<CSTextDocumentBuilder> process, GeneratedCodeType type)
         {
             CSTextDocument document = new CSTextDocument(new CSHeader_SimpleDated("MMMM dd, yyyy"));
 
@@ -24,58 +44,40 @@ namespace CrunchySandwichBag
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs();
             
             writer.Write("using System;");
+            writer.Write("using System.Collections;");
+            writer.Write("using System.Collections.Generic;");
 
             writer.Write("using UnityEngine;");
 
             writer.Write("#if UNITY_EDITOR");
             writer.Write("using UnityEditor;");
-            writer.Write("using CrunchySandwichBag;");
+            writer.Write("using Crunchy.SandwichBag;");
             writer.Write("#endif");
 
-            writer.Write("using CrunchyDough;");
-            writer.Write("using CrunchySalt;");
-            writer.Write("using CrunchyNoodle;");
-            writer.Write("using CrunchyBun;");
-            writer.Write("using CrunchySandwich;");
+            writer.Write("using Crunchy.Dough;");
+            writer.Write("using Crunchy.Salt;");
+            writer.Write("using Crunchy.Noodle;");
+            writer.Write("using Crunchy.Bun;");
+            writer.Write("using Crunchy.Bread;");
+            writer.Write("using Crunchy.Sandwich;");
 
             process(builder);
 
-            if (document.RenderDocument().SaveChanges(directory, filename, true))
-                AssetDatabase.Refresh();
+            if (document.RenderDocument().SaveChanges(type.GetDirectory(), base_filename + ".cs", true))
+                REGENERATION_COUNT++;
         }
 
-        static private void GenerateClass(string directory, string class_name, Process<CSTextDocumentBuilder> process)
+        static public void GenerateStaticClass(string class_name, Process<CSTextDocumentBuilder> process, GeneratedCodeType type)
         {
-            GenerateCode(directory, class_name + ".cs", delegate(CSTextDocumentBuilder builder) {
+            GenerateCode(class_name, delegate(CSTextDocumentBuilder builder) {
                 CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs(
-                    "CLASSNAME", class_name
+                    "CLASS", class_name.StyleAsClassName()
                 );
 
-                writer.Write("static public class ?CLASSNAME", delegate() {
+                writer.Write("static public class ?CLASS", delegate() {
                     process(builder);
                 });
-            });
-        }
-
-        static private void GenerateCodeFromTypes(string directory, string class_base_name, Type type, Process<Type, CSTextDocumentBuilder> process)
-        {
-            GenerateCode(directory, class_base_name + ".cs", delegate(CSTextDocumentBuilder builder) {
-                CrunchyNoodle.Types.GetFilteredTypes(
-                    Filterer_Type.IsConcreteClass(),
-                    Filterer_Type.CanBeTreatedAs(type)
-                ).Process(t => process(t, builder));
-            });
-        }
-
-        static private void GenerateClassFromTypes(string directory, string class_name, Type type, Process<Type, CSTextDocumentBuilder> process)
-        {
-            GenerateClass(directory, class_name, delegate(CSTextDocumentBuilder builder) {
-                CrunchyNoodle.Types.GetFilteredTypes(
-                    Filterer_Type.IsConcreteClass(),
-                    Filterer_Type.CanBeTreatedAs(type)
-                )
-                .Process(t => process(t, builder));
-            });
+            }, type);
         }
     }
 }

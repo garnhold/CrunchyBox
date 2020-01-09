@@ -1,0 +1,35 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"byte",
+	"short",
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+	static public class NumberExtensions_Approximate
+    {
+<# foreach(string type_name in type_names){#>
+
+		static public bool IsApproximatelyEqualTo(this <#=type_name#> item, <#=type_name#> other, <#=type_name#> tolerance)
+		{
+			if((item - other).GetAbs() <= tolerance)
+				return true;
+
+			return false;
+		}
+<# } #>
+	}
+}

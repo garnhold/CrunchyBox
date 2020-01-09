@@ -4,11 +4,11 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Sack;
+    
     static public class GridExtensions_Columns
     {
         static public void SetColumnDefinitionString(this Grid item, string input)

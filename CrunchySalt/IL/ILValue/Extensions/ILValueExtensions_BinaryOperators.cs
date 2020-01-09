@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,15 +6,31 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     static public class ILValueExtensions_BinaryOperators
     {
         static public ILBinaryOperatorInvokation GetILBinaryOperatorInvokation(this ILValue item, BinaryOperatorType type, ILValue right)
         {
             return new ILBinaryOperatorInvokation(type, item, right);
+        }
+
+        static public ILBinaryOperatorInvokation GetILBinaryOperatorInvokationBySymbol(this ILValue item, string symbol, ILValue right)
+        {
+            return item.GetILBinaryOperatorInvokation(
+                BinaryOperatorTypeExtensions.GetBinaryOperatorTypeBySymbol(symbol),
+                right
+            );
+        }
+
+        static public ILBinaryOperatorInvokation GetILBinaryOperatorInvokationByName(this ILValue item, string name, ILValue right)
+        {
+            return item.GetILBinaryOperatorInvokation(
+                BinaryOperatorTypeExtensions.GetBinaryOperatorTypeByName(name),
+                right
+            );
         }
 
         static public ILBinaryOperatorInvokation GetILMultiplied(this ILValue item, ILValue right)

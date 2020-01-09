@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     static public class ScopeAccessExtensions
     {
         static public ScopeAccess GetFromInside(this ScopeAccess item)

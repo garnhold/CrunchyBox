@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 int max_number_parameters = 10;
@@ -14,11 +14,11 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	static public class StringExtensions_Inject_Explicit
+    using Dough;
+    
+    static public class StringExtensions_Inject_Explicit
 	{
 	<#for(int number_parameters = 1; number_parameters <= max_number_parameters; number_parameters++){#>
 		<#
@@ -26,7 +26,7 @@ namespace CrunchySalt
 		string cache_name = "INJECT_EXPLICIT" + number_parameters;
 		#>
 
-		static private readonly OperationCache<<#=operation_type#>, string> <#=cache_name#> = TextParsingCache.Get().NewOperationCache(delegate(string format) {
+		static private readonly OperationCache<<#=operation_type#>, string> <#=cache_name#> = TextParsingCache.Get().NewOperationCache("<#=cache_name#>", delegate(string format) {
 			return typeof(string).CreateDynamicMethodDelegate<<#=operation_type#>>("FormatString", delegate(MethodBase method) {
 				return new ILReturn(
 					new ILStringExpression(format, s => method.GetTechnicalILParameter(s.ParseInt()))

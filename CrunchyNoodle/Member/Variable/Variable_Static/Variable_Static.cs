@@ -1,13 +1,15 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public abstract class Variable_Static : Variable
     {
         protected abstract void SetStaticContentsInternal(object value);
         protected abstract object GetStaticContentsInternal();
+
+        static public readonly object TARGET_INSTANCE = new object();
 
         protected override bool SetContentsInternal(object target, object value)
         {
@@ -25,12 +27,12 @@ namespace CrunchyNoodle
 
         public bool SetContents(object value)
         {
-            return SetContents(null, value);
+            return SetContents(TARGET_INSTANCE, value);
         }
 
         public object GetContents()
         {
-            return GetContents(null);
+            return GetContents(TARGET_INSTANCE);
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     public class Variable_Element : Variable
     {
         private Variable variable;
@@ -27,10 +27,25 @@ namespace CrunchyNoodle
             return variable.GetVariableName() + "[" + index + "]";
         }
 
+        protected override IEnumerable<Attribute> GetAllCustomAttributesInternal(bool inherit)
+        {
+            return variable.GetAllCustomAttributes(inherit);
+        }
+
         public Variable_Element(Variable v, int i) : base(v.GetDeclaringType(), v.GetVariableType().GetIEnumerableType())
         {
             variable = v;
             index = i;
+        }
+
+        public void SetElementIndex(int i)
+        {
+            index = i;
+        }
+
+        public int GetElementIndex()
+        {
+            return index;
         }
     }
 }

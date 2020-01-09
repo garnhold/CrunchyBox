@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class SubsystemExtensions
     {
     }

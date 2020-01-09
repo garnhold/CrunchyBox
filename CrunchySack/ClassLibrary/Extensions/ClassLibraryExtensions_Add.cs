@@ -1,12 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     static public class ClassLibraryExtensions_Add
     {
         static public void AddClasses(this ClassLibrary item, IEnumerable<CmlEntry_Class> to_add)

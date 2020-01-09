@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     public abstract class PrefabRegion_Bounds : PrefabRegion
     {
         protected abstract float GetRegionSize();
@@ -17,10 +17,8 @@ namespace CrunchySandwich
         protected override void PopulateRegionInternal(float density)
         {
             Bounds bounds = GetRegionBounds();
-            int count = density.ConvertFromDensityToCount(GetRegionSize());
 
-            for (int i = 0; i < count; i++)
-                SpawnPrefab(RandVector3.GetWithinBounds(bounds));
+            density.ProcessDensity(GetRegionSize(), () => SpawnPrefab(RandVector3.GetWithinBounds(bounds)));
         }
     }
 }

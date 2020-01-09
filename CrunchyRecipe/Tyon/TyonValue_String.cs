@@ -1,4 +1,4 @@
-
+﻿
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
@@ -9,30 +9,30 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public partial class TyonValue_String : TyonValue
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public partial class TyonValue_String : TyonValue
 	{
         private void LoadContextIntermediateString(string input)
         {
             SetString(input.ExtractStringValueFromLiteralString());
         }
 
-        public TyonValue_String(object value, TyonContext_Dehydration context) : this()
+        public TyonValue_String(object value, TyonDehydrater dehydrater) : this()
         {
             SetString(value.ToString());
         }
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetString().StyleAsLiteralString());
+            canvas.AppendToLine(GetString().StyleAsDoubleQuoteLiteral());
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonContext_Hydration context)
+        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             variable.SetContents(GetString());
         }

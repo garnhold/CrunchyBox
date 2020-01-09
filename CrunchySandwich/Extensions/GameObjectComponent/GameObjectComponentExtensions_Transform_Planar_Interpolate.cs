@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Transform_Planar_Interpolate
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Transform_Planar_Interpolate
     {
 		static public void InterpolatePlanarPosition(this GameObject item, Vector2 target, float amount)
         {
@@ -38,6 +38,15 @@ namespace CrunchySandwich
             item.transform.InterpolateLocalPlanarScale(target, amount);
         }
 
+		static public void InterpolatePlanarScale(this GameObject item, float target, float amount)
+        {
+            item.transform.InterpolatePlanarScale(target, amount);
+        }
+        static public void InterpolateLocalPlanarScale(this GameObject item, float target, float amount)
+        {
+            item.transform.InterpolateLocalPlanarScale(target, amount);
+        }
+
 		static public void InterpolatePlanarPosition(this Component item, Vector2 target, float amount)
         {
             item.transform.InterpolatePlanarPosition(target, amount);
@@ -61,6 +70,15 @@ namespace CrunchySandwich
             item.transform.InterpolatePlanarScale(target, amount);
         }
         static public void InterpolateLocalPlanarScale(this Component item, Vector2 target, float amount)
+        {
+            item.transform.InterpolateLocalPlanarScale(target, amount);
+        }
+
+		static public void InterpolatePlanarScale(this Component item, float target, float amount)
+        {
+            item.transform.InterpolatePlanarScale(target, amount);
+        }
+        static public void InterpolateLocalPlanarScale(this Component item, float target, float amount)
         {
             item.transform.InterpolateLocalPlanarScale(target, amount);
         }

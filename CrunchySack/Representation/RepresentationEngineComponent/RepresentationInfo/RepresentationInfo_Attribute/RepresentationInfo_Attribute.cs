@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Noodle;
+    
     public abstract class RepresentationInfo_Attribute : RepresentationInfo
     {
         private string name;

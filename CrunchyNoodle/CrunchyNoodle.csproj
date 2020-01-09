@@ -33,14 +33,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrunchyDough, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CrunchyDough\bin\Release\CrunchyDough.dll</HintPath>
-    </Reference>
-    <Reference Include="CrunchySalt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CrunchySalt\bin\Release\CrunchySalt.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -48,7 +40,9 @@
     <Compile Include="Assemblys\Assemblys_Inspected.cs" />
     <Compile Include="CompileTimeCache\CompileTimeCache.cs" />
     <Compile Include="CompileTimeCache\Extensions\CacheManagerExtensions_CompileTimeCache.cs" />
+    <Compile Include="ConversionMethods\Common\ConversionMethods_Duration.cs" />
     <Compile Include="ConversionMethods\Common\ConversionMethods_DateTime.cs" />
+    <Compile Include="ConversionMethods\Container\ConversionMethods_Dictionary.cs" />
     <Compile Include="ConversionMethods\ConversionAttribute.cs" />
     <Compile Include="ConversionMethods\General\GeneralConversionMethods_String.cs" />
     <Compile Include="ConversionMethods\General\GeneralConversionMethods_Enum.cs" />
@@ -70,13 +64,19 @@
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectCount.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectGetFirst.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectAdd.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectMove.cs" />
+    <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectRemove.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectRemoveAt.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectInsert.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectSet.cs" />
     <Compile Include="Extensions\IEnumerableBasic\IEnumerableBasicExtensions_InspectGet.cs" />
+    <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Variable.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Action.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions.cs" />
     <Compile Include="Extensions\MethodInfoEX\MethodInfoEXExtensions_Function.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_ActionExecute.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_VariableValue.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance_ActionInstance.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,14 +91,21 @@
     <Compile Include="Extensions\Object\ObjectExtensions_Finger.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance_ByPath.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_MemberInstance.cs" />
+    <Compile Include="Extensions\PropertyInfoEX\PropertyInfoEXExtensions.cs" />
+    <Compile Include="Extensions\PropertyInfoEX\PropertyInfoEXExtensions_Variable.cs" />
     <Compile Include="Extensions\PropInfoEX\PropInfoEXExtensions_Variable.cs" />
     <Compile Include="Extensions\PropInfoEX\PropInfoEXExtensions.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo_Static.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo_Instance.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_Instancing.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EvtInfo_Event.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EvtInfo_Method.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_FieldInfo_All.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_MemberAttributes_Method.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_MemberAttributes_Field.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_MemberAttributes.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo_All.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_MethodInfo_All.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_EvtInfo.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_PropInfo_Field.cs" />
@@ -141,14 +148,27 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Filterer\FieldInfo\FieldInfoFilters.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsSetPublic.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsGetPublic.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsDeclaredWithin.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsBackingField.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsTypicalValueType.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsTypicalReferenceType.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPrivateField.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsPublicField.cs" />
     <Compile Include="Filterer\Filterer_General.cs" />
     <Compile Include="Filterer\Filterer_Simple.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanTechnicalParametersHold_Generic.cs">
+      <DependentUpon>Filterer_MethodInfo_CanTechnicalParametersHold_Generic.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanTechnicalParametersHold.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNTechnicalParameters.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropCompatible.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropOfTypeCompatible.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsDeclaredWithin.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNonExtensionMethod.cs" />
     <Compile Include="Filterer\MethodInfo\MethodInfoFilters.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNEffectiveParameters.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanNthEffectiveParameterHold.cs" />
@@ -164,9 +184,20 @@
     </Compile>
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CanGenericParametersHold.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_CouldMaybeReturnInto.cs" />
-    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsAnyExtensionMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsExtensionMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNonGenericMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsGenericMethod.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_CanBeTreatedAs.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_CanGet.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_CanSet.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_CanSetAndGet.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_HasCustomAttributeOfType.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_HasCustomLabeledAttributeOfType.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_IsGetPublic.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_IsSetPublic.cs" />
+    <Compile Include="Filterer\PropertyInfo\Filterer_PropertyInfo_IsSetAndGetPublic.cs" />
+    <Compile Include="Filterer\PropertyInfo\PropertyInfoFilters.cs" />
     <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsSetAndGetPublic.cs" />
     <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsSetPublic.cs" />
     <Compile Include="Filterer\PropInfo\Filterer_PropInfo_IsGetPublic.cs" />
@@ -182,6 +213,10 @@
     <Compile Include="Filterer\Type\Filterer_Type_HasChildTypes.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_HasCustomForTypeAttributeOfType.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsBasicNamed.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_DoesNameContain.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNamespace.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNonNestedClass.cs" />
+    <Compile Include="Filterer\Type\Filterer_Type_IsNestedClass.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsNonGenericClass.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsGenericClass.cs" />
     <Compile Include="Filterer\Type\Filterer_Type_IsCleanNamed.cs" />
@@ -196,6 +231,8 @@
     <Compile Include="Holding\Extensions\HoldableExtensions_Field.cs" />
     <Compile Include="Holding\Extensions\HoldingContainerExtensions_Predicate.cs" />
     <Compile Include="Holding\Extensions\HoldingContainerExtensions.cs" />
+    <Compile Include="InspectedTypesAttribute\InspectedTypesAttribute.cs" />
+    <Compile Include="MarkedMethods\MarkedMethods.cs" />
     <Compile Include="MemberInstance\ActionInstance\ActionInstance.cs" />
     <Compile Include="MemberInstance\FunctionInstance\FunctionInstance.cs" />
     <Compile Include="MemberInstance\MemberInstance.cs" />
@@ -206,6 +243,7 @@
     <Compile Include="MemberInstance\TargetInstance\TargetInstance_Static.cs" />
     <Compile Include="MemberInstance\TargetInstance\TargetInstance_Strong.cs" />
     <Compile Include="MemberInstance\TargetInstance\TargetInstance_Weak.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Elements.cs" />
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_RelativeAction.cs" />
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_RelativeFunction.cs" />
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Relative.cs" />
@@ -217,7 +255,13 @@
     <Compile Include="Member\Action\Action_Function.cs" />
     <Compile Include="Member\Function\Extensions\FunctionExtensions_Parameters.cs" />
     <Compile Include="Member\Function\Extensions\FunctionExtensions.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Override.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Elements.cs" />
+    <Compile Include="Member\Variable\Variable_Pass\Variable_OverrideTypeAndName.cs" />
+    <Compile Include="Member\Variable\Variable_Pass\Variable_OverrideType.cs" />
+    <Compile Include="Member\Variable\Variable_Pass\Variable_Pass.cs" />
     <Compile Include="Member\Variable\Variable_Prop\Variable_Prop.cs" />
+    <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions_GetContents.cs" />
     <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions_Instance.cs" />
     <Compile Include="Member\Variable\Variable_Static\Extensions\VariableStaticExtensions.cs" />
     <Compile Include="MIMEType\MIMEType.cs">
@@ -225,17 +269,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ReflectionTypeHuskers\PropertyInfoEXHusker.cs" />
     <Compile Include="ReflectionTypeHuskers\PropInfoEXHusker.cs" />
     <Compile Include="ReflectionTypeHuskers\ModuleHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\MethodInfoEXHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\FieldInfoEXHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\TypeHusker.cs" />
-    <Compile Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\BasicReflectionTypeHusker.cs">
-      <DependentUpon>BasicReflectionTypeHusker.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="MarkedMethods\MarkedMethods.cs" />
+    <Compile Include="ReflectionTypeHuskers\MethodInfoEXHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\FieldInfoEXHusker.cs" />
+    <Compile Include="ReflectionTypeHuskers\TypeHusker.cs" />
     <Compile Include="ConfigurationVariable\ConfigurationVariable_Create_FactoryAttribute.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Member_Variable.cs" />
     <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Byte.cs" />
@@ -278,6 +317,7 @@
     <Compile Include="Member\Variable\Variable_Static\Variable_Static.cs" />
     <Compile Include="Member\Variable\Variable_This\Variable_This.cs" />
     <Compile Include="ReflectionTypeHuskers\AssemblyHusker.cs" />
+    <Compile Include="Types\Types_Inspected.cs" />
     <Compile Include="VersionInfo\VersionInfo.cs" />
     <Compile Include="ReflectionSystem\ReflectionSystem.cs" />
     <Compile Include="Relatable\Extensions\RelatableExtensions_Ancestor.cs" />
@@ -298,7 +338,6 @@
     <Compile Include="ReferenceInstances\ReferenceInstances.cs" />
     <Compile Include="TypeDictionary\TypeDictionary.cs" />
     <Compile Include="Types\Types_FromAssemblys.cs" />
-    <Compile Include="Types\Types_Primitive.cs" />
     <Compile Include="InspectedAssemblyAttribute\InspectAssemblys_ByTypeAttribute.cs" />
     <Compile Include="InspectedAssemblyAttribute\InspectedAssemblyAttribute.cs" />
     <Compile Include="InspectedAssemblyAttribute\InspectAssemblysAttribute.cs" />
@@ -370,7 +409,7 @@
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasCustomAttributeOfType.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasCustomLabeledAttributeOfType.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_HasNoReturn.cs" />
-    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsExtensionMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsExtensionMethodOf.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsNamed.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsEffectivelyStaticMethod.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsEffectivelyInstanceMethod.cs" />
@@ -386,7 +425,7 @@
     <Compile Include="Holding\HoldingContainerAttribute.cs" />
     <Compile Include="Holding\HoldingList.cs" />
     <Compile Include="Holding\HoldingSingle.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Filterer.cs" />
+    <Compile Include="Filterer\Extensions\FiltererExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_FieldInfo_Instance_GetValue.cs" />
@@ -411,6 +450,17 @@
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="Member\Variable\Variable.cs" />
     <Compile Include="Member\Variable\Variable_Operation\Variable_Operation.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsDerivedMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethod.cs" />
+    <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsOriginalMethodOf.cs" />
+    <Compile Include="Extensions\Object\ObjectExtensions_Regurgitate.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Elements_Get.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Elements_Modify.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Treatment.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Elements_Get.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Elements_Modify.cs" />
+    <Compile Include="Member\Variable\Extensions\VariableExtensions_Contents.cs" />
+    <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Contents.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -436,6 +486,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Filterer_ConstructorInfo_CanEffectiveParametersHold_Generic.cs</LastGenOutput>
     </Content>
+    <Content Include="Filterer\MethodInfo\Filterer_MethodInfo_CanTechnicalParametersHold_Generic.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Filterer_MethodInfo_CanTechnicalParametersHold_Generic.cs</LastGenOutput>
+    </Content>
     <Content Include="Filterer\MethodInfo\Filterer_MethodInfo_CanGenericParametersHold_Generic.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Filterer_MethodInfo_CanGenericParametersHold_Generic.cs</LastGenOutput>
@@ -450,12 +504,18 @@
     </Content>
     <Content Include="MIMEType\mime_types.txt" />
     <Content Include="MIMEType\source.txt" />
-    <Content Include="ReflectionTypeHuskers\BasicReflectionTypeHuskers\BasicReflectionTypeHusker.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BasicReflectionTypeHusker.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class TypeExtensions_Treatment_Basic
     {
@@ -58,6 +58,14 @@ namespace CrunchyDough
             return false;
         }
 
+        static public bool IsArray(this Type item)
+        {
+            if (item.IsArray)
+                return true;
+
+            return false;
+        }
+
         static public bool IsStruct(this Type item)
         {
             if (item.IsValueType())
@@ -69,9 +77,32 @@ namespace CrunchyDough
             return false;
         }
 
+        static public bool IsClass(this Type item)
+        {
+            if (item.IsTypicalReferenceType())
+                return true;
+
+            return false;
+        }
+
         static public bool IsNullable(this Type item)
         {
             if (item.IsReferenceType())
+                return true;
+
+            return false;
+        }
+
+        static public bool IsNestedClass(this Type item)
+        {
+            if (item.IsNested)
+                return true;
+
+            return false;
+        }
+        static public bool IsNonNestedClass(this Type item)
+        {
+            if (item.IsNestedClass() == false)
                 return true;
 
             return false;

@@ -8,29 +8,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchyRecipe
+namespace Crunchy.Recipe
 {
-	public abstract partial class TyonType : TyonElement
+    using Dough;
+    using Salt;
+    using Noodle;
+    
+    public abstract partial class TyonType : TyonElement
 	{
         static public TyonType CreateTyonType(Type type)
         {
+            if (type.IsArray)
+                return new TyonType_Array(type);
+
             if (type.IsGenericClass())
-                return new TyonType_Templated(type);
+                return new TyonType_Direct_Templated(type);
 
-            return new TyonType_Normal(type);
+            return new TyonType_Direct_Normal(type);
         }
 
-        public abstract Type GetSystemType();
+        public abstract Type GetSystemType(TyonHydrater hydrater);
+        public abstract object InstanceSystemType(TyonHydrater hydrater);
         public abstract void Render(TextDocumentCanvas canvas);
-
-        public object InstanceSystemType()
-        {
-            return GetSystemType().CreateForcedInstance();
-        }
 
         public string Render()
         {
@@ -38,6 +37,11 @@ namespace CrunchyRecipe
 
             Render(canvas);
             return canvas.ToString();
+        }
+
+        public override string ToString()
+        {
+            return Render();
         }
 	}
 	

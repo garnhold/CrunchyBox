@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IListExtensions_Index
     {
@@ -130,7 +130,7 @@ namespace CrunchyDough
 
         static public int GetFinalIndex<T>(this IList<T> item)
         {
-            return item.Count - 1;
+            return item.Count() - 1;
         }
     }
 }

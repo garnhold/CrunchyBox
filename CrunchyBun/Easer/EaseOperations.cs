@@ -1,16 +1,24 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public delegate float EaseOperation(float x);
 
     static public class EaseOperations
     {
-        static public float Instant(float x)
+        static public float InstantAtStart(float x)
         {
             return 1.0f;
+        }
+
+        static public float InstantAtEnd(float x)
+        {
+            if (x >= 1.0f)
+                return 1.0f;
+
+            return 0.0f;
         }
 
         static public float Linear(float x)

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class VectorI2Extensions_IsBound
     {
         static public bool IsBoundAbove(this VectorI2 item, VectorI2 value)

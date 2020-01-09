@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyCane
+namespace Crunchy.Cane
 {
     public interface MidiPort
     {

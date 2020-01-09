@@ -1,20 +1,25 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Noodle;
+    
     [ApplicationEXSatellite]
     static public class SubsystemManagerSatellite
     {
         static private void Start()
         {
             SubsystemManager.GetInstance().Start();
+        }
+
+        static private void StartInEditor()
+        {
+            SubsystemManager.GetInstance().StartInEditor();
         }
 
         static private void Update()
@@ -41,29 +46,43 @@ namespace CrunchySandwich
             return instance;
         }
 
+        public SubsystemManager()
+        {
+            subsystems = new Dictionary<Type, Subsystem>();
+        }
+
         public void Start()
         {
             Refresh();
+            GetSubsystems().ProcessSandboxed(s => s.Start(), e => Debug.LogException(e));
+        }
+
+        public void StartInEditor()
+        {
+            Refresh();
+            GetSubsystems().ProcessSandboxed(s => s.StartInEditor(), e => Debug.LogException(e));
         }
 
         public void Update()
         {
-            GetSubsystems().Process(s => s.Update());
+            GetSubsystems().ProcessSandboxed(s => s.Update(), e => Debug.LogException(e));
         }
 
         public void UpdateInEditor()
         {
-            GetSubsystems().Process(s => s.UpdateInEditor());
+            GetSubsystems().ProcessSandboxed(s => s.UpdateInEditor(), e => Debug.LogException(e));
         }
 
         public void Refresh()
         {
-            subsystems = SubsystemExtensions_Resource.LoadSubsystemResources().ToDictionaryValues(s => s.GetType());
+            subsystems.Set(
+                SubsystemExtensions_Resource.LoadSubsystemResources().ConvertToValueOfPair(s => s.GetType())
+            );
         }
 
         public Subsystem GetSubsystemInstance(Type type)
         {
-            return subsystems.GetValue(type);
+            return subsystems.GetOrCreateValue(type, t => SubsystemExtensions_Resource.LoadSubsystemResource(t));
         }
         public T GetSubsystemInstance<T>() where T : Subsystem
         {

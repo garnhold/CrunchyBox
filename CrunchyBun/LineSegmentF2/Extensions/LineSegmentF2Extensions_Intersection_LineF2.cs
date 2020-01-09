@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class LineSegmentF2Extensions_Intersection_LineF2
     {
         static public bool TryGetIntersection(this LineSegmentF2 item, LineF2 line, out float distance, out VectorF2 point)

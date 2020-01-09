@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class RectF2Extensions_Adjust
     {
         static public RectF2 GetAdjusted(this RectF2 item, VectorF2 min_adjust, VectorF2 max_adjust)

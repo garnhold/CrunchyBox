@@ -3,11 +3,11 @@ using System.IO;
 
 using System.Windows;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_WPF
+namespace Crunchy.Sack.WPF
 {
+    using Dough;
+    using Sack;
+    
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class BasicWPFEngineInitilizerAttribute : Attribute
     {

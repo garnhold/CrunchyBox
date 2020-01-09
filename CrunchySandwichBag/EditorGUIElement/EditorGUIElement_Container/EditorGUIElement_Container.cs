@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public abstract class EditorGUIElement_Container : EditorGUIElement
     {
         public abstract void ClearChildren();
@@ -18,19 +18,19 @@ namespace CrunchySandwichBag
 
         public abstract IEnumerable<EditorGUIElement> GetChildren();
 
-        protected override void InitilizeInternal()
+        protected override void InitializeInternal()
         {
-            GetChildren().Process(c => c.Initilize());
+            GetChildren().Process(c => c.Initialize());
         }
 
-        protected override void DrawContentsInternal(Rect view)
+        protected override void DrawContentsInternal(int draw_id, Rect view)
         {
-            GetChildren().Process(c => c.Draw(view));
+            GetChildren().Process(c => c.Draw(draw_id, view));
         }
 
-        protected override void UnwindInternal()
+        protected override void UnwindInternal(int draw_id)
         {
-            GetChildren().Process(c => c.Unwind());
+            GetChildren().Process(c => c.Unwind(draw_id));
         }
 
         public EditorGUIElement_Container()

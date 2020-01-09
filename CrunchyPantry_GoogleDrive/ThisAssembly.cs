@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyPantry_GoogleDrive
+namespace Crunchy.Pantry_GoogleDrive
 {
     public class ThisAssembly
     {

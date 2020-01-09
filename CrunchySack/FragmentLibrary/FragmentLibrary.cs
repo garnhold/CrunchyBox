@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    
     public class FragmentLibrary
     {
         private List<FragmentProvider> fragment_providers;
@@ -24,7 +24,7 @@ namespace CrunchySack
             ).CreateInstances<CmlEntry_Fragment>()
                 .ToDictionaryValues(f => f.GetName());
 
-            fragment_cache = new OperationCache<CmlEntry_Fragment, string>(delegate(string name) {
+            fragment_cache = new OperationCache<CmlEntry_Fragment, string>("fragment_cache", delegate(string name) {
                 return manual_fragments.GetValue(name) ??
                     fragment_providers.Convert(p => p.GetFragment(name)).GetFirstNonNull();
             });

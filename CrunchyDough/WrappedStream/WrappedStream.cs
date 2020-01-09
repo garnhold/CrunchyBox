@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
+    using Dough;
+    
     public abstract class WrappedStream : Stream
     {
         private Stream stream;

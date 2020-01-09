@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public class HuskReader
     {
@@ -33,6 +33,11 @@ namespace CrunchyDough
         public decimal ReadDecimal() { return reader.ReadDecimal(); }
 
         public string ReadString() { return reader.ReadString(); }
+
+        public bool ReadBoolBranch()
+        {
+            return ReadBool();
+        }
 
         public T ReadRecurrant<T>(Husker<T> husker)
         {

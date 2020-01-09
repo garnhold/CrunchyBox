@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Method)]
     public class RelatableParentAttribute : Attribute

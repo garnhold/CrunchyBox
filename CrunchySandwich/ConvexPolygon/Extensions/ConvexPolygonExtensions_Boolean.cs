@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Bun;
+    
     static public class ConvexPolygonExtensions_Boolean
     {
         static public ConvexPolygon GetIntersection(this ConvexPolygon item, Plane2 plane)
@@ -20,7 +20,7 @@ namespace CrunchySandwich
             Vector2 point;
             foreach (Face face in item.GetFaces())
             {
-                if (face.IntersectsPlane(plane, out point))
+                if (face.IsIntersecting(plane, out point))
                     intersection.AddVertex(point);
             }
 
@@ -39,7 +39,7 @@ namespace CrunchySandwich
             {
                 foreach (Face face2 in other.GetFaces())
                 {
-                    if (face1.IntersectsFace(face2, out point))
+                    if (face1.IsIntersecting(face2, out point))
                         intersection.AddVertex(point);
                 }
             }

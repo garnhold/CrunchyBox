@@ -1,24 +1,23 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Lidgren.Network;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyCart
+namespace Crunchy.Cart
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     public partial class Syncronizer
     {
         public partial class Buffer
         {
-            public void ExecuteWrite(MessageType type, Process process)
+            public void ExecuteWrite(MessageType type)
             {
-                buffer.Write((byte)type);
-                process();
+                WriteEnum(type);
             }
 
             public bool ExecuteRead(Process<MessageType> process)
@@ -29,7 +28,7 @@ namespace CrunchyCart
 
                     try
                     {
-                        MessageType message_type = (MessageType)buffer.ReadByte();
+                        MessageType message_type = ReadEnum<MessageType>();
 
                         process(message_type);
                         return true;

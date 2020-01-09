@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,13 +6,21 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILParameter : ILValue, ILAddressable
     {
         private ParameterInfo parameter;
+
+        private int GetArgIndex(ILCanvas canvas)
+        {
+            if (canvas.GetMethod().IsTechnicallyInstanceMethod())
+                return parameter.Position + 1;
+
+            return parameter.Position;
+        }
 
         public ILParameter(ParameterInfo p)
         {
@@ -21,12 +29,12 @@ namespace CrunchySalt
 
         public override void RenderIL_Load(ILCanvas canvas)
         {
-            canvas.Emit_Ldarg(parameter.Position);
+            canvas.Emit_Ldarg(GetArgIndex(canvas));
         }
 
         public void RenderIL_LoadAddress(ILCanvas canvas)
         {
-            canvas.Emit_Ldarga(parameter.Position);
+            canvas.Emit_Ldarga(GetArgIndex(canvas));
         }
 
         public override void RenderIL_Store(ILCanvas canvas, ILValue value)
@@ -34,7 +42,7 @@ namespace CrunchySalt
             value.GetILImplicitCast(GetValueType())
                 .RenderIL_Load(canvas);
 
-            canvas.Emit_Starg(parameter.Position);
+            canvas.Emit_Starg(GetArgIndex(canvas));
         }
 
         public override void RenderText_Value(ILTextCanvas canvas)

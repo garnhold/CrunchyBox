@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySauce
+namespace Crunchy.Sauce
 {
+    using Dough;
+    using Bun;
+    
     public class SurfaceTool_PolygonSelection<T> : SurfaceTool<T>
     {
         public SurfaceSelection<T> PolygonSelect(Surface<T> surface, IEnumerable<VectorF2> points)

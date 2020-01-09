@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 using Android;
@@ -7,11 +7,11 @@ using Android.Views;
 using Android.Content;
 using Android.Content.Res;
 
-using CrunchyDough;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Sack;
+    
     static public class ViewExtensions_Measurement
     {
         static public int ParseMeasurement(this View item, string measurement, double world = 1.0)

@@ -1,25 +1,25 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchyPantry
+namespace Crunchy.Pantry
 {
+    using Dough;
+    using Noodle;
+    
     public abstract class NookSystem_StorageStructure<STRUCTURE_TYPE, FILE_TYPE> : NookSystem where FILE_TYPE : FileSnapshot where STRUCTURE_TYPE : StorageStructure<FILE_TYPE>
     {
         private STRUCTURE_TYPE structure;
 
-        private RateLimiter initilize_rate_limiter;
-        private RateLimiter update_rate_limiter;
+        private Timer initilize_timer;
+        private Timer update_timer;
 
         protected abstract bool DeleteInternal(FILE_TYPE snapshot);
 
         protected abstract bool ReadInternal(FILE_TYPE snapshot, Process<Stream> process);
 
-        protected abstract bool CreateInternal(string path, string name, string mime_type, Process<Stream> process, out FILE_TYPE snapshot);
+        protected abstract bool CreateInternal(string path, string name, MIMEType mime_type, Process<Stream> process, out FILE_TYPE snapshot);
         protected abstract bool UpdateInternal(FILE_TYPE snapshot, Process<Stream> process);
 
         protected abstract bool TryGetLocalPathInternal(FILE_TYPE snapshot, out string local_path);
@@ -46,23 +46,19 @@ namespace CrunchyPantry
 
         private void Update()
         {
-            initilize_rate_limiter.Process(delegate() {
+            if (initilize_timer.Repeat())
                 InitilizeStructure();
-            });
 
-            update_rate_limiter.Process(delegate() {
+            if (update_timer.Repeat())
                 UpdateStructure();
-            });
         }
 
         public NookSystem_StorageStructure(STRUCTURE_TYPE s, Duration id, Duration ud)
         {
             structure = s;
 
-            initilize_rate_limiter = new RateLimiter(id);
-            update_rate_limiter = new RateLimiter(ud);
-
-            update_rate_limiter.Reset();
+            initilize_timer = new Timer(id).StartExpireAndGet();
+            update_timer = new Timer(ud).StartAndGet();
         }
 
         public override bool Delete(string path)
@@ -93,7 +89,7 @@ namespace CrunchyPantry
                 return true;
 
             string name = Filename.GetFilenameWithExtension(path);
-            string mime_type = MIMEType.GetMIMETypeFromFilename(name);
+            MIMEType mime_type = MIMEType.ParseFromFilename(name);
 
             if (CreateInternal(path, name, mime_type, process, out file))
             {

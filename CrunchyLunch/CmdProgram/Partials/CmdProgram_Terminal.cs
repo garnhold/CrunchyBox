@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
     public abstract partial class CmdProgram
     {

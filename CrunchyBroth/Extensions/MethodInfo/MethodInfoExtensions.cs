@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-using CrunchyNoodle;
-using CrunchySodium;
-
-namespace CrunchyBroth
+namespace Crunchy.Broth
 {
+    using Dough;
+    using Salt;
+    using Noodle;
+    using Sodium;
+    
     static public class MethodInfoExtensions
     {
     }

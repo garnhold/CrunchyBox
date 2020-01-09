@@ -1,10 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\CrunchyDough\bin\Release\CrunchyDough.dll" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="CrunchyDough" #>
+<#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
 int max_number_arguments = 10;
@@ -13,12 +13,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchyNoodle;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
-<#for(int number_arguments = 0; number_arguments <= max_number_arguments; number_arguments++){#>
+    using Dough;
+    using Noodle;
+    
+    <#for(int number_arguments = 0; number_arguments <= max_number_arguments; number_arguments++){#>
 	<#
 	string basic_class_type = "RepresentationConstructor_Simple_Operation";
 	string generic_arguments = TTCS.ArgumentsForGeneric("P#", number_arguments, "T");
@@ -41,7 +41,7 @@ namespace CrunchySack
 				arguments.PartOut(<#=TTCS.Arguments("out obj#", number_arguments)#>);
 			<#}#>
 
-			return operation(<#=TTCS.Arguments("obj#.ConvertEX<P\#>()", number_arguments)#>);
+			return operation(<#=TTCS.Arguments("obj#.ConvertEX<P# >()", number_arguments)#>);
         }
 
         public <#=basic_class_type#>(string n, <#=operation_type#> o) : base(n, <#=number_arguments#>)

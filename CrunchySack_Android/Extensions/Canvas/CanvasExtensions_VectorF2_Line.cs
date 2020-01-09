@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,12 +7,12 @@ using Android;
 using Android.App;
 using Android.Graphics;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySack;
-
-namespace CrunchySack_Android
+namespace Crunchy.Sack_Android
 {
+    using Dough;
+    using Bun;
+    using Sack;
+    
     static public class CanvasExtensions_VectorF2_Line
     {
         static public void DrawLine(this Canvas item, VectorF2 point1, VectorF2 point2, Paint paint)

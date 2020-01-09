@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchyLunch
+namespace Crunchy.Lunch
 {
+    using Dough;
+    
     static public class ExternalRunnerProcessExtensions_Execute
     {
         static public bool TryExecuteToText(this ExternalRunner_Process item, string arguments, out string text, int max_milliseconds)

@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public class ILBody
     {
         private MethodBase method;
@@ -26,11 +26,11 @@ namespace CrunchySalt
         {
             return Write(method, method.GetILGenerator(), statement);
         }
-        static public ILBody Write(ConstructorBuilder builder, ILStatement statement)
+        static public ILBody Write(ConstructorBuilderEX builder, ILStatement statement)
         {
             return Write(builder, builder.GetILGenerator(), statement);
         }
-        static public ILBody Write(MethodBuilder builder, ILStatement statement)
+        static public ILBody Write(MethodBuilderEX builder, ILStatement statement)
         {
             return Write(builder, builder.GetILGenerator(), statement);
         }
@@ -41,20 +41,29 @@ namespace CrunchySalt
             statement = s;
         }
 
+        public void Write(ILCanvas canvas)
+        {
+            statement.RenderIL_Execute(canvas);
+
+            if (method.HasReturn())
+            {
+                new ILReturn(new ILDefault(method.GetReturnType()))
+                    .RenderIL_Execute(canvas);
+            }
+            else
+            {
+                new ILReturn().RenderIL_Execute(canvas);
+            }
+        }
+
         public void Write(ILGenerator generator)
         {
-            ILCanvas_ILGenerator canvas = new ILCanvas_ILGenerator(method, generator);
-
-            statement.RenderIL_Execute(canvas);
-            canvas.Finish();
+            Write(new ILCanvas_ILGenerator(method, generator));
         }
 
         public void Write(ILTextCanvas text_canvas)
         {
-            ILCanvas_ILTextCanvas canvas = new ILCanvas_ILTextCanvas(method, text_canvas);
-
-            statement.RenderIL_Execute(canvas);
-            canvas.Finish();
+            Write(new ILCanvas_ILTextCanvas(method, text_canvas));
         }
 
         public override string ToString()

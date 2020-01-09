@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-using CrunchySalt;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    using Salt;
+    
     static public class TypeExtensions_MethodInfo_Instance
     {
         static private CompileTimeCache<List<MethodInfoEX>, IdentifiableType> GET_ALL_INSTANCE_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_ALL_INSTANCE_METHODS", MethodInfoEXListHusker.INSTANCE, delegate(IdentifiableType item) {
@@ -19,10 +19,11 @@ namespace CrunchyNoodle
         {
             return GET_ALL_INSTANCE_METHODS.Fetch(item);
         }
-
+        
         static private CompileTimeCache<List<MethodInfoEX>, IdentifiableType, MethodInfoFilters> GET_FILTERED_INSTANCE_METHODS = ReflectionCache.Get().NewCompileTimeCache("GET_FILTERED_INSTANCE_METHODS", MethodInfoEXListHusker.INSTANCE, delegate(IdentifiableType item, MethodInfoFilters filters) {
             return item.GetValue().GetAllInstanceMethods()
                 .FilterBy(filters)
+                .Convert(m => m.GetMethodInfoEX())
                 .ToList();
         });
         static public IEnumerable<MethodInfoEX> GetFilteredInstanceMethods(this Type item, IEnumerable<Filterer<MethodInfo>> filters)

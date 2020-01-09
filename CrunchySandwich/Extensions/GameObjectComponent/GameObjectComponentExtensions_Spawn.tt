@@ -12,12 +12,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Spawn
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Spawn
     {
 <# foreach(string type_name in type_names){#>
 	<# foreach(string function_suffix in function_suffixes){#>

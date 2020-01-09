@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     public abstract class Worker<T>
     {
-        private RateLimiter rate_limiter;
+        private Timer timer;
         private WorkCollection<T> work_collection;
 
         protected virtual void StartWorkInternal(WorkCollection<T> work_collection) { }
@@ -14,14 +14,14 @@ namespace CrunchyDough
 
         public Worker(long i, Process<T> p, TimeSource t)
         {
-            rate_limiter = new RateLimiter(i, t);
+            timer = new Timer(i, t).StartExpireAndGet();
             work_collection = new WorkCollection<T>(p);
         }
 
-        public Worker(long i, Process<T> p) : this(i, p, TimeSource_Stopwatch.INSTANCE) { }
+        public Worker(long i, Process<T> p) : this(i, p, TimeSource_System.INSTANCE) { }
 
         public Worker(Duration i, Process<T> p, TimeSource t) : this(i.GetWholeMilliseconds(), p, t) { }
-        public Worker(Duration i, Process<T> p) : this(i, p, TimeSource_Stopwatch.INSTANCE) { }
+        public Worker(Duration i, Process<T> p) : this(i, p, TimeSource_System.INSTANCE) { }
 
         public void Clear()
         {
@@ -40,18 +40,19 @@ namespace CrunchyDough
 
         public void Work()
         {
-            rate_limiter.Process(delegate() {
+            if (timer.Repeat())
+            {
                 work_collection.StartWork();
 
                 StartWorkInternal(work_collection);
-            });
+            }
 
             WorkInternal(work_collection);
         }
 
         public long GetWorkIntervalInMilliseconds()
         {
-            return rate_limiter.GetIntervalInMilliseconds();
+            return timer.GetDurationInMilliseconds();
         }
     }
 }

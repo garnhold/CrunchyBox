@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
     public class EditorGUIElementAttachment_Singular_Padding : EditorGUIElementAttachment_Singular
     {
         private float left;
@@ -29,9 +29,9 @@ namespace CrunchySandwichBag
         public EditorGUIElementAttachment_Singular_Padding(float lr, float tb) : this(lr, lr, tb, tb) { }
         public EditorGUIElementAttachment_Singular_Padding(float p) : this(p, p) { }
 
-        public override Rect LayoutContentsInternal(Rect rect, float label_width)
+        public override EditorGUIElementPlan PlanContentsInternal(EditorGUIElementPlan plan, EditorGUILayoutState state)
         {
-            return rect.GetShrunk(left, bottom, right, top);
+            return plan.Shrink(left, right, bottom, top);
         }
     }
 }

@@ -1,0 +1,30 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+using UnityEditor;
+
+namespace Crunchy.SandwichBag
+{
+    using Dough;
+    using Bun;
+    using Sandwich;
+    
+    static public class GameObjectComponentExtensions_Focus
+    {
+<# foreach(string type_name in type_names){#>
+		static public void Focus(this <#=type_name#> item)
+		{
+			Selection.activeObject = item;
+		}
+<#}#>
+	}
+}

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
+    using Dough;
+    
     static public class PlaneExtensions_GeometryIntersection
     {
         static public IEnumerable<Vector3> GetTriangleIntersection(this Plane item, Triangle3 triangle)
@@ -28,7 +28,7 @@ namespace CrunchySandwich
                     );
 
                     Plane2 plane_polygon;
-                    if (plane_space.IntersectPlane(item, out plane_polygon))
+                    if (plane_space.IsIntersecting(item, out plane_polygon))
                     {
                         return plane_space.InflatePoints(
                             triangle_polygon.GetIntersection(plane_polygon).GetVertexs()

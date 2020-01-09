@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchySack
+namespace Crunchy.Sack
 {
+    using Dough;
+    
     public class RepresentationModifier_General_Process<REPRESENTATION_TYPE> : RepresentationModifier_General<REPRESENTATION_TYPE>
     {
         private Process<CmlExecution, REPRESENTATION_TYPE> process;

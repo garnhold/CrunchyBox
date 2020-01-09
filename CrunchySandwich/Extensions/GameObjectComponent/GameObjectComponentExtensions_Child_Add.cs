@@ -4,22 +4,22 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using CrunchyDough;
-using CrunchyBun;
-
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-	static public class GameObjectComponentExtensions_Child_Add
+    using Dough;
+    using Bun;
+    
+    static public class GameObjectComponentExtensions_Child_Add
     {
 			static public GameObject AddChild(this GameObject item, GameObject child)
         {
-            item.transform.AddChild(child.transform);
+            item.transform.AddChild(child.IfNotNull(c => c.transform));
             return child;
         }
 
         static public T AddChild<T>(this GameObject item, T child) where T : Component
         {
-            item.AddChild(child.gameObject);
+            item.AddChild(child.IfNotNull(c => c.gameObject));
             return child;
         }
 
@@ -34,13 +34,13 @@ namespace CrunchySandwich
 		}
 			static public GameObject AddChildAtSelf(this GameObject item, GameObject child)
         {
-            item.transform.AddChildAtSelf(child.transform);
+            item.transform.AddChildAtSelf(child.IfNotNull(c => c.transform));
             return child;
         }
 
         static public T AddChildAtSelf<T>(this GameObject item, T child) where T : Component
         {
-            item.AddChildAtSelf(child.gameObject);
+            item.AddChildAtSelf(child.IfNotNull(c => c.gameObject));
             return child;
         }
 
@@ -55,13 +55,13 @@ namespace CrunchySandwich
 		}
 				static public GameObject AddChild(this Component item, GameObject child)
         {
-            item.transform.AddChild(child.transform);
+            item.transform.AddChild(child.IfNotNull(c => c.transform));
             return child;
         }
 
         static public T AddChild<T>(this Component item, T child) where T : Component
         {
-            item.AddChild(child.gameObject);
+            item.AddChild(child.IfNotNull(c => c.gameObject));
             return child;
         }
 
@@ -76,13 +76,13 @@ namespace CrunchySandwich
 		}
 			static public GameObject AddChildAtSelf(this Component item, GameObject child)
         {
-            item.transform.AddChildAtSelf(child.transform);
+            item.transform.AddChildAtSelf(child.IfNotNull(c => c.transform));
             return child;
         }
 
         static public T AddChildAtSelf<T>(this Component item, T child) where T : Component
         {
-            item.AddChildAtSelf(child.gameObject);
+            item.AddChildAtSelf(child.IfNotNull(c => c.gameObject));
             return child;
         }
 

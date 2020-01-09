@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     public abstract class RandFloatSource
     {
         public abstract float Get();
@@ -30,6 +30,10 @@ namespace CrunchyBun
         {
             return center + GetOffset(radius);
         }
+        public float GetVariance(FloatVariance variance)
+        {
+            return GetVariance(variance.value, variance.radius);
+        }
 
         public float GetBetween(float a, float b)
         {
@@ -38,6 +42,10 @@ namespace CrunchyBun
 
             a.Order(b, out low, out high);
             return low + Get() * (high - low);
+        }
+        public float GetBetween(FloatRange range)
+        {
+            return GetBetween(range.x1, range.x2);
         }
     }
 }

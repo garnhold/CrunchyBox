@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StringExtensions_Parse_Float
     {
         static public bool TryParseFloat(this string item, out float value)
         {
-            return float.TryParse(item, out value);
+            return float.TryParse(item.TrimAnySuffix("f", "F"), out value);
         }
 
         static public float ParseFloat(this string item, float default_value)

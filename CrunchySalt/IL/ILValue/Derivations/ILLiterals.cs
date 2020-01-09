@@ -7,11 +7,11 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
-	public abstract partial class ILLiteral : ILValue
+    using Dough;
+    
+    public abstract partial class ILLiteral : ILValue
 	{
 		public abstract object GetLiteralValue();
 
@@ -19,6 +19,9 @@ namespace CrunchySalt
 		{
 			if(value == null)
 				return ILNull.INSTANCE;
+
+			if(type.IsEnumType())
+				return new ILEnum((Enum)value);
 
 		
 			if(type == typeof(bool))
@@ -55,11 +58,6 @@ namespace CrunchySalt
 			return New(value.GetTypeEX(), value);
 		}
 
-		public override void RenderIL_Store(ILCanvas canvas, ILValue value)
-        {
-            throw new InvalidOperationException(GetType() + " doesn't support storing.");
-        }
-
 		public override bool IsILCostTrivial()
 		{
 			return true;
@@ -68,11 +66,6 @@ namespace CrunchySalt
 		public override bool CanLoad()
 		{
 			return true;
-		}
-
-		public override bool CanStore()
-		{
-			return false;
 		}
 	}
 
@@ -401,7 +394,7 @@ namespace CrunchySalt
 
 		public override void RenderText_Value(ILTextCanvas canvas)
 		{
-			canvas.AppendToLine(constant.StyleAsLiteralString());
+			canvas.AppendToLine(constant.StyleAsDoubleQuoteLiteral());
 		}
 
 		public override Type GetValueType()

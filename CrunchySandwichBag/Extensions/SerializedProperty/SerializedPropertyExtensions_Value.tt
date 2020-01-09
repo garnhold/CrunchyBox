@@ -42,67 +42,90 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CrunchyDough;
-using CrunchyNoodle;
-using CrunchyBun;
-using CrunchySandwich;
-
-namespace CrunchySandwichBag
+namespace Crunchy.SandwichBag
 {
-    static public class SerializedPropertyExtensions_Value
+    using Dough;
+    using Noodle;
+    using Bun;
+    using Sandwich;
+    
+    static public partial class SerializedPropertyExtensions_Value
     {
 		static public void ClearValue(this SerializedProperty item)
 		{
-			switch(item.propertyType)
+			if(item.IsTypicalArray())
+				item.ClearValue_Array();
+			else
 			{
-				case SerializedPropertyType.Generic:
-                    item.GetImmediateChildren(true).Process(c => c.ClearValue());
-                    break;
+				switch(item.propertyType)
+				{
+					case SerializedPropertyType.Generic:
+						item.ClearValue_Generic();
+						break;
 
-				case SerializedPropertyType.Enum:
-                    item.enumValueIndex = 0;
-                    break;
-	<#foreach(TypeInfo type in types){#>
+					case SerializedPropertyType.Enum:
+						item.ClearValue_Enum();
+						break;
+		<#foreach(TypeInfo type in types){#>
 
-				case SerializedPropertyType.<#=type.property_type#>:
-                    item.<#=type.field#> = default(<#=type.system_type#>);
-                    break;
-	<#}#>
+					case SerializedPropertyType.<#=type.property_type#>:
+						item.<#=type.field#> = default(<#=type.system_type#>);
+						break;
+		<#}#>
+				}
 			}
 		}
 
 		static public void SetValue(this SerializedProperty item, object value)
 		{
-			switch(item.propertyType)
+			if(item.IsTypicalArray())
+				item.SetValue_Array(value);
+			else
 			{
-				case SerializedPropertyType.Generic:
-                    item.objectReferenceValue = value.Convert<UnityEngine.Object>();
-                    break;
+				switch(item.propertyType)
+				{
+					case SerializedPropertyType.Generic:
+						item.SetValue_Generic(value);
+						break;
 
-				case SerializedPropertyType.Enum:
-                    item.enumValueIndex = value.Convert<Enum>().GetIndex();
-                    break;
-	<#foreach(TypeInfo type in types){#>
+					case SerializedPropertyType.Enum:
+						item.SetValue_Enum(value);
+						break;
+		<#foreach(TypeInfo type in types){#>
 
-				case SerializedPropertyType.<#=type.property_type#>:
-                    item.<#=type.field#> = value.ConvertEX<<#=type.system_type#>>();
-                    break;
-	<#}#>
+					case SerializedPropertyType.<#=type.property_type#>:
+						item.<#=type.field#> = value.ConvertEX<<#=type.system_type#>>();
+						break;
+		<#}#>
+				}
 			}
 		}
 
 		static public object GetValue(this SerializedProperty item)
 		{
-			switch(item.propertyType)
+			if(item.IsTypicalArray())
+				return item.GetValue_Array();
+			else
 			{
-				case SerializedPropertyType.Generic: return item.objectReferenceValue;
-				case SerializedPropertyType.Enum: return item.enumValueIndex.ConvertIndexToEnum(item.GetVariableType());
-	<#foreach(TypeInfo type in types){#>
-				case SerializedPropertyType.<#=type.property_type#>: return item.<#=type.field#>;
-	<#}#>
+				switch(item.propertyType)
+				{
+					case SerializedPropertyType.Generic: return item.GetValue_Generic();
+					case SerializedPropertyType.Enum: return item.GetValue_Enum();
+		<#foreach(TypeInfo type in types){#>
+					case SerializedPropertyType.<#=type.property_type#>: return item.<#=type.field#>;
+		<#}#>
+				}
 			}
 
 			return null;
+		}
+		static public object GetValue(this SerializedProperty item, Type type)
+		{
+			return item.GetValue().ConvertEX(type);
+		}
+		static public T GetValue<T>(this SerializedProperty item)
+		{
+			return item.GetValue().ConvertEX<T>();
 		}
     }
 }

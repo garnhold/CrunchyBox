@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class IDictionaryExtensions_List
     {
@@ -33,6 +33,11 @@ namespace CrunchyDough
         static public IEnumerable<VALUE_TYPE> GetAllAtKeys<KEY_TYPE, VALUE_TYPE>(this IDictionary<KEY_TYPE, List<VALUE_TYPE>> item, IEnumerable<KEY_TYPE> keys)
         {
             return keys.Convert(k => item.GetValues(k));
+        }
+
+        static public IEnumerable<VALUE_TYPE> GetAll<KEY_TYPE, VALUE_TYPE>(this IDictionary<KEY_TYPE, List<VALUE_TYPE>> item)
+        {
+            return item.Values.Flatten();
         }
 
         static public void CullEmpty<KEY_TYPE, VALUE_TYPE>(this IDictionary<KEY_TYPE, List<VALUE_TYPE>> item)

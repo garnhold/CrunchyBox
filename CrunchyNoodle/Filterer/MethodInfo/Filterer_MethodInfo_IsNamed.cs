@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-using CrunchyDough;
-
-namespace CrunchyNoodle
+namespace Crunchy.Noodle
 {
+    using Dough;
+    
     public class Filterer_MethodInfo_IsNamed : Filterer_General<MethodInfo, IdentifiableString>
     {
         public Filterer_MethodInfo_IsNamed(string l) : base(l)

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
 using UnityEngine;
 
-namespace CrunchySandwich
+namespace Crunchy.Sandwich
 {
-    [CustomAssetCategory("Land")]
+    [AssetClassCategory("Land")]
     public class LandRegionSplat : CustomAsset
     {
         [SerializeField]private Texture2D color_texture;

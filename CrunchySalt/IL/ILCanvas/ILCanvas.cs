@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -6,10 +6,10 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-using CrunchyDough;
-
-namespace CrunchySalt
+namespace Crunchy.Salt
 {
+    using Dough;
+    
     public abstract class ILCanvas
     {
         private MethodBase method;
@@ -18,7 +18,13 @@ namespace CrunchySalt
         public abstract ILCanvasLabel CreateLabel();
         protected abstract ILCanvasLocal CreateLocalInternal(Type type);
 
+        public abstract ILCanvasLabel BeginExceptionBlock();
+        public abstract void BeginCatchBlock(Type type);
+        public abstract void EndExceptionBlock();
+
         public abstract void Emit_Nop();
+        public abstract void Emit_Throw();
+        public abstract void Emit_Rethrow();
 
         public abstract void Emit_Dup();
         public abstract void Emit_Pop();
@@ -42,6 +48,7 @@ namespace CrunchySalt
         public abstract void Emit_Initobj(Type type);
 
         public abstract void Emit_Call(MethodInfo method);
+        public abstract void Emit_Call(ConstructorInfo method);
         public abstract void Emit_Callvirt(MethodInfo method);
 
         public abstract void Emit_Ldc_I4_M1_Direct();
@@ -138,6 +145,7 @@ namespace CrunchySalt
         public abstract void Emit_And();
         public abstract void Emit_Or();
         public abstract void Emit_Not();
+        public abstract void Emit_Xor();
 
         public abstract void Emit_Ceq();
         public abstract void Emit_Clt();
@@ -245,10 +253,28 @@ namespace CrunchySalt
                 Emit_Stloc_Direct((ushort)index);
         }
 
-        public void Finish()
+        public void Emit_LNot()
         {
-            if (method.HasNoReturn())
-                Emit_Ret();
+            Emit_Ldc_I4_1_Direct();
+            Emit_Xor();
+        }
+
+        public void Emit_Cneq()
+        {
+            Emit_Ceq();
+            Emit_LNot();
+        }
+
+        public void Emit_Cgtoe()
+        {
+            Emit_Clt();
+            Emit_LNot();
+        }
+
+        public void Emit_Cltoe()
+        {
+            Emit_Cgt();
+            Emit_LNot();
         }
 
         public ILCanvasLocal CreateLocal(Type type)

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CrunchyDough
+namespace Crunchy.Dough
 {
     static public class StringExtensions_Trim_Suffix
     {
@@ -15,7 +15,7 @@ namespace CrunchyDough
             {
                 if (item.EndsWith(suffix))
                 {
-                    output = item.SubSection(0, item.GetLength() - suffix.GetLength());
+                    output = item.TruncateAmount(suffix.GetLength());
                     return true;
                 }
             }

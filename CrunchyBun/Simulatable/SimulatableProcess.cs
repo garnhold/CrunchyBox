@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 
-using CrunchyDough;
-
-namespace CrunchyBun
+namespace Crunchy.Bun
 {
+    using Dough;
+    
     static public class SimulatableProcess
     {
         static public PeriodicProcess Create(long milliseconds, Process<float> process)
         {
-            Timer timer = new Timer();
+            Stopwatch stopwatch = new Stopwatch();
 
             return new PeriodicProcess_Timer(milliseconds, delegate() {
-                process(timer.GetElapsedTimeInSeconds());
-                timer.Restart();
+                process(stopwatch.GetElapsedTimeInSeconds());
+                stopwatch.Restart();
             });
         }
 
