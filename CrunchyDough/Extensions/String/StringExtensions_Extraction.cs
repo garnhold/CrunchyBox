@@ -32,6 +32,26 @@ namespace Crunchy.Dough
             return item.SubSection(0, end);
         }
 
+        static public string OffsetBefore(this string item, string input)
+        {
+            return item.Offset(item.IndexOf(input));
+        }
+
+        static public string OffsetAfter(this string item, string input)
+        {
+            return item.Offset(item.IndexOf(input) + input.GetLength());
+        }
+
+        static public string TruncateBefore(this string item, string input)
+        {
+            return item.Truncate(item.IndexOf(input));
+        }
+
+        static public string TruncateAfter(this string item, string input)
+        {
+            return item.Truncate(item.IndexOf(input) + input.GetLength());
+        }
+
         static public string TruncateAmount(this string item, int amount)
         {
             return item.Truncate(item.Length - amount);
@@ -39,7 +59,7 @@ namespace Crunchy.Dough
 
         static public string ExtractPreIntersection(this string item, string input)
         {
-            return item.SubSection(0, item.IndexOfIntersectionStart(input));
+            return item.Truncate(item.IndexOfIntersectionStart(input));
         }
 
         static public string ExtractPostIntersection(this string item, string input)
