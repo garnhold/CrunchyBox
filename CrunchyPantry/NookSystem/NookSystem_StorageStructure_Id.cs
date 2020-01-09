@@ -6,12 +6,13 @@ using System.Collections.Generic;
 namespace Crunchy.Pantry
 {
     using Dough;
+    using Noodle;
     
     public abstract class NookSystem_StorageStructure_Id : NookSystem_StorageStructure<StorageStructure_ById, FileSnapshot_ById>
     {
-        protected abstract bool CreateInternalViaParentId(string parent_id, string name, string mime_type, Process<Stream> process, out FileSnapshot_ById snapshot);
+        protected abstract bool CreateInternalViaParentId(string parent_id, string name, MIMEType mime_type, Process<Stream> process, out FileSnapshot_ById snapshot);
 
-        protected override bool CreateInternal(string path, string name, string mime_type, Process<Stream> process, out FileSnapshot_ById snapshot)
+        protected override bool CreateInternal(string path, string name, MIMEType mime_type, Process<Stream> process, out FileSnapshot_ById snapshot)
         {
             FileSnapshot_ById parent_file;
 

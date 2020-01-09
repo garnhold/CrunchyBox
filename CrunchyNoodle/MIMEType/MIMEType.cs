@@ -6,1005 +6,2623 @@ namespace Crunchy.Noodle
 {
     using Dough;
     
-    static public class MIMEType
-	{
-		static private OperationCache<OptionTable<string>> MIME_TYPE_DICTIONARY = ReflectionCache.Get().NewOperationCache("MIME_TYPE_DICTIONARY", delegate(){
-			return new OptionTable<string>(
-KeyValuePair.New("ez", "application/andrew-inset"),
-KeyValuePair.New("aw", "application/applixware"),
-KeyValuePair.New("atom", "application/atom+xml"),
-KeyValuePair.New("atomcat", "application/atomcat+xml"),
-KeyValuePair.New("atomsvc", "application/atomsvc+xml"),
-KeyValuePair.New("ccxml", "application/ccxml+xml"),
-KeyValuePair.New("cdmia", "application/cdmi-capability"),
-KeyValuePair.New("cdmic", "application/cdmi-container"),
-KeyValuePair.New("cdmid", "application/cdmi-domain"),
-KeyValuePair.New("cdmio", "application/cdmi-object"),
-KeyValuePair.New("cdmiq", "application/cdmi-queue"),
-KeyValuePair.New("cu", "application/cu-seeme"),
-KeyValuePair.New("davmount", "application/davmount+xml"),
-KeyValuePair.New("dbk", "application/docbook+xml"),
-KeyValuePair.New("dssc", "application/dssc+der"),
-KeyValuePair.New("xdssc", "application/dssc+xml"),
-KeyValuePair.New("ecma", "application/ecmascript"),
-KeyValuePair.New("emma", "application/emma+xml"),
-KeyValuePair.New("epub", "application/epub+zip"),
-KeyValuePair.New("exi", "application/exi"),
-KeyValuePair.New("pfr", "application/font-tdpfr"),
-KeyValuePair.New("gml", "application/gml+xml"),
-KeyValuePair.New("gpx", "application/gpx+xml"),
-KeyValuePair.New("gxf", "application/gxf"),
-KeyValuePair.New("stk", "application/hyperstudio"),
-KeyValuePair.New("ink", "application/inkml+xml"),
-KeyValuePair.New("inkml", "application/inkml+xml"),
-KeyValuePair.New("ipfix", "application/ipfix"),
-KeyValuePair.New("jar", "application/java-archive"),
-KeyValuePair.New("ser", "application/java-serialized-object"),
-KeyValuePair.New("class", "application/java-vm"),
-KeyValuePair.New("js", "application/javascript"),
-KeyValuePair.New("json", "application/json"),
-KeyValuePair.New("jsonml", "application/jsonml+json"),
-KeyValuePair.New("lostxml", "application/lost+xml"),
-KeyValuePair.New("hqx", "application/mac-binhex40"),
-KeyValuePair.New("cpt", "application/mac-compactpro"),
-KeyValuePair.New("mads", "application/mads+xml"),
-KeyValuePair.New("mrc", "application/marc"),
-KeyValuePair.New("mrcx", "application/marcxml+xml"),
-KeyValuePair.New("ma", "application/mathematica"),
-KeyValuePair.New("nb", "application/mathematica"),
-KeyValuePair.New("mb", "application/mathematica"),
-KeyValuePair.New("mathml", "application/mathml+xml"),
-KeyValuePair.New("mbox", "application/mbox"),
-KeyValuePair.New("mscml", "application/mediaservercontrol+xml"),
-KeyValuePair.New("metalink", "application/metalink+xml"),
-KeyValuePair.New("meta4", "application/metalink4+xml"),
-KeyValuePair.New("mets", "application/mets+xml"),
-KeyValuePair.New("mods", "application/mods+xml"),
-KeyValuePair.New("m21", "application/mp21"),
-KeyValuePair.New("mp21", "application/mp21"),
-KeyValuePair.New("mp4s", "application/mp4"),
-KeyValuePair.New("doc", "application/msword"),
-KeyValuePair.New("dot", "application/msword"),
-KeyValuePair.New("mxf", "application/mxf"),
-KeyValuePair.New("bin", "application/octet-stream"),
-KeyValuePair.New("dms", "application/octet-stream"),
-KeyValuePair.New("lrf", "application/octet-stream"),
-KeyValuePair.New("mar", "application/octet-stream"),
-KeyValuePair.New("so", "application/octet-stream"),
-KeyValuePair.New("dist", "application/octet-stream"),
-KeyValuePair.New("distz", "application/octet-stream"),
-KeyValuePair.New("pkg", "application/octet-stream"),
-KeyValuePair.New("bpk", "application/octet-stream"),
-KeyValuePair.New("dump", "application/octet-stream"),
-KeyValuePair.New("elc", "application/octet-stream"),
-KeyValuePair.New("deploy", "application/octet-stream"),
-KeyValuePair.New("oda", "application/oda"),
-KeyValuePair.New("opf", "application/oebps-package+xml"),
-KeyValuePair.New("ogx", "application/ogg"),
-KeyValuePair.New("omdoc", "application/omdoc+xml"),
-KeyValuePair.New("onetoc", "application/onenote"),
-KeyValuePair.New("onetoc2", "application/onenote"),
-KeyValuePair.New("onetmp", "application/onenote"),
-KeyValuePair.New("onepkg", "application/onenote"),
-KeyValuePair.New("oxps", "application/oxps"),
-KeyValuePair.New("xer", "application/patch-ops-error+xml"),
-KeyValuePair.New("pdf", "application/pdf"),
-KeyValuePair.New("pgp", "application/pgp-encrypted"),
-KeyValuePair.New("asc", "application/pgp-signature"),
-KeyValuePair.New("sig", "application/pgp-signature"),
-KeyValuePair.New("prf", "application/pics-rules"),
-KeyValuePair.New("p10", "application/pkcs10"),
-KeyValuePair.New("p7m", "application/pkcs7-mime"),
-KeyValuePair.New("p7c", "application/pkcs7-mime"),
-KeyValuePair.New("p7s", "application/pkcs7-signature"),
-KeyValuePair.New("p8", "application/pkcs8"),
-KeyValuePair.New("ac", "application/pkix-attr-cert"),
-KeyValuePair.New("cer", "application/pkix-cert"),
-KeyValuePair.New("crl", "application/pkix-crl"),
-KeyValuePair.New("pkipath", "application/pkix-pkipath"),
-KeyValuePair.New("pki", "application/pkixcmp"),
-KeyValuePair.New("pls", "application/pls+xml"),
-KeyValuePair.New("ai", "application/postscript"),
-KeyValuePair.New("eps", "application/postscript"),
-KeyValuePair.New("ps", "application/postscript"),
-KeyValuePair.New("cww", "application/prs.cww"),
-KeyValuePair.New("pskcxml", "application/pskc+xml"),
-KeyValuePair.New("rdf", "application/rdf+xml"),
-KeyValuePair.New("rif", "application/reginfo+xml"),
-KeyValuePair.New("rnc", "application/relax-ng-compact-syntax"),
-KeyValuePair.New("rl", "application/resource-lists+xml"),
-KeyValuePair.New("rld", "application/resource-lists-diff+xml"),
-KeyValuePair.New("rs", "application/rls-services+xml"),
-KeyValuePair.New("gbr", "application/rpki-ghostbusters"),
-KeyValuePair.New("mft", "application/rpki-manifest"),
-KeyValuePair.New("roa", "application/rpki-roa"),
-KeyValuePair.New("rsd", "application/rsd+xml"),
-KeyValuePair.New("rss", "application/rss+xml"),
-KeyValuePair.New("rtf", "application/rtf"),
-KeyValuePair.New("sbml", "application/sbml+xml"),
-KeyValuePair.New("scq", "application/scvp-cv-request"),
-KeyValuePair.New("scs", "application/scvp-cv-response"),
-KeyValuePair.New("spq", "application/scvp-vp-request"),
-KeyValuePair.New("spp", "application/scvp-vp-response"),
-KeyValuePair.New("sdp", "application/sdp"),
-KeyValuePair.New("setpay", "application/set-payment-initiation"),
-KeyValuePair.New("setreg", "application/set-registration-initiation"),
-KeyValuePair.New("shf", "application/shf+xml"),
-KeyValuePair.New("smi", "application/smil+xml"),
-KeyValuePair.New("smil", "application/smil+xml"),
-KeyValuePair.New("rq", "application/sparql-query"),
-KeyValuePair.New("srx", "application/sparql-results+xml"),
-KeyValuePair.New("gram", "application/srgs"),
-KeyValuePair.New("grxml", "application/srgs+xml"),
-KeyValuePair.New("sru", "application/sru+xml"),
-KeyValuePair.New("ssdl", "application/ssdl+xml"),
-KeyValuePair.New("ssml", "application/ssml+xml"),
-KeyValuePair.New("tei", "application/tei+xml"),
-KeyValuePair.New("teicorpus", "application/tei+xml"),
-KeyValuePair.New("tfi", "application/thraud+xml"),
-KeyValuePair.New("tsd", "application/timestamped-data"),
-KeyValuePair.New("plb", "application/vnd.3gpp.pic-bw-large"),
-KeyValuePair.New("psb", "application/vnd.3gpp.pic-bw-small"),
-KeyValuePair.New("pvb", "application/vnd.3gpp.pic-bw-var"),
-KeyValuePair.New("tcap", "application/vnd.3gpp2.tcap"),
-KeyValuePair.New("pwn", "application/vnd.3m.post-it-notes"),
-KeyValuePair.New("aso", "application/vnd.accpac.simply.aso"),
-KeyValuePair.New("imp", "application/vnd.accpac.simply.imp"),
-KeyValuePair.New("acu", "application/vnd.acucobol"),
-KeyValuePair.New("atc", "application/vnd.acucorp"),
-KeyValuePair.New("acutc", "application/vnd.acucorp"),
-KeyValuePair.New("air", "application/vnd.adobe.air-application-installer-package+zip"),
-KeyValuePair.New("fcdt", "application/vnd.adobe.formscentral.fcdt"),
-KeyValuePair.New("fxp", "application/vnd.adobe.fxp"),
-KeyValuePair.New("fxpl", "application/vnd.adobe.fxp"),
-KeyValuePair.New("xdp", "application/vnd.adobe.xdp+xml"),
-KeyValuePair.New("xfdf", "application/vnd.adobe.xfdf"),
-KeyValuePair.New("ahead", "application/vnd.ahead.space"),
-KeyValuePair.New("azf", "application/vnd.airzip.filesecure.azf"),
-KeyValuePair.New("azs", "application/vnd.airzip.filesecure.azs"),
-KeyValuePair.New("azw", "application/vnd.amazon.ebook"),
-KeyValuePair.New("acc", "application/vnd.americandynamics.acc"),
-KeyValuePair.New("ami", "application/vnd.amiga.ami"),
-KeyValuePair.New("apk", "application/vnd.android.package-archive"),
-KeyValuePair.New("cii", "application/vnd.anser-web-certificate-issue-initiation"),
-KeyValuePair.New("fti", "application/vnd.anser-web-funds-transfer-initiation"),
-KeyValuePair.New("atx", "application/vnd.antix.game-component"),
-KeyValuePair.New("mpkg", "application/vnd.apple.installer+xml"),
-KeyValuePair.New("m3u8", "application/vnd.apple.mpegurl"),
-KeyValuePair.New("swi", "application/vnd.aristanetworks.swi"),
-KeyValuePair.New("iota", "application/vnd.astraea-software.iota"),
-KeyValuePair.New("aep", "application/vnd.audiograph"),
-KeyValuePair.New("mpm", "application/vnd.blueice.multipass"),
-KeyValuePair.New("bmi", "application/vnd.bmi"),
-KeyValuePair.New("rep", "application/vnd.businessobjects"),
-KeyValuePair.New("cdxml", "application/vnd.chemdraw+xml"),
-KeyValuePair.New("mmd", "application/vnd.chipnuts.karaoke-mmd"),
-KeyValuePair.New("cdy", "application/vnd.cinderella"),
-KeyValuePair.New("cla", "application/vnd.claymore"),
-KeyValuePair.New("rp9", "application/vnd.cloanto.rp9"),
-KeyValuePair.New("c4g", "application/vnd.clonk.c4group"),
-KeyValuePair.New("c4d", "application/vnd.clonk.c4group"),
-KeyValuePair.New("c4f", "application/vnd.clonk.c4group"),
-KeyValuePair.New("c4p", "application/vnd.clonk.c4group"),
-KeyValuePair.New("c4u", "application/vnd.clonk.c4group"),
-KeyValuePair.New("c11amc", "application/vnd.cluetrust.cartomobile-config"),
-KeyValuePair.New("c11amz", "application/vnd.cluetrust.cartomobile-config-pkg"),
-KeyValuePair.New("csp", "application/vnd.commonspace"),
-KeyValuePair.New("cdbcmsg", "application/vnd.contact.cmsg"),
-KeyValuePair.New("cmc", "application/vnd.cosmocaller"),
-KeyValuePair.New("clkx", "application/vnd.crick.clicker"),
-KeyValuePair.New("clkk", "application/vnd.crick.clicker.keyboard"),
-KeyValuePair.New("clkp", "application/vnd.crick.clicker.palette"),
-KeyValuePair.New("clkt", "application/vnd.crick.clicker.template"),
-KeyValuePair.New("clkw", "application/vnd.crick.clicker.wordbank"),
-KeyValuePair.New("wbs", "application/vnd.criticaltools.wbs+xml"),
-KeyValuePair.New("pml", "application/vnd.ctc-posml"),
-KeyValuePair.New("ppd", "application/vnd.cups-ppd"),
-KeyValuePair.New("car", "application/vnd.curl.car"),
-KeyValuePair.New("pcurl", "application/vnd.curl.pcurl"),
-KeyValuePair.New("dart", "application/vnd.dart"),
-KeyValuePair.New("rdz", "application/vnd.data-vision.rdz"),
-KeyValuePair.New("uvf", "application/vnd.dece.data"),
-KeyValuePair.New("uvvf", "application/vnd.dece.data"),
-KeyValuePair.New("uvd", "application/vnd.dece.data"),
-KeyValuePair.New("uvvd", "application/vnd.dece.data"),
-KeyValuePair.New("uvt", "application/vnd.dece.ttml+xml"),
-KeyValuePair.New("uvvt", "application/vnd.dece.ttml+xml"),
-KeyValuePair.New("uvx", "application/vnd.dece.unspecified"),
-KeyValuePair.New("uvvx", "application/vnd.dece.unspecified"),
-KeyValuePair.New("uvz", "application/vnd.dece.zip"),
-KeyValuePair.New("uvvz", "application/vnd.dece.zip"),
-KeyValuePair.New("fe_launch", "application/vnd.denovo.fcselayout-link"),
-KeyValuePair.New("dna", "application/vnd.dna"),
-KeyValuePair.New("mlp", "application/vnd.dolby.mlp"),
-KeyValuePair.New("dpg", "application/vnd.dpgraph"),
-KeyValuePair.New("dfac", "application/vnd.dreamfactory"),
-KeyValuePair.New("kpxx", "application/vnd.ds-keypoint"),
-KeyValuePair.New("ait", "application/vnd.dvb.ait"),
-KeyValuePair.New("svc", "application/vnd.dvb.service"),
-KeyValuePair.New("geo", "application/vnd.dynageo"),
-KeyValuePair.New("mag", "application/vnd.ecowin.chart"),
-KeyValuePair.New("nml", "application/vnd.enliven"),
-KeyValuePair.New("esf", "application/vnd.epson.esf"),
-KeyValuePair.New("msf", "application/vnd.epson.msf"),
-KeyValuePair.New("qam", "application/vnd.epson.quickanime"),
-KeyValuePair.New("slt", "application/vnd.epson.salt"),
-KeyValuePair.New("ssf", "application/vnd.epson.ssf"),
-KeyValuePair.New("es3", "application/vnd.eszigno3+xml"),
-KeyValuePair.New("et3", "application/vnd.eszigno3+xml"),
-KeyValuePair.New("ez2", "application/vnd.ezpix-album"),
-KeyValuePair.New("ez3", "application/vnd.ezpix-package"),
-KeyValuePair.New("fdf", "application/vnd.fdf"),
-KeyValuePair.New("mseed", "application/vnd.fdsn.mseed"),
-KeyValuePair.New("seed", "application/vnd.fdsn.seed"),
-KeyValuePair.New("dataless", "application/vnd.fdsn.seed"),
-KeyValuePair.New("gph", "application/vnd.flographit"),
-KeyValuePair.New("ftc", "application/vnd.fluxtime.clip"),
-KeyValuePair.New("fm", "application/vnd.framemaker"),
-KeyValuePair.New("frame", "application/vnd.framemaker"),
-KeyValuePair.New("maker", "application/vnd.framemaker"),
-KeyValuePair.New("book", "application/vnd.framemaker"),
-KeyValuePair.New("fnc", "application/vnd.frogans.fnc"),
-KeyValuePair.New("ltf", "application/vnd.frogans.ltf"),
-KeyValuePair.New("fsc", "application/vnd.fsc.weblaunch"),
-KeyValuePair.New("oas", "application/vnd.fujitsu.oasys"),
-KeyValuePair.New("oa2", "application/vnd.fujitsu.oasys2"),
-KeyValuePair.New("oa3", "application/vnd.fujitsu.oasys3"),
-KeyValuePair.New("fg5", "application/vnd.fujitsu.oasysgp"),
-KeyValuePair.New("bh2", "application/vnd.fujitsu.oasysprs"),
-KeyValuePair.New("ddd", "application/vnd.fujixerox.ddd"),
-KeyValuePair.New("xdw", "application/vnd.fujixerox.docuworks"),
-KeyValuePair.New("xbd", "application/vnd.fujixerox.docuworks.binder"),
-KeyValuePair.New("fzs", "application/vnd.fuzzysheet"),
-KeyValuePair.New("txd", "application/vnd.genomatix.tuxedo"),
-KeyValuePair.New("ggb", "application/vnd.geogebra.file"),
-KeyValuePair.New("ggt", "application/vnd.geogebra.tool"),
-KeyValuePair.New("gex", "application/vnd.geometry-explorer"),
-KeyValuePair.New("gre", "application/vnd.geometry-explorer"),
-KeyValuePair.New("gxt", "application/vnd.geonext"),
-KeyValuePair.New("g2w", "application/vnd.geoplan"),
-KeyValuePair.New("g3w", "application/vnd.geospace"),
-KeyValuePair.New("gmx", "application/vnd.gmx"),
-KeyValuePair.New("kml", "application/vnd.google-earth.kml+xml"),
-KeyValuePair.New("kmz", "application/vnd.google-earth.kmz"),
-KeyValuePair.New("gqf", "application/vnd.grafeq"),
-KeyValuePair.New("gqs", "application/vnd.grafeq"),
-KeyValuePair.New("gac", "application/vnd.groove-account"),
-KeyValuePair.New("ghf", "application/vnd.groove-help"),
-KeyValuePair.New("gim", "application/vnd.groove-identity-message"),
-KeyValuePair.New("grv", "application/vnd.groove-injector"),
-KeyValuePair.New("gtm", "application/vnd.groove-tool-message"),
-KeyValuePair.New("tpl", "application/vnd.groove-tool-template"),
-KeyValuePair.New("vcg", "application/vnd.groove-vcard"),
-KeyValuePair.New("hal", "application/vnd.hal+xml"),
-KeyValuePair.New("zmm", "application/vnd.handheld-entertainment+xml"),
-KeyValuePair.New("hbci", "application/vnd.hbci"),
-KeyValuePair.New("les", "application/vnd.hhe.lesson-player"),
-KeyValuePair.New("hpgl", "application/vnd.hp-hpgl"),
-KeyValuePair.New("hpid", "application/vnd.hp-hpid"),
-KeyValuePair.New("hps", "application/vnd.hp-hps"),
-KeyValuePair.New("jlt", "application/vnd.hp-jlyt"),
-KeyValuePair.New("pcl", "application/vnd.hp-pcl"),
-KeyValuePair.New("pclxl", "application/vnd.hp-pclxl"),
-KeyValuePair.New("sfd-hdstx", "application/vnd.hydrostatix.sof-data"),
-KeyValuePair.New("mpy", "application/vnd.ibm.minipay"),
-KeyValuePair.New("afp", "application/vnd.ibm.modcap"),
-KeyValuePair.New("listafp", "application/vnd.ibm.modcap"),
-KeyValuePair.New("list3820", "application/vnd.ibm.modcap"),
-KeyValuePair.New("irm", "application/vnd.ibm.rights-management"),
-KeyValuePair.New("sc", "application/vnd.ibm.secure-container"),
-KeyValuePair.New("icc", "application/vnd.iccprofile"),
-KeyValuePair.New("icm", "application/vnd.iccprofile"),
-KeyValuePair.New("igl", "application/vnd.igloader"),
-KeyValuePair.New("ivp", "application/vnd.immervision-ivp"),
-KeyValuePair.New("ivu", "application/vnd.immervision-ivu"),
-KeyValuePair.New("igm", "application/vnd.insors.igm"),
-KeyValuePair.New("xpw", "application/vnd.intercon.formnet"),
-KeyValuePair.New("xpx", "application/vnd.intercon.formnet"),
-KeyValuePair.New("i2g", "application/vnd.intergeo"),
-KeyValuePair.New("qbo", "application/vnd.intu.qbo"),
-KeyValuePair.New("qfx", "application/vnd.intu.qfx"),
-KeyValuePair.New("rcprofile", "application/vnd.ipunplugged.rcprofile"),
-KeyValuePair.New("irp", "application/vnd.irepository.package+xml"),
-KeyValuePair.New("xpr", "application/vnd.is-xpr"),
-KeyValuePair.New("fcs", "application/vnd.isac.fcs"),
-KeyValuePair.New("jam", "application/vnd.jam"),
-KeyValuePair.New("rms", "application/vnd.jcp.javame.midlet-rms"),
-KeyValuePair.New("jisp", "application/vnd.jisp"),
-KeyValuePair.New("joda", "application/vnd.joost.joda-archive"),
-KeyValuePair.New("ktz", "application/vnd.kahootz"),
-KeyValuePair.New("ktr", "application/vnd.kahootz"),
-KeyValuePair.New("karbon", "application/vnd.kde.karbon"),
-KeyValuePair.New("chrt", "application/vnd.kde.kchart"),
-KeyValuePair.New("kfo", "application/vnd.kde.kformula"),
-KeyValuePair.New("flw", "application/vnd.kde.kivio"),
-KeyValuePair.New("kon", "application/vnd.kde.kontour"),
-KeyValuePair.New("kpr", "application/vnd.kde.kpresenter"),
-KeyValuePair.New("kpt", "application/vnd.kde.kpresenter"),
-KeyValuePair.New("ksp", "application/vnd.kde.kspread"),
-KeyValuePair.New("kwd", "application/vnd.kde.kword"),
-KeyValuePair.New("kwt", "application/vnd.kde.kword"),
-KeyValuePair.New("htke", "application/vnd.kenameaapp"),
-KeyValuePair.New("kia", "application/vnd.kidspiration"),
-KeyValuePair.New("kne", "application/vnd.kinar"),
-KeyValuePair.New("knp", "application/vnd.kinar"),
-KeyValuePair.New("skp", "application/vnd.koan"),
-KeyValuePair.New("skd", "application/vnd.koan"),
-KeyValuePair.New("skt", "application/vnd.koan"),
-KeyValuePair.New("skm", "application/vnd.koan"),
-KeyValuePair.New("sse", "application/vnd.kodak-descriptor"),
-KeyValuePair.New("lasxml", "application/vnd.las.las+xml"),
-KeyValuePair.New("lbd", "application/vnd.llamagraphics.life-balance.desktop"),
-KeyValuePair.New("lbe", "application/vnd.llamagraphics.life-balance.exchange+xml"),
-KeyValuePair.New("123", "application/vnd.lotus-1-2-3"),
-KeyValuePair.New("apr", "application/vnd.lotus-approach"),
-KeyValuePair.New("pre", "application/vnd.lotus-freelance"),
-KeyValuePair.New("nsf", "application/vnd.lotus-notes"),
-KeyValuePair.New("org", "application/vnd.lotus-organizer"),
-KeyValuePair.New("scm", "application/vnd.lotus-screencam"),
-KeyValuePair.New("lwp", "application/vnd.lotus-wordpro"),
-KeyValuePair.New("portpkg", "application/vnd.macports.portpkg"),
-KeyValuePair.New("mcd", "application/vnd.mcd"),
-KeyValuePair.New("mc1", "application/vnd.medcalcdata"),
-KeyValuePair.New("cdkey", "application/vnd.mediastation.cdkey"),
-KeyValuePair.New("mwf", "application/vnd.mfer"),
-KeyValuePair.New("mfm", "application/vnd.mfmp"),
-KeyValuePair.New("flo", "application/vnd.micrografx.flo"),
-KeyValuePair.New("igx", "application/vnd.micrografx.igx"),
-KeyValuePair.New("mif", "application/vnd.mif"),
-KeyValuePair.New("daf", "application/vnd.mobius.daf"),
-KeyValuePair.New("dis", "application/vnd.mobius.dis"),
-KeyValuePair.New("mbk", "application/vnd.mobius.mbk"),
-KeyValuePair.New("mqy", "application/vnd.mobius.mqy"),
-KeyValuePair.New("msl", "application/vnd.mobius.msl"),
-KeyValuePair.New("plc", "application/vnd.mobius.plc"),
-KeyValuePair.New("txf", "application/vnd.mobius.txf"),
-KeyValuePair.New("mpn", "application/vnd.mophun.application"),
-KeyValuePair.New("mpc", "application/vnd.mophun.certificate"),
-KeyValuePair.New("xul", "application/vnd.mozilla.xul+xml"),
-KeyValuePair.New("cil", "application/vnd.ms-artgalry"),
-KeyValuePair.New("cab", "application/vnd.ms-cab-compressed"),
-KeyValuePair.New("xls", "application/vnd.ms-excel"),
-KeyValuePair.New("xlm", "application/vnd.ms-excel"),
-KeyValuePair.New("xla", "application/vnd.ms-excel"),
-KeyValuePair.New("xlc", "application/vnd.ms-excel"),
-KeyValuePair.New("xlt", "application/vnd.ms-excel"),
-KeyValuePair.New("xlw", "application/vnd.ms-excel"),
-KeyValuePair.New("xlam", "application/vnd.ms-excel.addin.macroenabled.12"),
-KeyValuePair.New("xlsb", "application/vnd.ms-excel.sheet.binary.macroenabled.12"),
-KeyValuePair.New("xlsm", "application/vnd.ms-excel.sheet.macroenabled.12"),
-KeyValuePair.New("xltm", "application/vnd.ms-excel.template.macroenabled.12"),
-KeyValuePair.New("eot", "application/vnd.ms-fontobject"),
-KeyValuePair.New("chm", "application/vnd.ms-htmlhelp"),
-KeyValuePair.New("ims", "application/vnd.ms-ims"),
-KeyValuePair.New("lrm", "application/vnd.ms-lrm"),
-KeyValuePair.New("thmx", "application/vnd.ms-officetheme"),
-KeyValuePair.New("cat", "application/vnd.ms-pki.seccat"),
-KeyValuePair.New("stl", "application/vnd.ms-pki.stl"),
-KeyValuePair.New("ppt", "application/vnd.ms-powerpoint"),
-KeyValuePair.New("pps", "application/vnd.ms-powerpoint"),
-KeyValuePair.New("pot", "application/vnd.ms-powerpoint"),
-KeyValuePair.New("ppam", "application/vnd.ms-powerpoint.addin.macroenabled.12"),
-KeyValuePair.New("pptm", "application/vnd.ms-powerpoint.presentation.macroenabled.12"),
-KeyValuePair.New("sldm", "application/vnd.ms-powerpoint.slide.macroenabled.12"),
-KeyValuePair.New("ppsm", "application/vnd.ms-powerpoint.slideshow.macroenabled.12"),
-KeyValuePair.New("potm", "application/vnd.ms-powerpoint.template.macroenabled.12"),
-KeyValuePair.New("mpp", "application/vnd.ms-project"),
-KeyValuePair.New("mpt", "application/vnd.ms-project"),
-KeyValuePair.New("docm", "application/vnd.ms-word.document.macroenabled.12"),
-KeyValuePair.New("dotm", "application/vnd.ms-word.template.macroenabled.12"),
-KeyValuePair.New("wps", "application/vnd.ms-works"),
-KeyValuePair.New("wks", "application/vnd.ms-works"),
-KeyValuePair.New("wcm", "application/vnd.ms-works"),
-KeyValuePair.New("wdb", "application/vnd.ms-works"),
-KeyValuePair.New("wpl", "application/vnd.ms-wpl"),
-KeyValuePair.New("xps", "application/vnd.ms-xpsdocument"),
-KeyValuePair.New("mseq", "application/vnd.mseq"),
-KeyValuePair.New("mus", "application/vnd.musician"),
-KeyValuePair.New("msty", "application/vnd.muvee.style"),
-KeyValuePair.New("taglet", "application/vnd.mynfc"),
-KeyValuePair.New("nlu", "application/vnd.neurolanguage.nlu"),
-KeyValuePair.New("ntf", "application/vnd.nitf"),
-KeyValuePair.New("nitf", "application/vnd.nitf"),
-KeyValuePair.New("nnd", "application/vnd.noblenet-directory"),
-KeyValuePair.New("nns", "application/vnd.noblenet-sealer"),
-KeyValuePair.New("nnw", "application/vnd.noblenet-web"),
-KeyValuePair.New("ngdat", "application/vnd.nokia.n-gage.data"),
-KeyValuePair.New("n-gage", "application/vnd.nokia.n-gage.symbian.install"),
-KeyValuePair.New("rpst", "application/vnd.nokia.radio-preset"),
-KeyValuePair.New("rpss", "application/vnd.nokia.radio-presets"),
-KeyValuePair.New("edm", "application/vnd.novadigm.edm"),
-KeyValuePair.New("edx", "application/vnd.novadigm.edx"),
-KeyValuePair.New("ext", "application/vnd.novadigm.ext"),
-KeyValuePair.New("odc", "application/vnd.oasis.opendocument.chart"),
-KeyValuePair.New("otc", "application/vnd.oasis.opendocument.chart-template"),
-KeyValuePair.New("odb", "application/vnd.oasis.opendocument.database"),
-KeyValuePair.New("odf", "application/vnd.oasis.opendocument.formula"),
-KeyValuePair.New("odft", "application/vnd.oasis.opendocument.formula-template"),
-KeyValuePair.New("odg", "application/vnd.oasis.opendocument.graphics"),
-KeyValuePair.New("otg", "application/vnd.oasis.opendocument.graphics-template"),
-KeyValuePair.New("odi", "application/vnd.oasis.opendocument.image"),
-KeyValuePair.New("oti", "application/vnd.oasis.opendocument.image-template"),
-KeyValuePair.New("odp", "application/vnd.oasis.opendocument.presentation"),
-KeyValuePair.New("otp", "application/vnd.oasis.opendocument.presentation-template"),
-KeyValuePair.New("ods", "application/vnd.oasis.opendocument.spreadsheet"),
-KeyValuePair.New("ots", "application/vnd.oasis.opendocument.spreadsheet-template"),
-KeyValuePair.New("odt", "application/vnd.oasis.opendocument.text"),
-KeyValuePair.New("odm", "application/vnd.oasis.opendocument.text-master"),
-KeyValuePair.New("ott", "application/vnd.oasis.opendocument.text-template"),
-KeyValuePair.New("oth", "application/vnd.oasis.opendocument.text-web"),
-KeyValuePair.New("xo", "application/vnd.olpc-sugar"),
-KeyValuePair.New("dd2", "application/vnd.oma.dd2+xml"),
-KeyValuePair.New("oxt", "application/vnd.openofficeorg.extension"),
-KeyValuePair.New("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"),
-KeyValuePair.New("sldx", "application/vnd.openxmlformats-officedocument.presentationml.slide"),
-KeyValuePair.New("ppsx", "application/vnd.openxmlformats-officedocument.presentationml.slideshow"),
-KeyValuePair.New("potx", "application/vnd.openxmlformats-officedocument.presentationml.template"),
-KeyValuePair.New("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
-KeyValuePair.New("xltx", "application/vnd.openxmlformats-officedocument.spreadsheetml.template"),
-KeyValuePair.New("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
-KeyValuePair.New("dotx", "application/vnd.openxmlformats-officedocument.wordprocessingml.template"),
-KeyValuePair.New("mgp", "application/vnd.osgeo.mapguide.package"),
-KeyValuePair.New("dp", "application/vnd.osgi.dp"),
-KeyValuePair.New("esa", "application/vnd.osgi.subsystem"),
-KeyValuePair.New("pdb", "application/vnd.palm"),
-KeyValuePair.New("pqa", "application/vnd.palm"),
-KeyValuePair.New("oprc", "application/vnd.palm"),
-KeyValuePair.New("paw", "application/vnd.pawaafile"),
-KeyValuePair.New("str", "application/vnd.pg.format"),
-KeyValuePair.New("ei6", "application/vnd.pg.osasli"),
-KeyValuePair.New("efif", "application/vnd.picsel"),
-KeyValuePair.New("wg", "application/vnd.pmi.widget"),
-KeyValuePair.New("plf", "application/vnd.pocketlearn"),
-KeyValuePair.New("pbd", "application/vnd.powerbuilder6"),
-KeyValuePair.New("box", "application/vnd.previewsystems.box"),
-KeyValuePair.New("mgz", "application/vnd.proteus.magazine"),
-KeyValuePair.New("qps", "application/vnd.publishare-delta-tree"),
-KeyValuePair.New("ptid", "application/vnd.pvi.ptid1"),
-KeyValuePair.New("qxd", "application/vnd.quark.quarkxpress"),
-KeyValuePair.New("qxt", "application/vnd.quark.quarkxpress"),
-KeyValuePair.New("qwd", "application/vnd.quark.quarkxpress"),
-KeyValuePair.New("qwt", "application/vnd.quark.quarkxpress"),
-KeyValuePair.New("qxl", "application/vnd.quark.quarkxpress"),
-KeyValuePair.New("qxb", "application/vnd.quark.quarkxpress"),
-KeyValuePair.New("bed", "application/vnd.realvnc.bed"),
-KeyValuePair.New("mxl", "application/vnd.recordare.musicxml"),
-KeyValuePair.New("musicxml", "application/vnd.recordare.musicxml+xml"),
-KeyValuePair.New("cryptonote", "application/vnd.rig.cryptonote"),
-KeyValuePair.New("cod", "application/vnd.rim.cod"),
-KeyValuePair.New("rm", "application/vnd.rn-realmedia"),
-KeyValuePair.New("rmvb", "application/vnd.rn-realmedia-vbr"),
-KeyValuePair.New("link66", "application/vnd.route66.link66+xml"),
-KeyValuePair.New("st", "application/vnd.sailingtracker.track"),
-KeyValuePair.New("see", "application/vnd.seemail"),
-KeyValuePair.New("sema", "application/vnd.sema"),
-KeyValuePair.New("semd", "application/vnd.semd"),
-KeyValuePair.New("semf", "application/vnd.semf"),
-KeyValuePair.New("ifm", "application/vnd.shana.informed.formdata"),
-KeyValuePair.New("itp", "application/vnd.shana.informed.formtemplate"),
-KeyValuePair.New("iif", "application/vnd.shana.informed.interchange"),
-KeyValuePair.New("ipk", "application/vnd.shana.informed.package"),
-KeyValuePair.New("twd", "application/vnd.simtech-mindmapper"),
-KeyValuePair.New("twds", "application/vnd.simtech-mindmapper"),
-KeyValuePair.New("mmf", "application/vnd.smaf"),
-KeyValuePair.New("teacher", "application/vnd.smart.teacher"),
-KeyValuePair.New("sdkm", "application/vnd.solent.sdkm+xml"),
-KeyValuePair.New("sdkd", "application/vnd.solent.sdkm+xml"),
-KeyValuePair.New("dxp", "application/vnd.spotfire.dxp"),
-KeyValuePair.New("sfs", "application/vnd.spotfire.sfs"),
-KeyValuePair.New("sdc", "application/vnd.stardivision.calc"),
-KeyValuePair.New("sda", "application/vnd.stardivision.draw"),
-KeyValuePair.New("sdd", "application/vnd.stardivision.impress"),
-KeyValuePair.New("smf", "application/vnd.stardivision.math"),
-KeyValuePair.New("sdw", "application/vnd.stardivision.writer"),
-KeyValuePair.New("vor", "application/vnd.stardivision.writer"),
-KeyValuePair.New("sgl", "application/vnd.stardivision.writer-global"),
-KeyValuePair.New("smzip", "application/vnd.stepmania.package"),
-KeyValuePair.New("sm", "application/vnd.stepmania.stepchart"),
-KeyValuePair.New("sxc", "application/vnd.sun.xml.calc"),
-KeyValuePair.New("stc", "application/vnd.sun.xml.calc.template"),
-KeyValuePair.New("sxd", "application/vnd.sun.xml.draw"),
-KeyValuePair.New("std", "application/vnd.sun.xml.draw.template"),
-KeyValuePair.New("sxi", "application/vnd.sun.xml.impress"),
-KeyValuePair.New("sti", "application/vnd.sun.xml.impress.template"),
-KeyValuePair.New("sxm", "application/vnd.sun.xml.math"),
-KeyValuePair.New("sxw", "application/vnd.sun.xml.writer"),
-KeyValuePair.New("sxg", "application/vnd.sun.xml.writer.global"),
-KeyValuePair.New("stw", "application/vnd.sun.xml.writer.template"),
-KeyValuePair.New("sus", "application/vnd.sus-calendar"),
-KeyValuePair.New("susp", "application/vnd.sus-calendar"),
-KeyValuePair.New("svd", "application/vnd.svd"),
-KeyValuePair.New("sis", "application/vnd.symbian.install"),
-KeyValuePair.New("sisx", "application/vnd.symbian.install"),
-KeyValuePair.New("xsm", "application/vnd.syncml+xml"),
-KeyValuePair.New("bdm", "application/vnd.syncml.dm+wbxml"),
-KeyValuePair.New("xdm", "application/vnd.syncml.dm+xml"),
-KeyValuePair.New("tao", "application/vnd.tao.intent-module-archive"),
-KeyValuePair.New("pcap", "application/vnd.tcpdump.pcap"),
-KeyValuePair.New("cap", "application/vnd.tcpdump.pcap"),
-KeyValuePair.New("dmp", "application/vnd.tcpdump.pcap"),
-KeyValuePair.New("tmo", "application/vnd.tmobile-livetv"),
-KeyValuePair.New("tpt", "application/vnd.trid.tpt"),
-KeyValuePair.New("mxs", "application/vnd.triscape.mxs"),
-KeyValuePair.New("tra", "application/vnd.trueapp"),
-KeyValuePair.New("ufd", "application/vnd.ufdl"),
-KeyValuePair.New("ufdl", "application/vnd.ufdl"),
-KeyValuePair.New("utz", "application/vnd.uiq.theme"),
-KeyValuePair.New("umj", "application/vnd.umajin"),
-KeyValuePair.New("unityweb", "application/vnd.unity"),
-KeyValuePair.New("uoml", "application/vnd.uoml+xml"),
-KeyValuePair.New("vcx", "application/vnd.vcx"),
-KeyValuePair.New("vsd", "application/vnd.visio"),
-KeyValuePair.New("vst", "application/vnd.visio"),
-KeyValuePair.New("vss", "application/vnd.visio"),
-KeyValuePair.New("vsw", "application/vnd.visio"),
-KeyValuePair.New("vis", "application/vnd.visionary"),
-KeyValuePair.New("vsf", "application/vnd.vsf"),
-KeyValuePair.New("wbxml", "application/vnd.wap.wbxml"),
-KeyValuePair.New("wmlc", "application/vnd.wap.wmlc"),
-KeyValuePair.New("wmlsc", "application/vnd.wap.wmlscriptc"),
-KeyValuePair.New("wtb", "application/vnd.webturbo"),
-KeyValuePair.New("nbp", "application/vnd.wolfram.player"),
-KeyValuePair.New("wpd", "application/vnd.wordperfect"),
-KeyValuePair.New("wqd", "application/vnd.wqd"),
-KeyValuePair.New("stf", "application/vnd.wt.stf"),
-KeyValuePair.New("xar", "application/vnd.xara"),
-KeyValuePair.New("xfdl", "application/vnd.xfdl"),
-KeyValuePair.New("hvd", "application/vnd.yamaha.hv-dic"),
-KeyValuePair.New("hvs", "application/vnd.yamaha.hv-script"),
-KeyValuePair.New("hvp", "application/vnd.yamaha.hv-voice"),
-KeyValuePair.New("osf", "application/vnd.yamaha.openscoreformat"),
-KeyValuePair.New("osfpvg", "application/vnd.yamaha.openscoreformat.osfpvg+xml"),
-KeyValuePair.New("saf", "application/vnd.yamaha.smaf-audio"),
-KeyValuePair.New("spf", "application/vnd.yamaha.smaf-phrase"),
-KeyValuePair.New("cmp", "application/vnd.yellowriver-custom-menu"),
-KeyValuePair.New("zir", "application/vnd.zul"),
-KeyValuePair.New("zirz", "application/vnd.zul"),
-KeyValuePair.New("zaz", "application/vnd.zzazz.deck+xml"),
-KeyValuePair.New("vxml", "application/voicexml+xml"),
-KeyValuePair.New("wgt", "application/widget"),
-KeyValuePair.New("hlp", "application/winhlp"),
-KeyValuePair.New("wsdl", "application/wsdl+xml"),
-KeyValuePair.New("wspolicy", "application/wspolicy+xml"),
-KeyValuePair.New("7z", "application/x-7z-compressed"),
-KeyValuePair.New("abw", "application/x-abiword"),
-KeyValuePair.New("ace", "application/x-ace-compressed"),
-KeyValuePair.New("dmg", "application/x-apple-diskimage"),
-KeyValuePair.New("aab", "application/x-authorware-bin"),
-KeyValuePair.New("x32", "application/x-authorware-bin"),
-KeyValuePair.New("u32", "application/x-authorware-bin"),
-KeyValuePair.New("vox", "application/x-authorware-bin"),
-KeyValuePair.New("aam", "application/x-authorware-map"),
-KeyValuePair.New("aas", "application/x-authorware-seg"),
-KeyValuePair.New("bcpio", "application/x-bcpio"),
-KeyValuePair.New("torrent", "application/x-bittorrent"),
-KeyValuePair.New("blb", "application/x-blorb"),
-KeyValuePair.New("blorb", "application/x-blorb"),
-KeyValuePair.New("bz", "application/x-bzip"),
-KeyValuePair.New("bz2", "application/x-bzip2"),
-KeyValuePair.New("boz", "application/x-bzip2"),
-KeyValuePair.New("cbr", "application/x-cbr"),
-KeyValuePair.New("cba", "application/x-cbr"),
-KeyValuePair.New("cbt", "application/x-cbr"),
-KeyValuePair.New("cbz", "application/x-cbr"),
-KeyValuePair.New("cb7", "application/x-cbr"),
-KeyValuePair.New("vcd", "application/x-cdlink"),
-KeyValuePair.New("cfs", "application/x-cfs-compressed"),
-KeyValuePair.New("chat", "application/x-chat"),
-KeyValuePair.New("pgn", "application/x-chess-pgn"),
-KeyValuePair.New("nsc", "application/x-conference"),
-KeyValuePair.New("cpio", "application/x-cpio"),
-KeyValuePair.New("csh", "application/x-csh"),
-KeyValuePair.New("deb", "application/x-debian-package"),
-KeyValuePair.New("udeb", "application/x-debian-package"),
-KeyValuePair.New("dgc", "application/x-dgc-compressed"),
-KeyValuePair.New("dir", "application/x-director"),
-KeyValuePair.New("dcr", "application/x-director"),
-KeyValuePair.New("dxr", "application/x-director"),
-KeyValuePair.New("cst", "application/x-director"),
-KeyValuePair.New("cct", "application/x-director"),
-KeyValuePair.New("cxt", "application/x-director"),
-KeyValuePair.New("w3d", "application/x-director"),
-KeyValuePair.New("fgd", "application/x-director"),
-KeyValuePair.New("swa", "application/x-director"),
-KeyValuePair.New("wad", "application/x-doom"),
-KeyValuePair.New("ncx", "application/x-dtbncx+xml"),
-KeyValuePair.New("dtb", "application/x-dtbook+xml"),
-KeyValuePair.New("res", "application/x-dtbresource+xml"),
-KeyValuePair.New("dvi", "application/x-dvi"),
-KeyValuePair.New("evy", "application/x-envoy"),
-KeyValuePair.New("eva", "application/x-eva"),
-KeyValuePair.New("bdf", "application/x-font-bdf"),
-KeyValuePair.New("gsf", "application/x-font-ghostscript"),
-KeyValuePair.New("psf", "application/x-font-linux-psf"),
-KeyValuePair.New("pcf", "application/x-font-pcf"),
-KeyValuePair.New("snf", "application/x-font-snf"),
-KeyValuePair.New("pfa", "application/x-font-type1"),
-KeyValuePair.New("pfb", "application/x-font-type1"),
-KeyValuePair.New("pfm", "application/x-font-type1"),
-KeyValuePair.New("afm", "application/x-font-type1"),
-KeyValuePair.New("arc", "application/x-freearc"),
-KeyValuePair.New("spl", "application/x-futuresplash"),
-KeyValuePair.New("gca", "application/x-gca-compressed"),
-KeyValuePair.New("ulx", "application/x-glulx"),
-KeyValuePair.New("gnumeric", "application/x-gnumeric"),
-KeyValuePair.New("gramps", "application/x-gramps-xml"),
-KeyValuePair.New("gtar", "application/x-gtar"),
-KeyValuePair.New("hdf", "application/x-hdf"),
-KeyValuePair.New("install", "application/x-install-instructions"),
-KeyValuePair.New("iso", "application/x-iso9660-image"),
-KeyValuePair.New("jnlp", "application/x-java-jnlp-file"),
-KeyValuePair.New("latex", "application/x-latex"),
-KeyValuePair.New("lzh", "application/x-lzh-compressed"),
-KeyValuePair.New("lha", "application/x-lzh-compressed"),
-KeyValuePair.New("mie", "application/x-mie"),
-KeyValuePair.New("prc", "application/x-mobipocket-ebook"),
-KeyValuePair.New("mobi", "application/x-mobipocket-ebook"),
-KeyValuePair.New("application", "application/x-ms-application"),
-KeyValuePair.New("lnk", "application/x-ms-shortcut"),
-KeyValuePair.New("wmd", "application/x-ms-wmd"),
-KeyValuePair.New("wmz", "application/x-ms-wmz"),
-KeyValuePair.New("xbap", "application/x-ms-xbap"),
-KeyValuePair.New("mdb", "application/x-msaccess"),
-KeyValuePair.New("obd", "application/x-msbinder"),
-KeyValuePair.New("crd", "application/x-mscardfile"),
-KeyValuePair.New("clp", "application/x-msclip"),
-KeyValuePair.New("exe", "application/x-msdownload"),
-KeyValuePair.New("dll", "application/x-msdownload"),
-KeyValuePair.New("com", "application/x-msdownload"),
-KeyValuePair.New("bat", "application/x-msdownload"),
-KeyValuePair.New("msi", "application/x-msdownload"),
-KeyValuePair.New("mvb", "application/x-msmediaview"),
-KeyValuePair.New("m13", "application/x-msmediaview"),
-KeyValuePair.New("m14", "application/x-msmediaview"),
-KeyValuePair.New("wmf", "application/x-msmetafile"),
-KeyValuePair.New("wmz", "application/x-msmetafile"),
-KeyValuePair.New("emf", "application/x-msmetafile"),
-KeyValuePair.New("emz", "application/x-msmetafile"),
-KeyValuePair.New("mny", "application/x-msmoney"),
-KeyValuePair.New("pub", "application/x-mspublisher"),
-KeyValuePair.New("scd", "application/x-msschedule"),
-KeyValuePair.New("trm", "application/x-msterminal"),
-KeyValuePair.New("wri", "application/x-mswrite"),
-KeyValuePair.New("nc", "application/x-netcdf"),
-KeyValuePair.New("cdf", "application/x-netcdf"),
-KeyValuePair.New("nzb", "application/x-nzb"),
-KeyValuePair.New("p12", "application/x-pkcs12"),
-KeyValuePair.New("pfx", "application/x-pkcs12"),
-KeyValuePair.New("p7b", "application/x-pkcs7-certificates"),
-KeyValuePair.New("spc", "application/x-pkcs7-certificates"),
-KeyValuePair.New("p7r", "application/x-pkcs7-certreqresp"),
-KeyValuePair.New("rar", "application/x-rar-compressed"),
-KeyValuePair.New("ris", "application/x-research-info-systems"),
-KeyValuePair.New("sh", "application/x-sh"),
-KeyValuePair.New("shar", "application/x-shar"),
-KeyValuePair.New("swf", "application/x-shockwave-flash"),
-KeyValuePair.New("xap", "application/x-silverlight-app"),
-KeyValuePair.New("sql", "application/x-sql"),
-KeyValuePair.New("sit", "application/x-stuffit"),
-KeyValuePair.New("sitx", "application/x-stuffitx"),
-KeyValuePair.New("srt", "application/x-subrip"),
-KeyValuePair.New("sv4cpio", "application/x-sv4cpio"),
-KeyValuePair.New("sv4crc", "application/x-sv4crc"),
-KeyValuePair.New("t3", "application/x-t3vm-image"),
-KeyValuePair.New("gam", "application/x-tads"),
-KeyValuePair.New("tar", "application/x-tar"),
-KeyValuePair.New("tcl", "application/x-tcl"),
-KeyValuePair.New("tex", "application/x-tex"),
-KeyValuePair.New("tfm", "application/x-tex-tfm"),
-KeyValuePair.New("texinfo", "application/x-texinfo"),
-KeyValuePair.New("texi", "application/x-texinfo"),
-KeyValuePair.New("obj", "application/x-tgif"),
-KeyValuePair.New("ustar", "application/x-ustar"),
-KeyValuePair.New("src", "application/x-wais-source"),
-KeyValuePair.New("der", "application/x-x509-ca-cert"),
-KeyValuePair.New("crt", "application/x-x509-ca-cert"),
-KeyValuePair.New("fig", "application/x-xfig"),
-KeyValuePair.New("xlf", "application/x-xliff+xml"),
-KeyValuePair.New("xpi", "application/x-xpinstall"),
-KeyValuePair.New("xz", "application/x-xz"),
-KeyValuePair.New("z1", "application/x-zmachine"),
-KeyValuePair.New("z2", "application/x-zmachine"),
-KeyValuePair.New("z3", "application/x-zmachine"),
-KeyValuePair.New("z4", "application/x-zmachine"),
-KeyValuePair.New("z5", "application/x-zmachine"),
-KeyValuePair.New("z6", "application/x-zmachine"),
-KeyValuePair.New("z7", "application/x-zmachine"),
-KeyValuePair.New("z8", "application/x-zmachine"),
-KeyValuePair.New("xaml", "application/xaml+xml"),
-KeyValuePair.New("xdf", "application/xcap-diff+xml"),
-KeyValuePair.New("xenc", "application/xenc+xml"),
-KeyValuePair.New("xhtml", "application/xhtml+xml"),
-KeyValuePair.New("xht", "application/xhtml+xml"),
-KeyValuePair.New("xml", "application/xml"),
-KeyValuePair.New("xsl", "application/xml"),
-KeyValuePair.New("dtd", "application/xml-dtd"),
-KeyValuePair.New("xop", "application/xop+xml"),
-KeyValuePair.New("xpl", "application/xproc+xml"),
-KeyValuePair.New("xslt", "application/xslt+xml"),
-KeyValuePair.New("xspf", "application/xspf+xml"),
-KeyValuePair.New("mxml", "application/xv+xml"),
-KeyValuePair.New("xhvml", "application/xv+xml"),
-KeyValuePair.New("xvml", "application/xv+xml"),
-KeyValuePair.New("xvm", "application/xv+xml"),
-KeyValuePair.New("yang", "application/yang"),
-KeyValuePair.New("yin", "application/yin+xml"),
-KeyValuePair.New("zip", "application/zip"),
-KeyValuePair.New("adp", "audio/adpcm"),
-KeyValuePair.New("au", "audio/basic"),
-KeyValuePair.New("snd", "audio/basic"),
-KeyValuePair.New("mid", "audio/midi"),
-KeyValuePair.New("midi", "audio/midi"),
-KeyValuePair.New("kar", "audio/midi"),
-KeyValuePair.New("rmi", "audio/midi"),
-KeyValuePair.New("m4a", "audio/mp4"),
-KeyValuePair.New("mp4a", "audio/mp4"),
-KeyValuePair.New("mpga", "audio/mpeg"),
-KeyValuePair.New("mp2", "audio/mpeg"),
-KeyValuePair.New("mp2a", "audio/mpeg"),
-KeyValuePair.New("mp3", "audio/mpeg"),
-KeyValuePair.New("m2a", "audio/mpeg"),
-KeyValuePair.New("m3a", "audio/mpeg"),
-KeyValuePair.New("oga", "audio/ogg"),
-KeyValuePair.New("ogg", "audio/ogg"),
-KeyValuePair.New("spx", "audio/ogg"),
-KeyValuePair.New("s3m", "audio/s3m"),
-KeyValuePair.New("sil", "audio/silk"),
-KeyValuePair.New("uva", "audio/vnd.dece.audio"),
-KeyValuePair.New("uvva", "audio/vnd.dece.audio"),
-KeyValuePair.New("eol", "audio/vnd.digital-winds"),
-KeyValuePair.New("dra", "audio/vnd.dra"),
-KeyValuePair.New("dts", "audio/vnd.dts"),
-KeyValuePair.New("dtshd", "audio/vnd.dts.hd"),
-KeyValuePair.New("lvp", "audio/vnd.lucent.voice"),
-KeyValuePair.New("pya", "audio/vnd.ms-playready.media.pya"),
-KeyValuePair.New("ecelp4800", "audio/vnd.nuera.ecelp4800"),
-KeyValuePair.New("ecelp7470", "audio/vnd.nuera.ecelp7470"),
-KeyValuePair.New("ecelp9600", "audio/vnd.nuera.ecelp9600"),
-KeyValuePair.New("rip", "audio/vnd.rip"),
-KeyValuePair.New("weba", "audio/webm"),
-KeyValuePair.New("aac", "audio/x-aac"),
-KeyValuePair.New("aif", "audio/x-aiff"),
-KeyValuePair.New("aiff", "audio/x-aiff"),
-KeyValuePair.New("aifc", "audio/x-aiff"),
-KeyValuePair.New("caf", "audio/x-caf"),
-KeyValuePair.New("flac", "audio/x-flac"),
-KeyValuePair.New("mka", "audio/x-matroska"),
-KeyValuePair.New("m3u", "audio/x-mpegurl"),
-KeyValuePair.New("wax", "audio/x-ms-wax"),
-KeyValuePair.New("wma", "audio/x-ms-wma"),
-KeyValuePair.New("ram", "audio/x-pn-realaudio"),
-KeyValuePair.New("ra", "audio/x-pn-realaudio"),
-KeyValuePair.New("rmp", "audio/x-pn-realaudio-plugin"),
-KeyValuePair.New("wav", "audio/x-wav"),
-KeyValuePair.New("xm", "audio/xm"),
-KeyValuePair.New("cdx", "chemical/x-cdx"),
-KeyValuePair.New("cif", "chemical/x-cif"),
-KeyValuePair.New("cmdf", "chemical/x-cmdf"),
-KeyValuePair.New("cml", "chemical/x-cml"),
-KeyValuePair.New("csml", "chemical/x-csml"),
-KeyValuePair.New("xyz", "chemical/x-xyz"),
-KeyValuePair.New("ttc", "font/collection"),
-KeyValuePair.New("otf", "font/otf"),
-KeyValuePair.New("ttf", "font/ttf"),
-KeyValuePair.New("woff", "font/woff"),
-KeyValuePair.New("woff2", "font/woff2"),
-KeyValuePair.New("bmp", "image/bmp"),
-KeyValuePair.New("cgm", "image/cgm"),
-KeyValuePair.New("g3", "image/g3fax"),
-KeyValuePair.New("gif", "image/gif"),
-KeyValuePair.New("ief", "image/ief"),
-KeyValuePair.New("jpeg", "image/jpeg"),
-KeyValuePair.New("jpg", "image/jpeg"),
-KeyValuePair.New("jpe", "image/jpeg"),
-KeyValuePair.New("ktx", "image/ktx"),
-KeyValuePair.New("png", "image/png"),
-KeyValuePair.New("btif", "image/prs.btif"),
-KeyValuePair.New("sgi", "image/sgi"),
-KeyValuePair.New("svg", "image/svg+xml"),
-KeyValuePair.New("svgz", "image/svg+xml"),
-KeyValuePair.New("tiff", "image/tiff"),
-KeyValuePair.New("tif", "image/tiff"),
-KeyValuePair.New("psd", "image/vnd.adobe.photoshop"),
-KeyValuePair.New("uvi", "image/vnd.dece.graphic"),
-KeyValuePair.New("uvvi", "image/vnd.dece.graphic"),
-KeyValuePair.New("uvg", "image/vnd.dece.graphic"),
-KeyValuePair.New("uvvg", "image/vnd.dece.graphic"),
-KeyValuePair.New("djvu", "image/vnd.djvu"),
-KeyValuePair.New("djv", "image/vnd.djvu"),
-KeyValuePair.New("sub", "image/vnd.dvb.subtitle"),
-KeyValuePair.New("dwg", "image/vnd.dwg"),
-KeyValuePair.New("dxf", "image/vnd.dxf"),
-KeyValuePair.New("fbs", "image/vnd.fastbidsheet"),
-KeyValuePair.New("fpx", "image/vnd.fpx"),
-KeyValuePair.New("fst", "image/vnd.fst"),
-KeyValuePair.New("mmr", "image/vnd.fujixerox.edmics-mmr"),
-KeyValuePair.New("rlc", "image/vnd.fujixerox.edmics-rlc"),
-KeyValuePair.New("mdi", "image/vnd.ms-modi"),
-KeyValuePair.New("wdp", "image/vnd.ms-photo"),
-KeyValuePair.New("npx", "image/vnd.net-fpx"),
-KeyValuePair.New("wbmp", "image/vnd.wap.wbmp"),
-KeyValuePair.New("xif", "image/vnd.xiff"),
-KeyValuePair.New("webp", "image/webp"),
-KeyValuePair.New("3ds", "image/x-3ds"),
-KeyValuePair.New("ras", "image/x-cmu-raster"),
-KeyValuePair.New("cmx", "image/x-cmx"),
-KeyValuePair.New("fh", "image/x-freehand"),
-KeyValuePair.New("fhc", "image/x-freehand"),
-KeyValuePair.New("fh4", "image/x-freehand"),
-KeyValuePair.New("fh5", "image/x-freehand"),
-KeyValuePair.New("fh7", "image/x-freehand"),
-KeyValuePair.New("ico", "image/x-icon"),
-KeyValuePair.New("sid", "image/x-mrsid-image"),
-KeyValuePair.New("pcx", "image/x-pcx"),
-KeyValuePair.New("pic", "image/x-pict"),
-KeyValuePair.New("pct", "image/x-pict"),
-KeyValuePair.New("pnm", "image/x-portable-anymap"),
-KeyValuePair.New("pbm", "image/x-portable-bitmap"),
-KeyValuePair.New("pgm", "image/x-portable-graymap"),
-KeyValuePair.New("ppm", "image/x-portable-pixmap"),
-KeyValuePair.New("rgb", "image/x-rgb"),
-KeyValuePair.New("tga", "image/x-tga"),
-KeyValuePair.New("xbm", "image/x-xbitmap"),
-KeyValuePair.New("xpm", "image/x-xpixmap"),
-KeyValuePair.New("xwd", "image/x-xwindowdump"),
-KeyValuePair.New("eml", "message/rfc822"),
-KeyValuePair.New("mime", "message/rfc822"),
-KeyValuePair.New("igs", "model/iges"),
-KeyValuePair.New("iges", "model/iges"),
-KeyValuePair.New("msh", "model/mesh"),
-KeyValuePair.New("mesh", "model/mesh"),
-KeyValuePair.New("silo", "model/mesh"),
-KeyValuePair.New("dae", "model/vnd.collada+xml"),
-KeyValuePair.New("dwf", "model/vnd.dwf"),
-KeyValuePair.New("gdl", "model/vnd.gdl"),
-KeyValuePair.New("gtw", "model/vnd.gtw"),
-KeyValuePair.New("mts", "model/vnd.mts"),
-KeyValuePair.New("vtu", "model/vnd.vtu"),
-KeyValuePair.New("wrl", "model/vrml"),
-KeyValuePair.New("vrml", "model/vrml"),
-KeyValuePair.New("x3db", "model/x3d+binary"),
-KeyValuePair.New("x3dbz", "model/x3d+binary"),
-KeyValuePair.New("x3dv", "model/x3d+vrml"),
-KeyValuePair.New("x3dvz", "model/x3d+vrml"),
-KeyValuePair.New("x3d", "model/x3d+xml"),
-KeyValuePair.New("x3dz", "model/x3d+xml"),
-KeyValuePair.New("appcache", "text/cache-manifest"),
-KeyValuePair.New("ics", "text/calendar"),
-KeyValuePair.New("ifb", "text/calendar"),
-KeyValuePair.New("css", "text/css"),
-KeyValuePair.New("csv", "text/csv"),
-KeyValuePair.New("html", "text/html"),
-KeyValuePair.New("htm", "text/html"),
-KeyValuePair.New("n3", "text/n3"),
-KeyValuePair.New("txt", "text/plain"),
-KeyValuePair.New("text", "text/plain"),
-KeyValuePair.New("conf", "text/plain"),
-KeyValuePair.New("def", "text/plain"),
-KeyValuePair.New("list", "text/plain"),
-KeyValuePair.New("log", "text/plain"),
-KeyValuePair.New("in", "text/plain"),
-KeyValuePair.New("dsc", "text/prs.lines.tag"),
-KeyValuePair.New("rtx", "text/richtext"),
-KeyValuePair.New("sgml", "text/sgml"),
-KeyValuePair.New("sgm", "text/sgml"),
-KeyValuePair.New("tsv", "text/tab-separated-values"),
-KeyValuePair.New("t", "text/troff"),
-KeyValuePair.New("tr", "text/troff"),
-KeyValuePair.New("roff", "text/troff"),
-KeyValuePair.New("man", "text/troff"),
-KeyValuePair.New("me", "text/troff"),
-KeyValuePair.New("ms", "text/troff"),
-KeyValuePair.New("ttl", "text/turtle"),
-KeyValuePair.New("uri", "text/uri-list"),
-KeyValuePair.New("uris", "text/uri-list"),
-KeyValuePair.New("urls", "text/uri-list"),
-KeyValuePair.New("vcard", "text/vcard"),
-KeyValuePair.New("curl", "text/vnd.curl"),
-KeyValuePair.New("dcurl", "text/vnd.curl.dcurl"),
-KeyValuePair.New("mcurl", "text/vnd.curl.mcurl"),
-KeyValuePair.New("scurl", "text/vnd.curl.scurl"),
-KeyValuePair.New("sub", "text/vnd.dvb.subtitle"),
-KeyValuePair.New("fly", "text/vnd.fly"),
-KeyValuePair.New("flx", "text/vnd.fmi.flexstor"),
-KeyValuePair.New("gv", "text/vnd.graphviz"),
-KeyValuePair.New("3dml", "text/vnd.in3d.3dml"),
-KeyValuePair.New("spot", "text/vnd.in3d.spot"),
-KeyValuePair.New("jad", "text/vnd.sun.j2me.app-descriptor"),
-KeyValuePair.New("wml", "text/vnd.wap.wml"),
-KeyValuePair.New("wmls", "text/vnd.wap.wmlscript"),
-KeyValuePair.New("s", "text/x-asm"),
-KeyValuePair.New("asm", "text/x-asm"),
-KeyValuePair.New("c", "text/x-c"),
-KeyValuePair.New("cc", "text/x-c"),
-KeyValuePair.New("cxx", "text/x-c"),
-KeyValuePair.New("cpp", "text/x-c"),
-KeyValuePair.New("h", "text/x-c"),
-KeyValuePair.New("hh", "text/x-c"),
-KeyValuePair.New("dic", "text/x-c"),
-KeyValuePair.New("f", "text/x-fortran"),
-KeyValuePair.New("for", "text/x-fortran"),
-KeyValuePair.New("f77", "text/x-fortran"),
-KeyValuePair.New("f90", "text/x-fortran"),
-KeyValuePair.New("java", "text/x-java-source"),
-KeyValuePair.New("nfo", "text/x-nfo"),
-KeyValuePair.New("opml", "text/x-opml"),
-KeyValuePair.New("p", "text/x-pascal"),
-KeyValuePair.New("pas", "text/x-pascal"),
-KeyValuePair.New("etx", "text/x-setext"),
-KeyValuePair.New("sfv", "text/x-sfv"),
-KeyValuePair.New("uu", "text/x-uuencode"),
-KeyValuePair.New("vcs", "text/x-vcalendar"),
-KeyValuePair.New("vcf", "text/x-vcard"),
-KeyValuePair.New("3gp", "video/3gpp"),
-KeyValuePair.New("3g2", "video/3gpp2"),
-KeyValuePair.New("h261", "video/h261"),
-KeyValuePair.New("h263", "video/h263"),
-KeyValuePair.New("h264", "video/h264"),
-KeyValuePair.New("jpgv", "video/jpeg"),
-KeyValuePair.New("jpm", "video/jpm"),
-KeyValuePair.New("jpgm", "video/jpm"),
-KeyValuePair.New("mj2", "video/mj2"),
-KeyValuePair.New("mjp2", "video/mj2"),
-KeyValuePair.New("mp4", "video/mp4"),
-KeyValuePair.New("mp4v", "video/mp4"),
-KeyValuePair.New("mpg4", "video/mp4"),
-KeyValuePair.New("mpeg", "video/mpeg"),
-KeyValuePair.New("mpg", "video/mpeg"),
-KeyValuePair.New("mpe", "video/mpeg"),
-KeyValuePair.New("m1v", "video/mpeg"),
-KeyValuePair.New("m2v", "video/mpeg"),
-KeyValuePair.New("ogv", "video/ogg"),
-KeyValuePair.New("qt", "video/quicktime"),
-KeyValuePair.New("mov", "video/quicktime"),
-KeyValuePair.New("uvh", "video/vnd.dece.hd"),
-KeyValuePair.New("uvvh", "video/vnd.dece.hd"),
-KeyValuePair.New("uvm", "video/vnd.dece.mobile"),
-KeyValuePair.New("uvvm", "video/vnd.dece.mobile"),
-KeyValuePair.New("uvp", "video/vnd.dece.pd"),
-KeyValuePair.New("uvvp", "video/vnd.dece.pd"),
-KeyValuePair.New("uvs", "video/vnd.dece.sd"),
-KeyValuePair.New("uvvs", "video/vnd.dece.sd"),
-KeyValuePair.New("uvv", "video/vnd.dece.video"),
-KeyValuePair.New("uvvv", "video/vnd.dece.video"),
-KeyValuePair.New("dvb", "video/vnd.dvb.file"),
-KeyValuePair.New("fvt", "video/vnd.fvt"),
-KeyValuePair.New("mxu", "video/vnd.mpegurl"),
-KeyValuePair.New("m4u", "video/vnd.mpegurl"),
-KeyValuePair.New("pyv", "video/vnd.ms-playready.media.pyv"),
-KeyValuePair.New("uvu", "video/vnd.uvvu.mp4"),
-KeyValuePair.New("uvvu", "video/vnd.uvvu.mp4"),
-KeyValuePair.New("viv", "video/vnd.vivo"),
-KeyValuePair.New("webm", "video/webm"),
-KeyValuePair.New("f4v", "video/x-f4v"),
-KeyValuePair.New("fli", "video/x-fli"),
-KeyValuePair.New("flv", "video/x-flv"),
-KeyValuePair.New("m4v", "video/x-m4v"),
-KeyValuePair.New("mkv", "video/x-matroska"),
-KeyValuePair.New("mk3d", "video/x-matroska"),
-KeyValuePair.New("mks", "video/x-matroska"),
-KeyValuePair.New("mng", "video/x-mng"),
-KeyValuePair.New("asf", "video/x-ms-asf"),
-KeyValuePair.New("asx", "video/x-ms-asf"),
-KeyValuePair.New("vob", "video/x-ms-vob"),
-KeyValuePair.New("wm", "video/x-ms-wm"),
-KeyValuePair.New("wmv", "video/x-ms-wmv"),
-KeyValuePair.New("wmx", "video/x-ms-wmx"),
-KeyValuePair.New("wvx", "video/x-ms-wvx"),
-KeyValuePair.New("avi", "video/x-msvideo"),
-KeyValuePair.New("movie", "video/x-sgi-movie"),
-KeyValuePair.New("smv", "video/x-smv"),
-KeyValuePair.New("ice", "x-conference/x-cooltalk")
-			);
-		});
-		static public string GetMIMETypeFromExtension(string extension)
-		{
-			return MIME_TYPE_DICTIONARY.Fetch().Lookup(extension, "application/octet-stream");
-		}
-
-		static public string GetMIMETypeFromFilename(string filename)
-		{
-			return GetMIMETypeFromExtension(Filename.GetExtension(filename));
-		}
-	}
+    public class MIMEGeneralType
+    {
+        private string value;
+        
+        static public readonly MIMEGeneralType Application = new MIMEGeneralType("application");
+static public readonly MIMEGeneralType Audio = new MIMEGeneralType("audio");
+static public readonly MIMEGeneralType Chemical = new MIMEGeneralType("chemical");
+static public readonly MIMEGeneralType Image = new MIMEGeneralType("image");
+static public readonly MIMEGeneralType Message = new MIMEGeneralType("message");
+static public readonly MIMEGeneralType Model = new MIMEGeneralType("model");
+static public readonly MIMEGeneralType Text = new MIMEGeneralType("text");
+static public readonly MIMEGeneralType Video = new MIMEGeneralType("video");
+static public readonly MIMEGeneralType XConference = new MIMEGeneralType("x-conference");
+        
+        private MIMEGeneralType(string v)
+        {
+            value = v;
+        }
+        
+        public override string ToString()
+        {
+            return value;
+        }
+    }
+    
+    public class MIMEType
+    {
+        private MIMEGeneralType general_type;
+        private string sub_value;
+        
+        private List<string> extensions;
+        
+        static public readonly MIMEType ApplicationAndrewInset = new MIMEType(MIMEGeneralType.Application, "andrew-inset", Enumerable.New("ez"));
+static public readonly MIMEType ApplicationApplixware = new MIMEType(MIMEGeneralType.Application, "applixware", Enumerable.New("aw"));
+static public readonly MIMEType ApplicationAtomXml = new MIMEType(MIMEGeneralType.Application, "atom+xml", Enumerable.New("atom"));
+static public readonly MIMEType ApplicationAtomcatXml = new MIMEType(MIMEGeneralType.Application, "atomcat+xml", Enumerable.New("atomcat"));
+static public readonly MIMEType ApplicationAtomsvcXml = new MIMEType(MIMEGeneralType.Application, "atomsvc+xml", Enumerable.New("atomsvc"));
+static public readonly MIMEType ApplicationCcxmlXml = new MIMEType(MIMEGeneralType.Application, "ccxml+xml", Enumerable.New("ccxml"));
+static public readonly MIMEType ApplicationCdmiCapability = new MIMEType(MIMEGeneralType.Application, "cdmi-capability", Enumerable.New("cdmia"));
+static public readonly MIMEType ApplicationCdmiContainer = new MIMEType(MIMEGeneralType.Application, "cdmi-container", Enumerable.New("cdmic"));
+static public readonly MIMEType ApplicationCdmiDomain = new MIMEType(MIMEGeneralType.Application, "cdmi-domain", Enumerable.New("cdmid"));
+static public readonly MIMEType ApplicationCdmiObject = new MIMEType(MIMEGeneralType.Application, "cdmi-object", Enumerable.New("cdmio"));
+static public readonly MIMEType ApplicationCdmiQueue = new MIMEType(MIMEGeneralType.Application, "cdmi-queue", Enumerable.New("cdmiq"));
+static public readonly MIMEType ApplicationCuSeeme = new MIMEType(MIMEGeneralType.Application, "cu-seeme", Enumerable.New("cu"));
+static public readonly MIMEType ApplicationDavmountXml = new MIMEType(MIMEGeneralType.Application, "davmount+xml", Enumerable.New("davmount"));
+static public readonly MIMEType ApplicationDocbookXml = new MIMEType(MIMEGeneralType.Application, "docbook+xml", Enumerable.New("dbk"));
+static public readonly MIMEType ApplicationDsscDer = new MIMEType(MIMEGeneralType.Application, "dssc+der", Enumerable.New("dssc"));
+static public readonly MIMEType ApplicationDsscXml = new MIMEType(MIMEGeneralType.Application, "dssc+xml", Enumerable.New("xdssc"));
+static public readonly MIMEType ApplicationEcmascript = new MIMEType(MIMEGeneralType.Application, "ecmascript", Enumerable.New("ecma"));
+static public readonly MIMEType ApplicationEmmaXml = new MIMEType(MIMEGeneralType.Application, "emma+xml", Enumerable.New("emma"));
+static public readonly MIMEType ApplicationEpubZip = new MIMEType(MIMEGeneralType.Application, "epub+zip", Enumerable.New("epub"));
+static public readonly MIMEType ApplicationExi = new MIMEType(MIMEGeneralType.Application, "exi", Enumerable.New("exi"));
+static public readonly MIMEType ApplicationFontTdpfr = new MIMEType(MIMEGeneralType.Application, "font-tdpfr", Enumerable.New("pfr"));
+static public readonly MIMEType ApplicationGmlXml = new MIMEType(MIMEGeneralType.Application, "gml+xml", Enumerable.New("gml"));
+static public readonly MIMEType ApplicationGpxXml = new MIMEType(MIMEGeneralType.Application, "gpx+xml", Enumerable.New("gpx"));
+static public readonly MIMEType ApplicationGxf = new MIMEType(MIMEGeneralType.Application, "gxf", Enumerable.New("gxf"));
+static public readonly MIMEType ApplicationHyperstudio = new MIMEType(MIMEGeneralType.Application, "hyperstudio", Enumerable.New("stk"));
+static public readonly MIMEType ApplicationInkmlXml = new MIMEType(MIMEGeneralType.Application, "inkml+xml", Enumerable.New("ink", "inkml"));
+static public readonly MIMEType ApplicationIpfix = new MIMEType(MIMEGeneralType.Application, "ipfix", Enumerable.New("ipfix"));
+static public readonly MIMEType ApplicationJavaArchive = new MIMEType(MIMEGeneralType.Application, "java-archive", Enumerable.New("jar"));
+static public readonly MIMEType ApplicationJavaSerializedObject = new MIMEType(MIMEGeneralType.Application, "java-serialized-object", Enumerable.New("ser"));
+static public readonly MIMEType ApplicationJavaVm = new MIMEType(MIMEGeneralType.Application, "java-vm", Enumerable.New("class"));
+static public readonly MIMEType ApplicationJavascript = new MIMEType(MIMEGeneralType.Application, "javascript", Enumerable.New("js"));
+static public readonly MIMEType ApplicationJson = new MIMEType(MIMEGeneralType.Application, "json", Enumerable.New("json"));
+static public readonly MIMEType ApplicationJsonmlJson = new MIMEType(MIMEGeneralType.Application, "jsonml+json", Enumerable.New("jsonml"));
+static public readonly MIMEType ApplicationLostXml = new MIMEType(MIMEGeneralType.Application, "lost+xml", Enumerable.New("lostxml"));
+static public readonly MIMEType ApplicationMacBinhex40 = new MIMEType(MIMEGeneralType.Application, "mac-binhex40", Enumerable.New("hqx"));
+static public readonly MIMEType ApplicationMacCompactpro = new MIMEType(MIMEGeneralType.Application, "mac-compactpro", Enumerable.New("cpt"));
+static public readonly MIMEType ApplicationMadsXml = new MIMEType(MIMEGeneralType.Application, "mads+xml", Enumerable.New("mads"));
+static public readonly MIMEType ApplicationMarc = new MIMEType(MIMEGeneralType.Application, "marc", Enumerable.New("mrc"));
+static public readonly MIMEType ApplicationMarcxmlXml = new MIMEType(MIMEGeneralType.Application, "marcxml+xml", Enumerable.New("mrcx"));
+static public readonly MIMEType ApplicationMathematica = new MIMEType(MIMEGeneralType.Application, "mathematica", Enumerable.New("ma", "nb", "mb"));
+static public readonly MIMEType ApplicationMathmlXml = new MIMEType(MIMEGeneralType.Application, "mathml+xml", Enumerable.New("mathml"));
+static public readonly MIMEType ApplicationMbox = new MIMEType(MIMEGeneralType.Application, "mbox", Enumerable.New("mbox"));
+static public readonly MIMEType ApplicationMediaservercontrolXml = new MIMEType(MIMEGeneralType.Application, "mediaservercontrol+xml", Enumerable.New("mscml"));
+static public readonly MIMEType ApplicationMetalinkXml = new MIMEType(MIMEGeneralType.Application, "metalink+xml", Enumerable.New("metalink"));
+static public readonly MIMEType ApplicationMetalink4Xml = new MIMEType(MIMEGeneralType.Application, "metalink4+xml", Enumerable.New("meta4"));
+static public readonly MIMEType ApplicationMetsXml = new MIMEType(MIMEGeneralType.Application, "mets+xml", Enumerable.New("mets"));
+static public readonly MIMEType ApplicationModsXml = new MIMEType(MIMEGeneralType.Application, "mods+xml", Enumerable.New("mods"));
+static public readonly MIMEType ApplicationMp21 = new MIMEType(MIMEGeneralType.Application, "mp21", Enumerable.New("m21", "mp21"));
+static public readonly MIMEType ApplicationMp4 = new MIMEType(MIMEGeneralType.Application, "mp4", Enumerable.New("mp4s"));
+static public readonly MIMEType ApplicationMsword = new MIMEType(MIMEGeneralType.Application, "msword", Enumerable.New("doc", "dot"));
+static public readonly MIMEType ApplicationMxf = new MIMEType(MIMEGeneralType.Application, "mxf", Enumerable.New("mxf"));
+static public readonly MIMEType ApplicationOctetStream = new MIMEType(MIMEGeneralType.Application, "octet-stream", Enumerable.New("bin", "dms", "lrf", "mar", "so", "dist", "distz", "pkg", "bpk", "dump", "elc", "deploy"));
+static public readonly MIMEType ApplicationOda = new MIMEType(MIMEGeneralType.Application, "oda", Enumerable.New("oda"));
+static public readonly MIMEType ApplicationOebpsPackageXml = new MIMEType(MIMEGeneralType.Application, "oebps-package+xml", Enumerable.New("opf"));
+static public readonly MIMEType ApplicationOgg = new MIMEType(MIMEGeneralType.Application, "ogg", Enumerable.New("ogx"));
+static public readonly MIMEType ApplicationOmdocXml = new MIMEType(MIMEGeneralType.Application, "omdoc+xml", Enumerable.New("omdoc"));
+static public readonly MIMEType ApplicationOnenote = new MIMEType(MIMEGeneralType.Application, "onenote", Enumerable.New("onetoc", "onetoc2", "onetmp", "onepkg"));
+static public readonly MIMEType ApplicationOxps = new MIMEType(MIMEGeneralType.Application, "oxps", Enumerable.New("oxps"));
+static public readonly MIMEType ApplicationPatchOpsErrorXml = new MIMEType(MIMEGeneralType.Application, "patch-ops-error+xml", Enumerable.New("xer"));
+static public readonly MIMEType ApplicationPdf = new MIMEType(MIMEGeneralType.Application, "pdf", Enumerable.New("pdf"));
+static public readonly MIMEType ApplicationPgpEncrypted = new MIMEType(MIMEGeneralType.Application, "pgp-encrypted", Enumerable.New("pgp"));
+static public readonly MIMEType ApplicationPgpSignature = new MIMEType(MIMEGeneralType.Application, "pgp-signature", Enumerable.New("asc", "sig"));
+static public readonly MIMEType ApplicationPicsRules = new MIMEType(MIMEGeneralType.Application, "pics-rules", Enumerable.New("prf"));
+static public readonly MIMEType ApplicationPkcs10 = new MIMEType(MIMEGeneralType.Application, "pkcs10", Enumerable.New("p10"));
+static public readonly MIMEType ApplicationPkcs7Mime = new MIMEType(MIMEGeneralType.Application, "pkcs7-mime", Enumerable.New("p7m", "p7c"));
+static public readonly MIMEType ApplicationPkcs7Signature = new MIMEType(MIMEGeneralType.Application, "pkcs7-signature", Enumerable.New("p7s"));
+static public readonly MIMEType ApplicationPkcs8 = new MIMEType(MIMEGeneralType.Application, "pkcs8", Enumerable.New("p8"));
+static public readonly MIMEType ApplicationPkixAttrCert = new MIMEType(MIMEGeneralType.Application, "pkix-attr-cert", Enumerable.New("ac"));
+static public readonly MIMEType ApplicationPkixCert = new MIMEType(MIMEGeneralType.Application, "pkix-cert", Enumerable.New("cer"));
+static public readonly MIMEType ApplicationPkixCrl = new MIMEType(MIMEGeneralType.Application, "pkix-crl", Enumerable.New("crl"));
+static public readonly MIMEType ApplicationPkixPkipath = new MIMEType(MIMEGeneralType.Application, "pkix-pkipath", Enumerable.New("pkipath"));
+static public readonly MIMEType ApplicationPkixcmp = new MIMEType(MIMEGeneralType.Application, "pkixcmp", Enumerable.New("pki"));
+static public readonly MIMEType ApplicationPlsXml = new MIMEType(MIMEGeneralType.Application, "pls+xml", Enumerable.New("pls"));
+static public readonly MIMEType ApplicationPostscript = new MIMEType(MIMEGeneralType.Application, "postscript", Enumerable.New("ai", "eps", "ps"));
+static public readonly MIMEType ApplicationPrsCww = new MIMEType(MIMEGeneralType.Application, "prs.cww", Enumerable.New("cww"));
+static public readonly MIMEType ApplicationPskcXml = new MIMEType(MIMEGeneralType.Application, "pskc+xml", Enumerable.New("pskcxml"));
+static public readonly MIMEType ApplicationRdfXml = new MIMEType(MIMEGeneralType.Application, "rdf+xml", Enumerable.New("rdf"));
+static public readonly MIMEType ApplicationReginfoXml = new MIMEType(MIMEGeneralType.Application, "reginfo+xml", Enumerable.New("rif"));
+static public readonly MIMEType ApplicationRelaxNgCompactSyntax = new MIMEType(MIMEGeneralType.Application, "relax-ng-compact-syntax", Enumerable.New("rnc"));
+static public readonly MIMEType ApplicationResourceListsXml = new MIMEType(MIMEGeneralType.Application, "resource-lists+xml", Enumerable.New("rl"));
+static public readonly MIMEType ApplicationResourceListsDiffXml = new MIMEType(MIMEGeneralType.Application, "resource-lists-diff+xml", Enumerable.New("rld"));
+static public readonly MIMEType ApplicationRlsServicesXml = new MIMEType(MIMEGeneralType.Application, "rls-services+xml", Enumerable.New("rs"));
+static public readonly MIMEType ApplicationRpkiGhostbusters = new MIMEType(MIMEGeneralType.Application, "rpki-ghostbusters", Enumerable.New("gbr"));
+static public readonly MIMEType ApplicationRpkiManifest = new MIMEType(MIMEGeneralType.Application, "rpki-manifest", Enumerable.New("mft"));
+static public readonly MIMEType ApplicationRpkiRoa = new MIMEType(MIMEGeneralType.Application, "rpki-roa", Enumerable.New("roa"));
+static public readonly MIMEType ApplicationRsdXml = new MIMEType(MIMEGeneralType.Application, "rsd+xml", Enumerable.New("rsd"));
+static public readonly MIMEType ApplicationRssXml = new MIMEType(MIMEGeneralType.Application, "rss+xml", Enumerable.New("rss"));
+static public readonly MIMEType ApplicationRtf = new MIMEType(MIMEGeneralType.Application, "rtf", Enumerable.New("rtf"));
+static public readonly MIMEType ApplicationSbmlXml = new MIMEType(MIMEGeneralType.Application, "sbml+xml", Enumerable.New("sbml"));
+static public readonly MIMEType ApplicationScvpCvRequest = new MIMEType(MIMEGeneralType.Application, "scvp-cv-request", Enumerable.New("scq"));
+static public readonly MIMEType ApplicationScvpCvResponse = new MIMEType(MIMEGeneralType.Application, "scvp-cv-response", Enumerable.New("scs"));
+static public readonly MIMEType ApplicationScvpVpRequest = new MIMEType(MIMEGeneralType.Application, "scvp-vp-request", Enumerable.New("spq"));
+static public readonly MIMEType ApplicationScvpVpResponse = new MIMEType(MIMEGeneralType.Application, "scvp-vp-response", Enumerable.New("spp"));
+static public readonly MIMEType ApplicationSdp = new MIMEType(MIMEGeneralType.Application, "sdp", Enumerable.New("sdp"));
+static public readonly MIMEType ApplicationSetPaymentInitiation = new MIMEType(MIMEGeneralType.Application, "set-payment-initiation", Enumerable.New("setpay"));
+static public readonly MIMEType ApplicationSetRegistrationInitiation = new MIMEType(MIMEGeneralType.Application, "set-registration-initiation", Enumerable.New("setreg"));
+static public readonly MIMEType ApplicationShfXml = new MIMEType(MIMEGeneralType.Application, "shf+xml", Enumerable.New("shf"));
+static public readonly MIMEType ApplicationSmilXml = new MIMEType(MIMEGeneralType.Application, "smil+xml", Enumerable.New("smi", "smil"));
+static public readonly MIMEType ApplicationSparqlQuery = new MIMEType(MIMEGeneralType.Application, "sparql-query", Enumerable.New("rq"));
+static public readonly MIMEType ApplicationSparqlResultsXml = new MIMEType(MIMEGeneralType.Application, "sparql-results+xml", Enumerable.New("srx"));
+static public readonly MIMEType ApplicationSrgs = new MIMEType(MIMEGeneralType.Application, "srgs", Enumerable.New("gram"));
+static public readonly MIMEType ApplicationSrgsXml = new MIMEType(MIMEGeneralType.Application, "srgs+xml", Enumerable.New("grxml"));
+static public readonly MIMEType ApplicationSruXml = new MIMEType(MIMEGeneralType.Application, "sru+xml", Enumerable.New("sru"));
+static public readonly MIMEType ApplicationSsdlXml = new MIMEType(MIMEGeneralType.Application, "ssdl+xml", Enumerable.New("ssdl"));
+static public readonly MIMEType ApplicationSsmlXml = new MIMEType(MIMEGeneralType.Application, "ssml+xml", Enumerable.New("ssml"));
+static public readonly MIMEType ApplicationTeiXml = new MIMEType(MIMEGeneralType.Application, "tei+xml", Enumerable.New("tei", "teicorpus"));
+static public readonly MIMEType ApplicationThraudXml = new MIMEType(MIMEGeneralType.Application, "thraud+xml", Enumerable.New("tfi"));
+static public readonly MIMEType ApplicationTimestampedData = new MIMEType(MIMEGeneralType.Application, "timestamped-data", Enumerable.New("tsd"));
+static public readonly MIMEType ApplicationVnd3gppPicBwLarge = new MIMEType(MIMEGeneralType.Application, "vnd.3gpp.pic-bw-large", Enumerable.New("plb"));
+static public readonly MIMEType ApplicationVnd3gppPicBwSmall = new MIMEType(MIMEGeneralType.Application, "vnd.3gpp.pic-bw-small", Enumerable.New("psb"));
+static public readonly MIMEType ApplicationVnd3gppPicBwVar = new MIMEType(MIMEGeneralType.Application, "vnd.3gpp.pic-bw-var", Enumerable.New("pvb"));
+static public readonly MIMEType ApplicationVnd3gpp2Tcap = new MIMEType(MIMEGeneralType.Application, "vnd.3gpp2.tcap", Enumerable.New("tcap"));
+static public readonly MIMEType ApplicationVnd3mPostItNotes = new MIMEType(MIMEGeneralType.Application, "vnd.3m.post-it-notes", Enumerable.New("pwn"));
+static public readonly MIMEType ApplicationVndAccpacSimplyAso = new MIMEType(MIMEGeneralType.Application, "vnd.accpac.simply.aso", Enumerable.New("aso"));
+static public readonly MIMEType ApplicationVndAccpacSimplyImp = new MIMEType(MIMEGeneralType.Application, "vnd.accpac.simply.imp", Enumerable.New("imp"));
+static public readonly MIMEType ApplicationVndAcucobol = new MIMEType(MIMEGeneralType.Application, "vnd.acucobol", Enumerable.New("acu"));
+static public readonly MIMEType ApplicationVndAcucorp = new MIMEType(MIMEGeneralType.Application, "vnd.acucorp", Enumerable.New("atc", "acutc"));
+static public readonly MIMEType ApplicationVndAdobeAirApplicationInstallerPackageZip = new MIMEType(MIMEGeneralType.Application, "vnd.adobe.air-application-installer-package+zip", Enumerable.New("air"));
+static public readonly MIMEType ApplicationVndAdobeFormscentralFcdt = new MIMEType(MIMEGeneralType.Application, "vnd.adobe.formscentral.fcdt", Enumerable.New("fcdt"));
+static public readonly MIMEType ApplicationVndAdobeFxp = new MIMEType(MIMEGeneralType.Application, "vnd.adobe.fxp", Enumerable.New("fxp", "fxpl"));
+static public readonly MIMEType ApplicationVndAdobeXdpXml = new MIMEType(MIMEGeneralType.Application, "vnd.adobe.xdp+xml", Enumerable.New("xdp"));
+static public readonly MIMEType ApplicationVndAdobeXfdf = new MIMEType(MIMEGeneralType.Application, "vnd.adobe.xfdf", Enumerable.New("xfdf"));
+static public readonly MIMEType ApplicationVndAheadSpace = new MIMEType(MIMEGeneralType.Application, "vnd.ahead.space", Enumerable.New("ahead"));
+static public readonly MIMEType ApplicationVndAirzipFilesecureAzf = new MIMEType(MIMEGeneralType.Application, "vnd.airzip.filesecure.azf", Enumerable.New("azf"));
+static public readonly MIMEType ApplicationVndAirzipFilesecureAzs = new MIMEType(MIMEGeneralType.Application, "vnd.airzip.filesecure.azs", Enumerable.New("azs"));
+static public readonly MIMEType ApplicationVndAmazonEbook = new MIMEType(MIMEGeneralType.Application, "vnd.amazon.ebook", Enumerable.New("azw"));
+static public readonly MIMEType ApplicationVndAmericandynamicsAcc = new MIMEType(MIMEGeneralType.Application, "vnd.americandynamics.acc", Enumerable.New("acc"));
+static public readonly MIMEType ApplicationVndAmigaAmi = new MIMEType(MIMEGeneralType.Application, "vnd.amiga.ami", Enumerable.New("ami"));
+static public readonly MIMEType ApplicationVndAndroidPackageArchive = new MIMEType(MIMEGeneralType.Application, "vnd.android.package-archive", Enumerable.New("apk"));
+static public readonly MIMEType ApplicationVndAnserWebCertificateIssueInitiation = new MIMEType(MIMEGeneralType.Application, "vnd.anser-web-certificate-issue-initiation", Enumerable.New("cii"));
+static public readonly MIMEType ApplicationVndAnserWebFundsTransferInitiation = new MIMEType(MIMEGeneralType.Application, "vnd.anser-web-funds-transfer-initiation", Enumerable.New("fti"));
+static public readonly MIMEType ApplicationVndAntixGameComponent = new MIMEType(MIMEGeneralType.Application, "vnd.antix.game-component", Enumerable.New("atx"));
+static public readonly MIMEType ApplicationVndAppleInstallerXml = new MIMEType(MIMEGeneralType.Application, "vnd.apple.installer+xml", Enumerable.New("mpkg"));
+static public readonly MIMEType ApplicationVndAppleMpegurl = new MIMEType(MIMEGeneralType.Application, "vnd.apple.mpegurl", Enumerable.New("m3u8"));
+static public readonly MIMEType ApplicationVndAristanetworksSwi = new MIMEType(MIMEGeneralType.Application, "vnd.aristanetworks.swi", Enumerable.New("swi"));
+static public readonly MIMEType ApplicationVndAstraeaSoftwareIota = new MIMEType(MIMEGeneralType.Application, "vnd.astraea-software.iota", Enumerable.New("iota"));
+static public readonly MIMEType ApplicationVndAudiograph = new MIMEType(MIMEGeneralType.Application, "vnd.audiograph", Enumerable.New("aep"));
+static public readonly MIMEType ApplicationVndBlueiceMultipass = new MIMEType(MIMEGeneralType.Application, "vnd.blueice.multipass", Enumerable.New("mpm"));
+static public readonly MIMEType ApplicationVndBmi = new MIMEType(MIMEGeneralType.Application, "vnd.bmi", Enumerable.New("bmi"));
+static public readonly MIMEType ApplicationVndBusinessobjects = new MIMEType(MIMEGeneralType.Application, "vnd.businessobjects", Enumerable.New("rep"));
+static public readonly MIMEType ApplicationVndChemdrawXml = new MIMEType(MIMEGeneralType.Application, "vnd.chemdraw+xml", Enumerable.New("cdxml"));
+static public readonly MIMEType ApplicationVndChipnutsKaraokeMmd = new MIMEType(MIMEGeneralType.Application, "vnd.chipnuts.karaoke-mmd", Enumerable.New("mmd"));
+static public readonly MIMEType ApplicationVndCinderella = new MIMEType(MIMEGeneralType.Application, "vnd.cinderella", Enumerable.New("cdy"));
+static public readonly MIMEType ApplicationVndClaymore = new MIMEType(MIMEGeneralType.Application, "vnd.claymore", Enumerable.New("cla"));
+static public readonly MIMEType ApplicationVndCloantoRp9 = new MIMEType(MIMEGeneralType.Application, "vnd.cloanto.rp9", Enumerable.New("rp9"));
+static public readonly MIMEType ApplicationVndClonkC4group = new MIMEType(MIMEGeneralType.Application, "vnd.clonk.c4group", Enumerable.New("c4g", "c4d", "c4f", "c4p", "c4u"));
+static public readonly MIMEType ApplicationVndCluetrustCartomobileConfig = new MIMEType(MIMEGeneralType.Application, "vnd.cluetrust.cartomobile-config", Enumerable.New("c11amc"));
+static public readonly MIMEType ApplicationVndCluetrustCartomobileConfigPkg = new MIMEType(MIMEGeneralType.Application, "vnd.cluetrust.cartomobile-config-pkg", Enumerable.New("c11amz"));
+static public readonly MIMEType ApplicationVndCommonspace = new MIMEType(MIMEGeneralType.Application, "vnd.commonspace", Enumerable.New("csp"));
+static public readonly MIMEType ApplicationVndContactCmsg = new MIMEType(MIMEGeneralType.Application, "vnd.contact.cmsg", Enumerable.New("cdbcmsg"));
+static public readonly MIMEType ApplicationVndCosmocaller = new MIMEType(MIMEGeneralType.Application, "vnd.cosmocaller", Enumerable.New("cmc"));
+static public readonly MIMEType ApplicationVndCrickClicker = new MIMEType(MIMEGeneralType.Application, "vnd.crick.clicker", Enumerable.New("clkx"));
+static public readonly MIMEType ApplicationVndCrickClickerKeyboard = new MIMEType(MIMEGeneralType.Application, "vnd.crick.clicker.keyboard", Enumerable.New("clkk"));
+static public readonly MIMEType ApplicationVndCrickClickerPalette = new MIMEType(MIMEGeneralType.Application, "vnd.crick.clicker.palette", Enumerable.New("clkp"));
+static public readonly MIMEType ApplicationVndCrickClickerTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.crick.clicker.template", Enumerable.New("clkt"));
+static public readonly MIMEType ApplicationVndCrickClickerWordbank = new MIMEType(MIMEGeneralType.Application, "vnd.crick.clicker.wordbank", Enumerable.New("clkw"));
+static public readonly MIMEType ApplicationVndCriticaltoolsWbsXml = new MIMEType(MIMEGeneralType.Application, "vnd.criticaltools.wbs+xml", Enumerable.New("wbs"));
+static public readonly MIMEType ApplicationVndCtcPosml = new MIMEType(MIMEGeneralType.Application, "vnd.ctc-posml", Enumerable.New("pml"));
+static public readonly MIMEType ApplicationVndCupsPpd = new MIMEType(MIMEGeneralType.Application, "vnd.cups-ppd", Enumerable.New("ppd"));
+static public readonly MIMEType ApplicationVndCurlCar = new MIMEType(MIMEGeneralType.Application, "vnd.curl.car", Enumerable.New("car"));
+static public readonly MIMEType ApplicationVndCurlPcurl = new MIMEType(MIMEGeneralType.Application, "vnd.curl.pcurl", Enumerable.New("pcurl"));
+static public readonly MIMEType ApplicationVndDart = new MIMEType(MIMEGeneralType.Application, "vnd.dart", Enumerable.New("dart"));
+static public readonly MIMEType ApplicationVndDataVisionRdz = new MIMEType(MIMEGeneralType.Application, "vnd.data-vision.rdz", Enumerable.New("rdz"));
+static public readonly MIMEType ApplicationVndDeceData = new MIMEType(MIMEGeneralType.Application, "vnd.dece.data", Enumerable.New("uvf", "uvvf", "uvd", "uvvd"));
+static public readonly MIMEType ApplicationVndDeceTtmlXml = new MIMEType(MIMEGeneralType.Application, "vnd.dece.ttml+xml", Enumerable.New("uvt", "uvvt"));
+static public readonly MIMEType ApplicationVndDeceUnspecified = new MIMEType(MIMEGeneralType.Application, "vnd.dece.unspecified", Enumerable.New("uvx", "uvvx"));
+static public readonly MIMEType ApplicationVndDeceZip = new MIMEType(MIMEGeneralType.Application, "vnd.dece.zip", Enumerable.New("uvz", "uvvz"));
+static public readonly MIMEType ApplicationVndDenovoFcselayoutLink = new MIMEType(MIMEGeneralType.Application, "vnd.denovo.fcselayout-link", Enumerable.New("fe_launch"));
+static public readonly MIMEType ApplicationVndDna = new MIMEType(MIMEGeneralType.Application, "vnd.dna", Enumerable.New("dna"));
+static public readonly MIMEType ApplicationVndDolbyMlp = new MIMEType(MIMEGeneralType.Application, "vnd.dolby.mlp", Enumerable.New("mlp"));
+static public readonly MIMEType ApplicationVndDpgraph = new MIMEType(MIMEGeneralType.Application, "vnd.dpgraph", Enumerable.New("dpg"));
+static public readonly MIMEType ApplicationVndDreamfactory = new MIMEType(MIMEGeneralType.Application, "vnd.dreamfactory", Enumerable.New("dfac"));
+static public readonly MIMEType ApplicationVndDsKeypoint = new MIMEType(MIMEGeneralType.Application, "vnd.ds-keypoint", Enumerable.New("kpxx"));
+static public readonly MIMEType ApplicationVndDvbAit = new MIMEType(MIMEGeneralType.Application, "vnd.dvb.ait", Enumerable.New("ait"));
+static public readonly MIMEType ApplicationVndDvbService = new MIMEType(MIMEGeneralType.Application, "vnd.dvb.service", Enumerable.New("svc"));
+static public readonly MIMEType ApplicationVndDynageo = new MIMEType(MIMEGeneralType.Application, "vnd.dynageo", Enumerable.New("geo"));
+static public readonly MIMEType ApplicationVndEcowinChart = new MIMEType(MIMEGeneralType.Application, "vnd.ecowin.chart", Enumerable.New("mag"));
+static public readonly MIMEType ApplicationVndEnliven = new MIMEType(MIMEGeneralType.Application, "vnd.enliven", Enumerable.New("nml"));
+static public readonly MIMEType ApplicationVndEpsonEsf = new MIMEType(MIMEGeneralType.Application, "vnd.epson.esf", Enumerable.New("esf"));
+static public readonly MIMEType ApplicationVndEpsonMsf = new MIMEType(MIMEGeneralType.Application, "vnd.epson.msf", Enumerable.New("msf"));
+static public readonly MIMEType ApplicationVndEpsonQuickanime = new MIMEType(MIMEGeneralType.Application, "vnd.epson.quickanime", Enumerable.New("qam"));
+static public readonly MIMEType ApplicationVndEpsonSalt = new MIMEType(MIMEGeneralType.Application, "vnd.epson.salt", Enumerable.New("slt"));
+static public readonly MIMEType ApplicationVndEpsonSsf = new MIMEType(MIMEGeneralType.Application, "vnd.epson.ssf", Enumerable.New("ssf"));
+static public readonly MIMEType ApplicationVndEszigno3Xml = new MIMEType(MIMEGeneralType.Application, "vnd.eszigno3+xml", Enumerable.New("es3", "et3"));
+static public readonly MIMEType ApplicationVndEzpixAlbum = new MIMEType(MIMEGeneralType.Application, "vnd.ezpix-album", Enumerable.New("ez2"));
+static public readonly MIMEType ApplicationVndEzpixPackage = new MIMEType(MIMEGeneralType.Application, "vnd.ezpix-package", Enumerable.New("ez3"));
+static public readonly MIMEType ApplicationVndFdf = new MIMEType(MIMEGeneralType.Application, "vnd.fdf", Enumerable.New("fdf"));
+static public readonly MIMEType ApplicationVndFdsnMseed = new MIMEType(MIMEGeneralType.Application, "vnd.fdsn.mseed", Enumerable.New("mseed"));
+static public readonly MIMEType ApplicationVndFdsnSeed = new MIMEType(MIMEGeneralType.Application, "vnd.fdsn.seed", Enumerable.New("seed", "dataless"));
+static public readonly MIMEType ApplicationVndFlographit = new MIMEType(MIMEGeneralType.Application, "vnd.flographit", Enumerable.New("gph"));
+static public readonly MIMEType ApplicationVndFluxtimeClip = new MIMEType(MIMEGeneralType.Application, "vnd.fluxtime.clip", Enumerable.New("ftc"));
+static public readonly MIMEType ApplicationVndFramemaker = new MIMEType(MIMEGeneralType.Application, "vnd.framemaker", Enumerable.New("fm", "frame", "maker", "book"));
+static public readonly MIMEType ApplicationVndFrogansFnc = new MIMEType(MIMEGeneralType.Application, "vnd.frogans.fnc", Enumerable.New("fnc"));
+static public readonly MIMEType ApplicationVndFrogansLtf = new MIMEType(MIMEGeneralType.Application, "vnd.frogans.ltf", Enumerable.New("ltf"));
+static public readonly MIMEType ApplicationVndFscWeblaunch = new MIMEType(MIMEGeneralType.Application, "vnd.fsc.weblaunch", Enumerable.New("fsc"));
+static public readonly MIMEType ApplicationVndFujitsuOasys = new MIMEType(MIMEGeneralType.Application, "vnd.fujitsu.oasys", Enumerable.New("oas"));
+static public readonly MIMEType ApplicationVndFujitsuOasys2 = new MIMEType(MIMEGeneralType.Application, "vnd.fujitsu.oasys2", Enumerable.New("oa2"));
+static public readonly MIMEType ApplicationVndFujitsuOasys3 = new MIMEType(MIMEGeneralType.Application, "vnd.fujitsu.oasys3", Enumerable.New("oa3"));
+static public readonly MIMEType ApplicationVndFujitsuOasysgp = new MIMEType(MIMEGeneralType.Application, "vnd.fujitsu.oasysgp", Enumerable.New("fg5"));
+static public readonly MIMEType ApplicationVndFujitsuOasysprs = new MIMEType(MIMEGeneralType.Application, "vnd.fujitsu.oasysprs", Enumerable.New("bh2"));
+static public readonly MIMEType ApplicationVndFujixeroxDdd = new MIMEType(MIMEGeneralType.Application, "vnd.fujixerox.ddd", Enumerable.New("ddd"));
+static public readonly MIMEType ApplicationVndFujixeroxDocuworks = new MIMEType(MIMEGeneralType.Application, "vnd.fujixerox.docuworks", Enumerable.New("xdw"));
+static public readonly MIMEType ApplicationVndFujixeroxDocuworksBinder = new MIMEType(MIMEGeneralType.Application, "vnd.fujixerox.docuworks.binder", Enumerable.New("xbd"));
+static public readonly MIMEType ApplicationVndFuzzysheet = new MIMEType(MIMEGeneralType.Application, "vnd.fuzzysheet", Enumerable.New("fzs"));
+static public readonly MIMEType ApplicationVndGenomatixTuxedo = new MIMEType(MIMEGeneralType.Application, "vnd.genomatix.tuxedo", Enumerable.New("txd"));
+static public readonly MIMEType ApplicationVndGeogebraFile = new MIMEType(MIMEGeneralType.Application, "vnd.geogebra.file", Enumerable.New("ggb"));
+static public readonly MIMEType ApplicationVndGeogebraTool = new MIMEType(MIMEGeneralType.Application, "vnd.geogebra.tool", Enumerable.New("ggt"));
+static public readonly MIMEType ApplicationVndGeometryExplorer = new MIMEType(MIMEGeneralType.Application, "vnd.geometry-explorer", Enumerable.New("gex", "gre"));
+static public readonly MIMEType ApplicationVndGeonext = new MIMEType(MIMEGeneralType.Application, "vnd.geonext", Enumerable.New("gxt"));
+static public readonly MIMEType ApplicationVndGeoplan = new MIMEType(MIMEGeneralType.Application, "vnd.geoplan", Enumerable.New("g2w"));
+static public readonly MIMEType ApplicationVndGeospace = new MIMEType(MIMEGeneralType.Application, "vnd.geospace", Enumerable.New("g3w"));
+static public readonly MIMEType ApplicationVndGmx = new MIMEType(MIMEGeneralType.Application, "vnd.gmx", Enumerable.New("gmx"));
+static public readonly MIMEType ApplicationVndGoogleEarthKmlXml = new MIMEType(MIMEGeneralType.Application, "vnd.google-earth.kml+xml", Enumerable.New("kml"));
+static public readonly MIMEType ApplicationVndGoogleEarthKmz = new MIMEType(MIMEGeneralType.Application, "vnd.google-earth.kmz", Enumerable.New("kmz"));
+static public readonly MIMEType ApplicationVndGrafeq = new MIMEType(MIMEGeneralType.Application, "vnd.grafeq", Enumerable.New("gqf", "gqs"));
+static public readonly MIMEType ApplicationVndGrooveAccount = new MIMEType(MIMEGeneralType.Application, "vnd.groove-account", Enumerable.New("gac"));
+static public readonly MIMEType ApplicationVndGrooveHelp = new MIMEType(MIMEGeneralType.Application, "vnd.groove-help", Enumerable.New("ghf"));
+static public readonly MIMEType ApplicationVndGrooveIdentityMessage = new MIMEType(MIMEGeneralType.Application, "vnd.groove-identity-message", Enumerable.New("gim"));
+static public readonly MIMEType ApplicationVndGrooveInjector = new MIMEType(MIMEGeneralType.Application, "vnd.groove-injector", Enumerable.New("grv"));
+static public readonly MIMEType ApplicationVndGrooveToolMessage = new MIMEType(MIMEGeneralType.Application, "vnd.groove-tool-message", Enumerable.New("gtm"));
+static public readonly MIMEType ApplicationVndGrooveToolTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.groove-tool-template", Enumerable.New("tpl"));
+static public readonly MIMEType ApplicationVndGrooveVcard = new MIMEType(MIMEGeneralType.Application, "vnd.groove-vcard", Enumerable.New("vcg"));
+static public readonly MIMEType ApplicationVndHalXml = new MIMEType(MIMEGeneralType.Application, "vnd.hal+xml", Enumerable.New("hal"));
+static public readonly MIMEType ApplicationVndHandheldEntertainmentXml = new MIMEType(MIMEGeneralType.Application, "vnd.handheld-entertainment+xml", Enumerable.New("zmm"));
+static public readonly MIMEType ApplicationVndHbci = new MIMEType(MIMEGeneralType.Application, "vnd.hbci", Enumerable.New("hbci"));
+static public readonly MIMEType ApplicationVndHheLessonPlayer = new MIMEType(MIMEGeneralType.Application, "vnd.hhe.lesson-player", Enumerable.New("les"));
+static public readonly MIMEType ApplicationVndHpHpgl = new MIMEType(MIMEGeneralType.Application, "vnd.hp-hpgl", Enumerable.New("hpgl"));
+static public readonly MIMEType ApplicationVndHpHpid = new MIMEType(MIMEGeneralType.Application, "vnd.hp-hpid", Enumerable.New("hpid"));
+static public readonly MIMEType ApplicationVndHpHps = new MIMEType(MIMEGeneralType.Application, "vnd.hp-hps", Enumerable.New("hps"));
+static public readonly MIMEType ApplicationVndHpJlyt = new MIMEType(MIMEGeneralType.Application, "vnd.hp-jlyt", Enumerable.New("jlt"));
+static public readonly MIMEType ApplicationVndHpPcl = new MIMEType(MIMEGeneralType.Application, "vnd.hp-pcl", Enumerable.New("pcl"));
+static public readonly MIMEType ApplicationVndHpPclxl = new MIMEType(MIMEGeneralType.Application, "vnd.hp-pclxl", Enumerable.New("pclxl"));
+static public readonly MIMEType ApplicationVndHydrostatixSofData = new MIMEType(MIMEGeneralType.Application, "vnd.hydrostatix.sof-data", Enumerable.New("sfd-hdstx"));
+static public readonly MIMEType ApplicationVndIbmMinipay = new MIMEType(MIMEGeneralType.Application, "vnd.ibm.minipay", Enumerable.New("mpy"));
+static public readonly MIMEType ApplicationVndIbmModcap = new MIMEType(MIMEGeneralType.Application, "vnd.ibm.modcap", Enumerable.New("afp", "listafp", "list3820"));
+static public readonly MIMEType ApplicationVndIbmRightsManagement = new MIMEType(MIMEGeneralType.Application, "vnd.ibm.rights-management", Enumerable.New("irm"));
+static public readonly MIMEType ApplicationVndIbmSecureContainer = new MIMEType(MIMEGeneralType.Application, "vnd.ibm.secure-container", Enumerable.New("sc"));
+static public readonly MIMEType ApplicationVndIccprofile = new MIMEType(MIMEGeneralType.Application, "vnd.iccprofile", Enumerable.New("icc", "icm"));
+static public readonly MIMEType ApplicationVndIgloader = new MIMEType(MIMEGeneralType.Application, "vnd.igloader", Enumerable.New("igl"));
+static public readonly MIMEType ApplicationVndImmervisionIvp = new MIMEType(MIMEGeneralType.Application, "vnd.immervision-ivp", Enumerable.New("ivp"));
+static public readonly MIMEType ApplicationVndImmervisionIvu = new MIMEType(MIMEGeneralType.Application, "vnd.immervision-ivu", Enumerable.New("ivu"));
+static public readonly MIMEType ApplicationVndInsorsIgm = new MIMEType(MIMEGeneralType.Application, "vnd.insors.igm", Enumerable.New("igm"));
+static public readonly MIMEType ApplicationVndInterconFormnet = new MIMEType(MIMEGeneralType.Application, "vnd.intercon.formnet", Enumerable.New("xpw", "xpx"));
+static public readonly MIMEType ApplicationVndIntergeo = new MIMEType(MIMEGeneralType.Application, "vnd.intergeo", Enumerable.New("i2g"));
+static public readonly MIMEType ApplicationVndIntuQbo = new MIMEType(MIMEGeneralType.Application, "vnd.intu.qbo", Enumerable.New("qbo"));
+static public readonly MIMEType ApplicationVndIntuQfx = new MIMEType(MIMEGeneralType.Application, "vnd.intu.qfx", Enumerable.New("qfx"));
+static public readonly MIMEType ApplicationVndIpunpluggedRcprofile = new MIMEType(MIMEGeneralType.Application, "vnd.ipunplugged.rcprofile", Enumerable.New("rcprofile"));
+static public readonly MIMEType ApplicationVndIrepositoryPackageXml = new MIMEType(MIMEGeneralType.Application, "vnd.irepository.package+xml", Enumerable.New("irp"));
+static public readonly MIMEType ApplicationVndIsXpr = new MIMEType(MIMEGeneralType.Application, "vnd.is-xpr", Enumerable.New("xpr"));
+static public readonly MIMEType ApplicationVndIsacFcs = new MIMEType(MIMEGeneralType.Application, "vnd.isac.fcs", Enumerable.New("fcs"));
+static public readonly MIMEType ApplicationVndJam = new MIMEType(MIMEGeneralType.Application, "vnd.jam", Enumerable.New("jam"));
+static public readonly MIMEType ApplicationVndJcpJavameMidletRms = new MIMEType(MIMEGeneralType.Application, "vnd.jcp.javame.midlet-rms", Enumerable.New("rms"));
+static public readonly MIMEType ApplicationVndJisp = new MIMEType(MIMEGeneralType.Application, "vnd.jisp", Enumerable.New("jisp"));
+static public readonly MIMEType ApplicationVndJoostJodaArchive = new MIMEType(MIMEGeneralType.Application, "vnd.joost.joda-archive", Enumerable.New("joda"));
+static public readonly MIMEType ApplicationVndKahootz = new MIMEType(MIMEGeneralType.Application, "vnd.kahootz", Enumerable.New("ktz", "ktr"));
+static public readonly MIMEType ApplicationVndKdeKarbon = new MIMEType(MIMEGeneralType.Application, "vnd.kde.karbon", Enumerable.New("karbon"));
+static public readonly MIMEType ApplicationVndKdeKchart = new MIMEType(MIMEGeneralType.Application, "vnd.kde.kchart", Enumerable.New("chrt"));
+static public readonly MIMEType ApplicationVndKdeKformula = new MIMEType(MIMEGeneralType.Application, "vnd.kde.kformula", Enumerable.New("kfo"));
+static public readonly MIMEType ApplicationVndKdeKivio = new MIMEType(MIMEGeneralType.Application, "vnd.kde.kivio", Enumerable.New("flw"));
+static public readonly MIMEType ApplicationVndKdeKontour = new MIMEType(MIMEGeneralType.Application, "vnd.kde.kontour", Enumerable.New("kon"));
+static public readonly MIMEType ApplicationVndKdeKpresenter = new MIMEType(MIMEGeneralType.Application, "vnd.kde.kpresenter", Enumerable.New("kpr", "kpt"));
+static public readonly MIMEType ApplicationVndKdeKspread = new MIMEType(MIMEGeneralType.Application, "vnd.kde.kspread", Enumerable.New("ksp"));
+static public readonly MIMEType ApplicationVndKdeKword = new MIMEType(MIMEGeneralType.Application, "vnd.kde.kword", Enumerable.New("kwd", "kwt"));
+static public readonly MIMEType ApplicationVndKenameaapp = new MIMEType(MIMEGeneralType.Application, "vnd.kenameaapp", Enumerable.New("htke"));
+static public readonly MIMEType ApplicationVndKidspiration = new MIMEType(MIMEGeneralType.Application, "vnd.kidspiration", Enumerable.New("kia"));
+static public readonly MIMEType ApplicationVndKinar = new MIMEType(MIMEGeneralType.Application, "vnd.kinar", Enumerable.New("kne", "knp"));
+static public readonly MIMEType ApplicationVndKoan = new MIMEType(MIMEGeneralType.Application, "vnd.koan", Enumerable.New("skp", "skd", "skt", "skm"));
+static public readonly MIMEType ApplicationVndKodakDescriptor = new MIMEType(MIMEGeneralType.Application, "vnd.kodak-descriptor", Enumerable.New("sse"));
+static public readonly MIMEType ApplicationVndLasLasXml = new MIMEType(MIMEGeneralType.Application, "vnd.las.las+xml", Enumerable.New("lasxml"));
+static public readonly MIMEType ApplicationVndLlamagraphicsLifeBalanceDesktop = new MIMEType(MIMEGeneralType.Application, "vnd.llamagraphics.life-balance.desktop", Enumerable.New("lbd"));
+static public readonly MIMEType ApplicationVndLlamagraphicsLifeBalanceExchangeXml = new MIMEType(MIMEGeneralType.Application, "vnd.llamagraphics.life-balance.exchange+xml", Enumerable.New("lbe"));
+static public readonly MIMEType ApplicationVndLotus123 = new MIMEType(MIMEGeneralType.Application, "vnd.lotus-1-2-3", Enumerable.New("123"));
+static public readonly MIMEType ApplicationVndLotusApproach = new MIMEType(MIMEGeneralType.Application, "vnd.lotus-approach", Enumerable.New("apr"));
+static public readonly MIMEType ApplicationVndLotusFreelance = new MIMEType(MIMEGeneralType.Application, "vnd.lotus-freelance", Enumerable.New("pre"));
+static public readonly MIMEType ApplicationVndLotusNotes = new MIMEType(MIMEGeneralType.Application, "vnd.lotus-notes", Enumerable.New("nsf"));
+static public readonly MIMEType ApplicationVndLotusOrganizer = new MIMEType(MIMEGeneralType.Application, "vnd.lotus-organizer", Enumerable.New("org"));
+static public readonly MIMEType ApplicationVndLotusScreencam = new MIMEType(MIMEGeneralType.Application, "vnd.lotus-screencam", Enumerable.New("scm"));
+static public readonly MIMEType ApplicationVndLotusWordpro = new MIMEType(MIMEGeneralType.Application, "vnd.lotus-wordpro", Enumerable.New("lwp"));
+static public readonly MIMEType ApplicationVndMacportsPortpkg = new MIMEType(MIMEGeneralType.Application, "vnd.macports.portpkg", Enumerable.New("portpkg"));
+static public readonly MIMEType ApplicationVndMcd = new MIMEType(MIMEGeneralType.Application, "vnd.mcd", Enumerable.New("mcd"));
+static public readonly MIMEType ApplicationVndMedcalcdata = new MIMEType(MIMEGeneralType.Application, "vnd.medcalcdata", Enumerable.New("mc1"));
+static public readonly MIMEType ApplicationVndMediastationCdkey = new MIMEType(MIMEGeneralType.Application, "vnd.mediastation.cdkey", Enumerable.New("cdkey"));
+static public readonly MIMEType ApplicationVndMfer = new MIMEType(MIMEGeneralType.Application, "vnd.mfer", Enumerable.New("mwf"));
+static public readonly MIMEType ApplicationVndMfmp = new MIMEType(MIMEGeneralType.Application, "vnd.mfmp", Enumerable.New("mfm"));
+static public readonly MIMEType ApplicationVndMicrografxFlo = new MIMEType(MIMEGeneralType.Application, "vnd.micrografx.flo", Enumerable.New("flo"));
+static public readonly MIMEType ApplicationVndMicrografxIgx = new MIMEType(MIMEGeneralType.Application, "vnd.micrografx.igx", Enumerable.New("igx"));
+static public readonly MIMEType ApplicationVndMif = new MIMEType(MIMEGeneralType.Application, "vnd.mif", Enumerable.New("mif"));
+static public readonly MIMEType ApplicationVndMobiusDaf = new MIMEType(MIMEGeneralType.Application, "vnd.mobius.daf", Enumerable.New("daf"));
+static public readonly MIMEType ApplicationVndMobiusDis = new MIMEType(MIMEGeneralType.Application, "vnd.mobius.dis", Enumerable.New("dis"));
+static public readonly MIMEType ApplicationVndMobiusMbk = new MIMEType(MIMEGeneralType.Application, "vnd.mobius.mbk", Enumerable.New("mbk"));
+static public readonly MIMEType ApplicationVndMobiusMqy = new MIMEType(MIMEGeneralType.Application, "vnd.mobius.mqy", Enumerable.New("mqy"));
+static public readonly MIMEType ApplicationVndMobiusMsl = new MIMEType(MIMEGeneralType.Application, "vnd.mobius.msl", Enumerable.New("msl"));
+static public readonly MIMEType ApplicationVndMobiusPlc = new MIMEType(MIMEGeneralType.Application, "vnd.mobius.plc", Enumerable.New("plc"));
+static public readonly MIMEType ApplicationVndMobiusTxf = new MIMEType(MIMEGeneralType.Application, "vnd.mobius.txf", Enumerable.New("txf"));
+static public readonly MIMEType ApplicationVndMophunApplication = new MIMEType(MIMEGeneralType.Application, "vnd.mophun.application", Enumerable.New("mpn"));
+static public readonly MIMEType ApplicationVndMophunCertificate = new MIMEType(MIMEGeneralType.Application, "vnd.mophun.certificate", Enumerable.New("mpc"));
+static public readonly MIMEType ApplicationVndMozillaXulXml = new MIMEType(MIMEGeneralType.Application, "vnd.mozilla.xul+xml", Enumerable.New("xul"));
+static public readonly MIMEType ApplicationVndMsArtgalry = new MIMEType(MIMEGeneralType.Application, "vnd.ms-artgalry", Enumerable.New("cil"));
+static public readonly MIMEType ApplicationVndMsCabCompressed = new MIMEType(MIMEGeneralType.Application, "vnd.ms-cab-compressed", Enumerable.New("cab"));
+static public readonly MIMEType ApplicationVndMsExcel = new MIMEType(MIMEGeneralType.Application, "vnd.ms-excel", Enumerable.New("xls", "xlm", "xla", "xlc", "xlt", "xlw"));
+static public readonly MIMEType ApplicationVndMsExcelAddinMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-excel.addin.macroenabled.12", Enumerable.New("xlam"));
+static public readonly MIMEType ApplicationVndMsExcelSheetBinaryMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-excel.sheet.binary.macroenabled.12", Enumerable.New("xlsb"));
+static public readonly MIMEType ApplicationVndMsExcelSheetMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-excel.sheet.macroenabled.12", Enumerable.New("xlsm"));
+static public readonly MIMEType ApplicationVndMsExcelTemplateMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-excel.template.macroenabled.12", Enumerable.New("xltm"));
+static public readonly MIMEType ApplicationVndMsFontobject = new MIMEType(MIMEGeneralType.Application, "vnd.ms-fontobject", Enumerable.New("eot"));
+static public readonly MIMEType ApplicationVndMsHtmlhelp = new MIMEType(MIMEGeneralType.Application, "vnd.ms-htmlhelp", Enumerable.New("chm"));
+static public readonly MIMEType ApplicationVndMsIms = new MIMEType(MIMEGeneralType.Application, "vnd.ms-ims", Enumerable.New("ims"));
+static public readonly MIMEType ApplicationVndMsLrm = new MIMEType(MIMEGeneralType.Application, "vnd.ms-lrm", Enumerable.New("lrm"));
+static public readonly MIMEType ApplicationVndMsOfficetheme = new MIMEType(MIMEGeneralType.Application, "vnd.ms-officetheme", Enumerable.New("thmx"));
+static public readonly MIMEType ApplicationVndMsPkiSeccat = new MIMEType(MIMEGeneralType.Application, "vnd.ms-pki.seccat", Enumerable.New("cat"));
+static public readonly MIMEType ApplicationVndMsPkiStl = new MIMEType(MIMEGeneralType.Application, "vnd.ms-pki.stl", Enumerable.New("stl"));
+static public readonly MIMEType ApplicationVndMsPowerpoint = new MIMEType(MIMEGeneralType.Application, "vnd.ms-powerpoint", Enumerable.New("ppt", "pps", "pot"));
+static public readonly MIMEType ApplicationVndMsPowerpointAddinMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-powerpoint.addin.macroenabled.12", Enumerable.New("ppam"));
+static public readonly MIMEType ApplicationVndMsPowerpointPresentationMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-powerpoint.presentation.macroenabled.12", Enumerable.New("pptm"));
+static public readonly MIMEType ApplicationVndMsPowerpointSlideMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-powerpoint.slide.macroenabled.12", Enumerable.New("sldm"));
+static public readonly MIMEType ApplicationVndMsPowerpointSlideshowMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-powerpoint.slideshow.macroenabled.12", Enumerable.New("ppsm"));
+static public readonly MIMEType ApplicationVndMsPowerpointTemplateMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-powerpoint.template.macroenabled.12", Enumerable.New("potm"));
+static public readonly MIMEType ApplicationVndMsProject = new MIMEType(MIMEGeneralType.Application, "vnd.ms-project", Enumerable.New("mpp", "mpt"));
+static public readonly MIMEType ApplicationVndMsWordDocumentMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-word.document.macroenabled.12", Enumerable.New("docm"));
+static public readonly MIMEType ApplicationVndMsWordTemplateMacroenabled12 = new MIMEType(MIMEGeneralType.Application, "vnd.ms-word.template.macroenabled.12", Enumerable.New("dotm"));
+static public readonly MIMEType ApplicationVndMsWorks = new MIMEType(MIMEGeneralType.Application, "vnd.ms-works", Enumerable.New("wps", "wks", "wcm", "wdb"));
+static public readonly MIMEType ApplicationVndMsWpl = new MIMEType(MIMEGeneralType.Application, "vnd.ms-wpl", Enumerable.New("wpl"));
+static public readonly MIMEType ApplicationVndMsXpsdocument = new MIMEType(MIMEGeneralType.Application, "vnd.ms-xpsdocument", Enumerable.New("xps"));
+static public readonly MIMEType ApplicationVndMseq = new MIMEType(MIMEGeneralType.Application, "vnd.mseq", Enumerable.New("mseq"));
+static public readonly MIMEType ApplicationVndMusician = new MIMEType(MIMEGeneralType.Application, "vnd.musician", Enumerable.New("mus"));
+static public readonly MIMEType ApplicationVndMuveeStyle = new MIMEType(MIMEGeneralType.Application, "vnd.muvee.style", Enumerable.New("msty"));
+static public readonly MIMEType ApplicationVndMynfc = new MIMEType(MIMEGeneralType.Application, "vnd.mynfc", Enumerable.New("taglet"));
+static public readonly MIMEType ApplicationVndNeurolanguageNlu = new MIMEType(MIMEGeneralType.Application, "vnd.neurolanguage.nlu", Enumerable.New("nlu"));
+static public readonly MIMEType ApplicationVndNitf = new MIMEType(MIMEGeneralType.Application, "vnd.nitf", Enumerable.New("ntf", "nitf"));
+static public readonly MIMEType ApplicationVndNoblenetDirectory = new MIMEType(MIMEGeneralType.Application, "vnd.noblenet-directory", Enumerable.New("nnd"));
+static public readonly MIMEType ApplicationVndNoblenetSealer = new MIMEType(MIMEGeneralType.Application, "vnd.noblenet-sealer", Enumerable.New("nns"));
+static public readonly MIMEType ApplicationVndNoblenetWeb = new MIMEType(MIMEGeneralType.Application, "vnd.noblenet-web", Enumerable.New("nnw"));
+static public readonly MIMEType ApplicationVndNokiaNGageData = new MIMEType(MIMEGeneralType.Application, "vnd.nokia.n-gage.data", Enumerable.New("ngdat"));
+static public readonly MIMEType ApplicationVndNokiaNGageSymbianInstall = new MIMEType(MIMEGeneralType.Application, "vnd.nokia.n-gage.symbian.install", Enumerable.New("n-gage"));
+static public readonly MIMEType ApplicationVndNokiaRadioPreset = new MIMEType(MIMEGeneralType.Application, "vnd.nokia.radio-preset", Enumerable.New("rpst"));
+static public readonly MIMEType ApplicationVndNokiaRadioPresets = new MIMEType(MIMEGeneralType.Application, "vnd.nokia.radio-presets", Enumerable.New("rpss"));
+static public readonly MIMEType ApplicationVndNovadigmEdm = new MIMEType(MIMEGeneralType.Application, "vnd.novadigm.edm", Enumerable.New("edm"));
+static public readonly MIMEType ApplicationVndNovadigmEdx = new MIMEType(MIMEGeneralType.Application, "vnd.novadigm.edx", Enumerable.New("edx"));
+static public readonly MIMEType ApplicationVndNovadigmExt = new MIMEType(MIMEGeneralType.Application, "vnd.novadigm.ext", Enumerable.New("ext"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentChart = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.chart", Enumerable.New("odc"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentChartTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.chart-template", Enumerable.New("otc"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentDatabase = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.database", Enumerable.New("odb"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentFormula = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.formula", Enumerable.New("odf"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentFormulaTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.formula-template", Enumerable.New("odft"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentGraphics = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.graphics", Enumerable.New("odg"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentGraphicsTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.graphics-template", Enumerable.New("otg"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentImage = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.image", Enumerable.New("odi"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentImageTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.image-template", Enumerable.New("oti"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentPresentation = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.presentation", Enumerable.New("odp"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentPresentationTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.presentation-template", Enumerable.New("otp"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentSpreadsheet = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.spreadsheet", Enumerable.New("ods"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentSpreadsheetTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.spreadsheet-template", Enumerable.New("ots"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentText = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.text", Enumerable.New("odt"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentTextMaster = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.text-master", Enumerable.New("odm"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentTextTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.text-template", Enumerable.New("ott"));
+static public readonly MIMEType ApplicationVndOasisOpendocumentTextWeb = new MIMEType(MIMEGeneralType.Application, "vnd.oasis.opendocument.text-web", Enumerable.New("oth"));
+static public readonly MIMEType ApplicationVndOlpcSugar = new MIMEType(MIMEGeneralType.Application, "vnd.olpc-sugar", Enumerable.New("xo"));
+static public readonly MIMEType ApplicationVndOmaDd2Xml = new MIMEType(MIMEGeneralType.Application, "vnd.oma.dd2+xml", Enumerable.New("dd2"));
+static public readonly MIMEType ApplicationVndOpenofficeorgExtension = new MIMEType(MIMEGeneralType.Application, "vnd.openofficeorg.extension", Enumerable.New("oxt"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.presentationml.presentation", Enumerable.New("pptx"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentPresentationmlSlide = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.presentationml.slide", Enumerable.New("sldx"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentPresentationmlSlideshow = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.presentationml.slideshow", Enumerable.New("ppsx"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentPresentationmlTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.presentationml.template", Enumerable.New("potx"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.spreadsheetml.sheet", Enumerable.New("xlsx"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.spreadsheetml.template", Enumerable.New("xltx"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.wordprocessingml.document", Enumerable.New("docx"));
+static public readonly MIMEType ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.openxmlformats-officedocument.wordprocessingml.template", Enumerable.New("dotx"));
+static public readonly MIMEType ApplicationVndOsgeoMapguidePackage = new MIMEType(MIMEGeneralType.Application, "vnd.osgeo.mapguide.package", Enumerable.New("mgp"));
+static public readonly MIMEType ApplicationVndOsgiDp = new MIMEType(MIMEGeneralType.Application, "vnd.osgi.dp", Enumerable.New("dp"));
+static public readonly MIMEType ApplicationVndOsgiSubsystem = new MIMEType(MIMEGeneralType.Application, "vnd.osgi.subsystem", Enumerable.New("esa"));
+static public readonly MIMEType ApplicationVndPalm = new MIMEType(MIMEGeneralType.Application, "vnd.palm", Enumerable.New("pdb", "pqa", "oprc"));
+static public readonly MIMEType ApplicationVndPawaafile = new MIMEType(MIMEGeneralType.Application, "vnd.pawaafile", Enumerable.New("paw"));
+static public readonly MIMEType ApplicationVndPgFormat = new MIMEType(MIMEGeneralType.Application, "vnd.pg.format", Enumerable.New("str"));
+static public readonly MIMEType ApplicationVndPgOsasli = new MIMEType(MIMEGeneralType.Application, "vnd.pg.osasli", Enumerable.New("ei6"));
+static public readonly MIMEType ApplicationVndPicsel = new MIMEType(MIMEGeneralType.Application, "vnd.picsel", Enumerable.New("efif"));
+static public readonly MIMEType ApplicationVndPmiWidget = new MIMEType(MIMEGeneralType.Application, "vnd.pmi.widget", Enumerable.New("wg"));
+static public readonly MIMEType ApplicationVndPocketlearn = new MIMEType(MIMEGeneralType.Application, "vnd.pocketlearn", Enumerable.New("plf"));
+static public readonly MIMEType ApplicationVndPowerbuilder6 = new MIMEType(MIMEGeneralType.Application, "vnd.powerbuilder6", Enumerable.New("pbd"));
+static public readonly MIMEType ApplicationVndPreviewsystemsBox = new MIMEType(MIMEGeneralType.Application, "vnd.previewsystems.box", Enumerable.New("box"));
+static public readonly MIMEType ApplicationVndProteusMagazine = new MIMEType(MIMEGeneralType.Application, "vnd.proteus.magazine", Enumerable.New("mgz"));
+static public readonly MIMEType ApplicationVndPublishareDeltaTree = new MIMEType(MIMEGeneralType.Application, "vnd.publishare-delta-tree", Enumerable.New("qps"));
+static public readonly MIMEType ApplicationVndPviPtid1 = new MIMEType(MIMEGeneralType.Application, "vnd.pvi.ptid1", Enumerable.New("ptid"));
+static public readonly MIMEType ApplicationVndQuarkQuarkxpress = new MIMEType(MIMEGeneralType.Application, "vnd.quark.quarkxpress", Enumerable.New("qxd", "qxt", "qwd", "qwt", "qxl", "qxb"));
+static public readonly MIMEType ApplicationVndRealvncBed = new MIMEType(MIMEGeneralType.Application, "vnd.realvnc.bed", Enumerable.New("bed"));
+static public readonly MIMEType ApplicationVndRecordareMusicxml = new MIMEType(MIMEGeneralType.Application, "vnd.recordare.musicxml", Enumerable.New("mxl"));
+static public readonly MIMEType ApplicationVndRecordareMusicxmlXml = new MIMEType(MIMEGeneralType.Application, "vnd.recordare.musicxml+xml", Enumerable.New("musicxml"));
+static public readonly MIMEType ApplicationVndRigCryptonote = new MIMEType(MIMEGeneralType.Application, "vnd.rig.cryptonote", Enumerable.New("cryptonote"));
+static public readonly MIMEType ApplicationVndRimCod = new MIMEType(MIMEGeneralType.Application, "vnd.rim.cod", Enumerable.New("cod"));
+static public readonly MIMEType ApplicationVndRnRealmedia = new MIMEType(MIMEGeneralType.Application, "vnd.rn-realmedia", Enumerable.New("rm"));
+static public readonly MIMEType ApplicationVndRnRealmediaVbr = new MIMEType(MIMEGeneralType.Application, "vnd.rn-realmedia-vbr", Enumerable.New("rmvb"));
+static public readonly MIMEType ApplicationVndRoute66Link66Xml = new MIMEType(MIMEGeneralType.Application, "vnd.route66.link66+xml", Enumerable.New("link66"));
+static public readonly MIMEType ApplicationVndSailingtrackerTrack = new MIMEType(MIMEGeneralType.Application, "vnd.sailingtracker.track", Enumerable.New("st"));
+static public readonly MIMEType ApplicationVndSeemail = new MIMEType(MIMEGeneralType.Application, "vnd.seemail", Enumerable.New("see"));
+static public readonly MIMEType ApplicationVndSema = new MIMEType(MIMEGeneralType.Application, "vnd.sema", Enumerable.New("sema"));
+static public readonly MIMEType ApplicationVndSemd = new MIMEType(MIMEGeneralType.Application, "vnd.semd", Enumerable.New("semd"));
+static public readonly MIMEType ApplicationVndSemf = new MIMEType(MIMEGeneralType.Application, "vnd.semf", Enumerable.New("semf"));
+static public readonly MIMEType ApplicationVndShanaInformedFormdata = new MIMEType(MIMEGeneralType.Application, "vnd.shana.informed.formdata", Enumerable.New("ifm"));
+static public readonly MIMEType ApplicationVndShanaInformedFormtemplate = new MIMEType(MIMEGeneralType.Application, "vnd.shana.informed.formtemplate", Enumerable.New("itp"));
+static public readonly MIMEType ApplicationVndShanaInformedInterchange = new MIMEType(MIMEGeneralType.Application, "vnd.shana.informed.interchange", Enumerable.New("iif"));
+static public readonly MIMEType ApplicationVndShanaInformedPackage = new MIMEType(MIMEGeneralType.Application, "vnd.shana.informed.package", Enumerable.New("ipk"));
+static public readonly MIMEType ApplicationVndSimtechMindmapper = new MIMEType(MIMEGeneralType.Application, "vnd.simtech-mindmapper", Enumerable.New("twd", "twds"));
+static public readonly MIMEType ApplicationVndSmaf = new MIMEType(MIMEGeneralType.Application, "vnd.smaf", Enumerable.New("mmf"));
+static public readonly MIMEType ApplicationVndSmartTeacher = new MIMEType(MIMEGeneralType.Application, "vnd.smart.teacher", Enumerable.New("teacher"));
+static public readonly MIMEType ApplicationVndSolentSdkmXml = new MIMEType(MIMEGeneralType.Application, "vnd.solent.sdkm+xml", Enumerable.New("sdkm", "sdkd"));
+static public readonly MIMEType ApplicationVndSpotfireDxp = new MIMEType(MIMEGeneralType.Application, "vnd.spotfire.dxp", Enumerable.New("dxp"));
+static public readonly MIMEType ApplicationVndSpotfireSfs = new MIMEType(MIMEGeneralType.Application, "vnd.spotfire.sfs", Enumerable.New("sfs"));
+static public readonly MIMEType ApplicationVndStardivisionCalc = new MIMEType(MIMEGeneralType.Application, "vnd.stardivision.calc", Enumerable.New("sdc"));
+static public readonly MIMEType ApplicationVndStardivisionDraw = new MIMEType(MIMEGeneralType.Application, "vnd.stardivision.draw", Enumerable.New("sda"));
+static public readonly MIMEType ApplicationVndStardivisionImpress = new MIMEType(MIMEGeneralType.Application, "vnd.stardivision.impress", Enumerable.New("sdd"));
+static public readonly MIMEType ApplicationVndStardivisionMath = new MIMEType(MIMEGeneralType.Application, "vnd.stardivision.math", Enumerable.New("smf"));
+static public readonly MIMEType ApplicationVndStardivisionWriter = new MIMEType(MIMEGeneralType.Application, "vnd.stardivision.writer", Enumerable.New("sdw", "vor"));
+static public readonly MIMEType ApplicationVndStardivisionWriterGlobal = new MIMEType(MIMEGeneralType.Application, "vnd.stardivision.writer-global", Enumerable.New("sgl"));
+static public readonly MIMEType ApplicationVndStepmaniaPackage = new MIMEType(MIMEGeneralType.Application, "vnd.stepmania.package", Enumerable.New("smzip"));
+static public readonly MIMEType ApplicationVndStepmaniaStepchart = new MIMEType(MIMEGeneralType.Application, "vnd.stepmania.stepchart", Enumerable.New("sm"));
+static public readonly MIMEType ApplicationVndSunXmlCalc = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.calc", Enumerable.New("sxc"));
+static public readonly MIMEType ApplicationVndSunXmlCalcTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.calc.template", Enumerable.New("stc"));
+static public readonly MIMEType ApplicationVndSunXmlDraw = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.draw", Enumerable.New("sxd"));
+static public readonly MIMEType ApplicationVndSunXmlDrawTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.draw.template", Enumerable.New("std"));
+static public readonly MIMEType ApplicationVndSunXmlImpress = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.impress", Enumerable.New("sxi"));
+static public readonly MIMEType ApplicationVndSunXmlImpressTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.impress.template", Enumerable.New("sti"));
+static public readonly MIMEType ApplicationVndSunXmlMath = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.math", Enumerable.New("sxm"));
+static public readonly MIMEType ApplicationVndSunXmlWriter = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.writer", Enumerable.New("sxw"));
+static public readonly MIMEType ApplicationVndSunXmlWriterGlobal = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.writer.global", Enumerable.New("sxg"));
+static public readonly MIMEType ApplicationVndSunXmlWriterTemplate = new MIMEType(MIMEGeneralType.Application, "vnd.sun.xml.writer.template", Enumerable.New("stw"));
+static public readonly MIMEType ApplicationVndSusCalendar = new MIMEType(MIMEGeneralType.Application, "vnd.sus-calendar", Enumerable.New("sus", "susp"));
+static public readonly MIMEType ApplicationVndSvd = new MIMEType(MIMEGeneralType.Application, "vnd.svd", Enumerable.New("svd"));
+static public readonly MIMEType ApplicationVndSymbianInstall = new MIMEType(MIMEGeneralType.Application, "vnd.symbian.install", Enumerable.New("sis", "sisx"));
+static public readonly MIMEType ApplicationVndSyncmlXml = new MIMEType(MIMEGeneralType.Application, "vnd.syncml+xml", Enumerable.New("xsm"));
+static public readonly MIMEType ApplicationVndSyncmlDmWbxml = new MIMEType(MIMEGeneralType.Application, "vnd.syncml.dm+wbxml", Enumerable.New("bdm"));
+static public readonly MIMEType ApplicationVndSyncmlDmXml = new MIMEType(MIMEGeneralType.Application, "vnd.syncml.dm+xml", Enumerable.New("xdm"));
+static public readonly MIMEType ApplicationVndTaoIntentModuleArchive = new MIMEType(MIMEGeneralType.Application, "vnd.tao.intent-module-archive", Enumerable.New("tao"));
+static public readonly MIMEType ApplicationVndTcpdumpPcap = new MIMEType(MIMEGeneralType.Application, "vnd.tcpdump.pcap", Enumerable.New("pcap", "cap", "dmp"));
+static public readonly MIMEType ApplicationVndTmobileLivetv = new MIMEType(MIMEGeneralType.Application, "vnd.tmobile-livetv", Enumerable.New("tmo"));
+static public readonly MIMEType ApplicationVndTridTpt = new MIMEType(MIMEGeneralType.Application, "vnd.trid.tpt", Enumerable.New("tpt"));
+static public readonly MIMEType ApplicationVndTriscapeMxs = new MIMEType(MIMEGeneralType.Application, "vnd.triscape.mxs", Enumerable.New("mxs"));
+static public readonly MIMEType ApplicationVndTrueapp = new MIMEType(MIMEGeneralType.Application, "vnd.trueapp", Enumerable.New("tra"));
+static public readonly MIMEType ApplicationVndUfdl = new MIMEType(MIMEGeneralType.Application, "vnd.ufdl", Enumerable.New("ufd", "ufdl"));
+static public readonly MIMEType ApplicationVndUiqTheme = new MIMEType(MIMEGeneralType.Application, "vnd.uiq.theme", Enumerable.New("utz"));
+static public readonly MIMEType ApplicationVndUmajin = new MIMEType(MIMEGeneralType.Application, "vnd.umajin", Enumerable.New("umj"));
+static public readonly MIMEType ApplicationVndUnity = new MIMEType(MIMEGeneralType.Application, "vnd.unity", Enumerable.New("unityweb"));
+static public readonly MIMEType ApplicationVndUomlXml = new MIMEType(MIMEGeneralType.Application, "vnd.uoml+xml", Enumerable.New("uoml"));
+static public readonly MIMEType ApplicationVndVcx = new MIMEType(MIMEGeneralType.Application, "vnd.vcx", Enumerable.New("vcx"));
+static public readonly MIMEType ApplicationVndVisio = new MIMEType(MIMEGeneralType.Application, "vnd.visio", Enumerable.New("vsd", "vst", "vss", "vsw"));
+static public readonly MIMEType ApplicationVndVisionary = new MIMEType(MIMEGeneralType.Application, "vnd.visionary", Enumerable.New("vis"));
+static public readonly MIMEType ApplicationVndVsf = new MIMEType(MIMEGeneralType.Application, "vnd.vsf", Enumerable.New("vsf"));
+static public readonly MIMEType ApplicationVndWapWbxml = new MIMEType(MIMEGeneralType.Application, "vnd.wap.wbxml", Enumerable.New("wbxml"));
+static public readonly MIMEType ApplicationVndWapWmlc = new MIMEType(MIMEGeneralType.Application, "vnd.wap.wmlc", Enumerable.New("wmlc"));
+static public readonly MIMEType ApplicationVndWapWmlscriptc = new MIMEType(MIMEGeneralType.Application, "vnd.wap.wmlscriptc", Enumerable.New("wmlsc"));
+static public readonly MIMEType ApplicationVndWebturbo = new MIMEType(MIMEGeneralType.Application, "vnd.webturbo", Enumerable.New("wtb"));
+static public readonly MIMEType ApplicationVndWolframPlayer = new MIMEType(MIMEGeneralType.Application, "vnd.wolfram.player", Enumerable.New("nbp"));
+static public readonly MIMEType ApplicationVndWordperfect = new MIMEType(MIMEGeneralType.Application, "vnd.wordperfect", Enumerable.New("wpd"));
+static public readonly MIMEType ApplicationVndWqd = new MIMEType(MIMEGeneralType.Application, "vnd.wqd", Enumerable.New("wqd"));
+static public readonly MIMEType ApplicationVndWtStf = new MIMEType(MIMEGeneralType.Application, "vnd.wt.stf", Enumerable.New("stf"));
+static public readonly MIMEType ApplicationVndXara = new MIMEType(MIMEGeneralType.Application, "vnd.xara", Enumerable.New("xar"));
+static public readonly MIMEType ApplicationVndXfdl = new MIMEType(MIMEGeneralType.Application, "vnd.xfdl", Enumerable.New("xfdl"));
+static public readonly MIMEType ApplicationVndYamahaHvDic = new MIMEType(MIMEGeneralType.Application, "vnd.yamaha.hv-dic", Enumerable.New("hvd"));
+static public readonly MIMEType ApplicationVndYamahaHvScript = new MIMEType(MIMEGeneralType.Application, "vnd.yamaha.hv-script", Enumerable.New("hvs"));
+static public readonly MIMEType ApplicationVndYamahaHvVoice = new MIMEType(MIMEGeneralType.Application, "vnd.yamaha.hv-voice", Enumerable.New("hvp"));
+static public readonly MIMEType ApplicationVndYamahaOpenscoreformat = new MIMEType(MIMEGeneralType.Application, "vnd.yamaha.openscoreformat", Enumerable.New("osf"));
+static public readonly MIMEType ApplicationVndYamahaOpenscoreformatOsfpvgXml = new MIMEType(MIMEGeneralType.Application, "vnd.yamaha.openscoreformat.osfpvg+xml", Enumerable.New("osfpvg"));
+static public readonly MIMEType ApplicationVndYamahaSmafAudio = new MIMEType(MIMEGeneralType.Application, "vnd.yamaha.smaf-audio", Enumerable.New("saf"));
+static public readonly MIMEType ApplicationVndYamahaSmafPhrase = new MIMEType(MIMEGeneralType.Application, "vnd.yamaha.smaf-phrase", Enumerable.New("spf"));
+static public readonly MIMEType ApplicationVndYellowriverCustomMenu = new MIMEType(MIMEGeneralType.Application, "vnd.yellowriver-custom-menu", Enumerable.New("cmp"));
+static public readonly MIMEType ApplicationVndZul = new MIMEType(MIMEGeneralType.Application, "vnd.zul", Enumerable.New("zir", "zirz"));
+static public readonly MIMEType ApplicationVndZzazzDeckXml = new MIMEType(MIMEGeneralType.Application, "vnd.zzazz.deck+xml", Enumerable.New("zaz"));
+static public readonly MIMEType ApplicationVoicexmlXml = new MIMEType(MIMEGeneralType.Application, "voicexml+xml", Enumerable.New("vxml"));
+static public readonly MIMEType ApplicationWidget = new MIMEType(MIMEGeneralType.Application, "widget", Enumerable.New("wgt"));
+static public readonly MIMEType ApplicationWinhlp = new MIMEType(MIMEGeneralType.Application, "winhlp", Enumerable.New("hlp"));
+static public readonly MIMEType ApplicationWsdlXml = new MIMEType(MIMEGeneralType.Application, "wsdl+xml", Enumerable.New("wsdl"));
+static public readonly MIMEType ApplicationWspolicyXml = new MIMEType(MIMEGeneralType.Application, "wspolicy+xml", Enumerable.New("wspolicy"));
+static public readonly MIMEType ApplicationX7zCompressed = new MIMEType(MIMEGeneralType.Application, "x-7z-compressed", Enumerable.New("7z"));
+static public readonly MIMEType ApplicationXAbiword = new MIMEType(MIMEGeneralType.Application, "x-abiword", Enumerable.New("abw"));
+static public readonly MIMEType ApplicationXAceCompressed = new MIMEType(MIMEGeneralType.Application, "x-ace-compressed", Enumerable.New("ace"));
+static public readonly MIMEType ApplicationXAppleDiskimage = new MIMEType(MIMEGeneralType.Application, "x-apple-diskimage", Enumerable.New("dmg"));
+static public readonly MIMEType ApplicationXAuthorwareBin = new MIMEType(MIMEGeneralType.Application, "x-authorware-bin", Enumerable.New("aab", "x32", "u32", "vox"));
+static public readonly MIMEType ApplicationXAuthorwareMap = new MIMEType(MIMEGeneralType.Application, "x-authorware-map", Enumerable.New("aam"));
+static public readonly MIMEType ApplicationXAuthorwareSeg = new MIMEType(MIMEGeneralType.Application, "x-authorware-seg", Enumerable.New("aas"));
+static public readonly MIMEType ApplicationXBcpio = new MIMEType(MIMEGeneralType.Application, "x-bcpio", Enumerable.New("bcpio"));
+static public readonly MIMEType ApplicationXBittorrent = new MIMEType(MIMEGeneralType.Application, "x-bittorrent", Enumerable.New("torrent"));
+static public readonly MIMEType ApplicationXBlorb = new MIMEType(MIMEGeneralType.Application, "x-blorb", Enumerable.New("blb", "blorb"));
+static public readonly MIMEType ApplicationXBzip = new MIMEType(MIMEGeneralType.Application, "x-bzip", Enumerable.New("bz"));
+static public readonly MIMEType ApplicationXBzip2 = new MIMEType(MIMEGeneralType.Application, "x-bzip2", Enumerable.New("bz2", "boz"));
+static public readonly MIMEType ApplicationXCbr = new MIMEType(MIMEGeneralType.Application, "x-cbr", Enumerable.New("cbr", "cba", "cbt", "cbz", "cb7"));
+static public readonly MIMEType ApplicationXCdlink = new MIMEType(MIMEGeneralType.Application, "x-cdlink", Enumerable.New("vcd"));
+static public readonly MIMEType ApplicationXCfsCompressed = new MIMEType(MIMEGeneralType.Application, "x-cfs-compressed", Enumerable.New("cfs"));
+static public readonly MIMEType ApplicationXChat = new MIMEType(MIMEGeneralType.Application, "x-chat", Enumerable.New("chat"));
+static public readonly MIMEType ApplicationXChessPgn = new MIMEType(MIMEGeneralType.Application, "x-chess-pgn", Enumerable.New("pgn"));
+static public readonly MIMEType ApplicationXConference = new MIMEType(MIMEGeneralType.Application, "x-conference", Enumerable.New("nsc"));
+static public readonly MIMEType ApplicationXCpio = new MIMEType(MIMEGeneralType.Application, "x-cpio", Enumerable.New("cpio"));
+static public readonly MIMEType ApplicationXCsh = new MIMEType(MIMEGeneralType.Application, "x-csh", Enumerable.New("csh"));
+static public readonly MIMEType ApplicationXDebianPackage = new MIMEType(MIMEGeneralType.Application, "x-debian-package", Enumerable.New("deb", "udeb"));
+static public readonly MIMEType ApplicationXDgcCompressed = new MIMEType(MIMEGeneralType.Application, "x-dgc-compressed", Enumerable.New("dgc"));
+static public readonly MIMEType ApplicationXDirector = new MIMEType(MIMEGeneralType.Application, "x-director", Enumerable.New("dir", "dcr", "dxr", "cst", "cct", "cxt", "w3d", "fgd", "swa"));
+static public readonly MIMEType ApplicationXDoom = new MIMEType(MIMEGeneralType.Application, "x-doom", Enumerable.New("wad"));
+static public readonly MIMEType ApplicationXDtbncxXml = new MIMEType(MIMEGeneralType.Application, "x-dtbncx+xml", Enumerable.New("ncx"));
+static public readonly MIMEType ApplicationXDtbookXml = new MIMEType(MIMEGeneralType.Application, "x-dtbook+xml", Enumerable.New("dtb"));
+static public readonly MIMEType ApplicationXDtbresourceXml = new MIMEType(MIMEGeneralType.Application, "x-dtbresource+xml", Enumerable.New("res"));
+static public readonly MIMEType ApplicationXDvi = new MIMEType(MIMEGeneralType.Application, "x-dvi", Enumerable.New("dvi"));
+static public readonly MIMEType ApplicationXEnvoy = new MIMEType(MIMEGeneralType.Application, "x-envoy", Enumerable.New("evy"));
+static public readonly MIMEType ApplicationXEva = new MIMEType(MIMEGeneralType.Application, "x-eva", Enumerable.New("eva"));
+static public readonly MIMEType ApplicationXFontBdf = new MIMEType(MIMEGeneralType.Application, "x-font-bdf", Enumerable.New("bdf"));
+static public readonly MIMEType ApplicationXFontGhostscript = new MIMEType(MIMEGeneralType.Application, "x-font-ghostscript", Enumerable.New("gsf"));
+static public readonly MIMEType ApplicationXFontLinuxPsf = new MIMEType(MIMEGeneralType.Application, "x-font-linux-psf", Enumerable.New("psf"));
+static public readonly MIMEType ApplicationXFontOtf = new MIMEType(MIMEGeneralType.Application, "x-font-otf", Enumerable.New("otf"));
+static public readonly MIMEType ApplicationXFontPcf = new MIMEType(MIMEGeneralType.Application, "x-font-pcf", Enumerable.New("pcf"));
+static public readonly MIMEType ApplicationXFontSnf = new MIMEType(MIMEGeneralType.Application, "x-font-snf", Enumerable.New("snf"));
+static public readonly MIMEType ApplicationXFontTtf = new MIMEType(MIMEGeneralType.Application, "x-font-ttf", Enumerable.New("ttf", "ttc"));
+static public readonly MIMEType ApplicationXFontType1 = new MIMEType(MIMEGeneralType.Application, "x-font-type1", Enumerable.New("pfa", "pfb", "pfm", "afm"));
+static public readonly MIMEType ApplicationXFontWoff = new MIMEType(MIMEGeneralType.Application, "x-font-woff", Enumerable.New("woff"));
+static public readonly MIMEType ApplicationXFreearc = new MIMEType(MIMEGeneralType.Application, "x-freearc", Enumerable.New("arc"));
+static public readonly MIMEType ApplicationXFuturesplash = new MIMEType(MIMEGeneralType.Application, "x-futuresplash", Enumerable.New("spl"));
+static public readonly MIMEType ApplicationXGcaCompressed = new MIMEType(MIMEGeneralType.Application, "x-gca-compressed", Enumerable.New("gca"));
+static public readonly MIMEType ApplicationXGlulx = new MIMEType(MIMEGeneralType.Application, "x-glulx", Enumerable.New("ulx"));
+static public readonly MIMEType ApplicationXGnumeric = new MIMEType(MIMEGeneralType.Application, "x-gnumeric", Enumerable.New("gnumeric"));
+static public readonly MIMEType ApplicationXGrampsXml = new MIMEType(MIMEGeneralType.Application, "x-gramps-xml", Enumerable.New("gramps"));
+static public readonly MIMEType ApplicationXGtar = new MIMEType(MIMEGeneralType.Application, "x-gtar", Enumerable.New("gtar"));
+static public readonly MIMEType ApplicationXHdf = new MIMEType(MIMEGeneralType.Application, "x-hdf", Enumerable.New("hdf"));
+static public readonly MIMEType ApplicationXInstallInstructions = new MIMEType(MIMEGeneralType.Application, "x-install-instructions", Enumerable.New("install"));
+static public readonly MIMEType ApplicationXIso9660Image = new MIMEType(MIMEGeneralType.Application, "x-iso9660-image", Enumerable.New("iso"));
+static public readonly MIMEType ApplicationXJavaJnlpFile = new MIMEType(MIMEGeneralType.Application, "x-java-jnlp-file", Enumerable.New("jnlp"));
+static public readonly MIMEType ApplicationXLatex = new MIMEType(MIMEGeneralType.Application, "x-latex", Enumerable.New("latex"));
+static public readonly MIMEType ApplicationXLzhCompressed = new MIMEType(MIMEGeneralType.Application, "x-lzh-compressed", Enumerable.New("lzh", "lha"));
+static public readonly MIMEType ApplicationXMie = new MIMEType(MIMEGeneralType.Application, "x-mie", Enumerable.New("mie"));
+static public readonly MIMEType ApplicationXMobipocketEbook = new MIMEType(MIMEGeneralType.Application, "x-mobipocket-ebook", Enumerable.New("prc", "mobi"));
+static public readonly MIMEType ApplicationXMsApplication = new MIMEType(MIMEGeneralType.Application, "x-ms-application", Enumerable.New("application"));
+static public readonly MIMEType ApplicationXMsShortcut = new MIMEType(MIMEGeneralType.Application, "x-ms-shortcut", Enumerable.New("lnk"));
+static public readonly MIMEType ApplicationXMsWmd = new MIMEType(MIMEGeneralType.Application, "x-ms-wmd", Enumerable.New("wmd"));
+static public readonly MIMEType ApplicationXMsWmz = new MIMEType(MIMEGeneralType.Application, "x-ms-wmz", Enumerable.New("wmz"));
+static public readonly MIMEType ApplicationXMsXbap = new MIMEType(MIMEGeneralType.Application, "x-ms-xbap", Enumerable.New("xbap"));
+static public readonly MIMEType ApplicationXMsaccess = new MIMEType(MIMEGeneralType.Application, "x-msaccess", Enumerable.New("mdb"));
+static public readonly MIMEType ApplicationXMsbinder = new MIMEType(MIMEGeneralType.Application, "x-msbinder", Enumerable.New("obd"));
+static public readonly MIMEType ApplicationXMscardfile = new MIMEType(MIMEGeneralType.Application, "x-mscardfile", Enumerable.New("crd"));
+static public readonly MIMEType ApplicationXMsclip = new MIMEType(MIMEGeneralType.Application, "x-msclip", Enumerable.New("clp"));
+static public readonly MIMEType ApplicationXMsdownload = new MIMEType(MIMEGeneralType.Application, "x-msdownload", Enumerable.New("exe", "dll", "com", "bat", "msi"));
+static public readonly MIMEType ApplicationXMsmediaview = new MIMEType(MIMEGeneralType.Application, "x-msmediaview", Enumerable.New("mvb", "m13", "m14"));
+static public readonly MIMEType ApplicationXMsmetafile = new MIMEType(MIMEGeneralType.Application, "x-msmetafile", Enumerable.New("wmf", "wmz", "emf", "emz"));
+static public readonly MIMEType ApplicationXMsmoney = new MIMEType(MIMEGeneralType.Application, "x-msmoney", Enumerable.New("mny"));
+static public readonly MIMEType ApplicationXMspublisher = new MIMEType(MIMEGeneralType.Application, "x-mspublisher", Enumerable.New("pub"));
+static public readonly MIMEType ApplicationXMsschedule = new MIMEType(MIMEGeneralType.Application, "x-msschedule", Enumerable.New("scd"));
+static public readonly MIMEType ApplicationXMsterminal = new MIMEType(MIMEGeneralType.Application, "x-msterminal", Enumerable.New("trm"));
+static public readonly MIMEType ApplicationXMswrite = new MIMEType(MIMEGeneralType.Application, "x-mswrite", Enumerable.New("wri"));
+static public readonly MIMEType ApplicationXNetcdf = new MIMEType(MIMEGeneralType.Application, "x-netcdf", Enumerable.New("nc", "cdf"));
+static public readonly MIMEType ApplicationXNzb = new MIMEType(MIMEGeneralType.Application, "x-nzb", Enumerable.New("nzb"));
+static public readonly MIMEType ApplicationXPkcs12 = new MIMEType(MIMEGeneralType.Application, "x-pkcs12", Enumerable.New("p12", "pfx"));
+static public readonly MIMEType ApplicationXPkcs7Certificates = new MIMEType(MIMEGeneralType.Application, "x-pkcs7-certificates", Enumerable.New("p7b", "spc"));
+static public readonly MIMEType ApplicationXPkcs7Certreqresp = new MIMEType(MIMEGeneralType.Application, "x-pkcs7-certreqresp", Enumerable.New("p7r"));
+static public readonly MIMEType ApplicationXRarCompressed = new MIMEType(MIMEGeneralType.Application, "x-rar-compressed", Enumerable.New("rar"));
+static public readonly MIMEType ApplicationXResearchInfoSystems = new MIMEType(MIMEGeneralType.Application, "x-research-info-systems", Enumerable.New("ris"));
+static public readonly MIMEType ApplicationXSh = new MIMEType(MIMEGeneralType.Application, "x-sh", Enumerable.New("sh"));
+static public readonly MIMEType ApplicationXShar = new MIMEType(MIMEGeneralType.Application, "x-shar", Enumerable.New("shar"));
+static public readonly MIMEType ApplicationXShockwaveFlash = new MIMEType(MIMEGeneralType.Application, "x-shockwave-flash", Enumerable.New("swf"));
+static public readonly MIMEType ApplicationXSilverlightApp = new MIMEType(MIMEGeneralType.Application, "x-silverlight-app", Enumerable.New("xap"));
+static public readonly MIMEType ApplicationXSql = new MIMEType(MIMEGeneralType.Application, "x-sql", Enumerable.New("sql"));
+static public readonly MIMEType ApplicationXStuffit = new MIMEType(MIMEGeneralType.Application, "x-stuffit", Enumerable.New("sit"));
+static public readonly MIMEType ApplicationXStuffitx = new MIMEType(MIMEGeneralType.Application, "x-stuffitx", Enumerable.New("sitx"));
+static public readonly MIMEType ApplicationXSubrip = new MIMEType(MIMEGeneralType.Application, "x-subrip", Enumerable.New("srt"));
+static public readonly MIMEType ApplicationXSv4cpio = new MIMEType(MIMEGeneralType.Application, "x-sv4cpio", Enumerable.New("sv4cpio"));
+static public readonly MIMEType ApplicationXSv4crc = new MIMEType(MIMEGeneralType.Application, "x-sv4crc", Enumerable.New("sv4crc"));
+static public readonly MIMEType ApplicationXT3vmImage = new MIMEType(MIMEGeneralType.Application, "x-t3vm-image", Enumerable.New("t3"));
+static public readonly MIMEType ApplicationXTads = new MIMEType(MIMEGeneralType.Application, "x-tads", Enumerable.New("gam"));
+static public readonly MIMEType ApplicationXTar = new MIMEType(MIMEGeneralType.Application, "x-tar", Enumerable.New("tar"));
+static public readonly MIMEType ApplicationXTcl = new MIMEType(MIMEGeneralType.Application, "x-tcl", Enumerable.New("tcl"));
+static public readonly MIMEType ApplicationXTex = new MIMEType(MIMEGeneralType.Application, "x-tex", Enumerable.New("tex"));
+static public readonly MIMEType ApplicationXTexTfm = new MIMEType(MIMEGeneralType.Application, "x-tex-tfm", Enumerable.New("tfm"));
+static public readonly MIMEType ApplicationXTexinfo = new MIMEType(MIMEGeneralType.Application, "x-texinfo", Enumerable.New("texinfo", "texi"));
+static public readonly MIMEType ApplicationXTgif = new MIMEType(MIMEGeneralType.Application, "x-tgif", Enumerable.New("obj"));
+static public readonly MIMEType ApplicationXUstar = new MIMEType(MIMEGeneralType.Application, "x-ustar", Enumerable.New("ustar"));
+static public readonly MIMEType ApplicationXWaisSource = new MIMEType(MIMEGeneralType.Application, "x-wais-source", Enumerable.New("src"));
+static public readonly MIMEType ApplicationXX509CaCert = new MIMEType(MIMEGeneralType.Application, "x-x509-ca-cert", Enumerable.New("der", "crt"));
+static public readonly MIMEType ApplicationXXfig = new MIMEType(MIMEGeneralType.Application, "x-xfig", Enumerable.New("fig"));
+static public readonly MIMEType ApplicationXXliffXml = new MIMEType(MIMEGeneralType.Application, "x-xliff+xml", Enumerable.New("xlf"));
+static public readonly MIMEType ApplicationXXpinstall = new MIMEType(MIMEGeneralType.Application, "x-xpinstall", Enumerable.New("xpi"));
+static public readonly MIMEType ApplicationXXz = new MIMEType(MIMEGeneralType.Application, "x-xz", Enumerable.New("xz"));
+static public readonly MIMEType ApplicationXZmachine = new MIMEType(MIMEGeneralType.Application, "x-zmachine", Enumerable.New("z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8"));
+static public readonly MIMEType ApplicationXamlXml = new MIMEType(MIMEGeneralType.Application, "xaml+xml", Enumerable.New("xaml"));
+static public readonly MIMEType ApplicationXcapDiffXml = new MIMEType(MIMEGeneralType.Application, "xcap-diff+xml", Enumerable.New("xdf"));
+static public readonly MIMEType ApplicationXencXml = new MIMEType(MIMEGeneralType.Application, "xenc+xml", Enumerable.New("xenc"));
+static public readonly MIMEType ApplicationXhtmlXml = new MIMEType(MIMEGeneralType.Application, "xhtml+xml", Enumerable.New("xhtml", "xht"));
+static public readonly MIMEType ApplicationXml = new MIMEType(MIMEGeneralType.Application, "xml", Enumerable.New("xml", "xsl"));
+static public readonly MIMEType ApplicationXmlDtd = new MIMEType(MIMEGeneralType.Application, "xml-dtd", Enumerable.New("dtd"));
+static public readonly MIMEType ApplicationXopXml = new MIMEType(MIMEGeneralType.Application, "xop+xml", Enumerable.New("xop"));
+static public readonly MIMEType ApplicationXprocXml = new MIMEType(MIMEGeneralType.Application, "xproc+xml", Enumerable.New("xpl"));
+static public readonly MIMEType ApplicationXsltXml = new MIMEType(MIMEGeneralType.Application, "xslt+xml", Enumerable.New("xslt"));
+static public readonly MIMEType ApplicationXspfXml = new MIMEType(MIMEGeneralType.Application, "xspf+xml", Enumerable.New("xspf"));
+static public readonly MIMEType ApplicationXvXml = new MIMEType(MIMEGeneralType.Application, "xv+xml", Enumerable.New("mxml", "xhvml", "xvml", "xvm"));
+static public readonly MIMEType ApplicationYang = new MIMEType(MIMEGeneralType.Application, "yang", Enumerable.New("yang"));
+static public readonly MIMEType ApplicationYinXml = new MIMEType(MIMEGeneralType.Application, "yin+xml", Enumerable.New("yin"));
+static public readonly MIMEType ApplicationZip = new MIMEType(MIMEGeneralType.Application, "zip", Enumerable.New("zip"));
+static public readonly MIMEType AudioAdpcm = new MIMEType(MIMEGeneralType.Audio, "adpcm", Enumerable.New("adp"));
+static public readonly MIMEType AudioBasic = new MIMEType(MIMEGeneralType.Audio, "basic", Enumerable.New("au", "snd"));
+static public readonly MIMEType AudioMidi = new MIMEType(MIMEGeneralType.Audio, "midi", Enumerable.New("mid", "midi", "kar", "rmi"));
+static public readonly MIMEType AudioMp4 = new MIMEType(MIMEGeneralType.Audio, "mp4", Enumerable.New("mp4a"));
+static public readonly MIMEType AudioMpeg = new MIMEType(MIMEGeneralType.Audio, "mpeg", Enumerable.New("mpga", "mp2", "mp2a", "mp3", "m2a", "m3a"));
+static public readonly MIMEType AudioOgg = new MIMEType(MIMEGeneralType.Audio, "ogg", Enumerable.New("oga", "ogg", "spx"));
+static public readonly MIMEType AudioS3m = new MIMEType(MIMEGeneralType.Audio, "s3m", Enumerable.New("s3m"));
+static public readonly MIMEType AudioSilk = new MIMEType(MIMEGeneralType.Audio, "silk", Enumerable.New("sil"));
+static public readonly MIMEType AudioVndDeceAudio = new MIMEType(MIMEGeneralType.Audio, "vnd.dece.audio", Enumerable.New("uva", "uvva"));
+static public readonly MIMEType AudioVndDigitalWinds = new MIMEType(MIMEGeneralType.Audio, "vnd.digital-winds", Enumerable.New("eol"));
+static public readonly MIMEType AudioVndDra = new MIMEType(MIMEGeneralType.Audio, "vnd.dra", Enumerable.New("dra"));
+static public readonly MIMEType AudioVndDts = new MIMEType(MIMEGeneralType.Audio, "vnd.dts", Enumerable.New("dts"));
+static public readonly MIMEType AudioVndDtsHd = new MIMEType(MIMEGeneralType.Audio, "vnd.dts.hd", Enumerable.New("dtshd"));
+static public readonly MIMEType AudioVndLucentVoice = new MIMEType(MIMEGeneralType.Audio, "vnd.lucent.voice", Enumerable.New("lvp"));
+static public readonly MIMEType AudioVndMsPlayreadyMediaPya = new MIMEType(MIMEGeneralType.Audio, "vnd.ms-playready.media.pya", Enumerable.New("pya"));
+static public readonly MIMEType AudioVndNueraEcelp4800 = new MIMEType(MIMEGeneralType.Audio, "vnd.nuera.ecelp4800", Enumerable.New("ecelp4800"));
+static public readonly MIMEType AudioVndNueraEcelp7470 = new MIMEType(MIMEGeneralType.Audio, "vnd.nuera.ecelp7470", Enumerable.New("ecelp7470"));
+static public readonly MIMEType AudioVndNueraEcelp9600 = new MIMEType(MIMEGeneralType.Audio, "vnd.nuera.ecelp9600", Enumerable.New("ecelp9600"));
+static public readonly MIMEType AudioVndRip = new MIMEType(MIMEGeneralType.Audio, "vnd.rip", Enumerable.New("rip"));
+static public readonly MIMEType AudioWebm = new MIMEType(MIMEGeneralType.Audio, "webm", Enumerable.New("weba"));
+static public readonly MIMEType AudioXAac = new MIMEType(MIMEGeneralType.Audio, "x-aac", Enumerable.New("aac"));
+static public readonly MIMEType AudioXAiff = new MIMEType(MIMEGeneralType.Audio, "x-aiff", Enumerable.New("aif", "aiff", "aifc"));
+static public readonly MIMEType AudioXCaf = new MIMEType(MIMEGeneralType.Audio, "x-caf", Enumerable.New("caf"));
+static public readonly MIMEType AudioXFlac = new MIMEType(MIMEGeneralType.Audio, "x-flac", Enumerable.New("flac"));
+static public readonly MIMEType AudioXMatroska = new MIMEType(MIMEGeneralType.Audio, "x-matroska", Enumerable.New("mka"));
+static public readonly MIMEType AudioXMpegurl = new MIMEType(MIMEGeneralType.Audio, "x-mpegurl", Enumerable.New("m3u"));
+static public readonly MIMEType AudioXMsWax = new MIMEType(MIMEGeneralType.Audio, "x-ms-wax", Enumerable.New("wax"));
+static public readonly MIMEType AudioXMsWma = new MIMEType(MIMEGeneralType.Audio, "x-ms-wma", Enumerable.New("wma"));
+static public readonly MIMEType AudioXPnRealaudio = new MIMEType(MIMEGeneralType.Audio, "x-pn-realaudio", Enumerable.New("ram", "ra"));
+static public readonly MIMEType AudioXPnRealaudioPlugin = new MIMEType(MIMEGeneralType.Audio, "x-pn-realaudio-plugin", Enumerable.New("rmp"));
+static public readonly MIMEType AudioXWav = new MIMEType(MIMEGeneralType.Audio, "x-wav", Enumerable.New("wav"));
+static public readonly MIMEType AudioXm = new MIMEType(MIMEGeneralType.Audio, "xm", Enumerable.New("xm"));
+static public readonly MIMEType ChemicalXCdx = new MIMEType(MIMEGeneralType.Chemical, "x-cdx", Enumerable.New("cdx"));
+static public readonly MIMEType ChemicalXCif = new MIMEType(MIMEGeneralType.Chemical, "x-cif", Enumerable.New("cif"));
+static public readonly MIMEType ChemicalXCmdf = new MIMEType(MIMEGeneralType.Chemical, "x-cmdf", Enumerable.New("cmdf"));
+static public readonly MIMEType ChemicalXCml = new MIMEType(MIMEGeneralType.Chemical, "x-cml", Enumerable.New("cml"));
+static public readonly MIMEType ChemicalXCsml = new MIMEType(MIMEGeneralType.Chemical, "x-csml", Enumerable.New("csml"));
+static public readonly MIMEType ChemicalXXyz = new MIMEType(MIMEGeneralType.Chemical, "x-xyz", Enumerable.New("xyz"));
+static public readonly MIMEType ImageBmp = new MIMEType(MIMEGeneralType.Image, "bmp", Enumerable.New("bmp"));
+static public readonly MIMEType ImageCgm = new MIMEType(MIMEGeneralType.Image, "cgm", Enumerable.New("cgm"));
+static public readonly MIMEType ImageG3fax = new MIMEType(MIMEGeneralType.Image, "g3fax", Enumerable.New("g3"));
+static public readonly MIMEType ImageGif = new MIMEType(MIMEGeneralType.Image, "gif", Enumerable.New("gif"));
+static public readonly MIMEType ImageIef = new MIMEType(MIMEGeneralType.Image, "ief", Enumerable.New("ief"));
+static public readonly MIMEType ImageJpeg = new MIMEType(MIMEGeneralType.Image, "jpeg", Enumerable.New("jpeg", "jpg", "jpe"));
+static public readonly MIMEType ImageKtx = new MIMEType(MIMEGeneralType.Image, "ktx", Enumerable.New("ktx"));
+static public readonly MIMEType ImagePng = new MIMEType(MIMEGeneralType.Image, "png", Enumerable.New("png"));
+static public readonly MIMEType ImagePrsBtif = new MIMEType(MIMEGeneralType.Image, "prs.btif", Enumerable.New("btif"));
+static public readonly MIMEType ImageSgi = new MIMEType(MIMEGeneralType.Image, "sgi", Enumerable.New("sgi"));
+static public readonly MIMEType ImageSvgXml = new MIMEType(MIMEGeneralType.Image, "svg+xml", Enumerable.New("svg", "svgz"));
+static public readonly MIMEType ImageTiff = new MIMEType(MIMEGeneralType.Image, "tiff", Enumerable.New("tiff", "tif"));
+static public readonly MIMEType ImageVndAdobePhotoshop = new MIMEType(MIMEGeneralType.Image, "vnd.adobe.photoshop", Enumerable.New("psd"));
+static public readonly MIMEType ImageVndDeceGraphic = new MIMEType(MIMEGeneralType.Image, "vnd.dece.graphic", Enumerable.New("uvi", "uvvi", "uvg", "uvvg"));
+static public readonly MIMEType ImageVndDvbSubtitle = new MIMEType(MIMEGeneralType.Image, "vnd.dvb.subtitle", Enumerable.New("sub"));
+static public readonly MIMEType ImageVndDjvu = new MIMEType(MIMEGeneralType.Image, "vnd.djvu", Enumerable.New("djvu", "djv"));
+static public readonly MIMEType ImageVndDwg = new MIMEType(MIMEGeneralType.Image, "vnd.dwg", Enumerable.New("dwg"));
+static public readonly MIMEType ImageVndDxf = new MIMEType(MIMEGeneralType.Image, "vnd.dxf", Enumerable.New("dxf"));
+static public readonly MIMEType ImageVndFastbidsheet = new MIMEType(MIMEGeneralType.Image, "vnd.fastbidsheet", Enumerable.New("fbs"));
+static public readonly MIMEType ImageVndFpx = new MIMEType(MIMEGeneralType.Image, "vnd.fpx", Enumerable.New("fpx"));
+static public readonly MIMEType ImageVndFst = new MIMEType(MIMEGeneralType.Image, "vnd.fst", Enumerable.New("fst"));
+static public readonly MIMEType ImageVndFujixeroxEdmicsMmr = new MIMEType(MIMEGeneralType.Image, "vnd.fujixerox.edmics-mmr", Enumerable.New("mmr"));
+static public readonly MIMEType ImageVndFujixeroxEdmicsRlc = new MIMEType(MIMEGeneralType.Image, "vnd.fujixerox.edmics-rlc", Enumerable.New("rlc"));
+static public readonly MIMEType ImageVndMsModi = new MIMEType(MIMEGeneralType.Image, "vnd.ms-modi", Enumerable.New("mdi"));
+static public readonly MIMEType ImageVndMsPhoto = new MIMEType(MIMEGeneralType.Image, "vnd.ms-photo", Enumerable.New("wdp"));
+static public readonly MIMEType ImageVndNetFpx = new MIMEType(MIMEGeneralType.Image, "vnd.net-fpx", Enumerable.New("npx"));
+static public readonly MIMEType ImageVndWapWbmp = new MIMEType(MIMEGeneralType.Image, "vnd.wap.wbmp", Enumerable.New("wbmp"));
+static public readonly MIMEType ImageVndXiff = new MIMEType(MIMEGeneralType.Image, "vnd.xiff", Enumerable.New("xif"));
+static public readonly MIMEType ImageWebp = new MIMEType(MIMEGeneralType.Image, "webp", Enumerable.New("webp"));
+static public readonly MIMEType ImageX3ds = new MIMEType(MIMEGeneralType.Image, "x-3ds", Enumerable.New("3ds"));
+static public readonly MIMEType ImageXCmuRaster = new MIMEType(MIMEGeneralType.Image, "x-cmu-raster", Enumerable.New("ras"));
+static public readonly MIMEType ImageXCmx = new MIMEType(MIMEGeneralType.Image, "x-cmx", Enumerable.New("cmx"));
+static public readonly MIMEType ImageXFreehand = new MIMEType(MIMEGeneralType.Image, "x-freehand", Enumerable.New("fh", "fhc", "fh4", "fh5", "fh7"));
+static public readonly MIMEType ImageXIcon = new MIMEType(MIMEGeneralType.Image, "x-icon", Enumerable.New("ico"));
+static public readonly MIMEType ImageXMrsidImage = new MIMEType(MIMEGeneralType.Image, "x-mrsid-image", Enumerable.New("sid"));
+static public readonly MIMEType ImageXPcx = new MIMEType(MIMEGeneralType.Image, "x-pcx", Enumerable.New("pcx"));
+static public readonly MIMEType ImageXPict = new MIMEType(MIMEGeneralType.Image, "x-pict", Enumerable.New("pic", "pct"));
+static public readonly MIMEType ImageXPortableAnymap = new MIMEType(MIMEGeneralType.Image, "x-portable-anymap", Enumerable.New("pnm"));
+static public readonly MIMEType ImageXPortableBitmap = new MIMEType(MIMEGeneralType.Image, "x-portable-bitmap", Enumerable.New("pbm"));
+static public readonly MIMEType ImageXPortableGraymap = new MIMEType(MIMEGeneralType.Image, "x-portable-graymap", Enumerable.New("pgm"));
+static public readonly MIMEType ImageXPortablePixmap = new MIMEType(MIMEGeneralType.Image, "x-portable-pixmap", Enumerable.New("ppm"));
+static public readonly MIMEType ImageXRgb = new MIMEType(MIMEGeneralType.Image, "x-rgb", Enumerable.New("rgb"));
+static public readonly MIMEType ImageXTga = new MIMEType(MIMEGeneralType.Image, "x-tga", Enumerable.New("tga"));
+static public readonly MIMEType ImageXXbitmap = new MIMEType(MIMEGeneralType.Image, "x-xbitmap", Enumerable.New("xbm"));
+static public readonly MIMEType ImageXXpixmap = new MIMEType(MIMEGeneralType.Image, "x-xpixmap", Enumerable.New("xpm"));
+static public readonly MIMEType ImageXXwindowdump = new MIMEType(MIMEGeneralType.Image, "x-xwindowdump", Enumerable.New("xwd"));
+static public readonly MIMEType MessageRfc822 = new MIMEType(MIMEGeneralType.Message, "rfc822", Enumerable.New("eml", "mime"));
+static public readonly MIMEType ModelIges = new MIMEType(MIMEGeneralType.Model, "iges", Enumerable.New("igs", "iges"));
+static public readonly MIMEType ModelMesh = new MIMEType(MIMEGeneralType.Model, "mesh", Enumerable.New("msh", "mesh", "silo"));
+static public readonly MIMEType ModelVndColladaXml = new MIMEType(MIMEGeneralType.Model, "vnd.collada+xml", Enumerable.New("dae"));
+static public readonly MIMEType ModelVndDwf = new MIMEType(MIMEGeneralType.Model, "vnd.dwf", Enumerable.New("dwf"));
+static public readonly MIMEType ModelVndGdl = new MIMEType(MIMEGeneralType.Model, "vnd.gdl", Enumerable.New("gdl"));
+static public readonly MIMEType ModelVndGtw = new MIMEType(MIMEGeneralType.Model, "vnd.gtw", Enumerable.New("gtw"));
+static public readonly MIMEType ModelVndMts = new MIMEType(MIMEGeneralType.Model, "vnd.mts", Enumerable.New("mts"));
+static public readonly MIMEType ModelVndVtu = new MIMEType(MIMEGeneralType.Model, "vnd.vtu", Enumerable.New("vtu"));
+static public readonly MIMEType ModelVrml = new MIMEType(MIMEGeneralType.Model, "vrml", Enumerable.New("wrl", "vrml"));
+static public readonly MIMEType ModelX3dBinary = new MIMEType(MIMEGeneralType.Model, "x3d+binary", Enumerable.New("x3db", "x3dbz"));
+static public readonly MIMEType ModelX3dVrml = new MIMEType(MIMEGeneralType.Model, "x3d+vrml", Enumerable.New("x3dv", "x3dvz"));
+static public readonly MIMEType ModelX3dXml = new MIMEType(MIMEGeneralType.Model, "x3d+xml", Enumerable.New("x3d", "x3dz"));
+static public readonly MIMEType TextCacheManifest = new MIMEType(MIMEGeneralType.Text, "cache-manifest", Enumerable.New("appcache"));
+static public readonly MIMEType TextCalendar = new MIMEType(MIMEGeneralType.Text, "calendar", Enumerable.New("ics", "ifb"));
+static public readonly MIMEType TextCss = new MIMEType(MIMEGeneralType.Text, "css", Enumerable.New("css"));
+static public readonly MIMEType TextCsv = new MIMEType(MIMEGeneralType.Text, "csv", Enumerable.New("csv"));
+static public readonly MIMEType TextHtml = new MIMEType(MIMEGeneralType.Text, "html", Enumerable.New("html", "htm"));
+static public readonly MIMEType TextN3 = new MIMEType(MIMEGeneralType.Text, "n3", Enumerable.New("n3"));
+static public readonly MIMEType TextPlain = new MIMEType(MIMEGeneralType.Text, "plain", Enumerable.New("txt", "text", "conf", "def", "list", "log", "in"));
+static public readonly MIMEType TextPrsLinesTag = new MIMEType(MIMEGeneralType.Text, "prs.lines.tag", Enumerable.New("dsc"));
+static public readonly MIMEType TextRichtext = new MIMEType(MIMEGeneralType.Text, "richtext", Enumerable.New("rtx"));
+static public readonly MIMEType TextSgml = new MIMEType(MIMEGeneralType.Text, "sgml", Enumerable.New("sgml", "sgm"));
+static public readonly MIMEType TextTabSeparatedValues = new MIMEType(MIMEGeneralType.Text, "tab-separated-values", Enumerable.New("tsv"));
+static public readonly MIMEType TextTroff = new MIMEType(MIMEGeneralType.Text, "troff", Enumerable.New("t", "tr", "roff", "man", "me", "ms"));
+static public readonly MIMEType TextTurtle = new MIMEType(MIMEGeneralType.Text, "turtle", Enumerable.New("ttl"));
+static public readonly MIMEType TextUriList = new MIMEType(MIMEGeneralType.Text, "uri-list", Enumerable.New("uri", "uris", "urls"));
+static public readonly MIMEType TextVcard = new MIMEType(MIMEGeneralType.Text, "vcard", Enumerable.New("vcard"));
+static public readonly MIMEType TextVndCurl = new MIMEType(MIMEGeneralType.Text, "vnd.curl", Enumerable.New("curl"));
+static public readonly MIMEType TextVndCurlDcurl = new MIMEType(MIMEGeneralType.Text, "vnd.curl.dcurl", Enumerable.New("dcurl"));
+static public readonly MIMEType TextVndCurlScurl = new MIMEType(MIMEGeneralType.Text, "vnd.curl.scurl", Enumerable.New("scurl"));
+static public readonly MIMEType TextVndCurlMcurl = new MIMEType(MIMEGeneralType.Text, "vnd.curl.mcurl", Enumerable.New("mcurl"));
+static public readonly MIMEType TextVndDvbSubtitle = new MIMEType(MIMEGeneralType.Text, "vnd.dvb.subtitle", Enumerable.New("sub"));
+static public readonly MIMEType TextVndFly = new MIMEType(MIMEGeneralType.Text, "vnd.fly", Enumerable.New("fly"));
+static public readonly MIMEType TextVndFmiFlexstor = new MIMEType(MIMEGeneralType.Text, "vnd.fmi.flexstor", Enumerable.New("flx"));
+static public readonly MIMEType TextVndGraphviz = new MIMEType(MIMEGeneralType.Text, "vnd.graphviz", Enumerable.New("gv"));
+static public readonly MIMEType TextVndIn3d3dml = new MIMEType(MIMEGeneralType.Text, "vnd.in3d.3dml", Enumerable.New("3dml"));
+static public readonly MIMEType TextVndIn3dSpot = new MIMEType(MIMEGeneralType.Text, "vnd.in3d.spot", Enumerable.New("spot"));
+static public readonly MIMEType TextVndSunJ2meAppDescriptor = new MIMEType(MIMEGeneralType.Text, "vnd.sun.j2me.app-descriptor", Enumerable.New("jad"));
+static public readonly MIMEType TextVndWapWml = new MIMEType(MIMEGeneralType.Text, "vnd.wap.wml", Enumerable.New("wml"));
+static public readonly MIMEType TextVndWapWmlscript = new MIMEType(MIMEGeneralType.Text, "vnd.wap.wmlscript", Enumerable.New("wmls"));
+static public readonly MIMEType TextXAsm = new MIMEType(MIMEGeneralType.Text, "x-asm", Enumerable.New("s", "asm"));
+static public readonly MIMEType TextXC = new MIMEType(MIMEGeneralType.Text, "x-c", Enumerable.New("c", "cc", "cxx", "cpp", "h", "hh", "dic"));
+static public readonly MIMEType TextXFortran = new MIMEType(MIMEGeneralType.Text, "x-fortran", Enumerable.New("f", "for", "f77", "f90"));
+static public readonly MIMEType TextXJavaSource = new MIMEType(MIMEGeneralType.Text, "x-java-source", Enumerable.New("java"));
+static public readonly MIMEType TextXOpml = new MIMEType(MIMEGeneralType.Text, "x-opml", Enumerable.New("opml"));
+static public readonly MIMEType TextXPascal = new MIMEType(MIMEGeneralType.Text, "x-pascal", Enumerable.New("p", "pas"));
+static public readonly MIMEType TextXNfo = new MIMEType(MIMEGeneralType.Text, "x-nfo", Enumerable.New("nfo"));
+static public readonly MIMEType TextXSetext = new MIMEType(MIMEGeneralType.Text, "x-setext", Enumerable.New("etx"));
+static public readonly MIMEType TextXSfv = new MIMEType(MIMEGeneralType.Text, "x-sfv", Enumerable.New("sfv"));
+static public readonly MIMEType TextXUuencode = new MIMEType(MIMEGeneralType.Text, "x-uuencode", Enumerable.New("uu"));
+static public readonly MIMEType TextXVcalendar = new MIMEType(MIMEGeneralType.Text, "x-vcalendar", Enumerable.New("vcs"));
+static public readonly MIMEType TextXVcard = new MIMEType(MIMEGeneralType.Text, "x-vcard", Enumerable.New("vcf"));
+static public readonly MIMEType Video3gpp = new MIMEType(MIMEGeneralType.Video, "3gpp", Enumerable.New("3gp"));
+static public readonly MIMEType Video3gpp2 = new MIMEType(MIMEGeneralType.Video, "3gpp2", Enumerable.New("3g2"));
+static public readonly MIMEType VideoH261 = new MIMEType(MIMEGeneralType.Video, "h261", Enumerable.New("h261"));
+static public readonly MIMEType VideoH263 = new MIMEType(MIMEGeneralType.Video, "h263", Enumerable.New("h263"));
+static public readonly MIMEType VideoH264 = new MIMEType(MIMEGeneralType.Video, "h264", Enumerable.New("h264"));
+static public readonly MIMEType VideoJpeg = new MIMEType(MIMEGeneralType.Video, "jpeg", Enumerable.New("jpgv"));
+static public readonly MIMEType VideoJpm = new MIMEType(MIMEGeneralType.Video, "jpm", Enumerable.New("jpm", "jpgm"));
+static public readonly MIMEType VideoMj2 = new MIMEType(MIMEGeneralType.Video, "mj2", Enumerable.New("mj2", "mjp2"));
+static public readonly MIMEType VideoMp4 = new MIMEType(MIMEGeneralType.Video, "mp4", Enumerable.New("mp4", "mp4v", "mpg4"));
+static public readonly MIMEType VideoMpeg = new MIMEType(MIMEGeneralType.Video, "mpeg", Enumerable.New("mpeg", "mpg", "mpe", "m1v", "m2v"));
+static public readonly MIMEType VideoOgg = new MIMEType(MIMEGeneralType.Video, "ogg", Enumerable.New("ogv"));
+static public readonly MIMEType VideoQuicktime = new MIMEType(MIMEGeneralType.Video, "quicktime", Enumerable.New("qt", "mov"));
+static public readonly MIMEType VideoVndDeceHd = new MIMEType(MIMEGeneralType.Video, "vnd.dece.hd", Enumerable.New("uvh", "uvvh"));
+static public readonly MIMEType VideoVndDeceMobile = new MIMEType(MIMEGeneralType.Video, "vnd.dece.mobile", Enumerable.New("uvm", "uvvm"));
+static public readonly MIMEType VideoVndDecePd = new MIMEType(MIMEGeneralType.Video, "vnd.dece.pd", Enumerable.New("uvp", "uvvp"));
+static public readonly MIMEType VideoVndDeceSd = new MIMEType(MIMEGeneralType.Video, "vnd.dece.sd", Enumerable.New("uvs", "uvvs"));
+static public readonly MIMEType VideoVndDeceVideo = new MIMEType(MIMEGeneralType.Video, "vnd.dece.video", Enumerable.New("uvv", "uvvv"));
+static public readonly MIMEType VideoVndDvbFile = new MIMEType(MIMEGeneralType.Video, "vnd.dvb.file", Enumerable.New("dvb"));
+static public readonly MIMEType VideoVndFvt = new MIMEType(MIMEGeneralType.Video, "vnd.fvt", Enumerable.New("fvt"));
+static public readonly MIMEType VideoVndMpegurl = new MIMEType(MIMEGeneralType.Video, "vnd.mpegurl", Enumerable.New("mxu", "m4u"));
+static public readonly MIMEType VideoVndMsPlayreadyMediaPyv = new MIMEType(MIMEGeneralType.Video, "vnd.ms-playready.media.pyv", Enumerable.New("pyv"));
+static public readonly MIMEType VideoVndUvvuMp4 = new MIMEType(MIMEGeneralType.Video, "vnd.uvvu.mp4", Enumerable.New("uvu", "uvvu"));
+static public readonly MIMEType VideoVndVivo = new MIMEType(MIMEGeneralType.Video, "vnd.vivo", Enumerable.New("viv"));
+static public readonly MIMEType VideoWebm = new MIMEType(MIMEGeneralType.Video, "webm", Enumerable.New("webm"));
+static public readonly MIMEType VideoXF4v = new MIMEType(MIMEGeneralType.Video, "x-f4v", Enumerable.New("f4v"));
+static public readonly MIMEType VideoXFli = new MIMEType(MIMEGeneralType.Video, "x-fli", Enumerable.New("fli"));
+static public readonly MIMEType VideoXFlv = new MIMEType(MIMEGeneralType.Video, "x-flv", Enumerable.New("flv"));
+static public readonly MIMEType VideoXM4v = new MIMEType(MIMEGeneralType.Video, "x-m4v", Enumerable.New("m4v"));
+static public readonly MIMEType VideoXMatroska = new MIMEType(MIMEGeneralType.Video, "x-matroska", Enumerable.New("mkv", "mk3d", "mks"));
+static public readonly MIMEType VideoXMng = new MIMEType(MIMEGeneralType.Video, "x-mng", Enumerable.New("mng"));
+static public readonly MIMEType VideoXMsAsf = new MIMEType(MIMEGeneralType.Video, "x-ms-asf", Enumerable.New("asf", "asx"));
+static public readonly MIMEType VideoXMsVob = new MIMEType(MIMEGeneralType.Video, "x-ms-vob", Enumerable.New("vob"));
+static public readonly MIMEType VideoXMsWm = new MIMEType(MIMEGeneralType.Video, "x-ms-wm", Enumerable.New("wm"));
+static public readonly MIMEType VideoXMsWmv = new MIMEType(MIMEGeneralType.Video, "x-ms-wmv", Enumerable.New("wmv"));
+static public readonly MIMEType VideoXMsWmx = new MIMEType(MIMEGeneralType.Video, "x-ms-wmx", Enumerable.New("wmx"));
+static public readonly MIMEType VideoXMsWvx = new MIMEType(MIMEGeneralType.Video, "x-ms-wvx", Enumerable.New("wvx"));
+static public readonly MIMEType VideoXMsvideo = new MIMEType(MIMEGeneralType.Video, "x-msvideo", Enumerable.New("avi"));
+static public readonly MIMEType VideoXSgiMovie = new MIMEType(MIMEGeneralType.Video, "x-sgi-movie", Enumerable.New("movie"));
+static public readonly MIMEType VideoXSmv = new MIMEType(MIMEGeneralType.Video, "x-smv", Enumerable.New("smv"));
+static public readonly MIMEType XConferenceXCooltalk = new MIMEType(MIMEGeneralType.XConference, "x-cooltalk", Enumerable.New("ice"));
+        
+        static private Dictionary<string, MIMEType> TYPE_LOOKUP_TABLE = Enumerable.New(
+            new KeyValuePair<string, MIMEType>("application/andrew-inset", ApplicationAndrewInset),
+new KeyValuePair<string, MIMEType>("application/applixware", ApplicationApplixware),
+new KeyValuePair<string, MIMEType>("application/atom+xml", ApplicationAtomXml),
+new KeyValuePair<string, MIMEType>("application/atomcat+xml", ApplicationAtomcatXml),
+new KeyValuePair<string, MIMEType>("application/atomsvc+xml", ApplicationAtomsvcXml),
+new KeyValuePair<string, MIMEType>("application/ccxml+xml", ApplicationCcxmlXml),
+new KeyValuePair<string, MIMEType>("application/cdmi-capability", ApplicationCdmiCapability),
+new KeyValuePair<string, MIMEType>("application/cdmi-container", ApplicationCdmiContainer),
+new KeyValuePair<string, MIMEType>("application/cdmi-domain", ApplicationCdmiDomain),
+new KeyValuePair<string, MIMEType>("application/cdmi-object", ApplicationCdmiObject),
+new KeyValuePair<string, MIMEType>("application/cdmi-queue", ApplicationCdmiQueue),
+new KeyValuePair<string, MIMEType>("application/cu-seeme", ApplicationCuSeeme),
+new KeyValuePair<string, MIMEType>("application/davmount+xml", ApplicationDavmountXml),
+new KeyValuePair<string, MIMEType>("application/docbook+xml", ApplicationDocbookXml),
+new KeyValuePair<string, MIMEType>("application/dssc+der", ApplicationDsscDer),
+new KeyValuePair<string, MIMEType>("application/dssc+xml", ApplicationDsscXml),
+new KeyValuePair<string, MIMEType>("application/ecmascript", ApplicationEcmascript),
+new KeyValuePair<string, MIMEType>("application/emma+xml", ApplicationEmmaXml),
+new KeyValuePair<string, MIMEType>("application/epub+zip", ApplicationEpubZip),
+new KeyValuePair<string, MIMEType>("application/exi", ApplicationExi),
+new KeyValuePair<string, MIMEType>("application/font-tdpfr", ApplicationFontTdpfr),
+new KeyValuePair<string, MIMEType>("application/gml+xml", ApplicationGmlXml),
+new KeyValuePair<string, MIMEType>("application/gpx+xml", ApplicationGpxXml),
+new KeyValuePair<string, MIMEType>("application/gxf", ApplicationGxf),
+new KeyValuePair<string, MIMEType>("application/hyperstudio", ApplicationHyperstudio),
+new KeyValuePair<string, MIMEType>("application/inkml+xml", ApplicationInkmlXml),
+new KeyValuePair<string, MIMEType>("application/ipfix", ApplicationIpfix),
+new KeyValuePair<string, MIMEType>("application/java-archive", ApplicationJavaArchive),
+new KeyValuePair<string, MIMEType>("application/java-serialized-object", ApplicationJavaSerializedObject),
+new KeyValuePair<string, MIMEType>("application/java-vm", ApplicationJavaVm),
+new KeyValuePair<string, MIMEType>("application/javascript", ApplicationJavascript),
+new KeyValuePair<string, MIMEType>("application/json", ApplicationJson),
+new KeyValuePair<string, MIMEType>("application/jsonml+json", ApplicationJsonmlJson),
+new KeyValuePair<string, MIMEType>("application/lost+xml", ApplicationLostXml),
+new KeyValuePair<string, MIMEType>("application/mac-binhex40", ApplicationMacBinhex40),
+new KeyValuePair<string, MIMEType>("application/mac-compactpro", ApplicationMacCompactpro),
+new KeyValuePair<string, MIMEType>("application/mads+xml", ApplicationMadsXml),
+new KeyValuePair<string, MIMEType>("application/marc", ApplicationMarc),
+new KeyValuePair<string, MIMEType>("application/marcxml+xml", ApplicationMarcxmlXml),
+new KeyValuePair<string, MIMEType>("application/mathematica", ApplicationMathematica),
+new KeyValuePair<string, MIMEType>("application/mathml+xml", ApplicationMathmlXml),
+new KeyValuePair<string, MIMEType>("application/mbox", ApplicationMbox),
+new KeyValuePair<string, MIMEType>("application/mediaservercontrol+xml", ApplicationMediaservercontrolXml),
+new KeyValuePair<string, MIMEType>("application/metalink+xml", ApplicationMetalinkXml),
+new KeyValuePair<string, MIMEType>("application/metalink4+xml", ApplicationMetalink4Xml),
+new KeyValuePair<string, MIMEType>("application/mets+xml", ApplicationMetsXml),
+new KeyValuePair<string, MIMEType>("application/mods+xml", ApplicationModsXml),
+new KeyValuePair<string, MIMEType>("application/mp21", ApplicationMp21),
+new KeyValuePair<string, MIMEType>("application/mp4", ApplicationMp4),
+new KeyValuePair<string, MIMEType>("application/msword", ApplicationMsword),
+new KeyValuePair<string, MIMEType>("application/mxf", ApplicationMxf),
+new KeyValuePair<string, MIMEType>("application/octet-stream", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("application/oda", ApplicationOda),
+new KeyValuePair<string, MIMEType>("application/oebps-package+xml", ApplicationOebpsPackageXml),
+new KeyValuePair<string, MIMEType>("application/ogg", ApplicationOgg),
+new KeyValuePair<string, MIMEType>("application/omdoc+xml", ApplicationOmdocXml),
+new KeyValuePair<string, MIMEType>("application/onenote", ApplicationOnenote),
+new KeyValuePair<string, MIMEType>("application/oxps", ApplicationOxps),
+new KeyValuePair<string, MIMEType>("application/patch-ops-error+xml", ApplicationPatchOpsErrorXml),
+new KeyValuePair<string, MIMEType>("application/pdf", ApplicationPdf),
+new KeyValuePair<string, MIMEType>("application/pgp-encrypted", ApplicationPgpEncrypted),
+new KeyValuePair<string, MIMEType>("application/pgp-signature", ApplicationPgpSignature),
+new KeyValuePair<string, MIMEType>("application/pics-rules", ApplicationPicsRules),
+new KeyValuePair<string, MIMEType>("application/pkcs10", ApplicationPkcs10),
+new KeyValuePair<string, MIMEType>("application/pkcs7-mime", ApplicationPkcs7Mime),
+new KeyValuePair<string, MIMEType>("application/pkcs7-signature", ApplicationPkcs7Signature),
+new KeyValuePair<string, MIMEType>("application/pkcs8", ApplicationPkcs8),
+new KeyValuePair<string, MIMEType>("application/pkix-attr-cert", ApplicationPkixAttrCert),
+new KeyValuePair<string, MIMEType>("application/pkix-cert", ApplicationPkixCert),
+new KeyValuePair<string, MIMEType>("application/pkix-crl", ApplicationPkixCrl),
+new KeyValuePair<string, MIMEType>("application/pkix-pkipath", ApplicationPkixPkipath),
+new KeyValuePair<string, MIMEType>("application/pkixcmp", ApplicationPkixcmp),
+new KeyValuePair<string, MIMEType>("application/pls+xml", ApplicationPlsXml),
+new KeyValuePair<string, MIMEType>("application/postscript", ApplicationPostscript),
+new KeyValuePair<string, MIMEType>("application/prs.cww", ApplicationPrsCww),
+new KeyValuePair<string, MIMEType>("application/pskc+xml", ApplicationPskcXml),
+new KeyValuePair<string, MIMEType>("application/rdf+xml", ApplicationRdfXml),
+new KeyValuePair<string, MIMEType>("application/reginfo+xml", ApplicationReginfoXml),
+new KeyValuePair<string, MIMEType>("application/relax-ng-compact-syntax", ApplicationRelaxNgCompactSyntax),
+new KeyValuePair<string, MIMEType>("application/resource-lists+xml", ApplicationResourceListsXml),
+new KeyValuePair<string, MIMEType>("application/resource-lists-diff+xml", ApplicationResourceListsDiffXml),
+new KeyValuePair<string, MIMEType>("application/rls-services+xml", ApplicationRlsServicesXml),
+new KeyValuePair<string, MIMEType>("application/rpki-ghostbusters", ApplicationRpkiGhostbusters),
+new KeyValuePair<string, MIMEType>("application/rpki-manifest", ApplicationRpkiManifest),
+new KeyValuePair<string, MIMEType>("application/rpki-roa", ApplicationRpkiRoa),
+new KeyValuePair<string, MIMEType>("application/rsd+xml", ApplicationRsdXml),
+new KeyValuePair<string, MIMEType>("application/rss+xml", ApplicationRssXml),
+new KeyValuePair<string, MIMEType>("application/rtf", ApplicationRtf),
+new KeyValuePair<string, MIMEType>("application/sbml+xml", ApplicationSbmlXml),
+new KeyValuePair<string, MIMEType>("application/scvp-cv-request", ApplicationScvpCvRequest),
+new KeyValuePair<string, MIMEType>("application/scvp-cv-response", ApplicationScvpCvResponse),
+new KeyValuePair<string, MIMEType>("application/scvp-vp-request", ApplicationScvpVpRequest),
+new KeyValuePair<string, MIMEType>("application/scvp-vp-response", ApplicationScvpVpResponse),
+new KeyValuePair<string, MIMEType>("application/sdp", ApplicationSdp),
+new KeyValuePair<string, MIMEType>("application/set-payment-initiation", ApplicationSetPaymentInitiation),
+new KeyValuePair<string, MIMEType>("application/set-registration-initiation", ApplicationSetRegistrationInitiation),
+new KeyValuePair<string, MIMEType>("application/shf+xml", ApplicationShfXml),
+new KeyValuePair<string, MIMEType>("application/smil+xml", ApplicationSmilXml),
+new KeyValuePair<string, MIMEType>("application/sparql-query", ApplicationSparqlQuery),
+new KeyValuePair<string, MIMEType>("application/sparql-results+xml", ApplicationSparqlResultsXml),
+new KeyValuePair<string, MIMEType>("application/srgs", ApplicationSrgs),
+new KeyValuePair<string, MIMEType>("application/srgs+xml", ApplicationSrgsXml),
+new KeyValuePair<string, MIMEType>("application/sru+xml", ApplicationSruXml),
+new KeyValuePair<string, MIMEType>("application/ssdl+xml", ApplicationSsdlXml),
+new KeyValuePair<string, MIMEType>("application/ssml+xml", ApplicationSsmlXml),
+new KeyValuePair<string, MIMEType>("application/tei+xml", ApplicationTeiXml),
+new KeyValuePair<string, MIMEType>("application/thraud+xml", ApplicationThraudXml),
+new KeyValuePair<string, MIMEType>("application/timestamped-data", ApplicationTimestampedData),
+new KeyValuePair<string, MIMEType>("application/vnd.3gpp.pic-bw-large", ApplicationVnd3gppPicBwLarge),
+new KeyValuePair<string, MIMEType>("application/vnd.3gpp.pic-bw-small", ApplicationVnd3gppPicBwSmall),
+new KeyValuePair<string, MIMEType>("application/vnd.3gpp.pic-bw-var", ApplicationVnd3gppPicBwVar),
+new KeyValuePair<string, MIMEType>("application/vnd.3gpp2.tcap", ApplicationVnd3gpp2Tcap),
+new KeyValuePair<string, MIMEType>("application/vnd.3m.post-it-notes", ApplicationVnd3mPostItNotes),
+new KeyValuePair<string, MIMEType>("application/vnd.accpac.simply.aso", ApplicationVndAccpacSimplyAso),
+new KeyValuePair<string, MIMEType>("application/vnd.accpac.simply.imp", ApplicationVndAccpacSimplyImp),
+new KeyValuePair<string, MIMEType>("application/vnd.acucobol", ApplicationVndAcucobol),
+new KeyValuePair<string, MIMEType>("application/vnd.acucorp", ApplicationVndAcucorp),
+new KeyValuePair<string, MIMEType>("application/vnd.adobe.air-application-installer-package+zip", ApplicationVndAdobeAirApplicationInstallerPackageZip),
+new KeyValuePair<string, MIMEType>("application/vnd.adobe.formscentral.fcdt", ApplicationVndAdobeFormscentralFcdt),
+new KeyValuePair<string, MIMEType>("application/vnd.adobe.fxp", ApplicationVndAdobeFxp),
+new KeyValuePair<string, MIMEType>("application/vnd.adobe.xdp+xml", ApplicationVndAdobeXdpXml),
+new KeyValuePair<string, MIMEType>("application/vnd.adobe.xfdf", ApplicationVndAdobeXfdf),
+new KeyValuePair<string, MIMEType>("application/vnd.ahead.space", ApplicationVndAheadSpace),
+new KeyValuePair<string, MIMEType>("application/vnd.airzip.filesecure.azf", ApplicationVndAirzipFilesecureAzf),
+new KeyValuePair<string, MIMEType>("application/vnd.airzip.filesecure.azs", ApplicationVndAirzipFilesecureAzs),
+new KeyValuePair<string, MIMEType>("application/vnd.amazon.ebook", ApplicationVndAmazonEbook),
+new KeyValuePair<string, MIMEType>("application/vnd.americandynamics.acc", ApplicationVndAmericandynamicsAcc),
+new KeyValuePair<string, MIMEType>("application/vnd.amiga.ami", ApplicationVndAmigaAmi),
+new KeyValuePair<string, MIMEType>("application/vnd.android.package-archive", ApplicationVndAndroidPackageArchive),
+new KeyValuePair<string, MIMEType>("application/vnd.anser-web-certificate-issue-initiation", ApplicationVndAnserWebCertificateIssueInitiation),
+new KeyValuePair<string, MIMEType>("application/vnd.anser-web-funds-transfer-initiation", ApplicationVndAnserWebFundsTransferInitiation),
+new KeyValuePair<string, MIMEType>("application/vnd.antix.game-component", ApplicationVndAntixGameComponent),
+new KeyValuePair<string, MIMEType>("application/vnd.apple.installer+xml", ApplicationVndAppleInstallerXml),
+new KeyValuePair<string, MIMEType>("application/vnd.apple.mpegurl", ApplicationVndAppleMpegurl),
+new KeyValuePair<string, MIMEType>("application/vnd.aristanetworks.swi", ApplicationVndAristanetworksSwi),
+new KeyValuePair<string, MIMEType>("application/vnd.astraea-software.iota", ApplicationVndAstraeaSoftwareIota),
+new KeyValuePair<string, MIMEType>("application/vnd.audiograph", ApplicationVndAudiograph),
+new KeyValuePair<string, MIMEType>("application/vnd.blueice.multipass", ApplicationVndBlueiceMultipass),
+new KeyValuePair<string, MIMEType>("application/vnd.bmi", ApplicationVndBmi),
+new KeyValuePair<string, MIMEType>("application/vnd.businessobjects", ApplicationVndBusinessobjects),
+new KeyValuePair<string, MIMEType>("application/vnd.chemdraw+xml", ApplicationVndChemdrawXml),
+new KeyValuePair<string, MIMEType>("application/vnd.chipnuts.karaoke-mmd", ApplicationVndChipnutsKaraokeMmd),
+new KeyValuePair<string, MIMEType>("application/vnd.cinderella", ApplicationVndCinderella),
+new KeyValuePair<string, MIMEType>("application/vnd.claymore", ApplicationVndClaymore),
+new KeyValuePair<string, MIMEType>("application/vnd.cloanto.rp9", ApplicationVndCloantoRp9),
+new KeyValuePair<string, MIMEType>("application/vnd.clonk.c4group", ApplicationVndClonkC4group),
+new KeyValuePair<string, MIMEType>("application/vnd.cluetrust.cartomobile-config", ApplicationVndCluetrustCartomobileConfig),
+new KeyValuePair<string, MIMEType>("application/vnd.cluetrust.cartomobile-config-pkg", ApplicationVndCluetrustCartomobileConfigPkg),
+new KeyValuePair<string, MIMEType>("application/vnd.commonspace", ApplicationVndCommonspace),
+new KeyValuePair<string, MIMEType>("application/vnd.contact.cmsg", ApplicationVndContactCmsg),
+new KeyValuePair<string, MIMEType>("application/vnd.cosmocaller", ApplicationVndCosmocaller),
+new KeyValuePair<string, MIMEType>("application/vnd.crick.clicker", ApplicationVndCrickClicker),
+new KeyValuePair<string, MIMEType>("application/vnd.crick.clicker.keyboard", ApplicationVndCrickClickerKeyboard),
+new KeyValuePair<string, MIMEType>("application/vnd.crick.clicker.palette", ApplicationVndCrickClickerPalette),
+new KeyValuePair<string, MIMEType>("application/vnd.crick.clicker.template", ApplicationVndCrickClickerTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.crick.clicker.wordbank", ApplicationVndCrickClickerWordbank),
+new KeyValuePair<string, MIMEType>("application/vnd.criticaltools.wbs+xml", ApplicationVndCriticaltoolsWbsXml),
+new KeyValuePair<string, MIMEType>("application/vnd.ctc-posml", ApplicationVndCtcPosml),
+new KeyValuePair<string, MIMEType>("application/vnd.cups-ppd", ApplicationVndCupsPpd),
+new KeyValuePair<string, MIMEType>("application/vnd.curl.car", ApplicationVndCurlCar),
+new KeyValuePair<string, MIMEType>("application/vnd.curl.pcurl", ApplicationVndCurlPcurl),
+new KeyValuePair<string, MIMEType>("application/vnd.dart", ApplicationVndDart),
+new KeyValuePair<string, MIMEType>("application/vnd.data-vision.rdz", ApplicationVndDataVisionRdz),
+new KeyValuePair<string, MIMEType>("application/vnd.dece.data", ApplicationVndDeceData),
+new KeyValuePair<string, MIMEType>("application/vnd.dece.ttml+xml", ApplicationVndDeceTtmlXml),
+new KeyValuePair<string, MIMEType>("application/vnd.dece.unspecified", ApplicationVndDeceUnspecified),
+new KeyValuePair<string, MIMEType>("application/vnd.dece.zip", ApplicationVndDeceZip),
+new KeyValuePair<string, MIMEType>("application/vnd.denovo.fcselayout-link", ApplicationVndDenovoFcselayoutLink),
+new KeyValuePair<string, MIMEType>("application/vnd.dna", ApplicationVndDna),
+new KeyValuePair<string, MIMEType>("application/vnd.dolby.mlp", ApplicationVndDolbyMlp),
+new KeyValuePair<string, MIMEType>("application/vnd.dpgraph", ApplicationVndDpgraph),
+new KeyValuePair<string, MIMEType>("application/vnd.dreamfactory", ApplicationVndDreamfactory),
+new KeyValuePair<string, MIMEType>("application/vnd.ds-keypoint", ApplicationVndDsKeypoint),
+new KeyValuePair<string, MIMEType>("application/vnd.dvb.ait", ApplicationVndDvbAit),
+new KeyValuePair<string, MIMEType>("application/vnd.dvb.service", ApplicationVndDvbService),
+new KeyValuePair<string, MIMEType>("application/vnd.dynageo", ApplicationVndDynageo),
+new KeyValuePair<string, MIMEType>("application/vnd.ecowin.chart", ApplicationVndEcowinChart),
+new KeyValuePair<string, MIMEType>("application/vnd.enliven", ApplicationVndEnliven),
+new KeyValuePair<string, MIMEType>("application/vnd.epson.esf", ApplicationVndEpsonEsf),
+new KeyValuePair<string, MIMEType>("application/vnd.epson.msf", ApplicationVndEpsonMsf),
+new KeyValuePair<string, MIMEType>("application/vnd.epson.quickanime", ApplicationVndEpsonQuickanime),
+new KeyValuePair<string, MIMEType>("application/vnd.epson.salt", ApplicationVndEpsonSalt),
+new KeyValuePair<string, MIMEType>("application/vnd.epson.ssf", ApplicationVndEpsonSsf),
+new KeyValuePair<string, MIMEType>("application/vnd.eszigno3+xml", ApplicationVndEszigno3Xml),
+new KeyValuePair<string, MIMEType>("application/vnd.ezpix-album", ApplicationVndEzpixAlbum),
+new KeyValuePair<string, MIMEType>("application/vnd.ezpix-package", ApplicationVndEzpixPackage),
+new KeyValuePair<string, MIMEType>("application/vnd.fdf", ApplicationVndFdf),
+new KeyValuePair<string, MIMEType>("application/vnd.fdsn.mseed", ApplicationVndFdsnMseed),
+new KeyValuePair<string, MIMEType>("application/vnd.fdsn.seed", ApplicationVndFdsnSeed),
+new KeyValuePair<string, MIMEType>("application/vnd.flographit", ApplicationVndFlographit),
+new KeyValuePair<string, MIMEType>("application/vnd.fluxtime.clip", ApplicationVndFluxtimeClip),
+new KeyValuePair<string, MIMEType>("application/vnd.framemaker", ApplicationVndFramemaker),
+new KeyValuePair<string, MIMEType>("application/vnd.frogans.fnc", ApplicationVndFrogansFnc),
+new KeyValuePair<string, MIMEType>("application/vnd.frogans.ltf", ApplicationVndFrogansLtf),
+new KeyValuePair<string, MIMEType>("application/vnd.fsc.weblaunch", ApplicationVndFscWeblaunch),
+new KeyValuePair<string, MIMEType>("application/vnd.fujitsu.oasys", ApplicationVndFujitsuOasys),
+new KeyValuePair<string, MIMEType>("application/vnd.fujitsu.oasys2", ApplicationVndFujitsuOasys2),
+new KeyValuePair<string, MIMEType>("application/vnd.fujitsu.oasys3", ApplicationVndFujitsuOasys3),
+new KeyValuePair<string, MIMEType>("application/vnd.fujitsu.oasysgp", ApplicationVndFujitsuOasysgp),
+new KeyValuePair<string, MIMEType>("application/vnd.fujitsu.oasysprs", ApplicationVndFujitsuOasysprs),
+new KeyValuePair<string, MIMEType>("application/vnd.fujixerox.ddd", ApplicationVndFujixeroxDdd),
+new KeyValuePair<string, MIMEType>("application/vnd.fujixerox.docuworks", ApplicationVndFujixeroxDocuworks),
+new KeyValuePair<string, MIMEType>("application/vnd.fujixerox.docuworks.binder", ApplicationVndFujixeroxDocuworksBinder),
+new KeyValuePair<string, MIMEType>("application/vnd.fuzzysheet", ApplicationVndFuzzysheet),
+new KeyValuePair<string, MIMEType>("application/vnd.genomatix.tuxedo", ApplicationVndGenomatixTuxedo),
+new KeyValuePair<string, MIMEType>("application/vnd.geogebra.file", ApplicationVndGeogebraFile),
+new KeyValuePair<string, MIMEType>("application/vnd.geogebra.tool", ApplicationVndGeogebraTool),
+new KeyValuePair<string, MIMEType>("application/vnd.geometry-explorer", ApplicationVndGeometryExplorer),
+new KeyValuePair<string, MIMEType>("application/vnd.geonext", ApplicationVndGeonext),
+new KeyValuePair<string, MIMEType>("application/vnd.geoplan", ApplicationVndGeoplan),
+new KeyValuePair<string, MIMEType>("application/vnd.geospace", ApplicationVndGeospace),
+new KeyValuePair<string, MIMEType>("application/vnd.gmx", ApplicationVndGmx),
+new KeyValuePair<string, MIMEType>("application/vnd.google-earth.kml+xml", ApplicationVndGoogleEarthKmlXml),
+new KeyValuePair<string, MIMEType>("application/vnd.google-earth.kmz", ApplicationVndGoogleEarthKmz),
+new KeyValuePair<string, MIMEType>("application/vnd.grafeq", ApplicationVndGrafeq),
+new KeyValuePair<string, MIMEType>("application/vnd.groove-account", ApplicationVndGrooveAccount),
+new KeyValuePair<string, MIMEType>("application/vnd.groove-help", ApplicationVndGrooveHelp),
+new KeyValuePair<string, MIMEType>("application/vnd.groove-identity-message", ApplicationVndGrooveIdentityMessage),
+new KeyValuePair<string, MIMEType>("application/vnd.groove-injector", ApplicationVndGrooveInjector),
+new KeyValuePair<string, MIMEType>("application/vnd.groove-tool-message", ApplicationVndGrooveToolMessage),
+new KeyValuePair<string, MIMEType>("application/vnd.groove-tool-template", ApplicationVndGrooveToolTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.groove-vcard", ApplicationVndGrooveVcard),
+new KeyValuePair<string, MIMEType>("application/vnd.hal+xml", ApplicationVndHalXml),
+new KeyValuePair<string, MIMEType>("application/vnd.handheld-entertainment+xml", ApplicationVndHandheldEntertainmentXml),
+new KeyValuePair<string, MIMEType>("application/vnd.hbci", ApplicationVndHbci),
+new KeyValuePair<string, MIMEType>("application/vnd.hhe.lesson-player", ApplicationVndHheLessonPlayer),
+new KeyValuePair<string, MIMEType>("application/vnd.hp-hpgl", ApplicationVndHpHpgl),
+new KeyValuePair<string, MIMEType>("application/vnd.hp-hpid", ApplicationVndHpHpid),
+new KeyValuePair<string, MIMEType>("application/vnd.hp-hps", ApplicationVndHpHps),
+new KeyValuePair<string, MIMEType>("application/vnd.hp-jlyt", ApplicationVndHpJlyt),
+new KeyValuePair<string, MIMEType>("application/vnd.hp-pcl", ApplicationVndHpPcl),
+new KeyValuePair<string, MIMEType>("application/vnd.hp-pclxl", ApplicationVndHpPclxl),
+new KeyValuePair<string, MIMEType>("application/vnd.hydrostatix.sof-data", ApplicationVndHydrostatixSofData),
+new KeyValuePair<string, MIMEType>("application/vnd.ibm.minipay", ApplicationVndIbmMinipay),
+new KeyValuePair<string, MIMEType>("application/vnd.ibm.modcap", ApplicationVndIbmModcap),
+new KeyValuePair<string, MIMEType>("application/vnd.ibm.rights-management", ApplicationVndIbmRightsManagement),
+new KeyValuePair<string, MIMEType>("application/vnd.ibm.secure-container", ApplicationVndIbmSecureContainer),
+new KeyValuePair<string, MIMEType>("application/vnd.iccprofile", ApplicationVndIccprofile),
+new KeyValuePair<string, MIMEType>("application/vnd.igloader", ApplicationVndIgloader),
+new KeyValuePair<string, MIMEType>("application/vnd.immervision-ivp", ApplicationVndImmervisionIvp),
+new KeyValuePair<string, MIMEType>("application/vnd.immervision-ivu", ApplicationVndImmervisionIvu),
+new KeyValuePair<string, MIMEType>("application/vnd.insors.igm", ApplicationVndInsorsIgm),
+new KeyValuePair<string, MIMEType>("application/vnd.intercon.formnet", ApplicationVndInterconFormnet),
+new KeyValuePair<string, MIMEType>("application/vnd.intergeo", ApplicationVndIntergeo),
+new KeyValuePair<string, MIMEType>("application/vnd.intu.qbo", ApplicationVndIntuQbo),
+new KeyValuePair<string, MIMEType>("application/vnd.intu.qfx", ApplicationVndIntuQfx),
+new KeyValuePair<string, MIMEType>("application/vnd.ipunplugged.rcprofile", ApplicationVndIpunpluggedRcprofile),
+new KeyValuePair<string, MIMEType>("application/vnd.irepository.package+xml", ApplicationVndIrepositoryPackageXml),
+new KeyValuePair<string, MIMEType>("application/vnd.is-xpr", ApplicationVndIsXpr),
+new KeyValuePair<string, MIMEType>("application/vnd.isac.fcs", ApplicationVndIsacFcs),
+new KeyValuePair<string, MIMEType>("application/vnd.jam", ApplicationVndJam),
+new KeyValuePair<string, MIMEType>("application/vnd.jcp.javame.midlet-rms", ApplicationVndJcpJavameMidletRms),
+new KeyValuePair<string, MIMEType>("application/vnd.jisp", ApplicationVndJisp),
+new KeyValuePair<string, MIMEType>("application/vnd.joost.joda-archive", ApplicationVndJoostJodaArchive),
+new KeyValuePair<string, MIMEType>("application/vnd.kahootz", ApplicationVndKahootz),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.karbon", ApplicationVndKdeKarbon),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.kchart", ApplicationVndKdeKchart),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.kformula", ApplicationVndKdeKformula),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.kivio", ApplicationVndKdeKivio),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.kontour", ApplicationVndKdeKontour),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.kpresenter", ApplicationVndKdeKpresenter),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.kspread", ApplicationVndKdeKspread),
+new KeyValuePair<string, MIMEType>("application/vnd.kde.kword", ApplicationVndKdeKword),
+new KeyValuePair<string, MIMEType>("application/vnd.kenameaapp", ApplicationVndKenameaapp),
+new KeyValuePair<string, MIMEType>("application/vnd.kidspiration", ApplicationVndKidspiration),
+new KeyValuePair<string, MIMEType>("application/vnd.kinar", ApplicationVndKinar),
+new KeyValuePair<string, MIMEType>("application/vnd.koan", ApplicationVndKoan),
+new KeyValuePair<string, MIMEType>("application/vnd.kodak-descriptor", ApplicationVndKodakDescriptor),
+new KeyValuePair<string, MIMEType>("application/vnd.las.las+xml", ApplicationVndLasLasXml),
+new KeyValuePair<string, MIMEType>("application/vnd.llamagraphics.life-balance.desktop", ApplicationVndLlamagraphicsLifeBalanceDesktop),
+new KeyValuePair<string, MIMEType>("application/vnd.llamagraphics.life-balance.exchange+xml", ApplicationVndLlamagraphicsLifeBalanceExchangeXml),
+new KeyValuePair<string, MIMEType>("application/vnd.lotus-1-2-3", ApplicationVndLotus123),
+new KeyValuePair<string, MIMEType>("application/vnd.lotus-approach", ApplicationVndLotusApproach),
+new KeyValuePair<string, MIMEType>("application/vnd.lotus-freelance", ApplicationVndLotusFreelance),
+new KeyValuePair<string, MIMEType>("application/vnd.lotus-notes", ApplicationVndLotusNotes),
+new KeyValuePair<string, MIMEType>("application/vnd.lotus-organizer", ApplicationVndLotusOrganizer),
+new KeyValuePair<string, MIMEType>("application/vnd.lotus-screencam", ApplicationVndLotusScreencam),
+new KeyValuePair<string, MIMEType>("application/vnd.lotus-wordpro", ApplicationVndLotusWordpro),
+new KeyValuePair<string, MIMEType>("application/vnd.macports.portpkg", ApplicationVndMacportsPortpkg),
+new KeyValuePair<string, MIMEType>("application/vnd.mcd", ApplicationVndMcd),
+new KeyValuePair<string, MIMEType>("application/vnd.medcalcdata", ApplicationVndMedcalcdata),
+new KeyValuePair<string, MIMEType>("application/vnd.mediastation.cdkey", ApplicationVndMediastationCdkey),
+new KeyValuePair<string, MIMEType>("application/vnd.mfer", ApplicationVndMfer),
+new KeyValuePair<string, MIMEType>("application/vnd.mfmp", ApplicationVndMfmp),
+new KeyValuePair<string, MIMEType>("application/vnd.micrografx.flo", ApplicationVndMicrografxFlo),
+new KeyValuePair<string, MIMEType>("application/vnd.micrografx.igx", ApplicationVndMicrografxIgx),
+new KeyValuePair<string, MIMEType>("application/vnd.mif", ApplicationVndMif),
+new KeyValuePair<string, MIMEType>("application/vnd.mobius.daf", ApplicationVndMobiusDaf),
+new KeyValuePair<string, MIMEType>("application/vnd.mobius.dis", ApplicationVndMobiusDis),
+new KeyValuePair<string, MIMEType>("application/vnd.mobius.mbk", ApplicationVndMobiusMbk),
+new KeyValuePair<string, MIMEType>("application/vnd.mobius.mqy", ApplicationVndMobiusMqy),
+new KeyValuePair<string, MIMEType>("application/vnd.mobius.msl", ApplicationVndMobiusMsl),
+new KeyValuePair<string, MIMEType>("application/vnd.mobius.plc", ApplicationVndMobiusPlc),
+new KeyValuePair<string, MIMEType>("application/vnd.mobius.txf", ApplicationVndMobiusTxf),
+new KeyValuePair<string, MIMEType>("application/vnd.mophun.application", ApplicationVndMophunApplication),
+new KeyValuePair<string, MIMEType>("application/vnd.mophun.certificate", ApplicationVndMophunCertificate),
+new KeyValuePair<string, MIMEType>("application/vnd.mozilla.xul+xml", ApplicationVndMozillaXulXml),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-artgalry", ApplicationVndMsArtgalry),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-cab-compressed", ApplicationVndMsCabCompressed),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-excel", ApplicationVndMsExcel),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-excel.addin.macroenabled.12", ApplicationVndMsExcelAddinMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-excel.sheet.binary.macroenabled.12", ApplicationVndMsExcelSheetBinaryMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-excel.sheet.macroenabled.12", ApplicationVndMsExcelSheetMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-excel.template.macroenabled.12", ApplicationVndMsExcelTemplateMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-fontobject", ApplicationVndMsFontobject),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-htmlhelp", ApplicationVndMsHtmlhelp),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-ims", ApplicationVndMsIms),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-lrm", ApplicationVndMsLrm),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-officetheme", ApplicationVndMsOfficetheme),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-pki.seccat", ApplicationVndMsPkiSeccat),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-pki.stl", ApplicationVndMsPkiStl),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-powerpoint", ApplicationVndMsPowerpoint),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-powerpoint.addin.macroenabled.12", ApplicationVndMsPowerpointAddinMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-powerpoint.presentation.macroenabled.12", ApplicationVndMsPowerpointPresentationMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-powerpoint.slide.macroenabled.12", ApplicationVndMsPowerpointSlideMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-powerpoint.slideshow.macroenabled.12", ApplicationVndMsPowerpointSlideshowMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-powerpoint.template.macroenabled.12", ApplicationVndMsPowerpointTemplateMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-project", ApplicationVndMsProject),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-word.document.macroenabled.12", ApplicationVndMsWordDocumentMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-word.template.macroenabled.12", ApplicationVndMsWordTemplateMacroenabled12),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-works", ApplicationVndMsWorks),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-wpl", ApplicationVndMsWpl),
+new KeyValuePair<string, MIMEType>("application/vnd.ms-xpsdocument", ApplicationVndMsXpsdocument),
+new KeyValuePair<string, MIMEType>("application/vnd.mseq", ApplicationVndMseq),
+new KeyValuePair<string, MIMEType>("application/vnd.musician", ApplicationVndMusician),
+new KeyValuePair<string, MIMEType>("application/vnd.muvee.style", ApplicationVndMuveeStyle),
+new KeyValuePair<string, MIMEType>("application/vnd.mynfc", ApplicationVndMynfc),
+new KeyValuePair<string, MIMEType>("application/vnd.neurolanguage.nlu", ApplicationVndNeurolanguageNlu),
+new KeyValuePair<string, MIMEType>("application/vnd.nitf", ApplicationVndNitf),
+new KeyValuePair<string, MIMEType>("application/vnd.noblenet-directory", ApplicationVndNoblenetDirectory),
+new KeyValuePair<string, MIMEType>("application/vnd.noblenet-sealer", ApplicationVndNoblenetSealer),
+new KeyValuePair<string, MIMEType>("application/vnd.noblenet-web", ApplicationVndNoblenetWeb),
+new KeyValuePair<string, MIMEType>("application/vnd.nokia.n-gage.data", ApplicationVndNokiaNGageData),
+new KeyValuePair<string, MIMEType>("application/vnd.nokia.n-gage.symbian.install", ApplicationVndNokiaNGageSymbianInstall),
+new KeyValuePair<string, MIMEType>("application/vnd.nokia.radio-preset", ApplicationVndNokiaRadioPreset),
+new KeyValuePair<string, MIMEType>("application/vnd.nokia.radio-presets", ApplicationVndNokiaRadioPresets),
+new KeyValuePair<string, MIMEType>("application/vnd.novadigm.edm", ApplicationVndNovadigmEdm),
+new KeyValuePair<string, MIMEType>("application/vnd.novadigm.edx", ApplicationVndNovadigmEdx),
+new KeyValuePair<string, MIMEType>("application/vnd.novadigm.ext", ApplicationVndNovadigmExt),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.chart", ApplicationVndOasisOpendocumentChart),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.chart-template", ApplicationVndOasisOpendocumentChartTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.database", ApplicationVndOasisOpendocumentDatabase),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.formula", ApplicationVndOasisOpendocumentFormula),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.formula-template", ApplicationVndOasisOpendocumentFormulaTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.graphics", ApplicationVndOasisOpendocumentGraphics),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.graphics-template", ApplicationVndOasisOpendocumentGraphicsTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.image", ApplicationVndOasisOpendocumentImage),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.image-template", ApplicationVndOasisOpendocumentImageTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.presentation", ApplicationVndOasisOpendocumentPresentation),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.presentation-template", ApplicationVndOasisOpendocumentPresentationTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.spreadsheet", ApplicationVndOasisOpendocumentSpreadsheet),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.spreadsheet-template", ApplicationVndOasisOpendocumentSpreadsheetTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.text", ApplicationVndOasisOpendocumentText),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.text-master", ApplicationVndOasisOpendocumentTextMaster),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.text-template", ApplicationVndOasisOpendocumentTextTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.oasis.opendocument.text-web", ApplicationVndOasisOpendocumentTextWeb),
+new KeyValuePair<string, MIMEType>("application/vnd.olpc-sugar", ApplicationVndOlpcSugar),
+new KeyValuePair<string, MIMEType>("application/vnd.oma.dd2+xml", ApplicationVndOmaDd2Xml),
+new KeyValuePair<string, MIMEType>("application/vnd.openofficeorg.extension", ApplicationVndOpenofficeorgExtension),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.presentationml.presentation", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.presentationml.slide", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlSlide),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.presentationml.slideshow", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlSlideshow),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.presentationml.template", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.spreadsheetml.template", ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.wordprocessingml.document", ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument),
+new KeyValuePair<string, MIMEType>("application/vnd.openxmlformats-officedocument.wordprocessingml.template", ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.osgeo.mapguide.package", ApplicationVndOsgeoMapguidePackage),
+new KeyValuePair<string, MIMEType>("application/vnd.osgi.dp", ApplicationVndOsgiDp),
+new KeyValuePair<string, MIMEType>("application/vnd.osgi.subsystem", ApplicationVndOsgiSubsystem),
+new KeyValuePair<string, MIMEType>("application/vnd.palm", ApplicationVndPalm),
+new KeyValuePair<string, MIMEType>("application/vnd.pawaafile", ApplicationVndPawaafile),
+new KeyValuePair<string, MIMEType>("application/vnd.pg.format", ApplicationVndPgFormat),
+new KeyValuePair<string, MIMEType>("application/vnd.pg.osasli", ApplicationVndPgOsasli),
+new KeyValuePair<string, MIMEType>("application/vnd.picsel", ApplicationVndPicsel),
+new KeyValuePair<string, MIMEType>("application/vnd.pmi.widget", ApplicationVndPmiWidget),
+new KeyValuePair<string, MIMEType>("application/vnd.pocketlearn", ApplicationVndPocketlearn),
+new KeyValuePair<string, MIMEType>("application/vnd.powerbuilder6", ApplicationVndPowerbuilder6),
+new KeyValuePair<string, MIMEType>("application/vnd.previewsystems.box", ApplicationVndPreviewsystemsBox),
+new KeyValuePair<string, MIMEType>("application/vnd.proteus.magazine", ApplicationVndProteusMagazine),
+new KeyValuePair<string, MIMEType>("application/vnd.publishare-delta-tree", ApplicationVndPublishareDeltaTree),
+new KeyValuePair<string, MIMEType>("application/vnd.pvi.ptid1", ApplicationVndPviPtid1),
+new KeyValuePair<string, MIMEType>("application/vnd.quark.quarkxpress", ApplicationVndQuarkQuarkxpress),
+new KeyValuePair<string, MIMEType>("application/vnd.realvnc.bed", ApplicationVndRealvncBed),
+new KeyValuePair<string, MIMEType>("application/vnd.recordare.musicxml", ApplicationVndRecordareMusicxml),
+new KeyValuePair<string, MIMEType>("application/vnd.recordare.musicxml+xml", ApplicationVndRecordareMusicxmlXml),
+new KeyValuePair<string, MIMEType>("application/vnd.rig.cryptonote", ApplicationVndRigCryptonote),
+new KeyValuePair<string, MIMEType>("application/vnd.rim.cod", ApplicationVndRimCod),
+new KeyValuePair<string, MIMEType>("application/vnd.rn-realmedia", ApplicationVndRnRealmedia),
+new KeyValuePair<string, MIMEType>("application/vnd.rn-realmedia-vbr", ApplicationVndRnRealmediaVbr),
+new KeyValuePair<string, MIMEType>("application/vnd.route66.link66+xml", ApplicationVndRoute66Link66Xml),
+new KeyValuePair<string, MIMEType>("application/vnd.sailingtracker.track", ApplicationVndSailingtrackerTrack),
+new KeyValuePair<string, MIMEType>("application/vnd.seemail", ApplicationVndSeemail),
+new KeyValuePair<string, MIMEType>("application/vnd.sema", ApplicationVndSema),
+new KeyValuePair<string, MIMEType>("application/vnd.semd", ApplicationVndSemd),
+new KeyValuePair<string, MIMEType>("application/vnd.semf", ApplicationVndSemf),
+new KeyValuePair<string, MIMEType>("application/vnd.shana.informed.formdata", ApplicationVndShanaInformedFormdata),
+new KeyValuePair<string, MIMEType>("application/vnd.shana.informed.formtemplate", ApplicationVndShanaInformedFormtemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.shana.informed.interchange", ApplicationVndShanaInformedInterchange),
+new KeyValuePair<string, MIMEType>("application/vnd.shana.informed.package", ApplicationVndShanaInformedPackage),
+new KeyValuePair<string, MIMEType>("application/vnd.simtech-mindmapper", ApplicationVndSimtechMindmapper),
+new KeyValuePair<string, MIMEType>("application/vnd.smaf", ApplicationVndSmaf),
+new KeyValuePair<string, MIMEType>("application/vnd.smart.teacher", ApplicationVndSmartTeacher),
+new KeyValuePair<string, MIMEType>("application/vnd.solent.sdkm+xml", ApplicationVndSolentSdkmXml),
+new KeyValuePair<string, MIMEType>("application/vnd.spotfire.dxp", ApplicationVndSpotfireDxp),
+new KeyValuePair<string, MIMEType>("application/vnd.spotfire.sfs", ApplicationVndSpotfireSfs),
+new KeyValuePair<string, MIMEType>("application/vnd.stardivision.calc", ApplicationVndStardivisionCalc),
+new KeyValuePair<string, MIMEType>("application/vnd.stardivision.draw", ApplicationVndStardivisionDraw),
+new KeyValuePair<string, MIMEType>("application/vnd.stardivision.impress", ApplicationVndStardivisionImpress),
+new KeyValuePair<string, MIMEType>("application/vnd.stardivision.math", ApplicationVndStardivisionMath),
+new KeyValuePair<string, MIMEType>("application/vnd.stardivision.writer", ApplicationVndStardivisionWriter),
+new KeyValuePair<string, MIMEType>("application/vnd.stardivision.writer-global", ApplicationVndStardivisionWriterGlobal),
+new KeyValuePair<string, MIMEType>("application/vnd.stepmania.package", ApplicationVndStepmaniaPackage),
+new KeyValuePair<string, MIMEType>("application/vnd.stepmania.stepchart", ApplicationVndStepmaniaStepchart),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.calc", ApplicationVndSunXmlCalc),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.calc.template", ApplicationVndSunXmlCalcTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.draw", ApplicationVndSunXmlDraw),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.draw.template", ApplicationVndSunXmlDrawTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.impress", ApplicationVndSunXmlImpress),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.impress.template", ApplicationVndSunXmlImpressTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.math", ApplicationVndSunXmlMath),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.writer", ApplicationVndSunXmlWriter),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.writer.global", ApplicationVndSunXmlWriterGlobal),
+new KeyValuePair<string, MIMEType>("application/vnd.sun.xml.writer.template", ApplicationVndSunXmlWriterTemplate),
+new KeyValuePair<string, MIMEType>("application/vnd.sus-calendar", ApplicationVndSusCalendar),
+new KeyValuePair<string, MIMEType>("application/vnd.svd", ApplicationVndSvd),
+new KeyValuePair<string, MIMEType>("application/vnd.symbian.install", ApplicationVndSymbianInstall),
+new KeyValuePair<string, MIMEType>("application/vnd.syncml+xml", ApplicationVndSyncmlXml),
+new KeyValuePair<string, MIMEType>("application/vnd.syncml.dm+wbxml", ApplicationVndSyncmlDmWbxml),
+new KeyValuePair<string, MIMEType>("application/vnd.syncml.dm+xml", ApplicationVndSyncmlDmXml),
+new KeyValuePair<string, MIMEType>("application/vnd.tao.intent-module-archive", ApplicationVndTaoIntentModuleArchive),
+new KeyValuePair<string, MIMEType>("application/vnd.tcpdump.pcap", ApplicationVndTcpdumpPcap),
+new KeyValuePair<string, MIMEType>("application/vnd.tmobile-livetv", ApplicationVndTmobileLivetv),
+new KeyValuePair<string, MIMEType>("application/vnd.trid.tpt", ApplicationVndTridTpt),
+new KeyValuePair<string, MIMEType>("application/vnd.triscape.mxs", ApplicationVndTriscapeMxs),
+new KeyValuePair<string, MIMEType>("application/vnd.trueapp", ApplicationVndTrueapp),
+new KeyValuePair<string, MIMEType>("application/vnd.ufdl", ApplicationVndUfdl),
+new KeyValuePair<string, MIMEType>("application/vnd.uiq.theme", ApplicationVndUiqTheme),
+new KeyValuePair<string, MIMEType>("application/vnd.umajin", ApplicationVndUmajin),
+new KeyValuePair<string, MIMEType>("application/vnd.unity", ApplicationVndUnity),
+new KeyValuePair<string, MIMEType>("application/vnd.uoml+xml", ApplicationVndUomlXml),
+new KeyValuePair<string, MIMEType>("application/vnd.vcx", ApplicationVndVcx),
+new KeyValuePair<string, MIMEType>("application/vnd.visio", ApplicationVndVisio),
+new KeyValuePair<string, MIMEType>("application/vnd.visionary", ApplicationVndVisionary),
+new KeyValuePair<string, MIMEType>("application/vnd.vsf", ApplicationVndVsf),
+new KeyValuePair<string, MIMEType>("application/vnd.wap.wbxml", ApplicationVndWapWbxml),
+new KeyValuePair<string, MIMEType>("application/vnd.wap.wmlc", ApplicationVndWapWmlc),
+new KeyValuePair<string, MIMEType>("application/vnd.wap.wmlscriptc", ApplicationVndWapWmlscriptc),
+new KeyValuePair<string, MIMEType>("application/vnd.webturbo", ApplicationVndWebturbo),
+new KeyValuePair<string, MIMEType>("application/vnd.wolfram.player", ApplicationVndWolframPlayer),
+new KeyValuePair<string, MIMEType>("application/vnd.wordperfect", ApplicationVndWordperfect),
+new KeyValuePair<string, MIMEType>("application/vnd.wqd", ApplicationVndWqd),
+new KeyValuePair<string, MIMEType>("application/vnd.wt.stf", ApplicationVndWtStf),
+new KeyValuePair<string, MIMEType>("application/vnd.xara", ApplicationVndXara),
+new KeyValuePair<string, MIMEType>("application/vnd.xfdl", ApplicationVndXfdl),
+new KeyValuePair<string, MIMEType>("application/vnd.yamaha.hv-dic", ApplicationVndYamahaHvDic),
+new KeyValuePair<string, MIMEType>("application/vnd.yamaha.hv-script", ApplicationVndYamahaHvScript),
+new KeyValuePair<string, MIMEType>("application/vnd.yamaha.hv-voice", ApplicationVndYamahaHvVoice),
+new KeyValuePair<string, MIMEType>("application/vnd.yamaha.openscoreformat", ApplicationVndYamahaOpenscoreformat),
+new KeyValuePair<string, MIMEType>("application/vnd.yamaha.openscoreformat.osfpvg+xml", ApplicationVndYamahaOpenscoreformatOsfpvgXml),
+new KeyValuePair<string, MIMEType>("application/vnd.yamaha.smaf-audio", ApplicationVndYamahaSmafAudio),
+new KeyValuePair<string, MIMEType>("application/vnd.yamaha.smaf-phrase", ApplicationVndYamahaSmafPhrase),
+new KeyValuePair<string, MIMEType>("application/vnd.yellowriver-custom-menu", ApplicationVndYellowriverCustomMenu),
+new KeyValuePair<string, MIMEType>("application/vnd.zul", ApplicationVndZul),
+new KeyValuePair<string, MIMEType>("application/vnd.zzazz.deck+xml", ApplicationVndZzazzDeckXml),
+new KeyValuePair<string, MIMEType>("application/voicexml+xml", ApplicationVoicexmlXml),
+new KeyValuePair<string, MIMEType>("application/widget", ApplicationWidget),
+new KeyValuePair<string, MIMEType>("application/winhlp", ApplicationWinhlp),
+new KeyValuePair<string, MIMEType>("application/wsdl+xml", ApplicationWsdlXml),
+new KeyValuePair<string, MIMEType>("application/wspolicy+xml", ApplicationWspolicyXml),
+new KeyValuePair<string, MIMEType>("application/x-7z-compressed", ApplicationX7zCompressed),
+new KeyValuePair<string, MIMEType>("application/x-abiword", ApplicationXAbiword),
+new KeyValuePair<string, MIMEType>("application/x-ace-compressed", ApplicationXAceCompressed),
+new KeyValuePair<string, MIMEType>("application/x-apple-diskimage", ApplicationXAppleDiskimage),
+new KeyValuePair<string, MIMEType>("application/x-authorware-bin", ApplicationXAuthorwareBin),
+new KeyValuePair<string, MIMEType>("application/x-authorware-map", ApplicationXAuthorwareMap),
+new KeyValuePair<string, MIMEType>("application/x-authorware-seg", ApplicationXAuthorwareSeg),
+new KeyValuePair<string, MIMEType>("application/x-bcpio", ApplicationXBcpio),
+new KeyValuePair<string, MIMEType>("application/x-bittorrent", ApplicationXBittorrent),
+new KeyValuePair<string, MIMEType>("application/x-blorb", ApplicationXBlorb),
+new KeyValuePair<string, MIMEType>("application/x-bzip", ApplicationXBzip),
+new KeyValuePair<string, MIMEType>("application/x-bzip2", ApplicationXBzip2),
+new KeyValuePair<string, MIMEType>("application/x-cbr", ApplicationXCbr),
+new KeyValuePair<string, MIMEType>("application/x-cdlink", ApplicationXCdlink),
+new KeyValuePair<string, MIMEType>("application/x-cfs-compressed", ApplicationXCfsCompressed),
+new KeyValuePair<string, MIMEType>("application/x-chat", ApplicationXChat),
+new KeyValuePair<string, MIMEType>("application/x-chess-pgn", ApplicationXChessPgn),
+new KeyValuePair<string, MIMEType>("application/x-conference", ApplicationXConference),
+new KeyValuePair<string, MIMEType>("application/x-cpio", ApplicationXCpio),
+new KeyValuePair<string, MIMEType>("application/x-csh", ApplicationXCsh),
+new KeyValuePair<string, MIMEType>("application/x-debian-package", ApplicationXDebianPackage),
+new KeyValuePair<string, MIMEType>("application/x-dgc-compressed", ApplicationXDgcCompressed),
+new KeyValuePair<string, MIMEType>("application/x-director", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("application/x-doom", ApplicationXDoom),
+new KeyValuePair<string, MIMEType>("application/x-dtbncx+xml", ApplicationXDtbncxXml),
+new KeyValuePair<string, MIMEType>("application/x-dtbook+xml", ApplicationXDtbookXml),
+new KeyValuePair<string, MIMEType>("application/x-dtbresource+xml", ApplicationXDtbresourceXml),
+new KeyValuePair<string, MIMEType>("application/x-dvi", ApplicationXDvi),
+new KeyValuePair<string, MIMEType>("application/x-envoy", ApplicationXEnvoy),
+new KeyValuePair<string, MIMEType>("application/x-eva", ApplicationXEva),
+new KeyValuePair<string, MIMEType>("application/x-font-bdf", ApplicationXFontBdf),
+new KeyValuePair<string, MIMEType>("application/x-font-ghostscript", ApplicationXFontGhostscript),
+new KeyValuePair<string, MIMEType>("application/x-font-linux-psf", ApplicationXFontLinuxPsf),
+new KeyValuePair<string, MIMEType>("application/x-font-otf", ApplicationXFontOtf),
+new KeyValuePair<string, MIMEType>("application/x-font-pcf", ApplicationXFontPcf),
+new KeyValuePair<string, MIMEType>("application/x-font-snf", ApplicationXFontSnf),
+new KeyValuePair<string, MIMEType>("application/x-font-ttf", ApplicationXFontTtf),
+new KeyValuePair<string, MIMEType>("application/x-font-type1", ApplicationXFontType1),
+new KeyValuePair<string, MIMEType>("application/x-font-woff", ApplicationXFontWoff),
+new KeyValuePair<string, MIMEType>("application/x-freearc", ApplicationXFreearc),
+new KeyValuePair<string, MIMEType>("application/x-futuresplash", ApplicationXFuturesplash),
+new KeyValuePair<string, MIMEType>("application/x-gca-compressed", ApplicationXGcaCompressed),
+new KeyValuePair<string, MIMEType>("application/x-glulx", ApplicationXGlulx),
+new KeyValuePair<string, MIMEType>("application/x-gnumeric", ApplicationXGnumeric),
+new KeyValuePair<string, MIMEType>("application/x-gramps-xml", ApplicationXGrampsXml),
+new KeyValuePair<string, MIMEType>("application/x-gtar", ApplicationXGtar),
+new KeyValuePair<string, MIMEType>("application/x-hdf", ApplicationXHdf),
+new KeyValuePair<string, MIMEType>("application/x-install-instructions", ApplicationXInstallInstructions),
+new KeyValuePair<string, MIMEType>("application/x-iso9660-image", ApplicationXIso9660Image),
+new KeyValuePair<string, MIMEType>("application/x-java-jnlp-file", ApplicationXJavaJnlpFile),
+new KeyValuePair<string, MIMEType>("application/x-latex", ApplicationXLatex),
+new KeyValuePair<string, MIMEType>("application/x-lzh-compressed", ApplicationXLzhCompressed),
+new KeyValuePair<string, MIMEType>("application/x-mie", ApplicationXMie),
+new KeyValuePair<string, MIMEType>("application/x-mobipocket-ebook", ApplicationXMobipocketEbook),
+new KeyValuePair<string, MIMEType>("application/x-ms-application", ApplicationXMsApplication),
+new KeyValuePair<string, MIMEType>("application/x-ms-shortcut", ApplicationXMsShortcut),
+new KeyValuePair<string, MIMEType>("application/x-ms-wmd", ApplicationXMsWmd),
+new KeyValuePair<string, MIMEType>("application/x-ms-wmz", ApplicationXMsWmz),
+new KeyValuePair<string, MIMEType>("application/x-ms-xbap", ApplicationXMsXbap),
+new KeyValuePair<string, MIMEType>("application/x-msaccess", ApplicationXMsaccess),
+new KeyValuePair<string, MIMEType>("application/x-msbinder", ApplicationXMsbinder),
+new KeyValuePair<string, MIMEType>("application/x-mscardfile", ApplicationXMscardfile),
+new KeyValuePair<string, MIMEType>("application/x-msclip", ApplicationXMsclip),
+new KeyValuePair<string, MIMEType>("application/x-msdownload", ApplicationXMsdownload),
+new KeyValuePair<string, MIMEType>("application/x-msmediaview", ApplicationXMsmediaview),
+new KeyValuePair<string, MIMEType>("application/x-msmetafile", ApplicationXMsmetafile),
+new KeyValuePair<string, MIMEType>("application/x-msmoney", ApplicationXMsmoney),
+new KeyValuePair<string, MIMEType>("application/x-mspublisher", ApplicationXMspublisher),
+new KeyValuePair<string, MIMEType>("application/x-msschedule", ApplicationXMsschedule),
+new KeyValuePair<string, MIMEType>("application/x-msterminal", ApplicationXMsterminal),
+new KeyValuePair<string, MIMEType>("application/x-mswrite", ApplicationXMswrite),
+new KeyValuePair<string, MIMEType>("application/x-netcdf", ApplicationXNetcdf),
+new KeyValuePair<string, MIMEType>("application/x-nzb", ApplicationXNzb),
+new KeyValuePair<string, MIMEType>("application/x-pkcs12", ApplicationXPkcs12),
+new KeyValuePair<string, MIMEType>("application/x-pkcs7-certificates", ApplicationXPkcs7Certificates),
+new KeyValuePair<string, MIMEType>("application/x-pkcs7-certreqresp", ApplicationXPkcs7Certreqresp),
+new KeyValuePair<string, MIMEType>("application/x-rar-compressed", ApplicationXRarCompressed),
+new KeyValuePair<string, MIMEType>("application/x-research-info-systems", ApplicationXResearchInfoSystems),
+new KeyValuePair<string, MIMEType>("application/x-sh", ApplicationXSh),
+new KeyValuePair<string, MIMEType>("application/x-shar", ApplicationXShar),
+new KeyValuePair<string, MIMEType>("application/x-shockwave-flash", ApplicationXShockwaveFlash),
+new KeyValuePair<string, MIMEType>("application/x-silverlight-app", ApplicationXSilverlightApp),
+new KeyValuePair<string, MIMEType>("application/x-sql", ApplicationXSql),
+new KeyValuePair<string, MIMEType>("application/x-stuffit", ApplicationXStuffit),
+new KeyValuePair<string, MIMEType>("application/x-stuffitx", ApplicationXStuffitx),
+new KeyValuePair<string, MIMEType>("application/x-subrip", ApplicationXSubrip),
+new KeyValuePair<string, MIMEType>("application/x-sv4cpio", ApplicationXSv4cpio),
+new KeyValuePair<string, MIMEType>("application/x-sv4crc", ApplicationXSv4crc),
+new KeyValuePair<string, MIMEType>("application/x-t3vm-image", ApplicationXT3vmImage),
+new KeyValuePair<string, MIMEType>("application/x-tads", ApplicationXTads),
+new KeyValuePair<string, MIMEType>("application/x-tar", ApplicationXTar),
+new KeyValuePair<string, MIMEType>("application/x-tcl", ApplicationXTcl),
+new KeyValuePair<string, MIMEType>("application/x-tex", ApplicationXTex),
+new KeyValuePair<string, MIMEType>("application/x-tex-tfm", ApplicationXTexTfm),
+new KeyValuePair<string, MIMEType>("application/x-texinfo", ApplicationXTexinfo),
+new KeyValuePair<string, MIMEType>("application/x-tgif", ApplicationXTgif),
+new KeyValuePair<string, MIMEType>("application/x-ustar", ApplicationXUstar),
+new KeyValuePair<string, MIMEType>("application/x-wais-source", ApplicationXWaisSource),
+new KeyValuePair<string, MIMEType>("application/x-x509-ca-cert", ApplicationXX509CaCert),
+new KeyValuePair<string, MIMEType>("application/x-xfig", ApplicationXXfig),
+new KeyValuePair<string, MIMEType>("application/x-xliff+xml", ApplicationXXliffXml),
+new KeyValuePair<string, MIMEType>("application/x-xpinstall", ApplicationXXpinstall),
+new KeyValuePair<string, MIMEType>("application/x-xz", ApplicationXXz),
+new KeyValuePair<string, MIMEType>("application/x-zmachine", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("application/xaml+xml", ApplicationXamlXml),
+new KeyValuePair<string, MIMEType>("application/xcap-diff+xml", ApplicationXcapDiffXml),
+new KeyValuePair<string, MIMEType>("application/xenc+xml", ApplicationXencXml),
+new KeyValuePair<string, MIMEType>("application/xhtml+xml", ApplicationXhtmlXml),
+new KeyValuePair<string, MIMEType>("application/xml", ApplicationXml),
+new KeyValuePair<string, MIMEType>("application/xml-dtd", ApplicationXmlDtd),
+new KeyValuePair<string, MIMEType>("application/xop+xml", ApplicationXopXml),
+new KeyValuePair<string, MIMEType>("application/xproc+xml", ApplicationXprocXml),
+new KeyValuePair<string, MIMEType>("application/xslt+xml", ApplicationXsltXml),
+new KeyValuePair<string, MIMEType>("application/xspf+xml", ApplicationXspfXml),
+new KeyValuePair<string, MIMEType>("application/xv+xml", ApplicationXvXml),
+new KeyValuePair<string, MIMEType>("application/yang", ApplicationYang),
+new KeyValuePair<string, MIMEType>("application/yin+xml", ApplicationYinXml),
+new KeyValuePair<string, MIMEType>("application/zip", ApplicationZip),
+new KeyValuePair<string, MIMEType>("audio/adpcm", AudioAdpcm),
+new KeyValuePair<string, MIMEType>("audio/basic", AudioBasic),
+new KeyValuePair<string, MIMEType>("audio/midi", AudioMidi),
+new KeyValuePair<string, MIMEType>("audio/mp4", AudioMp4),
+new KeyValuePair<string, MIMEType>("audio/mpeg", AudioMpeg),
+new KeyValuePair<string, MIMEType>("audio/ogg", AudioOgg),
+new KeyValuePair<string, MIMEType>("audio/s3m", AudioS3m),
+new KeyValuePair<string, MIMEType>("audio/silk", AudioSilk),
+new KeyValuePair<string, MIMEType>("audio/vnd.dece.audio", AudioVndDeceAudio),
+new KeyValuePair<string, MIMEType>("audio/vnd.digital-winds", AudioVndDigitalWinds),
+new KeyValuePair<string, MIMEType>("audio/vnd.dra", AudioVndDra),
+new KeyValuePair<string, MIMEType>("audio/vnd.dts", AudioVndDts),
+new KeyValuePair<string, MIMEType>("audio/vnd.dts.hd", AudioVndDtsHd),
+new KeyValuePair<string, MIMEType>("audio/vnd.lucent.voice", AudioVndLucentVoice),
+new KeyValuePair<string, MIMEType>("audio/vnd.ms-playready.media.pya", AudioVndMsPlayreadyMediaPya),
+new KeyValuePair<string, MIMEType>("audio/vnd.nuera.ecelp4800", AudioVndNueraEcelp4800),
+new KeyValuePair<string, MIMEType>("audio/vnd.nuera.ecelp7470", AudioVndNueraEcelp7470),
+new KeyValuePair<string, MIMEType>("audio/vnd.nuera.ecelp9600", AudioVndNueraEcelp9600),
+new KeyValuePair<string, MIMEType>("audio/vnd.rip", AudioVndRip),
+new KeyValuePair<string, MIMEType>("audio/webm", AudioWebm),
+new KeyValuePair<string, MIMEType>("audio/x-aac", AudioXAac),
+new KeyValuePair<string, MIMEType>("audio/x-aiff", AudioXAiff),
+new KeyValuePair<string, MIMEType>("audio/x-caf", AudioXCaf),
+new KeyValuePair<string, MIMEType>("audio/x-flac", AudioXFlac),
+new KeyValuePair<string, MIMEType>("audio/x-matroska", AudioXMatroska),
+new KeyValuePair<string, MIMEType>("audio/x-mpegurl", AudioXMpegurl),
+new KeyValuePair<string, MIMEType>("audio/x-ms-wax", AudioXMsWax),
+new KeyValuePair<string, MIMEType>("audio/x-ms-wma", AudioXMsWma),
+new KeyValuePair<string, MIMEType>("audio/x-pn-realaudio", AudioXPnRealaudio),
+new KeyValuePair<string, MIMEType>("audio/x-pn-realaudio-plugin", AudioXPnRealaudioPlugin),
+new KeyValuePair<string, MIMEType>("audio/x-wav", AudioXWav),
+new KeyValuePair<string, MIMEType>("audio/xm", AudioXm),
+new KeyValuePair<string, MIMEType>("chemical/x-cdx", ChemicalXCdx),
+new KeyValuePair<string, MIMEType>("chemical/x-cif", ChemicalXCif),
+new KeyValuePair<string, MIMEType>("chemical/x-cmdf", ChemicalXCmdf),
+new KeyValuePair<string, MIMEType>("chemical/x-cml", ChemicalXCml),
+new KeyValuePair<string, MIMEType>("chemical/x-csml", ChemicalXCsml),
+new KeyValuePair<string, MIMEType>("chemical/x-xyz", ChemicalXXyz),
+new KeyValuePair<string, MIMEType>("image/bmp", ImageBmp),
+new KeyValuePair<string, MIMEType>("image/cgm", ImageCgm),
+new KeyValuePair<string, MIMEType>("image/g3fax", ImageG3fax),
+new KeyValuePair<string, MIMEType>("image/gif", ImageGif),
+new KeyValuePair<string, MIMEType>("image/ief", ImageIef),
+new KeyValuePair<string, MIMEType>("image/jpeg", ImageJpeg),
+new KeyValuePair<string, MIMEType>("image/ktx", ImageKtx),
+new KeyValuePair<string, MIMEType>("image/png", ImagePng),
+new KeyValuePair<string, MIMEType>("image/prs.btif", ImagePrsBtif),
+new KeyValuePair<string, MIMEType>("image/sgi", ImageSgi),
+new KeyValuePair<string, MIMEType>("image/svg+xml", ImageSvgXml),
+new KeyValuePair<string, MIMEType>("image/tiff", ImageTiff),
+new KeyValuePair<string, MIMEType>("image/vnd.adobe.photoshop", ImageVndAdobePhotoshop),
+new KeyValuePair<string, MIMEType>("image/vnd.dece.graphic", ImageVndDeceGraphic),
+new KeyValuePair<string, MIMEType>("image/vnd.dvb.subtitle", ImageVndDvbSubtitle),
+new KeyValuePair<string, MIMEType>("image/vnd.djvu", ImageVndDjvu),
+new KeyValuePair<string, MIMEType>("image/vnd.dwg", ImageVndDwg),
+new KeyValuePair<string, MIMEType>("image/vnd.dxf", ImageVndDxf),
+new KeyValuePair<string, MIMEType>("image/vnd.fastbidsheet", ImageVndFastbidsheet),
+new KeyValuePair<string, MIMEType>("image/vnd.fpx", ImageVndFpx),
+new KeyValuePair<string, MIMEType>("image/vnd.fst", ImageVndFst),
+new KeyValuePair<string, MIMEType>("image/vnd.fujixerox.edmics-mmr", ImageVndFujixeroxEdmicsMmr),
+new KeyValuePair<string, MIMEType>("image/vnd.fujixerox.edmics-rlc", ImageVndFujixeroxEdmicsRlc),
+new KeyValuePair<string, MIMEType>("image/vnd.ms-modi", ImageVndMsModi),
+new KeyValuePair<string, MIMEType>("image/vnd.ms-photo", ImageVndMsPhoto),
+new KeyValuePair<string, MIMEType>("image/vnd.net-fpx", ImageVndNetFpx),
+new KeyValuePair<string, MIMEType>("image/vnd.wap.wbmp", ImageVndWapWbmp),
+new KeyValuePair<string, MIMEType>("image/vnd.xiff", ImageVndXiff),
+new KeyValuePair<string, MIMEType>("image/webp", ImageWebp),
+new KeyValuePair<string, MIMEType>("image/x-3ds", ImageX3ds),
+new KeyValuePair<string, MIMEType>("image/x-cmu-raster", ImageXCmuRaster),
+new KeyValuePair<string, MIMEType>("image/x-cmx", ImageXCmx),
+new KeyValuePair<string, MIMEType>("image/x-freehand", ImageXFreehand),
+new KeyValuePair<string, MIMEType>("image/x-icon", ImageXIcon),
+new KeyValuePair<string, MIMEType>("image/x-mrsid-image", ImageXMrsidImage),
+new KeyValuePair<string, MIMEType>("image/x-pcx", ImageXPcx),
+new KeyValuePair<string, MIMEType>("image/x-pict", ImageXPict),
+new KeyValuePair<string, MIMEType>("image/x-portable-anymap", ImageXPortableAnymap),
+new KeyValuePair<string, MIMEType>("image/x-portable-bitmap", ImageXPortableBitmap),
+new KeyValuePair<string, MIMEType>("image/x-portable-graymap", ImageXPortableGraymap),
+new KeyValuePair<string, MIMEType>("image/x-portable-pixmap", ImageXPortablePixmap),
+new KeyValuePair<string, MIMEType>("image/x-rgb", ImageXRgb),
+new KeyValuePair<string, MIMEType>("image/x-tga", ImageXTga),
+new KeyValuePair<string, MIMEType>("image/x-xbitmap", ImageXXbitmap),
+new KeyValuePair<string, MIMEType>("image/x-xpixmap", ImageXXpixmap),
+new KeyValuePair<string, MIMEType>("image/x-xwindowdump", ImageXXwindowdump),
+new KeyValuePair<string, MIMEType>("message/rfc822", MessageRfc822),
+new KeyValuePair<string, MIMEType>("model/iges", ModelIges),
+new KeyValuePair<string, MIMEType>("model/mesh", ModelMesh),
+new KeyValuePair<string, MIMEType>("model/vnd.collada+xml", ModelVndColladaXml),
+new KeyValuePair<string, MIMEType>("model/vnd.dwf", ModelVndDwf),
+new KeyValuePair<string, MIMEType>("model/vnd.gdl", ModelVndGdl),
+new KeyValuePair<string, MIMEType>("model/vnd.gtw", ModelVndGtw),
+new KeyValuePair<string, MIMEType>("model/vnd.mts", ModelVndMts),
+new KeyValuePair<string, MIMEType>("model/vnd.vtu", ModelVndVtu),
+new KeyValuePair<string, MIMEType>("model/vrml", ModelVrml),
+new KeyValuePair<string, MIMEType>("model/x3d+binary", ModelX3dBinary),
+new KeyValuePair<string, MIMEType>("model/x3d+vrml", ModelX3dVrml),
+new KeyValuePair<string, MIMEType>("model/x3d+xml", ModelX3dXml),
+new KeyValuePair<string, MIMEType>("text/cache-manifest", TextCacheManifest),
+new KeyValuePair<string, MIMEType>("text/calendar", TextCalendar),
+new KeyValuePair<string, MIMEType>("text/css", TextCss),
+new KeyValuePair<string, MIMEType>("text/csv", TextCsv),
+new KeyValuePair<string, MIMEType>("text/html", TextHtml),
+new KeyValuePair<string, MIMEType>("text/n3", TextN3),
+new KeyValuePair<string, MIMEType>("text/plain", TextPlain),
+new KeyValuePair<string, MIMEType>("text/prs.lines.tag", TextPrsLinesTag),
+new KeyValuePair<string, MIMEType>("text/richtext", TextRichtext),
+new KeyValuePair<string, MIMEType>("text/sgml", TextSgml),
+new KeyValuePair<string, MIMEType>("text/tab-separated-values", TextTabSeparatedValues),
+new KeyValuePair<string, MIMEType>("text/troff", TextTroff),
+new KeyValuePair<string, MIMEType>("text/turtle", TextTurtle),
+new KeyValuePair<string, MIMEType>("text/uri-list", TextUriList),
+new KeyValuePair<string, MIMEType>("text/vcard", TextVcard),
+new KeyValuePair<string, MIMEType>("text/vnd.curl", TextVndCurl),
+new KeyValuePair<string, MIMEType>("text/vnd.curl.dcurl", TextVndCurlDcurl),
+new KeyValuePair<string, MIMEType>("text/vnd.curl.scurl", TextVndCurlScurl),
+new KeyValuePair<string, MIMEType>("text/vnd.curl.mcurl", TextVndCurlMcurl),
+new KeyValuePair<string, MIMEType>("text/vnd.dvb.subtitle", TextVndDvbSubtitle),
+new KeyValuePair<string, MIMEType>("text/vnd.fly", TextVndFly),
+new KeyValuePair<string, MIMEType>("text/vnd.fmi.flexstor", TextVndFmiFlexstor),
+new KeyValuePair<string, MIMEType>("text/vnd.graphviz", TextVndGraphviz),
+new KeyValuePair<string, MIMEType>("text/vnd.in3d.3dml", TextVndIn3d3dml),
+new KeyValuePair<string, MIMEType>("text/vnd.in3d.spot", TextVndIn3dSpot),
+new KeyValuePair<string, MIMEType>("text/vnd.sun.j2me.app-descriptor", TextVndSunJ2meAppDescriptor),
+new KeyValuePair<string, MIMEType>("text/vnd.wap.wml", TextVndWapWml),
+new KeyValuePair<string, MIMEType>("text/vnd.wap.wmlscript", TextVndWapWmlscript),
+new KeyValuePair<string, MIMEType>("text/x-asm", TextXAsm),
+new KeyValuePair<string, MIMEType>("text/x-c", TextXC),
+new KeyValuePair<string, MIMEType>("text/x-fortran", TextXFortran),
+new KeyValuePair<string, MIMEType>("text/x-java-source", TextXJavaSource),
+new KeyValuePair<string, MIMEType>("text/x-opml", TextXOpml),
+new KeyValuePair<string, MIMEType>("text/x-pascal", TextXPascal),
+new KeyValuePair<string, MIMEType>("text/x-nfo", TextXNfo),
+new KeyValuePair<string, MIMEType>("text/x-setext", TextXSetext),
+new KeyValuePair<string, MIMEType>("text/x-sfv", TextXSfv),
+new KeyValuePair<string, MIMEType>("text/x-uuencode", TextXUuencode),
+new KeyValuePair<string, MIMEType>("text/x-vcalendar", TextXVcalendar),
+new KeyValuePair<string, MIMEType>("text/x-vcard", TextXVcard),
+new KeyValuePair<string, MIMEType>("video/3gpp", Video3gpp),
+new KeyValuePair<string, MIMEType>("video/3gpp2", Video3gpp2),
+new KeyValuePair<string, MIMEType>("video/h261", VideoH261),
+new KeyValuePair<string, MIMEType>("video/h263", VideoH263),
+new KeyValuePair<string, MIMEType>("video/h264", VideoH264),
+new KeyValuePair<string, MIMEType>("video/jpeg", VideoJpeg),
+new KeyValuePair<string, MIMEType>("video/jpm", VideoJpm),
+new KeyValuePair<string, MIMEType>("video/mj2", VideoMj2),
+new KeyValuePair<string, MIMEType>("video/mp4", VideoMp4),
+new KeyValuePair<string, MIMEType>("video/mpeg", VideoMpeg),
+new KeyValuePair<string, MIMEType>("video/ogg", VideoOgg),
+new KeyValuePair<string, MIMEType>("video/quicktime", VideoQuicktime),
+new KeyValuePair<string, MIMEType>("video/vnd.dece.hd", VideoVndDeceHd),
+new KeyValuePair<string, MIMEType>("video/vnd.dece.mobile", VideoVndDeceMobile),
+new KeyValuePair<string, MIMEType>("video/vnd.dece.pd", VideoVndDecePd),
+new KeyValuePair<string, MIMEType>("video/vnd.dece.sd", VideoVndDeceSd),
+new KeyValuePair<string, MIMEType>("video/vnd.dece.video", VideoVndDeceVideo),
+new KeyValuePair<string, MIMEType>("video/vnd.dvb.file", VideoVndDvbFile),
+new KeyValuePair<string, MIMEType>("video/vnd.fvt", VideoVndFvt),
+new KeyValuePair<string, MIMEType>("video/vnd.mpegurl", VideoVndMpegurl),
+new KeyValuePair<string, MIMEType>("video/vnd.ms-playready.media.pyv", VideoVndMsPlayreadyMediaPyv),
+new KeyValuePair<string, MIMEType>("video/vnd.uvvu.mp4", VideoVndUvvuMp4),
+new KeyValuePair<string, MIMEType>("video/vnd.vivo", VideoVndVivo),
+new KeyValuePair<string, MIMEType>("video/webm", VideoWebm),
+new KeyValuePair<string, MIMEType>("video/x-f4v", VideoXF4v),
+new KeyValuePair<string, MIMEType>("video/x-fli", VideoXFli),
+new KeyValuePair<string, MIMEType>("video/x-flv", VideoXFlv),
+new KeyValuePair<string, MIMEType>("video/x-m4v", VideoXM4v),
+new KeyValuePair<string, MIMEType>("video/x-matroska", VideoXMatroska),
+new KeyValuePair<string, MIMEType>("video/x-mng", VideoXMng),
+new KeyValuePair<string, MIMEType>("video/x-ms-asf", VideoXMsAsf),
+new KeyValuePair<string, MIMEType>("video/x-ms-vob", VideoXMsVob),
+new KeyValuePair<string, MIMEType>("video/x-ms-wm", VideoXMsWm),
+new KeyValuePair<string, MIMEType>("video/x-ms-wmv", VideoXMsWmv),
+new KeyValuePair<string, MIMEType>("video/x-ms-wmx", VideoXMsWmx),
+new KeyValuePair<string, MIMEType>("video/x-ms-wvx", VideoXMsWvx),
+new KeyValuePair<string, MIMEType>("video/x-msvideo", VideoXMsvideo),
+new KeyValuePair<string, MIMEType>("video/x-sgi-movie", VideoXSgiMovie),
+new KeyValuePair<string, MIMEType>("video/x-smv", VideoXSmv),
+new KeyValuePair<string, MIMEType>("x-conference/x-cooltalk", XConferenceXCooltalk)
+        ).ToDictionary();
+        
+        static public bool TryParseFromType(string input, out MIMEType type)
+        {
+            if(TYPE_LOOKUP_TABLE.TryGetValue(input.ToLower(), out type))
+                return true;
+                
+            type = ApplicationOctetStream;
+            return false;
+        }
+        static public MIMEType ParseFromType(string input)
+        {
+            MIMEType type;
+            
+            TryParseFromType(input, out type);
+            return type;
+        }
+        
+        static private Dictionary<string, MIMEType> EXTENSION_LOOKUP_TABLE = Enumerable.New(
+            new KeyValuePair<string, MIMEType>("ez", ApplicationAndrewInset),
+new KeyValuePair<string, MIMEType>("aw", ApplicationApplixware),
+new KeyValuePair<string, MIMEType>("atom", ApplicationAtomXml),
+new KeyValuePair<string, MIMEType>("atomcat", ApplicationAtomcatXml),
+new KeyValuePair<string, MIMEType>("atomsvc", ApplicationAtomsvcXml),
+new KeyValuePair<string, MIMEType>("ccxml", ApplicationCcxmlXml),
+new KeyValuePair<string, MIMEType>("cdmia", ApplicationCdmiCapability),
+new KeyValuePair<string, MIMEType>("cdmic", ApplicationCdmiContainer),
+new KeyValuePair<string, MIMEType>("cdmid", ApplicationCdmiDomain),
+new KeyValuePair<string, MIMEType>("cdmio", ApplicationCdmiObject),
+new KeyValuePair<string, MIMEType>("cdmiq", ApplicationCdmiQueue),
+new KeyValuePair<string, MIMEType>("cu", ApplicationCuSeeme),
+new KeyValuePair<string, MIMEType>("davmount", ApplicationDavmountXml),
+new KeyValuePair<string, MIMEType>("dbk", ApplicationDocbookXml),
+new KeyValuePair<string, MIMEType>("dssc", ApplicationDsscDer),
+new KeyValuePair<string, MIMEType>("xdssc", ApplicationDsscXml),
+new KeyValuePair<string, MIMEType>("ecma", ApplicationEcmascript),
+new KeyValuePair<string, MIMEType>("emma", ApplicationEmmaXml),
+new KeyValuePair<string, MIMEType>("epub", ApplicationEpubZip),
+new KeyValuePair<string, MIMEType>("exi", ApplicationExi),
+new KeyValuePair<string, MIMEType>("pfr", ApplicationFontTdpfr),
+new KeyValuePair<string, MIMEType>("gml", ApplicationGmlXml),
+new KeyValuePair<string, MIMEType>("gpx", ApplicationGpxXml),
+new KeyValuePair<string, MIMEType>("gxf", ApplicationGxf),
+new KeyValuePair<string, MIMEType>("stk", ApplicationHyperstudio),
+new KeyValuePair<string, MIMEType>("ink", ApplicationInkmlXml),
+new KeyValuePair<string, MIMEType>("inkml", ApplicationInkmlXml),
+new KeyValuePair<string, MIMEType>("ipfix", ApplicationIpfix),
+new KeyValuePair<string, MIMEType>("jar", ApplicationJavaArchive),
+new KeyValuePair<string, MIMEType>("ser", ApplicationJavaSerializedObject),
+new KeyValuePair<string, MIMEType>("class", ApplicationJavaVm),
+new KeyValuePair<string, MIMEType>("js", ApplicationJavascript),
+new KeyValuePair<string, MIMEType>("json", ApplicationJson),
+new KeyValuePair<string, MIMEType>("jsonml", ApplicationJsonmlJson),
+new KeyValuePair<string, MIMEType>("lostxml", ApplicationLostXml),
+new KeyValuePair<string, MIMEType>("hqx", ApplicationMacBinhex40),
+new KeyValuePair<string, MIMEType>("cpt", ApplicationMacCompactpro),
+new KeyValuePair<string, MIMEType>("mads", ApplicationMadsXml),
+new KeyValuePair<string, MIMEType>("mrc", ApplicationMarc),
+new KeyValuePair<string, MIMEType>("mrcx", ApplicationMarcxmlXml),
+new KeyValuePair<string, MIMEType>("ma", ApplicationMathematica),
+new KeyValuePair<string, MIMEType>("nb", ApplicationMathematica),
+new KeyValuePair<string, MIMEType>("mb", ApplicationMathematica),
+new KeyValuePair<string, MIMEType>("mathml", ApplicationMathmlXml),
+new KeyValuePair<string, MIMEType>("mbox", ApplicationMbox),
+new KeyValuePair<string, MIMEType>("mscml", ApplicationMediaservercontrolXml),
+new KeyValuePair<string, MIMEType>("metalink", ApplicationMetalinkXml),
+new KeyValuePair<string, MIMEType>("meta4", ApplicationMetalink4Xml),
+new KeyValuePair<string, MIMEType>("mets", ApplicationMetsXml),
+new KeyValuePair<string, MIMEType>("mods", ApplicationModsXml),
+new KeyValuePair<string, MIMEType>("m21", ApplicationMp21),
+new KeyValuePair<string, MIMEType>("mp21", ApplicationMp21),
+new KeyValuePair<string, MIMEType>("mp4s", ApplicationMp4),
+new KeyValuePair<string, MIMEType>("doc", ApplicationMsword),
+new KeyValuePair<string, MIMEType>("dot", ApplicationMsword),
+new KeyValuePair<string, MIMEType>("mxf", ApplicationMxf),
+new KeyValuePair<string, MIMEType>("bin", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("dms", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("lrf", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("mar", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("so", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("dist", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("distz", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("pkg", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("bpk", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("dump", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("elc", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("deploy", ApplicationOctetStream),
+new KeyValuePair<string, MIMEType>("oda", ApplicationOda),
+new KeyValuePair<string, MIMEType>("opf", ApplicationOebpsPackageXml),
+new KeyValuePair<string, MIMEType>("ogx", ApplicationOgg),
+new KeyValuePair<string, MIMEType>("omdoc", ApplicationOmdocXml),
+new KeyValuePair<string, MIMEType>("onetoc", ApplicationOnenote),
+new KeyValuePair<string, MIMEType>("onetoc2", ApplicationOnenote),
+new KeyValuePair<string, MIMEType>("onetmp", ApplicationOnenote),
+new KeyValuePair<string, MIMEType>("onepkg", ApplicationOnenote),
+new KeyValuePair<string, MIMEType>("oxps", ApplicationOxps),
+new KeyValuePair<string, MIMEType>("xer", ApplicationPatchOpsErrorXml),
+new KeyValuePair<string, MIMEType>("pdf", ApplicationPdf),
+new KeyValuePair<string, MIMEType>("pgp", ApplicationPgpEncrypted),
+new KeyValuePair<string, MIMEType>("asc", ApplicationPgpSignature),
+new KeyValuePair<string, MIMEType>("sig", ApplicationPgpSignature),
+new KeyValuePair<string, MIMEType>("prf", ApplicationPicsRules),
+new KeyValuePair<string, MIMEType>("p10", ApplicationPkcs10),
+new KeyValuePair<string, MIMEType>("p7m", ApplicationPkcs7Mime),
+new KeyValuePair<string, MIMEType>("p7c", ApplicationPkcs7Mime),
+new KeyValuePair<string, MIMEType>("p7s", ApplicationPkcs7Signature),
+new KeyValuePair<string, MIMEType>("p8", ApplicationPkcs8),
+new KeyValuePair<string, MIMEType>("ac", ApplicationPkixAttrCert),
+new KeyValuePair<string, MIMEType>("cer", ApplicationPkixCert),
+new KeyValuePair<string, MIMEType>("crl", ApplicationPkixCrl),
+new KeyValuePair<string, MIMEType>("pkipath", ApplicationPkixPkipath),
+new KeyValuePair<string, MIMEType>("pki", ApplicationPkixcmp),
+new KeyValuePair<string, MIMEType>("pls", ApplicationPlsXml),
+new KeyValuePair<string, MIMEType>("ai", ApplicationPostscript),
+new KeyValuePair<string, MIMEType>("eps", ApplicationPostscript),
+new KeyValuePair<string, MIMEType>("ps", ApplicationPostscript),
+new KeyValuePair<string, MIMEType>("cww", ApplicationPrsCww),
+new KeyValuePair<string, MIMEType>("pskcxml", ApplicationPskcXml),
+new KeyValuePair<string, MIMEType>("rdf", ApplicationRdfXml),
+new KeyValuePair<string, MIMEType>("rif", ApplicationReginfoXml),
+new KeyValuePair<string, MIMEType>("rnc", ApplicationRelaxNgCompactSyntax),
+new KeyValuePair<string, MIMEType>("rl", ApplicationResourceListsXml),
+new KeyValuePair<string, MIMEType>("rld", ApplicationResourceListsDiffXml),
+new KeyValuePair<string, MIMEType>("rs", ApplicationRlsServicesXml),
+new KeyValuePair<string, MIMEType>("gbr", ApplicationRpkiGhostbusters),
+new KeyValuePair<string, MIMEType>("mft", ApplicationRpkiManifest),
+new KeyValuePair<string, MIMEType>("roa", ApplicationRpkiRoa),
+new KeyValuePair<string, MIMEType>("rsd", ApplicationRsdXml),
+new KeyValuePair<string, MIMEType>("rss", ApplicationRssXml),
+new KeyValuePair<string, MIMEType>("rtf", ApplicationRtf),
+new KeyValuePair<string, MIMEType>("sbml", ApplicationSbmlXml),
+new KeyValuePair<string, MIMEType>("scq", ApplicationScvpCvRequest),
+new KeyValuePair<string, MIMEType>("scs", ApplicationScvpCvResponse),
+new KeyValuePair<string, MIMEType>("spq", ApplicationScvpVpRequest),
+new KeyValuePair<string, MIMEType>("spp", ApplicationScvpVpResponse),
+new KeyValuePair<string, MIMEType>("sdp", ApplicationSdp),
+new KeyValuePair<string, MIMEType>("setpay", ApplicationSetPaymentInitiation),
+new KeyValuePair<string, MIMEType>("setreg", ApplicationSetRegistrationInitiation),
+new KeyValuePair<string, MIMEType>("shf", ApplicationShfXml),
+new KeyValuePair<string, MIMEType>("smi", ApplicationSmilXml),
+new KeyValuePair<string, MIMEType>("smil", ApplicationSmilXml),
+new KeyValuePair<string, MIMEType>("rq", ApplicationSparqlQuery),
+new KeyValuePair<string, MIMEType>("srx", ApplicationSparqlResultsXml),
+new KeyValuePair<string, MIMEType>("gram", ApplicationSrgs),
+new KeyValuePair<string, MIMEType>("grxml", ApplicationSrgsXml),
+new KeyValuePair<string, MIMEType>("sru", ApplicationSruXml),
+new KeyValuePair<string, MIMEType>("ssdl", ApplicationSsdlXml),
+new KeyValuePair<string, MIMEType>("ssml", ApplicationSsmlXml),
+new KeyValuePair<string, MIMEType>("tei", ApplicationTeiXml),
+new KeyValuePair<string, MIMEType>("teicorpus", ApplicationTeiXml),
+new KeyValuePair<string, MIMEType>("tfi", ApplicationThraudXml),
+new KeyValuePair<string, MIMEType>("tsd", ApplicationTimestampedData),
+new KeyValuePair<string, MIMEType>("plb", ApplicationVnd3gppPicBwLarge),
+new KeyValuePair<string, MIMEType>("psb", ApplicationVnd3gppPicBwSmall),
+new KeyValuePair<string, MIMEType>("pvb", ApplicationVnd3gppPicBwVar),
+new KeyValuePair<string, MIMEType>("tcap", ApplicationVnd3gpp2Tcap),
+new KeyValuePair<string, MIMEType>("pwn", ApplicationVnd3mPostItNotes),
+new KeyValuePair<string, MIMEType>("aso", ApplicationVndAccpacSimplyAso),
+new KeyValuePair<string, MIMEType>("imp", ApplicationVndAccpacSimplyImp),
+new KeyValuePair<string, MIMEType>("acu", ApplicationVndAcucobol),
+new KeyValuePair<string, MIMEType>("atc", ApplicationVndAcucorp),
+new KeyValuePair<string, MIMEType>("acutc", ApplicationVndAcucorp),
+new KeyValuePair<string, MIMEType>("air", ApplicationVndAdobeAirApplicationInstallerPackageZip),
+new KeyValuePair<string, MIMEType>("fcdt", ApplicationVndAdobeFormscentralFcdt),
+new KeyValuePair<string, MIMEType>("fxp", ApplicationVndAdobeFxp),
+new KeyValuePair<string, MIMEType>("fxpl", ApplicationVndAdobeFxp),
+new KeyValuePair<string, MIMEType>("xdp", ApplicationVndAdobeXdpXml),
+new KeyValuePair<string, MIMEType>("xfdf", ApplicationVndAdobeXfdf),
+new KeyValuePair<string, MIMEType>("ahead", ApplicationVndAheadSpace),
+new KeyValuePair<string, MIMEType>("azf", ApplicationVndAirzipFilesecureAzf),
+new KeyValuePair<string, MIMEType>("azs", ApplicationVndAirzipFilesecureAzs),
+new KeyValuePair<string, MIMEType>("azw", ApplicationVndAmazonEbook),
+new KeyValuePair<string, MIMEType>("acc", ApplicationVndAmericandynamicsAcc),
+new KeyValuePair<string, MIMEType>("ami", ApplicationVndAmigaAmi),
+new KeyValuePair<string, MIMEType>("apk", ApplicationVndAndroidPackageArchive),
+new KeyValuePair<string, MIMEType>("cii", ApplicationVndAnserWebCertificateIssueInitiation),
+new KeyValuePair<string, MIMEType>("fti", ApplicationVndAnserWebFundsTransferInitiation),
+new KeyValuePair<string, MIMEType>("atx", ApplicationVndAntixGameComponent),
+new KeyValuePair<string, MIMEType>("mpkg", ApplicationVndAppleInstallerXml),
+new KeyValuePair<string, MIMEType>("m3u8", ApplicationVndAppleMpegurl),
+new KeyValuePair<string, MIMEType>("swi", ApplicationVndAristanetworksSwi),
+new KeyValuePair<string, MIMEType>("iota", ApplicationVndAstraeaSoftwareIota),
+new KeyValuePair<string, MIMEType>("aep", ApplicationVndAudiograph),
+new KeyValuePair<string, MIMEType>("mpm", ApplicationVndBlueiceMultipass),
+new KeyValuePair<string, MIMEType>("bmi", ApplicationVndBmi),
+new KeyValuePair<string, MIMEType>("rep", ApplicationVndBusinessobjects),
+new KeyValuePair<string, MIMEType>("cdxml", ApplicationVndChemdrawXml),
+new KeyValuePair<string, MIMEType>("mmd", ApplicationVndChipnutsKaraokeMmd),
+new KeyValuePair<string, MIMEType>("cdy", ApplicationVndCinderella),
+new KeyValuePair<string, MIMEType>("cla", ApplicationVndClaymore),
+new KeyValuePair<string, MIMEType>("rp9", ApplicationVndCloantoRp9),
+new KeyValuePair<string, MIMEType>("c4g", ApplicationVndClonkC4group),
+new KeyValuePair<string, MIMEType>("c4d", ApplicationVndClonkC4group),
+new KeyValuePair<string, MIMEType>("c4f", ApplicationVndClonkC4group),
+new KeyValuePair<string, MIMEType>("c4p", ApplicationVndClonkC4group),
+new KeyValuePair<string, MIMEType>("c4u", ApplicationVndClonkC4group),
+new KeyValuePair<string, MIMEType>("c11amc", ApplicationVndCluetrustCartomobileConfig),
+new KeyValuePair<string, MIMEType>("c11amz", ApplicationVndCluetrustCartomobileConfigPkg),
+new KeyValuePair<string, MIMEType>("csp", ApplicationVndCommonspace),
+new KeyValuePair<string, MIMEType>("cdbcmsg", ApplicationVndContactCmsg),
+new KeyValuePair<string, MIMEType>("cmc", ApplicationVndCosmocaller),
+new KeyValuePair<string, MIMEType>("clkx", ApplicationVndCrickClicker),
+new KeyValuePair<string, MIMEType>("clkk", ApplicationVndCrickClickerKeyboard),
+new KeyValuePair<string, MIMEType>("clkp", ApplicationVndCrickClickerPalette),
+new KeyValuePair<string, MIMEType>("clkt", ApplicationVndCrickClickerTemplate),
+new KeyValuePair<string, MIMEType>("clkw", ApplicationVndCrickClickerWordbank),
+new KeyValuePair<string, MIMEType>("wbs", ApplicationVndCriticaltoolsWbsXml),
+new KeyValuePair<string, MIMEType>("pml", ApplicationVndCtcPosml),
+new KeyValuePair<string, MIMEType>("ppd", ApplicationVndCupsPpd),
+new KeyValuePair<string, MIMEType>("car", ApplicationVndCurlCar),
+new KeyValuePair<string, MIMEType>("pcurl", ApplicationVndCurlPcurl),
+new KeyValuePair<string, MIMEType>("dart", ApplicationVndDart),
+new KeyValuePair<string, MIMEType>("rdz", ApplicationVndDataVisionRdz),
+new KeyValuePair<string, MIMEType>("uvf", ApplicationVndDeceData),
+new KeyValuePair<string, MIMEType>("uvvf", ApplicationVndDeceData),
+new KeyValuePair<string, MIMEType>("uvd", ApplicationVndDeceData),
+new KeyValuePair<string, MIMEType>("uvvd", ApplicationVndDeceData),
+new KeyValuePair<string, MIMEType>("uvt", ApplicationVndDeceTtmlXml),
+new KeyValuePair<string, MIMEType>("uvvt", ApplicationVndDeceTtmlXml),
+new KeyValuePair<string, MIMEType>("uvx", ApplicationVndDeceUnspecified),
+new KeyValuePair<string, MIMEType>("uvvx", ApplicationVndDeceUnspecified),
+new KeyValuePair<string, MIMEType>("uvz", ApplicationVndDeceZip),
+new KeyValuePair<string, MIMEType>("uvvz", ApplicationVndDeceZip),
+new KeyValuePair<string, MIMEType>("fe_launch", ApplicationVndDenovoFcselayoutLink),
+new KeyValuePair<string, MIMEType>("dna", ApplicationVndDna),
+new KeyValuePair<string, MIMEType>("mlp", ApplicationVndDolbyMlp),
+new KeyValuePair<string, MIMEType>("dpg", ApplicationVndDpgraph),
+new KeyValuePair<string, MIMEType>("dfac", ApplicationVndDreamfactory),
+new KeyValuePair<string, MIMEType>("kpxx", ApplicationVndDsKeypoint),
+new KeyValuePair<string, MIMEType>("ait", ApplicationVndDvbAit),
+new KeyValuePair<string, MIMEType>("svc", ApplicationVndDvbService),
+new KeyValuePair<string, MIMEType>("geo", ApplicationVndDynageo),
+new KeyValuePair<string, MIMEType>("mag", ApplicationVndEcowinChart),
+new KeyValuePair<string, MIMEType>("nml", ApplicationVndEnliven),
+new KeyValuePair<string, MIMEType>("esf", ApplicationVndEpsonEsf),
+new KeyValuePair<string, MIMEType>("msf", ApplicationVndEpsonMsf),
+new KeyValuePair<string, MIMEType>("qam", ApplicationVndEpsonQuickanime),
+new KeyValuePair<string, MIMEType>("slt", ApplicationVndEpsonSalt),
+new KeyValuePair<string, MIMEType>("ssf", ApplicationVndEpsonSsf),
+new KeyValuePair<string, MIMEType>("es3", ApplicationVndEszigno3Xml),
+new KeyValuePair<string, MIMEType>("et3", ApplicationVndEszigno3Xml),
+new KeyValuePair<string, MIMEType>("ez2", ApplicationVndEzpixAlbum),
+new KeyValuePair<string, MIMEType>("ez3", ApplicationVndEzpixPackage),
+new KeyValuePair<string, MIMEType>("fdf", ApplicationVndFdf),
+new KeyValuePair<string, MIMEType>("mseed", ApplicationVndFdsnMseed),
+new KeyValuePair<string, MIMEType>("seed", ApplicationVndFdsnSeed),
+new KeyValuePair<string, MIMEType>("dataless", ApplicationVndFdsnSeed),
+new KeyValuePair<string, MIMEType>("gph", ApplicationVndFlographit),
+new KeyValuePair<string, MIMEType>("ftc", ApplicationVndFluxtimeClip),
+new KeyValuePair<string, MIMEType>("fm", ApplicationVndFramemaker),
+new KeyValuePair<string, MIMEType>("frame", ApplicationVndFramemaker),
+new KeyValuePair<string, MIMEType>("maker", ApplicationVndFramemaker),
+new KeyValuePair<string, MIMEType>("book", ApplicationVndFramemaker),
+new KeyValuePair<string, MIMEType>("fnc", ApplicationVndFrogansFnc),
+new KeyValuePair<string, MIMEType>("ltf", ApplicationVndFrogansLtf),
+new KeyValuePair<string, MIMEType>("fsc", ApplicationVndFscWeblaunch),
+new KeyValuePair<string, MIMEType>("oas", ApplicationVndFujitsuOasys),
+new KeyValuePair<string, MIMEType>("oa2", ApplicationVndFujitsuOasys2),
+new KeyValuePair<string, MIMEType>("oa3", ApplicationVndFujitsuOasys3),
+new KeyValuePair<string, MIMEType>("fg5", ApplicationVndFujitsuOasysgp),
+new KeyValuePair<string, MIMEType>("bh2", ApplicationVndFujitsuOasysprs),
+new KeyValuePair<string, MIMEType>("ddd", ApplicationVndFujixeroxDdd),
+new KeyValuePair<string, MIMEType>("xdw", ApplicationVndFujixeroxDocuworks),
+new KeyValuePair<string, MIMEType>("xbd", ApplicationVndFujixeroxDocuworksBinder),
+new KeyValuePair<string, MIMEType>("fzs", ApplicationVndFuzzysheet),
+new KeyValuePair<string, MIMEType>("txd", ApplicationVndGenomatixTuxedo),
+new KeyValuePair<string, MIMEType>("ggb", ApplicationVndGeogebraFile),
+new KeyValuePair<string, MIMEType>("ggt", ApplicationVndGeogebraTool),
+new KeyValuePair<string, MIMEType>("gex", ApplicationVndGeometryExplorer),
+new KeyValuePair<string, MIMEType>("gre", ApplicationVndGeometryExplorer),
+new KeyValuePair<string, MIMEType>("gxt", ApplicationVndGeonext),
+new KeyValuePair<string, MIMEType>("g2w", ApplicationVndGeoplan),
+new KeyValuePair<string, MIMEType>("g3w", ApplicationVndGeospace),
+new KeyValuePair<string, MIMEType>("gmx", ApplicationVndGmx),
+new KeyValuePair<string, MIMEType>("kml", ApplicationVndGoogleEarthKmlXml),
+new KeyValuePair<string, MIMEType>("kmz", ApplicationVndGoogleEarthKmz),
+new KeyValuePair<string, MIMEType>("gqf", ApplicationVndGrafeq),
+new KeyValuePair<string, MIMEType>("gqs", ApplicationVndGrafeq),
+new KeyValuePair<string, MIMEType>("gac", ApplicationVndGrooveAccount),
+new KeyValuePair<string, MIMEType>("ghf", ApplicationVndGrooveHelp),
+new KeyValuePair<string, MIMEType>("gim", ApplicationVndGrooveIdentityMessage),
+new KeyValuePair<string, MIMEType>("grv", ApplicationVndGrooveInjector),
+new KeyValuePair<string, MIMEType>("gtm", ApplicationVndGrooveToolMessage),
+new KeyValuePair<string, MIMEType>("tpl", ApplicationVndGrooveToolTemplate),
+new KeyValuePair<string, MIMEType>("vcg", ApplicationVndGrooveVcard),
+new KeyValuePair<string, MIMEType>("hal", ApplicationVndHalXml),
+new KeyValuePair<string, MIMEType>("zmm", ApplicationVndHandheldEntertainmentXml),
+new KeyValuePair<string, MIMEType>("hbci", ApplicationVndHbci),
+new KeyValuePair<string, MIMEType>("les", ApplicationVndHheLessonPlayer),
+new KeyValuePair<string, MIMEType>("hpgl", ApplicationVndHpHpgl),
+new KeyValuePair<string, MIMEType>("hpid", ApplicationVndHpHpid),
+new KeyValuePair<string, MIMEType>("hps", ApplicationVndHpHps),
+new KeyValuePair<string, MIMEType>("jlt", ApplicationVndHpJlyt),
+new KeyValuePair<string, MIMEType>("pcl", ApplicationVndHpPcl),
+new KeyValuePair<string, MIMEType>("pclxl", ApplicationVndHpPclxl),
+new KeyValuePair<string, MIMEType>("sfd-hdstx", ApplicationVndHydrostatixSofData),
+new KeyValuePair<string, MIMEType>("mpy", ApplicationVndIbmMinipay),
+new KeyValuePair<string, MIMEType>("afp", ApplicationVndIbmModcap),
+new KeyValuePair<string, MIMEType>("listafp", ApplicationVndIbmModcap),
+new KeyValuePair<string, MIMEType>("list3820", ApplicationVndIbmModcap),
+new KeyValuePair<string, MIMEType>("irm", ApplicationVndIbmRightsManagement),
+new KeyValuePair<string, MIMEType>("sc", ApplicationVndIbmSecureContainer),
+new KeyValuePair<string, MIMEType>("icc", ApplicationVndIccprofile),
+new KeyValuePair<string, MIMEType>("icm", ApplicationVndIccprofile),
+new KeyValuePair<string, MIMEType>("igl", ApplicationVndIgloader),
+new KeyValuePair<string, MIMEType>("ivp", ApplicationVndImmervisionIvp),
+new KeyValuePair<string, MIMEType>("ivu", ApplicationVndImmervisionIvu),
+new KeyValuePair<string, MIMEType>("igm", ApplicationVndInsorsIgm),
+new KeyValuePair<string, MIMEType>("xpw", ApplicationVndInterconFormnet),
+new KeyValuePair<string, MIMEType>("xpx", ApplicationVndInterconFormnet),
+new KeyValuePair<string, MIMEType>("i2g", ApplicationVndIntergeo),
+new KeyValuePair<string, MIMEType>("qbo", ApplicationVndIntuQbo),
+new KeyValuePair<string, MIMEType>("qfx", ApplicationVndIntuQfx),
+new KeyValuePair<string, MIMEType>("rcprofile", ApplicationVndIpunpluggedRcprofile),
+new KeyValuePair<string, MIMEType>("irp", ApplicationVndIrepositoryPackageXml),
+new KeyValuePair<string, MIMEType>("xpr", ApplicationVndIsXpr),
+new KeyValuePair<string, MIMEType>("fcs", ApplicationVndIsacFcs),
+new KeyValuePair<string, MIMEType>("jam", ApplicationVndJam),
+new KeyValuePair<string, MIMEType>("rms", ApplicationVndJcpJavameMidletRms),
+new KeyValuePair<string, MIMEType>("jisp", ApplicationVndJisp),
+new KeyValuePair<string, MIMEType>("joda", ApplicationVndJoostJodaArchive),
+new KeyValuePair<string, MIMEType>("ktz", ApplicationVndKahootz),
+new KeyValuePair<string, MIMEType>("ktr", ApplicationVndKahootz),
+new KeyValuePair<string, MIMEType>("karbon", ApplicationVndKdeKarbon),
+new KeyValuePair<string, MIMEType>("chrt", ApplicationVndKdeKchart),
+new KeyValuePair<string, MIMEType>("kfo", ApplicationVndKdeKformula),
+new KeyValuePair<string, MIMEType>("flw", ApplicationVndKdeKivio),
+new KeyValuePair<string, MIMEType>("kon", ApplicationVndKdeKontour),
+new KeyValuePair<string, MIMEType>("kpr", ApplicationVndKdeKpresenter),
+new KeyValuePair<string, MIMEType>("kpt", ApplicationVndKdeKpresenter),
+new KeyValuePair<string, MIMEType>("ksp", ApplicationVndKdeKspread),
+new KeyValuePair<string, MIMEType>("kwd", ApplicationVndKdeKword),
+new KeyValuePair<string, MIMEType>("kwt", ApplicationVndKdeKword),
+new KeyValuePair<string, MIMEType>("htke", ApplicationVndKenameaapp),
+new KeyValuePair<string, MIMEType>("kia", ApplicationVndKidspiration),
+new KeyValuePair<string, MIMEType>("kne", ApplicationVndKinar),
+new KeyValuePair<string, MIMEType>("knp", ApplicationVndKinar),
+new KeyValuePair<string, MIMEType>("skp", ApplicationVndKoan),
+new KeyValuePair<string, MIMEType>("skd", ApplicationVndKoan),
+new KeyValuePair<string, MIMEType>("skt", ApplicationVndKoan),
+new KeyValuePair<string, MIMEType>("skm", ApplicationVndKoan),
+new KeyValuePair<string, MIMEType>("sse", ApplicationVndKodakDescriptor),
+new KeyValuePair<string, MIMEType>("lasxml", ApplicationVndLasLasXml),
+new KeyValuePair<string, MIMEType>("lbd", ApplicationVndLlamagraphicsLifeBalanceDesktop),
+new KeyValuePair<string, MIMEType>("lbe", ApplicationVndLlamagraphicsLifeBalanceExchangeXml),
+new KeyValuePair<string, MIMEType>("123", ApplicationVndLotus123),
+new KeyValuePair<string, MIMEType>("apr", ApplicationVndLotusApproach),
+new KeyValuePair<string, MIMEType>("pre", ApplicationVndLotusFreelance),
+new KeyValuePair<string, MIMEType>("nsf", ApplicationVndLotusNotes),
+new KeyValuePair<string, MIMEType>("org", ApplicationVndLotusOrganizer),
+new KeyValuePair<string, MIMEType>("scm", ApplicationVndLotusScreencam),
+new KeyValuePair<string, MIMEType>("lwp", ApplicationVndLotusWordpro),
+new KeyValuePair<string, MIMEType>("portpkg", ApplicationVndMacportsPortpkg),
+new KeyValuePair<string, MIMEType>("mcd", ApplicationVndMcd),
+new KeyValuePair<string, MIMEType>("mc1", ApplicationVndMedcalcdata),
+new KeyValuePair<string, MIMEType>("cdkey", ApplicationVndMediastationCdkey),
+new KeyValuePair<string, MIMEType>("mwf", ApplicationVndMfer),
+new KeyValuePair<string, MIMEType>("mfm", ApplicationVndMfmp),
+new KeyValuePair<string, MIMEType>("flo", ApplicationVndMicrografxFlo),
+new KeyValuePair<string, MIMEType>("igx", ApplicationVndMicrografxIgx),
+new KeyValuePair<string, MIMEType>("mif", ApplicationVndMif),
+new KeyValuePair<string, MIMEType>("daf", ApplicationVndMobiusDaf),
+new KeyValuePair<string, MIMEType>("dis", ApplicationVndMobiusDis),
+new KeyValuePair<string, MIMEType>("mbk", ApplicationVndMobiusMbk),
+new KeyValuePair<string, MIMEType>("mqy", ApplicationVndMobiusMqy),
+new KeyValuePair<string, MIMEType>("msl", ApplicationVndMobiusMsl),
+new KeyValuePair<string, MIMEType>("plc", ApplicationVndMobiusPlc),
+new KeyValuePair<string, MIMEType>("txf", ApplicationVndMobiusTxf),
+new KeyValuePair<string, MIMEType>("mpn", ApplicationVndMophunApplication),
+new KeyValuePair<string, MIMEType>("mpc", ApplicationVndMophunCertificate),
+new KeyValuePair<string, MIMEType>("xul", ApplicationVndMozillaXulXml),
+new KeyValuePair<string, MIMEType>("cil", ApplicationVndMsArtgalry),
+new KeyValuePair<string, MIMEType>("cab", ApplicationVndMsCabCompressed),
+new KeyValuePair<string, MIMEType>("xls", ApplicationVndMsExcel),
+new KeyValuePair<string, MIMEType>("xlm", ApplicationVndMsExcel),
+new KeyValuePair<string, MIMEType>("xla", ApplicationVndMsExcel),
+new KeyValuePair<string, MIMEType>("xlc", ApplicationVndMsExcel),
+new KeyValuePair<string, MIMEType>("xlt", ApplicationVndMsExcel),
+new KeyValuePair<string, MIMEType>("xlw", ApplicationVndMsExcel),
+new KeyValuePair<string, MIMEType>("xlam", ApplicationVndMsExcelAddinMacroenabled12),
+new KeyValuePair<string, MIMEType>("xlsb", ApplicationVndMsExcelSheetBinaryMacroenabled12),
+new KeyValuePair<string, MIMEType>("xlsm", ApplicationVndMsExcelSheetMacroenabled12),
+new KeyValuePair<string, MIMEType>("xltm", ApplicationVndMsExcelTemplateMacroenabled12),
+new KeyValuePair<string, MIMEType>("eot", ApplicationVndMsFontobject),
+new KeyValuePair<string, MIMEType>("chm", ApplicationVndMsHtmlhelp),
+new KeyValuePair<string, MIMEType>("ims", ApplicationVndMsIms),
+new KeyValuePair<string, MIMEType>("lrm", ApplicationVndMsLrm),
+new KeyValuePair<string, MIMEType>("thmx", ApplicationVndMsOfficetheme),
+new KeyValuePair<string, MIMEType>("cat", ApplicationVndMsPkiSeccat),
+new KeyValuePair<string, MIMEType>("stl", ApplicationVndMsPkiStl),
+new KeyValuePair<string, MIMEType>("ppt", ApplicationVndMsPowerpoint),
+new KeyValuePair<string, MIMEType>("pps", ApplicationVndMsPowerpoint),
+new KeyValuePair<string, MIMEType>("pot", ApplicationVndMsPowerpoint),
+new KeyValuePair<string, MIMEType>("ppam", ApplicationVndMsPowerpointAddinMacroenabled12),
+new KeyValuePair<string, MIMEType>("pptm", ApplicationVndMsPowerpointPresentationMacroenabled12),
+new KeyValuePair<string, MIMEType>("sldm", ApplicationVndMsPowerpointSlideMacroenabled12),
+new KeyValuePair<string, MIMEType>("ppsm", ApplicationVndMsPowerpointSlideshowMacroenabled12),
+new KeyValuePair<string, MIMEType>("potm", ApplicationVndMsPowerpointTemplateMacroenabled12),
+new KeyValuePair<string, MIMEType>("mpp", ApplicationVndMsProject),
+new KeyValuePair<string, MIMEType>("mpt", ApplicationVndMsProject),
+new KeyValuePair<string, MIMEType>("docm", ApplicationVndMsWordDocumentMacroenabled12),
+new KeyValuePair<string, MIMEType>("dotm", ApplicationVndMsWordTemplateMacroenabled12),
+new KeyValuePair<string, MIMEType>("wps", ApplicationVndMsWorks),
+new KeyValuePair<string, MIMEType>("wks", ApplicationVndMsWorks),
+new KeyValuePair<string, MIMEType>("wcm", ApplicationVndMsWorks),
+new KeyValuePair<string, MIMEType>("wdb", ApplicationVndMsWorks),
+new KeyValuePair<string, MIMEType>("wpl", ApplicationVndMsWpl),
+new KeyValuePair<string, MIMEType>("xps", ApplicationVndMsXpsdocument),
+new KeyValuePair<string, MIMEType>("mseq", ApplicationVndMseq),
+new KeyValuePair<string, MIMEType>("mus", ApplicationVndMusician),
+new KeyValuePair<string, MIMEType>("msty", ApplicationVndMuveeStyle),
+new KeyValuePair<string, MIMEType>("taglet", ApplicationVndMynfc),
+new KeyValuePair<string, MIMEType>("nlu", ApplicationVndNeurolanguageNlu),
+new KeyValuePair<string, MIMEType>("ntf", ApplicationVndNitf),
+new KeyValuePair<string, MIMEType>("nitf", ApplicationVndNitf),
+new KeyValuePair<string, MIMEType>("nnd", ApplicationVndNoblenetDirectory),
+new KeyValuePair<string, MIMEType>("nns", ApplicationVndNoblenetSealer),
+new KeyValuePair<string, MIMEType>("nnw", ApplicationVndNoblenetWeb),
+new KeyValuePair<string, MIMEType>("ngdat", ApplicationVndNokiaNGageData),
+new KeyValuePair<string, MIMEType>("n-gage", ApplicationVndNokiaNGageSymbianInstall),
+new KeyValuePair<string, MIMEType>("rpst", ApplicationVndNokiaRadioPreset),
+new KeyValuePair<string, MIMEType>("rpss", ApplicationVndNokiaRadioPresets),
+new KeyValuePair<string, MIMEType>("edm", ApplicationVndNovadigmEdm),
+new KeyValuePair<string, MIMEType>("edx", ApplicationVndNovadigmEdx),
+new KeyValuePair<string, MIMEType>("ext", ApplicationVndNovadigmExt),
+new KeyValuePair<string, MIMEType>("odc", ApplicationVndOasisOpendocumentChart),
+new KeyValuePair<string, MIMEType>("otc", ApplicationVndOasisOpendocumentChartTemplate),
+new KeyValuePair<string, MIMEType>("odb", ApplicationVndOasisOpendocumentDatabase),
+new KeyValuePair<string, MIMEType>("odf", ApplicationVndOasisOpendocumentFormula),
+new KeyValuePair<string, MIMEType>("odft", ApplicationVndOasisOpendocumentFormulaTemplate),
+new KeyValuePair<string, MIMEType>("odg", ApplicationVndOasisOpendocumentGraphics),
+new KeyValuePair<string, MIMEType>("otg", ApplicationVndOasisOpendocumentGraphicsTemplate),
+new KeyValuePair<string, MIMEType>("odi", ApplicationVndOasisOpendocumentImage),
+new KeyValuePair<string, MIMEType>("oti", ApplicationVndOasisOpendocumentImageTemplate),
+new KeyValuePair<string, MIMEType>("odp", ApplicationVndOasisOpendocumentPresentation),
+new KeyValuePair<string, MIMEType>("otp", ApplicationVndOasisOpendocumentPresentationTemplate),
+new KeyValuePair<string, MIMEType>("ods", ApplicationVndOasisOpendocumentSpreadsheet),
+new KeyValuePair<string, MIMEType>("ots", ApplicationVndOasisOpendocumentSpreadsheetTemplate),
+new KeyValuePair<string, MIMEType>("odt", ApplicationVndOasisOpendocumentText),
+new KeyValuePair<string, MIMEType>("odm", ApplicationVndOasisOpendocumentTextMaster),
+new KeyValuePair<string, MIMEType>("ott", ApplicationVndOasisOpendocumentTextTemplate),
+new KeyValuePair<string, MIMEType>("oth", ApplicationVndOasisOpendocumentTextWeb),
+new KeyValuePair<string, MIMEType>("xo", ApplicationVndOlpcSugar),
+new KeyValuePair<string, MIMEType>("dd2", ApplicationVndOmaDd2Xml),
+new KeyValuePair<string, MIMEType>("oxt", ApplicationVndOpenofficeorgExtension),
+new KeyValuePair<string, MIMEType>("pptx", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation),
+new KeyValuePair<string, MIMEType>("sldx", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlSlide),
+new KeyValuePair<string, MIMEType>("ppsx", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlSlideshow),
+new KeyValuePair<string, MIMEType>("potx", ApplicationVndOpenxmlformatsOfficedocumentPresentationmlTemplate),
+new KeyValuePair<string, MIMEType>("xlsx", ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet),
+new KeyValuePair<string, MIMEType>("xltx", ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlTemplate),
+new KeyValuePair<string, MIMEType>("docx", ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument),
+new KeyValuePair<string, MIMEType>("dotx", ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlTemplate),
+new KeyValuePair<string, MIMEType>("mgp", ApplicationVndOsgeoMapguidePackage),
+new KeyValuePair<string, MIMEType>("dp", ApplicationVndOsgiDp),
+new KeyValuePair<string, MIMEType>("esa", ApplicationVndOsgiSubsystem),
+new KeyValuePair<string, MIMEType>("pdb", ApplicationVndPalm),
+new KeyValuePair<string, MIMEType>("pqa", ApplicationVndPalm),
+new KeyValuePair<string, MIMEType>("oprc", ApplicationVndPalm),
+new KeyValuePair<string, MIMEType>("paw", ApplicationVndPawaafile),
+new KeyValuePair<string, MIMEType>("str", ApplicationVndPgFormat),
+new KeyValuePair<string, MIMEType>("ei6", ApplicationVndPgOsasli),
+new KeyValuePair<string, MIMEType>("efif", ApplicationVndPicsel),
+new KeyValuePair<string, MIMEType>("wg", ApplicationVndPmiWidget),
+new KeyValuePair<string, MIMEType>("plf", ApplicationVndPocketlearn),
+new KeyValuePair<string, MIMEType>("pbd", ApplicationVndPowerbuilder6),
+new KeyValuePair<string, MIMEType>("box", ApplicationVndPreviewsystemsBox),
+new KeyValuePair<string, MIMEType>("mgz", ApplicationVndProteusMagazine),
+new KeyValuePair<string, MIMEType>("qps", ApplicationVndPublishareDeltaTree),
+new KeyValuePair<string, MIMEType>("ptid", ApplicationVndPviPtid1),
+new KeyValuePair<string, MIMEType>("qxd", ApplicationVndQuarkQuarkxpress),
+new KeyValuePair<string, MIMEType>("qxt", ApplicationVndQuarkQuarkxpress),
+new KeyValuePair<string, MIMEType>("qwd", ApplicationVndQuarkQuarkxpress),
+new KeyValuePair<string, MIMEType>("qwt", ApplicationVndQuarkQuarkxpress),
+new KeyValuePair<string, MIMEType>("qxl", ApplicationVndQuarkQuarkxpress),
+new KeyValuePair<string, MIMEType>("qxb", ApplicationVndQuarkQuarkxpress),
+new KeyValuePair<string, MIMEType>("bed", ApplicationVndRealvncBed),
+new KeyValuePair<string, MIMEType>("mxl", ApplicationVndRecordareMusicxml),
+new KeyValuePair<string, MIMEType>("musicxml", ApplicationVndRecordareMusicxmlXml),
+new KeyValuePair<string, MIMEType>("cryptonote", ApplicationVndRigCryptonote),
+new KeyValuePair<string, MIMEType>("cod", ApplicationVndRimCod),
+new KeyValuePair<string, MIMEType>("rm", ApplicationVndRnRealmedia),
+new KeyValuePair<string, MIMEType>("rmvb", ApplicationVndRnRealmediaVbr),
+new KeyValuePair<string, MIMEType>("link66", ApplicationVndRoute66Link66Xml),
+new KeyValuePair<string, MIMEType>("st", ApplicationVndSailingtrackerTrack),
+new KeyValuePair<string, MIMEType>("see", ApplicationVndSeemail),
+new KeyValuePair<string, MIMEType>("sema", ApplicationVndSema),
+new KeyValuePair<string, MIMEType>("semd", ApplicationVndSemd),
+new KeyValuePair<string, MIMEType>("semf", ApplicationVndSemf),
+new KeyValuePair<string, MIMEType>("ifm", ApplicationVndShanaInformedFormdata),
+new KeyValuePair<string, MIMEType>("itp", ApplicationVndShanaInformedFormtemplate),
+new KeyValuePair<string, MIMEType>("iif", ApplicationVndShanaInformedInterchange),
+new KeyValuePair<string, MIMEType>("ipk", ApplicationVndShanaInformedPackage),
+new KeyValuePair<string, MIMEType>("twd", ApplicationVndSimtechMindmapper),
+new KeyValuePair<string, MIMEType>("twds", ApplicationVndSimtechMindmapper),
+new KeyValuePair<string, MIMEType>("mmf", ApplicationVndSmaf),
+new KeyValuePair<string, MIMEType>("teacher", ApplicationVndSmartTeacher),
+new KeyValuePair<string, MIMEType>("sdkm", ApplicationVndSolentSdkmXml),
+new KeyValuePair<string, MIMEType>("sdkd", ApplicationVndSolentSdkmXml),
+new KeyValuePair<string, MIMEType>("dxp", ApplicationVndSpotfireDxp),
+new KeyValuePair<string, MIMEType>("sfs", ApplicationVndSpotfireSfs),
+new KeyValuePair<string, MIMEType>("sdc", ApplicationVndStardivisionCalc),
+new KeyValuePair<string, MIMEType>("sda", ApplicationVndStardivisionDraw),
+new KeyValuePair<string, MIMEType>("sdd", ApplicationVndStardivisionImpress),
+new KeyValuePair<string, MIMEType>("smf", ApplicationVndStardivisionMath),
+new KeyValuePair<string, MIMEType>("sdw", ApplicationVndStardivisionWriter),
+new KeyValuePair<string, MIMEType>("vor", ApplicationVndStardivisionWriter),
+new KeyValuePair<string, MIMEType>("sgl", ApplicationVndStardivisionWriterGlobal),
+new KeyValuePair<string, MIMEType>("smzip", ApplicationVndStepmaniaPackage),
+new KeyValuePair<string, MIMEType>("sm", ApplicationVndStepmaniaStepchart),
+new KeyValuePair<string, MIMEType>("sxc", ApplicationVndSunXmlCalc),
+new KeyValuePair<string, MIMEType>("stc", ApplicationVndSunXmlCalcTemplate),
+new KeyValuePair<string, MIMEType>("sxd", ApplicationVndSunXmlDraw),
+new KeyValuePair<string, MIMEType>("std", ApplicationVndSunXmlDrawTemplate),
+new KeyValuePair<string, MIMEType>("sxi", ApplicationVndSunXmlImpress),
+new KeyValuePair<string, MIMEType>("sti", ApplicationVndSunXmlImpressTemplate),
+new KeyValuePair<string, MIMEType>("sxm", ApplicationVndSunXmlMath),
+new KeyValuePair<string, MIMEType>("sxw", ApplicationVndSunXmlWriter),
+new KeyValuePair<string, MIMEType>("sxg", ApplicationVndSunXmlWriterGlobal),
+new KeyValuePair<string, MIMEType>("stw", ApplicationVndSunXmlWriterTemplate),
+new KeyValuePair<string, MIMEType>("sus", ApplicationVndSusCalendar),
+new KeyValuePair<string, MIMEType>("susp", ApplicationVndSusCalendar),
+new KeyValuePair<string, MIMEType>("svd", ApplicationVndSvd),
+new KeyValuePair<string, MIMEType>("sis", ApplicationVndSymbianInstall),
+new KeyValuePair<string, MIMEType>("sisx", ApplicationVndSymbianInstall),
+new KeyValuePair<string, MIMEType>("xsm", ApplicationVndSyncmlXml),
+new KeyValuePair<string, MIMEType>("bdm", ApplicationVndSyncmlDmWbxml),
+new KeyValuePair<string, MIMEType>("xdm", ApplicationVndSyncmlDmXml),
+new KeyValuePair<string, MIMEType>("tao", ApplicationVndTaoIntentModuleArchive),
+new KeyValuePair<string, MIMEType>("pcap", ApplicationVndTcpdumpPcap),
+new KeyValuePair<string, MIMEType>("cap", ApplicationVndTcpdumpPcap),
+new KeyValuePair<string, MIMEType>("dmp", ApplicationVndTcpdumpPcap),
+new KeyValuePair<string, MIMEType>("tmo", ApplicationVndTmobileLivetv),
+new KeyValuePair<string, MIMEType>("tpt", ApplicationVndTridTpt),
+new KeyValuePair<string, MIMEType>("mxs", ApplicationVndTriscapeMxs),
+new KeyValuePair<string, MIMEType>("tra", ApplicationVndTrueapp),
+new KeyValuePair<string, MIMEType>("ufd", ApplicationVndUfdl),
+new KeyValuePair<string, MIMEType>("ufdl", ApplicationVndUfdl),
+new KeyValuePair<string, MIMEType>("utz", ApplicationVndUiqTheme),
+new KeyValuePair<string, MIMEType>("umj", ApplicationVndUmajin),
+new KeyValuePair<string, MIMEType>("unityweb", ApplicationVndUnity),
+new KeyValuePair<string, MIMEType>("uoml", ApplicationVndUomlXml),
+new KeyValuePair<string, MIMEType>("vcx", ApplicationVndVcx),
+new KeyValuePair<string, MIMEType>("vsd", ApplicationVndVisio),
+new KeyValuePair<string, MIMEType>("vst", ApplicationVndVisio),
+new KeyValuePair<string, MIMEType>("vss", ApplicationVndVisio),
+new KeyValuePair<string, MIMEType>("vsw", ApplicationVndVisio),
+new KeyValuePair<string, MIMEType>("vis", ApplicationVndVisionary),
+new KeyValuePair<string, MIMEType>("vsf", ApplicationVndVsf),
+new KeyValuePair<string, MIMEType>("wbxml", ApplicationVndWapWbxml),
+new KeyValuePair<string, MIMEType>("wmlc", ApplicationVndWapWmlc),
+new KeyValuePair<string, MIMEType>("wmlsc", ApplicationVndWapWmlscriptc),
+new KeyValuePair<string, MIMEType>("wtb", ApplicationVndWebturbo),
+new KeyValuePair<string, MIMEType>("nbp", ApplicationVndWolframPlayer),
+new KeyValuePair<string, MIMEType>("wpd", ApplicationVndWordperfect),
+new KeyValuePair<string, MIMEType>("wqd", ApplicationVndWqd),
+new KeyValuePair<string, MIMEType>("stf", ApplicationVndWtStf),
+new KeyValuePair<string, MIMEType>("xar", ApplicationVndXara),
+new KeyValuePair<string, MIMEType>("xfdl", ApplicationVndXfdl),
+new KeyValuePair<string, MIMEType>("hvd", ApplicationVndYamahaHvDic),
+new KeyValuePair<string, MIMEType>("hvs", ApplicationVndYamahaHvScript),
+new KeyValuePair<string, MIMEType>("hvp", ApplicationVndYamahaHvVoice),
+new KeyValuePair<string, MIMEType>("osf", ApplicationVndYamahaOpenscoreformat),
+new KeyValuePair<string, MIMEType>("osfpvg", ApplicationVndYamahaOpenscoreformatOsfpvgXml),
+new KeyValuePair<string, MIMEType>("saf", ApplicationVndYamahaSmafAudio),
+new KeyValuePair<string, MIMEType>("spf", ApplicationVndYamahaSmafPhrase),
+new KeyValuePair<string, MIMEType>("cmp", ApplicationVndYellowriverCustomMenu),
+new KeyValuePair<string, MIMEType>("zir", ApplicationVndZul),
+new KeyValuePair<string, MIMEType>("zirz", ApplicationVndZul),
+new KeyValuePair<string, MIMEType>("zaz", ApplicationVndZzazzDeckXml),
+new KeyValuePair<string, MIMEType>("vxml", ApplicationVoicexmlXml),
+new KeyValuePair<string, MIMEType>("wgt", ApplicationWidget),
+new KeyValuePair<string, MIMEType>("hlp", ApplicationWinhlp),
+new KeyValuePair<string, MIMEType>("wsdl", ApplicationWsdlXml),
+new KeyValuePair<string, MIMEType>("wspolicy", ApplicationWspolicyXml),
+new KeyValuePair<string, MIMEType>("7z", ApplicationX7zCompressed),
+new KeyValuePair<string, MIMEType>("abw", ApplicationXAbiword),
+new KeyValuePair<string, MIMEType>("ace", ApplicationXAceCompressed),
+new KeyValuePair<string, MIMEType>("dmg", ApplicationXAppleDiskimage),
+new KeyValuePair<string, MIMEType>("aab", ApplicationXAuthorwareBin),
+new KeyValuePair<string, MIMEType>("x32", ApplicationXAuthorwareBin),
+new KeyValuePair<string, MIMEType>("u32", ApplicationXAuthorwareBin),
+new KeyValuePair<string, MIMEType>("vox", ApplicationXAuthorwareBin),
+new KeyValuePair<string, MIMEType>("aam", ApplicationXAuthorwareMap),
+new KeyValuePair<string, MIMEType>("aas", ApplicationXAuthorwareSeg),
+new KeyValuePair<string, MIMEType>("bcpio", ApplicationXBcpio),
+new KeyValuePair<string, MIMEType>("torrent", ApplicationXBittorrent),
+new KeyValuePair<string, MIMEType>("blb", ApplicationXBlorb),
+new KeyValuePair<string, MIMEType>("blorb", ApplicationXBlorb),
+new KeyValuePair<string, MIMEType>("bz", ApplicationXBzip),
+new KeyValuePair<string, MIMEType>("bz2", ApplicationXBzip2),
+new KeyValuePair<string, MIMEType>("boz", ApplicationXBzip2),
+new KeyValuePair<string, MIMEType>("cbr", ApplicationXCbr),
+new KeyValuePair<string, MIMEType>("cba", ApplicationXCbr),
+new KeyValuePair<string, MIMEType>("cbt", ApplicationXCbr),
+new KeyValuePair<string, MIMEType>("cbz", ApplicationXCbr),
+new KeyValuePair<string, MIMEType>("cb7", ApplicationXCbr),
+new KeyValuePair<string, MIMEType>("vcd", ApplicationXCdlink),
+new KeyValuePair<string, MIMEType>("cfs", ApplicationXCfsCompressed),
+new KeyValuePair<string, MIMEType>("chat", ApplicationXChat),
+new KeyValuePair<string, MIMEType>("pgn", ApplicationXChessPgn),
+new KeyValuePair<string, MIMEType>("nsc", ApplicationXConference),
+new KeyValuePair<string, MIMEType>("cpio", ApplicationXCpio),
+new KeyValuePair<string, MIMEType>("csh", ApplicationXCsh),
+new KeyValuePair<string, MIMEType>("deb", ApplicationXDebianPackage),
+new KeyValuePair<string, MIMEType>("udeb", ApplicationXDebianPackage),
+new KeyValuePair<string, MIMEType>("dgc", ApplicationXDgcCompressed),
+new KeyValuePair<string, MIMEType>("dir", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("dcr", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("dxr", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("cst", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("cct", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("cxt", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("w3d", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("fgd", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("swa", ApplicationXDirector),
+new KeyValuePair<string, MIMEType>("wad", ApplicationXDoom),
+new KeyValuePair<string, MIMEType>("ncx", ApplicationXDtbncxXml),
+new KeyValuePair<string, MIMEType>("dtb", ApplicationXDtbookXml),
+new KeyValuePair<string, MIMEType>("res", ApplicationXDtbresourceXml),
+new KeyValuePair<string, MIMEType>("dvi", ApplicationXDvi),
+new KeyValuePair<string, MIMEType>("evy", ApplicationXEnvoy),
+new KeyValuePair<string, MIMEType>("eva", ApplicationXEva),
+new KeyValuePair<string, MIMEType>("bdf", ApplicationXFontBdf),
+new KeyValuePair<string, MIMEType>("gsf", ApplicationXFontGhostscript),
+new KeyValuePair<string, MIMEType>("psf", ApplicationXFontLinuxPsf),
+new KeyValuePair<string, MIMEType>("otf", ApplicationXFontOtf),
+new KeyValuePair<string, MIMEType>("pcf", ApplicationXFontPcf),
+new KeyValuePair<string, MIMEType>("snf", ApplicationXFontSnf),
+new KeyValuePair<string, MIMEType>("ttf", ApplicationXFontTtf),
+new KeyValuePair<string, MIMEType>("ttc", ApplicationXFontTtf),
+new KeyValuePair<string, MIMEType>("pfa", ApplicationXFontType1),
+new KeyValuePair<string, MIMEType>("pfb", ApplicationXFontType1),
+new KeyValuePair<string, MIMEType>("pfm", ApplicationXFontType1),
+new KeyValuePair<string, MIMEType>("afm", ApplicationXFontType1),
+new KeyValuePair<string, MIMEType>("woff", ApplicationXFontWoff),
+new KeyValuePair<string, MIMEType>("arc", ApplicationXFreearc),
+new KeyValuePair<string, MIMEType>("spl", ApplicationXFuturesplash),
+new KeyValuePair<string, MIMEType>("gca", ApplicationXGcaCompressed),
+new KeyValuePair<string, MIMEType>("ulx", ApplicationXGlulx),
+new KeyValuePair<string, MIMEType>("gnumeric", ApplicationXGnumeric),
+new KeyValuePair<string, MIMEType>("gramps", ApplicationXGrampsXml),
+new KeyValuePair<string, MIMEType>("gtar", ApplicationXGtar),
+new KeyValuePair<string, MIMEType>("hdf", ApplicationXHdf),
+new KeyValuePair<string, MIMEType>("install", ApplicationXInstallInstructions),
+new KeyValuePair<string, MIMEType>("iso", ApplicationXIso9660Image),
+new KeyValuePair<string, MIMEType>("jnlp", ApplicationXJavaJnlpFile),
+new KeyValuePair<string, MIMEType>("latex", ApplicationXLatex),
+new KeyValuePair<string, MIMEType>("lzh", ApplicationXLzhCompressed),
+new KeyValuePair<string, MIMEType>("lha", ApplicationXLzhCompressed),
+new KeyValuePair<string, MIMEType>("mie", ApplicationXMie),
+new KeyValuePair<string, MIMEType>("prc", ApplicationXMobipocketEbook),
+new KeyValuePair<string, MIMEType>("mobi", ApplicationXMobipocketEbook),
+new KeyValuePair<string, MIMEType>("application", ApplicationXMsApplication),
+new KeyValuePair<string, MIMEType>("lnk", ApplicationXMsShortcut),
+new KeyValuePair<string, MIMEType>("wmd", ApplicationXMsWmd),
+new KeyValuePair<string, MIMEType>("wmz", ApplicationXMsWmz),
+new KeyValuePair<string, MIMEType>("xbap", ApplicationXMsXbap),
+new KeyValuePair<string, MIMEType>("mdb", ApplicationXMsaccess),
+new KeyValuePair<string, MIMEType>("obd", ApplicationXMsbinder),
+new KeyValuePair<string, MIMEType>("crd", ApplicationXMscardfile),
+new KeyValuePair<string, MIMEType>("clp", ApplicationXMsclip),
+new KeyValuePair<string, MIMEType>("exe", ApplicationXMsdownload),
+new KeyValuePair<string, MIMEType>("dll", ApplicationXMsdownload),
+new KeyValuePair<string, MIMEType>("com", ApplicationXMsdownload),
+new KeyValuePair<string, MIMEType>("bat", ApplicationXMsdownload),
+new KeyValuePair<string, MIMEType>("msi", ApplicationXMsdownload),
+new KeyValuePair<string, MIMEType>("mvb", ApplicationXMsmediaview),
+new KeyValuePair<string, MIMEType>("m13", ApplicationXMsmediaview),
+new KeyValuePair<string, MIMEType>("m14", ApplicationXMsmediaview),
+new KeyValuePair<string, MIMEType>("wmf", ApplicationXMsmetafile),
+new KeyValuePair<string, MIMEType>("wmz", ApplicationXMsmetafile),
+new KeyValuePair<string, MIMEType>("emf", ApplicationXMsmetafile),
+new KeyValuePair<string, MIMEType>("emz", ApplicationXMsmetafile),
+new KeyValuePair<string, MIMEType>("mny", ApplicationXMsmoney),
+new KeyValuePair<string, MIMEType>("pub", ApplicationXMspublisher),
+new KeyValuePair<string, MIMEType>("scd", ApplicationXMsschedule),
+new KeyValuePair<string, MIMEType>("trm", ApplicationXMsterminal),
+new KeyValuePair<string, MIMEType>("wri", ApplicationXMswrite),
+new KeyValuePair<string, MIMEType>("nc", ApplicationXNetcdf),
+new KeyValuePair<string, MIMEType>("cdf", ApplicationXNetcdf),
+new KeyValuePair<string, MIMEType>("nzb", ApplicationXNzb),
+new KeyValuePair<string, MIMEType>("p12", ApplicationXPkcs12),
+new KeyValuePair<string, MIMEType>("pfx", ApplicationXPkcs12),
+new KeyValuePair<string, MIMEType>("p7b", ApplicationXPkcs7Certificates),
+new KeyValuePair<string, MIMEType>("spc", ApplicationXPkcs7Certificates),
+new KeyValuePair<string, MIMEType>("p7r", ApplicationXPkcs7Certreqresp),
+new KeyValuePair<string, MIMEType>("rar", ApplicationXRarCompressed),
+new KeyValuePair<string, MIMEType>("ris", ApplicationXResearchInfoSystems),
+new KeyValuePair<string, MIMEType>("sh", ApplicationXSh),
+new KeyValuePair<string, MIMEType>("shar", ApplicationXShar),
+new KeyValuePair<string, MIMEType>("swf", ApplicationXShockwaveFlash),
+new KeyValuePair<string, MIMEType>("xap", ApplicationXSilverlightApp),
+new KeyValuePair<string, MIMEType>("sql", ApplicationXSql),
+new KeyValuePair<string, MIMEType>("sit", ApplicationXStuffit),
+new KeyValuePair<string, MIMEType>("sitx", ApplicationXStuffitx),
+new KeyValuePair<string, MIMEType>("srt", ApplicationXSubrip),
+new KeyValuePair<string, MIMEType>("sv4cpio", ApplicationXSv4cpio),
+new KeyValuePair<string, MIMEType>("sv4crc", ApplicationXSv4crc),
+new KeyValuePair<string, MIMEType>("t3", ApplicationXT3vmImage),
+new KeyValuePair<string, MIMEType>("gam", ApplicationXTads),
+new KeyValuePair<string, MIMEType>("tar", ApplicationXTar),
+new KeyValuePair<string, MIMEType>("tcl", ApplicationXTcl),
+new KeyValuePair<string, MIMEType>("tex", ApplicationXTex),
+new KeyValuePair<string, MIMEType>("tfm", ApplicationXTexTfm),
+new KeyValuePair<string, MIMEType>("texinfo", ApplicationXTexinfo),
+new KeyValuePair<string, MIMEType>("texi", ApplicationXTexinfo),
+new KeyValuePair<string, MIMEType>("obj", ApplicationXTgif),
+new KeyValuePair<string, MIMEType>("ustar", ApplicationXUstar),
+new KeyValuePair<string, MIMEType>("src", ApplicationXWaisSource),
+new KeyValuePair<string, MIMEType>("der", ApplicationXX509CaCert),
+new KeyValuePair<string, MIMEType>("crt", ApplicationXX509CaCert),
+new KeyValuePair<string, MIMEType>("fig", ApplicationXXfig),
+new KeyValuePair<string, MIMEType>("xlf", ApplicationXXliffXml),
+new KeyValuePair<string, MIMEType>("xpi", ApplicationXXpinstall),
+new KeyValuePair<string, MIMEType>("xz", ApplicationXXz),
+new KeyValuePair<string, MIMEType>("z1", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("z2", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("z3", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("z4", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("z5", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("z6", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("z7", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("z8", ApplicationXZmachine),
+new KeyValuePair<string, MIMEType>("xaml", ApplicationXamlXml),
+new KeyValuePair<string, MIMEType>("xdf", ApplicationXcapDiffXml),
+new KeyValuePair<string, MIMEType>("xenc", ApplicationXencXml),
+new KeyValuePair<string, MIMEType>("xhtml", ApplicationXhtmlXml),
+new KeyValuePair<string, MIMEType>("xht", ApplicationXhtmlXml),
+new KeyValuePair<string, MIMEType>("xml", ApplicationXml),
+new KeyValuePair<string, MIMEType>("xsl", ApplicationXml),
+new KeyValuePair<string, MIMEType>("dtd", ApplicationXmlDtd),
+new KeyValuePair<string, MIMEType>("xop", ApplicationXopXml),
+new KeyValuePair<string, MIMEType>("xpl", ApplicationXprocXml),
+new KeyValuePair<string, MIMEType>("xslt", ApplicationXsltXml),
+new KeyValuePair<string, MIMEType>("xspf", ApplicationXspfXml),
+new KeyValuePair<string, MIMEType>("mxml", ApplicationXvXml),
+new KeyValuePair<string, MIMEType>("xhvml", ApplicationXvXml),
+new KeyValuePair<string, MIMEType>("xvml", ApplicationXvXml),
+new KeyValuePair<string, MIMEType>("xvm", ApplicationXvXml),
+new KeyValuePair<string, MIMEType>("yang", ApplicationYang),
+new KeyValuePair<string, MIMEType>("yin", ApplicationYinXml),
+new KeyValuePair<string, MIMEType>("zip", ApplicationZip),
+new KeyValuePair<string, MIMEType>("adp", AudioAdpcm),
+new KeyValuePair<string, MIMEType>("au", AudioBasic),
+new KeyValuePair<string, MIMEType>("snd", AudioBasic),
+new KeyValuePair<string, MIMEType>("mid", AudioMidi),
+new KeyValuePair<string, MIMEType>("midi", AudioMidi),
+new KeyValuePair<string, MIMEType>("kar", AudioMidi),
+new KeyValuePair<string, MIMEType>("rmi", AudioMidi),
+new KeyValuePair<string, MIMEType>("mp4a", AudioMp4),
+new KeyValuePair<string, MIMEType>("mpga", AudioMpeg),
+new KeyValuePair<string, MIMEType>("mp2", AudioMpeg),
+new KeyValuePair<string, MIMEType>("mp2a", AudioMpeg),
+new KeyValuePair<string, MIMEType>("mp3", AudioMpeg),
+new KeyValuePair<string, MIMEType>("m2a", AudioMpeg),
+new KeyValuePair<string, MIMEType>("m3a", AudioMpeg),
+new KeyValuePair<string, MIMEType>("oga", AudioOgg),
+new KeyValuePair<string, MIMEType>("ogg", AudioOgg),
+new KeyValuePair<string, MIMEType>("spx", AudioOgg),
+new KeyValuePair<string, MIMEType>("s3m", AudioS3m),
+new KeyValuePair<string, MIMEType>("sil", AudioSilk),
+new KeyValuePair<string, MIMEType>("uva", AudioVndDeceAudio),
+new KeyValuePair<string, MIMEType>("uvva", AudioVndDeceAudio),
+new KeyValuePair<string, MIMEType>("eol", AudioVndDigitalWinds),
+new KeyValuePair<string, MIMEType>("dra", AudioVndDra),
+new KeyValuePair<string, MIMEType>("dts", AudioVndDts),
+new KeyValuePair<string, MIMEType>("dtshd", AudioVndDtsHd),
+new KeyValuePair<string, MIMEType>("lvp", AudioVndLucentVoice),
+new KeyValuePair<string, MIMEType>("pya", AudioVndMsPlayreadyMediaPya),
+new KeyValuePair<string, MIMEType>("ecelp4800", AudioVndNueraEcelp4800),
+new KeyValuePair<string, MIMEType>("ecelp7470", AudioVndNueraEcelp7470),
+new KeyValuePair<string, MIMEType>("ecelp9600", AudioVndNueraEcelp9600),
+new KeyValuePair<string, MIMEType>("rip", AudioVndRip),
+new KeyValuePair<string, MIMEType>("weba", AudioWebm),
+new KeyValuePair<string, MIMEType>("aac", AudioXAac),
+new KeyValuePair<string, MIMEType>("aif", AudioXAiff),
+new KeyValuePair<string, MIMEType>("aiff", AudioXAiff),
+new KeyValuePair<string, MIMEType>("aifc", AudioXAiff),
+new KeyValuePair<string, MIMEType>("caf", AudioXCaf),
+new KeyValuePair<string, MIMEType>("flac", AudioXFlac),
+new KeyValuePair<string, MIMEType>("mka", AudioXMatroska),
+new KeyValuePair<string, MIMEType>("m3u", AudioXMpegurl),
+new KeyValuePair<string, MIMEType>("wax", AudioXMsWax),
+new KeyValuePair<string, MIMEType>("wma", AudioXMsWma),
+new KeyValuePair<string, MIMEType>("ram", AudioXPnRealaudio),
+new KeyValuePair<string, MIMEType>("ra", AudioXPnRealaudio),
+new KeyValuePair<string, MIMEType>("rmp", AudioXPnRealaudioPlugin),
+new KeyValuePair<string, MIMEType>("wav", AudioXWav),
+new KeyValuePair<string, MIMEType>("xm", AudioXm),
+new KeyValuePair<string, MIMEType>("cdx", ChemicalXCdx),
+new KeyValuePair<string, MIMEType>("cif", ChemicalXCif),
+new KeyValuePair<string, MIMEType>("cmdf", ChemicalXCmdf),
+new KeyValuePair<string, MIMEType>("cml", ChemicalXCml),
+new KeyValuePair<string, MIMEType>("csml", ChemicalXCsml),
+new KeyValuePair<string, MIMEType>("xyz", ChemicalXXyz),
+new KeyValuePair<string, MIMEType>("bmp", ImageBmp),
+new KeyValuePair<string, MIMEType>("cgm", ImageCgm),
+new KeyValuePair<string, MIMEType>("g3", ImageG3fax),
+new KeyValuePair<string, MIMEType>("gif", ImageGif),
+new KeyValuePair<string, MIMEType>("ief", ImageIef),
+new KeyValuePair<string, MIMEType>("jpeg", ImageJpeg),
+new KeyValuePair<string, MIMEType>("jpg", ImageJpeg),
+new KeyValuePair<string, MIMEType>("jpe", ImageJpeg),
+new KeyValuePair<string, MIMEType>("ktx", ImageKtx),
+new KeyValuePair<string, MIMEType>("png", ImagePng),
+new KeyValuePair<string, MIMEType>("btif", ImagePrsBtif),
+new KeyValuePair<string, MIMEType>("sgi", ImageSgi),
+new KeyValuePair<string, MIMEType>("svg", ImageSvgXml),
+new KeyValuePair<string, MIMEType>("svgz", ImageSvgXml),
+new KeyValuePair<string, MIMEType>("tiff", ImageTiff),
+new KeyValuePair<string, MIMEType>("tif", ImageTiff),
+new KeyValuePair<string, MIMEType>("psd", ImageVndAdobePhotoshop),
+new KeyValuePair<string, MIMEType>("uvi", ImageVndDeceGraphic),
+new KeyValuePair<string, MIMEType>("uvvi", ImageVndDeceGraphic),
+new KeyValuePair<string, MIMEType>("uvg", ImageVndDeceGraphic),
+new KeyValuePair<string, MIMEType>("uvvg", ImageVndDeceGraphic),
+new KeyValuePair<string, MIMEType>("sub", ImageVndDvbSubtitle),
+new KeyValuePair<string, MIMEType>("djvu", ImageVndDjvu),
+new KeyValuePair<string, MIMEType>("djv", ImageVndDjvu),
+new KeyValuePair<string, MIMEType>("dwg", ImageVndDwg),
+new KeyValuePair<string, MIMEType>("dxf", ImageVndDxf),
+new KeyValuePair<string, MIMEType>("fbs", ImageVndFastbidsheet),
+new KeyValuePair<string, MIMEType>("fpx", ImageVndFpx),
+new KeyValuePair<string, MIMEType>("fst", ImageVndFst),
+new KeyValuePair<string, MIMEType>("mmr", ImageVndFujixeroxEdmicsMmr),
+new KeyValuePair<string, MIMEType>("rlc", ImageVndFujixeroxEdmicsRlc),
+new KeyValuePair<string, MIMEType>("mdi", ImageVndMsModi),
+new KeyValuePair<string, MIMEType>("wdp", ImageVndMsPhoto),
+new KeyValuePair<string, MIMEType>("npx", ImageVndNetFpx),
+new KeyValuePair<string, MIMEType>("wbmp", ImageVndWapWbmp),
+new KeyValuePair<string, MIMEType>("xif", ImageVndXiff),
+new KeyValuePair<string, MIMEType>("webp", ImageWebp),
+new KeyValuePair<string, MIMEType>("3ds", ImageX3ds),
+new KeyValuePair<string, MIMEType>("ras", ImageXCmuRaster),
+new KeyValuePair<string, MIMEType>("cmx", ImageXCmx),
+new KeyValuePair<string, MIMEType>("fh", ImageXFreehand),
+new KeyValuePair<string, MIMEType>("fhc", ImageXFreehand),
+new KeyValuePair<string, MIMEType>("fh4", ImageXFreehand),
+new KeyValuePair<string, MIMEType>("fh5", ImageXFreehand),
+new KeyValuePair<string, MIMEType>("fh7", ImageXFreehand),
+new KeyValuePair<string, MIMEType>("ico", ImageXIcon),
+new KeyValuePair<string, MIMEType>("sid", ImageXMrsidImage),
+new KeyValuePair<string, MIMEType>("pcx", ImageXPcx),
+new KeyValuePair<string, MIMEType>("pic", ImageXPict),
+new KeyValuePair<string, MIMEType>("pct", ImageXPict),
+new KeyValuePair<string, MIMEType>("pnm", ImageXPortableAnymap),
+new KeyValuePair<string, MIMEType>("pbm", ImageXPortableBitmap),
+new KeyValuePair<string, MIMEType>("pgm", ImageXPortableGraymap),
+new KeyValuePair<string, MIMEType>("ppm", ImageXPortablePixmap),
+new KeyValuePair<string, MIMEType>("rgb", ImageXRgb),
+new KeyValuePair<string, MIMEType>("tga", ImageXTga),
+new KeyValuePair<string, MIMEType>("xbm", ImageXXbitmap),
+new KeyValuePair<string, MIMEType>("xpm", ImageXXpixmap),
+new KeyValuePair<string, MIMEType>("xwd", ImageXXwindowdump),
+new KeyValuePair<string, MIMEType>("eml", MessageRfc822),
+new KeyValuePair<string, MIMEType>("mime", MessageRfc822),
+new KeyValuePair<string, MIMEType>("igs", ModelIges),
+new KeyValuePair<string, MIMEType>("iges", ModelIges),
+new KeyValuePair<string, MIMEType>("msh", ModelMesh),
+new KeyValuePair<string, MIMEType>("mesh", ModelMesh),
+new KeyValuePair<string, MIMEType>("silo", ModelMesh),
+new KeyValuePair<string, MIMEType>("dae", ModelVndColladaXml),
+new KeyValuePair<string, MIMEType>("dwf", ModelVndDwf),
+new KeyValuePair<string, MIMEType>("gdl", ModelVndGdl),
+new KeyValuePair<string, MIMEType>("gtw", ModelVndGtw),
+new KeyValuePair<string, MIMEType>("mts", ModelVndMts),
+new KeyValuePair<string, MIMEType>("vtu", ModelVndVtu),
+new KeyValuePair<string, MIMEType>("wrl", ModelVrml),
+new KeyValuePair<string, MIMEType>("vrml", ModelVrml),
+new KeyValuePair<string, MIMEType>("x3db", ModelX3dBinary),
+new KeyValuePair<string, MIMEType>("x3dbz", ModelX3dBinary),
+new KeyValuePair<string, MIMEType>("x3dv", ModelX3dVrml),
+new KeyValuePair<string, MIMEType>("x3dvz", ModelX3dVrml),
+new KeyValuePair<string, MIMEType>("x3d", ModelX3dXml),
+new KeyValuePair<string, MIMEType>("x3dz", ModelX3dXml),
+new KeyValuePair<string, MIMEType>("appcache", TextCacheManifest),
+new KeyValuePair<string, MIMEType>("ics", TextCalendar),
+new KeyValuePair<string, MIMEType>("ifb", TextCalendar),
+new KeyValuePair<string, MIMEType>("css", TextCss),
+new KeyValuePair<string, MIMEType>("csv", TextCsv),
+new KeyValuePair<string, MIMEType>("html", TextHtml),
+new KeyValuePair<string, MIMEType>("htm", TextHtml),
+new KeyValuePair<string, MIMEType>("n3", TextN3),
+new KeyValuePair<string, MIMEType>("txt", TextPlain),
+new KeyValuePair<string, MIMEType>("text", TextPlain),
+new KeyValuePair<string, MIMEType>("conf", TextPlain),
+new KeyValuePair<string, MIMEType>("def", TextPlain),
+new KeyValuePair<string, MIMEType>("list", TextPlain),
+new KeyValuePair<string, MIMEType>("log", TextPlain),
+new KeyValuePair<string, MIMEType>("in", TextPlain),
+new KeyValuePair<string, MIMEType>("dsc", TextPrsLinesTag),
+new KeyValuePair<string, MIMEType>("rtx", TextRichtext),
+new KeyValuePair<string, MIMEType>("sgml", TextSgml),
+new KeyValuePair<string, MIMEType>("sgm", TextSgml),
+new KeyValuePair<string, MIMEType>("tsv", TextTabSeparatedValues),
+new KeyValuePair<string, MIMEType>("t", TextTroff),
+new KeyValuePair<string, MIMEType>("tr", TextTroff),
+new KeyValuePair<string, MIMEType>("roff", TextTroff),
+new KeyValuePair<string, MIMEType>("man", TextTroff),
+new KeyValuePair<string, MIMEType>("me", TextTroff),
+new KeyValuePair<string, MIMEType>("ms", TextTroff),
+new KeyValuePair<string, MIMEType>("ttl", TextTurtle),
+new KeyValuePair<string, MIMEType>("uri", TextUriList),
+new KeyValuePair<string, MIMEType>("uris", TextUriList),
+new KeyValuePair<string, MIMEType>("urls", TextUriList),
+new KeyValuePair<string, MIMEType>("vcard", TextVcard),
+new KeyValuePair<string, MIMEType>("curl", TextVndCurl),
+new KeyValuePair<string, MIMEType>("dcurl", TextVndCurlDcurl),
+new KeyValuePair<string, MIMEType>("scurl", TextVndCurlScurl),
+new KeyValuePair<string, MIMEType>("mcurl", TextVndCurlMcurl),
+new KeyValuePair<string, MIMEType>("sub", TextVndDvbSubtitle),
+new KeyValuePair<string, MIMEType>("fly", TextVndFly),
+new KeyValuePair<string, MIMEType>("flx", TextVndFmiFlexstor),
+new KeyValuePair<string, MIMEType>("gv", TextVndGraphviz),
+new KeyValuePair<string, MIMEType>("3dml", TextVndIn3d3dml),
+new KeyValuePair<string, MIMEType>("spot", TextVndIn3dSpot),
+new KeyValuePair<string, MIMEType>("jad", TextVndSunJ2meAppDescriptor),
+new KeyValuePair<string, MIMEType>("wml", TextVndWapWml),
+new KeyValuePair<string, MIMEType>("wmls", TextVndWapWmlscript),
+new KeyValuePair<string, MIMEType>("s", TextXAsm),
+new KeyValuePair<string, MIMEType>("asm", TextXAsm),
+new KeyValuePair<string, MIMEType>("c", TextXC),
+new KeyValuePair<string, MIMEType>("cc", TextXC),
+new KeyValuePair<string, MIMEType>("cxx", TextXC),
+new KeyValuePair<string, MIMEType>("cpp", TextXC),
+new KeyValuePair<string, MIMEType>("h", TextXC),
+new KeyValuePair<string, MIMEType>("hh", TextXC),
+new KeyValuePair<string, MIMEType>("dic", TextXC),
+new KeyValuePair<string, MIMEType>("f", TextXFortran),
+new KeyValuePair<string, MIMEType>("for", TextXFortran),
+new KeyValuePair<string, MIMEType>("f77", TextXFortran),
+new KeyValuePair<string, MIMEType>("f90", TextXFortran),
+new KeyValuePair<string, MIMEType>("java", TextXJavaSource),
+new KeyValuePair<string, MIMEType>("opml", TextXOpml),
+new KeyValuePair<string, MIMEType>("p", TextXPascal),
+new KeyValuePair<string, MIMEType>("pas", TextXPascal),
+new KeyValuePair<string, MIMEType>("nfo", TextXNfo),
+new KeyValuePair<string, MIMEType>("etx", TextXSetext),
+new KeyValuePair<string, MIMEType>("sfv", TextXSfv),
+new KeyValuePair<string, MIMEType>("uu", TextXUuencode),
+new KeyValuePair<string, MIMEType>("vcs", TextXVcalendar),
+new KeyValuePair<string, MIMEType>("vcf", TextXVcard),
+new KeyValuePair<string, MIMEType>("3gp", Video3gpp),
+new KeyValuePair<string, MIMEType>("3g2", Video3gpp2),
+new KeyValuePair<string, MIMEType>("h261", VideoH261),
+new KeyValuePair<string, MIMEType>("h263", VideoH263),
+new KeyValuePair<string, MIMEType>("h264", VideoH264),
+new KeyValuePair<string, MIMEType>("jpgv", VideoJpeg),
+new KeyValuePair<string, MIMEType>("jpm", VideoJpm),
+new KeyValuePair<string, MIMEType>("jpgm", VideoJpm),
+new KeyValuePair<string, MIMEType>("mj2", VideoMj2),
+new KeyValuePair<string, MIMEType>("mjp2", VideoMj2),
+new KeyValuePair<string, MIMEType>("mp4", VideoMp4),
+new KeyValuePair<string, MIMEType>("mp4v", VideoMp4),
+new KeyValuePair<string, MIMEType>("mpg4", VideoMp4),
+new KeyValuePair<string, MIMEType>("mpeg", VideoMpeg),
+new KeyValuePair<string, MIMEType>("mpg", VideoMpeg),
+new KeyValuePair<string, MIMEType>("mpe", VideoMpeg),
+new KeyValuePair<string, MIMEType>("m1v", VideoMpeg),
+new KeyValuePair<string, MIMEType>("m2v", VideoMpeg),
+new KeyValuePair<string, MIMEType>("ogv", VideoOgg),
+new KeyValuePair<string, MIMEType>("qt", VideoQuicktime),
+new KeyValuePair<string, MIMEType>("mov", VideoQuicktime),
+new KeyValuePair<string, MIMEType>("uvh", VideoVndDeceHd),
+new KeyValuePair<string, MIMEType>("uvvh", VideoVndDeceHd),
+new KeyValuePair<string, MIMEType>("uvm", VideoVndDeceMobile),
+new KeyValuePair<string, MIMEType>("uvvm", VideoVndDeceMobile),
+new KeyValuePair<string, MIMEType>("uvp", VideoVndDecePd),
+new KeyValuePair<string, MIMEType>("uvvp", VideoVndDecePd),
+new KeyValuePair<string, MIMEType>("uvs", VideoVndDeceSd),
+new KeyValuePair<string, MIMEType>("uvvs", VideoVndDeceSd),
+new KeyValuePair<string, MIMEType>("uvv", VideoVndDeceVideo),
+new KeyValuePair<string, MIMEType>("uvvv", VideoVndDeceVideo),
+new KeyValuePair<string, MIMEType>("dvb", VideoVndDvbFile),
+new KeyValuePair<string, MIMEType>("fvt", VideoVndFvt),
+new KeyValuePair<string, MIMEType>("mxu", VideoVndMpegurl),
+new KeyValuePair<string, MIMEType>("m4u", VideoVndMpegurl),
+new KeyValuePair<string, MIMEType>("pyv", VideoVndMsPlayreadyMediaPyv),
+new KeyValuePair<string, MIMEType>("uvu", VideoVndUvvuMp4),
+new KeyValuePair<string, MIMEType>("uvvu", VideoVndUvvuMp4),
+new KeyValuePair<string, MIMEType>("viv", VideoVndVivo),
+new KeyValuePair<string, MIMEType>("webm", VideoWebm),
+new KeyValuePair<string, MIMEType>("f4v", VideoXF4v),
+new KeyValuePair<string, MIMEType>("fli", VideoXFli),
+new KeyValuePair<string, MIMEType>("flv", VideoXFlv),
+new KeyValuePair<string, MIMEType>("m4v", VideoXM4v),
+new KeyValuePair<string, MIMEType>("mkv", VideoXMatroska),
+new KeyValuePair<string, MIMEType>("mk3d", VideoXMatroska),
+new KeyValuePair<string, MIMEType>("mks", VideoXMatroska),
+new KeyValuePair<string, MIMEType>("mng", VideoXMng),
+new KeyValuePair<string, MIMEType>("asf", VideoXMsAsf),
+new KeyValuePair<string, MIMEType>("asx", VideoXMsAsf),
+new KeyValuePair<string, MIMEType>("vob", VideoXMsVob),
+new KeyValuePair<string, MIMEType>("wm", VideoXMsWm),
+new KeyValuePair<string, MIMEType>("wmv", VideoXMsWmv),
+new KeyValuePair<string, MIMEType>("wmx", VideoXMsWmx),
+new KeyValuePair<string, MIMEType>("wvx", VideoXMsWvx),
+new KeyValuePair<string, MIMEType>("avi", VideoXMsvideo),
+new KeyValuePair<string, MIMEType>("movie", VideoXSgiMovie),
+new KeyValuePair<string, MIMEType>("smv", VideoXSmv),
+new KeyValuePair<string, MIMEType>("ice", XConferenceXCooltalk)
+        ).ToDictionaryOverwrite();
+        
+        static public bool TryParseFromExtension(string input, out MIMEType type)
+        {
+            if(EXTENSION_LOOKUP_TABLE.TryGetValue(input.ToLower(), out type))
+                return true;
+                
+            type = ApplicationOctetStream;
+            return false;
+        }
+        static public MIMEType ParseFromExtension(string input)
+        {
+            MIMEType type;
+            
+            TryParseFromExtension(input, out type);
+            return type;
+        }
+        
+        static public bool TryParseFromFilename(string input, out MIMEType type)
+        {
+            return TryParseFromExtension(Filename.GetExtension(input), out type);
+        }
+        static public MIMEType ParseFromFilename(string input)
+        {
+            MIMEType type;
+            
+            TryParseFromFilename(input, out type);
+            return type;
+        }
+        
+        private MIMEType(MIMEGeneralType g, string v, IEnumerable<string> e)
+        {
+            general_type = g;
+            sub_value = v;
+            
+            extensions = e.ToList();
+        }
+        
+        public MIMEGeneralType GetGeneralType()
+        {
+            return general_type;
+        }
+        
+        public IEnumerable<string> GetExtensions()
+        {
+            return extensions;
+        }
+        
+        public override string ToString()
+        {
+            return general_type + "/" + sub_value;
+        }
+    }
 }

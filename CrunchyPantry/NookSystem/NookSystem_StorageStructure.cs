@@ -19,7 +19,7 @@ namespace Crunchy.Pantry
 
         protected abstract bool ReadInternal(FILE_TYPE snapshot, Process<Stream> process);
 
-        protected abstract bool CreateInternal(string path, string name, string mime_type, Process<Stream> process, out FILE_TYPE snapshot);
+        protected abstract bool CreateInternal(string path, string name, MIMEType mime_type, Process<Stream> process, out FILE_TYPE snapshot);
         protected abstract bool UpdateInternal(FILE_TYPE snapshot, Process<Stream> process);
 
         protected abstract bool TryGetLocalPathInternal(FILE_TYPE snapshot, out string local_path);
@@ -89,7 +89,7 @@ namespace Crunchy.Pantry
                 return true;
 
             string name = Filename.GetFilenameWithExtension(path);
-            string mime_type = MIMEType.GetMIMETypeFromFilename(name);
+            MIMEType mime_type = MIMEType.ParseFromFilename(name);
 
             if (CreateInternal(path, name, mime_type, process, out file))
             {
