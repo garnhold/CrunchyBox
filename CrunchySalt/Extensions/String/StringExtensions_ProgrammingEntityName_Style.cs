@@ -10,7 +10,9 @@ namespace Crunchy.Salt
     {
         static public string StyleAsEntity(this string item)
         {
-            return item.RegexRemove("(^[0-9_]+|[^A-Za-z0-9_]|[_]+$)")
+            return item
+                .RegexReplace("([^A-Za-z0-9_]+)", "_")
+                .RegexRemove("(^[0-9_]+|[^A-Za-z0-9_]|[_]+$)")
                 .CoalesceBlank(() => ProgrammingEntityName.GenerateEntityName());
         }
 
