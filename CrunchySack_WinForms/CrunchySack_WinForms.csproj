@@ -47,6 +47,8 @@
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizerAttribute.cs" />
     <Compile Include="Extensions\Form\FormExtensions.cs" />
     <Compile Include="Extensions\Form\FormExtensions_LinkSyncroDaemon.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Control.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Auto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

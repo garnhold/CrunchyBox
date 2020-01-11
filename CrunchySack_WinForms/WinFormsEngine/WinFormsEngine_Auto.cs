@@ -19,7 +19,7 @@ namespace Crunchy.Sack.WinForms
         {
             Add(WinFormsInstancers.Simple(type.Name, () => type.CreateInstance()));
 
-            AddAttributeInfosForBrowsablePropertys(type);
+            AddAttributeInfosForPublicPropertys(type);
         }
 
         public void AddInspectedComponentsForTypes(IEnumerable<Type> types)
@@ -31,12 +31,15 @@ namespace Crunchy.Sack.WinForms
             AddInspectedComponentsForTypes((IEnumerable<Type>)types);
         }
 
-        public void AddAttributeInfosForBrowsablePropertys(Type type)
+        public void AddAttributeInfosForPublicPropertys(Type type)
         {
             Add(
-                type.GetFilteredInstancePropertys(Filterer_PropertyInfo.HasCustomAttributeOfType<BrowsableAttribute>())
+                type.GetFilteredInstancePropertys(Filterer_PropertyInfo.IsSetAndGetPublic())
                     .Convert(p => p.CreateVariable())
-                    .Convert(v => (RepresentationEngineComponent)WinFormsInfos.AttributeLink(v))
+                    .Convert(v => (RepresentationEngineComponent)WinFormsInfos.AttributeLink(
+                        v.GetVariableName().StyleAsVariableName(), 
+                        v
+                    ))
             );
         }
     }
