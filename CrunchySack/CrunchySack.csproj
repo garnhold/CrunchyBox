@@ -305,6 +305,8 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancer_Operation.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancer.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancer_Variation_Process.cs" />
+    <Compile Include="ClassLibrary\Extensions\ClassLibraryExtensions_AddText.cs" />
+    <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_AddText.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
