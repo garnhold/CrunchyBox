@@ -15,19 +15,19 @@ namespace Crunchy.Sack.WinForms
     {
         private System.Windows.Forms.Timer timer;
 
-        public PeriodicProcess_WinForms(int pm, Process p) : base(p)
+        public PeriodicProcess_WinForms(long pm, Process p) : base(p)
         {
             timer = new System.Windows.Forms.Timer();
 
-            timer.Interval = pm;
+            timer.Interval = (int)pm;
             timer.Tick += delegate(object sender, EventArgs args) {
                 ExecuteProcess();
             };
         }
 
-        public PeriodicProcess_WinForms(int pm) : this(pm, null) { }
+        public PeriodicProcess_WinForms(long pm) : this(pm, null) { }
 
-        public PeriodicProcess_WinForms(Duration d, Process p) : this((int)d.GetWholeMilliseconds(), p) { }
+        public PeriodicProcess_WinForms(Duration d, Process p) : this(d.GetWholeMilliseconds(), p) { }
         public PeriodicProcess_WinForms(Duration d) : this(d, null) { }
 
         public override void Start()
