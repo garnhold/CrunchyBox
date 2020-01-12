@@ -29,6 +29,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +50,16 @@
     <Compile Include="Extensions\Form\FormExtensions_LinkSyncroDaemon.cs" />
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Control.cs" />
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Auto.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Layout.cs" />
+    <Compile Include="Extensions\ColumnStyle\ColumnStyleExtensions.cs" />
+    <Compile Include="Extensions\SizeType\SizeTypeExtensions.cs" />
+    <Compile Include="Extensions\TableLayoutPanel\TableLayoutPanelExtensions.cs" />
+    <Compile Include="Extensions\TableLayoutPanel\TableLayoutPanelExtensions_Columns.cs" />
+    <Compile Include="Extensions\RowStyle\RowStyleExtensions.cs" />
+    <Compile Include="Extensions\TableLayoutPanel\TableLayoutPanelExtensions_Rows.cs" />
+    <Compile Include="Extensions\Control\ControlExtensions.cs" />
+    <Compile Include="Extensions\Control\ControlExtensions_TableLayoutPanel.cs" />
+    <Compile Include="Extensions\Control\ControlExtensions_Parent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -86,6 +97,11 @@
     <Folder Include="Basic\" />
     <Folder Include="Extensions\" />
     <Folder Include="Extensions\Form\" />
+    <Folder Include="Extensions\ColumnStyle\" />
+    <Folder Include="Extensions\SizeType\" />
+    <Folder Include="Extensions\TableLayoutPanel\" />
+    <Folder Include="Extensions\RowStyle\" />
+    <Folder Include="Extensions\Control\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
