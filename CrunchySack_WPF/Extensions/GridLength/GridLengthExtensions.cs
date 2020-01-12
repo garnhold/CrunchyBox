@@ -14,9 +14,9 @@ namespace Crunchy.Sack.WPF
     [Conversion]
     static public class GridLengthExtensions
     {
-        static public GridLength Create(double input, string units)
+        static public GridLength Create(double value, string units)
         {
-            return new GridLength(input, GridUnitTypeExtensions.Create(units));
+            return new GridLength(value, GridUnitTypeExtensions.Create(units));
         }
 
         [Conversion]
@@ -25,10 +25,8 @@ namespace Crunchy.Sack.WPF
             double value;
             string units;
 
-            if (input.TryParseMeasurement(out value, out units))
-                return Create(value, units);
-            
-            return new GridLength(value);
+            input.TryParseMeasurement(out value, out units);
+            return Create(value, units);
         }
     }
 }
