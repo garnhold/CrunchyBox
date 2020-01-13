@@ -26,44 +26,40 @@ namespace Crunchy.Salt
         }
         static private IEnumerable Wrap(object to_wrap)
         {
-            yield return to_wrap;
+            if (to_wrap != null)
+                yield return to_wrap;
         }
-        static private IEnumerable Append(IEnumerable item, IEnumerable to_append)
+        static private IEnumerable Join(IEnumerable[] enumerables)
         {
-            if (item != null)
+            foreach (IEnumerable enumerable in enumerables)
             {
-                foreach (object obj in item)
-                    yield return obj;
-            }
-
-            if (to_append != null)
-            {
-                foreach (object obj in to_append)
-                    yield return obj;
+                if (enumerable != null)
+                {
+                    foreach (object obj in enumerable)
+                    {
+                        if (obj != null)
+                            yield return obj;
+                    }
+                }
             }
         }
 
         public override void RenderIL_Load(ILCanvas canvas)
         {
-            int i = 0;
-
             if (targets.IsNotEmpty())
             {
                 MethodInfo wrap_method = GetType().GetStaticMethod<object>("Wrap").GetNativeMethodInfo();
-                MethodInfo append_method = GetType().GetStaticMethod<IEnumerable, IEnumerable>("Append").GetNativeMethodInfo();
+                MethodInfo join_method = GetType().GetStaticMethod<IEnumerable[]>("Join").GetNativeMethodInfo();
 
-                foreach (ILValue value in targets)
-                {
-                    value.RenderIL_Load(canvas);
-
-                    if (value.GetValueType().IsTypicalIEnumerable() == false)
-                        canvas.Emit_Call(wrap_method);
-
-                    if (i > 0)
-                        canvas.Emit_Call(append_method);
-
-                    i++;
-                }
+                join_method.GetStaticILMethodInvokation(
+                    new ILNewPopulatedArray(
+                        typeof(IEnumerable),
+                        targets.Exchange(
+                            v => v.GetValueType().IsTypicalIEnumerable() == false,
+                            v => wrap_method.GetStaticILMethodInvokation(v)
+                        )
+                    )
+                ).RenderIL_Load(canvas);
             }
             else
             {
