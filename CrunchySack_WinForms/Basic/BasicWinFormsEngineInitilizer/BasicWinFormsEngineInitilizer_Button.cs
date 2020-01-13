@@ -7,17 +7,20 @@ namespace Crunchy.Sack.WinForms
 {
     using Dough;
     using Sack;
+    using WinCommon;
     
     [BasicWinFormsEngineInitilizer]
-    static public class BasicWinFormsEngineInitilizer_Control
+    static public class BasicWinFormsEngineInitilizer_Button
     {
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
-            engine.AddPublicPropertyAttributeLinksForType<Control>();
+            engine.AddPublicPropertyAttributeLinksForType<Button>();
 
             engine.Add(
-                WinFormsInfos.Children<Control>(p => p.Controls)
+                WinFormsInstancers.Simple("Button", () => new Button()),
+
+                WinFormsInfos.AttributeFunction<Button>("click", (b, s) => b.Click += s.GetEventHandler())
             );
         }
     }

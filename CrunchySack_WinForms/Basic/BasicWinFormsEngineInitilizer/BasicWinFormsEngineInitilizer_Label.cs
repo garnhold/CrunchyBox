@@ -9,15 +9,15 @@ namespace Crunchy.Sack.WinForms
     using Sack;
     
     [BasicWinFormsEngineInitilizer]
-    static public class BasicWinFormsEngineInitilizer_Control
+    static public class BasicWinFormsEngineInitilizer_Label
     {
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
-            engine.AddPublicPropertyAttributeLinksForType<Control>();
+            engine.AddPublicPropertyAttributeLinksForType<Label>();
 
             engine.Add(
-                WinFormsInfos.Children<Control>(p => p.Controls)
+                WinFormsInstancers.Simple("Label", () => new Label())
             );
         }
     }

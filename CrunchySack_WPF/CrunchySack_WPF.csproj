@@ -87,7 +87,6 @@
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_Command.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_MouseEventHandler.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_MouseButtonEventHandler.cs" />
-    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_EventHandler.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_RoutedEventHandler.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions.cs" />
     <Compile Include="Extensions\DependencyObject\DependencyObjectExtensions_Window.cs" />
@@ -154,6 +153,10 @@
     <ProjectReference Include="..\CrunchySystem\CrunchySystem.csproj">
       <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
       <Name>CrunchyWinsys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySack_WinCommon\CrunchySack_WinCommon.csproj">
+      <Project>{EE111B93-23EC-497B-9FFC-B5535E14F96D}</Project>
+      <Name>CrunchySack_WinCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -7,12 +7,12 @@ using Crunchy.Noodle;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CrunchyWinsys")]
+[assembly: AssemblyTitle("CrunchySack_WinCommon")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CrunchyWinsys")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyProduct("CrunchySack_WinCommon")]
+[assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -22,7 +22,9 @@ using Crunchy.Noodle;
     typeof(Crunchy.Salt.ThisAssembly),
     typeof(Crunchy.Noodle.ThisAssembly),
     typeof(Crunchy.Bun.ThisAssembly),
-    typeof(Crunchy.Sauce.ThisAssembly)
+    typeof(Crunchy.Sauce.ThisAssembly),
+    typeof(Crunchy.Winsys.ThisAssembly),
+    typeof(Crunchy.Sack.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -31,7 +33,7 @@ using Crunchy.Noodle;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("27319d34-7cf7-43e3-a86d-05ed71d36e1b")]
+[assembly: Guid("49663f9f-cb98-458e-9c9d-6d6199538db4")]
 
 // Version information for an assembly consists of the following four values:
 //

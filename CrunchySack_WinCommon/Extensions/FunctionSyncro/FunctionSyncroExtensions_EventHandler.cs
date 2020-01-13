@@ -2,9 +2,8 @@
 using System.IO;
 
 using System.Windows;
-using System.Windows.Controls;
 
-namespace Crunchy.Sack.WPF
+namespace Crunchy.Sack.WinCommon
 {
     using Dough;
     using Noodle;

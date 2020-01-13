@@ -16,13 +16,15 @@ namespace Crunchy.Sack.WinForms
         static public void Initilize(WinFormsEngine engine)
         {
             engine.Add(
-                WinFormsInstancers.Simple("Panel", () => new Panel()),
+                WinFormsInstancers.Simple("DockPanel", () => new Panel()),
 
                 WinFormsModifiers.General<Panel>(p => {
                     p.AutoSize = true;
                     p.Dock = DockStyle.Fill;
-                }),
+                })
+            );
 
+            engine.Add(
                 WinFormsInstancers.Simple("HorizontalLayout", () => new FlowLayoutPanel() {
                     FlowDirection = FlowDirection.LeftToRight,
                     WrapContents = false
@@ -31,8 +33,10 @@ namespace Crunchy.Sack.WinForms
                 WinFormsInstancers.Simple("VerticalLayout", () => new FlowLayoutPanel() {
                     FlowDirection = FlowDirection.TopDown,
                     WrapContents = false
-                }),
+                })
+            );
 
+            engine.Add(
                 WinFormsInstancers.Simple("Table", () => new TableLayoutPanel()),
 
                 WinFormsInfos.AttributeLink<TableLayoutPanel, string>("columns", (t, s) => t.SetColumnsDefinitionString(s), t => t.GetColumnsDefinitionString()),

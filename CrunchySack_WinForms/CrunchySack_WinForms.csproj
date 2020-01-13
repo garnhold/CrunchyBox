@@ -39,7 +39,6 @@
     <Compile Include="WinFormsInfos\WinFormsInfos.cs" />
     <Compile Include="WinFormsEngine\WinFormsEngine.cs" />
     <Compile Include="WinFormsEngine\WinFormsEngine_Application.cs" />
-    <Compile Include="WinFormsEngine\WinFormsEngine_Auto.cs" />
     <Compile Include="WinFormsEngine\WinFormsEngine_Window.cs" />
     <Compile Include="WinFormsConstructors\WinFormsConstructors.cs" />
     <Compile Include="PeriodicProcess_WinForms\PeriodicProcess_WinForms.cs" />
@@ -49,7 +48,6 @@
     <Compile Include="Extensions\Form\FormExtensions.cs" />
     <Compile Include="Extensions\Form\FormExtensions_LinkSyncroDaemon.cs" />
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Control.cs" />
-    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Auto.cs" />
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Layout.cs" />
     <Compile Include="Extensions\ColumnStyle\ColumnStyleExtensions.cs" />
     <Compile Include="Extensions\SizeType\SizeTypeExtensions.cs" />
@@ -60,6 +58,9 @@
     <Compile Include="Extensions\Control\ControlExtensions.cs" />
     <Compile Include="Extensions\Control\ControlExtensions_TableLayoutPanel.cs" />
     <Compile Include="Extensions\Control\ControlExtensions_Parent.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Menu.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Button.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Label.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -85,6 +86,10 @@
     <ProjectReference Include="..\CrunchyWinsys\CrunchyWinsys.csproj">
       <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
       <Name>CrunchyWinsys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySack_WinCommon\CrunchySack_WinCommon.csproj">
+      <Project>{EE111B93-23EC-497B-9FFC-B5535E14F96D}</Project>
+      <Name>CrunchySack_WinCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
