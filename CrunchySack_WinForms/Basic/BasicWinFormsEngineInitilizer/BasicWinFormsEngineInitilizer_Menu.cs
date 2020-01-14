@@ -7,6 +7,7 @@ namespace Crunchy.Sack.WinForms
 {
     using Dough;
     using Sack;
+    using WinCommon;
     
     [BasicWinFormsEngineInitilizer]
     static public class BasicWinFormsEngineInitilizer_Menu
@@ -22,7 +23,9 @@ namespace Crunchy.Sack.WinForms
                 WinFormsInfos.Children<MenuStrip>(m => m.Items),
 
                 WinFormsInstancers.Simple("MenuItem", () => new ToolStripMenuItem()),
-                WinFormsInfos.Children<ToolStripMenuItem>(i => i.DropDownItems)
+                WinFormsInfos.Children<ToolStripMenuItem>(i => i.DropDownItems),
+
+                WinFormsInfos.AttributeFunction<ToolStripMenuItem>("click", (i, s) => i.Click += s.GetEventHandler())
             );
         }
     }

@@ -15,6 +15,7 @@ namespace Crunchy.Sack.WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddPublicPropertyAttributeLinksForType<Panel>();
             engine.Add(
                 WinFormsInstancers.Simple("DockPanel", () => new Panel()),
 
@@ -22,6 +23,11 @@ namespace Crunchy.Sack.WinForms
                     p.AutoSize = true;
                     p.Dock = DockStyle.Fill;
                 })
+            );
+
+            engine.AddPublicPropertyAttributeLinksForType<ContainerControl>();
+            engine.Add(
+                WinFormsModifiers.General<ContainerControl>(c => c.Dock = DockStyle.Fill)
             );
 
             engine.Add(
@@ -44,6 +50,24 @@ namespace Crunchy.Sack.WinForms
 
                 WinFormsInfos.AttributeLink<Control, int>("column", (c, i) => c.SetColumn(i), c => c.GetColumn()),
                 WinFormsInfos.AttributeLink<Control, int>("row", (c, i) => c.SetRow(i), c => c.GetRow())
+            );
+
+            engine.AddPublicPropertyAttributeLinksForType<SplitContainer>();
+            engine.Add(
+                WinFormsInstancers.Simple("SplitContainer", () => new SplitContainer()),
+
+                WinFormsInfos.AttributeChildren<SplitContainer>("panel1", c => c.Panel1.Controls),
+                WinFormsInfos.AttributeChildren<SplitContainer>("panel2", c => c.Panel2.Controls)
+            );
+
+            engine.AddPublicPropertyAttributeLinksForType<TabControl>();
+            engine.AddPublicPropertyAttributeLinksForType<TabPage>();
+            engine.Add(
+                WinFormsInstancers.Simple("TabControl", () => new TabControl()),
+                WinFormsInfos.Children<TabControl>(c => c.TabPages),
+
+                WinFormsInstancers.Simple("TabPage", () => new TabPage()),
+                WinFormsInfos.Children<TabPage>(p => p.Controls)
             );
         }
     }
