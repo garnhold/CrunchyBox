@@ -62,6 +62,8 @@
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Button.cs" />
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Label.cs" />
     <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Field.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_Slider.cs" />
+    <Compile Include="Basic\BasicWinFormsEngineInitilizer\BasicWinFormsEngineInitilizer_ListBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
