@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace Crunchy.Sack.WinCommon
+namespace Crunchy.Sack_WinCommon
 {
     public class ThisAssembly
     {

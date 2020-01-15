@@ -3,7 +3,7 @@ using System.IO;
 
 using System.Windows;
 
-namespace Crunchy.Sack.WPF
+namespace Crunchy.Sack_WPF
 {
     using Dough;
     using Sack;

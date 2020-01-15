@@ -3,7 +3,7 @@ using System.IO;
 
 using System.Windows.Forms;
 
-namespace Crunchy.Sack.WinForms
+namespace Crunchy.Sack_WinForms
 {
     using Dough;
     using Sack;

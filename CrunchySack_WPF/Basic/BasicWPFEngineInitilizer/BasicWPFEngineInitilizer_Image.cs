@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Crunchy.Sack.WPF
+namespace Crunchy.Sack_WPF
 {
     using Dough;
     using Sack;

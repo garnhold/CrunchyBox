@@ -3,7 +3,7 @@ using System.IO;
 
 using System.Windows;
 
-namespace Crunchy.Sack.WinCommon
+namespace Crunchy.Sack_WinCommon
 {
     using Dough;
     using Noodle;

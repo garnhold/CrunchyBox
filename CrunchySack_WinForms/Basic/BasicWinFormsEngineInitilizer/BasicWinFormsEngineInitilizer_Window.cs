@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 using System.Drawing;
 
-namespace Crunchy.Sack.WinForms
+namespace Crunchy.Sack_WinForms
 {
     using Dough;
     using Sack;

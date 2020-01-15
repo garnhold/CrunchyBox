@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Crunchy.Sack.WPF
+namespace Crunchy.Sack_WPF
 {
     using Dough;
     using Noodle;

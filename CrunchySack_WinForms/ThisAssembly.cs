@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace Crunchy.Sack.WinForms
+namespace Crunchy.Sack_WinForms
 {
     public class ThisAssembly
     {

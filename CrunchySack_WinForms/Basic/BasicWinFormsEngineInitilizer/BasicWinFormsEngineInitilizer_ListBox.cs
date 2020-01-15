@@ -3,11 +3,11 @@ using System.IO;
 
 using System.Windows.Forms;
 
-namespace Crunchy.Sack.WinForms
+namespace Crunchy.Sack_WinForms
 {
     using Dough;
     using Sack;
-    using WinCommon;
+    using Sack_WinCommon;
     
     [BasicWinFormsEngineInitilizer]
     static public class BasicWinFormsEngineInitilizer_ListBox

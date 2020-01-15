@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Crunchy.Sack.WPF
+namespace Crunchy.Sack_WPF
 {
     using Dough;
     using Noodle;

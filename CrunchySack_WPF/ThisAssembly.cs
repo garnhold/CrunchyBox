@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Crunchy.Sack.WPF
+namespace Crunchy.Sack_WPF
 {
     public class ThisAssembly
     {

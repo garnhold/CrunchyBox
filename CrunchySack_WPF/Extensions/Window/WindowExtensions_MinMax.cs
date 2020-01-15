@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using System.Windows;
 
-namespace Crunchy.Sack.WPF
+namespace Crunchy.Sack_WPF
 {
     using Dough;
     using Noodle;
