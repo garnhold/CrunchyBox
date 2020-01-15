@@ -308,6 +308,7 @@
     <Compile Include="ClassLibrary\Extensions\ClassLibraryExtensions_AddText.cs" />
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_AddText.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add.cs" />
+    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_None.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

@@ -19,6 +19,9 @@ namespace Crunchy.Sack
 
         public override CmlEntry_Class AssertGetClass(CmlExecution execution)
         {
+            if (layout == "none")
+                return new CmlEntry_Class_None(execution.GetTargetInfo().GetTargetType());
+
             return execution.GetTargetInfo().GetEngine().GetClassLibrary()
                 .AssertGetClass(execution.GetTargetInfo().GetTargetType(), layout);
         }
