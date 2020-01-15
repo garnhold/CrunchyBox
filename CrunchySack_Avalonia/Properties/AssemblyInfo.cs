@@ -7,11 +7,11 @@ using Crunchy.Noodle;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CrunchySack_WinForms")]
+[assembly: AssemblyTitle("CrunchySack.Avalonia")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CrunchySack_WinForms")]
+[assembly: AssemblyProduct("CrunchySack.Avalonia")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,9 +21,7 @@ using Crunchy.Noodle;
     typeof(Crunchy.Dough.ThisAssembly),
     typeof(Crunchy.Salt.ThisAssembly),
     typeof(Crunchy.Noodle.ThisAssembly),
-    typeof(Crunchy.Sodium.ThisAssembly),
-    typeof(Crunchy.Winsys.ThisAssembly),
-    typeof(Crunchy.Sack.WinCommon.ThisAssembly)
+    typeof(Crunchy.Sodium.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -32,7 +30,7 @@ using Crunchy.Noodle;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("eadcf39c-f758-48ef-b74c-a8296945eeb7")]
+[assembly: Guid("b3d06ebb-cfab-4742-8bfb-716f34883af4")]
 
 // Version information for an assembly consists of the following four values:
 //

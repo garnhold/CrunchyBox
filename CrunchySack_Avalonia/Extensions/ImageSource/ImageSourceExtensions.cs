@@ -1,0 +1,49 @@
+﻿using System;
+using System.IO;
+using System.Drawing;
+
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
+
+namespace Crunchy.Sack_Avalonia
+{
+    using Dough;
+    using Noodle;
+    using Sack;
+    
+    [Conversion]
+    static public class ImageSourceExtensions
+    {
+        [Conversion]
+        static public ImageSource Create(System.Drawing.Image image)
+        {
+            return Transfer.StreamViaMemory(
+                s => image.Save(s, System.Drawing.Imaging.ImageFormat.Png),
+                s => Create(s)
+            );
+        }
+
+        [Conversion]
+        static public ImageSource Create(Stream stream)
+        {
+            BitmapImage bitmap_image = new BitmapImage();
+
+            try
+            {
+                bitmap_image.BeginInit();
+                bitmap_image.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap_image.StreamSource = stream;
+                bitmap_image.EndInit();
+
+                return bitmap_image;
+            }
+            catch (Exception)
+            {
+            }
+
+            return null;
+        }
+    }
+}
