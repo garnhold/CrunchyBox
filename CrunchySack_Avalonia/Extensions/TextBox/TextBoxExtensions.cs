@@ -3,16 +3,13 @@ using System.IO;
 
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Input;
 
 namespace Crunchy.Sack_Avalonia
 {
     using Dough;
-    using Noodle;
     using Sack;
     
-    static public class EmptyKeyGesture
+    static public class TextBoxExtensions
     {
-        static public readonly KeyGesture INSTANCE = new KeyGesture(Key.None);
     }
 }

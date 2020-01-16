@@ -3,6 +3,7 @@ using System.IO;
 
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace Crunchy.Sack_Avalonia
 {
@@ -19,6 +20,11 @@ namespace Crunchy.Sack_Avalonia
         static public RepresentationInfo AttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(string n, AvaloniaProperty property) where REPRESENTATION_TYPE : Control
         {
             return AttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(n, (s, t) => s.SetValue(property, t), s => s.GetValue(property).Convert<VALUE_TYPE>());
+        }
+
+        static public RepresentationInfo AttributeFunction<REPRESENTATION_TYPE>(string n, RoutedEvent routed_event, RoutingStrategies routes = RoutingStrategies.Bubble) where REPRESENTATION_TYPE : Control
+        {
+            return AttributeFunction<REPRESENTATION_TYPE>(n, (e, s) => e.Register(routed_event, s, routes));
         }
     }
 }

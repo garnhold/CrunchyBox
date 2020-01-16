@@ -311,17 +311,33 @@
     <Compile Include="DropHandler\DropHandler.cs" />
     <Compile Include="DropHandler\DropHandler_Internal.cs" />
     <Compile Include="DropHandler\DropHandler_Internal_FunctionSyncro.cs" />
-    <Compile Include="EmptyCommand\EmptyCommand.cs" />
-    <Compile Include="EmptyKeyGesture\EmptyKeyGesture.cs" />
     <Compile Include="ProcessCommand\ProcessCommand.cs" />
     <Compile Include="Extensions\Control\ControlExtensions_KeyBindings.cs" />
-    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_EventHandler.cs" />
     <Compile Include="Extensions\PointerEventArgs\PointerEventArgsExtensions.cs" />
     <Compile Include="Extensions\PointerEventArgs\PointerEventArgsExtensions_Button.cs" />
     <Compile Include="Extensions\Point\PointExtensions.cs" />
     <Compile Include="Extensions\Point\PointExtensions_Distance.cs" />
     <Compile Include="Extensions\Point\PointExtensions_Magnitude.cs" />
     <Compile Include="Extensions\Point\PointExtensions_Math.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Control.cs" />
+    <Compile Include="Extensions\Control\ControlExtensions_RoutedEventHandler.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_TreeView.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_TabControl.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ScrollViewer.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Menu.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Layout.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_KeyBinding.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Image.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Fields.cs" />
+    <Compile Include="Extensions\TextBox\TextBoxExtensions.cs" />
+    <Compile Include="Extensions\TextBox\TextBoxExtensions_Select.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_DragDrop.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Decorator.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ContentControl.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ComboBox.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Button.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Border.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -379,11 +395,10 @@
     <Folder Include="Extensions\Control\" />
     <Folder Include="DragHandler\" />
     <Folder Include="DropHandler\" />
-    <Folder Include="EmptyCommand\" />
-    <Folder Include="EmptyKeyGesture\" />
     <Folder Include="ProcessCommand\" />
     <Folder Include="Extensions\PointerEventArgs\" />
     <Folder Include="Extensions\Point\" />
+    <Folder Include="Extensions\TextBox\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets')" />
