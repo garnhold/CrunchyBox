@@ -32,6 +32,7 @@ namespace Crunchy.Sack_WinForms
             throw new UnaccountedBranchException("input", input);
         }
 
+        [Conversion]
         static public string GetDefinitionString(this SizeType item)
         {
             switch (item)

@@ -11,11 +11,8 @@ namespace Crunchy.Sack_Avalonia
     using Noodle;
     using Sack;
     
-    static public class DependencyObjectExtensions_Window
+    static public class EmptyKeyGesture
     {
-        static public Window GetWindow(this DependencyObject item)
-        {
-            return Window.GetWindow(item);
-        }
+        static public readonly KeyGesture INSTANCE = new KeyGesture(Key.None);
     }
 }

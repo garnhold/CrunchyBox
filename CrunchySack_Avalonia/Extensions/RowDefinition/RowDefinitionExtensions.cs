@@ -14,12 +14,18 @@ namespace Crunchy.Sack_Avalonia
     static public class RowDefinitionExtensions
     {
         [Conversion]
-        static public RowDefinition Create(string input)
+        static public RowDefinition CreateFromDefinitionString(string input)
         {
             RowDefinition definition = new RowDefinition();
 
-            definition.Height = GridLengthExtensions.Create(input);
+            definition.Height = GridLengthExtensions.CreateFromDefinitionString(input);
             return definition;
+        }
+
+        [Conversion]
+        static public string GetDefinitionString(this RowDefinition item)
+        {
+            return item.Height.GetDefinitionString();
         }
     }
 }

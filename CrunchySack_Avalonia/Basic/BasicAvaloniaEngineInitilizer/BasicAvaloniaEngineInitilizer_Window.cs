@@ -16,7 +16,8 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
-            engine.AddPublicPropertyAttributeLinksForType<Window>();
+            engine.AddAvaloniaPropertyAttributeLinksForType<Window>();
+
             engine.Add(
                 AvaloniaInstancers.Simple("Window", () => new Window()),
 

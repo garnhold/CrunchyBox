@@ -16,7 +16,7 @@ namespace Crunchy.Sack_Avalonia
     
     static public class ControlExtensions_Drag
     {
-        static private readonly AttachedObjectField<Control, DragHandler> DRAG_HANDLER_FIELD = new AttachedObjectField<Control, DragHandler>();
+        static private readonly AttachedObjectField<Control, DragHandler> DRAG_HANDLER_FIELD = new AttachedObjectField<Control, DragHandler>(null);
 
         static public void SetDragHandler(this Control item, DragHandler to_set)
         {

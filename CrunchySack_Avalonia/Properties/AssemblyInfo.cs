@@ -7,11 +7,11 @@ using Crunchy.Noodle;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CrunchySack.Avalonia")]
+[assembly: AssemblyTitle("CrunchySack_Avalonia")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CrunchySack.Avalonia")]
+[assembly: AssemblyProduct("CrunchySack_Avalonia")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +21,10 @@ using Crunchy.Noodle;
     typeof(Crunchy.Dough.ThisAssembly),
     typeof(Crunchy.Salt.ThisAssembly),
     typeof(Crunchy.Noodle.ThisAssembly),
-    typeof(Crunchy.Sodium.ThisAssembly)
+    typeof(Crunchy.Sodium.ThisAssembly),
+    typeof(Crunchy.Winsys.ThisAssembly),
+    typeof(Crunchy.Sack.ThisAssembly),
+    typeof(Crunchy.Sack_WinCommon.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

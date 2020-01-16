@@ -3,6 +3,7 @@ using System.IO;
 
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace Crunchy.Sack_Avalonia
 {
@@ -10,29 +11,29 @@ namespace Crunchy.Sack_Avalonia
     using Noodle;
     using Sack;
     
-    static public class FunctionSyncroExtensions_RoutedEventHandler
+    static public class FunctionSyncroExtensions_EventHandler
     {
-        static public RoutedEventHandler GetRoutedEventHandler(this FunctionSyncro item, Predicate<RoutedEventArgs> predicate)
+        static public EventHandler<T> GetEventHandler<T>(this FunctionSyncro item, Predicate<T> predicate)
         {
             if(item.GetFunction().HasNoParameters())
             {
-                return delegate(object sender, RoutedEventArgs e) {
+                return delegate(object sender, T e) {
                     if (predicate(e))
                         item.Execute();
                 };
             }
 
-            if (item.GetFunction().CanParametersHold<object, RoutedEventArgs>())
+            if (item.GetFunction().CanParametersHold<object, T>())
             {
-                return delegate(object sender, RoutedEventArgs e) {
+                return delegate(object sender, T e) {
                     if (predicate(e))
                         item.Execute(new object[] { sender, e });
                 };
             }
 
-            if (item.GetFunction().CanParametersHold<RoutedEventArgs>())
+            if (item.GetFunction().CanParametersHold<T>())
             {
-                return delegate(object sender, RoutedEventArgs e) {
+                return delegate(object sender, T e) {
                     if (predicate(e))
                         item.Execute(new object[] { e });
                 };
@@ -40,9 +41,9 @@ namespace Crunchy.Sack_Avalonia
 
             throw new UnexpectedSignatureException(item.GetFunction().GetParameterTypes());
         }
-        static public RoutedEventHandler GetRoutedEventHandler(this FunctionSyncro item)
+        static public EventHandler<T> GetEventHandler<T>(this FunctionSyncro item)
         {
-            return item.GetRoutedEventHandler(e => true);
+            return item.GetEventHandler<T>(e => true);
         }
     }
 }

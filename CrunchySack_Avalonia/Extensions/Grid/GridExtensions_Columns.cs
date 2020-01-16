@@ -11,16 +11,16 @@ namespace Crunchy.Sack_Avalonia
     
     static public class GridExtensions_Columns
     {
-        static public void SetColumnDefinitionString(this Grid item, string input)
+        static public void SetColumnsDefinitionString(this Grid item, string input)
         {
             item.ColumnDefinitions.Set(
-                input.SplitOn(",").Convert(s => ColumnDefinitionExtensions.Create(s))
+                input.SplitOn(",").Convert(s => ColumnDefinitionExtensions.CreateFromDefinitionString(s))
             );
         }
 
-        static public string GetColumnDefinitionString(this Grid item)
+        static public string GetColumnsDefinitionString(this Grid item)
         {
-            return item.ColumnDefinitions.Convert(c => c.Width).ToString(", ");
+            return item.ColumnDefinitions.Convert(c => c.GetDefinitionString()).ToString(", ");
         }
     }
 }

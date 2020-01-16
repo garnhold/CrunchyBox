@@ -28,9 +28,12 @@ namespace Crunchy.Sack_Avalonia
 
         protected override DataObject OnStartDrag()
         {
+            DataObject data_object = new DataObject();
+
             DRAGGED_OBJECT = GetObjectToDrag();
 
-            return new DataObject(DataFormats.Text, "Internal");
+            data_object.Set(DataFormats.Text, "Internal");
+            return data_object;
         }
     }
 }

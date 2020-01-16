@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Drawing;
 
 using Avalonia;
 using Avalonia.Controls;
@@ -10,7 +11,7 @@ namespace Crunchy.Sack_Avalonia
     using Noodle;
     using Sack;
     
-    static public class MouseEventArgsExtensions
+    static public class PointerEventArgsExtensions
     {
     }
 }

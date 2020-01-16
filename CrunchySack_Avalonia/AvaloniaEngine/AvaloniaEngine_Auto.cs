@@ -15,23 +15,7 @@ namespace Crunchy.Sack_Avalonia
     
     public abstract partial class AvaloniaEngine : RepresentationEngine
     {
-        public void AddInspectedComponentsForType(Type type)
-        {
-            Add(AvaloniaInstancers.Simple(type.Name, () => type.CreateInstance()));
-
-            AddAttributeInfosForAvaloniaPropertys(type);
-        }
-
-        public void AddInspectedComponentsForTypes(IEnumerable<Type> types)
-        {
-            types.Process(t => AddInspectedComponentsForType(t));
-        }
-        public void AddInspectedComponentsForTypes(params Type[] types)
-        {
-            AddInspectedComponentsForTypes((IEnumerable<Type>)types);
-        }
-
-        public void AddAttributeInfosForAvaloniaPropertys(Type type)
+        public void AddAvaloniaPropertyAttributeLinksForType(Type type)
         {
             Add(
                 type.GetFilteredStaticFieldsOfType<AvaloniaProperty>(Filterer_FieldInfo.IsDeclaredWithin(type))
@@ -43,6 +27,10 @@ namespace Crunchy.Sack_Avalonia
                     )
                     .SkipNull()
             );
+        }
+        public void AddAvaloniaPropertyAttributeLinksForType<T>()
+        {
+            AddAvaloniaPropertyAttributeLinksForType(typeof(T));
         }
     }
 }

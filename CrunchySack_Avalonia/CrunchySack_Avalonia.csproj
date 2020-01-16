@@ -89,7 +89,6 @@
     <Reference Include="System.Drawing.Common">
       <HintPath>..\packages\System.Drawing.Common.4.7.0\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Globalization.Calendars">
       <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
     </Reference>
@@ -267,6 +266,7 @@
     <Reference Include="Avalonia.Visuals">
       <HintPath>..\packages\Avalonia.0.9.1\lib\net461\Avalonia.Visuals.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,15 +288,8 @@
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Text.cs" />
     <Compile Include="AvaloniaEngine\AvaloniaEngine_Auto.cs" />
     <Compile Include="Extensions\ColumnDefinition\ColumnDefinitionExtensions.cs" />
-    <Compile Include="Extensions\DependencyObject\DependencyObjectExtensions.cs" />
-    <Compile Include="Extensions\DependencyObject\DependencyObjectExtensions_Window.cs" />
-    <Compile Include="Extensions\FrameworkElement\FrameworkElementExtensions.cs" />
-    <Compile Include="Extensions\FrameworkElement\FrameworkElementExtensions_InputBindings.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_Command.cs" />
-    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_MouseButtonEventHandler.cs" />
-    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_MouseEventHandler.cs" />
-    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_RoutedEventHandler.cs" />
     <Compile Include="Extensions\Grid\GridExtensions.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Columns.cs" />
     <Compile Include="Extensions\Grid\GridExtensions_Rows.cs" />
@@ -304,9 +297,7 @@
     <Compile Include="Extensions\GridUnitType\GridUnitTypeExtensions.cs" />
     <Compile Include="Extensions\Image\ImageExtensions.cs" />
     <Compile Include="Extensions\Image\ImageExtensions_Transform.cs" />
-    <Compile Include="Extensions\ImageSource\ImageSourceExtensions.cs" />
-    <Compile Include="Extensions\MouseEventArgs\MouseEventArgsExtensions.cs" />
-    <Compile Include="Extensions\MouseEventArgs\MouseEventArgsExtensions_Compare.cs" />
+    <Compile Include="Extensions\IBitmap\IBitmapExtensions.cs" />
     <Compile Include="Extensions\RowDefinition\RowDefinitionExtensions.cs" />
     <Compile Include="Extensions\Size\SizeExtensions.cs" />
     <Compile Include="Extensions\Size\SizeExtensions_GetWith.cs" />
@@ -321,8 +312,16 @@
     <Compile Include="DropHandler\DropHandler_Internal.cs" />
     <Compile Include="DropHandler\DropHandler_Internal_FunctionSyncro.cs" />
     <Compile Include="EmptyCommand\EmptyCommand.cs" />
-    <Compile Include="EmptyInputGesture\EmptyInputGesture.cs" />
+    <Compile Include="EmptyKeyGesture\EmptyKeyGesture.cs" />
     <Compile Include="ProcessCommand\ProcessCommand.cs" />
+    <Compile Include="Extensions\Control\ControlExtensions_KeyBindings.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_EventHandler.cs" />
+    <Compile Include="Extensions\PointerEventArgs\PointerEventArgsExtensions.cs" />
+    <Compile Include="Extensions\PointerEventArgs\PointerEventArgsExtensions_Button.cs" />
+    <Compile Include="Extensions\Point\PointExtensions.cs" />
+    <Compile Include="Extensions\Point\PointExtensions_Distance.cs" />
+    <Compile Include="Extensions\Point\PointExtensions_Magnitude.cs" />
+    <Compile Include="Extensions\Point\PointExtensions_Math.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -368,15 +367,12 @@
     <Folder Include="Extensions\Window\" />
     <Folder Include="Basic\" />
     <Folder Include="Extensions\ColumnDefinition\" />
-    <Folder Include="Extensions\DependencyObject\" />
-    <Folder Include="Extensions\FrameworkElement\" />
     <Folder Include="Extensions\FunctionSyncro\" />
     <Folder Include="Extensions\Grid\" />
     <Folder Include="Extensions\GridLength\" />
     <Folder Include="Extensions\GridUnitType\" />
     <Folder Include="Extensions\Image\" />
-    <Folder Include="Extensions\ImageSource\" />
-    <Folder Include="Extensions\MouseEventArgs\" />
+    <Folder Include="Extensions\IBitmap\" />
     <Folder Include="Extensions\RowDefinition\" />
     <Folder Include="Extensions\Size\" />
     <Folder Include="Extensions\Thickness\" />
@@ -384,8 +380,10 @@
     <Folder Include="DragHandler\" />
     <Folder Include="DropHandler\" />
     <Folder Include="EmptyCommand\" />
-    <Folder Include="EmptyInputGesture\" />
+    <Folder Include="EmptyKeyGesture\" />
     <Folder Include="ProcessCommand\" />
+    <Folder Include="Extensions\PointerEventArgs\" />
+    <Folder Include="Extensions\Point\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets')" />

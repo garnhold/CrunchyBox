@@ -4,6 +4,7 @@ using System.IO;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 
 namespace Crunchy.Sack_Avalonia
 {
@@ -14,7 +15,10 @@ namespace Crunchy.Sack_Avalonia
     
     public abstract class DropHandler
     {
-        private UIElement element;
+        private Control element;
+
+        private Point point;
+        private IDataObject data;
 
         protected abstract bool OnEnter(Point point, IDataObject data);
         protected abstract bool OnOver(Point point, IDataObject data);
@@ -24,33 +28,45 @@ namespace Crunchy.Sack_Avalonia
 
         private void element_DragEnter(object sender, DragEventArgs e)
         {
-            if (OnEnter(e.GetPosition(element), e.Data))
+            Update(e);
+
+            if (OnEnter(point, data))
                 e.Handled = true;
         }
 
         private void element_DragOver(object sender, DragEventArgs e)
         {
-            if (OnOver(e.GetPosition(element), e.Data))
+            Update(e);
+
+            if (OnOver(point, data))
                 e.Handled = true;
         }
 
-        private void element_DragLeave(object sender, DragEventArgs e)
+        private void element_DragLeave(object sender, RoutedEventArgs e)
         {
-            if (OnLeave(e.GetPosition(element), e.Data))
+            if (OnLeave(point, data))
                 e.Handled = true;
         }
 
         private void element_Drop(object sender, DragEventArgs e)
         {
-            if (OnDrop(e.GetPosition(element), e.Data))
+            Update(e);
+
+            if (OnDrop(point, data))
                 e.Handled = true;
+        }
+
+        private void Update(DragEventArgs e)
+        {
+            point = e.GetPosition(element);
+            data = e.Data;
         }
 
         public DropHandler()
         {
         }
 
-        public void Attach(UIElement e)
+        public void Attach(Control e)
         {
             Detach();
 
@@ -58,13 +74,11 @@ namespace Crunchy.Sack_Avalonia
 
             if (element != null)
             {
-                element.AllowDrop = true;
+                element.AddHandler(DragDrop.DropEvent, element_Drop);
 
-                element.Drop += element_Drop;
-
-                element.DragEnter += element_DragEnter;
-                element.DragOver += element_DragOver;
-                element.DragLeave += element_DragLeave;
+                element.AddHandler(DragDrop.DragEnterEvent, element_DragEnter);
+                element.AddHandler(DragDrop.DragOverEvent, element_DragOver);
+                element.AddHandler(DragDrop.DragLeaveEvent, element_DragLeave);
             }
         }
 
@@ -72,11 +86,11 @@ namespace Crunchy.Sack_Avalonia
         {
             if (element != null)
             {
-                element.Drop -= element_Drop;
+                element.RemoveHandler(DragDrop.DropEvent, element_Drop);
 
-                element.DragEnter -= element_DragEnter;
-                element.DragOver -= element_DragOver;
-                element.DragLeave -= element_DragLeave;
+                element.RemoveHandler(DragDrop.DragEnterEvent, element_DragEnter);
+                element.RemoveHandler(DragDrop.DragOverEvent, element_DragOver);
+                element.RemoveHandler(DragDrop.DragLeaveEvent, element_DragLeave);
 
                 element = null;
             }

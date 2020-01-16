@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace Crunchy.Sack_Avalonia
 {
@@ -26,10 +27,11 @@ namespace Crunchy.Sack_Avalonia
         {
             item.SyncronizeLinkSyncroDaemon(to_attach);
 
-            item.GetPropertyChangedObservable(Window.IsVisibleProperty).AddClassHandler(
-                delegate (AvaloniaObject sender, AvaloniaPropertyChangedEventArgs e) {
+            item.GetPropertyChangedObservable(Window.IsVisibleProperty).Subscribe(
+                delegate (AvaloniaPropertyChangedEventArgs e) {
                     item.SyncronizeLinkSyncroDaemon(to_attach);
-            });
+                }
+            );
 
             item.Closed += delegate(object sender, EventArgs e) {
                 to_attach.StopClear();

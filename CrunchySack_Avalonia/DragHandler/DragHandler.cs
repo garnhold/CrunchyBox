@@ -4,54 +4,53 @@ using System.IO;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 
 namespace Crunchy.Sack_Avalonia
 {
     using Dough;
     using Noodle;
     using Sack;
-    using System;
+    using Winsys;
     
     public abstract class DragHandler
     {
-        private UIElement element;
+        private Control element;
         private DragDropEffects effects;
 
         private Point start_point;
         private bool is_dragging;
 
+        public const double MinimumDragDistance = 15.0;
+
         protected abstract DataObject OnStartDrag();
 
-        private void element_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void element_PointerPressedEvent(object sender, PointerPressedEventArgs e)
         {
-            start_point = e.GetPosition(element);
-            is_dragging = false;
+            if(e.GetPointerUpdateKind() == PointerUpdateKind.LeftButtonPressed)
+            {
+                start_point = e.GetPosition(element);
+                is_dragging = false;
+            }
         }
 
-        private void element_PreviewMouseMove(object sender, MouseEventArgs e)
+        private void element_PointerMovedEvent(object sender, PointerEventArgs e)
         {
             if (is_dragging == false)
             {
-                if (e.LeftButton == MouseButtonState.Pressed)
+                if (e.GetPointerUpdateKind() == PointerUpdateKind.LeftButtonPressed)
                 {
-                    Point difference = start_point.GetSubtract(e.GetPosition(element)).GetAbs();
-
-                    if (difference.X >= SystemParameters.MinimumHorizontalDragDistance ||
-                        difference.Y >= SystemParameters.MinimumVerticalDragDistance)
+                    if(start_point.IsOutsideDistance(e.GetPosition(element), MinimumDragDistance))
                     {
                         is_dragging = true;
 
-                        DragDrop.DoDragDrop(
-                            element,
-                            OnStartDrag(),
-                            effects
-                        );
+                        DragDrop.DoDragDrop(e, OnStartDrag(), effects);
                     }
                 }
             }
         }
 
-        public void Attach(UIElement e)
+        public void Attach(Control e)
         {
             Detach();
 
@@ -59,8 +58,8 @@ namespace Crunchy.Sack_Avalonia
 
             if (element != null)
             {
-                element.PreviewMouseLeftButtonDown += element_PreviewMouseLeftButtonDown;
-                element.PreviewMouseMove += element_PreviewMouseMove;
+                element.AddHandler(Control.PointerPressedEvent, element_PointerPressedEvent, RoutingStrategies.Tunnel);
+                element.AddHandler(Control.PointerMovedEvent, element_PointerMovedEvent, RoutingStrategies.Tunnel);
             }
         }
 
@@ -68,8 +67,8 @@ namespace Crunchy.Sack_Avalonia
         {
             if (element != null)
             {
-                element.PreviewMouseLeftButtonDown -= element_PreviewMouseLeftButtonDown;
-                element.PreviewMouseMove -= element_PreviewMouseMove;
+                element.RemoveHandler(Control.PointerPressedEvent, element_PointerPressedEvent);
+                element.RemoveHandler(Control.PointerMovedEvent, element_PointerMovedEvent);
 
                 element = null;
             }

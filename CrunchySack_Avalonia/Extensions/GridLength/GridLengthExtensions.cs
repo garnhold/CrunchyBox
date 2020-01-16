@@ -15,19 +15,25 @@ namespace Crunchy.Sack_Avalonia
     [Conversion]
     static public class GridLengthExtensions
     {
-        static public GridLength Create(double value, string units)
+        static public GridLength CreateFromDefinitionString(double value, string units)
         {
-            return new GridLength(value, GridUnitTypeExtensions.Create(units));
+            return new GridLength(value, GridUnitTypeExtensions.CreateFromDefinitionString(units));
         }
 
         [Conversion]
-        static public GridLength Create(string input)
+        static public GridLength CreateFromDefinitionString(string input)
         {
             double value;
             string units;
 
             input.TryParseMeasurement(out value, out units);
-            return Create(value, units);
+            return CreateFromDefinitionString(value, units);
+        }
+
+        [Conversion]
+        static public string GetDefinitionString(this GridLength item)
+        {
+            return item.GridUnitType.GetDefinitionString(item.Value);
         }
     }
 }
