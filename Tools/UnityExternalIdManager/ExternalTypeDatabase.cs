@@ -32,7 +32,7 @@ public class ExternalTypeDatabase
 
     public void Load(string filepath)
     {
-        TyonSettings.INSTANCE.CreateContext().DeserializeInto(
+        TyonSettings.INSTANCE.DeserializeInto(
             this,
             File.ReadAllText(filepath),
             TyonHydrationMode.Permissive
@@ -43,7 +43,7 @@ public class ExternalTypeDatabase
     {
         File.WriteAllText(
             filepath,
-            TyonSettings.INSTANCE.CreateContext().Serialize(this)
+            TyonSettings.INSTANCE.Serialize(this)
         );
     }
 

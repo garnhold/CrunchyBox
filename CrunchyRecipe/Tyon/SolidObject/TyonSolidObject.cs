@@ -34,7 +34,7 @@ namespace Crunchy.Recipe
 
             if (previous_tyon.IsVisible())
             {
-                settings.CreateContext().DeserializeInto(
+                settings.DeserializeInto(
                     target,
                     previous_tyon,
                     mode
@@ -44,7 +44,7 @@ namespace Crunchy.Recipe
 
         public void Save()
         {
-            string current_tyon = settings.CreateContext().Serialize(target);
+            string current_tyon = settings.Serialize(target);
 
             if (current_tyon != previous_tyon)
             {

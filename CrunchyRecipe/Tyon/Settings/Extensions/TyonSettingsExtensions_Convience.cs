@@ -28,5 +28,10 @@ namespace Crunchy.Recipe
         {
             return item.CreateContext().DeserializeValue(type, text, mode);
         }
+
+        static public void DeserializeInto(this TyonSettings item, object obj, string text, TyonHydrationMode mode)
+        {
+            item.CreateContext().DeserializeInto(obj, text, mode);
+        }
     }
 }
