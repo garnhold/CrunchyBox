@@ -338,6 +338,14 @@
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ComboBox.cs" />
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Button.cs" />
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Border.cs" />
+    <Compile Include="Extensions\Window\WindowExtensions_Dialog.cs" />
+    <Compile Include="Extensions\FileDialogFilter\FileDialogFilterExtensions.cs" />
+    <Compile Include="Extensions\FileDialog\FileDialogExtensions.cs" />
+    <Compile Include="Extensions\FileDialog\FileDialogExtensions_Filters.cs" />
+    <Compile Include="Extensions\SaveFileDialog\SaveFileDialogExtensions.cs" />
+    <Compile Include="Extensions\SaveFileDialog\SaveFileDialogExtensions_Show.cs" />
+    <Compile Include="Extensions\OpenFileDialog\OpenFileDialogExtensions.cs" />
+    <Compile Include="Extensions\OpenFileDialog\OpenFileDialogExtensions_Show.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -399,6 +407,10 @@
     <Folder Include="Extensions\PointerEventArgs\" />
     <Folder Include="Extensions\Point\" />
     <Folder Include="Extensions\TextBox\" />
+    <Folder Include="Extensions\FileDialogFilter\" />
+    <Folder Include="Extensions\FileDialog\" />
+    <Folder Include="Extensions\SaveFileDialog\" />
+    <Folder Include="Extensions\OpenFileDialog\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets')" />
