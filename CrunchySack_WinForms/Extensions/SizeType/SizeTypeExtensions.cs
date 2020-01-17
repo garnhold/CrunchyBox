@@ -17,7 +17,7 @@ namespace Crunchy.Sack_WinForms
         [Conversion]
         static public SizeType CreateFromDefinitionString(string input)
         {
-            input = input.ToLower().Trim();
+            input = input.Solidify().ToLower().Trim();
 
             switch (input)
             {

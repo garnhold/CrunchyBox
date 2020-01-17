@@ -17,7 +17,7 @@ namespace Crunchy.Sack_WPF
         [Conversion]
         static public GridUnitType Create(string input)
         {
-            input = input.ToLower().Trim();
+            input = input.Solidify().ToLower().Trim();
 
             switch (input)
             {

@@ -17,7 +17,7 @@ namespace Crunchy.Sack_Avalonia
         [Conversion]
         static public GridUnitType CreateFromDefinitionString(string input)
         {
-            input = input.ToLower().Trim();
+            input = input.Solidify().ToLower().Trim();
 
             switch (input)
             {
