@@ -1204,6 +1204,7 @@
     <Compile Include="DecayTimeSet\Extensions\DecayTimeSetExtensions.cs" />
     <Compile Include="DecayTimeSet\Extensions\DecayTimeSetExtensions_Add.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_ProcessAndChain.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Solidify.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
