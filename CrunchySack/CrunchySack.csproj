@@ -85,8 +85,8 @@
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_IList.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_Process.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Overwrite_Process.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Overwrite.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Process.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
@@ -309,6 +309,8 @@
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_AddText.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add.cs" />
     <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_None.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite_Process.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

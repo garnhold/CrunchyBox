@@ -32,7 +32,14 @@ namespace Crunchy.Sack
         static public RepresentationInfo AttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(string n, Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
         {
             return new RepresentationInfo_Attribute_Children(n,
-                new EffigyInfo_Collection_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
+                new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
+            );
+        }
+
+        static public RepresentationInfo AttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(string n, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
+        {
+            return new RepresentationInfo_Attribute_Children(n,
+                new EffigyInfo_Collection_Flush_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
             );
         }
 
@@ -86,7 +93,14 @@ namespace Crunchy.Sack
         static public RepresentationInfo Children<REPRESENTATION_TYPE, CHILD_TYPE>(Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
         {
             return new RepresentationInfo_Children(
-                new EffigyInfo_Collection_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
+                new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
+            );
+        }
+
+        static public RepresentationInfo Children<REPRESENTATION_TYPE, CHILD_TYPE>(Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
+        {
+            return new RepresentationInfo_Children(
+                new EffigyInfo_Collection_Flush_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
             );
         }
 
