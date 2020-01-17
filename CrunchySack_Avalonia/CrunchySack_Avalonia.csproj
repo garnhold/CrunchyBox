@@ -346,6 +346,7 @@
     <Compile Include="Extensions\SaveFileDialog\SaveFileDialogExtensions_Show.cs" />
     <Compile Include="Extensions\OpenFileDialog\OpenFileDialogExtensions.cs" />
     <Compile Include="Extensions\OpenFileDialog\OpenFileDialogExtensions_Show.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ItemsControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -411,6 +412,7 @@
     <Folder Include="Extensions\FileDialog\" />
     <Folder Include="Extensions\SaveFileDialog\" />
     <Folder Include="Extensions\OpenFileDialog\" />
+    <Folder Include="Extensions\FunctionSyncro\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets')" />
