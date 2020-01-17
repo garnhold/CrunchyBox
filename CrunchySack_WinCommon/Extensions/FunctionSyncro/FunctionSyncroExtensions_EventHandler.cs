@@ -21,19 +21,19 @@ namespace Crunchy.Sack_WinCommon
                 };
             }
 
-            if (item.GetFunction().CanParametersHold<object, EventArgs>())
+            if (item.GetFunction().GetNumberParameters() == 1)
+            {
+                return delegate (object sender, EventArgs e) {
+                    if (predicate(e))
+                        item.Execute(new object[] { e });
+                };
+            }
+
+            if (item.GetFunction().GetNumberParameters() == 2)
             {
                 return delegate(object sender, EventArgs e) {
                     if (predicate(e))
                         item.Execute(new object[] { sender, e });
-                };
-            }
-
-            if (item.GetFunction().CanParametersHold<EventArgs>())
-            {
-                return delegate(object sender, EventArgs e) {
-                    if (predicate(e))
-                        item.Execute(new object[] { e });
                 };
             }
 
