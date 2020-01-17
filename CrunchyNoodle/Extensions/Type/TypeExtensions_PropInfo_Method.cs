@@ -37,9 +37,10 @@ namespace Crunchy.Noodle
             string get_method;
 
             name = name.TrimSuffix("()");
-            name.TryDetectEntityPropMethodPair(out set_method, out get_method);
+            if (name.TryDetectEntityPropMethodPair(out set_method, out get_method))
+                return item.GetInstanceMethodPropInternal(set_method, get_method);
 
-            return item.GetInstanceMethodPropInternal(set_method, get_method);
+            return null;
         });
         static public PropInfoEX GetInstanceMethodProp(this Type item, string name)
         {
