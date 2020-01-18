@@ -311,6 +311,7 @@
     <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_None.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite_Process.cs" />
+    <Compile Include="Application\ApplicationRepresentationEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -339,6 +340,9 @@
       <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
       <Name>CrunchySodium</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
