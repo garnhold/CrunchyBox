@@ -14,11 +14,5 @@ namespace Crunchy.Sack_Avalonia
     
     public abstract partial class AvaloniaEngine : RepresentationEngine
     {
-        public AvaloniaEngine()
-        {
-            if (Application.Current == null)
-                new Application();
-
-        }
     }
 }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Platform;
+using Avalonia.Controls.ApplicationLifetimes;
 
 namespace Crunchy.Sack_Avalonia
 {
@@ -21,18 +23,38 @@ namespace Crunchy.Sack_Avalonia
             return MAIN_WINDOW;
         }
 
-        public void StartApplication(object target, string layout = CmlLinkSource.DEFAULT_LAYOUT)
+        private void StartApplication<APP_TYPE>(Operation<Window> operation) where APP_TYPE : Application, new()
         {
-            MAIN_WINDOW = CreateWindowRepresentation(target, layout);
+            AppBuilder.Configure<APP_TYPE>()
+                .UsePlatformDetect()
+                .AfterSetup(delegate (AppBuilder builder) {
+                    MAIN_WINDOW = operation();
 
-            Application.Current.Run(MAIN_WINDOW);
+                    ((IClassicDesktopStyleApplicationLifetime)builder.Instance.ApplicationLifetime).MainWindow = MAIN_WINDOW;
+                })
+                .StartWithClassicDesktopLifetime(Empty.Array<string>());
         }
 
-        public void StartApplication(object target, long milliseconds, Process process, string layout = CmlLinkSource.DEFAULT_LAYOUT)
+        public void StartApplication<APP_TYPE>(object target, string layout = CmlLinkSource.DEFAULT_LAYOUT) where APP_TYPE : Application, new()
         {
-            MAIN_WINDOW = CreateWindowRepresentation(target, milliseconds, process, layout);
+            StartApplication<APP_TYPE>(() => CreateWindowRepresentation(target, layout));
+        }
+        public void StartApplication<APP_TYPE, T>(string layout = CmlLinkSource.DEFAULT_LAYOUT) where APP_TYPE : Application, new() where T : new()
+        {
+            StartApplication<APP_TYPE>(new T(), layout);
+        }
 
-            Application.Current.Run(MAIN_WINDOW);
+        public void StartApplication<APP_TYPE>(object target, long milliseconds, Process process, string layout = CmlLinkSource.DEFAULT_LAYOUT) where APP_TYPE : Application, new()
+        {
+            StartApplication<APP_TYPE>(() => CreateWindowRepresentation(target, milliseconds, process, layout));
+        }
+        public void StartApplication<APP_TYPE, T>(T target, long milliseconds, Process<T> process, string layout = CmlLinkSource.DEFAULT_LAYOUT) where APP_TYPE : Application, new()
+        {
+            StartApplication<APP_TYPE>(target, milliseconds, () => process(target), layout);
+        }
+        public void StartApplication<APP_TYPE, T>(long milliseconds, Process<T> process, string layout = CmlLinkSource.DEFAULT_LAYOUT) where APP_TYPE : Application, new() where T : new()
+        {
+            StartApplication<APP_TYPE, T>(new T(), milliseconds, process, layout);
         }
     }
 }
