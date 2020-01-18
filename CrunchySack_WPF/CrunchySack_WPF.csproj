@@ -74,7 +74,6 @@
     <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Image.cs" />
     <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Text.cs" />
     <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizer_Layouts_Panel.cs" />
-    <Compile Include="Basic\BasicWPFEngineWindow.cs" />
     <Compile Include="Basic\BasicWPFEngineInitilizer\BasicWPFEngineInitilizerAttribute.cs" />
     <Compile Include="DragHandler\DragHandler_Internal_Value.cs" />
     <Compile Include="DragHandler\DragHandler_Internal.cs" />
@@ -117,7 +116,6 @@
     <Compile Include="Extensions\Window\WindowExtensions.cs" />
     <Compile Include="PeriodicProcess_WPF\PeriodicProcess_WPF.cs" />
     <Compile Include="ProcessCommand\ProcessCommand.cs" />
-    <Compile Include="WPFEngineWindow\WPFEngineWindow.cs" />
     <Compile Include="WPFEngine\WPFEngine_Window.cs" />
     <Compile Include="WPFEngine\WPFEngine_Application.cs" />
     <Compile Include="WPFEngine\WPFEngine_Auto.cs" />
