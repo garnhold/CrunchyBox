@@ -1,0 +1,34 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Crunchy.Dough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_parameters = 10;
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Noodle
+{
+    using Dough;
+    using Salt;
+    
+    static public partial class MarkedMethods<T> where T : Attribute
+	{      
+		<#for(int i = 0; i < max_number_parameters; i++){#>
+
+			static public void InvokeFilteredMarkedStaticMethods<#=TTCS.ArgumentsForGeneric("P#", i)#>(<#=TTCS.Parameters("P#", "p#", i)#>)
+			{
+                GetFilteredMarkedStaticMethods(
+                    Filterer_MethodInfo.CanEffectiveParametersHold<#=TTCS.ArgumentsForGeneric("P#", i)#>()
+                ).Process(m => m.Invoke(null, new object[] { <#=TTCS.Arguments("p#", i)#> }));
+			}
+		<#}#>
+	}
+}

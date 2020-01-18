@@ -23,9 +23,7 @@ namespace Crunchy.Noodle
             {
                 instance = typeof(INSTANCE_TYPE).CreateInstance<INSTANCE_TYPE>();
 
-                MarkedMethods<ATTRIBUTE_TYPE>.GetFilteredMarkedStaticMethods(
-                    Filterer_MethodInfo.CanEffectiveParametersHold<INSTANCE_TYPE>()
-                ).Process(m => m.Invoke(null, new object[] { instance }));
+                MarkedMethods<ATTRIBUTE_TYPE>.InvokeFilteredMarkedStaticMethods<INSTANCE_TYPE>(instance);
             }
 
             return instance;
