@@ -4,23 +4,29 @@ using System.Collections;
 using System.Collections.Generic;
 
 using Avalonia;
+using Avalonia.Platform;
 
 namespace Crunchy.Sack_Avalonia
 {
     using Dough;
     using Noodle;
     using Sack;
-    
+
     public class BasicAvaloniaEngine : AvaloniaEngine
     {
-        static private readonly DistributedInitilizationInstance<BasicAvaloniaEngine, BasicAvaloniaEngineInitilizerAttribute> INSTANCE = new DistributedInitilizationInstance<BasicAvaloniaEngine, BasicAvaloniaEngineInitilizerAttribute>();
+        static private BasicAvaloniaEngine INSTANCE;
         static public BasicAvaloniaEngine GetInstance()
         {
-            return INSTANCE.Get();
+            return INSTANCE;
         }
 
-        private BasicAvaloniaEngine()
+        static public void Initialize(AppBuilder builder)
         {
+            INSTANCE = new BasicAvaloniaEngine(builder);
+
+            MarkedMethods<BasicAvaloniaEngineInitilizerAttribute>.InvokeFilteredMarkedStaticMethods(INSTANCE);
         }
+
+        private BasicAvaloniaEngine(AppBuilder b) : base(b) { }
     }
 }

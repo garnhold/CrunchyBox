@@ -12,7 +12,16 @@ namespace Crunchy.Sack_WinForms
     using Noodle;
     using Sack;
     
-    public abstract partial class WinFormsEngine : RepresentationEngine
+    public abstract class WinFormsEngine : ApplicationRepresentationEngine<Form, PeriodicProcess_WinForms>
     {
+        protected override void AttachLinkSyncroDaemon(Form window, LinkSyncroDaemon daemon)
+        {
+            window.AttachLinkSyncroDaemon(daemon);
+        }
+
+        protected override void StartApplicationInternal(Operation<Form> operation)
+        {
+            Application.Run(operation());
+        }
     }
 }

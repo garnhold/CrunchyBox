@@ -116,9 +116,6 @@
     <Compile Include="Extensions\Window\WindowExtensions.cs" />
     <Compile Include="PeriodicProcess_WPF\PeriodicProcess_WPF.cs" />
     <Compile Include="ProcessCommand\ProcessCommand.cs" />
-    <Compile Include="WPFEngine\WPFEngine_Window.cs" />
-    <Compile Include="WPFEngine\WPFEngine_Application.cs" />
-    <Compile Include="WPFEngine\WPFEngine_Auto.cs" />
     <Compile Include="WPFInfos\WPFInfos.cs" />
     <Compile Include="WPFConstructors\WPFConstructors.cs" />
     <Compile Include="WPFModifiers\WPFModifiers.cs" />

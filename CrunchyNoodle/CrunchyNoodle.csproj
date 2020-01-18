@@ -461,6 +461,11 @@
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Elements_Modify.cs" />
     <Compile Include="Member\Variable\Extensions\VariableExtensions_Contents.cs" />
     <Compile Include="MemberInstance\VariableInstance\Extensions\VariableInstanceExtensions_Contents.cs" />
+    <Compile Include="MarkedMethods\MarkedMethods_Invoke.cs">
+      <DependentUpon>MarkedMethods_Invoke.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -504,6 +509,10 @@
     </Content>
     <Content Include="MIMEType\mime_types.txt" />
     <Content Include="MIMEType\source.txt" />
+    <Content Include="MarkedMethods\MarkedMethods_Invoke.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MarkedMethods_Invoke.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

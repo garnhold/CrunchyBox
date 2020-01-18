@@ -273,8 +273,6 @@
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="AvaloniaConstructors\AvaloniaConstructors.cs" />
     <Compile Include="AvaloniaEngine\AvaloniaEngine.cs" />
-    <Compile Include="AvaloniaEngine\AvaloniaEngine_Application.cs" />
-    <Compile Include="AvaloniaEngine\AvaloniaEngine_Window.cs" />
     <Compile Include="AvaloniaInfos\AvaloniaInfos.cs" />
     <Compile Include="AvaloniaInstancers\AvaloniaInstancers.cs" />
     <Compile Include="AvaloniaModifiers\AvaloniaModifiers.cs" />
@@ -286,7 +284,6 @@
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Window.cs" />
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizerAttribute.cs" />
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_Text.cs" />
-    <Compile Include="AvaloniaEngine\AvaloniaEngine_Auto.cs" />
     <Compile Include="Extensions\ColumnDefinition\ColumnDefinitionExtensions.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_Command.cs" />

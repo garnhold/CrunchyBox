@@ -38,8 +38,6 @@
     <Compile Include="WinFormsInstancers\WinFormsInstancers.cs" />
     <Compile Include="WinFormsInfos\WinFormsInfos.cs" />
     <Compile Include="WinFormsEngine\WinFormsEngine.cs" />
-    <Compile Include="WinFormsEngine\WinFormsEngine_Application.cs" />
-    <Compile Include="WinFormsEngine\WinFormsEngine_Window.cs" />
     <Compile Include="WinFormsConstructors\WinFormsConstructors.cs" />
     <Compile Include="PeriodicProcess_WinForms\PeriodicProcess_WinForms.cs" />
     <Compile Include="Basic\BasicWinFormsEngine.cs" />
