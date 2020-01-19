@@ -26,6 +26,9 @@ namespace Crunchy.Sack_Avalonia
             engine.AddAttributeFunction<Control>("on_mouse_down", Control.PointerPressedEvent);
             engine.AddAttributeFunction<Control>("on_mouse_up", Control.PointerReleasedEvent);
             engine.AddAttributeFunction<Control>("on_mouse_move", Control.PointerMovedEvent);
+
+            engine.AddAttributeFunction<Control>("on_click", Control.TappedEvent);
+            engine.AddAttributeFunction<Control>("on_double_click", Control.DoubleTappedEvent);
         }
     }
 }
