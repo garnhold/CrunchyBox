@@ -18,13 +18,10 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<ScrollViewer>();
             engine.AddAvaloniaPropertyAttributeLinksForType<ScrollViewer>();
 
-            engine.Add(
-                AvaloniaInstancers.Simple("ScrollViewer", () => new ScrollViewer()),
-
-                AvaloniaInfos.Children<ScrollViewer, Control>(v => v.Content = null, (v, e) => v.Content = e)
-            );
+            engine.AddChildren<ScrollViewer, Control>(v => v.Content = null, (v, c) => v.Content = c);
         }
     }
 }

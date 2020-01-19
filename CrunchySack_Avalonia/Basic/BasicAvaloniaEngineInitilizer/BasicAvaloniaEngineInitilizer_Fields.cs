@@ -18,21 +18,19 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<TextBox>("TextField");
             engine.AddAvaloniaPropertyAttributeLinksForType<TextBox>();
-            engine.Add(
-                AvaloniaInstancers.Simple("TextField", () => new TextBox()),
 
-                AvaloniaInstancers.Variation<TextBox>("SmallField", "TextField", b => {
-                    b.GotFocus += (s, e) => b.SelectAllText();
-                }),
+            engine.AddVariationInstancer<TextBox>("SmallField", "TextField", b => {
+                b.GotFocus += (s, e) => b.SelectAllText();
+            });
 
-                AvaloniaInstancers.Variation<TextBox>("StringField", "SmallField", b => { }),
-                AvaloniaInstancers.Variation<TextBox>("IntField", "SmallField", b => { }),
-                AvaloniaInstancers.Variation<TextBox>("FloatField", "SmallField", b => { }),
+            engine.AddVariationInstancer<TextBox>("StringField", "SmallField", b => { });
+            engine.AddVariationInstancer<TextBox>("IntField", "SmallField", b => { });
+            engine.AddVariationInstancer<TextBox>("FloatField", "SmallField", b => { });
 
-                AvaloniaInfos.AttributeLink<TextBox, string>("text", TextBox.TextProperty),
-                AvaloniaInfos.AttributeLink<TextBox, string>("value", TextBox.TextProperty)
-            );
+            engine.AddAttributeLink<TextBox, string>("text", TextBox.TextProperty);
+            engine.AddAttributeLink<TextBox, string>("value", TextBox.TextProperty);
         }
     }
 }

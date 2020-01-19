@@ -271,11 +271,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisAssembly.cs" />
-    <Compile Include="AvaloniaConstructors\AvaloniaConstructors.cs" />
     <Compile Include="AvaloniaEngine\AvaloniaEngine.cs" />
-    <Compile Include="AvaloniaInfos\AvaloniaInfos.cs" />
-    <Compile Include="AvaloniaInstancers\AvaloniaInstancers.cs" />
-    <Compile Include="AvaloniaModifiers\AvaloniaModifiers.cs" />
     <Compile Include="PeriodicProcess_Avalonia\PeriodicProcess_Avalonia.cs" />
     <Compile Include="Extensions\Window\WindowExtensions.cs" />
     <Compile Include="Extensions\Window\WindowExtensions_LinkSyncroDaemon.cs" />
@@ -344,6 +340,7 @@
     <Compile Include="Extensions\OpenFileDialog\OpenFileDialogExtensions.cs" />
     <Compile Include="Extensions\OpenFileDialog\OpenFileDialogExtensions_Show.cs" />
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ItemsControl.cs" />
+    <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_RoutedEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -379,11 +376,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AvaloniaConstructors\" />
     <Folder Include="AvaloniaEngine\" />
-    <Folder Include="AvaloniaInfos\" />
-    <Folder Include="AvaloniaInstancers\" />
-    <Folder Include="AvaloniaModifiers\" />
     <Folder Include="PeriodicProcess_Avalonia\" />
     <Folder Include="Extensions\" />
     <Folder Include="Extensions\Window\" />

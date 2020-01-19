@@ -19,43 +19,32 @@ namespace Crunchy.Sack_Avalonia
         static public void Initilize(AvaloniaEngine engine)
         {
             engine.AddAvaloniaPropertyAttributeLinksForType<Panel>();
-            engine.Add(
-                AvaloniaInfos.Children<Panel>(p => p.Children)
-            );
+            engine.AddChildren<Panel>(p => p.Children);
 
+            engine.AddSimpleInstancer("HorizontalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Horizontal });
+            engine.AddSimpleInstancer("VerticalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Vertical });
             engine.AddAvaloniaPropertyAttributeLinksForType<StackPanel>();
-            engine.Add(
-                AvaloniaInstancers.Simple("HorizontalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Horizontal }),
-                AvaloniaInstancers.Simple("VerticalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Vertical })
-            );
 
+            engine.AddSimpleInstancer<DockPanel>();
             engine.AddAvaloniaPropertyAttributeLinksForType<DockPanel>();
-            engine.Add(
-                AvaloniaInstancers.Simple("DockPanel", () => new DockPanel()),
 
-                AvaloniaInfos.AttributeLink<Control, Dock>("dock", DockPanel.DockProperty)
-            );
+            engine.AddAttributeLink<Control, Dock>("dock", DockPanel.DockProperty);
 
+            engine.AddSimpleInstancer<Grid>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Grid>();
-            engine.Add(
-                AvaloniaInstancers.Simple("Grid", () => new Grid()),
+            engine.AddAttributeLink<Grid, string>("columns", (g, s) => g.SetColumnsDefinitionString(s), g => g.GetColumnsDefinitionString());
+            engine.AddAttributeLink<Grid, string>("rows", (g, s) => g.SetRowsDefinitionString(s), g => g.GetRowsDefinitionString());
 
-                AvaloniaInfos.AttributeLink<Grid, string>("columns", (g, s) => g.SetColumnsDefinitionString(s), g => g.GetColumnsDefinitionString()),
-                AvaloniaInfos.AttributeLink<Grid, string>("rows", (g, s) => g.SetRowsDefinitionString(s), g => g.GetRowsDefinitionString()),
+            engine.AddChildren<Grid>(g => g.Children);
 
-                AvaloniaInfos.Children<Grid>(g => g.Children),
+            engine.AddAttributeLink<Control, int>("column", Grid.ColumnProperty);
+            engine.AddAttributeLink<Control, int>("row", Grid.RowProperty);
 
-                AvaloniaInfos.AttributeLink<Control, int>("column", Grid.ColumnProperty),
-                AvaloniaInfos.AttributeLink<Control, int>("row", Grid.RowProperty),
+            engine.AddAttributeLink<Control, int>("column_span", Grid.ColumnSpanProperty);
+            engine.AddAttributeLink<Control, int>("row_span", Grid.RowSpanProperty);
 
-                AvaloniaInfos.AttributeLink<Control, int>("column_span", Grid.ColumnSpanProperty),
-                AvaloniaInfos.AttributeLink<Control, int>("row_span", Grid.RowSpanProperty)
-            );
-
+            engine.AddSimpleInstancer<GridSplitter>();
             engine.AddAvaloniaPropertyAttributeLinksForType<GridSplitter>();
-            engine.Add(
-                AvaloniaInstancers.Simple("GridSplitter", () => new GridSplitter())
-            );
         }
     }
 }

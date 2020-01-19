@@ -18,10 +18,7 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
-            engine.AddPublicPropertyAttributeLinksForType<ItemsControl>();
-            engine.Add(
-                AvaloniaInfos.Children<ItemsControl, object>((c, os) => c.Items = os)
-            );
+            engine.AddChildren<ItemsControl, object>((c, os) => c.Items = os);
         }
     }
 }

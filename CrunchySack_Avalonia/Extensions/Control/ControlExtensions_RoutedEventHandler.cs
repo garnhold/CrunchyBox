@@ -18,7 +18,7 @@ namespace Crunchy.Sack_Avalonia
     {
         static public void Register(this Control item, RoutedEvent routed_event, FunctionSyncro function, RoutingStrategies routes = RoutingStrategies.Bubble)
         {
-            item.AddHandler(routed_event, function.GetEventHandler(), routes);
+            item.AddHandler(routed_event, function.GetRoutedEventHandler<RoutedEventArgs>(), routes);
         }
     }
 }

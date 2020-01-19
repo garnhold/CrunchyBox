@@ -18,13 +18,11 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<TreeView>();
             engine.AddAvaloniaPropertyAttributeLinksForType<TreeView>();
-            engine.AddAvaloniaPropertyAttributeLinksForType<TreeViewItem>();
 
-            engine.Add(
-                AvaloniaInstancers.Simple("TreeView", () => new TreeView()),
-                AvaloniaInstancers.Simple("TreeViewItem", () => new TreeViewItem())
-            );
+            engine.AddSimpleInstancer<TreeViewItem>();
+            engine.AddAvaloniaPropertyAttributeLinksForType<TreeViewItem>();
         }
     }
 }

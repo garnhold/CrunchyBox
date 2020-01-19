@@ -19,16 +19,13 @@ namespace Crunchy.Sack_Avalonia
         static public void Initilize(AvaloniaEngine engine)
         {
             engine.AddAvaloniaPropertyAttributeLinksForType<Control>();
+            engine.AddGeneralModifier<Control>((ex, c) => c.DataContext = ex.GetTargetInfo().GetTarget());
 
-            engine.Add(
-                AvaloniaModifiers.General<Control>((ex, e) => e.DataContext = ex.GetTargetInfo().GetTarget()),
+            engine.AddAttributeValue<Control, bool>("auto_focus", (c, v) => c.Focus());
 
-                AvaloniaInfos.AttributeValue<Control, bool>("auto_focus", (f, v) => f.Focus()),
-
-                AvaloniaInfos.AttributeFunction<Control>("on_mouse_down", Control.PointerPressedEvent),
-                AvaloniaInfos.AttributeFunction<Control>("on_mouse_up", Control.PointerReleasedEvent),
-                AvaloniaInfos.AttributeFunction<Control>("on_mouse_move", Control.PointerMovedEvent)
-            );
+            engine.AddAttributeFunction<Control>("on_mouse_down", Control.PointerPressedEvent);
+            engine.AddAttributeFunction<Control>("on_mouse_up", Control.PointerReleasedEvent);
+            engine.AddAttributeFunction<Control>("on_mouse_move", Control.PointerMovedEvent);
         }
     }
 }

@@ -18,10 +18,8 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<Border>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Border>();
-            engine.Add(
-                AvaloniaInstancers.Simple("Border", () => new Border())
-            );
         }
     }
 }

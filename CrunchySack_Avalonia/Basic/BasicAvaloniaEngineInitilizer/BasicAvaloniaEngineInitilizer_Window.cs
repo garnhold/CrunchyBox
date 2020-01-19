@@ -16,13 +16,10 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<Window>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Window>();
 
-            engine.Add(
-                AvaloniaInstancers.Simple("Window", () => new Window()),
-
-                AvaloniaInfos.AttributeFunction<Window>("on_close", (w, f) => w.Closed += f.GetEventHandler())
-            );
+            engine.AddAttributeFunction<Window>("on_close", (w, s) => w.Closed += s.GetEventHandler());
         }
     }
 }

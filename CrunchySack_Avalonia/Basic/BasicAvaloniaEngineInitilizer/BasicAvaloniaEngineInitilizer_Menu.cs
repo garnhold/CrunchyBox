@@ -18,24 +18,21 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<ContextMenu>();
             engine.AddAvaloniaPropertyAttributeLinksForType<ContextMenu>();
+
+            engine.AddSimpleInstancer<Menu>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Menu>();
+
+            engine.AddSimpleInstancer<MenuItem>();
             engine.AddAvaloniaPropertyAttributeLinksForType<MenuItem>();
+            engine.AddAttributeFunction<MenuItem>("command", (i, s) => i.Command = s.GetCommand());
+            engine.AddAttributeFunction<MenuItem>("action", MenuItem.ClickEvent);
+
+            engine.AddSimpleInstancer<Separator>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Separator>();
 
-            engine.Add(
-                 AvaloniaInfos.AttributeValue<Control, ContextMenu>("context_menu", (f, e) => { f.ContextMenu = e; f.InvalidateVisual(); }),
-
-                AvaloniaInstancers.Simple("ContextMenu", () => new ContextMenu()),
-                AvaloniaInstancers.Simple("Menu", () => new Menu()),
-
-                AvaloniaInstancers.Simple("MenuItem", () => new MenuItem()),
-
-                AvaloniaInfos.AttributeFunction<MenuItem>("command", (m, s) => m.Command = s.GetCommand()),
-                AvaloniaInfos.AttributeFunction<MenuItem>("action", Control.PointerPressedEvent),
-
-                AvaloniaInstancers.Simple("Separator", () => new Separator())
-            );
+            engine.AddAttributeValue<Control, ContextMenu>("context_menu", (f, e) => { f.ContextMenu = e; f.InvalidateVisual(); });
         }
     }
 }

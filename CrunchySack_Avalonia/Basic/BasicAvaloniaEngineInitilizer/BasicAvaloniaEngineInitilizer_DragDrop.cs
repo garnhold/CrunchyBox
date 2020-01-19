@@ -18,25 +18,19 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
-            engine.Add(
-                AvaloniaInstancers.Simple("DragHandler", () => new DragHandler_Internal_Value()),
+            engine.AddSimpleInstancer<DragHandler_Internal_Value>("DragHandler");
+            engine.AddAttributeLink<DragHandler_Internal_Value, object>("value", (h, v) => h.SetValue(v), h => h.GetValue(), h => true);
+            engine.AddAttributeLink<DragHandler, DragDropEffects>("drag_drop_effects", (h, e) => h.SetDragDropEffects(e), e => e.GetDragDropEffects(), h => true);
 
-                AvaloniaInfos.AttributeLink<DragHandler_Internal_Value, object>("value", (h, v) => h.SetValue(v), h => h.GetValue(), h => true),
-                AvaloniaInfos.AttributeLink<DragHandler, DragDropEffects>("drag_drop_effects", (h, e) => h.SetDragDropEffects(e), e => e.GetDragDropEffects(), h => true),
+            engine.AddAttributeLink<Control, DragHandler>("drag_handler", (e, h) => e.SetDragHandler(h), e => e.GetDragHandler());
 
-                AvaloniaInfos.AttributeLink<Control, DragHandler>("drag_handler", (e, h) => e.SetDragHandler(h), e => e.GetDragHandler())
-            );
+            engine.AddSimpleInstancer<DropHandler_Internal_FunctionSyncro>("DropHandler");
+            engine.AddAttributeFunction<DropHandler_Internal_FunctionSyncro>("on_enter", (h, f) => h.SetOnEnter(f));
+            engine.AddAttributeFunction<DropHandler_Internal_FunctionSyncro>("on_over", (h, f) => h.SetOnOver(f));
+            engine.AddAttributeFunction<DropHandler_Internal_FunctionSyncro>("on_leave", (h, f) => h.SetOnLeave(f));
+            engine.AddAttributeFunction<DropHandler_Internal_FunctionSyncro>("on_drop", (h, f) => h.SetOnDrop(f));
 
-            engine.Add(
-                AvaloniaInstancers.Simple("DropHandler", () => new DropHandler_Internal_FunctionSyncro()),
-
-                AvaloniaInfos.AttributeFunction<DropHandler_Internal_FunctionSyncro>("on_enter", (h, f) => h.SetOnEnter(f)),
-                AvaloniaInfos.AttributeFunction<DropHandler_Internal_FunctionSyncro>("on_over", (h, f) => h.SetOnOver(f)),
-                AvaloniaInfos.AttributeFunction<DropHandler_Internal_FunctionSyncro>("on_leave", (h, f) => h.SetOnLeave(f)),
-                AvaloniaInfos.AttributeFunction<DropHandler_Internal_FunctionSyncro>("on_drop", (h, f) => h.SetOnDrop(f)),
-
-                AvaloniaInfos.AttributeChildren<Control, DropHandler>("drop_handlers", e => e.ClearDropHandlers(), (e, h) => e.AddDropHandler(h))
-            );
+            engine.AddAttributeChildren<Control, DropHandler>("drop_handlers", e => e.ClearDropHandlers(), (e, h) => e.AddDropHandler(h));
         }
     }
 }

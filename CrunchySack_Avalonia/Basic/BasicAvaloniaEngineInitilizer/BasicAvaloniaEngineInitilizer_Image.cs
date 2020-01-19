@@ -19,10 +19,8 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<Image>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Image>();
-            engine.Add(
-                AvaloniaInstancers.Simple("Image", () => new Image())
-            );
         }
     }
 }

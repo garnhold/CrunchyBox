@@ -18,14 +18,11 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<Button>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Button>();
-            engine.Add(
-                AvaloniaInstancers.Simple("Button", () => new Button()),
 
-                AvaloniaInfos.AttributeLink<Button, string>("text", Button.ContentProperty),
-                AvaloniaInfos.AttributeFunction<Button>("action", Control.PointerPressedEvent),
-                AvaloniaInfos.AttributeFunction<Button>("preview_action", Control.PointerPressedEvent, RoutingStrategies.Tunnel)
-            );
+            engine.AddAttributeLink<Button, string>("text", Button.ContentProperty);
+            engine.AddAttributeFunction<Button>("action", Button.ClickEvent);
         }
     }
 }

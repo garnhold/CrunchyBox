@@ -18,13 +18,11 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<TabControl>();
             engine.AddAvaloniaPropertyAttributeLinksForType<TabControl>();
-            engine.AddAvaloniaPropertyAttributeLinksForType<TabItem>();
 
-            engine.Add(
-                AvaloniaInstancers.Simple("TabControl", () => new TabControl()),
-                AvaloniaInstancers.Simple("TabItem", () => new TabItem())
-            );
+            engine.AddSimpleInstancer<TabItem>();
+            engine.AddAvaloniaPropertyAttributeLinksForType<TabItem>();
         }
     }
 }

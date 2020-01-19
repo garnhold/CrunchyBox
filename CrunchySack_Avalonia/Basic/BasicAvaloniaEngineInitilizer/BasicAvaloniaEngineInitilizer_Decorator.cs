@@ -18,11 +18,8 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
-            engine.AddAvaloniaPropertyAttributeLinksForType<Decorator>();
-            engine.Add(
-                AvaloniaInfos.AttributeValue<Decorator, Control>("child", (d, e) => d.Child = e),
-                AvaloniaInfos.Children<Decorator, Control>(d => d.Child = null, (d, e) => d.Child = e)
-            );
+            engine.AddAttributeValue<Decorator, Control>("child", (d, c) => d.Child = c);
+            engine.AddChildren<Decorator, Control>(d => d.Child = null, (d, c) => d.Child = c);
         }
     }
 }

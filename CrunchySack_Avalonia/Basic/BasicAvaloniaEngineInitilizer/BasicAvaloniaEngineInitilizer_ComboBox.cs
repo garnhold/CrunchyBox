@@ -18,10 +18,8 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
+            engine.AddSimpleInstancer<ComboBox>();
             engine.AddAvaloniaPropertyAttributeLinksForType<ComboBox>();
-            engine.Add(
-                AvaloniaInstancers.Simple("ComboBox", () => new ComboBox())
-            );
         }
     }
 }

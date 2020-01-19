@@ -19,22 +19,15 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
-            engine.Add(
-                AvaloniaInfos.AttributeChildren<Control>("key_bindings", e => e.KeyBindings)
-            );
-
+            engine.AddSimpleInstancer<KeyBinding>();
             engine.AddAvaloniaPropertyAttributeLinksForType<KeyBinding>();
-            engine.Add(
-                AvaloniaInstancers.Simple("KeyBinding", () => new KeyBinding()),
+            engine.AddAttributeFunction<KeyBinding>("action", (b, s) => b.Command = s.GetCommand());
 
-                AvaloniaInfos.AttributeFunction<KeyBinding>("action", (b, a) => b.Command = a.GetCommand())
+            engine.AddSimpleConstructor<KeyGesture, string, string>("KeyGesture",
+                (k, m) => new KeyGesture(k.ConvertEX<Key>(), m.ConvertEX<KeyModifiers>())
             );
 
-            engine.Add(
-                AvaloniaConstructors.Simple<KeyGesture, string, string>("KeyGesture",
-                    (k, m) => new KeyGesture(k.ConvertEX<Key>(), m.ConvertEX<KeyModifiers>())
-                )
-            );
+            engine.AddAttributeChildren<Control>("key_bindings", e => e.KeyBindings);
         }
     }
 }
