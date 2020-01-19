@@ -23,4 +23,14 @@ namespace Crunchy.Sack
                 process(cast, value.ConvertEX<VALUE_TYPE>());
         }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddAttributeValue<REPRESENTATION_TYPE, VALUE_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> p)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Value_Process<REPRESENTATION_TYPE, VALUE_TYPE>(n, p)
+            );
+        }
+    }
 }

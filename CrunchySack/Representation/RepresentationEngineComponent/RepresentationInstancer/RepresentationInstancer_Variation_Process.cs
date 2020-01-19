@@ -18,4 +18,14 @@ namespace Crunchy.Sack
             process = p;
         }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddVariationInstancer<REPRESENTATION_TYPE>(this RepresentationEngine item, string t, string b, Process<REPRESENTATION_TYPE> p)
+        {
+            item.AddInstancer(
+                new RepresentationInstancer_Variation_Process<REPRESENTATION_TYPE>(t, b, p)
+            );
+        }
+    }
 }

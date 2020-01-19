@@ -20,4 +20,14 @@ namespace Crunchy.Sack
             process = p;
         }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddAttributeFunction<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, FunctionSyncro> p)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Function_Process<REPRESENTATION_TYPE>(n, p)
+            );
+        }
+    }
 }

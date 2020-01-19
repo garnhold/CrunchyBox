@@ -49,11 +49,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<#=generic_arguments#>(string n, <#=operation_type#> o)
+		static public void AddSimpleConstructor<#=generic_arguments#>(this RepresentationEngine item, string n, <#=operation_type#> o)
 		{
-			return new <#=class_type#>(n, o);
+            item.AddConstructor(new <#=class_type#>(n, o));
 		}
 	}
 <#}#>

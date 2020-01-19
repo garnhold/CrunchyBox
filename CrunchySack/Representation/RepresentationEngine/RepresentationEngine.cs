@@ -107,21 +107,6 @@ namespace Crunchy.Sack
             AddGeneralModifiers((IEnumerable<RepresentationModifier_General>)cs);
         }
 
-        public void Add(IEnumerable<RepresentationEngineComponent> cs)
-        {
-            AddInstancers(cs.Convert<RepresentationEngineComponent, RepresentationInstancer>());
-            AddConstructors(cs.Convert<RepresentationEngineComponent, RepresentationConstructor>());
-            
-            AddAttributeInfos(cs.Convert<RepresentationEngineComponent, RepresentationInfo_Attribute>());
-            AddChildrenInfos(cs.Convert<RepresentationEngineComponent, RepresentationInfo_Children>());
-
-            AddGeneralModifiers(cs.Convert<RepresentationEngineComponent, RepresentationModifier_General>());
-        }
-        public void Add(params RepresentationEngineComponent[] cs)
-        {
-            Add((IEnumerable<RepresentationEngineComponent>)cs);
-        }
-
         public CmlEntityInstance AssertEntityInstance(CmlExecution execution, CmlEntity entity, string tag)
         {
             return (

@@ -22,4 +22,20 @@ namespace Crunchy.Sack
             variable.SetContents(representation, value);
         }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddAttributeValue(this RepresentationEngine item, string n, Variable v)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Value_Variable(n, v)
+            );
+        }
+        static public void AddAttributeValue(this RepresentationEngine item, Variable v)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Value_Variable(v)
+            );
+        }
+    }
 }

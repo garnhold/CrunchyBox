@@ -255,13 +255,11 @@
     <Compile Include="GlobalLibrary\Global\Global_Indirect_ResourceManager.cs" />
     <Compile Include="GlobalLibrary\Global\Global.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Simple.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructors.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RepresentationConstructor_Operation.tt</DependentUpon>
     </Compile>
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfos.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor.cs" />
@@ -270,14 +268,12 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link_Path.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Path.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Variable.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifiers.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier_General\RepresentationModifier_General.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier_General\RepresentationModifier_General_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInstancer\RepresentationInstancers.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_Cml.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions.cs" />
     <Compile Include="Representation\RepresentationResult\Extensions\RepresentationResultExtensions_Get.cs" />

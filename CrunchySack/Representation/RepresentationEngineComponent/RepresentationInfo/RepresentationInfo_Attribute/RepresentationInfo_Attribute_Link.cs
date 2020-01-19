@@ -27,4 +27,20 @@ namespace Crunchy.Sack
             return variable;
         }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddAttributeLink(this RepresentationEngine item, string n, Variable v)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Link(n, v)
+            );
+        }
+        static public void AddAttributeLink(this RepresentationEngine item, Variable v)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Link(v)
+            );
+        }
+    }
 }

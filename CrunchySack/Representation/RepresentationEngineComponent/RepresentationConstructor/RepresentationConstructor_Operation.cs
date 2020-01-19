@@ -24,11 +24,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T>(string n, Operation<T> o)
+		static public void AddSimpleConstructor<T>(this RepresentationEngine item, string n, Operation<T> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T>(n, o));
 		}
 	}
 	
@@ -50,11 +50,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1>(string n, Operation<T, P1> o)
+		static public void AddSimpleConstructor<T, P1>(this RepresentationEngine item, string n, Operation<T, P1> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1>(n, o));
 		}
 	}
 	
@@ -77,11 +77,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2>(string n, Operation<T, P1, P2> o)
+		static public void AddSimpleConstructor<T, P1, P2>(this RepresentationEngine item, string n, Operation<T, P1, P2> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2>(n, o));
 		}
 	}
 	
@@ -105,11 +105,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3>(string n, Operation<T, P1, P2, P3> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3>(n, o));
 		}
 	}
 	
@@ -134,11 +134,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3, P4>(string n, Operation<T, P1, P2, P3, P4> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3, P4>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3, P4> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4>(n, o));
 		}
 	}
 	
@@ -164,11 +164,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3, P4, P5>(string n, Operation<T, P1, P2, P3, P4, P5> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3, P4, P5> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5>(n, o));
 		}
 	}
 	
@@ -195,11 +195,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3, P4, P5, P6>(string n, Operation<T, P1, P2, P3, P4, P5, P6> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3, P4, P5, P6> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6>(n, o));
 		}
 	}
 	
@@ -227,11 +227,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3, P4, P5, P6, P7>(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7>(n, o));
 		}
 	}
 	
@@ -260,11 +260,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3, P4, P5, P6, P7, P8>(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8>(n, o));
 		}
 	}
 	
@@ -294,11 +294,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(n, o));
 		}
 	}
 	
@@ -329,11 +329,11 @@ namespace Crunchy.Sack
 			operation = o;
 		}
     }
-	public partial class RepresentationConstructors
+	static public partial class RepresentationEngineExtensions_Add
 	{
-		static public RepresentationConstructor Simple<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
+		static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(this RepresentationEngine item, string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
 		{
-			return new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(n, o);
+            item.AddConstructor(new RepresentationConstructor_Simple_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(n, o));
 		}
 	}
 }

@@ -20,4 +20,21 @@ namespace Crunchy.Sack
 
         public RepresentationModifier_General_Process(Process<REPRESENTATION_TYPE> p) : this((e, r) => p(r)) { }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddGeneralModifier<REPRESENTATION_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE> p)
+        {
+            item.AddGeneralModifier(
+                new RepresentationModifier_General_Process<REPRESENTATION_TYPE>(p)
+            );
+        }
+
+        static public void AddGeneralModifier<REPRESENTATION_TYPE>(this RepresentationEngine item, Process<CmlExecution, REPRESENTATION_TYPE> p)
+        {
+            item.AddGeneralModifier(
+                new RepresentationModifier_General_Process<REPRESENTATION_TYPE>(p)
+            );
+        }
+    }
 }

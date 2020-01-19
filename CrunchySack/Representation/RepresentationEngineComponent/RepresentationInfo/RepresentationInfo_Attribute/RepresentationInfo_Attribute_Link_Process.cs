@@ -29,4 +29,27 @@ namespace Crunchy.Sack
         {
         }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r, Operation<bool, REPRESENTATION_TYPE> i)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Link_Process<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r, i)
+            );
+        }
+
+        static public void AddAttributeLink<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Link_Process<REPRESENTATION_TYPE>(n, v, i)
+            );
+        }
+        static public void AddAttributeLink<REPRESENTATION_TYPE>(this RepresentationEngine item, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
+        {
+            item.AddAttributeInfo(
+                new RepresentationInfo_Attribute_Link_Process<REPRESENTATION_TYPE>(v, i)
+            );
+        }
+    }
 }
