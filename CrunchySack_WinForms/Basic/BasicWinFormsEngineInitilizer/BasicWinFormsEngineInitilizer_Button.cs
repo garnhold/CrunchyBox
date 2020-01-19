@@ -15,13 +15,10 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddSimpleInstancer<Button>();
             engine.AddPublicPropertyAttributeLinksForType<Button>();
 
-            engine.Add(
-                WinFormsInstancers.Simple("Button", () => new Button()),
-
-                WinFormsInfos.AttributeFunction<Button>("click", (b, s) => b.Click += s.GetEventHandler())
-            );
+            engine.AddAttributeFunction<Button>("click", (b, s) => b.Click += s.GetEventHandler());
         }
     }
 }

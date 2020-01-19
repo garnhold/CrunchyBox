@@ -17,9 +17,7 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
-            engine.Add(
-                WinFormsInstancers.Simple("Window", () => new Form())
-            );
+            engine.AddSimpleInstancer<Form>("Window");
         }
     }
 }

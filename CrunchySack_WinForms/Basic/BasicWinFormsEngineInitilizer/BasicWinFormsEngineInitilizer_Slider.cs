@@ -15,10 +15,8 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddSimpleInstancer<TrackBar>("Slider");
             engine.AddPublicPropertyAttributeLinksForType<TrackBar>();
-            engine.Add(
-                WinFormsInstancers.Simple("Slider", () => new TrackBar())
-            );
         }
     }
 }

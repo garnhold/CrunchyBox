@@ -15,60 +15,42 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddGeneralModifier<Panel>(p => {
+                p.AutoSize = true;
+                p.Dock = DockStyle.Fill;
+            });
+            engine.AddGeneralModifier<ContainerControl>(c => c.Dock = DockStyle.Fill);
+
+            engine.AddSimpleInstancer<Panel>("DockPanel");
             engine.AddPublicPropertyAttributeLinksForType<Panel>();
-            engine.Add(
-                WinFormsInstancers.Simple("DockPanel", () => new Panel()),
 
-                WinFormsModifiers.General<Panel>(p => {
-                    p.AutoSize = true;
-                    p.Dock = DockStyle.Fill;
-                })
-            );
+            engine.AddSimpleInstancer("HorizontalLayout", () => new FlowLayoutPanel() {
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = false
+            });
+            engine.AddSimpleInstancer("VerticalLayout", () => new FlowLayoutPanel() {
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false
+            });
+            engine.AddPublicPropertyAttributeLinksForType<FlowLayoutPanel>();
 
-            engine.AddPublicPropertyAttributeLinksForType<ContainerControl>();
-            engine.Add(
-                WinFormsModifiers.General<ContainerControl>(c => c.Dock = DockStyle.Fill)
-            );
+            engine.AddSimpleInstancer<TableLayoutPanel>("Table");
+            engine.AddAttributeLink<TableLayoutPanel, string>("columns", (t, s) => t.SetColumnsDefinitionString(s), t => t.GetColumnsDefinitionString());
+            engine.AddAttributeLink<TableLayoutPanel, string>("rows", (t, s) => t.SetRowsDefinitionString(s), t => t.GetRowsDefinitionString());
 
-            engine.Add(
-                WinFormsInstancers.Simple("HorizontalLayout", () => new FlowLayoutPanel() {
-                    FlowDirection = FlowDirection.LeftToRight,
-                    WrapContents = false
-                }),
+            engine.AddAttributeLink<Control, int>("column", (c, i) => c.SetColumn(i), c => c.GetColumn());
+            engine.AddAttributeLink<Control, int>("row", (c, i) => c.SetRow(i), c => c.GetRow());
 
-                WinFormsInstancers.Simple("VerticalLayout", () => new FlowLayoutPanel() {
-                    FlowDirection = FlowDirection.TopDown,
-                    WrapContents = false
-                })
-            );
-
-            engine.Add(
-                WinFormsInstancers.Simple("Table", () => new TableLayoutPanel()),
-
-                WinFormsInfos.AttributeLink<TableLayoutPanel, string>("columns", (t, s) => t.SetColumnsDefinitionString(s), t => t.GetColumnsDefinitionString()),
-                WinFormsInfos.AttributeLink<TableLayoutPanel, string>("rows", (t, s) => t.SetRowsDefinitionString(s), t => t.GetRowsDefinitionString()),
-
-                WinFormsInfos.AttributeLink<Control, int>("column", (c, i) => c.SetColumn(i), c => c.GetColumn()),
-                WinFormsInfos.AttributeLink<Control, int>("row", (c, i) => c.SetRow(i), c => c.GetRow())
-            );
-
+            engine.AddSimpleInstancer<SplitContainer>();
             engine.AddPublicPropertyAttributeLinksForType<SplitContainer>();
-            engine.Add(
-                WinFormsInstancers.Simple("SplitContainer", () => new SplitContainer()),
+            engine.AddAttributeChildren<SplitContainer>("panel1", c => c.Panel1.Controls);
+            engine.AddAttributeChildren<SplitContainer>("panel2", c => c.Panel2.Controls);
 
-                WinFormsInfos.AttributeChildren<SplitContainer>("panel1", c => c.Panel1.Controls),
-                WinFormsInfos.AttributeChildren<SplitContainer>("panel2", c => c.Panel2.Controls)
-            );
-
+            engine.AddSimpleInstancer<TabControl>();
             engine.AddPublicPropertyAttributeLinksForType<TabControl>();
-            engine.AddPublicPropertyAttributeLinksForType<TabPage>();
-            engine.Add(
-                WinFormsInstancers.Simple("TabControl", () => new TabControl()),
-                WinFormsInfos.Children<TabControl>(c => c.TabPages),
 
-                WinFormsInstancers.Simple("TabPage", () => new TabPage()),
-                WinFormsInfos.Children<TabPage>(p => p.Controls)
-            );
+            engine.AddSimpleInstancer<TabPage>();
+            engine.AddPublicPropertyAttributeLinksForType<TabPage>();
         }
     }
 }

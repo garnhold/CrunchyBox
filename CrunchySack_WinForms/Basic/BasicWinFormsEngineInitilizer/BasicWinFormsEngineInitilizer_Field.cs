@@ -15,15 +15,11 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddSimpleInstancer<TextBox>("TextField");
             engine.AddPublicPropertyAttributeLinksForType<TextBox>();
-            engine.Add(
-                WinFormsInstancers.Simple("TextField", () => new TextBox())
-            );
 
+            engine.AddSimpleInstancer<NumericUpDown>("NumericField");
             engine.AddPublicPropertyAttributeLinksForType<NumericUpDown>();
-            engine.Add(
-                WinFormsInstancers.Simple("NumericField", () => new NumericUpDown())
-            );
         }
     }
 }

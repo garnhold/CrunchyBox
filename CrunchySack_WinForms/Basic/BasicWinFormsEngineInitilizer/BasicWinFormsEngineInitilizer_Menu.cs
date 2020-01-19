@@ -15,18 +15,14 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddSimpleInstancer<MenuStrip>("Menu");
             engine.AddPublicPropertyAttributeLinksForType<MenuStrip>();
+            engine.AddChildren<MenuStrip>(m => m.Items);
+
+            engine.AddSimpleInstancer<ToolStripMenuItem>("MenuItem");
             engine.AddPublicPropertyAttributeLinksForType<ToolStripMenuItem>();
-
-            engine.Add(
-                WinFormsInstancers.Simple("Menu", () => new MenuStrip()),
-                WinFormsInfos.Children<MenuStrip>(m => m.Items),
-
-                WinFormsInstancers.Simple("MenuItem", () => new ToolStripMenuItem()),
-                WinFormsInfos.Children<ToolStripMenuItem>(i => i.DropDownItems),
-
-                WinFormsInfos.AttributeFunction<ToolStripMenuItem>("click", (i, s) => i.Click += s.GetEventHandler())
-            );
+            engine.AddChildren<ToolStripMenuItem>(i => i.DropDownItems);
+            engine.AddAttributeFunction<ToolStripMenuItem>("click", (i, s) => i.Click += s.GetEventHandler());
         }
     }
 }

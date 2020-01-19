@@ -15,11 +15,9 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddSimpleInstancer<ListBox>();
             engine.AddPublicPropertyAttributeLinksForType<ListBox>();
-            engine.Add(
-                WinFormsInstancers.Simple("ListBox", () => new ListBox()),
-                WinFormsInfos.Children<ListBox>(b => b.Items)
-            );
+            engine.AddChildren<ListBox>(b => b.Items);
         }
     }
 }

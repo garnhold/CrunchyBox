@@ -16,9 +16,7 @@ namespace Crunchy.Sack_WinForms
         {
             engine.AddPublicPropertyAttributeLinksForType<Control>();
 
-            engine.Add(
-                WinFormsInfos.Children<Control>(p => p.Controls)
-            );
+            engine.AddChildren<Control>(c => c.Controls);
         }
     }
 }

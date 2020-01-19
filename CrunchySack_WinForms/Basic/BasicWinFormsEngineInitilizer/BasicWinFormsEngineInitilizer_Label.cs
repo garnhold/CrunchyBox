@@ -14,11 +14,8 @@ namespace Crunchy.Sack_WinForms
         [BasicWinFormsEngineInitilizer]
         static public void Initilize(WinFormsEngine engine)
         {
+            engine.AddSimpleInstancer<Label>();
             engine.AddPublicPropertyAttributeLinksForType<Label>();
-
-            engine.Add(
-                WinFormsInstancers.Simple("Label", () => new Label())
-            );
         }
     }
 }
