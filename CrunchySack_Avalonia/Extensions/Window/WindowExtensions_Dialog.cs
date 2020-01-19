@@ -16,12 +16,10 @@ namespace Crunchy.Sack_Avalonia
 
     static public class WindowExtensions_Dialog
     {
-        static public bool ShowDialog(this Window item)
+        static public void DoDialog<T>(this Window item, Process<T> process)
         {
-            Task<bool> task = item.ShowDialog<bool>(AvaloniaEngine.GetMainWindow());
-
-            task.Wait();
-            return task.Result;
+            item.ShowDialog<T>(AvaloniaEngine.GetMainWindow())
+                .ContinueWith(t => t.Result.IfNotNull(r => process(r)));
         }
     }
 }

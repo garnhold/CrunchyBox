@@ -15,12 +15,10 @@ namespace Crunchy.Sack_Avalonia
     
     static public class SaveFileDialogExtensions_Show
     {
-        static public string ShowDialog(this SaveFileDialog item)
+        static public void DoDialog(this SaveFileDialog item, Process<string> process)
         {
-            Task<string> task = item.ShowAsync(AvaloniaEngine.GetMainWindow());
-
-            task.Wait();
-            return task.Result;
+            item.ShowAsync(AvaloniaEngine.GetMainWindow())
+                .ContinueWith(t => t.Result.IfNotNull(r => process(r)));
         }
     }
 }
