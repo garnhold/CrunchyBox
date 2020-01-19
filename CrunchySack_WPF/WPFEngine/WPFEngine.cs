@@ -13,7 +13,7 @@ namespace Crunchy.Sack_WPF
     using Noodle;
     using Sack;
     
-    public abstract class WPFEngined : ApplicationRepresentationEngine<Window, PeriodicProcess_WPF>
+    public abstract class WPFEngine : ApplicationRepresentationEngine<Window, PeriodicProcess_WPF>
     {
         protected override void AttachLinkSyncroDaemon(Window window, LinkSyncroDaemon daemon)
         {
@@ -34,7 +34,7 @@ namespace Crunchy.Sack_WPF
 
         public void AddInspectedComponentsForType(Type type)
         {
-            Add(WPFInstancers.Simple(type.Name, () => type.CreateInstance()));
+            this.AddSimpleInstancer(type);
 
             AddAttributeInfosForDependencyPropertys(type);
         }
@@ -50,16 +50,12 @@ namespace Crunchy.Sack_WPF
 
         public void AddAttributeInfosForDependencyPropertys(Type type)
         {
-            Add(
-                type.GetFilteredStaticFieldsOfType<DependencyProperty>(Filterer_FieldInfo.IsDeclaredWithin(type))
-                    .Convert(f => f.Name)
-                    .TryConvert((string s, out string p) => s.TryTrimSuffix("Property", out p))
-                    .Convert(
-                        s => type.GetVariableByPath(s)
-                            .IfNotNull(v => WPFInfos.AttributeLink(s.StyleAsVariableName(), v))
-                    )
-                    .SkipNull()
-            );
+            type.GetFilteredStaticFieldsOfType<DependencyProperty>(Filterer_FieldInfo.IsDeclaredWithin(type))
+                .Convert(f => f.Name)
+                .TryConvert((string s, out string p) => s.TryTrimSuffix("Property", out p))
+                .Convert(p => type.GetVariableByPath(p))
+                .SkipNull()
+                .Process(v => this.AddAttributeLink(v.GetVariableName().StyleAsVariableName(), v));
         }
     }
 }

@@ -15,11 +15,9 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("ScrollViewer", () => new ScrollViewer()),
+            engine.AddSimpleInstancer<ScrollViewer>();
 
-                WPFInfos.Children<ScrollViewer, UIElement>(v => v.Content = null, (v, e) => v.Content = e)
-            );
+            engine.AddChildren<ScrollViewer, UIElement>(v => v.Content = null, (v, e) => v.Content = e);
         }
     }
 }

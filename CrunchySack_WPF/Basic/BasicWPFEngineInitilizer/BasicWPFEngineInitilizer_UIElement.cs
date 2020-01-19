@@ -16,15 +16,13 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInfos.AttributeFunction<UIElement>("on_mouse_down", (e, f) => e.MouseDown += f.GetMouseButtonEventHandler()),
-                WPFInfos.AttributeFunction<UIElement>("on_mouse_down_update", (e, f) => e.MouseMove += f.GetMouseEventHandler(z => z.IsPressed())),
+            engine.AddAttributeFunction<UIElement>("on_mouse_down", (e, f) => e.MouseDown += f.GetMouseButtonEventHandler());
+            engine.AddAttributeFunction<UIElement>("on_mouse_down_update", (e, f) => e.MouseMove += f.GetMouseEventHandler(z => z.IsPressed()));
 
-                WPFInfos.AttributeFunction<UIElement>("on_mouse_move", (e, f) => e.MouseMove += f.GetMouseEventHandler()),
+            engine.AddAttributeFunction<UIElement>("on_mouse_move", (e, f) => e.MouseMove += f.GetMouseEventHandler());
 
-                WPFInfos.AttributeFunction<UIElement>("on_mouse_up", (e, f) => e.MouseUp += f.GetMouseButtonEventHandler()),
-                WPFInfos.AttributeFunction<UIElement>("on_mouse_up_update", (e, f) => e.MouseMove += f.GetMouseEventHandler(z => z.IsPressed() == false))
-            );
+            engine.AddAttributeFunction<UIElement>("on_mouse_up", (e, f) => e.MouseUp += f.GetMouseButtonEventHandler());
+            engine.AddAttributeFunction<UIElement>("on_mouse_up_update", (e, f) => e.MouseMove += f.GetMouseEventHandler(z => z.IsPressed() == false));
         }
     }
 }

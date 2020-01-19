@@ -15,19 +15,17 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInfos.AttributeValue<FrameworkElement, ContextMenu>("context_menu", (f, e) => { f.ContextMenu = e; f.InvalidateVisual(); }),
+            engine.AddAttributeValue<FrameworkElement, ContextMenu>("context_menu", (f, e) => { f.ContextMenu = e; f.InvalidateVisual(); });
 
-                WPFInstancers.Simple("ContextMenu", () => new ContextMenu()),
-                WPFInstancers.Simple("Menu", () => new Menu()),
+            engine.AddSimpleInstancer<ContextMenu>();
+            engine.AddSimpleInstancer<Menu>();
 
-                WPFInstancers.Simple("MenuItem", () => new MenuItem()),
+            engine.AddSimpleInstancer<MenuItem>();
 
-                WPFInfos.AttributeFunction<MenuItem>("command", (m, a) => m.Command = a.GetCommand()),
-                WPFInfos.AttributeFunction<MenuItem>("action", (m, a) => m.Click += a.GetRoutedEventHandler()),
+            engine.AddAttributeFunction<MenuItem>("command", (m, a) => m.Command = a.GetCommand());
+            engine.AddAttributeFunction<MenuItem>("action", (m, a) => m.Click += a.GetRoutedEventHandler());
 
-                WPFInstancers.Simple("Separator", () => new Separator())
-            );
+            engine.AddSimpleInstancer<Separator>();
         }
     }
 }

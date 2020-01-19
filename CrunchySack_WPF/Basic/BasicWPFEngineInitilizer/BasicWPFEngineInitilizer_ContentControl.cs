@@ -16,10 +16,8 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInfos.AttributeLink<ContentControl, object>("content", ContentControl.ContentProperty),
-                WPFInfos.Children<ContentControl, UIElement>(c => c.Content = null, (c, e) => c.Content = e)
-            );
+            engine.AddAttributeLink<ContentControl, object>("content", ContentControl.ContentProperty);
+            engine.AddChildren<ContentControl, UIElement>(c => c.Content = null, (c, e) => c.Content = e);
         }
     }
 }

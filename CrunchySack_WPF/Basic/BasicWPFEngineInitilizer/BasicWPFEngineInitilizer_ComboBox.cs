@@ -15,9 +15,7 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("ComboBox", () => new ComboBox())
-            );
+            engine.AddSimpleInstancer<ComboBox>();
         }
     }
 }

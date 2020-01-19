@@ -16,11 +16,9 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("Image", () => new Image()),
+            engine.AddSimpleInstancer<Image>("Image");
 
-                WPFInfos.AttributeLink<Image, ImageSource>("source", Image.SourceProperty)
-            );
+            engine.AddAttributeLink<Image, ImageSource>("source", Image.SourceProperty);
         }
     }
 }

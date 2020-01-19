@@ -16,14 +16,12 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFModifiers.General<FrameworkElement>((ex, e) => e.DataContext = ex.GetTargetInfo().GetTarget()),
+            engine.AddGeneralModifier<FrameworkElement>((ex, e) => e.DataContext = ex.GetTargetInfo().GetTarget());
 
-                WPFInfos.AttributeValue<FrameworkElement, bool>("auto_focus", (f, v) => f.Focus()),
+            engine.AddAttributeValue<FrameworkElement, bool>("auto_focus", (f, v) => f.Focus());
 
-                WPFInfos.AttributeFunction<FrameworkElement>("bind_left_click", (f, a) => f.AddInputBinding(a, MouseAction.LeftClick)),
-                WPFInfos.AttributeFunction<FrameworkElement>("bind_left_double_click", (f, a) => f.AddInputBinding(a, MouseAction.LeftDoubleClick))
-            );
+            engine.AddAttributeFunction<FrameworkElement>("bind_left_click", (f, a) => f.AddInputBinding(a, MouseAction.LeftClick));
+            engine.AddAttributeFunction<FrameworkElement>("bind_left_double_click", (f, a) => f.AddInputBinding(a, MouseAction.LeftDoubleClick));
         }
     }
 }

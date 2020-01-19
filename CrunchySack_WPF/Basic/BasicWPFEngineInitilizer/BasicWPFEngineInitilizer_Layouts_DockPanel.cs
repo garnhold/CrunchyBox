@@ -15,11 +15,9 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("DockPanel", () => new DockPanel()),
+            engine.AddSimpleInstancer<DockPanel>();
 
-                WPFInfos.AttributeLink<UIElement, Dock>("dock", DockPanel.DockProperty)
-            );
+            engine.AddAttributeLink<UIElement, Dock>("dock", DockPanel.DockProperty);
         }
     }
 }

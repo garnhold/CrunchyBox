@@ -17,9 +17,7 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInfos.AttributeLink<Selector, object>("selected_item", Selector.SelectedItemProperty)
-            );
+            engine.AddAttributeLink<Selector, object>("selected_item", Selector.SelectedItemProperty);
         }
     }
 }

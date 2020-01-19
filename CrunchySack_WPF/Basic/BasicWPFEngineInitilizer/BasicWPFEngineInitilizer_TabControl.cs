@@ -15,10 +15,8 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("TabControl", () => new TabControl()),
-                WPFInstancers.Simple("TabItem", () => new TabItem())
-            );
+            engine.AddSimpleInstancer<TabControl>();
+            engine.AddSimpleInstancer<TabItem>();
         }
     }
 }

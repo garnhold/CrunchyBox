@@ -16,9 +16,7 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInfos.AttributeLink<HeaderedContentControl, object>("header", HeaderedContentControl.HeaderProperty)
-            );
+            engine.AddAttributeLink<HeaderedContentControl, object>("header", HeaderedContentControl.HeaderProperty);
         }
     }
 }

@@ -15,10 +15,8 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInfos.AttributeValue<Decorator, UIElement>("child", (d, e) => d.Child = e),
-                WPFInfos.Children<Decorator, UIElement>(d => d.Child = null, (d, e) => d.Child = e)
-            );
+            engine.AddAttributeValue<Decorator, UIElement>("child", (d, e) => d.Child = e);
+            engine.AddChildren<Decorator, UIElement>(d => d.Child = null, (d, e) => d.Child = e);
         }
     }
 }

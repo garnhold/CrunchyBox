@@ -15,10 +15,8 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("HorizontalLayout", () => new StackPanel() { Orientation = Orientation.Horizontal }),
-                WPFInstancers.Simple("VerticalLayout", () => new StackPanel() { Orientation = Orientation.Vertical })
-            );
+            engine.AddSimpleInstancer("HorizontalLayout", () => new StackPanel() { Orientation = Orientation.Horizontal });
+            engine.AddSimpleInstancer("VerticalLayout", () => new StackPanel() { Orientation = Orientation.Vertical });
         }
     }
 }

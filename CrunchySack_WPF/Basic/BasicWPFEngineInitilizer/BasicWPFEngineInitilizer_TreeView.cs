@@ -15,10 +15,8 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("TreeView", () => new TreeView()),
-                WPFInstancers.Simple("TreeViewItem", () => new TreeViewItem())
-            );
+            engine.AddSimpleInstancer<TreeView>();
+            engine.AddSimpleInstancer<TreeViewItem>();
         }
     }
 }

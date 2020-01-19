@@ -15,16 +15,14 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("Text", () => new TextBlock()),
+            engine.AddSimpleInstancer<TextBlock>("Text");
 
-                WPFInstancers.Variation<TextBlock>("Label", "Text", t => t.FontSize = 12.0),
-                WPFInstancers.Variation<TextBlock>("Header", "Text", t => t.FontSize = 22.0),
-                WPFInstancers.Variation<TextBlock>("Title", "Text", t => t.FontSize = 33.0),
+            engine.AddVariationInstancer<TextBlock>("Label", "Text", t => t.FontSize = 12.0);
+            engine.AddVariationInstancer<TextBlock>("Header", "Text", t => t.FontSize = 22.0);
+            engine.AddVariationInstancer<TextBlock>("Title", "Text", t => t.FontSize = 33.0);
 
-                WPFInfos.AttributeLink<TextBlock, string>("text", TextBlock.TextProperty),
-                WPFInfos.AttributeLink<TextBlock, string>("value", TextBlock.TextProperty)
-            );
+            engine.AddAttributeLink<TextBlock, string>("text", TextBlock.TextProperty);
+            engine.AddAttributeLink<TextBlock, string>("value", TextBlock.TextProperty);
         }
     }
 }

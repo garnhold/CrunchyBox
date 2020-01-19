@@ -15,24 +15,20 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInstancers.Simple("Grid", () => new Grid()),
+            engine.AddSimpleInstancer<Grid>();
 
-                WPFInfos.AttributeLink<Grid, string>("columns", (g, s) => g.SetColumnDefinitionString(s), g => g.GetColumnDefinitionString()),
-                WPFInfos.AttributeLink<Grid, string>("rows", (g, s) => g.SetRowDefinitionString(s), g => g.GetRowDefinitionString()),
+            engine.AddAttributeLink<Grid, string>("columns", (g, s) => g.SetColumnDefinitionString(s), g => g.GetColumnDefinitionString());
+            engine.AddAttributeLink<Grid, string>("rows", (g, s) => g.SetRowDefinitionString(s), g => g.GetRowDefinitionString());
 
-                WPFInfos.Children<Grid>(g => g.Children),
+            engine.AddChildren<Grid>(g => g.Children);
 
-                WPFInfos.AttributeLink<UIElement, int>("column", Grid.ColumnProperty),
-                WPFInfos.AttributeLink<UIElement, int>("row", Grid.RowProperty),
+            engine.AddAttributeLink<UIElement, int>("column", Grid.ColumnProperty);
+            engine.AddAttributeLink<UIElement, int>("row", Grid.RowProperty);
 
-                WPFInfos.AttributeLink<UIElement, int>("column_span", Grid.ColumnSpanProperty),
-                WPFInfos.AttributeLink<UIElement, int>("row_span", Grid.RowSpanProperty)
-            );
+            engine.AddAttributeLink<UIElement, int>("column_span", Grid.ColumnSpanProperty);
+            engine.AddAttributeLink<UIElement, int>("row_span", Grid.RowSpanProperty);
 
-            engine.Add(
-                WPFInstancers.Simple("GridSplitter", () => new GridSplitter())
-            );
+            engine.AddSimpleInstancer<GridSplitter>();
         }
     }
 }

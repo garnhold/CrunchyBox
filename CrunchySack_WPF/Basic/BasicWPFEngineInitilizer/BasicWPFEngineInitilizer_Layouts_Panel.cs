@@ -15,9 +15,7 @@ namespace Crunchy.Sack_WPF
         [BasicWPFEngineInitilizer]
         static public void Initilize(WPFEngine engine)
         {
-            engine.Add(
-                WPFInfos.Children<Panel>(p => p.Children)
-            );
+            engine.AddChildren<Panel>(p => p.Children);
         }
     }
 }
