@@ -18,7 +18,7 @@ namespace Crunchy.Sack_WPF
         {
             engine.AddGeneralModifier<FrameworkElement>((ex, e) => e.DataContext = ex.GetTargetInfo().GetTarget());
 
-            engine.AddAttributeValue<FrameworkElement, bool>("auto_focus", (f, v) => f.Focus());
+            engine.AddAttributeValue<FrameworkElement, bool>("auto_focus", (f, v) => v.IfTrue(() => f.Focus()));
 
             engine.AddAttributeFunction<FrameworkElement>("bind_left_click", (f, a) => f.AddInputBinding(a, MouseAction.LeftClick));
             engine.AddAttributeFunction<FrameworkElement>("bind_left_double_click", (f, a) => f.AddInputBinding(a, MouseAction.LeftDoubleClick));
