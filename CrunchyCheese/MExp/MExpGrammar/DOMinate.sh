@@ -1,0 +1,1 @@
+mono "/home/garrett/Documents/Programming/DOME6/DOME6/bin/Release/DOME6.exe" -c "true" -v "Auto" -g "MExp" -e "MExpElement" -n "Crunchy.Cheese" -bn "Implicit" -o "/home/garrett/Documents/Programming/CrunchyBox/CrunchyCheese/MExp/"

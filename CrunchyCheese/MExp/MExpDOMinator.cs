@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: June 29 2019 19:05:29 -07:00
+//Date: January 19 2020 23:05:45 -08:00
 
 using System;
 using System.IO;
@@ -1305,23 +1305,17 @@ namespace Crunchy.Cheese
 	public partial class MExpSyntaxException : Exception
 	{
 		private int line;
-		private int column;
 		private string base_message;
-		public MExpSyntaxException(int l, int c, string m) : base()
+		public override string Message { get{ return GetMessage(); } }
+		public MExpSyntaxException(int l, string m) : base()
 		{
 			line = l;
-			column = c;
 			base_message = m;
 		}
 		
 		public int GetLine()
 		{
 			return line;
-		}
-		
-		public int GetColumn()
-		{
-			return column;
 		}
 		
 		public string GetBaseMessage()
@@ -1331,7 +1325,7 @@ namespace Crunchy.Cheese
 		
 		public string GetMessage()
 		{
-			return "(" + line + ", " + column + ")" +  base_message;
+			return "(" + line + ")" +  base_message;
 		}
 		
 	}
@@ -1343,9 +1337,9 @@ namespace Crunchy.Cheese
 		{
 		}
 		
-		public override void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, int column, string msg, RecognitionException e)
+		public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 		{
-			throw new MExpSyntaxException(line, column, msg);
+			throw new MExpSyntaxException(line, msg);
 		}
 		
 	}
