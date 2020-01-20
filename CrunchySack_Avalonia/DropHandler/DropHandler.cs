@@ -74,6 +74,8 @@ namespace Crunchy.Sack_Avalonia
 
             if (element != null)
             {
+                DragDrop.SetAllowDrop(element, true);
+
                 element.AddHandler(DragDrop.DropEvent, element_Drop);
 
                 element.AddHandler(DragDrop.DragEnterEvent, element_DragEnter);
