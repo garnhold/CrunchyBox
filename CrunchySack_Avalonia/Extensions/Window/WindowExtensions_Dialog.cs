@@ -21,5 +21,14 @@ namespace Crunchy.Sack_Avalonia
             item.ShowDialog<T>(AvaloniaEngine.GetMainWindow())
                 .ContinueWith(t => t.Result.IfNotNull(r => process(r)));
         }
+
+        static public void OkClose(this Window item)
+        {
+            item.Close(true);
+        }
+        static public void CancelClose(this Window item)
+        {
+            item.Close(false);
+        }
     }
 }
