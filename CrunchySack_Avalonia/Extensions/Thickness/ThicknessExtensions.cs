@@ -15,10 +15,10 @@ namespace Crunchy.Sack_Avalonia
     [Conversion]
     static public class ThicknessExtensions
     {
-        static public Thickness Create(double value)
-        {
-            return new Thickness(value);
-        }
+        [Conversion] static public Thickness Create(double value) { return new Thickness(value); }
+
+        [Conversion]static public Thickness Create(float value) { return Create((double)value); }
+        [Conversion]static public Thickness Create(int value) { return Create((double)value); }
 
         static public Thickness Create(double horizontal_value, double vertical_value)
         {
