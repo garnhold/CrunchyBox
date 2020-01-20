@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: October 14 2019 1:47:36 -07:00
+//Date: January 19 2020 23:18:17 -08:00
 
 using System;
 using System.IO;
@@ -3993,23 +3993,17 @@ namespace Crunchy.Ramen
 	public partial class CMinorSyntaxException : Exception
 	{
 		private int line;
-		private int column;
 		private string base_message;
-		public CMinorSyntaxException(int l, int c, string m) : base()
+		public override string Message { get{ return GetMessage(); } }
+		public CMinorSyntaxException(int l, string m) : base()
 		{
 			line = l;
-			column = c;
 			base_message = m;
 		}
 		
 		public int GetLine()
 		{
 			return line;
-		}
-		
-		public int GetColumn()
-		{
-			return column;
 		}
 		
 		public string GetBaseMessage()
@@ -4019,7 +4013,7 @@ namespace Crunchy.Ramen
 		
 		public string GetMessage()
 		{
-			return "(" + line + ", " + column + ")" +  base_message;
+			return "(" + line + ")" +  base_message;
 		}
 		
 	}
@@ -4031,9 +4025,9 @@ namespace Crunchy.Ramen
 		{
 		}
 		
-		public override void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, int column, string msg, RecognitionException e)
+		public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 		{
-			throw new CMinorSyntaxException(line, column, msg);
+			throw new CMinorSyntaxException(line, msg);
 		}
 		
 	}
