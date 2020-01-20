@@ -19,7 +19,7 @@ namespace Crunchy.Lunch
 
         public void Run(IEnumerable<string> args)
         {
-            new CmdSettingTable(args).LoadAsConfigurationInto(this, true);
+            CmdUtilities.LoadConfigurationInfo(this, args, true);
 
             PrintHeader(GetType().Name);
             RunInternal();

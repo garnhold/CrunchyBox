@@ -60,6 +60,7 @@
     <Compile Include="Terminal\Extensions\TerminalExtensions.cs" />
     <Compile Include="Terminal\Terminal_Console.cs" />
     <Compile Include="ThisAssembly.cs" />
+    <Compile Include="CmdUtilities\CmdUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">
@@ -78,6 +79,9 @@
       <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
       <Name>CrunchySalt</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CmdUtilities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
