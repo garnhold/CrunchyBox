@@ -341,6 +341,7 @@
     <Compile Include="Extensions\OpenFileDialog\OpenFileDialogExtensions_Show.cs" />
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ItemsControl.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_RoutedEventHandler.cs" />
+    <Compile Include="Extensions\CornerRadius\CornerRadiusExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -403,6 +404,7 @@
     <Folder Include="Extensions\SaveFileDialog\" />
     <Folder Include="Extensions\OpenFileDialog\" />
     <Folder Include="Extensions\FunctionSyncro\" />
+    <Folder Include="Extensions\CornerRadius\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.0\build\net45\SkiaSharp.targets')" />
