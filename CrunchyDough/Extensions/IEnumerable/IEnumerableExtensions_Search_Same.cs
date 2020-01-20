@@ -22,7 +22,7 @@ namespace Crunchy.Dough
 
                         while (iter.MoveNext())
                         {
-                            if (iter.Current.NotEqualsEX(value))
+                            if (iter.Current.NotEqualsEX(first_value))
                                 return false;
                         }
                     }

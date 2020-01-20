@@ -1,0 +1,1 @@
+mono "/home/garrett/Documents/Programming/DOME6/DOME6/bin/Release/DOME6.exe" -c "false" -v "None" -g "Cml" -e "CmlElement" -n "CrunchySack" -bn "Implicit" -o "/home/garrett/Documents/Programming/CrunchyBox/CrunchySack/Cml/"
