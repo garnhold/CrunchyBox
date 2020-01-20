@@ -36,16 +36,22 @@ cmlPrimitive
 
 cmlEntity : ID /*info: name=>tag*/ (ID /*info: name=>id*/)?
     ('(' cmlEntityAttribute* /*info: name=>attributes*/ ')')?
-    (cmlEntityChildren /*info: name=>children*/ | cmlEntityMountPoint /*info: name=>mount_point*/)?
+    (
+        cmlEntityChildren /*info: name=>children*/ |
+        cmlEntityMountPoint /*info: name=>mount_point*/ |
+        cmlEntityCompositeChild /*info: name=>composite_child*/
+    )?
     ;
-
-cmlEntityMountPoint : '[' '*' ']';
 
 cmlEntityChildren
     : cmlComponentSourceList /*info: name=>component_source_list*/ # cmlEntityChildren_Static
     | cmlLinkSource /*info: name=>link_source*/ # cmlEntityChildren_Dynamic
     | cmlLinkSourceWithEntitySource /*info: name=>link_source_with_entity_source*/ # cmlEntityChildren_DynamicInline
     ;
+
+cmlEntityMountPoint : '[' '*' ']';
+
+cmlEntityCompositeChild : '.' cmlComponentSource /*info: name=>component_source*/;
 
 cmlEntityAttribute : ID /*info: name=>name*/ '=' cmlValueSource /*info: name=>value_source*/;
 

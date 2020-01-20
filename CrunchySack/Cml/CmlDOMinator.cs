@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: April 09 2019 1:21:34 -07:00
+//Date: January 19 2020 22:50:29 -08:00
 
 using System;
 using System.IO;
@@ -1293,6 +1293,7 @@ namespace Crunchy.Sack
 		[RelatableChild]private List<CmlEntityAttribute> attributes;
 		[RelatableChild]private CmlEntityChildren children;
 		[RelatableChild]private CmlEntityMountPoint mount_point;
+		[RelatableChild]private CmlEntityCompositeChild composite_child;
 		static public CmlEntity DOMify(CmlParser.CmlEntityContext context)
 		{
 			if(context != null)
@@ -1330,6 +1331,7 @@ namespace Crunchy.Sack
 			attributes = new List<CmlEntityAttribute>();
 			children = null;
 			mount_point = null;
+			composite_child = null;
 			OnConstructor();
 		}
 		
@@ -1341,6 +1343,7 @@ namespace Crunchy.Sack
 			AddAttributes(context.cmlEntityAttribute().Convert(c => CmlEntityAttribute.DOMify(c)));
 			SetChildren(CmlEntityChildren.DOMify(context.cmlEntityChildren()));
 			SetMountPoint(CmlEntityMountPoint.DOMify(context.cmlEntityMountPoint()));
+			SetCompositeChild(CmlEntityCompositeChild.DOMify(context.cmlEntityCompositeChild()));
 		}
 		
 		public CmlEntity Duplicate()
@@ -1351,6 +1354,7 @@ namespace Crunchy.Sack
 			instance.SetAttributes(GetAttributes().Convert(i => i.IfNotNull(z => z.Duplicate())));
 			instance.SetChildren(GetChildren().IfNotNull(z => z.Duplicate()));
 			instance.SetMountPoint(GetMountPoint().IfNotNull(z => z.Duplicate()));
+			instance.SetCompositeChild(GetCompositeChild().IfNotNull(z => z.Duplicate()));
 			return instance;
 		}
 		
@@ -1430,54 +1434,14 @@ namespace Crunchy.Sack
 			return mount_point;
 		}
 		
-	}
-	
-	public partial class CmlEntityMountPoint : CmlElement
-	{
-		static public CmlEntityMountPoint DOMify(CmlParser.CmlEntityMountPointContext context)
+		private void SetCompositeChild(CmlEntityCompositeChild input)
 		{
-			if(context != null)
-			{
-				return new CmlEntityMountPoint(context);
-			}
-			
-			return null;
+			composite_child = input;
 		}
 		
-		static public CmlEntityMountPoint DOMify(IParseTree parse_tree)
+		public CmlEntityCompositeChild GetCompositeChild()
 		{
-			return DOMify(parse_tree as CmlParser.CmlEntityMountPointContext);
-		}
-		
-		static public CmlEntityMountPoint DOMify(Stream stream)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlEntityMountPoint());
-		}
-		
-		static public CmlEntityMountPoint DOMify(string text)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlEntityMountPoint());
-		}
-		
-		static public CmlEntityMountPoint DOMifyFile(string filename)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlEntityMountPoint());
-		}
-		
-		public CmlEntityMountPoint()
-		{
-			OnConstructor();
-		}
-		
-		partial void OnConstructor();
-		public CmlEntityMountPoint(CmlParser.CmlEntityMountPointContext context) : this()
-		{
-		}
-		
-		public CmlEntityMountPoint Duplicate()
-		{
-			CmlEntityMountPoint instance = new CmlEntityMountPoint();
-			return instance;
+			return composite_child;
 		}
 		
 	}
@@ -1700,6 +1664,120 @@ namespace Crunchy.Sack
 		public CmlLinkSourceWithEntitySource GetLinkSourceWithEntitySource()
 		{
 			return link_source_with_entity_source;
+		}
+		
+	}
+	
+	public partial class CmlEntityMountPoint : CmlElement
+	{
+		static public CmlEntityMountPoint DOMify(CmlParser.CmlEntityMountPointContext context)
+		{
+			if(context != null)
+			{
+				return new CmlEntityMountPoint(context);
+			}
+			
+			return null;
+		}
+		
+		static public CmlEntityMountPoint DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as CmlParser.CmlEntityMountPointContext);
+		}
+		
+		static public CmlEntityMountPoint DOMify(Stream stream)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlEntityMountPoint());
+		}
+		
+		static public CmlEntityMountPoint DOMify(string text)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlEntityMountPoint());
+		}
+		
+		static public CmlEntityMountPoint DOMifyFile(string filename)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlEntityMountPoint());
+		}
+		
+		public CmlEntityMountPoint()
+		{
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public CmlEntityMountPoint(CmlParser.CmlEntityMountPointContext context) : this()
+		{
+		}
+		
+		public CmlEntityMountPoint Duplicate()
+		{
+			CmlEntityMountPoint instance = new CmlEntityMountPoint();
+			return instance;
+		}
+		
+	}
+	
+	public partial class CmlEntityCompositeChild : CmlElement
+	{
+		[RelatableChild]private CmlComponentSource component_source;
+		static public CmlEntityCompositeChild DOMify(CmlParser.CmlEntityCompositeChildContext context)
+		{
+			if(context != null)
+			{
+				return new CmlEntityCompositeChild(context);
+			}
+			
+			return null;
+		}
+		
+		static public CmlEntityCompositeChild DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as CmlParser.CmlEntityCompositeChildContext);
+		}
+		
+		static public CmlEntityCompositeChild DOMify(Stream stream)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlEntityCompositeChild());
+		}
+		
+		static public CmlEntityCompositeChild DOMify(string text)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlEntityCompositeChild());
+		}
+		
+		static public CmlEntityCompositeChild DOMifyFile(string filename)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlEntityCompositeChild());
+		}
+		
+		public CmlEntityCompositeChild()
+		{
+			component_source = null;
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public CmlEntityCompositeChild(CmlParser.CmlEntityCompositeChildContext context) : this()
+		{
+			SetComponentSource(CmlComponentSource.DOMify(context.cmlComponentSource()));
+		}
+		
+		public CmlEntityCompositeChild Duplicate()
+		{
+			CmlEntityCompositeChild instance = new CmlEntityCompositeChild();
+			instance.SetComponentSource(GetComponentSource().IfNotNull(z => z.Duplicate()));
+			return instance;
+		}
+		
+		private void SetComponentSource(CmlComponentSource input)
+		{
+			component_source = input;
+		}
+		
+		public CmlComponentSource GetComponentSource()
+		{
+			return component_source;
 		}
 		
 	}
@@ -6775,11 +6853,6 @@ namespace Crunchy.Sack
 			return CmlEntity.DOMify(context);
 		}
 		
-		public override CmlElement VisitCmlEntityMountPoint(CmlParser.CmlEntityMountPointContext context)
-		{
-			return CmlEntityMountPoint.DOMify(context);
-		}
-		
 		public override CmlElement VisitCmlEntityChildren_Static(CmlParser.CmlEntityChildren_StaticContext context)
 		{
 			return CmlEntityChildren_Static.DOMify(context);
@@ -6793,6 +6866,16 @@ namespace Crunchy.Sack
 		public override CmlElement VisitCmlEntityChildren_DynamicInline(CmlParser.CmlEntityChildren_DynamicInlineContext context)
 		{
 			return CmlEntityChildren_DynamicInline.DOMify(context);
+		}
+		
+		public override CmlElement VisitCmlEntityMountPoint(CmlParser.CmlEntityMountPointContext context)
+		{
+			return CmlEntityMountPoint.DOMify(context);
+		}
+		
+		public override CmlElement VisitCmlEntityCompositeChild(CmlParser.CmlEntityCompositeChildContext context)
+		{
+			return CmlEntityCompositeChild.DOMify(context);
 		}
 		
 		public override CmlElement VisitCmlEntityAttribute(CmlParser.CmlEntityAttributeContext context)
@@ -7130,23 +7213,17 @@ namespace Crunchy.Sack
 	public partial class CmlSyntaxException : Exception
 	{
 		private int line;
-		private int column;
 		private string base_message;
-		public CmlSyntaxException(int l, int c, string m) : base()
+		public override string Message { get{ return GetMessage(); } }
+		public CmlSyntaxException(int l, string m) : base()
 		{
 			line = l;
-			column = c;
 			base_message = m;
 		}
 		
 		public int GetLine()
 		{
 			return line;
-		}
-		
-		public int GetColumn()
-		{
-			return column;
 		}
 		
 		public string GetBaseMessage()
@@ -7156,7 +7233,7 @@ namespace Crunchy.Sack
 		
 		public string GetMessage()
 		{
-			return "(" + line + ", " + column + ")" +  base_message;
+			return "(" + line + ")" +  base_message;
 		}
 		
 	}
@@ -7168,9 +7245,9 @@ namespace Crunchy.Sack
 		{
 		}
 		
-		public override void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, int column, string msg, RecognitionException e)
+		public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 		{
-			throw new CmlSyntaxException(line, column, msg);
+			throw new CmlSyntaxException(line, msg);
 		}
 		
 	}
