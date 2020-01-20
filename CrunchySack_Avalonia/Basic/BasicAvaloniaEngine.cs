@@ -20,11 +20,12 @@ namespace Crunchy.Sack_Avalonia
             return INSTANCE;
         }
 
-        static public void Initialize(AppBuilder builder)
+        static public BasicAvaloniaEngine Initialize(AppBuilder builder)
         {
             INSTANCE = new BasicAvaloniaEngine(builder);
 
             MarkedMethods<BasicAvaloniaEngineInitilizerAttribute>.InvokeFilteredMarkedStaticMethods(INSTANCE);
+            return GetInstance();
         }
 
         private BasicAvaloniaEngine(AppBuilder b) : base(b) { }
