@@ -32,17 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Antlr4.Runtime">
-      <HintPath>..\Antlr4.Runtime.dll</HintPath>
+    <Reference Include="Antlr4.Runtime.Standard">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.8.0\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisAssembly.cs" />
-    <Compile Include="Tyon\antlr4\TyonBaseVisitor.cs" />
-    <Compile Include="Tyon\antlr4\TyonLexer.cs" />
-    <Compile Include="Tyon\antlr4\TyonParser.cs" />
-    <Compile Include="Tyon\antlr4\TyonVisitor.cs" />
     <Compile Include="Tyon\Settings\Derivations\TyonSettings_Distributed.cs" />
     <Compile Include="Tyon\TyonValue_Real.cs" />
     <Compile Include="Tyon\TyonValue_Integer.cs" />
@@ -104,6 +100,10 @@
     <Compile Include="Tyon\SolidObject\TyonSolidObject.cs" />
     <Compile Include="Tyon\Settings\Extensions\TyonSettingsExtensions.cs" />
     <Compile Include="Tyon\Settings\Extensions\TyonSettingsExtensions_Convience.cs" />
+    <Compile Include="Tyon\antlr4\TyonBaseVisitor.cs" />
+    <Compile Include="Tyon\antlr4\TyonLexer.cs" />
+    <Compile Include="Tyon\antlr4\TyonParser.cs" />
+    <Compile Include="Tyon\antlr4\TyonVisitor.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -123,6 +123,10 @@
   <ItemGroup>
     <Folder Include="Tyon\SolidObject\" />
     <Folder Include="Tyon\Settings\Extensions\" />
+    <Folder Include="Tyon\antlr4\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

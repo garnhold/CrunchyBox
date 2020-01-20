@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: September 03 2019 23:21:30 -07:00
+//Date: January 19 2020 23:12:16 -08:00
 
 using System;
 using System.IO;
@@ -1729,26 +1729,17 @@ namespace Crunchy.Recipe
 	public partial class TyonSyntaxException : Exception
 	{
 		private int line;
-		private int column;
-        private string base_message;
-
-        public override string Message { get{ return GetMessage(); } }
-
-        public TyonSyntaxException(int l, int c, string m) : base()
+		private string base_message;
+		public override string Message { get{ return GetMessage(); } }
+		public TyonSyntaxException(int l, string m) : base()
 		{
 			line = l;
-			column = c;
 			base_message = m;
 		}
 		
 		public int GetLine()
 		{
 			return line;
-		}
-		
-		public int GetColumn()
-		{
-			return column;
 		}
 		
 		public string GetBaseMessage()
@@ -1758,7 +1749,7 @@ namespace Crunchy.Recipe
 		
 		public string GetMessage()
 		{
-			return "(" + line + ", " + column + ")" +  base_message;
+			return "(" + line + ")" +  base_message;
 		}
 		
 	}
@@ -1770,9 +1761,9 @@ namespace Crunchy.Recipe
 		{
 		}
 		
-		public override void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, int column, string msg, RecognitionException e)
+		public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 		{
-			throw new TyonSyntaxException(line, column, msg);
+			throw new TyonSyntaxException(line, msg);
 		}
 		
 	}

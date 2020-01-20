@@ -1,0 +1,1 @@
+mono "/home/garrett/Documents/Programming/DOME6/DOME6/bin/Release/DOME6.exe" -c "true" -g "Tyon" -e "TyonElement" -n "Crunchy.Recipe" -v "None" -bn "Implicit" -o "/home/garrett/Documents/Programming/CrunchyBox/CrunchyRecipe/Tyon/"
