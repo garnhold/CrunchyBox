@@ -1223,13 +1223,18 @@
     <Compile Include="Extensions\TextGenerator\TextGeneratorExtensions_Mesh.cs" />
     <Compile Include="MonomorphicFieldAttribute\MonomorphicFieldAttribute.cs" />
     <Compile Include="ObjectSignifyFieldAttribute\ObjectSignifyFieldAttribute.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_OpenTKJoystickAxis.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_JoystickAxis.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_GridChunk_Cropped.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_GridChunk_Overflown.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_OpenTKJoystickButton.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_OpenTKKeyboardButton.cs" />
+    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_JoystickButton.cs" />
+    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_KeyboardButton.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_EditProcess.cs" />
+    <Compile Include="MotionController\MotionController_MaterialPropertyFloat.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseHorizontalAxis.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseVerticalAxis.cs" />
+    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_MouseButton.cs" />
+    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseWheelAxis.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

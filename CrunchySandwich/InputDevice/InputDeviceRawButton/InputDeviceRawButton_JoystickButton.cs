@@ -9,13 +9,14 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
+    using Bread;
     
-    public class InputDeviceRawButton_OpenTKJoystickButton : InputDeviceRawButton
+    public class InputDeviceRawButton_JoystickButton : InputDeviceRawButton
     {
         private int device_index;
         private int button_index;
 
-        public InputDeviceRawButton_OpenTKJoystickButton(int di, int bi)
+        public InputDeviceRawButton_JoystickButton(int di, int bi)
         {
             device_index = di;
             button_index = bi;
@@ -23,7 +24,7 @@ namespace Crunchy.Sandwich
 
         public override bool IsButtonDown()
         {
-            return Joystick.GetState(device_index).IsButtonDown(button_index);
+            return JoystickExtensions.GetState(device_index).IsButtonDown(button_index);
         }
     }
 }

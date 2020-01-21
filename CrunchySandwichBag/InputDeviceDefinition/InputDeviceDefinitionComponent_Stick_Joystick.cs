@@ -38,11 +38,11 @@ namespace Crunchy.SandwichBag
             writer.Write(@"?VARIABLE = new InputDeviceComponent_Stick(
                 new InputDeviceRawStick_Axises(
                     new InputDeviceRawAxis_Filtered(
-                        new InputDeviceRawAxis_OpenTKJoystickAxis(?DEVICE_INDEX, ?HORIZONTAL_AXIS_INDEX),
+                        new InputDeviceRawAxis_JoystickAxis(?DEVICE_INDEX, ?HORIZONTAL_AXIS_INDEX),
                         AxisFilters.General(?DEAD_ZONE, ?INVERT_HORIZONTAL)
                     ),
                     new InputDeviceRawAxis_Filtered(
-                        new InputDeviceRawAxis_OpenTKJoystickAxis(?DEVICE_INDEX, ?VERTICAL_AXIS_INDEX),
+                        new InputDeviceRawAxis_JoystickAxis(?DEVICE_INDEX, ?VERTICAL_AXIS_INDEX),
                         AxisFilters.General(?DEAD_ZONE, ?INVERT_VERTICAL)
                     )
                 )

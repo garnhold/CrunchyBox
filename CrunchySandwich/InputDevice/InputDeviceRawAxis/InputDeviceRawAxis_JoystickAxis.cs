@@ -11,12 +11,12 @@ namespace Crunchy.Sandwich
     using Dough;
     using Bread;
     
-    public class InputDeviceRawAxis_OpenTKJoystickAxis : InputDeviceRawAxis
+    public class InputDeviceRawAxis_JoystickAxis : InputDeviceRawAxis
     {
         private int device_index;
         private int axis_index;
 
-        public InputDeviceRawAxis_OpenTKJoystickAxis(int di, int ai)
+        public InputDeviceRawAxis_JoystickAxis(int di, int ai)
         {
             device_index = di;
             axis_index = ai;
@@ -24,7 +24,7 @@ namespace Crunchy.Sandwich
 
         public override float GetValue()
         {
-            return Joystick.GetState(device_index).GetAxis(axis_index);
+            return JoystickExtensions.GetState(device_index).GetAxis(axis_index);
         }
     }
 }

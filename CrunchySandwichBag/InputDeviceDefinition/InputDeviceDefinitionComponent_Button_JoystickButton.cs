@@ -26,7 +26,7 @@ namespace Crunchy.SandwichBag
             );
 
             writer.Write(@"?VARIABLE = new InputDeviceComponent_Button(
-                new InputDeviceRawButton_OpenTKJoystickButton(?DEVICE_INDEX, ?BUTTON_INDEX)
+                new InputDeviceRawButton_JoystickButton(?DEVICE_INDEX, ?BUTTON_INDEX)
             );");
         }
     }

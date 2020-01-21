@@ -33,7 +33,7 @@ namespace Crunchy.SandwichBag
 
             writer.Write(@"?VARIABLE = new InputDeviceComponent_Button(
                 new InputDeviceRawButton_Axis(
-                    new InputDeviceRawAxis_OpenTKJoystickAxis(?DEVICE_INDEX, ?AXIS_INDEX),
+                    new InputDeviceRawAxis_JoystickAxis(?DEVICE_INDEX, ?AXIS_INDEX),
                     ?DOWN_VALUE,
                     ?DOWN_TOLERANCE
                 )
