@@ -71,6 +71,11 @@ namespace Crunchy.Salt
             return item.ParseDouble().StyleAsLiteral();
         }
 
+        static public string StyleAsLiteral(this Enum item)
+        {
+            return item.GetEnumValueInfo().IfNotNull(i => i.GetEnumType().Name + "." + i.GetName());
+        }
+
         static public string StyleAsDoubleQuoteLiteral(this string item)
         {
             return item.CompressEscapeSequences().Surround("\"");
