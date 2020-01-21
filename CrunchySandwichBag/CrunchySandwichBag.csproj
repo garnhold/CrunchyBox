@@ -38,6 +38,9 @@
     <Reference Include="UnityEditor">
       <HintPath>..\..\..\..\Unity3D\2019.1.14f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEX\ApplicationEXEditorInitilizer.cs" />
@@ -409,6 +412,11 @@
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_Modify.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextField.cs" />
     <Compile Include="InputDeviceActionSettings\InputDeviceActionSettings.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_KeyboardButton.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_MouseButton.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseHorizontalAxis.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseVerticalAxis.cs" />
+    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseScrollAxis.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -497,6 +505,10 @@
       <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
       <Name>CrunchySodium</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CrunchyBread\CrunchyBread.csproj">
+      <Project>{7D5A203B-A23F-4AE5-A85F-5894BF6D9A4A}</Project>
+      <Name>CrunchyBread</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EditorGUIView\" />
@@ -506,6 +518,10 @@
     <Folder Include="LibrarySettings\" />
     <Folder Include="EditorGUIElement\EditorGUIElement_Single\" />
     <Folder Include="InputDeviceActionSettings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
