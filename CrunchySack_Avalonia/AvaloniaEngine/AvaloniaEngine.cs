@@ -54,7 +54,7 @@ namespace Crunchy.Sack_Avalonia
 
         public void AddAttributeFunction<REPRESENTATION_TYPE>(string n, RoutedEvent routed_event) where REPRESENTATION_TYPE : Control
         {
-            this.AddAttributeFunction<REPRESENTATION_TYPE>(n, (e, s) => e.Register(routed_event, s, RoutingStrategies.Bubble));
+            this.AddAttributeFunction<REPRESENTATION_TYPE>(n, (e, s) => e.Register(routed_event, s, RoutingStrategies.Bubble | RoutingStrategies.Direct));
             this.AddAttributeFunction<REPRESENTATION_TYPE>("preview_" + n, (e, s) => e.Register(routed_event, s, RoutingStrategies.Tunnel));
         }
 
