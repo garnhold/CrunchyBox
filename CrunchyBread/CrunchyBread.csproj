@@ -42,6 +42,9 @@
     <Compile Include="Input\AxisFilter\AxisFilter_Invert.cs" />
     <Compile Include="Input\AxisFilter\AxisFilter_CenterCalibrating.cs" />
     <Compile Include="Input\AxisFilter\AxisFilters.cs" />
+    <Compile Include="Extensions\MouseExtensions\MouseExtensions.cs" />
+    <Compile Include="Extensions\JoystickExtensions\JoystickExtensions.cs" />
+    <Compile Include="Extensions\KeyboardExtensions\KeyboardExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -72,6 +75,10 @@
   <ItemGroup>
     <Folder Include="Input\" />
     <Folder Include="Input\AxisFilter\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Extensions\MouseExtensions\" />
+    <Folder Include="Extensions\JoystickExtensions\" />
+    <Folder Include="Extensions\KeyboardExtensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
