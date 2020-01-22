@@ -1235,6 +1235,8 @@
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseVerticalAxis.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_MouseButton.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseWheelAxis.cs" />
+    <Compile Include="Extensions\Input\InputExtensions.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Looped.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1535,6 +1537,7 @@
     <Folder Include="MonomorphicFieldAttribute\" />
     <Folder Include="ObjectSignifyFieldAttribute\" />
     <Folder Include="LibrarySettings\" />
+    <Folder Include="Extensions\Input\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
