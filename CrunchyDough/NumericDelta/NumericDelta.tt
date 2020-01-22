@@ -1,0 +1,94 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo byte_info = new NumericInfo("byte", "Byte");
+NumericInfo short_info = new NumericInfo("short", "Short");
+NumericInfo int_info = new NumericInfo("int", "Int");
+NumericInfo long_info = new NumericInfo("long", "Long");
+NumericInfo float_info = new NumericInfo("float", "Float");
+NumericInfo double_info = new NumericInfo("double", "Double");
+NumericInfo decimal_info = new NumericInfo("decimal", "Decimal");
+
+NumericInfo[] types = new NumericInfo[]{ byte_info, short_info, int_info, long_info, float_info, double_info, decimal_info };
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+<#foreach(NumericInfo type in types){#>
+    public class <#=type.class_name#>Delta
+	{
+		private <#=type.type_name#> previous;
+        private <#=type.type_name#> delta;
+        
+        private bool is_initialized;
+        
+        public <#=type.class_name#>Delta()
+        {
+            Clear();
+        }
+        
+        public <#=type.class_name#>Delta(<#=type.type_name#> v) : this()
+        {
+            Update(v);
+        }
+        
+        public void Clear()
+        {
+            previous = 0;
+            delta = 0;
+        
+            is_initialized = false;
+        }
+        
+        public void Update(<#=type.type_name#> value)
+        {
+            if(is_initialized)
+                delta = (<#=type.type_name#>)(value - previous);
+            else
+            {
+                delta = 0;
+                is_initialized = true;
+            }
+            
+            previous = value;
+        }
+        
+        public <#=type.type_name#> UpdateDelta(<#=type.type_name#> value)
+        {
+            Update(value);
+            
+            return GetDelta();
+        }
+        
+        public <#=type.type_name#> GetValue()
+        {
+            return previous;
+        }
+        
+        public <#=type.type_name#> GetDelta()
+        {
+            return delta;
+        }
+	}
+
+<# } #>
+}
+
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public NumericInfo(string t, string c)
+	{
+		type_name = t;
+		class_name = c;
+	}
+}
+#>

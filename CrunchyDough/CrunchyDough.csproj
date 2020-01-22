@@ -1205,6 +1205,11 @@
     <Compile Include="DecayTimeSet\Extensions\DecayTimeSetExtensions_Add.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_ProcessAndChain.cs" />
     <Compile Include="Extensions\String\StringExtensions_Solidify.cs" />
+    <Compile Include="NumericDelta\NumericDelta.cs">
+      <DependentUpon>NumericDelta.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1363,6 +1368,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberExtensions_Heavyside.cs</LastGenOutput>
     </Content>
+    <Content Include="NumericDelta\NumericDelta.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumericDelta.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -1378,6 +1387,7 @@
     <Folder Include="TemporalOperationCache\" />
     <Folder Include="DecayTimeSet\" />
     <Folder Include="DecayTimeSet\Extensions\" />
+    <Folder Include="NumericDelta\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
