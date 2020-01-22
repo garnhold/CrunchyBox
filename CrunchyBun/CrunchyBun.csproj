@@ -281,6 +281,8 @@
     <Compile Include="Easer\Easer.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Fill.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_ConvertFromVariance.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Looped.cs" />
+    <Compile Include="VectorI2\Extensions\VectorI2Extensions_Looped.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Math\Mathq_IntPow.tt">
