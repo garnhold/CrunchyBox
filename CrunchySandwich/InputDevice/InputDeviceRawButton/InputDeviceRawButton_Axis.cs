@@ -23,9 +23,9 @@ namespace Crunchy.Sandwich
             tolerance = t;
         }
 
-        public override bool IsButtonDown()
+        public override bool UpdateIsButtonDown()
         {
-            if (axis.GetValue().IsApproximatelyEqualTo(value, tolerance))
+            if (axis.UpdateValue().IsApproximatelyEqualTo(value, tolerance))
                 return true;
 
             return false;

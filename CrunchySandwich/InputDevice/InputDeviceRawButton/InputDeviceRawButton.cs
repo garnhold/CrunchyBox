@@ -10,6 +10,6 @@ namespace Crunchy.Sandwich
     
     public abstract class InputDeviceRawButton
     {
-        public abstract bool IsButtonDown();
+        public abstract bool UpdateIsButtonDown();
     }
 }

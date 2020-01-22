@@ -19,11 +19,11 @@ namespace Crunchy.Sandwich
             vertical_axis = v;
         }
 
-        public override Vector2 GetValue()
+        public override Vector2 UpdateValue()
         {
             return new Vector2(
-                horizontal_axis.GetValue(),
-                vertical_axis.GetValue()
+                horizontal_axis.UpdateValue(),
+                vertical_axis.UpdateValue()
             ).BindMagnitudeBelow(1.0f);
         }
     }

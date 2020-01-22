@@ -22,7 +22,7 @@ namespace Crunchy.Sandwich
             axis_index = ai;
         }
 
-        public override float GetValue()
+        public override float UpdateValue()
         {
             return JoystickExtensions.GetState(device_index).GetAxis(axis_index);
         }

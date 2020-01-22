@@ -24,7 +24,7 @@ namespace Crunchy.Sandwich
 
         public InputDeviceRawButton_KeyboardButton(Key k) : this(-1, k) { }
 
-        public override bool IsButtonDown()
+        public override bool UpdateIsButtonDown()
         {
             return KeyboardExtensions.GetState(device_index).IsKeyDown(key);
         }

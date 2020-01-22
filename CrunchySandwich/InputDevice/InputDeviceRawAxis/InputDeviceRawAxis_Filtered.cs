@@ -20,9 +20,9 @@ namespace Crunchy.Sandwich
             filter = f;
         }
 
-        public override float GetValue()
+        public override float UpdateValue()
         {
-            return filter.Filter(axis.GetValue());
+            return filter.Filter(axis.UpdateValue());
         }
     }
 }

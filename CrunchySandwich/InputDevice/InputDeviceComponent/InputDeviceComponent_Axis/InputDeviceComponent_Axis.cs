@@ -22,7 +22,7 @@ namespace Crunchy.Sandwich
 
         protected override void UpdateInternal()
         {
-            value = axis.GetValue();
+            value = axis.UpdateValue();
         }
 
         public InputDeviceComponent_Axis()

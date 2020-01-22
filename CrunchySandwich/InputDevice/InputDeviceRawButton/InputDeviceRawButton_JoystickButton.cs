@@ -22,7 +22,7 @@ namespace Crunchy.Sandwich
             button_index = bi;
         }
 
-        public override bool IsButtonDown()
+        public override bool UpdateIsButtonDown()
         {
             return JoystickExtensions.GetState(device_index).IsButtonDown(button_index);
         }

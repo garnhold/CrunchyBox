@@ -27,16 +27,15 @@ namespace Crunchy.Sandwich
 
         protected override void UpdateInternal()
         {
-            is_down = false;
+            is_down = button.UpdateIsButtonDown();
+
             is_pressed = false;
             is_released = false;
 
-            if (button.IsButtonDown())
+            if (is_down)
             {
                 if (presses.LogValue(true))
                     is_pressed = true;
-
-                is_down = true;
             }
             else
             {

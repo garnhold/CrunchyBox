@@ -22,7 +22,7 @@ namespace Crunchy.Sandwich
 
         public InputDeviceRawAxis_MouseVerticalAxis() : this(-1) { }
 
-        public override float GetValue()
+        public override float UpdateValue()
         {
             return MouseExtensions.GetState(device_index).Y;
         }

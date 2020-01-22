@@ -191,11 +191,8 @@
     <Compile Include="Time\Alarm\GameAlarm.cs" />
     <Compile Include="Time\Stopwatch\GameStopwatch.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Option\InputDeviceComponent_Option.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_Axis.cs" />
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton.cs" />
-    <Compile Include="InputDevice\InputDeviceRawOption\InputDeviceRawOption_Button.cs" />
-    <Compile Include="InputDevice\InputDeviceRawOption\InputDeviceRawOption.cs" />
     <Compile Include="InputDevice\InputDeviceRawStick\InputDeviceRawStick_Axises.cs" />
     <Compile Include="InputDevice\InputDeviceRawStick\InputDeviceRawStick.cs" />
     <Compile Include="PolymorphicFieldAttribute\PolymorphicFieldAttribute.cs" />

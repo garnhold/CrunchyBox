@@ -10,6 +10,6 @@ namespace Crunchy.Sandwich
     
     public abstract class InputDeviceRawAxis
     {
-        public abstract float GetValue();
+        public abstract float UpdateValue();
     }
 }

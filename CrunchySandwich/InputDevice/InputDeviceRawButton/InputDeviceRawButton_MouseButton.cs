@@ -24,7 +24,7 @@ namespace Crunchy.Sandwich
 
         public InputDeviceRawButton_MouseButton(MouseButton b) : this(-1, b) { }
 
-        public override bool IsButtonDown()
+        public override bool UpdateIsButtonDown()
         {
             return MouseExtensions.GetState(device_index).IsButtonDown(button);
         }

@@ -19,20 +19,10 @@ namespace Crunchy.Sandwich
             positive_button = pb;
         }
 
-        public override float GetValue()
+        public override float UpdateValue()
         {
-            if (negative_button.IsButtonDown())
-            {
-                if (positive_button.IsButtonDown() == false)
-                    return -1.0f;
-            }
-            else
-            {
-                if (positive_button.IsButtonDown())
-                    return 1.0f;
-            }
-
-            return 0.0f;
+            return negative_button.UpdateIsButtonDown().ConvertBool(-1.0f) +
+                positive_button.UpdateIsButtonDown().ConvertBool(1.0f);
         }
     }
 }

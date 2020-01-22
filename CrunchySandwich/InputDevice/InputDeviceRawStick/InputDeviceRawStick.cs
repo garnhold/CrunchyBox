@@ -10,6 +10,6 @@ namespace Crunchy.Sandwich
     
     public abstract class InputDeviceRawStick
     {
-        public abstract Vector2 GetValue();
+        public abstract Vector2 UpdateValue();
     }
 }

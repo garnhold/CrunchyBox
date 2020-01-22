@@ -32,7 +32,7 @@ namespace Crunchy.Sandwich
 
         protected override void UpdateInternal()
         {
-            value = stick.GetValue();
+            value = stick.UpdateValue();
             magnitude = value.GetMagnitude();
 
             if (magnitude != 0.0f)
