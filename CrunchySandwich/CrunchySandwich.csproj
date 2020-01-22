@@ -1234,6 +1234,7 @@
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseWheelAxis.cs" />
     <Compile Include="Extensions\Input\InputExtensions.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_Looped.cs" />
+    <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Roll.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
