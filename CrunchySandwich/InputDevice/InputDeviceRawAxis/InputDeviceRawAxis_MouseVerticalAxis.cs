@@ -22,6 +22,8 @@ namespace Crunchy.Sandwich
             device_index = di;
 
             delta = new IntDelta();
+
+            CursorLooper.Enable();
         }
 
         public InputDeviceRawAxis_MouseVerticalAxis() : this(-1) { }
