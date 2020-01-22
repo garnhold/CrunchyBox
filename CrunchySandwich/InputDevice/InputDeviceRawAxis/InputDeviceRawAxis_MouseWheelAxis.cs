@@ -15,6 +15,8 @@ namespace Crunchy.Sandwich
     {
         private int device_index;
 
+        private FloatDelta delta;
+
         public InputDeviceRawAxis_MouseWheelAxis(int di)
         {
             device_index = di;
@@ -24,7 +26,7 @@ namespace Crunchy.Sandwich
 
         public override float UpdateValue()
         {
-            return MouseExtensions.GetState(device_index).WheelPrecise;
+            return delta.UpdateDelta(MouseExtensions.GetState(device_index).WheelPrecise);
         }
     }
 }

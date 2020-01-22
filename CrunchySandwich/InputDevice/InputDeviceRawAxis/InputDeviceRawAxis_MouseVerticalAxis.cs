@@ -15,16 +15,20 @@ namespace Crunchy.Sandwich
     {
         private int device_index;
 
+        private IntDelta delta;
+
         public InputDeviceRawAxis_MouseVerticalAxis(int di)
         {
             device_index = di;
+
+            delta = new IntDelta();
         }
 
         public InputDeviceRawAxis_MouseVerticalAxis() : this(-1) { }
 
         public override float UpdateValue()
         {
-            return MouseExtensions.GetState(device_index).Y;
+            return delta.UpdateDelta(MouseExtensions.GetState(device_index).Y);
         }
     }
 }
