@@ -42,9 +42,14 @@
     <Compile Include="Input\AxisFilter\AxisFilter_Invert.cs" />
     <Compile Include="Input\AxisFilter\AxisFilter_CenterCalibrating.cs" />
     <Compile Include="Input\AxisFilter\AxisFilters.cs" />
-    <Compile Include="Extensions\MouseExtensions\MouseExtensions.cs" />
-    <Compile Include="Extensions\JoystickExtensions\JoystickExtensions.cs" />
-    <Compile Include="Extensions\KeyboardExtensions\KeyboardExtensions.cs" />
+    <Compile Include="Extensions\Mouse\MouseExtensions.cs" />
+    <Compile Include="Extensions\Joystick\JoystickExtensions.cs" />
+    <Compile Include="Extensions\Keyboard\KeyboardExtensions.cs" />
+    <Compile Include="Input\CursorLooper\CursorLooper.cs" />
+    <Compile Include="Extensions\MouseState\MouseStateExtensions.cs" />
+    <Compile Include="Extensions\MouseState\MouseStateExtensions_Position.cs" />
+    <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions.cs" />
+    <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions_Resolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -76,9 +81,12 @@
     <Folder Include="Input\" />
     <Folder Include="Input\AxisFilter\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Extensions\MouseExtensions\" />
-    <Folder Include="Extensions\JoystickExtensions\" />
-    <Folder Include="Extensions\KeyboardExtensions\" />
+    <Folder Include="Extensions\Mouse\" />
+    <Folder Include="Extensions\Joystick\" />
+    <Folder Include="Extensions\Keyboard\" />
+    <Folder Include="Input\CursorLooper\" />
+    <Folder Include="Extensions\MouseState\" />
+    <Folder Include="Extensions\DisplayDevice\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
