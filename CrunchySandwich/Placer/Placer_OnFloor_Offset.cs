@@ -12,7 +12,7 @@ namespace Crunchy.Sandwich
 
         protected override void ForcePlaceGameObjectOnFloor(GameObject game_object, RaycastHit hit)
         {
-            game_object.transform.SetSpacarPosition(hit.point + offset);
+            game_object.SetSpacarPosition(hit.point + offset);
         }
     }
 }

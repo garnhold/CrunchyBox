@@ -14,9 +14,9 @@ namespace Crunchy.Sandwich
 
         protected override void ForcePlaceGameObjectOnFloor(GameObject game_object, RaycastHit hit)
         {
-            game_object.transform.SetSpacarPosition(hit.point + RandVector3.GetWithinBounds(translation_jitter));
-            game_object.transform.SetSpacarRotation(RandVector3.GetWithinBounds(rotation_jitter));
-            game_object.transform.SetSpacarScale(RandVector3.GetWithinBounds(scaling_jitter));
+            game_object.SetSpacarPosition(hit.point + RandVector3.GetWithinBounds(translation_jitter));
+            game_object.SetSpacarRotation(RandVector3.GetWithinBounds(rotation_jitter));
+            game_object.SetSpacarScale(RandVector3.GetWithinBounds(scaling_jitter));
         }
     }
 }
