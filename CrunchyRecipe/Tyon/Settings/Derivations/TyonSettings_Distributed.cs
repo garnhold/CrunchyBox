@@ -20,7 +20,7 @@ namespace Crunchy.Recipe
             ).Convert(t => t.CreateInstance<TyonSettingsComponent>());
         }
 
-        public TyonSettings_Distributed(IEnumerable<TyonSettingsComponent> c) : base(c.Append(CreateComponents())) { }
+        public TyonSettings_Distributed(IEnumerable<TyonSettingsComponent> c) : base(c.Prepend(CreateComponents())) { }
         public TyonSettings_Distributed(params TyonSettingsComponent[] c) : this((IEnumerable<TyonSettingsComponent>)c) { }
     }
 }
