@@ -15,7 +15,9 @@ namespace Crunchy.Sandwich
     public class UnityExplicitTyonDesignatedVariableProvider : TyonDesignatedVariableProvider_Manual
     {
         private UnityExplicitTyonDesignatedVariableProvider() : base(
-            new Variable_Operation<Timer, float>("duration", (t, v) => t.SetDurationInSeconds(v), t => t.GetDurationInSeconds())
+            new Variable_Operation<Timer, float>("duration", (t, v) => t.SetDurationInSeconds(v), t => t.GetDurationInSeconds()),
+
+            typeof(LayerMask).GetVariableByPath("value")
         ) { }
     }
 }
