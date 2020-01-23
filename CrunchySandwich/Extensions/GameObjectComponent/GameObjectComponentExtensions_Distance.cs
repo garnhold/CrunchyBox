@@ -112,22 +112,22 @@ namespace Crunchy.Sandwich
 				return item.GetSpacarPosition().IsOutsideDistance(target.GetSpacarPosition(), distance);
 			}
 		
-		static public float GetSpacarDistanceBetween(this GameObject item, Vector2 target)
+		static public float GetSpacarDistanceBetween(this GameObject item, Vector3 target)
 		{
 			return item.GetSpacarPosition().GetDistanceTo(target);
 		}
 
-		static public float GetSpacarSquaredDistanceBetween(this GameObject item, Vector2 target)
+		static public float GetSpacarSquaredDistanceBetween(this GameObject item, Vector3 target)
 		{
 			return item.GetSpacarPosition().GetSquaredDistanceTo(target);
 		}
 
-		static public bool IsWithinSpacarDistance(this GameObject item, Vector2 target, float distance)
+		static public bool IsWithinSpacarDistance(this GameObject item, Vector3 target, float distance)
 		{
 			return item.GetSpacarPosition().IsWithinDistance(target, distance);
 		}
 
-		static public bool IsOutsideSpacarDistance(this GameObject item, Vector2 target, float distance)
+		static public bool IsOutsideSpacarDistance(this GameObject item, Vector3 target, float distance)
 		{
 			return item.GetSpacarPosition().IsOutsideDistance(target, distance);
 		}
@@ -232,22 +232,22 @@ namespace Crunchy.Sandwich
 				return item.GetSpacarPosition().IsOutsideDistance(target.GetSpacarPosition(), distance);
 			}
 		
-		static public float GetSpacarDistanceBetween(this Component item, Vector2 target)
+		static public float GetSpacarDistanceBetween(this Component item, Vector3 target)
 		{
 			return item.GetSpacarPosition().GetDistanceTo(target);
 		}
 
-		static public float GetSpacarSquaredDistanceBetween(this Component item, Vector2 target)
+		static public float GetSpacarSquaredDistanceBetween(this Component item, Vector3 target)
 		{
 			return item.GetSpacarPosition().GetSquaredDistanceTo(target);
 		}
 
-		static public bool IsWithinSpacarDistance(this Component item, Vector2 target, float distance)
+		static public bool IsWithinSpacarDistance(this Component item, Vector3 target, float distance)
 		{
 			return item.GetSpacarPosition().IsWithinDistance(target, distance);
 		}
 
-		static public bool IsOutsideSpacarDistance(this Component item, Vector2 target, float distance)
+		static public bool IsOutsideSpacarDistance(this Component item, Vector3 target, float distance)
 		{
 			return item.GetSpacarPosition().IsOutsideDistance(target, distance);
 		}

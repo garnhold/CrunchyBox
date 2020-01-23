@@ -4,7 +4,11 @@
 <#@ output extension=".cs" #>
 <#
 string[] type_names = new string[]{"GameObject", "Component"};
-string[] distance_types = new string[]{"Planar", "Spacar"};
+
+DistanceType[] distance_types = new DistanceType[]{
+    new DistanceType("Planar", "Vector2"),
+    new DistanceType("Spacar", "Vector3")
+};
 #>
 using System;
 using System.Collections;
@@ -20,50 +24,63 @@ namespace Crunchy.Sandwich
     static public class GameObjectComponentExtensions_Distance
     {
 <# foreach(string type_name in type_names){#>
-	<#foreach(string distance_type in distance_types){#>
+	<#foreach(DistanceType distance_type in distance_types){#>
 		<# foreach(string target_type_name in type_names){#>
 
-			static public float Get<#=distance_type#>DistanceBetween(this <#=type_name#> item, <#=target_type_name#> target)
+			static public float Get<#=distance_type.name#>DistanceBetween(this <#=type_name#> item, <#=target_type_name#> target)
 			{
-				return item.Get<#=distance_type#>Position().GetDistanceTo(target.Get<#=distance_type#>Position());
+				return item.Get<#=distance_type.name#>Position().GetDistanceTo(target.Get<#=distance_type.name#>Position());
 			}
 
-			static public float Get<#=distance_type#>SquaredDistanceBetween(this <#=type_name#> item, <#=target_type_name#> target)
+			static public float Get<#=distance_type.name#>SquaredDistanceBetween(this <#=type_name#> item, <#=target_type_name#> target)
 			{
-				return item.Get<#=distance_type#>Position().GetSquaredDistanceTo(target.Get<#=distance_type#>Position());
+				return item.Get<#=distance_type.name#>Position().GetSquaredDistanceTo(target.Get<#=distance_type.name#>Position());
 			}
 
-			static public bool IsWithin<#=distance_type#>Distance(this <#=type_name#> item, <#=target_type_name#> target, float distance)
+			static public bool IsWithin<#=distance_type.name#>Distance(this <#=type_name#> item, <#=target_type_name#> target, float distance)
 			{
-				return item.Get<#=distance_type#>Position().IsWithinDistance(target.Get<#=distance_type#>Position(), distance);
+				return item.Get<#=distance_type.name#>Position().IsWithinDistance(target.Get<#=distance_type.name#>Position(), distance);
 			}
 
-			static public bool IsOutside<#=distance_type#>Distance(this <#=type_name#> item, <#=target_type_name#> target, float distance)
+			static public bool IsOutside<#=distance_type.name#>Distance(this <#=type_name#> item, <#=target_type_name#> target, float distance)
 			{
-				return item.Get<#=distance_type#>Position().IsOutsideDistance(target.Get<#=distance_type#>Position(), distance);
+				return item.Get<#=distance_type.name#>Position().IsOutsideDistance(target.Get<#=distance_type.name#>Position(), distance);
 			}
 		<#}#>
 
-		static public float Get<#=distance_type#>DistanceBetween(this <#=type_name#> item, Vector2 target)
+		static public float Get<#=distance_type.name#>DistanceBetween(this <#=type_name#> item, <#=distance_type.position_type#> target)
 		{
-			return item.Get<#=distance_type#>Position().GetDistanceTo(target);
+			return item.Get<#=distance_type.name#>Position().GetDistanceTo(target);
 		}
 
-		static public float Get<#=distance_type#>SquaredDistanceBetween(this <#=type_name#> item, Vector2 target)
+		static public float Get<#=distance_type.name#>SquaredDistanceBetween(this <#=type_name#> item, <#=distance_type.position_type#> target)
 		{
-			return item.Get<#=distance_type#>Position().GetSquaredDistanceTo(target);
+			return item.Get<#=distance_type.name#>Position().GetSquaredDistanceTo(target);
 		}
 
-		static public bool IsWithin<#=distance_type#>Distance(this <#=type_name#> item, Vector2 target, float distance)
+		static public bool IsWithin<#=distance_type.name#>Distance(this <#=type_name#> item, <#=distance_type.position_type#> target, float distance)
 		{
-			return item.Get<#=distance_type#>Position().IsWithinDistance(target, distance);
+			return item.Get<#=distance_type.name#>Position().IsWithinDistance(target, distance);
 		}
 
-		static public bool IsOutside<#=distance_type#>Distance(this <#=type_name#> item, Vector2 target, float distance)
+		static public bool IsOutside<#=distance_type.name#>Distance(this <#=type_name#> item, <#=distance_type.position_type#> target, float distance)
 		{
-			return item.Get<#=distance_type#>Position().IsOutsideDistance(target, distance);
+			return item.Get<#=distance_type.name#>Position().IsOutsideDistance(target, distance);
 		}
 	<#}#>
 <#}#>
 	}
 }
+<#+
+public class DistanceType
+{
+    public readonly string name;
+    public readonly string position_type;
+    
+    public DistanceType(string n, string pt)
+    {
+        name = n;
+        position_type = pt;
+    }
+}
+#>

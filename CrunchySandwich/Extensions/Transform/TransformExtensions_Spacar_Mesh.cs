@@ -21,7 +21,7 @@ namespace Crunchy.Sandwich
             item.GetComponent<MeshFilter>().SetBounds(bounds);
         }
 
-        static public Vector2 GetSpacarMeshSize(this Transform item)
+        static public Vector3 GetSpacarMeshSize(this Transform item)
         {
             return item.GetComponent<MeshFilter>().GetSize();
         }
