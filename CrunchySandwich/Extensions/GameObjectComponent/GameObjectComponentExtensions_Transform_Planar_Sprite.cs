@@ -11,9 +11,9 @@ namespace Crunchy.Sandwich
     
     static public class GameObjectComponentExtensions_Transform_Planar_Sprite
     {
-		static public void SetPlanarSpriteAsLine(this GameObject item, Vector2 point1, Vector2 point2)
+		static public void SetPlanarSpriteAsLine(this GameObject item, Vector2 point1, Vector2 point2, float total_margin = 0.0f)
         {
-			item.transform.SetPlanarSpriteAsLine(point1, point2);
+			item.transform.SetPlanarSpriteAsLine(point1, point2, total_margin);
         }
 
 		static public void SetPlanarSpriteSize(this GameObject item, Vector2 size)
@@ -34,9 +34,9 @@ namespace Crunchy.Sandwich
 			return item.transform.GetPlanarSpriteSize();
 		}
 
-		static public void SetPlanarSpriteAsLine(this Component item, Vector2 point1, Vector2 point2)
+		static public void SetPlanarSpriteAsLine(this Component item, Vector2 point1, Vector2 point2, float total_margin = 0.0f)
         {
-			item.transform.SetPlanarSpriteAsLine(point1, point2);
+			item.transform.SetPlanarSpriteAsLine(point1, point2, total_margin);
         }
 
 		static public void SetPlanarSpriteSize(this Component item, Vector2 size)

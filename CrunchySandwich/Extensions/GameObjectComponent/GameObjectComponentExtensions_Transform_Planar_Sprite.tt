@@ -19,9 +19,9 @@ namespace Crunchy.Sandwich
     static public class GameObjectComponentExtensions_Transform_Planar_Sprite
     {
 <# foreach(string type_name in type_names){#>
-		static public void SetPlanarSpriteAsLine(this <#=type_name#> item, Vector2 point1, Vector2 point2)
+		static public void SetPlanarSpriteAsLine(this <#=type_name#> item, Vector2 point1, Vector2 point2, float total_margin = 0.0f)
         {
-			item.transform.SetPlanarSpriteAsLine(point1, point2);
+			item.transform.SetPlanarSpriteAsLine(point1, point2, total_margin);
         }
 
 		static public void SetPlanarSpriteSize(this <#=type_name#> item, Vector2 size)

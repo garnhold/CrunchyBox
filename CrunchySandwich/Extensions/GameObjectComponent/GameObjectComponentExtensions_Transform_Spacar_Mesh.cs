@@ -11,9 +11,9 @@ namespace Crunchy.Sandwich
     
     static public class GameObjectComponentExtensions_Transform_Spacar_Mesh
     {
-        static public void SetSpacarMeshAsLine(this GameObject item, Axis axis, Vector3 point1, Vector3 point2)
+        static public void SetSpacarMeshAsLine(this GameObject item, Axis axis, Vector3 point1, Vector3 point2, float total_margin = 0.0f)
         {
-            item.transform.SetSpacarMeshAsLine(axis, point1, point2);
+            item.transform.SetSpacarMeshAsLine(axis, point1, point2, total_margin);
         }
         
 		static public void SetSpacarMeshSize(this GameObject item, Vector3 size)
@@ -52,9 +52,9 @@ namespace Crunchy.Sandwich
 			return item.transform.GetSpacarMeshBounds();
 		}
 
-        static public void SetSpacarMeshAsLine(this Component item, Axis axis, Vector3 point1, Vector3 point2)
+        static public void SetSpacarMeshAsLine(this Component item, Axis axis, Vector3 point1, Vector3 point2, float total_margin = 0.0f)
         {
-            item.transform.SetSpacarMeshAsLine(axis, point1, point2);
+            item.transform.SetSpacarMeshAsLine(axis, point1, point2, total_margin);
         }
         
 		static public void SetSpacarMeshSize(this Component item, Vector3 size)

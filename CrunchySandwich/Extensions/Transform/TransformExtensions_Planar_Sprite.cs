@@ -11,13 +11,13 @@ namespace Crunchy.Sandwich
     
     static public class TransformExtensions_Planar_Sprite
     {
-        static public void SetPlanarSpriteAsLine(this Transform item, Vector2 point1, Vector2 point2)
+        static public void SetPlanarSpriteAsLine(this Transform item, Vector2 point1, Vector2 point2, float total_margin = 0.0f)
         {
             Vector2 diff = point2 - point1;
 
             item.SetPlanarPosition(point1.GetMidpoint(point2));
             item.SetPlanarRotation(diff.GetAngleInDegrees());
-            item.SetPlanarSpriteWidth(diff.GetMagnitude());
+            item.SetPlanarSpriteWidth((diff.GetMagnitude() - total_margin).BindAbove(0.0f));
         }
 
         static public void SetPlanarSpriteSize(this Transform item, Vector2 size)

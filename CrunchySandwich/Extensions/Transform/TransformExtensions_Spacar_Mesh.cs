@@ -11,13 +11,13 @@ namespace Crunchy.Sandwich
     
     static public class TransformExtensions_Spacar_Mesh
     {
-        static public void SetSpacarMeshAsLine(this Transform item, Axis axis, Vector3 point1, Vector3 point2)
+        static public void SetSpacarMeshAsLine(this Transform item, Axis axis, Vector3 point1, Vector3 point2, float total_margin = 0.0f)
         {
             Vector3 diff = point2 - point1;
 
             item.SetSpacarPosition(point1.GetMidpoint(point2));
             item.SetSpacarAxis(axis, diff);
-            item.SetSpacarMeshDimension(axis, diff.GetMagnitude());
+            item.SetSpacarMeshDimension(axis, (diff.GetMagnitude() - total_margin).BindAbove(0.0f));
         }
 
         static public void SetSpacarMeshSize(this Transform item, Vector3 size)
