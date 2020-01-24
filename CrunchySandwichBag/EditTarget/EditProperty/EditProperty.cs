@@ -95,7 +95,7 @@ namespace Crunchy.SandwichBag
         public void ForceContentValues(object value)
         {
             target.TouchWithUndo("Setting " + GetName(), delegate () {
-                if (GetPropertyType().IsPrimitive())
+                if (GetPropertyType().IsReferenceFreeType())
                     GetVariables().Process(v => v.SetContents(value));
                 else
                 {
