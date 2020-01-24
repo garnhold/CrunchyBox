@@ -29,6 +29,30 @@ namespace Crunchy.Sandwich
             item.localEulerAngles = angles;
         }
 
+        static public void SetSpacarAxis(this Transform item, Axis axis, Vector3 vector)
+        {
+            switch (axis)
+            {
+                case Axis.X: item.SetSpacarRight(vector); return;
+                case Axis.Y: item.SetSpacarUp(vector); return;
+                case Axis.Z: item.SetSpacarForward(vector); return;
+            }
+
+            throw new UnaccountedBranchException("axis", axis);
+        }
+        static public void SetSpacarRight(this Transform item, Vector3 vector)
+        {
+            item.right = vector;
+        }
+        static public void SetSpacarUp(this Transform item, Vector3 vector)
+        {
+            item.up = vector;
+        }
+        static public void SetSpacarForward(this Transform item, Vector3 vector)
+        {
+            item.forward = vector;
+        }
+
         static public void SetSpacarQuaternion(this Transform item, Quaternion quaternion)
         {
             item.rotation = quaternion;
@@ -74,6 +98,30 @@ namespace Crunchy.Sandwich
         static public Vector3 GetLocalSpacarRotation(this Transform item)
         {
             return item.localEulerAngles;
+        }
+
+        static public Vector3 GetSpacarAxis(this Transform item, Axis axis)
+        {
+            switch (axis)
+            {
+                case Axis.X: return item.GetSpacarRight();
+                case Axis.Y: return item.GetSpacarUp();
+                case Axis.Z: return item.GetSpacarForward();
+            }
+
+            throw new UnaccountedBranchException("axis", axis);
+        }
+        static public Vector3 GetSpacarRight(this Transform item)
+        {
+            return item.right;
+        }
+        static public Vector3 GetSpacarUp(this Transform item)
+        {
+            return item.up;
+        }
+        static public Vector3 GetSpacarForward(this Transform item)
+        {
+            return item.forward;
         }
 
         static public Quaternion GetSpacarQuaternion(this Transform item)

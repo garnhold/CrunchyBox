@@ -14,6 +14,22 @@ namespace Crunchy.Sandwich
         {
             item.SetSpacarScale(size.GetComponentDivide(item.GetNativeSize()));
         }
+        static public void SetWidth(this MeshFilter item, float width)
+        {
+            item.SetSize(item.GetSize().GetWithX(width));
+        }
+        static public void SetHeight(this MeshFilter item, float height)
+        {
+            item.SetSize(item.GetSize().GetWithY(height));
+        }
+        static public void SetDepth(this MeshFilter item, float depth)
+        {
+            item.SetSize(item.GetSize().GetWithZ(depth));
+        }
+        static public void SetDimension(this MeshFilter item, Axis axis, float length)
+        {
+            item.SetSize(item.GetSize().GetWith(axis, length));
+        }
 
         static public Vector3 GetNativeSize(this MeshFilter item)
         {
