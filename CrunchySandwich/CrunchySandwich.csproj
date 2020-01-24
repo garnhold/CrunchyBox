@@ -1235,6 +1235,10 @@
     <Compile Include="Extensions\Input\InputExtensions.cs" />
     <Compile Include="Extensions\Vector2\Vector2Extensions_Looped.cs" />
     <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Roll.cs" />
+    <Compile Include="Extensions\Joint\JointExtensions.cs" />
+    <Compile Include="Extensions\Joint\JointExtensions_Connect.cs" />
+    <Compile Include="Extensions\ConfigurableJoint\ConfigurableJointExtensions.cs" />
+    <Compile Include="Extensions\ConfigurableJoint\ConfigurableJointExtensions_Setup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1536,6 +1540,8 @@
     <Folder Include="ObjectSignifyFieldAttribute\" />
     <Folder Include="LibrarySettings\" />
     <Folder Include="Extensions\Input\" />
+    <Folder Include="Extensions\Joint\" />
+    <Folder Include="Extensions\ConfigurableJoint\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
