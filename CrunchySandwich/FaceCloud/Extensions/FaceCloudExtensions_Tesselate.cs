@@ -12,7 +12,7 @@ namespace Crunchy.Sandwich
     {
         static public IEnumerable<PolygonTriangle> Tesselate(this FaceCloud item)
         {
-            return item.GetVertexLoops().Convert(l => l.TesselateLoop());
+            return item.GetVertexLoops().Convert(l => l.TesselateLoop()).Flatten();
         }
     }
 }

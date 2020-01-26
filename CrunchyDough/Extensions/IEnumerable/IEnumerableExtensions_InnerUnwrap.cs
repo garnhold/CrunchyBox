@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public IEnumerable<IEnumerable<object>> InnerUnwrap<J, T>(this IEnumerable<IEnumerable<J>> item, Operation<object, T> operation)
         {
-            return item.ConvertGrouped(e => e.Unwrap(operation));
+            return item.Convert(e => e.Unwrap(operation));
         }
     }
 }

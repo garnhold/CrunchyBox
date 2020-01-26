@@ -13,7 +13,7 @@ namespace Crunchy.Sandwich
         static public void AddChunk(this MeshBuilder item, IEnumerable<Triangle3> triangles, Plane plane)
         {
             item.AddConvexPolygons(
-                triangles.ConvertGrouped(t => plane.GetTriangleIntersection(t))
+                triangles.Convert(t => plane.GetTriangleIntersection(t))
             );
         }
 

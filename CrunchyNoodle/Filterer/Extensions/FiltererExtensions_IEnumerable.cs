@@ -26,7 +26,7 @@ namespace Crunchy.Noodle
 
         static public IEnumerable<Filterer<Assembly>> GetAssemblyFilters<T>(this IEnumerable<Filterer<T>> filters)
         {
-            return filters.Convert(f => f.GetAssemblyFilters());
+            return filters.Convert(f => f.GetAssemblyFilters()).Flatten();
         }
     }
 }

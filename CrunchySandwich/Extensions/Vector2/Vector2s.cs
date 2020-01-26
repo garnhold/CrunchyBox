@@ -30,7 +30,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Vector2> RadialFromRadians(IEnumerable<float> angles, IEnumerable<float> magnitudes)
         {
-			return angles.Convert(a => RadialFromRadians(a, magnitudes));
+			return angles.Convert(a => RadialFromRadians(a, magnitudes)).Flatten();
         }
 	
 		static public IEnumerable<Vector2> RadialFromDegrees(IEnumerable<float> angles)
@@ -52,7 +52,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Vector2> RadialFromDegrees(IEnumerable<float> angles, IEnumerable<float> magnitudes)
         {
-			return angles.Convert(a => RadialFromDegrees(a, magnitudes));
+			return angles.Convert(a => RadialFromDegrees(a, magnitudes)).Flatten();
         }
 	
 		static public IEnumerable<Vector2> RadialFromPercent(IEnumerable<float> angles)
@@ -74,7 +74,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Vector2> RadialFromPercent(IEnumerable<float> angles, IEnumerable<float> magnitudes)
         {
-			return angles.Convert(a => RadialFromPercent(a, magnitudes));
+			return angles.Convert(a => RadialFromPercent(a, magnitudes)).Flatten();
         }
 	
 	}

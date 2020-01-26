@@ -19,6 +19,7 @@ namespace Crunchy.Noodle
 
                 target.GetAllCustomAttributesOfType<InspectAssemblysAttribute>(false)
                     .Convert(a => a.GetAssemblys())
+                    .Flatten()
                     .Process(delegate(Assembly sub_target) {
                         absorbed.Add(sub_target);
                         AbsorbInspectedAssemblys(sub_target, absorbed, visited);

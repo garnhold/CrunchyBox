@@ -13,6 +13,7 @@ namespace Crunchy.Noodle
         static private OperationCache<List<FieldInfoEX>, FieldInfoFilters> GET_FILTERED_STATIC_FIELDS = ReflectionCache.Get().NewOperationCache("GET_FILTERED_STATIC_FIELDS", delegate(FieldInfoFilters filters) {
             return Types.GetAllTypesFromFilteredAssemblys(filters.GetAssemblyFilters())
                 .Convert(t => t.GetFilteredStaticFields(filters))
+                .Flatten()
                 .ToList();
         });
         static public IEnumerable<FieldInfoEX> GetFilteredStaticFields(IEnumerable<Filterer<FieldInfo>> filters)

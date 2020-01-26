@@ -12,7 +12,9 @@ namespace Crunchy.Noodle
         static private OperationCache<List<Type>> GET_ALL_INSPECTED_TYPES = ReflectionCache.Get().NewOperationCache("GET_ALL_INSPECTED_TYPES", delegate() {
             return Assemblys.GetAllInspectedAssemblys()
                 .Convert(a => a.GetAllCustomAttributesOfType<InspectedTypesAttribute>(true))
+                .Flatten()
                 .Convert(a => a.GetTypes())
+                .Flatten()
                 .Unique()
                 .ToList();
         });

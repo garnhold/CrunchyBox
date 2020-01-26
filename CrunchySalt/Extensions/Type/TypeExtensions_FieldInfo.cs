@@ -22,6 +22,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_Member_FIELDS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_Member_FIELDS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeMemberFields())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<FieldInfo> GetNativeMemberFields(this Type item)
@@ -42,6 +43,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<FieldInfoEX>, Type> GET_Member_FIELDS = ReflectionCache.Get().NewOperationCache("GET_Member_FIELDS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateMemberFields())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<FieldInfoEX> GetMemberFields(this Type item)
@@ -80,6 +82,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_Instance_FIELDS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_Instance_FIELDS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeInstanceFields())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<FieldInfo> GetNativeInstanceFields(this Type item)
@@ -100,6 +103,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<FieldInfoEX>, Type> GET_Instance_FIELDS = ReflectionCache.Get().NewOperationCache("GET_Instance_FIELDS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateInstanceFields())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<FieldInfoEX> GetInstanceFields(this Type item)
@@ -138,6 +142,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<FieldInfo>, Type> GET_NATIVE_Static_FIELDS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_Static_FIELDS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeStaticFields())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<FieldInfo> GetNativeStaticFields(this Type item)
@@ -158,6 +163,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<FieldInfoEX>, Type> GET_Static_FIELDS = ReflectionCache.Get().NewOperationCache("GET_Static_FIELDS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateStaticFields())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<FieldInfoEX> GetStaticFields(this Type item)

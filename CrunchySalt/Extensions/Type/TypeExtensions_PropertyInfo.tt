@@ -38,6 +38,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfo>, Type> GET_NATIVE_<#=style.name#>_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_<#=style.name#>_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNative<#=style.name#>Propertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfo> GetNative<#=style.name#>Propertys(this Type item)
@@ -58,6 +59,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfoEX>, Type> GET_<#=style.name#>_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_<#=style.name#>_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediate<#=style.name#>Propertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfoEX> Get<#=style.name#>Propertys(this Type item)

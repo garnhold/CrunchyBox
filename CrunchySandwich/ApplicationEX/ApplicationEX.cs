@@ -50,7 +50,8 @@ namespace Crunchy.Sandwich
                     Filterer_MethodInfo.HasNoReturn(),
                     Filterer_MethodInfo.HasNoEffectiveParameters(),
                     Filterer_MethodInfo.IsStaticMethod()
-                ));
+                ))
+                .Flatten();
         }
         private IEnumerable<Process> GetApplicationEXMarkedTypeMethodProcesses(string name)
         {

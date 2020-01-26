@@ -16,6 +16,7 @@ namespace Crunchy.Noodle
                 Filterer_Type.HasCustomAttributeOfType<T>(false)
             )
             .Convert(t => t.GetFilteredStaticMethods(Filterer_MethodInfo.HasCustomAttributeOfType<T>()))
+            .Flatten()
             .ToList();
         });
         static public IEnumerable<MethodInfoEX> GetAllMarkedStaticMethods()

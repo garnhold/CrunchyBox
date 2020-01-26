@@ -22,6 +22,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<MethodInfo>, Type> GET_NATIVE_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_TechnicalMember_METHODS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeTechnicalMemberMethods())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<MethodInfo> GetNativeTechnicalMemberMethods(this Type item)
@@ -29,7 +30,8 @@ namespace Crunchy.Salt
 			//return GET_NATIVE_TechnicalMember_METHODS.Fetch(item);
 
 			return item.GetTypeAndAllBaseTypes()
-				.Convert(t => t.GetImmediateNativeTechnicalMemberMethods());
+				.Convert(t => t.GetImmediateNativeTechnicalMemberMethods())
+                .Flatten();
 		}
 
 		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_TechnicalMember_METHODS", delegate(Type item){
@@ -45,6 +47,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<MethodInfoEX>, Type> GET_TechnicalMember_METHODS = ReflectionCache.Get().NewOperationCache("GET_TechnicalMember_METHODS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateTechnicalMemberMethods())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<MethodInfoEX> GetTechnicalMemberMethods(this Type item)
@@ -185,6 +188,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<MethodInfo>, Type> GET_NATIVE_TechnicalInstance_METHODS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_TechnicalInstance_METHODS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeTechnicalInstanceMethods())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<MethodInfo> GetNativeTechnicalInstanceMethods(this Type item)
@@ -192,7 +196,8 @@ namespace Crunchy.Salt
 			//return GET_NATIVE_TechnicalInstance_METHODS.Fetch(item);
 
 			return item.GetTypeAndAllBaseTypes()
-				.Convert(t => t.GetImmediateNativeTechnicalInstanceMethods());
+				.Convert(t => t.GetImmediateNativeTechnicalInstanceMethods())
+                .Flatten();
 		}
 
 		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_TechnicalInstance_METHODS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_TechnicalInstance_METHODS", delegate(Type item){
@@ -208,6 +213,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<MethodInfoEX>, Type> GET_TechnicalInstance_METHODS = ReflectionCache.Get().NewOperationCache("GET_TechnicalInstance_METHODS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateTechnicalInstanceMethods())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<MethodInfoEX> GetTechnicalInstanceMethods(this Type item)
@@ -348,6 +354,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<MethodInfo>, Type> GET_NATIVE_Static_METHODS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_Static_METHODS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeStaticMethods())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<MethodInfo> GetNativeStaticMethods(this Type item)
@@ -355,7 +362,8 @@ namespace Crunchy.Salt
 			//return GET_NATIVE_Static_METHODS.Fetch(item);
 
 			return item.GetTypeAndAllBaseTypes()
-				.Convert(t => t.GetImmediateNativeStaticMethods());
+				.Convert(t => t.GetImmediateNativeStaticMethods())
+                .Flatten();
 		}
 
 		static private OperationCache<List<MethodInfoEX>, Type> GET_IMMEDIATE_Static_METHODS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_Static_METHODS", delegate(Type item){
@@ -371,6 +379,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<MethodInfoEX>, Type> GET_Static_METHODS = ReflectionCache.Get().NewOperationCache("GET_Static_METHODS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateStaticMethods())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<MethodInfoEX> GetStaticMethods(this Type item)

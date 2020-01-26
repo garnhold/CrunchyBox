@@ -48,7 +48,11 @@ namespace Crunchy.Sandwich
         static public IEnumerable<Triangle2> RecursiveSplitAlongEdgeByArea(this Triangle2 item, float p, float min_area, int max_recursions)
         {
             if (item.GetArea() > min_area && max_recursions >= 1)
-                return item.SplitAlongEdge01ByPercent(p).Convert(t => t.RecursiveSplitAlongEdgeByArea(p, min_area, max_recursions - 1));
+            {
+                return item.SplitAlongEdge01ByPercent(p)
+                    .Convert(t => t.RecursiveSplitAlongEdgeByArea(p, min_area, max_recursions - 1))
+                    .Flatten();
+            }
 
             return item.WrapAsEnumerable();
         }
@@ -56,7 +60,11 @@ namespace Crunchy.Sandwich
         static public IEnumerable<Triangle2> RecursiveSplitSpiralAlongEdgeByArea(this Triangle2 item, float p, float dp, float min_area, int max_recursions)
         {
             if (item.GetArea() > min_area && max_recursions >= 1)
-                return item.SplitAlongEdgeByPercent(p).Convert(t => t.RecursiveSplitSpiralAlongEdgeByArea(p + dp, dp, min_area, max_recursions - 1));
+            {
+                return item.SplitAlongEdgeByPercent(p)
+                    .Convert(t => t.RecursiveSplitSpiralAlongEdgeByArea(p + dp, dp, min_area, max_recursions - 1))
+                    .Flatten();
+            }
 
             return item.WrapAsEnumerable();
         }

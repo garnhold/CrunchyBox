@@ -70,7 +70,7 @@ namespace Crunchy.Sandwich
         {
             Validate();
 
-            return vertex_loops.ConvertGrouped(i => i);
+            return vertex_loops.Convert(i => (IEnumerable<Vector2>)i);
         }
     }
 }

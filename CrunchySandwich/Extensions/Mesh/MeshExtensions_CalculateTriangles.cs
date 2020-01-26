@@ -27,6 +27,7 @@ namespace Crunchy.Sandwich
         {
             item.triangles = Ints.Range(0, item.vertexCount, 4, false)
                 .Convert(i => Enumerable.New(i, i+1, i+2, i, i+2, i+3))
+                .Flatten()
                 .ToArray();
         }
     }

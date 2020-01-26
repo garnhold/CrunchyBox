@@ -15,9 +15,11 @@ namespace Crunchy.Noodle
                 .Narrow(a => a.ContainsExtensionTypes())
 
                 .Convert(a => a.GetAllDefinedTypes())
+                .Flatten()
                 .Narrow(t => t.IsExtensionClass())
 
                 .Convert(t => t.GetStaticMethods())
+                .Flatten()
                 .Narrow(m => m.IsExtensionMethod())
                 .Skip(m => m.IsGenericTypelessMethod())
 
@@ -39,6 +41,7 @@ namespace Crunchy.Noodle
         static private OperationCache<List<MethodInfoEX>, Type> GET_ALL_EXTENSION_METHODS_FOR_TYPE = ReflectionCache.Get().NewOperationCache("GET_ALL_EXTENSION_METHODS_FOR_TYPE", delegate(Type type) {
             return type.GetTypeAndAllBaseTypesAndInterfaces()
                 .Convert(t => GetImmediateExtensionMethodsForType(t))
+                .Flatten()
                 .ToList();
         });
         static public IEnumerable<MethodInfoEX> GetAllExtensionMethodsForType(Type type)

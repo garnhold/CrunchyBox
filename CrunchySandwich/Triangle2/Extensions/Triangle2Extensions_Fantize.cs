@@ -25,7 +25,11 @@ namespace Crunchy.Sandwich
         static public IEnumerable<Triangle2> RecursiveFantizeAtCenterByArea(this Triangle2 item, float min_area, int max_recursions)
         {
             if (item.GetArea() > min_area && max_recursions >= 1)
-                return item.FantizeAtCenter().Convert(t => t.RecursiveFantizeAtCenterByArea(min_area, max_recursions - 1));
+            {
+                return item.FantizeAtCenter()
+                    .Convert(t => t.RecursiveFantizeAtCenterByArea(min_area, max_recursions - 1))
+                    .Flatten();
+            }
 
             return item.WrapAsEnumerable();
         }

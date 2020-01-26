@@ -14,7 +14,7 @@ namespace Crunchy.Sandwich
         {
             Mesh mesh = new Mesh();
 
-            mesh.vertices = item.Convert(t => t.GetPoints()).ToArray();
+            mesh.vertices = item.Convert(t => t.GetPoints()).Flatten().ToArray();
             mesh.triangles = Ints.Range(0, mesh.vertexCount, false).ToArray();
 
             mesh.RecalculateBounds();

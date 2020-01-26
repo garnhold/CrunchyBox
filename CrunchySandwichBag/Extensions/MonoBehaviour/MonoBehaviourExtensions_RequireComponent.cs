@@ -19,6 +19,7 @@ namespace Crunchy.SandwichBag
         {
             item.GetType().GetAllCustomAttributesOfType<RequireComponent>(true)
                 .Convert(a => a.GetRequiredComponentTypes())
+                .Flatten()
                 .Convert(t => item.FetchComponent(t))
                 .Convert<Component, MonoBehaviour>()
                 .Process(m => m.EnforceRequiredComponents());

@@ -74,7 +74,7 @@ namespace Crunchy.Noodle
         }
         
         static private Dictionary<string, MIMEType> EXTENSION_LOOKUP_TABLE = Enumerable.New(
-            <#=infos.Convert(i => i.extensions.Convert(e => "new KeyValuePair<string, MIMEType>(\"" + e + "\", " + i.type.StyleAsEnumName() + ")")).Join(",\n")#>
+            <#=infos.Convert(i => i.extensions.Convert(e => "new KeyValuePair<string, MIMEType>(\"" + e + "\", " + i.type.StyleAsEnumName() + ")")).Flatten().Join(",\n")#>
         ).ToDictionaryOverwrite();
         
         static public bool TryParseFromExtension(string input, out MIMEType type)

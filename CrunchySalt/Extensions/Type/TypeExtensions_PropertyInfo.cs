@@ -22,6 +22,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfo>, Type> GET_NATIVE_Member_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_Member_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeMemberPropertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfo> GetNativeMemberPropertys(this Type item)
@@ -42,6 +43,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfoEX>, Type> GET_Member_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_Member_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateMemberPropertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfoEX> GetMemberPropertys(this Type item)
@@ -80,6 +82,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfo>, Type> GET_NATIVE_Instance_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_Instance_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeInstancePropertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfo> GetNativeInstancePropertys(this Type item)
@@ -100,6 +103,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfoEX>, Type> GET_Instance_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_Instance_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateInstancePropertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfoEX> GetInstancePropertys(this Type item)
@@ -138,6 +142,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfo>, Type> GET_NATIVE_Static_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_Static_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateNativeStaticPropertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfo> GetNativeStaticPropertys(this Type item)
@@ -158,6 +163,7 @@ namespace Crunchy.Salt
 		static private OperationCache<List<PropertyInfoEX>, Type> GET_Static_PROPERTYS = ReflectionCache.Get().NewOperationCache("GET_Static_PROPERTYS", delegate(Type item){
 			return item.GetTypeAndAllBaseTypes()
 				.Convert(t => t.GetImmediateStaticPropertys())
+                .Flatten()
 				.ToList();
 		});
 		static public IEnumerable<PropertyInfoEX> GetStaticPropertys(this Type item)

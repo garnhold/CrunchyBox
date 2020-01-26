@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public IEnumerable<IEnumerable<object>> InnerExpand<J, T>(this IEnumerable<IEnumerable<J>> item, Operation<object, T> operation)
         {
-            return item.ConvertGrouped(e => e.Expand(operation));
+            return item.Convert(e => e.Expand(operation));
         }
     }
 }

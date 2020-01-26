@@ -42,7 +42,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Vector2> RadialFrom<#=angle_type#>(IEnumerable<float> angles, IEnumerable<float> magnitudes)
         {
-			return angles.Convert(a => RadialFrom<#=angle_type#>(a, magnitudes));
+			return angles.Convert(a => RadialFrom<#=angle_type#>(a, magnitudes)).Flatten();
         }
 	<#}#>
 

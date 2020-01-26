@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public IEnumerable<IEnumerable<T>> InnerNarrow<T>(this IEnumerable<IEnumerable<T>> item, Predicate<T> predicate)
         {
-            return item.ConvertGrouped(e => e.Narrow(predicate));
+            return item.Convert(e => e.Narrow(predicate));
         }
     }
 }

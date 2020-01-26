@@ -94,7 +94,7 @@ namespace Crunchy.Sandwich
             if (predicate.DoesDescribe(bounds))
             {
                 if (is_subdivided)
-                    return child_bounds.Convert(c => c.GetItemsWithin(predicate));
+                    return child_bounds.Convert(c => c.GetItemsWithin(predicate)).Flatten();
 
                 return child_items.Narrow(c => predicate.DoesDescribe(get_bounds_operation(c)));
             }
@@ -110,7 +110,7 @@ namespace Crunchy.Sandwich
         public IEnumerable<T> GetItems()
         {
             if (is_subdivided)
-                return child_bounds.Convert(c => c.GetItems());
+                return child_bounds.Convert(c => c.GetItems()).Flatten();
 
             return child_items;
         }

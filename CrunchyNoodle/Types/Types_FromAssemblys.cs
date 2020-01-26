@@ -12,6 +12,7 @@ namespace Crunchy.Noodle
         static private OperationCache<List<Type>, AssemblyFilters> GET_ALL_TYPES_FROM_FILTERED_ASSEMBLYS = ReflectionCache.Get().NewOperationCache("GET_ALL_TYPES_FROM_FILTERED_ASSEMBLYS", delegate(AssemblyFilters filters) {
             return Assemblys.GetFilteredAssemblys(filters)
                 .Convert(a => a.GetAllDefinedTypes())
+                .Flatten()
                 .Append(GetAllInspectedTypes())
                 .Unique()
                 .ToList();

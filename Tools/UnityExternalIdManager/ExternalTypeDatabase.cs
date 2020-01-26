@@ -25,7 +25,7 @@ public class ExternalTypeDatabase
     {
         types = Directory.GetFiles(filepath, "*.dll", SearchOption.AllDirectories)
             .Convert(p => ExternalAssembly.LoadExternalAssembly(p))
-            .Convert(a => a.GetExternalTypes())
+            .Convert(a => a.GetExternalTypes()).Flatten()
             .ConvertToValueOfPair(t => t.GetReference())
             .ToDictionaryOverwrite();
     }

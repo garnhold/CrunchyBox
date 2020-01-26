@@ -32,7 +32,7 @@ namespace Crunchy.Dough
 
         static public IEnumerable<VALUE_TYPE> GetAllAtKeys<KEY_TYPE, VALUE_TYPE>(this IDictionary<KEY_TYPE, HashSet<VALUE_TYPE>> item, IEnumerable<KEY_TYPE> keys)
         {
-            return keys.Convert(k => item.GetValues(k));
+            return keys.Convert(k => item.GetValues(k)).Flatten();
         }
 
         static public IEnumerable<VALUE_TYPE> GetAll<KEY_TYPE, VALUE_TYPE>(this IDictionary<KEY_TYPE, HashSet<VALUE_TYPE>> item)

@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public IEnumerable<IEnumerable<T>> InnerUnique<T>(this IEnumerable<IEnumerable<T>> item)
         {
-            return item.ConvertGrouped(e => e.Unique());
+            return item.Convert(e => e.Unique());
         }
     }
 }

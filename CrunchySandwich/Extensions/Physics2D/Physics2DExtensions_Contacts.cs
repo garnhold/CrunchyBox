@@ -19,7 +19,7 @@ namespace Crunchy.Sandwich
 
         static public IEnumerable<ContactPoint2D> GetContacts(Collider2D collider, int layer_mask = IntBits.ALL_BITS)
         {
-            return OverlapColliderAll(collider, layer_mask).Convert(c => GetContacts(collider, c));
+            return OverlapColliderAll(collider, layer_mask).Convert(c => GetContacts(collider, c)).Flatten();
         }
     }
 }

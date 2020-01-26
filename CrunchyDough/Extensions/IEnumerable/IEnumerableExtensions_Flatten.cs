@@ -8,17 +8,24 @@ namespace Crunchy.Dough
     {
         static public IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> item)
         {
-            return item.Convert(i => (IEnumerable<T>)i);
+            if (item != null)
+            {
+                foreach (IEnumerable<T> sub_item in item)
+                {
+                    foreach (T sub_sub_item in sub_item)
+                        yield return sub_sub_item;
+                }
+            }
         }
 
         static public IEnumerable<T> Flatten<T>(this IEnumerable<List<T>> item)
         {
-            return item.Convert(i => (IEnumerable<T>)i);
+            return item.Convert(i => (IEnumerable<T>)i).Flatten();
         }
 
         static public IEnumerable<T> Flatten<T>(this IEnumerable<HashSet<T>> item)
         {
-            return item.Convert(i => (IEnumerable<T>)i);
+            return item.Convert(i => (IEnumerable<T>)i).Flatten();
         }
     }
 }

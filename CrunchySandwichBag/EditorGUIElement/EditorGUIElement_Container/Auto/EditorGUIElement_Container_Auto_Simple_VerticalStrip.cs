@@ -23,6 +23,7 @@ namespace Crunchy.SandwichBag
                 state = state.GetWithCurrentLabelWidth(
                     GetChildren()
                         .Convert(c => c.GetAttachments<EditorGUIElementAttachment_Singular_Label_GUIContent_Inline>())
+                        .Flatten()
                         .Convert(a => a.GetLabel().GetLabelLayoutWidth())
                         .Max() + state.GetAutoSizeLabelMargin()
                 );
