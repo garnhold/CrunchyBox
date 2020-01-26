@@ -135,7 +135,6 @@
     <Compile Include="Math\Mathq_IntPow.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Mathq_IntPow.tt</DependentUpon>
     </Compile>
     <Compile Include="RotationDirection\RotationDirection.cs" />
     <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
@@ -285,10 +284,6 @@
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Looped.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Math\Mathq_IntPow.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Mathq_IntPow.cs</LastGenOutput>
-    </Content>
     <Content Include="VectorF2\VectorF2s.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>VectorF2s.cs</LastGenOutput>
