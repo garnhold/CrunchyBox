@@ -6,7 +6,7 @@ namespace Crunchy.Dough
 {
     static public class IListExtensions_Island_Section
     {
-        static public IListSubSection<T> SubSection<T>(this IList<T> item, IslandInfo info)
+        static public IList<T> SubSection<T>(this IList<T> item, IslandInfo info)
         {
             return item.SubSection(info.start, info.end);
         }

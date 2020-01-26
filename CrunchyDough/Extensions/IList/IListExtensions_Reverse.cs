@@ -6,9 +6,12 @@ namespace Crunchy.Dough
 {
     static public class IListExtensions_Reverse
     {
-        static public IListReverse<T> GetReverse<T>(this IList<T> item)
+        static public IList<T> GetReverse<T>(this IList<T> item)
         {
-            return new IListReverse<T>(item);
+            return new IListTransform<T>(
+                () => item.Count,
+                i => item[item.GetFinalIndex() - i]
+            );
         }
     }
 }
