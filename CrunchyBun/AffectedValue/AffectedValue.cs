@@ -5,8 +5,6 @@ using System.Collections.Generic;
 namespace Crunchy.Bun
 {
     using Dough;
-    using Salt;
-    using Noodle;
     
     public abstract class AffectedValue<VALUE_TYPE>
     {

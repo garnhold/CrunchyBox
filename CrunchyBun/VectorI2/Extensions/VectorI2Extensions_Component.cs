@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace Crunchy.Bun
 {
     using Dough;
-    using Noodle;
     
     static public class VectorI2Extensions_Component
     {

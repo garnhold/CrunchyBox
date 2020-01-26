@@ -3,8 +3,6 @@ using System;
 namespace Crunchy.Bun
 {
     using Dough;
-    using Salt;
-    using Noodle;
     
     public class AnimatedFloat
     {

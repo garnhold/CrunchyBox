@@ -3,7 +3,6 @@ using System;
 namespace Crunchy.Bun
 {
     using Dough;
-    using Noodle;
     
     public struct VectorF2
     {
