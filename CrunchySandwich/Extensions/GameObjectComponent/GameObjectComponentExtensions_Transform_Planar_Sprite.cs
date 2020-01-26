@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Transform_Planar_Sprite
     {
 		static public void SetPlanarSpriteAsLine(this GameObject item, Vector2 point1, Vector2 point2, float total_margin = 0.0f)

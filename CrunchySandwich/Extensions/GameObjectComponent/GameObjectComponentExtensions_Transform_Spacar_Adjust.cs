@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Transform_Spacar_Adjust
     {
 		static public void AdjustSpacarPosition(this GameObject item, Vector3 amount)

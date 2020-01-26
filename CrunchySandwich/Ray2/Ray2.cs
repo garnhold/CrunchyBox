@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public struct Ray2
     {
         public readonly Vector2 origin;

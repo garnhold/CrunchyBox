@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,9 +7,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    using Sauce;
+    using Dough;    using Sauce;
     
     static public class Texture2DExtensions_Surface
     {

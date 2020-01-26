@@ -13,9 +13,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_IEnumerable_Distance
     {
 		static public GameObject GetSpacarClosest(this IEnumerable<GameObject> item, Vector3 position)

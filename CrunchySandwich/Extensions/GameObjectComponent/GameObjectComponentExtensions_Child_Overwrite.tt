@@ -14,9 +14,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Child_Overwrite
     {
 <# foreach(string destroy_flavor in destroy_flavors){#>

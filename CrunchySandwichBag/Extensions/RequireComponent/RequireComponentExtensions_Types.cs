@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,9 +7,7 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class RequireComponentExtensions_Types
     {
         static public IEnumerable<Type> GetRequiredComponentTypes(this RequireComponent item)

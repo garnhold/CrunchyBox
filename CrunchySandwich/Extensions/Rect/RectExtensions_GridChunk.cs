@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class RectExtensions_GridChunk
     {
         static public Rect GetGridChunk(this Rect item, int x, int y, int number_columns, int number_rows)

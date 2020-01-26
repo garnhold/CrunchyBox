@@ -6,7 +6,6 @@ namespace Crunchy.Sauce
 {
     using Dough;
     using Noodle;
-    using Bun;
     
     public class Utensil_InkedBrush<T> : Utensil<T>
     {

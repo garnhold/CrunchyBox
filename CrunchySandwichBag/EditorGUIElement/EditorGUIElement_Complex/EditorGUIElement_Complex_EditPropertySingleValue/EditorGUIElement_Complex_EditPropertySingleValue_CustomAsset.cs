@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,9 +8,7 @@ using UnityEditor;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    using Sandwich;
+    using Noodle;    using Sandwich;
     
     [EditorGUIElementForType(typeof(CustomAsset), true)]
     public class EditorGUIElement_Complex_EditPropertySingleValue_CustomAsset : EditorGUIElement_Complex_EditPropertySingleValue<CustomAsset>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,8 +8,6 @@ using UnityEngine.Tilemaps;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    using Bun;
-
     public class OctoTile : CustomTile_MultiSprite_NeighborRuled
     {
         [SerializeField]private OctoSubTile[] sub_tiles;

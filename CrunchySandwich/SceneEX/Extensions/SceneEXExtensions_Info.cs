@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,9 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class SceneEXExtensions_Info
     {
         static public string GetName(this SceneEX item)

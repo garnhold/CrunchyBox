@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace Crunchy.Sauce
 {
     using Dough;
-    using Bun;
     
     public class SurfaceTool_PolygonSelection<T> : SurfaceTool<T>
     {

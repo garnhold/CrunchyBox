@@ -6,7 +6,6 @@ namespace Crunchy.Sauce
 {
     using Dough;
     using Noodle;
-    using Bun;
     
     public class SurfaceTool_Line_Basic_Scratch<T> : SurfaceTool_Line_Basic<T>
     {

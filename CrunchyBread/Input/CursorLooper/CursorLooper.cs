@@ -6,7 +6,6 @@ using OpenTK.Input;
 namespace Crunchy.Bread
 {
     using Dough;
-    using Bun;
 
     public class CursorLooper
     {

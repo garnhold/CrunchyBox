@@ -13,9 +13,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Transform_Planar_Sprite
     {
 <# foreach(string type_name in type_names){#>

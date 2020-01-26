@@ -20,8 +20,7 @@ using Crunchy.Noodle;
 [assembly: InspectAssemblys_ByType(
     typeof(Crunchy.Dough.ThisAssembly),
     typeof(Crunchy.Salt.ThisAssembly),
-    typeof(Crunchy.Noodle.ThisAssembly),
-    typeof(Crunchy.Bun.ThisAssembly)
+    typeof(Crunchy.Noodle.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

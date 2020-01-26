@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public class Signal_Periodic_Saw : Signal_Periodic_Typical
     {
         protected override float ExecuteInternal(float input)

@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public class Signal_Periodic_RampEase : Signal_Periodic
     {
         [SerializeFieldEX]private SignalPeriodicTransform transform;

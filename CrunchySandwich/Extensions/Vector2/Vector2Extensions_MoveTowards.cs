@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class Vector2Extensions_MoveTowards
     {
         static public bool GetMoveTowards(this Vector2 item, Vector2 target, Vector2 amount, out Vector2 output)

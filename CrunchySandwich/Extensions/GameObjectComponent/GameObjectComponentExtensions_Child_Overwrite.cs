@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Child_Overwrite
     {
 		static public void OverwriteChildByName(this GameObject item, string name, Operation<GameObject> operation)

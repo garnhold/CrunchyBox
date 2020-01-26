@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class ColorExtensions_Interpolate
     {
         static public Color GetInterpolate(this Color item, Color target, float amount)

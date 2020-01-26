@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,9 +11,7 @@ namespace Crunchy.SandwichBag
 {
     using Dough;
     using Salt;
-    using Noodle;
-    using Bun;
-    using Sandwich;
+    using Noodle;    using Sandwich;
     
     static public class EditorGUIElementExtensions_Convenience
     {

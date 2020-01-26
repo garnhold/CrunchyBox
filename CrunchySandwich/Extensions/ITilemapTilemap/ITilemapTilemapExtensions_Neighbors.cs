@@ -7,9 +7,7 @@ using UnityEngine.Tilemaps;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class ITilemapTilemapExtensions_Neighbors
     {
         static public IEnumerable<TileBase> GetCardinalNeighbors(this Tilemap item, Vector3Int position)

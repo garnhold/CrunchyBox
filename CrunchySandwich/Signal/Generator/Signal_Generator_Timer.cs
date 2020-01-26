@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public class Signal_Generator_Timer : Signal_Generator
     {
         [SerializeFieldEX]private GameTimer timer;

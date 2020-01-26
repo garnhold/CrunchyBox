@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public abstract class Signal_Ease : Signal
     {
     }

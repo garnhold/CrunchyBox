@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Transform_Planar_Interpolate
     {
 		static public void InterpolatePlanarPosition(this GameObject item, Vector2 target, float amount)

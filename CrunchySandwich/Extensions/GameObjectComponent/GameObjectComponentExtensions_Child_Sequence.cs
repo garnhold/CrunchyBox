@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Child_Sequence
     {
 		static public IEnumerable<GameObject> GetChildSequence(this GameObject item, GameObject child)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,9 +9,7 @@ namespace Crunchy.SandwichBag
 {
     using Dough;
     using Noodle;
-    using Salt;
-    using Bun;
-    using Sandwich;
+    using Salt;    using Sandwich;
     
     static public class AssetImporterExtensions_Reserialize
     {

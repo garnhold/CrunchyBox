@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +9,7 @@ using UnityEditor;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    using Sandwich;
+    using Noodle;    using Sandwich;
     
     public abstract class EditorGUIElement_Complex_EditPropertyArray<T> : EditorGUIElement_Complex<T>
     {

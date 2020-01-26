@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class CardinalOrdinalDirectionExtensions_Vector2
     {
         static public Vector2 GetVector2(this CardinalOrdinalDirection item)

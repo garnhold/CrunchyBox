@@ -3,7 +3,6 @@ using System;
 namespace Crunchy.Lunch
 {
     using Dough;
-    using Bun;
     
     public class TerminalBlock_Progress : TerminalBlock
     {

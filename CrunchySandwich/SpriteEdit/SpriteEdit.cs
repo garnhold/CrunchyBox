@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     [RequireComponent(typeof(SpriteRenderer))]
     [AddComponentMenu("CrunchySandwich/SpriteEdit")]
     public class SpriteEdit : InitBehaviour

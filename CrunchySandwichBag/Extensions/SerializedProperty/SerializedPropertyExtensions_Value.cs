@@ -9,9 +9,7 @@ using UnityEditor;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    using Sandwich;
+    using Noodle;    using Sandwich;
     
     static public partial class SerializedPropertyExtensions_Value
     {

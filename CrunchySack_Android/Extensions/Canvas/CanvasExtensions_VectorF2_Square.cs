@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +9,7 @@ using Android.Graphics;
 
 namespace Crunchy.Sack_Android
 {
-    using Dough;
-    using Bun;
-    using Sack;
+    using Dough;    using Sack;
     
     static public class CanvasExtensions_VectorF2_Square
     {

@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class ColorExtensions_Vectors
     {
         static public Vector2 GetVector2(this Color item)

@@ -7,7 +7,6 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    using Bun;
     
     public class ComponentCache_DownwardFromChildren<T> : ComponentCache<T>
     {

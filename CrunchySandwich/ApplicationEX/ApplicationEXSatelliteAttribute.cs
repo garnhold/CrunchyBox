@@ -8,7 +8,6 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    using Bun;
     
     [AttributeUsage(AttributeTargets.Class)]
     public class ApplicationEXSatelliteAttribute : Attribute

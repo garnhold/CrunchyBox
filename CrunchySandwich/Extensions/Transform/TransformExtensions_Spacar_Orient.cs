@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class TransformExtensions_Spacar_Orient
     {
         static public void OrientSpacarLocalToWorld(this Transform item, Vector3 l1, Vector3 l2, Vector3 l3, Vector3 w1, Vector3 w2, Vector3 w3)

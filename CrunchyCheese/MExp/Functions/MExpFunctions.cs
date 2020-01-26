@@ -13,7 +13,6 @@ namespace Crunchy.Cheese
     using Dough;
     using Salt;
     using Noodle;
-    using Bun;
     
     [MExpFunction]
     static public class MExpFunctions

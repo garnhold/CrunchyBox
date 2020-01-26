@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Transform_Planar_Radial
     {
 		static public void SetLocalPlanarPositionAndRotation(this GameObject item, Vector2 position, float angle_offset = 0.0f)

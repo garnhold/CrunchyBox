@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class TransformExtensions_Planar_Orient
     {
         static public void OrientPlanarLocalToWorld(this Transform item, Vector2 l1, Vector2 l2, Vector2 w1, Vector2 w2)

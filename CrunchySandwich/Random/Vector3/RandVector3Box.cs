@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
-{
-    using Bun;
-    
+{    
     public abstract class RandVector3Box
     {
         private RandVector3Source source;

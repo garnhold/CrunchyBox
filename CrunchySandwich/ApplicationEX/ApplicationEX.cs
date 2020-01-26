@@ -11,7 +11,6 @@ namespace Crunchy.Sandwich
     using Dough;
     using Salt;
     using Noodle;
-    using Bun;
 
     public class ApplicationEX
     {

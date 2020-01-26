@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class ConvexPolygonExtensions_Boolean
     {
         static public ConvexPolygon GetIntersection(this ConvexPolygon item, Plane2 plane)

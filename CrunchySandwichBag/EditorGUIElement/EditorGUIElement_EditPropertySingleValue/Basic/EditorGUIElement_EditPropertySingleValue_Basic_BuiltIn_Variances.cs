@@ -8,9 +8,7 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;
-    using Bun;
-    using Sandwich;
+    using Dough;    using Sandwich;
     
     	[EditorGUIElementForType(typeof(IntVariance), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_IntVariance : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<IntVariance>

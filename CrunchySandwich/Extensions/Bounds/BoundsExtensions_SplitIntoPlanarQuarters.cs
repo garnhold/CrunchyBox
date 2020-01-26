@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class BoundsExtensions_SplitIntoPlanarQuarters
     {
         static public void SplitIntoPlanarQuarters(this Bounds item, out Bounds b1, out Bounds b2, out Bounds b3, out Bounds b4)

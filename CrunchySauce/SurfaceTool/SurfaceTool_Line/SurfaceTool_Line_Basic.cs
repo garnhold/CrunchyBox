@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace Crunchy.Sauce
 {
     using Dough;
-    using Bun;
     
     public abstract class SurfaceTool_Line_Basic<T> : SurfaceTool_Line<T>
     {

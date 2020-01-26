@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class TransformExtensions_Spacar_Mesh
     {
         static public void SetSpacarMeshAsLine(this Transform item, Axis axis, Vector3 point1, Vector3 point2, float total_margin = 0.0f)

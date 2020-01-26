@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,9 +8,7 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class UnityObjectExtensions_Asset_Get
     {
         static public bool IsAssetSaved(this UnityEngine.Object item)

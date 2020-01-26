@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,9 +11,7 @@ using UnityEngine.UI;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    
+    using Noodle;    
     public class RepresentationController_Button : RepresentationController
     {
         [SerializeFieldEX]private Scriptlet scriptlet;

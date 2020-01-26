@@ -7,9 +7,7 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;
-    using Bun;
-    using Sandwich;
+    using Dough;    using Sandwich;
     
     
     [EditorGUIElementForType(typeof(InputDeviceComponentId), true)]

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class RectExtensions_Adjust
     {
         static public Rect GetAdjusted(this Rect item, float x_min_adjust, float y_min_adjust, float x_max_adjust, float y_max_adjust)

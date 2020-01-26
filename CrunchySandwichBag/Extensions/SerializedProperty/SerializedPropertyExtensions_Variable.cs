@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using System.Collections;
@@ -11,9 +11,7 @@ namespace Crunchy.SandwichBag
 {
     using Dough;
     using Salt;
-    using Noodle;
-    using Bun;
-    
+    using Noodle;    
     static public class SerializedPropertyExtensions_Variable
     {
         static public string GetVariablePath(this SerializedProperty item)

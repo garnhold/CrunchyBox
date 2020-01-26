@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,9 +7,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class RendererExtensions_Material
     {
         static public void AlterMaterialPropertys(this Renderer item, MaterialPropertyBlock block, Process<MaterialPropertyBlock> process)

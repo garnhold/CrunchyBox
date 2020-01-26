@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;
-    using Bun;
-    using Sandwich;
+    using Dough;    using Sandwich;
     
     public class EditorGUIFlowElement
     {

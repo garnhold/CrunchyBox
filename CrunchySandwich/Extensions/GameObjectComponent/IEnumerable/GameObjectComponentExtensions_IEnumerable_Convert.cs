@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_IEnumerable_Convert
     {
 		static public IEnumerable<Component> ConvertComponent<T>(this IEnumerable<T> item, Type component_type) where T : Component

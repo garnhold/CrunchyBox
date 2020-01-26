@@ -25,5 +25,10 @@ namespace Crunchy.Dough
         {
             return item.StartSetDuration(Duration.Seconds(seconds));
         }
+
+        static public bool StartJittered(this TemporalDuration item)
+        {
+            return item.StartWithRandomElapsedTimeInMilliseconds(item.GetDurationInMilliseconds());
+        }
     }
 }

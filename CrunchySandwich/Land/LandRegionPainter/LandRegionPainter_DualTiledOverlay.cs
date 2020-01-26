@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public class LandRegionPainter_DualTiledOverlay : LandRegionPainter
     {
         [SerializeField]private float overlay_scale;

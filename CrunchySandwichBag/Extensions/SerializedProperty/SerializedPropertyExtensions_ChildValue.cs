@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,9 +8,7 @@ using UnityEditor;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    
+    using Noodle;    
     static public class SerializedPropertyExtensions_SubValue
     {
         static public void SetChildValue(this SerializedProperty item, string name, object value)

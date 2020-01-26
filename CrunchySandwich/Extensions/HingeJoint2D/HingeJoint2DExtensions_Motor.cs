@@ -2,13 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Crunchy.Dough;
-using Crunchy.Bun;
-
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
+    using Dough;
+
     static public class HingeJoint2DExtensions_Motor
     {
         static public void SetMotorMaxTorqueAndSpeed(this HingeJoint2D item, float max_torque, float speed)

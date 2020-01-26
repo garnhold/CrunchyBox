@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class RandVector2
     {
         static public readonly RandVector2Source SOURCE = new RandVector2Source(RandFloat.SOURCE);

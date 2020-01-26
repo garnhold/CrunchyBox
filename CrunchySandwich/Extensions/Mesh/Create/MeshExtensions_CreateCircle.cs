@@ -2,14 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Crunchy.Dough;
-using Crunchy.Noodle;
-using Crunchy.Bun;
-
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
+    using Dough;
+    using Noodle;
+
     static public partial class MeshExtensions
     {
         static public Mesh CreateCircle(int number_vertexs)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class Vector2Extensions_IEnumerable_LoopReduction
     {
         static public IEnumerable<Vector2> CollapseLoopPoints(this IEnumerable<Vector2> item, float minimum_distance)

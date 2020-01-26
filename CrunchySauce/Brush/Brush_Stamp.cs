@@ -3,7 +3,6 @@ using System;
 namespace Crunchy.Sauce
 {
     using Dough;
-    using Bun;
     
     public class Brush_Stamp<T> : Brush<T>
     {

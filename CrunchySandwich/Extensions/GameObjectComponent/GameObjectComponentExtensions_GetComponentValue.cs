@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_GetComponentValue
     {
 		static public J GetComponentValue<T, J>(this GameObject item, Operation<J, T> operation)

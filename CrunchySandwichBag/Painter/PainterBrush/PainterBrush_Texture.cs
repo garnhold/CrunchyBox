@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -10,9 +10,7 @@ namespace Crunchy.SandwichBag
 {
     using Dough;
     using Salt;
-    using Noodle;
-    using Bun;
-    using Sauce;
+    using Noodle;    using Sauce;
     using Sandwich;
     
     public class PainterBrush_Texture : PainterBrush

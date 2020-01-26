@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,9 +7,7 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;
-    using Bun;
-    using Sandwich;
+    using Dough;    using Sandwich;
     
     public class EditorGUIElementAttachment_Singular_Label_Index : EditorGUIElementAttachment_Singular_Label
     {

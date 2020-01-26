@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public class Signal_Ease_InOut : Signal_Ease_Typical
     {
         [SerializeFieldEX][PolymorphicField]private Signal_EaseShape in_ease;

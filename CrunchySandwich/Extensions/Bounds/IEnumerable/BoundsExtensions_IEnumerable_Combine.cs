@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class BoundsExtensions_IEnumerable_Combine
     {
         static public IEnumerable<Bounds> Combine(this IEnumerable<Bounds> item, float tolerance_percent)

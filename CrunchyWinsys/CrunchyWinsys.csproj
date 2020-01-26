@@ -76,10 +76,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">
-      <Project>{EBB3AD40-1BB3-476C-B093-225045332242}</Project>
-      <Name>CrunchyBun</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
       <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
       <Name>CrunchyDough</Name>

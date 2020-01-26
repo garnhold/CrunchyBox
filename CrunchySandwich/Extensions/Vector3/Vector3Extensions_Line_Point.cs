@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class Vector3Extensions_Line_Point
     {
         static public Vector3 GetPointOnLineByPercent(this Vector3 item, Vector3 target, float percent)

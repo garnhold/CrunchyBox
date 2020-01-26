@@ -1,10 +1,8 @@
-using System;
+﻿using System;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public struct EditorGUIElementDimension
     {
         private float weight;

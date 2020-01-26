@@ -7,7 +7,6 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    using Bun;
     
     [AssetClassCategory("Audio")]
     public class BurstAudioClip : CustomAsset

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class ConvexPolygonExtensions_Point
     {
         static public bool IsPointWithin(this ConvexPolygon item, Vector2 point, float tolerance = 0.0f)

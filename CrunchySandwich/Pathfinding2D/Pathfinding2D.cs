@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     public class Pathfinding2D : Subsystem<Pathfinding2D>
     {
         [Tooltip("The radius of the cast circle between nodes; the radius of the navigating entity.")]

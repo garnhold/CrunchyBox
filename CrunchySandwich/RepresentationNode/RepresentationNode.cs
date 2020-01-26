@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +9,7 @@ using UnityEngine.SceneManagement;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    
+    using Noodle;    
     [ExecuteAlways]
     public class RepresentationNode : MonoBehaviourEX
     {

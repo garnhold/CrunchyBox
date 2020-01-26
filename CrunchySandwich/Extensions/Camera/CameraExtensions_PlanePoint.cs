@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class CameraExtensions_PlanePoint
     {
         static private readonly Plane PLANAR_WORLD_PLANE = PlaneExtensions.CreateNormalAndDistance(new Vector3(0.0f, 0.0f, 1.0f), -0.1f);

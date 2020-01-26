@@ -6,7 +6,6 @@ namespace Crunchy.Strudel
 {
     using Dough;
     using Noodle;
-    using Bun;
     
     public abstract class AIMachineCondition_Binary : AIMachineCondition
     {

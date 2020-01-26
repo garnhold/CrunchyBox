@@ -62,10 +62,6 @@
       <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
       <Name>CrunchyWinsys</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CrunchyBun\CrunchyBun.csproj">
-      <Project>{EBB3AD40-1BB3-476C-B093-225045332242}</Project>
-      <Name>CrunchyBun</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CrunchySauce\CrunchySauce.csproj">
       <Project>{9FEE093F-4200-4E2E-8C52-842B4CC42478}</Project>
       <Name>CrunchySauce</Name>

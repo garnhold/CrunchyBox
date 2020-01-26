@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GameObjectComponentExtensions_Transform_Planar_MoveTowards
     {
 		static public bool MoveTowardsPlanarPosition(this GameObject item, Vector2 target, Vector2 amount)

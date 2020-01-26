@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public partial class GUIExtensions
     {
         static public void DrawColoredMesh(Mesh mesh, Color color)

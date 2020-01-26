@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +9,7 @@ namespace Crunchy.Sandwich
 {
     using Dough;
     using Salt;
-    using Noodle;
-    using Bun;
-    using Ramen;
+    using Noodle;    using Ramen;
     
     static public class TargetedScriptletExtensions
     {

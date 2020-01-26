@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 
 using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    using Cheese;
+    using Dough;    using Cheese;
     
     public class Signal_Periodic_MExp : Signal_Periodic_Typical
     {

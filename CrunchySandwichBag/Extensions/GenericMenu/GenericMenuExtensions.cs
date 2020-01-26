@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,9 +8,7 @@ using UnityEditor;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    
+    using Noodle;    
     static public class GenericMenuExtensions
     {
         static public GenericMenu Create<T>(IEnumerable<T> options, Process<T> process)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,9 +11,7 @@ using Android.Content.Res;
 
 namespace Crunchy.Sack_Android
 {
-    using Dough;
-    using Bun;
-    using Sack;
+    using Dough;    using Sack;
     
     static public class PathExtensions_VectorF2
     {

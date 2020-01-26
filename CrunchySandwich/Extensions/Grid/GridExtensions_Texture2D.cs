@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;
-    using Bun;
-    
+    using Dough;    
     static public class GridExtensions_Texture2D
     {
         static public Texture2D CreateTexture2D<T>(this Grid<T> item, Operation<Color, T> operation)

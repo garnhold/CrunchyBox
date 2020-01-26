@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace Crunchy.Strudel
 {
     using Dough;
-    using Bun;
     
     public class MarkDefinition
     {

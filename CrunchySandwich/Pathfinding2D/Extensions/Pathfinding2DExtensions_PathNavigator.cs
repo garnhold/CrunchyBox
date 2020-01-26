@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,9 +7,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    
+    using Noodle;    
     static public class Pathfinding2DExtensions_PathNavigator
     {
         static public PathNavigator2D GetPathNavigatorToWander(this Pathfinding2D item, Vector2 origin, float target_distance)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,9 +16,7 @@ using Android.Animation;
 namespace Crunchy.Sack_Android
 {
     using Dough;
-    using Noodle;
-    using Bun;
-    using Sack;
+    using Noodle;    using Sack;
     
     public abstract class SimpleView : View
     {

@@ -25,7 +25,6 @@ using Crunchy.Noodle;
     typeof(Crunchy.Noodle.ThisAssembly),
     typeof(Crunchy.Sodium.ThisAssembly),
     typeof(Crunchy.Ginger.ThisAssembly),
-    typeof(Crunchy.Bun.ThisAssembly),
     typeof(Crunchy.Cheese.ThisAssembly),
     typeof(Crunchy.Sauce.ThisAssembly),
     typeof(Crunchy.Recipe.ThisAssembly),

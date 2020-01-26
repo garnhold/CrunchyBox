@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 using Android;
@@ -10,9 +10,7 @@ using Android.Content.Res;
 
 namespace Crunchy.Sack_Android
 {
-    using Dough;
-    using Bun;
-    using Sack;
+    using Dough;    using Sack;
     
     static public class MotionEventExtensions_VectorF2
     {
