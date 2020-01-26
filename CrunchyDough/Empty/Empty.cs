@@ -16,6 +16,11 @@ namespace Crunchy.Dough
             return EmptyList<T>.INSTANCE;
         }
 
+        static public IList2D<T> IList2D<T>()
+        {
+            return EmptyList2D<T>.INSTANCE;
+        }
+
         static public ICollection<T> ICollection<T>()
         {
             return EmptyList<T>.INSTANCE;
