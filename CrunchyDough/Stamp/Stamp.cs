@@ -40,8 +40,8 @@ namespace Crunchy.Dough
 
         public Stamp(float r, TryOperation<T, int, int> o) : this((int)(r * 2), (int)(r * 2), new VectorF2(r, r) / 2.0f, o) { }
 
-        public Stamp(VectorF2 c, IList2D<T> l) : this(l.GetSize(), c, l.GetKeyValuePairs()) { }
-        public Stamp(IList2D<T> l) : this(l.GetSize() * 0.5f, l) { }
+        public Stamp(VectorF2 c, IGrid<T> g) : this(g.GetSize(), c, g.GetKeyValuePairs()) { }
+        public Stamp(IGrid<T> g) : this(g.GetSize() * 0.5f, g) { }
 
         public void Press(VectorF2 position, Process<T, VectorF2> process)
         {

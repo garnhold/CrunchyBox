@@ -20,9 +20,9 @@ namespace Crunchy.Sandwich
             palette.Add(secondary_splat);
         }
 
-        public override void PaintLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid)
+        public override void PaintLandRegion(Land land, LandRegionType land_region_type, IGrid<LandPoint> grid)
         {
-            IList2D<float> overlay_tile = overlay_tile_texture.CreateGrayscaleGrid();
+            IGrid<float> overlay_tile = overlay_tile_texture.CreateGrayscaleGrid();
 
             grid.ProcessWithIndexs(delegate (int x, int y, LandPoint point) {
                 float main_weight = overlay_tile.GetLooped((int)(x * overlay_scale), (int)(y * overlay_scale));

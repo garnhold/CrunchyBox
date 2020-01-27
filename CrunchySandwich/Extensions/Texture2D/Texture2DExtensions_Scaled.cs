@@ -14,7 +14,7 @@ namespace Crunchy.Sandwich
         static public Texture2D GetScaledByFactor(this Texture2D item, float width_scale, float height_scale)
         {
             return item.CreateColorGrid()
-                .ScaleByFactor(width_scale, height_scale)
+                .ConvertToScaledByFactor(width_scale, height_scale)
                 .CreateTexture2D();
         }
         static public Texture2D GetScaledByFactor(this Texture2D item, float scale)
@@ -25,7 +25,7 @@ namespace Crunchy.Sandwich
         static public Texture2D GetScaledToDimensions(this Texture2D item, int width, int height)
         {
             return item.CreateColorGrid()
-                .ScaleToDimensions(width, height)
+                .ConvertToDimensionsScaled(width, height)
                 .CreateTexture2D();
         }
     }

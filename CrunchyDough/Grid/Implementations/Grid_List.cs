@@ -1,0 +1,59 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+    public class Grid_List<T> : IGrid<T>
+    {
+        private int width;
+        private int height;
+
+        private List<T> list;
+
+        public T this[int x, int y]
+        {
+            get { return list[y * width + x]; }
+            set { list[y * width + x] = value; }
+        }
+
+        public Grid_List(int w, int h)
+        {
+            width = w;
+            height = h;
+
+            list = new List<T>();
+            list.AddEmptys(width * height);
+        }
+
+        public Grid_List(int w, int h, IEnumerable<T> v)
+        {
+            width = w;
+            height = h;
+
+            list = v.ToList();
+            list.EnsureSizeWithEmptys(width * height);
+        }
+
+        public Grid_List(int w, int h, Operation<T, int, int> operation) : this(w, h)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                    this[x, y] = operation(x, y);
+            }
+        }
+
+        public Grid_List(IGrid<T> g) : this(g.GetWidth(), g.GetHeight(), (x, y) => g[x, y]) { }
+
+        public int GetWidth()
+        {
+            return width;
+        }
+
+        public int GetHeight()
+        {
+            return height;
+        }
+    }
+}

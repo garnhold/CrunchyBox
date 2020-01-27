@@ -7,7 +7,8 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;    using Noodle;
+    using Dough;
+    using Noodle;
     using Sandwich;
     
     public class EditorGUIElement_Container_Auto_Simple_VerticalStrip : EditorGUIElement_Container_Auto_Simple

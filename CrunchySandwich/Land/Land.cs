@@ -21,10 +21,10 @@ namespace Crunchy.Sandwich
             TerrainData terrain_data = GetTerrainData();
             Palette<LandRegionSplat> palette = new Palette<LandRegionSplat>();
 
-            IList2D<LandPoint> grid = GetTerrainData()
+            IGrid<LandPoint> grid = GetTerrainData()
                 .ConvertToSampleGridWithAlphaMapDimensions()
                 .Convert(s => new LandPoint(s))
-                .ToList2D();
+                .ToGrid();
 
             population_parent.DestroyChildrenAdvisory();
 

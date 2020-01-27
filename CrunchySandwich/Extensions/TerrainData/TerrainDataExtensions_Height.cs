@@ -10,20 +10,20 @@ namespace Crunchy.Sandwich
     
     static public class TerrainDataExtensions_Height
     {
-        static public void SetHeightGrid(this TerrainData item, int x, int y, IList2D<float> grid)
+        static public void SetHeightGrid(this TerrainData item, int x, int y, IGrid<float> grid)
         {
             item.SetHeights(x, y, grid.ToArray2D());
         }
-        static public void SetHeightGrid(this TerrainData item, IList2D<float> grid)
+        static public void SetHeightGrid(this TerrainData item, IGrid<float> grid)
         {
             item.SetHeightGrid(0, 0, grid);
         }
 
-        static public IList2D<float> GetHeightGrid(this TerrainData item, int x, int y, int width, int height)
+        static public IGrid<float> GetHeightGrid(this TerrainData item, int x, int y, int width, int height)
         {
-            return item.GetHeights(x, y, width, height).AdaptToIList2D();
+            return item.GetHeights(x, y, width, height).AdaptToIGrid();
         }
-        static public IList2D<float> GetHeightGrid(this TerrainData item)
+        static public IGrid<float> GetHeightGrid(this TerrainData item)
         {
             return item.GetHeightGrid(0, 0, item.heightmapWidth, item.heightmapHeight);
         }

@@ -1170,24 +1170,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="IList2D\IList2D.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_IEnumerable.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Index.cs" />
+    <Compile Include="Grid\IGrid.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_IEnumerable.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Index.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Convert.cs" />
     <Compile Include="Extensions\IList\IListTransform.cs" />
-    <Compile Include="IList2D\IList2DTransform.cs" />
-    <Compile Include="Empty\EmptyList2D.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Section.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Convert.cs" />
+    <Compile Include="Grid\IGridTransform.cs" />
+    <Compile Include="Empty\EmptyGrid.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Section.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Convert.cs" />
     <Compile Include="Extensions\IList\IListExtensions_ConvertWithIndex.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_ConvertWithIndexs.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Bound.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Unbound.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_To.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Process.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Set.cs" />
-    <Compile Include="IList2D\Extensions\Special\IList2DExtensions_Solid.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_ConvertWithIndexs.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Section_Bound.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Section_Unbound.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_To.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Process.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Section_Set.cs" />
+    <Compile Include="Grid\Extensions\Special\IGridExtensions_Solid.cs" />
     <Compile Include="RadiatingWalker\RadiatingWalker.cs" />
     <Compile Include="RotationDirection\RotationDirection.cs" />
     <Compile Include="Roulette\Extensions\RouletteExtensions.cs" />
@@ -1418,19 +1418,18 @@
     <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_RandomLine.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Neighbors.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Radiating.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Size.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Looped.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Dropped.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Capped.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Scale.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Size.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Looped.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Dropped.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Capped.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Scale.cs" />
     <Compile Include="Extensions\Array2D\Array2DExtensions_Adapt.cs" />
-    <Compile Include="IList2D\Implementations\List2D_Array2DAdapter.cs" />
-    <Compile Include="IList2D\Implementations\List2D_List.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_List.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_GetOrCreate.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Stamp.cs" />
-    <Compile Include="IList2D\List2D.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Get.cs" />
+    <Compile Include="Grid\Implementations\Grid_Array2DAdapter.cs" />
+    <Compile Include="Grid\Implementations\Grid_List.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_List.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_GetOrCreate.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Stamp.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Get.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1613,9 +1612,9 @@
     <Folder Include="DecayTimeSet\" />
     <Folder Include="DecayTimeSet\Extensions\" />
     <Folder Include="NumericDelta\" />
-    <Folder Include="IList2D\" />
-    <Folder Include="IList2D\Extensions\" />
-    <Folder Include="IList2D\Extensions\Special\" />
+    <Folder Include="Grid\" />
+    <Folder Include="Grid\Extensions\" />
+    <Folder Include="Grid\Extensions\Special\" />
     <Folder Include="RadiatingWalker\" />
     <Folder Include="RotationDirection\" />
     <Folder Include="Roulette\" />
@@ -1644,7 +1643,7 @@
     <Folder Include="Graph\GraphNodeWanderer\" />
     <Folder Include="Extensions\Float\" />
     <Folder Include="Extensions\Float\IList\" />
-    <Folder Include="IList2D\Implementations\" />
+    <Folder Include="Grid\Implementations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

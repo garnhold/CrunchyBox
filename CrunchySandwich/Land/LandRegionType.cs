@@ -29,7 +29,7 @@ namespace Crunchy.Sandwich
                 populater.InitilizeLandRegion(land, this);
         }
 
-        public bool BuildLandRegion(Land land, IList2D<LandPoint> grid)
+        public bool BuildLandRegion(Land land, IGrid<LandPoint> grid)
         {
             if(builder != null)
                 return builder.BuildLandRegion(land, this, grid);
@@ -37,13 +37,13 @@ namespace Crunchy.Sandwich
             return true;
         }
 
-        public void PaintLandRegion(Land land, IList2D<LandPoint> grid)
+        public void PaintLandRegion(Land land, IGrid<LandPoint> grid)
         {
             if(painter != null)
                 painter.PaintLandRegion(land, this, grid);
         }
 
-        public void PopulateLandRegion(Land land, IList2D<LandPoint> grid, GameObject parent)
+        public void PopulateLandRegion(Land land, IGrid<LandPoint> grid, GameObject parent)
         {
             if(populater != null)
                 populater.PopulateLandRegion(land, this, grid, parent.SpawnEmptyChild());

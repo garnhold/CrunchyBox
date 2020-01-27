@@ -23,7 +23,7 @@ namespace Crunchy.Sandwich
 
         static public Texture2D Create(int width, int height, Operation<Color, int, int> operation)
         {
-            return new IList2DTransform<Color>(width, height, operation)
+            return new IGridTransform<Color>(width, height, operation)
                 .CreateTexture2D();
         }
 

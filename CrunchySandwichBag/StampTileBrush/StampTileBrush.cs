@@ -8,7 +8,8 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;    using Sandwich;
+    using Dough;
+    using Sandwich;
     
     public abstract class StampTileBrush : GridBrush
     {

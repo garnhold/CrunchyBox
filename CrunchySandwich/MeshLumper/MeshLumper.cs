@@ -54,7 +54,7 @@ namespace Crunchy.Sandwich
 
         private void GridLump(Material material, List<LumpableMesh> lumpables, Bounds bounds, GameObject parent)
         {
-            IList2D<List<LumpableMesh>> grid = new List2D_List<List<LumpableMesh>>(Mathf.CeilToInt(bounds.size.x / cell_size.x), Mathf.CeilToInt(bounds.size.z / cell_size.z));
+            IGrid<List<LumpableMesh>> grid = new Grid_List<List<LumpableMesh>>(Mathf.CeilToInt(bounds.size.x / cell_size.x), Mathf.CeilToInt(bounds.size.z / cell_size.z));
 
             foreach(LumpableMesh lumpable in lumpables)
             {

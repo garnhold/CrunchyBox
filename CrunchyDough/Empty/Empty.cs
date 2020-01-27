@@ -16,9 +16,9 @@ namespace Crunchy.Dough
             return EmptyList<T>.INSTANCE;
         }
 
-        static public IList2D<T> IList2D<T>()
+        static public IGrid<T> IGrid<T>()
         {
-            return EmptyList2D<T>.INSTANCE;
+            return EmptyGrid<T>.INSTANCE;
         }
 
         static public ICollection<T> ICollection<T>()

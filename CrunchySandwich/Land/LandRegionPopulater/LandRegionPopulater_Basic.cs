@@ -16,7 +16,7 @@ namespace Crunchy.Sandwich
         {
         }
 
-        public override void PopulateLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid, GameObject parent)
+        public override void PopulateLandRegion(Land land, LandRegionType land_region_type, IGrid<LandPoint> grid, GameObject parent)
         {
             grid.ProcessWithIndexs(delegate (int x, int y, LandPoint point) {
                 GetLandRegionPrefabPopulaters().Process(pp => 

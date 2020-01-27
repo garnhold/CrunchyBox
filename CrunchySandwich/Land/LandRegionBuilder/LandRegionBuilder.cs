@@ -10,6 +10,6 @@ namespace Crunchy.Sandwich
     public abstract class LandRegionBuilder : CustomAsset
     {
         public abstract void InitilizeLandRegion(Land land, LandRegionType land_region_type);
-        public abstract bool BuildLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid);
+        public abstract bool BuildLandRegion(Land land, LandRegionType land_region_type, IGrid<LandPoint> grid);
     }
 }
