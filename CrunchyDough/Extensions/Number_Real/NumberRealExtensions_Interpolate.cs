@@ -9,7 +9,7 @@ namespace Crunchy.Dough
 
 		static public float GetInterpolate(this float item, float target, float amount)
         {
-            amount = amount.BindBetween(0.0f, 1.0f);
+            amount = amount.BindPercent();
 
             return item * (1.0f - amount) + target * amount;
         }
@@ -21,7 +21,7 @@ namespace Crunchy.Dough
 
 		static public double GetInterpolate(this double item, double target, double amount)
         {
-            amount = amount.BindBetween(0.0, 1.0);
+            amount = amount.BindPercent();
 
             return item * (1.0 - amount) + target * amount;
         }
@@ -33,7 +33,7 @@ namespace Crunchy.Dough
 
 		static public decimal GetInterpolate(this decimal item, decimal target, decimal amount)
         {
-            amount = amount.BindBetween(0.0m, 1.0m);
+            amount = amount.BindPercent();
 
             return item * (1.0m - amount) + target * amount;
         }

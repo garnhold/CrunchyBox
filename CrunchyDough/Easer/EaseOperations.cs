@@ -21,12 +21,12 @@ namespace Crunchy.Dough
 
         static public float Linear(float x)
         {
-            return x.BindBetween(0.0f, 1.0f);
+            return x.BindPercent();
         }
 
         static public float QuadIn(float x)
         {
-            return Mathq.IntPow(x.BindBetween(0.0f, 1.0f), 2);
+            return Mathq.IntPow(x.BindPercent(), 2);
         }
         static public float QuadOut(float x)
         {
@@ -39,7 +39,7 @@ namespace Crunchy.Dough
 
         static public float CubicIn(float x)
         {
-            return Mathq.IntPow(x.BindBetween(0.0f, 1.0f), 3);
+            return Mathq.IntPow(x.BindPercent(), 3);
         }
         static public float CubicOut(float x)
         {
@@ -52,7 +52,7 @@ namespace Crunchy.Dough
 
         static public float QuintIn(float x)
         {
-            return Mathq.IntPow(x.BindBetween(0.0f, 1.0f), 4);
+            return Mathq.IntPow(x.BindPercent(), 4);
         }
         static public float QuintOut(float x)
         {
@@ -65,7 +65,7 @@ namespace Crunchy.Dough
 
         static public float SineIn(float x)
         {
-            return Wave.Sine(x.BindBetween(0.0f, 1.0f) / 4.0f);
+            return Wave.Sine(x.BindPercent() / 4.0f);
         }
         static public float SineOut(float x)
         {

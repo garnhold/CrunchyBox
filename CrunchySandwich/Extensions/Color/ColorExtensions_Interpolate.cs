@@ -8,7 +8,7 @@ namespace Crunchy.Sandwich
     {
         static public Color GetInterpolate(this Color item, Color target, float amount)
         {
-            amount = amount.BindBetween(0.0f, 1.0f);
+            amount = amount.BindPercent();
 
             return item * (1.0f - amount) + target * amount;
         }

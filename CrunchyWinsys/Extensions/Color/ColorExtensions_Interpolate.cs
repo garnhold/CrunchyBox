@@ -12,7 +12,7 @@ namespace Crunchy.Winsys
     {
         static public Color GetInterpolate(this Color item, Color target, float amount)
         {
-            amount = amount.BindBetween(0.0f, 1.0f);
+            amount = amount.BindPercent();
 
             return item.GetScaled(1.0f - amount).GetAdded(
                 target.GetScaled(amount)

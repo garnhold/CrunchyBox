@@ -49,7 +49,7 @@ namespace Crunchy.Lunch
             if (progress_stopwatch.IsStopped())
                 progress_stopwatch.Restart();
 
-            progress = p.BindBetween(0.0f, 1.0f);
+            progress = p.BindPercent();
             Render();
         }
         public void UpdateProgress(double current, double all)

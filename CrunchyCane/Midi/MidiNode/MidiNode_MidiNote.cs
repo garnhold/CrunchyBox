@@ -22,7 +22,7 @@ namespace Crunchy.Cane
         {
             if (IsNotPressed())
             {
-                velocity = v.BindBetween(0.0f, 1.0f);
+                velocity = v.BindPercent();
                 Send(new MidiMessage_ChannelVoice_Note_On(note_id, (int)(velocity * 127.0f)));
             }
         }

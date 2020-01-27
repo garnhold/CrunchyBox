@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     {
         static public Vector2 GetInterpolate(this Vector2 item, Vector2 target, float amount)
         {
-            amount = amount.BindBetween(0.0f, 1.0f);
+            amount = amount.BindPercent();
 
             return item * (1.0f - amount) + target * amount;
         }

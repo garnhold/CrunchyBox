@@ -21,7 +21,7 @@ namespace Crunchy.Dough
 
 		static public <#=type.type_name#> GetInterpolate(this <#=type.type_name#> item, <#=type.type_name#> target, <#=type.type_name#> amount)
         {
-            amount = amount.BindBetween(<#=type.zero#>, <#=type.one#>);
+            amount = amount.BindPercent();
 
             return item * (<#=type.one#> - amount) + target * amount;
         }

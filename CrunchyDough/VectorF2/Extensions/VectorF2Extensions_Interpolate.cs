@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public VectorF2 GetInterpolate(this VectorF2 item, VectorF2 target, float amount)
         {
-            amount = amount.BindBetween(0.0f, 1.0f);
+            amount = amount.BindPercent();
 
             return item * (1.0f - amount) + target * amount;
         }

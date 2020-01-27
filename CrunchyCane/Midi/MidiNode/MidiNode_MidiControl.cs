@@ -43,7 +43,7 @@ namespace Crunchy.Cane
 
         public void SetValue(float v)
         {
-            value = v.BindBetween(0.0f, 1.0f);
+            value = v.BindPercent();
 
             PushValue();
         }

@@ -56,17 +56,17 @@ namespace Crunchy.Sandwich
 
         public float GetLandRegionTypeStrength(LandRegionType land_region_type)
         {
-            return land_region_type_strengths[land_region_type].BindBetween(0.0f, 1.0f);
+            return land_region_type_strengths[land_region_type].BindPercent();
         }
 
         public float GetLandRegionTypePresence(LandRegionType land_region_type)
         {
-            return land_region_type_presences[land_region_type].BindBetween(0.0f, 1.0f);
+            return land_region_type_presences[land_region_type].BindPercent();
         }
 
         public float GetLandRegionSplatAlpha(LandRegionSplat land_region_splat)
         {
-            return land_region_splat_alpha[land_region_splat].BindBetween(0.0f, 1.0f);
+            return land_region_splat_alpha[land_region_splat].BindPercent();
         }
     }
 }
