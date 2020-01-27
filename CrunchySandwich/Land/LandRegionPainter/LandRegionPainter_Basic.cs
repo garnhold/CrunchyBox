@@ -17,7 +17,7 @@ namespace Crunchy.Sandwich
             palette.AddRange(GetLandRegionSplats());
         }
 
-        public override void PaintLandRegion(Land land, LandRegionType land_region_type, Grid<LandPoint> grid)
+        public override void PaintLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid)
         {
             grid.GetData().Process(p =>
                 GetLandRegionSplats().Process(s => p.PaintLandRegionSplatAlpha(land_region_type, s))

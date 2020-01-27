@@ -11,9 +11,9 @@ namespace Crunchy.Winsys
     
     static public class BitmapExtensions_Grid
     {
-        static public Grid<T> CreateGrid<T>(this Bitmap item, Operation<T, Color> operation)
+        static public IList2D<T> CreateGrid<T>(this Bitmap item, Operation<T, Color> operation)
         {
-            return new Grid<T>(item.Width, item.Height, delegate(int x, int y) {
+            return new List2D_List<T>(item.Width, item.Height, delegate(int x, int y) {
                 return operation(item.GetPixel(x, y));
             });
         }

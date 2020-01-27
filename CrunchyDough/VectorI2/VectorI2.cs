@@ -25,9 +25,9 @@ namespace Crunchy.Dough
         static public VectorI2 operator *(int s, VectorI2 v1) { return v1 * s; }
         static public VectorI2 operator /(VectorI2 v1, int s) { return new VectorI2(v1.x / s, v1.y / s); }
 
-        static public VectorI2 operator *(VectorI2 v1, float s) { return new VectorI2(v1.x * s, v1.y * s); }
-        static public VectorI2 operator *(float s, VectorI2 v1) { return v1 * s; }
-        static public VectorI2 operator /(VectorI2 v1, float s) { return new VectorI2(v1.x / s, v1.y / s); }
+        static public VectorF2 operator *(VectorI2 v1, float s) { return new VectorF2(v1.x * s, v1.y * s); }
+        static public VectorF2 operator *(float s, VectorI2 v1) { return v1 * s; }
+        static public VectorF2 operator /(VectorI2 v1, float s) { return new VectorF2(v1.x / s, v1.y / s); }
 
         static public bool operator ==(VectorI2 p1, VectorI2 p2)
         {

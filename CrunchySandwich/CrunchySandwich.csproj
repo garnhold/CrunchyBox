@@ -405,7 +405,7 @@
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Loop.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Path.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_WireCube.cs" />
-    <Compile Include="Extensions\Grid\GridExtensions_Vectorize.cs" />
+    <Compile Include="Extensions\IList2D\IList2DExtensions_Vectorize.cs" />
     <Compile Include="Extensions\GUIUtility\GUIUtilityExtensions_Scale.cs" />
     <Compile Include="Extensions\GUIUtility\GUIUtilityExtensions.cs" />
     <Compile Include="Extensions\GUI\GUIExtensions_Square.cs" />
@@ -1054,9 +1054,8 @@
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_DontDestroyOnLoad.cs" />
     <Compile Include="Subsystem\Subsystem.cs" />
     <Compile Include="Subsystem\SubsystemManager.cs" />
-    <Compile Include="Extensions\GridCell\GridCellExtensions_Vector2.cs" />
-    <Compile Include="Extensions\Grid\GridExtensions_Texture2D.cs" />
-    <Compile Include="Extensions\Grid\GridExtensions_Vector2.cs" />
+    <Compile Include="Extensions\IList2D\IList2DExtensions_Texture2D.cs" />
+    <Compile Include="Extensions\IList2D\IList2DExtensions_Vector2.cs" />
     <Compile Include="InitBehaviour\InitBehaviour.cs" />
     <Compile Include="Extensions\Physics\PhysicsExtensions_MultiRaycast.cs" />
     <Compile Include="Extensions\Physics\PhysicsExtensions.cs" />
@@ -1098,8 +1097,7 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Color.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Data.cs" />
-    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Grid.cs" />
-    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Grids.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_IList2D.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Index.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_SubTexture.cs" />
     <Compile Include="Extensions\TerrainData\TerrainSample.cs" />
@@ -1239,6 +1237,8 @@
     <Compile Include="Extensions\Joint\JointExtensions_Connect.cs" />
     <Compile Include="Extensions\ConfigurableJoint\ConfigurableJointExtensions.cs" />
     <Compile Include="Extensions\ConfigurableJoint\ConfigurableJointExtensions_Setup.cs" />
+    <Compile Include="Extensions\VectorI2\VectorI2Extensions_Vector2.cs" />
+    <Compile Include="Extensions\VectorI2\VectorI2Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1538,6 +1538,7 @@
     <Folder Include="Extensions\Input\" />
     <Folder Include="Extensions\Joint\" />
     <Folder Include="Extensions\ConfigurableJoint\" />
+    <Folder Include="Extensions\VectorI2\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

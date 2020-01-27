@@ -21,7 +21,10 @@ namespace Crunchy.Sandwich
             TerrainData terrain_data = GetTerrainData();
             Palette<LandRegionSplat> palette = new Palette<LandRegionSplat>();
 
-            Grid<LandPoint> grid = GetTerrainData().GetSampleGridWithAlphaMapDimensions().ConvertGrid(s => new LandPoint(s));
+            IList2D<LandPoint> grid = GetTerrainData()
+                .ConvertToSampleGridWithAlphaMapDimensions()
+                .Convert(s => new LandPoint(s))
+                .ToList2D();
 
             population_parent.DestroyChildrenAdvisory();
 
@@ -35,7 +38,11 @@ namespace Crunchy.Sandwich
 
             float[,,] alpha_maps = new float[grid.GetHeight(), grid.GetWidth(), palette.GetNumberValues()];
 
-            grid.Process(c => palette.Process(kvp => alpha_maps[c.GetY(), c.GetX(), kvp.Key] = kvp.Value.GetAlphaAt(c.GetData())));
+            grid.ProcessWithIndexs((x, y, v) =>
+                palette.Process(kvp =>
+                    alpha_maps[y, x, kvp.Key] = kvp.Value.GetAlphaAt(v)
+                )
+            );
 
             terrain_data.splatPrototypes = palette.GetValues().Convert(s => s.GetSplatPrototype()).ToArray();
             terrain_data.SetAlphamaps(0, 0, alpha_maps);

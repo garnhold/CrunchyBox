@@ -16,17 +16,17 @@ namespace Crunchy.Sandwich
         {
         }
 
-        public override void PopulateLandRegion(Land land, LandRegionType land_region_type, Grid<LandPoint> grid, GameObject parent)
+        public override void PopulateLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid, GameObject parent)
         {
-            grid.Process(c =>
-                GetLandRegionPrefabPopulaters().Process(pp =>
+            grid.ProcessWithIndexs(delegate (int x, int y, LandPoint point) {
+                GetLandRegionPrefabPopulaters().Process(pp => 
                     pp.Populate(
                         parent,
-                        land.GetCellBounds(c.GetX(), c.GetY()),
-                        c.GetData().GetLandRegionTypePresence(land_region_type)
+                        land.GetCellBounds(x, y),
+                        point.GetLandRegionTypePresence(land_region_type)
                     )
-                )
-            );
+                );
+            });
         }
     }
 }

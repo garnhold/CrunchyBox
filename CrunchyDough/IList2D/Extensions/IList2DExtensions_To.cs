@@ -6,9 +6,9 @@ namespace Crunchy.Dough
 {
     static public class IList2DExtensions_To
     {
-        static public List2D<T> ToList2D<T>(this IList2D<T> item)
+        static public List2D_List<T> ToList2D<T>(this IList2D<T> item)
         {
-            return new List2D<T>(item);
+            return new List2D_List<T>(item);
         }
 
         static public T[,] ToArray2D<T>(this IList2D<T> item)

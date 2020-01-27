@@ -48,12 +48,12 @@ namespace Crunchy.Sandwich
             return texture.height;
         }
 
-        public IEnumerable<SurfacePoint> GetSurfacePoints()
+        public IEnumerable<VectorI2> GetSurfacePoints()
         {
             for (int y = 0; y < texture.height; y++)
             {
                 for (int x = 0; x < texture.width; x++)
-                    yield return new SurfacePoint(x, y);
+                    yield return new VectorI2(x, y);
             }
         }
     }

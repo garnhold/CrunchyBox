@@ -54,29 +54,27 @@ namespace Crunchy.Sandwich
 
         private void GridLump(Material material, List<LumpableMesh> lumpables, Bounds bounds, GameObject parent)
         {
-            Grid<List<LumpableMesh>> grid = new Grid<List<LumpableMesh>>(Mathf.CeilToInt(bounds.size.x / cell_size.x), Mathf.CeilToInt(bounds.size.z / cell_size.z));
+            IList2D<List<LumpableMesh>> grid = new List2D_List<List<LumpableMesh>>(Mathf.CeilToInt(bounds.size.x / cell_size.x), Mathf.CeilToInt(bounds.size.z / cell_size.z));
 
             foreach(LumpableMesh lumpable in lumpables)
             {
-                Vector2 cell = (lumpable.transform.position - bounds.min).GetComponentDivide(cell_size).GetArear();
-
-                grid.AddData((int)cell.x, (int)cell.y, lumpable);
+                grid.Add(
+                    (lumpable.transform.position - bounds.min).GetComponentDivide(cell_size).GetArear().GetVectorI2(),
+                    lumpable
+                );
             }
 
-            foreach (GridCell<List<LumpableMesh>> cell in grid)
-            {
-                List<LumpableMesh> list = cell.GetData();
-
-                if(list != null)
+            grid.ProcessWithIndexs(delegate (int x, int y, List<LumpableMesh> list) {
+                if (list.IsNotEmpty())
                 {
                     AttemptLump(
                         material,
                         list,
-                        bounds.GetOverflownAreaGridChunk(cell.GetX(), cell.GetY(), cell_size),
+                        bounds.GetOverflownAreaGridChunk(x, y, cell_size),
                         parent
                     );
                 }
-            }
+            });
         }
 
         private void OnDrawGizmos()

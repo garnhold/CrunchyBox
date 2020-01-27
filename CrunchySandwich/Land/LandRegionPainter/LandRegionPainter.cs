@@ -10,6 +10,6 @@ namespace Crunchy.Sandwich
     public abstract class LandRegionPainter : CustomAsset
     {
         public abstract void InitilizeLandRegion(Land land, LandRegionType land_region_type, Palette<LandRegionSplat> palette);
-        public abstract void PaintLandRegion(Land land, LandRegionType land_region_type, Grid<LandPoint> grid);
+        public abstract void PaintLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid);
     }
 }

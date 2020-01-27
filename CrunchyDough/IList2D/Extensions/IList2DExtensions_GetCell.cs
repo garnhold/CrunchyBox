@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    static public class IList2DExtensions_Get_Cell
+    static public class IList2DExtensions_GetCell
     {
         static public bool TryGetCell<T>(this IList2D<T> item, int x, int y, out IList2DCell<T> cell)
         {

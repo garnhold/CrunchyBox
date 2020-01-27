@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 namespace Crunchy.Sauce
 {
+    using Dough;
+
     public interface Surface<T>
     {
         void MixPigmentAt(int x, int y, T pigment, float coverage, Mixer<T> pigment_mixer);
@@ -14,6 +16,6 @@ namespace Crunchy.Sauce
         int GetWidth();
         int GetHeight();
 
-        IEnumerable<SurfacePoint> GetSurfacePoints();
+        IEnumerable<VectorI2> GetSurfacePoints();
     }
 }

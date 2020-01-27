@@ -10,8 +10,8 @@ namespace Crunchy.Sauce
     {
         public void Fill(Surface<T> surface, Ink<T> ink)
         {
-            foreach (SurfacePoint point in surface.GetSurfacePoints())
-                ink.Paint(surface, 1.0f, point.GetVectorF2());
+            foreach (VectorI2 point in surface.GetSurfacePoints())
+                ink.Paint(surface, 1.0f, point);
         }
     }
 }

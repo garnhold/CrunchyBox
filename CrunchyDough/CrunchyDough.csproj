@@ -1172,7 +1172,7 @@
     </Compile>
     <Compile Include="IList2D\IList2D.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Get.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_IEnumerable.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Index.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Convert.cs" />
     <Compile Include="Extensions\IList\IListTransform.cs" />
@@ -1184,13 +1184,12 @@
     <Compile Include="IList2D\Extensions\IList2DExtensions_ConvertWithIndexs.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Bound.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Unbound.cs" />
-    <Compile Include="List2D\List2D.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_To.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Process.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Set.cs" />
     <Compile Include="IList2D\Extensions\Special\IList2DExtensions_Solid.cs" />
     <Compile Include="RadiatingWalker\RadiatingWalker.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Get_Cell.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_GetCell.cs" />
     <Compile Include="RotationDirection\RotationDirection.cs" />
     <Compile Include="Roulette\Extensions\RouletteExtensions.cs" />
     <Compile Include="Roulette\Extensions\RouletteExtensions_Add.cs" />
@@ -1428,6 +1427,14 @@
     <Compile Include="IList2D\Extensions\IList2DExtensions_Dropped.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Capped.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Scale.cs" />
+    <Compile Include="Extensions\Array2D\Array2DExtensions_Adapt.cs" />
+    <Compile Include="IList2D\Implementations\List2D_Array2DAdapter.cs" />
+    <Compile Include="IList2D\Implementations\List2D_List.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_List.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_GetOrCreate.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_Stamp.cs" />
+    <Compile Include="IList2D\List2D.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_Get.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1612,7 +1619,6 @@
     <Folder Include="NumericDelta\" />
     <Folder Include="IList2D\" />
     <Folder Include="IList2D\Extensions\" />
-    <Folder Include="List2D\" />
     <Folder Include="IList2D\Extensions\Special\" />
     <Folder Include="RadiatingWalker\" />
     <Folder Include="RotationDirection\" />
@@ -1644,6 +1650,7 @@
     <Folder Include="Extensions\Float\IList\" />
     <Folder Include="IList2DCell\" />
     <Folder Include="IList2DCell\Extensions\" />
+    <Folder Include="IList2D\Implementations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

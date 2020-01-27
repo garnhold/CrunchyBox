@@ -8,7 +8,7 @@ namespace Crunchy.Sauce
     {
         static public bool Add<T>(this SurfaceSelection<T> item, VectorF2 point)
         {
-            return item.Add(point.GetSurfacePoint());
+            return item.Add(point.GetVectorI2());
         }
 
         static public void AddRectangle<T>(this SurfaceSelection<T> item, VectorF2 point1, VectorF2 point2)

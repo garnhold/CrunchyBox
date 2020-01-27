@@ -11,11 +11,11 @@ namespace Crunchy.Winsys
     
     static public class GridExtensions_Bitmap
     {
-        static public Bitmap CreateBitmap<T>(this Grid<T> item, Operation<Color, T> operation)
+        static public Bitmap CreateBitmap<T>(this IList2D<T> item, Operation<Color, T> operation)
         {
             Bitmap bitmap = new Bitmap(item.GetWidth(), item.GetHeight());
 
-            item.Process(c => bitmap.SetPixel(c.GetX(), c.GetY(), operation(c.GetData())));
+            item.ProcessWithIndexs((x, y, v) => bitmap.SetPixel(x, y, operation(v)));
             return bitmap;
         }
     }

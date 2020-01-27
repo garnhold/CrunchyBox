@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class Texture2DExtensions_Stamp
     {
         static public Stamp<T> CreateStamp<T>(this Texture2D item, Operation<T, int, int> operation)

@@ -47,12 +47,12 @@ namespace Crunchy.Winsys
             return bitmap.Height;
         }
 
-        public IEnumerable<SurfacePoint> GetSurfacePoints()
+        public IEnumerable<VectorI2> GetSurfacePoints()
         {
             for (int y = 0; y < bitmap.Height; y++)
             {
                 for (int x = 0; x < bitmap.Width; x++)
-                    yield return new SurfacePoint(x, y);
+                    yield return new VectorI2(x, y);
             }
         }
     }

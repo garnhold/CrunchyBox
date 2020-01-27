@@ -10,6 +10,6 @@ namespace Crunchy.Sandwich
     public abstract class LandRegionPopulater : CustomAsset
     {
         public abstract void InitilizeLandRegion(Land land, LandRegionType land_region_type);
-        public abstract void PopulateLandRegion(Land land, LandRegionType land_region_type, Grid<LandPoint> grid, GameObject parent);
+        public abstract void PopulateLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid, GameObject parent);
     }
 }

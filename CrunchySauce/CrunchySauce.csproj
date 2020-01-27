@@ -34,19 +34,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\GridCell\GridCellExtensions_SurfacePoint.cs" />
-    <Compile Include="Extensions\GridCell\GridCellExtensions.cs" />
-    <Compile Include="Extensions\VectorF2\VectorF2Extensions.cs" />
-    <Compile Include="Extensions\VectorF2\VectorF2Extensions_SurfacePoint.cs" />
     <Compile Include="SurfaceSelection\Extensions\SurfaceSelectionExtensions_VectorF2.cs" />
     <Compile Include="SurfaceSelection\Extensions\SurfaceSelectionExtensions_Add.cs" />
     <Compile Include="SurfaceSelection\Extensions\SurfaceSelectionExtensions.cs" />
     <Compile Include="SurfaceTool\SurfaceTool_Fill\SurfaceTool_Fill.cs" />
     <Compile Include="SurfaceTool\SurfaceTool_PolygonSelection\SurfaceTool_PolygonSelection.cs" />
-    <Compile Include="Surface\Extensions\SurfacePointExtensions_VectorF2.cs" />
-    <Compile Include="Surface\Extensions\SurfacePointExtensions.cs" />
     <Compile Include="Surface\Extensions\SurfaceExtensions.cs" />
-    <Compile Include="Surface\Extensions\SurfaceExtensions_SurfacePoint.cs" />
+    <Compile Include="Surface\Extensions\SurfaceExtensions_Index.cs" />
     <Compile Include="SurfaceSelection\SurfaceSelection.cs" />
     <Compile Include="Mixer\Mixer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,9 +50,7 @@
     <Compile Include="Brush\Brush_Pixel.cs" />
     <Compile Include="Brush\Brush_Stamp.cs" />
     <Compile Include="Marker\Marker.cs" />
-    <Compile Include="Surface\Surface_Grid.cs" />
-    <Compile Include="Surface\SurfacePoint.cs" />
-    <Compile Include="Surface\Extensions\SurfacePointExtensions_Neighbor.cs" />
+    <Compile Include="Surface\Surface_IList2D.cs" />
     <Compile Include="SurfaceTool\SurfaceTool_Line\SurfaceTool_Line.cs" />
     <Compile Include="Marker\Marker_Stroker.cs" />
     <Compile Include="SurfaceTool\SurfaceTool_Line\SurfaceTool_Line_Basic.cs" />

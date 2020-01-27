@@ -18,26 +18,26 @@ namespace Crunchy.Sandwich
             );
         }
 
-        static public Grid<TerrainSample> GetSampleGrid(this TerrainData item, float x, float y, int width, int height, float dx, float dy)
+        static public IList2D<TerrainSample> ConvertToSampleGrid(this TerrainData item, int width, int height)
         {
-            return new Grid<TerrainSample>(width, height, delegate(int ix, int iy) {
-                return item.GetSample(x + ix*dx, y + iy*dy);
-            });
+            float dx = 1.0f / width;
+            float dy = 1.0f / height;
+
+            return new IList2DTransform<TerrainSample>(
+                () => width,
+                () => height,
+                (x, y) => item.GetSample(x * dx, y * dy)
+            );
         }
 
-        static public Grid<TerrainSample> GetSampleGrid(this TerrainData item, int width, int height)
+        static public IList2D<TerrainSample> ConvertToSampleGridWithHeightMapDimensions(this TerrainData item)
         {
-            return item.GetSampleGrid(0.0f, 0.0f, width, height, 1.0f / width, 1.0f / height);
+            return item.ConvertToSampleGrid(item.heightmapWidth, item.heightmapHeight);
         }
 
-        static public Grid<TerrainSample> GetSampleGridWithHeightMapDimensions(this TerrainData item)
+        static public IList2D<TerrainSample> ConvertToSampleGridWithAlphaMapDimensions(this TerrainData item)
         {
-            return item.GetSampleGrid(item.heightmapWidth, item.heightmapHeight);
-        }
-
-        static public Grid<TerrainSample> GetSampleGridWithAlphaMapDimensions(this TerrainData item)
-        {
-            return item.GetSampleGrid(item.alphamapWidth, item.alphamapHeight);
+            return item.ConvertToSampleGrid(item.alphamapWidth, item.alphamapHeight);
         }
     }
 }

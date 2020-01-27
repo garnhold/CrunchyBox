@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public class LandRegionPainter_DualTiledOverlay : LandRegionPainter
     {
         [SerializeField]private float overlay_scale;
@@ -19,21 +20,17 @@ namespace Crunchy.Sandwich
             palette.Add(secondary_splat);
         }
 
-        public override void PaintLandRegion(Land land, LandRegionType land_region_type, Grid<LandPoint> grid)
+        public override void PaintLandRegion(Land land, LandRegionType land_region_type, IList2D<LandPoint> grid)
         {
-            Grid<float> overlay_tile = overlay_tile_texture.CreateGrayscaleGrid();
+            IList2D<float> overlay_tile = overlay_tile_texture.CreateGrayscaleGrid();
 
-            foreach (GridCell<LandPoint> cell in grid)
-            {
-                int x = (int)(cell.GetX() * overlay_scale);
-                int y = (int)(cell.GetY() * overlay_scale);
-
-                float main_weight = overlay_tile.GetDataLooped(x, y);
+            grid.ProcessWithIndexs(delegate (int x, int y, LandPoint point) {
+                float main_weight = overlay_tile.GetLooped((int)(x * overlay_scale), (int)(y * overlay_scale));
                 float secondary_weight = 1.0f - main_weight;
 
-                cell.GetData().PaintLandRegionSplatAlpha(land_region_type, main_splat, main_weight);
-                cell.GetData().PaintLandRegionSplatAlpha(land_region_type, secondary_splat, secondary_weight);
-            }
+                point.PaintLandRegionSplatAlpha(land_region_type, main_splat, main_weight);
+                point.PaintLandRegionSplatAlpha(land_region_type, secondary_splat, secondary_weight);
+            });
         }
     }
 }

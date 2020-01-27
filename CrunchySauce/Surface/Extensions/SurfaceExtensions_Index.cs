@@ -2,9 +2,11 @@ using System;
 
 namespace Crunchy.Sauce
 {
-    static public class SurfaceExtensions_SurfacePoint
+    using Dough;
+
+    static public class SurfaceExtensions_Index
     {
-        static public bool IsValidPoint<T>(this Surface<T> item, SurfacePoint to_check)
+        static public bool IsValidPoint<T>(this Surface<T> item, VectorI2 to_check)
         {
             if (to_check.x >= 0 && to_check.x < item.GetWidth())
             {
