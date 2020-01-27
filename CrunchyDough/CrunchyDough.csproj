@@ -1222,7 +1222,6 @@
     <Compile Include="IList2D\Extensions\IList2DExtensions_ConvertWithIndexs.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Bound.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Unbound.cs" />
-    <Compile Include="IList2D\IList2DCell.cs" />
     <Compile Include="List2D\List2D.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_To.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Process.cs" />
@@ -1467,6 +1466,10 @@
     <Compile Include="GridCell\Extensions\GridCellExtensions_VectorI2.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Neighbors.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Radiating.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_Size.cs" />
+    <Compile Include="IList2DCell\IList2DCell.cs" />
+    <Compile Include="IList2DCell\Extensions\IList2DCellExtensions.cs" />
+    <Compile Include="IList2DCell\Extensions\IList2DCellExtensions_Set.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1683,6 +1686,8 @@
     <Folder Include="Extensions\Float\IList\" />
     <Folder Include="GridCell\" />
     <Folder Include="GridCell\Extensions\" />
+    <Folder Include="IList2DCell\" />
+    <Folder Include="IList2DCell\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
