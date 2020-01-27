@@ -14,5 +14,9 @@ namespace Crunchy.Dough
                     process(x, y, item[x, y]);
             }
         }
+        static public void ProcessWithIndexs<T>(this IList2D<T> item, Process<VectorI2, T> process)
+        {
+            item.ProcessWithIndexs<T>((x, y, v) => process(new VectorI2(x, y), v));
+        }
     }
 }

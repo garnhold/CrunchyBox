@@ -19,5 +19,9 @@ namespace Crunchy.Dough
 
             return Empty.IList2D<OUTPUT_TYPE>();
         }
+        static public IList2D<OUTPUT_TYPE> ConvertWithIndexs<INPUT_TYPE, OUTPUT_TYPE>(this IList2D<INPUT_TYPE> item, Operation<OUTPUT_TYPE, VectorI2, INPUT_TYPE> operation)
+        {
+            return item.ConvertWithIndexs<INPUT_TYPE, OUTPUT_TYPE>((x, y, v) => operation(new VectorI2(x, y), v));
+        }
     }
 }
