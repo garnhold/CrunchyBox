@@ -8,14 +8,14 @@ namespace Crunchy.Winsys
     using Salt;
     using Noodle;
     using Sauce;
-    
+
     static public class BitmapExtensions_Grid
     {
-        static public IList2D<T> CreateGrid<T>(this Bitmap item, Operation<T, Color> operation)
+        static public IList2D<T> ConvertToGrid<T>(this Bitmap item, Operation<T, Color> operation)
         {
-            return new List2D_List<T>(item.Width, item.Height, delegate(int x, int y) {
-                return operation(item.GetPixel(x, y));
-            });
+            return new IList2DTransform<T>(item.Width, item.Height,
+                (x, y) => operation(item.GetPixel(x, y))
+            );
         }
     }
 }
