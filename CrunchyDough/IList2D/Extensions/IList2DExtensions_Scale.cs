@@ -12,9 +12,7 @@ namespace Crunchy.Dough
             float new_to_old_width = (float)item.GetWidth() / (float)new_width;
             float new_to_old_height = (float)item.GetHeight() / (float)new_height;
 
-            return new IList2DTransform<T>(
-                () => new_width,
-                () => new_height,
+            return new IList2DTransform<T>(new_width, new_height,
                 (x, y) => item[(int)(x * new_to_old_width), (int)(y * new_to_old_height)]
             );
         }

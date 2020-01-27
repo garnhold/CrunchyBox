@@ -8,11 +8,7 @@ namespace Crunchy.Dough
     {
         static public IList2D<T> Operation<T>(int width, int height, Operation<T, int, int> operation)
         {
-            return new IList2DTransform<T>(
-                () => width,
-                () => height,
-                operation
-            );
+            return new IList2DTransform<T>(width, height, operation);
         }
     }
 }

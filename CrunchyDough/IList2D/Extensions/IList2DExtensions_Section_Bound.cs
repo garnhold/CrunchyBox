@@ -16,15 +16,12 @@ namespace Crunchy.Dough
                 y1 = y1.BindBetween(0, item.GetHeight());
                 y2 = y2.BindBetween(0, item.GetHeight());
 
-                int block_width = x2 - x1;
-                int block_height = y2 - y1;
-
                 if (x1 == 0 && y1 == 0 && x2 == item.GetWidth() && y2 == item.GetHeight())
                     return item;
 
                 return new IList2DTransform<T>(
-                    () => block_width,
-                    () => block_height,
+                    x2 - x1,
+                    y2 - y1,
                     (x, y) => item[x1 + x, y1 + y],
                     (x, y, v) => item[x1 + x, y1 + y] = v
                 );

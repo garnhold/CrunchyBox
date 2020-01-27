@@ -23,9 +23,7 @@ namespace Crunchy.Sandwich
             float dx = 1.0f / width;
             float dy = 1.0f / height;
 
-            return new IList2DTransform<TerrainSample>(
-                () => width,
-                () => height,
+            return new IList2DTransform<TerrainSample>(width, height,
                 (x, y) => item.GetSample(x * dx, y * dy)
             );
         }

@@ -8,14 +8,11 @@ namespace Crunchy.Dough
     {
         static public IList2D<T> UnboundSubSection<T>(this IList2D<T> item, int x1, int y1, int x2, int y2, T default_value = default(T))
         {
-            int block_width = x2 - x1;
-            int block_height = y2 - y1;
-
             if (item != null)
             {
                 return new IList2DTransform<T>(
-                    () => block_width,
-                    () => block_height,
+                    x2 - x1,
+                    y2 - y1,
                     (x, y) => item.Get(x, y, default_value),
                     (x, y, v) => item.SetDropped(x, y, v)
                 );

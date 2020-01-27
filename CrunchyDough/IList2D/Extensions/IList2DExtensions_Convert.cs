@@ -10,9 +10,7 @@ namespace Crunchy.Dough
         {
             if (item != null)
             {
-                return new IList2DTransform<OUTPUT_TYPE>(
-                    () => item.GetWidth(),
-                    () => item.GetHeight(),
+                return new IList2DTransform<OUTPUT_TYPE>(item.GetWidth(), item.GetHeight(),
                     (x, y) => operation(item[x, y])
                 );
             }
