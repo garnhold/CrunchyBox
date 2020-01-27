@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class Vector3Extensions_Component
     {
         static public Vector3 GetComponentMultiply(this Vector3 item, Vector3 other)

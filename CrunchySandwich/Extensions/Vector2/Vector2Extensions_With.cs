@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class Vector2Extensions_With
     {
         static public Vector2 GetWithX(this Vector2 item, float x)
