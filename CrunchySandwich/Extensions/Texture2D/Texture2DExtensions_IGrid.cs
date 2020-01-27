@@ -42,7 +42,7 @@ namespace Crunchy.Sandwich
 
         static public IGrid<T> CreateGrid<T>(this Texture2D item, Operation<T, Color> operation)
         {
-            return new Grid_List<T>(item.width, item.height, item.GetPixels().Convert(operation));
+            return new Grid<T>(item.width, item.height, item.GetPixels().Convert(operation));
         }
     }
 }

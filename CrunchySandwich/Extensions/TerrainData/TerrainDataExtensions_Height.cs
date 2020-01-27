@@ -21,7 +21,7 @@ namespace Crunchy.Sandwich
 
         static public IGrid<float> GetHeightGrid(this TerrainData item, int x, int y, int width, int height)
         {
-            return item.GetHeights(x, y, width, height).AdaptToIGrid();
+            return item.GetHeights(x, y, width, height).ConvertToIGrid();
         }
         static public IGrid<float> GetHeightGrid(this TerrainData item)
         {

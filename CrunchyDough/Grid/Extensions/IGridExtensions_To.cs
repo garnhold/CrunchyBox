@@ -6,9 +6,9 @@ namespace Crunchy.Dough
 {
     static public class IGridExtensions_To
     {
-        static public Grid_List<T> ToGrid<T>(this IGrid<T> item)
+        static public Grid<T> ToGrid<T>(this IGrid<T> item)
         {
-            return new Grid_List<T>(item);
+            return new Grid<T>(item);
         }
 
         static public T[,] ToArray2D<T>(this IGrid<T> item)

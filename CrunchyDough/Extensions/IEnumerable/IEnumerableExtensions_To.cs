@@ -20,6 +20,14 @@ namespace Crunchy.Dough
             return item.ToList().ToArray();
         }
 
+        static public T[,] ToArray2D<T>(this IEnumerable<T> item, int width, int height)
+        {
+            T[,] array = new T[width, height];
+
+            item.ProcessWithIndex((i, s) => array[i % width, i / width] = s);
+            return array;
+        }
+
         static public List<T> ToList<T>(this IEnumerable<T> item)
         {
             if (item == null)

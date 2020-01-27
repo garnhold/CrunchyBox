@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class Grid_List<T> : IGrid<T>
+    public class Grid<T> : IGrid<T>
     {
         private int width;
         private int height;
@@ -17,7 +17,7 @@ namespace Crunchy.Dough
             set { list[y * width + x] = value; }
         }
 
-        public Grid_List(int w, int h)
+        public Grid(int w, int h)
         {
             width = w;
             height = h;
@@ -26,7 +26,7 @@ namespace Crunchy.Dough
             list.AddEmptys(width * height);
         }
 
-        public Grid_List(int w, int h, IEnumerable<T> v)
+        public Grid(int w, int h, IEnumerable<T> v)
         {
             width = w;
             height = h;
@@ -35,7 +35,7 @@ namespace Crunchy.Dough
             list.EnsureSizeWithEmptys(width * height);
         }
 
-        public Grid_List(int w, int h, Operation<T, int, int> operation) : this(w, h)
+        public Grid(int w, int h, Operation<T, int, int> operation) : this(w, h)
         {
             for (int y = 0; y < height; y++)
             {
@@ -44,7 +44,7 @@ namespace Crunchy.Dough
             }
         }
 
-        public Grid_List(IGrid<T> g) : this(g.GetWidth(), g.GetHeight(), (x, y) => g[x, y]) { }
+        public Grid(IGrid<T> g) : this(g.GetWidth(), g.GetHeight(), (x, y) => g[x, y]) { }
 
         public int GetWidth()
         {

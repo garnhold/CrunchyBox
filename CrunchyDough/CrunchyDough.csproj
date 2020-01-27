@@ -1423,13 +1423,11 @@
     <Compile Include="Grid\Extensions\IGridExtensions_Dropped.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Capped.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Scale.cs" />
-    <Compile Include="Extensions\Array2D\Array2DExtensions_Adapt.cs" />
-    <Compile Include="Grid\Implementations\Grid_Array2DAdapter.cs" />
-    <Compile Include="Grid\Implementations\Grid_List.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_List.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_GetOrCreate.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Stamp.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Get.cs" />
+    <Compile Include="Grid\Grid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1643,7 +1641,6 @@
     <Folder Include="Graph\GraphNodeWanderer\" />
     <Folder Include="Extensions\Float\" />
     <Folder Include="Extensions\Float\IList\" />
-    <Folder Include="Grid\Implementations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
