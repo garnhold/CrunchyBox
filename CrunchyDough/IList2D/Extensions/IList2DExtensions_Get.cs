@@ -17,9 +17,9 @@ namespace Crunchy.Dough
             value = default(T);
             return false;
         }
-        static public bool TryGet<T>(this IList2D<T> item, IList2DIndex index, out T value)
+        static public bool TryGet<T>(this IList2D<T> item, VectorI2 index, out T value)
         {
-            return item.TryGet<T>(index.GetX(), index.GetY(), out value);
+            return item.TryGet<T>(index.x, index.y, out value);
         }
 
         static public T Get<T>(this IList2D<T> item, int x, int y, T default_value = default(T))
@@ -31,9 +31,9 @@ namespace Crunchy.Dough
 
             return default_value;
         }
-        static public T Get<T>(this IList2D<T> item, IList2DIndex index, T default_value = default(T))
+        static public T Get<T>(this IList2D<T> item, VectorI2 index, T default_value = default(T))
         {
-            return item.Get<T>(index.GetX(), index.GetY(), default_value);
+            return item.Get<T>(index.x, index.y, default_value);
         }
     }
 }

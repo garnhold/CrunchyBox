@@ -6,25 +6,27 @@ namespace Crunchy.Dough
 {
     public struct IList2DCell<T>
     {
-        private IList2D<T> list;
-        private IList2DIndex index;
+        private VectorI2 index;
 
-        public IList2DCell(IList2D<T> l, IList2DIndex i)
+        private IList2D<T> list;
+
+        public IList2DCell(VectorI2 i, IList2D<T> l)
         {
-            list = l;
             index = i;
+
+            list = l;
         }
 
-        public IList2DCell(IList2D<T> l, int x, int y) : this(l, new IList2DIndex(x, y)) { }
+        public IList2DCell(int x, int y, IList2D<T> l) : this(new VectorI2(x, y), l) { }
+
+        public VectorI2 GetIndex()
+        {
+            return index;
+        }
 
         public IList2D<T> GetList()
         {
             return list;
-        }
-
-        public IList2DIndex GetIndex()
-        {
-            return index;
         }
     }
 }

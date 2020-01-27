@@ -12,9 +12,9 @@ namespace Crunchy.Dough
                 .BoundSub(0, 0, item.GetWidth() - x, item.GetHeight() - y)
                 .ProcessWithIndexs((sx, sy, v) => item[x + sx, y + sy] = v);
         }
-        static public void SetSection<T>(this IList2D<T> item, IList2DIndex position, IList2D<T> value)
+        static public void SetSection<T>(this IList2D<T> item, VectorI2 index, IList2D<T> value)
         {
-            item.SetSection<T>(position.GetX(), position.GetY(), value);
+            item.SetSection<T>(index.x, index.y, value);
         }
     }
 }

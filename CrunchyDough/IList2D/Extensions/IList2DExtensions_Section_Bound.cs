@@ -32,10 +32,18 @@ namespace Crunchy.Dough
 
             return Empty.IList2D<T>();
         }
+        static public IList2D<T> BoundSubSection<T>(this IList2D<T> item, VectorI2 lower, VectorI2 upper)
+        {
+            return item.BoundSubSection(lower.x, lower.y, upper.x, upper.y);
+        }
 
         static public IList2D<T> BoundSub<T>(this IList2D<T> item, int x, int y, int width, int height)
         {
             return item.BoundSubSection<T>(x, y, x + width, y + height);
+        }
+        static public IList2D<T> BoundSub<T>(this IList2D<T> item, VectorI2 index, VectorI2 size)
+        {
+            return item.BoundSubSection<T>(index, index + size);
         }
     }
 }

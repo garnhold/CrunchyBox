@@ -16,9 +16,9 @@ namespace Crunchy.Dough
 
             return false;
         }
-        static public bool SetDropped<T>(this IList2D<T> item, IList2DIndex index, T value)
+        static public bool SetDropped<T>(this IList2D<T> item, VectorI2 index, T value)
         {
-            return item.SetDropped(index.GetX(), index.GetY(), value);
+            return item.SetDropped(index.x, index.y, value);
         }
     }
 }

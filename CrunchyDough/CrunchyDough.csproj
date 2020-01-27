@@ -1232,7 +1232,6 @@
     <Compile Include="IList2D\Extensions\Special\IList2DExtensions_Solid.cs" />
     <Compile Include="RadiatingWalker\RadiatingWalker.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Iterators_Radiating.cs" />
-    <Compile Include="IList2D\IList2DIndex.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Get_Cell.cs" />
     <Compile Include="RotationDirection\RotationDirection.cs" />
     <Compile Include="Roulette\Extensions\RouletteExtensions.cs" />

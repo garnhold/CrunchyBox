@@ -16,9 +16,9 @@ namespace Crunchy.Dough
 
             return false;
         }
-        static public bool IsIndexValid<T>(this IList2D<T> item, IList2DIndex index)
+        static public bool IsIndexValid<T>(this IList2D<T> item, VectorI2 index)
         {
-            return item.IsIndexValid<T>(index.GetX(), index.GetY());
+            return item.IsIndexValid<T>(index.x, index.y);
         }
     }
 }

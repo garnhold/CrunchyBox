@@ -10,16 +10,16 @@ namespace Crunchy.Dough
         {
             if (item.IsIndexValid(x, y))
             {
-                cell = new IList2DCell<T>(item, x, y);
+                cell = new IList2DCell<T>(x, y, item);
                 return true;
             }
 
             cell = default(IList2DCell<T>);
             return false;
         }
-        static public bool TryGetCell<T>(this IList2D<T> item, IList2DIndex index, out IList2DCell<T> cell)
+        static public bool TryGetCell<T>(this IList2D<T> item, VectorI2 index, out IList2DCell<T> cell)
         {
-            return item.TryGetCell<T>(index.GetX(), index.GetY(), out cell);
+            return item.TryGetCell<T>(index.x, index.y, out cell);
         }
 
         static public IList2DCell<T> GetCell<T>(this IList2D<T> item, int x, int y)
@@ -29,9 +29,9 @@ namespace Crunchy.Dough
             item.TryGetCell<T>(x, y, out cell);
             return cell;
         }
-        static public IList2DCell<T> GetCell<T>(this IList2D<T> item, IList2DIndex index)
+        static public IList2DCell<T> GetCell<T>(this IList2D<T> item, VectorI2 index)
         {
-            return item.GetCell<T>(index.GetX(), index.GetY());
+            return item.GetCell<T>(index.x, index.y);
         }
     }
 }

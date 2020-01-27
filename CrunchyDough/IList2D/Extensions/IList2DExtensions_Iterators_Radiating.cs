@@ -9,7 +9,7 @@ namespace Crunchy.Dough
         static public IEnumerable<T> GetRadiating<T>(this IList2D<T> item, int radius)
         {
             return RadiatingWalker.Iterator(radius)
-                .Convert(p => item.Get(p.item1, p.item2));
+                .Convert(p => item.Get(p));
         }
     }
 }

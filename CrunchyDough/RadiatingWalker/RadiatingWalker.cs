@@ -7,11 +7,11 @@ namespace Crunchy.Dough
     public class RadiatingWalker
     {
         private int current_radius;
-        private SortedList<float, Tuple<int, int>> points;
+        private SortedList<float, VectorI2> points;
 
         static private RadiatingWalker INSTANCE = new RadiatingWalker();
 
-        static public IEnumerable<Tuple<int, int>> Iterator(int radius)
+        static public IEnumerable<VectorI2> Iterator(int radius)
         {
             return INSTANCE.GetPoints(radius);
         }
@@ -24,7 +24,7 @@ namespace Crunchy.Dough
                 {
                     points.Add(
                         (float)Math.Sqrt(x.GetSquared() + y.GetSquared()),
-                        Tuple.New(x, y)
+                        new VectorI2(x, y)
                     );
                 }
             }
@@ -33,7 +33,7 @@ namespace Crunchy.Dough
         private RadiatingWalker()
         {
             current_radius = 0;
-            points = new SortedList<float, Tuple<int, int>>();
+            points = new SortedList<float, VectorI2>();
         }
 
         public void EnsureRadius(int radius)
@@ -50,11 +50,11 @@ namespace Crunchy.Dough
             }
         }
 
-        public IEnumerable<Tuple<int, int>> GetPoints(int radius)
+        public IEnumerable<VectorI2> GetPoints(int radius)
         {
             EnsureRadius(radius);
 
-            foreach (KeyValuePair<float, Tuple<int, int>> pair in points)
+            foreach (KeyValuePair<float, VectorI2> pair in points)
             {
                 if (pair.Key <= radius)
                     yield return pair.Value;
