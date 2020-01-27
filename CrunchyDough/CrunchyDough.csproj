@@ -459,8 +459,6 @@
     <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorGoal\GraphNodeNavigatorGoal_GraphNode.cs" />
     <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigatorGoal\GraphNodeNavigatorGoal.cs" />
     <Compile Include="Graph\GraphNodeNavigator\GraphNodeNavigator.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Looped.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Looped.cs" />
     <Compile Include="IDynamicCustomAttributeProvider\IDynamicCustomAttributeProvider.cs" />
     <Compile Include="OperationCache\Extensions\CacheManagerExtensions_OperationCache.cs" />
     <Compile Include="OrderedCollection\OrderedList.cs">
@@ -613,7 +611,6 @@
     <Compile Include="Extensions\Value\ValueExtensions_Validate.cs" />
     <Compile Include="Extensions\Value\ValueExtensions_TraverseLoop.cs" />
     <Compile Include="Extensions\Value\ValueExtensions_TraverseWeb.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_GetOrCreate.cs" />
     <Compile Include="MipMask\MipMask.cs" />
     <Compile Include="Process\Extensions\MultiProcessExtensions.cs" />
     <Compile Include="Process\MultiProcess.cs" />
@@ -633,7 +630,6 @@
     <Compile Include="Extensions\DateTime\DateTimeExtensions_To.cs" />
     <Compile Include="Extensions\DateTime\DateTimeExtensions_TimeZone.cs" />
     <Compile Include="Extensions\DateTime\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\Grid\GridExtensions_List.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions_CalculateRelations.cs" />
     <Compile Include="Extensions\HashSet\HashSetExtensions.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Ensure.cs" />
@@ -747,7 +743,6 @@
     <Compile Include="Extensions\Type\TypeExtensions_Treatment_Primitive.cs" />
     <Compile Include="Extensions\Value\ValueExtensions_Chain.cs" />
     <Compile Include="Extensions\Value\ValueExtensions_TraverseTree.cs" />
-    <Compile Include="Grid\Extensions\Special\GridExtensions_TraverseEdges.cs" />
     <Compile Include="ForTypeAttribute\ForTypeAttribute.cs" />
     <Compile Include="Latch\Latch.cs" />
     <Compile Include="NeverCatchException\NeverCatchException.cs" />
@@ -841,19 +836,6 @@
     <Compile Include="Extensions\Type\TypeExtensions_Generic.cs" />
     <Compile Include="Extensions\WeakReference\WeakReferenceExtensions.cs" />
     <Compile Include="Extensions\WeakReference\WeakReferenceExtensions_ICollection.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Array2D.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Iterators_Extended.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Extended.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByArray2D.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByArray2D.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByGrid.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByGrid.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByIEnumerable.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByIEnumerable.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Modify_ByOperation.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set_ByOperation.cs" />
     <Compile Include="LabeledItemSet\IndexedItemSet\IndexedItem.cs" />
     <Compile Include="LabeledItemSet\IndexedItemSet\IndexedItemSet.cs" />
     <Compile Include="LabeledItemSet\NamedItemSet\NamedItem.cs" />
@@ -894,9 +876,7 @@
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Add.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessTill.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Array2D.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ProcessCopy.cs" />
-    <Compile Include="Grid\Extensions\GridExtensions_Convert.cs" />
     <Compile Include="Palette\Extensions\PaletteExtensions.cs" />
     <Compile Include="Palette\Palette.cs" />
     <Compile Include="Pedia\Pedia.cs" />
@@ -923,17 +903,6 @@
     <Compile Include="Extensions\IList\IListExtensions_Index.cs" />
     <Compile Include="Extensions\Array\ArrayExtensions_Length.cs" />
     <Compile Include="CircularFixedLengthCollection\CircularQueue.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_All.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_All.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get_Block.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Iterators.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Get.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Iterators_Neighbors.cs" />
-    <Compile Include="Grid\Extensions\Derive\GridExtensions_Derive.cs" />
-    <Compile Include="Grid\Extensions\Derive\GridExtensions_Derive_Solid.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Neighbors.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_SequenceRating.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Sequence.cs" />
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_MoveNext.cs" />
@@ -946,12 +915,6 @@
     <Compile Include="Extensions\Bool\BoolExtensions.cs" />
     <Compile Include="Extensions\Char\CharExtensions.cs" />
     <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions.cs" />
-    <Compile Include="Grid\Grid.cs" />
-    <Compile Include="Grid\Extensions\GridExtensions.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get_Block.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Get.cs" />
-    <Compile Include="Grid\Extensions\Data\GridExtensions_Data_Set.cs" />
-    <Compile Include="Grid\Extensions\Cell\GridExtensions_Cells_Iterators_Spiral.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Loop.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Add.cs" />
@@ -1455,14 +1418,6 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Random.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Random.cs" />
     <Compile Include="StreamSystem\Base\Extensions\StreamSystemExtensions_RandomLine.cs" />
-    <Compile Include="Grid\Extensions\GridExtensions_Scale.cs" />
-    <Compile Include="Grid\Extensions\GridExtensions_Stamp.cs" />
-    <Compile Include="Grid\Extensions\GridExtensions_VectorF2.cs" />
-    <Compile Include="Grid\Extensions\GridExtensions_VectorI2.cs" />
-    <Compile Include="Grid\Extensions\GridExtensions_Get.cs" />
-    <Compile Include="GridCell\GridCell.cs" />
-    <Compile Include="GridCell\Extensions\GridCellExtensions_VectorF2.cs" />
-    <Compile Include="GridCell\Extensions\GridCellExtensions_VectorI2.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Neighbors.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Radiating.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Size.cs" />
@@ -1472,6 +1427,7 @@
     <Compile Include="IList2D\Extensions\IList2DExtensions_Looped.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Dropped.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Capped.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_Scale.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1686,8 +1642,6 @@
     <Folder Include="Graph\GraphNodeWanderer\" />
     <Folder Include="Extensions\Float\" />
     <Folder Include="Extensions\Float\IList\" />
-    <Folder Include="GridCell\" />
-    <Folder Include="GridCell\Extensions\" />
     <Folder Include="IList2DCell\" />
     <Folder Include="IList2DCell\Extensions\" />
   </ItemGroup>
