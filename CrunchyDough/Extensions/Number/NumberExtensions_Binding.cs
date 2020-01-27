@@ -55,6 +55,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public byte BindIndex(this byte item, byte count)
+        {
+            return item.BindBetween(0, (byte)(count - 1));
+        }
 
 		static public bool IsBoundBetween(this byte item, byte value1, byte value2)
 		{
@@ -72,6 +77,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this byte item, byte count)
+        {
+            return item.IsBoundBetween(0, (byte)(count - 1));
+        }
         
         static public byte BindAround(this byte item, byte value, byte radius)
         {
@@ -162,6 +172,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public short BindIndex(this short item, short count)
+        {
+            return item.BindBetween(0, (short)(count - 1));
+        }
 
 		static public bool IsBoundBetween(this short item, short value1, short value2)
 		{
@@ -179,6 +194,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this short item, short count)
+        {
+            return item.IsBoundBetween(0, (short)(count - 1));
+        }
         
         static public short BindAround(this short item, short value, short radius)
         {
@@ -269,6 +289,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public int BindIndex(this int item, int count)
+        {
+            return item.BindBetween(0, (int)(count - 1));
+        }
 
 		static public bool IsBoundBetween(this int item, int value1, int value2)
 		{
@@ -286,6 +311,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this int item, int count)
+        {
+            return item.IsBoundBetween(0, (int)(count - 1));
+        }
         
         static public int BindAround(this int item, int value, int radius)
         {
@@ -376,6 +406,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public long BindIndex(this long item, long count)
+        {
+            return item.BindBetween(0L, (long)(count - 1L));
+        }
 
 		static public bool IsBoundBetween(this long item, long value1, long value2)
 		{
@@ -393,6 +428,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this long item, long count)
+        {
+            return item.IsBoundBetween(0L, (long)(count - 1L));
+        }
         
         static public long BindAround(this long item, long value, long radius)
         {
@@ -483,6 +523,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public float BindIndex(this float item, float count)
+        {
+            return item.BindBetween(0.0f, (float)(count - 1.0f));
+        }
 
 		static public bool IsBoundBetween(this float item, float value1, float value2)
 		{
@@ -500,6 +545,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this float item, float count)
+        {
+            return item.IsBoundBetween(0.0f, (float)(count - 1.0f));
+        }
         
         static public float BindAround(this float item, float value, float radius)
         {
@@ -590,6 +640,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public double BindIndex(this double item, double count)
+        {
+            return item.BindBetween(0.0, (double)(count - 1.0));
+        }
 
 		static public bool IsBoundBetween(this double item, double value1, double value2)
 		{
@@ -607,6 +662,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this double item, double count)
+        {
+            return item.IsBoundBetween(0.0, (double)(count - 1.0));
+        }
         
         static public double BindAround(this double item, double value, double radius)
         {
@@ -697,6 +757,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public decimal BindIndex(this decimal item, decimal count)
+        {
+            return item.BindBetween(0.0m, (decimal)(count - 1.0m));
+        }
 
 		static public bool IsBoundBetween(this decimal item, decimal value1, decimal value2)
 		{
@@ -714,6 +779,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this decimal item, decimal count)
+        {
+            return item.IsBoundBetween(0.0m, (decimal)(count - 1.0m));
+        }
         
         static public decimal BindAround(this decimal item, decimal value, decimal radius)
         {

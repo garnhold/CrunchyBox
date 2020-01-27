@@ -4,13 +4,13 @@
 <#@ output extension=".cs" #>
 <#
 NumericInfo[] infos = new NumericInfo[]{
-	new NumericInfo("byte", "ByteRange", "ByteVariance", "0"),
-	new NumericInfo("short", "ShortRange", "ShortVariance", "0"),
-	new NumericInfo("int", "IntRange", "IntVariance", "0"),
-	new NumericInfo("long", "LongRange", "LongVariance", "0L"),
-	new NumericInfo("float", "FloatRange", "FloatVariance", "0.0f"),
-	new NumericInfo("double", "DoubleRange", "DoubleVariance", "0.0"),
-	new NumericInfo("decimal", "DecimalRange", "DecimalVariance", "0.0m")
+	new NumericInfo("byte", "ByteRange", "ByteVariance", "0", "1"),
+	new NumericInfo("short", "ShortRange", "ShortVariance", "0", "1"),
+	new NumericInfo("int", "IntRange", "IntVariance", "0", "1"),
+	new NumericInfo("long", "LongRange", "LongVariance", "0L", "1L"),
+	new NumericInfo("float", "FloatRange", "FloatVariance", "0.0f", "1.0f"),
+	new NumericInfo("double", "DoubleRange", "DoubleVariance", "0.0", "1.0"),
+	new NumericInfo("decimal", "DecimalRange", "DecimalVariance", "0.0m", "1.0m")
 };
 #>
 using System;
@@ -71,6 +71,11 @@ namespace Crunchy.Dough
 		{
 			return item.BindBetween(range.x1, range.x2);
 		}
+        
+        static public <#=info.type_name#> BindIndex(this <#=info.type_name#> item, <#=info.type_name#> count)
+        {
+            return item.BindBetween(<#=info.zero#>, (<#=info.type_name#>)(count - <#=info.one#>));
+        }
 
 		static public bool IsBoundBetween(this <#=info.type_name#> item, <#=info.type_name#> value1, <#=info.type_name#> value2)
 		{
@@ -88,6 +93,11 @@ namespace Crunchy.Dough
 		{
 			return item.IsBoundBetween(range.x1, range.x2);
 		}
+        
+        static public bool IsBoundIndex(this <#=info.type_name#> item, <#=info.type_name#> count)
+        {
+            return item.IsBoundBetween(<#=info.zero#>, (<#=info.type_name#>)(count - <#=info.one#>));
+        }
         
         static public <#=info.type_name#> BindAround(this <#=info.type_name#> item, <#=info.type_name#> value, <#=info.type_name#> radius)
         {
@@ -140,14 +150,16 @@ public class NumericInfo
     public readonly string variance_name;
     
     public readonly string zero;
+    public readonly string one;
 
-	public NumericInfo(string t, string r, string v, string z)
+	public NumericInfo(string t, string r, string v, string z, string o)
 	{
 		type_name = t;
 		range_name = r;
         variance_name = v;
         
         zero = z;
+        one = o;
 	}
 }
 #>
