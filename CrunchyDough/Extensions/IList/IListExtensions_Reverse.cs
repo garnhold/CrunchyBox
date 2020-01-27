@@ -8,8 +8,7 @@ namespace Crunchy.Dough
     {
         static public IList<T> GetReverse<T>(this IList<T> item)
         {
-            return new IListTransform<T>(
-                () => item.Count,
+            return new IListTransform<T>(item.Count,
                 i => item[item.GetFinalIndex() - i]
             );
         }

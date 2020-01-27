@@ -10,8 +10,7 @@ namespace Crunchy.Dough
         {
             if (item != null)
             {
-                return new IListTransform<OUTPUT_TYPE>(
-                    () => item.Count,
+                return new IListTransform<OUTPUT_TYPE>(item.Count,
                     i => operation(item[i])
                 );
             }

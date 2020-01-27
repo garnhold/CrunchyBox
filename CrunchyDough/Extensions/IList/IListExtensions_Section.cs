@@ -11,10 +11,8 @@ namespace Crunchy.Dough
             start = start.BindBetween(0, item.Count);
             end = end.BindBetween(start, item.Count);
 
-            int count = end - start;
-
             return new IListTransform<T>(
-                () => count,
+                end - start,
                 i => item[start + i],
                 (i, v) => item[start + i] = v
             );

@@ -6,13 +6,13 @@ namespace Crunchy.Dough
 {
     public class IListTransform<T> : IList<T>, IEnumerable<T>
     {
-        private Operation<int> get_count;
+        private int count;
 
         private Operation<T, int> get_operation;
         private Process<int, T> set_process;
 
         public bool IsReadOnly { get { return true; } }
-        public int Count { get { return get_count(); } }
+        public int Count { get { return count; } }
 
         public T this[int index]
         {
@@ -20,16 +20,16 @@ namespace Crunchy.Dough
             set { set_process(index, value); }
         }
 
-        public IListTransform(Operation<int> c, Operation<T, int> g, Process<int, T> s)
+        public IListTransform(int c, Operation<T, int> g, Process<int, T> s)
         {
-            get_count = c;
+            count = c;
 
             get_operation = g ?? (i => throw new InvalidOperationException(GetType() + " doesn't support reading."));
             set_process = s ?? ((i, v) => throw new InvalidOperationException(GetType() + " doesn't support writing."));
         }
 
-        public IListTransform(Operation<int> c, Operation<T, int> g) : this(c, g, null) { }
-        public IListTransform(Operation<int> c, Process<int, T> s) : this(c, null, s) { }
+        public IListTransform(int c, Operation<T, int> g) : this(c, g, null) { }
+        public IListTransform(int c, Process<int, T> s) : this(c, null, s) { }
 
         public void Clear()
         {
@@ -79,7 +79,7 @@ namespace Crunchy.Dough
 
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < count; i++)
                 yield return this[i];
         }
         IEnumerator IEnumerable.GetEnumerator()
