@@ -1189,7 +1189,6 @@
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Set.cs" />
     <Compile Include="IList2D\Extensions\Special\IList2DExtensions_Solid.cs" />
     <Compile Include="RadiatingWalker\RadiatingWalker.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_GetCell.cs" />
     <Compile Include="RotationDirection\RotationDirection.cs" />
     <Compile Include="Roulette\Extensions\RouletteExtensions.cs" />
     <Compile Include="Roulette\Extensions\RouletteExtensions_Add.cs" />
@@ -1420,9 +1419,6 @@
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Neighbors.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Radiating.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Size.cs" />
-    <Compile Include="IList2DCell\IList2DCell.cs" />
-    <Compile Include="IList2DCell\Extensions\IList2DCellExtensions.cs" />
-    <Compile Include="IList2DCell\Extensions\IList2DCellExtensions_Set.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Looped.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Dropped.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Capped.cs" />
@@ -1648,8 +1644,6 @@
     <Folder Include="Graph\GraphNodeWanderer\" />
     <Folder Include="Extensions\Float\" />
     <Folder Include="Extensions\Float\IList\" />
-    <Folder Include="IList2DCell\" />
-    <Folder Include="IList2DCell\Extensions\" />
     <Folder Include="IList2D\Implementations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
