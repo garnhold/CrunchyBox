@@ -1218,8 +1218,6 @@
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Convert.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Set.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Iterators.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Iterators_Neighbors.cs" />
     <Compile Include="Extensions\IList\IListExtensions_ConvertWithIndex.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_ConvertWithIndexs.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Bound.cs" />
@@ -1231,7 +1229,6 @@
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Set.cs" />
     <Compile Include="IList2D\Extensions\Special\IList2DExtensions_Solid.cs" />
     <Compile Include="RadiatingWalker\RadiatingWalker.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Iterators_Radiating.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Get_Cell.cs" />
     <Compile Include="RotationDirection\RotationDirection.cs" />
     <Compile Include="Roulette\Extensions\RouletteExtensions.cs" />
@@ -1468,6 +1465,8 @@
     <Compile Include="GridCell\GridCell.cs" />
     <Compile Include="GridCell\Extensions\GridCellExtensions_VectorF2.cs" />
     <Compile Include="GridCell\Extensions\GridCellExtensions_VectorI2.cs" />
+    <Compile Include="VectorI2\Extensions\VectorI2Extensions_Neighbors.cs" />
+    <Compile Include="VectorI2\Extensions\VectorI2Extensions_Radiating.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
