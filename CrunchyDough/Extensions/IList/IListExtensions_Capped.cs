@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public int GetCappedIndex<T>(this IList<T> item, int index)
         {
-            return index.BindBetween(0, item.GetFinalIndex());
+            return index.BindIndex(item.Count());
         }
 
         static public void SetCapped<T>(this IList<T> item, int index, T value)

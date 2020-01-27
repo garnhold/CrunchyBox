@@ -1217,7 +1217,6 @@
     <Compile Include="Empty\EmptyList2D.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Convert.cs" />
-    <Compile Include="IList2D\Extensions\IList2DExtensions_Set.cs" />
     <Compile Include="Extensions\IList\IListExtensions_ConvertWithIndex.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_ConvertWithIndexs.cs" />
     <Compile Include="IList2D\Extensions\IList2DExtensions_Section_Bound.cs" />
@@ -1470,6 +1469,9 @@
     <Compile Include="IList2DCell\IList2DCell.cs" />
     <Compile Include="IList2DCell\Extensions\IList2DCellExtensions.cs" />
     <Compile Include="IList2DCell\Extensions\IList2DCellExtensions_Set.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_Looped.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_Dropped.cs" />
+    <Compile Include="IList2D\Extensions\IList2DExtensions_Capped.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
