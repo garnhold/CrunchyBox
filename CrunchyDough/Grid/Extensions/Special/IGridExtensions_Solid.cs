@@ -39,9 +39,12 @@ namespace Crunchy.Dough
             VectorI2 point;
             IGrid<bool> edges = item.ConvertToStrictEdges().ToGrid();
 
-            for (int y = 0; y < edges.GetHeight(); y++)
+            int width = edges.GetWidth();
+            int height = edges.GetHeight();
+
+            for (int y = 0; y < height; y++)
             {
-                for (int x = 0; x < edges.GetWidth(); x++)
+                for (int x = 0; x < width; x++)
                 {
                     point = new VectorI2(x, y);
 
