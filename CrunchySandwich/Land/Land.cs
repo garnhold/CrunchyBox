@@ -31,7 +31,7 @@ namespace Crunchy.Sandwich
             land_region_types.Process(t => t.InitilizeLandRegion(this, palette));
             land_region_types.ProcessTillCompleteOrStagnated(t => t.BuildLandRegion(this, grid));
 
-            grid.GetData().Process(p => p.BuildLandRegionTypePresences());
+            grid.Process(p => p.BuildLandRegionTypePresences());
 
             land_region_types.Process(t => t.PaintLandRegion(this, grid));
             land_region_types.Process(t => t.PopulateLandRegion(this, grid, population_parent));

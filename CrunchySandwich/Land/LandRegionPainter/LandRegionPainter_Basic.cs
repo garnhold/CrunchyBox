@@ -19,7 +19,7 @@ namespace Crunchy.Sandwich
 
         public override void PaintLandRegion(Land land, LandRegionType land_region_type, IGrid<LandPoint> grid)
         {
-            grid.GetData().Process(p =>
+            grid.Process(p =>
                 GetLandRegionSplats().Process(s => p.PaintLandRegionSplatAlpha(land_region_type, s))
             );
         }

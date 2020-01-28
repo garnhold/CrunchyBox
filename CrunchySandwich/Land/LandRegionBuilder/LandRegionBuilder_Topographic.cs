@@ -16,7 +16,7 @@ namespace Crunchy.Sandwich
 
         public override bool BuildLandRegion(Land land, LandRegionType land_region_type, IGrid<LandPoint> grid)
         {
-            grid.GetData().Process(p =>
+            grid.Process(p =>
                 p.PaintLandRegionTypeStrength(land_region_type, CalculateLandRegionTypeStrength(p.GetTerrainSample()))
             );
 
