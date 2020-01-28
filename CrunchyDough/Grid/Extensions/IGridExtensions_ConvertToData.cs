@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    static public class IGridExtensions_ConvertTo
+    static public class IGridExtensions_ConvertToData
     {
         static public IEnumerable<T> ConvertToData<T>(this IGrid<T> item)
         {
@@ -34,11 +34,6 @@ namespace Crunchy.Dough
         static public IEnumerable<OUTPUT_TYPE> ConvertWithIndexsToData<INPUT_TYPE, OUTPUT_TYPE>(this IGrid<INPUT_TYPE> item, Operation<OUTPUT_TYPE, VectorI2, INPUT_TYPE> operation)
         {
             return item.ConvertWithIndexs(operation).ConvertToData();
-        }
-
-        static public IEnumerable<KeyValuePair<VectorI2, T>> ConvertToKeyValuePairs<T>(this IGrid<T> item)
-        {
-            return item.ConvertWithIndexsToData((i, v) => KeyValuePair.New(i, v));
         }
     }
 }

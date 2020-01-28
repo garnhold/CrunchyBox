@@ -21,6 +21,11 @@ namespace Crunchy.Dough
             return EmptyGrid<T>.INSTANCE;
         }
 
+        static public ISparseGrid<T> ISparseGrid<T>()
+        {
+            return EmptySparseGrid<T>.INSTANCE;
+        }
+
         static public ICollection<T> ICollection<T>()
         {
             return EmptyList<T>.INSTANCE;

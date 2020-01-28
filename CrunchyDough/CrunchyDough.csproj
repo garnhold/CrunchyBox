@@ -1188,7 +1188,6 @@
     <Compile Include="Grid\Extensions\IGridExtensions_Section.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Convert.cs" />
     <Compile Include="Extensions\IList\IListExtensions_ConvertWithIndex.cs" />
-    <Compile Include="Grid\Extensions\IGridExtensions_ConvertWithIndexs.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Section_Bound.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Section_Unbound.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_To.cs" />
@@ -1435,7 +1434,13 @@
     <Compile Include="Grid\Extensions\IGridExtensions_Stamp.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Get.cs" />
     <Compile Include="Grid\Grid.cs" />
-    <Compile Include="Grid\Extensions\IGridExtensions_ConvertTo.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_ConvertToData.cs" />
+    <Compile Include="SparseGrid\ISparseGrid.cs" />
+    <Compile Include="SparseGrid\SparseGrid.cs" />
+    <Compile Include="SparseGrid\Extensions\ISparseGridExtensions.cs" />
+    <Compile Include="SparseGrid\Extensions\ISparseGridExtensions_Has.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_ConvertToKeyValuePairs.cs" />
+    <Compile Include="Empty\EmptySparseGrid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1649,6 +1654,8 @@
     <Folder Include="Graph\GraphNodeWanderer\" />
     <Folder Include="Extensions\Float\" />
     <Folder Include="Extensions\Float\IList\" />
+    <Folder Include="SparseGrid\" />
+    <Folder Include="SparseGrid\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
