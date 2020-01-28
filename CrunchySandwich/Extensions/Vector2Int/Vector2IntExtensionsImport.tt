@@ -1,0 +1,31 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="$(SolutionDir)/CrunchyDough/bin/Release/CrunchyDough.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Crunchy.Dough" #>
+<#@ output extension=".cs" #>
+<#
+string[] filenames = Directory.GetFiles(Host.ResolvePath("$(SolutionDir)/CrunchyDough/VectorI2/Extensions/"), "*.cs", SearchOption.AllDirectories);
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+using Crunchy.Dough;
+
+<#foreach(string filename in filenames.Skip(f => f.EndsWithAny("VectorI2Extensions_Radiating.cs"))){#>
+    <#=
+        File.ReadAllText(filename)
+            .RegexRemove("^.*?(?=namespace)")
+            .RegexRemove("\\s+$")
+            .Replace("VectorI2.UP", "Vector2Int.up")
+            .Replace("VectorI2.LEFT", "Vector2Int.left")
+            .Replace("VectorI2.DOWN", "Vector2Int.down")
+            .Replace("VectorI2.RIGHT", "Vector2Int.right")
+            .Replace("VectorI2", "Vector2Int")
+            .Replace("namespace Crunchy.Dough", "namespace Crunchy.Sandwich")
+    #>
+<#}#>

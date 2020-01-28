@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class Vector2IntExtensions_Vector3Int
     {
         static public Vector3Int GetVector3Int(this Vector2Int item, int z)

@@ -54,16 +54,6 @@ namespace Crunchy.Dough
         public VectorI2(int v) : this(v, v) { }
         public VectorI2(float v) : this(v, v) { }
 
-        public float GetMagnitude()
-        {
-            return Mathq.Sqrt(GetSquaredMagnitude());
-        }
-
-        public int GetSquaredMagnitude()
-        {
-            return x*x + y*y;
-        }
-
         public override int GetHashCode()
         {
             unchecked

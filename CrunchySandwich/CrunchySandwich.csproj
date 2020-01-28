@@ -146,10 +146,8 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_Orient.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Scale.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
-    <Compile Include="Extensions\Vector2Int\Vector2IntExtensions_Magnitude.cs" />
     <Compile Include="Extensions\Vector2Int\Vector2IntExtensions_Vector3Int.cs" />
     <Compile Include="Extensions\Vector2Int\Vector2IntExtensions_Vector2.cs" />
-    <Compile Include="Extensions\Vector2Int\Vector2IntExtensions.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions_Vector3.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions_Vector2Int.cs" />
@@ -1196,6 +1194,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\Vector2Int\Vector2IntExtensionsImport.cs">
+      <DependentUpon>Vector2IntExtensionsImport.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1425,6 +1428,10 @@
     <Content Include="Extensions\Vector2\Vector2ExtensionsImport.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Vector2ExtensionsImport.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Vector2Int\Vector2IntExtensionsImport.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Vector2IntExtensionsImport.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

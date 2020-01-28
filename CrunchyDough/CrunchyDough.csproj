@@ -1445,6 +1445,7 @@
     <Compile Include="VectorF2\Extensions\VectorF2s.cs">
       <DependentUpon>VectorF2s.tt</DependentUpon>
     </Compile>
+    <Compile Include="VectorI2\Extensions\VectorI2Extensions_Magnitude.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
