@@ -13,7 +13,7 @@ namespace Crunchy.Strudel
 
         static public MarkDefinition Create(IEnumerable<VectorF2> p)
         {
-            return Create(p.ConvertToLineSegmentF2s());
+            return Create(p.Connect());
         }
 
         static public MarkDefinition Create(IEnumerable<LineSegmentF2> l)

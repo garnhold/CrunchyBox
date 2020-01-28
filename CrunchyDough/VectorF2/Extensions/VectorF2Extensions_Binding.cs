@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
-{
+{   
     static public class VectorF2Extensions_Binding
     {
         static public VectorF2 BindAbove(this VectorF2 item, VectorF2 lower)
@@ -19,6 +19,11 @@ namespace Crunchy.Dough
         static public VectorF2 BindBetween(this VectorF2 item, VectorF2 value1, VectorF2 value2)
         {
             return new VectorF2(item.x.BindBetween(value1.x, value2.x), item.y.BindBetween(value1.y, value2.y));
+        }
+
+        static public VectorF2 BindWithin(this VectorF2 item, RectF2 rect)
+        {
+            return item.BindBetween(rect.min, rect.max);
         }
 
         static public VectorF2 BindAround(this VectorF2 item, float radius)

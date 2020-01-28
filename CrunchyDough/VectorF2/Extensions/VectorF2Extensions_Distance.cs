@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
-{    
+{
     static public class VectorF2Extensions_Distance
     {
         static public float GetDistanceTo(this VectorF2 item, VectorF2 point)

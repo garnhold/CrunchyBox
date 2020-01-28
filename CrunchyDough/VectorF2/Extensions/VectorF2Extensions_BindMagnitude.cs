@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
-{    
+{   
     static public class VectorF2Extensions_BindMagnitude
     {
         static public VectorF2 BindMagnitudeAbove(this VectorF2 item, float lower)

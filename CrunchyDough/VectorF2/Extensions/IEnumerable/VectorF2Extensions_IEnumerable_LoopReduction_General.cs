@@ -2,14 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using UnityEngine;
-
-namespace Crunchy.Sandwich
-{
-    using Dough;    
-    static public class Vector2Extensions_IEnumerable_LoopReduction_General
+namespace Crunchy.Dough
+{    
+    static public class VectorF2Extensions_IEnumerable_LoopReduction_General
     {
-        static public IEnumerable<Vector2> ApproximateLoop(this IEnumerable<Vector2> item, int quality, float maximum_normal_deviance, float minimum_inter_length, float minimum_area)
+        static public IEnumerable<VectorF2> ApproximateLoop(this IEnumerable<VectorF2> item, int quality, float maximum_normal_deviance, float minimum_inter_length, float minimum_area)
         {
             if (quality > 0)
             {

@@ -2,21 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using UnityEngine;
-
-namespace Crunchy.Sandwich
-{
-    using Dough;    
-    static public class Vector2Extensions_IEnumerable_Winding
+namespace Crunchy.Dough
+{    
+    static public class VectorF2Extensions_IEnumerable_Winding
     {
-        static public IEnumerable<Vector2> WindClockwise(this IEnumerable<Vector2> item)
+        static public IEnumerable<VectorF2> WindClockwise(this IEnumerable<VectorF2> item)
         {
             if (item.IsLoopClockwise())
                 return item;
 
             return item.Reverse();
         }
-        static public IEnumerable<Vector2> WindCounterClockwise(this IEnumerable<Vector2> item)
+        static public IEnumerable<VectorF2> WindCounterClockwise(this IEnumerable<VectorF2> item)
         {
             if (item.IsLoopCounterClockwise())
                 return item;

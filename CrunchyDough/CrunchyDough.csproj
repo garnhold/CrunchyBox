@@ -1219,48 +1219,7 @@
     <Compile Include="Trig\TrigDegree.cs" />
     <Compile Include="Trig\TrigPercent.cs" />
     <Compile Include="Trig\TrigRadian.cs" />
-    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable.cs" />
-    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_Floats.cs" />
-    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_IteratedBinaryOperation.cs" />
-    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_LineSegmentF2s.cs" />
-    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_LoopReduction.cs" />
-    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
-    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathReduction.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Custom.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Degrees.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Percent.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Radians.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Binding.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_BindMagnitude.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalDirection.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Compare.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Component.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Direction.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Distance.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Dot.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Interpolate.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_IsBound.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line_Point.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line_ProjectedPoint.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Looped.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_MinMax.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_MoveTowards.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Normal.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Normalize.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Towards.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Triangle.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_VectorI2.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2Extensions_With.cs" />
     <Compile Include="VectorF2\VectorF2.cs" />
-    <Compile Include="VectorF2\VectorF2s.cs">
-      <DependentUpon>VectorF2s.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="VectorI2\Extensions\HashSet\VectorI2Extensions_HashSet.cs" />
     <Compile Include="VectorI2\Extensions\HashSet\VectorI2Extensions_HashSet_CardinallyContinous.cs" />
     <Compile Include="VectorI2\Extensions\ICollection\VectorI2Extensions_ICollection_Rectangle.cs" />
@@ -1435,6 +1394,57 @@
     <Compile Include="Grid\Extensions\IGridExtensions_ConvertToKeyValuePairs.cs" />
     <Compile Include="Grid\Grids.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Mask.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_Area.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_Connect.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_Convert.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_Floats.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_IteratedBinaryOperation.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_Loop.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_LoopInflate.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_LoopReduction.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_LoopReduction_General.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathPromotion.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_PathReduction.cs" />
+    <Compile Include="VectorF2\Extensions\IEnumerable\VectorF2Extensions_IEnumerable_Winding.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Abs.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Custom.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Degrees.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Percent.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Angle_Radians.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Aspect.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Binding.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_BindMagnitude.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalDirection.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_CardinalOrdinalDirection.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Compare.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Component.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Direction.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Distance.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Dot.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Fill.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_HorizontalDirection.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Interpolate.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_IsBound.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line_Point.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Line_ProjectedPoint.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Looped.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Magnitude.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_MinMax.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_MoveTowards.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Normal.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Normalize.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_RectF2.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Towards.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Triangle.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_VectorI2.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_With.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2s.cs">
+      <DependentUpon>VectorF2s.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1597,7 +1607,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumericDelta.cs</LastGenOutput>
     </Content>
-    <Content Include="VectorF2\VectorF2s.tt">
+    <Content Include="VectorF2\Extensions\VectorF2s.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>VectorF2s.cs</LastGenOutput>
     </Content>

@@ -150,7 +150,6 @@
     <Compile Include="Extensions\Vector2Int\Vector2IntExtensions_Vector3Int.cs" />
     <Compile Include="Extensions\Vector2Int\Vector2IntExtensions_Vector2.cs" />
     <Compile Include="Extensions\Vector2Int\Vector2IntExtensions.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Vector2Int.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions_Vector3.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions_Vector2Int.cs" />
@@ -256,10 +255,6 @@
     <Compile Include="Extensions\Rect\RectExtensions_Adjust_Side.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_MoveTowards.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_Towards.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_CardinalOrdinalDirection.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_HorizontalDirection.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Towards.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_MoveTowards.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Release.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick_Gesture.cs" />
     <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Hold.cs" />
@@ -469,31 +464,6 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_Radial.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Adjust.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_ContentIdentity.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Convert.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_LoopInflate.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_LoopReduction_General.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_PathPromotion.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Loop.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Winding.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Area.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Tesselate.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_FaceLoop.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Spacar.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Floats.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Connect.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Aspect.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Normal.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Rect.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Bounds.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_VectorI2.cs" />
-    <Compile Include="Extensions\Vector2\Vector2s.cs">
-      <DependentUpon>Vector2s.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Abs.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_CardinalDirection.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Compare.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Connect.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Triangles.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Planar.cs" />
@@ -836,18 +806,6 @@
     <Compile Include="Extensions\UnityObject\IEnumerable\UnityObjectExtensions_IEnumerable_Spawn.cs" />
     <Compile Include="Extensions\UnityObject\IEnumerable\UnityObjectExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Spawn.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_IteratedBinaryOperation.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_IsBound.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Axis.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Interpolate.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Line_ProjectedPoint.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_BindMagnitude.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_MinMax.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Binding.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_GUI.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Arear.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_VectorF2.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_Bounds.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable_IteratedBinaryOperation.cs" />
     <Compile Include="Extensions\Vector3\IEnumerable\Vector3Extensions_IEnumerable.cs" />
@@ -1113,31 +1071,12 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Children.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Custom.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Degrees.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Percent.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Angle_Radians.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Distance.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Component.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Component.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Magnitude.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Normalize.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Direction.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Direction.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Distance.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Dot.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Dot.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Line_Point.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_LoopReduction.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Magnitude.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Normalize.cs" />
-    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_PathReduction.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Line.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Spacar.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Triangle.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_With.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Planar.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_WithAdjusted.cs" />
@@ -1199,7 +1138,6 @@
     <Compile Include="SaveState\Extensions\HasSaveStateSolidObjectExtensions.cs" />
     <Compile Include="SaveState\HasSaveStateSolidObject.cs" />
     <Compile Include="SaveState\Extensions\HasSaveStateSolidObjectExtensions_SaveLoad.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Fill.cs" />
     <Compile Include="PixelArtCamera\PixelArtCamera.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Bounds.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Rect.cs" />
@@ -1236,7 +1174,6 @@
     <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_MouseButton.cs" />
     <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseWheelAxis.cs" />
     <Compile Include="Extensions\Input\InputExtensions.cs" />
-    <Compile Include="Extensions\Vector2\Vector2Extensions_Looped.cs" />
     <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Roll.cs" />
     <Compile Include="Extensions\Joint\JointExtensions.cs" />
     <Compile Include="Extensions\Joint\JointExtensions_Connect.cs" />
@@ -1244,6 +1181,21 @@
     <Compile Include="Extensions\ConfigurableJoint\ConfigurableJointExtensions_Setup.cs" />
     <Compile Include="Extensions\VectorI2\VectorI2Extensions_Vector2.cs" />
     <Compile Include="Extensions\VectorI2\VectorI2Extensions.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_FaceLoop.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Spacar.cs" />
+    <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Tesselate.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Arear.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Axis.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Bounds.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_GUI.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Spacar.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_Vector2Int.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_VectorF2.cs" />
+    <Compile Include="Extensions\Vector2\Vector2ExtensionsImport.cs">
+      <DependentUpon>Vector2ExtensionsImport.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1450,10 +1402,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ITilemapTilemapExtensions.cs</LastGenOutput>
     </Content>
-    <Content Include="Extensions\Vector2\Vector2s.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Vector2s.cs</LastGenOutput>
-    </Content>
     <Content Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>InputDeviceComponentIds.cs</LastGenOutput>
@@ -1473,6 +1421,10 @@
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Renderer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Renderer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Vector2\Vector2ExtensionsImport.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Vector2ExtensionsImport.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

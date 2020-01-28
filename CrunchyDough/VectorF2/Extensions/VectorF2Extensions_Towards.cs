@@ -13,5 +13,12 @@ namespace Crunchy.Dough
                 item.y.GetTowards(target.y, amount.y)
             );
         }
+        static public VectorF2 GetTowards(this VectorF2 item, VectorF2 target, float amount)
+        {
+            return item.GetTowards(
+                target,
+                item.GetDirection(target) * amount
+            );
+        }
     }
 }

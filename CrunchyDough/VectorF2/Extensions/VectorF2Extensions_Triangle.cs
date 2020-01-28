@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
-{    
+{
     static public class VectorF2Extensions_Triangle
     {
         static public float CalculateTriangleArea(this VectorF2 point1, VectorF2 point2, VectorF2 point3)

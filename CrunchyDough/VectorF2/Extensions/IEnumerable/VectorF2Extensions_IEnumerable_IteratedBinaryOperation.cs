@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
-{    
+{   
     static public class VectorF2Extensions_IEnumerable_IteratedBinaryOperation
     {
         static public VectorF2 Sum(this IEnumerable<VectorF2> item)
