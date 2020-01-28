@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class RectExtensions_Constrain
     {
         static public Rect GetConstrainedBelowX(this Rect item, float x)

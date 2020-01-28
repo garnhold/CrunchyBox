@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class RectExtensions_Compare
     {
         static public bool IsCollapsed(this Rect item, float tolerance)
