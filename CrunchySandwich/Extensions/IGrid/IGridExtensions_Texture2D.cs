@@ -12,7 +12,7 @@ namespace Crunchy.Sandwich
     {
         static public Texture2D CreateTexture2D<T>(this IGrid<T> item, Operation<Color, T> operation)
         {
-            return Texture2DExtensions.Create(item.GetWidth(), item.GetHeight(), item.GetData().Convert(operation).ToArray());
+            return Texture2DExtensions.Create(item.GetWidth(), item.GetHeight(), item.ConvertToData(operation).ToArray());
         }
 
         static public Texture2D CreateTexture2D(this IGrid<Color> item)

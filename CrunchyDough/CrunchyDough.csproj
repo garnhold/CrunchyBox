@@ -1180,7 +1180,6 @@
     </Compile>
     <Compile Include="Grid\IGrid.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions.cs" />
-    <Compile Include="Grid\Extensions\IGridExtensions_IEnumerable.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Index.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Convert.cs" />
     <Compile Include="Extensions\IList\IListTransform.cs" />
@@ -1436,6 +1435,7 @@
     <Compile Include="Grid\Extensions\IGridExtensions_Stamp.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Get.cs" />
     <Compile Include="Grid\Grid.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_ConvertTo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
