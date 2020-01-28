@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public void Add<T>(this IGrid<List<T>> item, int x, int y, T value)
         {
-            item.GetOrCreate(x, y, () => new List<T>()).Add(value);
+            item.GetOrCreateDefaultValue(x, y).Add(value);
         }
         static public void Add<T>(this IGrid<List<T>> item, VectorI2 index, T value)
         {

@@ -1431,7 +1431,7 @@
     <Compile Include="Grid\Extensions\IGridExtensions_Capped.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Scale.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_List.cs" />
-    <Compile Include="Grid\Extensions\IGridExtensions_GetOrCreate.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_GetOrCreateValue.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Stamp.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Get.cs" />
     <Compile Include="Grid\Grid.cs" />
