@@ -1446,6 +1446,24 @@
       <DependentUpon>VectorF2s.tt</DependentUpon>
     </Compile>
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Magnitude.cs" />
+    <Compile Include="RectI2\Extensions\IEnumerable\RectI2Extensions_IEnumerable.cs" />
+    <Compile Include="RectI2\Extensions\IEnumerable\RectI2Extensions_IEnumerable_Boolean.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Adjust.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Boolean.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Compare.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Constrain.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Contains.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_GridChunk.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Points.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Shift.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Sides.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Size.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Split.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_Split_Center.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_SplitIntoQuarters.cs" />
+    <Compile Include="RectI2\RectI2.cs" />
+    <Compile Include="VectorI2\Extensions\IEnumerable\VectorI2Extensions_IEnumerable_IteratedBinaryOperation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1658,6 +1676,7 @@
     <Folder Include="Graph\GraphNodeWanderer\" />
     <Folder Include="Extensions\Float\" />
     <Folder Include="Extensions\Float\IList\" />
+    <Folder Include="RectI2\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
