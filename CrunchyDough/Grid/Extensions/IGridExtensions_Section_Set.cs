@@ -8,8 +8,7 @@ namespace Crunchy.Dough
     {
         static public void SetSection<T>(this IGrid<T> item, int x, int y, IGrid<T> value)
         {
-            value
-                .BoundSub(0, 0, item.GetWidth() - x, item.GetHeight() - y)
+            value.BoundSub(0, 0, item.GetWidth() - x, item.GetHeight() - y)
                 .ProcessWithIndexs((sx, sy, v) => item[x + sx, y + sy] = v);
         }
         static public void SetSection<T>(this IGrid<T> item, VectorI2 index, IGrid<T> value)
