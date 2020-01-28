@@ -1434,6 +1434,7 @@
     <Compile Include="Grid\Extensions\IGridExtensions_ConvertToData.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_ConvertToKeyValuePairs.cs" />
     <Compile Include="Grid\Grids.cs" />
+    <Compile Include="Grid\Extensions\IGridExtensions_Mask.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
