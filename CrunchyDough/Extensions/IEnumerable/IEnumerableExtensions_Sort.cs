@@ -108,5 +108,9 @@ namespace Crunchy.Dough
         {
             return item.Sort((x, y) => getter(x).CompareTo(getter(y)));
         }
+        static public IEnumerable<T> Sort<T>(this IEnumerable<T> item) where T : IComparable
+        {
+            return item.Sort((x, y) => x.CompareTo(y));
+        }
     }
 }
