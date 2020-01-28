@@ -10,7 +10,8 @@ namespace Crunchy.SandwichBag
 {
     using Dough;
     using Salt;
-    using Noodle;    using Sauce;
+    using Noodle;
+    using Sauce;
     using Sandwich;
     
     public class PainterBrush_Texture : PainterBrush
@@ -19,9 +20,7 @@ namespace Crunchy.SandwichBag
 
         public override Brush<Color> CreateBrush(float size)
         {
-            return new Brush_Stamp<Color>(
-                texture.CreateAlphaStamp()
-            );
+            return new Brush_Grid<Color>(texture.CreateAlphaGrid());
         }
     }
 }

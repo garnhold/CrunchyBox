@@ -461,8 +461,6 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Scaled.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Vertorize.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Color_Fill.cs" />
-    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Stamps.cs" />
-    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Stamp.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprite.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Match.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_Match.cs" />

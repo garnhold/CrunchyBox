@@ -56,7 +56,7 @@
     <Compile Include="Ink\Ink_Basic.cs" />
     <Compile Include="Brush\Brush.cs" />
     <Compile Include="Brush\Brush_Pixel.cs" />
-    <Compile Include="Brush\Brush_Stamp.cs" />
+    <Compile Include="Brush\Brush_Grid.cs" />
     <Compile Include="Marker\Marker.cs" />
     <Compile Include="Surface\Surface_IGrid.cs" />
     <Compile Include="SurfaceTool\SurfaceTool_Line\SurfaceTool_Line.cs" />

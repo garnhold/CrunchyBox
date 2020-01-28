@@ -1215,8 +1215,6 @@
     <Compile Include="Spectrum\SpectrumBand.cs" />
     <Compile Include="Spectrum\SpectrumBound.cs" />
     <Compile Include="Spectrum\SpectrumLookup.cs" />
-    <Compile Include="Stamp\Stamp.cs" />
-    <Compile Include="Stamp\Stamps.cs" />
     <Compile Include="Trig\TrigCustom.cs" />
     <Compile Include="Trig\TrigDegree.cs" />
     <Compile Include="Trig\TrigPercent.cs" />
@@ -1431,12 +1429,11 @@
     <Compile Include="Grid\Extensions\IGridExtensions_Scale.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_List.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_GetOrCreateValue.cs" />
-    <Compile Include="Grid\Extensions\IGridExtensions_Stamp.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_Get.cs" />
     <Compile Include="Grid\Grid.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_ConvertToData.cs" />
     <Compile Include="Grid\Extensions\IGridExtensions_ConvertToKeyValuePairs.cs" />
-    <Compile Include="Empty\EmptySparseGrid.cs" />
+    <Compile Include="Grid\Grids.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1629,7 +1626,6 @@
     <Folder Include="Simulatable\" />
     <Folder Include="SmoothedFloat\" />
     <Folder Include="Spectrum\" />
-    <Folder Include="Stamp\" />
     <Folder Include="Trig\" />
     <Folder Include="VectorF2\" />
     <Folder Include="VectorI2\" />
