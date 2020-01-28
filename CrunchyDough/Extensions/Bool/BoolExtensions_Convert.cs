@@ -12,13 +12,14 @@ namespace Crunchy.Dough
             return if_false();
         }
 
-        static public T ConvertBool<T>(this bool item, T if_true, T if_false)
+        static public T ConvertBool<T>(this bool item, Operation<T> if_true, T if_false = default(T))
+        {
+            return item.ConvertBool<T>(if_true, () => if_false);
+        }
+
+        static public T ConvertBool<T>(this bool item, T if_true, T if_false = default(T))
         {
             return item.ConvertBool<T>(() => if_true, () => if_false);
-        }
-        static public T ConvertBool<T>(this bool item, T if_true)
-        {
-            return item.ConvertBool<T>(if_true, default(T));
         }
     }
 }
