@@ -16,20 +16,6 @@ namespace Crunchy.Dough
             return INSTANCE.GetPoints(radius);
         }
 
-        private void AddBlock(int x1, int y1, int x2, int y2)
-        {
-            for (int y = y1; y < y2; y++)
-            {
-                for (int x = x1; x < x2; x++)
-                {
-                    points.Add(
-                        (float)Math.Sqrt(x.GetSquared() + y.GetSquared()),
-                        new VectorI2(x, y)
-                    );
-                }
-            }
-        }
-
         private RadiatingWalker()
         {
             current_radius = 0;
@@ -40,11 +26,13 @@ namespace Crunchy.Dough
         {
             if (radius > current_radius)
             {
-                AddBlock(radius, radius, -radius, current_radius);
-                AddBlock(radius, -current_radius, -radius, radius);
+                RectI2 old_rect = RectI2Extensions.CreateCenterRectI2(VectorI2.ZERO, new VectorI2(current_radius * 2, current_radius * 2));
+                RectI2 new_rect = RectI2Extensions.CreateCenterRectI2(VectorI2.ZERO, new VectorI2(radius * 2, radius * 2));
 
-                AddBlock(radius, current_radius, current_radius, -current_radius);
-                AddBlock(-current_radius, current_radius, -radius, current_radius);
+                new_rect.GetSubtraction(old_rect)
+                    .Convert(r => r.GetPoints())
+                    .Flatten()
+                    .Process(p => points.Add(p.GetMagnitude(), p));
 
                 current_radius = radius;
             }

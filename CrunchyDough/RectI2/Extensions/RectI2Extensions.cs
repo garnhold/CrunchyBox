@@ -33,6 +33,13 @@ namespace Crunchy.Dough
             return CreateStrictMinMaxRectI2(new VectorI2(left, bottom), new VectorI2(right, top));
         }
 
+        static public RectI2 CreateCenterRectI2(VectorI2 position, VectorI2 size)
+        {
+            VectorI2 extents = size / 2;
+
+            return new RectI2(position - extents, position + extents);
+        }
+
         static public RectI2 CreatePoints(IEnumerable<VectorI2> points)
         {
             return new RectI2(points.Min(), points.Max());
