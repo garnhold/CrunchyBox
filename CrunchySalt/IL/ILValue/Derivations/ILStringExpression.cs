@@ -35,14 +35,20 @@ namespace Crunchy.Salt
 
         public override void RenderIL_Load(ILCanvas canvas)
         {
-            MethodInfoEX explicit_method = typeof(string).GetStaticMethod(
-                "Concat", typeof(object).Repeat(values.Count)
-            );
+            if (values.Count <= 3)
+            {
+                MethodInfoEX explicit_method = typeof(string).GetStaticMethod(
+                    "Concat", typeof(object).Repeat(values.Count)
+                );
 
-            if (explicit_method != null)
                 explicit_method.GetStaticILMethodInvokation(values).RenderIL_Load(canvas);
+            }
             else
-                typeof(string).GetStaticILMethodInvokation("Concat", new ILNewPopulatedArray(typeof(object), values)).RenderIL_Load(canvas);
+            {
+                typeof(string).GetStaticILMethodInvokation("Concat", 
+                    new ILNewPopulatedArray(typeof(object), values)
+                ).RenderIL_Load(canvas);
+            }
         }
 
         public override void RenderText_Value(ILTextCanvas canvas)
