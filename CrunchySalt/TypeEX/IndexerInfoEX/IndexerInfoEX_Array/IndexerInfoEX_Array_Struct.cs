@@ -30,7 +30,10 @@ namespace Crunchy.Salt
             index.RenderIL_Load(canvas);
 
             canvas.Emit_Ldelema(GetElementType());
-            value.RenderIL_Load(canvas);
+
+            value.GetILImplicitCast(GetElementType())
+                .RenderIL_Load(canvas);
+
             canvas.Emit_Stobj(GetElementType());
         }
     }

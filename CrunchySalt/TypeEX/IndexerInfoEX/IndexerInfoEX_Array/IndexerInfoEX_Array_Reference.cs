@@ -26,7 +26,8 @@ namespace Crunchy.Salt
             target.RenderIL_Load(canvas);
             index.RenderIL_Load(canvas);
 
-            value.RenderIL_Load(canvas);
+            value.GetILImplicitCast(GetElementType())
+                .RenderIL_Load(canvas);
 
             canvas.Emit_Stelem_Ref();
         }
