@@ -30,7 +30,7 @@ namespace Crunchy.Sack
 
         private WINDOW_TYPE CreateWindowRepresentationInternal(object target, out LinkSyncroDaemon daemon, string layout = CmlLinkSource.DEFAULT_LAYOUT)
         {
-            RepresentationResult result = this.CreateRepresentation(target, layout);
+            RepresentationResult result = this.AssertCreateRepresentation(target, layout);
 
             WINDOW_TYPE window = result.GetRepresentation<WINDOW_TYPE>();
             daemon = result.CreateLinkSyncroDaemon<PERIODIC_PROCESS_TYPE>();
