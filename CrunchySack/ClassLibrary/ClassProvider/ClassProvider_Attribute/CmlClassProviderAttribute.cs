@@ -8,7 +8,7 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class CmlClassProviderAttribute : Attribute
     {
         private string layout;
