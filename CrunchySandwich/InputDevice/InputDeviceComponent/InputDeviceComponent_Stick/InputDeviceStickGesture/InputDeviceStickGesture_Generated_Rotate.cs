@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public class InputDeviceStickGesture_Generated_Rotate : InputDeviceStickGesture_Generated
     {
         [SerializeField]private RotationDirection direction;

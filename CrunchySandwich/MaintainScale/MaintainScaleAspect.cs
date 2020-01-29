@@ -8,10 +8,10 @@ namespace Crunchy.Sandwich
     [AddComponentMenu("Utility/MaintainScaleAspect")]
     public class MaintainScaleAspect : MonoBehaviour
     {
-        [SerializeField]private Axis driving_axis;
+        [SerializeField]private Axis driving_axis = Axis.X;
 
-        [SerializeField]private float axis1_aspect;
-        [SerializeField]private float axis2_aspect;
+        [SerializeField]private float axis1_aspect = 1.0f;
+        [SerializeField]private float axis2_aspect = 1.0f;
 
         private void Update()
         {

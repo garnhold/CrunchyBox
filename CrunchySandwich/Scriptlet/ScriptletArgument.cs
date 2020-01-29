@@ -11,10 +11,10 @@ namespace Crunchy.Sandwich
     
     public class ScriptletArgument
     {
-        [SerializeFieldEX]private Type type;
+        [SerializeFieldEX]private Type type = typeof(int);
 
-        [SerializeFieldEX]private string name;
-        [SerializeFieldEX]private object value;
+        [SerializeFieldEX]private string name = "arg";
+        [SerializeFieldEX]private object value = 0;
 
         public Type GetArgumentType()
         {

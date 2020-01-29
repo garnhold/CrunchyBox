@@ -10,9 +10,9 @@ namespace Crunchy.Sandwich
     
     public class MeshLumper : MonoBehaviour
     {
-        [SerializeField]private Vector3 size;
-        [SerializeField]private Vector3 cell_size;
-        [SerializeField]private short target_number_vertexs;
+        [SerializeField]private Vector3 size = new Vector3(100.0f, 100.0f, 100.0f);
+        [SerializeField]private Vector3 cell_size = new Vector3(10.0f, 10.0f, 10.0f);
+        [SerializeField]private short target_number_vertexs = 2500;
 
         private void Lump(Material material, List<LumpableMesh> lumpables, GameObject parent)
         {

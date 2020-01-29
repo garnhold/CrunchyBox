@@ -6,23 +6,24 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public class Pathfinding2D : Subsystem<Pathfinding2D>
     {
         [Tooltip("The radius of the cast circle between nodes; the radius of the navigating entity.")]
-        [SerializeField]private float connection_radius;
+        [SerializeField]private float connection_radius = 0.32f;
         [Tooltip("The distance that is added to a node's radius to determine connected nodes.")]
-        [SerializeField]private float connection_fudge_distance;
+        [SerializeField]private float connection_fudge_distance = 1.0f;
 
         [Tooltip("The maximum node radius to attempt. Higher values will yield better results, but slower generation times.")]
-        [SerializeField]private float max_clearing_radius;
+        [SerializeField]private float max_clearing_radius = 7.0f;
 
         [Tooltip("The maximum distance that connections may span.")]
-        [SerializeField]private float max_connection_distance;
+        [SerializeField]private float max_connection_distance = 18.0f;
 
-        [SerializeField]private LayerEX node_layer;
-        [SerializeField]private LayerMask dynamic_obstacle_layer_mask;
-        [SerializeField]private LayerMask static_obstacle_layer_mask;
+        [SerializeField]private LayerEX node_layer = new LayerEX();
+        [SerializeField]private LayerMask dynamic_obstacle_layer_mask = new LayerMask();
+        [SerializeField]private LayerMask static_obstacle_layer_mask = new LayerMask();
 
         private bool IsConnection(Vector2 position1, Vector2 position2, int layer_mask)
         {
