@@ -350,6 +350,7 @@
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ItemsControl.cs" />
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_RoutedEventHandler.cs" />
     <Compile Include="Extensions\CornerRadius\CornerRadiusExtensions.cs" />
+    <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ListBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
