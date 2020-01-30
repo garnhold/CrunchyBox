@@ -279,26 +279,26 @@ using Crunchy.Dough;
 }
     namespace Crunchy.Sandwich
 {
-    static public class Vector2IntExtensions_VectorF2
+    static public class Vector2IntExtensions_Vector2
     {
-        static public VectorF2 GetVectorF2(this Vector2Int item)
+        static public Vector2 GetVector2(this Vector2Int item)
         {
-            return new VectorF2(item.x, item.y);
+            return new Vector2(item.x, item.y);
         }
 
-        static public VectorF2 GetCenterVectorF2(this Vector2Int item)
+        static public Vector2 GetCenterVector2(this Vector2Int item)
         {
-            return new VectorF2(item.x + 0.5f, item.y + 0.5f);
+            return new Vector2(item.x + 0.5f, item.y + 0.5f);
         }
 
-        static public VectorF2 GetInflated(this Vector2Int item, VectorF2 unit)
+        static public Vector2 GetInflated(this Vector2Int item, Vector2 unit)
         {
-            return item.GetVectorF2().GetComponentMultiply(unit);
+            return item.GetVector2().GetComponentMultiply(unit);
         }
 
-        static public VectorF2 GetCenterInflated(this Vector2Int item, VectorF2 unit)
+        static public Vector2 GetCenterInflated(this Vector2Int item, Vector2 unit)
         {
-            return item.GetCenterVectorF2().GetComponentMultiply(unit);
+            return item.GetCenterVector2().GetComponentMultiply(unit);
         }
     }
 }
@@ -347,6 +347,33 @@ using Crunchy.Dough;
                 return true;
 
             return false;
+        }
+    }
+}
+    namespace Crunchy.Sandwich
+{   
+    static public class Vector2IntExtensions_IEnumerable_IteratedBinaryOperation
+    {
+        static public Vector2Int Sum(this IEnumerable<Vector2Int> item)
+        {
+            return item.PerformIteratedBinaryOperation((v1, v2) => v1 + v2);
+        }
+
+        static public Vector2 Average(this IEnumerable<Vector2Int> item)
+        {
+            int count;
+
+            return item.PerformIteratedBinaryOperation((v1, v2) => v1 + v2, out count).GetVector2() / count;
+        }
+
+        static public Vector2Int Min(this IEnumerable<Vector2Int> item)
+        {
+            return item.PerformIteratedBinaryOperation((v1, v2) => v1.GetMin(v2));
+        }
+
+        static public Vector2Int Max(this IEnumerable<Vector2Int> item)
+        {
+            return item.PerformIteratedBinaryOperation((v1, v2) => v1.GetMax(v2));
         }
     }
 }

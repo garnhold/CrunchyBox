@@ -147,7 +147,6 @@
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Scale.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Orient.cs" />
     <Compile Include="Extensions\Vector2Int\Vector2IntExtensions_Vector3Int.cs" />
-    <Compile Include="Extensions\Vector2Int\Vector2IntExtensions_Vector2.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions_Vector3.cs" />
     <Compile Include="Extensions\Vector3Int\Vector3IntExtensions_Vector2Int.cs" />

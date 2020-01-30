@@ -15,7 +15,7 @@ namespace Crunchy.Dough
         {
             int count;
 
-            return item.PerformIteratedBinaryOperation((v1, v2) => v1 + v2, out count) / (float)count;
+            return item.PerformIteratedBinaryOperation((v1, v2) => v1 + v2, out count).GetVectorF2() / count;
         }
 
         static public VectorI2 Min(this IEnumerable<VectorI2> item)
