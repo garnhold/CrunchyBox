@@ -66,7 +66,6 @@ namespace Crunchy.Sack_Avalonia
                 .Convert(s => type.GetVariableByPath(s))
                 .SkipNull()
                 .Process(v => this.AddAttributeLink(v.GetVariableName().StyleAsVariableName(), v));
-            
         }
         public void AddAvaloniaPropertyAttributeLinksForType<T>()
         {
