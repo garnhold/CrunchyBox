@@ -35,7 +35,7 @@ namespace Crunchy.Sack
         }
 
         public LinkSyncroDaemon(LinkManager l, long li, SyncroManager s, long si, params KeyValuePair<string, long>[] g) : this(l, li, s, si, (IEnumerable<KeyValuePair<string, long>>)g) { }
-        public LinkSyncroDaemon(LinkManager l, long li, SyncroManager s) : this(l, li, s, 10, new KeyValuePair<string, long>("priority", 10)) { }
+        public LinkSyncroDaemon(LinkManager l, long li, SyncroManager s) : this(l, li, s, 16, new KeyValuePair<string, long>("priority", 16)) { }
         public LinkSyncroDaemon(LinkManager l, SyncroManager s) : this(l, 125, s) { }
 
         public override void Step()
