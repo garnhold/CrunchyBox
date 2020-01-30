@@ -351,6 +351,8 @@
     <Compile Include="Extensions\FunctionSyncro\FunctionSyncroExtensions_RoutedEventHandler.cs" />
     <Compile Include="Extensions\CornerRadius\CornerRadiusExtensions.cs" />
     <Compile Include="Basic\BasicAvaloniaEngineInitilizer\BasicAvaloniaEngineInitilizer_ListBox.cs" />
+    <Compile Include="Extensions\Point\PointExtensions_Component.cs" />
+    <Compile Include="Extensions\PointerEventArgs\PointerEventArgsExtensions_Position.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
