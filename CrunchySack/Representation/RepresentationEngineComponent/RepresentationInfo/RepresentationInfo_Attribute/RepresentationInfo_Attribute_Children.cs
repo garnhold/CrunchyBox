@@ -25,40 +25,9 @@ namespace Crunchy.Sack
 
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddAttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
+        static public void AddAttributeChildren(this RepresentationEngine item, string n, EffigyInfo effigy)
         {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Children(n,
-                    new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
-                )
-            );
-        }
-
-        static public void AddAttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
-        {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Children(n,
-                    new EffigyInfo_Collection_Flush_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
-                )
-            );
-        }
-
-        static public void AddAttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
-        {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Children(n,
-                    new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE, CHILD_TYPE>(o)
-                )
-            );
-        }
-
-        static public void AddAttributeChildren<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Operation<IList, REPRESENTATION_TYPE> o)
-        {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Children(n,
-                    new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE>(o)
-                )
-            );
+            item.AddAttributeInfo(new RepresentationInfo_Attribute_Children(n, effigy));
         }
     }
 }

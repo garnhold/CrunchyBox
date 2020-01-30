@@ -32,6 +32,22 @@ namespace Crunchy.Sack
             operation((REPRESENTATION_TYPE)representation).Insert(index, (CHILD_TYPE)child);
         }
     }
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
+        {
+            item.AddChildren(
+                new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE, CHILD_TYPE>(o)
+            );
+        }
+
+        static public void AddAttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
+        {
+            item.AddAttributeChildren(n,
+                new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE, CHILD_TYPE>(o)
+            );
+        }
+    }
 
     public class EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE> : EffigyInfo_Collection_IslandMorph
     {
@@ -55,6 +71,18 @@ namespace Crunchy.Sack
         public override void InsertChild(object representation, int index, object child)
         {
             operation((REPRESENTATION_TYPE)representation).Insert(index, child);
+        }
+    }
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddChildren<REPRESENTATION_TYPE>(this RepresentationEngine item, Operation<IList, REPRESENTATION_TYPE> o)
+        {
+            item.AddChildren(new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE>(o));
+        }
+
+        static public void AddAttributeChildren<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Operation<IList, REPRESENTATION_TYPE> o)
+        {
+            item.AddAttributeChildren(n, new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE>(o));
         }
     }
 }

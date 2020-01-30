@@ -31,6 +31,7 @@ namespace Crunchy.Sack
                 new RepresentationInfo_Attribute_Value_Variable(n, v)
             );
         }
+
         static public void AddAttributeValue(this RepresentationEngine item, Variable v)
         {
             item.AddAttributeInfo(

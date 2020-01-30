@@ -61,7 +61,6 @@ namespace Crunchy.Sack
             return operation(execution.GetTargetInfo().GetRequester().Convert<REQUESTER_TYPE>());
         }
     }
-
     static public partial class RepresentationEngineExtensions_Add
     {
         static public void AddSimpleInstancer<REQUESTER_TYPE>(this RepresentationEngine item, string t, Operation<object, REQUESTER_TYPE> o)

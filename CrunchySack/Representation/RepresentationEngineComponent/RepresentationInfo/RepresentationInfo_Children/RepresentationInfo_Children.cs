@@ -29,40 +29,9 @@ namespace Crunchy.Sack
 
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
+        static public void AddChildren(this RepresentationEngine item, EffigyInfo_Collection effigy)
         {
-            item.AddChildrenInfo(
-                new RepresentationInfo_Children(
-                    new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
-                )
-            );
-        }
-
-        static public void AddChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
-        {
-            item.AddChildrenInfo(
-                new RepresentationInfo_Children(
-                    new EffigyInfo_Collection_Flush_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
-                )
-            );
-        }
-
-        static public void AddChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
-        {
-            item.AddChildrenInfo(
-                new RepresentationInfo_Children(
-                    new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE, CHILD_TYPE>(o)
-                )
-            );
-        }
-
-        static public void AddChildren<REPRESENTATION_TYPE>(this RepresentationEngine item, Operation<IList, REPRESENTATION_TYPE> o)
-        {
-            item.AddChildrenInfo(
-                new RepresentationInfo_Children(
-                    new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE>(o)
-                )
-            );
+            item.AddChildrenInfo(new RepresentationInfo_Children(effigy));
         }
     }
 }
