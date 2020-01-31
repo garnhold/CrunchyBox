@@ -25,6 +25,7 @@ namespace Crunchy.Dough
             list = new List<T>();
             list.AddEmptys(width * height);
         }
+        public Grid(VectorI2 i) : this(i.x, i.y) { }
 
         public Grid(int w, int h, IEnumerable<T> v)
         {
@@ -34,6 +35,7 @@ namespace Crunchy.Dough
             list = v.ToList();
             list.EnsureSizeWithEmptys(width * height);
         }
+        public Grid(VectorI2 i, IEnumerable<T> v) : this(i.x, i.y, v) { }
 
         public Grid(int w, int h, Operation<T, int, int> operation) : this(w, h)
         {
@@ -43,6 +45,7 @@ namespace Crunchy.Dough
                     this[x, y] = operation(x, y);
             }
         }
+        public Grid(VectorI2 i, Operation<T, int, int> operation) : this(i.x, i.y, operation) { }
 
         public Grid(IGrid<T> g) : this(g.GetWidth(), g.GetHeight(), (x, y) => g[x, y]) { }
 
