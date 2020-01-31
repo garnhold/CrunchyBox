@@ -722,8 +722,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar.cs">
-      <DependentUpon>GameObjectComponentExtensions_Transform_Planar.tt</DependentUpon>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Arear.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Arear.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1198,6 +1198,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Extensions\Bounds\BoundsExtensions_Arear.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Arear.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Arear_Parent.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1431,6 +1437,10 @@
     <Content Include="Extensions\Vector2Int\Vector2IntExtensionsImport.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Vector2IntExtensionsImport.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Arear.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Arear.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

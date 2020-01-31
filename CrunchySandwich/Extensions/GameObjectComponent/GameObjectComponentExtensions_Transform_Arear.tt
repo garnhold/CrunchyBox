@@ -1,0 +1,92 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;    
+    static public class GameObjectComponentExtensions_Transform_Arear
+    {
+<# foreach(string type_name in type_names){#>
+		static public void SetArearPosition(this <#=type_name#> item, Vector2 position)
+        {
+            item.transform.SetArearPosition(position);
+        }
+        static public void SetLocalArearPosition(this <#=type_name#> item, Vector2 position)
+        {
+            item.transform.SetLocalArearPosition(position);
+        }
+		static public void SetOffsetArearPosition(this <#=type_name#> item, Vector2 position)
+		{
+			item.transform.SetOffsetArearPosition(position);
+		}
+
+        static public void SetArearRotation(this <#=type_name#> item, float angle)
+        {
+            item.transform.SetArearRotation(angle);
+        }
+        static public void SetLocalArearRotation(this <#=type_name#> item, float angle)
+        {
+            item.transform.SetLocalArearRotation(angle);
+        }
+
+        static public void SetArearScale(this <#=type_name#> item, Vector2 scale)
+        {
+            item.transform.SetArearScale(scale);
+        }
+        static public void SetArearScale(this <#=type_name#> item, float scale)
+        {
+            item.transform.SetArearScale(scale);
+        }
+        static public void SetLocalArearScale(this <#=type_name#> item, Vector2 scale)
+        {
+            item.transform.SetLocalArearScale(scale);
+        }
+        static public void SetLocalArearScale(this <#=type_name#> item, float scale)
+        {
+            item.transform.SetLocalArearScale(scale);
+        }
+
+        static public Vector2 GetArearPosition(this <#=type_name#> item)
+        {
+            return item.transform.GetArearPosition();
+        }
+        static public Vector2 GetLocalArearPosition(this <#=type_name#> item)
+        {
+            return item.transform.GetLocalArearPosition();
+        }
+		static public Vector2 GetOffsetArearPosition(this <#=type_name#> item)
+		{
+			return item.transform.GetOffsetArearPosition();
+		}
+
+        static public float GetArearRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetArearRotation();
+        }
+        static public float GetLocalArearRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetLocalArearRotation();
+        }
+
+        static public Vector2 GetArearScale(this <#=type_name#> item)
+        {
+            return item.transform.GetArearScale();
+        }
+        static public Vector2 GetLocalArearScale(this <#=type_name#> item)
+        {
+            return item.transform.GetLocalArearScale();
+        }
+
+<# } #>
+	}
+}
