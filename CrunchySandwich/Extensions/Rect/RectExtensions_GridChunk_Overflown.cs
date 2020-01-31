@@ -42,7 +42,7 @@ namespace Crunchy.Sandwich
 
         static public Rect GetContainingOverflownGridChunk(this Rect item, Vector2 point, Vector2 cell_size)
         {
-            return item.GetOverflownGridChunk((point - item.min).GetDeflated(cell_size), cell_size);
+            return item.GetOverflownGridChunk(item.GetContainingGridIndex(point, cell_size), cell_size);
         }
     }
 }

@@ -33,6 +33,10 @@ namespace Crunchy.Sandwich
             item.GetGridChunkInfos(number_columns, number_rows).Process(t => process(t.item1, t.item2, t.item3));
         }
 
+        static public VectorI2 GetContainingGridIndex(this Rect item, Vector2 point, Vector2 cell_size)
+        {
+            return (point - item.min).GetDeflated(cell_size);
+        }
         static public Rect GetContainingGridChunk(this Rect item, Vector2 point, int number_columns, int number_rows)
         {
             return item.GetContainingOverflownGridChunk(point, item.GetSize().GetComponentDivide(number_columns, number_rows));
