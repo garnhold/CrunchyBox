@@ -57,7 +57,6 @@ namespace Crunchy.SandwichBag
             writer.Write("using Crunchy.Dough;");
             writer.Write("using Crunchy.Salt;");
             writer.Write("using Crunchy.Noodle;");
-            writer.Write("using Crunchy.Bun;");
             writer.Write("using Crunchy.Bread;");
             writer.Write("using Crunchy.Sandwich;");
 
