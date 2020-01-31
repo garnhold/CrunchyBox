@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     public class MeshLumper : MonoBehaviour
     {
         [SerializeField]private Vector3 size = new Vector3(100.0f, 100.0f, 100.0f);
-        [SerializeField]private Vector3 cell_size = new Vector3(10.0f, 10.0f, 10.0f);
+        [SerializeField]private Vector2 cell_size = new Vector2(10.0f, 10.0f);
         [SerializeField]private short target_number_vertexs = 2500;
 
         private void Lump(Material material, List<LumpableMesh> lumpables, GameObject parent)
@@ -22,17 +22,17 @@ namespace Crunchy.Sandwich
             lump.AddComponent<MeshRenderer>().sharedMaterial = material;
         }
 
-        private void NarrowAttemptLump(Material material, List<LumpableMesh> lumpables, Bounds bounds, GameObject parent)
+        private void NarrowAttemptLump(Material material, List<LumpableMesh> lumpables, Rect rect, GameObject parent)
         {
             AttemptLump(
                 material,
-                lumpables.Narrow(l => bounds.Contains(l.transform.position)).ToList(),
-                bounds,
+                lumpables.Narrow(l => rect.Contains(l.GetArearPosition())).ToList(),
+                rect,
                 parent
             );
         }
 
-        private void AttemptLump(Material material, List<LumpableMesh> lumpables, Bounds bounds, GameObject parent)
+        private void AttemptLump(Material material, List<LumpableMesh> lumpables, Rect rect, GameObject parent)
         {
             if (lumpables.Count > 1)
             {
@@ -40,26 +40,26 @@ namespace Crunchy.Sandwich
                     Lump(material, lumpables, parent);
                 else
                 {
-                    Bounds b1, b2, b3, b4;
+                    Rect r1, r2, r3, r4;
 
-                    bounds.SplitIntoAreaQuarters(out b1, out b2, out b3, out b4);
+                    rect.SplitIntoQuarters(out r1, out r2, out r3, out r4);
 
-                    NarrowAttemptLump(material, lumpables, b1, parent);
-                    NarrowAttemptLump(material, lumpables, b2, parent);
-                    NarrowAttemptLump(material, lumpables, b3, parent);
-                    NarrowAttemptLump(material, lumpables, b4, parent);
+                    NarrowAttemptLump(material, lumpables, r1, parent);
+                    NarrowAttemptLump(material, lumpables, r2, parent);
+                    NarrowAttemptLump(material, lumpables, r3, parent);
+                    NarrowAttemptLump(material, lumpables, r4, parent);
                 }
             }
         }
 
-        private void GridLump(Material material, List<LumpableMesh> lumpables, Bounds bounds, GameObject parent)
+        private void GridLump(Material material, List<LumpableMesh> lumpables, Rect rect, GameObject parent)
         {
-            IGrid<List<LumpableMesh>> grid = new Grid<List<LumpableMesh>>(Mathf.CeilToInt(bounds.size.x / cell_size.x), Mathf.CeilToInt(bounds.size.z / cell_size.z));
+            IGrid<List<LumpableMesh>> grid = new Grid<List<LumpableMesh>>(rect.size.GetComponentDivide(cell_size).GetVectorI2());
 
             foreach(LumpableMesh lumpable in lumpables)
             {
                 grid.Add(
-                    (lumpable.transform.position - bounds.min).GetComponentDivide(cell_size).GetArear().GetVectorI2(),
+                    rect.GetContainingGridIndex(lumpable.GetArearPosition(), cell_size),
                     lumpable
                 );
             }
@@ -70,7 +70,7 @@ namespace Crunchy.Sandwich
                     AttemptLump(
                         material,
                         list,
-                        bounds.GetOverflownAreaGridChunk(x, y, cell_size),
+                        rect.GetOverflownGridChunk(x, y, cell_size),
                         parent
                     );
                 }
@@ -82,24 +82,30 @@ namespace Crunchy.Sandwich
             Gizmos.color = Color.blue.GetWithAlpha(0.05f);
             GizmosExtensions.DrawOutlinedCube(GetBounds());
 
-            Gizmos.color = Color.red.GetWithAlpha(0.05f);
-            GizmosExtensions.DrawOutlinedCube(transform.position, cell_size);
+            Gizmos.color = Color.black;
+            GizmosExtensions.DrawArearGrid(GetRect(), cell_size);
         }
 
         private void Start()
         {
             Bounds bounds = GetBounds();
+
             Dictionary<Material, List<LumpableMesh>> lumpables = GameObject.FindObjectsOfType<LumpableMesh>()
                 .Narrow(l => bounds.Contains(l.transform.position))
                 .ToMultiDictionary(l => l.GetMaterial());
 
             foreach (KeyValuePair<Material, List<LumpableMesh>> pair in lumpables)
-                GridLump(pair.Key, pair.Value, bounds, new GameObject("Lumps"));
+                GridLump(pair.Key, pair.Value, bounds.GetArear(), new GameObject("Lumps"));
         }
 
         public Bounds GetBounds()
         {
             return new Bounds(transform.position, size);
+        }
+
+        public Rect GetRect()
+        {
+            return GetBounds().GetArear();
         }
     }
 }
