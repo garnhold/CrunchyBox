@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     {
         static public Rect GetPlanar(this Bounds item)
         {
-            return RectExtensions.CreateMinMaxRect(item.min, item.max);
+            return RectExtensions.CreateMinMaxRect(item.min.GetPlanar(), item.max.GetPlanar());
         }
 
         static public Vector2 GetPlanarSize(this Bounds item)
