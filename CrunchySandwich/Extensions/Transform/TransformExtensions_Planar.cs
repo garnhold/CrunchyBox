@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class TransformExtensions_Planar
     {
         static public void SetPlanarPosition(this Transform item, Vector2 position)
