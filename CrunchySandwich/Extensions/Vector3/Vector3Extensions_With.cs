@@ -37,10 +37,18 @@ namespace Crunchy.Sandwich
         {
             return new Vector3(x, item.y, z);
         }
+        static public Vector3 GetWithXZ(this Vector3 item, Vector2 vector)
+        {
+            return item.GetWithXZ(vector.x, vector.y);
+        }
 
         static public Vector3 GetWithYZ(this Vector3 item, float y, float z)
         {
             return new Vector3(item.x, y, z);
+        }
+        static public Vector3 GetWithYZ(this Vector3 item, Vector2 vector)
+        {
+            return item.GetWithYZ(vector.x, vector.y);
         }
     }
 }
