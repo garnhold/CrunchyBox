@@ -1464,6 +1464,7 @@
     <Compile Include="RectI2\Extensions\RectI2Extensions_SplitIntoQuarters.cs" />
     <Compile Include="RectI2\RectI2.cs" />
     <Compile Include="VectorI2\Extensions\IEnumerable\VectorI2Extensions_IEnumerable_IteratedBinaryOperation.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_PopValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
