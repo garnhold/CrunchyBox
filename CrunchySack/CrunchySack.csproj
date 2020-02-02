@@ -317,6 +317,10 @@
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite_Process.cs" />
     <Compile Include="Application\ApplicationRepresentationEngine.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityCompositeChild\CmlEntityCompositeChild.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Process.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Overwrite.cs" />
+    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Overwrite_Process.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
