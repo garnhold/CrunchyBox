@@ -22,8 +22,7 @@ using Crunchy.Noodle;
     typeof(Crunchy.Salt.ThisAssembly),
     typeof(Crunchy.Noodle.ThisAssembly),
     typeof(Crunchy.Sodium.ThisAssembly),
-    typeof(Crunchy.Winsys.ThisAssembly),
-    typeof(Crunchy.Sack_WinCommon.ThisAssembly)
+    typeof(Crunchy.Winsys.ThisAssembly)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

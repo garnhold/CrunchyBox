@@ -92,10 +92,6 @@
       <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
       <Name>CrunchyWinsys</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CrunchySack_WinCommon\CrunchySack_WinCommon.csproj">
-      <Project>{EE111B93-23EC-497B-9FFC-B5535E14F96D}</Project>
-      <Name>CrunchySack_WinCommon</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WinFormsEngine\" />

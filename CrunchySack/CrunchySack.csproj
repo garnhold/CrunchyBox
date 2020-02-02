@@ -321,6 +321,8 @@
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Process.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Overwrite.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Overwrite_Process.cs" />
+    <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions.cs" />
+    <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions_EventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -353,6 +355,7 @@
   <ItemGroup>
     <Folder Include="Application\" />
     <Folder Include="Cml\CmlEntity\CmlEntityCompositeChild\" />
+    <Folder Include="Syncro\FunctionSyncro\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
