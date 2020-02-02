@@ -49,4 +49,16 @@ namespace Crunchy.Sack
             )
         { }
     }
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, int> rp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap, Process<REPRESENTATION_TYPE, int, CHILD_TYPE> ip)
+        {
+            item.AddChildren(new EffigyInfo_Collection_IslandMorph_Process<REPRESENTATION_TYPE, CHILD_TYPE>(rp, ap, ip));
+        }
+
+        static public void AddAttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, int> rp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap, Process<REPRESENTATION_TYPE, int, CHILD_TYPE> ip)
+        {
+            item.AddAttributeChildren(n, new EffigyInfo_Collection_IslandMorph_Process<REPRESENTATION_TYPE, CHILD_TYPE>(rp, ap, ip));
+        }
+    }
 }
