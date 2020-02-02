@@ -70,6 +70,7 @@
     <Compile Include="Basic\BasicGtkEngine.cs" />
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer.cs" />
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizerAttribute.cs" />
+    <Compile Include="ThisAssembly.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
