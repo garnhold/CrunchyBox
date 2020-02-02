@@ -1465,6 +1465,7 @@
     <Compile Include="RectI2\RectI2.cs" />
     <Compile Include="VectorI2\Extensions\IEnumerable\VectorI2Extensions_IEnumerable_IteratedBinaryOperation.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_PopValue.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_Shift.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
