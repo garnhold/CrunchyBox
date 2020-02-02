@@ -19,7 +19,16 @@ namespace Crunchy.Sack_Gtk
         protected override void StartApplicationInternal(Operation<Window> operation)
         {
             Application.Init();
-            operation().ShowAll();
+
+            Window window = operation();
+
+            window.DeleteEvent += delegate(object obj, DeleteEventArgs args) {
+                Application.Quit();
+                args.RetVal = true;
+            };
+
+            window.ShowAll();
+
             Application.Run();
         }
 
