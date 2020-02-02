@@ -14,7 +14,7 @@ namespace Crunchy.Sack_Gtk
         [BasicGtkEngineInitilizer]
         static public void Initilize(GtkEngine engine)
         {
-            engine.AddChildren<Container, Widget>((c, i) => c.RemoveChildAt(i), (c, w) => c.AddChild(w), (c, i, w) => c.insert
+            engine.AddChildren<Container, Widget>((c, i) => c.RemoveChildAt(i), (c, w) => c.AddChild(w), (c, i, w) => c.InsertChild(i, w));
         }
     }
 }

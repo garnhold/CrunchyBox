@@ -30,11 +30,9 @@ namespace Crunchy.Sack_Gtk
 
         static public void InsertChild(this Container item, int index, Widget widget)
         {
-            Widget[] new_children = item.Children.CopyInsert(index, widget);
-            fasdadsffadsadsf
+            item.Add(widget);
+            item.Children.ShiftUpInsert(index, widget);
         }
-
-
 
         static public Widget GetChildAt(this Container item, int index)
         {
