@@ -75,6 +75,7 @@
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Container.cs" />
     <Compile Include="Extensions\Container\ContainerExtensions.cs" />
     <Compile Include="Extensions\Container\ContainerExtensions_Children.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Button.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
