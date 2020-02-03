@@ -45,12 +45,6 @@ namespace Crunchy.Sack_WinForms
             engine.AddPublicPropertyAttributeLinksForType<SplitContainer>();
             engine.AddAttributeChildren<SplitContainer>("panel1", c => c.Panel1.Controls);
             engine.AddAttributeChildren<SplitContainer>("panel2", c => c.Panel2.Controls);
-
-            engine.AddSimpleInstancer<TabControl>();
-            engine.AddPublicPropertyAttributeLinksForType<TabControl>();
-
-            engine.AddSimpleInstancer<TabPage>();
-            engine.AddPublicPropertyAttributeLinksForType<TabPage>();
         }
     }
 }
