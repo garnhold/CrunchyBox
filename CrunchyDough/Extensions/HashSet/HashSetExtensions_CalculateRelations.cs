@@ -34,26 +34,43 @@ namespace Crunchy.Dough
             item.CalculateKeyRelations<T>(other, only_in_first, in_both, only_in_last);
         }
 
-        static public void CalculateKeyRelations<T>(this HashSet<T> item, IEnumerable<T> other, HashSet<T> only_in_first, HashSet<T> in_both)
+        static public void CalculateKeysOnlyIn<T>(this HashSet<T> item, IEnumerable<T> other, HashSet<T> only_in_first, HashSet<T> only_in_last)
         {
             only_in_first.Set(item);
-            in_both.Clear();
+            only_in_last.Clear();
 
             foreach (T key in other)
             {
                 if (item.Contains(key))
-                {
                     only_in_first.Remove(key);
-                    in_both.Add(key);
-                }
+                else
+                    only_in_last.Add(key);
             }
         }
-        static public void CalculateKeyRelations<T>(this HashSet<T> item, IEnumerable<T> other, out HashSet<T> only_in_first, out HashSet<T> in_both)
+        static public void CalculateKeysOnlyIn<T>(this HashSet<T> item, IEnumerable<T> other, out HashSet<T> only_in_first, out HashSet<T> only_in_last)
         {
             only_in_first = new HashSet<T>();
-            in_both = new HashSet<T>();
+            only_in_last = new HashSet<T>();
 
-            item.CalculateKeyRelations<T>(other, only_in_first, in_both);
+            item.CalculateKeysOnlyIn<T>(other, only_in_first, only_in_last);
+        }
+
+        static public void CalculateKeysOnlyIn<T>(this HashSet<T> item, IEnumerable<T> other, HashSet<T> only_in_first)
+        {
+            only_in_first.Set(item);
+
+            foreach (T key in other)
+            {
+                if (item.Contains(key))
+                    only_in_first.Remove(key);
+            }
+        }
+        static public HashSet<T> CalculateKeysOnlyIn<T>(this HashSet<T> item, IEnumerable<T> other)
+        {
+            HashSet<T> set = new HashSet<T>();
+
+            item.CalculateKeysOnlyIn<T>(other, set);
+            return set;
         }
     }
 }
