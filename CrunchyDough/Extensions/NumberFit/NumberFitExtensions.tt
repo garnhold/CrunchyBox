@@ -4,12 +4,14 @@
 <#@ output extension=".cs" #>
 <#
 NumericInfo[] infos = new NumericInfo[]{
-	new NumericInfo("long", "Long", "long.MinValue", "long.MaxValue"),
-	new NumericInfo("int", "Int", "int.MinValue", "int.MaxValue"),
-	new NumericInfo("short", "Short", "short.MinValue", "short.MaxValue"),
-	new NumericInfo("ushort", "UnsignedShort", "ushort.MinValue", "ushort.MaxValue"),
-	new NumericInfo("byte", "Byte", "byte.MinValue", "byte.MaxValue"),
-	new NumericInfo("sbyte", "SignedByte", "sbyte.MinValue", "sbyte.MaxValue")
+    new NumericInfo("byte", "Byte", byte.MinValue, byte.MaxValue),
+    new NumericInfo("sbyte", "SignedByte", sbyte.MinValue, sbyte.MaxValue),
+    new NumericInfo("short", "Short", short.MinValue, short.MaxValue),
+    new NumericInfo("ushort", "UnsignedShort", ushort.MinValue, ushort.MaxValue),
+    new NumericInfo("int", "Int", int.MinValue, int.MaxValue),
+    new NumericInfo("uint", "UnsignedInt", uint.MinValue, uint.MaxValue),
+    new NumericInfo("long", "Long", long.MinValue, long.MaxValue),
+    new NumericInfo("ulong", "UnsignedLong", ulong.MinValue, ulong.MaxValue)
 };
 #>
 using System;
@@ -20,38 +22,56 @@ namespace Crunchy.Dough
 {
 	static public class NumberFitExtensions
     {
-<#for(int i = 0; i < infos.Length; i++){#>
-<#
-NumericInfo src_info = infos[i];
-#>
+        <#for(int i = 0; i < infos.Length; i++){#>
+            <#NumericInfo src_info = infos[i];#>
 
-		static public object ShrinkFit(this <#=src_info.type_name#> item)
-		{
-<#for(int j = i + 1; j < infos.Length; j++){#>
-<#
-NumericInfo dst_info = infos[j];
-#>
-			if(item.CanFitIn<#=dst_info.class_name#>())
-				return (<#=dst_info.type_name#>)item;
+    		static public object ShrinkFit(this <#=src_info.type_name#> item)
+    		{
+                <#for(int j = 0; j < i; j++){#>
+                    <#NumericInfo dst_info = infos[j];#>
+                
+        			if(item.CanFitIn<#=dst_info.class_name#>())
+        				return (<#=dst_info.type_name#>)item;
 
-<#}#>
-			return item;
-		}
+                <#}#>
+    			return item;
+    		}
 
-<#for(int j = i + 1; j < infos.Length; j++){#>
-<#
-NumericInfo dst_info = infos[j];
-#>
-		static public bool CanFitIn<#=dst_info.class_name#>(this <#=src_info.type_name#> item)
-		{
-			if(item >= <#=dst_info.minimum#> && item <= <#=dst_info.maximum#>)
-				return true;
+            <#for(int j = 0; j < infos.Length; j++){#><#if(j != i){#>
+                <#NumericInfo dst_info = infos[j];#>
+                
+        		static public bool CanFitIn<#=dst_info.class_name#>(this <#=src_info.type_name#> item)
+        		{
+                    <#if(src_info.minimum < dst_info.minimum){#>
+                        if(item < <#=dst_info.minimum#>)
+                            return false;
+                    <#}#>
+                    
+                    <#if(src_info.maximum > dst_info.maximum){#>
+                        if(item > <#=dst_info.maximum#>)
+                            return false;
+                    <#}#>
 
-			return false;
-		}
+        			return true;
+        		}
+                
+                static public <#=dst_info.type_name#> FitInCapped<#=dst_info.class_name#>(this <#=src_info.type_name#> item)
+                {
+                    <#if(src_info.minimum < dst_info.minimum){#>
+                        if(item < <#=dst_info.minimum#>)
+                            return <#=dst_info.minimum#>;
+                    <#}#>
+                    
+                    <#if(src_info.maximum > dst_info.maximum){#>
+                        if(item > <#=dst_info.maximum#>)
+                            return <#=dst_info.maximum#>;
+                    <#}#>
+                        
+                    return (<#=dst_info.type_name#>)item;
+                }
 
-<#}#>
-<#}#>
+            <#}#><#}#>
+        <#}#>
 	}
 }
 <#+
@@ -60,10 +80,10 @@ public class NumericInfo
 	public readonly string type_name;
 	public readonly string class_name;
 
-	public readonly string minimum;
-	public readonly string maximum;
+	public readonly decimal minimum;
+	public readonly decimal maximum;
 
-	public NumericInfo(string t, string c, string min, string max)
+	public NumericInfo(string t, string c, decimal min, decimal max)
 	{
 		type_name = t;
 		class_name = c;
