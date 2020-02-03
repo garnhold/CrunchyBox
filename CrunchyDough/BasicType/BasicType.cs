@@ -8,10 +8,15 @@ namespace Crunchy.Dough
 
         Bool,
 
-        Byte,
+        SByte,
         Short,
         Int,
         Long,
+
+        Byte,
+        UShort,
+        UInt,
+        ULong,
 
         Float,
         Double,
