@@ -148,8 +148,15 @@ namespace Crunchy.Salt
         public override void Emit_Ldelem_I2() { il_generator.Emit(OpCodes.Ldelem_I2); }
         public override void Emit_Ldelem_I4() { il_generator.Emit(OpCodes.Ldelem_I4); }
         public override void Emit_Ldelem_I8() { il_generator.Emit(OpCodes.Ldelem_I8); }
+
+        public override void Emit_Ldelem_U1() { il_generator.Emit(OpCodes.Ldelem_U1); }
+        public override void Emit_Ldelem_U2() { il_generator.Emit(OpCodes.Ldelem_U2); }
+        public override void Emit_Ldelem_U4() { il_generator.Emit(OpCodes.Ldelem_U4); }
+        public override void Emit_Ldelem_U8() { il_generator.Emit(OpCodes.Ldelem_I8); }
+
         public override void Emit_Ldelem_R4() { il_generator.Emit(OpCodes.Ldelem_R4); }
         public override void Emit_Ldelem_R8() { il_generator.Emit(OpCodes.Ldelem_R8); }
+
         public override void Emit_Ldelem_Ref() { il_generator.Emit(OpCodes.Ldelem_Ref); }
 
         public override void Emit_Ldelema(Type type) { il_generator.Emit(OpCodes.Ldelema, type.GetNativeType()); }
@@ -158,8 +165,15 @@ namespace Crunchy.Salt
         public override void Emit_Stelem_I2() { il_generator.Emit(OpCodes.Stelem_I2); }
         public override void Emit_Stelem_I4() { il_generator.Emit(OpCodes.Stelem_I4); }
         public override void Emit_Stelem_I8() { il_generator.Emit(OpCodes.Stelem_I8); }
+
+        public override void Emit_Stelem_U1() { il_generator.Emit(OpCodes.Stelem_I1); }
+        public override void Emit_Stelem_U2() { il_generator.Emit(OpCodes.Stelem_I2); }
+        public override void Emit_Stelem_U4() { il_generator.Emit(OpCodes.Stelem_I4); }
+        public override void Emit_Stelem_U8() { il_generator.Emit(OpCodes.Stelem_I8); }
+
         public override void Emit_Stelem_R4() { il_generator.Emit(OpCodes.Stelem_R4); }
         public override void Emit_Stelem_R8() { il_generator.Emit(OpCodes.Stelem_R8); }
+
         public override void Emit_Stelem_Ref() { il_generator.Emit(OpCodes.Stelem_Ref); }
 
         public override void Emit_Neg() { il_generator.Emit(OpCodes.Neg); }

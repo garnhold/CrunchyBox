@@ -17,10 +17,15 @@ namespace Crunchy.Dough
 
                 case BasicType.Bool: return (bool)false;
 
-                case BasicType.Byte: return (byte)0;
+                case BasicType.SByte: return (sbyte)0;
                 case BasicType.Short: return (short)0;
                 case BasicType.Int: return (int)0;
                 case BasicType.Long: return (long)0;
+
+                case BasicType.Byte: return (byte)0;
+                case BasicType.UShort: return (ushort)0;
+                case BasicType.UInt: return (uint)0;
+                case BasicType.ULong: return (ulong)0;
 
                 case BasicType.Float: return (float)0.0f;
                 case BasicType.Double: return (double)0.0;
@@ -49,10 +54,15 @@ namespace Crunchy.Dough
 
                 case BasicType.Bool: return (bool)false;
 
-                case BasicType.Byte: return (byte)0;
+                case BasicType.SByte: return (sbyte)0;
                 case BasicType.Short: return (short)0;
                 case BasicType.Int: return (int)0;
                 case BasicType.Long: return (long)0;
+
+                case BasicType.Byte: return (byte)0;
+                case BasicType.UShort: return (ushort)0;
+                case BasicType.UInt: return (uint)0;
+                case BasicType.ULong: return (ulong)0;
 
                 case BasicType.Float: return (float)0.0f;
                 case BasicType.Double: return (double)0.0;

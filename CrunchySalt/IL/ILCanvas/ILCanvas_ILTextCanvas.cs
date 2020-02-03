@@ -152,8 +152,15 @@ namespace Crunchy.Salt
         public override void Emit_Ldelem_I2() { canvas.AppendInstruction("Ldelem.I2"); }
         public override void Emit_Ldelem_I4() { canvas.AppendInstruction("Ldelem.I4"); }
         public override void Emit_Ldelem_I8() { canvas.AppendInstruction("Ldelem.I8"); }
+
+        public override void Emit_Ldelem_U1() { canvas.AppendInstruction("Ldelem.U1"); }
+        public override void Emit_Ldelem_U2() { canvas.AppendInstruction("Ldelem.U2"); }
+        public override void Emit_Ldelem_U4() { canvas.AppendInstruction("Ldelem.U4"); }
+        public override void Emit_Ldelem_U8() { canvas.AppendInstruction("Ldelem.U8"); }
+
         public override void Emit_Ldelem_R4() { canvas.AppendInstruction("Ldelem.R4"); }
         public override void Emit_Ldelem_R8() { canvas.AppendInstruction("Ldelem.R8"); }
+
         public override void Emit_Ldelem_Ref() { canvas.AppendInstruction("Ldelem.Ref"); }
 
         public override void Emit_Ldelema(Type type) { canvas.AppendInstruction("Ldelema", type.Name); }
@@ -162,8 +169,15 @@ namespace Crunchy.Salt
         public override void Emit_Stelem_I2() { canvas.AppendInstruction("Stelem.I2"); }
         public override void Emit_Stelem_I4() { canvas.AppendInstruction("Stelem.I4"); }
         public override void Emit_Stelem_I8() { canvas.AppendInstruction("Stelem.I8"); }
+
+        public override void Emit_Stelem_U1() { canvas.AppendInstruction("Stelem.U1"); }
+        public override void Emit_Stelem_U2() { canvas.AppendInstruction("Stelem.U2"); }
+        public override void Emit_Stelem_U4() { canvas.AppendInstruction("Stelem.U4"); }
+        public override void Emit_Stelem_U8() { canvas.AppendInstruction("Stelem.U8"); }
+
         public override void Emit_Stelem_R4() { canvas.AppendInstruction("Stelem.R4"); }
         public override void Emit_Stelem_R8() { canvas.AppendInstruction("Stelem.R8"); }
+
         public override void Emit_Stelem_Ref() { canvas.AppendInstruction("Stelem.Ref"); }
 
         public override void Emit_Neg() { canvas.AppendInstruction("Neg"); }

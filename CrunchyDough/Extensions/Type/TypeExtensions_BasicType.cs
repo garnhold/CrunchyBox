@@ -13,10 +13,15 @@ namespace Crunchy.Dough
 
             if (type == typeof(bool)) return BasicType.Bool;
 
-            if (type == typeof(byte)) return BasicType.Byte;
+            if (type == typeof(sbyte)) return BasicType.SByte;
             if (type == typeof(short)) return BasicType.Short;
             if (type == typeof(int)) return BasicType.Int;
             if (type == typeof(long)) return BasicType.Long;
+
+            if (type == typeof(byte)) return BasicType.Byte;
+            if (type == typeof(ushort)) return BasicType.UShort;
+            if (type == typeof(uint)) return BasicType.UInt;
+            if (type == typeof(ulong)) return BasicType.ULong;
 
             if (type == typeof(float)) return BasicType.Float;
             if (type == typeof(double)) return BasicType.Double;

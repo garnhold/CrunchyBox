@@ -27,8 +27,8 @@ namespace Crunchy.Salt
 			if(type == typeof(bool))
 				return new ILBool((bool)value);
 		
-			if(type == typeof(byte))
-				return new ILByte((byte)value);
+			if(type == typeof(sbyte))
+				return new ILSByte((sbyte)value);
 		
 			if(type == typeof(short))
 				return new ILShort((short)value);
@@ -38,6 +38,18 @@ namespace Crunchy.Salt
 		
 			if(type == typeof(long))
 				return new ILLong((long)value);
+		
+			if(type == typeof(byte))
+				return new ILByte((byte)value);
+		
+			if(type == typeof(ushort))
+				return new ILUShort((ushort)value);
+		
+			if(type == typeof(uint))
+				return new ILUInt((uint)value);
+		
+			if(type == typeof(ulong))
+				return new ILULong((ulong)value);
 		
 			if(type == typeof(float))
 				return new ILFloat((float)value);
@@ -114,11 +126,11 @@ namespace Crunchy.Salt
 		}
 	}
 
-	public class ILByte : ILLiteral
+	public class ILSByte : ILLiteral
 	{
-		private byte constant;
+		private sbyte constant;
 
-		public ILByte(byte c)
+		public ILSByte(sbyte c)
 		{
 			constant = c;
 		}
@@ -135,7 +147,7 @@ namespace Crunchy.Salt
 
 		public override Type GetValueType()
 		{
-			return typeof(byte);
+			return typeof(sbyte);
 		}
 
 		public override object GetLiteralValue()
@@ -145,16 +157,16 @@ namespace Crunchy.Salt
 	}
 	public abstract partial class ILValue
 	{
-		static public implicit operator ILValue(byte item)
+		static public implicit operator ILValue(sbyte item)
 		{
-			return new ILByte(item);
+			return new ILSByte(item);
 		}
 	}
 	public abstract partial class ILLiteral
 	{
-		static public implicit operator ILLiteral(byte item)
+		static public implicit operator ILLiteral(sbyte item)
 		{
-			return new ILByte(item);
+			return new ILSByte(item);
 		}
 	}
 
@@ -287,6 +299,182 @@ namespace Crunchy.Salt
 		static public implicit operator ILLiteral(long item)
 		{
 			return new ILLong(item);
+		}
+	}
+
+	public class ILByte : ILLiteral
+	{
+		private byte constant;
+
+		public ILByte(byte c)
+		{
+			constant = c;
+		}
+
+		public override void RenderIL_Load(ILCanvas canvas)
+		{
+			canvas.Emit_Ldc_U4(constant);
+		}
+
+		public override void RenderText_Value(ILTextCanvas canvas)
+		{
+			canvas.AppendToLine(constant.ToStringEX());
+		}
+
+		public override Type GetValueType()
+		{
+			return typeof(byte);
+		}
+
+		public override object GetLiteralValue()
+		{
+			return constant;
+		}
+	}
+	public abstract partial class ILValue
+	{
+		static public implicit operator ILValue(byte item)
+		{
+			return new ILByte(item);
+		}
+	}
+	public abstract partial class ILLiteral
+	{
+		static public implicit operator ILLiteral(byte item)
+		{
+			return new ILByte(item);
+		}
+	}
+
+	public class ILUShort : ILLiteral
+	{
+		private ushort constant;
+
+		public ILUShort(ushort c)
+		{
+			constant = c;
+		}
+
+		public override void RenderIL_Load(ILCanvas canvas)
+		{
+			canvas.Emit_Ldc_U4(constant);
+		}
+
+		public override void RenderText_Value(ILTextCanvas canvas)
+		{
+			canvas.AppendToLine(constant.ToStringEX());
+		}
+
+		public override Type GetValueType()
+		{
+			return typeof(ushort);
+		}
+
+		public override object GetLiteralValue()
+		{
+			return constant;
+		}
+	}
+	public abstract partial class ILValue
+	{
+		static public implicit operator ILValue(ushort item)
+		{
+			return new ILUShort(item);
+		}
+	}
+	public abstract partial class ILLiteral
+	{
+		static public implicit operator ILLiteral(ushort item)
+		{
+			return new ILUShort(item);
+		}
+	}
+
+	public class ILUInt : ILLiteral
+	{
+		private uint constant;
+
+		public ILUInt(uint c)
+		{
+			constant = c;
+		}
+
+		public override void RenderIL_Load(ILCanvas canvas)
+		{
+			canvas.Emit_Ldc_U4(constant);
+		}
+
+		public override void RenderText_Value(ILTextCanvas canvas)
+		{
+			canvas.AppendToLine(constant.ToStringEX());
+		}
+
+		public override Type GetValueType()
+		{
+			return typeof(uint);
+		}
+
+		public override object GetLiteralValue()
+		{
+			return constant;
+		}
+	}
+	public abstract partial class ILValue
+	{
+		static public implicit operator ILValue(uint item)
+		{
+			return new ILUInt(item);
+		}
+	}
+	public abstract partial class ILLiteral
+	{
+		static public implicit operator ILLiteral(uint item)
+		{
+			return new ILUInt(item);
+		}
+	}
+
+	public class ILULong : ILLiteral
+	{
+		private ulong constant;
+
+		public ILULong(ulong c)
+		{
+			constant = c;
+		}
+
+		public override void RenderIL_Load(ILCanvas canvas)
+		{
+			canvas.Emit_Ldc_U8(constant);
+		}
+
+		public override void RenderText_Value(ILTextCanvas canvas)
+		{
+			canvas.AppendToLine(constant.ToStringEX());
+		}
+
+		public override Type GetValueType()
+		{
+			return typeof(ulong);
+		}
+
+		public override object GetLiteralValue()
+		{
+			return constant;
+		}
+	}
+	public abstract partial class ILValue
+	{
+		static public implicit operator ILValue(ulong item)
+		{
+			return new ILULong(item);
+		}
+	}
+	public abstract partial class ILLiteral
+	{
+		static public implicit operator ILLiteral(ulong item)
+		{
+			return new ILULong(item);
 		}
 	}
 

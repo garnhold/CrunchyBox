@@ -41,10 +41,15 @@ namespace Crunchy.Salt
 
                 switch (element_basic_type)
                 {
-                    case BasicType.Byte: return IndexerInfoEX_Array_Byte.INSTANCE;
+                    case BasicType.SByte: return IndexerInfoEX_Array_SByte.INSTANCE;
                     case BasicType.Short: return IndexerInfoEX_Array_Short.INSTANCE;
                     case BasicType.Int: return IndexerInfoEX_Array_Int.INSTANCE;
                     case BasicType.Long: return IndexerInfoEX_Array_Long.INSTANCE;
+
+                    case BasicType.Byte: return IndexerInfoEX_Array_Byte.INSTANCE;
+                    case BasicType.UShort: return IndexerInfoEX_Array_UShort.INSTANCE;
+                    case BasicType.UInt: return IndexerInfoEX_Array_UInt.INSTANCE;
+                    case BasicType.ULong: return IndexerInfoEX_Array_ULong.INSTANCE;
 
                     case BasicType.Float: return IndexerInfoEX_Array_Float.INSTANCE;
                     case BasicType.Double: return IndexerInfoEX_Array_Double.INSTANCE;

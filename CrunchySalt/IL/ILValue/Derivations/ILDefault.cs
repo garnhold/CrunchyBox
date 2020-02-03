@@ -27,11 +27,16 @@ namespace Crunchy.Salt
             switch (basic_type)
             {
                 case BasicType.Bool: canvas.Emit_Ldc_I4(0); break;
-
-                case BasicType.Byte: canvas.Emit_Ldc_I4(0); break;
+                
+                case BasicType.SByte: canvas.Emit_Ldc_I4(0); break;
                 case BasicType.Short: canvas.Emit_Ldc_I4(0); break;
                 case BasicType.Int: canvas.Emit_Ldc_I4(0); break;
                 case BasicType.Long: canvas.Emit_Ldc_I8(0); break;
+
+                case BasicType.Byte: canvas.Emit_Ldc_U4(0); break;
+                case BasicType.UShort: canvas.Emit_Ldc_U4(0); break;
+                case BasicType.UInt: canvas.Emit_Ldc_U4(0); break;
+                case BasicType.ULong: canvas.Emit_Ldc_U8(0); break;
 
                 case BasicType.Float: canvas.Emit_Ldc_R4(0.0f); break;
                 case BasicType.Double: canvas.Emit_Ldc_R8(0.0); break;

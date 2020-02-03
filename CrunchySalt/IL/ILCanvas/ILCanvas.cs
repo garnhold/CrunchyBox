@@ -126,8 +126,15 @@ namespace Crunchy.Salt
         public abstract void Emit_Ldelem_I2();
         public abstract void Emit_Ldelem_I4();
         public abstract void Emit_Ldelem_I8();
+
+        public abstract void Emit_Ldelem_U1();
+        public abstract void Emit_Ldelem_U2();
+        public abstract void Emit_Ldelem_U4();
+        public abstract void Emit_Ldelem_U8();
+
         public abstract void Emit_Ldelem_R4();
         public abstract void Emit_Ldelem_R8();
+
         public abstract void Emit_Ldelem_Ref();
 
         public abstract void Emit_Ldelema(Type type);
@@ -136,8 +143,15 @@ namespace Crunchy.Salt
         public abstract void Emit_Stelem_I2();
         public abstract void Emit_Stelem_I4();
         public abstract void Emit_Stelem_I8();
+
+        public abstract void Emit_Stelem_U1();
+        public abstract void Emit_Stelem_U2();
+        public abstract void Emit_Stelem_U4();
+        public abstract void Emit_Stelem_U8();
+
         public abstract void Emit_Stelem_R4();
         public abstract void Emit_Stelem_R8();
+
         public abstract void Emit_Stelem_Ref();
 
         public abstract void Emit_Neg();
@@ -186,6 +200,16 @@ namespace Crunchy.Salt
                 Emit_Ldc_I4_S_Direct((sbyte)value);
             else
                 Emit_Ldc_I4_Direct(value);
+        }
+
+        public void Emit_Ldc_U4(uint value)
+        {
+            Emit_Ldc_I4(unchecked((int)value));
+        }
+
+        public void Emit_Ldc_U8(ulong value)
+        {
+            Emit_Ldc_I8(unchecked((long)value));
         }
 
         public void Emit_Ldarg(int index)

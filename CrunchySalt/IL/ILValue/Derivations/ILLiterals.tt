@@ -11,11 +11,16 @@
 ConstantType[] constant_types = new ConstantType[]{
 	new ConstantType("Bool", "bool", "canvas.Emit_Ldc_I4(constant.ConvertBool(1, 0));", "constant.ToStringEX()"),
 
-	new ConstantType("Byte", "byte", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),
+	new ConstantType("SByte", "sbyte", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),
 	new ConstantType("Short", "short", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),
-	new ConstantType("Int", "int", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),
-
+	new ConstantType("Int", "int", "canvas.Emit_Ldc_I4(constant);", "constant.ToStringEX()"),   
 	new ConstantType("Long", "long", "canvas.Emit_Ldc_I8(constant);", "constant.ToStringEX()"),
+    
+    new ConstantType("Byte", "byte", "canvas.Emit_Ldc_U4(constant);", "constant.ToStringEX()"),
+    new ConstantType("UShort", "ushort", "canvas.Emit_Ldc_U4(constant);", "constant.ToStringEX()"),
+    new ConstantType("UInt", "uint", "canvas.Emit_Ldc_U4(constant);", "constant.ToStringEX()"),   
+    new ConstantType("ULong", "ulong", "canvas.Emit_Ldc_U8(constant);", "constant.ToStringEX()"),
+    
 	new ConstantType("Float", "float", "canvas.Emit_Ldc_R4(constant);", "constant.ToStringEX()"),
 	new ConstantType("Double", "double", "canvas.Emit_Ldc_R8(constant);", "constant.ToStringEX()"),
 

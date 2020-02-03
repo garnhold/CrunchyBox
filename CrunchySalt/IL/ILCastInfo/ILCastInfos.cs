@@ -33,10 +33,16 @@ namespace Crunchy.Salt
             {
                 switch (destination_type.GetBasicType())
                 {
-                    case BasicType.Byte: return new ILCastInfo_Conv_I1(source_type);
+                    case BasicType.SByte: return new ILCastInfo_Conv_I1(source_type);
                     case BasicType.Short: return new ILCastInfo_Conv_I2(source_type);
                     case BasicType.Int: return new ILCastInfo_Conv_I4(source_type);
                     case BasicType.Long: return new ILCastInfo_Conv_I8(source_type);
+
+                    case BasicType.Byte: return new ILCastInfo_Conv_U1(source_type);
+                    case BasicType.UShort: return new ILCastInfo_Conv_U2(source_type);
+                    case BasicType.UInt: return new ILCastInfo_Conv_U4(source_type);
+                    case BasicType.ULong: return new ILCastInfo_Conv_U8(source_type);
+
                     case BasicType.Float: return new ILCastInfo_Conv_R4(source_type);
                     case BasicType.Double: return new ILCastInfo_Conv_R8(source_type);
                 }

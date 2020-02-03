@@ -8,10 +8,15 @@
 <#@ output extension=".cs" #>
 <#
 TypeInfo[] types = new TypeInfo[]{
-	new TypeInfo("byte", "Byte", "I1"),
+	new TypeInfo("sbyte", "SByte", "I1"),
 	new TypeInfo("short", "Short", "I2"),
 	new TypeInfo("int", "Int", "I4"),
 	new TypeInfo("long", "Long", "I8"),
+    
+    new TypeInfo("byte", "Byte", "U1"),
+    new TypeInfo("ushort", "UShort", "U2"),
+    new TypeInfo("uint", "UInt", "U4"),
+    new TypeInfo("ulong", "ULong", "U8"),
 
 	new TypeInfo("float", "Float", "R4"),
 	new TypeInfo("double", "Double", "R8")
