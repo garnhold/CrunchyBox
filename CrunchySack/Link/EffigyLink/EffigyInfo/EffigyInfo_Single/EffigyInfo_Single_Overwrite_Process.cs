@@ -31,4 +31,13 @@ namespace Crunchy.Sack
             )
         { }
     }
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public void AddSingleAttributeChild<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> s)
+        {
+            item.AddAttributeChildren(n,
+                new EffigyInfo_Single_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
+            );
+        }
+    }
 }
