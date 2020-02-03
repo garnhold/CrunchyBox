@@ -23,9 +23,6 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<Grid>();
             engine.AddPublicPropertyAttributeLinksForType<Grid>();
 
-            engine.AddAttributeLink<Widget, int>("row", (w, i) => w.SetRow(i), w => w.GetRow());
-            engine.AddAttributeLink<Widget, int>("column", (w, i) => w.SetColumn(i), w => w.GetColumn());
-
             engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("row", "top-attach");
             engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("column", "left-attach");
 
