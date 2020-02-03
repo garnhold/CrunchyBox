@@ -346,6 +346,10 @@
     <Compile Include="ProgrammingEntityName\ProgrammingEntityName.cs" />
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Compare.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U1.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U2.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U4.cs" />
+    <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U8.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">

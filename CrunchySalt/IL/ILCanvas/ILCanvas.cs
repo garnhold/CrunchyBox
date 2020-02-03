@@ -72,6 +72,12 @@ namespace Crunchy.Salt
         public abstract void Emit_Conv_I2();
         public abstract void Emit_Conv_I4();
         public abstract void Emit_Conv_I8();
+
+        public abstract void Emit_Conv_U1();
+        public abstract void Emit_Conv_U2();
+        public abstract void Emit_Conv_U4();
+        public abstract void Emit_Conv_U8();
+
         public abstract void Emit_Conv_R4();
         public abstract void Emit_Conv_R8();
 

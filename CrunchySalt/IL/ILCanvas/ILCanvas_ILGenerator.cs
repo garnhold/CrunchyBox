@@ -90,10 +90,16 @@ namespace Crunchy.Salt
         public override void Emit_Ldc_R4(float value) { il_generator.Emit(OpCodes.Ldc_R4, value); }
         public override void Emit_Ldc_R8(double value) { il_generator.Emit(OpCodes.Ldc_R8, value); }
 
-        public override void Emit_Conv_I1() { il_generator.Emit(OpCodes.Conv_U1); }
-        public override void Emit_Conv_I2() { il_generator.Emit(OpCodes.Conv_U2); }
-        public override void Emit_Conv_I4() { il_generator.Emit(OpCodes.Conv_U4); }
-        public override void Emit_Conv_I8() { il_generator.Emit(OpCodes.Conv_U8); }
+        public override void Emit_Conv_I1() { il_generator.Emit(OpCodes.Conv_I1); }
+        public override void Emit_Conv_I2() { il_generator.Emit(OpCodes.Conv_I2); }
+        public override void Emit_Conv_I4() { il_generator.Emit(OpCodes.Conv_I4); }
+        public override void Emit_Conv_I8() { il_generator.Emit(OpCodes.Conv_I8); }
+
+        public override void Emit_Conv_U1() { il_generator.Emit(OpCodes.Conv_U1); }
+        public override void Emit_Conv_U2() { il_generator.Emit(OpCodes.Conv_U2); }
+        public override void Emit_Conv_U4() { il_generator.Emit(OpCodes.Conv_U4); }
+        public override void Emit_Conv_U8() { il_generator.Emit(OpCodes.Conv_U8); }
+
         public override void Emit_Conv_R4() { il_generator.Emit(OpCodes.Conv_R4); }
         public override void Emit_Conv_R8() { il_generator.Emit(OpCodes.Conv_R8); }
 

@@ -97,6 +97,12 @@ namespace Crunchy.Salt
         public override void Emit_Conv_I2() { canvas.AppendInstruction("Conv.I2"); }
         public override void Emit_Conv_I4() { canvas.AppendInstruction("Conv.I4"); }
         public override void Emit_Conv_I8() { canvas.AppendInstruction("Conv.I8"); }
+
+        public override void Emit_Conv_U1() { canvas.AppendInstruction("Conv.U1"); }
+        public override void Emit_Conv_U2() { canvas.AppendInstruction("Conv.U2"); }
+        public override void Emit_Conv_U4() { canvas.AppendInstruction("Conv.U4"); }
+        public override void Emit_Conv_U8() { canvas.AppendInstruction("Conv.U8"); }
+
         public override void Emit_Conv_R4() { canvas.AppendInstruction("Conv.R4"); }
         public override void Emit_Conv_R8() { canvas.AppendInstruction("Conv.R8"); }
 
