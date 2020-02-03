@@ -77,12 +77,6 @@ namespace Crunchy.Noodle
         }
 
         [Conversion]
-        static public double ToDouble(double input)
-        {
-            return input;
-        }
-
-        [Conversion]
         static public decimal ToDecimal(double input)
         {
             if (input > (double)decimal.MaxValue)

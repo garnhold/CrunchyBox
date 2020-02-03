@@ -285,11 +285,7 @@
     <Compile Include="ReflectionTypeHuskers\TypeHusker.cs" />
     <Compile Include="ConfigurationVariable\ConfigurationVariable_Create_FactoryAttribute.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Member_Variable.cs" />
-    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Byte.cs" />
     <Compile Include="ConversionMethods\Primitive\ConversionMethods_Bool.cs" />
-    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Short.cs" />
-    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Int.cs" />
-    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Long.cs" />
     <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Float.cs" />
     <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Double.cs" />
     <Compile Include="Factory\Factory.cs" />
@@ -474,6 +470,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Integer.cs">
+      <DependentUpon>ConversionMethods_Integer.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -520,6 +519,10 @@
     <Content Include="MarkedMethods\MarkedMethods_Invoke.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MarkedMethods_Invoke.cs</LastGenOutput>
+    </Content>
+    <Content Include="ConversionMethods\Primitive\Numeric\ConversionMethods_Integer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ConversionMethods_Integer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup />

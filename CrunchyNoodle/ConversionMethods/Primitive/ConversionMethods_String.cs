@@ -14,9 +14,9 @@ namespace Crunchy.Noodle
         }
 
         [Conversion]
-        static public byte ToByte(string input)
+        static public sbyte ToSByte(string input)
         {
-            return input.ParseByte();
+            return input.ParseSByte();
         }
 
         [Conversion]
@@ -35,6 +35,30 @@ namespace Crunchy.Noodle
         static public long ToLong(string input)
         {
             return input.ParseLong();
+        }
+
+        [Conversion]
+        static public byte ToByte(string input)
+        {
+            return input.ParseByte();
+        }
+
+        [Conversion]
+        static public ushort ToUShort(string input)
+        {
+            return input.ParseUShort();
+        }
+
+        [Conversion]
+        static public uint ToUInt(string input)
+        {
+            return input.ParseUInt();
+        }
+
+        [Conversion]
+        static public ulong ToULong(string input)
+        {
+            return input.ParseULong();
         }
 
         [Conversion]

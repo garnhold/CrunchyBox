@@ -65,12 +65,6 @@ namespace Crunchy.Noodle
         }
 
         [Conversion]
-        static public float ToFloat(float input)
-        {
-            return input;
-        }
-
-        [Conversion]
         static public double ToDouble(float input)
         {
             return input;

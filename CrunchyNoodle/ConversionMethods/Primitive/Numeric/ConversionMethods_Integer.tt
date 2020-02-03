@@ -1,0 +1,89 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] infos = new NumericInfo[]{
+    new NumericInfo("byte", "Byte"),
+    new NumericInfo("sbyte", "SignedByte"),
+    new NumericInfo("short", "Short"),
+    new NumericInfo("ushort", "UnsignedShort"),
+    new NumericInfo("int", "Int"),
+    new NumericInfo("uint", "UnsignedInt"),
+    new NumericInfo("long", "Long"),
+    new NumericInfo("ulong", "UnsignedLong")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Noodle
+{
+    using Dough;
+    
+    [Conversion]
+	static public class ConversionMethods_Integer
+    {
+        <#for(int i = 0; i < infos.Length; i++){#>      
+            <#NumericInfo src_info = infos[i];#>
+            
+            <#for(int j = 0; j < infos.Length; j++){#><#if(j != i){#>
+                <#NumericInfo dst_info = infos[j];#>
+                
+                [Conversion]
+                static public <#=dst_info.type_name#> To<#=dst_info.class_name#>(this <#=src_info.type_name#> item)
+                {
+                    return item.FitInCapped<#=dst_info.class_name#>();
+                }
+
+            <#}#><#}#>
+            
+            [Conversion]
+            static public bool ToBool(this <#=src_info.type_name#> item)
+            {
+                if(item == 0)
+                    return false;
+                    
+                return true;
+            }
+            
+            [Conversion]
+            static public float ToFloat(this <#=src_info.type_name#> item)
+            {
+                return item;
+            }
+            
+            [Conversion]
+            static public double ToDouble(this <#=src_info.type_name#> item)
+            {
+                return item;
+            }
+            
+            [Conversion]
+            static public decimal ToDecimal(this <#=src_info.type_name#> item)
+            {
+                return item;
+            }
+            
+            [Conversion]
+            static public string ToString(this <#=src_info.type_name#> item)
+            {
+                return item.ToStringEX();
+            }
+        <#}#>
+	}
+}
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public NumericInfo(string t, string c)
+	{
+		type_name = t;
+		class_name = c;
+	}
+}
+#>

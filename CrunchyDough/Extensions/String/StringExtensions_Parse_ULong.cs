@@ -11,7 +11,7 @@ namespace Crunchy.Dough
             return ulong.TryParse(item.TrimAnySuffix("l", "L"), out value);
         }
 
-        static public ulong ParseLong(this string item, ulong default_value)
+        static public ulong ParseULong(this string item, ulong default_value)
         {
             ulong value;
 
