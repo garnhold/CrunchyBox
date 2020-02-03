@@ -28,6 +28,15 @@ namespace Crunchy.Sack_Gtk
 
             engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("row_span", "height");
             engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("column_span", "width");
+
+            engine.AddSimpleInstancer<HPaned>("HorizontalSplitContainer");
+            engine.AddPublicPropertyAttributeLinksForType<HPaned>();
+
+            engine.AddSimpleInstancer<VPaned>("VerticalSplitContainer");
+            engine.AddPublicPropertyAttributeLinksForType<VPaned>();
+
+            engine.AddSingleAttributeChild<Paned, Widget>("child1", (p, w) => p.Add1(w));
+            engine.AddSingleAttributeChild<Paned, Widget>("child2", (p, w) => p.Add2(w));
         }
     }
 }
