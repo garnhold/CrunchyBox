@@ -20,7 +20,7 @@ namespace Crunchy.Sack_Avalonia
             engine.AddSimpleInstancer<ScrollViewer>();
             engine.AddAvaloniaPropertyAttributeLinksForType<ScrollViewer>();
 
-            engine.AddChildren<ScrollViewer, Control>(v => v.Content = null, (v, c) => v.Content = c);
+            engine.AddReOrgChildren<ScrollViewer, Control>(v => v.Content = null, (v, c) => v.Content = c);
         }
     }
 }

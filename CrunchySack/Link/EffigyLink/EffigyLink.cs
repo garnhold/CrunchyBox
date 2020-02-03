@@ -62,9 +62,5 @@ namespace Crunchy.Sack
 
             class_info.AssertGetClass(execution).SolidifyInto(execution, container);
         }
-        public void CreateRepresentationInto(object value, Process<object> process)
-        {
-            CreateRepresentationInto(value, new CmlContainer_EndPoint_SystemValueProcess(process));
-        }
     }
 }

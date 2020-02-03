@@ -34,10 +34,5 @@ namespace Crunchy.Sack
             list.Add(child);
             SetChildrenInternal(representation, list);
         }
-
-        public override IEnumerable<object> GetChildren(object representation)
-        {
-            return field.GetValue(representation);
-        }
     }
 }

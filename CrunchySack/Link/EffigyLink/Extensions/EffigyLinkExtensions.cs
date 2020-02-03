@@ -8,7 +8,7 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    static public class EffigyInfoExtensions
+    static public class EffigyLinkExtensions
     {
     }
 }

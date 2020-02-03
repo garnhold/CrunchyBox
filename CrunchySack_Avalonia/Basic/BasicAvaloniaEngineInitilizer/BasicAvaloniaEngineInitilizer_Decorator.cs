@@ -18,7 +18,7 @@ namespace Crunchy.Sack_Avalonia
         static public void Initilize(AvaloniaEngine engine)
         {
             engine.AddAttributeValue<Decorator, Control>("child", (d, c) => d.Child = c);
-            engine.AddChildren<Decorator, Control>(d => d.Child = null, (d, c) => d.Child = c);
+            engine.AddReOrgChildren<Decorator, Control>(d => d.Child = null, (d, c) => d.Child = c);
         }
     }
 }
