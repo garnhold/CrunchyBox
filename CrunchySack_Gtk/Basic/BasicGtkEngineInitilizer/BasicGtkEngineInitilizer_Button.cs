@@ -18,6 +18,12 @@ namespace Crunchy.Sack_Gtk
             engine.AddPublicPropertyAttributeLinksForType<Button>();
 
             engine.AddAttributeFunction<Button>("action", (b, s) => b.Clicked += s.GetEventHandler());
+
+            engine.AddSimpleInstancer<ToggleButton>("Toggle");
+            engine.AddPublicPropertyAttributeLinksForType<ToggleButton>();
+
+            engine.AddSimpleInstancer<Switch>();
+            engine.AddPublicPropertyAttributeLinksForType<Switch>();
         }
     }
 }

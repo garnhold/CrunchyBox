@@ -85,6 +85,13 @@
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Menu.cs" />
     <Compile Include="Extensions\MenuItem\MenuItemExtensions.cs" />
     <Compile Include="Extensions\MenuItem\MenuItemExtensions_Submenu.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Fields.cs" />
+    <Compile Include="Extensions\Entry\EntryExtensions.cs" />
+    <Compile Include="Extensions\Entry\EntryExtensions_Select.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_ListBox.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Frame.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Image.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Bar.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
@@ -122,6 +129,7 @@
     <Folder Include="NotebookItem\" />
     <Folder Include="Extensions\Notebook\" />
     <Folder Include="Extensions\MenuItem\" />
+    <Folder Include="Extensions\Entry\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets" Condition="Exists('..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets')" />
