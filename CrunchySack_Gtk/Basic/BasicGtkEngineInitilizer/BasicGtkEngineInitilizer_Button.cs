@@ -24,6 +24,9 @@ namespace Crunchy.Sack_Gtk
 
             engine.AddSimpleInstancer<Switch>();
             engine.AddPublicPropertyAttributeLinksForType<Switch>();
+
+            engine.AddSimpleInstancer<CheckButton>("CheckBox");
+            engine.AddPublicPropertyAttributeLinksForType<CheckButton>();
         }
     }
 }

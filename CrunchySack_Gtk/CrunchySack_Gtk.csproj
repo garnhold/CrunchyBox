@@ -92,6 +92,13 @@
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Frame.cs" />
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Image.cs" />
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Bar.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Slider.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_ComboBox.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_ScrollViewer.cs" />
+    <Compile Include="CustomDialog\CustomDialog.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Dialog.cs" />
+    <Compile Include="Extensions\FileChooserDialog\FileChooserDialogExtensions.cs" />
+    <Compile Include="Extensions\FileChooserDialog\FileChooserDialogExtensions_Show.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
@@ -130,6 +137,8 @@
     <Folder Include="Extensions\Notebook\" />
     <Folder Include="Extensions\MenuItem\" />
     <Folder Include="Extensions\Entry\" />
+    <Folder Include="CustomDialog\" />
+    <Folder Include="Extensions\FileChooserDialog\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets" Condition="Exists('..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets')" />
