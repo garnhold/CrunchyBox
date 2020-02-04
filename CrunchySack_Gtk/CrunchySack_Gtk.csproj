@@ -82,6 +82,9 @@
     <Compile Include="Extensions\Notebook\NotebookExtensions.cs" />
     <Compile Include="Extensions\Notebook\NotebookExtensions_NotebookItem.cs" />
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Text.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Menu.cs" />
+    <Compile Include="Extensions\MenuItem\MenuItemExtensions.cs" />
+    <Compile Include="Extensions\MenuItem\MenuItemExtensions_Submenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
@@ -118,6 +121,7 @@
     <Folder Include="Extensions\Container\" />
     <Folder Include="NotebookItem\" />
     <Folder Include="Extensions\Notebook\" />
+    <Folder Include="Extensions\MenuItem\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets" Condition="Exists('..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets')" />
