@@ -25,12 +25,6 @@ namespace Crunchy.Sack_Gtk
 
             engine.AddSimpleInstancer<VScrollbar>("VectricalScrollbar");
             engine.AddPublicPropertyAttributeLinksForType<VScrollbar>();
-
-            engine.AddSimpleInstancer<HScale>("HorizontalSlider");
-            engine.AddPublicPropertyAttributeLinksForType<HScale>();
-
-            engine.AddSimpleInstancer<VScale>("VerticalSlider");
-            engine.AddPublicPropertyAttributeLinksForType<VScale>();
         }
     }
 }

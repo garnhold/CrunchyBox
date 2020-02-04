@@ -22,9 +22,9 @@ namespace Crunchy.Sack_Gtk
                 (n, i) => n.AddNotebookItem(i),
                 (n, p, i) => n.InsertNotebookItem(p, i)
             );
-                
-            engine.AddSimpleConstructor<NotebookItem, Widget, Widget>("TabItem", (t, p) => new NotebookItem(t, p));
+
             engine.AddSimpleConstructor<NotebookItem, string, Widget>("TabItem", (t, p) => new NotebookItem(t, p));
+            engine.AddSimpleConstructor<NotebookItem, Widget, Widget>("TabItem", (t, p) => new NotebookItem(t, p));
         }
     }
 }

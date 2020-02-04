@@ -26,11 +26,13 @@ namespace Crunchy.Sack_Gtk
         static public void AddNotebookItem(this Notebook item, NotebookItem to_add)
         {
             item.AppendPage(to_add.GetPage(), to_add.GetTab());
+            to_add.GetTab().IfNotNull(t => t.ShowAll());
         }
 
         static public void InsertNotebookItem(this Notebook item, int index, NotebookItem to_insert)
         {
             item.InsertPage(to_insert.GetPage(), to_insert.GetTab(), index);
+            to_insert.GetTab().IfNotNull(t => t.ShowAll());
         }
     }
 }
