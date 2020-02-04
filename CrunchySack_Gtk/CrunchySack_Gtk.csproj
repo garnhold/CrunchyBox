@@ -77,6 +77,11 @@
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Button.cs" />
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Layout.cs" />
     <Compile Include="Extensions\Widget\WidgetExtensions_Parent.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_TabControl.cs" />
+    <Compile Include="NotebookItem\NotebookItem.cs" />
+    <Compile Include="Extensions\Notebook\NotebookExtensions.cs" />
+    <Compile Include="Extensions\Notebook\NotebookExtensions_NotebookItem.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Text.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
@@ -111,6 +116,8 @@
     <Folder Include="Extensions\Widget\" />
     <Folder Include="Basic\" />
     <Folder Include="Extensions\Container\" />
+    <Folder Include="NotebookItem\" />
+    <Folder Include="Extensions\Notebook\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets" Condition="Exists('..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets')" />
