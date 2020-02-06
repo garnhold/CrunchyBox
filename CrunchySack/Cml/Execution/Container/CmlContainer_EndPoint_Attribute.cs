@@ -36,7 +36,7 @@ namespace Crunchy.Sack
             execution.AddVariableLink(
                 value.GetInfoValue("group"),
 
-                new VariableLink(
+                new VariableLink_Simple_Direct(
                     new VariableNode(value.GetVariableInstance()),
                     new VariableNode(attribute_info.GetRepresentationVariable().CreateStrongInstance(representation))
                 )

@@ -9,16 +9,18 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class VariableLink
+    public abstract class VariableLink
     {
-        private VariableNode dominate_node;
-        private VariableNode submissive_node;
-
         private VariableLinkState state;
+
+        protected abstract void UpdateInternal();
+
+        protected abstract bool PushDominateToSubmissive();
+        protected abstract bool PushSubmissiveToDominate();
 
         private bool PropagateDominate(bool allow_backflow = true)
         {
-            if (submissive_node.PushValue(dominate_node.GetValue()))
+            if (PushDominateToSubmissive())
             {
                 state = VariableLinkState.Equal;
                 return true;
@@ -32,7 +34,7 @@ namespace Crunchy.Sack
 
         private bool PropagateSubmissive(bool allow_backflow = true)
         {
-            if (dominate_node.PushValue(submissive_node.GetValue()))
+            if (PushSubmissiveToDominate())
             {
                 state = VariableLinkState.Equal;
                 return true;
@@ -44,23 +46,19 @@ namespace Crunchy.Sack
             return false;
         }
 
-        public VariableLink(VariableNode d, VariableNode s)
+        protected void PushState(VariableLinkState new_state)
         {
-            dominate_node = d;
-            submissive_node = s;
+            state = new_state;
+        }
 
+        public VariableLink()
+        {
             state = VariableLinkState.DominateActive;
         }
 
         public void Update()
         {
-            bool did_dominate_change = dominate_node.UpdateState();
-            bool did_submissive_change = submissive_node.UpdateState();
-
-            if (did_dominate_change)
-                state = VariableLinkState.DominateActive;
-            else if (did_submissive_change)
-                state = VariableLinkState.SubmissiveActive;
+            UpdateInternal();
 
             switch (state)
             {

@@ -327,6 +327,9 @@
     <Compile Include="Link\EffigyLink\Extensions\EffigyLinkExtensions.cs" />
     <Compile Include="Link\EffigyLink\Extensions\EffigyLinkExtensions_Create.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless_Process.cs" />
+    <Compile Include="Link\VariableLink\VariableLink_Simple_EffigySurrogate.cs" />
+    <Compile Include="Link\VariableLink\VariableLink_Simple_Direct.cs" />
+    <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -361,6 +364,7 @@
     <Folder Include="Cml\CmlEntity\CmlEntityCompositeChild\" />
     <Folder Include="Syncro\FunctionSyncro\Extensions\" />
     <Folder Include="Link\EffigyLink\Extensions\" />
+    <Folder Include="Link\EffigyLink\EffigyInfoAttribute\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
