@@ -12,6 +12,8 @@ namespace Crunchy.Sack
     {
         MemberInstance member_instance;
 
+        public abstract IEnumerable<object> GetValues();
+
         public EffigySource(MemberInstance i)
         {
             member_instance = i;

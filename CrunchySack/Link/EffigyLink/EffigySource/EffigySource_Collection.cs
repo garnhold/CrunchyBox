@@ -34,7 +34,7 @@ namespace Crunchy.Sack
             }
         }
 
-        public IEnumerable<object> GetValues()
+        public override IEnumerable<object> GetValues()
         {
             return transition_values;
         }

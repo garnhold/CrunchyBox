@@ -31,5 +31,10 @@ namespace Crunchy.Sack
                 Swap.Values(ref transition_value, ref incoming_value);
             }
         }
+
+        public override IEnumerable<object> GetValues()
+        {
+            yield return transition_value;
+        }
     }
 }

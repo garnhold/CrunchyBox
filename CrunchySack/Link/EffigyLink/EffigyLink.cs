@@ -62,5 +62,10 @@ namespace Crunchy.Sack
 
             class_info.AssertGetClass(execution).SolidifyInto(execution, container);
         }
+
+        public IEnumerable<object> GetValues()
+        {
+            return effigy_source.GetValues();
+        }
     }
 }
