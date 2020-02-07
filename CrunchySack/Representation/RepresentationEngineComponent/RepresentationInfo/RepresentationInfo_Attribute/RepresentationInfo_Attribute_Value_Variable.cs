@@ -17,7 +17,7 @@ namespace Crunchy.Sack
 
         public RepresentationInfo_Attribute_Value_Variable(Variable v) : this(v.GetVariableName(), v) { }
 
-        public override void SetRepresentationValue(object representation, object value)
+        public override void SetRepresentationValue(CmlExecution execution, object representation, object value)
         {
             variable.SetContents(representation, value);
         }

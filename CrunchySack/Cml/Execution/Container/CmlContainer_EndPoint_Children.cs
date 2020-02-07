@@ -21,7 +21,8 @@ namespace Crunchy.Sack
 
         protected void InsertInternal(CmlValue_SystemValue value, CmlExecution execution)
         {
-            children_info.GetEffigyInfo().AddChild(
+            children_info.AddRepresentationValue(
+                execution,
                 representation,
                 value.GetSystemValue()
             );
@@ -39,10 +40,10 @@ namespace Crunchy.Sack
             execution.AddEffigyLink(
                 value.GetInfoValue("group"),
 
-                new EffigyLink_Collection(
+                children_info.CreateEffigyLink(
                     execution,
-                    new EffigySource_Collection(value.GetVariableInstance()),
-                    new EffigyDestination_Collection(representation, children_info.GetEffigyInfo()),
+                    representation,
+                    value.GetVariableInstance(),
                     new EffigyClassInfo_Dynamic(value.GetInfoValue("layout"))
                 )
             );
@@ -53,10 +54,10 @@ namespace Crunchy.Sack
             execution.AddEffigyLink(
                 value.GetLink().GetInfoValue("group"),
 
-                new EffigyLink_Collection(
+                children_info.CreateEffigyLink(
                     execution,
-                    new EffigySource_Collection(value.GetLink().GetVariableInstance()),
-                    new EffigyDestination_Collection(representation, children_info.GetEffigyInfo()),
+                    representation,
+                    value.GetLink().GetVariableInstance(),
                     new EffigyClassInfo_Static(value.GetEntity())
                 )
             );

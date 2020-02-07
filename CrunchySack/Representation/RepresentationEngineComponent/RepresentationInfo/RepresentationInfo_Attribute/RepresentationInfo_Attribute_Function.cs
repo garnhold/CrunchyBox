@@ -12,7 +12,7 @@ namespace Crunchy.Sack
 
         public RepresentationInfo_Attribute_Function(string n) : base(n, typeof(REPRESENTATION_TYPE)) { }
 
-        public override void InjectRepresentationFunction(object representation, FunctionSyncro function_syncro)
+        public override void InjectRepresentationFunction(CmlExecution execution, object representation, FunctionSyncro function_syncro)
         {
             REPRESENTATION_TYPE cast;
 

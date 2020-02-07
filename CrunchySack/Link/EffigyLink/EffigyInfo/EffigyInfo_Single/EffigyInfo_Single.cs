@@ -20,5 +20,15 @@ namespace Crunchy.Sack
         {
             SetChild(representation, child);
         }
+
+        public override EffigyLink CreateLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class)
+        {
+            return new EffigyLink_Single(
+                execution,
+                new EffigySource_Single(variable_instance),
+                new EffigyDestination_Single(representation, this),
+                @class
+            );
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Crunchy.Sack
         private Type child_type;
 
         public abstract void AddChild(object representation, object child);
+        public abstract EffigyLink CreateLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class);
 
         public EffigyInfo(Type r, Type c)
         {

@@ -17,14 +17,17 @@ namespace Crunchy.Sack
 
         public RepresentationInfo_Attribute_Link(Variable v) : this(v.GetVariableName(), v) { }
 
-        public override void SetRepresentationValue(object representation, object value)
+        public override void SetRepresentationValue(CmlExecution execution, object representation, object value)
         {
-            GetRepresentationVariable().SetContents(representation, value);
+            variable.SetContents(representation, value);
         }
 
-        public override Variable GetRepresentationVariable()
+        public override VariableLink CreateVariableLink(CmlExecution execution, object representation, VariableInstance variable_instance)
         {
-            return variable;
+            return new VariableLink_Simple_Direct(
+                new VariableNode(variable_instance),
+                new VariableNode(variable.CreateStrongInstance(representation))
+            );
         }
     }
 

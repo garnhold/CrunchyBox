@@ -1,13 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
 namespace Crunchy.Sack
 {
-    using Dough;
-    using Salt;
-    using Noodle;
-    
+
     public class EffigyLink_Single : EffigyLink
     {
         private EffigySource_Single single_source;

@@ -21,7 +21,7 @@ namespace Crunchy.Sack
 
         protected void InsertInternal(CmlValue_SystemValue value, CmlExecution execution)
         {
-            attribute_info.GetRepresentationEffigyInfo().AddChild(representation, value.GetSystemValue());
+            attribute_info.AddRepresentationValue(execution, representation, value.GetSystemValue());
         }
 
         protected void InsertInternal(CmlValue_ComponentSourceList value, CmlExecution execution)

@@ -21,7 +21,7 @@ namespace Crunchy.Sack
 
         protected void InsertInternal(CmlValue_SystemValue value, CmlExecution execution)
         {
-            attribute_info.SetRepresentationValue(representation, value.GetSystemValue());
+            attribute_info.SetRepresentationValue(execution, representation, value.GetSystemValue());
         }
 
         protected void InsertInternal(CmlValue_ComponentSourceList value, CmlExecution execution)
@@ -35,11 +35,7 @@ namespace Crunchy.Sack
         {
             execution.AddVariableLink(
                 value.GetInfoValue("group"),
-
-                new VariableLink_Simple_Direct(
-                    new VariableNode(value.GetVariableInstance()),
-                    new VariableNode(attribute_info.GetRepresentationVariable().CreateStrongInstance(representation))
-                )
+                attribute_info.CreateVariableLink(execution, representation, value.GetVariableInstance())
             );
         }
 
@@ -49,6 +45,7 @@ namespace Crunchy.Sack
 
             execution.AddFunctionSyncro(function_syncro);
             attribute_info.InjectRepresentationFunction(
+                execution,
                 representation,
                 function_syncro
             );
