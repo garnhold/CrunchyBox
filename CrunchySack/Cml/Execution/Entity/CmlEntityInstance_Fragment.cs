@@ -26,7 +26,7 @@ namespace Crunchy.Sack
             execution.PushPopReturnSpaceNew(delegate (CmlReturnSpace return_space) {
                 return_space.RequestSystemValueReturn("MOUNT_POINT", v => mount_point = v);
 
-                execution.PushPopParameterSpace(
+                execution.PushPopParameterSpaceNew(
                     parameters,
                     () => fragment.SolidifyInto(execution, container)
                 );

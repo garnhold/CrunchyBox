@@ -77,7 +77,7 @@ namespace Crunchy.Sack
                 process
             );
         }
-        public void PushPopParameterSpace(IEnumerable<CmlParameter> parameters, Process process)
+        public void PushPopParameterSpaceNew(IEnumerable<CmlParameter> parameters, Process process)
         {
             PushPopParameterSpace(
                 new CmlParameterSpace(parameters),
