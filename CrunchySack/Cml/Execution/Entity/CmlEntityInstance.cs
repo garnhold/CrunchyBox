@@ -44,7 +44,7 @@ namespace Crunchy.Sack
             });
 
             entity.GetChildren().IfNotNull(c => c.InitializeRepresentation(execution, mount_point));
-            entity.GetMountPoint().IfNotNull(m => context.GetReturnSpace().IfNotNull(s => s.LogSystemValueReturn(execution, "MOUNT_POINT", representation)));
+            entity.GetMountPoint().IfNotNull(m => context.GetReturnSpace().IfNotNull(s => s.LogSystemValueReturn(execution, "MOUNT_POINT", mount_point)));
             entity.GetCompositeChild().IfNotNull(c => c.InitializeRepresentation(execution, mount_point));
 
             context.GetRepresentationSpace().PopRepresentation(representation);
