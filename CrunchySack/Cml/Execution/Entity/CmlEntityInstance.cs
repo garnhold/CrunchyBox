@@ -1,27 +1,18 @@
-
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
 //Date: November 13 2018 18:20:51 -08:00
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Crunchy.Sack
 {
     using Dough;
-    using Salt;
-    using Noodle;
-    
+
     public abstract class CmlEntityInstance
     {
         private CmlEntity entity;
 
-        private object representation;
-        private object mount_point;
-
-        protected abstract void SolidifyInternal(CmlExecution execution, CmlContainer container);
+        protected abstract object SolidifyInternal(CmlExecution execution, CmlContainer container);
 
         public CmlEntityInstance(CmlEntity e)
         {
@@ -32,16 +23,12 @@ namespace Crunchy.Sack
         {
             CmlCallContext context = execution.GetCallContext();
 
-            execution.PushPopReturnSpaceNew(delegate(CmlReturnSpace return_space) {
-                return_space.RequestSystemValueReturn("MOUNT_POINT", v => mount_point = v);
+            object representation = null;
+            object mount_point = SolidifyInternal(execution, container.PiggyBack(delegate(CmlExecution inner_execution, CmlValue value) {
+                representation = value.ForceSystemValue();
 
-                SolidifyInternal(execution, container.PiggyBack(delegate(CmlExecution inner_execution, CmlValue value) {
-                    representation = value.ForceSystemValue();
-                    mount_point = representation;
-
-                    context.GetRepresentationSpace().PushRepresentation(entity, representation);
-                }));
-            });
+                context.GetRepresentationSpace().PushRepresentation(entity, representation);
+            }));
 
             entity.GetChildren().IfNotNull(c => c.InitializeRepresentation(execution, mount_point));
             entity.GetMountPoint().IfNotNull(m => context.GetReturnSpace().IfNotNull(s => s.LogSystemValueReturn(execution, "MOUNT_POINT", mount_point)));
@@ -53,16 +40,6 @@ namespace Crunchy.Sack
         public CmlEntity GetEntity()
         {
             return entity;
-        }
-
-        public object GetRepresentation()
-        {
-            return representation;
-        }
-
-        public object GetMountPoint()
-        {
-            return mount_point;
         }
     }
 

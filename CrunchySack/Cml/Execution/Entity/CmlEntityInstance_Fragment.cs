@@ -18,18 +18,24 @@ namespace Crunchy.Sack
 	{
         private CmlEntry_Fragment fragment;
 
-        protected override void SolidifyInternal(CmlExecution execution, CmlContainer container)
+        protected override object SolidifyInternal(CmlExecution execution, CmlContainer container)
         {
+            object mount_point = null;
             List<CmlParameter> parameters = GetEntity().GetAttributes().Convert(a => a.CreateParameter(execution)).ToList();
 
-            execution.PushPopParameterSpace(
-                parameters,
-                () => fragment.SolidifyInto(execution, container)
-            );
+            execution.PushPopReturnSpaceNew(delegate (CmlReturnSpace return_space) {
+                return_space.RequestSystemValueReturn("MOUNT_POINT", v => mount_point = v);
 
-            object representation = GetRepresentation();
+                execution.PushPopParameterSpace(
+                    parameters,
+                    () => fragment.SolidifyInto(execution, container)
+                );
+            });
+
+            object representation = container.ForceContainedSystemValue();
 
             parameters.Narrow(p => p.IsUnused()).Process(p => p.ApplyAsAttribute(execution, representation));
+            return mount_point ?? representation;
         }
 
         public CmlEntityInstance_Fragment(CmlEntity e, CmlEntry_Fragment f) : base(e)

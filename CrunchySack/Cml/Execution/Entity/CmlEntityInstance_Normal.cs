@@ -18,17 +18,19 @@ namespace Crunchy.Sack
 	{
         private RepresentationInstancer instancer;
 
-        protected override void SolidifyInternal(CmlExecution execution, CmlContainer container)
+        protected override object SolidifyInternal(CmlExecution execution, CmlContainer container)
         {
             container.Insert(
                 execution,
                 new CmlValue_SystemValue(instancer.Instance(execution))
             );
 
-            object representation = GetRepresentation();
+            object representation = container.ForceContainedSystemValue();
 
             execution.GetTargetInfo().GetEngine().AssertApplyGeneralModifiers(execution, representation);
             GetEntity().GetAttributes().Process(a => a.InitializeRepresentation(execution, representation));
+
+            return representation;
         }
 
         public CmlEntityInstance_Normal(CmlEntity e, RepresentationInstancer i) : base(e)
