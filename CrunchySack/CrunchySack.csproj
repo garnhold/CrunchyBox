@@ -331,7 +331,6 @@
     <Compile Include="Link\VariableLink\VariableLink_Simple_Direct.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set.cs" />
-    <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add_Multiple.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add_General.cs" />
   </ItemGroup>
   <ItemGroup>
