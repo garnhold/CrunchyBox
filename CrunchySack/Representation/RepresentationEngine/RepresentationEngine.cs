@@ -19,6 +19,7 @@ namespace Crunchy.Sack
         
         private Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>> attribute_infos;
         private TypeDictionary<RepresentationInfo_Children> children_infos;
+        private Dictionary<string, TypeDictionary<RepresentationInfo_Set>> set_infos;
 
         private Dictionary<Type, List<RepresentationModifier_General>> general_modifiers;
 
@@ -33,6 +34,7 @@ namespace Crunchy.Sack
             
             attribute_infos = new Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>>();
             children_infos = new TypeDictionary<RepresentationInfo_Children>();
+            set_infos = new Dictionary<string, TypeDictionary<RepresentationInfo_Set>>();
 
             general_modifiers = new Dictionary<Type, List<RepresentationModifier_General>>();
         }
@@ -42,27 +44,11 @@ namespace Crunchy.Sack
             instancers[cs.GetTag()] = cs;
             cs.Initilize(this);
         }
-        public void AddInstancers(IEnumerable<RepresentationInstancer> cs)
-        {
-            cs.Process(c => AddInstancer(c));
-        }
-        public void AddInstancers(params RepresentationInstancer[] cs)
-        {
-            AddInstancers((IEnumerable<RepresentationInstancer>)cs);
-        }
 
         public void AddConstructor(RepresentationConstructor cs)
         {
             constructors[Tuple.New(cs.GetName(), cs.GetNumberParameters())] = cs;
             cs.Initilize(this);
-        }
-        public void AddConstructors(IEnumerable<RepresentationConstructor> cs)
-        {
-            cs.Process(c => AddConstructor(c));
-        }
-        public void AddConstructors(params RepresentationConstructor[] cs)
-        {
-            AddConstructors((IEnumerable<RepresentationConstructor>)cs);
         }
 
         public void AddAttributeInfo(RepresentationInfo_Attribute c)
@@ -70,41 +56,17 @@ namespace Crunchy.Sack
             attribute_infos.GetOrCreateDefaultValue(c.GetName())[c.GetRepresentationType()] = c;
             c.Initilize(this);
         }
-        public void AddAttributeInfos(IEnumerable<RepresentationInfo_Attribute> cs)
-        {
-            cs.Process(c => AddAttributeInfo(c));
-        }
-        public void AddAttributeInfos(params RepresentationInfo_Attribute[] cs)
-        {
-            AddAttributeInfos((IEnumerable<RepresentationInfo_Attribute>)cs);
-        }
 
         public void AddChildrenInfo(RepresentationInfo_Children c)
         {
             children_infos[c.GetRepresentationType()] = c;
             c.Initilize(this);
         }
-        public void AddChildrenInfos(IEnumerable<RepresentationInfo_Children> cs)
-        {
-            cs.Process(c => AddChildrenInfo(c));
-        }
-        public void AddChildrenInfos(params RepresentationInfo_Children[] cs)
-        {
-            AddChildrenInfos((IEnumerable<RepresentationInfo_Children>)cs);
-        }
 
         public void AddGeneralModifier(RepresentationModifier_General c)
         {
             general_modifiers.Add(c.GetRepresentationType(), c);
             c.Initilize(this);
-        }
-        public void AddGeneralModifiers(IEnumerable<RepresentationModifier_General> cs)
-        {
-            cs.Process(c => AddGeneralModifier(c));
-        }
-        public void AddGeneralModifiers(params RepresentationModifier_General[] cs)
-        {
-            AddGeneralModifiers((IEnumerable<RepresentationModifier_General>)cs);
         }
 
         public CmlEntityInstance AssertEntityInstance(CmlExecution execution, CmlEntity entity, string tag)
@@ -138,7 +100,7 @@ namespace Crunchy.Sack
             return constructors.GetValue(Tuple.New(name, number_parameters));
         }
 
-        public CmlContainer_EndPoint_Attribute AssertCreateAttributeContainer(CmlExecution execution, object representation, string name)
+        public CmlContainer AssertCreateAttributeContainer(CmlExecution execution, object representation, string name)
         {
             return new CmlContainer_EndPoint_Attribute(
                 representation,
@@ -153,7 +115,7 @@ namespace Crunchy.Sack
                 .IfNotNull(d => d.GetValue(type));
         }
 
-        public CmlContainer_EndPoint_Children AssertCreateChildrenContainer(CmlExecution execution, object representation)
+        public CmlContainer AssertCreateChildrenContainer(CmlExecution execution, object representation)
         {
             return new CmlContainer_EndPoint_Children(
                 representation,
