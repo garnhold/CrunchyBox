@@ -37,29 +37,23 @@ namespace Crunchy.Sack
 
         protected void InsertInternal(CmlValue_Link value, CmlExecution execution)
         {
-            execution.AddEffigyLink(
-                value.GetInfoValue("group"),
-
-                children_info.CreateEffigyLink(
-                    execution,
-                    representation,
-                    value.GetVariableInstance(),
-                    new EffigyClassInfo_Dynamic(value.GetInfoValue("layout"))
-                )
+            children_info.SetEffigyLink(
+                execution,
+                representation,
+                value.GetVariableInstance(),
+                new EffigyClassInfo_Dynamic(value.GetInfoValue("layout")),
+                value.GetInfoValue("group")
             );
         }
 
         protected void InsertInternal(CmlValue_LinkWithEntity value, CmlExecution execution)
         {
-            execution.AddEffigyLink(
-                value.GetLink().GetInfoValue("group"),
-
-                children_info.CreateEffigyLink(
-                    execution,
-                    representation,
-                    value.GetLink().GetVariableInstance(),
-                    new EffigyClassInfo_Static(value.GetEntity())
-                )
+            children_info.SetEffigyLink(
+                execution,
+                representation,
+                value.GetLink().GetVariableInstance(),
+                new EffigyClassInfo_Static(value.GetEntity()),
+                value.GetLink().GetInfoValue("group")
             );
         }
 

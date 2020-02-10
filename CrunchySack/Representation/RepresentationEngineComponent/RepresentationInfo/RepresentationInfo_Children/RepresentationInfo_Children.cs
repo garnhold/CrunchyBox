@@ -21,9 +21,12 @@ namespace Crunchy.Sack
             effigy_info.AddChild(representation, value);
         }
 
-        public EffigyLink CreateEffigyLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class)
+        public void SetEffigyLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class, string group)
         {
-            return effigy_info.CreateLink(execution, representation, variable_instance, @class);
+            execution.AddEffigyLink(
+                group,
+                effigy_info.CreateLink(execution, representation, variable_instance, @class)
+            );
         }
 
         public override Type GetRepresentationType()
