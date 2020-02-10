@@ -22,11 +22,15 @@ namespace Crunchy.Sack
             variable.SetContents(representation, value);
         }
 
-        public override VariableLink CreateVariableLink(CmlExecution execution, object representation, VariableInstance variable_instance)
+        public override void SetVariableLink(CmlExecution execution, object representation, VariableInstance variable_instance, string group)
         {
-            return new VariableLink_Simple_Direct(
-                new VariableNode(variable_instance),
-                new VariableNode(variable.CreateStrongInstance(representation))
+            execution.AddVariableLink(
+                group,
+
+                new VariableLink_Simple_Direct(
+                    new VariableNode(variable_instance),
+                    new VariableNode(variable.CreateStrongInstance(representation))
+                )
             );
         }
     }

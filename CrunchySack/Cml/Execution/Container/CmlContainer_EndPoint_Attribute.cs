@@ -33,21 +33,20 @@ namespace Crunchy.Sack
 
         protected void InsertInternal(CmlValue_Link value, CmlExecution execution)
         {
-            execution.AddVariableLink(
-                value.GetInfoValue("group"),
-                attribute_info.CreateVariableLink(execution, representation, value.GetVariableInstance())
+            attribute_info.SetVariableLink(
+                execution,
+                representation,
+                value.GetVariableInstance(),
+                value.GetInfoValue("group")
             );
         }
 
         protected void InsertInternal(CmlValue_Function value, CmlExecution execution)
         {
-            FunctionSyncro function_syncro = new FunctionSyncro(value.GetFunctionInstance());
-
-            execution.AddFunctionSyncro(function_syncro);
-            attribute_info.InjectRepresentationFunction(
+            attribute_info.SetRepresentationFunction(
                 execution,
                 representation,
-                function_syncro
+                value.GetFunctionInstance()
             );
         }
 

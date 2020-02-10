@@ -21,7 +21,7 @@ namespace Crunchy.Sack
             throw new CmlRuntimeError_AttributeSupportException("setting values", this);
         }
 
-        public virtual VariableLink CreateVariableLink(CmlExecution execution, object representation, VariableInstance variable_instance)
+        public virtual void SetVariableLink(CmlExecution execution, object representation, VariableInstance variable_instance, string group)
         {
             throw new CmlRuntimeError_AttributeSupportException("linking values", this);
         }
@@ -31,12 +31,12 @@ namespace Crunchy.Sack
             throw new CmlRuntimeError_AttributeSupportException("setting children", this);
         }
 
-        public virtual EffigyLink CreateEffigyLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class)
+        public virtual void SetEffigyLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class, string group)
         {
             throw new CmlRuntimeError_AttributeSupportException("linking children", this);
         }
 
-        public virtual void InjectRepresentationFunction(CmlExecution execution, object representation, FunctionSyncro function_syncro)
+        public virtual void SetRepresentationFunction(CmlExecution execution, object representation, FunctionInstance function_instance)
         {
             throw new CmlRuntimeError_AttributeSupportException("function", this);
         }
