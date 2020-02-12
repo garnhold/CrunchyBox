@@ -9,37 +9,18 @@ namespace Crunchy.Sack
     
     public class RepresentationInfo_Children : RepresentationInfo
     {
-        private EffigyInfo_Collection effigy_info;
-
-        public RepresentationInfo_Children(EffigyInfo_Collection e)
+        public RepresentationInfo_Children(Type r) : base(r)
         {
-            effigy_info = e;
         }
 
-        public void AddRepresentationValue(CmlExecution execution, object representation, object value)
+        public virtual void AddRepresentationValue(CmlExecution execution, object representation, object value)
         {
-            effigy_info.AddChild(representation, value);
+            throw new CmlRuntimeError_ChildrenSupportException("setting values", this);
         }
 
-        public void SetEffigyLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class, string group)
+        public virtual void SetEffigyLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class, string group)
         {
-            execution.AddEffigyLink(
-                group,
-                effigy_info.CreateLink(execution, representation, variable_instance, @class)
-            );
-        }
-
-        public override Type GetRepresentationType()
-        {
-            return effigy_info.GetRepresentationType();
-        }
-    }
-
-    static public partial class RepresentationEngineExtensions_Add
-    {
-        static public void AddChildren(this RepresentationEngine item, EffigyInfo_Collection effigy)
-        {
-            item.AddChildrenInfo(new RepresentationInfo_Children(effigy));
+            throw new CmlRuntimeError_ChildrenSupportException("linking values", this);
         }
     }
 }

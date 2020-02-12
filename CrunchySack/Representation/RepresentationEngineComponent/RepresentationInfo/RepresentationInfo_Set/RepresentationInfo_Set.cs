@@ -9,32 +9,13 @@ namespace Crunchy.Sack
     
     public abstract class RepresentationInfo_Set : RepresentationInfo
     {
-        private bool does_include_children;
-        private List<string> attribute_names;
+        public abstract void SolidifyInstance(CmlExecution execution, object representation, CmlSet set);
 
-        private Type representation_type;
+        public abstract IEnumerable<RepresentationInfo_Children> GetChildrenInfos();
+        public abstract IEnumerable<RepresentationInfo_Attribute> GetAttributeInfos();
 
-        public RepresentationInfo_Set(bool dic, IEnumerable<string> an, Type r)
+        public RepresentationInfo_Set(Type r) : base(r)
         {
-            does_include_children = dic;
-            attribute_names = an.ToList();
-
-            representation_type = r;
-        }
-
-        public bool DoesIncludeChildren()
-        {
-            return does_include_children;
-        }
-
-        public IEnumerable<string> GetAttributeNames()
-        {
-            return attribute_names;
-        }
-
-        public override Type GetRepresentationType()
-        {
-            return representation_type;
         }
     }
 }

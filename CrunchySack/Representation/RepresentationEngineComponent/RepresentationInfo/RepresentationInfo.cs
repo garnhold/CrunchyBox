@@ -7,6 +7,16 @@ namespace Crunchy.Sack
     
     public abstract class RepresentationInfo : RepresentationEngineComponent
     {
-        public abstract Type GetRepresentationType();
+        private Type representation_type;
+
+        public RepresentationInfo(Type r)
+        {
+            representation_type = r;
+        }
+
+        public Type GetRepresentationType()
+        {
+            return representation_type;
+        }
     }
 }

@@ -21,20 +21,23 @@ namespace Crunchy.Sack
 
         public void SolidifyInto(CmlExecution execution, CmlContainer container)
         {
-            CmlCallContext context = execution.GetCallContext();
+            execution.PushPopSetSpaceNew(delegate (CmlSetSpace set_space) {
+                CmlCallContext context = execution.GetCallContext();
 
-            object representation = null;
-            object mount_point = SolidifyInternal(execution, container.PiggyBack(delegate(CmlExecution inner_execution, CmlValue value) {
-                representation = value.ForceSystemValue();
+                object representation = null;
+                object mount_point = SolidifyInternal(execution, container.PiggyBack(delegate (CmlExecution inner_execution, CmlValue value) {
+                    representation = value.ForceSystemValue();
 
-                context.GetRepresentationSpace().PushRepresentation(entity, representation);
-            }));
+                    context.GetRepresentationSpace().PushRepresentation(entity, representation);
+                }));
 
-            entity.GetChildren().IfNotNull(c => c.InitializeRepresentation(execution, mount_point));
-            entity.GetMountPoint().IfNotNull(m => context.GetReturnSpace().IfNotNull(s => s.LogSystemValueReturn(execution, "MOUNT_POINT", mount_point)));
-            entity.GetCompositeChild().IfNotNull(c => c.InitializeRepresentation(execution, mount_point));
+                entity.GetChildren().IfNotNull(c => c.InitializeRepresentation(execution, mount_point));
+                entity.GetMountPoint().IfNotNull(m => context.GetReturnSpace().IfNotNull(s => s.LogSystemValueReturn(execution, "MOUNT_POINT", mount_point)));
+                entity.GetCompositeChild().IfNotNull(c => c.InitializeRepresentation(execution, mount_point));
 
-            context.GetRepresentationSpace().PopRepresentation(representation);
+                context.GetRepresentationSpace().PopRepresentation(representation);
+                set_space.SolidifyInstance(execution, representation);
+            });
         }
 
         public CmlEntity GetEntity()

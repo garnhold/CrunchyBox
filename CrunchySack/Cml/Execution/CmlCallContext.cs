@@ -18,14 +18,16 @@ namespace Crunchy.Sack
 	{
         private CmlEntry_Class @class;
 
+        private CmlSetSpace set_space;
         private CmlReturnSpace return_space;
         private CmlParameterSpace parameter_space;
         private CmlRepresentationSpace representation_space;
 
-        public CmlCallContext(CmlEntry_Class c, CmlReturnSpace ret, CmlParameterSpace p, CmlRepresentationSpace rep)
+        public CmlCallContext(CmlEntry_Class c, CmlSetSpace ss, CmlReturnSpace ret, CmlParameterSpace p, CmlRepresentationSpace rep)
         {
             @class = c;
 
+            set_space = ss;
             return_space = ret;
             parameter_space = p;
             representation_space = rep;
@@ -34,6 +36,11 @@ namespace Crunchy.Sack
         public CmlEntry_Class GetClass()
         {
             return @class;
+        }
+
+        public CmlSetSpace GetSetSpace()
+        {
+            return set_space;
         }
 
         public CmlReturnSpace GetReturnSpace()

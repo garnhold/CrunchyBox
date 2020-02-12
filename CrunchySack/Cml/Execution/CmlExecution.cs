@@ -24,15 +24,16 @@ namespace Crunchy.Sack
             syncro_manager = s;
 
             call_stack = new List<CmlCallContext>();
-            call_stack.Add(new CmlCallContext(null, null, null, null));
+            call_stack.Add(new CmlCallContext(null, null, null, null, null));
         }
 
         public CmlExecution(CmlTargetInfo t) : this(t, new LinkManager(), new SyncroManager()) { }
 
-        public CmlCallContext CreateNewCallContext(CmlEntry_Class @class, CmlReturnSpace return_space, CmlParameterSpace parameter_space, CmlRepresentationSpace representation_space)
+        public CmlCallContext CreateNewCallContext(CmlEntry_Class @class, CmlSetSpace set_space, CmlReturnSpace return_space, CmlParameterSpace parameter_space, CmlRepresentationSpace representation_space)
         {
             return new CmlCallContext(
                 @class ?? GetCallContext().GetClass(),
+                set_space ?? GetCallContext().GetSetSpace(),
                 return_space ?? GetCallContext().GetReturnSpace(),
                 parameter_space ?? GetCallContext().GetParameterSpace(),
                 representation_space ?? GetCallContext().GetRepresentationSpace()
@@ -49,15 +50,31 @@ namespace Crunchy.Sack
         public void PushPopClass(CmlEntry_Class @class, Process process)
         {
             PushPopCallContext(
-                CreateNewCallContext(@class, null, null, null),
+                CreateNewCallContext(@class, null, null, null, null),
                 process
             );
+        }
+
+        public void PushPopSetSpace(CmlSetSpace set_space, Process process)
+        {
+            PushPopCallContext(
+                CreateNewCallContext(null, set_space, null, null, null),
+                process
+            );
+        }
+        public void PushPopSetSpaceNew(Process<CmlSetSpace> process)
+        {
+            CmlSetSpace set_space = new CmlSetSpace();
+
+            PushPopSetSpace(set_space, delegate() {
+                process(set_space);
+            });
         }
 
         public void PushPopReturnSpace(CmlReturnSpace return_space, Process process)
         {
             PushPopCallContext(
-                CreateNewCallContext(null, return_space, null, null),
+                CreateNewCallContext(null, null, return_space, null, null),
                 process
             );
         }
@@ -73,7 +90,7 @@ namespace Crunchy.Sack
         public void PushPopParameterSpace(CmlParameterSpace parameter_space, Process process)
         {
             PushPopCallContext(
-                CreateNewCallContext(null, null, parameter_space, null),
+                CreateNewCallContext(null, null, null, parameter_space, null),
                 process
             );
         }
@@ -88,7 +105,7 @@ namespace Crunchy.Sack
         public void PushPopRepresentationSpace(CmlRepresentationSpace representation_space, Process process)
         {
             PushPopCallContext(
-                CreateNewCallContext(null, null, null, representation_space),
+                CreateNewCallContext(null, null, null, null, representation_space),
                 process
             );
         }

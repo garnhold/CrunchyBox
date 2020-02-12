@@ -8,12 +8,10 @@ namespace Crunchy.Sack
     public abstract class RepresentationInfo_Attribute : RepresentationInfo
     {
         private string name;
-        private Type representation_type;
 
-        public RepresentationInfo_Attribute(string n, Type r)
+        public RepresentationInfo_Attribute(string n, Type r) : base(r)
         {
             name = n;
-            representation_type = r;
         }
 
         public virtual void SetRepresentationValue(CmlExecution execution, object representation, object value)
@@ -44,11 +42,6 @@ namespace Crunchy.Sack
         public string GetName()
         {
             return name;
-        }
-
-        public override Type GetRepresentationType()
-        {
-            return representation_type;
         }
     }
 }

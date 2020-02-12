@@ -332,6 +332,14 @@
     <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add_General.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSetSpace.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Set.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children_Set.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSetAttribute.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSet.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSetChildren.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children_Link.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_ChildrenSupportException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -367,6 +375,7 @@
     <Folder Include="Syncro\FunctionSyncro\Extensions\" />
     <Folder Include="Link\EffigyLink\Extensions\" />
     <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\" />
+    <Folder Include="Cml\Execution\Set\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

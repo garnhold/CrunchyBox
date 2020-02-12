@@ -19,7 +19,7 @@ namespace Crunchy.Sack
         
         private Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>> attribute_infos;
         private TypeDictionary<RepresentationInfo_Children> children_infos;
-        private Dictionary<string, TypeDictionary<RepresentationInfo_Set>> set_infos;
+        private Dictionary<Type, List<RepresentationInfo_Set>> set_infos;
 
         private Dictionary<Type, List<RepresentationModifier_General>> general_modifiers;
 
@@ -34,7 +34,7 @@ namespace Crunchy.Sack
             
             attribute_infos = new Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>>();
             children_infos = new TypeDictionary<RepresentationInfo_Children>();
-            set_infos = new Dictionary<string, TypeDictionary<RepresentationInfo_Set>>();
+            set_infos = new Dictionary<Type, List<RepresentationInfo_Set>>();
 
             general_modifiers = new Dictionary<Type, List<RepresentationModifier_General>>();
         }
@@ -61,6 +61,16 @@ namespace Crunchy.Sack
         {
             children_infos[c.GetRepresentationType()] = c;
             c.Initilize(this);
+        }
+
+        public void AddSetInfo(RepresentationInfo_Set s)
+        {
+            set_infos.Add(s.GetRepresentationType(), s);
+
+            s.GetChildrenInfos().Process(c => AddChildrenInfo(c));
+            s.GetAttributeInfos().Process(a => AddAttributeInfo(a));
+
+            s.Initilize(this);
         }
 
         public void AddGeneralModifier(RepresentationModifier_General c)
