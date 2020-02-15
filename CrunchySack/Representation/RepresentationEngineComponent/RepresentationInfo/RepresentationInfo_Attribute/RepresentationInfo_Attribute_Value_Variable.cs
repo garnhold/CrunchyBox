@@ -27,16 +27,12 @@ namespace Crunchy.Sack
     {
         static public void AddAttributeValue(this RepresentationEngine item, string n, Variable v)
         {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Value_Variable(n, v)
-            );
+            item.AddAttributeInfo(new RepresentationInfo_Attribute_Value_Variable(n, v));
         }
 
         static public void AddAttributeValue(this RepresentationEngine item, Variable v)
         {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Value_Variable(v)
-            );
+            item.AddAttributeInfo(new RepresentationInfo_Attribute_Value_Variable(v));
         }
     }
 }
