@@ -18,7 +18,7 @@ namespace Crunchy.Sack
         {
             execution.GetCallContext().GetSetSpace()
                 .GetSet(set_info)
-                .SetAttribute(GetName(), value);
+                .SetAttributeValue(GetName(), value);
         }
 
         public override void SetVariableLink(CmlExecution execution, object representation, VariableInstance variable_instance, string group)
@@ -32,14 +32,14 @@ namespace Crunchy.Sack
         {
             execution.GetCallContext().GetSetSpace()
                 .GetSet(set_info)
-                .AddAttributeChild(GetName(), value);
+                .AddNamedChild(GetName(), value);
         }
 
         public override void SetEffigyLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class, string group)
         {
             execution.GetCallContext().GetSetSpace()
                 .GetSet(set_info)
-                .SetAttributeChildrenLink(GetName(), variable_instance, @class, group);
+                .SetNamedChildrenLink(GetName(), variable_instance, @class, group);
         }
     }
 }

@@ -43,8 +43,8 @@ namespace Crunchy.Sack_WinForms
 
             engine.AddSimpleInstancer<SplitContainer>();
             engine.AddPublicPropertyAttributeLinksForType<SplitContainer>();
-            engine.AddAttributeChildren<SplitContainer>("panel1", c => c.Panel1.Controls);
-            engine.AddAttributeChildren<SplitContainer>("panel2", c => c.Panel2.Controls);
+            engine.AddNamedChildren<SplitContainer>("panel1", c => c.Panel1.Controls);
+            engine.AddNamedChildren<SplitContainer>("panel2", c => c.Panel2.Controls);
         }
     }
 }

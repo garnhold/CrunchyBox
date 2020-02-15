@@ -8,11 +8,11 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class RepresentationInfo_Attribute_Children : RepresentationInfo_Attribute
+    public class RepresentationInfo_Attribute_NamedChildren : RepresentationInfo_Attribute
     {
         private EffigyInfo effigy_info;
 
-        public RepresentationInfo_Attribute_Children(string n, EffigyInfo i) : base(n, i.GetRepresentationType())
+        public RepresentationInfo_Attribute_NamedChildren(string n, EffigyInfo i) : base(n, i.GetRepresentationType())
         {
             effigy_info = i;
         }
@@ -33,9 +33,9 @@ namespace Crunchy.Sack
 
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddAttributeChildren(this RepresentationEngine item, string n, EffigyInfo effigy)
+        static public void AddNamedChildren(this RepresentationEngine item, string n, EffigyInfo effigy)
         {
-            item.AddAttributeInfo(new RepresentationInfo_Attribute_Children(n, effigy));
+            item.AddAttributeInfo(new RepresentationInfo_Attribute_NamedChildren(n, effigy));
         }
     }
 }

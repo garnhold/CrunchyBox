@@ -47,9 +47,9 @@ namespace Crunchy.Sack
             );
         }
 
-        static public void AddOrderlessAttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
+        static public void AddOrderlessNamedChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
         {
-            item.AddAttributeChildren(n,
+            item.AddNamedChildren(n,
                 new EffigyInfo_Collection_Orderless_Process<REPRESENTATION_TYPE, CHILD_TYPE>(a, r)
             );
         }

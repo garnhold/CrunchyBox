@@ -100,7 +100,7 @@
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink_Collection.cs" />
     <Compile Include="Link\EffigyLink\EffigySource\EffigySource_Collection.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Children.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_NamedChildren.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Function_Process.cs" />
     <Compile Include="Syncro\FunctionSyncro\FunctionSyncro.cs" />
     <Compile Include="Syncro\SyncroManager.cs" />

@@ -40,9 +40,9 @@ namespace Crunchy.Sack
             );
         }
 
-        static public void AddReOrgAttributeChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
+        static public void AddReOrgNamedChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
         {
-            item.AddAttributeChildren(n,
+            item.AddNamedChildren(n,
                 new EffigyInfo_Collection_ReOrg_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
             );
         }

@@ -9,27 +9,25 @@ namespace Crunchy.Sack
 
     public class CmlSet
     {
-        private CmlSetChildren children;
         private Dictionary<string, CmlSetAttribute> attributes;
-        private Dictionary<string, CmlSetChildren> attribute_children;
+        private Dictionary<string, CmlSetChildren> children;
 
         public CmlSet()
         {
-            children = new CmlSetChildren();
             attributes = new Dictionary<string, CmlSetAttribute>();
-            attribute_children = new Dictionary<string, CmlSetChildren>();
+            children = new Dictionary<string, CmlSetChildren>();
         }
 
         public void AddChild(object child)
         {
-            children.AddChild(child);
+            AddNamedChild("", child);
         }
         public void SetChildrenLink(VariableInstance variable_instance, EffigyClassInfo @class, string group)
         {
-            children.SetLink(variable_instance, @class, group);
+            SetNamedChildrenLink("", variable_instance, @class, group);
         }
 
-        public void SetAttribute(string name, object value)
+        public void SetAttributeValue(string name, object value)
         {
             attributes.GetOrCreateDefaultValue(name).SetValue(value);
         }
@@ -38,28 +36,27 @@ namespace Crunchy.Sack
             attributes.GetOrCreateDefaultValue(name).SetLink(variable_instance, group);
         }
 
-        public void AddAttributeChild(string name, object child)
+        public void AddNamedChild(string name, object child)
         {
-            attribute_children.GetOrCreateDefaultValue(name).AddChild(child);
+            children.GetOrCreateDefaultValue(name).AddChild(child);
         }
-        public void SetAttributeChildrenLink(string name, VariableInstance variable_instance, EffigyClassInfo @class, string group)
+        public void SetNamedChildrenLink(string name, VariableInstance variable_instance, EffigyClassInfo @class, string group)
         {
-            attribute_children.GetOrCreateDefaultValue(name).SetLink(variable_instance, @class, group);
+            children.GetOrCreateDefaultValue(name).SetLink(variable_instance, @class, group);
         }
 
+        public CmlSetChildren GetChildren(string name)
+        {
+            return children.GetValue(name);
+        }
         public CmlSetChildren GetChildren()
         {
-            return children;
+            return GetChildren("");
         }
 
         public CmlSetAttribute GetAttribute(string name)
         {
             return attributes.GetValue(name);
-        }
-
-        public CmlSetChildren GetAttributeChildren(string name)
-        {
-            return attribute_children.GetValue(name);
         }
     }
 }

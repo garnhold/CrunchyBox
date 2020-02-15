@@ -35,8 +35,8 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<VPaned>("VerticalSplitContainer");
             engine.AddPublicPropertyAttributeLinksForType<VPaned>();
 
-            engine.AddSingleAttributeChild<Paned, Widget>("child1", (p, w) => p.Add1(w));
-            engine.AddSingleAttributeChild<Paned, Widget>("child2", (p, w) => p.Add2(w));
+            engine.AddSingleNamedChild<Paned, Widget>("child1", (p, w) => p.Add1(w));
+            engine.AddSingleNamedChild<Paned, Widget>("child2", (p, w) => p.Add2(w));
 
             engine.AddSimpleInstancer<FlowBox>();
             engine.AddPublicPropertyAttributeLinksForType<FlowBox>();

@@ -29,7 +29,7 @@ namespace Crunchy.Sack_Avalonia
             engine.AddAttributeFunction<DropHandler_Internal_FunctionSyncro>("on_leave", (h, f) => h.SetOnLeave(f));
             engine.AddAttributeFunction<DropHandler_Internal_FunctionSyncro>("on_drop", (h, f) => h.SetOnDrop(f));
 
-            engine.AddReOrgAttributeChildren<Control, DropHandler>("drop_handlers", e => e.ClearDropHandlers(), (e, h) => e.AddDropHandler(h));
+            engine.AddReOrgNamedChildren<Control, DropHandler>("drop_handlers", e => e.ClearDropHandlers(), (e, h) => e.AddDropHandler(h));
         }
     }
 }
