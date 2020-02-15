@@ -53,9 +53,13 @@ namespace Crunchy.Sack
 
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public RepresentationInfoSet_SelectableChildren AddSelectableChildren(this RepresentationEngine item, string n, EffigyInfo_Collection e)
+        static public RepresentationInfoSet_SelectableChildren AddSelectableChildrenInfo(this RepresentationEngine item, string n, EffigyInfo_Collection e)
         {
             return item.AddAndGetInfoSet(new RepresentationInfoSet_SelectableChildren(n, e));
+        }
+        static public RepresentationInfoSet_SelectableChildren AddSelectableChildrenInfo(this RepresentationEngine item, EffigyInfo_Collection e)
+        {
+            return item.AddSelectableChildrenInfo(RepresentationInfo.UnamedChildren, e);
         }
     }
 }

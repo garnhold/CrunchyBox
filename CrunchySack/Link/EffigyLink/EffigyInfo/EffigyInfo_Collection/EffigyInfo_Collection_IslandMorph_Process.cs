@@ -53,11 +53,24 @@ namespace Crunchy.Sack
     {
         static public void AddChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, int> rp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap, Process<REPRESENTATION_TYPE, int, CHILD_TYPE> ip)
         {
-            item.AddChildrenInfo(n, new EffigyInfo_Collection_IslandMorph_Process<REPRESENTATION_TYPE, CHILD_TYPE>(rp, ap, ip));
+            item.AddChildrenInfo(n, 
+                new EffigyInfo_Collection_IslandMorph_Process<REPRESENTATION_TYPE, CHILD_TYPE>(rp, ap, ip)
+            );
         }
         static public void AddChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, int> rp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap, Process<REPRESENTATION_TYPE, int, CHILD_TYPE> ip)
         {
             item.AddChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, rp, ap, ip);
+        }
+
+        static public RepresentationInfoSet_SelectableChildren AddSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, int> rp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap, Process<REPRESENTATION_TYPE, int, CHILD_TYPE> ip)
+        {
+            return item.AddSelectableChildrenInfo(n,
+                new EffigyInfo_Collection_IslandMorph_Process<REPRESENTATION_TYPE, CHILD_TYPE>(rp, ap, ip)
+            );
+        }
+        static public RepresentationInfoSet_SelectableChildren AddSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, int> rp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap, Process<REPRESENTATION_TYPE, int, CHILD_TYPE> ip)
+        {
+            return item.AddSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, rp, ap, ip);
         }
     }
 }

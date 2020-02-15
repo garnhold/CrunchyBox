@@ -43,5 +43,16 @@ namespace Crunchy.Sack
         {
             item.AddReOrgChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, s);
         }
+
+        static public RepresentationInfoSet_SelectableChildren AddReOrgSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
+        {
+            return item.AddSelectableChildrenInfo(n,
+                new EffigyInfo_Collection_ReOrg_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
+            );
+        }
+        static public RepresentationInfoSet_SelectableChildren AddReOrgSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> s)
+        {
+            return item.AddReOrgSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, s);
+        }
     }
 }
