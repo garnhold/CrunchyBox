@@ -9,7 +9,7 @@ namespace Crunchy.Sack
     {
         private string name;
 
-        public abstract void SolidifyInstance(CmlExecution execution, object representation, EffigyLink effigy_link, CmlSetAttribute attribute);
+        public abstract void SolidifyInstance(CmlExecution execution, object representation, EffigyLink effigy_link, CmlSetMember member);
 
         public RepresentationInfoSetChildrenSelector(string n)
         {

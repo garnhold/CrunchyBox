@@ -14,7 +14,7 @@ namespace Crunchy.Sack_Gtk
         [BasicGtkEngineInitilizer]
         static public void Initilize(GtkEngine engine)
         {
-            engine.AddChildren<Container, Widget>((c, i) => c.RemoveChildAt(i), (c, w) => c.AddChild(w), (c, i, w) => c.InsertChild(i, w));
+            engine.AddChildrenInfo<Container, Widget>((c, i) => c.RemoveChildAt(i), (c, w) => c.AddChild(w), (c, i, w) => c.InsertChild(i, w));
 
             engine.AddSimpleInstancer("HorizontalLayout", () => new Box(Orientation.Horizontal, 0));
             engine.AddSimpleInstancer("VerticalLayout", () => new Box(Orientation.Vertical, 0));
@@ -23,11 +23,11 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<Grid>();
             engine.AddPublicPropertyAttributeLinksForType<Grid>();
 
-            engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("row", "top-attach");
-            engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("column", "left-attach");
+            engine.AddChildPropertyOfParentLinkInfo<Grid, Widget, int>("row", "top-attach");
+            engine.AddChildPropertyOfParentLinkInfo<Grid, Widget, int>("column", "left-attach");
 
-            engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("row_span", "height");
-            engine.AddChildPropertyOfParentAttributeLink<Grid, Widget, int>("column_span", "width");
+            engine.AddChildPropertyOfParentLinkInfo<Grid, Widget, int>("row_span", "height");
+            engine.AddChildPropertyOfParentLinkInfo<Grid, Widget, int>("column_span", "width");
 
             engine.AddSimpleInstancer<HPaned>("HorizontalSplitContainer");
             engine.AddPublicPropertyAttributeLinksForType<HPaned>();
@@ -35,8 +35,8 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<VPaned>("VerticalSplitContainer");
             engine.AddPublicPropertyAttributeLinksForType<VPaned>();
 
-            engine.AddSingleNamedChild<Paned, Widget>("child1", (p, w) => p.Add1(w));
-            engine.AddSingleNamedChild<Paned, Widget>("child2", (p, w) => p.Add2(w));
+            engine.AddSingleChildInfo<Paned, Widget>("child1", (p, w) => p.Add1(w));
+            engine.AddSingleChildInfo<Paned, Widget>("child2", (p, w) => p.Add2(w));
 
             engine.AddSimpleInstancer<FlowBox>();
             engine.AddPublicPropertyAttributeLinksForType<FlowBox>();

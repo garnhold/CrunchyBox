@@ -16,12 +16,12 @@ namespace Crunchy.Sack_WinForms
         {
             engine.AddSimpleInstancer<MenuStrip>("Menu");
             engine.AddPublicPropertyAttributeLinksForType<MenuStrip>();
-            engine.AddChildren<MenuStrip>(m => m.Items);
+            engine.AddChildrenInfo<MenuStrip>(m => m.Items);
 
             engine.AddSimpleInstancer<ToolStripMenuItem>("MenuItem");
             engine.AddPublicPropertyAttributeLinksForType<ToolStripMenuItem>();
-            engine.AddChildren<ToolStripMenuItem>(i => i.DropDownItems);
-            engine.AddAttributeFunction<ToolStripMenuItem>("click", (i, s) => i.Click += s.GetEventHandler());
+            engine.AddChildrenInfo<ToolStripMenuItem>(i => i.DropDownItems);
+            engine.AddFunctionInfo<ToolStripMenuItem>("click", (i, s) => i.Click += s.GetEventHandler());
         }
     }
 }

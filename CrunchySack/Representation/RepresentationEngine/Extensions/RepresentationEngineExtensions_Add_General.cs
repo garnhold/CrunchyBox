@@ -14,7 +14,7 @@ namespace Crunchy.Sack
         {
             type.GetFilteredInstancePropertys(Filterer_PropertyInfo.IsSetAndGetPublic())
                 .Convert(p => p.CreateVariable())
-                .Process(v => item.AddAttributeLink(v.GetVariableName().StyleAsVariableName(), v));
+                .Process(v => item.AddLinkInfo(v.GetVariableName().StyleAsVariableName(), v));
         }
         static public void AddPublicPropertyAttributeLinksForType<T>(this RepresentationEngine item)
         {

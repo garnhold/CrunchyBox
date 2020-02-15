@@ -35,16 +35,16 @@ namespace Crunchy.Sack_WinForms
             engine.AddPublicPropertyAttributeLinksForType<FlowLayoutPanel>();
 
             engine.AddSimpleInstancer<TableLayoutPanel>("Table");
-            engine.AddAttributeLink<TableLayoutPanel, string>("columns", (t, s) => t.SetColumnsDefinitionString(s), t => t.GetColumnsDefinitionString());
-            engine.AddAttributeLink<TableLayoutPanel, string>("rows", (t, s) => t.SetRowsDefinitionString(s), t => t.GetRowsDefinitionString());
+            engine.AddLinkInfo<TableLayoutPanel, string>("columns", (t, s) => t.SetColumnsDefinitionString(s), t => t.GetColumnsDefinitionString());
+            engine.AddLinkInfo<TableLayoutPanel, string>("rows", (t, s) => t.SetRowsDefinitionString(s), t => t.GetRowsDefinitionString());
 
-            engine.AddAttributeLink<Control, int>("column", (c, i) => c.SetColumn(i), c => c.GetColumn());
-            engine.AddAttributeLink<Control, int>("row", (c, i) => c.SetRow(i), c => c.GetRow());
+            engine.AddLinkInfo<Control, int>("column", (c, i) => c.SetColumn(i), c => c.GetColumn());
+            engine.AddLinkInfo<Control, int>("row", (c, i) => c.SetRow(i), c => c.GetRow());
 
             engine.AddSimpleInstancer<SplitContainer>();
             engine.AddPublicPropertyAttributeLinksForType<SplitContainer>();
-            engine.AddNamedChildren<SplitContainer>("panel1", c => c.Panel1.Controls);
-            engine.AddNamedChildren<SplitContainer>("panel2", c => c.Panel2.Controls);
+            engine.AddChildrenInfo<SplitContainer>("panel1", c => c.Panel1.Controls);
+            engine.AddChildrenInfo<SplitContainer>("panel2", c => c.Panel2.Controls);
         }
     }
 }

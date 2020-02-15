@@ -31,7 +31,7 @@ namespace Crunchy.Sack_Gtk
                 b.InputPurpose = InputPurpose.Number;
             });
 
-            engine.AddAttributeLink<Entry, string>("value", (e, v) => e.Text = v, e => e.Text);
+            engine.AddLinkInfo<Entry, string>("value", (e, v) => e.Text = v, e => e.Text);
 
             engine.AddSimpleInstancer<TextView>("TextBox");
             engine.AddPublicPropertyAttributeLinksForType<TextView>();

@@ -10,9 +10,9 @@ namespace Crunchy.Sack
     
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public T AddAndGetSetInfo<T>(this RepresentationEngine item, T info) where T : RepresentationInfo_Set
+        static public T AddAndGetInfoSet<T>(this RepresentationEngine item, T info) where T : RepresentationInfoSet
         {
-            item.AddSetInfo(info);
+            item.AddInfoSet(info);
 
             return info;
         }

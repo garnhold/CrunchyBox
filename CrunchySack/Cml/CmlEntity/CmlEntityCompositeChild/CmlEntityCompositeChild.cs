@@ -14,7 +14,7 @@ namespace Crunchy.Sack
         {
             GetComponentSource().SolidifyInto(
                 execution,
-                execution.GetTargetInfo().GetEngine().AssertCreateChildrenContainer(execution, representation)
+                execution.GetTargetInfo().GetEngine().AssertCreateInfoContainer(execution, representation, RepresentationInfo.UnamedChildren)
             );
         }
 	}

@@ -24,9 +24,9 @@ namespace Crunchy.Sack_WinForms
             Application.Run(operation());
         }
 
-        public void AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r) where REPRESENTATION_TYPE : Control
+        public void AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r) where REPRESENTATION_TYPE : Control
         {
-            this.AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r, s => s.Focused == false);
+            this.AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r, s => s.Focused == false);
         }
     }
 }

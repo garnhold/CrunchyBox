@@ -6,13 +6,13 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public abstract class RepresentationInfo_Attribute_Function<REPRESENTATION_TYPE> : RepresentationInfo_Attribute
+    public abstract class RepresentationInfo_Function<REPRESENTATION_TYPE> : RepresentationInfo
     {
         protected abstract void ApplyFunctionSyncroToRepresentation(REPRESENTATION_TYPE representation, FunctionSyncro function_syncro);
 
-        public RepresentationInfo_Attribute_Function(string n) : base(n, typeof(REPRESENTATION_TYPE)) { }
+        public RepresentationInfo_Function(string n) : base(n, typeof(REPRESENTATION_TYPE)) { }
 
-        public override void SetRepresentationFunction(CmlExecution execution, object representation, FunctionInstance function_instance)
+        public override void InjectFunction(CmlExecution execution, object representation, FunctionInstance function_instance)
         {
             REPRESENTATION_TYPE cast;
             FunctionSyncro function_syncro = new FunctionSyncro(function_instance);

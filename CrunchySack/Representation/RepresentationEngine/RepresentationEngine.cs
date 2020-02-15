@@ -17,10 +17,9 @@ namespace Crunchy.Sack
         private Dictionary<string, RepresentationInstancer> instancers;
         private Dictionary<Tuple<string, int>, RepresentationConstructor> constructors;
         
-        private Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>> attribute_infos;
-        private TypeDictionary<RepresentationInfo_Children> children_infos;
-        private Dictionary<Type, List<RepresentationInfo_Set>> set_infos;
+        private Dictionary<string, TypeDictionary<RepresentationInfo>> infos;
 
+        private Dictionary<Type, List<RepresentationInfoSet>> info_sets;
         private Dictionary<Type, List<RepresentationModifier_General>> general_modifiers;
 
         public RepresentationEngine()
@@ -31,11 +30,10 @@ namespace Crunchy.Sack
 
             instancers = new Dictionary<string, RepresentationInstancer>();
             constructors = new Dictionary<Tuple<string, int>, RepresentationConstructor>();
-            
-            attribute_infos = new Dictionary<string, TypeDictionary<RepresentationInfo_Attribute>>();
-            children_infos = new TypeDictionary<RepresentationInfo_Children>();
-            set_infos = new Dictionary<Type, List<RepresentationInfo_Set>>();
 
+            infos = new Dictionary<string, TypeDictionary<RepresentationInfo>>();
+
+            info_sets = new Dictionary<Type, List<RepresentationInfoSet>>();
             general_modifiers = new Dictionary<Type, List<RepresentationModifier_General>>();
         }
 
@@ -51,21 +49,15 @@ namespace Crunchy.Sack
             cs.Initilize(this);
         }
 
-        public void AddAttributeInfo(RepresentationInfo_Attribute c)
+        public void AddInfo(RepresentationInfo i)
         {
-            attribute_infos.GetOrCreateDefaultValue(c.GetName())[c.GetRepresentationType()] = c;
-            c.Initilize(this);
+            infos.GetOrCreateDefaultValue(i.GetName())[i.GetRepresentationType()] = i;
+            i.Initilize(this);
         }
 
-        public void AddChildrenInfo(RepresentationInfo_Children c)
+        public void AddInfoSet(RepresentationInfoSet s)
         {
-            children_infos[c.GetRepresentationType()] = c;
-            c.Initilize(this);
-        }
-
-        public void AddSetInfo(RepresentationInfo_Set s)
-        {
-            set_infos.Add(s.GetRepresentationType(), s);
+            info_sets.Add(s.GetRepresentationType(), s);
             s.Initilize(this);
         }
 
@@ -106,32 +98,19 @@ namespace Crunchy.Sack
             return constructors.GetValue(Tuple.New(name, number_parameters));
         }
 
-        public CmlContainer AssertCreateAttributeContainer(CmlExecution execution, object representation, string name)
+        public CmlContainer AssertCreateInfoContainer(CmlExecution execution, object representation, string name)
         {
-            return new CmlContainer_EndPoint_Attribute(
+            return new CmlContainer_EndPoint_Info(
                 representation,
-                GetAttributeInfo(name, representation.GetTypeEX())
-                    .AssertNotNull(() => new CmlRuntimeError_InvalidIdForTypeException("attribute", name, representation.GetTypeEX()))
+                GetInfo(name, representation.GetTypeEX())
+                    .AssertNotNull(() => new CmlRuntimeError_InvalidIdForTypeException("info", name, representation.GetTypeEX()))
             );
         }
-        public RepresentationInfo_Attribute GetAttributeInfo(string name, Type type)
+        public RepresentationInfo GetInfo(string name, Type type)
         {
-            return attribute_infos
+            return infos
                 .GetValue(name)
                 .IfNotNull(d => d.GetValue(type));
-        }
-
-        public CmlContainer AssertCreateChildrenContainer(CmlExecution execution, object representation)
-        {
-            return new CmlContainer_EndPoint_Children(
-                representation,
-                GetChildrenInfo(representation.GetTypeEX())
-                    .AssertNotNull(() => new CmlRuntimeError_InvalidTypeException("children", representation.GetTypeEX()))
-            );
-        }
-        public RepresentationInfo_Children GetChildrenInfo(Type type)
-        {
-            return children_infos.GetValue(type);
         }
 
         public void AssertApplyGeneralModifiers(CmlExecution execution, object representation)

@@ -9,54 +9,31 @@ namespace Crunchy.Sack
 
     public class CmlSet
     {
-        private Dictionary<string, CmlSetAttribute> attributes;
-        private Dictionary<string, CmlSetChildren> children;
+        private Dictionary<string, CmlSetMember> members;
 
         public CmlSet()
         {
-            attributes = new Dictionary<string, CmlSetAttribute>();
-            children = new Dictionary<string, CmlSetChildren>();
+            members = new Dictionary<string, CmlSetMember>();
         }
 
-        public void AddChild(object child)
+        public void SetValue(string name, object value)
         {
-            AddNamedChild("", child);
-        }
-        public void SetChildrenLink(VariableInstance variable_instance, EffigyClassInfo @class, string group)
-        {
-            SetNamedChildrenLink("", variable_instance, @class, group);
+            members.GetOrCreateDefaultValue(name).SetValue(value);
         }
 
-        public void SetAttributeValue(string name, object value)
+        public void LinkValue(string name, VariableInstance variable_instance, HasInfo info)
         {
-            attributes.GetOrCreateDefaultValue(name).SetValue(value);
-        }
-        public void SetAttributeLink(string name, VariableInstance variable_instance, string group)
-        {
-            attributes.GetOrCreateDefaultValue(name).SetLink(variable_instance, group);
+            members.GetOrCreateDefaultValue(name).LinkValue(variable_instance, info);
         }
 
-        public void AddNamedChild(string name, object child)
+        public void LinkValueWithEntity(string name, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
         {
-            children.GetOrCreateDefaultValue(name).AddChild(child);
-        }
-        public void SetNamedChildrenLink(string name, VariableInstance variable_instance, EffigyClassInfo @class, string group)
-        {
-            children.GetOrCreateDefaultValue(name).SetLink(variable_instance, @class, group);
+            members.GetOrCreateDefaultValue(name).LinkValueWithEntity(variable_instance, entity, info);
         }
 
-        public CmlSetChildren GetChildren(string name)
+        public CmlSetMember GetMember(string name)
         {
-            return children.GetValue(name);
-        }
-        public CmlSetChildren GetChildren()
-        {
-            return GetChildren("");
-        }
-
-        public CmlSetAttribute GetAttribute(string name)
-        {
-            return attributes.GetValue(name);
+            return members.GetValue(name);
         }
     }
 }

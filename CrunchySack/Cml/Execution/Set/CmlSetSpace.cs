@@ -9,11 +9,11 @@ namespace Crunchy.Sack
 
     public class CmlSetSpace
     {
-        private Dictionary<RepresentationInfo_Set, CmlSet> sets;
+        private Dictionary<RepresentationInfoSet, CmlSet> sets;
 
         public CmlSetSpace()
         {
-            sets = new Dictionary<RepresentationInfo_Set, CmlSet>();
+            sets = new Dictionary<RepresentationInfoSet, CmlSet>();
         }
 
         public void SolidifyInstance(CmlExecution execution, object representation)
@@ -21,7 +21,7 @@ namespace Crunchy.Sack
             sets.Process(p => p.Key.SolidifyInstance(execution, representation, p.Value));
         }
 
-        public CmlSet GetSet(RepresentationInfo_Set set)
+        public CmlSet GetSet(RepresentationInfoSet set)
         {
             return sets.GetOrCreateDefaultValue(set);
         }

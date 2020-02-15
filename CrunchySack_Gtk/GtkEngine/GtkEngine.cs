@@ -33,22 +33,22 @@ namespace Crunchy.Sack_Gtk
             Application.Run();
         }
 
-        public void AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r) where REPRESENTATION_TYPE : Widget
+        public void AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r) where REPRESENTATION_TYPE : Widget
         {
-            this.AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r, s => s.IsFocus == false);
+            this.AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r, s => s.IsFocus == false);
         }
 
-        public void AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(string n, string property_name) where REPRESENTATION_TYPE : Widget
+        public void AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(string n, string property_name) where REPRESENTATION_TYPE : Widget
         {
-            this.AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(n,
+            this.AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(n,
                 (w, v) => w.SetProperty(property_name, v.ConvertEX<GLib.Value>()),
                 w => w.GetProperty(property_name).ConvertEX<VALUE_TYPE>()
             );
         }
 
-        public void AddChildPropertyOfParentAttributeLink<PARENT_TYPE, REPRESENTATION_TYPE, VALUE_TYPE>(string n, string property_name) where PARENT_TYPE : Container where REPRESENTATION_TYPE : Widget
+        public void AddChildPropertyOfParentLinkInfo<PARENT_TYPE, REPRESENTATION_TYPE, VALUE_TYPE>(string n, string property_name) where PARENT_TYPE : Container where REPRESENTATION_TYPE : Widget
         {
-            this.AddAttributeLink<REPRESENTATION_TYPE, VALUE_TYPE>(n,
+            this.AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(n,
                 (w, v) => w.SetChildPropertyOfParent<PARENT_TYPE>(property_name, v),
                 w => w.GetChildPropertyOfParent<PARENT_TYPE>(property_name).ConvertEX<VALUE_TYPE>()
             );

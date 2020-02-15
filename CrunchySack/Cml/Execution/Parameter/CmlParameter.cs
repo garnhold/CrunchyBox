@@ -38,7 +38,7 @@ namespace Crunchy.Sack
         {
             SolidifyInto(
                 execution,
-                execution.GetTargetInfo().GetEngine().AssertCreateAttributeContainer(execution, representation, GetName())
+                execution.GetTargetInfo().GetEngine().AssertCreateInfoContainer(execution, representation, GetName())
             );
         }
 

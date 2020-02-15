@@ -20,14 +20,14 @@ namespace Crunchy.Sack_Avalonia
             engine.AddAvaloniaPropertyAttributeLinksForType<Control>();
             engine.AddGeneralModifier<Control>((ex, c) => c.DataContext = ex.GetTargetInfo().GetTarget());
 
-            engine.AddAttributeValue<Control, bool>("auto_focus", (c, v) => v.IfTrue(() => c.Focus()));
+            engine.AddValueInfo<Control, bool>("auto_focus", (c, v) => v.IfTrue(() => c.Focus()));
 
-            engine.AddAttributeFunction<Control>("on_mouse_down", Control.PointerPressedEvent);
-            engine.AddAttributeFunction<Control>("on_mouse_up", Control.PointerReleasedEvent);
-            engine.AddAttributeFunction<Control>("on_mouse_move", Control.PointerMovedEvent);
+            engine.AddFunctionInfo<Control>("on_mouse_down", Control.PointerPressedEvent);
+            engine.AddFunctionInfo<Control>("on_mouse_up", Control.PointerReleasedEvent);
+            engine.AddFunctionInfo<Control>("on_mouse_move", Control.PointerMovedEvent);
 
-            engine.AddAttributeFunction<Control>("on_click", Control.TappedEvent);
-            engine.AddAttributeFunction<Control>("on_double_click", Control.DoubleTappedEvent);
+            engine.AddFunctionInfo<Control>("on_click", Control.TappedEvent);
+            engine.AddFunctionInfo<Control>("on_double_click", Control.DoubleTappedEvent);
         }
     }
 }

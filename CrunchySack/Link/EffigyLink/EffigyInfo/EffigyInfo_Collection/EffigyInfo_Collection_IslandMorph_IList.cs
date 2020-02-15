@@ -34,18 +34,15 @@ namespace Crunchy.Sack
     }
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
+        static public void AddChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
         {
-            item.AddChildren(
+            item.AddChildrenInfo(n,
                 new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE, CHILD_TYPE>(o)
             );
         }
-
-        static public void AddNamedChildren<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
+        static public void AddChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Operation<IList<CHILD_TYPE>, REPRESENTATION_TYPE> o)
         {
-            item.AddNamedChildren(n,
-                new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE, CHILD_TYPE>(o)
-            );
+            item.AddChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, o);
         }
     }
 
@@ -75,14 +72,13 @@ namespace Crunchy.Sack
     }
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddChildren<REPRESENTATION_TYPE>(this RepresentationEngine item, Operation<IList, REPRESENTATION_TYPE> o)
+        static public void AddChildrenInfo<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Operation<IList, REPRESENTATION_TYPE> o)
         {
-            item.AddChildren(new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE>(o));
+            item.AddChildrenInfo(n, new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE>(o));
         }
-
-        static public void AddNamedChildren<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Operation<IList, REPRESENTATION_TYPE> o)
+        static public void AddChildrenInfo<REPRESENTATION_TYPE>(this RepresentationEngine item, Operation<IList, REPRESENTATION_TYPE> o)
         {
-            item.AddNamedChildren(n, new EffigyInfo_Collection_IslandMorph_IList<REPRESENTATION_TYPE>(o));
+            item.AddChildrenInfo<REPRESENTATION_TYPE>(RepresentationInfo.UnamedChildren, o);
         }
     }
 }

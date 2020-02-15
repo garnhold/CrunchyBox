@@ -25,13 +25,13 @@ namespace Crunchy.Sack_Avalonia
 
             engine.AddSimpleInstancer<MenuItem>();
             engine.AddAvaloniaPropertyAttributeLinksForType<MenuItem>();
-            engine.AddAttributeFunction<MenuItem>("command", (i, s) => i.Command = s.GetCommand());
-            engine.AddAttributeFunction<MenuItem>("action", MenuItem.ClickEvent);
+            engine.AddFunctionInfo<MenuItem>("command", (i, s) => i.Command = s.GetCommand());
+            engine.AddFunctionInfo<MenuItem>("action", MenuItem.ClickEvent);
 
             engine.AddSimpleInstancer<Separator>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Separator>();
 
-            engine.AddAttributeValue<Control, ContextMenu>("context_menu", (f, e) => { f.ContextMenu = e; f.InvalidateVisual(); });
+            engine.AddValueInfo<Control, ContextMenu>("context_menu", (f, e) => { f.ContextMenu = e; f.InvalidateVisual(); });
         }
     }
 }

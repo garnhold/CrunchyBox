@@ -28,8 +28,8 @@ namespace Crunchy.Sack_Avalonia
             engine.AddVariationInstancer<TextBox>("IntField", "SmallField", b => { });
             engine.AddVariationInstancer<TextBox>("FloatField", "SmallField", b => { });
 
-            engine.AddAttributeLink<TextBox, string>("text", TextBox.TextProperty);
-            engine.AddAttributeLink<TextBox, string>("value", TextBox.TextProperty);
+            engine.AddLinkInfo<TextBox, string>("text", TextBox.TextProperty);
+            engine.AddLinkInfo<TextBox, string>("value", TextBox.TextProperty);
         }
     }
 }

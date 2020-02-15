@@ -20,8 +20,8 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer("VerticalSlider", () => new VScale(0.0, 1.0, 0.01));
             engine.AddPublicPropertyAttributeLinksForType<VScale>();
 
-            engine.AddAttributeLink<Scale>("minimum", "Adjustment.Lower");
-            engine.AddAttributeLink<Scale>("maximum", "Adjustment.Upper");
+            engine.AddLinkInfo<Scale>("minimum", "Adjustment.Lower");
+            engine.AddLinkInfo<Scale>("maximum", "Adjustment.Upper");
         }
     }
 }

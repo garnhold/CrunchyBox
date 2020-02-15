@@ -17,7 +17,7 @@ namespace Crunchy.Sack_WinForms
             engine.AddSimpleInstancer<Button>();
             engine.AddPublicPropertyAttributeLinksForType<Button>();
 
-            engine.AddAttributeFunction<Button>("click", (b, s) => b.Click += s.GetEventHandler());
+            engine.AddFunctionInfo<Button>("click", (b, s) => b.Click += s.GetEventHandler());
         }
     }
 }

@@ -74,8 +74,6 @@
     <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_StaticClass\CmlScriptValue_StaticClass.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSource.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSourceList.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_AttributeCollection.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_ChildrenCollection.cs" />
     <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_SystemValueProcess.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClass.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_TypeSupportException.cs" />
@@ -100,8 +98,6 @@
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink_Collection.cs" />
     <Compile Include="Link\EffigyLink\EffigySource\EffigySource_Collection.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_NamedChildren.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Function_Process.cs" />
     <Compile Include="Syncro\FunctionSyncro\FunctionSyncro.cs" />
     <Compile Include="Syncro\SyncroManager.cs" />
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem_Inject.cs" />
@@ -188,13 +184,12 @@
     <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint.cs" />
     <Compile Include="Cml\Execution\Container\CmlContainer_Values.cs" />
     <Compile Include="Cml\Execution\Container\CmlContainer_Value.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_Attribute.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_Children.cs" />
+    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_Info.cs" />
     <Compile Include="Cml\Execution\Container\CmlContainer.cs" />
     <Compile Include="Cml\Execution\DeferredValue\CmlDeferredValue.cs" />
     <Compile Include="Cml\Execution\Representation\CmlRepresentationSpace.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_ContainerSupportException.cs" />
-    <Compile Include="Cml\Execution\Error\CmlRuntimeError_AttributeSupportException.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_InfoSupportException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidFunctionIndirectionException.cs" />
     <Compile Include="Cml\Execution\CmlExecution.cs" />
     <Compile Include="Cml\Execution\Return\CmlReturnSpace.cs" />
@@ -249,7 +244,6 @@
     <Compile Include="ClassLibrary\ClassLibrary.cs" />
     <Compile Include="GlobalLibrary\Global\Global_Indirect.cs" />
     <Compile Include="Link\LinkManager.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Function.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Create.cs" />
     <Compile Include="FragmentLibrary\FragmentProvider\FragmentProvider.cs" />
@@ -269,16 +263,10 @@
       <DependentUpon>RepresentationConstructor_Operation.tt</DependentUpon>
     </Compile>
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Variable.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier_General\RepresentationModifier_General.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier_General\RepresentationModifier_General_Process.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Process.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions_Cml.cs" />
     <Compile Include="Extensions\StreamSystem\StreamSystemExtensions.cs" />
     <Compile Include="Representation\RepresentationResult\Extensions\RepresentationResultExtensions_Get.cs" />
@@ -327,19 +315,22 @@
     <Compile Include="Link\VariableLink\VariableLink_Simple_Process.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple_Direct.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add_General.cs" />
     <Compile Include="Cml\Execution\Set\CmlSetSpace.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Set.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children_Set.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSetAttribute.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSetMember.cs" />
     <Compile Include="Cml\Execution\Set\CmlSet.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSetChildren.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children_Link.cs" />
-    <Compile Include="Cml\Execution\Error\CmlRuntimeError_ChildrenSupportException.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfo_Set_SelectableChildren.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfoSetChildrenSelector.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfoSetChildrenSelector_SingleIndex.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSet_SelectableChildren.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSetChildrenSelector.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSetChildrenSelector_SingleIndex.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Link.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function_Process.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Variable.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Process.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_SetMember.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -374,9 +365,8 @@
     <Folder Include="Cml\CmlEntity\CmlEntityCompositeChild\" />
     <Folder Include="Syncro\FunctionSyncro\Extensions\" />
     <Folder Include="Link\EffigyLink\Extensions\" />
-    <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\" />
     <Folder Include="Cml\Execution\Set\" />
-    <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\" />
+    <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

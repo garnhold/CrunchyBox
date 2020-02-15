@@ -22,7 +22,7 @@ namespace Crunchy.Sack
         {
             SolidifyInto(
                 execution,
-                execution.GetTargetInfo().GetEngine().AssertCreateChildrenContainer(execution, representation)
+                execution.GetTargetInfo().GetEngine().AssertCreateInfoContainer(execution, representation, RepresentationInfo.UnamedChildren)
             );
         }
 	}

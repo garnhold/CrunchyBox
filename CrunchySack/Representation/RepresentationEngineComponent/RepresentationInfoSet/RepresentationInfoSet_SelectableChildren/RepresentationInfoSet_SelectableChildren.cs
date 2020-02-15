@@ -7,22 +7,26 @@ namespace Crunchy.Sack
     using Dough;
     using Noodle;
     
-    public class RepresentationInfo_Set_SelectableChildren : RepresentationInfo_Set
+    public class RepresentationInfoSet_SelectableChildren : RepresentationInfoSet
     {
+        private string name;
+
         private EffigyInfo_Collection effigy_info;
         private List<RepresentationInfoSetChildrenSelector> selectors;
 
-        public RepresentationInfo_Set_SelectableChildren(EffigyInfo_Collection e) : base(e.GetRepresentationType())
+        public RepresentationInfoSet_SelectableChildren(string n, EffigyInfo_Collection e) : base(e.GetRepresentationType())
         {
+            name = n;
+
             effigy_info = e;
-            RegisterChildrenInfo();
+            RegisterSetMember(name);
 
             selectors = new List<RepresentationInfoSetChildrenSelector>();
         }
 
         public override void SolidifyInstance(CmlExecution execution, object representation, CmlSet set)
         {
-            CmlSetChildren children = set.GetChildren();
+            CmlSetMember children = set.GetMember(name);
             EffigyLink effigy_link = effigy_info.CreateLink(execution, representation, children.GetVariableInstance(), children.GetClass());
 
             selectors.Process(
@@ -30,7 +34,7 @@ namespace Crunchy.Sack
                     execution, 
                     representation, 
                     effigy_link, 
-                    set.GetAttribute(s.GetName())
+                    set.GetMember(s.GetName())
                 )
             );
 
@@ -43,15 +47,15 @@ namespace Crunchy.Sack
         public void AddSelector(RepresentationInfoSetChildrenSelector to_add)
         {
             selectors.Add(to_add);
-            RegisterAttributeInfo(to_add.GetName());
+            RegisterSetMember(to_add.GetName());
         }
     }
 
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public RepresentationInfo_Set_SelectableChildren AddSelectableChildren(this RepresentationEngine item, EffigyInfo_Collection e)
+        static public RepresentationInfoSet_SelectableChildren AddSelectableChildren(this RepresentationEngine item, string n, EffigyInfo_Collection e)
         {
-            return item.AddAndGetSetInfo(new RepresentationInfo_Set_SelectableChildren(e));
+            return item.AddAndGetInfoSet(new RepresentationInfoSet_SelectableChildren(n, e));
         }
     }
 }

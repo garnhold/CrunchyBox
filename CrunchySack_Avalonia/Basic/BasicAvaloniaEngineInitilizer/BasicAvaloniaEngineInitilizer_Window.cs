@@ -18,7 +18,7 @@ namespace Crunchy.Sack_Avalonia
             engine.AddSimpleInstancer<Window>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Window>();
 
-            engine.AddAttributeFunction<Window>("on_close", (w, s) => w.Closed += s.GetEventHandler());
+            engine.AddFunctionInfo<Window>("on_close", (w, s) => w.Closed += s.GetEventHandler());
         }
     }
 }

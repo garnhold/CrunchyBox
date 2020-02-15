@@ -26,20 +26,20 @@ namespace Crunchy.Sack_Avalonia
             engine.AddSimpleInstancer<DockPanel>();
             engine.AddAvaloniaPropertyAttributeLinksForType<DockPanel>();
 
-            engine.AddAttributeLink<Control, Dock>("dock", DockPanel.DockProperty);
+            engine.AddLinkInfo<Control, Dock>("dock", DockPanel.DockProperty);
 
             engine.AddSimpleInstancer<Grid>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Grid>();
-            engine.AddAttributeLink<Grid, string>("columns", (g, s) => g.SetColumnsDefinitionString(s), g => g.GetColumnsDefinitionString());
-            engine.AddAttributeLink<Grid, string>("rows", (g, s) => g.SetRowsDefinitionString(s), g => g.GetRowsDefinitionString());
+            engine.AddLinkInfo<Grid, string>("columns", (g, s) => g.SetColumnsDefinitionString(s), g => g.GetColumnsDefinitionString());
+            engine.AddLinkInfo<Grid, string>("rows", (g, s) => g.SetRowsDefinitionString(s), g => g.GetRowsDefinitionString());
 
-            engine.AddChildren<Grid>(g => g.Children);
+            engine.AddChildrenInfo<Grid>(g => g.Children);
 
-            engine.AddAttributeLink<Control, int>("column", Grid.ColumnProperty);
-            engine.AddAttributeLink<Control, int>("row", Grid.RowProperty);
+            engine.AddLinkInfo<Control, int>("column", Grid.ColumnProperty);
+            engine.AddLinkInfo<Control, int>("row", Grid.RowProperty);
 
-            engine.AddAttributeLink<Control, int>("column_span", Grid.ColumnSpanProperty);
-            engine.AddAttributeLink<Control, int>("row_span", Grid.RowSpanProperty);
+            engine.AddLinkInfo<Control, int>("column_span", Grid.ColumnSpanProperty);
+            engine.AddLinkInfo<Control, int>("row_span", Grid.RowSpanProperty);
 
             engine.AddSimpleInstancer<GridSplitter>();
             engine.AddAvaloniaPropertyAttributeLinksForType<GridSplitter>();

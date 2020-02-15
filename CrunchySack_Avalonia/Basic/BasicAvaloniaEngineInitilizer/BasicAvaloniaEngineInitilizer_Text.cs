@@ -22,7 +22,7 @@ namespace Crunchy.Sack_Avalonia
             engine.AddVariationInstancer<TextBlock>("Header", "Text", t => t.FontSize = 22.0);
             engine.AddVariationInstancer<TextBlock>("Title", "Text", t => t.FontSize = 33.0);
 
-            engine.AddAttributeLink<TextBlock, string>("value", TextBlock.TextProperty);
+            engine.AddLinkInfo<TextBlock, string>("value", TextBlock.TextProperty);
         }
     }
 }

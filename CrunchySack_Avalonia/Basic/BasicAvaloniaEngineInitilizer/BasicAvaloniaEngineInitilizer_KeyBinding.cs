@@ -20,13 +20,13 @@ namespace Crunchy.Sack_Avalonia
         {
             engine.AddSimpleInstancer<KeyBinding>();
             engine.AddAvaloniaPropertyAttributeLinksForType<KeyBinding>();
-            engine.AddAttributeFunction<KeyBinding>("action", (b, s) => b.Command = s.GetCommand());
+            engine.AddFunctionInfo<KeyBinding>("action", (b, s) => b.Command = s.GetCommand());
 
             engine.AddSimpleConstructor<KeyGesture, string, string>("KeyGesture",
                 (k, m) => new KeyGesture(k.ConvertEX<Key>(), m.ConvertEX<KeyModifiers>())
             );
 
-            engine.AddNamedChildren<Control>("key_bindings", e => e.KeyBindings);
+            engine.AddChildrenInfo<Control>("key_bindings", e => e.KeyBindings);
         }
     }
 }

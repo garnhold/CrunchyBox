@@ -20,8 +20,8 @@ namespace Crunchy.Sack_Avalonia
             engine.AddSimpleInstancer<Button>();
             engine.AddAvaloniaPropertyAttributeLinksForType<Button>();
 
-            engine.AddAttributeLink<Button, string>("text", Button.ContentProperty);
-            engine.AddAttributeFunction<Button>("action", Button.ClickEvent);
+            engine.AddLinkInfo<Button, string>("text", Button.ContentProperty);
+            engine.AddFunctionInfo<Button>("action", Button.ClickEvent);
         }
     }
 }
