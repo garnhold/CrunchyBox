@@ -6,7 +6,7 @@ namespace Crunchy.Sack
     {
         private RepresentationEngine engine;
 
-        public void Initilize(RepresentationEngine e)
+        public virtual void Initilize(RepresentationEngine e)
         {
             engine = e;
         }

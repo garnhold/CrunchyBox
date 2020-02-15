@@ -340,6 +340,10 @@
     <Compile Include="Cml\Execution\Set\CmlSetChildren.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children\RepresentationInfo_Children_Link.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_ChildrenSupportException.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfo_Set_SelectableChildren.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfoSetChildrenSelector.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInf_Set_UnifiedSet\RepresentationInfo_Set_UnifiedSet.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfoSetChildrenSelector_Index.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -376,6 +380,8 @@
     <Folder Include="Link\EffigyLink\Extensions\" />
     <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\" />
     <Folder Include="Cml\Execution\Set\" />
+    <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\" />
+    <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInf_Set_UnifiedSet\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

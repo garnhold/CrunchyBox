@@ -66,10 +66,6 @@ namespace Crunchy.Sack
         public void AddSetInfo(RepresentationInfo_Set s)
         {
             set_infos.Add(s.GetRepresentationType(), s);
-
-            s.GetChildrenInfos().Process(c => AddChildrenInfo(c));
-            s.GetAttributeInfos().Process(a => AddAttributeInfo(a));
-
             s.Initilize(this);
         }
 
