@@ -15,8 +15,6 @@ namespace Crunchy.Sack
             variable = v;
         }
 
-        public RepresentationInfo_Attribute_Link(Variable v) : this(v.GetVariableName(), v) { }
-
         public override void SetRepresentationValue(CmlExecution execution, object representation, object value)
         {
             variable.SetContents(representation, value);
@@ -39,15 +37,11 @@ namespace Crunchy.Sack
     {
         static public void AddAttributeLink(this RepresentationEngine item, string n, Variable v)
         {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Link(n, v)
-            );
+            item.AddAttributeInfo(new RepresentationInfo_Attribute_Link(n, v));
         }
         static public void AddAttributeLink(this RepresentationEngine item, Variable v)
         {
-            item.AddAttributeInfo(
-                new RepresentationInfo_Attribute_Link(v)
-            );
+            item.AddAttributeLink(v.GetVariableName(), v);
         }
 
         static public void AddAttributeLink<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, string p)

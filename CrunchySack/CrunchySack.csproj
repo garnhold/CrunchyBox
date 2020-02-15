@@ -339,7 +339,7 @@
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_ChildrenSupportException.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfo_Set_SelectableChildren.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfoSetChildrenSelector.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfoSetChildrenSelector_Index.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Set\RepresentationInfo_Set_SelectableChildren\RepresentationInfoSetChildrenSelector_SingleIndex.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

@@ -46,4 +46,12 @@ namespace Crunchy.Sack
             RegisterAttributeInfo(to_add.GetName());
         }
     }
+
+    static public partial class RepresentationEngineExtensions_Add
+    {
+        static public RepresentationInfo_Set_SelectableChildren AddSelectableChildren(this RepresentationEngine item, EffigyInfo_Collection e)
+        {
+            return item.AddAndGetSetInfo(new RepresentationInfo_Set_SelectableChildren(e));
+        }
+    }
 }
