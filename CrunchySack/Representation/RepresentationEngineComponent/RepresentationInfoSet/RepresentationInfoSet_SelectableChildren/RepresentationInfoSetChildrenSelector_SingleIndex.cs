@@ -31,33 +31,33 @@ namespace Crunchy.Sack
 
     static public partial class RepresentationInfoSetSelectableChildrenExtensions_Add
     {
-        static public void AddSingleIndexChildSelectorLink(this RepresentationInfoSet_SelectableChildren item, string n, Variable v)
+        static public void AddSingleIndexChildSelectorLinkInfo(this RepresentationInfoSet_SelectableChildren item, string n, Variable v)
         {
             item.AddSelector(new RepresentationInfoSetChildrenSelector_SingleIndex(n, v));
         }
-        static public void AddSingleIndexChildSelectorLink(this RepresentationInfoSet_SelectableChildren item, Variable v)
+        static public void AddSingleIndexChildSelectorLinkInfo(this RepresentationInfoSet_SelectableChildren item, Variable v)
         {
-            item.AddSingleIndexChildSelectorLink(v.GetVariableName(), v);
+            item.AddSingleIndexChildSelectorLinkInfo(v.GetVariableName(), v);
         }
 
-        static public void AddSingleIndexChildSelectorLink(this RepresentationInfoSet_SelectableChildren item, string n, string p)
+        static public void AddSingleIndexChildSelectorLinkInfo(this RepresentationInfoSet_SelectableChildren item, string n, string p)
         {
-            item.AddSingleIndexChildSelectorLink(n, item.GetRepresentationType().GetVariableByPath(p));
+            item.AddSingleIndexChildSelectorLinkInfo(n, item.GetRepresentationType().GetVariableByPath(p));
         }
 
-        static public void AddSingleIndexChildSelectorLink<REPRESENTATION_TYPE>(this RepresentationInfoSet_SelectableChildren item, string n, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
+        static public void AddSingleIndexChildSelectorLinkInfo<REPRESENTATION_TYPE>(this RepresentationInfoSet_SelectableChildren item, string n, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
         {
-            item.AddSingleIndexChildSelectorLink(n, new Variable_Blockable<REPRESENTATION_TYPE>(v, i));
+            item.AddSingleIndexChildSelectorLinkInfo(n, new Variable_Blockable<REPRESENTATION_TYPE>(v, i));
         }
 
-        static public void AddSingleIndexChildSelectorLink<REPRESENTATION_TYPE>(this RepresentationInfoSet_SelectableChildren item, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
+        static public void AddSingleIndexChildSelectorLinkInfo<REPRESENTATION_TYPE>(this RepresentationInfoSet_SelectableChildren item, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
         {
-            item.AddSingleIndexChildSelectorLink<REPRESENTATION_TYPE>(v.GetVariableName(), v, i);
+            item.AddSingleIndexChildSelectorLinkInfo<REPRESENTATION_TYPE>(v.GetVariableName(), v, i);
         }
 
-        static public void AddSingleIndexChildSelectorLink<REPRESENTATION_TYPE, VALUE_TYPE>(this RepresentationInfoSet_SelectableChildren item, string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r, Operation<bool, REPRESENTATION_TYPE> i)
+        static public void AddSingleIndexChildSelectorLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(this RepresentationInfoSet_SelectableChildren item, string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a, Operation<VALUE_TYPE, REPRESENTATION_TYPE> r, Operation<bool, REPRESENTATION_TYPE> i)
         {
-            item.AddSingleIndexChildSelectorLink<REPRESENTATION_TYPE>(
+            item.AddSingleIndexChildSelectorLinkInfo<REPRESENTATION_TYPE>(
                 new Variable_Operation<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r),
                 i
             );
