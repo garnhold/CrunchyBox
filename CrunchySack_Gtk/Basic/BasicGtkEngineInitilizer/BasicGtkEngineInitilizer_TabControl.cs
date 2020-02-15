@@ -17,11 +17,12 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<Notebook>("TabControl");
             engine.AddPublicPropertyAttributeLinksForType<Notebook>();
 
-            engine.AddChildrenInfo<Notebook, NotebookItem>(
+            engine.AddSelectableChildrenInfo<Notebook, NotebookItem>(
                 (n, i) => n.RemoveNotebookItemAt(i),
                 (n, i) => n.AddNotebookItem(i),
                 (n, p, i) => n.InsertNotebookItem(p, i)
-            );
+            )
+            .AddSingleIndexChildSelectorLinkInfo("selected", "Page");
 
             engine.AddSimpleConstructor<NotebookItem, string, Widget>("TabItem", (t, p) => new NotebookItem(t, p));
             engine.AddSimpleConstructor<NotebookItem, Widget, Widget>("TabItem", (t, p) => new NotebookItem(t, p));
