@@ -34,5 +34,10 @@ namespace Crunchy.Sack
         {
             item.AddAttributeInfo(new RepresentationInfo_Attribute_Value_Variable(v));
         }
+
+        static public void AddAttributeValue<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, string p)
+        {
+            item.AddAttributeLink(n, typeof(REPRESENTATION_TYPE).GetVariableByPath(p));
+        }
     }
 }

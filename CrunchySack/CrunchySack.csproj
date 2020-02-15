@@ -272,9 +272,6 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link_Process.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Link_Path.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Path.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Attribute\RepresentationInfo_Attribute_Value_Variable.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationModifier\RepresentationModifier_General\RepresentationModifier_General.cs" />
