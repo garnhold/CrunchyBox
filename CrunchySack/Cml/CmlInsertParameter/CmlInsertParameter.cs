@@ -16,19 +16,13 @@ namespace Crunchy.Sack
     
     public partial class CmlInsertParameter : CmlElement
 	{
-        public CmlValue Solidify(CmlContext context, bool assert)
+        public CmlValue Solidify(CmlContext context)
         {
-            context.GetParameterSpace().IfNotNull(s => s.GetParameter(GetId())).IfNotNull(
-                p => p.SolidifyInto(context, container),
-                () => GetDefaultValueSource().IfNotNull(
-                    v => v.SolidifyInto(context, container),
-                    () => assert.ThrowIfTrue(() => new CmlRuntimeError_InvalidIdException("parameter", GetId()))
-                )
-            );
-
-            return context.GetParameterSpace()
-                .IfNotNull(s => s.GetParameter(GetId()))
-                .IfNotNull(p => p.SolidifyInto
+            return (
+                context.GetParameterSpace().IfNotNull(s => s.GetParameter(GetId())).IfNotNull(p => p.Solidify()) ??
+                GetDefaultValueSource().IfNotNull(s => s.Solidify(context))
+            )
+            .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("parameter", GetId()));
         }
 	}
 	

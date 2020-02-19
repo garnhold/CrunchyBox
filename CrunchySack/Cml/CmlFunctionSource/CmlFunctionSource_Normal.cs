@@ -21,7 +21,7 @@ namespace Crunchy.Sack
 
         public override CmlValue Solidify(CmlContext context)
         {
-            return new CmlValue_Function(GetFunction().CompileFunctionInstance(context), this));
+            return new CmlValue_Function(GetFunction().CompileFunctionInstance(context), this);
         }
 
         public LookupBackedSet<string, string> GetInfoSettings()

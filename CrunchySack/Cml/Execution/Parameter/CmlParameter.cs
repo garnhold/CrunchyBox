@@ -14,36 +14,28 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class CmlParameter
+    public class CmlParameter : CmlEntityInfo
 	{
         private string name;
         private CmlValue value;
 
         private bool is_used;
 
-        private CmlContext context;
-
-        public CmlParameter(CmlContext c, string n, CmlValue v)
+        public CmlParameter(string n, CmlValue v)
         {
             name = n;
             value = v;
-
-            context = c;
         }
 
-        public void SolidifyInto(CmlContext context, CmlContainer container)
+        public CmlValue Solidify()
         {
             is_used = true;
 
-            deferred_value.SolidifyInto(context, container);
+            return value;
         }
-
-        public void ApplyAsAttribute(CmlContext context, object representation)
+        public CmlValue Solidify(CmlContext context)
         {
-            SolidifyInto(
-                context,
-                context.GetEngine().AssertCreateInfoContainer(context, representation, GetName())
-            );
+            return Solidify();
         }
 
         public string GetName()

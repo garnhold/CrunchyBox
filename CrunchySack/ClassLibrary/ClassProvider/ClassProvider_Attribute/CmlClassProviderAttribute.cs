@@ -30,9 +30,9 @@ namespace Crunchy.Sack
             return cml;
         }
 
-        public CmlClass_ClassDefinition GetCmlClass(Type t)
+        public CmlClass GetCmlClass(Type t)
         {
-            return new CmlClass_ClassDefinition(t, layout, CmlClassDefinition.DOMify(cml));
+            return new CmlClass_Entity(t, layout, CmlEntity.DOMify(cml));
         }
     }
 }

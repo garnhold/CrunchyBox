@@ -6,31 +6,17 @@ namespace Crunchy.Sack
     
     static public class StreamSystemExtensions_Cml
     {
-        static public AttemptResult AttemptReadCmlClassDefinition(this StreamSystem item, string path, out CmlClassDefinition class_definition, long milliseconds = StreamSystem.DEFAULT_WAIT)
+        static public AttemptResult AttemptReadCmlEntity(this StreamSystem item, string path, out CmlEntity entity, long milliseconds = StreamSystem.DEFAULT_WAIT)
         {
-            return item.AttemptReadText<CmlClassDefinition>(path, delegate(string text) {
-                return CmlClassDefinition.DOMify(text);
-            }, out class_definition, milliseconds);
+            return item.AttemptReadText<CmlEntity>(path, delegate(string text) {
+                return CmlEntity.DOMify(text);
+            }, out entity, milliseconds);
         }
-        static public CmlClassDefinition ReadCmlClassDefinition(this StreamSystem item, string path, long milliseconds = StreamSystem.DEFAULT_WAIT)
+        static public CmlEntity ReadCmlEntity(this StreamSystem item, string path, long milliseconds = StreamSystem.DEFAULT_WAIT)
         {
-            CmlClassDefinition output;
+            CmlEntity output;
 
-            item.AttemptReadCmlClassDefinition(path, out output, milliseconds);
-            return output;
-        }
-
-        static public AttemptResult AttemptReadCmlFragmentDefinition(this StreamSystem item, string path, out CmlFragmentDefinition fragment_definition, long milliseconds = StreamSystem.DEFAULT_WAIT)
-        {
-            return item.AttemptReadText<CmlFragmentDefinition>(path, delegate(string text) {
-                return CmlFragmentDefinition.DOMify(text);
-            }, out fragment_definition, milliseconds);
-        }
-        static public CmlFragmentDefinition ReadCmlFragmentDefinition(this StreamSystem item, string path, long milliseconds = StreamSystem.DEFAULT_WAIT)
-        {
-            CmlFragmentDefinition output;
-
-            item.AttemptReadCmlFragmentDefinition(path, out output, milliseconds);
+            item.AttemptReadCmlEntity(path, out output, milliseconds);
             return output;
         }
     }

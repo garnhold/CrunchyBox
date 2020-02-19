@@ -18,7 +18,7 @@ namespace Crunchy.Sack
 	{
         public override CmlValue Solidify(CmlContext context)
         {
-            return GetInsertParameter().Solidify(context, false);
+            return GetInsertParameter().Solidify(context);
         }
     }
 	
