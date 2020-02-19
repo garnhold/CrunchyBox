@@ -370,10 +370,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Cml\antlr4\Cml.interp" />
-    <None Include="Cml\antlr4\CmlLexer.tokens" />
-    <None Include="Cml\antlr4\CmlLexer.interp" />
-    <None Include="Cml\antlr4\Cml.tokens" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

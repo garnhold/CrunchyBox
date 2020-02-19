@@ -35,10 +35,7 @@ namespace Crunchy.Sack
 
         public T GetParameterForcedSystemValue<T>(CmlContext context, string name)
         {
-            CmlContainer_Value value = new CmlContainer_Value();
-
-            GetParameter(name).IfNotNull(f => f.SolidifyInto(context, value));
-            return value.ForceContainedSystemValueEX<T>();
+            return GetParameter(name).Solidify().ForceSystemValueEX<T>();
         }
 	}
 	
