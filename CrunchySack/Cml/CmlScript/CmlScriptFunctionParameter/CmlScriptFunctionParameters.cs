@@ -13,10 +13,10 @@ namespace Crunchy.Sack
     using Dough;
     using Salt;
     using Noodle;
-    
+
     public partial class CmlScriptFunctionParameters : CmlElement, CmlScriptElement
 	{
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
             CmlScriptValue_Argument_Host parameter_host = request.AddPrimaryArgument(new CmlScriptValue_Argument_Host());
 

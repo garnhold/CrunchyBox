@@ -24,7 +24,7 @@ namespace Crunchy.Sack
             selectors = new List<RepresentationInfoSetChildrenSelector>();
         }
 
-        public override void SolidifyInstance(CmlExecution execution, object representation, CmlSet set)
+        public override void SolidifyInstance(CmlContext context, object representation, CmlSet set)
         {
             CmlSetMember children = set.GetMember(name);
             EffigyLink effigy_link = effigy_info.CreateLink(execution, representation, children.GetVariableInstance(), children.GetClass());
@@ -38,10 +38,36 @@ namespace Crunchy.Sack
                 )
             );
 
+<<<<<<< Updated upstream
             execution.AddEffigyLink(
                 children.GetGroup(),
                 effigy_link
             );
+=======
+            if (children.Convert<CmlSetMember_Link>(out children_link))
+            {
+                EffigyLink effigy_link = effigy_info.CreateLink(context, representation, children_link.GetVariableInstance(), children_link.GetClass());
+
+                selectors.Process(
+                    s => set.GetMember(s.GetName()).IfNotNull(
+                        m => s.SolidifyInstance(
+                            context,
+                            representation,
+                            effigy_link,
+                            m
+                        ))
+                );
+
+                context.AddEffigyLink(
+                    children_link.GetGroup(),
+                    effigy_link
+                );
+            }
+            else if (children.Convert<CmlSetMember_Values>(out children_values))
+            {
+                children_values.GetValues().Process(v => effigy_info.AddChild(representation, v));
+            }
+>>>>>>> Stashed changes
         }
 
         public void AddSelector(RepresentationInfoSetChildrenSelector to_add)

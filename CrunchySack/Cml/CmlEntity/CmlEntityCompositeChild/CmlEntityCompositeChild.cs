@@ -10,11 +10,11 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityCompositeChild : CmlElement
 	{
-        public void InitializeRepresentation(CmlExecution execution, object representation)
+        public void InitializeRepresentation(CmlContext context, object representation)
         {
             GetComponentSource().SolidifyInto(
-                execution,
-                execution.GetTargetInfo().GetEngine().AssertCreateInfoContainer(execution, representation, RepresentationInfo.UnamedChildren)
+                context,
+                context.GetEngine().AssertCreateInfoContainer(context, representation, RepresentationInfo.UnamedChildren)
             );
         }
 	}

@@ -14,10 +14,10 @@ namespace Crunchy.Sack
 
         protected abstract string CalculateId(Type type, string layout);
 
-        protected override CmlEntry_Class GetClassInternal(Type type, string layout)
+        protected override CmlClass GetClassInternal(Type type, string layout)
         {
             return stream_system.ReadCmlClassDefinition(CalculateId(type, layout))
-                .IfNotNull(c => new CmlEntry_Class_ClassDefinition(type, layout, c));
+                .IfNotNull(c => new CmlClass_ClassDefinition(type, layout, c));
         }
 
         public ClassProvider_StreamSystem(StreamSystem s)

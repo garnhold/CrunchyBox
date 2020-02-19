@@ -23,13 +23,13 @@ namespace Crunchy.Sack
             SetString(input.ExtractStringValueFromLiteralString());
         }
 
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
             value = new CmlScriptValue_Basic(
                 new ILStringExpression(
                     GetString(),
                     s => CmlScriptExpression.DOMify(s)
-                        .Chain(z => z.Compile(execution, request, this_value))
+                        .Chain(z => z.Compile(context, request, this_value))
                         .GetValue()
                         .GetILValue()
                 )

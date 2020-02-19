@@ -57,7 +57,6 @@
     <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpression_BinaryOperation.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptExpression_Parenthetical.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptExpression\CmlScriptSubExpression\CmlScriptSubExpression_Constant_Null.cs" />
-    <Compile Include="Cml\CmlComponentSource\CmlComponentSourceList.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptInsertRepresentation\CmlScriptInsertRepresentation_This.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptInsertRepresentation\CmlScriptInsertRepresentation_Normal.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptStatement\CmlScriptStatement_While.cs" />
@@ -74,10 +73,13 @@
     <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_StaticClass\CmlScriptValue_StaticClass.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSource.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSourceList.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_SystemValueProcess.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClass.cs" />
+=======
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClassException.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_TypeSupportException.cs" />
-    <Compile Include="Cml\Execution\Value\CmlValue_ComponentSourceList.cs" />
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions.cs" />
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_Add.cs" />
     <Compile Include="GlobalLibrary\Extensions\GlobalLibraryExtensions_Add.cs" />
@@ -103,7 +105,6 @@
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem_Inject.cs" />
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem_Operation.cs" />
     <Compile Include="Cml\antlr4\CmlBaseVisitor.cs" />
-    <Compile Include="Cml\Execution\Entry\CmlEntry.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptFunctionParameter\CmlScriptFunctionParameters.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptFunctionParameter\CmlScriptFunctionParameter.cs" />
     <Compile Include="Cml\CmlScript\CmlScriptInsertRepresentation\CmlScriptInsertRepresentation.cs" />
@@ -162,37 +163,16 @@
     <Compile Include="Cml\CmlValueSource\CmlValueSource_FunctionSource.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_LinkSource.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_LinkSourceWithEntitySource.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_ClassDefinition.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_Entity.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class.cs" />
     <Compile Include="Cml\CmlClassDefinition\CmlClassDefinition.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Dynamic.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_DynamicInline.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Static.cs" />
     <Compile Include="Cml\CmlFragmentDefinition\CmlFragmentDefinition.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_PiggyBack.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_Process.cs" />
-    <Compile Include="Cml\Execution\Container\Extensions\CmlContainerExtensions_PiggyBack.cs" />
-    <Compile Include="Cml\Execution\Container\Extensions\CmlContainerExtensions_Force.cs" />
-    <Compile Include="Cml\Execution\Container\Extensions\CmlContainerExtensions.cs" />
-    <Compile Include="Cml\Execution\Entity\CmlEntityInstance_Fragment.cs" />
-    <Compile Include="Cml\Execution\Entity\CmlEntityInstance_Normal.cs" />
-    <Compile Include="Cml\Execution\Entity\CmlEntityInstance.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Fragment\CmlEntry_Fragment_FragmentDefinition.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Fragment\CmlEntry_Fragment.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_Values.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_Value.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_Info.cs" />
-    <Compile Include="Cml\Execution\Container\CmlContainer.cs" />
-    <Compile Include="Cml\Execution\DeferredValue\CmlDeferredValue.cs" />
     <Compile Include="Cml\Execution\Representation\CmlRepresentationSpace.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_ContainerSupportException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InfoSupportException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidFunctionIndirectionException.cs" />
-    <Compile Include="Cml\Execution\CmlExecution.cs" />
-    <Compile Include="Cml\Execution\Return\CmlReturnSpace.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_LinkWithEntity.cs" />
     <Compile Include="Cml\CmlScript\Request\CmlScriptDefinition\CmlScriptDefinition.cs" />
     <Compile Include="Cml\CmlScript\Request\CmlScriptElement\CmlScriptElement.cs" />
@@ -200,7 +180,6 @@
     <Compile Include="Cml\CmlScript\CmlScriptEntry\CmlScriptEntry.cs" />
     <Compile Include="Extensions\StreamSystemStream\StreamSystemStreamExtensions.cs" />
     <Compile Include="Extensions\StreamSystemStream\StreamSystemStreamExtensions_Cml.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Fragment\Entry_Fragment_BuiltIn\CmlEntry_Fragment_BuiltIn.cs" />
     <Compile Include="Cml\CmlInsertParameter\CmlInsertParameter.cs" />
     <Compile Include="Cml\CmlDOMinator.cs" />
     <Compile Include="Cml\CmlElement.cs" />
@@ -234,10 +213,7 @@
     <Compile Include="Cml\Execution\Value\CmlValue_Function.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_SystemValue.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_Link.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Fragment\Entry_Fragment_BuiltIn\CmlEntry_Fragment_BuiltIn_Base.cs" />
-    <Compile Include="Cml\Execution\CmlCallContext.cs" />
     <Compile Include="Cml\Execution\Parameter\CmlParameterSpace.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Fragment\Entry_Fragment_BuiltIn\CmlEntry_Fragment_BuiltIn_Layout.cs" />
     <Compile Include="Cml\Execution\Parameter\CmlParameter.cs" />
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem.cs" />
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider.cs" />
@@ -256,7 +232,6 @@
     <Compile Include="GlobalLibrary\Global\Global_Direct_VariableInstance.cs" />
     <Compile Include="GlobalLibrary\Global\Global_Indirect_ResourceManager.cs" />
     <Compile Include="GlobalLibrary\Global\Global.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Simple.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -297,7 +272,6 @@
     <Compile Include="ClassLibrary\Extensions\ClassLibraryExtensions_AddText.cs" />
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_AddText.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add.cs" />
-    <Compile Include="Cml\Execution\Entry\Entry_Class\CmlEntry_Class_None.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite_Process.cs" />
     <Compile Include="Application\ApplicationRepresentationEngine.cs" />
@@ -331,6 +305,35 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Variable.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_SetMember.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Cml\Execution\Set\CmlSetMember_Value.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSetMember_Link.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSetMember_Link_WithEntity.cs" />
+    <Compile Include="Cml\Execution\Set\CmlSetMember_Values.cs" />
+    <Compile Include="Link\VariableValue\VariableValue.cs" />
+    <Compile Include="Cml\Execution\Context\CmlContext.cs" />
+    <Compile Include="Cml\Execution\Context\CmlContext_Base.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_Class.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_ParameterSpace.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_RepresentationSpace.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_ReturnSpace.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_SetSpace.cs" />
+    <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions.cs" />
+    <Compile Include="Cml\Execution\Entity\CmlEntityInstancer.cs" />
+    <Compile Include="Cml\Execution\Entity\CmlEntityInfo.cs" />
+    <Compile Include="Cml\Execution\Fragment\CmlFragment_BuiltIn\CmlFragment_BuiltIn.cs" />
+    <Compile Include="Cml\Execution\Fragment\CmlFragment_BuiltIn\CmlFragment_BuiltIn_Base.cs" />
+    <Compile Include="Cml\Execution\Fragment\CmlFragment_BuiltIn\CmlFragment_BuiltIn_Layout.cs" />
+    <Compile Include="Cml\Execution\Fragment\CmlFragment.cs" />
+    <Compile Include="Cml\Execution\Fragment\CmlFragment_FragmentDefinition.cs" />
+    <Compile Include="Cml\Execution\Class\CmlClass.cs" />
+    <Compile Include="Cml\Execution\Class\CmlClass_ClassDefinition.cs" />
+    <Compile Include="Cml\Execution\Class\CmlClass_Entity.cs" />
+    <Compile Include="Cml\Execution\Class\CmlClass_None.cs" />
+    <Compile Include="Cml\Execution\Class\Extensions\CmlClassExtensions.cs" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -367,6 +370,15 @@
     <Folder Include="Link\EffigyLink\Extensions\" />
     <Folder Include="Cml\Execution\Set\" />
     <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\" />
+    <Folder Include="Link\VariableValue\" />
+    <Folder Include="Cml\Execution\Context\" />
+    <Folder Include="Cml\Execution\Context\Extensions\" />
+    <Folder Include="Cml\Execution\Context\Child\" />
+    <Folder Include="Cml\Execution\Entity\" />
+    <Folder Include="Cml\Execution\Fragment\" />
+    <Folder Include="Cml\Execution\Fragment\CmlFragment_BuiltIn\" />
+    <Folder Include="Cml\Execution\Class\" />
+    <Folder Include="Cml\Execution\Class\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

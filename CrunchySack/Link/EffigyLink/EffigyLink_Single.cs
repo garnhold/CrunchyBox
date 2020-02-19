@@ -13,7 +13,7 @@ namespace Crunchy.Sack
             });
         }
 
-        public EffigyLink_Single(CmlExecution execution, EffigySource_Single s, EffigyDestination_Single d, EffigyClassInfo c) : base(execution, s, d, c)
+        public EffigyLink_Single(CmlContext context, EffigySource_Single s, EffigyDestination_Single d, EffigyClassInfo c) : base(context, s, d, c)
         {
             single_source = s;
             single_destination = d;

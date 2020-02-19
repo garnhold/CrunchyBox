@@ -16,11 +16,11 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptStatement_If : CmlScriptStatement
 	{
-        protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetConditionExpression().Compile(execution, request, this_value);
-            GetTrueStatement().IfNotNull(s => s.Compile(execution, request, this_value));
-            GetFalseStatement().IfNotNull(s => s.Compile(execution, request, this_value));
+            GetConditionExpression().Compile(context, request, this_value);
+            GetTrueStatement().IfNotNull(s => s.Compile(context, request, this_value));
+            GetFalseStatement().IfNotNull(s => s.Compile(context, request, this_value));
 
             return new ILIf(
                 GetConditionExpression().GetValue().GetILValue(),

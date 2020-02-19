@@ -9,13 +9,13 @@ namespace Crunchy.Sack
     
     static public class FragmentLibraryExtensions_Add
     {
-        static public void AddFragments(this FragmentLibrary item, IEnumerable<CmlEntry_Fragment> to_add)
+        static public void AddFragments(this FragmentLibrary item, IEnumerable<CmlFragment> to_add)
         {
             to_add.Process(f => item.AddFragment(f));
         }
-        static public void AddFragments(this FragmentLibrary item, params CmlEntry_Fragment[] to_add)
+        static public void AddFragments(this FragmentLibrary item, params CmlFragment[] to_add)
         {
-            item.AddFragments((IEnumerable<CmlEntry_Fragment>)to_add);
+            item.AddFragments((IEnumerable<CmlFragment>)to_add);
         }
 
         static public void AddFragmentProviders(this FragmentLibrary item, IEnumerable<FragmentProvider> to_add)

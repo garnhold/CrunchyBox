@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptInsertRepresentation_Normal : CmlScriptInsertRepresentation
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
             return request.InsertRepresentationValue(GetId())
                 .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("representation", GetId()));

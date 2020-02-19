@@ -10,7 +10,7 @@ namespace Crunchy.Sack
     
     public class ClassProvider_Attribute : ClassProvider
     {
-        protected override CmlEntry_Class GetClassInternal(Type type, string layout)
+        protected override CmlClass GetClassInternal(Type type, string layout)
         {
             return type.GetAllCustomAttributesOfType<CmlClassProviderAttribute>(false)
                 .FindFirst(a => a.GetLayout() == layout)

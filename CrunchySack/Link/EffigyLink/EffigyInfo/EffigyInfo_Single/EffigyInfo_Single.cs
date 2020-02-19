@@ -21,7 +21,7 @@ namespace Crunchy.Sack
             SetChild(representation, child);
         }
 
-        public override EffigyLink CreateLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class)
+        public override EffigyLink CreateLink(CmlContext context, object representation, VariableInstance variable_instance, EffigyClassInfo @class)
         {
             return new EffigyLink_Single(
                 execution,

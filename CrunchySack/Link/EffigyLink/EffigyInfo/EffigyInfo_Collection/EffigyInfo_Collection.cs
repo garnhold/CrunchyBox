@@ -14,10 +14,10 @@ namespace Crunchy.Sack
 
         public EffigyInfo_Collection(Type r, Type c) : base(r, c) { }
 
-        public override EffigyLink CreateLink(CmlExecution execution, object representation, VariableInstance variable_instance, EffigyClassInfo @class)
+        public override EffigyLink CreateLink(CmlContext context, object representation, VariableInstance variable_instance, EffigyClassInfo @class)
         {
             return new EffigyLink_Collection(
-                execution,
+                context,
                 new EffigySource_Collection(variable_instance),
                 new EffigyDestination_Collection(representation, this),
                 @class

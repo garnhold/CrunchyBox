@@ -23,9 +23,9 @@ namespace Crunchy.Sack
             definitions = new Dictionary<CmlScriptSignature, CmlScriptDefinition_Function>();
         }
 
-        public FunctionInstance CompileFunctionInstance(CmlExecution execution)
+        public FunctionInstance CompileFunctionInstance(CmlContext context)
         {
-            CmlScriptRequest request = InitializeRequest(execution);
+            CmlScriptRequest request = InitializeRequest(context);
 
             CmlScriptDefinition_Function definition = definitions.GetOrCreateValue(request.GetSignature(), delegate() {
                 string name = "CmlFunction[" + GetFunctionParameters() + stored_text + "]";

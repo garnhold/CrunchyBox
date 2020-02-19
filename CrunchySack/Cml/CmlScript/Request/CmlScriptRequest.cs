@@ -17,8 +17,7 @@ namespace Crunchy.Sack
     
     public class CmlScriptRequest : CmlScriptValue
     {
-        private CmlTargetInfo target_info;
-        private CmlCallContext call_context;
+        private CmlContext context;
 
         private List<CmlScriptValue_Argument> arguments;
         private Dictionary<string, CmlScriptValue> indirect_values;
@@ -32,15 +31,14 @@ namespace Crunchy.Sack
         private CmlScriptValue_Argument this_representation_argument;
         private Dictionary<string, CmlScriptValue> insert_representation_values;
 
-        public CmlScriptRequest(CmlExecution e)
+        public CmlScriptRequest(CmlContext c)
         {
-            target_info = e.GetTargetInfo();
-            call_context = e.GetCallContext();
+            context = c;
 
             arguments = new List<CmlScriptValue_Argument>();
             indirect_values = new Dictionary<string, CmlScriptValue>();
 
-            this_argument = AddPrimaryArgument(new CmlScriptValue_Argument_Single_Constant(target_info.GetTarget()));
+            this_argument = AddPrimaryArgument(new CmlScriptValue_Argument_Single_Constant(context.GetTargetInfo().GetTarget()));
             host_argument = AddPrimaryArgument(new CmlScriptValue_Argument_Host());
 
             parent_argument = null;

@@ -16,18 +16,22 @@ namespace Crunchy.Sack
             effigy_info = e;
         }
 
+<<<<<<< Updated upstream
         public override void SetValue(CmlExecution execution, object representation, object value)
+=======
+        public override void SetValue(CmlContext context, object representation, object child)
+>>>>>>> Stashed changes
         {
             effigy_info.AddChild(representation, value);
         }
 
-        public override void LinkValue(CmlExecution execution, object representation, VariableInstance variable_instance, HasInfo info)
+        public override void LinkValue(CmlContext context, object representation, VariableInstance variable_instance, HasInfo info)
         {
-            execution.AddEffigyLink(
+            context.AddEffigyLink(
                 info.GetInfoValue("group"),
 
                 effigy_info.CreateLink(
-                    execution,
+                    context,
                     representation,
                     variable_instance,
                     new EffigyClassInfo_Dynamic(info.GetInfoValue("layout"))
@@ -35,13 +39,13 @@ namespace Crunchy.Sack
             );
         }
 
-        public override void LinkValueWithEntity(CmlExecution execution, object representation, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
+        public override void LinkValueWithEntity(CmlContext context, object representation, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
         {
-            execution.AddEffigyLink(
+            context.AddEffigyLink(
                 info.GetInfoValue("group"),
 
                 effigy_info.CreateLink(
-                    execution,
+                    context,
                     representation,
                     variable_instance,
                     new EffigyClassInfo_Static(entity)

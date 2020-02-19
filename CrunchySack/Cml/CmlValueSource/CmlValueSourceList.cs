@@ -16,10 +16,6 @@ namespace Crunchy.Sack
     
     public partial class CmlValueSourceList : CmlElement
 	{
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
-        {
-            GetValueSources().Process(v => v.SolidifyInto(execution, container));
-        }
 	}
 	
 }

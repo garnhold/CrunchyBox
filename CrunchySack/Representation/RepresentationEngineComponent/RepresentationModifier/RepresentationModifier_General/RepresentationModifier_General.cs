@@ -6,14 +6,14 @@ namespace Crunchy.Sack
     
     public abstract class RepresentationModifier_General<REPRESENTATION_TYPE> : RepresentationModifier_General
     {
-        protected abstract void ApplyInternal(CmlExecution execution, REPRESENTATION_TYPE representation);
+        protected abstract void ApplyInternal(CmlContext context, REPRESENTATION_TYPE representation);
 
-        public override void Apply(CmlExecution execution, object representation)
+        public override void Apply(CmlContext context, object representation)
         {
             REPRESENTATION_TYPE cast;
 
             if (representation.Convert<REPRESENTATION_TYPE>(out cast))
-                ApplyInternal(execution, cast);
+                ApplyInternal(context, cast);
         }
 
         public override Type GetRepresentationType()
@@ -24,6 +24,6 @@ namespace Crunchy.Sack
 
     public abstract class RepresentationModifier_General : RepresentationModifier
     {
-        public abstract void Apply(CmlExecution execution, object representation);
+        public abstract void Apply(CmlContext context, object representation);
     }
 }

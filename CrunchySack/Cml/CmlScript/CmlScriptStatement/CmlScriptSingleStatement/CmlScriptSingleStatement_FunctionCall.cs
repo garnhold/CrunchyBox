@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSingleStatement_FunctionCall : CmlScriptSingleStatement
 	{
-        protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetFunctionCall().Compile(execution, request, this_value);
+            GetFunctionCall().Compile(context, request, this_value);
 
             return GetFunctionCall().GetValue().GetILValue().CreateILCalculate();
         }

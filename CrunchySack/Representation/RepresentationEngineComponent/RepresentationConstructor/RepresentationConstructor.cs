@@ -12,7 +12,7 @@ namespace Crunchy.Sack
         private string name;
         private int number_parameters;
 
-        public abstract void InstanceInto(CmlExecution execution, IEnumerable<object> arguments, CmlContainer container);
+        public abstract object Invoke(CmlContext context, IEnumerable<object> arguments);
 
         public RepresentationConstructor(string n, int p)
         {

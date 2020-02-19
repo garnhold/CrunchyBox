@@ -15,7 +15,7 @@ namespace Crunchy.Sack
             process = p;
         }
 
-        public override void SetValue(CmlExecution execution, object representation, object value)
+        public override void SetValue(CmlContext context, object representation, object value)
         {
             REPRESENTATION_TYPE cast;
 

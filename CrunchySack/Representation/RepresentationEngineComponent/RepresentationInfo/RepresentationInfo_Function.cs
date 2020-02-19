@@ -12,12 +12,12 @@ namespace Crunchy.Sack
 
         public RepresentationInfo_Function(string n) : base(n, typeof(REPRESENTATION_TYPE)) { }
 
-        public override void InjectFunction(CmlExecution execution, object representation, FunctionInstance function_instance)
+        public override void InjectFunction(CmlContext context, object representation, FunctionInstance function_instance)
         {
             REPRESENTATION_TYPE cast;
             FunctionSyncro function_syncro = new FunctionSyncro(function_instance);
 
-            execution.AddFunctionSyncro(function_syncro);
+            context.AddFunctionSyncro(function_syncro);
 
             if (representation.Convert<REPRESENTATION_TYPE>(out cast))
                 ApplyFunctionSyncroToRepresentation(cast, function_syncro);

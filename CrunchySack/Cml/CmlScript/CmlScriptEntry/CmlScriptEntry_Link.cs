@@ -23,9 +23,9 @@ namespace Crunchy.Sack
             definitions = new Dictionary<CmlScriptSignature, CmlScriptDefinition_Link>();
         }
 
-        public VariableInstance CompileVariableInstance(CmlExecution execution)
+        public VariableInstance CompileVariableInstance(CmlContext context)
         {            
-            CmlScriptRequest request = InitializeRequest(execution);
+            CmlScriptRequest request = InitializeRequest(context);
 
             ILValue il_value = GetExpression().GetValue().GetILValue();
             Type expression_type = il_value.GetValueType();

@@ -33,11 +33,11 @@ namespace Crunchy.Sack
             return parameters.Values;
         }
 
-        public T GetParameterForcedSystemValue<T>(CmlExecution execution, string name)
+        public T GetParameterForcedSystemValue<T>(CmlContext context, string name)
         {
             CmlContainer_Value value = new CmlContainer_Value();
 
-            GetParameter(name).IfNotNull(f => f.SolidifyInto(execution, value));
+            GetParameter(name).IfNotNull(f => f.SolidifyInto(context, value));
             return value.ForceContainedSystemValueEX<T>();
         }
 	}

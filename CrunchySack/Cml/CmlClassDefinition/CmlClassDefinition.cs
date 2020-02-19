@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlClassDefinition : CmlElement
 	{
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public object Instance(CmlContext context)
         {
-            GetEntity().SolidifyInto(execution, container);
+            return GetEntity().Instance(context);
         }
 	}
 	

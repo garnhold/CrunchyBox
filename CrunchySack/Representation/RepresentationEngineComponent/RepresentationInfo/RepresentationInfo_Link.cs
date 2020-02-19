@@ -15,14 +15,14 @@ namespace Crunchy.Sack
             variable = v;
         }
 
-        public override void SetValue(CmlExecution execution, object representation, object value)
+        public override void SetValue(CmlContext context, object representation, object value)
         {
             variable.SetContents(representation, value);
         }
 
-        public override void LinkValue(CmlExecution execution, object representation, VariableInstance variable_instance, HasInfo info)
+        public override void LinkValue(CmlContext context, object representation, VariableInstance variable_instance, HasInfo info)
         {
-            execution.AddVariableLink(
+            context.AddVariableLink(
                 info.GetInfoValue("group"),
 
                 new VariableLink_Simple_Direct(

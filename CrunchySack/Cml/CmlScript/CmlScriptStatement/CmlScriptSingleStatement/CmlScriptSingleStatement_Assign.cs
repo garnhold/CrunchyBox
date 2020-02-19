@@ -16,10 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSingleStatement_Assign : CmlScriptSingleStatement
 	{
-        protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetValueReference().Compile(execution, request, this_value);
-            GetExpression().Compile(execution, request, this_value);
+            GetValueReference().Compile(context, request, this_value);
+            GetExpression().Compile(context, request, this_value);
 
             return new ILAssign(
                 GetValueReference().GetValue().GetILValue(),

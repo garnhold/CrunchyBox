@@ -13,7 +13,7 @@ namespace Crunchy.Sack
             operation = o;
         }
 
-        public override object Instance(CmlExecution execution)
+        public override object Instance(CmlContext context)
         {
  	        return operation();
         }
@@ -56,9 +56,9 @@ namespace Crunchy.Sack
             operation = o;
         }
 
-        public override object Instance(CmlExecution execution)
+        public override object Instance(CmlContext context)
         {
-            return operation(execution.GetTargetInfo().GetRequester().Convert<REQUESTER_TYPE>());
+            return operation(context.GetTargetInfo().GetRequester().Convert<REQUESTER_TYPE>());
         }
     }
     static public partial class RepresentationEngineExtensions_Add

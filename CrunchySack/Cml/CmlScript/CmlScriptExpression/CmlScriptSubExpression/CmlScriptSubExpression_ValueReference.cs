@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSubExpression_ValueReference : CmlScriptSubExpression
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetValueReference().Compile(execution, request, this_value);
+            GetValueReference().Compile(context, request, this_value);
 
             return GetValueReference().GetValue();
         }

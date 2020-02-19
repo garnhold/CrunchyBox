@@ -19,9 +19,9 @@ namespace Crunchy.Sack
 	{
         private CmlScriptValue value;
 
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetArguments().Compile(execution, request, this_value);
+            GetArguments().Compile(context, request, this_value);
 
             value = null;
             if (GetArguments().GetNumberExpressions() == 0)

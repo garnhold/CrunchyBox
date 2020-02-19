@@ -16,10 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlEntity : CmlElement
 	{
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public object Instance(CmlContext context)
         {
-            execution.GetTargetInfo().GetEngine().AssertEntityInstance(execution, this, GetTag())
-                .SolidifyInto(execution, container);
+            return context.GetEngine().AssertInstanceEntity(context, this, GetTag());
         }
 
         public bool HasId()

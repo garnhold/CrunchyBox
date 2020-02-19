@@ -20,7 +20,7 @@ namespace Crunchy.Sack
             });
         }
 
-        public EffigyLink_Collection(CmlExecution execution, EffigySource_Collection s, EffigyDestination_Collection d, EffigyClassInfo c) : base(execution, s, d, c)
+        public EffigyLink_Collection(CmlContext context, EffigySource_Collection s, EffigyDestination_Collection d, EffigyClassInfo c) : base(context, s, d, c)
         {
             collection_source = s;
             collection_destination = d;

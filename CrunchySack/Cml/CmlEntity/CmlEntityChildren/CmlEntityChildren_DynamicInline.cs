@@ -16,10 +16,18 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityChildren_DynamicInline : CmlEntityChildren
 	{
-        public override void SolidifyInto(CmlExecution execution, CmlContainer container)
+        protected override void PushToRepresentationInternal(CmlContext context, object representation, RepresentationInfo info)
         {
-            GetLinkSourceWithEntitySource().SolidifyInto(execution, container);
+            CmlValue_LinkWithEntity link = GetLinkSourceWithEntitySource().SolidifyIntoLinkWithEntity(context);
+
+            info.LinkValueWithEntity(
+                context,
+                representation,
+                link.GetLink().GetVariableInstance(),
+                link.GetEntity(),
+                link.GetLink()
+            );
         }
-	}
+    }
 	
 }

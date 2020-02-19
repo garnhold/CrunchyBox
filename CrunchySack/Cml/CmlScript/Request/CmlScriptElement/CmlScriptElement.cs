@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public interface CmlScriptElement : Relatable
     {
-        void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value);
+        void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value);
     }
 	
 }

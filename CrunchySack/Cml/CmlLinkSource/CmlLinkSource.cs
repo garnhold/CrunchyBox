@@ -19,15 +19,7 @@ namespace Crunchy.Sack
         public const string DEFAULT_GROUP = "normal";
         public const string DEFAULT_LAYOUT = "normal";
 
-        public abstract void SolidifyInto(CmlExecution execution, CmlContainer container);
-
-        public CmlValue_Link SolidifyLink(CmlExecution execution)
-        {
-            CmlContainer_Value value = new CmlContainer_Value();
-
-            SolidifyInto(execution, value);
-            return value.GetValue<CmlValue_Link>();
-        }
+        public abstract CmlValue_Link SolidifyLink(CmlContext context);
 	}
 	
 }

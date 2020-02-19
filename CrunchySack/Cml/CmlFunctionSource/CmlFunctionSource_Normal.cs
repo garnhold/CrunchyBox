@@ -19,11 +19,11 @@ namespace Crunchy.Sack
         static private LookupSet<string, string> DEFAULT_ATTRIBUTE_INFO_VALUES = new StringTable(
         );
 
-        public override void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public override void SolidifyInto(CmlContext context, CmlContainer container)
         {
             container.Insert(
-                execution,
-                new CmlValue_Function(GetFunction().CompileFunctionInstance(execution), this)
+                context,
+                new CmlValue_Function(GetFunction().CompileFunctionInstance(context), this)
             );
         }
 

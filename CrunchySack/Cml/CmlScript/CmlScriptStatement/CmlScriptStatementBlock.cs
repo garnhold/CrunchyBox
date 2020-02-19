@@ -18,9 +18,9 @@ namespace Crunchy.Sack
 	{
         private ILBlock il_block;
 
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetStatements().Process(s => s.Compile(execution, request, this_value));
+            GetStatements().Process(s => s.Compile(context, request, this_value));
 
             il_block = new ILBlock(
                 GetStatements().Convert(s => s.GetILStatement())

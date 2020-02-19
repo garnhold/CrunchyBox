@@ -13,16 +13,16 @@ namespace Crunchy.Sack
     using Dough;
     using Salt;
     using Noodle;
-    
+
     public abstract partial class CmlFunctionSource : CmlElement
 	{
-        public abstract void SolidifyInto(CmlExecution execution, CmlContainer container);
+        public abstract void SolidifyInto(CmlContext context, CmlContainer container);
 
-        public CmlValue_Function SolidifyFunction(CmlExecution execution)
+        public CmlValue_Function SolidifyFunction(CmlContext context)
         {
             CmlContainer_Value value = new CmlContainer_Value();
 
-            SolidifyInto(execution, value);
+            SolidifyInto(context, value);
             return value.GetValue<CmlValue_Function>();
         }
 	}

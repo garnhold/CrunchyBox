@@ -6,14 +6,14 @@ namespace Crunchy.Sack
     
     public class RepresentationModifier_General_Process<REPRESENTATION_TYPE> : RepresentationModifier_General<REPRESENTATION_TYPE>
     {
-        private Process<CmlExecution, REPRESENTATION_TYPE> process;
+        private Process<CmlContext, REPRESENTATION_TYPE> process;
 
-        protected override void ApplyInternal(CmlExecution execution, REPRESENTATION_TYPE representation)
+        protected override void ApplyInternal(CmlContext context, REPRESENTATION_TYPE representation)
         {
-            process(execution, representation);
+            process(context, representation);
         }
 
-        public RepresentationModifier_General_Process(Process<CmlExecution, REPRESENTATION_TYPE> p)
+        public RepresentationModifier_General_Process(Process<CmlContext, REPRESENTATION_TYPE> p)
         {
             process = p;
         }
@@ -30,7 +30,7 @@ namespace Crunchy.Sack
             );
         }
 
-        static public void AddGeneralModifier<REPRESENTATION_TYPE>(this RepresentationEngine item, Process<CmlExecution, REPRESENTATION_TYPE> p)
+        static public void AddGeneralModifier<REPRESENTATION_TYPE>(this RepresentationEngine item, Process<CmlContext, REPRESENTATION_TYPE> p)
         {
             item.AddGeneralModifier(
                 new RepresentationModifier_General_Process<REPRESENTATION_TYPE>(p)

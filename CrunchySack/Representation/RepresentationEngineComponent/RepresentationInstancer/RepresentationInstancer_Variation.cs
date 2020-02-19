@@ -15,9 +15,9 @@ namespace Crunchy.Sack
             base_tag = b;
         }
 
-        public override object Instance(CmlExecution execution)
+        public override object Instance(CmlContext context)
         {
-            REPRESENTATION_TYPE representation = GetEngine().AssertInstance(execution, base_tag).Convert<REPRESENTATION_TYPE>();
+            REPRESENTATION_TYPE representation = GetEngine().AssertInstance(context, base_tag).Convert<REPRESENTATION_TYPE>();
 
             VariateInternal(representation);
             return representation;

@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptExpression_Direct : CmlScriptExpression, CmlScriptElement
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetSubExpression().Compile(execution, request, request);
+            GetSubExpression().Compile(context, request, request);
 
             return GetSubExpression().GetValue();
         }

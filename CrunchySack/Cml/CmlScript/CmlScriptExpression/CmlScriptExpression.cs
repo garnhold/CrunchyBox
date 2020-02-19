@@ -18,11 +18,11 @@ namespace Crunchy.Sack
 	{
         private CmlScriptValue value;
 
-        protected abstract CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value);
+        protected abstract CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value);
 
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            value = CompileValue(execution, request, this_value);
+            value = CompileValue(context, request, this_value);
         }
 
         public CmlScriptValue GetValue()

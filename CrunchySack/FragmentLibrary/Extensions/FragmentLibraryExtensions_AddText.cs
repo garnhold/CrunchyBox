@@ -12,7 +12,7 @@ namespace Crunchy.Sack
         static public void AddFragment(this FragmentLibrary item, string name, string text)
         {
             item.AddFragment(
-                new CmlEntry_Fragment_FragmentDefinition(
+                new CmlFragment_FragmentDefinition(
                     name,
                     CmlFragmentDefinition.DOMify(text)
                 )

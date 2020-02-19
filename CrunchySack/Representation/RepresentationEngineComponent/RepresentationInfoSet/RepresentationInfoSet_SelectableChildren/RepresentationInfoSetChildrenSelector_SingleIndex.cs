@@ -14,7 +14,7 @@ namespace Crunchy.Sack
             variable = v;
         }
 
-        public override void SolidifyInstance(CmlExecution execution, object representation, EffigyLink effigy_link, CmlSetMember member)
+        public override void SolidifyInstance(CmlContext context, object representation, EffigyLink effigy_link, CmlSetMember member)
         {
             execution.AddVariableLink(
                 member.GetGroup(),

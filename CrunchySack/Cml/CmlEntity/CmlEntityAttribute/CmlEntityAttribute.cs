@@ -14,21 +14,23 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public partial class CmlEntityAttribute : CmlElement
+    public partial class CmlEntityAttribute : CmlElement, CmlEntityInfo
 	{
-        public void InitializeRepresentation(CmlExecution execution, object representation)
+        public void PushToRepresentation(CmlContext context, object representation)
         {
-            GetValueSource().SolidifyInto(
-                execution,
-                execution.GetTargetInfo().GetEngine().AssertCreateInfoContainer(execution, representation, GetName())
+            GetValueSource().PushToRepresentation(
+                context,
+                representation,
+                context.GetEngine().AssertGetInfo(representation.GetTypeEX(), GetName())
             );
         }
 
-        public CmlParameter CreateParameter(CmlExecution execution)
+        public CmlParameter CreateParameter(CmlContext context)
         {
             return new CmlParameter(
+                context,
                 GetName(),
-                GetValueSource().CreateDeferred(execution)
+                GetValueSource().CreateDeferred(context)
             );
         }
 	}

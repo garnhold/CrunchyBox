@@ -21,12 +21,12 @@ namespace Crunchy.Sack
 
         public abstract CmlScriptBinaryOperator GetOperator();
 
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetLeft().Compile(execution, request, this_value);
-            GetRight().Compile(execution, request, this_value);
+            GetLeft().Compile(context, request, this_value);
+            GetRight().Compile(context, request, this_value);
 
-            GetOperator().Compile(execution, request, this_value, GetLeft().GetValue(), GetRight().GetValue());
+            GetOperator().Compile(context, request, this_value, GetLeft().GetValue(), GetRight().GetValue());
             return GetOperator().GetValue();
         }
 	}

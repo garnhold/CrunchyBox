@@ -19,10 +19,10 @@ namespace Crunchy.Sack
             stream_system = s;
         }
 
-        public override CmlEntry_Fragment GetFragment(string name)
+        public override CmlFragment GetFragment(string name)
         {
             return stream_system.ReadCmlFragmentDefinition(CalculateId(name))
-                .IfNotNull(c => new CmlEntry_Fragment_FragmentDefinition(name, c));
+                .IfNotNull(c => new CmlFragment_FragmentDefinition(name, c));
         }
     }
 }

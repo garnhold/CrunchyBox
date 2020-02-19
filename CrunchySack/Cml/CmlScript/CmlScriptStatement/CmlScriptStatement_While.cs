@@ -16,10 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptStatement_While : CmlScriptStatement
 	{
-        protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetConditionExpression().Compile(execution, request, this_value);
-            GetWhileStatement().Compile(execution, request, this_value);
+            GetConditionExpression().Compile(context, request, this_value);
+            GetWhileStatement().Compile(context, request, this_value);
 
             return new ILWhile(
                 GetConditionExpression().GetValue().GetILValue(),

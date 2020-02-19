@@ -15,7 +15,7 @@ namespace Crunchy.Sack
             variable = v;
         }
 
-        public override void SetValue(CmlExecution execution, object representation, object value)
+        public override void SetValue(CmlContext context, object representation, object value)
         {
             variable.SetContents(representation, value);
         }

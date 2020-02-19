@@ -17,28 +17,32 @@ namespace Crunchy.Sack
     public class CmlParameter
 	{
         private string name;
-        private CmlDeferredValue deferred_value;
+        private CmlValue value;
 
         private bool is_used;
 
-        public CmlParameter(string n, CmlDeferredValue v)
+        private CmlContext context;
+
+        public CmlParameter(CmlContext c, string n, CmlValue v)
         {
             name = n;
-            deferred_value = v;
+            value = v;
+
+            context = c;
         }
 
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public void SolidifyInto(CmlContext context, CmlContainer container)
         {
             is_used = true;
 
-            deferred_value.SolidifyInto(execution, container);
+            deferred_value.SolidifyInto(context, container);
         }
 
-        public void ApplyAsAttribute(CmlExecution execution, object representation)
+        public void ApplyAsAttribute(CmlContext context, object representation)
         {
             SolidifyInto(
-                execution,
-                execution.GetTargetInfo().GetEngine().AssertCreateInfoContainer(execution, representation, GetName())
+                context,
+                context.GetEngine().AssertCreateInfoContainer(context, representation, GetName())
             );
         }
 

@@ -20,7 +20,7 @@ namespace Crunchy.Sack
 
         public abstract BinaryOperatorType GetOperatorType();
 
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value, CmlScriptValue l, CmlScriptValue r)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value, CmlScriptValue l, CmlScriptValue r)
         {
             value = new CmlScriptValue_Basic(
                 new ILBinaryOperatorInvokation(GetOperatorType(), l.GetILValue(), r.GetILValue())

@@ -21,7 +21,7 @@ namespace Crunchy.Sack
             SetString(input.ExtractStringValueFromLiteralString());
         }
 
-        public override object GetSystemValue()
+        public override object Solidify()
         {
             return GetString();
         }

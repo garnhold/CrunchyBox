@@ -17,13 +17,13 @@ namespace Crunchy.Sack
             layout = l;
         }
 
-        public override CmlEntry_Class AssertGetClass(CmlExecution execution)
+        public override CmlClass AssertGetClass(CmlContext context)
         {
             if (layout == "none")
-                return new CmlEntry_Class_None(execution.GetTargetInfo().GetTargetType());
+                return new CmlClass_None(context.GetTargetInfo().GetTargetType());
 
-            return execution.GetTargetInfo().GetEngine().GetClassLibrary()
-                .AssertGetClass(execution.GetTargetInfo().GetTargetType(), layout);
+            return context.GetEngine().GetClassLibrary()
+                .AssertGetClass(context.GetTargetInfo().GetTargetType(), layout);
         }
     }
 }

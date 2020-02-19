@@ -10,6 +10,6 @@ namespace Crunchy.Sack
     
     public abstract class FragmentProvider
     {
-        public abstract CmlEntry_Fragment GetFragment(string name);
+        public abstract CmlFragment GetFragment(string name);
     }
 }

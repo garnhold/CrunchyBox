@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptValueReference_Normal : CmlScriptValueReference
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
             return this_value.GetIndirectValue(GetId())
                 .AssertNotNull(() => new CmlRuntimeError_InvalidIdForTypeException("value", GetId(), this_value.GetValueType()));

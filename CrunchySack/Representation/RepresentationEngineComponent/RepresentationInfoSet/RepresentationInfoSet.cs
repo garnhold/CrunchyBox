@@ -13,7 +13,7 @@ namespace Crunchy.Sack
 
         private List<RepresentationInfo_SetMember> members;
 
-        public abstract void SolidifyInstance(CmlExecution execution, object representation, CmlSet set);
+        public abstract void SolidifyInstance(CmlContext context, object representation, CmlSet set);
 
         protected void RegisterSetMember(string name)
         {

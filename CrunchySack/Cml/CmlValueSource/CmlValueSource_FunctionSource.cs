@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlValueSource_FunctionSource : CmlValueSource
 	{
-        public override void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public override void SolidifyInto(CmlContext context, CmlContainer container)
         {
-            GetFunctionSource().SolidifyInto(execution, container);
+            GetFunctionSource().SolidifyInto(context, container);
         }
 	}
 	

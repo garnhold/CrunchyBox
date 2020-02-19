@@ -16,12 +16,12 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSingleStatement_IndirectAssign : CmlScriptSingleStatement
 	{
-        protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetIndirectionExpression().Compile(execution, request, this_value);
-            GetValueReference().Compile(execution, request, GetIndirectionExpression().GetValue());
+            GetIndirectionExpression().Compile(context, request, this_value);
+            GetValueReference().Compile(context, request, GetIndirectionExpression().GetValue());
 
-            GetExpression().Compile(execution, request, this_value);
+            GetExpression().Compile(context, request, this_value);
 
             return new ILAssign(
                 GetValueReference().GetValue().GetILValue(),

@@ -18,11 +18,11 @@ namespace Crunchy.Sack
 	{
         private ILStatement il_statement;
 
-        protected abstract ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value);
+        protected abstract ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value);
 
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            il_statement = CompileILStatement(execution, request, this_value);
+            il_statement = CompileILStatement(context, request, this_value);
         }
 
         public ILStatement GetILStatement()

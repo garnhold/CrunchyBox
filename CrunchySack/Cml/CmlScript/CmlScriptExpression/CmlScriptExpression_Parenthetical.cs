@@ -13,12 +13,12 @@ namespace Crunchy.Sack
     using Dough;
     using Salt;
     using Noodle;
-    
+
     public partial class CmlScriptExpression_Parenthetical : CmlScriptExpression
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetInnerExpression().Compile(execution, request, this_value);
+            GetInnerExpression().Compile(context, request, this_value);
 
             return GetInnerExpression().GetValue();
         }
