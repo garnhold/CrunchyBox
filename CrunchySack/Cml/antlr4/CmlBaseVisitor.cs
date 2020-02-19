@@ -34,26 +34,6 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class CmlBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, ICmlVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CmlParser.cmlClassDefinition"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitCmlClassDefinition([NotNull] CmlParser.CmlClassDefinitionContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CmlParser.cmlFragmentDefinition"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitCmlFragmentDefinition([NotNull] CmlParser.CmlFragmentDefinitionContext context) { return VisitChildren(context); }
-	/// <summary>
 	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSource</c>
 	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
 	/// <para>

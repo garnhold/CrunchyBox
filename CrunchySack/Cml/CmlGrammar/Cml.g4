@@ -1,8 +1,5 @@
 grammar Cml;
 
-cmlClassDefinition : cmlEntity /*info: name=>entity*/;
-cmlFragmentDefinition : cmlEntity /*info: name=>entity*/;
-
 cmlValueSource
     : cmlComponentSource /*info: name=>component_source*/ # cmlValueSource_ComponentSource
     | cmlComponentSourceList /*info: name=>component_source_list*/ # cmlValueSource_ComponentSourceList

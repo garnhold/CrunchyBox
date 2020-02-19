@@ -14,20 +14,20 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class CmlFragment_FragmentDefinition : CmlFragment
+    public class CmlFragment_Entity : CmlFragment
 	{
         private string name;
-        private CmlFragmentDefinition fragment_definition;
+        private CmlEntity entity;
 
         protected override object InstanceInternal(CmlContext context)
         {
-            return fragment_definition.Instance(context);
+            return entity.Instance(context);
         }
 
-        public CmlFragment_FragmentDefinition(string n, CmlFragmentDefinition f)
+        public CmlFragment_Entity(string n, CmlEntity e)
         {
             name = n;
-            fragment_definition = f;
+            entity = e;
         }
 
         public override string GetName()

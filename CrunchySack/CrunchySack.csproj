@@ -157,12 +157,10 @@
     <Compile Include="Cml\CmlValueSource\CmlValueSource_FunctionSource.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_LinkSource.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_LinkSourceWithEntitySource.cs" />
-    <Compile Include="Cml\CmlClassDefinition\CmlClassDefinition.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Dynamic.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_DynamicInline.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Static.cs" />
-    <Compile Include="Cml\CmlFragmentDefinition\CmlFragmentDefinition.cs" />
     <Compile Include="Cml\Execution\Representation\CmlRepresentationSpace.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_ContainerSupportException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InfoSupportException.cs" />
@@ -315,9 +313,8 @@
     <Compile Include="Cml\Execution\Fragment\CmlFragment_BuiltIn\CmlFragment_BuiltIn_Base.cs" />
     <Compile Include="Cml\Execution\Fragment\CmlFragment_BuiltIn\CmlFragment_BuiltIn_Layout.cs" />
     <Compile Include="Cml\Execution\Fragment\CmlFragment.cs" />
-    <Compile Include="Cml\Execution\Fragment\CmlFragment_FragmentDefinition.cs" />
+    <Compile Include="Cml\Execution\Fragment\CmlFragment_Entity.cs" />
     <Compile Include="Cml\Execution\Class\CmlClass.cs" />
-    <Compile Include="Cml\Execution\Class\CmlClass_ClassDefinition.cs" />
     <Compile Include="Cml\Execution\Class\CmlClass_Entity.cs" />
     <Compile Include="Cml\Execution\Class\CmlClass_None.cs" />
     <Compile Include="Cml\Execution\Class\Extensions\CmlClassExtensions.cs" />
@@ -370,8 +367,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Cml\CmlLexer.tokens" />
-    <None Include="Cml\Cml.tokens" />
     <None Include="Cml\CmlGrammar\CmlGrammar.iml" />
     <None Include="Cml\CmlGrammar\Cml.g4" />
     <None Include="Cml\CmlGrammar\DOMinate.sh" />

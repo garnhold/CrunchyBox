@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: January 19 2020 22:50:29 -08:00
+//Date: February 18 2020 18:22:01 -08:00
 
 using System;
 using System.IO;
@@ -18,134 +18,6 @@ using Antlr4.Runtime.Tree;
 
 namespace Crunchy.Sack
 {
-	public partial class CmlClassDefinition : CmlElement
-	{
-		[RelatableChild]private CmlEntity entity;
-		static public CmlClassDefinition DOMify(CmlParser.CmlClassDefinitionContext context)
-		{
-			if(context != null)
-			{
-				return new CmlClassDefinition(context);
-			}
-			
-			return null;
-		}
-		
-		static public CmlClassDefinition DOMify(IParseTree parse_tree)
-		{
-			return DOMify(parse_tree as CmlParser.CmlClassDefinitionContext);
-		}
-		
-		static public CmlClassDefinition DOMify(Stream stream)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlClassDefinition());
-		}
-		
-		static public CmlClassDefinition DOMify(string text)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlClassDefinition());
-		}
-		
-		static public CmlClassDefinition DOMifyFile(string filename)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlClassDefinition());
-		}
-		
-		public CmlClassDefinition()
-		{
-			entity = null;
-			OnConstructor();
-		}
-		
-		partial void OnConstructor();
-		public CmlClassDefinition(CmlParser.CmlClassDefinitionContext context) : this()
-		{
-			SetEntity(CmlEntity.DOMify(context.cmlEntity()));
-		}
-		
-		public CmlClassDefinition Duplicate()
-		{
-			CmlClassDefinition instance = new CmlClassDefinition();
-			instance.SetEntity(GetEntity().IfNotNull(z => z.Duplicate()));
-			return instance;
-		}
-		
-		private void SetEntity(CmlEntity input)
-		{
-			entity = input;
-		}
-		
-		public CmlEntity GetEntity()
-		{
-			return entity;
-		}
-		
-	}
-	
-	public partial class CmlFragmentDefinition : CmlElement
-	{
-		[RelatableChild]private CmlEntity entity;
-		static public CmlFragmentDefinition DOMify(CmlParser.CmlFragmentDefinitionContext context)
-		{
-			if(context != null)
-			{
-				return new CmlFragmentDefinition(context);
-			}
-			
-			return null;
-		}
-		
-		static public CmlFragmentDefinition DOMify(IParseTree parse_tree)
-		{
-			return DOMify(parse_tree as CmlParser.CmlFragmentDefinitionContext);
-		}
-		
-		static public CmlFragmentDefinition DOMify(Stream stream)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlFragmentDefinition());
-		}
-		
-		static public CmlFragmentDefinition DOMify(string text)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlFragmentDefinition());
-		}
-		
-		static public CmlFragmentDefinition DOMifyFile(string filename)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlFragmentDefinition());
-		}
-		
-		public CmlFragmentDefinition()
-		{
-			entity = null;
-			OnConstructor();
-		}
-		
-		partial void OnConstructor();
-		public CmlFragmentDefinition(CmlParser.CmlFragmentDefinitionContext context) : this()
-		{
-			SetEntity(CmlEntity.DOMify(context.cmlEntity()));
-		}
-		
-		public CmlFragmentDefinition Duplicate()
-		{
-			CmlFragmentDefinition instance = new CmlFragmentDefinition();
-			instance.SetEntity(GetEntity().IfNotNull(z => z.Duplicate()));
-			return instance;
-		}
-		
-		private void SetEntity(CmlEntity input)
-		{
-			entity = input;
-		}
-		
-		public CmlEntity GetEntity()
-		{
-			return entity;
-		}
-		
-	}
-	
 	public abstract partial class CmlValueSource : CmlElement
 	{
 		public abstract CmlValueSource Duplicate();
@@ -6756,16 +6628,6 @@ namespace Crunchy.Sack
 		
 		private CmlResolver()
 		{
-		}
-		
-		public override CmlElement VisitCmlClassDefinition(CmlParser.CmlClassDefinitionContext context)
-		{
-			return CmlClassDefinition.DOMify(context);
-		}
-		
-		public override CmlElement VisitCmlFragmentDefinition(CmlParser.CmlFragmentDefinitionContext context)
-		{
-			return CmlFragmentDefinition.DOMify(context);
 		}
 		
 		public override CmlElement VisitCmlValueSource_ComponentSource(CmlParser.CmlValueSource_ComponentSourceContext context)
