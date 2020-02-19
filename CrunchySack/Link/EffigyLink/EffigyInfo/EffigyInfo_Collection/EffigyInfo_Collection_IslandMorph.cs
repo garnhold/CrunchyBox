@@ -15,6 +15,11 @@ namespace Crunchy.Sack
 
         public EffigyInfo_Collection_IslandMorph(Type r, Type c) : base(r, c) { }
 
+        public override void SetChildren(object representation, IEnumerable<object> children)
+        {
+            children.ProcessWithIndex((i, c) => InsertChild(representation, i, c));
+        }
+
         public override void Update(EffigyLink link, object representation, IList<object> old_values, IList<object> new_values)
         {
             IslandMorphInfo info = old_values.CalculateIslandMorph(new_values);

@@ -16,9 +16,9 @@ namespace Crunchy.Sack
 
         public EffigyInfo_Single(Type r, Type c) : base(r, c) { }
 
-        public override void AddChild(object representation, object child)
+        public override void SetChildren(object representation, IEnumerable<object> children)
         {
-            SetChild(representation, child);
+            SetChild(representation, children.GetFirst());
         }
 
         public override EffigyLink CreateLink(CmlContext context, object representation, VariableInstance variable_instance, EffigyClassInfo @class)

@@ -20,6 +20,12 @@ namespace Crunchy.Sack_Avalonia
             return new List<DropHandler>();
         });
 
+        static public void SetDropHandlers(this Control item, IEnumerable<DropHandler> drop_handlers)
+        {
+            item.ClearDropHandlers();
+            drop_handlers.Process(h => item.AddDropHandler(h));
+        }
+
         static public void AddDropHandler(this Control item, DropHandler to_add)
         {
             DROP_HANDLER_LIST_FIELD.GetValue(item).Add(to_add);

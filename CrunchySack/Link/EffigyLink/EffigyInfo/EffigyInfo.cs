@@ -13,7 +13,7 @@ namespace Crunchy.Sack
         private Type representation_type;
         private Type child_type;
 
-        public abstract void AddChild(object representation, object child);
+        public abstract void SetChildren(object representation, IEnumerable<object> children);
         public abstract EffigyLink CreateLink(CmlContext context, object representation, VariableInstance variable_instance, EffigyClassInfo @class);
 
         public EffigyInfo(Type r, Type c)

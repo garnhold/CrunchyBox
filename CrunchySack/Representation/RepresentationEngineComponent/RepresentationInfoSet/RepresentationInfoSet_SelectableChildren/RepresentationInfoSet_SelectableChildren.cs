@@ -52,7 +52,7 @@ namespace Crunchy.Sack
             }
             else if (children.Convert<CmlValue_SystemValues>(out children_values))
             {
-                children_values.GetSystemValues().Process(v => effigy_info.AddChild(representation, v));
+                effigy_info.SetChildren(representation, children_values.GetSystemValues());
             }
         }
 

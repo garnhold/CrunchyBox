@@ -17,8 +17,8 @@ namespace Crunchy.Sack_Avalonia
         [BasicAvaloniaEngineInitilizer]
         static public void Initilize(AvaloniaEngine engine)
         {
-            engine.AddValueInfo<Decorator, Control>("child", (d, c) => d.Child = c);
-            engine.AddReOrgChildrenInfo<Decorator, Control>(d => d.Child = null, (d, c) => d.Child = c);
+            engine.AddSingleChildInfo<Decorator, Control>((d, c) => d.Child = c);
+            engine.AddSingleChildInfo<Decorator, Control>("child", (d, c) => d.Child = c);
         }
     }
 }

@@ -260,14 +260,10 @@
     <Compile Include="ClassLibrary\Extensions\ClassLibraryExtensions_AddText.cs" />
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_AddText.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Overwrite_Process.cs" />
     <Compile Include="Application\ApplicationRepresentationEngine.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityCompositeChild\CmlEntityCompositeChild.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Process.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Overwrite.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Overwrite_Process.cs" />
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions.cs" />
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions_EventHandler.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless.cs" />

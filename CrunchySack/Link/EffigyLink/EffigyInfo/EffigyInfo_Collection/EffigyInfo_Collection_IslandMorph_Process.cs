@@ -28,11 +28,6 @@ namespace Crunchy.Sack
             remove_process(representation, index);
         }
 
-        public override void AddChild(object representation, object child)
-        {
-            add_process(representation, child);
-        }
-
         public override void InsertChild(object representation, int index, object child)
         {
             insert_process(representation, index, child);
