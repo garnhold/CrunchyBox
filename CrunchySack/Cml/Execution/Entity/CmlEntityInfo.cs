@@ -6,9 +6,8 @@ namespace Crunchy.Sack
 
     public interface CmlEntityInfo
     {
-        CmlParameter CreateParameter(CmlContext context);
-
-        void PushToRepresentation(CmlContext context, object representation);
+        string GetName();
+        CmlValue GetValue(CmlContext context);
     }
 
 }

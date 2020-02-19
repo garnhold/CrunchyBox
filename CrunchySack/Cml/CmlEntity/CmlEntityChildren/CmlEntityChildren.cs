@@ -16,23 +16,11 @@ namespace Crunchy.Sack
     
     public abstract partial class CmlEntityChildren : CmlElement, CmlEntityInfo
 	{
-        protected abstract void PushToRepresentationInternal(CmlContext context, object representation, RepresentationInfo info);
+        public abstract CmlValue GetValue(CmlContext context);
 
-        public void PushToRepresentation(CmlContext context, object representation)
+        public string GetName()
         {
-            PushToRepresentationInternal(
-                context,
-                representation,
-                context.GetEngine().AssertGetInfo(representation.GetTypeEX(), RepresentationInfo.UnamedChildren)
-            );
-        }
-
-        public CmlParameter CreateParameter(CmlContext context)
-        {
-            return new CmlParameter(
-                context,
-                RepresentationInfo.UnamedChildren,
-            );
+            return RepresentationInfo.UnamedChildren;
         }
 	}
 	

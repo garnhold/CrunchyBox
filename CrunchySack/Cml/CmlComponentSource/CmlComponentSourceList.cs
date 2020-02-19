@@ -14,8 +14,14 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public partial class CmlValueSourceList : CmlElement
+    public partial class CmlComponentSourceList : CmlElement
 	{
+        public CmlValue Solidify(CmlContext context)
+        {
+            return new CmlValue_SystemValues(
+                GetComponentSources().Convert(s => s.Instance(context))
+            );
+        }
 	}
 	
 }

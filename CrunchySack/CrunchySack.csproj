@@ -197,7 +197,6 @@
     <Compile Include="Cml\CmlSyntaxException.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource.cs" />
-    <Compile Include="Cml\CmlValueSource\CmlValueSourceList.cs" />
     <Compile Include="Cml\CmlComponentSource\CmlComponentSource_Entity.cs" />
     <Compile Include="Cml\CmlComponentSource\CmlComponentSource_InsertParameter.cs" />
     <Compile Include="Cml\CmlComponentSource\CmlComponentSource_Constructor.cs" />
@@ -319,6 +318,9 @@
     <Compile Include="Cml\Execution\Class\CmlClass_None.cs" />
     <Compile Include="Cml\Execution\Class\Extensions\CmlClassExtensions.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClassException.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_SystemValues.cs" />
+    <Compile Include="Cml\Execution\Entity\Extensions\CmlEntityInfoExtensions.cs" />
+    <Compile Include="Cml\CmlComponentSource\CmlComponentSourceList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -364,6 +366,7 @@
     <Folder Include="Cml\Execution\Fragment\CmlFragment_BuiltIn\" />
     <Folder Include="Cml\Execution\Class\" />
     <Folder Include="Cml\Execution\Class\Extensions\" />
+    <Folder Include="Cml\Execution\Entity\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

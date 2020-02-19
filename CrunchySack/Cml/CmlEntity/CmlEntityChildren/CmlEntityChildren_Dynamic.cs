@@ -16,16 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityChildren_Dynamic : CmlEntityChildren
 	{
-        protected override void PushToRepresentationInternal(CmlContext context, object representation, RepresentationInfo info)
+        public override CmlValue GetValue(CmlContext context)
         {
-            CmlValue_Link link = GetLinkSource().SolidifyLink(context);
-
-            info.LinkValue(
-                context,
-                representation,
-                link.GetVariableInstance(),
-                link
-            );
+            return GetLinkSource().Solidify(context);
         }
     }
 	

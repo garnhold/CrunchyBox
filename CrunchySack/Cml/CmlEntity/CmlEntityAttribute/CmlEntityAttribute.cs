@@ -16,22 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityAttribute : CmlElement, CmlEntityInfo
 	{
-        public void PushToRepresentation(CmlContext context, object representation)
+        public CmlValue GetValue(CmlContext context)
         {
-            GetValueSource().PushToRepresentation(
-                context,
-                representation,
-                context.GetEngine().AssertGetInfo(representation.GetTypeEX(), GetName())
-            );
-        }
-
-        public CmlParameter CreateParameter(CmlContext context)
-        {
-            return new CmlParameter(
-                context,
-                GetName(),
-                GetValueSource().CreateDeferred(context)
-            );
+            return GetValueSource().GetValue(context);
         }
 	}
 	

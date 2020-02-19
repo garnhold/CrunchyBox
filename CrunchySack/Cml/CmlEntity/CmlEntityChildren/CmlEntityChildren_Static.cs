@@ -16,12 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityChildren_Static : CmlEntityChildren
 	{
-        protected override void PushToRepresentationInternal(CmlContext context, object representation, RepresentationInfo info)
+        public override CmlValue GetValue(CmlContext context)
         {
-            info.SetMultipleValues(
-                context,
-                representation,
-                GetComponentSourceList().GetComponentSources().Convert(s => s.Instance(context))
+            return new CmlValue_SystemValues(
+                GetComponentSourceList().Instance(context)
             );
         }
     }

@@ -21,7 +21,7 @@ namespace Crunchy.Sack
             KeyValuePair.New("layout", DEFAULT_LAYOUT)
         );
             
-        public override CmlValue_Link SolidifyLink(CmlContext context)
+        public override CmlValue_Link Solidify(CmlContext context)
         {
             return new CmlValue_Link(GetLink().CompileVariableInstance(context), this);
         }
