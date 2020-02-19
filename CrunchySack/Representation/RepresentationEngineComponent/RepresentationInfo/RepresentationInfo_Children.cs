@@ -16,13 +16,9 @@ namespace Crunchy.Sack
             effigy_info = e;
         }
 
-<<<<<<< Updated upstream
-        public override void SetValue(CmlExecution execution, object representation, object value)
-=======
         public override void SetValue(CmlContext context, object representation, object child)
->>>>>>> Stashed changes
         {
-            effigy_info.AddChild(representation, value);
+            effigy_info.AddChild(representation, child);
         }
 
         public override void LinkValue(CmlContext context, object representation, VariableInstance variable_instance, HasInfo info)

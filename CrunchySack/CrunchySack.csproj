@@ -73,12 +73,6 @@
     <Compile Include="Cml\CmlScript\Request\CmlScriptValue\CmlScriptValue_StaticClass\CmlScriptValue_StaticClass.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSource.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_ComponentSourceList.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="Cml\Execution\Container\CmlContainer_EndPoint_SystemValueProcess.cs" />
-    <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClass.cs" />
-=======
-    <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClassException.cs" />
->>>>>>> Stashed changes
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_TypeSupportException.cs" />
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions.cs" />
     <Compile Include="FragmentLibrary\Extensions\FragmentLibraryExtensions_Add.cs" />
@@ -305,12 +299,6 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Variable.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_SetMember.cs" />
-<<<<<<< Updated upstream
-=======
-    <Compile Include="Cml\Execution\Set\CmlSetMember_Value.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSetMember_Link.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSetMember_Link_WithEntity.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSetMember_Values.cs" />
     <Compile Include="Link\VariableValue\VariableValue.cs" />
     <Compile Include="Cml\Execution\Context\CmlContext.cs" />
     <Compile Include="Cml\Execution\Context\CmlContext_Base.cs" />
@@ -333,7 +321,7 @@
     <Compile Include="Cml\Execution\Class\CmlClass_Entity.cs" />
     <Compile Include="Cml\Execution\Class\CmlClass_None.cs" />
     <Compile Include="Cml\Execution\Class\Extensions\CmlClassExtensions.cs" />
->>>>>>> Stashed changes
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnableToFindClassException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -382,6 +370,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Cml\CmlLexer.tokens" />
+    <None Include="Cml\Cml.tokens" />
+    <None Include="Cml\CmlGrammar\CmlGrammar.iml" />
+    <None Include="Cml\CmlGrammar\Cml.g4" />
+    <None Include="Cml\CmlGrammar\DOMinate.sh" />
+    <None Include="Cml\CmlGrammar\.idea\CmlGrammar.iml" />
+    <None Include="Cml\CmlGrammar\.idea\modules.xml" />
+    <None Include="Cml\CmlGrammar\.idea\workspace.xml" />
+    <None Include="Cml\CmlGrammar\.idea\vcs.xml" />
+    <None Include="Cml\antlr4\Cml.interp" />
+    <None Include="Cml\antlr4\CmlLexer.tokens" />
+    <None Include="Cml\antlr4\CmlLexer.interp" />
+    <None Include="Cml\antlr4\Cml.tokens" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

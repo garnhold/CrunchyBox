@@ -7,20 +7,23 @@ namespace Crunchy.Sack
     
     public class RepresentationInfo_SetMember : RepresentationInfo
     {
+        private bool can_set_value;
+        private bool can_link_value;
+        private bool can_link_value_with_entity;
+
         private RepresentationInfoSet set;
 
-        public RepresentationInfo_SetMember(string n, RepresentationInfoSet s) : base(n, s.GetRepresentationType())
+        public RepresentationInfo_SetMember(string n, bool csv, bool clv, bool clve, RepresentationInfoSet s) : base(n, s.GetRepresentationType())
         {
+            can_set_value = csv;
+            can_link_value = clv;
+            can_link_value_with_entity = clve;
+
             set = s;
         }
 
         public override void SetValue(CmlContext context, object representation, object value)
         {
-<<<<<<< Updated upstream
-            execution.GetCallContext().GetSetSpace()
-                .GetSet(set)
-                .SetValue(GetName(), value);
-=======
             if (can_set_value)
             {
                 context.GetSetSpace()
@@ -31,16 +34,10 @@ namespace Crunchy.Sack
             {
                 base.SetValue(context, representation, value);
             }
->>>>>>> Stashed changes
         }
 
         public override void LinkValue(CmlContext context, object representation, VariableInstance variable_instance, HasInfo info)
         {
-<<<<<<< Updated upstream
-            execution.GetCallContext().GetSetSpace()
-                .GetSet(set)
-                .LinkValue(GetName(), variable_instance, info);
-=======
             if (can_link_value)
             {
                 context.GetSetSpace()
@@ -51,16 +48,10 @@ namespace Crunchy.Sack
             {
                 base.LinkValue(context, representation, variable_instance, info);
             }
->>>>>>> Stashed changes
         }
 
         public override void LinkValueWithEntity(CmlContext context, object representation, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
         {
-<<<<<<< Updated upstream
-            execution.GetCallContext().GetSetSpace()
-                .GetSet(set)
-                .LinkValueWithEntity(GetName(), variable_instance, entity, info);
-=======
             if (can_link_value_with_entity)
             {
                 context.GetSetSpace()
@@ -71,7 +62,6 @@ namespace Crunchy.Sack
             {
                 base.LinkValueWithEntity(context, representation, variable_instance, entity, info);
             }
->>>>>>> Stashed changes
         }
     }
 }

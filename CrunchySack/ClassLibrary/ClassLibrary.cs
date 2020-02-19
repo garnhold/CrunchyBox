@@ -46,7 +46,7 @@ namespace Crunchy.Sack
         public CmlClass AssertGetClass(Type type, string layout)
         {
             return GetClass(type, layout)
-                .AssertNotNull(() => new CmlRuntimeError_UnableToFindClass(type, layout));
+                .AssertNotNull(() => new CmlRuntimeError_UnableToFindClassException(type, layout));
         }
     }
 }
