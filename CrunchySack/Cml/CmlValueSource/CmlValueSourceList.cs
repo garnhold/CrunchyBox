@@ -1,8 +1,8 @@
+
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: 1/30/2017 1:49:45 AM
-
+//Date: November 15 2018 22:26:50 -08:00
 
 using System;
 using System.Collections;
@@ -14,11 +14,16 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public partial class CmlEntityAttribute : CmlElement, CmlEntityInfo
+    public partial class CmlValueSourceList : CmlElement
 	{
+        public IEnumerable<object> Instance(CmlContext context)
+        {
+            return GetValueSources().Convert(s => s.Instance(context));
+        }
+
         public CmlValue Solidify(CmlContext context)
         {
-            return GetValueSource().Solidify(context);
+            return new CmlValue_SystemValues(Instance(context));
         }
 	}
 	

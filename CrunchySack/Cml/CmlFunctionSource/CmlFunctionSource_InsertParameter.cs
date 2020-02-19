@@ -16,10 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlFunctionSource_InsertParameter : CmlFunctionSource
 	{
-        public override void SolidifyInto(CmlContext context, CmlContainer container)
+        public override CmlValue Solidify(CmlContext context)
         {
-            GetInsertParameter().SolidifyInto(context, container, false);
+            return GetInsertParameter().Solidify(context, false);
         }
-	}
+    }
 	
 }

@@ -7,6 +7,7 @@ namespace Crunchy.Sack
     public interface CmlEntityInfo
     {
         string GetName();
+
         CmlValue Solidify(CmlContext context);
     }
 

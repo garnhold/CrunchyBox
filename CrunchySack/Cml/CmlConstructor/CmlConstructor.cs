@@ -21,7 +21,7 @@ namespace Crunchy.Sack
             return context.GetEngine().AssertInvokeConstructor(
                 context, 
                 GetName(), 
-                GetArgumentSources().GetValueSources().Convert(s => s.Instance(context))
+                GetArgumentSources().Instance(context)
             );
         }
 	}

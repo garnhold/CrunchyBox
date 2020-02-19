@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public abstract partial class CmlValueSource : CmlElement
 	{
-        public abstract CmlValue GetValue(CmlContext context);
+        public abstract CmlValue Solidify(CmlContext context);
 	}
 	
 }

@@ -18,7 +18,7 @@ namespace Crunchy.Sack
 
         public void SolidifyInstance(CmlContext context, object representation)
         {
-            sets.Process(p => p.Key.SolidifyInstance(execution, representation, p.Value));
+            sets.Process(p => p.Key.SolidifyInstance(context, representation, p.Value));
         }
 
         public CmlSet GetSet(RepresentationInfoSet set)

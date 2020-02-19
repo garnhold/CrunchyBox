@@ -53,11 +53,6 @@ namespace Crunchy.Sack
             return parent_context.GetSetSpace();
         }
 
-        public override CmlReturnSpace GetReturnSpace()
-        {
-            return parent_context.GetReturnSpace();
-        }
-
         public override CmlParameterSpace GetParameterSpace()
         {
             return parent_context.GetParameterSpace();

@@ -23,6 +23,11 @@ namespace Crunchy.Sack
             system_values = vs.ToList();
         }
 
+        public override CmlScriptValue_Argument CreateScriptArgument()
+        {
+            throw new CmlRuntimeError_TypeSupportException("passing to script", this);
+        }
+
         public IEnumerable<object> GetSystemValues()
         {
             return system_values;

@@ -25,15 +25,10 @@ namespace Crunchy.Sack
                     () => assert.ThrowIfTrue(() => new CmlRuntimeError_InvalidIdException("parameter", GetId()))
                 )
             );
-        }
 
-        public object Instance(CmlContext context)
-        {
-        }
-
-        public void PushToRepresentation(CmlContext context, object representation, RepresentationInfo info)
-        {
-            fjk
+            return context.GetParameterSpace()
+                .IfNotNull(s => s.GetParameter(GetId()))
+                .IfNotNull(p => p.SolidifyInto
         }
 	}
 	

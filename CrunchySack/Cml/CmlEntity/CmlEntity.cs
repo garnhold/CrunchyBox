@@ -18,7 +18,7 @@ namespace Crunchy.Sack
 	{
         public object Instance(CmlContext context)
         {
-            return context.GetEngine().AssertInstanceEntity(context, this, GetTag());
+            return context.GetEngine().AssertInstanceEntity(context, GetTag(), this);
         }
 
         public bool HasId()

@@ -54,11 +54,6 @@ namespace Crunchy.Sack
             return null;
         }
 
-        public override CmlReturnSpace GetReturnSpace()
-        {
-            return null;
-        }
-
         public override CmlParameterSpace GetParameterSpace()
         {
             return null;

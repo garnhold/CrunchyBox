@@ -16,11 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlValueSource_ComponentSource : CmlValueSource
 	{
-        public override CmlValue GetValue(CmlContext context)
+        public override CmlValue Solidify(CmlContext context)
         {
-            return new CmlValue_SystemValue(
-                GetComponentSource().Instance(context)
-            );
+            return GetComponentSource().Solidify(context);
         }
     }
 	

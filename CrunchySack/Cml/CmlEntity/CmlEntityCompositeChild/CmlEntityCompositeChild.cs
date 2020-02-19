@@ -17,7 +17,7 @@ namespace Crunchy.Sack
 
         public CmlValue Solidify(CmlContext context)
         {
-            return GetComponentSource().GetValue(context);
+            return GetComponentSource().Solidify(context);
         }
 	}
 	

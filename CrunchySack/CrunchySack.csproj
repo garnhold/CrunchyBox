@@ -162,7 +162,6 @@
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_DynamicInline.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Static.cs" />
     <Compile Include="Cml\Execution\Representation\CmlRepresentationSpace.cs" />
-    <Compile Include="Cml\Execution\Error\CmlRuntimeError_ContainerSupportException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InfoSupportException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidFunctionIndirectionException.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_LinkWithEntity.cs" />
@@ -174,7 +173,6 @@
     <Compile Include="Extensions\StreamSystemStream\StreamSystemStreamExtensions_Cml.cs" />
     <Compile Include="Cml\CmlInsertParameter\CmlInsertParameter.cs" />
     <Compile Include="Cml\CmlDOMinator.cs" />
-    <Compile Include="Cml\CmlElement.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntity.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityAttribute\CmlEntityAttribute.cs" />
     <Compile Include="Cml\antlr4\CmlLexer.cs" />
@@ -189,7 +187,6 @@
     <Compile Include="Cml\CmlPrimitive\CmlPrimitive.cs" />
     <Compile Include="Cml\CmlPrimitive\CmlPrimitive_Bool.cs" />
     <Compile Include="Cml\CmlPrimitive\CmlPrimitive_String.cs" />
-    <Compile Include="Cml\CmlResolver.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidTypeException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidIdForTypeException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidIdException.cs" />
@@ -282,7 +279,6 @@
     <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add_General.cs" />
     <Compile Include="Cml\Execution\Set\CmlSetSpace.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSetMember.cs" />
     <Compile Include="Cml\Execution\Set\CmlSet.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSet_SelectableChildren.cs" />
@@ -303,7 +299,6 @@
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_Class.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_ParameterSpace.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_RepresentationSpace.cs" />
-    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_ReturnSpace.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_SetSpace.cs" />
     <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions.cs" />
     <Compile Include="Cml\Execution\Entity\CmlEntityInstancer.cs" />
@@ -323,6 +318,7 @@
     <Compile Include="Cml\CmlComponentSource\CmlComponentSourceList.cs" />
     <Compile Include="Cml\CmlValueSource\Extensions\CmlValueSourceExtensions.cs" />
     <Compile Include="Cml\CmlComponentSource\Extensions\CmlComponentSourceExtensions.cs" />
+    <Compile Include="Cml\CmlValueSource\CmlValueSourceList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

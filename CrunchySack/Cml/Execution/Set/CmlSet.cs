@@ -9,31 +9,21 @@ namespace Crunchy.Sack
 
     public class CmlSet
     {
-        private Dictionary<string, CmlSetMember> members;
+        private Dictionary<string, CmlValue> values;
 
         public CmlSet()
         {
-            members = new Dictionary<string, CmlSetMember>();
+            values = new Dictionary<string, CmlValue>();
         }
 
-        public void SetValue(string name, object value)
+        public void SetValue(string name, CmlValue value)
         {
-            members.GetOrCreateDefaultValue(name).SetValue(value);
+            values[name] = value;
         }
 
-        public void LinkValue(string name, VariableInstance variable_instance, HasInfo info)
+        public CmlValue GetValue(string name)
         {
-            members.GetOrCreateDefaultValue(name).LinkValue(variable_instance, info);
-        }
-
-        public void LinkValueWithEntity(string name, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
-        {
-            members.GetOrCreateDefaultValue(name).LinkValueWithEntity(variable_instance, entity, info);
-        }
-
-        public CmlSetMember GetMember(string name)
-        {
-            return members.GetValue(name);
+            return values.GetValue(name);
         }
     }
 }

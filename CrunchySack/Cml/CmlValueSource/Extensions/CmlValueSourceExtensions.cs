@@ -12,7 +12,7 @@ namespace Crunchy.Sack
 	{
         static public object Instance(this CmlValueSource item, CmlContext context)
         {
-            return item.GetValue(context).ForceSystemValue();
+            return item.Solidify(context).ForceSystemValue();
         }
 	}
 	

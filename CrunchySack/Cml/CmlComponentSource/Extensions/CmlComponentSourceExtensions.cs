@@ -10,7 +10,7 @@ namespace Crunchy.Sack
     
     static public class CmlComponentSourceExtensions
 	{
-        static public CmlValue GetValue(this CmlComponentSource item, CmlContext context)
+        static public CmlValue Solidify(this CmlComponentSource item, CmlContext context)
         {
             return new CmlValue_SystemValue(item.Instance(context));
         }

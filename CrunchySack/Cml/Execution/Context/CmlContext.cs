@@ -1,9 +1,3 @@
-
-//-------------------------------
-//--Generated Code File----------
-//-------------------------------
-//Date: November 13 2018 18:20:51 -08:00
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
