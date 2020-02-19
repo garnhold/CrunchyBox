@@ -20,7 +20,7 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
         {
             context.AddVariableLink(
-                value.GetInfoValue("group"),
+                value.GetGroup(),
 
                 new VariableLink_Simple_Direct(
                     new VariableNode(value.GetVariableInstance()),

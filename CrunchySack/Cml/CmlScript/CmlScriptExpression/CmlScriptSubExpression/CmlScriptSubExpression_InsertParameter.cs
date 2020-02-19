@@ -18,10 +18,9 @@ namespace Crunchy.Sack
 	{
         protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            CmlContainer_Value container = new CmlContainer_Value();
-
-            GetInsertParameter().SolidifyInto(context, container, true);
-            return request.AddSecondaryArgument(container.GetValue().CreateScriptArgument());
+            return request.AddSecondaryArgument(
+                GetInsertParameter().Solidify(context, true).CreateScriptArgument()
+            );
         }
 	}
 	

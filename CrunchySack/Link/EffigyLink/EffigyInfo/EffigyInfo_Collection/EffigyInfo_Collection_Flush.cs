@@ -19,9 +19,7 @@ namespace Crunchy.Sack
             ClearChildren(representation);
 
             old_values.Process(v => link.UnlinkValue(v));
-            new_values.Process(v => link.CreateRepresentationInto(v, delegate(object child) {
-                AddChild(representation, child);
-            }));
+            new_values.Process(v => AddChild(representation, link.Instance(v)));
         }
     }
 }

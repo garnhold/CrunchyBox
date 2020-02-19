@@ -15,7 +15,6 @@ namespace Crunchy.Sack
         static public CmlParameter CreateParameter(this CmlEntityInfo item, CmlContext context)
         {
             return new CmlParameter(
-                context,
                 item.GetName(),
                 item.Solidify(context)
             );

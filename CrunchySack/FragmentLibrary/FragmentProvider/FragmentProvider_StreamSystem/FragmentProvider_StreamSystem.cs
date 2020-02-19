@@ -21,8 +21,8 @@ namespace Crunchy.Sack
 
         public override CmlFragment GetFragment(string name)
         {
-            return stream_system.ReadCmlFragmentDefinition(CalculateId(name))
-                .IfNotNull(c => new CmlFragment_FragmentDefinition(name, c));
+            return stream_system.ReadCmlEntity(CalculateId(name))
+                .IfNotNull(e => new CmlFragment_Entity(name, e));
         }
     }
 }

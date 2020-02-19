@@ -14,35 +14,35 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class CmlValue_Link_WithEntity : CmlValue_Link
+    public class CmlValue_Link_Normal : CmlValue_Link
 	{
-        private CmlValue_Link link;
-        private CmlEntity entity;
+        private VariableInstance variable_instance;
+        private HasInfo info;
 
-        public CmlValue_Link_WithEntity(CmlValue_Link l, CmlEntity e)
+        public CmlValue_Link_Normal(VariableInstance v, HasInfo i)
         {
-            link = l;
-            entity = e;
+            variable_instance = v;
+            info = i;
         }
 
         public override CmlScriptValue_Argument CreateScriptArgument()
         {
-            return link.CreateScriptArgument();
+            return new CmlScriptValue_Argument_Single_VariableInstance(variable_instance);
         }
 
         public override string GetGroup()
         {
-            return link.GetGroup();
+            return info.GetInfoValue("group");
         }
 
         public override EffigyClassInfo GetClass()
         {
-            return new EffigyClassInfo_Static(entity);
+            return new EffigyClassInfo_Dynamic(info.GetInfoValue("layout"));
         }
 
         public override VariableInstance GetVariableInstance()
         {
-            return link.GetVariableInstance();
+            return variable_instance;
         }
     }
 	

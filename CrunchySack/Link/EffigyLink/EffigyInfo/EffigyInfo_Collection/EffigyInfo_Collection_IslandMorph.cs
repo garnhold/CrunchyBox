@@ -25,11 +25,9 @@ namespace Crunchy.Sack
                 RemoveChildAt(representation, info.remove_range.start);
             }
 
-            new_values.SubSection(info.insert_range).ProcessWithIndex(delegate(int index, object value) {
-                link.CreateRepresentationInto(value, delegate(object child) {
-                    InsertChild(representation, info.insert_index + index, child);
-                });
-            });
+            new_values.SubSection(info.insert_range).ProcessWithIndex(
+                (i, v) => InsertChild(representation, info.insert_index + i, link.Instance(v))
+            );
         }
     }
 }

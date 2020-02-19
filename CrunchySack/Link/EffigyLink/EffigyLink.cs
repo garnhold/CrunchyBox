@@ -52,7 +52,7 @@ namespace Crunchy.Sack
             link_managers.Remove(value);
         }
 
-        public void CreateRepresentationInto(object value, CmlContainer container)
+        public object Instance(object value)
         {
             CmlContext_Base context = new CmlContext_Base(
                 target_info.CreateChild(value),
@@ -60,7 +60,7 @@ namespace Crunchy.Sack
                 syncro_manager
             );
 
-            class_info.AssertGetClass(context).SolidifyInto(context, container);
+            return class_info.AssertGetClass(context).Instance(context);
         }
 
         public IEnumerable<object> GetValues()

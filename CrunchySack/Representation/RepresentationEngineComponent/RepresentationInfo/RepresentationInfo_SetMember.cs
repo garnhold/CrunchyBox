@@ -47,7 +47,7 @@ namespace Crunchy.Sack
             return false;
         }
 
-        private bool PushToRepresentationInternal(CmlValue_LinkWithEntity value, object representation, CmlContext context)
+        private bool PushToRepresentationInternal(CmlValue_Link_WithEntity value, object representation, CmlContext context)
         {
             if (can_link_value_with_entity)
                 return PushToRepresentation(value, context);

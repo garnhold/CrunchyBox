@@ -18,7 +18,10 @@ namespace Crunchy.Sack
 
         private RepresentationInfoSet_SelectableChildren selectable_children;
 
-        public abstract void SolidifyInstance(CmlContext context, object representation, EffigyLink effigy_link, CmlValue value);
+        private void SolidifyInstanceInternal(CmlValue value, object representation, EffigyLink effigy_link, CmlContext context)
+        {
+            throw new CmlRuntimeError_InfoSupportException(value.GetTypeEX(), set_member);
+        }
 
         public RepresentationInfoSetChildrenSelector(string n)
         {
@@ -35,6 +38,17 @@ namespace Crunchy.Sack
                 can_set_values,
                 can_link_value,
                 can_link_value_with_entity
+            );
+        }
+
+        public void SolidifyInstance(CmlContext context, object representation, EffigyLink effigy_link, CmlValue value)
+        {
+            this.CallSpecializationMethod<CmlValue, object, EffigyLink, CmlContext>(
+                "SolidifyInstanceInternal",
+                value,
+                representation,
+                effigy_link,
+                context
             );
         }
 

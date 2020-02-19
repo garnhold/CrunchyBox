@@ -23,7 +23,7 @@ namespace Crunchy.Sack
             
         public override CmlValue_Link Solidify(CmlContext context)
         {
-            return new CmlValue_Link(GetLink().CompileVariableInstance(context), this);
+            return new CmlValue_Link_Normal(GetLink().CompileVariableInstance(context), this);
         }
 
         public LookupBackedSet<string, string> GetInfoSettings()

@@ -21,29 +21,13 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
         {
             context.AddEffigyLink(
-                value.GetInfoValue("group"),
+                value.GetGroup(),
 
                 effigy_info.CreateLink(
                     context,
                     representation,
                     value.GetVariableInstance(),
-                    new EffigyClassInfo_Dynamic(value.GetInfoValue("layout"))
-                )
-            );
-
-            return true;
-        }
-
-        private bool PushToRepresentationInternal(CmlValue_LinkWithEntity value, object representation, CmlContext context)
-        {
-            context.AddEffigyLink(
-                value.GetLink().GetInfoValue("group"),
-
-                effigy_info.CreateLink(
-                    context,
-                    representation,
-                    value.GetLink().GetVariableInstance(),
-                    new EffigyClassInfo_Static(value.GetEntity())
+                    value.GetClass()
                 )
             );
 

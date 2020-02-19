@@ -14,36 +14,12 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class CmlValue_Link : CmlValue
+    public abstract class CmlValue_Link : CmlValue
 	{
-        private VariableInstance variable_instance;
-        private HasInfo info;
+        public abstract string GetGroup();
+        public abstract EffigyClassInfo GetClass();
 
-        public CmlValue_Link(VariableInstance v, HasInfo i)
-        {
-            variable_instance = v;
-            info = i;
-        }
-
-        public override CmlScriptValue_Argument CreateScriptArgument()
-        {
-            return new CmlScriptValue_Argument_Single_VariableInstance(variable_instance);
-        }
-
-        public string GetGroup()
-        {
-            return info.GetInfoValue("group");
-        }
-
-        public VariableInstance GetVariableInstance()
-        {
-            return variable_instance;
-        }
-
-        public virtual EffigyClassInfo GetClass()
-        {
-            return new EffigyClassInfo_Dynamic(info.GetInfoValue("layout"));
-        }
+        public abstract VariableInstance GetVariableInstance();
 	}
 	
 }

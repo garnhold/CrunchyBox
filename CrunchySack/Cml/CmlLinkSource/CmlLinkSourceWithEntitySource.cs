@@ -19,7 +19,8 @@ namespace Crunchy.Sack
         public CmlValue Solidify(CmlContext context)
         {
             return new CmlValue_Link_WithEntity(
-                GetLinkSource().
+                GetLinkSource().Solidify(context),
+                GetEntity()
             );
         }
 	}

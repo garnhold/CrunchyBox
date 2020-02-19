@@ -271,8 +271,6 @@
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions.cs" />
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions_EventHandler.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless.cs" />
-    <Compile Include="Link\EffigyLink\Extensions\EffigyLinkExtensions.cs" />
-    <Compile Include="Link\EffigyLink\Extensions\EffigyLinkExtensions_Create.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless_Process.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple_Process.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple_Direct.cs" />
@@ -320,6 +318,7 @@
     <Compile Include="Cml\CmlComponentSource\Extensions\CmlComponentSourceExtensions.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSourceList.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityMountPoint\CmlEntityMountPoint.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_Link_Normal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -353,7 +352,6 @@
     <Folder Include="Application\" />
     <Folder Include="Cml\CmlEntity\CmlEntityCompositeChild\" />
     <Folder Include="Syncro\FunctionSyncro\Extensions\" />
-    <Folder Include="Link\EffigyLink\Extensions\" />
     <Folder Include="Cml\Execution\Set\" />
     <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\" />
     <Folder Include="Link\VariableValue\" />
