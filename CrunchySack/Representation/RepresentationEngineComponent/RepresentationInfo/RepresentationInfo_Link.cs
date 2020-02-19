@@ -10,26 +10,30 @@ namespace Crunchy.Sack
     {
         private Variable variable;
 
-        public RepresentationInfo_Link(string n, Variable v) : base(n, v.GetDeclaringType())
+        private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
         {
-            variable = v;
+            variable.SetContents(representation, value.GetSystemValue());
+
+            return true;
         }
 
-        public override void SetValue(CmlContext context, object representation, object value)
-        {
-            variable.SetContents(representation, value);
-        }
-
-        public override void LinkValue(CmlContext context, object representation, VariableInstance variable_instance, HasInfo info)
+        private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
         {
             context.AddVariableLink(
-                info.GetInfoValue("group"),
+                value.GetInfoValue("group"),
 
                 new VariableLink_Simple_Direct(
-                    new VariableNode(variable_instance),
+                    new VariableNode(value.GetVariableInstance()),
                     new VariableNode(variable.CreateStrongInstance(representation))
                 )
             );
+
+            return true;
+        }
+
+        public RepresentationInfo_Link(string n, Variable v) : base(n, v.GetDeclaringType())
+        {
+            variable = v;
         }
     }
 

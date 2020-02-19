@@ -11,42 +11,48 @@ namespace Crunchy.Sack
     {
         private EffigyInfo effigy_info;
 
+        private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
+        {
+            effigy_info.AddChild(representation, value.GetSystemValue());
+
+            return true;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
+        {
+            context.AddEffigyLink(
+                value.GetInfoValue("group"),
+
+                effigy_info.CreateLink(
+                    context,
+                    representation,
+                    value.GetVariableInstance(),
+                    new EffigyClassInfo_Dynamic(value.GetInfoValue("layout"))
+                )
+            );
+
+            return true;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_LinkWithEntity value, object representation, CmlContext context)
+        {
+            context.AddEffigyLink(
+                value.GetLink().GetInfoValue("group"),
+
+                effigy_info.CreateLink(
+                    context,
+                    representation,
+                    value.GetLink().GetVariableInstance(),
+                    new EffigyClassInfo_Static(value.GetEntity())
+                )
+            );
+
+            return true;
+        }
+
         public RepresentationInfo_Children(string n, EffigyInfo e) : base(n, e.GetRepresentationType())
         {
             effigy_info = e;
-        }
-
-        public override void SetValue(CmlContext context, object representation, object child)
-        {
-            effigy_info.AddChild(representation, child);
-        }
-
-        public override void LinkValue(CmlContext context, object representation, VariableInstance variable_instance, HasInfo info)
-        {
-            context.AddEffigyLink(
-                info.GetInfoValue("group"),
-
-                effigy_info.CreateLink(
-                    context,
-                    representation,
-                    variable_instance,
-                    new EffigyClassInfo_Dynamic(info.GetInfoValue("layout"))
-                )
-            );
-        }
-
-        public override void LinkValueWithEntity(CmlContext context, object representation, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
-        {
-            context.AddEffigyLink(
-                info.GetInfoValue("group"),
-
-                effigy_info.CreateLink(
-                    context,
-                    representation,
-                    variable_instance,
-                    new EffigyClassInfo_Static(entity)
-                )
-            );
         }
     }
 

@@ -23,6 +23,11 @@ namespace Crunchy.Sack
             parent_context = p;
         }
 
+        public override void AddVariableValue(VariableValue variable_value)
+        {
+            parent_context.AddVariableValue(variable_value);
+        }
+
         public override void AddVariableLink(string group, VariableLink variable_link)
         {
             parent_context.AddVariableLink(group, variable_link);

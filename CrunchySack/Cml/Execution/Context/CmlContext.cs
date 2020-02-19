@@ -16,13 +16,13 @@ namespace Crunchy.Sack
 
     public abstract class CmlContext
 	{
+        public abstract void AddVariableValue(VariableValue variable_value);
         public abstract void AddVariableLink(string group, VariableLink variable_link);
         public abstract void AddEffigyLink(string group, EffigyLink effigy_link);
         public abstract void AddFunctionSyncro(FunctionSyncro function_syncro);
 
         public abstract CmlClass GetClass();
         public abstract CmlSetSpace GetSetSpace();
-        public abstract CmlReturnSpace GetReturnSpace();
         public abstract CmlParameterSpace GetParameterSpace();
         public abstract CmlRepresentationSpace GetRepresentationSpace();
 

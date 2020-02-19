@@ -24,6 +24,11 @@ namespace Crunchy.Sack
 
         public CmlContext_Base(CmlTargetInfo t) : this(t, new LinkManager(), new SyncroManager()) { }
 
+        public override void AddVariableValue(VariableValue variable_value)
+        {
+            link_manager.AddVariableValue(variable_value);
+        }
+
         public override void AddVariableLink(string group, VariableLink variable_link)
         {
             link_manager.AddVariableLink(group, variable_link);

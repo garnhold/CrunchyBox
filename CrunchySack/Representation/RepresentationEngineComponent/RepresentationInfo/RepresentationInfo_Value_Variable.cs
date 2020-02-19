@@ -10,14 +10,16 @@ namespace Crunchy.Sack
     {
         private Variable variable;
 
+        private bool PushToRepresentation(CmlValue_SystemValue value, object representation, CmlContext context)
+        {
+            variable.SetContents(representation, value.GetSystemValue());
+
+            return true;
+        }
+
         public RepresentationInfo_Value_Variable(string n, Variable v) : base(n, v.GetDeclaringType())
         {
             variable = v;
-        }
-
-        public override void SetValue(CmlContext context, object representation, object value)
-        {
-            variable.SetContents(representation, value);
         }
     }
 

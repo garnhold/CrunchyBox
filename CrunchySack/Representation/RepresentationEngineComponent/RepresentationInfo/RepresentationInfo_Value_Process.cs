@@ -10,17 +10,19 @@ namespace Crunchy.Sack
     {
         private Process<REPRESENTATION_TYPE, VALUE_TYPE> process;
 
-        public RepresentationInfo_Value_Process(string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> p) : base(n, typeof(REPRESENTATION_TYPE))
-        {
-            process = p;
-        }
-
-        public override void SetValue(CmlContext context, object representation, object value)
+        private bool PushToRepresentation(CmlValue_SystemValue value, object representation, CmlContext context)
         {
             REPRESENTATION_TYPE cast;
 
             if (representation.Convert<REPRESENTATION_TYPE>(out cast))
-                process(cast, value.ConvertEX<VALUE_TYPE>());
+                process(cast, value.GetSystemValue().ConvertEX<VALUE_TYPE>());
+
+            return true;
+        }
+
+        public RepresentationInfo_Value_Process(string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> p) : base(n, typeof(REPRESENTATION_TYPE))
+        {
+            process = p;
         }
     }
 

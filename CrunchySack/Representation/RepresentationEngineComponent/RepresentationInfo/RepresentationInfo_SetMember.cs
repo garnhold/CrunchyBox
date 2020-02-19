@@ -13,6 +13,48 @@ namespace Crunchy.Sack
 
         private RepresentationInfoSet set;
 
+        private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
+        {
+            if (can_set_value)
+            {
+                context.GetSetSpace()
+                    .GetSet(set)
+                    .SetValue(GetName(), value.GetSystemValue());
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
+        {
+            if (can_link_value)
+            {
+                context.GetSetSpace()
+                    .GetSet(set)
+                    .LinkValue(GetName(), value.GetVariableInstance(), value);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_LinkWithEntity value, object representation, CmlContext context)
+        {
+            if (can_link_value_with_entity)
+            {
+                context.GetSetSpace()
+                    .GetSet(set)
+                    .LinkValueWithEntity(GetName(), value.GetLink().GetVariableInstance(), value.GetEntity(), value.GetLink());
+
+                return true;
+            }
+
+            return false;
+        }
+
         public RepresentationInfo_SetMember(string n, bool csv, bool clv, bool clve, RepresentationInfoSet s) : base(n, s.GetRepresentationType())
         {
             can_set_value = csv;
@@ -20,48 +62,6 @@ namespace Crunchy.Sack
             can_link_value_with_entity = clve;
 
             set = s;
-        }
-
-        public override void SetValue(CmlContext context, object representation, object value)
-        {
-            if (can_set_value)
-            {
-                context.GetSetSpace()
-                    .GetSet(set)
-                    .SetValue(GetName(), value);
-            }
-            else
-            {
-                base.SetValue(context, representation, value);
-            }
-        }
-
-        public override void LinkValue(CmlContext context, object representation, VariableInstance variable_instance, HasInfo info)
-        {
-            if (can_link_value)
-            {
-                context.GetSetSpace()
-                    .GetSet(set)
-                    .LinkValue(GetName(), variable_instance, info);
-            }
-            else
-            {
-                base.LinkValue(context, representation, variable_instance, info);
-            }
-        }
-
-        public override void LinkValueWithEntity(CmlContext context, object representation, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
-        {
-            if (can_link_value_with_entity)
-            {
-                context.GetSetSpace()
-                    .GetSet(set)
-                    .LinkValueWithEntity(GetName(), variable_instance, entity, info);
-            }
-            else
-            {
-                base.LinkValueWithEntity(context, representation, variable_instance, entity, info);
-            }
         }
     }
 }
