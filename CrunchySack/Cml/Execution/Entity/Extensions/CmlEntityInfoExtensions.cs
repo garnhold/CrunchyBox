@@ -9,7 +9,7 @@ namespace Crunchy.Sack
         static public void PushToRepresentation(this CmlEntityInfo item, CmlContext context, object representation)
         {
             context.GetEngine().AssertGetInfo(representation.GetTypeEX(), item.GetName())
-                .PushToRepresentation(context, representation, item.GetValue(context));
+                .PushToRepresentation(context, representation, item.Solidify(context));
         }
 
         static public CmlParameter CreateParameter(this CmlEntityInfo item, CmlContext context)
@@ -17,7 +17,7 @@ namespace Crunchy.Sack
             return new CmlParameter(
                 context,
                 item.GetName(),
-                item.GetValue(context)
+                item.Solidify(context)
             );
         }
     }

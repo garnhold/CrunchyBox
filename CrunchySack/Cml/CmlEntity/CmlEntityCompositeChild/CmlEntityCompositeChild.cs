@@ -8,14 +8,16 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public partial class CmlEntityCompositeChild : CmlElement
+    public partial class CmlEntityCompositeChild : CmlElement, CmlEntityInfo
 	{
-        public void InitializeRepresentation(CmlContext context, object representation)
+        public string GetName()
         {
-            GetComponentSource().SolidifyInto(
-                context,
-                context.GetEngine().AssertCreateInfoContainer(context, representation, RepresentationInfo.UnamedChildren)
-            );
+            return RepresentationInfo.UnamedChildren;
+        }
+
+        public CmlValue Solidify(CmlContext context)
+        {
+            return GetComponentSource().GetValue(context);
         }
 	}
 	

@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityAttribute : CmlElement, CmlEntityInfo
 	{
-        public CmlValue GetValue(CmlContext context)
+        public CmlValue Solidify(CmlContext context)
         {
             return GetValueSource().GetValue(context);
         }

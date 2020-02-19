@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public abstract partial class CmlPrimitive : CmlElement
 	{
-        public abstract object Solidify();
+        public abstract object Instance();
 	}
 	
 }

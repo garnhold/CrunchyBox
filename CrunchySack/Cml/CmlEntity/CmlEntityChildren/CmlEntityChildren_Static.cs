@@ -16,11 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityChildren_Static : CmlEntityChildren
 	{
-        public override CmlValue GetValue(CmlContext context)
+        public override CmlValue Solidify(CmlContext context)
         {
-            return new CmlValue_SystemValues(
-                GetComponentSourceList().Instance(context)
-            );
+            return GetComponentSourceList().Solidify(context);
         }
     }
 	

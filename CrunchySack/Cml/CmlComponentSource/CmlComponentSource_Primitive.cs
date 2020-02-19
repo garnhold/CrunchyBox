@@ -16,10 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlComponentSource_Primitive : CmlComponentSource
 	{
-        public override object Solidify(CmlContext context)
+        public override object Instance(CmlContext context)
         {
-            return GetPrimitive().Solidify();
+            return GetPrimitive().Instance();
         }
-	}
+    }
 	
 }

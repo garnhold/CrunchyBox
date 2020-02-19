@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public partial class CmlEntityChildren_Dynamic : CmlEntityChildren
 	{
-        public override CmlValue GetValue(CmlContext context)
+        public override CmlValue Solidify(CmlContext context)
         {
             return GetLinkSource().Solidify(context);
         }

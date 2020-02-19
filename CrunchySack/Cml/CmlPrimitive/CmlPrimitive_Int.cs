@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public partial class CmlPrimitive_Int : CmlPrimitive
 	{
-        public override object Solidify()
+        public override object Instance()
         {
             return GetInt();
         }
