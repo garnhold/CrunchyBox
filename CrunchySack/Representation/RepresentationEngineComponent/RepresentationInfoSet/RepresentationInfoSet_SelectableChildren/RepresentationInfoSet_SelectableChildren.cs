@@ -19,29 +19,29 @@ namespace Crunchy.Sack
             name = n;
 
             effigy_info = e;
-            RegisterSetMember(name);
+            RegisterSetMember(name, false, false, true, true);
 
             selectors = new List<RepresentationInfoSetChildrenSelector>();
         }
 
         public override void SolidifyInstance(CmlContext context, object representation, CmlSet set)
         {
-            CmlSetMember children = set.GetMember(name);
+            CmlValue children = set.GetValue(name);
 
-            CmlSetMember_Link children_link;
-            CmlSetMember_Values children_values;
+            CmlValue_Link children_link;
+            CmlValue_SystemValues children_values;
 
-            if (children.Convert<CmlSetMember_Link>(out children_link))
+            if (children.Convert<CmlValue_Link>(out children_link))
             {
                 EffigyLink effigy_link = effigy_info.CreateLink(context, representation, children_link.GetVariableInstance(), children_link.GetClass());
 
                 selectors.Process(
-                    s => set.GetMember(s.GetName()).IfNotNull(
-                        m => s.SolidifyInstance(
+                    s => set.GetValue(s.GetName()).IfNotNull(
+                        v => s.SolidifyInstance(
                             context,
                             representation,
                             effigy_link,
-                            m
+                            v
                         ))
                 );
 
@@ -50,16 +50,16 @@ namespace Crunchy.Sack
                     effigy_link
                 );
             }
-            else if (children.Convert<CmlSetMember_Values>(out children_values))
+            else if (children.Convert<CmlValue_SystemValues>(out children_values))
             {
-                children_values.GetValues().Process(v => effigy_info.AddChild(representation, v));
+                children_values.GetSystemValues().Process(v => effigy_info.AddChild(representation, v));
             }
         }
 
         public void AddSelector(RepresentationInfoSetChildrenSelector to_add)
         {
             selectors.Add(to_add);
-            RegisterSetMember(to_add.GetName());
+            to_add.Initialize(this);
         }
     }
 

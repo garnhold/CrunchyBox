@@ -8,21 +8,33 @@ namespace Crunchy.Sack
     public class RepresentationInfo_SetMember : RepresentationInfo
     {
         private bool can_set_value;
+        private bool can_set_values;
         private bool can_link_value;
         private bool can_link_value_with_entity;
 
         private RepresentationInfoSet set;
 
+        private bool PushToRepresentation(CmlValue value, CmlContext context)
+        {
+            context.GetSetSpace()
+                .GetSet(set)
+                .SetValue(GetName(), value);
+
+            return true;
+        }
+
         private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
         {
             if (can_set_value)
-            {
-                context.GetSetSpace()
-                    .GetSet(set)
-                    .SetValue(GetName(), value.GetSystemValue());
+                return PushToRepresentation(value, context);
 
-                return true;
-            }
+            return false;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_SystemValues value, object representation, CmlContext context)
+        {
+            if (can_set_values)
+                return PushToRepresentation(value, context);
 
             return false;
         }
@@ -30,13 +42,7 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
         {
             if (can_link_value)
-            {
-                context.GetSetSpace()
-                    .GetSet(set)
-                    .LinkValue(GetName(), value.GetVariableInstance(), value);
-
-                return true;
-            }
+                return PushToRepresentation(value, context);
 
             return false;
         }
@@ -44,20 +50,15 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_LinkWithEntity value, object representation, CmlContext context)
         {
             if (can_link_value_with_entity)
-            {
-                context.GetSetSpace()
-                    .GetSet(set)
-                    .LinkValueWithEntity(GetName(), value.GetLink().GetVariableInstance(), value.GetEntity(), value.GetLink());
-
-                return true;
-            }
+                return PushToRepresentation(value, context);
 
             return false;
         }
 
-        public RepresentationInfo_SetMember(string n, bool csv, bool clv, bool clve, RepresentationInfoSet s) : base(n, s.GetRepresentationType())
+        public RepresentationInfo_SetMember(string n, bool csv, bool csvs, bool clv, bool clve, RepresentationInfoSet s) : base(n, s.GetRepresentationType())
         {
             can_set_value = csv;
+            can_set_values = csvs;
             can_link_value = clv;
             can_link_value_with_entity = clve;
 

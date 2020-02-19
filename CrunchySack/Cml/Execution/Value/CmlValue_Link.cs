@@ -14,7 +14,7 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class CmlValue_Link : CmlValue, HasInfo
+    public class CmlValue_Link : CmlValue
 	{
         private VariableInstance variable_instance;
         private HasInfo info;
@@ -30,14 +30,19 @@ namespace Crunchy.Sack
             return new CmlScriptValue_Argument_Single_VariableInstance(variable_instance);
         }
 
+        public string GetGroup()
+        {
+            return info.GetInfoValue("group");
+        }
+
         public VariableInstance GetVariableInstance()
         {
             return variable_instance;
         }
 
-        public LookupBackedSet<string, string> GetInfoSettings()
+        public virtual EffigyClassInfo GetClass()
         {
-            return info.GetInfoSettings();
+            return new EffigyClassInfo_Dynamic(info.GetInfoValue("layout"));
         }
 	}
 	

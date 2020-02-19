@@ -164,7 +164,7 @@
     <Compile Include="Cml\Execution\Representation\CmlRepresentationSpace.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InfoSupportException.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InvalidFunctionIndirectionException.cs" />
-    <Compile Include="Cml\Execution\Value\CmlValue_LinkWithEntity.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_Link_WithEntity.cs" />
     <Compile Include="Cml\CmlScript\Request\CmlScriptDefinition\CmlScriptDefinition.cs" />
     <Compile Include="Cml\CmlScript\Request\CmlScriptElement\CmlScriptElement.cs" />
     <Compile Include="Cml\CmlScript\Request\CmlScriptParameter\CmlScriptParameter.cs" />

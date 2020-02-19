@@ -15,14 +15,6 @@ namespace Crunchy.Sack
 
         public abstract void SolidifyInstance(CmlContext context, object representation, CmlSet set);
 
-        protected void RegisterSetMember(string name)
-        {
-            RepresentationInfo_SetMember info = new RepresentationInfo_SetMember(name, this);
-
-            GetEngine().IfNotNull(e => e.AddInfo(info));
-            members.Add(info);
-        }
-
         public RepresentationInfoSet(Type r)
         {
             representation_type = r;
@@ -35,6 +27,15 @@ namespace Crunchy.Sack
             base.Initilize(e);
 
             members.Process(m => e.AddInfo(m));
+        }
+
+        public RepresentationInfo_SetMember RegisterSetMember(string name, bool can_set_value, bool can_set_values, bool can_set_link, bool can_set_link_with_entity)
+        {
+            RepresentationInfo_SetMember info = new RepresentationInfo_SetMember(name, can_set_value, can_set_values, can_set_link, can_set_link_with_entity, this);
+
+            GetEngine().IfNotNull(e => e.AddInfo(info));
+            members.Add(info);
+            return info;
         }
 
         public Type GetRepresentationType()
