@@ -319,6 +319,7 @@
     <Compile Include="Cml\CmlValueSource\CmlValueSourceList.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityMountPoint\CmlEntityMountPoint.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_Link_Normal.cs" />
+    <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnexpectedInsertParameterTypeException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

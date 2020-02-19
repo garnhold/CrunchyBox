@@ -16,8 +16,8 @@ namespace Crunchy.Sack
 
         protected override CmlClass GetClassInternal(Type type, string layout)
         {
-            return stream_system.ReadCmlClassDefinition(CalculateId(type, layout))
-                .IfNotNull(c => new CmlClass_ClassDefinition(type, layout, c));
+            return stream_system.ReadCmlEntity(CalculateId(type, layout))
+                .IfNotNull(c => new CmlClass_Entity(type, layout, c));
         }
 
         public ClassProvider_StreamSystem(StreamSystem s)

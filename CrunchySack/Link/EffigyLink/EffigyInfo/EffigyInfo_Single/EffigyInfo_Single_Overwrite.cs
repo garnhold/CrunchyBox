@@ -15,9 +15,7 @@ namespace Crunchy.Sack
         public override void Update(EffigyLink link, object representation, object old_value, object new_value)
         {
             link.UnlinkValue(old_value);
-            link.CreateRepresentationInto(new_value, delegate(object child) {
-                SetChild(representation, child);
-            });
+            SetChild(representation, link.Instance(new_value));
         }
     }
 }

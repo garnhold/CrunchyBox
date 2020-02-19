@@ -40,8 +40,8 @@ namespace Crunchy.Sack
                     AddChild(representation, sub_representation);
                 else
                 {
-                    value_to_sub_representation.Add(value, 
-                        link.CreateAndGetRepresentationInto(value, c => AddChild(representation, c))
+                    value_to_sub_representation.Add(value,
+                        link.Instance(value).Chain(c => AddChild(representation, c))
                     );
                 }
             }
