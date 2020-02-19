@@ -319,6 +319,7 @@
     <Compile Include="Cml\CmlValueSource\Extensions\CmlValueSourceExtensions.cs" />
     <Compile Include="Cml\CmlComponentSource\Extensions\CmlComponentSourceExtensions.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSourceList.cs" />
+    <Compile Include="Cml\CmlEntity\CmlEntityMountPoint\CmlEntityMountPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -367,6 +368,7 @@
     <Folder Include="Cml\Execution\Entity\Extensions\" />
     <Folder Include="Cml\CmlValueSource\Extensions\" />
     <Folder Include="Cml\CmlComponentSource\Extensions\" />
+    <Folder Include="Cml\CmlEntity\CmlEntityMountPoint\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
