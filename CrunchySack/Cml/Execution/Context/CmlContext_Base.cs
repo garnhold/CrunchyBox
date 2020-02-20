@@ -24,26 +24,6 @@ namespace Crunchy.Sack
 
         public CmlContext_Base(CmlTargetInfo t) : this(t, new LinkManager(), new SyncroManager()) { }
 
-        public override void AddVariableValue(VariableValue variable_value)
-        {
-            link_manager.AddVariableValue(variable_value);
-        }
-
-        public override void AddVariableLink(string group, VariableLink variable_link)
-        {
-            link_manager.AddVariableLink(group, variable_link);
-        }
-
-        public override void AddEffigyLink(string group, EffigyLink effigy_link)
-        {
-            link_manager.AddEffigyLink(group, effigy_link);
-        }
-
-        public override void AddFunctionSyncro(FunctionSyncro function_syncro)
-        {
-            function_syncro.SetManager(syncro_manager);
-        }
-
         public override CmlClass GetClass()
         {
             return null;

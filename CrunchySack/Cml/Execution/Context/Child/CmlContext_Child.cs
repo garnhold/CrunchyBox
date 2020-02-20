@@ -18,64 +18,62 @@ namespace Crunchy.Sack
 	{
         private CmlContext parent_context;
 
+        private CmlClass @class;
+        private CmlSetSpace set_space;
+        private CmlParameterSpace parameter_space;
+        private CmlRepresentationSpace representation_space;
+
+        private CmlTargetInfo target_info;
+        private LinkManager link_manager;
+        private SyncroManager syncro_manager;
+
         public CmlContext_Child(CmlContext p)
         {
             parent_context = p;
-        }
 
-        public override void AddVariableValue(VariableValue variable_value)
-        {
-            parent_context.AddVariableValue(variable_value);
-        }
+            @class = parent_context.GetClass();
+            set_space = parent_context.GetSetSpace();
+            parameter_space = parent_context.GetParameterSpace();
+            representation_space = parent_context.GetRepresentationSpace();
 
-        public override void AddVariableLink(string group, VariableLink variable_link)
-        {
-            parent_context.AddVariableLink(group, variable_link);
-        }
-
-        public override void AddEffigyLink(string group, EffigyLink effigy_link)
-        {
-            parent_context.AddEffigyLink(group, effigy_link);
-        }
-
-        public override void AddFunctionSyncro(FunctionSyncro function_syncro)
-        {
-            parent_context.AddFunctionSyncro(function_syncro);
+            target_info = parent_context.GetTargetInfo();
+            link_manager = parent_context.GetLinkManager();
+            syncro_manager = parent_context.GetSyncroManager();
         }
 
         public override CmlClass GetClass()
         {
-            return parent_context.GetClass();
+            return @class;
         }
 
         public override CmlSetSpace GetSetSpace()
         {
-            return parent_context.GetSetSpace();
+            return set_space;
         }
 
         public override CmlParameterSpace GetParameterSpace()
         {
-            return parent_context.GetParameterSpace();
+            return parameter_space;
         }
 
         public override CmlRepresentationSpace GetRepresentationSpace()
         {
-            return parent_context.GetRepresentationSpace();
+            return representation_space;
         }
 
         public override CmlTargetInfo GetTargetInfo()
         {
-            return parent_context.GetTargetInfo();
+            return target_info;
         }
 
         public override LinkManager GetLinkManager()
         {
-            return parent_context.GetLinkManager();
+            return link_manager;
         }
 
         public override SyncroManager GetSyncroManager()
         {
-            return parent_context.GetSyncroManager();
+            return syncro_manager;
         }
 	}
 	

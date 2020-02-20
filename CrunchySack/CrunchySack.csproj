@@ -314,6 +314,8 @@
     <Compile Include="Cml\CmlEntity\CmlEntityMountPoint\CmlEntityMountPoint.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_Link_Normal.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnexpectedInsertParameterTypeException.cs" />
+    <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions_Engine.cs" />
+    <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions_Add.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

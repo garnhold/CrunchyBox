@@ -10,10 +10,6 @@ namespace Crunchy.Sack
 
     static public class CmlContextExtensions
 	{
-        static public RepresentationEngine GetEngine(this CmlContext item)
-        {
-            return item.GetTargetInfo().GetEngine();
-        }
 	}
 	
 }
