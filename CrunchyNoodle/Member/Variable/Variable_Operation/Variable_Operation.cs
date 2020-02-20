@@ -70,11 +70,11 @@ namespace Crunchy.Noodle
 
         public Variable_Operation(string n, Process<DECLARING_TYPE, VARIABLE_TYPE> s, Operation<VARIABLE_TYPE, DECLARING_TYPE> g)
             : this(n,
-                delegate(DECLARING_TYPE target, VARIABLE_TYPE value) {
-                    s(target, value);
+                s.IfNotNull(o => (TryProcess<DECLARING_TYPE, VARIABLE_TYPE>)delegate(DECLARING_TYPE target, VARIABLE_TYPE value) {
+                    o(target, value);
 
                     return true;
-                },
+                }),
                 g
             ) { }
     }
