@@ -14,7 +14,7 @@ namespace Crunchy.Sack
 
         private RepresentationInfoSet set;
 
-        private bool PushToRepresentation(CmlValue value, CmlContext context)
+        private bool SetSetValue(CmlValue value, CmlContext context)
         {
             context.GetSetSpace()
                 .GetSet(set)
@@ -26,7 +26,7 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
         {
             if (can_set_value)
-                return PushToRepresentation(value, context);
+                return SetSetValue(value, context);
 
             return false;
         }
@@ -34,7 +34,7 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_SystemValues value, object representation, CmlContext context)
         {
             if (can_set_values)
-                return PushToRepresentation(value, context);
+                return SetSetValue(value, context);
 
             return false;
         }
@@ -42,7 +42,7 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
         {
             if (can_link_value)
-                return PushToRepresentation(value, context);
+                return SetSetValue(value, context);
 
             return false;
         }
@@ -50,7 +50,7 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_Link_WithEntity value, object representation, CmlContext context)
         {
             if (can_link_value_with_entity)
-                return PushToRepresentation(value, context);
+                return SetSetValue(value, context);
 
             return false;
         }

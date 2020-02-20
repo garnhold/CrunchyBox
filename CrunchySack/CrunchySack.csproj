@@ -283,8 +283,6 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Variable.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_SetMember.cs" />
     <Compile Include="Link\VariableValue\VariableValue.cs" />
     <Compile Include="Cml\Execution\Context\CmlContext.cs" />
@@ -316,6 +314,7 @@
     <Compile Include="Cml\CmlEntity\CmlEntityMountPoint\CmlEntityMountPoint.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_Link_Normal.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnexpectedInsertParameterTypeException.cs" />
+    <Compile Include="Link\VariableValue\VariableValue_Variable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

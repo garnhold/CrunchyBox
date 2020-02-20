@@ -8,11 +8,11 @@ namespace Crunchy.Sack
     using Dough;
     using Salt;
     using Noodle;
-    
+
     public abstract class VariableValue
     {
-        public object representation;
-        public object value;
+        private object representation;
+        private object value;
 
         protected abstract void Push(object representation, object value);
 
