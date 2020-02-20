@@ -19,7 +19,7 @@ namespace Crunchy.Sack
             name = n;
 
             effigy_info = e;
-            RegisterSetMember(name, false, false, true, true);
+            RegisterSetMember(name, false, true, true, true);
 
             selectors = new List<RepresentationInfoSetChildrenSelector>();
         }
