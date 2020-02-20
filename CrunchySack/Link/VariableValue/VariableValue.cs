@@ -9,22 +9,20 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
 
-    public abstract class VariableValue
+    public class VariableValue
     {
-        private object representation;
+        private VariableInstance variable_instance;
         private object value;
 
-        protected abstract void Push(object representation, object value);
-
-        public VariableValue(object r, object v)
+        public VariableValue(VariableInstance vi, object v)
         {
-            representation = r;
+            variable_instance = vi;
             value = v;
         }
 
         public void Initialize()
         {
-            Push(representation, value);
+            variable_instance.SetContents(value);
         }
     }
 }

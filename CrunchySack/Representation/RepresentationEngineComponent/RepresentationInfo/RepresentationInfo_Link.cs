@@ -13,7 +13,10 @@ namespace Crunchy.Sack
         private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
         {
             context.AddVariableValue(
-                new VariableValue_Variable(variable, representation, value.GetSystemValue())
+                new VariableValue(
+                    variable.CreateStrongInstance(representation),
+                    value.GetSystemValue()
+                )
             );
 
             return true;
