@@ -1473,6 +1473,9 @@
     <Compile Include="DecayCountDictionary\DecayCountElement.cs" />
     <Compile Include="StaleDictionary\StaleDictionary.cs" />
     <Compile Include="StaleDictionary\StaleDictionaryElement.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionTransform.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_Convert.cs" />
+    <Compile Include="Extensions\ICollection\ICollectionExtensions_ConvertWithIndex.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
