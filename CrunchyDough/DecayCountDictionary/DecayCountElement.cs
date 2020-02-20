@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class DecayCounter
+    public class DecayCountElement<T>
     {
+        private T data;
         private int lifetime;
 
-        public DecayCounter(int l)
+        public DecayCountElement(T d, int l)
         {
+            data = d;
             lifetime = l;
         }
 
@@ -25,6 +27,16 @@ namespace Crunchy.Dough
 
             lifetime--;
             return false;
+        }
+
+        public void SetData(T d)
+        {
+            data = d;
+        }
+
+        public T GetData()
+        {
+            return data;
         }
     }
 }

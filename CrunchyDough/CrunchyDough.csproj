@@ -1469,6 +1469,10 @@
     <Compile Include="Extensions\String\StringExtensions_Parse_SByte.cs" />
     <Compile Include="Extensions\String\StringExtensions_Parse_UShort.cs" />
     <Compile Include="Extensions\String\StringExtensions_Parse_ULong.cs" />
+    <Compile Include="DecayCountDictionary\DecayCountDictionary.cs" />
+    <Compile Include="DecayCountDictionary\DecayCountElement.cs" />
+    <Compile Include="StaleDictionary\StaleDictionary.cs" />
+    <Compile Include="StaleDictionary\StaleDictionaryElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1682,6 +1686,8 @@
     <Folder Include="Extensions\Float\" />
     <Folder Include="Extensions\Float\IList\" />
     <Folder Include="RectI2\" />
+    <Folder Include="DecayCountDictionary\" />
+    <Folder Include="StaleDictionary\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
