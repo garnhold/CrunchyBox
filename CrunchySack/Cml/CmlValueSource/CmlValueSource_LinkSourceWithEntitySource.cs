@@ -16,10 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlValueSource_LinkSourceWithEntitySource : CmlValueSource
 	{
-        public override void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public override CmlValue Solidify(CmlContext context)
         {
-            GetLinkSourceWithEntitySource().SolidifyInto(execution, container);
+            return GetLinkSourceWithEntitySource().Solidify(context);
         }
-	}
+    }
 	
 }

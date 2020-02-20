@@ -19,9 +19,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSubExpression_SyntheticString : CmlScriptSubExpression
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetSyntheticString().Compile(execution, request, this_value);
+            GetSyntheticString().Compile(context, request, this_value);
 
             return GetSyntheticString().GetValue();
         }

@@ -32,18 +32,6 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface ICmlVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CmlParser.cmlClassDefinition"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCmlClassDefinition([NotNull] CmlParser.CmlClassDefinitionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CmlParser.cmlFragmentDefinition"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCmlFragmentDefinition([NotNull] CmlParser.CmlFragmentDefinitionContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSource</c>
 	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
 	/// </summary>

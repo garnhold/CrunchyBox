@@ -10,17 +10,19 @@ namespace Crunchy.Sack
     {
         protected abstract void ApplyFunctionSyncroToRepresentation(REPRESENTATION_TYPE representation, FunctionSyncro function_syncro);
 
-        public RepresentationInfo_Function(string n) : base(n, typeof(REPRESENTATION_TYPE)) { }
-
-        public override void InjectFunction(CmlExecution execution, object representation, FunctionInstance function_instance)
+        private bool PushToRepresentationInternal(CmlValue_Function value, object representation, CmlContext context)
         {
             REPRESENTATION_TYPE cast;
-            FunctionSyncro function_syncro = new FunctionSyncro(function_instance);
+            FunctionSyncro function_syncro = new FunctionSyncro(value.GetFunctionInstance());
 
-            execution.AddFunctionSyncro(function_syncro);
+            context.AddFunctionSyncro(function_syncro);
 
             if (representation.Convert<REPRESENTATION_TYPE>(out cast))
                 ApplyFunctionSyncroToRepresentation(cast, function_syncro);
+
+            return true;
         }
+
+        public RepresentationInfo_Function(string n) : base(n, typeof(REPRESENTATION_TYPE)) { }
     }
 }

@@ -16,9 +16,9 @@ namespace Crunchy.Sack
             sets = new Dictionary<RepresentationInfoSet, CmlSet>();
         }
 
-        public void SolidifyInstance(CmlExecution execution, object representation)
+        public void SolidifyInstance(CmlContext context, object representation)
         {
-            sets.Process(p => p.Key.SolidifyInstance(execution, representation, p.Value));
+            sets.Process(p => p.Key.SolidifyInstance(context, representation, p.Value));
         }
 
         public CmlSet GetSet(RepresentationInfoSet set)

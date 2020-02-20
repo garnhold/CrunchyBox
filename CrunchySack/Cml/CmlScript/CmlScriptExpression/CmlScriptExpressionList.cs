@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptExpressionList : CmlElement, CmlScriptElement
 	{
-        public void Compile(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        public void Compile(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetExpressions().Process(e => e.Compile(execution, request, request));
+            GetExpressions().Process(e => e.Compile(context, request, request));
         }
 
         public IEnumerable<CmlScriptValue> GetValues()

@@ -16,12 +16,14 @@ namespace Crunchy.Sack
     
     public partial class CmlComponentSourceList : CmlElement
 	{
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public IEnumerable<object> Instance(CmlContext context)
         {
-            container.Insert(
-                execution,
-                new CmlValue_ComponentSourceList(this)
-            );
+            return GetComponentSources().Convert(s => s.Instance(context));
+        }
+
+        public CmlValue Solidify(CmlContext context)
+        {
+            return new CmlValue_SystemValues(Instance(context));
         }
 	}
 	

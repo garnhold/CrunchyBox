@@ -16,7 +16,7 @@ namespace Crunchy.Sack
     
     public abstract partial class CmlComponentSource : CmlElement
 	{
-        public abstract void SolidifyInto(CmlExecution execution, CmlContainer container);
+        public abstract object Instance(CmlContext context);
 	}
 	
 }

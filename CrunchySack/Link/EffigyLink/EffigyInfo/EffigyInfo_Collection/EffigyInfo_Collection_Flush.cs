@@ -10,18 +10,13 @@ namespace Crunchy.Sack
     
     public abstract class EffigyInfo_Collection_Flush : EffigyInfo_Collection
     {
-        public abstract void ClearChildren(object representation);
-
         public EffigyInfo_Collection_Flush(Type r, Type c) : base(r, c) { }
 
         public override void Update(EffigyLink link, object representation, IList<object> old_values, IList<object> new_values)
         {
-            ClearChildren(representation);
-
             old_values.Process(v => link.UnlinkValue(v));
-            new_values.Process(v => link.CreateRepresentationInto(v, delegate(object child) {
-                AddChild(representation, child);
-            }));
+
+            SetChildren(representation, new_values.Convert(v => link.Instance(v)));
         }
     }
 }

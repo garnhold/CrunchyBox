@@ -12,11 +12,17 @@ namespace Crunchy.Sack
     {
         private AttachedObjectField<object, IDictionary<object, object>> field;
 
+        public abstract void AddChild(object representation, object child);
         public abstract void RemoveChild(object representation, object child);
 
         public EffigyInfo_Collection_Orderless(Type r, Type c) : base(r, c)
         {
             field = new AttachedObjectField<object, IDictionary<object, object>>(o => new Dictionary<object, object>());
+        }
+
+        public override void SetChildren(object representation, IEnumerable<object> children)
+        {
+            children.Process(c => AddChild(representation, c));
         }
 
         public override void Update(EffigyLink link, object representation, IList<object> old_values, IList<object> new_values)
@@ -37,7 +43,7 @@ namespace Crunchy.Sack
             foreach (object value in added_values)
             {
                 value_to_sub_representation.Add(value,
-                    link.CreateAndGetRepresentationInto(value, c => AddChild(representation, c))
+                    link.Instance(value).Chain(c => AddChild(representation, c))
                 );
             }
         }

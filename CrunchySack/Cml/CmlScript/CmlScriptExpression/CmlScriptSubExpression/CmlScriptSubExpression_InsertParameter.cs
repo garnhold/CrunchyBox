@@ -16,12 +16,11 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSubExpression_InsertParameter : CmlScriptSubExpression
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            CmlContainer_Value container = new CmlContainer_Value();
-
-            GetInsertParameter().SolidifyInto(execution, container, true);
-            return request.AddSecondaryArgument(container.GetValue().CreateScriptArgument());
+            return request.AddSecondaryArgument(
+                GetInsertParameter().Solidify(context, true).CreateScriptArgument()
+            );
         }
 	}
 	

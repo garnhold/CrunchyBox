@@ -11,22 +11,22 @@ namespace Crunchy.Sack
     public class ClassLibrary
     {
         private List<ClassProvider> class_providers;
-        private Dictionary<Tuple<Type, string>, CmlEntry_Class> manual_classes;
+        private Dictionary<Tuple<Type, string>, CmlClass> manual_classes;
 
-        private OperationCache<CmlEntry_Class, Type, string> class_cache;
+        private OperationCache<CmlClass, Type, string> class_cache;
 
         public ClassLibrary()
         {
             class_providers = new List<ClassProvider>();
-            manual_classes = new Dictionary<Tuple<Type, string>, CmlEntry_Class>();
+            manual_classes = new Dictionary<Tuple<Type, string>, CmlClass>();
 
-            class_cache = new OperationCache<CmlEntry_Class, Type, string>("class_cache", delegate(Type type, string layout) {
+            class_cache = new OperationCache<CmlClass, Type, string>("class_cache", delegate(Type type, string layout) {
                 return manual_classes.GetValue(Tuple.New(type, layout)) ?? 
                     class_providers.Convert(p => p.GetClass(type, layout)).GetFirstNonNull();
             });
         }
 
-        public void AddClass(CmlEntry_Class @class)
+        public void AddClass(CmlClass @class)
         {
             manual_classes[Tuple.New(@class.GetTargetType(), @class.GetLayout())] = @class;
             class_cache.Clear();
@@ -38,15 +38,15 @@ namespace Crunchy.Sack
             class_cache.Clear();
         }
 
-        public CmlEntry_Class GetClass(Type type, string layout)
+        public CmlClass GetClass(Type type, string layout)
         {
             return class_cache.Fetch(type, layout);
         }
 
-        public CmlEntry_Class AssertGetClass(Type type, string layout)
+        public CmlClass AssertGetClass(Type type, string layout)
         {
             return GetClass(type, layout)
-                .AssertNotNull(() => new CmlRuntimeError_UnableToFindClass(type, layout));
+                .AssertNotNull(() => new CmlRuntimeError_UnableToFindClassException(type, layout));
         }
     }
 }

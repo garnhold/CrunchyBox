@@ -15,6 +15,11 @@ namespace Crunchy.Sack
 
         public EffigyInfo_Collection_IslandMorph(Type r, Type c) : base(r, c) { }
 
+        public override void SetChildren(object representation, IEnumerable<object> children)
+        {
+            children.ProcessWithIndex((i, c) => InsertChild(representation, i, c));
+        }
+
         public override void Update(EffigyLink link, object representation, IList<object> old_values, IList<object> new_values)
         {
             IslandMorphInfo info = old_values.CalculateIslandMorph(new_values);
@@ -25,11 +30,9 @@ namespace Crunchy.Sack
                 RemoveChildAt(representation, info.remove_range.start);
             }
 
-            new_values.SubSection(info.insert_range).ProcessWithIndex(delegate(int index, object value) {
-                link.CreateRepresentationInto(value, delegate(object child) {
-                    InsertChild(representation, info.insert_index + index, child);
-                });
-            });
+            new_values.SubSection(info.insert_range).ProcessWithIndex(
+                (i, v) => InsertChild(representation, info.insert_index + i, link.Instance(v))
+            );
         }
     }
 }

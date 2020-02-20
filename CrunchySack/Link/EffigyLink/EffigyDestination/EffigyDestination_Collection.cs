@@ -17,11 +17,6 @@ namespace Crunchy.Sack
             collection_info = i;
         }
 
-        public void AddChild(object child)
-        {
-            collection_info.AddChild(GetRepresentation(), child);
-        }
-
         public void Update(EffigyLink link, IList<object> old_values, IList<object> new_values)
         {
             collection_info.Update(link, GetRepresentation(), old_values, new_values);

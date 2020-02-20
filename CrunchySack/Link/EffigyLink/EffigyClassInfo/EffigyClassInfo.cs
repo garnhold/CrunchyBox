@@ -10,6 +10,6 @@ namespace Crunchy.Sack
     
     public abstract class EffigyClassInfo
     {
-        public abstract CmlEntry_Class AssertGetClass(CmlExecution execution);
+        public abstract CmlClass AssertGetClass(CmlContext context);
     }
 }

@@ -13,11 +13,7 @@ namespace Crunchy.Sack
         static public void AddClass(this ClassLibrary item, Type type, string layout, string text)
         {
             item.AddClass(
-                new CmlEntry_Class_ClassDefinition(
-                    type,
-                    layout,
-                    CmlClassDefinition.DOMify(text)
-                )
+                new CmlClass_Entity(type, layout, CmlEntity.DOMify(text))
             );
         }
     }

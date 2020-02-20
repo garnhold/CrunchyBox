@@ -20,12 +20,10 @@ namespace Crunchy.Sack
             KeyValuePair.New("group", DEFAULT_GROUP),
             KeyValuePair.New("layout", DEFAULT_LAYOUT)
         );
-
-        public override void SolidifyInto(CmlExecution execution, CmlContainer container)
+            
+        public override CmlValue_Link Solidify(CmlContext context)
         {
-            container.Insert(execution,
-                new CmlValue_Link(GetLink().CompileVariableInstance(execution), this)
-            );
+            return new CmlValue_Link_Normal(GetLink().CompileVariableInstance(context), this);
         }
 
         public LookupBackedSet<string, string> GetInfoSettings()

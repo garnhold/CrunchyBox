@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlComponentSource_Constructor : CmlComponentSource
 	{
-        public override void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public override object Instance(CmlContext context)
         {
-            GetConstructor().SolidifyInto(execution, container);
+            return GetConstructor().Invoke(context);
         }
 	}
 	

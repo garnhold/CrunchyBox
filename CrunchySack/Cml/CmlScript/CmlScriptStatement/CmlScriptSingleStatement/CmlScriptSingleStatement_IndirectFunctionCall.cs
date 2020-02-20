@@ -16,10 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSingleStatement_IndirectFunctionCall : CmlScriptSingleStatement
 	{
-        protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetIndirectionExpression().Compile(execution, request, this_value);
-            GetFunctionCall().Compile(execution, request, GetIndirectionExpression().GetValue());
+            GetIndirectionExpression().Compile(context, request, this_value);
+            GetFunctionCall().Compile(context, request, GetIndirectionExpression().GetValue());
 
             return GetFunctionCall().GetValue().GetILValue().CreateILCalculate();
         }

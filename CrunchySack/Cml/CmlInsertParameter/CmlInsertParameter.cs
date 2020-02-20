@@ -16,15 +16,30 @@ namespace Crunchy.Sack
     
     public partial class CmlInsertParameter : CmlElement
 	{
-        public void SolidifyInto(CmlExecution execution, CmlContainer container, bool assert)
+        public CmlValue Solidify(CmlContext context, bool assert)
         {
-            execution.GetCallContext().GetParameterSpace().IfNotNull(s => s.GetParameter(GetId())).IfNotNull(
-                p => p.SolidifyInto(execution, container),
-                () => GetDefaultValueSource().IfNotNull(
-                    v => v.SolidifyInto(execution, container),
-                    () => assert.ThrowIfTrue(() => new CmlRuntimeError_InvalidIdException("parameter", GetId()))
-                )
-            );
+            return (
+                context.GetParameterSpace().IfNotNull(s => s.GetParameter(GetId())).IfNotNull(p => p.Solidify()) ??
+                GetDefaultValueSource().IfNotNull(s => s.Solidify(context))
+            )
+            .AssertNotNull(assert, () => new CmlRuntimeError_InvalidIdException("parameter", GetId()));
+        }
+
+        public CmlValue_Link SolidifyLink(CmlContext context, bool assert)
+        {
+            return Solidify(context, assert)
+                .AssertConvert<CmlValue, CmlValue_Link>(assert, () => new CmlRuntimeError_UnexpectedInsertParameterTypeException(typeof(CmlValue_Link), GetId()));
+        }
+
+        public CmlValue_Function SolidifyFunction(CmlContext context, bool assert)
+        {
+            return Solidify(context, assert)
+                .AssertConvert<CmlValue, CmlValue_Function>(assert, () => new CmlRuntimeError_UnexpectedInsertParameterTypeException(typeof(CmlValue_Function), GetId()));
+        }
+
+        public object Instance(CmlContext context, bool assert)
+        {
+            return Solidify(context, assert).ForceSystemValue();
         }
 	}
 	

@@ -9,23 +9,23 @@ namespace Crunchy.Sack
     {
         private Variable variable;
 
-        public RepresentationInfoSetChildrenSelector_SingleIndex(string n, Variable v) : base(n)
+        private void SolidifyInstanceInternal(CmlValue_Link value, object representation, EffigyLink effigy_link, CmlContext context)
         {
-            variable = v;
-        }
-
-        public override void SolidifyInstance(CmlExecution execution, object representation, EffigyLink effigy_link, CmlSetMember member)
-        {
-            execution.AddVariableLink(
-                member.GetGroup(),
+            context.AddVariableLink(
+                value.GetGroup(),
 
                 new VariableLink_Simple_Process(
-                    new VariableNode(member.GetVariableInstance()),
+                    new VariableNode(value.GetVariableInstance()),
                     new VariableNode(variable.CreateStrongInstance(representation)),
                     o => effigy_link.GetValues().FindIndexOf(o),
                     i => effigy_link.GetValues().Get(i.ConvertEX<int>())
                 )
             );
+        }
+
+        public RepresentationInfoSetChildrenSelector_SingleIndex(string n, Variable v) : base(n)
+        {
+            variable = v;
         }
     }
 

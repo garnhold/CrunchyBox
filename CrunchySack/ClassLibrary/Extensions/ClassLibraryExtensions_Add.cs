@@ -9,13 +9,13 @@ namespace Crunchy.Sack
     
     static public class ClassLibraryExtensions_Add
     {
-        static public void AddClasses(this ClassLibrary item, IEnumerable<CmlEntry_Class> to_add)
+        static public void AddClasses(this ClassLibrary item, IEnumerable<CmlClass> to_add)
         {
             to_add.Process(c => item.AddClass(c));
         }
-        static public void AddClasses(this ClassLibrary item, params CmlEntry_Class[] to_add)
+        static public void AddClasses(this ClassLibrary item, params CmlClass[] to_add)
         {
-            item.AddClasses((IEnumerable<CmlEntry_Class>)to_add);
+            item.AddClasses((IEnumerable<CmlClass>)to_add);
         }
 
         static public void AddClassProviders(this ClassLibrary item, IEnumerable<ClassProvider> to_add)

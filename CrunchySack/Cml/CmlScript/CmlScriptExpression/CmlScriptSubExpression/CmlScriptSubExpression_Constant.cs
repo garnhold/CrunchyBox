@@ -18,7 +18,7 @@ namespace Crunchy.Sack
 	{
         protected abstract object GetConstant();
 
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
             return new CmlScriptValue_Basic(
                 ILLiteral.New(GetConstant())

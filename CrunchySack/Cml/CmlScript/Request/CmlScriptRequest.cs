@@ -17,8 +17,7 @@ namespace Crunchy.Sack
     
     public class CmlScriptRequest : CmlScriptValue
     {
-        private CmlTargetInfo target_info;
-        private CmlCallContext call_context;
+        private CmlContext context;
 
         private List<CmlScriptValue_Argument> arguments;
         private Dictionary<string, CmlScriptValue> indirect_values;
@@ -32,15 +31,14 @@ namespace Crunchy.Sack
         private CmlScriptValue_Argument this_representation_argument;
         private Dictionary<string, CmlScriptValue> insert_representation_values;
 
-        public CmlScriptRequest(CmlExecution e)
+        public CmlScriptRequest(CmlContext c)
         {
-            target_info = e.GetTargetInfo();
-            call_context = e.GetCallContext();
+            context = c;
 
             arguments = new List<CmlScriptValue_Argument>();
             indirect_values = new Dictionary<string, CmlScriptValue>();
 
-            this_argument = AddPrimaryArgument(new CmlScriptValue_Argument_Single_Constant(target_info.GetTarget()));
+            this_argument = AddPrimaryArgument(new CmlScriptValue_Argument_Single_Constant(context.GetTargetInfo().GetTarget()));
             host_argument = AddPrimaryArgument(new CmlScriptValue_Argument_Host());
 
             parent_argument = null;
@@ -91,7 +89,7 @@ namespace Crunchy.Sack
         public override CmlScriptValue GetIndirectValue(string id)
         {
             return indirect_values.GetOrCreateValue(id, delegate() {
-                return (target_info.GetEngine().GetGlobalLibrary()
+                return (context.GetEngine().GetGlobalLibrary()
                     .CreateScriptValue(id, host_argument) ?? this_argument.GetIndirectValue(id));
             });
         }
@@ -105,7 +103,7 @@ namespace Crunchy.Sack
         {
             if (parent_argument == null)
             {
-                parent_argument = target_info.GetImmediateParent()
+                parent_argument = GetTargetInfo().GetImmediateParent()
                     .IfNotNull(p => AddSecondaryArgument(new CmlScriptValue_Argument_Single_Constant(p)));
             }
 
@@ -115,7 +113,7 @@ namespace Crunchy.Sack
         public CmlScriptValue GetParentOfTypeValue(Type type)
         {
             return parent_of_type_arguments.GetOrCreateValue(type, delegate() {
-                return target_info.GetParentOfType(type)
+                return GetTargetInfo().GetParentOfType(type)
                     .IfNotNull(p => AddSecondaryArgument(new CmlScriptValue_Argument_Single_Constant(p)));
             });
         }
@@ -124,7 +122,7 @@ namespace Crunchy.Sack
         {
             if (this_representation_argument == null)
             {
-                this_representation_argument = call_context.GetRepresentationSpace()
+                this_representation_argument = context.GetRepresentationSpace()
                     .IfNotNull(s => s.GetThisRepresentation())
                     .IfNotNull(r => AddSecondaryArgument(new CmlScriptValue_Argument_Single_Constant(r)));
             }
@@ -135,7 +133,7 @@ namespace Crunchy.Sack
         public CmlScriptValue InsertRepresentationValue(string id)
         {
             return insert_representation_values.GetOrCreateValue(id, delegate() {
-                return call_context.GetRepresentationSpace()
+                return context.GetRepresentationSpace()
                     .IfNotNull(s => s.GetRepresentation(id))
                     .IfNotNull(r => AddSecondaryArgument(new CmlScriptValue_Argument_Single_Constant(r)));
             });
@@ -143,7 +141,7 @@ namespace Crunchy.Sack
 
         public CmlTargetInfo GetTargetInfo()
         {
-            return target_info;
+            return context.GetTargetInfo();
         }
 
         public CmlScriptValue_Argument GetThisArgument()

@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptStatement_Single : CmlScriptStatement
 	{
-        protected override ILStatement CompileILStatement(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override ILStatement CompileILStatement(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetSingleStatement().Compile(execution, request, this_value);
+            GetSingleStatement().Compile(context, request, this_value);
 
             return GetSingleStatement().GetILStatement();
         }

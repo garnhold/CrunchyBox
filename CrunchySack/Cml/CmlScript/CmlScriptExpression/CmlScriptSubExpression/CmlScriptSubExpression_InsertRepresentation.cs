@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSubExpression_InsertRepresentation : CmlScriptSubExpression
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetInsertRepresentation().Compile(execution, request, this_value);
+            GetInsertRepresentation().Compile(context, request, this_value);
 
             return GetInsertRepresentation().GetValue();
         }

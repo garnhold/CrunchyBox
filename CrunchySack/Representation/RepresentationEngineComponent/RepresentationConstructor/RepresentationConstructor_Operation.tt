@@ -20,18 +20,18 @@ namespace Crunchy.Sack
     
     <#for(int number_arguments = 0; number_arguments <= max_number_arguments; number_arguments++){#>
 	<#
-	string basic_class_type = "RepresentationConstructor_Simple_Operation";
+	string basic_class_type = "RepresentationConstructor_Operation";
 	string generic_arguments = TTCS.ArgumentsForGeneric("P#", number_arguments, "T");
 
 	string class_type = basic_class_type + generic_arguments;
 	string operation_type = "Operation" + generic_arguments;
 	#>
 
-    public class <#=class_type#> : RepresentationConstructor_Simple
+    public class <#=class_type#> : RepresentationConstructor
 	{
 		private <#=operation_type#> operation;
 
-		protected override object Instance(CmlExecution execution, IEnumerable<object> arguments)
+		public override object Instance(CmlContext context, IEnumerable<object> arguments)
         {
 			<#for(int i = 1; i <= number_arguments; i++){#>
 				object obj<#=i#>;

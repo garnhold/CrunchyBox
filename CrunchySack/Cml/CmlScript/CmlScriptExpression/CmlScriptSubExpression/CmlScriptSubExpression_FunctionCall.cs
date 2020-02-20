@@ -16,9 +16,9 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptSubExpression_FunctionCall : CmlScriptSubExpression
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetFunctionCall().Compile(execution, request, this_value);
+            GetFunctionCall().Compile(context, request, this_value);
 
             return GetFunctionCall().GetValue();
         }

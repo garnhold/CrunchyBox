@@ -16,12 +16,13 @@ namespace Crunchy.Sack
     
     public partial class CmlConstructor : CmlElement
 	{
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public object Invoke(CmlContext context)
         {
-            CmlContainer_Values values = new CmlContainer_Values();
-
-            GetArgumentSources().SolidifyInto(execution, values);
-            execution.GetTargetInfo().GetEngine().AssertConstructorInto(execution, GetName(), values.ForceSystemValues(), container);
+            return context.GetEngine().AssertInvokeConstructor(
+                context, 
+                GetName(), 
+                GetArgumentSources().Instance(context)
+            );
         }
 	}
 	

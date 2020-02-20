@@ -18,11 +18,11 @@ namespace Crunchy.Sack
     {
         private CmlScriptRequest request;
 
-        protected CmlScriptRequest InitializeRequest(CmlExecution execution)
+        protected CmlScriptRequest InitializeRequest(CmlContext context)
         {
-            request = new CmlScriptRequest(execution);
+            request = new CmlScriptRequest(context);
 
-            this.GetTopicalChildren<CmlScriptElement>().Process(e => e.Compile(execution, request, request));
+            this.GetTopicalChildren<CmlScriptElement>().Process(e => e.Compile(context, request, request));
             return request;
         }
     }

@@ -10,57 +10,49 @@ namespace Crunchy.Sack
     
     public class EffigyInfo_Collection_Flush_Process : EffigyInfo_Collection_Flush
     {
-        private Process<object> clear_process;
-        private Process<object, object> add_process;
+        private Process<object, IEnumerable<object>> set_process;
 
-        public EffigyInfo_Collection_Flush_Process(Type r, Type c, Process<object> cp, Process<object, object> ap) : base(r, c)
+        public EffigyInfo_Collection_Flush_Process(Type r, Type c, Process<object, IEnumerable<object>> sp) : base(r, c)
         {
-            clear_process = cp;
-            add_process = ap;
+            set_process = sp;
         }
 
-        public override void ClearChildren(object representation)
+        public override void SetChildren(object representation, IEnumerable<object> children)
         {
-            clear_process(representation);
-        }
-
-        public override void AddChild(object representation, object child)
-        {
-            add_process(representation, child);
+            set_process(representation, children);
         }
     }
 
     public class EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE> : EffigyInfo_Collection_Flush_Process
     {
-        public EffigyInfo_Collection_Flush_Process(Process<REPRESENTATION_TYPE> cp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap)
+        public EffigyInfo_Collection_Flush_Process(Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> sp)
             : base(typeof(REPRESENTATION_TYPE), typeof(CHILD_TYPE),
-                r => cp((REPRESENTATION_TYPE)r),
-                (r, c) => ap((REPRESENTATION_TYPE)r, (CHILD_TYPE)c)
+                (r, c) => sp((REPRESENTATION_TYPE)r, c.Convert<object, CHILD_TYPE>())
             )
         { }
     }
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddFlushChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
+        static public void AddFlushChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> sp)
         {
             item.AddChildrenInfo(n,
-                new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
+                new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(sp)
             );
         }
-        static public void AddFlushChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
+        static public void AddFlushChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> sp)
         {
-            item.AddFlushChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, c, a);
+            item.AddFlushChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, sp);
         }
 
-        static public RepresentationInfoSet_SelectableChildren AddFlushSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
+        static public RepresentationInfoSet_SelectableChildren AddFlushSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> sp)
         {
             return item.AddSelectableChildrenInfo(n,
-                new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(c, a)
+                new EffigyInfo_Collection_Flush_Process<REPRESENTATION_TYPE, CHILD_TYPE>(sp)
             );
         }
-        static public RepresentationInfoSet_SelectableChildren AddFlushSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE> c, Process<REPRESENTATION_TYPE, CHILD_TYPE> a)
+        static public RepresentationInfoSet_SelectableChildren AddFlushSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> sp)
         {
-            return item.AddFlushSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, c, a);
+            return item.AddFlushSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, sp);
         }
     }
 }

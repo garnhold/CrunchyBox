@@ -34,11 +34,11 @@ namespace Crunchy.Sack
             link_managers.Values.Process(m => m.Update(group));
         }
 
-        public EffigyLink(CmlExecution e, EffigySource s, EffigyDestination d, EffigyClassInfo c)
+        public EffigyLink(CmlContext context, EffigySource s, EffigyDestination d, EffigyClassInfo c)
         {
-            target_info = e.GetTargetInfo();
+            target_info = context.GetTargetInfo();
 
-            syncro_manager = e.GetSyncroManager();
+            syncro_manager = context.GetSyncroManager();
             link_managers = new Dictionary<object, LinkManager>();
 
             effigy_source = s;
@@ -52,15 +52,15 @@ namespace Crunchy.Sack
             link_managers.Remove(value);
         }
 
-        public void CreateRepresentationInto(object value, CmlContainer container)
+        public object Instance(object value)
         {
-            CmlExecution execution = new CmlExecution(
+            CmlContext_Base context = new CmlContext_Base(
                 target_info.CreateChild(value),
                 link_managers.AddAndGet(value, new LinkManager()),
                 syncro_manager
             );
 
-            class_info.AssertGetClass(execution).SolidifyInto(execution, container);
+            return class_info.AssertGetClass(context).Instance(context);
         }
 
         public IEnumerable<object> GetValues()

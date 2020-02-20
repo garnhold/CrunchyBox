@@ -13,12 +13,12 @@ namespace Crunchy.Sack
         private LinkManager link_manager;
         private SyncroManager syncro_manager;
 
-        public RepresentationResult(object r, CmlExecution e)
+        public RepresentationResult(object r, CmlContext c)
         {
             representation = r;
 
-            link_manager = e.GetLinkManager();
-            syncro_manager = e.GetSyncroManager();
+            link_manager = c.GetLinkManager();
+            syncro_manager = c.GetSyncroManager();
         }
 
         public object GetRepresentation()

@@ -16,15 +16,7 @@ namespace Crunchy.Sack
     
     public abstract partial class CmlPrimitive : CmlElement
 	{
-        public abstract object GetSystemValue();
-
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
-        {
-            container.Insert(
-                execution,
-                new CmlValue_SystemValue(GetSystemValue())
-            );
-        }
+        public abstract object Instance();
 	}
 	
 }

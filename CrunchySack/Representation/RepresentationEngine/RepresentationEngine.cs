@@ -67,44 +67,41 @@ namespace Crunchy.Sack
             c.Initilize(this);
         }
 
-        public CmlEntityInstance AssertEntityInstance(CmlExecution execution, CmlEntity entity, string tag)
+        public object AssertInstanceEntity(CmlContext context, string tag, CmlEntity entity)
         {
             return (
-                (CmlEntityInstance)GetInstancer(tag).IfNotNull(i => new CmlEntityInstance_Normal(entity, i)) ??
-                (CmlEntityInstance)GetFragmentLibrary().GetFragment(tag).IfNotNull(f => new CmlEntityInstance_Fragment(entity, f))
+                GetInstancer(tag).IfNotNull(i => i.Instance(context, entity)) ?? 
+                GetFragmentLibrary().GetFragment(tag).IfNotNull(f => f.Instance(context, entity))
             ).AssertNotNull(() => new CmlRuntimeError_InvalidIdException("entity", tag));
         }
-        public object AssertInstance(CmlExecution execution, string tag)
+        public object AssertInstance(CmlContext context, string tag)
         {
             return GetInstancer(tag)
                 .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("instancer", tag))
-                .Instance(execution);
+                .Instance(context);
         }
         public RepresentationInstancer GetInstancer(string tag)
         {
             return instancers.GetValue(tag);
         }
 
-        public void AssertConstructorInto(CmlExecution execution, string name, IEnumerable<object> system_values, CmlContainer container)
+        public object AssertInvokeConstructor(CmlContext context, string name, IEnumerable<object> system_values)
         {
             List<object> system_value_list = system_values.ToList();
 
-            GetConstructor(name, system_value_list.Count)
+            return GetConstructor(name, system_value_list.Count)
                 .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("constructor", name + "(" + system_value_list.Count + ")"))
-                .InstanceInto(execution, system_value_list, container);
+                .Invoke(context, system_value_list);
         }
         public RepresentationConstructor GetConstructor(string name, int number_parameters)
         {
             return constructors.GetValue(Tuple.New(name, number_parameters));
         }
 
-        public CmlContainer AssertCreateInfoContainer(CmlExecution execution, object representation, string name)
+        public RepresentationInfo AssertGetInfo(Type type, string name)
         {
-            return new CmlContainer_EndPoint_Info(
-                representation,
-                GetInfo(name, representation.GetTypeEX())
-                    .AssertNotNull(() => new CmlRuntimeError_InvalidIdForTypeException("info", name, representation.GetTypeEX()))
-            );
+            return GetInfo(name, type)
+                .AssertNotNull(() => new CmlRuntimeError_InvalidIdForTypeException("info", name, type));
         }
         public RepresentationInfo GetInfo(string name, Type type)
         {
@@ -113,10 +110,10 @@ namespace Crunchy.Sack
                 .IfNotNull(d => d.GetValue(type));
         }
 
-        public void AssertApplyGeneralModifiers(CmlExecution execution, object representation)
+        public void AssertApplyGeneralModifiers(CmlContext context, object representation)
         {
             GetGeneralModifiers(representation.GetTypeEX())
-                .Process(m => m.Apply(execution, representation));
+                .Process(m => m.Apply(context, representation));
         }
         public IEnumerable<RepresentationModifier_General> GetGeneralModifiers(Type type)
         {

@@ -7,32 +7,62 @@ namespace Crunchy.Sack
     
     public class RepresentationInfo_SetMember : RepresentationInfo
     {
+        private bool can_set_value;
+        private bool can_set_values;
+        private bool can_link_value;
+        private bool can_link_value_with_entity;
+
         private RepresentationInfoSet set;
 
-        public RepresentationInfo_SetMember(string n, RepresentationInfoSet s) : base(n, s.GetRepresentationType())
+        private bool SetSetValue(CmlValue value, CmlContext context)
         {
-            set = s;
-        }
-
-        public override void SetValue(CmlExecution execution, object representation, object value)
-        {
-            execution.GetCallContext().GetSetSpace()
+            context.GetSetSpace()
                 .GetSet(set)
                 .SetValue(GetName(), value);
+
+            return true;
         }
 
-        public override void LinkValue(CmlExecution execution, object representation, VariableInstance variable_instance, HasInfo info)
+        private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
         {
-            execution.GetCallContext().GetSetSpace()
-                .GetSet(set)
-                .LinkValue(GetName(), variable_instance, info);
+            if (can_set_value)
+                return SetSetValue(value, context);
+
+            return false;
         }
 
-        public override void LinkValueWithEntity(CmlExecution execution, object representation, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
+        private bool PushToRepresentationInternal(CmlValue_SystemValues value, object representation, CmlContext context)
         {
-            execution.GetCallContext().GetSetSpace()
-                .GetSet(set)
-                .LinkValueWithEntity(GetName(), variable_instance, entity, info);
+            if (can_set_values)
+                return SetSetValue(value, context);
+
+            return false;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
+        {
+            if (can_link_value)
+                return SetSetValue(value, context);
+
+            return false;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_Link_WithEntity value, object representation, CmlContext context)
+        {
+            if (can_link_value_with_entity)
+                return SetSetValue(value, context);
+
+            return false;
+        }
+
+        public RepresentationInfo_SetMember(string n, bool csv, bool csvs, bool clv, bool clve, RepresentationInfoSet s) : base(n, s.GetRepresentationType())
+        {
+            can_set_value = csv;
+            can_set_values = csvs;
+            can_link_value = clv;
+            can_link_value_with_entity = clve;
+
+            set = s;
         }
     }
 }

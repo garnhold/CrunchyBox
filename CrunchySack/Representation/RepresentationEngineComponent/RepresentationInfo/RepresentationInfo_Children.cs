@@ -11,42 +11,39 @@ namespace Crunchy.Sack
     {
         private EffigyInfo effigy_info;
 
+        private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
+        {
+            effigy_info.SetChildren(representation, value.GetSystemValue().WrapAsEnumerable());
+
+            return true;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_SystemValues value, object representation, CmlContext context)
+        {
+            effigy_info.SetChildren(representation, value.GetSystemValues());
+
+            return true;
+        }
+
+        private bool PushToRepresentationInternal(CmlValue_Link value, object representation, CmlContext context)
+        {
+            context.AddEffigyLink(
+                value.GetGroup(),
+
+                effigy_info.CreateLink(
+                    context,
+                    representation,
+                    value.GetVariableInstance(),
+                    value.GetClass()
+                )
+            );
+
+            return true;
+        }
+
         public RepresentationInfo_Children(string n, EffigyInfo e) : base(n, e.GetRepresentationType())
         {
             effigy_info = e;
-        }
-
-        public override void SetValue(CmlExecution execution, object representation, object value)
-        {
-            effigy_info.AddChild(representation, value);
-        }
-
-        public override void LinkValue(CmlExecution execution, object representation, VariableInstance variable_instance, HasInfo info)
-        {
-            execution.AddEffigyLink(
-                info.GetInfoValue("group"),
-
-                effigy_info.CreateLink(
-                    execution,
-                    representation,
-                    variable_instance,
-                    new EffigyClassInfo_Dynamic(info.GetInfoValue("layout"))
-                )
-            );
-        }
-
-        public override void LinkValueWithEntity(CmlExecution execution, object representation, VariableInstance variable_instance, CmlEntity entity, HasInfo info)
-        {
-            execution.AddEffigyLink(
-                info.GetInfoValue("group"),
-
-                effigy_info.CreateLink(
-                    execution,
-                    representation,
-                    variable_instance,
-                    new EffigyClassInfo_Static(entity)
-                )
-            );
         }
     }
 

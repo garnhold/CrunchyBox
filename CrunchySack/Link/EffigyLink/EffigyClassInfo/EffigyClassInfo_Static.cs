@@ -17,9 +17,9 @@ namespace Crunchy.Sack
             entity = e;
         }
 
-        public override CmlEntry_Class AssertGetClass(CmlExecution execution)
+        public override CmlClass AssertGetClass(CmlContext context)
         {
-            return new CmlEntry_Class_Entity(execution.GetTargetInfo().GetTargetType(), "<inline>", entity);
+            return new CmlClass_Entity(context.GetTargetInfo().GetTargetType(), "<inline>", entity);
         }
     }
 }

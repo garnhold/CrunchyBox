@@ -16,10 +16,10 @@ namespace Crunchy.Sack
     
     public partial class CmlScriptExpression_Indirect : CmlScriptExpression
 	{
-        protected override CmlScriptValue CompileValue(CmlExecution execution, CmlScriptRequest request, CmlScriptValue this_value)
+        protected override CmlScriptValue CompileValue(CmlContext context, CmlScriptRequest request, CmlScriptValue this_value)
         {
-            GetIndirectionExpression().Compile(execution, request, this_value);
-            GetSubExpression().Compile(execution, request, GetIndirectionExpression().GetValue());
+            GetIndirectionExpression().Compile(context, request, this_value);
+            GetSubExpression().Compile(context, request, GetIndirectionExpression().GetValue());
 
             return GetSubExpression().GetValue();
         }

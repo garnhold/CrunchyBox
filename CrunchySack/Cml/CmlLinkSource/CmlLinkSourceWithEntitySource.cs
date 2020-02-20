@@ -16,23 +16,12 @@ namespace Crunchy.Sack
     
     public partial class CmlLinkSourceWithEntitySource : CmlElement
 	{
-        public void SolidifyInto(CmlExecution execution, CmlContainer container)
+        public CmlValue Solidify(CmlContext context)
         {
-            container.Insert(
-                execution,
-                new CmlValue_LinkWithEntity(
-                    GetLinkSource().SolidifyLink(execution),
-                    GetEntity()
-                )
+            return new CmlValue_Link_WithEntity(
+                GetLinkSource().Solidify(context),
+                GetEntity()
             );
-        }
-
-        public CmlValue_LinkWithEntity SolidifyIntoLinkWithEntity(CmlExecution execution)
-        {
-            CmlContainer_Value value = new CmlContainer_Value();
-
-            SolidifyInto(execution, value);
-            return value.GetValue<CmlValue_LinkWithEntity>();
         }
 	}
 	

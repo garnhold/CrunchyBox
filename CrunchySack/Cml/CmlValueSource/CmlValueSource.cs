@@ -16,12 +16,7 @@ namespace Crunchy.Sack
     
     public abstract partial class CmlValueSource : CmlElement
 	{
-        public abstract void SolidifyInto(CmlExecution execution, CmlContainer container);
-
-        public CmlDeferredValue CreateDeferred(CmlExecution execution)
-        {
-            return new CmlDeferredValue(execution.GetCallContext(), this);
-        }
+        public abstract CmlValue Solidify(CmlContext context);
 	}
 	
 }

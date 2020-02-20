@@ -10,7 +10,7 @@ namespace Crunchy.Sack
     
     public class CmlRuntimeError_InfoSupportException : CmlRuntimeErrorException
 	{
-        public CmlRuntimeError_InfoSupportException(string support_type, RepresentationInfo info) : base("The " + info.GetName() + " attribute of " + info.GetRepresentationType() + " doesn't support " + support_type +".") { }
+        public CmlRuntimeError_InfoSupportException(Type value_type, RepresentationInfo info) : base("The " + info.GetName() + " attribute of " + info.GetRepresentationType() + " doesn't support " + value_type +".") { }
 	}
 	
 }

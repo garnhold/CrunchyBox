@@ -17,14 +17,14 @@ namespace Crunchy.Sack
             operation = o;
         }
 
+        public override void SetChildren(object representation, IEnumerable<object> children)
+        {
+            operation((REPRESENTATION_TYPE)representation).Set(children.Convert<object, CHILD_TYPE>());
+        }
+
         public override void RemoveChildAt(object representation, int index)
         {
             operation((REPRESENTATION_TYPE)representation).RemoveAt(index);
-        }
-
-        public override void AddChild(object representation, object child)
-        {
-            operation((REPRESENTATION_TYPE)representation).Add((CHILD_TYPE)child);
         }
 
         public override void InsertChild(object representation, int index, object child)
@@ -58,11 +58,6 @@ namespace Crunchy.Sack
         public override void RemoveChildAt(object representation, int index)
         {
             operation((REPRESENTATION_TYPE)representation).RemoveAt(index);
-        }
-
-        public override void AddChild(object representation, object child)
-        {
-            operation((REPRESENTATION_TYPE)representation).Add(child);
         }
 
         public override void InsertChild(object representation, int index, object child)
