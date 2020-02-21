@@ -15,12 +15,11 @@ namespace Crunchy.Sack
         private SyncroManager syncro_manager;
         private Dictionary<object, LinkManager> link_managers;
 
-        private EffigySource effigy_source;
-        private EffigyDestination effigy_destination;
-
         private EffigyClassInfo class_info;
 
         protected abstract void UpdateInternal();
+
+        public abstract IEnumerable<object> GetValues();
 
         public void Update()
         {
@@ -34,15 +33,12 @@ namespace Crunchy.Sack
             link_managers.Values.Process(m => m.Update(group));
         }
 
-        public EffigyLink(CmlContext context, EffigySource s, EffigyDestination d, EffigyClassInfo c)
+        public EffigyLink(CmlContext context, EffigyClassInfo c)
         {
             target_info = context.GetTargetInfo();
 
             syncro_manager = context.GetSyncroManager();
             link_managers = new Dictionary<object, LinkManager>();
-
-            effigy_source = s;
-            effigy_destination = d;
 
             class_info = c;
         }
@@ -61,11 +57,6 @@ namespace Crunchy.Sack
             );
 
             return class_info.AssertGetClass(context).Instance(context);
-        }
-
-        public IEnumerable<object> GetValues()
-        {
-            return effigy_source.GetValues();
         }
     }
 }

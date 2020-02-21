@@ -12,7 +12,7 @@ namespace Crunchy.Sack
     {
         public abstract void SetChild(object representation, object child);
 
-        public abstract void Update(EffigyLink link, object representation, object old_value, object new_value);
+        public abstract EffigySingleDestination CreateSingleDestination(object representation);
 
         public EffigyInfo_Single(Type r, Type c) : base(r, c) { }
 
@@ -25,8 +25,8 @@ namespace Crunchy.Sack
         {
             return new EffigyLink_Single(
                 context,
-                new EffigySource_Single(variable_instance),
-                new EffigyDestination_Single(representation, this),
+                variable_instance,
+                CreateSingleDestination(representation),
                 @class
             );
         }

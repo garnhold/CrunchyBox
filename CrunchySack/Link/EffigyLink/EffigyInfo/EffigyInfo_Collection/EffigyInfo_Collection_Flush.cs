@@ -10,13 +10,24 @@ namespace Crunchy.Sack
     
     public abstract class EffigyInfo_Collection_Flush : EffigyInfo_Collection
     {
-        public EffigyInfo_Collection_Flush(Type r, Type c) : base(r, c) { }
-
-        public override void Update(EffigyLink link, object representation, IList<object> old_values, IList<object> new_values)
+        protected override EffigyCollectionDestination CreateCollectionDestination(object representation)
         {
-            old_values.Process(v => link.UnlinkValue(v));
+            List<object> new_representations = new List<object>();
+            StaleDictionary<object, object> value_to_representation = new StaleDictionary<object, object>();
 
-            SetChildren(representation, new_values.Convert(v => link.Instance(v)));
+            return delegate (EffigyLink link, IList<object> old_values, IList<object> new_values) {
+                value_to_representation.MarkStale();
+
+                new_representations.Set(
+                    new_values.Convert(v => value_to_representation.GetOrCreateValue(v, () => link.Instance(v)))
+                );
+
+                value_to_representation.RemoveStale(p => link.UnlinkValue(p.Key));
+
+                SetChildren(representation, new_representations);
+            };
         }
+
+        public EffigyInfo_Collection_Flush(Type r, Type c) : base(r, c) { }
     }
 }

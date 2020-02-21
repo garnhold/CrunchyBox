@@ -7,23 +7,40 @@ namespace Crunchy.Sack
     using Dough;
     using Salt;
     using Noodle;
-    
+
+    public delegate void EffigyCollectionDestination(EffigyLink link, IList<object> old_values, IList<object> new_values);
+
     public class EffigyLink_Collection : EffigyLink
     {
-        private EffigySource_Collection collection_source;
-        private EffigyDestination_Collection collection_destination;
+        private List<object> transition_values;
+        private List<object> incoming_values;
+
+        private VariableInstance variable_instance;
+        private EffigyCollectionDestination destination;
 
         protected override void UpdateInternal()
         {
-            collection_source.Update(delegate(List<object> old_values, List<object> new_values) {
-                collection_destination.Update(this, old_values, new_values);
-            });
+            incoming_values.Set(variable_instance.GetContents().ToEnumerable<object>());
+
+            if (transition_values.AreElementsEqual(incoming_values) == false)
+            {
+                destination(this, transition_values, incoming_values);
+                Swap.Values(ref transition_values, ref incoming_values);
+            }
         }
 
-        public EffigyLink_Collection(CmlContext context, EffigySource_Collection s, EffigyDestination_Collection d, EffigyClassInfo c) : base(context, s, d, c)
+        public EffigyLink_Collection(CmlContext context, VariableInstance v, EffigyCollectionDestination d, EffigyClassInfo c) : base(context, c)
         {
-            collection_source = s;
-            collection_destination = d;
+            transition_values = new List<object>();
+            incoming_values = new List<object>();
+
+            variable_instance = v;
+            destination = d;
+        }
+
+        public override IEnumerable<object> GetValues()
+        {
+            return transition_values;
         }
     }
 }

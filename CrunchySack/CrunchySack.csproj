@@ -81,9 +81,6 @@
     <Compile Include="GlobalLibrary\Global\Global_StaticClass.cs" />
     <Compile Include="GlobalLibrary\Global\Global_Direct_Operation.cs" />
     <Compile Include="GlobalLibrary\Global\Global_Direct.cs" />
-    <Compile Include="Link\EffigyLink\EffigyDestination\EffigyDestination_Collection.cs" />
-    <Compile Include="Link\EffigyLink\EffigyDestination\EffigyDestination_Single.cs" />
-    <Compile Include="Link\EffigyLink\EffigyDestination\EffigyDestination.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_IList.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_Process.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph.cs" />
@@ -93,7 +90,6 @@
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink_Collection.cs" />
-    <Compile Include="Link\EffigyLink\EffigySource\EffigySource_Collection.cs" />
     <Compile Include="Syncro\FunctionSyncro\FunctionSyncro.cs" />
     <Compile Include="Syncro\SyncroManager.cs" />
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem_Inject.cs" />
@@ -239,8 +235,6 @@
     <Compile Include="LinkSyncroDaemon\LinkSyncroDaemon.cs" />
     <Compile Include="Link\VariableLink\VariableLinkState\VariableLinkState.cs" />
     <Compile Include="Link\VariableLink\VariableLink.cs" />
-    <Compile Include="Link\EffigyLink\EffigySource\EffigySource.cs" />
-    <Compile Include="Link\EffigyLink\EffigySource\EffigySource_Single.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink_Single.cs" />
@@ -262,8 +256,6 @@
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add.cs" />
     <Compile Include="Application\ApplicationRepresentationEngine.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityCompositeChild\CmlEntityCompositeChild.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_ReOrg_Process.cs" />
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions.cs" />
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions_EventHandler.cs" />
     <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless.cs" />
