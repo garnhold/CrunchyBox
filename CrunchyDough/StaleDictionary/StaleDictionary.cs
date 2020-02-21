@@ -15,7 +15,15 @@ namespace Crunchy.Dough
         public VALUE_TYPE this[KEY_TYPE key]
         {
             get { return dictionary[key].GetData(); }
-            set { dictionary[key].SetData(value, stale_id); }
+            set
+            {
+                StaleDictionaryElement<VALUE_TYPE> element;
+
+                if (dictionary.TryGetValue(key, out element))
+                    element.SetData(value, stale_id);
+                else
+                    Add(key, value);
+            }
         }
 
         public ICollection<KEY_TYPE> Keys { get { return dictionary.Keys; } }
