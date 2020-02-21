@@ -10,54 +10,107 @@ namespace Crunchy.Dough
         private int stale_id;
 
         public int Count { get { return dictionary.Count; } }
+        public bool IsReadOnly { get { return false; } }
 
         public VALUE_TYPE this[KEY_TYPE key]
         {
             get { return dictionary[key].GetData(); }
             set { dictionary[key].SetData(value, stale_id); }
         }
-        TValue this[TKey key]
+
+        public ICollection<KEY_TYPE> Keys { get { return dictionary.Keys; } }
+        public ICollection<VALUE_TYPE> Values { get { return dictionary.Values.Convert(v => v.GetData()); } }
+
+        public void MarkStale()
         {
-            get;
-            set;
+            stale_id++;
         }
 
-        ICollection<TKey> Keys
+        public void RemoveStale(Process<KeyValuePair<KEY_TYPE, VALUE_TYPE>> process)
         {
-            get;
+            dictionary.RemoveAll(delegate(KeyValuePair<KEY_TYPE, StaleDictionaryElement<VALUE_TYPE>> pair) {
+                if (pair.Value.IsStale(stale_id))
+                {
+                    process(new KeyValuePair<KEY_TYPE, VALUE_TYPE>(pair.Key, pair.Value.GetData()));
+
+                    return true;
+                }
+
+                return false;
+            });
         }
 
-        ICollection<TValue> Values
+        public void Clear()
         {
-            get;
+            dictionary.Clear();
         }
 
-        void Add(TKey key, TValue value);
-
-        bool ContainsKey(TKey key);
-
-        bool Remove(TKey key);
-
-        bool TryGetValue(TKey key, out TValue value);
-
-        int Count
+        public void Add(KEY_TYPE key, VALUE_TYPE value)
         {
-            get;
+            dictionary.Add(key, new StaleDictionaryElement<VALUE_TYPE>(value, stale_id));
         }
 
-        bool IsReadOnly
+        public void Add(KeyValuePair<KEY_TYPE, VALUE_TYPE> item)
         {
-            get;
+            Add(item.Key, item.Value);
         }
 
-        void Add(T item);
+        public bool ContainsKey(KEY_TYPE key)
+        {
+            return dictionary.ContainsKey(key);
+        }
 
-        void Clear();
+        public bool Contains(KeyValuePair<KEY_TYPE, VALUE_TYPE> item)
+        {
+            VALUE_TYPE value;
 
-        bool Contains(T item);
+            if (TryGetValue(item.Key, out value))
+            {
+                if (value.EqualsEX(item.Value))
+                    return true;
+            }
 
-        void CopyTo(T[] array, int arrayIndex);
+            return false;
+        }
 
-        bool Remove(T item);
+        public bool Remove(KEY_TYPE key)
+        {
+            return dictionary.Remove(key);
+        }
+
+        public bool Remove(KeyValuePair<KEY_TYPE, VALUE_TYPE> item)
+        {
+            return Remove(item.Key);
+        }
+
+        public void CopyTo(KeyValuePair<KEY_TYPE, VALUE_TYPE>[] array, int arrayIndex)
+        {
+            foreach (KeyValuePair<KEY_TYPE, VALUE_TYPE> pair in this)
+                array[arrayIndex++] = pair;
+        }
+
+        public bool TryGetValue(KEY_TYPE key, out VALUE_TYPE value)
+        {
+            StaleDictionaryElement<VALUE_TYPE> element;
+
+            if (dictionary.TryGetValue(key, out element))
+            {
+                value = element.GetData();
+                return true;
+            }
+
+            value = default(VALUE_TYPE);
+            return false;
+        }
+
+        public IEnumerator<KeyValuePair<KEY_TYPE, VALUE_TYPE>> GetEnumerator()
+        {
+            return dictionary.Convert(p => new KeyValuePair<KEY_TYPE, VALUE_TYPE>(p.Key, p.Value.GetData()))
+                .GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
