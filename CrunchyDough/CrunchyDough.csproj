@@ -1474,6 +1474,7 @@
     <Compile Include="Extensions\ICollection\ICollectionTransform.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Convert.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_ConvertWithIndex.cs" />
+    <Compile Include="Extensions\String\StringExtensions_CompareTo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

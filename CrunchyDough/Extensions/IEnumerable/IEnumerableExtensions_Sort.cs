@@ -112,5 +112,10 @@ namespace Crunchy.Dough
         {
             return item.Sort((x, y) => x.CompareTo(y));
         }
+
+        static public IEnumerable<T> NaturalSort<T>(this IEnumerable<T> item, Operation<string, T> operation)
+        {
+            return item.Sort((x, y) => operation(x).NaturalCompareTo(operation(y)));
+        }
     }
 }
