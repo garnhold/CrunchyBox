@@ -18,6 +18,7 @@ namespace Crunchy.Sack_Avalonia
         static public void Initilize(AvaloniaEngine engine)
         {
             engine.AddAvaloniaPropertyAttributeLinksForType<Panel>();
+            engine.AddChildrenInfo<Panel>(p => p.Children);
 
             engine.AddSimpleInstancer("HorizontalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Horizontal });
             engine.AddSimpleInstancer("VerticalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Vertical });
