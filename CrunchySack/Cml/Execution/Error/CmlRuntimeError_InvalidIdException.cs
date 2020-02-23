@@ -10,7 +10,7 @@ namespace Crunchy.Sack
     
     public class CmlRuntimeError_InvalidIdException : CmlRuntimeErrorException
 	{
-        public CmlRuntimeError_InvalidIdException(string for_what, string id) : base(id + " is an invalid " + for_what + ".") { }
+        public CmlRuntimeError_InvalidIdException(string for_what, string id) : base(id + " is an invalid " + for_what + " id.") { }
 	}
 	
 }

@@ -21,6 +21,9 @@ namespace Crunchy.Sack
             CmlEntitySpace entity_space;
             object representation = Instance(context);
 
+            if (entity.HasId())
+                context.GetRepresentationSpace().AddRepresentation(entity.GetId(), representation);
+
             context = context.NewEntitySpace(representation, out entity_space);
 
             context.GetEngine().AssertApplyGeneralModifiers(context, representation);
