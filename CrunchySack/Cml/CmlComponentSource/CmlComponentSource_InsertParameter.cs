@@ -18,7 +18,7 @@ namespace Crunchy.Sack
 	{
         public override object Instance(CmlContext context)
         {
-            return GetInsertParameter().Instance(context, false);
+            return GetInsertParameter().Instance(context);
         }
     }
 	

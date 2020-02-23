@@ -305,6 +305,7 @@
     <Compile Include="Cml\Execution\Space\CmlRepresentationSpace.cs" />
     <Compile Include="Cml\Execution\Space\Set\CmlSet.cs" />
     <Compile Include="Cml\Execution\Space\Parameter\CmlParameter.cs" />
+    <Compile Include="Cml\Execution\Value\CmlValue_None.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
