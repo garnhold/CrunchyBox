@@ -29,7 +29,7 @@ namespace Crunchy.Sack
             return null;
         }
 
-        public override CmlSetSpace GetSetSpace()
+        public override CmlEntitySpace GetEntitySpace()
         {
             return null;
         }

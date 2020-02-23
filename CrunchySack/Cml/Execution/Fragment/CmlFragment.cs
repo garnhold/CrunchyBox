@@ -26,7 +26,11 @@ namespace Crunchy.Sack
                 .Convert(i => i.CreateParameter(context))
                 .ToList();
 
-            object representation = InstanceInternal(context.NewParameterSpace(parameters));
+            object representation = InstanceInternal(
+                context
+                    .NewParameterSpace(parameters)
+                    .NewRepresentationSpace()
+            );
 
             parameters.Narrow(p => p.IsUnused()).Process(p => p.PushToRepresentation(context, representation));
             return representation;

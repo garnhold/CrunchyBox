@@ -11,7 +11,7 @@ namespace Crunchy.Sack
     public abstract class CmlContext
 	{
         public abstract CmlClass GetClass();
-        public abstract CmlSetSpace GetSetSpace();
+        public abstract CmlEntitySpace GetEntitySpace();
         public abstract CmlParameterSpace GetParameterSpace();
         public abstract CmlRepresentationSpace GetRepresentationSpace();
 

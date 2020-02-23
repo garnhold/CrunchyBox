@@ -264,7 +264,6 @@
     <Compile Include="Link\VariableLink\VariableLink_Simple_Direct.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add_General.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSetSpace.cs" />
     <Compile Include="Cml\Execution\Set\CmlSet.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSet_SelectableChildren.cs" />
@@ -283,7 +282,7 @@
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_Class.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_ParameterSpace.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_RepresentationSpace.cs" />
-    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_SetSpace.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_EntitySpace.cs" />
     <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions.cs" />
     <Compile Include="Cml\Execution\Entity\CmlEntityInstancer.cs" />
     <Compile Include="Cml\Execution\Entity\CmlEntityInfo.cs" />
@@ -308,6 +307,7 @@
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_UnexpectedInsertParameterTypeException.cs" />
     <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions_Engine.cs" />
     <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions_Add.cs" />
+    <Compile Include="Cml\Execution\Entity\CmlEntitySpace.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">

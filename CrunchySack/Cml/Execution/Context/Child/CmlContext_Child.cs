@@ -19,7 +19,7 @@ namespace Crunchy.Sack
         private CmlContext parent_context;
 
         private CmlClass @class;
-        private CmlSetSpace set_space;
+        private CmlEntitySpace entity_space;
         private CmlParameterSpace parameter_space;
         private CmlRepresentationSpace representation_space;
 
@@ -32,7 +32,7 @@ namespace Crunchy.Sack
             parent_context = p;
 
             @class = parent_context.GetClass();
-            set_space = parent_context.GetSetSpace();
+            entity_space = parent_context.GetEntitySpace();
             parameter_space = parent_context.GetParameterSpace();
             representation_space = parent_context.GetRepresentationSpace();
 
@@ -46,9 +46,9 @@ namespace Crunchy.Sack
             return @class;
         }
 
-        public override CmlSetSpace GetSetSpace()
+        public override CmlEntitySpace GetEntitySpace()
         {
-            return set_space;
+            return entity_space;
         }
 
         public override CmlParameterSpace GetParameterSpace()

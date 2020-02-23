@@ -16,31 +16,16 @@ namespace Crunchy.Sack
     
     public class CmlRepresentationSpace
 	{
-        private List<object> representation_stack;
         private Dictionary<string, object> representations;
 
         public CmlRepresentationSpace()
         {
-            representation_stack = new List<object>();
             representations = new Dictionary<string, object>();
         }
 
-        public void PushRepresentation(CmlEntity entity, object representation)
+        public void AddRepresentation(string id, object representation)
         {
-            representation_stack.Add(representation);
-
-            if (entity.HasId())
-                representations.Add(entity.GetId(), representation);
-        }
-
-        public void PopRepresentation(object representation)
-        {
-            representation_stack.RemoveAll(representation);
-        }
-
-        public object GetThisRepresentation()
-        {
-            return representation_stack.GetLast();
+            representations.Add(id, representation);
         }
 
         public object GetRepresentation(string id)

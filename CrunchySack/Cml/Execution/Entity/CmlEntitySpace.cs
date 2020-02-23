@@ -7,18 +7,25 @@ namespace Crunchy.Sack
     using Dough;
     using Noodle;
 
-    public class CmlSetSpace
+    public class CmlEntitySpace
     {
+        private object representation;
         private Dictionary<RepresentationInfoSet, CmlSet> sets;
 
-        public CmlSetSpace()
+        public CmlEntitySpace(object r)
         {
+            representation = r;
             sets = new Dictionary<RepresentationInfoSet, CmlSet>();
         }
 
-        public void SolidifyInstance(CmlContext context, object representation)
+        public void SolidifyInstance(CmlContext context)
         {
             sets.Process(p => p.Key.SolidifyInstance(context, representation, p.Value));
+        }
+
+        public object GetRepresentation()
+        {
+            return representation;
         }
 
         public CmlSet GetSet(RepresentationInfoSet set)

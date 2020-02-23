@@ -122,8 +122,8 @@ namespace Crunchy.Sack
         {
             if (this_representation_argument == null)
             {
-                this_representation_argument = context.GetRepresentationSpace()
-                    .IfNotNull(s => s.GetThisRepresentation())
+                this_representation_argument = context.GetEntitySpace()
+                    .IfNotNull(s => s.GetRepresentation())
                     .IfNotNull(r => AddSecondaryArgument(new CmlScriptValue_Argument_Single_Constant(r)));
             }
 

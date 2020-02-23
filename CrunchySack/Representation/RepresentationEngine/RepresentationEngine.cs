@@ -67,22 +67,22 @@ namespace Crunchy.Sack
             c.Initilize(this);
         }
 
-        public object AssertInstanceEntity(CmlContext context, string tag, CmlEntity entity)
+        public object AssertInstance(CmlContext context, string tag, CmlEntity entity)
         {
-            return (
-                GetInstancer(tag).IfNotNull(i => i.Instance(context, entity)) ?? 
-                GetFragmentLibrary().GetFragment(tag).IfNotNull(f => f.Instance(context, entity))
-            ).AssertNotNull(() => new CmlRuntimeError_InvalidIdException("entity", tag));
+            return GetInstancer(tag).IfNotNull(i => i.Instance(context, entity))
+                .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("entity", tag));
         }
-        public object AssertInstance(CmlContext context, string tag)
+        public CmlEntityInstancer GetInstancer(string tag)
         {
-            return GetInstancer(tag)
+            return (CmlEntityInstancer)instancers.GetValue(tag) ??
+                (CmlEntityInstancer)GetFragmentLibrary().GetFragment(tag);
+        }
+
+        public object AssertInstanceBase(CmlContext context, string tag)
+        {
+            return instancers.GetValue(tag)
                 .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("instancer", tag))
                 .Instance(context);
-        }
-        public RepresentationInstancer GetInstancer(string tag)
-        {
-            return instancers.GetValue(tag);
         }
 
         public object AssertInvokeConstructor(CmlContext context, string name, IEnumerable<object> system_values)
