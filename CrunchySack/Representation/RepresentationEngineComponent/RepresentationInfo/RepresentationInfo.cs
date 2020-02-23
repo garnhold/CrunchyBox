@@ -19,6 +19,11 @@ namespace Crunchy.Sack
             return false;
         }
 
+        private bool PushToRepresentationInternal(CmlValue_None value, object representation, CmlContext context)
+        {
+            return true;
+        }
+
         public RepresentationInfo(string n, Type r)
         {
             name = n;
