@@ -29,6 +29,12 @@ namespace Crunchy.Dough
         public ICollection<KEY_TYPE> Keys { get { return dictionary.Keys; } }
         public ICollection<VALUE_TYPE> Values { get { return dictionary.Values.Convert(v => v.GetData()); } }
 
+        public StaleDictionary()
+        {
+            dictionary = new Dictionary<KEY_TYPE, StaleDictionaryElement<VALUE_TYPE>>();
+            stale_id = 0;
+        }
+
         public void MarkStale()
         {
             stale_id++;
