@@ -31,8 +31,8 @@ namespace Crunchy.Sack
         {
             return InstanceInternal(
                 context
+                    .NewUnitSpace()
                     .NewClass(this)
-                    .NewRepresentationSpace()
             );
         }
 

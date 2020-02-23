@@ -13,7 +13,7 @@ namespace Crunchy.Sack
         protected override object InstanceInternal(CmlContext context)
         {
             Type type = context.GetClass().GetTargetType();
-            string layout = context.GetParameterSpace().GetParameterForcedSystemValue<string>(context, "name");
+            string layout = context.GetFragmentSpace().GetParameterForcedSystemValue<string>(context, "name");
 
             return context.GetEngine().GetClassLibrary().GetClass(type, layout)
                 .IfNotNull(c => c.Instance(context));

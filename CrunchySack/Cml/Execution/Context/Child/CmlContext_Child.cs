@@ -19,8 +19,8 @@ namespace Crunchy.Sack
         private CmlContext parent_context;
 
         private CmlClass @class;
-        private CmlEntitySpace entity_space;
-        private CmlParameterSpace parameter_space;
+        private CmlUnitSpace unit_space;
+        private CmlFragmentSpace fragment_space;
         private CmlRepresentationSpace representation_space;
 
         private CmlTargetInfo target_info;
@@ -32,8 +32,8 @@ namespace Crunchy.Sack
             parent_context = p;
 
             @class = parent_context.GetClass();
-            entity_space = parent_context.GetEntitySpace();
-            parameter_space = parent_context.GetParameterSpace();
+            unit_space = parent_context.GetUnitSpace();
+            fragment_space = parent_context.GetFragmentSpace();
             representation_space = parent_context.GetRepresentationSpace();
 
             target_info = parent_context.GetTargetInfo();
@@ -46,14 +46,14 @@ namespace Crunchy.Sack
             return @class;
         }
 
-        public override CmlEntitySpace GetEntitySpace()
+        public override CmlUnitSpace GetUnitSpace()
         {
-            return entity_space;
+            return unit_space;
         }
 
-        public override CmlParameterSpace GetParameterSpace()
+        public override CmlFragmentSpace GetFragmentSpace()
         {
-            return parameter_space;
+            return fragment_space;
         }
 
         public override CmlRepresentationSpace GetRepresentationSpace()

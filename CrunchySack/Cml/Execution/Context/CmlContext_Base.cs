@@ -29,12 +29,12 @@ namespace Crunchy.Sack
             return null;
         }
 
-        public override CmlEntitySpace GetEntitySpace()
+        public override CmlUnitSpace GetUnitSpace()
         {
             return null;
         }
 
-        public override CmlParameterSpace GetParameterSpace()
+        public override CmlFragmentSpace GetFragmentSpace()
         {
             return null;
         }

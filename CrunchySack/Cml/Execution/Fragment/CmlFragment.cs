@@ -28,8 +28,8 @@ namespace Crunchy.Sack
 
             object representation = InstanceInternal(
                 context
-                    .NewParameterSpace(parameters)
-                    .NewRepresentationSpace()
+                    .NewUnitSpace()
+                    .NewFragmentSpace(parameters)
             );
 
             parameters.Narrow(p => p.IsUnused()).Process(p => p.PushToRepresentation(context, representation));

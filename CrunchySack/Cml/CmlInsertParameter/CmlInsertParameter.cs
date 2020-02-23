@@ -19,7 +19,7 @@ namespace Crunchy.Sack
         public CmlValue Solidify(CmlContext context, bool assert)
         {
             return (
-                context.GetParameterSpace().IfNotNull(s => s.GetParameter(GetId())).IfNotNull(p => p.Solidify()) ??
+                context.GetFragmentSpace().IfNotNull(s => s.GetParameter(GetId())).IfNotNull(p => p.Solidify()) ??
                 GetDefaultValueSource().IfNotNull(s => s.Solidify(context))
             )
             .AssertNotNull(assert, () => new CmlRuntimeError_InvalidIdException("parameter", GetId()));

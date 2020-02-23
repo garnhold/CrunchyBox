@@ -14,11 +14,11 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class CmlRepresentationSpace
+    public class CmlUnitSpace
 	{
         private Dictionary<string, object> representations;
 
-        public CmlRepresentationSpace()
+        public CmlUnitSpace()
         {
             representations = new Dictionary<string, object>();
         }

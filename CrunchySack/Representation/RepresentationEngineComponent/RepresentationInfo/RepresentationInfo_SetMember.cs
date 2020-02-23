@@ -16,7 +16,7 @@ namespace Crunchy.Sack
 
         private bool SetSetValue(CmlValue value, CmlContext context)
         {
-            context.GetEntitySpace()
+            context.GetRepresentationSpace()
                 .GetSet(set)
                 .SetValue(GetName(), value);
 

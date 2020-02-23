@@ -122,7 +122,7 @@ namespace Crunchy.Sack
         {
             if (this_representation_argument == null)
             {
-                this_representation_argument = context.GetEntitySpace()
+                this_representation_argument = context.GetRepresentationSpace()
                     .IfNotNull(s => s.GetRepresentation())
                     .IfNotNull(r => AddSecondaryArgument(new CmlScriptValue_Argument_Single_Constant(r)));
             }
@@ -133,7 +133,7 @@ namespace Crunchy.Sack
         public CmlScriptValue InsertRepresentationValue(string id)
         {
             return insert_representation_values.GetOrCreateValue(id, delegate() {
-                return context.GetRepresentationSpace()
+                return context.GetUnitSpace()
                     .IfNotNull(s => s.GetRepresentation(id))
                     .IfNotNull(r => AddSecondaryArgument(new CmlScriptValue_Argument_Single_Constant(r)));
             });

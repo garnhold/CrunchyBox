@@ -157,7 +157,6 @@
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Dynamic.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_DynamicInline.cs" />
     <Compile Include="Cml\CmlEntity\CmlEntityChildren\CmlEntityChildren_Static.cs" />
-    <Compile Include="Cml\Execution\Representation\CmlRepresentationSpace.cs" />
     <Compile Include="Cml\Execution\Error\CmlRuntimeError_InfoSupportException.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_Link_WithEntity.cs" />
     <Compile Include="Cml\CmlScript\Request\CmlScriptDefinition\CmlScriptDefinition.cs" />
@@ -194,8 +193,6 @@
     <Compile Include="Cml\Execution\Value\CmlValue_Function.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_SystemValue.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_Link.cs" />
-    <Compile Include="Cml\Execution\Parameter\CmlParameterSpace.cs" />
-    <Compile Include="Cml\Execution\Parameter\CmlParameter.cs" />
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider_StreamSystem\ClassProvider_StreamSystem.cs" />
     <Compile Include="ClassLibrary\ClassProvider\ClassProvider.cs" />
     <Compile Include="ClassLibrary\ClassLibrary.cs" />
@@ -261,7 +258,6 @@
     <Compile Include="Link\VariableLink\VariableLink_Simple_Direct.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
     <Compile Include="Representation\RepresentationEngine\Extensions\RepresentationEngineExtensions_Add_General.cs" />
-    <Compile Include="Cml\Execution\Set\CmlSet.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSet_SelectableChildren.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSetChildrenSelector.cs" />
@@ -277,9 +273,9 @@
     <Compile Include="Cml\Execution\Context\CmlContext_Base.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_Class.cs" />
-    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_ParameterSpace.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_FragmentSpace.cs" />
+    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_UnitSpace.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_RepresentationSpace.cs" />
-    <Compile Include="Cml\Execution\Context\Child\CmlContext_Child_EntitySpace.cs" />
     <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions.cs" />
     <Compile Include="Cml\Execution\Entity\CmlEntityInstancer.cs" />
     <Compile Include="Cml\Execution\Entity\CmlEntityInfo.cs" />
@@ -303,8 +299,12 @@
     <Compile Include="Cml\Execution\Value\CmlValue_Link_Normal.cs" />
     <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions_Engine.cs" />
     <Compile Include="Cml\Execution\Context\Extensions\CmlContextExtensions_Add.cs" />
-    <Compile Include="Cml\Execution\Entity\CmlEntitySpace.cs" />
     <Compile Include="Cml\CmlValueSource\CmlValueSource_InsertParameter.cs" />
+    <Compile Include="Cml\Execution\Space\CmlUnitSpace.cs" />
+    <Compile Include="Cml\Execution\Space\CmlFragmentSpace.cs" />
+    <Compile Include="Cml\Execution\Space\CmlRepresentationSpace.cs" />
+    <Compile Include="Cml\Execution\Space\Set\CmlSet.cs" />
+    <Compile Include="Cml\Execution\Space\Parameter\CmlParameter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -338,7 +338,6 @@
     <Folder Include="Application\" />
     <Folder Include="Cml\CmlEntity\CmlEntityCompositeChild\" />
     <Folder Include="Syncro\FunctionSyncro\Extensions\" />
-    <Folder Include="Cml\Execution\Set\" />
     <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\" />
     <Folder Include="Link\VariableValue\" />
     <Folder Include="Cml\Execution\Context\" />
@@ -353,6 +352,9 @@
     <Folder Include="Cml\CmlValueSource\Extensions\" />
     <Folder Include="Cml\CmlComponentSource\Extensions\" />
     <Folder Include="Cml\CmlEntity\CmlEntityMountPoint\" />
+    <Folder Include="Cml\Execution\Space\" />
+    <Folder Include="Cml\Execution\Space\Set\" />
+    <Folder Include="Cml\Execution\Space\Parameter\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

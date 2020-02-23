@@ -17,7 +17,7 @@ namespace Crunchy.Sack
 
         public CmlValue Solidify(CmlContext context)
         {
-            return context.GetParameterSpace()
+            return context.GetFragmentSpace()
                 .IfNotNull(s => s.GetParameter(RepresentationInfo.UnamedChildren))
                 .IfNotNull(p => p.Solidify());
         }

@@ -18,18 +18,18 @@ namespace Crunchy.Sack
 
         public object Instance(CmlContext context, CmlEntity entity)
         {
-            CmlEntitySpace entity_space;
+            CmlRepresentationSpace representation_space;
             object representation = Instance(context);
 
             if (entity.HasId())
-                context.GetRepresentationSpace().AddRepresentation(entity.GetId(), representation);
+                context.GetUnitSpace().AddRepresentation(entity.GetId(), representation);
 
-            context = context.NewEntitySpace(representation, out entity_space);
+            context = context.NewRepresentationSpace(representation, out representation_space);
 
             context.GetEngine().AssertApplyGeneralModifiers(context, representation);
             entity.GetTopicalChildren<CmlEntityInfo>().Process(i => i.PushToRepresentation(context, representation));
 
-            entity_space.SolidifyInstance(context);
+            representation_space.SolidifyInstance(context);
             return representation;
         }
 

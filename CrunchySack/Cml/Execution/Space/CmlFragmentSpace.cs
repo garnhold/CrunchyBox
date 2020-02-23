@@ -14,11 +14,11 @@ namespace Crunchy.Sack
     using Salt;
     using Noodle;
     
-    public class CmlParameterSpace
+    public class CmlFragmentSpace
 	{
         private Dictionary<string, CmlParameter> parameters;
 
-        public CmlParameterSpace(IEnumerable<CmlParameter> f)
+        public CmlFragmentSpace(IEnumerable<CmlParameter> f)
         {
             parameters = f.ToDictionaryValues(z => z.GetName());
         }

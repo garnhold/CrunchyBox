@@ -7,12 +7,12 @@ namespace Crunchy.Sack
     using Dough;
     using Noodle;
 
-    public class CmlEntitySpace
+    public class CmlRepresentationSpace
     {
         private object representation;
         private Dictionary<RepresentationInfoSet, CmlSet> sets;
 
-        public CmlEntitySpace(object r)
+        public CmlRepresentationSpace(object r)
         {
             representation = r;
             sets = new Dictionary<RepresentationInfoSet, CmlSet>();
