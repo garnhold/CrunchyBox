@@ -25,7 +25,7 @@ namespace Crunchy.Sack
                 }
 
                 new_values.SubSection(info.insert_range).ProcessWithIndex(
-                    (i, v) => InsertChild(representation, info.insert_index + i, link.Instance(v))
+                    (i, v) => InsertChild(representation, info.insert_index + i, link.LinkValue(v))
                 );
             };
         }

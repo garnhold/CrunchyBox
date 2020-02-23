@@ -19,7 +19,7 @@ namespace Crunchy.Sack
                 value_to_representation.MarkStale();
 
                 new_representations.Set(
-                    new_values.Convert(v => value_to_representation.GetOrCreateValue(v, () => link.Instance(v)))
+                    new_values.Convert(v => value_to_representation.GetOrCreateValue(v, () => link.LinkValue(v)))
                 );
 
                 value_to_representation.RemoveStale(p => link.UnlinkValue(p.Key));

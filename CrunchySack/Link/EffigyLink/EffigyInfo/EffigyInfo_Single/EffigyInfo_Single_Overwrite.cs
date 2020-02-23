@@ -15,7 +15,7 @@ namespace Crunchy.Sack
             return delegate (EffigyLink link, object old_value, object new_value) {
                 link.UnlinkValue(old_value);
 
-                SetChild(representation, link.Instance(new_value));
+                SetChild(representation, link.LinkValue(new_value));
             };
         }
 

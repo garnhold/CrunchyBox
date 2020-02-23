@@ -48,7 +48,7 @@ namespace Crunchy.Sack
             link_managers.Remove(value);
         }
 
-        public object Instance(object value)
+        public object LinkValue(object value)
         {
             CmlContext_Base context = new CmlContext_Base(
                 target_info.CreateChild(value),

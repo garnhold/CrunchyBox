@@ -32,7 +32,7 @@ namespace Crunchy.Sack
                 foreach (object value in added_values)
                 {
                     value_to_sub_representation.Add(value,
-                        link.Instance(value).Chain(c => AddChild(representation, c))
+                        link.LinkValue(value).Chain(c => AddChild(representation, c))
                     );
                 }
             };
