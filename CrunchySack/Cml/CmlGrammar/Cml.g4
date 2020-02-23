@@ -1,13 +1,15 @@
 grammar Cml;
 
 cmlValueSource
-    : cmlComponentSource /*info: name=>component_source*/ # cmlValueSource_ComponentSource
-    | cmlComponentSourceList /*info: name=>component_source_list*/ # cmlValueSource_ComponentSourceList
+    : cmlInsertParameter /*info: name=>insert_parameter*/ # cmlValueSource_InsertParameter
 
     | cmlLinkSource /*info: name=>link_source*/ # cmlValueSource_LinkSource
     | cmlLinkSourceWithEntitySource /*info: name=>link_source_with_entity_source*/ # cmlValueSource_LinkSourceWithEntitySource
 
     | cmlFunctionSource /*info: name=>function_source*/ # cmlValueSource_FunctionSource
+
+    | cmlComponentSource /*info: name=>component_source*/ # cmlValueSource_ComponentSource
+    | cmlComponentSourceList /*info: name=>component_source_list*/ # cmlValueSource_ComponentSourceList
     ;
 
 cmlComponentSource
@@ -55,11 +57,7 @@ cmlEntityAttribute : ID /*info: name=>name*/ '=' cmlValueSource /*info: name=>va
 cmlConstructor : ID /*info: name=>name*/ '(' cmlValueSourceList /*info: name=>argument_sources*/ ')';
 cmlValueSourceList : /*group:{*/ (cmlValueSource (',' cmlValueSource)*)? /*group:}*/ /*info: name=>value_sources*/;
 
-cmlLinkSource
-    : '[' cmlScriptEntry_Link /*info: name=>link*/ ']' cmlInfo? /*info: name=>info*/ # cmlLinkSource_Normal
-    | '[' cmlInsertParameter /*info: name=>insert_parameter*/ ']' # cmlLinkSource_InsertParameter
-    ;
-
+cmlLinkSource : '[' cmlScriptEntry_Link /*info: name=>link*/ ']' cmlInfo? /*info: name=>info*/;
 cmlLinkSourceWithEntitySource : cmlLinkSource /*info: name=>link_source*/ '{' cmlEntity? /*info: name=>entity*/ '}';
 
 cmlFunctionSource

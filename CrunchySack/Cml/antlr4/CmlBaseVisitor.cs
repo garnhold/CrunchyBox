@@ -34,7 +34,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class CmlBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, ICmlVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSource</c>
+	/// Visit a parse tree produced by the <c>cmlValueSource_InsertParameter</c>
 	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -43,18 +43,7 @@ public partial class CmlBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCmlValueSource_ComponentSource([NotNull] CmlParser.CmlValueSource_ComponentSourceContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSourceList</c>
-	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitCmlValueSource_ComponentSourceList([NotNull] CmlParser.CmlValueSource_ComponentSourceListContext context) { return VisitChildren(context); }
+	public virtual Result VisitCmlValueSource_InsertParameter([NotNull] CmlParser.CmlValueSource_InsertParameterContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>cmlValueSource_LinkSource</c>
 	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
@@ -88,6 +77,28 @@ public partial class CmlBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, 
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitCmlValueSource_FunctionSource([NotNull] CmlParser.CmlValueSource_FunctionSourceContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSource</c>
+	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCmlValueSource_ComponentSource([NotNull] CmlParser.CmlValueSource_ComponentSourceContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSourceList</c>
+	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitCmlValueSource_ComponentSourceList([NotNull] CmlParser.CmlValueSource_ComponentSourceListContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>cmlComponentSource_Primitive</c>
 	/// labeled alternative in <see cref="CmlParser.cmlComponentSource"/>.
@@ -302,8 +313,7 @@ public partial class CmlBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, 
 	/// <return>The visitor result.</return>
 	public virtual Result VisitCmlValueSourceList([NotNull] CmlParser.CmlValueSourceListContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlLinkSource_Normal</c>
-	/// labeled alternative in <see cref="CmlParser.cmlLinkSource"/>.
+	/// Visit a parse tree produced by <see cref="CmlParser.cmlLinkSource"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -311,18 +321,7 @@ public partial class CmlBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, 
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCmlLinkSource_Normal([NotNull] CmlParser.CmlLinkSource_NormalContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlLinkSource_InsertParameter</c>
-	/// labeled alternative in <see cref="CmlParser.cmlLinkSource"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitCmlLinkSource_InsertParameter([NotNull] CmlParser.CmlLinkSource_InsertParameterContext context) { return VisitChildren(context); }
+	public virtual Result VisitCmlLinkSource([NotNull] CmlParser.CmlLinkSourceContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CmlParser.cmlLinkSourceWithEntitySource"/>.
 	/// <para>

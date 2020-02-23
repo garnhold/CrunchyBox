@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: February 18 2020 18:22:01 -08:00
+//Date: February 22 2020 21:11:30 -08:00
 
 using System;
 using System.IO;
@@ -48,130 +48,66 @@ namespace Crunchy.Sack
 		
 	}
 	
-	public partial class CmlValueSource_ComponentSource : CmlValueSource
+	public partial class CmlValueSource_InsertParameter : CmlValueSource
 	{
-		[RelatableChild]private CmlComponentSource component_source;
-		static public CmlValueSource_ComponentSource DOMify(CmlParser.CmlValueSource_ComponentSourceContext context)
+		[RelatableChild]private CmlInsertParameter insert_parameter;
+		static public CmlValueSource_InsertParameter DOMify(CmlParser.CmlValueSource_InsertParameterContext context)
 		{
 			if(context != null)
 			{
-				return new CmlValueSource_ComponentSource(context);
+				return new CmlValueSource_InsertParameter(context);
 			}
 			
 			return null;
 		}
 		
-		static new public CmlValueSource_ComponentSource DOMify(IParseTree parse_tree)
+		static new public CmlValueSource_InsertParameter DOMify(IParseTree parse_tree)
 		{
-			return DOMify(parse_tree as CmlParser.CmlValueSource_ComponentSourceContext);
+			return DOMify(parse_tree as CmlParser.CmlValueSource_InsertParameterContext);
 		}
 		
-		static new public CmlValueSource_ComponentSource DOMify(Stream stream)
+		static new public CmlValueSource_InsertParameter DOMify(Stream stream)
 		{
 			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlValueSource());
 		}
 		
-		static new public CmlValueSource_ComponentSource DOMify(string text)
+		static new public CmlValueSource_InsertParameter DOMify(string text)
 		{
 			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlValueSource());
 		}
 		
-		static new public CmlValueSource_ComponentSource DOMifyFile(string filename)
+		static new public CmlValueSource_InsertParameter DOMifyFile(string filename)
 		{
 			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlValueSource());
 		}
 		
-		public CmlValueSource_ComponentSource()
+		public CmlValueSource_InsertParameter()
 		{
-			component_source = null;
+			insert_parameter = null;
 			OnConstructor();
 		}
 		
 		partial void OnConstructor();
-		public CmlValueSource_ComponentSource(CmlParser.CmlValueSource_ComponentSourceContext context) : this()
+		public CmlValueSource_InsertParameter(CmlParser.CmlValueSource_InsertParameterContext context) : this()
 		{
-			SetComponentSource(CmlComponentSource.DOMify(context.cmlComponentSource()));
+			SetInsertParameter(CmlInsertParameter.DOMify(context.cmlInsertParameter()));
 		}
 		
 		public override CmlValueSource Duplicate()
 		{
-			CmlValueSource_ComponentSource instance = new CmlValueSource_ComponentSource();
-			instance.SetComponentSource(GetComponentSource().IfNotNull(z => z.Duplicate()));
+			CmlValueSource_InsertParameter instance = new CmlValueSource_InsertParameter();
+			instance.SetInsertParameter(GetInsertParameter().IfNotNull(z => z.Duplicate()));
 			return instance;
 		}
 		
-		private void SetComponentSource(CmlComponentSource input)
+		private void SetInsertParameter(CmlInsertParameter input)
 		{
-			component_source = input;
+			insert_parameter = input;
 		}
 		
-		public CmlComponentSource GetComponentSource()
+		public CmlInsertParameter GetInsertParameter()
 		{
-			return component_source;
-		}
-		
-	}
-	
-	public partial class CmlValueSource_ComponentSourceList : CmlValueSource
-	{
-		[RelatableChild]private CmlComponentSourceList component_source_list;
-		static public CmlValueSource_ComponentSourceList DOMify(CmlParser.CmlValueSource_ComponentSourceListContext context)
-		{
-			if(context != null)
-			{
-				return new CmlValueSource_ComponentSourceList(context);
-			}
-			
-			return null;
-		}
-		
-		static new public CmlValueSource_ComponentSourceList DOMify(IParseTree parse_tree)
-		{
-			return DOMify(parse_tree as CmlParser.CmlValueSource_ComponentSourceListContext);
-		}
-		
-		static new public CmlValueSource_ComponentSourceList DOMify(Stream stream)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlValueSource());
-		}
-		
-		static new public CmlValueSource_ComponentSourceList DOMify(string text)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlValueSource());
-		}
-		
-		static new public CmlValueSource_ComponentSourceList DOMifyFile(string filename)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlValueSource());
-		}
-		
-		public CmlValueSource_ComponentSourceList()
-		{
-			component_source_list = null;
-			OnConstructor();
-		}
-		
-		partial void OnConstructor();
-		public CmlValueSource_ComponentSourceList(CmlParser.CmlValueSource_ComponentSourceListContext context) : this()
-		{
-			SetComponentSourceList(CmlComponentSourceList.DOMify(context.cmlComponentSourceList()));
-		}
-		
-		public override CmlValueSource Duplicate()
-		{
-			CmlValueSource_ComponentSourceList instance = new CmlValueSource_ComponentSourceList();
-			instance.SetComponentSourceList(GetComponentSourceList().IfNotNull(z => z.Duplicate()));
-			return instance;
-		}
-		
-		private void SetComponentSourceList(CmlComponentSourceList input)
-		{
-			component_source_list = input;
-		}
-		
-		public CmlComponentSourceList GetComponentSourceList()
-		{
-			return component_source_list;
+			return insert_parameter;
 		}
 		
 	}
@@ -364,6 +300,134 @@ namespace Crunchy.Sack
 		public CmlFunctionSource GetFunctionSource()
 		{
 			return function_source;
+		}
+		
+	}
+	
+	public partial class CmlValueSource_ComponentSource : CmlValueSource
+	{
+		[RelatableChild]private CmlComponentSource component_source;
+		static public CmlValueSource_ComponentSource DOMify(CmlParser.CmlValueSource_ComponentSourceContext context)
+		{
+			if(context != null)
+			{
+				return new CmlValueSource_ComponentSource(context);
+			}
+			
+			return null;
+		}
+		
+		static new public CmlValueSource_ComponentSource DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as CmlParser.CmlValueSource_ComponentSourceContext);
+		}
+		
+		static new public CmlValueSource_ComponentSource DOMify(Stream stream)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlValueSource());
+		}
+		
+		static new public CmlValueSource_ComponentSource DOMify(string text)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlValueSource());
+		}
+		
+		static new public CmlValueSource_ComponentSource DOMifyFile(string filename)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlValueSource());
+		}
+		
+		public CmlValueSource_ComponentSource()
+		{
+			component_source = null;
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public CmlValueSource_ComponentSource(CmlParser.CmlValueSource_ComponentSourceContext context) : this()
+		{
+			SetComponentSource(CmlComponentSource.DOMify(context.cmlComponentSource()));
+		}
+		
+		public override CmlValueSource Duplicate()
+		{
+			CmlValueSource_ComponentSource instance = new CmlValueSource_ComponentSource();
+			instance.SetComponentSource(GetComponentSource().IfNotNull(z => z.Duplicate()));
+			return instance;
+		}
+		
+		private void SetComponentSource(CmlComponentSource input)
+		{
+			component_source = input;
+		}
+		
+		public CmlComponentSource GetComponentSource()
+		{
+			return component_source;
+		}
+		
+	}
+	
+	public partial class CmlValueSource_ComponentSourceList : CmlValueSource
+	{
+		[RelatableChild]private CmlComponentSourceList component_source_list;
+		static public CmlValueSource_ComponentSourceList DOMify(CmlParser.CmlValueSource_ComponentSourceListContext context)
+		{
+			if(context != null)
+			{
+				return new CmlValueSource_ComponentSourceList(context);
+			}
+			
+			return null;
+		}
+		
+		static new public CmlValueSource_ComponentSourceList DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as CmlParser.CmlValueSource_ComponentSourceListContext);
+		}
+		
+		static new public CmlValueSource_ComponentSourceList DOMify(Stream stream)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlValueSource());
+		}
+		
+		static new public CmlValueSource_ComponentSourceList DOMify(string text)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlValueSource());
+		}
+		
+		static new public CmlValueSource_ComponentSourceList DOMifyFile(string filename)
+		{
+			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlValueSource());
+		}
+		
+		public CmlValueSource_ComponentSourceList()
+		{
+			component_source_list = null;
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public CmlValueSource_ComponentSourceList(CmlParser.CmlValueSource_ComponentSourceListContext context) : this()
+		{
+			SetComponentSourceList(CmlComponentSourceList.DOMify(context.cmlComponentSourceList()));
+		}
+		
+		public override CmlValueSource Duplicate()
+		{
+			CmlValueSource_ComponentSourceList instance = new CmlValueSource_ComponentSourceList();
+			instance.SetComponentSourceList(GetComponentSourceList().IfNotNull(z => z.Duplicate()));
+			return instance;
+		}
+		
+		private void SetComponentSourceList(CmlComponentSourceList input)
+		{
+			component_source_list = input;
+		}
+		
+		public CmlComponentSourceList GetComponentSourceList()
+		{
+			return component_source_list;
 		}
 		
 	}
@@ -1900,12 +1964,18 @@ namespace Crunchy.Sack
 		
 	}
 	
-	public abstract partial class CmlLinkSource : CmlElement
+	public partial class CmlLinkSource : CmlElement
 	{
-		public abstract CmlLinkSource Duplicate();
+		[RelatableChild]private CmlScriptEntry_Link link;
+		[RelatableChild]private CmlInfo info;
 		static public CmlLinkSource DOMify(CmlParser.CmlLinkSourceContext context)
 		{
-			return CmlResolver.Resolve<CmlLinkSource>(context);
+			if(context != null)
+			{
+				return new CmlLinkSource(context);
+			}
+			
+			return null;
 		}
 		
 		static public CmlLinkSource DOMify(IParseTree parse_tree)
@@ -1928,43 +1998,7 @@ namespace Crunchy.Sack
 			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlLinkSource());
 		}
 		
-	}
-	
-	public partial class CmlLinkSource_Normal : CmlLinkSource
-	{
-		[RelatableChild]private CmlScriptEntry_Link link;
-		[RelatableChild]private CmlInfo info;
-		static public CmlLinkSource_Normal DOMify(CmlParser.CmlLinkSource_NormalContext context)
-		{
-			if(context != null)
-			{
-				return new CmlLinkSource_Normal(context);
-			}
-			
-			return null;
-		}
-		
-		static new public CmlLinkSource_Normal DOMify(IParseTree parse_tree)
-		{
-			return DOMify(parse_tree as CmlParser.CmlLinkSource_NormalContext);
-		}
-		
-		static new public CmlLinkSource_Normal DOMify(Stream stream)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlLinkSource());
-		}
-		
-		static new public CmlLinkSource_Normal DOMify(string text)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlLinkSource());
-		}
-		
-		static new public CmlLinkSource_Normal DOMifyFile(string filename)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlLinkSource());
-		}
-		
-		public CmlLinkSource_Normal()
+		public CmlLinkSource()
 		{
 			link = null;
 			info = null;
@@ -1972,15 +2006,15 @@ namespace Crunchy.Sack
 		}
 		
 		partial void OnConstructor();
-		public CmlLinkSource_Normal(CmlParser.CmlLinkSource_NormalContext context) : this()
+		public CmlLinkSource(CmlParser.CmlLinkSourceContext context) : this()
 		{
 			SetLink(CmlScriptEntry_Link.DOMify(context.cmlScriptEntry_Link()));
 			SetInfo(CmlInfo.DOMify(context.cmlInfo()));
 		}
 		
-		public override CmlLinkSource Duplicate()
+		public CmlLinkSource Duplicate()
 		{
-			CmlLinkSource_Normal instance = new CmlLinkSource_Normal();
+			CmlLinkSource instance = new CmlLinkSource();
 			instance.SetLink(GetLink().IfNotNull(z => z.Duplicate()));
 			instance.SetInfo(GetInfo().IfNotNull(z => z.Duplicate()));
 			return instance;
@@ -2004,70 +2038,6 @@ namespace Crunchy.Sack
 		public CmlInfo GetInfo()
 		{
 			return info;
-		}
-		
-	}
-	
-	public partial class CmlLinkSource_InsertParameter : CmlLinkSource
-	{
-		[RelatableChild]private CmlInsertParameter insert_parameter;
-		static public CmlLinkSource_InsertParameter DOMify(CmlParser.CmlLinkSource_InsertParameterContext context)
-		{
-			if(context != null)
-			{
-				return new CmlLinkSource_InsertParameter(context);
-			}
-			
-			return null;
-		}
-		
-		static new public CmlLinkSource_InsertParameter DOMify(IParseTree parse_tree)
-		{
-			return DOMify(parse_tree as CmlParser.CmlLinkSource_InsertParameterContext);
-		}
-		
-		static new public CmlLinkSource_InsertParameter DOMify(Stream stream)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(stream).cmlLinkSource());
-		}
-		
-		static new public CmlLinkSource_InsertParameter DOMify(string text)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateParser(text).cmlLinkSource());
-		}
-		
-		static new public CmlLinkSource_InsertParameter DOMifyFile(string filename)
-		{
-			return DOMify(CmlDOMinatorUtilities.CreateFileParser(filename).cmlLinkSource());
-		}
-		
-		public CmlLinkSource_InsertParameter()
-		{
-			insert_parameter = null;
-			OnConstructor();
-		}
-		
-		partial void OnConstructor();
-		public CmlLinkSource_InsertParameter(CmlParser.CmlLinkSource_InsertParameterContext context) : this()
-		{
-			SetInsertParameter(CmlInsertParameter.DOMify(context.cmlInsertParameter()));
-		}
-		
-		public override CmlLinkSource Duplicate()
-		{
-			CmlLinkSource_InsertParameter instance = new CmlLinkSource_InsertParameter();
-			instance.SetInsertParameter(GetInsertParameter().IfNotNull(z => z.Duplicate()));
-			return instance;
-		}
-		
-		private void SetInsertParameter(CmlInsertParameter input)
-		{
-			insert_parameter = input;
-		}
-		
-		public CmlInsertParameter GetInsertParameter()
-		{
-			return insert_parameter;
 		}
 		
 	}
@@ -6630,14 +6600,9 @@ namespace Crunchy.Sack
 		{
 		}
 		
-		public override CmlElement VisitCmlValueSource_ComponentSource(CmlParser.CmlValueSource_ComponentSourceContext context)
+		public override CmlElement VisitCmlValueSource_InsertParameter(CmlParser.CmlValueSource_InsertParameterContext context)
 		{
-			return CmlValueSource_ComponentSource.DOMify(context);
-		}
-		
-		public override CmlElement VisitCmlValueSource_ComponentSourceList(CmlParser.CmlValueSource_ComponentSourceListContext context)
-		{
-			return CmlValueSource_ComponentSourceList.DOMify(context);
+			return CmlValueSource_InsertParameter.DOMify(context);
 		}
 		
 		public override CmlElement VisitCmlValueSource_LinkSource(CmlParser.CmlValueSource_LinkSourceContext context)
@@ -6653,6 +6618,16 @@ namespace Crunchy.Sack
 		public override CmlElement VisitCmlValueSource_FunctionSource(CmlParser.CmlValueSource_FunctionSourceContext context)
 		{
 			return CmlValueSource_FunctionSource.DOMify(context);
+		}
+		
+		public override CmlElement VisitCmlValueSource_ComponentSource(CmlParser.CmlValueSource_ComponentSourceContext context)
+		{
+			return CmlValueSource_ComponentSource.DOMify(context);
+		}
+		
+		public override CmlElement VisitCmlValueSource_ComponentSourceList(CmlParser.CmlValueSource_ComponentSourceListContext context)
+		{
+			return CmlValueSource_ComponentSourceList.DOMify(context);
 		}
 		
 		public override CmlElement VisitCmlComponentSource_Primitive(CmlParser.CmlComponentSource_PrimitiveContext context)
@@ -6755,14 +6730,9 @@ namespace Crunchy.Sack
 			return CmlValueSourceList.DOMify(context);
 		}
 		
-		public override CmlElement VisitCmlLinkSource_Normal(CmlParser.CmlLinkSource_NormalContext context)
+		public override CmlElement VisitCmlLinkSource(CmlParser.CmlLinkSourceContext context)
 		{
-			return CmlLinkSource_Normal.DOMify(context);
-		}
-		
-		public override CmlElement VisitCmlLinkSource_InsertParameter(CmlParser.CmlLinkSource_InsertParameterContext context)
-		{
-			return CmlLinkSource_InsertParameter.DOMify(context);
+			return CmlLinkSource.DOMify(context);
 		}
 		
 		public override CmlElement VisitCmlLinkSourceWithEntitySource(CmlParser.CmlLinkSourceWithEntitySourceContext context)

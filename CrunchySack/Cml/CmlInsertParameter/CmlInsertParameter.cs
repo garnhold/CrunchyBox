@@ -25,18 +25,6 @@ namespace Crunchy.Sack
             .AssertNotNull(assert, () => new CmlRuntimeError_InvalidIdException("parameter", GetId()));
         }
 
-        public CmlValue_Link SolidifyLink(CmlContext context, bool assert)
-        {
-            return Solidify(context, assert)
-                .AssertConvert<CmlValue, CmlValue_Link>(assert, () => new CmlRuntimeError_UnexpectedInsertParameterTypeException(typeof(CmlValue_Link), GetId()));
-        }
-
-        public CmlValue_Function SolidifyFunction(CmlContext context, bool assert)
-        {
-            return Solidify(context, assert)
-                .AssertConvert<CmlValue, CmlValue_Function>(assert, () => new CmlRuntimeError_UnexpectedInsertParameterTypeException(typeof(CmlValue_Function), GetId()));
-        }
-
         public object Instance(CmlContext context, bool assert)
         {
             return Solidify(context, assert).ForceSystemValue();

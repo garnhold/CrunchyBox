@@ -32,19 +32,12 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface ICmlVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSource</c>
+	/// Visit a parse tree produced by the <c>cmlValueSource_InsertParameter</c>
 	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitCmlValueSource_ComponentSource([NotNull] CmlParser.CmlValueSource_ComponentSourceContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSourceList</c>
-	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCmlValueSource_ComponentSourceList([NotNull] CmlParser.CmlValueSource_ComponentSourceListContext context);
+	Result VisitCmlValueSource_InsertParameter([NotNull] CmlParser.CmlValueSource_InsertParameterContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>cmlValueSource_LinkSource</c>
 	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
@@ -66,6 +59,20 @@ public interface ICmlVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitCmlValueSource_FunctionSource([NotNull] CmlParser.CmlValueSource_FunctionSourceContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSource</c>
+	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCmlValueSource_ComponentSource([NotNull] CmlParser.CmlValueSource_ComponentSourceContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>cmlValueSource_ComponentSourceList</c>
+	/// labeled alternative in <see cref="CmlParser.cmlValueSource"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCmlValueSource_ComponentSourceList([NotNull] CmlParser.CmlValueSource_ComponentSourceListContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>cmlComponentSource_Primitive</c>
 	/// labeled alternative in <see cref="CmlParser.cmlComponentSource"/>.
@@ -200,19 +207,11 @@ public interface ICmlVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitCmlValueSourceList([NotNull] CmlParser.CmlValueSourceListContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlLinkSource_Normal</c>
-	/// labeled alternative in <see cref="CmlParser.cmlLinkSource"/>.
+	/// Visit a parse tree produced by <see cref="CmlParser.cmlLinkSource"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitCmlLinkSource_Normal([NotNull] CmlParser.CmlLinkSource_NormalContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>cmlLinkSource_InsertParameter</c>
-	/// labeled alternative in <see cref="CmlParser.cmlLinkSource"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCmlLinkSource_InsertParameter([NotNull] CmlParser.CmlLinkSource_InsertParameterContext context);
+	Result VisitCmlLinkSource([NotNull] CmlParser.CmlLinkSourceContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CmlParser.cmlLinkSourceWithEntitySource"/>.
 	/// </summary>
