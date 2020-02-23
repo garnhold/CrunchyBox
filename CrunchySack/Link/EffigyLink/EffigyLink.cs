@@ -45,18 +45,24 @@ namespace Crunchy.Sack
 
         public void UnlinkValue(object value)
         {
-            link_managers.Remove(value);
+            if (value != null)
+                link_managers.Remove(value);
         }
 
         public object LinkValue(object value)
         {
-            CmlContext_Base context = new CmlContext_Base(
-                target_info.CreateChild(value),
-                link_managers.AddAndGet(value, new LinkManager()),
-                syncro_manager
-            );
+            if (value != null)
+            {
+                CmlContext_Base context = new CmlContext_Base(
+                    target_info.CreateChild(value),
+                    link_managers.AddAndGet(value, new LinkManager()),
+                    syncro_manager
+                );
 
-            return class_info.AssertGetClass(context).Instance(context);
+                return class_info.AssertGetClass(context).Instance(context);
+            }
+
+            return null;
         }
     }
 }
