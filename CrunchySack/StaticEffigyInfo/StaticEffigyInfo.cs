@@ -21,6 +21,11 @@ namespace Crunchy.Sack
             child_type = c;
         }
 
+        public void AddChildren(object representation, IEnumerable<object> children)
+        {
+            children.Process(c => AddChild(representation, c));
+        }
+
         public Type GetRepresentationType()
         {
             return representation_type;

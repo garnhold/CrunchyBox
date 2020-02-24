@@ -40,26 +40,26 @@ namespace Crunchy.Sack
     }
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddOrderlessChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
+        static public void AddOrderlessDynamicChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
         {
-            item.AddChildrenInfo(n,
+            item.AddDynamicChildrenInfo(n,
                 new EffigyInfo_Collection_Orderless_Process<REPRESENTATION_TYPE, CHILD_TYPE>(a, r)
             );
         }
-        static public void AddOrderlessChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
+        static public void AddOrderlessDynamicChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
         {
-            item.AddOrderlessChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, a, r);
+            item.AddOrderlessDynamicChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, a, r);
         }
 
-        static public RepresentationInfoSet_SelectableChildren AddOrderlessSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
+        static public RepresentationInfoSet_SelectableChildren AddOrderlessSelectableDynamicChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
         {
-            return item.AddSelectableChildrenInfo(n,
+            return item.AddSelectableDynamicChildrenInfo(n,
                 new EffigyInfo_Collection_Orderless_Process<REPRESENTATION_TYPE, CHILD_TYPE>(a, r)
             );
         }
-        static public RepresentationInfoSet_SelectableChildren AddOrderlessSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
+        static public RepresentationInfoSet_SelectableChildren AddOrderlessSelectableDynamicChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, CHILD_TYPE> a, Process<REPRESENTATION_TYPE, CHILD_TYPE> r)
         {
-            return item.AddOrderlessSelectableChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, a, r);
+            return item.AddOrderlessSelectableDynamicChildrenInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, a, r);
         }
     }
 }

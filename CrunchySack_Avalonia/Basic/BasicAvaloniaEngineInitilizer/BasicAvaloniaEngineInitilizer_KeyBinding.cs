@@ -26,7 +26,7 @@ namespace Crunchy.Sack_Avalonia
                 (k, m) => new KeyGesture(k.ConvertEX<Key>(), m.ConvertEX<KeyModifiers>())
             );
 
-            engine.AddChildrenInfo<Control>("key_bindings", e => e.KeyBindings);
+            engine.AddDynamicChildrenInfo<Control>("key_bindings", e => e.KeyBindings);
         }
     }
 }

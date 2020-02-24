@@ -17,7 +17,7 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<ComboBoxText>("ComboBox");
             engine.AddPublicPropertyAttributeLinksForType<ComboBoxText>();
 
-            engine.AddChildrenInfo<ComboBoxText, string>(
+            engine.AddDynamicChildrenInfo<ComboBoxText, string>(
                 (b, i) => b.Remove(i),
                 (b, s) => b.AppendText(s),
                 (b, i, s) => b.InsertText(i, s)

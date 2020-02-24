@@ -18,7 +18,7 @@ namespace Crunchy.Sack_Avalonia
         static public void Initilize(AvaloniaEngine engine)
         {
             engine.AddAvaloniaPropertyAttributeLinksForType<Panel>();
-            engine.AddChildrenInfo<Panel>(p => p.Children);
+            engine.AddDynamicChildrenInfo<Panel>(p => p.Children);
 
             engine.AddSimpleInstancer("HorizontalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Horizontal });
             engine.AddSimpleInstancer("VerticalLayout", () => new StackPanel() { Orientation = Avalonia.Layout.Orientation.Vertical });
@@ -34,7 +34,7 @@ namespace Crunchy.Sack_Avalonia
             engine.AddLinkInfo<Grid, string>("columns", (g, s) => g.SetColumnsDefinitionString(s), g => g.GetColumnsDefinitionString());
             engine.AddLinkInfo<Grid, string>("rows", (g, s) => g.SetRowsDefinitionString(s), g => g.GetRowsDefinitionString());
 
-            engine.AddChildrenInfo<Grid>(g => g.Children);
+            engine.AddDynamicChildrenInfo<Grid>(g => g.Children);
 
             engine.AddLinkInfo<Control, int>("column", Grid.ColumnProperty);
             engine.AddLinkInfo<Control, int>("row", Grid.RowProperty);

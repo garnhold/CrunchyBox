@@ -33,15 +33,15 @@ namespace Crunchy.Sack
     }
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddSingleChildInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> s)
+        static public void AddSingleDynamicChildInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, CHILD_TYPE> s)
         {
-            item.AddChildrenInfo(n,
+            item.AddDynamicChildrenInfo(n,
                 new EffigyInfo_Single_Overwrite_Process<REPRESENTATION_TYPE, CHILD_TYPE>(s)
             );
         }
-        static public void AddSingleChildInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, CHILD_TYPE> s)
+        static public void AddSingleDynamicChildInfo<REPRESENTATION_TYPE, CHILD_TYPE>(this RepresentationEngine item, Process<REPRESENTATION_TYPE, CHILD_TYPE> s)
         {
-            item.AddSingleChildInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, s);
+            item.AddSingleDynamicChildInfo<REPRESENTATION_TYPE, CHILD_TYPE>(RepresentationInfo.UnamedChildren, s);
         }
     }
 }

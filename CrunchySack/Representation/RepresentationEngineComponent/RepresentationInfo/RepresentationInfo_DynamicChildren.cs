@@ -7,7 +7,7 @@ namespace Crunchy.Sack
     using Dough;
     using Noodle;
     
-    public class RepresentationInfo_Children : RepresentationInfo
+    public class RepresentationInfo_DynamicChildren : RepresentationInfo
     {
         private EffigyInfo effigy_info;
 
@@ -41,7 +41,7 @@ namespace Crunchy.Sack
             return true;
         }
 
-        public RepresentationInfo_Children(string n, EffigyInfo e) : base(n, e.GetRepresentationType())
+        public RepresentationInfo_DynamicChildren(string n, EffigyInfo e) : base(n, e.GetRepresentationType())
         {
             effigy_info = e;
         }
@@ -49,9 +49,9 @@ namespace Crunchy.Sack
 
     static public partial class RepresentationEngineExtensions_Add
     {
-        static public void AddChildrenInfo(this RepresentationEngine item, string n, EffigyInfo effigy)
+        static public void AddDynamicChildrenInfo(this RepresentationEngine item, string n, EffigyInfo effigy)
         {
-            item.AddInfo(new RepresentationInfo_Children(n, effigy));
+            item.AddInfo(new RepresentationInfo_DynamicChildren(n, effigy));
         }
     }
 }

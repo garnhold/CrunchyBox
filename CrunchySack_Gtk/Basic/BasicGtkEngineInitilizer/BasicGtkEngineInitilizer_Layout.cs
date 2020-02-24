@@ -14,7 +14,7 @@ namespace Crunchy.Sack_Gtk
         [BasicGtkEngineInitilizer]
         static public void Initilize(GtkEngine engine)
         {
-            engine.AddChildrenInfo<Container, Widget>((c, i) => c.RemoveChildAt(i), (c, w) => c.AddChild(w), (c, i, w) => c.InsertChild(i, w));
+            engine.AddDynamicChildrenInfo<Container, Widget>((c, i) => c.RemoveChildAt(i), (c, w) => c.AddChild(w), (c, i, w) => c.InsertChild(i, w));
 
             engine.AddSimpleInstancer("HorizontalLayout", () => new Box(Orientation.Horizontal, 0));
             engine.AddSimpleInstancer("VerticalLayout", () => new Box(Orientation.Vertical, 0));
@@ -35,8 +35,8 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<VPaned>("VerticalSplitContainer");
             engine.AddPublicPropertyAttributeLinksForType<VPaned>();
 
-            engine.AddSingleChildInfo<Paned, Widget>("child1", (p, w) => p.Add1(w));
-            engine.AddSingleChildInfo<Paned, Widget>("child2", (p, w) => p.Add2(w));
+            engine.AddSingleDynamicChildInfo<Paned, Widget>("child1", (p, w) => p.Add1(w));
+            engine.AddSingleDynamicChildInfo<Paned, Widget>("child2", (p, w) => p.Add2(w));
 
             engine.AddSimpleInstancer<FlowBox>();
             engine.AddPublicPropertyAttributeLinksForType<FlowBox>();

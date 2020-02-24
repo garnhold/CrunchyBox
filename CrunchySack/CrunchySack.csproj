@@ -251,7 +251,7 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSetChildrenSelector.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\RepresentationInfoSet_SelectableChildren\RepresentationInfoSetChildrenSelector_SingleIndex.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Link.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Children.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_DynamicChildren.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value.cs" />
@@ -307,6 +307,11 @@
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
     <Compile Include="StaticEffigyInfo\StaticEffigyInfo.cs" />
+    <Compile Include="StaticEffigyInfo\StaticEffigyInfo_Single\StaticEffigyInfo_Single.cs" />
+    <Compile Include="StaticEffigyInfo\StaticEffigyInfo_Collection\StaticEffigyInfo_Collection.cs" />
+    <Compile Include="StaticEffigyInfo\StaticEffigyInfo_Collection\StaticEffigyInfo_Collection_Process.cs" />
+    <Compile Include="StaticEffigyInfo\StaticEffigyInfo_Single\StaticEffigyInfo_Single_Process.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_StaticChildren.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -359,6 +364,8 @@
     <Folder Include="Cml\Execution\Space\Parameter\" />
     <Folder Include="EffigyInfo\" />
     <Folder Include="StaticEffigyInfo\" />
+    <Folder Include="StaticEffigyInfo\StaticEffigyInfo_Collection\" />
+    <Folder Include="StaticEffigyInfo\StaticEffigyInfo_Single\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

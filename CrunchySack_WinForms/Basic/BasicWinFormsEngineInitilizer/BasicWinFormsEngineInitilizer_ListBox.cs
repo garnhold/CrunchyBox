@@ -16,7 +16,7 @@ namespace Crunchy.Sack_WinForms
         {
             engine.AddSimpleInstancer<ListBox>();
             engine.AddPublicPropertyAttributeLinksForType<ListBox>();
-            engine.AddChildrenInfo<ListBox>(b => b.Items);
+            engine.AddDynamicChildrenInfo<ListBox>(b => b.Items);
         }
     }
 }

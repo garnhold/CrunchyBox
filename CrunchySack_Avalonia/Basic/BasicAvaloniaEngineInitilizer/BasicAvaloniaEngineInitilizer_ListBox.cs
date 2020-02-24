@@ -19,7 +19,7 @@ namespace Crunchy.Sack_Avalonia
         {
             engine.AddSimpleInstancer<ListBox>();
             engine.AddAvaloniaPropertyAttributeLinksForType<ListBox>();
-            engine.AddChildrenInfo<ListBox, ListBoxItem>((b, o) => b.Items = o);
+            engine.AddDynamicChildrenInfo<ListBox, ListBoxItem>((b, o) => b.Items = o);
 
             engine.AddSimpleInstancer<ListBoxItem>();
             engine.AddAvaloniaPropertyAttributeLinksForType<ListBoxItem>();

@@ -20,7 +20,7 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<MenuItem>("MenuItem");
             engine.AddPublicPropertyAttributeLinksForType<MenuItem>();
 
-            engine.AddChildrenInfo<MenuItem, MenuItem>(
+            engine.AddDynamicChildrenInfo<MenuItem, MenuItem>(
                 (i, p) => i.RemoveSubmenuChildAt(p),
                 (i, c) => i.AddSubmenuChild(c),
                 (i, p, c) => i.InsertSubmenuChild(p, c)
