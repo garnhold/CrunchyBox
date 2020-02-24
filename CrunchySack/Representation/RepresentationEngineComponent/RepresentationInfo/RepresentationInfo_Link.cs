@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Crunchy.Sack
 {
@@ -56,6 +58,18 @@ namespace Crunchy.Sack
         static public void AddLinkInfo<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, string p)
         {
             item.AddLinkInfo(n, typeof(REPRESENTATION_TYPE).GetVariableByPath(p));
+        }
+        static public void AddLinkInfo<REPRESENTATION_TYPE>(this RepresentationEngine item, string np)
+        {
+            item.AddLinkInfo<REPRESENTATION_TYPE>(np, np);
+        }
+        static public void AddLinkInfos<REPRESENTATION_TYPE>(this RepresentationEngine item, IEnumerable<string> nps)
+        {
+            nps.Process(np => item.AddLinkInfo<REPRESENTATION_TYPE>(np));
+        }
+        static public void AddLinkInfos<REPRESENTATION_TYPE>(this RepresentationEngine item, params string[] nps)
+        {
+            item.AddLinkInfos<REPRESENTATION_TYPE>((IEnumerable<string>)nps);
         }
 
         static public void AddLinkInfo<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
