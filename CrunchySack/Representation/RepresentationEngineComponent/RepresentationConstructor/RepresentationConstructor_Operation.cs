@@ -19,7 +19,7 @@ namespace Crunchy.Sack
 			return operation();
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T> o) : base(n, 0)
+        public RepresentationConstructor_Operation(string n, Operation<T> o) : base(n)
 		{
 			operation = o;
 		}
@@ -30,6 +30,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T>(n, o));
 		}
+        static public void AddSimpleConstructor<T>(this RepresentationEngine item, Operation<T> o)
+        {
+            item.AddSimpleConstructor<T>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1> : RepresentationConstructor
@@ -45,7 +49,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1> o) : base(n, 1)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1> o) : base(n, typeof(P1))
 		{
 			operation = o;
 		}
@@ -56,6 +60,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1>(this RepresentationEngine item, Operation<T, P1> o)
+        {
+            item.AddSimpleConstructor<T, P1>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2> : RepresentationConstructor
@@ -72,7 +80,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2> o) : base(n, 2)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2> o) : base(n, typeof(P1), typeof(P2))
 		{
 			operation = o;
 		}
@@ -83,6 +91,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2>(this RepresentationEngine item, Operation<T, P1, P2> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3> : RepresentationConstructor
@@ -100,7 +112,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3> o) : base(n, 3)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3> o) : base(n, typeof(P1), typeof(P2), typeof(P3))
 		{
 			operation = o;
 		}
@@ -111,6 +123,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3>(this RepresentationEngine item, Operation<T, P1, P2, P3> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3, P4> : RepresentationConstructor
@@ -129,7 +145,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >(), obj4.ConvertEX<P4 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4> o) : base(n, 4)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4> o) : base(n, typeof(P1), typeof(P2), typeof(P3), typeof(P4))
 		{
 			operation = o;
 		}
@@ -140,6 +156,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3, P4>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3, P4>(this RepresentationEngine item, Operation<T, P1, P2, P3, P4> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3, P4>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5> : RepresentationConstructor
@@ -159,7 +179,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >(), obj4.ConvertEX<P4 >(), obj5.ConvertEX<P5 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5> o) : base(n, 5)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5> o) : base(n, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5))
 		{
 			operation = o;
 		}
@@ -170,6 +190,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5>(this RepresentationEngine item, Operation<T, P1, P2, P3, P4, P5> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3, P4, P5>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6> : RepresentationConstructor
@@ -190,7 +214,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >(), obj4.ConvertEX<P4 >(), obj5.ConvertEX<P5 >(), obj6.ConvertEX<P6 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6> o) : base(n, 6)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6> o) : base(n, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6))
 		{
 			operation = o;
 		}
@@ -201,6 +225,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6>(this RepresentationEngine item, Operation<T, P1, P2, P3, P4, P5, P6> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7> : RepresentationConstructor
@@ -222,7 +250,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >(), obj4.ConvertEX<P4 >(), obj5.ConvertEX<P5 >(), obj6.ConvertEX<P6 >(), obj7.ConvertEX<P7 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : base(n, 7)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : base(n, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7))
 		{
 			operation = o;
 		}
@@ -233,6 +261,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7>(this RepresentationEngine item, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> : RepresentationConstructor
@@ -255,7 +287,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >(), obj4.ConvertEX<P4 >(), obj5.ConvertEX<P5 >(), obj6.ConvertEX<P6 >(), obj7.ConvertEX<P7 >(), obj8.ConvertEX<P8 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : base(n, 8)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : base(n, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8))
 		{
 			operation = o;
 		}
@@ -266,6 +298,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8>(this RepresentationEngine item, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> : RepresentationConstructor
@@ -289,7 +325,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >(), obj4.ConvertEX<P4 >(), obj5.ConvertEX<P5 >(), obj6.ConvertEX<P6 >(), obj7.ConvertEX<P7 >(), obj8.ConvertEX<P8 >(), obj9.ConvertEX<P9 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : base(n, 9)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : base(n, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8), typeof(P9))
 		{
 			operation = o;
 		}
@@ -300,6 +336,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(this RepresentationEngine item, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(typeof(T).Name, o);
+        }
 	}
 	
     public class RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> : RepresentationConstructor
@@ -324,7 +364,7 @@ namespace Crunchy.Sack
 			return operation(obj1.ConvertEX<P1 >(), obj2.ConvertEX<P2 >(), obj3.ConvertEX<P3 >(), obj4.ConvertEX<P4 >(), obj5.ConvertEX<P5 >(), obj6.ConvertEX<P6 >(), obj7.ConvertEX<P7 >(), obj8.ConvertEX<P8 >(), obj9.ConvertEX<P9 >(), obj10.ConvertEX<P10 >());
         }
 
-        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : base(n, 10)
+        public RepresentationConstructor_Operation(string n, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : base(n, typeof(P1), typeof(P2), typeof(P3), typeof(P4), typeof(P5), typeof(P6), typeof(P7), typeof(P8), typeof(P9), typeof(P10))
 		{
 			operation = o;
 		}
@@ -335,5 +375,9 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new RepresentationConstructor_Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(n, o));
 		}
+        static public void AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(this RepresentationEngine item, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
+        {
+            item.AddSimpleConstructor<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(typeof(T).Name, o);
+        }
 	}
 }

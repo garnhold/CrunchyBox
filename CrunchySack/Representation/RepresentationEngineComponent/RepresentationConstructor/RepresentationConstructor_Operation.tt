@@ -22,6 +22,8 @@ namespace Crunchy.Sack
 	<#
 	string basic_class_type = "RepresentationConstructor_Operation";
 	string generic_arguments = TTCS.ArgumentsForGeneric("P#", number_arguments, "T");
+    
+    string base_arguments = TTCS.Arguments("typeof(P#)", number_arguments, "n");
 
 	string class_type = basic_class_type + generic_arguments;
 	string operation_type = "Operation" + generic_arguments;
@@ -31,7 +33,7 @@ namespace Crunchy.Sack
 	{
 		private <#=operation_type#> operation;
 
-		public override object Instance(CmlContext context, IEnumerable<object> arguments)
+		public override object Invoke(CmlContext context, IEnumerable<object> arguments)
         {
 			<#for(int i = 1; i <= number_arguments; i++){#>
 				object obj<#=i#>;
@@ -44,7 +46,7 @@ namespace Crunchy.Sack
 			return operation(<#=TTCS.Arguments("obj#.ConvertEX<P# >()", number_arguments)#>);
         }
 
-        public <#=basic_class_type#>(string n, <#=operation_type#> o) : base(n, <#=number_arguments#>)
+        public <#=basic_class_type#>(string n, <#=operation_type#> o) : base(<#=base_arguments#>)
 		{
 			operation = o;
 		}
@@ -55,6 +57,10 @@ namespace Crunchy.Sack
 		{
             item.AddConstructor(new <#=class_type#>(n, o));
 		}
+        static public void AddSimpleConstructor<#=generic_arguments#>(this RepresentationEngine item, <#=operation_type#> o)
+        {
+            item.AddSimpleConstructor<#=generic_arguments#>(typeof(T).Name, o);
+        }
 	}
 <#}#>
 }

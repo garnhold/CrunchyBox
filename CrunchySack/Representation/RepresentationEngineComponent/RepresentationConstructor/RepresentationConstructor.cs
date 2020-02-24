@@ -10,24 +10,26 @@ namespace Crunchy.Sack
     public abstract class RepresentationConstructor : RepresentationEngineComponent
     {
         private string name;
-        private int number_parameters;
+        private List<Type> parameter_types;
 
         public abstract object Invoke(CmlContext context, IEnumerable<object> arguments);
 
-        public RepresentationConstructor(string n, int p)
+        public RepresentationConstructor(string n, IEnumerable<Type> p)
         {
             name = n;
-            number_parameters = p;
+            parameter_types = p.ToList();
         }
+
+        public RepresentationConstructor(string n, params Type[] p) : this(n, (IEnumerable<Type>)p) { }
 
         public string GetName()
         {
             return name;
         }
 
-        public int GetNumberParameters()
+        public IEnumerable<Type> GetParameterTypes()
         {
-            return number_parameters;
+            return parameter_types;
         }
     }
 }

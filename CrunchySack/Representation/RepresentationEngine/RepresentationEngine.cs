@@ -15,7 +15,8 @@ namespace Crunchy.Sack
         private FragmentLibrary fragment_library;
 
         private Dictionary<string, RepresentationInstancer> instancers;
-        private Dictionary<Tuple<string, int>, RepresentationConstructor> constructors;
+        private Dictionary<string, List<RepresentationConstructor>> constructors;
+        private OperationCache<RepresentationConstructor, string, ContentsEnumerable<Type>> constructor_cache;
         
         private Dictionary<string, TypeDictionary<RepresentationInfo>> infos;
 
@@ -29,7 +30,12 @@ namespace Crunchy.Sack
             fragment_library = new FragmentLibrary();
 
             instancers = new Dictionary<string, RepresentationInstancer>();
-            constructors = new Dictionary<Tuple<string, int>, RepresentationConstructor>();
+            constructors = new Dictionary<string, List<RepresentationConstructor>>();
+
+            constructor_cache = new OperationCache<RepresentationConstructor, string, ContentsEnumerable<Type>>("constructor_cache", delegate (string name, ContentsEnumerable<Type> parameter_types) {
+                return constructors.GetValues(name)
+                    .FindFirst(c => c.GetParameterTypes().AreElements(parameter_types, (p1, p2) => p1.CanHold(p2)));
+            });
 
             infos = new Dictionary<string, TypeDictionary<RepresentationInfo>>();
 
@@ -45,8 +51,10 @@ namespace Crunchy.Sack
 
         public void AddConstructor(RepresentationConstructor cs)
         {
-            constructors[Tuple.New(cs.GetName(), cs.GetNumberParameters())] = cs;
+            constructors.Add(cs.GetName(), cs);
             cs.Initilize(this);
+
+            constructor_cache.Clear();
         }
 
         public void AddInfo(RepresentationInfo i)
@@ -89,13 +97,13 @@ namespace Crunchy.Sack
         {
             List<object> system_value_list = system_values.ToList();
 
-            return GetConstructor(name, system_value_list.Count)
+            return GetConstructor(name, system_value_list.Convert(o => o.GetTypeEX()))
                 .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("constructor", name + "(" + system_value_list.Count + ")"))
                 .Invoke(context, system_value_list);
         }
-        public RepresentationConstructor GetConstructor(string name, int number_parameters)
+        public RepresentationConstructor GetConstructor(string name, IEnumerable<Type> parameter_types)
         {
-            return constructors.GetValue(Tuple.New(name, number_parameters));
+            return constructor_cache.Fetch(name, new ContentsEnumerable<Type>(parameter_types));
         }
 
         public RepresentationInfo AssertGetInfo(Type type, string name)
