@@ -306,6 +306,7 @@
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
+    <Compile Include="StaticEffigyInfo\StaticEffigyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -357,6 +358,7 @@
     <Folder Include="Cml\Execution\Space\Set\" />
     <Folder Include="Cml\Execution\Space\Parameter\" />
     <Folder Include="EffigyInfo\" />
+    <Folder Include="StaticEffigyInfo\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
