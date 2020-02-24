@@ -81,14 +81,6 @@
     <Compile Include="GlobalLibrary\Global\Global_StaticClass.cs" />
     <Compile Include="GlobalLibrary\Global\Global_Direct_Operation.cs" />
     <Compile Include="GlobalLibrary\Global\Global_Direct.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_IList.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_Process.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Process.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink_Collection.cs" />
     <Compile Include="Syncro\FunctionSyncro\FunctionSyncro.cs" />
     <Compile Include="Syncro\SyncroManager.cs" />
@@ -230,11 +222,9 @@
     <Compile Include="Link\VariableLink\VariableLinkState\VariableLinkState.cs" />
     <Compile Include="Link\VariableLink\VariableLink.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite.cs" />
     <Compile Include="Link\EffigyLink\EffigyLink_Single.cs" />
     <Compile Include="Link\EffigyLink\EffigyClassInfo\EffigyClassInfo_Dynamic.cs" />
     <Compile Include="Link\EffigyLink\EffigyClassInfo\EffigyClassInfo_Static.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Single\EffigyInfo_Single.cs" />
     <Compile Include="Link\EffigyLink\EffigyClassInfo\EffigyClassInfo.cs" />
     <Compile Include="Link\VariableLink\VariableNode\VariableNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,8 +242,6 @@
     <Compile Include="Cml\CmlEntity\CmlEntityCompositeChild\CmlEntityCompositeChild.cs" />
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions.cs" />
     <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions_EventHandler.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless.cs" />
-    <Compile Include="Link\EffigyLink\EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless_Process.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple_Process.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple_Direct.cs" />
     <Compile Include="Link\VariableLink\VariableLink_Simple.cs" />
@@ -306,6 +294,18 @@
     <Compile Include="Cml\Execution\Space\Set\CmlSet.cs" />
     <Compile Include="Cml\Execution\Space\Parameter\CmlParameter.cs" />
     <Compile Include="Cml\Execution\Value\CmlValue_None.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Flush_Process.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_IList.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_Process.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless_Process.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite.cs" />
+    <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
@@ -356,6 +356,7 @@
     <Folder Include="Cml\Execution\Space\" />
     <Folder Include="Cml\Execution\Space\Set\" />
     <Folder Include="Cml\Execution\Space\Parameter\" />
+    <Folder Include="EffigyInfo\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
