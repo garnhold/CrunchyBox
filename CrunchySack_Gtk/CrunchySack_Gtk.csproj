@@ -99,6 +99,8 @@
     <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Dialog.cs" />
     <Compile Include="Extensions\FileChooserDialog\FileChooserDialogExtensions.cs" />
     <Compile Include="Extensions\FileChooserDialog\FileChooserDialogExtensions_Show.cs" />
+    <Compile Include="Extensions\FileChooserDialog\FileChooserDialogExtensions_Filters.cs" />
+    <Compile Include="Extensions\FileFilter\FileFilterExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
@@ -139,6 +141,7 @@
     <Folder Include="Extensions\Entry\" />
     <Folder Include="CustomDialog\" />
     <Folder Include="Extensions\FileChooserDialog\" />
+    <Folder Include="Extensions\FileFilter\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets" Condition="Exists('..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets')" />
