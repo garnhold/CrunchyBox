@@ -98,7 +98,7 @@ namespace Crunchy.Sack
             List<object> system_value_list = system_values.ToList();
 
             return GetConstructor(name, system_value_list.Convert(o => o.GetTypeEX()))
-                .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("constructor", name + "(" + system_value_list.Count + ")"))
+                .AssertNotNull(() => new CmlRuntimeError_InvalidIdException("constructor", name + "(" + system_value_list.Convert(o => o.GetTypeEX()).ToString(", ") + ")"))
                 .Invoke(context, system_value_list);
         }
         public RepresentationConstructor GetConstructor(string name, IEnumerable<Type> parameter_types)
