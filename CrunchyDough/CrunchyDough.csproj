@@ -1475,6 +1475,7 @@
     <Compile Include="Extensions\ICollection\ICollectionExtensions_Convert.cs" />
     <Compile Include="Extensions\ICollection\ICollectionExtensions_ConvertWithIndex.cs" />
     <Compile Include="Extensions\String\StringExtensions_CompareTo.cs" />
+    <Compile Include="DeferredProcessList\DeferredProcessList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1689,6 +1690,7 @@
     <Folder Include="Extensions\Float\IList\" />
     <Folder Include="RectI2\" />
     <Folder Include="StaleDictionary\" />
+    <Folder Include="DeferredProcessList\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
