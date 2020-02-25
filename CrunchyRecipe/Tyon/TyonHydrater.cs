@@ -13,14 +13,14 @@ namespace Crunchy.Recipe
 	{
         private TyonHydrationMode mode;
 
-        private List<Process> deferred_processes;
+        private DeferredProcessList deferred_process_list;
         private Dictionary<TyonAddress, object> internal_address_to_object;
 
         private TyonContext context;
 
         private void Finish()
         {
-            deferred_processes.Process(p => p());
+            deferred_process_list.ProcessDeferred();
             Clear();
         }
 
@@ -28,7 +28,7 @@ namespace Crunchy.Recipe
         {
             mode = m;
 
-            deferred_processes = new List<Process>();
+            deferred_process_list = new DeferredProcessList();
             internal_address_to_object = new Dictionary<TyonAddress, object>();
 
             context = c;
@@ -41,7 +41,7 @@ namespace Crunchy.Recipe
 
         public void Clear()
         {
-            deferred_processes.Clear();
+            deferred_process_list.Clear();
             internal_address_to_object.Clear();
         }
 
@@ -107,7 +107,7 @@ namespace Crunchy.Recipe
 
         public void DeferProcess(Process process)
         {
-            deferred_processes.Add(process);
+            deferred_process_list.Defer(process);
         }
 
         public bool TryGetDesignatedVariable(Type type, string name, out Variable variable)
