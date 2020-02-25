@@ -76,7 +76,6 @@ namespace Crunchy.Sack
         {
             item.AddLinkInfo(n, new Variable_Blockable<REPRESENTATION_TYPE>(v, i));
         }
-
         static public void AddLinkInfo<REPRESENTATION_TYPE>(this RepresentationEngine item, Variable v, Operation<bool, REPRESENTATION_TYPE> i)
         {
             item.AddLinkInfo<REPRESENTATION_TYPE>(v.GetVariableName(), v, i);
@@ -88,6 +87,10 @@ namespace Crunchy.Sack
                 new Variable_Operation<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r),
                 i
             );
+        }
+        static public void AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, VALUE_TYPE> a)
+        {
+            item.AddLinkInfo(new Variable_Operation<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, null));
         }
     }
 }
