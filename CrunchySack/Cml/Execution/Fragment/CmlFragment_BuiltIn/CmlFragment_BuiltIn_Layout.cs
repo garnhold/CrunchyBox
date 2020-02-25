@@ -16,7 +16,7 @@ namespace Crunchy.Sack
             string layout = context.GetFragmentSpace().GetParameterForcedSystemValue<string>(context, "name");
 
             return context.GetEngine().GetClassLibrary().GetClass(type, layout)
-                .IfNotNull(c => c.Instance(context));
+                .IfNotNull(c => c.Create(context));
         }
 
         public CmlFragment_BuiltIn_Layout() : base("Layout") { }

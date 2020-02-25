@@ -32,7 +32,10 @@ namespace Crunchy.Sack
                     .NewFragmentSpace(parameters)
             );
 
-            parameters.Narrow(p => p.IsUnused()).Process(p => p.PushToRepresentation(context, representation));
+            context.AddDeferredProcess(delegate() {
+                parameters.Narrow(p => p.IsUnused()).Process(p => p.PushToRepresentation(context, representation));
+            });
+
             return representation;
         }
 	}

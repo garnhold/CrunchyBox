@@ -27,13 +27,16 @@ namespace Crunchy.Sack
             layout = l;
         }
 
-        public object Instance(CmlContext context)
+        public object Create(CmlContext context)
         {
-            return InstanceInternal(
+            object instance = InstanceInternal(
                 context
                     .NewUnitSpace()
                     .NewClass(this)
             );
+
+            context.Complete();
+            return instance;
         }
 
         public Type GetTargetType()

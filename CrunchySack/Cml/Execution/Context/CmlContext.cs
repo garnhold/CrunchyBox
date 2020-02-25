@@ -10,6 +10,8 @@ namespace Crunchy.Sack
 
     public abstract class CmlContext
 	{
+        public abstract void Complete();
+
         public abstract CmlClass GetClass();
         public abstract CmlUnitSpace GetUnitSpace();
         public abstract CmlFragmentSpace GetFragmentSpace();

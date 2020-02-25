@@ -26,10 +26,13 @@ namespace Crunchy.Sack
 
             context = context.NewRepresentationSpace(representation, out representation_space);
 
-            context.GetEngine().AssertApplyGeneralModifiers(context, representation);
-            entity.GetTopicalChildren<CmlEntityInfo>().Process(i => i.PushToRepresentation(context, representation));
+            context.AddDeferredProcess(delegate() {
+                context.GetEngine().AssertApplyGeneralModifiers(context, representation);
+                entity.GetTopicalChildren<CmlEntityInfo>().Process(i => i.PushToRepresentation(context, representation));
 
-            representation_space.SolidifyInstance(context);
+                representation_space.SolidifyInstance(context);
+            });
+
             return representation;
         }
 

@@ -43,6 +43,10 @@ namespace Crunchy.Sack
             deferred_process_list = parent_context.GetDeferredProcessList();
         }
 
+        public override void Complete()
+        {
+        }
+
         public override CmlClass GetClass()
         {
             return @class;

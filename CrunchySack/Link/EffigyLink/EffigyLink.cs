@@ -59,7 +59,7 @@ namespace Crunchy.Sack
                     syncro_manager
                 );
 
-                return class_info.AssertGetClass(context).Instance(context);
+                return class_info.AssertGetClass(context).Create(context);
             }
 
             return null;

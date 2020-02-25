@@ -15,7 +15,7 @@ namespace Crunchy.Sack
             CmlClass @class = context.GetClass();
 
             return context.GetEngine().GetClassLibrary().GetClass(@class.GetTargetType().BaseType, @class.GetLayout())
-                .IfNotNull(c => c.Instance(context));
+                .IfNotNull(c => c.Create(context));
         }
 
         public CmlFragment_BuiltIn_Base() : base("Base") { }

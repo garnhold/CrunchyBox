@@ -28,7 +28,7 @@ namespace Crunchy.Sack
 
         public CmlContext_Base(CmlTargetInfo t) : this(t, new LinkManager(), new SyncroManager()) { }
 
-        public void Finish()
+        public override void Complete()
         {
             deferred_process_list.ProcessDeferred();
         }
