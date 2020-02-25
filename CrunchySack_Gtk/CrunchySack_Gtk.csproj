@@ -101,6 +101,11 @@
     <Compile Include="Extensions\FileChooserDialog\FileChooserDialogExtensions_Show.cs" />
     <Compile Include="Extensions\FileChooserDialog\FileChooserDialogExtensions_Filters.cs" />
     <Compile Include="Extensions\FileFilter\FileFilterExtensions.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Accelerator.cs" />
+    <Compile Include="Extensions\Window\WindowExtensions_AccelGroup.cs" />
+    <Compile Include="Extensions\Widget\WidgetExtensions_Window.cs" />
+    <Compile Include="Extensions\Widget\WidgetExtensions_Accelerator.cs" />
+    <Compile Include="AcceleratorItem\AcceleratorItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
@@ -142,6 +147,7 @@
     <Folder Include="CustomDialog\" />
     <Folder Include="Extensions\FileChooserDialog\" />
     <Folder Include="Extensions\FileFilter\" />
+    <Folder Include="AcceleratorItem\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets" Condition="Exists('..\packages\GtkSharp.3.22.25.56\build\GtkSharp.targets')" />

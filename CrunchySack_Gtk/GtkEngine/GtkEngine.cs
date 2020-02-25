@@ -43,7 +43,7 @@ namespace Crunchy.Sack_Gtk
             this.AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(n, a, r, s => s.IsFocus == false);
         }
 
-        public void AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(string n, string property_name) where REPRESENTATION_TYPE : Widget
+        public void AddPropertyLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(string n, string property_name) where REPRESENTATION_TYPE : Widget
         {
             this.AddLinkInfo<REPRESENTATION_TYPE, VALUE_TYPE>(n,
                 (w, v) => w.SetProperty(property_name, v.ConvertEX<GLib.Value>()),

@@ -16,6 +16,9 @@ namespace Crunchy.Sack_Gtk
         {
             engine.AddSimpleInstancer<Label>("Text");
             engine.AddPublicPropertyAttributeLinksForType<Label>();
+
+            engine.AddSimpleInstancer<AccelLabel>();
+            engine.AddPublicPropertyAttributeLinksForType<AccelLabel>();
         }
     }
 }

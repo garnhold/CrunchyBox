@@ -20,6 +20,9 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<MenuItem>("MenuItem");
             engine.AddPublicPropertyAttributeLinksForType<MenuItem>();
 
+            engine.AddLinkInfo<MenuItem, string>("label", (i, s) => i.Child = new AccelLabel(s));
+            engine.AddSingleDynamicChildInfo<MenuItem, Widget>("contents", (i, w) => i.Child = w);
+
             engine.AddDynamicChildrenInfo<MenuItem, MenuItem>(
                 (i, p) => i.RemoveSubmenuChildAt(p),
                 (i, c) => i.AddSubmenuChild(c),
