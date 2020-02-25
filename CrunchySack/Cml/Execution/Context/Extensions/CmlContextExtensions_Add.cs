@@ -29,6 +29,11 @@ namespace Crunchy.Sack
         {
             function_syncro.SetManager(item.GetSyncroManager());
         }
+
+        static public void AddDeferredProcess(this CmlContext item, Process process)
+        {
+            item.GetDeferredProcessList().Defer(process);
+        }
 	}
 	
 }

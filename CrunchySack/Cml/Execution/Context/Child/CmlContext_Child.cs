@@ -26,6 +26,7 @@ namespace Crunchy.Sack
         private CmlTargetInfo target_info;
         private LinkManager link_manager;
         private SyncroManager syncro_manager;
+        private DeferredProcessList deferred_process_list;
 
         public CmlContext_Child(CmlContext p)
         {
@@ -39,6 +40,7 @@ namespace Crunchy.Sack
             target_info = parent_context.GetTargetInfo();
             link_manager = parent_context.GetLinkManager();
             syncro_manager = parent_context.GetSyncroManager();
+            deferred_process_list = parent_context.GetDeferredProcessList();
         }
 
         public override CmlClass GetClass()
@@ -75,6 +77,11 @@ namespace Crunchy.Sack
         {
             return syncro_manager;
         }
-	}
+
+        public override DeferredProcessList GetDeferredProcessList()
+        {
+            return deferred_process_list;
+        }
+    }
 	
 }

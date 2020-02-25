@@ -18,6 +18,7 @@ namespace Crunchy.Sack
         public abstract CmlTargetInfo GetTargetInfo();
         public abstract LinkManager GetLinkManager();
         public abstract SyncroManager GetSyncroManager();
+        public abstract DeferredProcessList GetDeferredProcessList();
 	}
 	
 }
