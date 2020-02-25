@@ -256,7 +256,6 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_SetMember.cs" />
-    <Compile Include="Link\VariableValue\VariableValue.cs" />
     <Compile Include="Cml\Execution\Context\CmlContext.cs" />
     <Compile Include="Cml\Execution\Context\CmlContext_Base.cs" />
     <Compile Include="Cml\Execution\Context\Child\CmlContext_Child.cs" />
@@ -346,7 +345,6 @@
     <Folder Include="Cml\CmlEntity\CmlEntityCompositeChild\" />
     <Folder Include="Syncro\FunctionSyncro\Extensions\" />
     <Folder Include="Representation\RepresentationEngineComponent\RepresentationInfoSet\" />
-    <Folder Include="Link\VariableValue\" />
     <Folder Include="Cml\Execution\Context\" />
     <Folder Include="Cml\Execution\Context\Extensions\" />
     <Folder Include="Cml\Execution\Context\Child\" />

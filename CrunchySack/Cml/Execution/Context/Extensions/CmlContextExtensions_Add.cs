@@ -10,11 +10,6 @@ namespace Crunchy.Sack
 
     static public class CmlContextExtensions_Add
 	{
-        static public void AddVariableValue(this CmlContext item, VariableValue variable_value)
-        {
-            item.GetLinkManager().AddVariableValue(variable_value);
-        }
-
         static public void AddVariableLink(this CmlContext item, string group, VariableLink variable_link)
         {
             item.GetLinkManager().AddVariableLink(group, variable_link);
