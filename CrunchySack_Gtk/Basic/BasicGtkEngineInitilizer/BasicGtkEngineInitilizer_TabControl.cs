@@ -17,6 +17,10 @@ namespace Crunchy.Sack_Gtk
             engine.AddSimpleInstancer<Notebook>("TabControl");
             engine.AddPublicPropertyAttributeLinksForType<Notebook>();
 
+            engine.AddGeneralModifier<Notebook>(n => n.Shown += (s, e) => 
+                n.GetTabs().Process(t => t.ShowAll())
+            );
+
             engine.AddSelectableDynamicChildrenInfo<Notebook, NotebookItem>(
                 (n, i) => n.RemoveNotebookItemAt(i),
                 (n, i) => n.AddNotebookItem(i),

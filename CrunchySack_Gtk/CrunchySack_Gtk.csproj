@@ -106,6 +106,8 @@
     <Compile Include="Extensions\Widget\WidgetExtensions_Window.cs" />
     <Compile Include="Extensions\Widget\WidgetExtensions_Accelerator.cs" />
     <Compile Include="AcceleratorItem\AcceleratorItem.cs" />
+    <Compile Include="Extensions\Notebook\NotebookExtensions_Pages.cs" />
+    <Compile Include="Extensions\Notebook\NotebookExtensions_Tabs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
