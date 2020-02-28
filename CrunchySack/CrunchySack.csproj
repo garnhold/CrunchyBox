@@ -300,8 +300,6 @@
     <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_IList.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_IslandMorph_Process.cs" />
-    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless.cs" />
-    <Compile Include="EffigyInfo\EffigyInfo_Collection\EffigyInfo_Collection_Orderless_Process.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite.cs" />
     <Compile Include="EffigyInfo\EffigyInfo_Single\EffigyInfo_Single_Overwrite_Process.cs" />
