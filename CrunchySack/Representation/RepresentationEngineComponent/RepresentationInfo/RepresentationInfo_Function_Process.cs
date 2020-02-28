@@ -25,9 +25,7 @@ namespace Crunchy.Sack
     {
         static public void AddFunctionInfo<REPRESENTATION_TYPE>(this RepresentationEngine item, string n, Process<REPRESENTATION_TYPE, FunctionSyncro> p)
         {
-            item.AddInfo(
-                new RepresentationInfo_Function_Process<REPRESENTATION_TYPE>(n, p)
-            );
+            item.AddInfo(new RepresentationInfo_Function_Process<REPRESENTATION_TYPE>(n, p));
         }
     }
 }
