@@ -27,7 +27,7 @@ namespace Crunchy.Sack
     {
         public EffigyInfo_Single_Overwrite_Process(Process<REPRESENTATION_TYPE, CHILD_TYPE> sp)
             : base(typeof(REPRESENTATION_TYPE), typeof(CHILD_TYPE),
-                (r, c) => sp((REPRESENTATION_TYPE)r, (CHILD_TYPE)c)
+                (r, c) => sp((REPRESENTATION_TYPE)r, c.ConvertEX<CHILD_TYPE>())
             )
         { }
     }

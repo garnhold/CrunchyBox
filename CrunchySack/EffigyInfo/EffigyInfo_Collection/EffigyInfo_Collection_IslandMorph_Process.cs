@@ -39,8 +39,8 @@ namespace Crunchy.Sack
         public EffigyInfo_Collection_IslandMorph_Process(Process<REPRESENTATION_TYPE, int> rp, Process<REPRESENTATION_TYPE, CHILD_TYPE> ap, Process<REPRESENTATION_TYPE, int, CHILD_TYPE> ip)
             : base(typeof(REPRESENTATION_TYPE), typeof(CHILD_TYPE),
                 (r, i) => rp((REPRESENTATION_TYPE)r, i),
-                (r, c) => ap((REPRESENTATION_TYPE)r, (CHILD_TYPE)c),
-                (r, i, c) => ip((REPRESENTATION_TYPE)r, i, (CHILD_TYPE)c)
+                (r, c) => ap((REPRESENTATION_TYPE)r, c.ConvertEX<CHILD_TYPE>()),
+                (r, i, c) => ip((REPRESENTATION_TYPE)r, i, c.ConvertEX<CHILD_TYPE>())
             )
         { }
     }

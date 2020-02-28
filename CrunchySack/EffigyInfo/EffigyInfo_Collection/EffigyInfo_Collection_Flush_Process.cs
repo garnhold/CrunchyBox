@@ -27,7 +27,7 @@ namespace Crunchy.Sack
     {
         public EffigyInfo_Collection_Flush_Process(Process<REPRESENTATION_TYPE, IEnumerable<CHILD_TYPE>> sp)
             : base(typeof(REPRESENTATION_TYPE), typeof(CHILD_TYPE),
-                (r, c) => sp((REPRESENTATION_TYPE)r, c.Convert<object, CHILD_TYPE>())
+                (r, c) => sp((REPRESENTATION_TYPE)r, c.Convert(z => z.ConvertEX<CHILD_TYPE>()))
             )
         { }
     }

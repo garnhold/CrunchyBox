@@ -27,7 +27,7 @@ namespace Crunchy.Sack
     {
         public StaticEffigyInfo_Collection_Process(Process<REPRESENTATION_TYPE, CHILD_TYPE> p)
             : base(typeof(REPRESENTATION_TYPE), typeof(CHILD_TYPE),
-                  (r, c) => p((REPRESENTATION_TYPE)r, (CHILD_TYPE)c)
+                  (r, c) => p((REPRESENTATION_TYPE)r, c.ConvertEX<CHILD_TYPE>())
             ) { }
     }
     static public partial class RepresentationEngineExtensions_Add
