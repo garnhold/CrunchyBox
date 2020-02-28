@@ -13,7 +13,7 @@ namespace Crunchy.Sack
 
         private bool PushToRepresentationInternal(CmlValue_SystemValue value, object representation, CmlContext context)
         {
-            static_effigy_info.AddChild(representation, value.GetSystemValue().WrapAsEnumerable());
+            static_effigy_info.AddChild(representation, value.GetSystemValue());
 
             return true;
         }
