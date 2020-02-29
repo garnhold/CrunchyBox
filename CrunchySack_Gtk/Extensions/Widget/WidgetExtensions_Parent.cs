@@ -22,14 +22,5 @@ namespace Crunchy.Sack_Gtk
         {
             return item.GetParents().FindFirstOfType<Widget, T>();
         }
-
-        static public void SetChildPropertyOfParent<T>(this Widget item, string property_name, object value) where T : Container
-        {
-            item.GetParent<T>().ChildSetProperty(item, property_name, value.ConvertEX<GLib.Value>());
-        }
-        static public object GetChildPropertyOfParent<T>(this Widget item, string property_name) where T : Container
-        {
-            return item.GetParent<T>().ChildGetProperty(item, property_name);
-        }
     }
 }
