@@ -13,6 +13,18 @@ namespace Crunchy.Sack_Gtk
     
     static public class ContainerExtensions_Children
     {
+        static public void SetChild(this Container item, Widget widget)
+        {
+            item.ClearChildren();
+            item.AddChild(widget);
+        }
+
+        static public void SetChildren(this Container item, IEnumerable<Widget> widgets)
+        {
+            item.ClearChildren();
+            item.AddChildren(widgets);
+        }
+
         static public void ClearChildren(this Container item)
         {
             item.Children.ProcessCopy(w => item.Remove(w));
@@ -26,6 +38,11 @@ namespace Crunchy.Sack_Gtk
         static public void AddChild(this Container item, Widget widget)
         {
             item.Add(widget);
+        }
+
+        static public void AddChildren(this Container item, IEnumerable<Widget> widgets)
+        {
+            widgets.Process(w => item.AddChild(w));
         }
 
         static public void InsertChild(this Container item, int index, Widget widget)
