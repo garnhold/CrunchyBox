@@ -23,7 +23,11 @@ namespace Crunchy.Sack_Gtk
                 (s, k, m) => new AcceleratorItem(s, k.ConvertEX<Gdk.Key>(), m.ConvertEX<Gdk.ModifierType>())
             );
 
-            engine.AddStaticChildrenInfo<Widget, AcceleratorItem>("accelerators", (w, a) => w.AddBasicAccelerator(a));
+            engine.AddSimpleConstructor<AcceleratorItem, string, string>(
+                (s, p) => new AcceleratorItem(s, p)
+            );
+
+            engine.AddSingleStaticChildInfo<Widget, AcceleratorItem>("accelerator", (w, a) => w.AddBasicAccelerator(a));
         }
     }
 }
