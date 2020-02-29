@@ -109,6 +109,9 @@
     <Compile Include="Extensions\Notebook\NotebookExtensions_Pages.cs" />
     <Compile Include="Extensions\Notebook\NotebookExtensions_Tabs.cs" />
     <Compile Include="Extensions\AccelKey\AccelKeyExtensions.cs" />
+    <Compile Include="Extensions\Widget\WidgetExtensions_AccelGroup.cs" />
+    <Compile Include="Extensions\Widget\WidgetExtensions_Containing.cs" />
+    <Compile Include="Extensions\Widget\WidgetExtensions_Root.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">

@@ -9,18 +9,23 @@ using Gdk;
 namespace Crunchy.Sack_Gtk
 {
     using Dough;
+    using Salt;
     using Noodle;
     using Sack;
     
     static public class WidgetExtensions_Accelerator
     {
-        static public void AddBasicAccelerator(this Widget item, AcceleratorItem accelerator)
+        static public void AddBasicAccelerator(this Widget item, string signal, AccelKey key)
         {
             item.AddAccelerator(
-                accelerator.GetSignal(),
-                item.GetWindow().GetBasicAccelGroup(),
-                accelerator.GetKey()
+                signal,
+                item.GetBasicAccelGroup(),
+                key
             );
+        }
+        static public void AddBasicAccelerator(this Widget item, AcceleratorItem accelerator)
+        {
+            item.AddBasicAccelerator(accelerator.GetSignal(), accelerator.GetKey());
         }
     }
 }

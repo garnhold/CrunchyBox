@@ -11,11 +11,11 @@ namespace Crunchy.Sack_Gtk
     using Noodle;
     using Sack;
     
-    static public class WidgetExtensions_Window
+    static public class WidgetExtensions_Root
     {
-        static public Window GetRootWindow(this Widget item)
+        static public Widget GetRoot(this Widget item)
         {
-            return item.GetRoot() as Window;
+            return item.GetUpwards().GetLast();
         }
     }
 }
