@@ -27,10 +27,5 @@ namespace Crunchy.Sack_Gtk
         {
             return item.Traverse(i => i.GetImmediateContaining());
         }
-
-        static public IEnumerable<Widget> GetUpwards(this Widget item)
-        {
-            return item.TraverseWithSelf(i => i.GetImmediateContaining());
-        }
     }
 }

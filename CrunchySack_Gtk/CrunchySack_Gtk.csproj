@@ -112,6 +112,7 @@
     <Compile Include="Extensions\Widget\WidgetExtensions_AccelGroup.cs" />
     <Compile Include="Extensions\Widget\WidgetExtensions_Containing.cs" />
     <Compile Include="Extensions\Widget\WidgetExtensions_Root.cs" />
+    <Compile Include="Extensions\Widget\WidgetExtensions_Upward.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
