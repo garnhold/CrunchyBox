@@ -6,6 +6,10 @@ namespace Crunchy.Dough
 {
     static public class ValueExtensions_Traverse
     {
+        static public IEnumerable<T> Traverse<T>(this T item, Operation<T, T> operation)
+        {
+            return item.TraverseWithSelf(operation).Offset(1);
+        }
         static public IEnumerable<T> TraverseWithSelf<T>(this T item, Operation<T, T> operation)
         {
             while (item != null)
@@ -15,22 +19,9 @@ namespace Crunchy.Dough
             }
         }
 
-        static public IEnumerable<J> Traverse<T, J>(this T item, Operation<J, T> operation) where J : T
-        {
-            J cast;
-
-            while (item != null)
-            {
-                cast = operation(item);
-
-                yield return cast;
-                item = cast;
-            }
-        }
-
         static public IEnumerable<object> TraversePermissiveWithSelf<T>(this T item, Operation<object, T> operation)
         {
-            return item.TraverseWithSelf<object>(delegate(object sub_item) {
+            return item.TraverseWithSelf<object>(delegate (object sub_item) {
                 T cast;
 
                 if (sub_item.Convert<T>(out cast))
