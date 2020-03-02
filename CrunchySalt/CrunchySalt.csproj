@@ -65,10 +65,10 @@
     <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Backing.cs" />
     <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_EX.cs" />
     <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Prop.cs" />
-    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Property.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Value.cs" />
     <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions.cs" />
-    <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo.cs">
-      <DependentUpon>TypeExtensions_PropertyInfo.tt</DependentUpon>
+    <Compile Include="Extensions\Type\TypeExtensions_EventInfo.cs">
+      <DependentUpon>TypeExtensions_EventInfo.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -85,7 +85,6 @@
     <Compile Include="TypeBuilderEX\ConstructorBuilderEX\ConstructorBuilderEX.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoPass.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoEX.cs" />
-    <Compile Include="EmitDebugger\EmitDebugger.cs" />
     <Compile Include="EventDeregister\EventDeregister.cs" />
     <Compile Include="EventRegister\EventRegister.cs" />
     <Compile Include="TypeEX\EvtInfoEX\EvtInfoEX_MethodPair.cs" />
@@ -352,6 +351,19 @@
     <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U8.cs" />
     <Compile Include="IL\ILValue\Derivations\ILFunctionPointer.cs" />
     <Compile Include="IL\ILValue\Derivations\ILTypeOf.cs" />
+    <Compile Include="TypeEX\EvtInfoEX\EvtInfoEX_Event.cs" />
+    <Compile Include="TypeEX\EventInfoEX\EventInfoPass.cs" />
+    <Compile Include="ForeignEventInfo\ForeignEventInfo.cs" />
+    <Compile Include="TypeEX\EventInfoEX\EventInfoEX.cs" />
+    <Compile Include="Extensions\EventInfo\EventInfoExtensions.cs" />
+    <Compile Include="Extensions\EventInfo\EventInfoExtensions_EX.cs" />
+    <Compile Include="Extensions\EventInfo\EventInfoExtensions_Evt.cs" />
+    <Compile Include="Extensions\PropertyInfo\PropertyInfoExtensions_Foreign.cs" />
+    <Compile Include="Extensions\EventInfo\EventInfoExtensions_Foreign.cs" />
+    <Compile Include="Extensions\EventInfo\EventInfoExtensions_Manage.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo.cs">
+      <DependentUpon>TypeExtensions_PropertyInfo.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">
@@ -398,12 +410,19 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UnaryOperatorInfoEXSystem.cs</LastGenOutput>
     </Content>
+    <Content Include="Extensions\Type\TypeExtensions_EventInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeExtensions_EventInfo.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IL\ILStatementImplementation\" />
+    <Folder Include="TypeEX\EventInfoEX\" />
+    <Folder Include="ForeignEventInfo\" />
+    <Folder Include="Extensions\EventInfo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

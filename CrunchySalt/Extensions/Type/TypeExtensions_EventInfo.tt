@@ -1,0 +1,103 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)/bin/CrunchyDough.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Crunchy.Dough" #>
+<#@ output extension=".cs" #>
+<#
+Style[] styles = new Style[]{
+	new Style("Member", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly"),
+	new Style("Instance", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly"),
+	new Style("Static", "BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly")
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Salt
+{
+    using Dough;
+    
+    static public class TypeExtensions_EventInfo
+	{
+	<#foreach(Style style in styles){#>
+
+		static private OperationCache<List<EventInfo>, Type> GET_IMMEDIATE_NATIVE_<#=style.name#>_EVENTS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_NATIVE_<#=style.name#>_EVENTS", delegate(Type item){
+			return item.GetEvents(<#=style.binding_flags#>)
+				.ToList();
+		});
+		static public IEnumerable<EventInfo> GetImmediateNative<#=style.name#>Events(this Type item)
+		{
+			return GET_IMMEDIATE_NATIVE_<#=style.name#>_EVENTS.Fetch(item);
+		}
+
+		static private OperationCache<List<EventInfo>, Type> GET_NATIVE_<#=style.name#>_EVENTS = ReflectionCache.Get().NewOperationCache("GET_NATIVE_<#=style.name#>_EVENTS", delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediateNative<#=style.name#>Events())
+                .Flatten()
+				.ToList();
+		});
+		static public IEnumerable<EventInfo> GetNative<#=style.name#>Events(this Type item)
+		{
+			return GET_NATIVE_<#=style.name#>_EVENTS.Fetch(item);
+		}
+		
+		static private OperationCache<List<EventInfoEX>, Type> GET_IMMEDIATE_<#=style.name#>_EVENTS = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_<#=style.name#>_EVENTS", delegate(Type item){
+			return item.GetImmediateNative<#=style.name#>Events()
+				.Convert(f => f.GetEventInfoEX())
+				.ToList();
+		});
+		static public IEnumerable<EventInfoEX> GetImmediate<#=style.name#>Events(this Type item)
+		{
+			return GET_IMMEDIATE_<#=style.name#>_EVENTS.Fetch(item);
+		}
+
+		static private OperationCache<List<EventInfoEX>, Type> GET_<#=style.name#>_EVENTS = ReflectionCache.Get().NewOperationCache("GET_<#=style.name#>_EVENTS", delegate(Type item){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediate<#=style.name#>Events())
+                .Flatten()
+				.ToList();
+		});
+		static public IEnumerable<EventInfoEX> Get<#=style.name#>Events(this Type item)
+		{
+			return GET_<#=style.name#>_EVENTS.Fetch(item);
+		}
+
+		static private OperationCache<EventInfoEX, Type, string> GET_IMMEDIATE_<#=style.name#>_EVENT = ReflectionCache.Get().NewOperationCache("GET_IMMEDIATE_<#=style.name#>_EVENT", delegate(Type item, string name){
+			return item.GetEvent(name, <#=style.binding_flags#>)
+				.GetEventInfoEX();
+		});
+		static public EventInfoEX GetImmediate<#=style.name#>Event(this Type item, string name)
+		{
+			return GET_IMMEDIATE_<#=style.name#>_EVENT.Fetch(item, name);
+		}
+
+		static private OperationCache<EventInfoEX, Type, string> GET_<#=style.name#>_EVENT = ReflectionCache.Get().NewOperationCache("GET_<#=style.name#>_EVENT", delegate(Type item, string name){
+			return item.GetTypeAndAllBaseTypes()
+				.Convert(t => t.GetImmediate<#=style.name#>Event(name))
+				.GetFirstNonNull();
+		});
+		static public EventInfoEX Get<#=style.name#>Event(this Type item, string name)
+		{
+			return GET_<#=style.name#>_EVENT.Fetch(item, name);
+		}
+	<#}#>
+	}
+}
+<#+
+public class Style
+{
+	public readonly string name;
+	public readonly string binding_flags;
+
+	public Style(string n, string b)
+	{
+		name = n;
+		binding_flags = b;
+	}
+}
+#>

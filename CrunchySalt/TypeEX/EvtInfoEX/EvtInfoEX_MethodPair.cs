@@ -71,5 +71,33 @@ namespace Crunchy.Salt
                 .CreateILCalculate()
                 .RenderIL_Execute(canvas);
         }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+
+                hash = hash * 23 + add_method.GetHashCodeEX();
+                hash = hash * 23 + remove_method.GetHashCodeEX();
+                return hash;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            EvtInfoEX_MethodPair cast;
+
+            if (obj.Convert<EvtInfoEX_MethodPair>(out cast))
+            {
+                if (cast.add_method == add_method)
+                {
+                    if (cast.remove_method == remove_method)
+                        return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
