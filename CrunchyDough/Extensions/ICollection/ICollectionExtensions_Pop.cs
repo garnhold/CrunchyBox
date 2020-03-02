@@ -13,5 +13,13 @@ namespace Crunchy.Dough
             item.Remove(sub_item);
             return sub_item;
         }
+
+        static public T PopFirst<T>(this ICollection<T> item, Predicate<T> predicate)
+        {
+            T sub_item = item.FindFirst(predicate);
+
+            item.Remove(sub_item);
+            return sub_item;
+        }
     }
 }
