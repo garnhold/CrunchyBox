@@ -14,10 +14,7 @@ namespace Crunchy.Salt
     {
         static public IEnumerable<ILValue> GetILExpandedParams(this ILValue item, int start_index, IEnumerable<Type> types)
         {
-            int i = start_index;
-
-            foreach(Type type in types)
-                yield return item.GetILIndexed(i++).GetILImplicitCast(type);
+            return types.ConvertWithIndex((i, t) => item.GetILIndexed(i + start_index).GetILImplicitCast(t));
         }
         static public IEnumerable<ILValue> GetILExpandedParams(this ILValue item, int start_index, params Type[] types)
         {
