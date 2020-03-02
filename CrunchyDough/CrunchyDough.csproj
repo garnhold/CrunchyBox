@@ -1476,6 +1476,7 @@
     <Compile Include="Extensions\ICollection\ICollectionExtensions_ConvertWithIndex.cs" />
     <Compile Include="Extensions\String\StringExtensions_CompareTo.cs" />
     <Compile Include="DeferredProcessList\DeferredProcessList.cs" />
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertToMatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
