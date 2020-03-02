@@ -24,9 +24,7 @@ ConstantType[] constant_types = new ConstantType[]{
 	new ConstantType("Float", "float", "canvas.Emit_Ldc_R4(constant);", "constant.ToStringEX()"),
 	new ConstantType("Double", "double", "canvas.Emit_Ldc_R8(constant);", "constant.ToStringEX()"),
 
-	new ConstantType("String", "string", "canvas.Emit_Ldstr(constant);", "constant.StyleAsDoubleQuoteLiteral()"),
-
-	new ConstantType("TypeOf", "Type", "canvas.Emit_Ldtoken(constant); canvas.Emit_Call(typeof(Type).GetStaticMethod<RuntimeTypeHandle>(\"GetTypeFromHandle\"));", "\"typeof(\" + constant.ToStringEX() + \")\"")
+	new ConstantType("String", "string", "canvas.Emit_Ldstr(constant);", "constant.StyleAsDoubleQuoteLiteral()")
 };
 
 #>
@@ -54,6 +52,9 @@ namespace Crunchy.Salt
 
 			if(type.IsEnumType())
 				return new ILEnum((Enum)value);
+                
+            if(type.IsTypeType())
+                return new ILTypeOf((Type)value);
 
 		<#foreach(ConstantType constant_type in constant_types){#>
 

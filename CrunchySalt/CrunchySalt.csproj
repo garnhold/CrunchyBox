@@ -350,6 +350,8 @@
     <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U2.cs" />
     <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U4.cs" />
     <Compile Include="IL\ILCastInfo\ILCastInfo_Conv_U8.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILFunctionPointer.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILTypeOf.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">

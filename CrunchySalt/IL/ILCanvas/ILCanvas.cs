@@ -47,6 +47,8 @@ namespace Crunchy.Salt
         public abstract void Emit_Stobj(Type type);
         public abstract void Emit_Initobj(Type type);
 
+        public abstract void Emit_Ldftn(MethodInfo method);
+
         public abstract void Emit_Call(MethodInfo method);
         public abstract void Emit_Call(ConstructorInfo method);
         public abstract void Emit_Callvirt(MethodInfo method);
