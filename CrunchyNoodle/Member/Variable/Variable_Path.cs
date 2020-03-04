@@ -26,6 +26,11 @@ namespace Crunchy.Noodle
             return path_resolver + "." + variable.ToString(false, false);
         }
 
+        protected override IEnumerable<Attribute> GetAllCustomAttributesInternal(bool inherit)
+        {
+            return variable.GetAllCustomAttributes(inherit);
+        }
+
         public Variable_Path(Variable v, PathResolver p) : base(p.GetInputType(), v.GetVariableType())
         {
             variable = v;

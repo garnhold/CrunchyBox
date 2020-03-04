@@ -21,6 +21,11 @@ namespace Crunchy.Noodle
             return path_resolver + "." + function.ToString(false, false, true);
         }
 
+        protected override IEnumerable<Attribute> GetAllCustomAttributesInternal(bool inherit)
+        {
+            return function.GetAllCustomAttributes(inherit);
+        }
+
         public Function_Path(Function f, PathResolver p) : base(p.GetInputType(), f.GetReturnType(), f.GetParameters())
         {
             function = f;
