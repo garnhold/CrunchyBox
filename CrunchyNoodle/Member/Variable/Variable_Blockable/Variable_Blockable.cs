@@ -39,14 +39,9 @@ namespace Crunchy.Noodle
     {
         public Variable_Blockable(Variable v, Operation<bool, DECLARING_TYPE> i)
             : base(v,
-                delegate(object target) {
-                    DECLARING_TYPE cast;
-
-                    if (target.Convert<DECLARING_TYPE>(out cast))
-                        return i(cast);
-
-                    return false;
-                }
+                i.IfNotNull(z => (Operation<bool, object>)delegate (object target) {
+                    return z((DECLARING_TYPE)target);
+                })
             )
         { }
     }
