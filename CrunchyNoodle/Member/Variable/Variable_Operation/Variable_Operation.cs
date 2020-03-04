@@ -9,13 +9,17 @@ namespace Crunchy.Noodle
     {
         private string name;
 
-        private TryProcess<object, object> set;
+        private Process<object, object> set;
         private Operation<object, object> get;
 
         protected override bool SetContentsInternal(object target, object value)
         {
-            if(set != null)
-                return set(target, value);
+            if (set != null)
+            {
+                set(target, value);
+
+                return true;
+            }
 
             return false;
         }
@@ -33,7 +37,7 @@ namespace Crunchy.Noodle
             return name;
         }
 
-        public Variable_Operation(Type d, Type v, string n, TryProcess<object, object> s, Operation<object, object> g) : base(d, v)
+        public Variable_Operation(Type d, Type v, string n, Process<object, object> s, Operation<object, object> g) : base(d, v)
         {
             name = n;
 
@@ -46,36 +50,12 @@ namespace Crunchy.Noodle
     {
         public Variable_Operation(string n, TryProcess<DECLARING_TYPE, VARIABLE_TYPE> s, Operation<VARIABLE_TYPE, DECLARING_TYPE> g)
             : base(typeof(DECLARING_TYPE), typeof(VARIABLE_TYPE), n,
-                s.IfNotNull(p => (TryProcess<object, object>)delegate(object target, object value) {
-                    DECLARING_TYPE target_cast;
-                    VARIABLE_TYPE value_cast;
-
-                    if (target.Convert<DECLARING_TYPE>(out target_cast))
-                    {
-                        if (value.Convert<VARIABLE_TYPE>(out value_cast, true))
-                            return p(target_cast, value_cast);
-                    }
-
-                    return false;
+                s.IfNotNull(z => (Process<object, object>)delegate(object target, object value) {
+                    z((DECLARING_TYPE)target, (VARIABLE_TYPE)value);
                 }),
-                g.IfNotNull(o => (Operation<object, object>)delegate(object target) {
-                    DECLARING_TYPE target_cast;
-
-                    if (target.Convert<DECLARING_TYPE>(out target_cast))
-                        return o(target_cast);
-
-                    return default(VARIABLE_TYPE);
+                g.IfNotNull(z => (Operation<object, object>)delegate(object target) {
+                    return z((DECLARING_TYPE)target);
                 })
-            ) { }
-
-        public Variable_Operation(string n, Process<DECLARING_TYPE, VARIABLE_TYPE> s, Operation<VARIABLE_TYPE, DECLARING_TYPE> g)
-            : this(n,
-                s.IfNotNull(o => (TryProcess<DECLARING_TYPE, VARIABLE_TYPE>)delegate(DECLARING_TYPE target, VARIABLE_TYPE value) {
-                    o(target, value);
-
-                    return true;
-                }),
-                g
             ) { }
     }
 }
