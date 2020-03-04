@@ -11,12 +11,12 @@ namespace Crunchy.Salt
 {
     using Dough;
     
-    public delegate void BasicEventDeregister(object obj, object evt);
-    public delegate void EventDeregister<T>(object obj, T evt);
+    public delegate void BasicDelegateRemover(object obj, object evt);
+    public delegate void DelegateRemover<T>(object obj, T evt);
 
-    static public class EventDeregisterExtensions
+    static public class DelegateRemoverExtensions
     {
-        static public EventDeregister<T> GetTypeSafe<T>(this BasicEventDeregister item)
+        static public DelegateRemover<T> GetTypeSafe<T>(this BasicDelegateRemover item)
         {
             return delegate(object obj, T value) {
                 item(obj, value);

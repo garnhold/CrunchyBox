@@ -85,9 +85,9 @@
     <Compile Include="TypeBuilderEX\ConstructorBuilderEX\ConstructorBuilderEX.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoPass.cs" />
     <Compile Include="TypeEX\ConstructorInfoEX\ConstructorInfoEX.cs" />
-    <Compile Include="EventDeregister\EventDeregister.cs" />
-    <Compile Include="EventRegister\EventRegister.cs" />
-    <Compile Include="TypeEX\EvtInfoEX\EvtInfoEX_MethodPair.cs" />
+    <Compile Include="DelegateRemover\DelegateRemover.cs" />
+    <Compile Include="DelegateAdder\DelegateAdder.cs" />
+    <Compile Include="TypeEX\EvtInfoEX\EvtInfoEX_Methods.cs" />
     <Compile Include="TypeEX\EvtInfoEX\EvtInfoEX.cs" />
     <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_DefaultFilename.cs" />
     <Compile Include="Extensions\AssemblyBuilder\AssemblyBuilderExtensions_Save.cs" />
@@ -364,6 +364,7 @@
     <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo.cs">
       <DependentUpon>TypeExtensions_PropertyInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="EventInvoker\EventInvoker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">
@@ -423,6 +424,7 @@
     <Folder Include="TypeEX\EventInfoEX\" />
     <Folder Include="ForeignEventInfo\" />
     <Folder Include="Extensions\EventInfo\" />
+    <Folder Include="EventInvoker\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

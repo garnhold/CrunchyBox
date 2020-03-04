@@ -15,13 +15,14 @@ namespace Crunchy.Salt
     {
         private EventInfoEX event_info;
 
-        private EvtInfoEX_MethodPair method_pair;
+        private EvtInfoEX_Methods methods;
 
         public EvtInfoEX_Event(EventInfoEX e)
         {
             event_info = e;
 
-            method_pair = new EvtInfoEX_MethodPair(
+            methods = new EvtInfoEX_Methods(
+                e.GetRaiseMethod(true).GetMethodInfoEX(),
                 e.GetAddMethod(true).GetMethodInfoEX(),
                 e.GetRemoveMethod(true).GetMethodInfoEX()
             );
@@ -42,14 +43,49 @@ namespace Crunchy.Salt
             return event_info.DeclaringType;
         }
 
-        public override BasicEventRegister GetBasicEventRegister()
+        public override bool CanInvoke()
         {
-            return method_pair.GetBasicEventRegister();
+            return methods.CanInvoke();
         }
 
-        public override BasicEventDeregister GetBasicEventDeregister()
+        public override bool CanAdd()
         {
-            return method_pair.GetBasicEventDeregister();
+            return methods.CanAdd();
+        }
+
+        public override bool CanRemove()
+        {
+            return methods.CanRemove();
+        }
+
+        public override bool IsInvokePublic()
+        {
+            return methods.IsInvokePublic();
+        }
+
+        public override bool IsAddPublic()
+        {
+            return methods.IsAddPublic();
+        }
+
+        public override bool IsRemovePublic()
+        {
+            return methods.IsRemovePublic();
+        }
+
+        public override BasicEventInvoker GetBasicEventInvoker()
+        {
+            return methods.GetBasicEventInvoker();
+        }
+
+        public override BasicDelegateAdder GetBasicDelegateAdder()
+        {
+            return methods.GetBasicDelegateAdder();
+        }
+
+        public override BasicDelegateRemover GetBasicDelegateRemover()
+        {
+            return methods.GetBasicEventRemover();
         }
 
         public override IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
@@ -57,14 +93,14 @@ namespace Crunchy.Salt
             return event_info.GetAllCustomAttributes(inherit);
         }
 
-        public override void EmitRegisterEvent(ILCanvas canvas, ILValue target, ILValue evt)
+        public override void EmitAddDelegate(ILCanvas canvas, ILValue target, ILValue @delegate)
         {
-            method_pair.EmitRegisterEvent(canvas, target, evt);
+            methods.EmitAddDelegate(canvas, target, @delegate);
         }
 
-        public override void EmitDeregisterEvent(ILCanvas canvas, ILValue target, ILValue evt)
+        public override void EmitRemoveDelegate(ILCanvas canvas, ILValue target, ILValue @delegate)
         {
-            method_pair.EmitDeregisterEvent(canvas, target, evt);
+            methods.EmitRemoveDelegate(canvas, target, @delegate);
         }
 
         public EventInfoEX GetEventInfo()

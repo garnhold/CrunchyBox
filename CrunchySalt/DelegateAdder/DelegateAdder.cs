@@ -11,12 +11,12 @@ namespace Crunchy.Salt
 {
     using Dough;
     
-    public delegate void BasicEventRegister(object obj, object evt);
-    public delegate void EventRegister<T>(object obj, T evt);
+    public delegate void BasicDelegateAdder(object obj, object evt);
+    public delegate void DelegateAdder<T>(object obj, T evt);
 
-    static public class EventRegisterExtensions
+    static public class DelegateAdderExtensions
     {
-        static public EventRegister<T> GetTypeSafe<T>(this BasicEventRegister item)
+        static public DelegateAdder<T> GetTypeSafe<T>(this BasicDelegateAdder item)
         {
             return delegate(object obj, T value) {
                 item(obj, value);

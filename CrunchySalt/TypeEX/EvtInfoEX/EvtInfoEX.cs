@@ -17,32 +17,46 @@ namespace Crunchy.Salt
         public abstract Type GetEvtType();
         public abstract Type GetDeclaringType();
 
-        public abstract BasicEventRegister GetBasicEventRegister();
-        public abstract BasicEventDeregister GetBasicEventDeregister();
+        public abstract bool CanInvoke();
+        public abstract bool CanAdd();
+        public abstract bool CanRemove();
+
+        public abstract bool IsInvokePublic();
+        public abstract bool IsAddPublic();
+        public abstract bool IsRemovePublic();
+
+        public abstract BasicEventInvoker GetBasicEventInvoker();
+        public abstract BasicDelegateAdder GetBasicDelegateAdder();
+        public abstract BasicDelegateRemover GetBasicDelegateRemover();
 
         public abstract IEnumerable<Attribute> GetAllCustomAttributes(bool inherit);
 
-        public abstract void EmitRegisterEvent(ILCanvas canvas, ILValue target, ILValue evt);
-        public abstract void EmitDeregisterEvent(ILCanvas canvas, ILValue target, ILValue evt);
+        public abstract void EmitAddDelegate(ILCanvas canvas, ILValue target, ILValue @delegate);
+        public abstract void EmitRemoveDelegate(ILCanvas canvas, ILValue target, ILValue @delegate);
 
-        public EventRegister<T> GetEventRegister<T>()
+        public DelegateAdder<T> GetDelegateAdder<T>()
         {
-            return GetBasicEventRegister().GetTypeSafe<T>();
+            return GetBasicDelegateAdder().GetTypeSafe<T>();
         }
 
-        public EventDeregister<T> GetEventDeregister<T>()
+        public DelegateRemover<T> GetDelegateRemover<T>()
         {
-            return GetBasicEventDeregister().GetTypeSafe<T>();
+            return GetBasicDelegateRemover().GetTypeSafe<T>();
         }
 
-        public void AddDelegate(object obj, Delegate evt)
+        public void Invoke(object obj)
         {
-            GetBasicEventRegister()(obj, evt);
+            GetBasicEventInvoker()(obj);
         }
 
-        public void RemoveDelegate(object obj, Delegate evt)
+        public void AddDelegate(object obj, Delegate @delegate)
         {
-            GetBasicEventDeregister()(obj, evt);
+            GetBasicDelegateAdder()(obj, @delegate);
+        }
+
+        public void RemoveDelegate(object obj, Delegate @delegate)
+        {
+            GetBasicDelegateRemover()(obj, @delegate);
         }
 
         public override string ToString()
