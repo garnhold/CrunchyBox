@@ -48,7 +48,7 @@ namespace Crunchy.Noodle
 
     public class Variable_Operation<DECLARING_TYPE, VARIABLE_TYPE> : Variable_Operation
     {
-        public Variable_Operation(string n, TryProcess<DECLARING_TYPE, VARIABLE_TYPE> s, Operation<VARIABLE_TYPE, DECLARING_TYPE> g)
+        public Variable_Operation(string n, Process<DECLARING_TYPE, VARIABLE_TYPE> s, Operation<VARIABLE_TYPE, DECLARING_TYPE> g)
             : base(typeof(DECLARING_TYPE), typeof(VARIABLE_TYPE), n,
                 s.IfNotNull(z => (Process<object, object>)delegate(object target, object value) {
                     z((DECLARING_TYPE)target, (VARIABLE_TYPE)value);

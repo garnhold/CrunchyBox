@@ -41,14 +41,12 @@ namespace Crunchy.Sack
                     request.GetTargetInfo().GetTargetType(),
                     variable_type, 
                     name,
-                    set_process.IfNotNull(p => (TryProcess<object, object>)delegate(object t, object v) {
+                    set_process.IfNotNull(p => (Process<object, object>)delegate(object t, object v) {
                         p(
                             request.GetThisArgument().GetArgument(),
                             request.GetHostArgument().GetArgument(),
                             v
                         );
-
-                        return true;
                     }),
                     get_operation.IfNotNull(o => (Operation<object, object>)delegate(object t) {
                         return get_operation(
