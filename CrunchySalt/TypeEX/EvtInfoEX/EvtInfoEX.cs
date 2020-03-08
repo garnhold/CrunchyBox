@@ -17,15 +17,12 @@ namespace Crunchy.Salt
         public abstract Type GetEvtType();
         public abstract Type GetDeclaringType();
 
-        public abstract bool CanInvoke();
         public abstract bool CanAdd();
         public abstract bool CanRemove();
 
-        public abstract bool IsInvokePublic();
         public abstract bool IsAddPublic();
         public abstract bool IsRemovePublic();
 
-        public abstract BasicEventInvoker GetBasicEventInvoker();
         public abstract BasicDelegateAdder GetBasicDelegateAdder();
         public abstract BasicDelegateRemover GetBasicDelegateRemover();
 
@@ -42,11 +39,6 @@ namespace Crunchy.Salt
         public DelegateRemover<T> GetDelegateRemover<T>()
         {
             return GetBasicDelegateRemover().GetTypeSafe<T>();
-        }
-
-        public void Invoke(object obj)
-        {
-            GetBasicEventInvoker()(obj);
         }
 
         public void AddDelegate(object obj, Delegate @delegate)

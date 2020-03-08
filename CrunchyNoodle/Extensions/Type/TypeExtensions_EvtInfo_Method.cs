@@ -22,8 +22,8 @@ namespace Crunchy.Noodle
                 Filterer_MethodInfo.HasOneEffectiveParameter()
             ).GetFirst();
 
-            if (add != null && remove != null)
-                return (EvtInfoEX)new EvtInfoEX_MethodPair(add, remove);
+            if (add != null || remove != null)
+                return (EvtInfoEX)new EvtInfoEX_Methods(add, remove);
 
             return null;
         });

@@ -364,7 +364,6 @@
     <Compile Include="Extensions\Type\TypeExtensions_PropertyInfo.cs">
       <DependentUpon>TypeExtensions_PropertyInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventInvoker\EventInvoker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">
@@ -424,7 +423,6 @@
     <Folder Include="TypeEX\EventInfoEX\" />
     <Folder Include="ForeignEventInfo\" />
     <Folder Include="Extensions\EventInfo\" />
-    <Folder Include="EventInvoker\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

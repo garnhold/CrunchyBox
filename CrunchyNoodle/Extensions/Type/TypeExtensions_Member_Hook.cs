@@ -11,7 +11,7 @@ namespace Crunchy.Noodle
 
     static public class TypeExtensions_Member_Hook
     {
-        static private OperationCache<Hook, Type, string> GET_HOOK_BY_COMPONENT = ReflectionCache.Get().NewOperationCache<Function, Type, string, ContentsEnumerable<Type>>("GET_HOOK_BY_COMPONENT", delegate (Type type, string component) {
+        static private OperationCache<Hook, Type, string> GET_HOOK_BY_COMPONENT = ReflectionCache.Get().NewOperationCache<Hook, Type, string>("GET_HOOK_BY_COMPONENT", delegate (Type type, string component) {
             return Hook_Evt.New(type, component);
         });
         static public Hook GetHookByComponent(this Type item, string component)

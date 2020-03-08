@@ -12,8 +12,6 @@ namespace Crunchy.Noodle
     {
         private Type hook_type;
 
-        protected abstract bool InvokeInternal(object target);
-
         protected abstract bool AddDelegateInternal(object target, Delegate @delegate);
         protected abstract bool RemoveDelegateInternal(object target, Delegate @delegate);
 
@@ -23,14 +21,6 @@ namespace Crunchy.Noodle
         public Hook(Type d, Type h) : base(d)
         {
             hook_type = h;
-        }
-
-        public bool Invoke(object target)
-        {
-            if (target.CanObjectBeTreatedAs(GetDeclaringType()))
-                return InvokeInternal(target);
-
-            return false;
         }
 
         public bool AddDelegate(object target, Delegate @delegate)

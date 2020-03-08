@@ -11,11 +11,6 @@ namespace Crunchy.Noodle
         private Hook hook;
         private PathResolver path_resolver;
 
-        protected override bool InvokeInternal(object target)
-        {
-            return hook.Invoke(path_resolver.ResolveTarget(target));
-        }
-
         protected override bool AddDelegateInternal(object target, Delegate @delegate)
         {
             return hook.AddDelegate(path_resolver.ResolveTarget(target), @delegate);

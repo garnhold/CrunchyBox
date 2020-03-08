@@ -16,18 +16,6 @@ namespace Crunchy.Noodle
             return d.GetInstanceEvt(n).IfNotNull(e => new Hook_Evt(e));
         }
 
-        protected override bool InvokeInternal(object target)
-        {
-            if (evt.CanInvoke())
-            {
-                evt.Invoke(target);
-
-                return true;
-            }
-
-            return false;
-        }
-
         protected override bool AddDelegateInternal(object target, Delegate @delegate)
         {
             if (evt.CanAdd())

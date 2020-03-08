@@ -22,7 +22,6 @@ namespace Crunchy.Salt
             event_info = e;
 
             methods = new EvtInfoEX_Methods(
-                e.GetRaiseMethod(true).GetMethodInfoEX(),
                 e.GetAddMethod(true).GetMethodInfoEX(),
                 e.GetRemoveMethod(true).GetMethodInfoEX()
             );
@@ -43,11 +42,6 @@ namespace Crunchy.Salt
             return event_info.DeclaringType;
         }
 
-        public override bool CanInvoke()
-        {
-            return methods.CanInvoke();
-        }
-
         public override bool CanAdd()
         {
             return methods.CanAdd();
@@ -58,11 +52,6 @@ namespace Crunchy.Salt
             return methods.CanRemove();
         }
 
-        public override bool IsInvokePublic()
-        {
-            return methods.IsInvokePublic();
-        }
-
         public override bool IsAddPublic()
         {
             return methods.IsAddPublic();
@@ -71,11 +60,6 @@ namespace Crunchy.Salt
         public override bool IsRemovePublic()
         {
             return methods.IsRemovePublic();
-        }
-
-        public override BasicEventInvoker GetBasicEventInvoker()
-        {
-            return methods.GetBasicEventInvoker();
         }
 
         public override BasicDelegateAdder GetBasicDelegateAdder()
