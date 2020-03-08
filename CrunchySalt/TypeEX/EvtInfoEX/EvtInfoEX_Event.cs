@@ -85,7 +85,7 @@ namespace Crunchy.Salt
 
         public override BasicDelegateRemover GetBasicDelegateRemover()
         {
-            return methods.GetBasicEventRemover();
+            return methods.GetBasicDelegateRemover();
         }
 
         public override IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)

@@ -15,8 +15,8 @@ namespace Crunchy.Salt
     {
         private EventInfo native_event_info;
 
-        private BasicEventRegister basic_event_register;
-        private BasicEventDeregister basic_event_deregister;
+        private BasicDelegateAdder basic_delegate_adder;
+        private BasicDelegateRemover basic_delegate_remover;
 
         static private OperationCache<EventInfoEX, EventInfo> GET_EVENT_INFO_EX = ReflectionCache.Get().NewOperationCache("GET_EVENT_INFO_EX", delegate(EventInfo event_info) {
             return new EventInfoEX(event_info);
@@ -46,20 +46,20 @@ namespace Crunchy.Salt
             return native_event_info;
         }
 
-        public BasicEventRegister GetBasicEventRegister()
+        public BasicDelegateAdder GetBasicDelegateAdder()
         {
-            if (basic_event_register == null)
-                basic_event_register = GetNativeEventInfo().CreateDynamicEventRegisterDelegate<BasicEventRegister>();
+            if (basic_delegate_adder == null)
+                basic_delegate_adder = GetNativeEventInfo().CreateDynamicDelegateAdderDelegate<BasicDelegateAdder>();
 
-            return basic_event_register;
+            return basic_delegate_adder;
         }
 
-        public BasicEventDeregister GetBasicEventDeregister()
+        public BasicDelegateRemover GetBasicDelegateRemover()
         {
-            if (basic_event_deregister == null)
-                basic_event_deregister = GetNativeEventInfo().CreateDynamicEventDeregisterDelegate<BasicEventDeregister>();
+            if (basic_delegate_remover == null)
+                basic_delegate_remover = GetNativeEventInfo().CreateDynamicDelegateRemoverDelegate<BasicDelegateRemover>();
 
-            return basic_event_deregister;
+            return basic_delegate_remover;
         }
     }
 }

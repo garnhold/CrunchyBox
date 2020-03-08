@@ -13,12 +13,12 @@ namespace Crunchy.Salt
     
     static public class EventInfoExtensions_Manage
     {
-        static public T CreateDynamicEventRegisterDelegate<T>(this EventInfo item)
+        static public T CreateDynamicDelegateAdderDelegate<T>(this EventInfo item)
         {
             return item.GetAddMethod(true).CreateDynamicMethodCallerDelegate<T>();
         }
 
-        static public T CreateDynamicEventDeregisterDelegate<T>(this EventInfo item)
+        static public T CreateDynamicDelegateRemoverDelegate<T>(this EventInfo item)
         {
             return item.GetRemoveMethod(true).CreateDynamicMethodCallerDelegate<T>();
         }
