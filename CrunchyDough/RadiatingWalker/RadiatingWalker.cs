@@ -7,7 +7,7 @@ namespace Crunchy.Dough
     public class RadiatingWalker
     {
         private int current_radius;
-        private SortedList<float, VectorI2> points;
+        private List<RadiatingPoint> points;
 
         static private RadiatingWalker INSTANCE = new RadiatingWalker();
 
@@ -19,7 +19,7 @@ namespace Crunchy.Dough
         private RadiatingWalker()
         {
             current_radius = 0;
-            points = new SortedList<float, VectorI2>();
+            points = new List<RadiatingPoint>();
         }
 
         public void EnsureRadius(int radius)
@@ -32,9 +32,10 @@ namespace Crunchy.Dough
                 new_rect.GetSubtraction(old_rect)
                     .Convert(r => r.GetPoints())
                     .Flatten()
-                    .Process(p => points.Add(p.GetMagnitude(), p));
+                    .Process(p => points.Add(new RadiatingPoint(p)));
 
                 current_radius = radius;
+                points.Sort((x, y) => x.GetDistance().CompareTo(y.GetDistance()));
             }
         }
 
@@ -42,10 +43,10 @@ namespace Crunchy.Dough
         {
             EnsureRadius(radius);
 
-            foreach (KeyValuePair<float, VectorI2> pair in points)
+            foreach (RadiatingPoint point in points)
             {
-                if (pair.Key <= radius)
-                    yield return pair.Value;
+                if (point.GetDistance() <= radius)
+                    yield return point.GetPoint();
             }
         }
     }

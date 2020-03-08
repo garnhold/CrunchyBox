@@ -1477,6 +1477,7 @@
     <Compile Include="Extensions\String\StringExtensions_CompareTo.cs" />
     <Compile Include="DeferredProcessList\DeferredProcessList.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertToMatch.cs" />
+    <Compile Include="RadiatingWalker\RadiatingPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
