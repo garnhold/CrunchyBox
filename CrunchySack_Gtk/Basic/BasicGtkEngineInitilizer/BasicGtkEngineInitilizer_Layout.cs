@@ -37,6 +37,7 @@ namespace Crunchy.Sack_Gtk
 
             engine.AddSingleDynamicChildInfo<Paned, Widget>("child1", (p, w) => p.Add1(w));
             engine.AddSingleDynamicChildInfo<Paned, Widget>("child2", (p, w) => p.Add2(w));
+            engine.AddStaticChildrenInfo<Paned, Widget>((p, w) => p.Add(w));
 
             engine.AddSimpleInstancer<FlowBox>();
             engine.AddPublicPropertyAttributeLinksForType<FlowBox>();

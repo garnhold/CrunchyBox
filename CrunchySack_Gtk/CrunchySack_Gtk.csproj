@@ -113,6 +113,7 @@
     <Compile Include="Extensions\Widget\WidgetExtensions_Containing.cs" />
     <Compile Include="Extensions\Widget\WidgetExtensions_Root.cs" />
     <Compile Include="Extensions\Widget\WidgetExtensions_Upward.cs" />
+    <Compile Include="Basic\BasicGtkEngineInitilizer\BasicGtkEngineInitilizer_Widget.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySack\CrunchySack.csproj">
