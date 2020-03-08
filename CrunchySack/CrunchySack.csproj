@@ -253,7 +253,6 @@
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Link.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_DynamicChildren.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function.cs" />
-    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Value.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_SetMember.cs" />
     <Compile Include="Cml\Execution\Context\CmlContext.cs" />
@@ -309,6 +308,9 @@
     <Compile Include="StaticEffigyInfo\StaticEffigyInfo_Collection\StaticEffigyInfo_Collection_Process.cs" />
     <Compile Include="StaticEffigyInfo\StaticEffigyInfo_Single\StaticEffigyInfo_Single_Process.cs" />
     <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_StaticChildren.cs" />
+    <Compile Include="Syncro\FunctionSyncro\Extensions\FunctionSyncroExtensions_Delegate.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_FunctionHook.cs" />
+    <Compile Include="Representation\RepresentationEngineComponent\RepresentationInfo\RepresentationInfo_Function_Process.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Representation\RepresentationEngineComponent\RepresentationConstructor\RepresentationConstructor_Operation.tt">
