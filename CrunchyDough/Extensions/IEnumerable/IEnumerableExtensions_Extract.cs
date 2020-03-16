@@ -27,6 +27,11 @@ namespace Crunchy.Dough
             }
         }
 
+        static public IEnumerable<T> SubArea<T>(this IEnumerable<T> item, int center, int radius)
+        {
+            return item.SubSection<T>(center - radius, center + radius);
+        }
+
         static public IEnumerable<T> Sub<T>(this IEnumerable<T> item, int start_index, int length)
         {
             return item.SubSection<T>(start_index, start_index + length);

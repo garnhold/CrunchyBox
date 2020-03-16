@@ -14,6 +14,11 @@ namespace Crunchy.Dough
             return subsection;
         }
 
+        static public IEnumerable<T> ExtractSubArea<T>(this IList<T> item, int center, int radius)
+        {
+            return item.ExtractSubSection(center - radius, center + radius);
+        }
+
         static public IEnumerable<T> ExtractSub<T>(this IList<T> item, int start, int length)
         {
             return item.ExtractSubSection(start, start + length);

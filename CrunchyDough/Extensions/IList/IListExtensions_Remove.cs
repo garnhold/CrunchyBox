@@ -12,6 +12,11 @@ namespace Crunchy.Dough
                 item.RemoveAt(i);
         }
 
+        static public void RemoveSubArea<T>(this IList<T> item, int center, int radius)
+        {
+            item.RemoveSubSection<T>(center - radius, center + radius);
+        }
+
         static public void RemoveSub<T>(this IList<T> item, int start, int length)
         {
             item.RemoveSubSection(start, start + length);

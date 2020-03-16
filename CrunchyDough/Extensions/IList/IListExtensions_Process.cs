@@ -12,6 +12,11 @@ namespace Crunchy.Dough
                 process(item[i]);
         }
 
+        static public void ProcessSubArea<T>(this IList<T> item, int center, int radius, Process<T> process)
+        {
+            item.ProcessSubSection<T>(center - radius, center + radius, process);
+        }
+
         static public void ProcessSub<T>(this IList<T> item, int start, int length, Process<T> process)
         {
             item.ProcessSubSection<T>(start, start + length, process);

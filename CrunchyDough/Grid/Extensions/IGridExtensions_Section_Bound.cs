@@ -34,6 +34,24 @@ namespace Crunchy.Dough
             return item.BoundSubSection(lower.x, lower.y, upper.x, upper.y);
         }
 
+        static public IGrid<T> BoundSubArea<T>(this IGrid<T> item, int x, int y, int width_radius, int height_radius)
+        {
+            return item.BoundSubSection<T>(x - width_radius, y - height_radius, x + width_radius, y + height_radius);
+        }
+        static public IGrid<T> BoundSubArea<T>(this IGrid<T> item, VectorI2 center, VectorI2 radius)
+        {
+            return item.BoundSubArea<T>(center.x, center.y, radius.x, radius.y);
+        }
+
+        static public IGrid<T> BoundSubArea<T>(this IGrid<T> item, int x, int y, int radius)
+        {
+            return item.BoundSubArea<T>(x, y, radius, radius);
+        }
+        static public IGrid<T> BoundSubArea<T>(this IGrid<T> item, VectorI2 center, int radius)
+        {
+            return item.BoundSubArea<T>(center.x, center.y, radius);
+        }
+
         static public IGrid<T> BoundSub<T>(this IGrid<T> item, int x, int y, int width, int height)
         {
             return item.BoundSubSection<T>(x, y, x + width, y + height);

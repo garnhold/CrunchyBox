@@ -18,6 +18,11 @@ namespace Crunchy.Dough
             );
         }
 
+        static public IList<T> SubArea<T>(this IList<T> item, int center, int radius)
+        {
+            return item.SubSection<T>(center - radius, center + radius);
+        }
+
         static public IList<T> Sub<T>(this IList<T> item, int start, int length)
         {
             return item.SubSection(start, start + length);
