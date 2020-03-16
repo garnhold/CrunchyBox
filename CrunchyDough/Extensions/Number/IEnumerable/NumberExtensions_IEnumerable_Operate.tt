@@ -30,6 +30,15 @@ namespace Crunchy.Dough
 		{
 			return item.Convert(n => n.GetSquared());
 		}
+        
+        static public IEnumerable<<#=type_name#>> GetSquaredResiduals(this IEnumerable<<#=type_name#>> item, IEnumerable<<#=type_name#>> other)
+        {
+            return item.GetSubtractedValues(other).GetSquaredValues();
+        }
+        static public <#=type_name#> GetTotalSquaredResiduals(this IEnumerable<<#=type_name#>> item, IEnumerable<<#=type_name#>> other)
+        {
+            return item.GetSquaredResiduals(other).Sum();
+        }
 
 		<#foreach(OperationInfo operation in operations){#>
 

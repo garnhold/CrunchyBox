@@ -10,6 +10,15 @@ namespace Crunchy.Dough
 		{
 			return item.Convert(n => n.GetSquared());
 		}
+        
+        static public IEnumerable<int> GetSquaredResiduals(this IEnumerable<int> item, IEnumerable<int> other)
+        {
+            return item.GetSubtractedValues(other).GetSquaredValues();
+        }
+        static public int GetTotalSquaredResiduals(this IEnumerable<int> item, IEnumerable<int> other)
+        {
+            return item.GetSquaredResiduals(other).Sum();
+        }
 
 		
 			static public IEnumerable<int> GetAddedValues(this IEnumerable<int> item, IEnumerable<int> other)
@@ -35,6 +44,15 @@ namespace Crunchy.Dough
 		{
 			return item.Convert(n => n.GetSquared());
 		}
+        
+        static public IEnumerable<long> GetSquaredResiduals(this IEnumerable<long> item, IEnumerable<long> other)
+        {
+            return item.GetSubtractedValues(other).GetSquaredValues();
+        }
+        static public long GetTotalSquaredResiduals(this IEnumerable<long> item, IEnumerable<long> other)
+        {
+            return item.GetSquaredResiduals(other).Sum();
+        }
 
 		
 			static public IEnumerable<long> GetAddedValues(this IEnumerable<long> item, IEnumerable<long> other)
@@ -60,6 +78,15 @@ namespace Crunchy.Dough
 		{
 			return item.Convert(n => n.GetSquared());
 		}
+        
+        static public IEnumerable<float> GetSquaredResiduals(this IEnumerable<float> item, IEnumerable<float> other)
+        {
+            return item.GetSubtractedValues(other).GetSquaredValues();
+        }
+        static public float GetTotalSquaredResiduals(this IEnumerable<float> item, IEnumerable<float> other)
+        {
+            return item.GetSquaredResiduals(other).Sum();
+        }
 
 		
 			static public IEnumerable<float> GetAddedValues(this IEnumerable<float> item, IEnumerable<float> other)
@@ -85,6 +112,15 @@ namespace Crunchy.Dough
 		{
 			return item.Convert(n => n.GetSquared());
 		}
+        
+        static public IEnumerable<double> GetSquaredResiduals(this IEnumerable<double> item, IEnumerable<double> other)
+        {
+            return item.GetSubtractedValues(other).GetSquaredValues();
+        }
+        static public double GetTotalSquaredResiduals(this IEnumerable<double> item, IEnumerable<double> other)
+        {
+            return item.GetSquaredResiduals(other).Sum();
+        }
 
 		
 			static public IEnumerable<double> GetAddedValues(this IEnumerable<double> item, IEnumerable<double> other)
@@ -110,6 +146,15 @@ namespace Crunchy.Dough
 		{
 			return item.Convert(n => n.GetSquared());
 		}
+        
+        static public IEnumerable<decimal> GetSquaredResiduals(this IEnumerable<decimal> item, IEnumerable<decimal> other)
+        {
+            return item.GetSubtractedValues(other).GetSquaredValues();
+        }
+        static public decimal GetTotalSquaredResiduals(this IEnumerable<decimal> item, IEnumerable<decimal> other)
+        {
+            return item.GetSquaredResiduals(other).Sum();
+        }
 
 		
 			static public IEnumerable<decimal> GetAddedValues(this IEnumerable<decimal> item, IEnumerable<decimal> other)
