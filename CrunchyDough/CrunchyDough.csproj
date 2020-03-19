@@ -1478,6 +1478,11 @@
     <Compile Include="DeferredProcessList\DeferredProcessList.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertToMatch.cs" />
     <Compile Include="RadiatingWalker\RadiatingPoint.cs" />
+    <Compile Include="NumericWeighted\NumericWeighted.cs">
+      <DependentUpon>NumericWeighted.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VectorI2\Extensions\IEnumerable\VectorI2Extensions_IEnumerable_Ints.cs" />
+    <Compile Include="Extensions\IList\IListExtensions_CappedInterpolate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1644,6 +1649,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>VectorF2s.cs</LastGenOutput>
     </Content>
+    <Content Include="NumericWeighted\NumericWeighted.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumericWeighted.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -1693,6 +1702,7 @@
     <Folder Include="RectI2\" />
     <Folder Include="StaleDictionary\" />
     <Folder Include="DeferredProcessList\" />
+    <Folder Include="NumericWeighted\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,5 +14,10 @@ namespace Crunchy.Dough
                 yield return vector.y;
             }
         }
+
+        static public IEnumerable<VectorF2> ConvertToVectorF2s(this IEnumerable<float> item, IEnumerable<float> other)
+        {
+            return item.PairStrict(other, (x, y) => new VectorF2(x, y));
+        }
     }
 }

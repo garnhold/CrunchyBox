@@ -1,0 +1,71 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo byte_info = new NumericInfo("byte", "Byte", "float");
+NumericInfo short_info = new NumericInfo("short", "Short", "float");
+NumericInfo int_info = new NumericInfo("int", "Int", "float");
+NumericInfo long_info = new NumericInfo("long", "Long", "float");
+NumericInfo float_info = new NumericInfo("float", "Float", "float");
+NumericInfo double_info = new NumericInfo("double", "Double", "double");
+NumericInfo decimal_info = new NumericInfo("decimal", "Decimal", "decimal");
+
+NumericInfo[] types = new NumericInfo[]{ byte_info, short_info, int_info, long_info, float_info, double_info, decimal_info };
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+<#foreach(NumericInfo type in types){#>
+    [Serializable]
+    public struct <#=type.class_name#>Weighted
+	{
+		public readonly <#=type.type_name#> value;
+        public readonly <#=type.weight_type_name#> weight;
+        
+        public <#=type.class_name#>Weighted(<#=type.type_name#> v, <#=type.weight_type_name#> w)
+        {
+            value = v;
+            weight = w;
+        }
+	}
+    static public class <#=type.class_name#>WeightedExtensions
+    {
+        static public <#=type.type_name#> Average(this IEnumerable<<#=type.class_name#>Weighted> item)
+        {
+            <#=type.weight_type_name#> total = 0;
+            <#=type.weight_type_name#> divisor = 0;
+            
+            foreach(<#=type.class_name#>Weighted sub_item in item)
+            {
+                total += sub_item.value * sub_item.weight;
+                divisor += sub_item.weight;
+            }
+            
+            return (<#=type.type_name#>)(total / divisor);
+        }
+    }
+
+<# } #>
+}
+
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+    
+    public readonly string weight_type_name;
+
+	public NumericInfo(string t, string c, string w)
+	{
+		type_name = t;
+		class_name = c;
+        
+        weight_type_name = w;
+	}
+}
+#>
