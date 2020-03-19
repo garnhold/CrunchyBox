@@ -7,16 +7,20 @@ namespace Crunchy.Dough
     public class ICollectionTransform<T> : ICollection<T>, IEnumerable<T>
     {
         private int count;
-        private IEnumerable<T> enumerable;
+
+        private Operation<IEnumerator<T>> get_operation;
 
         public bool IsReadOnly { get { return true; } }
         public int Count { get { return count; } }
 
-        public ICollectionTransform(int c, IEnumerable<T> e)
+        public ICollectionTransform(int c, Operation<IEnumerator<T>> g)
         {
             count = c;
-            enumerable = e;
+
+            get_operation = g;
         }
+
+        public ICollectionTransform(int c, IEnumerable<T> e) : this(c, () => e.GetEnumerator()) { }
 
         public void Clear()
         {
@@ -46,7 +50,7 @@ namespace Crunchy.Dough
 
         public IEnumerator<T> GetEnumerator()
         {
-            return enumerable.GetEnumerator();
+            return get_operation();
         }
         IEnumerator IEnumerable.GetEnumerator()
         {

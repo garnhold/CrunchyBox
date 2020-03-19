@@ -11,7 +11,7 @@ namespace Crunchy.Dough
             if (item != null)
             {
                 return new ICollectionTransform<OUTPUT_TYPE>(item.Count,
-                    item.Convert(operation)
+                    ((IEnumerable<INPUT_TYPE>)item).Convert(operation)
                 );
             }
 
