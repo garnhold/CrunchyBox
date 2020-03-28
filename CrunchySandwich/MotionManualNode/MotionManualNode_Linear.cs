@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public class MotionManualNode_Linear : MotionManualNode
     {
         [SerializeField]private float speed = 3.5f;

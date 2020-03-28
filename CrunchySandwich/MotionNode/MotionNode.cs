@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public class MotionNode : MonoBehaviourEX, MotionValueProvider
     {
         [SerializeFieldEX][PolymorphicField]private Signal signal;

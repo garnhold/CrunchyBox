@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public abstract class MotionManualNode : MonoBehaviourEX, MotionValueProvider
     {
         private float motion_value;
