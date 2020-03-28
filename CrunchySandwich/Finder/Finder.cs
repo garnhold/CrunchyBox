@@ -24,5 +24,10 @@ namespace Crunchy.Sandwich
         {
             return Find<T>().FindLowestRated(t => t.GetPlanarSquaredDistanceBetween(position));
         }
+
+        static public T FindSpacarClosest<T>(Vector3 position) where T : Component
+        {
+            return Find<T>().FindLowestRated(t => t.GetSpacarSquaredDistanceBetween(position));
+        }
     }
 }
