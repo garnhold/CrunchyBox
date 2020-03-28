@@ -21,7 +21,7 @@ namespace Crunchy.Dough
         }
         static private string CalculateIdByCollective()
         {
-            return HashTypes.SHA1.CalculateAsUnicode(
+            return "Crunchy" + HashTypes.SHA1.CalculateAsUnicode(
                 AppDomain.CurrentDomain.GetAssemblies()
                     .Convert(a => a.GetAssemblyId())
                     .Join(":")
