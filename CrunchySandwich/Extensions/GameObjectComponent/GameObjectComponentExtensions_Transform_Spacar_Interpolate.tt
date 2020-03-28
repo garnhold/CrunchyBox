@@ -1,0 +1,50 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Interpolate
+    {
+<# foreach(string type_name in type_names){#>
+		static public void InterpolateSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            item.transform.InterpolateSpacarPosition(target, amount);
+        }
+        static public void InterpolateLocalSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            item.transform.InterpolateLocalSpacarPosition(target, amount);
+        }
+
+        static public void InterpolateSpacarScale(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            item.transform.InterpolateSpacarScale(target, amount);
+        }
+        static public void InterpolateLocalSpacarScale(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            item.transform.InterpolateLocalSpacarScale(target, amount);
+        }
+
+		static public void InterpolateSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.InterpolateSpacarScale(target, amount);
+        }
+        static public void InterpolateLocalSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.InterpolateLocalSpacarScale(target, amount);
+        }
+
+<# } #>
+	}
+}
