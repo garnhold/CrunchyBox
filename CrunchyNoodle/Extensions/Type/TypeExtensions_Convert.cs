@@ -26,9 +26,9 @@ namespace Crunchy.Noodle
         {
             return GET_CONVERSION_METHOD.Fetch(item, type);
         }
-        static public BasicMethodInvoker GetConversionMethodInvoker(this Type item, Type type)
+        static public BasicConversionInvoker GetConversionConversionInvoker(this Type item, Type type)
         {
-            return item.GetConversionMethod(type).IfNotNull(m => m.GetBasicMethodInvoker());
+            return item.GetConversionMethod(type).IfNotNull(m => m.GetBasicConversionInvoker());
         }
 
         static private OperationCache<ConstructorInfoEX, Type, Type> GET_CONVERSION_CONSTRUCTOR = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_CONSTRUCTOR", delegate(Type item, Type type) {
@@ -38,9 +38,9 @@ namespace Crunchy.Noodle
         {
             return GET_CONVERSION_CONSTRUCTOR.Fetch(item, type);
         }
-        static public BasicMethodInvoker GetConversionConstructorInvoker(this Type item, Type type)
+        static public BasicConversionInvoker GetConversionConstructorInvoker(this Type item, Type type)
         {
-            return item.GetConversionConstructor(type).IfNotNull(c => c.GetBasicMethodInvoker());
+            return item.GetConversionConstructor(type).IfNotNull(c => c.GetBasicConversionInvoker());
         }
 
         static private OperationCache<MethodInfoEX, Type, Type> GET_GENERAL_CONVERSION_METHOD = ReflectionCache.Get().NewOperationCache("GET_GENERAL_CONVERSION_METHOD", delegate(Type item, Type type) {
@@ -53,15 +53,15 @@ namespace Crunchy.Noodle
         {
             return GET_GENERAL_CONVERSION_METHOD.Fetch(item, type);
         }
-        static public BasicMethodInvoker GetGeneralConversionMethodInvoker(this Type item, Type type)
+        static public BasicConversionInvoker GetGeneralConversionMethodInvoker(this Type item, Type type)
         {
-            return item.GetGeneralConversionMethod(type).IfNotNull(m => (BasicMethodInvoker)delegate(object obj, object[] parameters) {
-                return m.Invoke(obj, parameters.Append(type).ToArray());
+            return item.GetGeneralConversionMethod(type).IfNotNull(m => (BasicConversionInvoker)delegate(object obj) {
+                return m.Invoke(null, new object[] { obj, type });
             });
         }
 
         static private OperationCache<BasicConversionInvoker, Type, Type> GET_CONVERSION_INVOKER = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_INVOKER", delegate(Type item, Type type) {
-            return item.GetConversionMethodInvoker(type) ??
+            return item.GetConversionConversionInvoker(type) ??
                 item.GetConversionConstructorInvoker(type) ??
                 item.GetGeneralConversionMethodInvoker(type);
         });

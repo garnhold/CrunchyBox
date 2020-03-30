@@ -31,6 +31,11 @@ namespace Crunchy.Salt
             return item.GetBasicMethodInvoker().GetTypeSafe<T>();
         }
 
+        static public BasicConversionInvoker GetBasicConversionInvoker(this MethodInfo item)
+        {
+            return item.GetBasicMethodInvoker().GetBasicConversionInvoker();
+        }
+
         static public BasicValueGetter GetSimulatedBasicValueGetter(this MethodInfo item)
         {
             return item.GetBasicMethodInvoker().GetSimulatedBasicValueGetter();
