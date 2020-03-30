@@ -33,6 +33,10 @@ namespace Crunchy.Sack_WinForms
         }
 
         [Conversion]
+        static public string ToString(SizeType item)
+        {
+            return item.GetDefinitionString();
+        }
         static public string GetDefinitionString(this SizeType item)
         {
             switch (item)

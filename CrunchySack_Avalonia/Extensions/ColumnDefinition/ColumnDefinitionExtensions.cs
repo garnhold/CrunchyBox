@@ -23,6 +23,10 @@ namespace Crunchy.Sack_Avalonia
         }
 
         [Conversion]
+        static public string ToString(ColumnDefinition item)
+        {
+            return item.GetDefinitionString();
+        }
         static public string GetDefinitionString(this ColumnDefinition item)
         {
             return item.Width.GetDefinitionString();

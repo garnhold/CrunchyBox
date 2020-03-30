@@ -33,6 +33,10 @@ namespace Crunchy.Sack_Avalonia
         }
 
         [Conversion]
+        static public string ToString(GridUnitType item)
+        {
+            return item.GetDefinitionString();
+        }
         static public string GetDefinitionString(this GridUnitType item)
         {
             switch (item)

@@ -30,6 +30,10 @@ namespace Crunchy.Sack_WinForms
         }
 
         [Conversion]
+        static public string ToString(ColumnStyle item)
+        {
+            return item.GetDefinitionString();
+        }
         static public string GetDefinitionString(this ColumnStyle item)
         {
             return item.SizeType.GetDefinitionString(item.Width);

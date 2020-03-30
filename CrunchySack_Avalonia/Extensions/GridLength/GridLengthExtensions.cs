@@ -31,6 +31,10 @@ namespace Crunchy.Sack_Avalonia
         }
 
         [Conversion]
+        static public string ToString(GridLength item)
+        {
+            return item.GetDefinitionString();
+        }
         static public string GetDefinitionString(this GridLength item)
         {
             return item.GridUnitType.GetDefinitionString(item.Value);

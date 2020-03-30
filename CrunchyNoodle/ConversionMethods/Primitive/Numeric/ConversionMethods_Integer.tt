@@ -32,7 +32,7 @@ namespace Crunchy.Noodle
                 <#NumericInfo dst_info = infos[j];#>
                 
                 [Conversion]
-                static public <#=dst_info.type_name#> To<#=dst_info.class_name#>(this <#=src_info.type_name#> item)
+                static public <#=dst_info.type_name#> To<#=dst_info.class_name#>(<#=src_info.type_name#> item)
                 {
                     return item.FitInCapped<#=dst_info.class_name#>();
                 }
@@ -40,7 +40,7 @@ namespace Crunchy.Noodle
             <#}#><#}#>
             
             [Conversion]
-            static public bool ToBool(this <#=src_info.type_name#> item)
+            static public bool ToBool(<#=src_info.type_name#> item)
             {
                 if(item == 0)
                     return false;
@@ -49,25 +49,25 @@ namespace Crunchy.Noodle
             }
             
             [Conversion]
-            static public float ToFloat(this <#=src_info.type_name#> item)
+            static public float ToFloat(<#=src_info.type_name#> item)
             {
                 return item;
             }
             
             [Conversion]
-            static public double ToDouble(this <#=src_info.type_name#> item)
+            static public double ToDouble(<#=src_info.type_name#> item)
             {
                 return item;
             }
             
             [Conversion]
-            static public decimal ToDecimal(this <#=src_info.type_name#> item)
+            static public decimal ToDecimal(<#=src_info.type_name#> item)
             {
                 return item;
             }
             
             [Conversion]
-            static public string ToString(this <#=src_info.type_name#> item)
+            static public string ToString(<#=src_info.type_name#> item)
             {
                 return item.ToStringEX();
             }

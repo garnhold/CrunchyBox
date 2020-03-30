@@ -30,6 +30,10 @@ namespace Crunchy.Sack_WinForms
         }
 
         [Conversion]
+        static public string ToString(RowStyle item)
+        {
+            return item.GetDefinitionString();
+        }
         static public string GetDefinitionString(this RowStyle item)
         {
             return item.SizeType.GetDefinitionString(item.Height);
