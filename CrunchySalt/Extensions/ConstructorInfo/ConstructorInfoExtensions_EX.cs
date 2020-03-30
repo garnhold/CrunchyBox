@@ -23,14 +23,19 @@ namespace Crunchy.Salt
             return item.GetConstructorInfoEX().GetBasicConstructorInvoker();
         }
 
-        static public BasicMethodInvoker GetBasicMethodInvoker(this ConstructorInfo item)
-        {
-            return item.GetConstructorInfoEX().GetBasicMethodInvoker();
-        }
-
         static public ConstructorInvoker<T> GetConstructorInvoker<T>(this ConstructorInfo item)
         {
-            return item.GetConstructorInfoEX().GetConstructorInvoker<T>();
+            return item.GetBasicConstructorInvoker().GetTypeSafe<T>();
+        }
+
+        static public BasicConversionInvoker GetBasicConversionInvoker(this ConstructorInfo item)
+        {
+            return item.GetBasicConstructorInvoker().GetBasicConversionInvoker();
+        }
+
+        static public BasicMethodInvoker GetBasicMethodInvoker(this ConstructorInfo item)
+        {
+            return item.GetBasicConstructorInvoker().GetBasicMethodInvoker();
         }
     }
 }

@@ -15,7 +15,6 @@ namespace Crunchy.Salt
     {
         private ConstructorInfo native_constructor_info;
         private BasicConstructorInvoker basic_constructor_invoker;
-        private BasicMethodInvoker basic_method_invoker;
 
         static private OperationCache<ConstructorInfoEX, ConstructorInfo> GET_CONSTRUCTOR_INFO_EX = ReflectionCache.Get().NewOperationCache("GET_CONSTRUCTOR_INFO_EX", delegate(ConstructorInfo constructor_info) {
             return new ConstructorInfoEX(constructor_info);
@@ -51,11 +50,6 @@ namespace Crunchy.Salt
                 basic_constructor_invoker = native_constructor_info.CreateDynamicConstructorInvokerDelegate<BasicConstructorInvoker>();
 
             return basic_constructor_invoker;
-        }
-
-        public ConstructorInvoker<T> GetConstructorInvoker<T>()
-        {
-            return GetBasicConstructorInvoker().GetTypeSafe<T>();
         }
 
         public override object Invoke(BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)
