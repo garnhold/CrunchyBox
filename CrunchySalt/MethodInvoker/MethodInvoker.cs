@@ -32,6 +32,13 @@ namespace Crunchy.Salt
             };
         }
 
+        static public BasicConversionInvoker GetConversionInvoker(this BasicMethodInvoker item)
+        {
+            return delegate(object obj) {
+                return item(null, new object[] { obj });
+            };
+        }
+
         static public BasicValueGetter GetSimulatedBasicValueGetter(this BasicMethodInvoker item)
         {
             return delegate(object obj) {

@@ -15,10 +15,10 @@ namespace Crunchy.Noodle
 
             if (item != null)
             {
-                BasicMethodInvoker invoker = item.GetType().GetConversionInvoker<T>();
+                BasicConversionInvoker invoker = item.GetType().GetConversionInvoker<T>();
                 if (invoker != null)
                 {
-                    output = (T)invoker(null, new object[] { item });
+                    output = (T)invoker(item);
                     return true;
                 }
             }

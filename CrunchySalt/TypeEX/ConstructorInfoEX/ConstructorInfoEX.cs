@@ -53,18 +53,6 @@ namespace Crunchy.Salt
             return basic_constructor_invoker;
         }
 
-        public BasicMethodInvoker GetBasicMethodInvoker()
-        {
-            if (basic_method_invoker == null)
-            {
-                basic_method_invoker = delegate(object obj, object[] parameters) {
-                    return GetBasicConstructorInvoker()(parameters);
-                };
-            }
-
-            return basic_method_invoker;
-        }
-
         public ConstructorInvoker<T> GetConstructorInvoker<T>()
         {
             return GetBasicConstructorInvoker().GetTypeSafe<T>();

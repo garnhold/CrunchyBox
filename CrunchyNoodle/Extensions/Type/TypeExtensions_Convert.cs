@@ -60,12 +60,12 @@ namespace Crunchy.Noodle
             });
         }
 
-        static private OperationCache<BasicMethodInvoker, Type, Type> GET_CONVERSION_INVOKER = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_INVOKER", delegate(Type item, Type type) {
+        static private OperationCache<BasicConversionInvoker, Type, Type> GET_CONVERSION_INVOKER = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_INVOKER", delegate(Type item, Type type) {
             return item.GetConversionMethodInvoker(type) ??
                 item.GetConversionConstructorInvoker(type) ??
                 item.GetGeneralConversionMethodInvoker(type);
         });
-        static public BasicMethodInvoker GetConversionInvoker(this Type item, Type type)
+        static public BasicConversionInvoker GetConversionInvoker(this Type item, Type type)
         {
             return GET_CONVERSION_INVOKER.Fetch(item, type);
         }
