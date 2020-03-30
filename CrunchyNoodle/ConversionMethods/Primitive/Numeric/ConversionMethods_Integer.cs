@@ -9,8 +9,7 @@ namespace Crunchy.Noodle
     [Conversion]
 	static public class ConversionMethods_Integer
     {
-              
-                        
+                                
                                             
                 [Conversion]
                 static public sbyte ToSignedByte(this byte item)
@@ -93,8 +92,7 @@ namespace Crunchy.Noodle
             {
                 return item.ToStringEX();
             }
-              
-                        
+                                
                                             
                 [Conversion]
                 static public byte ToByte(this sbyte item)
@@ -177,8 +175,7 @@ namespace Crunchy.Noodle
             {
                 return item.ToStringEX();
             }
-              
-                        
+                                
                                             
                 [Conversion]
                 static public byte ToByte(this short item)
@@ -261,8 +258,7 @@ namespace Crunchy.Noodle
             {
                 return item.ToStringEX();
             }
-              
-                        
+                                
                                             
                 [Conversion]
                 static public byte ToByte(this ushort item)
@@ -345,8 +341,7 @@ namespace Crunchy.Noodle
             {
                 return item.ToStringEX();
             }
-              
-                        
+                                
                                             
                 [Conversion]
                 static public byte ToByte(this int item)
@@ -429,8 +424,7 @@ namespace Crunchy.Noodle
             {
                 return item.ToStringEX();
             }
-              
-                        
+                                
                                             
                 [Conversion]
                 static public byte ToByte(this uint item)
@@ -513,8 +507,7 @@ namespace Crunchy.Noodle
             {
                 return item.ToStringEX();
             }
-              
-                        
+                                
                                             
                 [Conversion]
                 static public byte ToByte(this long item)
@@ -597,8 +590,7 @@ namespace Crunchy.Noodle
             {
                 return item.ToStringEX();
             }
-              
-                        
+                                
                                             
                 [Conversion]
                 static public byte ToByte(this ulong item)
