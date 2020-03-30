@@ -48,37 +48,9 @@ namespace Crunchy.Salt
         public BasicMethodInvoker GetBasicMethodInvoker()
         {
             if (basic_method_invoker == null)
-                basic_method_invoker = GetNativeMethodInfo().CreateDynamicMethodInvokerDelegate<BasicMethodInvoker>();
+                basic_method_invoker = GetNativeMethodInfo().CreateDynamicEffectiveMethodInvokerDelegate<BasicMethodInvoker>();
 
             return basic_method_invoker;
-        }
-        public MethodInvoker GetMethodInvoker()
-        {
-            return GetBasicMethodInvoker().GetTypeSafeNoReturn();
-        }
-        public MethodInvoker<T> GetMethodInvoker<T>()
-        {
-            return GetBasicMethodInvoker().GetTypeSafe<T>();
-        }
-
-        public BasicValueGetter GetSimulatedBasicValueGetter()
-        {
-            return GetBasicMethodInvoker().GetSimulatedBasicValueGetter();
-        }
-
-        public BasicValueSetter GetSimulatedBasicValueSetter()
-        {
-            return GetBasicMethodInvoker().GetSimulatedBasicValueSetter();
-        }
-
-        public ValueGetter<T> GetSimulatedValueGetter<T>()
-        {
-            return GetBasicMethodInvoker().GetSimulatedValueGetter<T>();
-        }
-
-        public ValueSetter<T> GetSimulatedValueSetter<T>()
-        {
-            return GetBasicMethodInvoker().GetSimulatedValueSetter<T>();
         }
 
         public override object Invoke(object obj, BindingFlags invokeAttr, Binder binder, object[] parameters, CultureInfo culture)

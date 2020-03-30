@@ -13,7 +13,7 @@ namespace Crunchy.Salt
     
     static public class MethodInfoExtensions_MethodInvoker
     {
-        static public T CreateDynamicMethodInvokerDelegate<T>(this MethodInfo item)
+        static public T CreateDynamicEffectiveMethodInvokerDelegate<T>(this MethodInfo item)
         {
             return item.CreateDynamicMethodDelegate<T>("Invoker", delegate(MethodBase method) {
                 ILParameter target = method.GetTechnicalILParameter(0);
@@ -27,6 +27,21 @@ namespace Crunchy.Salt
                     )
                 );
             });
+        }
+
+        static public T CreateDynamicTechnicalMethodInvokerDelegate<T>(this MethodInfo item)
+        {
+            if (item.IsExtensionMethod())
+            {
+                return item.CreateDynamicMethodDelegate<T>("TechnicalInvoker", delegate (MethodBase method) {
+                    ILParameter target = method.GetTechnicalILParameter(0);
+                    ILParameter arguments = method.GetTechnicalILParameter(1);
+
+                    return item.GetStaticILMethodInvokation(arguments.GetILExpandedParams(item));
+                });
+            }
+
+            return item.CreateDynamicEffectiveMethodInvokerDelegate<T>();
         }
     }
 }

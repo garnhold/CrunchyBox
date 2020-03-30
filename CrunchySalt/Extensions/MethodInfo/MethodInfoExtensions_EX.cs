@@ -24,31 +24,31 @@ namespace Crunchy.Salt
         }
         static public MethodInvoker GetMethodInvoker(this MethodInfo item)
         {
-            return item.GetMethodInfoEX().GetMethodInvoker();
+            return item.GetBasicMethodInvoker().GetTypeSafeNoReturn();
         }
         static public MethodInvoker<T> GetMethodInvoker<T>(this MethodInfo item)
         {
-            return item.GetMethodInfoEX().GetMethodInvoker<T>();
+            return item.GetBasicMethodInvoker().GetTypeSafe<T>();
         }
 
         static public BasicValueGetter GetSimulatedBasicValueGetter(this MethodInfo item)
         {
-            return item.GetMethodInfoEX().GetSimulatedBasicValueGetter();
+            return item.GetBasicMethodInvoker().GetSimulatedBasicValueGetter();
         }
 
         static public BasicValueSetter GetSimulatedBasicValueSetter(this MethodInfo item)
         {
-            return item.GetMethodInfoEX().GetSimulatedBasicValueSetter();
+            return item.GetBasicMethodInvoker().GetSimulatedBasicValueSetter();
         }
 
         static public ValueGetter<T> GetSimulatedValueGetter<T>(this MethodInfo item)
         {
-            return item.GetMethodInfoEX().GetSimulatedValueGetter<T>();
+            return item.GetBasicMethodInvoker().GetSimulatedValueGetter<T>();
         }
 
         static public ValueSetter<T> GetSimulatedValueSetter<T>(this MethodInfo item)
         {
-            return item.GetMethodInfoEX().GetSimulatedValueSetter<T>();
+            return item.GetBasicMethodInvoker().GetSimulatedValueSetter<T>();
         }
     }
 }
