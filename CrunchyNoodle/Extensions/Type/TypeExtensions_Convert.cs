@@ -16,6 +16,8 @@ namespace Crunchy.Noodle
                 Filterer_MethodInfo.CanEffectiveParametersHold(item)
             };
 
+            //TODO: might want to do the whole adjust filter shit so that it has purely static or instance method
+
             return MarkedMethods<ConversionAttribute>.GetFilteredMarkedStaticMethods(filters).GetFirst() ??
                 item.GetValue().GetFilteredStaticMethods(filters.Append(Filterer_MethodInfo.IsNamed("op_Implicit"))).GetFirst() ??
                 type.GetValue().GetFilteredStaticMethods(filters.Append(Filterer_MethodInfo.IsNamed("op_Implicit"))).GetFirst() ??
