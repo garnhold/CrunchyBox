@@ -10,6 +10,8 @@ namespace Crunchy.Sandwich
 {
     static public class MeshFilterExtensions_Bounds
     {
+        //TODO: Make this work for arbitrary origin meshes
+
         static public void SetBounds(this MeshFilter item, Bounds bounds)
         {
             item.SetSize(bounds.size);
