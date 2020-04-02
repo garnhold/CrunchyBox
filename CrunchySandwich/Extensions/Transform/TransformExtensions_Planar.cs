@@ -23,6 +23,15 @@ namespace Crunchy.Sandwich
             item.SetPlanarPosition(item.GetParentPlanarPosition() + position);
         }
 
+        static public void SetPlanarZPosition(this Transform item, float position)
+        {
+            item.SetSpacarPosition(item.position.GetWithZ(position));
+        }
+        static public void SetLocalPlanarZPosition(this Transform item, float position)
+        {
+            item.SetLocalSpacarPosition(item.localPosition.GetWithZ(position));
+        }
+
         static public void SetPlanarRotation(this Transform item, float angle)
         {
             item.SetSpacarRotation(item.GetSpacarRotation().GetWithZ(angle));

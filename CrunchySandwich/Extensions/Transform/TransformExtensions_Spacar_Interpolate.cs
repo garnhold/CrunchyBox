@@ -19,6 +19,11 @@ namespace Crunchy.Sandwich
             item.SetLocalSpacarPosition(item.GetLocalSpacarPosition().GetInterpolate(target, amount));
         }
 
+        static public void InterpolateSpacarForward(this Transform item, Vector3 target, float amount)
+        {
+            item.SetSpacarForward(item.GetSpacarForward().GetInterpolate(target, amount));
+        }
+
         static public void InterpolateSpacarScale(this Transform item, Vector3 target, float amount)
         {
             item.SetSpacarScale(item.GetSpacarScale().GetInterpolate(target, amount));

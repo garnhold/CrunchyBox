@@ -29,6 +29,15 @@ namespace Crunchy.Sandwich
 		{
 			item.transform.SetOffsetPlanarPosition(position);
 		}
+        
+        static public void SetPlanarZPosition(this <#=type_name#> item, float position)
+        {
+            item.transform.SetPlanarZPosition(position);
+        }
+        static public void SetLocalPlanarZPosition(this <#=type_name#> item, float position)
+        {
+            item.transform.SetLocalPlanarZPosition(position);
+        }
 
         static public void SetPlanarRotation(this <#=type_name#> item, float angle)
         {

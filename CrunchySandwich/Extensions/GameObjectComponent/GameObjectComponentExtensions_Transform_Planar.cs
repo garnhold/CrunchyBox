@@ -21,6 +21,15 @@ namespace Crunchy.Sandwich
 		{
 			item.transform.SetOffsetPlanarPosition(position);
 		}
+        
+        static public void SetPlanarZPosition(this GameObject item, float position)
+        {
+            item.transform.SetPlanarZPosition(position);
+        }
+        static public void SetLocalPlanarZPosition(this GameObject item, float position)
+        {
+            item.transform.SetLocalPlanarZPosition(position);
+        }
 
         static public void SetPlanarRotation(this GameObject item, float angle)
         {
@@ -91,6 +100,15 @@ namespace Crunchy.Sandwich
 		{
 			item.transform.SetOffsetPlanarPosition(position);
 		}
+        
+        static public void SetPlanarZPosition(this Component item, float position)
+        {
+            item.transform.SetPlanarZPosition(position);
+        }
+        static public void SetLocalPlanarZPosition(this Component item, float position)
+        {
+            item.transform.SetLocalPlanarZPosition(position);
+        }
 
         static public void SetPlanarRotation(this Component item, float angle)
         {
