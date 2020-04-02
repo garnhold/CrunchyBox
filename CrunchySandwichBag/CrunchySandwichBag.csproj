@@ -425,6 +425,7 @@
     <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseHorizontalAxis.cs" />
     <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseVerticalAxis.cs" />
     <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseScrollAxis.cs" />
+    <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\EditorSceneElement_EditGadgetInstance_LocalOffset.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
