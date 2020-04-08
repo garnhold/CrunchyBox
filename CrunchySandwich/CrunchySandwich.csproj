@@ -1214,6 +1214,7 @@
     <Compile Include="Extensions\Input\InputExtensions_Axis.cs" />
     <Compile Include="Extensions\Input\InputExtensions_Stick.cs" />
     <Compile Include="MotionController\MotionController_LocalPlanarZPosition.cs" />
+    <Compile Include="Extensions\Vector3\Vector3s.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
