@@ -41,6 +41,12 @@ namespace Crunchy.Dough
 		{
 			return Range(start, end, 1, include_end);
 		}
+        
+        static public IEnumerable<int> Indexs(int count)
+        {
+            for(int i = 0; i < count; i++)
+                yield return i;
+        }
 	}
 	static public class IntsExtensions_Process
 	{
@@ -92,6 +98,12 @@ namespace Crunchy.Dough
 		{
 			return Range(start, end, 1, include_end);
 		}
+        
+        static public IEnumerable<long> Indexs(long count)
+        {
+            for(long i = 0; i < count; i++)
+                yield return i;
+        }
 	}
 	static public class LongsExtensions_Process
 	{
@@ -143,6 +155,12 @@ namespace Crunchy.Dough
 		{
 			return Range(start, end, 1, include_end);
 		}
+        
+        static public IEnumerable<float> Indexs(float count)
+        {
+            for(float i = 0; i < count; i++)
+                yield return i;
+        }
 	}
 	static public class FloatsExtensions_Process
 	{
@@ -194,6 +212,12 @@ namespace Crunchy.Dough
 		{
 			return Range(start, end, 1, include_end);
 		}
+        
+        static public IEnumerable<double> Indexs(double count)
+        {
+            for(double i = 0; i < count; i++)
+                yield return i;
+        }
 	}
 	static public class DoublesExtensions_Process
 	{
@@ -245,6 +269,12 @@ namespace Crunchy.Dough
 		{
 			return Range(start, end, 1, include_end);
 		}
+        
+        static public IEnumerable<decimal> Indexs(decimal count)
+        {
+            for(decimal i = 0; i < count; i++)
+                yield return i;
+        }
 	}
 	static public class DecimalsExtensions_Process
 	{

@@ -54,6 +54,12 @@ namespace Crunchy.Dough
 		{
 			return Range(start, end, 1, include_end);
 		}
+        
+        static public IEnumerable<<#=type.type_name#>> Indexs(<#=type.type_name#> count)
+        {
+            for(<#=type.type_name#> i = 0; i < count; i++)
+                yield return i;
+        }
 	}
 	static public class <#=type.class_name#>Extensions_Process
 	{
