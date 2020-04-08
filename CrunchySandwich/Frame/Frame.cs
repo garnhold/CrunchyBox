@@ -29,10 +29,24 @@ namespace Crunchy.Sandwich
 
             return false;
         }
+        public bool IsNotCurrent()
+        {
+            if (IsCurrent() == false)
+                return true;
+
+            return false;
+        }
 
         public bool IsRecent()
         {
             if (GetNumberFramesPast() <= 3)
+                return true;
+
+            return false;
+        }
+        public bool IsNotRecent()
+        {
+            if (IsRecent() == false)
                 return true;
 
             return false;
