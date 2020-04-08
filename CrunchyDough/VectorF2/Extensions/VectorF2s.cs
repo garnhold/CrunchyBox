@@ -3,76 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
-{    
-    static public class VectorF2s
-	{
-	
-		static public IEnumerable<VectorF2> RadialFromRadians(IEnumerable<float> angles)
+{
+    static public partial class VectorF2s
+    {
+        static public IEnumerable<VectorF2> Ray(VectorF2 start, VectorF2 step, int divisions)
         {
-            return angles.Convert(a => VectorF2Extensions.CreateDirectionFromRadians(a));
+            for (int i = 0; i < divisions; i++)
+                yield return start + i * step;
         }
 
-		static public IEnumerable<VectorF2> RadialFromRadians(IEnumerable<float> angles, float magnitude)
+        static public IEnumerable<VectorF2> Line(VectorF2 start, VectorF2 end, int divisions, bool include_end)
         {
-			return RadialFromRadians(angles).Convert(v => v * magnitude);
+            VectorF2 step;
+
+            if (include_end)
+                step = (end - start) / (divisions - 1);
+            else
+                step = (end - start) / divisions;
+
+            return Ray(start, step, divisions);
         }
 
-		static public IEnumerable<VectorF2> RadialFromRadians(float angle, IEnumerable<float> magnitudes)
-		{
-			VectorF2 direction = VectorF2Extensions.CreateDirectionFromRadians(angle);
-
-			return magnitudes.Convert(m => direction * m);
-		}
-
-		static public IEnumerable<VectorF2> RadialFromRadians(IEnumerable<float> angles, IEnumerable<float> magnitudes)
+        static public IEnumerable<VectorF2> Range(VectorF2 start, VectorF2 end, float step, bool include_end)
         {
-			return angles.Convert(a => RadialFromRadians(a, magnitudes)).Flatten();
+            float distance;
+            VectorF2 direction = start.GetDirection(end, out distance);
+
+            int divisions = (int)(distance / step).GetAbs();
+
+            if (include_end)
+                divisions++;
+
+            return Ray(start, direction * (distance / divisions), divisions);
         }
-	
-		static public IEnumerable<VectorF2> RadialFromDegrees(IEnumerable<float> angles)
+        static public IEnumerable<VectorF2> Range(VectorF2 start, VectorF2 end, bool include_end)
         {
-            return angles.Convert(a => VectorF2Extensions.CreateDirectionFromDegrees(a));
+            return Range(start, end, 1.0f, include_end);
         }
-
-		static public IEnumerable<VectorF2> RadialFromDegrees(IEnumerable<float> angles, float magnitude)
-        {
-			return RadialFromDegrees(angles).Convert(v => v * magnitude);
-        }
-
-		static public IEnumerable<VectorF2> RadialFromDegrees(float angle, IEnumerable<float> magnitudes)
-		{
-			VectorF2 direction = VectorF2Extensions.CreateDirectionFromDegrees(angle);
-
-			return magnitudes.Convert(m => direction * m);
-		}
-
-		static public IEnumerable<VectorF2> RadialFromDegrees(IEnumerable<float> angles, IEnumerable<float> magnitudes)
-        {
-			return angles.Convert(a => RadialFromDegrees(a, magnitudes)).Flatten();
-        }
-	
-		static public IEnumerable<VectorF2> RadialFromPercent(IEnumerable<float> angles)
-        {
-            return angles.Convert(a => VectorF2Extensions.CreateDirectionFromPercent(a));
-        }
-
-		static public IEnumerable<VectorF2> RadialFromPercent(IEnumerable<float> angles, float magnitude)
-        {
-			return RadialFromPercent(angles).Convert(v => v * magnitude);
-        }
-
-		static public IEnumerable<VectorF2> RadialFromPercent(float angle, IEnumerable<float> magnitudes)
-		{
-			VectorF2 direction = VectorF2Extensions.CreateDirectionFromPercent(angle);
-
-			return magnitudes.Convert(m => direction * m);
-		}
-
-		static public IEnumerable<VectorF2> RadialFromPercent(IEnumerable<float> angles, IEnumerable<float> magnitudes)
-        {
-			return angles.Convert(a => RadialFromPercent(a, magnitudes)).Flatten();
-        }
-	
-	}
+    }
 }
-

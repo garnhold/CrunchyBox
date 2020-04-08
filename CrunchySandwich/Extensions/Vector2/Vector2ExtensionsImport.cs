@@ -59,6 +59,11 @@ using Crunchy.Dough;
                 yield return vector.y;
             }
         }
+
+        static public IEnumerable<Vector2> ConvertToVector2s(this IEnumerable<float> item, IEnumerable<float> other)
+        {
+            return item.PairStrict(other, (x, y) => new Vector2(x, y));
+        }
     }
 }
     namespace Crunchy.Sandwich
@@ -1134,8 +1139,48 @@ using Crunchy.Dough;
     }
 }
     namespace Crunchy.Sandwich
+{
+    static public partial class Vector2s
+    {
+        static public IEnumerable<Vector2> Ray(Vector2 start, Vector2 step, int divisions)
+        {
+            for (int i = 0; i < divisions; i++)
+                yield return start + i * step;
+        }
+
+        static public IEnumerable<Vector2> Line(Vector2 start, Vector2 end, int divisions, bool include_end)
+        {
+            Vector2 step;
+
+            if (include_end)
+                step = (end - start) / (divisions - 1);
+            else
+                step = (end - start) / divisions;
+
+            return Ray(start, step, divisions);
+        }
+
+        static public IEnumerable<Vector2> Range(Vector2 start, Vector2 end, float step, bool include_end)
+        {
+            float distance;
+            Vector2 direction = start.GetDirection(end, out distance);
+
+            int divisions = (int)(distance / step).GetAbs();
+
+            if (include_end)
+                divisions++;
+
+            return Ray(start, direction * (distance / divisions), divisions);
+        }
+        static public IEnumerable<Vector2> Range(Vector2 start, Vector2 end, bool include_end)
+        {
+            return Range(start, end, 1.0f, include_end);
+        }
+    }
+}
+    namespace Crunchy.Sandwich
 {    
-    static public class Vector2s
+    static public partial class Vector2s
 	{
 	
 		static public IEnumerable<Vector2> RadialFromRadians(IEnumerable<float> angles)

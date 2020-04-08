@@ -1442,9 +1442,6 @@
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Triangle.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_VectorI2.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_With.cs" />
-    <Compile Include="VectorF2\Extensions\VectorF2s.cs">
-      <DependentUpon>VectorF2s.tt</DependentUpon>
-    </Compile>
     <Compile Include="VectorI2\Extensions\VectorI2Extensions_Magnitude.cs" />
     <Compile Include="RectI2\Extensions\IEnumerable\RectI2Extensions_IEnumerable.cs" />
     <Compile Include="RectI2\Extensions\IEnumerable\RectI2Extensions_IEnumerable_Boolean.cs" />
@@ -1483,6 +1480,10 @@
     </Compile>
     <Compile Include="VectorI2\Extensions\IEnumerable\VectorI2Extensions_IEnumerable_Ints.cs" />
     <Compile Include="Extensions\IList\IListExtensions_CappedInterpolate.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2s_Radial.cs">
+      <DependentUpon>VectorF2s_Radial.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VectorF2\Extensions\VectorF2s.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1645,9 +1646,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumericDelta.cs</LastGenOutput>
     </Content>
-    <Content Include="VectorF2\Extensions\VectorF2s.tt">
+    <Content Include="VectorF2\Extensions\VectorF2s_Radial.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>VectorF2s.cs</LastGenOutput>
+      <LastGenOutput>VectorF2s_Radial.cs</LastGenOutput>
     </Content>
     <Content Include="NumericWeighted\NumericWeighted.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
