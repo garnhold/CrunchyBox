@@ -43,21 +43,21 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisAssembly.cs" />
-    <Compile Include="Input\AxisFilter\AxisFilter.cs" />
-    <Compile Include="Input\AxisFilter\AxisFilter_Series.cs" />
-    <Compile Include="Input\AxisFilter\AxisFilter_DeadZone.cs" />
-    <Compile Include="Input\AxisFilter\AxisFilter_AdaptiveLimit.cs" />
-    <Compile Include="Input\AxisFilter\AxisFilter_Invert.cs" />
-    <Compile Include="Input\AxisFilter\AxisFilter_CenterCalibrating.cs" />
-    <Compile Include="Input\AxisFilter\AxisFilters.cs" />
     <Compile Include="Extensions\Mouse\MouseExtensions.cs" />
     <Compile Include="Extensions\Joystick\JoystickExtensions.cs" />
     <Compile Include="Extensions\Keyboard\KeyboardExtensions.cs" />
-    <Compile Include="Input\CursorLooper\CursorLooper.cs" />
     <Compile Include="Extensions\MouseState\MouseStateExtensions.cs" />
     <Compile Include="Extensions\MouseState\MouseStateExtensions_Position.cs" />
     <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions.cs" />
     <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions_Resolution.cs" />
+    <Compile Include="AxisFilter\AxisFilter.cs" />
+    <Compile Include="AxisFilter\AxisFilter_AdaptiveLimit.cs" />
+    <Compile Include="AxisFilter\AxisFilter_CenterCalibrating.cs" />
+    <Compile Include="AxisFilter\AxisFilter_DeadZone.cs" />
+    <Compile Include="AxisFilter\AxisFilter_Invert.cs" />
+    <Compile Include="AxisFilter\AxisFilter_Series.cs" />
+    <Compile Include="AxisFilter\AxisFilters.cs" />
+    <Compile Include="CursorLooper\CursorLooper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -82,15 +82,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Input\" />
-    <Folder Include="Input\AxisFilter\" />
     <Folder Include="Extensions\" />
     <Folder Include="Extensions\Mouse\" />
     <Folder Include="Extensions\Joystick\" />
     <Folder Include="Extensions\Keyboard\" />
-    <Folder Include="Input\CursorLooper\" />
     <Folder Include="Extensions\MouseState\" />
     <Folder Include="Extensions\DisplayDevice\" />
+    <Folder Include="AxisFilter\" />
+    <Folder Include="CursorLooper\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
