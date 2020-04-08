@@ -13,6 +13,10 @@ namespace Crunchy.Dough
         {
             return (Enum)Enum.ToObject(item, value);
         }
+        static public T MakeEnumValue<T>(this Type item, long value)
+        {
+            return item.MakeEnumValue(value).Convert<T>();
+        }
 
         static public bool IsEnumType(this Type item)
         {
@@ -51,6 +55,10 @@ namespace Crunchy.Dough
         {
             return item.GetEnumValueInfoByIndex(index).IfNotNull(i => i.GetValue());
         }
+        static public T GetEnumValueByIndex<T>(this Type item, int index)
+        {
+            return item.GetEnumValueByIndex(index).Convert<T>();
+        }
 
         static public EnumValueInfo GetEnumValueInfoByName(this Type item, string name)
         {
@@ -60,6 +68,10 @@ namespace Crunchy.Dough
         {
             return item.GetEnumValueInfoByName(name).IfNotNull(i => i.GetValue());
         }
+        static public T GetEnumValueByName<T>(this Type item, string name)
+        {
+            return item.GetEnumValueByName(name).Convert<T>();
+        }
 
         static public EnumValueInfo GetEnumValueInfoByLongValue(this Type item, long value)
         {
@@ -68,6 +80,10 @@ namespace Crunchy.Dough
         static public Enum GetEnumValueByLongValue(this Type item, long value)
         {
             return item.GetEnumValueInfoByLongValue(value).IfNotNull(i => i.GetValue());
+        }
+        static public T GetEnumValueByLongValue<T>(this Type item, long value)
+        {
+            return item.GetEnumValueByLongValue(value).Convert<T>();
         }
 
         static public EnumValueInfo GetEnumValueInfoByValue(this Type item, Enum value)
@@ -82,6 +98,10 @@ namespace Crunchy.Dough
         static public IEnumerable<Enum> GetEnumValues(this Type item)
         {
             return item.GetEnumValueInfos().Convert(i => i.GetValue());
+        }
+        static public IEnumerable<T> GetEnumValues<T>(this Type item)
+        {
+            return item.GetEnumValues().Convert<Enum, T>();
         }
     }
 }
