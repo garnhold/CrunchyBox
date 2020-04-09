@@ -50,6 +50,9 @@
     <Compile Include="Extensions\MouseState\MouseStateExtensions_Position.cs" />
     <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions.cs" />
     <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions_Resolution.cs" />
+    <Compile Include="InputDevice\InputDevice.cs" />
+    <Compile Include="InputDevice\InputDevice_Joystick.cs" />
+    <Compile Include="InputDevice\InputDevice_Keyboard.cs" />
     <Compile Include="AxisFilter\AxisFilter.cs" />
     <Compile Include="AxisFilter\AxisFilter_AdaptiveLimit.cs" />
     <Compile Include="AxisFilter\AxisFilter_CenterCalibrating.cs" />
@@ -58,6 +61,69 @@
     <Compile Include="AxisFilter\AxisFilter_Series.cs" />
     <Compile Include="AxisFilter\AxisFilters.cs" />
     <Compile Include="CursorLooper\CursorLooper.cs" />
+    <Compile Include="InputAtom\InputAtom.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_Button.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_ButtonPair.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_SliderPair.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\InputAtom_Axis.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\InputAtom_Axis_Native.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Native\InputAtom_Axis_Native_Joystick.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Composite\InputAtom_Button_AxisLimit.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Composite\InputAtom_Button_SliderLimit.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\InputAtom_Button.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\InputAtom_Button_Native.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Native\InputAtom_Button_Native_Joystick.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Native\InputAtom_Button_Native_Keyboard.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Native\InputAtom_Button_Native_Mouse.cs" />
+    <Compile Include="InputAtom\InputAtom_Position\InputAtom_Position.cs" />
+    <Compile Include="InputAtom\InputAtom_Position\InputAtom_Position_Native.cs" />
+    <Compile Include="InputAtom\InputAtom_Position\Native\InputAtom_Position_Native_MouseHorizontal.cs" />
+    <Compile Include="InputAtom\InputAtom_Position\Native\InputAtom_Position_Native_MouseVertical.cs" />
+    <Compile Include="InputAtom\InputAtom_Position\Native\InputAtom_Position_Native_MouseWheel.cs" />
+    <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_AxisHalf.cs" />
+    <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_Button.cs" />
+    <Compile Include="InputAtom\InputAtom_Slider\InputAtom_Slider.cs" />
+    <Compile Include="InputAtom\InputAtom_Stick\Composite\InputAtom_Stick_AxisPair.cs" />
+    <Compile Include="InputAtom\InputAtom_Stick\InputAtom_Stick.cs" />
+    <Compile Include="InputAtom\InputNativeAtom.cs" />
+    <Compile Include="InputAtomLock\InputAtomLock.cs" />
+    <Compile Include="InputAtomLock\InputAtomLockType.cs" />
+    <Compile Include="Frame\Frame.cs" />
+    <Compile Include="Gamepad\GamepadBase.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Axis\GamepadComponent_Axis.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Button\Extensions\GamepadComponentButtonExtensions.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Button\Extensions\GamepadComponentButtonExtensions_Released.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Button\GamepadComponent_Button.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Stick\Extensions\GamepadStickExtensions.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Stick\Extensions\GamepadStickExtensions_Direction.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Stick\GamepadComponent_Stick.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Stick\GamepadStickZone\Extensions\GamepadStickZoneExtensions.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Stick\GamepadStickZone\Extensions\GamepadStickZoneExtensions_CardinalOrdinalDirection.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Stick\GamepadStickZone\Extensions\GamepadStickZoneExtensions_Vector2.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Stick\GamepadStickZone\GamepadStickZone.cs" />
+    <Compile Include="GamepadComponentId\GamepadComponentIds.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamepadComponentIds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GamepadEvent\GamepadEvent.cs" />
+    <Compile Include="GamepadEventHistory\Extensions\GamepadEventHistoryExtensions.cs" />
+    <Compile Include="GamepadEventHistory\Extensions\GamepadEventHistoryExtensions_Events.cs" />
+    <Compile Include="GamepadEventHistory\Extensions\GamepadEventHistoryExtensions_Frame.cs" />
+    <Compile Include="GamepadEventHistory\Extensions\GamepadEventHistoryExtensions_Relation.cs" />
+    <Compile Include="GamepadEventHistory\Extensions\GamepadEventHistoryExtensions_Values.cs" />
+    <Compile Include="GamepadEventHistory\GamepadEventEmptyHistory.cs" />
+    <Compile Include="GamepadEventHistory\GamepadEventHistory.cs" />
+    <Compile Include="GamepadEventHistory\GamepadEventLog.cs" />
+    <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions_GamepadStickZone.cs" />
+    <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions.cs" />
+    <Compile Include="Gamepad\Extensions\GamepadExtensions.cs" />
+    <Compile Include="Gamepad\Extensions\GamepadExtensions_Lock_Multiple.cs" />
+    <Compile Include="Gamepad\Extensions\GamepadExtensions_Lock_Single.cs" />
+    <Compile Include="GamepadComponentType\GamepadComponentType.cs" />
+    <Compile Include="GamepadComponentType\Extensions\GamepadComponentTypeExtensions.cs" />
+    <Compile Include="GamepadComponentType\Extensions\GamepadComponentTypeExtensions_SystemType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -88,8 +154,30 @@
     <Folder Include="Extensions\Keyboard\" />
     <Folder Include="Extensions\MouseState\" />
     <Folder Include="Extensions\DisplayDevice\" />
+    <Folder Include="InputDevice\" />
     <Folder Include="AxisFilter\" />
     <Folder Include="CursorLooper\" />
+    <Folder Include="InputAtom\" />
+    <Folder Include="InputAtomLock\" />
+    <Folder Include="Frame\" />
+    <Folder Include="Gamepad\" />
+    <Folder Include="GamepadComponent\" />
+    <Folder Include="GamepadComponent\GamepadComponent_Axis\" />
+    <Folder Include="GamepadComponent\GamepadComponent_Button\" />
+    <Folder Include="GamepadComponent\GamepadComponent_Stick\" />
+    <Folder Include="GamepadComponentId\" />
+    <Folder Include="GamepadEvent\" />
+    <Folder Include="GamepadEventHistory\" />
+    <Folder Include="Extensions\CardinalOrdinalDirection\" />
+    <Folder Include="Gamepad\Extensions\" />
+    <Folder Include="GamepadComponentType\" />
+    <Folder Include="GamepadComponentType\Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GamepadComponentId\GamepadComponentIds.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GamepadComponentIds.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

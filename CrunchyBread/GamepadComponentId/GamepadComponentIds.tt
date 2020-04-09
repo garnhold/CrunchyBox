@@ -1,0 +1,108 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] types = new string[]{
+	"Component",
+	"Axis",
+	"Button",
+	"Stick"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Bread
+{
+    using Dough;
+    using Salt;
+    using Noodle;
+<#foreach(string type in types){#>
+
+	[Serializable]
+    public struct Gamepad<#=type#>Id
+    {
+        private string id;
+
+        static public bool operator==(Gamepad<#=type#>Id id1, Gamepad<#=type#>Id id2)
+        {
+            if(id1.id == id2.id)
+                return true;
+
+            return false;
+        }
+        static public bool operator!=(Gamepad<#=type#>Id id1, Gamepad<#=type#>Id id2)
+        {
+            if(id1.id != id2.id)
+                return true;
+
+            return false;
+        }
+        
+    <#if(type != "Component"){#>
+        
+        static public implicit operator GamepadComponentId(Gamepad<#=type#>Id id)
+        {
+            return new GamepadComponentId(id.id);
+        }
+        
+        static public explicit operator Gamepad<#=type#>Id(GamepadComponentId id)
+        {
+            return new Gamepad<#=type#>Id(id.GetValue());
+        }
+    <#}#>
+
+		static private readonly OperationCache<List<Gamepad<#=type#>Id>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
+			return Types.GetFilteredTypes(
+				Filterer_Type.IsNamed("Gamepad<#=type#>Ids"),
+				Filterer_Type.IsStaticClass()
+			).GetFirst()
+				.GetStaticMethod("GetAll")
+				.Invoke(null, new object[]{})
+				.ToEnumerable<Gamepad<#=type#>Id>()
+				.ToList();
+        });
+		static public IEnumerable<Gamepad<#=type#>Id> Get<#=type#>s()
+		{
+			return GET_ALL.Fetch();
+		}
+
+        public Gamepad<#=type#>Id(string i)
+        {
+            id = i;
+        }
+
+		public string GetValue()
+		{
+			return id;
+		}
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCodeEX();
+        }
+
+        public override bool Equals(object obj)
+        {
+            Gamepad<#=type#>Id cast;
+
+            if (obj.Convert<Gamepad<#=type#>Id>(out cast))
+            {
+                if (cast == this)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return id;
+        }
+    }
+<#}#>
+}

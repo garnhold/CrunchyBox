@@ -1,0 +1,81 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Bread
+{
+    using Dough;
+    
+    public class GamepadComponent_Button : GamepadComponent
+    {
+        private InputAtom_Button button;
+
+        private bool is_down;
+        private bool is_pressed;
+        private bool is_released;
+
+        private bool frozen_is_down;
+
+        private GamepadEventLog<bool> presses;
+
+        protected override void FreezeInternal()
+        {
+            frozen_is_down = is_down;
+        }
+
+        protected override void UpdateInternal()
+        {
+            is_down = button.GetValue();
+
+            is_pressed = false;
+            is_released = false;
+
+            if (is_down)
+            {
+                if (presses.LogValue(true))
+                    is_pressed = true;
+            }
+            else
+            {
+                if (presses.LogValue(false))
+                    is_released = true;
+            }
+        }
+
+        public GamepadComponent_Button(string i, InputAtom_Button b, InputAtomLockType l) : base(i, b, l)
+        {
+            button = b;
+
+            is_down = false;
+            is_pressed = false;
+            is_released = false;
+
+            frozen_is_down = false;
+
+            presses = new GamepadEventLog<bool>(32);
+        }
+
+        public bool IsButtonDown()
+        {
+            return SwitchSharedFrozen(is_down, frozen_is_down);
+        }
+
+        public bool IsButtonPressed()
+        {
+            return SwitchSharedExclusive(is_pressed);
+        }
+
+        public bool IsButtonReleased()
+        {
+            return SwitchSharedExclusive(is_released);
+        }
+
+        public GamepadEventHistory<bool> GetHistory()
+        {
+            return SwitchSharedExclusive<GamepadEventHistory<bool>>(
+                presses,
+                GamepadEventEmptyHistory<bool>.INSTANCE
+            );
+        }
+    }
+}
