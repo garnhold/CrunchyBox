@@ -239,6 +239,86 @@ namespace Crunchy.Bread
     }
 
 	[Serializable]
+    public struct GamepadSliderId
+    {
+        private string id;
+
+        static public bool operator==(GamepadSliderId id1, GamepadSliderId id2)
+        {
+            if(id1.id == id2.id)
+                return true;
+
+            return false;
+        }
+        static public bool operator!=(GamepadSliderId id1, GamepadSliderId id2)
+        {
+            if(id1.id != id2.id)
+                return true;
+
+            return false;
+        }
+        
+            
+        static public implicit operator GamepadComponentId(GamepadSliderId id)
+        {
+            return new GamepadComponentId(id.id);
+        }
+        
+        static public explicit operator GamepadSliderId(GamepadComponentId id)
+        {
+            return new GamepadSliderId(id.GetValue());
+        }
+    
+		static private readonly OperationCache<List<GamepadSliderId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
+			return Types.GetFilteredTypes(
+				Filterer_Type.IsNamed("GamepadSliderIds"),
+				Filterer_Type.IsStaticClass()
+			).GetFirst()
+				.GetStaticMethod("GetAll")
+				.Invoke(null, new object[]{})
+				.ToEnumerable<GamepadSliderId>()
+				.ToList();
+        });
+		static public IEnumerable<GamepadSliderId> GetSliders()
+		{
+			return GET_ALL.Fetch();
+		}
+
+        public GamepadSliderId(string i)
+        {
+            id = i;
+        }
+
+		public string GetValue()
+		{
+			return id;
+		}
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCodeEX();
+        }
+
+        public override bool Equals(object obj)
+        {
+            GamepadSliderId cast;
+
+            if (obj.Convert<GamepadSliderId>(out cast))
+            {
+                if (cast == this)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return id;
+        }
+    }
+
+	[Serializable]
     public struct GamepadStickId
     {
         private string id;

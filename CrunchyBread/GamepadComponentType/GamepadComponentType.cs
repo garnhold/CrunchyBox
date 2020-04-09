@@ -10,6 +10,7 @@ namespace Crunchy.Bread
     {
         Axis,
         Button,
+        Slider,
         Stick
     }
 }

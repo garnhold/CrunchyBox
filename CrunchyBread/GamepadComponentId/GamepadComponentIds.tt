@@ -9,6 +9,7 @@ string[] types = new string[]{
 	"Component",
 	"Axis",
 	"Button",
+    "Slider",
 	"Stick"
 };
 #>

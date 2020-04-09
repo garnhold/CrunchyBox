@@ -124,6 +124,7 @@
     <Compile Include="GamepadComponentType\GamepadComponentType.cs" />
     <Compile Include="GamepadComponentType\Extensions\GamepadComponentTypeExtensions.cs" />
     <Compile Include="GamepadComponentType\Extensions\GamepadComponentTypeExtensions_SystemType.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_Slider\GamepadComponent_Slider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -172,6 +173,7 @@
     <Folder Include="Gamepad\Extensions\" />
     <Folder Include="GamepadComponentType\" />
     <Folder Include="GamepadComponentType\Extensions\" />
+    <Folder Include="GamepadComponent\GamepadComponent_Slider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
