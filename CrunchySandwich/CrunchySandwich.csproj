@@ -194,11 +194,6 @@
     <Compile Include="Time\Alarm\GameAlarm_Constant.cs" />
     <Compile Include="Time\Alarm\GameAlarm.cs" />
     <Compile Include="Time\Stopwatch\GameStopwatch.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_Axis.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton.cs" />
-    <Compile Include="InputDevice\InputDeviceRawStick\InputDeviceRawStick_Axises.cs" />
-    <Compile Include="InputDevice\InputDeviceRawStick\InputDeviceRawStick.cs" />
     <Compile Include="PolymorphicFieldAttribute\PolymorphicFieldAttribute.cs" />
     <Compile Include="PrefabFieldAttribute\PrefabFieldAttribute.cs" />
     <Compile Include="AssetFieldAttribute\AssetFieldAttribute.cs" />
@@ -225,7 +220,6 @@
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions_Volume.cs" />
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions.cs" />
     <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions.cs" />
-    <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions_InputDeviceComponentStickZone.cs" />
     <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions_Vector2.cs" />
     <Compile Include="Extensions\Component\ComponentExtensions_SpawnInstance.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Children_Set.cs">
@@ -252,42 +246,6 @@
     <Compile Include="Extensions\Rect\RectExtensions_Adjust_Side.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_MoveTowards.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_Towards.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Release.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick_Gesture.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Hold.cs" />
-    <Compile Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InputDeviceComponentIds.tt</DependentUpon>
-    </Compile>
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_StickGesture.cs" />
-    <Compile Include="InputDevice\InputDevice.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button_Press.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceEventHistoryStickExtensions_StickGesture.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceEventHistoryStickExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions_Direction.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\Extensions\InputDeviceComponentStickExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Frame.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Relation.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Values.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence_Custom.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated_TapSequence_Repeated.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Generated_Rotate.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture_Custom.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickGesture\InputDeviceStickGesture.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_CardinalOrdinalDirection.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions_Vector2.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\Extensions\InputDeviceStickZoneExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceStickZone\InputDeviceStickZone.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions_Events.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\Extensions\InputDeviceEventHistoryExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventEmptyHistory.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventLog.cs" />
-    <Compile Include="InputDevice\InputDeviceEventHistory\InputDeviceEventHistory.cs" />
-    <Compile Include="InputDevice\InputDeviceEvent\InputDeviceEvent.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Typical.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_RampEase.cs" />
     <Compile Include="Signal\Periodic\SignalPeriodicTransform.cs" />
@@ -483,12 +441,6 @@
     <Compile Include="Face\Extensions\FaceExtensions_Side.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable_Tesselate.cs" />
     <Compile Include="Face\Extensions\IEnumerable\FaceExtensions_IEnumerable.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\Extensions\InputDeviceComponentButtonExtensions_Released.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\Extensions\InputDeviceComponentButtonExtensions.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Stick\InputDeviceComponent_Stick.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Axis\InputDeviceComponent_Axis.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent_Button\InputDeviceComponent_Button.cs" />
-    <Compile Include="InputDevice\InputDeviceComponent\InputDeviceComponent.cs" />
     <Compile Include="LayerEX\Extensions\LayerEXExtensions.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Face.cs" />
     <Compile Include="LineSegment2\Extensions\LineSegment2Extensions_Direction.cs" />
@@ -1078,18 +1030,6 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_Planar.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_WithAdjusted.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_With.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Button.cs" />
-    <Compile Include="InputDevice\InputDeviceAction\InputDeviceAction_Stick.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_ButtonPair.cs" />
-    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock.cs" />
-    <Compile Include="Frame\Frame.cs" />
-    <Compile Include="InputDevice\Extensions\InputDeviceExtensions.cs" />
-    <Compile Include="InputDevice\Extensions\InputDeviceExtensions_Lock_Single.cs" />
-    <Compile Include="InputDevice\Extensions\InputDeviceExtensions_Lock_Multiple.cs" />
-    <Compile Include="InputDevice\InputDeviceLockState\InputDeviceLockState.cs" />
-    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_Blanket.cs" />
-    <Compile Include="InputDevice\InputDeviceLock\InputDeviceLock_TypeSpecial.cs" />
-    <Compile Include="InputDevice\InputDeviceLockState\Extensions\InputDeviceLockStateExtensions.cs" />
     <Compile Include="Extensions\GUIUtility\GUIUtilityExtensions_Visibility.cs" />
     <Compile Include="Indicator\Indicator_Scaling.cs" />
     <Compile Include="TextIndicator\TextIndicator.cs" />
@@ -1158,18 +1098,10 @@
     <Compile Include="Extensions\TextGenerator\TextGeneratorExtensions_Mesh.cs" />
     <Compile Include="MonomorphicFieldAttribute\MonomorphicFieldAttribute.cs" />
     <Compile Include="ObjectSignifyFieldAttribute\ObjectSignifyFieldAttribute.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_JoystickAxis.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_Filtered.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_GridChunk_Cropped.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_GridChunk_Overflown.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_JoystickButton.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_KeyboardButton.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_EditProcess.cs" />
     <Compile Include="MotionController\MotionController_MaterialPropertyFloat.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseHorizontalAxis.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseVerticalAxis.cs" />
-    <Compile Include="InputDevice\InputDeviceRawButton\InputDeviceRawButton_MouseButton.cs" />
-    <Compile Include="InputDevice\InputDeviceRawAxis\InputDeviceRawAxis_MouseWheelAxis.cs" />
     <Compile Include="Extensions\Input\InputExtensions.cs" />
     <Compile Include="Extensions\RigidBody\RigidBodyExtensions_Roll.cs" />
     <Compile Include="Extensions\Joint\JointExtensions.cs" />
@@ -1215,6 +1147,25 @@
     <Compile Include="Extensions\Input\InputExtensions_Stick.cs" />
     <Compile Include="MotionController\MotionController_LocalPlanarZPosition.cs" />
     <Compile Include="Extensions\Vector3\Vector3s.cs" />
+    <Compile Include="Gamepad\GamepadAction\GamepadAction.cs" />
+    <Compile Include="Gamepad\GamepadAction\GamepadAction_Button.cs" />
+    <Compile Include="Gamepad\GamepadAction\GamepadAction_Button_Hold.cs" />
+    <Compile Include="Gamepad\GamepadAction\GamepadAction_Button_Press.cs" />
+    <Compile Include="Gamepad\GamepadAction\GamepadAction_Button_Release.cs" />
+    <Compile Include="Gamepad\GamepadAction\GamepadAction_Stick.cs" />
+    <Compile Include="Gamepad\GamepadAction\GamepadAction_Stick_Gesture.cs" />
+    <Compile Include="Gamepad\GamepadStickGesture\GamepadStickGesture.cs" />
+    <Compile Include="Gamepad\GamepadStickGesture\GamepadStickGesture_Custom.cs" />
+    <Compile Include="Gamepad\GamepadStickGesture\GamepadStickGesture_Generated.cs" />
+    <Compile Include="Gamepad\GamepadStickGesture\GamepadStickGesture_Generated_Rotate.cs" />
+    <Compile Include="Gamepad\GamepadStickGesture\GamepadStickGesture_Generated_TapSequence.cs" />
+    <Compile Include="Gamepad\GamepadStickGesture\GamepadStickGesture_Generated_TapSequence_Custom.cs" />
+    <Compile Include="Gamepad\GamepadStickGesture\GamepadStickGesture_Generated_TapSequence_Repeated.cs" />
+    <Compile Include="Extensions\GamepadComponent_Stick\GamepadComponentStickExtensions.cs" />
+    <Compile Include="Extensions\GamepadComponent_Stick\GamepadComponentStickExtensions_StickGesture.cs" />
+    <Compile Include="Extensions\GamepadEventHistory\GamepadEventHistoryExtensions_StickGesture.cs" />
+    <Compile Include="Extensions\GamepadEventHistory\GamepadEventHistoryExtensions.cs" />
+    <Compile Include="FrameSatellite\FrameSatellite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1421,10 +1372,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ITilemapTilemapExtensions.cs</LastGenOutput>
     </Content>
-    <Content Include="InputDevice\InputDeviceComponentId\InputDeviceComponentIds.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>InputDeviceComponentIds.cs</LastGenOutput>
-    </Content>
     <Content Include="PlayEditDistinction\PlayEditDistinction.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PlayEditDistinction.cs</LastGenOutput>
@@ -1501,11 +1448,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="InputDevice\InputDeviceLock\" />
-    <Folder Include="Frame\" />
-    <Folder Include="InputDevice\Extensions\" />
-    <Folder Include="InputDevice\InputDeviceLockState\" />
-    <Folder Include="InputDevice\InputDeviceLockState\Extensions\" />
     <Folder Include="TextIndicator\" />
     <Folder Include="Conductor\" />
     <Folder Include="Easer\" />
@@ -1527,6 +1469,14 @@
     <Folder Include="Extensions\Joint\" />
     <Folder Include="Extensions\ConfigurableJoint\" />
     <Folder Include="Extensions\VectorI2\" />
+    <Folder Include="Gamepad\" />
+    <Folder Include="Gamepad\GamepadAction\" />
+    <Folder Include="Gamepad\InputDeviceComponent_Stick\" />
+    <Folder Include="Gamepad\GamepadStickGesture\" />
+    <Folder Include="Extensions\GamepadComponent_Stick\" />
+    <Folder Include="Gamepad\InputDeviceComponent_Stick\Extensions\" />
+    <Folder Include="Extensions\GamepadEventHistory\" />
+    <Folder Include="FrameSatellite\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
