@@ -6,7 +6,7 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public class InputDeviceNativeAtom : InputAtom
+    public class InputNativeAtom : InputAtom
     {
         private bool is_in_lock_section;
         private InputAtomLock current_lock;
