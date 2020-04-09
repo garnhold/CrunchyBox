@@ -109,11 +109,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_GameObjectComponentType.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_TypeSubType.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_Prefab.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_InputDeviceComponentIds.cs">
-      <DependentUpon>EditorGUIElement_EditPropertySingleValue_Popup_InputDeviceComponentIds.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_LayerEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_SortingLayerEX.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn.cs" />
@@ -162,7 +157,6 @@
     <Compile Include="Extensions\Type\TypeExtensions_EditorGUIElement.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_SceneObject.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_JoystickAxis.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindow.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Single\EditProperty_Single.cs" />
     <Compile Include="EditTarget\EditProperty\Extensions\EditPropertyExtensions_Labeled.cs" />
@@ -300,14 +294,6 @@
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Save.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Spawn.cs" />
     <Compile Include="CodeGenerator\CodeGenerator.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinition.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Stick_Joystick.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Stick.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_JoystickButton.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_JoystickAxis.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button.cs" />
     <Compile Include="Layer\LayerInitilizer.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_Texture.cs" />
     <Compile Include="Painter\PainterBrush\PainterBrush_SoftCircle.cs" />
@@ -419,23 +405,19 @@
     <Compile Include="EditTarget\Extensions\EditTargetExtensions_Object.cs" />
     <Compile Include="EditTarget\EditProperty\EditProperty_Array\Extensions\EditPropertyArrayExtensions_Modify.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_TextField.cs" />
-    <Compile Include="InputDeviceActionSettings\InputDeviceActionSettings.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_KeyboardButton.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Button_MouseButton.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseHorizontalAxis.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseVerticalAxis.cs" />
-    <Compile Include="InputDeviceDefinition\InputDeviceDefinitionComponent_Axis_MouseScrollAxis.cs" />
+    <Compile Include="GamepadActionsSettings\GamepadActionsSettings.cs" />
     <Compile Include="EditorSceneElement\EditorSceneElement_EditGadgetInstance\EditorSceneElement_EditGadgetInstance_LocalOffset.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.cs">
+      <DependentUpon>EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GamepadDefinition\GamepadDefinition.cs" />
+    <Compile Include="GamepadDefinition\GamepadComponentDefinition.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Variances.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Variances.cs</LastGenOutput>
-    </Content>
-    <Content Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_InputDeviceComponentIds.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EditorGUIElement_EditPropertySingleValue_Popup_InputDeviceComponentIds.cs</LastGenOutput>
     </Content>
     <Content Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Primitives\EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_NumberPrimitives.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -522,11 +504,16 @@
     <Folder Include="UnityObjectEX\" />
     <Folder Include="LibrarySettings\" />
     <Folder Include="EditorGUIElement\EditorGUIElement_Single\" />
-    <Folder Include="InputDeviceActionSettings\" />
+    <Folder Include="GamepadActionsSettings\" />
+    <Folder Include="GamepadDefinition\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
+    <None Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,17 +14,17 @@ namespace Crunchy.SandwichBag
     using Ginger;
     using Sandwich;
     
-    public class InputDeviceActionsSettings : LibrarySettings
+    public class GamepadActionsSettings : LibrarySettings
     {
         public override string GetLibraryName()
         {
-            return "InputDeviceActions";
+            return "GamepadActions";
         }
 
         public override IEnumerable<UnityEngine.Object> GetObjects()
         {
-            return Project.GetAllSofabs<InputDeviceAction>()
-                .Convert<InputDeviceAction, UnityEngine.Object>();
+            return Project.GetAllSofabs<GamepadAction>()
+                .Convert<GamepadAction, UnityEngine.Object>();
         }
     }
 }

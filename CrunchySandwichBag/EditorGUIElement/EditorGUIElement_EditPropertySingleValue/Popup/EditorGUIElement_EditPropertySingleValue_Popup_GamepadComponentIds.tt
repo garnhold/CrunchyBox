@@ -1,0 +1,39 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] types = new string[]{
+    "Component",
+    "Axis",
+    "Button",
+    "Stick"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+using UnityEditor;
+
+namespace Crunchy.SandwichBag
+{
+    using Dough;
+    using Bread;
+    using Sandwich;
+    
+    <#foreach(string type in types){#>
+
+    [EditorGUIElementForType(typeof(Gamepad<#=type#>Id), true)]
+    public class EditorGUIElement_EditPropertySingleValue_Popup_Gamepad<#=type#>Id : EditorGUIElement_EditPropertySingleValue_Popup<Gamepad<#=type#>Id>
+    {
+        public EditorGUIElement_EditPropertySingleValue_Popup_Gamepad<#=type#>Id(EditProperty_Single_Value p) : base(p) { }
+
+        public override IEnumerable<Gamepad<#=type#>Id> GetOptions()
+        {
+            return Gamepad<#=type#>Id.Get<#=type#>s();
+        }
+    }
+<#}#>
+}
