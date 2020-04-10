@@ -13,6 +13,8 @@ namespace Crunchy.Bread
         private bool is_positive;
         private float threshold;
 
+        public const float DefaultThreshold = 0.85f;
+
         public InputAtom_Button_AxisLimit(InputAtom_Axis a, bool p, float t)
         {
             axis = a;
@@ -21,7 +23,7 @@ namespace Crunchy.Bread
             threshold = t;
         }
 
-        public InputAtom_Button_AxisLimit(InputAtom_Axis a, bool p) : this(a, p, 0.85f) { }
+        public InputAtom_Button_AxisLimit(InputAtom_Axis a, bool p) : this(a, p, DefaultThreshold) { }
         public InputAtom_Button_AxisLimit(InputAtom_Axis a) : this(a, true) { }
 
         public void EnterLockSection(InputAtomLock @lock)
