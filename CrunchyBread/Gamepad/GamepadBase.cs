@@ -22,6 +22,10 @@ namespace Crunchy.Bread
 
             return axis;
         }
+        protected GamepadComponent_Axis CreateAxis(GamepadAxisId id, InputAtomLockType lock_type = InputAtomLockType.Zeroed)
+        {
+            return RegisterAxis(new GamepadComponent_Axis(id, lock_type));
+        }
 
         protected GamepadComponent_Button RegisterButton(GamepadComponent_Button button)
         {
@@ -29,6 +33,10 @@ namespace Crunchy.Bread
             buttons.Add((GamepadButtonId)button.GetId(), button);
 
             return button;
+        }
+        protected GamepadComponent_Button CreateButton(GamepadButtonId id, InputAtomLockType lock_type = InputAtomLockType.Zeroed)
+        {
+            return RegisterButton(new GamepadComponent_Button(id, lock_type));
         }
 
         protected GamepadComponent_Slider RegisterSlider(GamepadComponent_Slider slider)
@@ -38,6 +46,10 @@ namespace Crunchy.Bread
 
             return slider;
         }
+        protected GamepadComponent_Slider CreateSlider(GamepadSliderId id, InputAtomLockType lock_type = InputAtomLockType.Zeroed)
+        {
+            return RegisterSlider(new GamepadComponent_Slider(id, lock_type));
+        }
 
         protected GamepadComponent_Stick RegisterStick(GamepadComponent_Stick stick)
         {
@@ -45,6 +57,10 @@ namespace Crunchy.Bread
             sticks.Add((GamepadStickId)stick.GetId(), stick);
 
             return stick;
+        }
+        protected GamepadComponent_Stick CreateStick(GamepadStickId id, InputAtomLockType lock_type = InputAtomLockType.Zeroed)
+        {
+            return RegisterStick(new GamepadComponent_Stick(id, lock_type));
         }
 
         public GamepadBase()
