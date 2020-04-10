@@ -51,8 +51,6 @@
     <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions.cs" />
     <Compile Include="Extensions\DisplayDevice\DisplayDeviceExtensions_Resolution.cs" />
     <Compile Include="InputDevice\InputDevice.cs" />
-    <Compile Include="InputDevice\InputDevice_Joystick.cs" />
-    <Compile Include="InputDevice\InputDevice_Keyboard.cs" />
     <Compile Include="AxisFilter\AxisFilter.cs" />
     <Compile Include="AxisFilter\AxisFilter_AdaptiveLimit.cs" />
     <Compile Include="AxisFilter\AxisFilter_CenterCalibrating.cs" />
@@ -127,6 +125,8 @@
     <Compile Include="GamepadComponent\GamepadComponent_Slider\GamepadComponent_Slider.cs" />
     <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_PositionDelta.cs" />
     <Compile Include="InputAtom\InputUpdateAtom.cs" />
+    <Compile Include="InputDevice\InputDevice_Joystick\InputDevice_Joystick.cs" />
+    <Compile Include="InputDevice\InputDevice_Keyboard\InputDevice_Keyboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -176,6 +176,8 @@
     <Folder Include="GamepadComponentType\" />
     <Folder Include="GamepadComponentType\Extensions\" />
     <Folder Include="GamepadComponent\GamepadComponent_Slider\" />
+    <Folder Include="InputDevice\InputDevice_Joystick\" />
+    <Folder Include="InputDevice\InputDevice_Keyboard\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
