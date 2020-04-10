@@ -129,6 +129,9 @@
     <Compile Include="InputDevice\InputDevice_Keyboard\InputDevice_Keyboard.cs" />
     <Compile Include="InputDevice\InputDevice_Joystick\Extensions\InputDeviceJoystickExtensions.cs" />
     <Compile Include="InputDevice\InputDevice_Joystick\Extensions\InputDeviceJoystickExtensions_Stick.cs" />
+    <Compile Include="Extensions\JoystickState\JoystickStateExtensions.cs" />
+    <Compile Include="Extensions\JoystickHatState\JoystickHatStateExtensions.cs" />
+    <Compile Include="Extensions\HatPosition\HatPositionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -181,6 +184,9 @@
     <Folder Include="InputDevice\InputDevice_Joystick\" />
     <Folder Include="InputDevice\InputDevice_Keyboard\" />
     <Folder Include="InputDevice\InputDevice_Joystick\Extensions\" />
+    <Folder Include="Extensions\JoystickState\" />
+    <Folder Include="Extensions\JoystickHatState\" />
+    <Folder Include="Extensions\HatPosition\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
