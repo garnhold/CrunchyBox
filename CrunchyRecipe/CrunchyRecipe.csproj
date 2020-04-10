@@ -112,6 +112,8 @@
     <Compile Include="Tyon\antlr4\TyonLexer.cs" />
     <Compile Include="Tyon\antlr4\TyonParser.cs" />
     <Compile Include="Tyon\antlr4\TyonVisitor.cs" />
+    <Compile Include="Tyon\Settings\Default\TyonSettings_General.cs" />
+    <Compile Include="Tyon\Settings\Default\TyonFieldAttribute.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -132,6 +134,7 @@
     <Folder Include="Tyon\SolidObject\" />
     <Folder Include="Tyon\Settings\Extensions\" />
     <Folder Include="Tyon\antlr4\" />
+    <Folder Include="Tyon\Settings\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -24,7 +24,7 @@ public class GamepadGenerator : CmdProgram
 
     protected override void RunInternal()
     {
-        GamepadDefinition definition = TyonSettings_Default.INSTANCE.Deserialize<GamepadDefinition>(
+        GamepadDefinition definition = TyonSettings_General.INSTANCE.Deserialize<GamepadDefinition>(
             File.ReadAllText(input_filename),
             TyonHydrationMode.Strict
         );
