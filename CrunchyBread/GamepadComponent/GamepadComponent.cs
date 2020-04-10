@@ -9,8 +9,6 @@ namespace Crunchy.Bread
     public abstract class GamepadComponent
     {
         private GamepadComponentId id;
-
-        private InputAtom atom;
         private InputAtomLockType lock_type;
 
         private bool has_frozen;
@@ -18,9 +16,11 @@ namespace Crunchy.Bread
         protected abstract void FreezeInternal();
         protected abstract void UpdateInternal();
 
+        protected abstract InputAtom GetAtom();
+
         protected T SwitchValues<T>(T value, T zero, T frozen)
         {
-            if (atom.IsEffectivelyLocked())
+            if (GetAtom().IsEffectivelyLocked())
             {
                 switch (lock_type)
                 {
@@ -48,11 +48,9 @@ namespace Crunchy.Bread
             return SwitchValues<T>(value, default(T), frozen);
         }
 
-        public GamepadComponent(string i, InputAtom a, InputAtomLockType l)
+        public GamepadComponent(GamepadComponentId i, InputAtomLockType l = InputAtomLockType.Zeroed)
         {
-            id = new GamepadComponentId(i);
-
-            atom = a;
+            id = i;
             lock_type = l;
         }
 
@@ -60,7 +58,7 @@ namespace Crunchy.Bread
         {
             UpdateInternal();
 
-            if (atom.IsNominallyLocked())
+            if (GetAtom().IsNominallyLocked())
             {
                 if (has_frozen == false)
                 {
@@ -76,12 +74,12 @@ namespace Crunchy.Bread
 
         public void EnterLockSection(InputAtomLock @lock)
         {
-            atom.EnterLockSection(@lock);
+            GetAtom().EnterLockSection(@lock);
         }
 
         public void ExitLockSection(InputAtomLock @lock)
         {
-            atom.ExitLockSection(@lock);
+            GetAtom().ExitLockSection(@lock);
         }
 
         public GamepadComponentId GetId()

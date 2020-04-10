@@ -23,12 +23,20 @@ namespace Crunchy.Bread
             value = axis.GetValue();
         }
 
-        public GamepadComponent_Axis(string i, InputAtom_Axis a, InputAtomLockType l) : base(i, a, l)
+        protected override InputAtom GetAtom()
         {
-            axis = a;
+            return axis;
+        }
 
+        public GamepadComponent_Axis(GamepadAxisId i, InputAtomLockType l = InputAtomLockType.Zeroed) : base(i, l)
+        {
             value = 0.0f;
             frozen_value = 0.0f;
+        }
+
+        public void Initialize(InputAtom_Axis a)
+        {
+            axis = a;
         }
 
         public float GetValue()

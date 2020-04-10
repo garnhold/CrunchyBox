@@ -42,10 +42,13 @@ namespace Crunchy.Bread
             }
         }
 
-        public GamepadComponent_Button(string i, InputAtom_Button b, InputAtomLockType l) : base(i, b, l)
+        protected override InputAtom GetAtom()
         {
-            button = b;
+            return button;
+        }
 
+        public GamepadComponent_Button(GamepadButtonId i, InputAtomLockType l = InputAtomLockType.Zeroed) : base(i, l)
+        {
             is_down = false;
             is_pressed = false;
             is_released = false;
@@ -53,6 +56,11 @@ namespace Crunchy.Bread
             frozen_is_down = false;
 
             presses = new GamepadEventLog<bool>(32);
+        }
+
+        public void Initialize(InputAtom_Button b)
+        {
+            button = b;
         }
 
         public bool IsButtonDown()

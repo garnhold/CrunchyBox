@@ -45,10 +45,13 @@ namespace Crunchy.Bread
             }
         }
 
-        public GamepadComponent_Stick(string i, InputAtom_Stick s, InputAtomLockType l) : base(i, s, l)
+        protected override InputAtom GetAtom()
         {
-            stick = s;
+            return stick;
+        }
 
+        public GamepadComponent_Stick(GamepadStickId i, InputAtomLockType l) : base(i, l)
+        {
             value = VectorF2.ZERO;
             magnitude = 0.0f;
             angle_in_degrees = 0.0f;
@@ -58,6 +61,11 @@ namespace Crunchy.Bread
             frozen_angle_in_degrees = 0.0f;
 
             stick_zones = new GamepadEventLog<GamepadStickZone>(64);
+        }
+
+        public void Initialize(InputAtom_Stick s)
+        {
+            stick = s;
         }
 
         public VectorF2 GetValue()

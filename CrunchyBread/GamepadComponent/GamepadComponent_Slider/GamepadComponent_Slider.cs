@@ -23,12 +23,20 @@ namespace Crunchy.Bread
             value = slider.GetValue();
         }
 
-        public GamepadComponent_Slider(string i, InputAtom_Slider a, InputAtomLockType l) : base(i, a, l)
+        protected override InputAtom GetAtom()
         {
-            slider = a;
+            return slider;
+        }
 
+        public GamepadComponent_Slider(GamepadSliderId i, InputAtomLockType l = InputAtomLockType.Zeroed) : base(i, l)
+        {
             value = 0.0f;
             frozen_value = 0.0f;
+        }
+
+        public void Initialize(InputAtom_Slider s)
+        {
+            slider = s;
         }
 
         public float GetValue()
