@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1AB3D94-715E-4796-810D-D0A586759CCD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GamepadGenerator</RootNamespace>
+    <AssemblyName>GamepadGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Antlr4.Runtime.Standard">
+      <HintPath>..\..\packages\Antlr4.Runtime.Standard.4.8.0\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GamepadGenerator.cs" />
+    <Compile Include="GamepadComponentDefinition.cs" />
+    <Compile Include="GamepadDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CrunchyBread\CrunchyBread.csproj">
+      <Project>{7D5A203B-A23F-4AE5-A85F-5894BF6D9A4A}</Project>
+      <Name>CrunchyBread</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchyRecipe\CrunchyRecipe.csproj">
+      <Project>{3E2B2475-732C-41E1-A746-552A07B2F283}</Project>
+      <Name>CrunchyRecipe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchySodium\CrunchySodium.csproj">
+      <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
+      <Name>CrunchySodium</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchyLunch\CrunchyLunch.csproj">
+      <Project>{25C7126F-8124-47E2-B570-C960BCE31DB3}</Project>
+      <Name>CrunchyLunch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrunchyGinger\CrunchyGinger.csproj">
+      <Project>{9E4779F4-3B29-4CDC-912F-789FFC4715E8}</Project>
+      <Name>CrunchyGinger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

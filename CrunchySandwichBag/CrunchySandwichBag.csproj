@@ -410,8 +410,6 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.cs">
       <DependentUpon>EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.tt</DependentUpon>
     </Compile>
-    <Compile Include="GamepadDefinition\GamepadDefinition.cs" />
-    <Compile Include="GamepadDefinition\GamepadComponentDefinition.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -505,7 +503,6 @@
     <Folder Include="LibrarySettings\" />
     <Folder Include="EditorGUIElement\EditorGUIElement_Single\" />
     <Folder Include="GamepadActionsSettings\" />
-    <Folder Include="GamepadDefinition\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
