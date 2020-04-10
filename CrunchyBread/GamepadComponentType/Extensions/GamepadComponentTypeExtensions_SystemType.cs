@@ -14,6 +14,7 @@ namespace Crunchy.Bread
             {
                 case GamepadComponentType.Axis: return typeof(GamepadComponent_Axis);
                 case GamepadComponentType.Button: return typeof(GamepadComponent_Button);
+                case GamepadComponentType.Slider: return typeof(GamepadComponent_Slider);
                 case GamepadComponentType.Stick: return typeof(GamepadComponent_Stick);
             }
 
