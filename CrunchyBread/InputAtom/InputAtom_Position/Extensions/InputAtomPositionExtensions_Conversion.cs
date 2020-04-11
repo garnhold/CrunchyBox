@@ -10,7 +10,7 @@ namespace Crunchy.Bread
     {
         static public InputAtom_Axis GetAsAxis(this InputAtom_Position item)
         {
-            return new InputAtom_Axis_PositionDelta(item);
+            return item.IfNotNull(i => new InputAtom_Axis_PositionDelta(i));
         }
     }
 }

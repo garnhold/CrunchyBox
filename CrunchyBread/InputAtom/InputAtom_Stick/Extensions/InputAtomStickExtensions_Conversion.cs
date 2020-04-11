@@ -10,7 +10,7 @@ namespace Crunchy.Bread
     {
         static public InputAtom_Axis GetAsAxis(this InputAtom_Stick item, bool is_horizontal)
         {
-            return new InputAtom_Axis_StickHalf(item, is_horizontal);
+            return item.IfNotNull(i => new InputAtom_Axis_StickHalf(i, is_horizontal));
         }
     }
 }

@@ -10,12 +10,12 @@ namespace Crunchy.Bread
     {
         static public InputAtom_Button GetAsButton(this InputAtom_Axis item, bool is_positive, float threshold = AxisSlider.Threshold)
         {
-            return new InputAtom_Button_AxisLimit(item, is_positive, threshold);
+            return item.IfNotNull(i => new InputAtom_Button_AxisLimit(item, is_positive, threshold));
         }
 
         static public InputAtom_Slider GetAsSlider(this InputAtom_Axis item, bool is_positive)
         {
-            return new InputAtom_Slider_AxisHalf(item, is_positive);
+            return item.IfNotNull(i => new InputAtom_Slider_AxisHalf(item, is_positive));
         }
     }
 }
