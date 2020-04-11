@@ -39,9 +39,9 @@ namespace Crunchy.Bread
             return negative_slider.IsEffectivelyLocked() | positive_slider.IsEffectivelyLocked();
         }
 
-        public float GetValue()
+        public float GetRawValue()
         {
-            return positive_slider.GetValue() - negative_slider.GetValue();
+            return positive_slider.GetRawValue() - negative_slider.GetRawValue();
         }
     }
 }

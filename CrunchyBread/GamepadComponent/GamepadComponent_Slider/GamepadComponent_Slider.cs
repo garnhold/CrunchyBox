@@ -6,7 +6,7 @@ namespace Crunchy.Bread
 {
     using Dough;
     
-    public class GamepadComponent_Slider : GamepadComponent
+    public class GamepadComponent_Slider : GamepadComponent, InputAtom_Slider
     {
         private InputAtom_Slider slider;
 
@@ -20,7 +20,7 @@ namespace Crunchy.Bread
 
         protected override void UpdateInternal()
         {
-            value = slider.GetValue();
+            value = slider.GetRawValue();
         }
 
         protected override InputAtom GetAtom()
@@ -37,6 +37,11 @@ namespace Crunchy.Bread
         public void Initialize(InputAtom_Slider s)
         {
             slider = s;
+        }
+
+        public float GetRawValue()
+        {
+            return slider.GetRawValue();
         }
 
         public float GetValue()

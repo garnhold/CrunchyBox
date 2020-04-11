@@ -8,6 +8,6 @@ namespace Crunchy.Bread
 
     public abstract class InputAtom_Stick_Native : InputNativeAtom, InputAtom_Stick
     {
-        public abstract VectorF2 GetValue();
+        public abstract VectorF2 GetRawValue();
     }
 }

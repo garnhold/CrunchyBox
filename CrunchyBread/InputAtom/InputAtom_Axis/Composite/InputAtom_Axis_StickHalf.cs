@@ -39,12 +39,12 @@ namespace Crunchy.Bread
             return stick.IsEffectivelyLocked();
         }
 
-        public float GetValue()
+        public float GetRawValue()
         {
             if (is_horizontal)
-                return stick.GetValue().x;
+                return stick.GetRawValue().x;
 
-            return stick.GetValue().y;
+            return stick.GetRawValue().y;
         }
     }
 }

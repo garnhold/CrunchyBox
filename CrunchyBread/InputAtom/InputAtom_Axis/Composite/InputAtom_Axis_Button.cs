@@ -39,9 +39,9 @@ namespace Crunchy.Bread
             return button.IsEffectivelyLocked();
         }
 
-        public float GetValue()
+        public float GetRawValue()
         {
-            return button.GetValue().ConvertBool(value);
+            return button.GetRawValue().ConvertBool(value);
         }
     }
 }

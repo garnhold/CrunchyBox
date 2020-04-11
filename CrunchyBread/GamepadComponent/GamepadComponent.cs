@@ -6,7 +6,7 @@ namespace Crunchy.Bread
 {
     using Dough;
     
-    public abstract class GamepadComponent
+    public abstract class GamepadComponent : InputAtom
     {
         private GamepadComponentId id;
         private InputAtomLockType lock_type;
@@ -80,6 +80,16 @@ namespace Crunchy.Bread
         public void ExitLockSection(InputAtomLock @lock)
         {
             GetAtom().ExitLockSection(@lock);
+        }
+
+        public bool IsNominallyLocked()
+        {
+            return GetAtom().IsNominallyLocked();
+        }
+
+        public bool IsEffectivelyLocked()
+        {
+            return GetAtom().IsEffectivelyLocked();
         }
 
         public GamepadComponentId GetId()

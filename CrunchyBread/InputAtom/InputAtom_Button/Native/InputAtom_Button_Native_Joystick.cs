@@ -19,7 +19,7 @@ namespace Crunchy.Bread
             button_index = bi;
         }
 
-        public override bool GetValue()
+        public override bool GetRawValue()
         {
             return JoystickExtensions.GetState(device_index).IsButtonDown(button_index);
         }

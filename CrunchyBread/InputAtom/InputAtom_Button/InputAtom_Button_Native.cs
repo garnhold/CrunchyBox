@@ -8,6 +8,6 @@ namespace Crunchy.Bread
 
     public abstract class InputAtom_Button_Native : InputNativeAtom, InputAtom_Button
     {
-        public abstract bool GetValue();
+        public abstract bool GetRawValue();
     }
 }

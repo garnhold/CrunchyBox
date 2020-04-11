@@ -17,6 +17,6 @@ namespace Crunchy.Bread
 
     public interface InputAtom<T> : InputAtom
     {
-        T GetValue();
+        T GetRawValue();
     }
 }

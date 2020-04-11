@@ -17,7 +17,7 @@ namespace Crunchy.Bread
 
         public InputAtom_Position_Native_MouseWheel() : this(-1) { }
 
-        public override float GetValue()
+        public override float GetRawValue()
         {
             return MouseExtensions.GetState(device_index).WheelPrecise;
         }

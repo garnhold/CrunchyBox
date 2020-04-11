@@ -39,11 +39,11 @@ namespace Crunchy.Bread
             return horizontal_axis.IsEffectivelyLocked() | vertical_axis.IsEffectivelyLocked();
         }
 
-        public VectorF2 GetValue()
+        public VectorF2 GetRawValue()
         {
             return new VectorF2(
-                horizontal_axis.GetValue(),
-                vertical_axis.GetValue()
+                horizontal_axis.GetRawValue(),
+                vertical_axis.GetRawValue()
             );
         }
     }

@@ -44,16 +44,16 @@ namespace Crunchy.Bread
             return axis.IsEffectivelyLocked();
         }
 
-        public bool GetValue()
+        public bool GetRawValue()
         {
             if (is_positive)
             {
-                if (axis.GetValue() >= threshold)
+                if (axis.GetRawValue() >= threshold)
                     return true;
             }
             else
             {
-                if (axis.GetValue() <= -threshold)
+                if (axis.GetRawValue() <= -threshold)
                     return true;
             }
 

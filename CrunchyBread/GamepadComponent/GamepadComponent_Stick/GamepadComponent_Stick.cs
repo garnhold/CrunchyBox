@@ -6,7 +6,7 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public class GamepadComponent_Stick : GamepadComponent
+    public class GamepadComponent_Stick : GamepadComponent, InputAtom_Stick
     {
         private InputAtom_Stick stick;
 
@@ -29,7 +29,7 @@ namespace Crunchy.Bread
 
         protected override void UpdateInternal()
         {
-            value = stick.GetValue();
+            value = stick.GetRawValue();
             magnitude = value.GetMagnitude();
 
             if (magnitude != 0.0f)
@@ -66,6 +66,11 @@ namespace Crunchy.Bread
         public void Initialize(InputAtom_Stick s)
         {
             stick = s;
+        }
+
+        public VectorF2 GetRawValue()
+        {
+            return stick.GetRawValue();
         }
 
         public VectorF2 GetValue()

@@ -17,7 +17,7 @@ namespace Crunchy.Bread
             hat_index = hi;
         }
 
-        public override VectorF2 GetValue()
+        public override VectorF2 GetRawValue()
         {
             return JoystickExtensions.GetState(device_index).GetHat(hat_index).GetVectorF2();
         }

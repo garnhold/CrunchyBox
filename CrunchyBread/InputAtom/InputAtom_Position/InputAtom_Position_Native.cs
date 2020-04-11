@@ -8,6 +8,6 @@ namespace Crunchy.Bread
 
     public abstract class InputAtom_Position_Native : InputNativeAtom, InputAtom_Position
     {
-        public abstract float GetValue();
+        public abstract float GetRawValue();
     }
 }

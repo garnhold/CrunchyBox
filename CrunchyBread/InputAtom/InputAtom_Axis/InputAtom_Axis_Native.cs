@@ -8,6 +8,6 @@ namespace Crunchy.Bread
 
     public abstract class InputAtom_Axis_Native : InputNativeAtom, InputAtom_Axis
     {
-        public abstract float GetValue();
+        public abstract float GetRawValue();
     }
 }

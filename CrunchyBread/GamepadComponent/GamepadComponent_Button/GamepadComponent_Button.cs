@@ -6,7 +6,7 @@ namespace Crunchy.Bread
 {
     using Dough;
     
-    public class GamepadComponent_Button : GamepadComponent
+    public class GamepadComponent_Button : GamepadComponent, InputAtom_Button
     {
         private InputAtom_Button button;
 
@@ -25,7 +25,7 @@ namespace Crunchy.Bread
 
         protected override void UpdateInternal()
         {
-            is_down = button.GetValue();
+            is_down = button.GetRawValue();
 
             is_pressed = false;
             is_released = false;
@@ -61,6 +61,11 @@ namespace Crunchy.Bread
         public void Initialize(InputAtom_Button b)
         {
             button = b;
+        }
+
+        public bool GetRawValue()
+        {
+            return button.GetRawValue();
         }
 
         public bool IsButtonDown()

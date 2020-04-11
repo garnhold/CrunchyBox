@@ -19,7 +19,7 @@ namespace Crunchy.Bread
 
         protected override void UpdateAtomInternal()
         {
-            delta.UpdateDelta(position.GetValue());
+            delta.UpdateDelta(position.GetRawValue());
         }
 
         public InputAtom_Axis_PositionDelta(InputAtom_Position p)
@@ -49,7 +49,7 @@ namespace Crunchy.Bread
             return position.IsEffectivelyLocked();
         }
 
-        public float GetValue()
+        public float GetRawValue()
         {
             return delta.GetDelta();
         }

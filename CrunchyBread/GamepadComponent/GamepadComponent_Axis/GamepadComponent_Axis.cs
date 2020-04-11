@@ -6,7 +6,7 @@ namespace Crunchy.Bread
 {
     using Dough;
     
-    public class GamepadComponent_Axis : GamepadComponent
+    public class GamepadComponent_Axis : GamepadComponent, InputAtom_Axis
     {
         private InputAtom_Axis axis;
 
@@ -20,7 +20,7 @@ namespace Crunchy.Bread
 
         protected override void UpdateInternal()
         {
-            value = axis.GetValue();
+            value = axis.GetRawValue();
         }
 
         protected override InputAtom GetAtom()
@@ -37,6 +37,11 @@ namespace Crunchy.Bread
         public void Initialize(InputAtom_Axis a)
         {
             axis = a;
+        }
+
+        public float GetRawValue()
+        {
+            return axis.GetRawValue();
         }
 
         public float GetValue()

@@ -17,7 +17,7 @@ namespace Crunchy.Bread
             axis_index = ai;
         }
 
-        public override float GetValue()
+        public override float GetRawValue()
         {
             return JoystickExtensions.GetState(device_index).GetAxis(axis_index);
         }

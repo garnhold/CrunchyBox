@@ -21,7 +21,7 @@ namespace Crunchy.Bread
 
         public InputAtom_Button_Native_Keyboard(Key k) : this(-1, k) { }
 
-        public override bool GetValue()
+        public override bool GetRawValue()
         {
             return KeyboardExtensions.GetState(device_index).IsKeyDown(key);
         }

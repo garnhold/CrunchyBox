@@ -39,12 +39,12 @@ namespace Crunchy.Bread
             return axis.IsEffectivelyLocked();
         }
 
-        public float GetValue()
+        public float GetRawValue()
         {
             if (is_positive)
-                return axis.GetValue().BindBetween(0.0f, 1.0f);
+                return axis.GetRawValue().BindBetween(0.0f, 1.0f);
 
-            return -axis.GetValue().BindBetween(-1.0f, 0.0f);
+            return -axis.GetRawValue().BindBetween(-1.0f, 0.0f);
         }
     }
 }

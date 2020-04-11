@@ -21,7 +21,7 @@ namespace Crunchy.Bread
 
         public InputAtom_Button_Native_Mouse(MouseButton b) : this(-1, b) { }
 
-        public override bool GetValue()
+        public override bool GetRawValue()
         {
             return MouseExtensions.GetState(device_index).IsButtonDown(button);
         }

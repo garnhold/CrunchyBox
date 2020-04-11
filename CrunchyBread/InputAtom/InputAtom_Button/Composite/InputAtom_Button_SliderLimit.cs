@@ -41,9 +41,9 @@ namespace Crunchy.Bread
             return slider.IsEffectivelyLocked();
         }
 
-        public bool GetValue()
+        public bool GetRawValue()
         {
-            if (slider.GetValue() >= threshold)
+            if (slider.GetRawValue() >= threshold)
                 return true;
 
             return false;
