@@ -19,7 +19,7 @@ namespace Crunchy.Bread
             threshold = t;
         }
 
-        public InputAtom_Button_SliderLimit(InputAtom_Slider a) : this(a, 0.85f) { }
+        public InputAtom_Button_SliderLimit(InputAtom_Slider a) : this(a, AxisSlider.Threshold) { }
 
         public void EnterLockSection(InputAtomLock @lock)
         {

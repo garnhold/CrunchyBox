@@ -145,6 +145,7 @@
     <Compile Include="Extensions\JoystickHatState\JoystickHatStateExtensions.cs" />
     <Compile Include="Extensions\HatPosition\HatPositionExtensions.cs" />
     <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_StickHalf.cs" />
+    <Compile Include="AxisSlider\AxisSlider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -206,6 +207,7 @@
     <Folder Include="Extensions\JoystickState\" />
     <Folder Include="Extensions\JoystickHatState\" />
     <Folder Include="Extensions\HatPosition\" />
+    <Folder Include="AxisSlider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
