@@ -7,5 +7,8 @@ namespace Crunchy.Dough
     {
         void SetElapsedTimeInMilliseconds(long m);
         long GetElapsedTimeInMilliseconds();
+
+        void SetSpeed(float speed);
+        float GetSpeed();
     }
 }
