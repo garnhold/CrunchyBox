@@ -80,7 +80,7 @@ namespace Crunchy.Lunch
         public string ReadLine()
         {
             lock (output_lock)
-                return output_buffer.Pop();
+                return output_buffer.PopFirst();
         }
 
         public IEnumerable<string> ReadLines()

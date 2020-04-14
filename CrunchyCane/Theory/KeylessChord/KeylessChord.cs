@@ -30,7 +30,7 @@ namespace Crunchy.Cane
 
         public void InvertUpward()
         {
-            indexs.Add(indexs.Pop() + scale.GetScaleSize());
+            indexs.Add(indexs.PopFirst() + scale.GetScaleSize());
         }
         public void InvertUpward(int amount)
         {

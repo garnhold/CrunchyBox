@@ -14,6 +14,11 @@ namespace Crunchy.Dough
             return element;
         }
 
+        static public T PopFirst<T>(this IList<T> item)
+        {
+            return item.PopAt(0);
+        }
+
         static public T PopLast<T>(this IList<T> item)
         {
             return item.PopAt(item.GetFinalIndex());

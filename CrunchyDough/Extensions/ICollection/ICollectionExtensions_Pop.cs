@@ -6,7 +6,7 @@ namespace Crunchy.Dough
 {
     static public class ICollectionExtensions_Pop
     {
-        static public T Pop<T>(this ICollection<T> item)
+        static public T PopFirst<T>(this ICollection<T> item)
         {
             T sub_item = item.GetFirst();
 
