@@ -46,7 +46,7 @@ namespace Crunchy.Bread
 
         public float GetValue()
         {
-            return SwitchSharedFrozen(value, frozen_value);
+            return CalculateEffectiveValueFrozen(value, frozen_value);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Crunchy.Bread
 
         protected abstract InputAtom GetAtom();
 
-        protected T SwitchValues<T>(T value, T zero, T frozen)
+        protected T CalculateEffectiveValue<T>(T value, T zero, T frozen)
         {
             if (GetAtom().IsEffectivelyLocked())
             {
@@ -34,18 +34,18 @@ namespace Crunchy.Bread
             return value;
         }
 
-        protected T SwitchSharedExclusive<T>(T value, T exclusive)
+        protected T CalculateEffectiveValueExclusive<T>(T value, T exclusive)
         {
-            return SwitchValues<T>(value, exclusive, exclusive);
+            return CalculateEffectiveValue<T>(value, exclusive, exclusive);
         }
-        protected T SwitchSharedExclusive<T>(T value)
+        protected T CalculateEffectiveValueExclusive<T>(T value)
         {
-            return SwitchSharedExclusive<T>(value, default(T));
+            return CalculateEffectiveValueExclusive<T>(value, default(T));
         }
 
-        protected T SwitchSharedFrozen<T>(T value, T frozen)
+        protected T CalculateEffectiveValueFrozen<T>(T value, T frozen)
         {
-            return SwitchValues<T>(value, default(T), frozen);
+            return CalculateEffectiveValue<T>(value, default(T), frozen);
         }
 
         public GamepadComponent(GamepadComponentId i, InputAtomLockType l = InputAtomLockType.Zeroed)

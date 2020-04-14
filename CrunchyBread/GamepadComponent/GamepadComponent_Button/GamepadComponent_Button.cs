@@ -70,22 +70,22 @@ namespace Crunchy.Bread
 
         public bool IsButtonDown()
         {
-            return SwitchSharedFrozen(is_down, frozen_is_down);
+            return CalculateEffectiveValueFrozen(is_down, frozen_is_down);
         }
 
         public bool IsButtonPressed()
         {
-            return SwitchSharedExclusive(is_pressed);
+            return CalculateEffectiveValueExclusive(is_pressed);
         }
 
         public bool IsButtonReleased()
         {
-            return SwitchSharedExclusive(is_released);
+            return CalculateEffectiveValueExclusive(is_released);
         }
 
         public GamepadEventHistory<bool> GetHistory()
         {
-            return SwitchSharedExclusive<GamepadEventHistory<bool>>(
+            return CalculateEffectiveValueExclusive<GamepadEventHistory<bool>>(
                 presses,
                 GamepadEventEmptyHistory<bool>.INSTANCE
             );

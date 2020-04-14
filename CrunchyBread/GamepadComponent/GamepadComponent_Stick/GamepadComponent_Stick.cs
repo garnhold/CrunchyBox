@@ -75,22 +75,22 @@ namespace Crunchy.Bread
 
         public VectorF2 GetValue()
         {
-            return SwitchSharedFrozen(value, frozen_value);
+            return CalculateEffectiveValueFrozen(value, frozen_value);
         }
 
         public float GetMagnitude()
         {
-            return SwitchSharedFrozen(magnitude, frozen_magnitude);
+            return CalculateEffectiveValueFrozen(magnitude, frozen_magnitude);
         }
 
         public float GetAngleInDegrees()
         {
-            return SwitchSharedFrozen(angle_in_degrees, frozen_angle_in_degrees);
+            return CalculateEffectiveValueFrozen(angle_in_degrees, frozen_angle_in_degrees);
         }
 
         public GamepadEventHistory<GamepadStickZone> GetHistory()
         {
-            return SwitchSharedExclusive<GamepadEventHistory<GamepadStickZone>>(
+            return CalculateEffectiveValueExclusive<GamepadEventHistory<GamepadStickZone>>(
                 stick_zones,
                 GamepadEventEmptyHistory<GamepadStickZone>.INSTANCE
             );
