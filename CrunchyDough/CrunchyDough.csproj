@@ -1486,6 +1486,10 @@
     <Compile Include="VectorF2\Extensions\VectorF2s.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Conductor.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Multiple.cs" />
+    <Compile Include="ConductedValue\ConductedValue.cs" />
+    <Compile Include="ConductedValue\Extensions\ConductedValueExtensions.cs" />
+    <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_Value.cs" />
+    <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_Wait.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1706,6 +1710,8 @@
     <Folder Include="StaleDictionary\" />
     <Folder Include="DeferredProcessList\" />
     <Folder Include="NumericWeighted\" />
+    <Folder Include="ConductedValue\" />
+    <Folder Include="ConductedValue\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
