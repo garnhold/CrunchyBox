@@ -13,7 +13,7 @@ namespace Crunchy.Dough
             operation = o;
         }
 
-        public override bool Fulfill()
+        public override bool UpdateFulfill()
         {
             if (operation())
                 return true;

@@ -13,7 +13,7 @@ namespace Crunchy.Dough
             process = p;
         }
 
-        public override bool Fulfill()
+        public override bool UpdateFulfill()
         {
             process();
 

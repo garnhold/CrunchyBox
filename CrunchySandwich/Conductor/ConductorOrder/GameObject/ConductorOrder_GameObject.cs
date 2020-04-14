@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public abstract class ConductorOrder_GameObject : ConductorOrder
     {
         private GameObject target;

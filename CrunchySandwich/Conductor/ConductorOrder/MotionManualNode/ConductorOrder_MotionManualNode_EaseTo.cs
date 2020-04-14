@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public abstract class ConductorOrder_MotionManualNode_EaseTo : ConductorOrder_MotionManualNode
     {
         private float start;
@@ -20,13 +21,22 @@ namespace Crunchy.Sandwich
             easer = new GameEaser(o, d, tt);
         }
 
-        public override void Start()
+        public override void InitializeFulfill()
         {
             start = GetMotionValue();
+        }
+
+        public override void StartFulfill()
+        {
             easer.Start();
         }
 
-        public override bool Fulfill()
+        public override void PauseFulfill()
+        {
+            easer.Pause();
+        }
+
+        public override bool UpdateFulfill()
         {
             ForceMotionValue(
                 start.GetInterpolate(end, easer.GetCurrentValue())

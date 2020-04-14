@@ -21,12 +21,22 @@ namespace Crunchy.Dough
         public ConductorOrder_WaitFor(Duration d, TimeSource t) : this(new Timer(d, t)) { }
         public ConductorOrder_WaitFor(Duration d) : this(d, TimeSource_System.INSTANCE) { }
 
-        public override void Start()
+        public override void InitializeFulfill()
+        {
+            temporal_event.Reset();
+        }
+
+        public override void StartFulfill()
         {
             temporal_event.Start();
         }
 
-        public override bool Fulfill()
+        public override void PauseFulfill()
+        {
+            temporal_event.Pause();
+        }
+
+        public override bool UpdateFulfill()
         {
             if (temporal_event.IsTimeOver())
                 return true;

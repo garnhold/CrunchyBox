@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public abstract class ConductorOrder_MotionManualNode_MoveTo : ConductorOrder_MotionManualNode
     {
         private float target;
@@ -22,7 +23,7 @@ namespace Crunchy.Sandwich
             time_type = tt;
         }
 
-        public override bool Fulfill()
+        public override bool UpdateFulfill()
         {
             float value;
             bool result = GetMotionValue().GetMoveTowards(target, speed * time_type.GetDelta(), out value);

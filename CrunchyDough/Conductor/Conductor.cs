@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class Conductor : IDisposable
+    public class Conductor : TemporalEvent, IDisposable
     {
+        private bool is_done;
         private bool is_running;
         private bool has_started;
 
@@ -13,7 +14,8 @@ namespace Crunchy.Dough
 
         public Conductor(IEnumerator<ConductorOrder> i)
         {
-            is_running = true;
+            is_done = false;
+            is_running = false;
             has_started = false;
 
             iter = i;
@@ -22,7 +24,6 @@ namespace Crunchy.Dough
         public Conductor(IEnumerable<ConductorOrder> e) : this(e.GetEnumerator()) { }
         public Conductor(params ConductorOrder[] e) : this((IEnumerable<ConductorOrder>)e) { }
 
-        public Conductor(Operation<IEnumerator<ConductorOrder>> o) : this(o()) { }
         public Conductor(Operation<IEnumerable<ConductorOrder>> o) : this(o()) { }
 
         public void Dispose()
@@ -30,31 +31,79 @@ namespace Crunchy.Dough
             iter.Dispose();
         }
 
-        public bool Update()
+        public bool Start()
+        {
+            if (is_running == false)
+            {
+                if (has_started && is_done == false)
+                    iter.Current.StartFulfill();
+
+                is_running = true;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Pause()
         {
             if (is_running)
             {
-                if (has_started == false || iter.Current.Fulfill())
+                if (has_started && is_done == false)
+                    iter.Current.PauseFulfill();
+
+                is_running = false;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            is_done = false;
+            has_started = false;
+
+            iter.Reset();
+        }
+
+        public void Prime()
+        {
+            is_done = true;
+            has_started = true;
+        }
+
+        public bool UpdateFulfill()
+        {
+            if (is_running && is_done == false)
+            {
+                if (has_started == false || iter.Current.UpdateFulfill())
                 {
                     if (iter.MoveNext())
                     {
-                        iter.Current.Start();
-
-                        has_started = true;
+                        iter.Current.InitializeFulfill();
+                        iter.Current.StartFulfill();
                     }
                     else
                     {
-                        is_running = false;
+                        is_done = true;
                     }
+
+                    has_started = true;
                 }
             }
 
-            return is_running;
+            return is_done;
         }
 
         public bool IsRunning()
         {
             return is_running;
+        }
+
+        public bool IsTimeOver()
+        {
+            return is_done;
         }
     }
 }

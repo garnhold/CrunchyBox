@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public class ConductorOrder_GameObject_MoveToPlanarPosition : ConductorOrder_GameObject
     {
         private Vector2 end;
@@ -22,7 +23,7 @@ namespace Crunchy.Sandwich
             time_type = tt;
         }
 
-        public override bool Fulfill()
+        public override bool UpdateFulfill()
         {
             return GetTarget().MoveTowardsPlanarPosition(end, speed * time_type.GetDelta());
         }
