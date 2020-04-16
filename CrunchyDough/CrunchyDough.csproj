@@ -1490,6 +1490,7 @@
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions.cs" />
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_Value.cs" />
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_Wait.cs" />
+    <Compile Include="Extensions\String\IEnumerable\StringExtensions_IEnumerable_Sort.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
