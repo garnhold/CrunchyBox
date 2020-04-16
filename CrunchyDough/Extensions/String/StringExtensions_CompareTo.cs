@@ -21,10 +21,10 @@ namespace Crunchy.Dough
 
                         if (match2 == null)
                             return 1;
-
-                        if (match1.Groups[0].Success)
+                            
+                        if (match1.Groups[1].Success)
                         {
-                            if (match2.Groups[0].Success)
+                            if (match2.Groups[1].Success)
                             {
                                 return match1.Value.PadLeft(match2.Length, '0').CompareTo(
                                     match2.Value.PadLeft(match1.Length, '0')
@@ -37,7 +37,7 @@ namespace Crunchy.Dough
                         }
                         else
                         {
-                            if (match2.Groups[0].Success)
+                            if (match2.Groups[1].Success)
                             {
                                 return 1;
                             }
