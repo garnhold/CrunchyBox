@@ -4,17 +4,15 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public abstract class ConductedValue<T> : TemporalEvent, IDisposable
+    public class ConductedValue<T> : TemporalEvent, IDisposable
     {
         private T value;
         private Conductor conductor;
 
-        protected abstract IEnumerable<ConductorOrder> Orders();
-
         public ConductedValue(T v)
         {
             value = v;
-            conductor = new Conductor(Orders);
+            conductor = new Conductor();
         }
 
         public ConductedValue() : this(default(T)) { }
@@ -22,6 +20,11 @@ namespace Crunchy.Dough
         public void Dispose()
         {
             conductor.Dispose();
+        }
+
+        public void SetScore(ConductorScore score)
+        {
+            conductor.SetScore(score);
         }
 
         public bool Start()

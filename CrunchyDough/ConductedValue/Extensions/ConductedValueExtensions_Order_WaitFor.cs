@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    static public class ConductedValueExtensions_Order_Wait
+    static public class ConductedValueExtensions_Order_WaitFor
     {
         static public ConductorOrder Order_WaitFor<T>(this ConductedValue<T> item, TemporalEvent temporal_event)
         {
