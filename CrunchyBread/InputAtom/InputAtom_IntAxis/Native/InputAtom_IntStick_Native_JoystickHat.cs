@@ -6,20 +6,20 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public class InputAtom_Stick_Native_JoystickHat : InputAtom_Stick_Native
+    public class InputAtom_IntStick_Native_JoystickHat : InputAtom_IntStick_Native
     {
         private int device_index;
         private int hat_index;
 
-        public InputAtom_Stick_Native_JoystickHat(int di, int hi)
+        public InputAtom_IntStick_Native_JoystickHat(int di, int hi)
         {
             device_index = di;
             hat_index = hi;
         }
 
-        public override VectorF2 GetRawValue()
+        public override VectorI2 GetRawValue()
         {
-            return JoystickExtensions.GetState(device_index).GetHat(hat_index).GetVectorF2();
+            return JoystickExtensions.GetState(device_index).GetHat(hat_index).GetVectorI2();
         }
     }
 }

@@ -140,7 +140,6 @@
     <Compile Include="InputAtom\InputAtom_Position\Extensions\InputAtomPositionExtensions.cs" />
     <Compile Include="InputAtom\InputAtom_Position\Extensions\InputAtomPositionExtensions_Conversion.cs" />
     <Compile Include="InputAtom\InputAtom_Stick\InputAtom_Stick_Native.cs" />
-    <Compile Include="InputAtom\InputAtom_Stick\Native\InputAtom_Stick_Native_JoystickHat.cs" />
     <Compile Include="Extensions\JoystickState\JoystickStateExtensions.cs" />
     <Compile Include="Extensions\JoystickHatState\JoystickHatStateExtensions.cs" />
     <Compile Include="Extensions\HatPosition\HatPositionExtensions.cs" />
@@ -157,6 +156,11 @@
     <Compile Include="InputAtom\InputAtom_IntStick\Composite\InputAtom_IntStick_Stick.cs" />
     <Compile Include="GamepadComponent\GamepadComponent_MenuStick\GamepadComponent_MenuStick.cs" />
     <Compile Include="MenuRepeater\MenuRepeater.cs" />
+    <Compile Include="InputAtom\InputAtom_IntAxis\Native\InputAtom_IntStick_Native_JoystickHat.cs" />
+    <Compile Include="InputAtom\InputAtom_IntAxis\InputAtom_IntStick_Native.cs" />
+    <Compile Include="InputAtom\InputAtom_Stick\Composite\InputAtom_Stick_IntStick.cs" />
+    <Compile Include="InputAtom\InputAtom_IntStick\Extensions\InputAtomIntStickExtensions.cs" />
+    <Compile Include="InputAtom\InputAtom_IntStick\Extensions\InputAtomIntStickExtensions_Conversion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -214,7 +218,6 @@
     <Folder Include="InputAtom\InputAtom_Slider\Extensions\" />
     <Folder Include="InputAtom\InputAtom_Stick\Extensions\" />
     <Folder Include="InputAtom\InputAtom_Position\Extensions\" />
-    <Folder Include="InputAtom\InputAtom_Stick\Native\" />
     <Folder Include="Extensions\JoystickState\" />
     <Folder Include="Extensions\JoystickHatState\" />
     <Folder Include="Extensions\HatPosition\" />
@@ -227,6 +230,8 @@
     <Folder Include="GamepadComponent\GamepadComponent_MenuAxis\" />
     <Folder Include="GamepadComponent\GamepadComponent_MenuStick\" />
     <Folder Include="MenuRepeater\" />
+    <Folder Include="InputAtom\InputAtom_IntAxis\Native\" />
+    <Folder Include="InputAtom\InputAtom_IntStick\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">

@@ -8,9 +8,9 @@ namespace Crunchy.Bread
     
     static public class JoystickHatStateExtensions
     {
-        static public VectorF2 GetVectorF2(this JoystickHatState item)
+        static public VectorI2 GetVectorI2(this JoystickHatState item)
         {
-            return item.Position.GetVectorF2();
+            return item.Position.GetVectorI2();
         }
     }
 }

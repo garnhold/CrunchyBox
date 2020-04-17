@@ -14,7 +14,7 @@ namespace Crunchy.Bread
 
         private Dictionary<int, InputAtom_Axis> axises;
         private Dictionary<int, InputAtom_Button> buttons;
-        private Dictionary<int, InputAtom_Stick> sticks;
+        private Dictionary<int, InputAtom_IntStick> int_sticks;
 
         static private Dictionary<int, InputDevice_Joystick> JOYSTICKS = new Dictionary<int, InputDevice_Joystick>();
         static public InputDevice_Joystick GetJoystick(int device_index)
@@ -36,8 +36,8 @@ namespace Crunchy.Bread
                 .ConvertToKeyOfPair(i => (InputAtom_Button)new InputAtom_Button_Native_Joystick(device_index, i))
                 .ToDictionary();
 
-            sticks = Ints.Indexs(capabilities.HatCount)
-                .ConvertToKeyOfPair(i => (InputAtom_Stick)new InputAtom_Stick_Native_JoystickHat(device_index, i))
+            int_sticks = Ints.Indexs(capabilities.HatCount)
+                .ConvertToKeyOfPair(i => (InputAtom_IntStick)new InputAtom_IntStick_Native_JoystickHat(device_index, i))
                 .ToDictionary();
         }
 
@@ -51,9 +51,9 @@ namespace Crunchy.Bread
             return buttons.GetValue(button_index);
         }
 
-        public InputAtom_Stick GetStick(int stick_index)
+        public InputAtom_IntStick GetIntStick(int int_stick_index)
         {
-            return sticks.GetValue(stick_index);
+            return int_sticks.GetValue(int_stick_index);
         }
 
         public IEnumerable<InputAtom_Axis> GetAxises()
@@ -66,9 +66,9 @@ namespace Crunchy.Bread
             return buttons.Values;
         }
 
-        public IEnumerable<InputAtom_Stick> GetSticks()
+        public IEnumerable<InputAtom_IntStick> GetIntSticks()
         {
-            return sticks.Values;
+            return int_sticks.Values;
         }
     }
 }
