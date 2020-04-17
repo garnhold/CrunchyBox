@@ -153,7 +153,10 @@
     <Compile Include="InputAtom\InputAtom_IntStick\Composite\InputAtom_IntStick_IntAxisPair.cs" />
     <Compile Include="InputAtom\InputAtom_IntAxis\Extensions\InputAtomIntAxisExtensions.cs" />
     <Compile Include="InputAtom\InputAtom_IntAxis\Extensions\InputAtomIntAxisExtensions_Conversion.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_MenuAxis\GamepadComponent_MenuAxis.cs" />
     <Compile Include="InputAtom\InputAtom_IntStick\Composite\InputAtom_IntStick_Stick.cs" />
+    <Compile Include="GamepadComponent\GamepadComponent_MenuStick\GamepadComponent_MenuStick.cs" />
+    <Compile Include="MenuRepeater\MenuRepeater.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -221,6 +224,9 @@
     <Folder Include="InputAtom\InputAtom_IntStick\" />
     <Folder Include="InputAtom\InputAtom_IntStick\Composite\" />
     <Folder Include="InputAtom\InputAtom_IntAxis\Extensions\" />
+    <Folder Include="GamepadComponent\GamepadComponent_MenuAxis\" />
+    <Folder Include="GamepadComponent\GamepadComponent_MenuStick\" />
+    <Folder Include="MenuRepeater\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">

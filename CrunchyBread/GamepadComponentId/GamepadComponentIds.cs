@@ -159,6 +159,86 @@ namespace Crunchy.Bread
     }
 
 	[Serializable]
+    public struct GamepadMenuAxisId
+    {
+        private string id;
+
+        static public bool operator==(GamepadMenuAxisId id1, GamepadMenuAxisId id2)
+        {
+            if(id1.id == id2.id)
+                return true;
+
+            return false;
+        }
+        static public bool operator!=(GamepadMenuAxisId id1, GamepadMenuAxisId id2)
+        {
+            if(id1.id != id2.id)
+                return true;
+
+            return false;
+        }
+        
+            
+        static public implicit operator GamepadComponentId(GamepadMenuAxisId id)
+        {
+            return new GamepadComponentId(id.id);
+        }
+        
+        static public explicit operator GamepadMenuAxisId(GamepadComponentId id)
+        {
+            return new GamepadMenuAxisId(id.GetValue());
+        }
+    
+		static private readonly OperationCache<List<GamepadMenuAxisId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
+			return Types.GetFilteredTypes(
+				Filterer_Type.IsNamed("GamepadMenuAxisIds"),
+				Filterer_Type.IsStaticClass()
+			).GetFirst()
+				.GetStaticMethod("GetAll")
+				.Invoke(null, new object[]{})
+				.ToEnumerable<GamepadMenuAxisId>()
+				.ToList();
+        });
+		static public IEnumerable<GamepadMenuAxisId> GetMenuAxiss()
+		{
+			return GET_ALL.Fetch();
+		}
+
+        public GamepadMenuAxisId(string i)
+        {
+            id = i;
+        }
+
+		public string GetValue()
+		{
+			return id;
+		}
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCodeEX();
+        }
+
+        public override bool Equals(object obj)
+        {
+            GamepadMenuAxisId cast;
+
+            if (obj.Convert<GamepadMenuAxisId>(out cast))
+            {
+                if (cast == this)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return id;
+        }
+    }
+
+	[Serializable]
     public struct GamepadButtonId
     {
         private string id;
@@ -384,6 +464,86 @@ namespace Crunchy.Bread
             GamepadStickId cast;
 
             if (obj.Convert<GamepadStickId>(out cast))
+            {
+                if (cast == this)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return id;
+        }
+    }
+
+	[Serializable]
+    public struct GamepadMenuStickId
+    {
+        private string id;
+
+        static public bool operator==(GamepadMenuStickId id1, GamepadMenuStickId id2)
+        {
+            if(id1.id == id2.id)
+                return true;
+
+            return false;
+        }
+        static public bool operator!=(GamepadMenuStickId id1, GamepadMenuStickId id2)
+        {
+            if(id1.id != id2.id)
+                return true;
+
+            return false;
+        }
+        
+            
+        static public implicit operator GamepadComponentId(GamepadMenuStickId id)
+        {
+            return new GamepadComponentId(id.id);
+        }
+        
+        static public explicit operator GamepadMenuStickId(GamepadComponentId id)
+        {
+            return new GamepadMenuStickId(id.GetValue());
+        }
+    
+		static private readonly OperationCache<List<GamepadMenuStickId>> GET_ALL = ReflectionCache.Get().NewOperationCache("GET_ALL", delegate() {
+			return Types.GetFilteredTypes(
+				Filterer_Type.IsNamed("GamepadMenuStickIds"),
+				Filterer_Type.IsStaticClass()
+			).GetFirst()
+				.GetStaticMethod("GetAll")
+				.Invoke(null, new object[]{})
+				.ToEnumerable<GamepadMenuStickId>()
+				.ToList();
+        });
+		static public IEnumerable<GamepadMenuStickId> GetMenuSticks()
+		{
+			return GET_ALL.Fetch();
+		}
+
+        public GamepadMenuStickId(string i)
+        {
+            id = i;
+        }
+
+		public string GetValue()
+		{
+			return id;
+		}
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCodeEX();
+        }
+
+        public override bool Equals(object obj)
+        {
+            GamepadMenuStickId cast;
+
+            if (obj.Convert<GamepadMenuStickId>(out cast))
             {
                 if (cast == this)
                     return true;
