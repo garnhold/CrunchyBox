@@ -1128,7 +1128,6 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Contents.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Compare.cs" />
     <Compile Include="StreamSource\StreamSource.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitFor.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Concurrent.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitUntil.cs" />
@@ -1492,6 +1491,8 @@
     <Compile Include="Conductor\Conductor.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Sequential.cs" />
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_SetOrder.cs" />
+    <Compile Include="Conductor\ConductorOrderState\ConductorOrderState.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1714,6 +1715,7 @@
     <Folder Include="NumericWeighted\" />
     <Folder Include="ConductedValue\" />
     <Folder Include="ConductedValue\Extensions\" />
+    <Folder Include="Conductor\ConductorOrderState\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

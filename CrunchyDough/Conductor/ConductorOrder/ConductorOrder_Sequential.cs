@@ -6,59 +6,34 @@ namespace Crunchy.Dough
 {
     public class ConductorOrder_Sequential : ConductorOrder
     {
-        private bool is_done;
-        private bool has_started;
-
         private IEnumerator<ConductorOrder> iter;
 
-        private bool MoveNextOrder()
+        protected override bool InitializeFulfill()
         {
-            if (is_done == false)
-            {
-                if (iter.MoveNext())
-                {
-                    iter.Current.InitializeFulfill();
+            iter.Reset();
 
-                    has_started = true;
-                    return true;
-                }
-            }
-
-            is_done = true;
-            return false;
+            return iter.MoveNext();
         }
 
-        private bool StepFulfill()
+        protected override void PauseFulfill()
         {
-            if (GetCurrentOrder().IfNotNull(o => o.UpdateFulfill()))
-            {
-                if (MoveNextOrder())
-                {
-                    StartFulfill();
-
-                    return true;
-                }
-            }
-
-            return false;
+            iter.Current.SuspendFulfill();
         }
 
-        private ConductorOrder GetCurrentOrder()
+        protected override bool UpdateFulfill()
         {
-            if (is_done == false)
+            do
             {
-                if (has_started || MoveNextOrder())
-                    return iter.Current;
+                if (iter.Current.ContinueFulfill() == false)
+                    return false;
             }
+            while (iter.MoveNext());
 
-            return null;
+            return true;
         }
 
         public ConductorOrder_Sequential(IEnumerator<ConductorOrder> i)
         {
-            is_done = false;
-            has_started = false;
-
             iter = i;
         }
 
@@ -66,29 +41,5 @@ namespace Crunchy.Dough
         public ConductorOrder_Sequential(params ConductorOrder[] e) : this((IEnumerable<ConductorOrder>)e) { }
 
         public ConductorOrder_Sequential(Operation<IEnumerable<ConductorOrder>> o) : this(o()) { }
-
-        public override void InitializeFulfill()
-        {
-            is_done = false;
-            has_started = false;
-
-            iter.Reset();
-        }
-
-        public override void StartFulfill()
-        {
-            GetCurrentOrder().IfNotNull(o => o.StartFulfill());
-        }
-
-        public override void PauseFulfill()
-        {
-            GetCurrentOrder().IfNotNull(o => o.PauseFulfill());
-        }
-
-        public override bool UpdateFulfill()
-        {
-            while (StepFulfill()) ;
-            return is_done;
-        }
     }
 }

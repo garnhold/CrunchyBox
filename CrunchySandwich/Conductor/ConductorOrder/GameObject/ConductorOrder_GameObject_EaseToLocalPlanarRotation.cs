@@ -15,34 +15,35 @@ namespace Crunchy.Sandwich
 
         private GameEaser easer;
 
-        public ConductorOrder_GameObject_EaseToLocalPlanarRotation(GameObject t, float e, EaseOperation o, float d, TimeType tt) : base(t)
-        {
-            end = e;
-            easer = new GameEaser(o, d, tt);
-        }
-
-        public override void InitializeFulfill()
+        protected override bool InitializeFulfill()
         {
             start = GetTarget().GetPlanarRotation();
+            return true;
         }
 
-        public override void StartFulfill()
+        protected override void StartFulfill()
         {
             easer.Start();
         }
 
-        public override void PauseFulfill()
+        protected override void PauseFulfill()
         {
             easer.Pause();
         }
 
-        public override bool UpdateFulfill()
+        protected override bool UpdateFulfill()
         {
             GetTarget().SetPlanarRotation(
                 start.GetInterpolateAngleInDegrees(end, easer.GetCurrentValue())
             );
 
             return easer.IsTimeOver();
+        }
+
+        public ConductorOrder_GameObject_EaseToLocalPlanarRotation(GameObject t, float e, EaseOperation o, float d, TimeType tt) : base(t)
+        {
+            end = e;
+            easer = new GameEaser(o, d, tt);
         }
     }
 }

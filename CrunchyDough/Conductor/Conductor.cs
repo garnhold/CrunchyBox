@@ -7,15 +7,11 @@ namespace Crunchy.Dough
     public class Conductor : TemporalEvent
     {
         private bool is_running;
-
-        private bool is_done;
         private ConductorOrder order;
 
         public Conductor(ConductorOrder o)
         {
             is_running = false;
-
-            is_done = false;
             order = o;
         }
 
@@ -27,7 +23,6 @@ namespace Crunchy.Dough
 
         public void SetOrder(ConductorOrder o)
         {
-            is_done = false;
             order = o;
         }
 
@@ -35,9 +30,6 @@ namespace Crunchy.Dough
         {
             if (is_running == false)
             {
-                if (is_done == false)
-                    order.IfNotNull(s => s.StartFulfill());
-
                 is_running = true;
                 return true;
             }
@@ -49,9 +41,7 @@ namespace Crunchy.Dough
         {
             if (is_running)
             {
-                if (is_done == false)
-                    order.IfNotNull(s => s.PauseFulfill());
-
+                order.IfNotNull(o => o.SuspendFulfill());
                 is_running = false;
                 return true;
             }
@@ -61,26 +51,20 @@ namespace Crunchy.Dough
 
         public void Reset()
         {
-            is_done = false;
-            order.IfNotNull(s => s.InitializeFulfill());
+            order.IfNotNull(o => o.Reset());
         }
 
         public void Prime()
         {
-            is_done = true;
+            order.IfNotNull(o => o.Prime());
         }
 
         public bool UpdateFulfill()
         {
-            if (is_running && is_done == false && order != null)
-            {
-                if (order.UpdateFulfill())
-                    is_done = true;
+            if (is_running)
+                order.IfNotNull(o => o.ContinueFulfill());
 
-                return is_done;
-            }
-
-            return true;
+            return IsTimeOver();
         }
 
         public bool IsRunning()
@@ -90,7 +74,7 @@ namespace Crunchy.Dough
 
         public bool IsTimeOver()
         {
-            return is_done;
+            return order.IfNotNull(o => o.IsDone(), true);
         }
     }
 }

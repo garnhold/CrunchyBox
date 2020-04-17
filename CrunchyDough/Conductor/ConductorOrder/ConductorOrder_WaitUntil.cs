@@ -8,17 +8,17 @@ namespace Crunchy.Dough
     {
         private Operation<bool> operation;
 
-        public ConductorOrder_WaitUntil(Operation<bool> o)
-        {
-            operation = o;
-        }
-
-        public override bool UpdateFulfill()
+        protected override bool UpdateFulfill()
         {
             if (operation())
                 return true;
 
             return false;
+        }
+
+        public ConductorOrder_WaitUntil(Operation<bool> o)
+        {
+            operation = o;
         }
     }
 }

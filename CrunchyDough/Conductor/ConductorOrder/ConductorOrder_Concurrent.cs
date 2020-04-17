@@ -7,40 +7,31 @@ namespace Crunchy.Dough
     public class ConductorOrder_Concurrent : ConductorOrder
     {
         private List<ConductorOrder> orders;
-        private List<ConductorOrder> order_queue;
 
-        public ConductorOrder_Concurrent(IEnumerable<ConductorOrder> o)
+        protected override bool InitializeFulfill()
         {
-            orders = o.ToList();
-            order_queue = new List<ConductorOrder>();
+            orders.Process(o => o.Reset());
+            return true;
         }
 
-        public ConductorOrder_Concurrent(params ConductorOrder[] o) : this((IEnumerable<ConductorOrder>)o) { }
-
-        public override void InitializeFulfill()
+        protected override void PauseFulfill()
         {
-            order_queue.Set(orders);
-            order_queue.Process(o => o.InitializeFulfill());
+            orders.Process(o => o.SuspendFulfill());
         }
 
-        public override void StartFulfill()
+        protected override bool UpdateFulfill()
         {
-            order_queue.Process(o => o.StartFulfill());
-        }
-
-        public override void PauseFulfill()
-        {
-            order_queue.Process(o => o.PauseFulfill());
-        }
-
-        public override bool UpdateFulfill()
-        {
-            order_queue.RemoveAll(o => o.UpdateFulfill());
-
-            if (order_queue.IsEmpty())
+            if (orders.ProcessAND(o => o.ContinueFulfill()))
                 return true;
 
             return false;
         }
+
+        public ConductorOrder_Concurrent(IEnumerable<ConductorOrder> o)
+        {
+            orders = o.ToList();
+        }
+
+        public ConductorOrder_Concurrent(params ConductorOrder[] o) : this((IEnumerable<ConductorOrder>)o) { }
     }
 }

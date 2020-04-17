@@ -15,21 +15,21 @@ namespace Crunchy.Sandwich
         private float speed;
         private TimeType time_type;
 
-        public ConductorOrder_MotionManualNode_MoveTo(MotionManualNode n, float t, float s, TimeType tt) : base(n)
-        {
-            target = t;
-
-            speed = s;
-            time_type = tt;
-        }
-
-        public override bool UpdateFulfill()
+        protected override bool UpdateFulfill()
         {
             float value;
             bool result = GetMotionValue().GetMoveTowards(target, speed * time_type.GetDelta(), out value);
 
             ForceMotionValue(value);
             return result;
+        }
+
+        public ConductorOrder_MotionManualNode_MoveTo(MotionManualNode n, float t, float s, TimeType tt) : base(n)
+        {
+            target = t;
+
+            speed = s;
+            time_type = tt;
         }
     }
 }

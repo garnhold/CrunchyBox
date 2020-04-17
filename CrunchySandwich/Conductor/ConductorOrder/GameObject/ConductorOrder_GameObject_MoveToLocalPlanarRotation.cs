@@ -15,17 +15,17 @@ namespace Crunchy.Sandwich
         private float speed;
         private TimeType time_type;
 
+        protected override bool UpdateFulfill()
+        {
+            return GetTarget().MoveTowardsLocalPlanarRotation(end, speed * time_type.GetDelta());
+        }
+
         public ConductorOrder_GameObject_MoveToLocalPlanarRotation(GameObject t, float e, float s, TimeType tt) : base(t)
         {
             end = e;
 
             speed = s;
             time_type = tt;
-        }
-
-        public override bool UpdateFulfill()
-        {
-            return GetTarget().MoveTowardsLocalPlanarRotation(end, speed * time_type.GetDelta());
         }
     }
 }

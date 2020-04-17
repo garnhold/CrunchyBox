@@ -15,34 +15,35 @@ namespace Crunchy.Sandwich
 
         private GameEaser easer;
 
-        public ConductorOrder_MotionManualNode_EaseTo(MotionManualNode n, float e, EaseOperation o, float d, TimeType tt) : base(n)
-        {
-            end = e;
-            easer = new GameEaser(o, d, tt);
-        }
-
-        public override void InitializeFulfill()
+        protected override bool InitializeFulfill()
         {
             start = GetMotionValue();
+            return true;
         }
 
-        public override void StartFulfill()
+        protected override void StartFulfill()
         {
             easer.Start();
         }
 
-        public override void PauseFulfill()
+        protected override void PauseFulfill()
         {
             easer.Pause();
         }
 
-        public override bool UpdateFulfill()
+        protected override bool UpdateFulfill()
         {
             ForceMotionValue(
                 start.GetInterpolate(end, easer.GetCurrentValue())
             );
 
             return easer.IsTimeOver();
+        }
+
+        public ConductorOrder_MotionManualNode_EaseTo(MotionManualNode n, float e, EaseOperation o, float d, TimeType tt) : base(n)
+        {
+            end = e;
+            easer = new GameEaser(o, d, tt);
         }
     }
 }

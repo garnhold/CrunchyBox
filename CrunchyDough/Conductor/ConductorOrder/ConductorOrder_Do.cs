@@ -8,16 +8,15 @@ namespace Crunchy.Dough
     {
         private Process process;
 
+        protected override bool UpdateFulfill()
+        {
+            process();
+            return true;
+        }
+
         public ConductorOrder_Do(Process p)
         {
             process = p;
-        }
-
-        public override bool UpdateFulfill()
-        {
-            process();
-
-            return true;
         }
     }
 }

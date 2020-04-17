@@ -8,22 +8,23 @@ namespace Crunchy.Dough
     {
         private bool is_ready;
 
-        public ConductorOrder_WaitForNextUpdate()
-        {
-        }
-
-        public override void InitializeFulfill()
+        protected override bool InitializeFulfill()
         {
             is_ready = false;
+            return true;
         }
 
-        public override bool UpdateFulfill()
+        protected override bool UpdateFulfill()
         {
             if (is_ready)
                 return true;
 
             is_ready = true;
             return false;
+        }
+
+        public ConductorOrder_WaitForNextUpdate()
+        {
         }
     }
 }

@@ -8,6 +8,30 @@ namespace Crunchy.Dough
     {
         private TemporalEvent temporal_event;
 
+        protected override bool InitializeFulfill()
+        {
+            temporal_event.Reset();
+            return true;
+        }
+
+        protected override void StartFulfill()
+        {
+            temporal_event.Start();
+        }
+
+        protected override void PauseFulfill()
+        {
+            temporal_event.Pause();
+        }
+
+        protected override bool UpdateFulfill()
+        {
+            if (temporal_event.IsTimeOver())
+                return true;
+
+            return false;
+        }
+
         public ConductorOrder_WaitFor(TemporalEvent e)
         {
             temporal_event = e;
@@ -20,28 +44,5 @@ namespace Crunchy.Dough
 
         public ConductorOrder_WaitFor(Duration d, TimeSource t) : this(new Timer(d, t)) { }
         public ConductorOrder_WaitFor(Duration d) : this(d, TimeSource_System.INSTANCE) { }
-
-        public override void InitializeFulfill()
-        {
-            temporal_event.Reset();
-        }
-
-        public override void StartFulfill()
-        {
-            temporal_event.Start();
-        }
-
-        public override void PauseFulfill()
-        {
-            temporal_event.Pause();
-        }
-
-        public override bool UpdateFulfill()
-        {
-            if (temporal_event.IsTimeOver())
-                return true;
-
-            return false;
-        }
     }
 }
