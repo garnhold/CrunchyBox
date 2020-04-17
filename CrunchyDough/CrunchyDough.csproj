@@ -1128,7 +1128,6 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Contents.cs" />
     <Compile Include="Extensions\MethodInfo\MethodInfoExtensions_Compare.cs" />
     <Compile Include="StreamSource\StreamSource.cs" />
-    <Compile Include="Conductor\Conductor.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitFor.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Multiple_Concurrent.cs" />
@@ -1492,6 +1491,8 @@
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_Wait.cs" />
     <Compile Include="Extensions\String\IEnumerable\StringExtensions_IEnumerable_Sort.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitForNextUpdate.cs" />
+    <Compile Include="Conductor\Conductor.cs" />
+    <Compile Include="Conductor\ConductorScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

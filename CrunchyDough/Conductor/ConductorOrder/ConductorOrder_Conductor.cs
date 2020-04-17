@@ -13,6 +13,12 @@ namespace Crunchy.Dough
             conductor = c;
         }
 
+        public ConductorOrder_Conductor(ConductorScore s) : this(new Conductor(s)) { }
+
+        public ConductorOrder_Conductor(IEnumerable<ConductorOrder> e) : this(new ConductorScore(e)) { }
+        public ConductorOrder_Conductor(params ConductorOrder[] e) : this((IEnumerable<ConductorOrder>)e) { }
+        public ConductorOrder_Conductor(Operation<IEnumerable<ConductorOrder>> o) : this(o()) { }
+
         public override void InitializeFulfill()
         {
             conductor.Reset();

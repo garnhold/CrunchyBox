@@ -6,37 +6,36 @@ namespace Crunchy.Dough
 {
     public class Conductor : TemporalEvent, IDisposable
     {
-        private bool is_done;
         private bool is_running;
-        private bool has_started;
+        private ConductorScore score;
 
-        private IEnumerator<ConductorOrder> iter;
-
-        public Conductor(IEnumerator<ConductorOrder> i)
+        public Conductor(ConductorScore s)
         {
-            is_done = false;
             is_running = false;
-            has_started = false;
-
-            iter = i;
+            score = s;
         }
 
-        public Conductor(IEnumerable<ConductorOrder> e) : this(e.GetEnumerator()) { }
+        public Conductor(IEnumerable<ConductorOrder> e) : this(new ConductorScore(e)) { }
         public Conductor(params ConductorOrder[] e) : this((IEnumerable<ConductorOrder>)e) { }
-
         public Conductor(Operation<IEnumerable<ConductorOrder>> o) : this(o()) { }
+
+        public Conductor() : this((ConductorScore)null) { }
 
         public void Dispose()
         {
-            iter.Dispose();
+            score.IfNotNull(s => s.Dispose());
+        }
+
+        public void SetScore(ConductorScore s)
+        {
+            score = s;
         }
 
         public bool Start()
         {
             if (is_running == false)
             {
-                if (has_started && is_done == false)
-                    iter.Current.StartFulfill();
+                score.IfNotNull(s => s.StartFulfill());
 
                 is_running = true;
                 return true;
@@ -49,8 +48,7 @@ namespace Crunchy.Dough
         {
             if (is_running)
             {
-                if (has_started && is_done == false)
-                    iter.Current.PauseFulfill();
+                score.IfNotNull(s => s.PauseFulfill());
 
                 is_running = false;
                 return true;
@@ -61,43 +59,23 @@ namespace Crunchy.Dough
 
         public void Reset()
         {
-            is_done = false;
-            has_started = false;
-
-            iter.Reset();
+            score.IfNotNull(s => s.Reset());
         }
 
         public void Prime()
         {
-            is_done = true;
-            has_started = true;
+            score.IfNotNull(s => s.Prime());
         }
 
         public bool UpdateFulfill()
         {
-            while (is_running && is_done == false)
+            if (is_running && score != null)
             {
-                if (has_started == false || iter.Current.UpdateFulfill())
-                {
-                    if (iter.MoveNext())
-                    {
-                        iter.Current.InitializeFulfill();
-                        iter.Current.StartFulfill();
-                    }
-                    else
-                    {
-                        is_done = true;
-                    }
-
-                    has_started = true;
-                }
-                else
-                {
-                    break;
-                }
+                while (score.StepFulfill());
+                return score.IsDone();
             }
 
-            return is_done;
+            return true;
         }
 
         public bool IsRunning()
@@ -107,7 +85,7 @@ namespace Crunchy.Dough
 
         public bool IsTimeOver()
         {
-            return is_done;
+            return score.IsDone();
         }
     }
 }
