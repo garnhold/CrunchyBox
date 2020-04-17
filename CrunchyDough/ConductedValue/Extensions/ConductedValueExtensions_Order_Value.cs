@@ -15,26 +15,28 @@ namespace Crunchy.Dough
             return item.Order_SetValue(() => value);
         }
 
+        static private IEnumerable<ConductorOrder> InternalOrder_FlickerValue<T>(ConductedValue<T> item, T first, T second)
+        {
+            yield return item.Order_SetValue(first);
+            yield return item.Order_WaitForNextUpdate();
+            yield return item.Order_SetValue(second);
+        }
         static public ConductorOrder Order_FlickerValue<T>(this ConductedValue<T> item, T first, T second)
         {
-            return new ConductorOrder_Multiple_Sequential(
-                item.Order_SetValue(first),
-                item.Order_WaitForNextUpdate(),
-                item.Order_SetValue(second)
-            );
+            return new ConductorOrder_Sequential(InternalOrder_FlickerValue(item, first, second));
+        }
+
+        static private IEnumerable<ConductorOrder> InternalOrder_FlickerValue<T>(ConductedValue<T> item, T value)
+        {
+            T old_value = item.GetValue();
+
+            yield return item.Order_SetValue(value);
+            yield return item.Order_WaitForNextUpdate();
+            yield return item.Order_SetValue(old_value);
         }
         static public ConductorOrder Order_FlickerValue<T>(this ConductedValue<T> item, T value)
         {
-            T old_value = default(T);
-
-            return new ConductorOrder_Multiple_Sequential(
-                new ConductorOrder_Do(() => {
-                    old_value = item.GetValue();
-                    item.SetValue(value);
-                }),
-                item.Order_WaitForNextUpdate(),
-                item.Order_SetValue(() => old_value)
-            );
+            return new ConductorOrder_Sequential(InternalOrder_FlickerValue(item, value));
         }
     }
 }

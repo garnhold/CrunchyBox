@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class ConductorScore : IDisposable
+    public class ConductorOrder_Sequential : ConductorOrder
     {
         private bool is_done;
         private bool has_started;
@@ -28,60 +28,7 @@ namespace Crunchy.Dough
             return false;
         }
 
-        private ConductorOrder GetCurrentOrder()
-        {
-            if (is_done == false)
-            {
-                if (has_started || MoveNextOrder())
-                    return iter.Current;
-            }
-
-            return null;
-        }
-
-        public ConductorScore(IEnumerator<ConductorOrder> i)
-        {
-            is_done = false;
-            has_started = false;
-
-            iter = i;
-        }
-
-        public ConductorScore(IEnumerable<ConductorOrder> e) : this(e.GetEnumerator()) { }
-        public ConductorScore(params ConductorOrder[] e) : this((IEnumerable<ConductorOrder>)e) { }
-
-        public ConductorScore(Operation<IEnumerable<ConductorOrder>> o) : this(o()) { }
-
-        public void Dispose()
-        {
-            iter.Dispose();
-        }
-
-        public void Reset()
-        {
-            is_done = false;
-            has_started = false;
-
-            iter.Reset();
-        }
-
-        public void Prime()
-        {
-            is_done = true;
-            has_started = true;
-        }
-
-        public void StartFulfill()
-        {
-            GetCurrentOrder().IfNotNull(o => o.StartFulfill());
-        }
-
-        public void PauseFulfill()
-        {
-            GetCurrentOrder().IfNotNull(o => o.PauseFulfill());
-        }
-
-        public bool StepFulfill()
+        private bool StepFulfill()
         {
             if (GetCurrentOrder().IfNotNull(o => o.UpdateFulfill()))
             {
@@ -96,8 +43,51 @@ namespace Crunchy.Dough
             return false;
         }
 
-        public bool IsDone()
+        private ConductorOrder GetCurrentOrder()
         {
+            if (is_done == false)
+            {
+                if (has_started || MoveNextOrder())
+                    return iter.Current;
+            }
+
+            return null;
+        }
+
+        public ConductorOrder_Sequential(IEnumerator<ConductorOrder> i)
+        {
+            is_done = false;
+            has_started = false;
+
+            iter = i;
+        }
+
+        public ConductorOrder_Sequential(IEnumerable<ConductorOrder> e) : this(e.GetEnumerator()) { }
+        public ConductorOrder_Sequential(params ConductorOrder[] e) : this((IEnumerable<ConductorOrder>)e) { }
+
+        public ConductorOrder_Sequential(Operation<IEnumerable<ConductorOrder>> o) : this(o()) { }
+
+        public override void InitializeFulfill()
+        {
+            is_done = false;
+            has_started = false;
+
+            iter.Reset();
+        }
+
+        public override void StartFulfill()
+        {
+            GetCurrentOrder().IfNotNull(o => o.StartFulfill());
+        }
+
+        public override void PauseFulfill()
+        {
+            GetCurrentOrder().IfNotNull(o => o.PauseFulfill());
+        }
+
+        public override bool UpdateFulfill()
+        {
+            while (StepFulfill()) ;
             return is_done;
         }
     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class ConductedValue<T> : TemporalEvent, IDisposable
+    public class ConductedValue<T> : TemporalEvent
     {
         private T value;
         private Conductor conductor;
@@ -17,14 +17,9 @@ namespace Crunchy.Dough
 
         public ConductedValue() : this(default(T)) { }
 
-        public void Dispose()
+        public void SetOrder(ConductorOrder order)
         {
-            conductor.Dispose();
-        }
-
-        public void SetScore(ConductorScore score)
-        {
-            conductor.SetScore(score);
+            conductor.SetOrder(order);
         }
 
         public bool Start()

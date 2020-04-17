@@ -4,29 +4,33 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class ConductorOrder_Multiple_Concurrent : ConductorOrder_Multiple
+    public class ConductorOrder_Concurrent : ConductorOrder
     {
         private List<ConductorOrder> orders;
         private List<ConductorOrder> order_queue;
 
-        protected override IEnumerable<ConductorOrder> GetActive()
-        {
-            return order_queue;
-        }
-
-        public ConductorOrder_Multiple_Concurrent(IEnumerable<ConductorOrder> o)
+        public ConductorOrder_Concurrent(IEnumerable<ConductorOrder> o)
         {
             orders = o.ToList();
             order_queue = new List<ConductorOrder>();
         }
 
-        public ConductorOrder_Multiple_Concurrent(params ConductorOrder[] o) : this((IEnumerable<ConductorOrder>)o) { }
+        public ConductorOrder_Concurrent(params ConductorOrder[] o) : this((IEnumerable<ConductorOrder>)o) { }
 
         public override void InitializeFulfill()
         {
             order_queue.Set(orders);
+            order_queue.Process(o => o.InitializeFulfill());
+        }
 
-            base.InitializeFulfill();
+        public override void StartFulfill()
+        {
+            order_queue.Process(o => o.StartFulfill());
+        }
+
+        public override void PauseFulfill()
+        {
+            order_queue.Process(o => o.PauseFulfill());
         }
 
         public override bool UpdateFulfill()
