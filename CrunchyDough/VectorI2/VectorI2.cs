@@ -10,11 +10,14 @@ namespace Crunchy.Dough
         static public readonly VectorI2 ONE = new VectorI2(1);
         static public readonly VectorI2 ZERO = new VectorI2(0);
 
-        static public readonly VectorI2 UP = new VectorI2(0, 1);
-        static public readonly VectorI2 DOWN = new VectorI2(0, -1);
-
-        static public readonly VectorI2 LEFT = new VectorI2(-1, 0);
         static public readonly VectorI2 RIGHT = new VectorI2(1, 0);
+        static public readonly VectorI2 RIGHT_UP = new VectorI2(1, 1);
+        static public readonly VectorI2 UP = new VectorI2(0, 1);
+        static public readonly VectorI2 LEFT_UP = new VectorI2(-1, 1);
+        static public readonly VectorI2 LEFT = new VectorI2(-1, 0);
+        static public readonly VectorI2 LEFT_DOWN = new VectorI2(-1, -1);
+        static public readonly VectorI2 DOWN = new VectorI2(0, -1);
+        static public readonly VectorI2 RIGHT_DOWN = new VectorI2(1, -1);
 
         static public VectorI2 operator -(VectorI2 v) { return new VectorI2(-v.x, -v.y); }
 
