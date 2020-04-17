@@ -31,9 +31,9 @@ namespace Crunchy.Dough
 
         public override bool UpdateFulfill()
         {
-            orders.RemoveAll(o => o.UpdateFulfill());
+            order_queue.RemoveAll(o => o.UpdateFulfill());
 
-            if (orders.IsEmpty())
+            if (order_queue.IsEmpty())
                 return true;
 
             return false;
