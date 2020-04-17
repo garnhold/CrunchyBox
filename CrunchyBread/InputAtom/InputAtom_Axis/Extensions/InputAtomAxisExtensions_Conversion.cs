@@ -8,6 +8,11 @@ namespace Crunchy.Bread
 
     static public class InputAtomAxisExtensions_Conversion
     {
+        static public InputAtom_IntAxis GetAsIntAxis(this InputAtom_Axis item, float threshold = AxisSlider.Threshold)
+        {
+            return item.IfNotNull(i => new InputAtom_IntAxis_Axis(i, threshold));
+        }
+
         static public InputAtom_Button GetAsButton(this InputAtom_Axis item, bool is_positive, float threshold = AxisSlider.Threshold)
         {
             return item.IfNotNull(i => new InputAtom_Button_AxisLimit(item, is_positive, threshold));

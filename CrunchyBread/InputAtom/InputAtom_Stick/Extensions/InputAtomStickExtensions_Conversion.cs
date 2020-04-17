@@ -12,5 +12,10 @@ namespace Crunchy.Bread
         {
             return item.IfNotNull(i => new InputAtom_Axis_StickHalf(i, is_horizontal));
         }
+
+        static public InputAtom_IntStick GetAsIntStick(this InputAtom_Stick item, float threshold = AxisSlider.Threshold)
+        {
+            return item.IfNotNull(i => new InputAtom_IntStick_Stick(i, threshold));
+        }
     }
 }
