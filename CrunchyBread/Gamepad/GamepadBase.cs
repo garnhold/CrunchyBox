@@ -15,6 +15,9 @@ namespace Crunchy.Bread
         private Dictionary<GamepadSliderId, GamepadComponent_Slider> sliders;
         private Dictionary<GamepadStickId, GamepadComponent_Stick> sticks;
 
+        private Dictionary<GamepadMenuAxisId, GamepadComponent_MenuAxis> menu_axises;
+        private Dictionary<GamepadMenuStickId, GamepadComponent_MenuStick> menu_sticks;
+
         protected GamepadComponent_Axis RegisterAxis(GamepadComponent_Axis axis)
         {
             components.Add(axis.GetId(), axis);
@@ -63,6 +66,30 @@ namespace Crunchy.Bread
             return RegisterStick(new GamepadComponent_Stick(id, lock_type));
         }
 
+        protected GamepadComponent_MenuAxis RegisterMenuAxis(GamepadComponent_MenuAxis axis)
+        {
+            components.Add(axis.GetId(), axis);
+            menu_axises.Add((GamepadMenuAxisId)axis.GetId(), axis);
+
+            return axis;
+        }
+        protected GamepadComponent_MenuAxis CreateMenuAxis(GamepadMenuAxisId id, InputAtomLockType lock_type = InputAtomLockType.Zeroed)
+        {
+            return RegisterMenuAxis(new GamepadComponent_MenuAxis(id, lock_type));
+        }
+
+        protected GamepadComponent_MenuStick RegisterMenuStick(GamepadComponent_MenuStick stick)
+        {
+            components.Add(stick.GetId(), stick);
+            menu_sticks.Add((GamepadMenuStickId)stick.GetId(), stick);
+
+            return stick;
+        }
+        protected GamepadComponent_MenuStick CreateMenuStick(GamepadMenuStickId id, InputAtomLockType lock_type = InputAtomLockType.Zeroed)
+        {
+            return RegisterMenuStick(new GamepadComponent_MenuStick(id, lock_type));
+        }
+
         public GamepadBase()
         {
             components = new Dictionary<GamepadComponentId, GamepadComponent>();
@@ -71,6 +98,9 @@ namespace Crunchy.Bread
             buttons = new Dictionary<GamepadButtonId, GamepadComponent_Button>();
             sliders = new Dictionary<GamepadSliderId, GamepadComponent_Slider>();
             sticks = new Dictionary<GamepadStickId, GamepadComponent_Stick>();
+
+            menu_axises = new Dictionary<GamepadMenuAxisId, GamepadComponent_MenuAxis>();
+            menu_sticks = new Dictionary<GamepadMenuStickId, GamepadComponent_MenuStick>();
         }
 
         public void Update()
@@ -103,6 +133,16 @@ namespace Crunchy.Bread
             return sticks.GetValue(id);
         }
 
+        public GamepadComponent_MenuAxis GetMenuAxis(GamepadMenuAxisId id)
+        {
+            return menu_axises.GetValue(id);
+        }
+
+        public GamepadComponent_MenuStick GetMenuStick(GamepadMenuStickId id)
+        {
+            return menu_sticks.GetValue(id);
+        }
+
         public IEnumerable<GamepadComponent> GetComponents()
         {
             return components.Values;
@@ -126,6 +166,16 @@ namespace Crunchy.Bread
         public IEnumerable<GamepadComponent_Stick> GetSticks()
         {
             return sticks.Values;
+        }
+
+        public IEnumerable<GamepadComponent_MenuAxis> GetMenuAxises()
+        {
+            return menu_axises.Values;
+        }
+
+        public IEnumerable<GamepadComponent_MenuStick> GetMenuSticks()
+        {
+            return menu_sticks.Values;
         }
     }
 }

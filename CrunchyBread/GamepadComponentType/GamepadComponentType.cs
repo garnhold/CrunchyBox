@@ -11,6 +11,8 @@ namespace Crunchy.Bread
         Axis,
         Button,
         Slider,
-        Stick
+        Stick,
+        MenuAxis,
+        MenuStick
     }
 }

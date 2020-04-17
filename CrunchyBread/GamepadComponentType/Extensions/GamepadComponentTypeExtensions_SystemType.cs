@@ -16,6 +16,8 @@ namespace Crunchy.Bread
                 case GamepadComponentType.Button: return typeof(GamepadComponent_Button);
                 case GamepadComponentType.Slider: return typeof(GamepadComponent_Slider);
                 case GamepadComponentType.Stick: return typeof(GamepadComponent_Stick);
+                case GamepadComponentType.MenuAxis: return typeof(GamepadComponent_MenuAxis);
+                case GamepadComponentType.MenuStick: return typeof(GamepadComponent_MenuStick);
             }
 
             throw new UnaccountedBranchException("item", item);
