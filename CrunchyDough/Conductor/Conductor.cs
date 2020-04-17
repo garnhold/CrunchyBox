@@ -75,7 +75,7 @@ namespace Crunchy.Dough
 
         public bool UpdateFulfill()
         {
-            if (is_running && is_done == false)
+            while (is_running && is_done == false)
             {
                 if (has_started == false || iter.Current.UpdateFulfill())
                 {
@@ -90,6 +90,10 @@ namespace Crunchy.Dough
                     }
 
                     has_started = true;
+                }
+                else
+                {
+                    break;
                 }
             }
 

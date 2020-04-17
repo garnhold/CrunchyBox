@@ -31,7 +31,7 @@ namespace Crunchy.Dough
 
         public override bool UpdateFulfill()
         {
-            if (orders.GetDropped(current_order_index).IfNotNull(o => o.UpdateFulfill()))
+            while (orders.GetDropped(current_order_index).IfNotNull(o => o.UpdateFulfill()))
                 current_order_index++;
 
             if (current_order_index >= orders.Count())
