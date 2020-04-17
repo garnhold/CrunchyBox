@@ -24,6 +24,14 @@ namespace Crunchy.Dough
             item.Reset();
         }
 
+        static public void StartOrStopClear(this TemporalDuration item, bool run)
+        {
+            if (run)
+                item.Start();
+            else
+                item.StopClear();
+        }
+
         static public bool TriggerStopClear(this TemporalDuration item)
         {
             if (item.IsTimeOver())
