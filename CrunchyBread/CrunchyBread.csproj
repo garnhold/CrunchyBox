@@ -161,6 +161,7 @@
     <Compile Include="InputAtom\InputAtom_Stick\Composite\InputAtom_Stick_IntStick.cs" />
     <Compile Include="InputAtom\InputAtom_IntStick\Extensions\InputAtomIntStickExtensions.cs" />
     <Compile Include="InputAtom\InputAtom_IntStick\Extensions\InputAtomIntStickExtensions_Conversion.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_Multiple.cs" />
     <Compile Include="InputAtom\InputCompositeAtom.cs" />
   </ItemGroup>
   <ItemGroup>
