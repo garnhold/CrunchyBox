@@ -139,6 +139,18 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
+        
+    <#if(info.type_name != "byte"){#>
+        static public <#=info.type_name#> BindPercent(this <#=info.type_name#> item)
+        {
+            return item.BindBetween(<#=info.zero#>, <#=info.one#>);
+        }
+
+        static public <#=info.type_name#> BindOffset(this <#=info.type_name#> item)
+        {
+            return item.BindBetween(-<#=info.one#>, <#=info.one#>);
+        }
+    <#}#>
 <# } #>
 	}
 }

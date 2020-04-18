@@ -18,16 +18,6 @@ namespace Crunchy.Dough
 	static public class NumberRealExtensions_Binding
     {
 <# foreach(NumericInfo type in type_info){#>
-
-		static public <#=type.type_name#> BindPercent(this <#=type.type_name#> item)
-		{
-			return item.BindBetween(<#=type.zero#>, <#=type.one#>);
-		}
-
-		static public <#=type.type_name#> BindOffset(this <#=type.type_name#> item)
-		{
-			return item.BindBetween(-<#=type.one#>, <#=type.one#>);
-		}
 <# } #>
 	}
 }

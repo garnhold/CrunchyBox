@@ -123,7 +123,8 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
-		static public short BindAbove(this short item, short lower)
+        
+    		static public short BindAbove(this short item, short lower)
         {
             if (item > lower)
                 return item;
@@ -240,7 +241,17 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
-		static public int BindAbove(this int item, int lower)
+        
+            static public short BindPercent(this short item)
+        {
+            return item.BindBetween(0, 1);
+        }
+
+        static public short BindOffset(this short item)
+        {
+            return item.BindBetween(-1, 1);
+        }
+    		static public int BindAbove(this int item, int lower)
         {
             if (item > lower)
                 return item;
@@ -357,7 +368,17 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
-		static public long BindAbove(this long item, long lower)
+        
+            static public int BindPercent(this int item)
+        {
+            return item.BindBetween(0, 1);
+        }
+
+        static public int BindOffset(this int item)
+        {
+            return item.BindBetween(-1, 1);
+        }
+    		static public long BindAbove(this long item, long lower)
         {
             if (item > lower)
                 return item;
@@ -474,7 +495,17 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
-		static public float BindAbove(this float item, float lower)
+        
+            static public long BindPercent(this long item)
+        {
+            return item.BindBetween(0L, 1L);
+        }
+
+        static public long BindOffset(this long item)
+        {
+            return item.BindBetween(-1L, 1L);
+        }
+    		static public float BindAbove(this float item, float lower)
         {
             if (item > lower)
                 return item;
@@ -591,7 +622,17 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
-		static public double BindAbove(this double item, double lower)
+        
+            static public float BindPercent(this float item)
+        {
+            return item.BindBetween(0.0f, 1.0f);
+        }
+
+        static public float BindOffset(this float item)
+        {
+            return item.BindBetween(-1.0f, 1.0f);
+        }
+    		static public double BindAbove(this double item, double lower)
         {
             if (item > lower)
                 return item;
@@ -708,7 +749,17 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
-		static public decimal BindAbove(this decimal item, decimal lower)
+        
+            static public double BindPercent(this double item)
+        {
+            return item.BindBetween(0.0, 1.0);
+        }
+
+        static public double BindOffset(this double item)
+        {
+            return item.BindBetween(-1.0, 1.0);
+        }
+    		static public decimal BindAbove(this decimal item, decimal lower)
         {
             if (item > lower)
                 return item;
@@ -825,5 +876,15 @@ namespace Crunchy.Dough
         {
             return item.IsBoundAround(variance.value, variance.radius);
         }
-	}
+        
+            static public decimal BindPercent(this decimal item)
+        {
+            return item.BindBetween(0.0m, 1.0m);
+        }
+
+        static public decimal BindOffset(this decimal item)
+        {
+            return item.BindBetween(-1.0m, 1.0m);
+        }
+    	}
 }
