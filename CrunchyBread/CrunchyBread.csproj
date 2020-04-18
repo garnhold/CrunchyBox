@@ -168,6 +168,12 @@
     <Compile Include="InputAtom\InputAtom_IntStick\Composite\InputAtom_IntStick_Multiple.cs" />
     <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_Multiple.cs" />
     <Compile Include="InputAtom\InputAtom_Stick\Composite\InputAtom_Stick_Multiple.cs" />
+    <Compile Include="InputAtom\InputAtom_IntSlider\InputAtom_IntSlider.cs" />
+    <Compile Include="InputAtom\InputAtom_IntSlider\Composite\InputAtom_IntSlider_IntAxisHalf.cs" />
+    <Compile Include="InputAtom\InputAtom_IntSlider\Composite\InputAtom_IntSlider_Button.cs" />
+    <Compile Include="InputAtom\InputAtom_IntSlider\Composite\InputAtom_IntSlider_Multiple.cs" />
+    <Compile Include="InputAtom\InputAtom_IntSlider\Extensions\InputAtomIntSliderExtensions.cs" />
+    <Compile Include="InputAtom\InputAtom_IntSlider\Extensions\InputAtomIntSliderExtensions_Conversion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -239,6 +245,9 @@
     <Folder Include="MenuRepeater\" />
     <Folder Include="InputAtom\InputAtom_IntAxis\Native\" />
     <Folder Include="InputAtom\InputAtom_IntStick\Extensions\" />
+    <Folder Include="InputAtom\InputAtom_IntSlider\" />
+    <Folder Include="InputAtom\InputAtom_IntSlider\Composite\" />
+    <Folder Include="InputAtom\InputAtom_IntSlider\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
