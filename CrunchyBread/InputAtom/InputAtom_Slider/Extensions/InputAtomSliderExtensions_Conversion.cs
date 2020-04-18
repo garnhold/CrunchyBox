@@ -8,5 +8,9 @@ namespace Crunchy.Bread
 
     static public class InputAtomSliderExtensions_Conversion
     {
+        static public InputAtom_Button GetAsButton(this InputAtom_Slider item, float threshold = AxisSlider.Threshold)
+        {
+            return item.IfNotNull(i => new InputAtom_Button_SliderLimit(i, threshold));
+        }
     }
 }

@@ -168,12 +168,18 @@
     <Compile Include="InputAtom\InputAtom_IntStick\Composite\InputAtom_IntStick_Multiple.cs" />
     <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_Multiple.cs" />
     <Compile Include="InputAtom\InputAtom_Stick\Composite\InputAtom_Stick_Multiple.cs" />
+    <Compile Include="InputAtom\InputAtom_IntAxis\Composite\InputAtom_IntAxis_IntStickHalf.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_IntAxis.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Composite\InputAtom_Button_IntAxisLimit.cs" />
     <Compile Include="InputAtom\InputAtom_IntSlider\InputAtom_IntSlider.cs" />
     <Compile Include="InputAtom\InputAtom_IntSlider\Composite\InputAtom_IntSlider_IntAxisHalf.cs" />
     <Compile Include="InputAtom\InputAtom_IntSlider\Composite\InputAtom_IntSlider_Button.cs" />
     <Compile Include="InputAtom\InputAtom_IntSlider\Composite\InputAtom_IntSlider_Multiple.cs" />
     <Compile Include="InputAtom\InputAtom_IntSlider\Extensions\InputAtomIntSliderExtensions.cs" />
     <Compile Include="InputAtom\InputAtom_IntSlider\Extensions\InputAtomIntSliderExtensions_Conversion.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Composite\InputAtom_Button_IntSliderLimit.cs" />
+    <Compile Include="InputAtom\InputAtom_IntAxis\Composite\InputAtom_IntAxis_IntSliderPair.cs" />
+    <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_IntSlider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
