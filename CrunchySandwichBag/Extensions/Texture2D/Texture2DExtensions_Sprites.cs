@@ -8,7 +8,8 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;    using Sandwich;
+    using Dough;
+    using Sandwich;
     
     static public class Texture2DExtensions_Sprites
     {
