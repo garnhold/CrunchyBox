@@ -410,6 +410,8 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Popup\EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.cs">
       <DependentUpon>EditorGUIElement_EditPropertySingleValue_Popup_GamepadComponentIds.tt</DependentUpon>
     </Compile>
+    <Compile Include="DuplicateMenu\DuplicateMenu.cs" />
+    <Compile Include="PrefabMenu\PrefabMenu.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -503,6 +505,8 @@
     <Folder Include="LibrarySettings\" />
     <Folder Include="EditorGUIElement\EditorGUIElement_Single\" />
     <Folder Include="GamepadActionsSettings\" />
+    <Folder Include="DuplicateMenu\" />
+    <Folder Include="PrefabMenu\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
