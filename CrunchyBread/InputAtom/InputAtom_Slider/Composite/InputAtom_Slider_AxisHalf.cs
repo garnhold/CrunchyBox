@@ -6,10 +6,15 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public class InputAtom_Slider_AxisHalf : InputAtom_Slider
+    public class InputAtom_Slider_AxisHalf : InputCompositeAtom, InputAtom_Slider
     {
         private InputAtom_Axis axis;
         private bool is_positive;
+
+        protected override IEnumerable<InputAtom> GetAtoms()
+        {
+            yield return axis;
+        }
 
         public InputAtom_Slider_AxisHalf(InputAtom_Axis a, bool p)
         {
@@ -18,26 +23,6 @@ namespace Crunchy.Bread
         }
 
         public InputAtom_Slider_AxisHalf(InputAtom_Axis a) : this(a, true) { }
-
-        public void EnterLockSection(InputAtomLock @lock)
-        {
-            axis.EnterLockSection(@lock);
-        }
-
-        public void ExitLockSection(InputAtomLock @lock)
-        {
-            axis.ExitLockSection(@lock);
-        }
-
-        public bool IsNominallyLocked()
-        {
-            return axis.IsNominallyLocked();
-        }
-
-        public bool IsEffectivelyLocked()
-        {
-            return axis.IsEffectivelyLocked();
-        }
 
         public float GetRawValue()
         {

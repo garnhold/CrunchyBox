@@ -6,35 +6,20 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public class InputAtom_IntStick_Stick : InputAtom_IntStick
+    public class InputAtom_IntStick_Stick : InputCompositeAtom, InputAtom_IntStick
     {
         private InputAtom_Stick stick;
         private float threshold;
+
+        protected override IEnumerable<InputAtom> GetAtoms()
+        {
+            yield return stick;
+        }
 
         public InputAtom_IntStick_Stick(InputAtom_Stick s, float t = AxisSlider.Threshold)
         {
             stick = s;
             threshold = t;
-        }
-
-        public void EnterLockSection(InputAtomLock @lock)
-        {
-            stick.EnterLockSection(@lock);
-        }
-
-        public void ExitLockSection(InputAtomLock @lock)
-        {
-            stick.ExitLockSection(@lock);
-        }
-
-        public bool IsNominallyLocked()
-        {
-            return stick.IsNominallyLocked();
-        }
-
-        public bool IsEffectivelyLocked()
-        {
-            return stick.IsEffectivelyLocked();
         }
 
         public VectorI2 GetRawValue()

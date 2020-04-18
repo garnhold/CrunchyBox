@@ -6,10 +6,15 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public class InputAtom_Axis_Button : InputAtom_Axis
+    public class InputAtom_Axis_Button : InputCompositeAtom, InputAtom_Axis
     {
         private InputAtom_Button button;
         private float value;
+
+        protected override IEnumerable<InputAtom> GetAtoms()
+        {
+            yield return button;
+        }
 
         public InputAtom_Axis_Button(InputAtom_Button b, float v)
         {
@@ -18,26 +23,6 @@ namespace Crunchy.Bread
         }
 
         public InputAtom_Axis_Button(InputAtom_Button b) : this(b, 1.0f) { }
-
-        public void EnterLockSection(InputAtomLock @lock)
-        {
-            button.EnterLockSection(@lock);
-        }
-
-        public void ExitLockSection(InputAtomLock @lock)
-        {
-            button.ExitLockSection(@lock);
-        }
-
-        public bool IsNominallyLocked()
-        {
-            return button.IsNominallyLocked();
-        }
-
-        public bool IsEffectivelyLocked()
-        {
-            return button.IsEffectivelyLocked();
-        }
 
         public float GetRawValue()
         {
