@@ -67,7 +67,7 @@ namespace Crunchy.SandwichBag
                     .Join(", ");
 
                 writer.Write("static public ?TYPE ?FUNCTION(" + parameters + ")", delegate () {
-                    writer.Write("return GetInstance().?NAME.Deploy(" + arguments + ");");
+                    writer.Write("return (?TYPE)GetInstance().?NAME.Deploy(" + arguments + ");");
                 });
             }
         }
