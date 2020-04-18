@@ -163,6 +163,11 @@
     <Compile Include="InputAtom\InputAtom_IntStick\Extensions\InputAtomIntStickExtensions_Conversion.cs" />
     <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_Multiple.cs" />
     <Compile Include="InputAtom\InputCompositeAtom.cs" />
+    <Compile Include="InputAtom\InputAtom_Button\Composite\InputAtom_Button_Multiple.cs" />
+    <Compile Include="InputAtom\InputAtom_IntAxis\Composite\InputAtom_IntAxis_Multiple.cs" />
+    <Compile Include="InputAtom\InputAtom_IntStick\Composite\InputAtom_IntStick_Multiple.cs" />
+    <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_Multiple.cs" />
+    <Compile Include="InputAtom\InputAtom_Stick\Composite\InputAtom_Stick_Multiple.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
