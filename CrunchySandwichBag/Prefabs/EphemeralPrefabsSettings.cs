@@ -28,7 +28,7 @@ namespace Crunchy.SandwichBag
                 ))
             {
                 string parameters = method.GetParameters()
-                    .Convert(p => p.ParameterType.Name + " " + p.Name)
+                    .Convert(p => p.ParameterType.GetCleanName() + " " + p.Name)
                     .Prepend("this ?TYPE item")
                     .Join(", ");
 
@@ -56,7 +56,7 @@ namespace Crunchy.SandwichBag
                 ))
             {
                 string parameters = method.GetParameters()
-                    .Convert(p => p.ParameterType.Name + " " + p.Name)
+                    .Convert(p => p.ParameterType.GetCleanName() + " " + p.Name)
                     .Join(", ");
 
                 string arguments = method.GetParameters()
