@@ -32,13 +32,16 @@ namespace Crunchy.Dough
         {
             return item.SubSection(start, item.Count);
         }
+        static public IList<T> OffsetFromEnd<T>(this IList<T> item, int amount)
+        {
+            return item.Offset(item.Count - amount);
+        }
 
         static public IList<T> Truncate<T>(this IList<T> item, int end)
         {
             return item.SubSection(0, end);
         }
-
-        static public IList<T> Trim<T>(this IList<T> item, int amount)
+        static public IList<T> TruncateFromEnd<T>(this IList<T> item, int amount)
         {
             return item.Truncate(item.Count - amount);
         }

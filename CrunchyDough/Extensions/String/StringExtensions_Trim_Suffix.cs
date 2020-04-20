@@ -15,7 +15,7 @@ namespace Crunchy.Dough
             {
                 if (item.EndsWith(suffix))
                 {
-                    output = item.TruncateAmount(suffix.GetLength());
+                    output = item.TruncateFromEnd(suffix.GetLength());
                     return true;
                 }
             }

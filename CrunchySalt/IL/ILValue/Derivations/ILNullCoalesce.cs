@@ -26,7 +26,7 @@ namespace Crunchy.Salt
         {
             ILCanvasLabel label = canvas.CreateLabel();
 
-            foreach (ILValue value in values.Trim(1))
+            foreach (ILValue value in values.TruncateFromEnd(1))
             {
                 value.RenderIL_Load(canvas);
                 canvas.Emit_Dup();
