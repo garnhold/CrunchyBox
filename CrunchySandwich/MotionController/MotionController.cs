@@ -22,7 +22,7 @@ namespace Crunchy.Sandwich
 
         private void Update()
         {
-            float input = motion_node.GetComponent().GetMotionValue();
+            float input = motion_node.GetComponent().IfNotNull(n => n.GetMotionValue());
 
             if (signal != null)
                 input = signal.Execute(input);
