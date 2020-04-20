@@ -97,6 +97,8 @@ namespace Crunchy.Dough
         static public Duration operator *(Duration d1, float s) { return new Duration(d1.milliseconds * s); }
         static public Duration operator /(Duration d1, float s) { return new Duration(d1.milliseconds / s); }
 
+        static public float operator /(Duration d1, Duration d2) { return d1.milliseconds / d2.milliseconds; }
+
         static public bool operator ==(Duration d1, Duration d2) { return d1.milliseconds == d2.milliseconds; }
         static public bool operator !=(Duration d1, Duration d2) { return d1.milliseconds != d2.milliseconds; }
         static public bool operator <(Duration d1, Duration d2) { return d1.milliseconds < d2.milliseconds; }
