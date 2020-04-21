@@ -12,9 +12,9 @@ namespace Crunchy.Bread
     {
         private int device_index;
 
-        private Dictionary<int, InputAtom_Axis> axises;
-        private Dictionary<int, InputAtom_Button> buttons;
-        private Dictionary<int, InputAtom_IntStick> int_sticks;
+        private OperationCache<InputAtom_Axis, int> axises;
+        private OperationCache<InputAtom_Button, int> buttons;
+        private OperationCache<InputAtom_IntStick, int> int_sticks;
 
         static private Dictionary<int, InputDevice_Joystick> JOYSTICKS = new Dictionary<int, InputDevice_Joystick>();
         static public InputDevice_Joystick GetJoystick(int device_index)
@@ -26,49 +26,24 @@ namespace Crunchy.Bread
         {
             device_index = di;
 
-            JoystickCapabilities capabilities = Joystick.GetCapabilities(device_index);
-
-            axises = Ints.Indexs(capabilities.AxisCount)
-                .ConvertToKeyOfPair(i => (InputAtom_Axis)new InputAtom_Axis_Native_Joystick(device_index, i))
-                .ToDictionary();
-
-            buttons = Ints.Indexs(capabilities.ButtonCount)
-                .ConvertToKeyOfPair(i => (InputAtom_Button)new InputAtom_Button_Native_Joystick(device_index, i))
-                .ToDictionary();
-
-            int_sticks = Ints.Indexs(capabilities.HatCount)
-                .ConvertToKeyOfPair(i => (InputAtom_IntStick)new InputAtom_IntStick_Native_JoystickHat(device_index, i))
-                .ToDictionary();
+            axises = new OperationCache<InputAtom_Axis, int>("axises", i => new InputAtom_Axis_Native_Joystick(device_index, i));
+            buttons = new OperationCache<InputAtom_Button, int>("buttons", i => new InputAtom_Button_Native_Joystick(device_index, i));
+            int_sticks = new OperationCache<InputAtom_IntStick, int>("int_sticks", i => new InputAtom_IntStick_Native_JoystickHat(device_index, i));
         }
 
         public InputAtom_Axis GetAxis(int axis_index)
         {
-            return axises.GetValue(axis_index);
+            return axises.Fetch(axis_index);
         }
 
         public InputAtom_Button GetButton(int button_index)
         {
-            return buttons.GetValue(button_index);
+            return buttons.Fetch(button_index);
         }
 
         public InputAtom_IntStick GetIntStick(int int_stick_index)
         {
-            return int_sticks.GetValue(int_stick_index);
-        }
-
-        public IEnumerable<InputAtom_Axis> GetAxises()
-        {
-            return axises.Values;
-        }
-
-        public IEnumerable<InputAtom_Button> GetButtons()
-        {
-            return buttons.Values;
-        }
-
-        public IEnumerable<InputAtom_IntStick> GetIntSticks()
-        {
-            return int_sticks.Values;
+            return int_sticks.Fetch(int_stick_index);
         }
     }
 }

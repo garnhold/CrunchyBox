@@ -12,7 +12,7 @@ namespace Crunchy.Bread
     {
         private int device_index;
 
-        private Dictionary<Key, InputAtom_Button> buttons;
+        private OperationCache<InputAtom_Button, Key> buttons;
 
         static private Dictionary<int, InputDevice_Keyboard> KEYBOARDS = new Dictionary<int, InputDevice_Keyboard>();
         static public InputDevice_Keyboard GetKeyboard(int device_index)
@@ -28,19 +28,12 @@ namespace Crunchy.Bread
         {
             device_index = di;
 
-            buttons = typeof(Key).GetEnumValues<Key>()
-                .Convert(v => new KeyValuePair<Key, InputAtom_Button>(v, new InputAtom_Button_Native_Keyboard(di, v)))
-                .ToDictionary();
+            buttons = new OperationCache<InputAtom_Button, Key>("buttons", k => new InputAtom_Button_Native_Keyboard(device_index, k));
         }
 
         public InputAtom_Button GetButton(Key key)
         {
-            return buttons.GetValue(key);
-        }
-
-        public IEnumerable<InputAtom_Button> GetButtons()
-        {
-            return buttons.Values;
+            return buttons.Fetch(key);
         }
     }
 }

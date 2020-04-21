@@ -125,7 +125,6 @@
     <Compile Include="GamepadComponent\GamepadComponent_Slider\GamepadComponent_Slider.cs" />
     <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_PositionDelta.cs" />
     <Compile Include="InputAtom\InputUpdateAtom.cs" />
-    <Compile Include="InputDevice\InputDevice_Joystick\InputDevice_Joystick.cs" />
     <Compile Include="InputDevice\InputDevice_Keyboard\InputDevice_Keyboard.cs" />
     <Compile Include="InputDevice\InputDevice_Joystick\Extensions\InputDeviceJoystickExtensions.cs" />
     <Compile Include="InputDevice\InputDevice_Joystick\Extensions\InputDeviceJoystickExtensions_Stick.cs" />
@@ -180,6 +179,7 @@
     <Compile Include="InputAtom\InputAtom_Button\Composite\InputAtom_Button_IntSliderLimit.cs" />
     <Compile Include="InputAtom\InputAtom_IntAxis\Composite\InputAtom_IntAxis_IntSliderPair.cs" />
     <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_IntSlider.cs" />
+    <Compile Include="InputDevice\InputDevice_Joystick\InputDevice_Joystick.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
