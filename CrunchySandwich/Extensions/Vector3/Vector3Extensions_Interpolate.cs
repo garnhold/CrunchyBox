@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class Vector3Extensions_Interpolate
     {
         static public Vector3 GetInterpolate(this Vector3 item, Vector3 target, float amount)
@@ -19,6 +20,15 @@ namespace Crunchy.Sandwich
         static public Vector3 GetMidpoint(this Vector3 item, Vector3 target)
         {
             return (item + target) * 0.5f;
+        }
+
+        static public Vector3 GetDirectionInterpolate(this Vector3 item, Vector3 target, float amount)
+        {
+            return Quaternion.Lerp(
+                Quaternion.LookRotation(item),
+                Quaternion.LookRotation(target),
+                amount
+            ) * Vector3.forward;
         }
     }
 }
