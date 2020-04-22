@@ -13,12 +13,19 @@ namespace Crunchy.SandwichBag
     public abstract class EditorWindowEX : EditorWindow
     {
         private EditorGUIView view;
+        private EditorSceneElement scene_element;
 
-        protected abstract EditorGUIElement CreateRootEditorGUIElement();
+        protected virtual EditorGUIElement CreateRootEditorGUIElement() { return null; }
+        protected virtual EditorSceneElement CreateRootEditorSceneElement() { return null; }
 
         private void OnGUI()
         {
             GetEditorGUIView().LayoutDrawUnwind();
+        }
+
+        private void OnSceneGUI(SceneView sceneView)
+        {
+            GetEditorSceneElement().Draw();
         }
 
         public EditorWindowEX()
@@ -32,6 +39,14 @@ namespace Crunchy.SandwichBag
                 view = new EditorGUIView(CreateRootEditorGUIElement().InitilizeAndGet());
 
             return view;
+        }
+
+        public EditorSceneElement GetEditorSceneElement()
+        {
+            if (scene_element == null)
+                scene_element = CreateRootEditorSceneElement().InitilizeAndGet();
+
+            return scene_element;
         }
     }
 }

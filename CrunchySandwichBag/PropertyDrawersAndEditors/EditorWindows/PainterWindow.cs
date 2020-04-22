@@ -12,7 +12,7 @@ namespace Crunchy.SandwichBag
     
     public class PainterWindow : EditorWindowEX_Simple
     {
-        protected override void InitilizeRootEditorGUIElement(EditorGUIElement_Container_Auto root)
+        protected override void InitializeRootEditorGUIElement(EditorGUIElement_Container_Auto root)
         {
             root.AddChild(new EditorGUIElement_Complex_EditTarget(new EditTarget(Painter.GetInstance())));
         }
