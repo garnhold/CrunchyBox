@@ -10,7 +10,8 @@ namespace Crunchy.SandwichBag
 {
     using Dough;
     using Salt;
-    using Noodle;    using Sauce;
+    using Noodle;
+    using Sauce;
     using Sandwich;
     
     public class Painter : Subsystem<Painter>, ISerializationCallbackReceiver
