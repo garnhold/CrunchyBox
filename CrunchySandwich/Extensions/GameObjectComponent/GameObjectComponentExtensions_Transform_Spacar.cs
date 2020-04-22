@@ -26,6 +26,50 @@ namespace Crunchy.Sandwich
 		{
 			item.transform.SetLocalSpacarRotation(angles);
 		}
+        
+        static public void SetSpacarXRotation(this GameObject item, float angle)
+        {
+            item.transform.SetSpacarXRotation(angle);
+        }
+        static public void SetLocalSpacarXRotation(this GameObject item, float angle)
+        {
+            item.transform.SetLocalSpacarXRotation(angle);
+        }
+
+        static public void SetSpacarYRotation(this GameObject item, float angle)
+        {
+            item.transform.SetSpacarYRotation(angle);
+        }
+        static public void SetLocalSpacarYRotation(this GameObject item, float angle)
+        {
+            item.transform.SetLocalSpacarYRotation(angle);
+        }
+
+        static public void SetSpacarZRotation(this GameObject item, float angle)
+        {
+            item.transform.SetSpacarZRotation(angle);
+        }
+        static public void SetLocalSpacarZRotation(this GameObject item, float angle)
+        {
+            item.transform.SetLocalSpacarZRotation(angle);
+        }
+        
+        static public void SetSpacarAxis(this GameObject item, Axis axis, Vector3 vector)
+        {
+            item.transform.SetSpacarAxis(axis, vector);
+        }
+        static public void SetSpacarRight(this GameObject item, Vector3 vector)
+        {
+            item.transform.SetSpacarRight(vector);
+        }
+        static public void SetSpacarUp(this GameObject item, Vector3 vector)
+        {
+            item.transform.SetSpacarUp(vector);
+        }
+        static public void SetSpacarForward(this GameObject item, Vector3 vector)
+        {
+            item.transform.SetSpacarForward(vector);
+        }
 
 		static public void SetSpacarQuaternion(this GameObject item, Quaternion quaternion)
 		{
@@ -70,6 +114,23 @@ namespace Crunchy.Sandwich
 		{
 			return item.transform.GetLocalSpacarRotation();
 		}
+        
+        static public Vector3 GetSpacarAxis(this GameObject item, Axis axis)
+        {
+            return item.transform.GetSpacarAxis(axis);
+        }
+        static public Vector3 GetSpacarRight(this GameObject item)
+        {
+            return item.transform.GetSpacarRight();
+        }
+        static public Vector3 GetSpacarUp(this GameObject item)
+        {
+            return item.transform.GetSpacarUp();
+        }
+        static public Vector3 GetSpacarForward(this GameObject item)
+        {
+            return item.transform.GetSpacarForward();
+        }
 
 		static public Quaternion GetSpacarQuaternion(this GameObject item)
 		{
@@ -106,6 +167,50 @@ namespace Crunchy.Sandwich
 		{
 			item.transform.SetLocalSpacarRotation(angles);
 		}
+        
+        static public void SetSpacarXRotation(this Component item, float angle)
+        {
+            item.transform.SetSpacarXRotation(angle);
+        }
+        static public void SetLocalSpacarXRotation(this Component item, float angle)
+        {
+            item.transform.SetLocalSpacarXRotation(angle);
+        }
+
+        static public void SetSpacarYRotation(this Component item, float angle)
+        {
+            item.transform.SetSpacarYRotation(angle);
+        }
+        static public void SetLocalSpacarYRotation(this Component item, float angle)
+        {
+            item.transform.SetLocalSpacarYRotation(angle);
+        }
+
+        static public void SetSpacarZRotation(this Component item, float angle)
+        {
+            item.transform.SetSpacarZRotation(angle);
+        }
+        static public void SetLocalSpacarZRotation(this Component item, float angle)
+        {
+            item.transform.SetLocalSpacarZRotation(angle);
+        }
+        
+        static public void SetSpacarAxis(this Component item, Axis axis, Vector3 vector)
+        {
+            item.transform.SetSpacarAxis(axis, vector);
+        }
+        static public void SetSpacarRight(this Component item, Vector3 vector)
+        {
+            item.transform.SetSpacarRight(vector);
+        }
+        static public void SetSpacarUp(this Component item, Vector3 vector)
+        {
+            item.transform.SetSpacarUp(vector);
+        }
+        static public void SetSpacarForward(this Component item, Vector3 vector)
+        {
+            item.transform.SetSpacarForward(vector);
+        }
 
 		static public void SetSpacarQuaternion(this Component item, Quaternion quaternion)
 		{
@@ -150,6 +255,23 @@ namespace Crunchy.Sandwich
 		{
 			return item.transform.GetLocalSpacarRotation();
 		}
+        
+        static public Vector3 GetSpacarAxis(this Component item, Axis axis)
+        {
+            return item.transform.GetSpacarAxis(axis);
+        }
+        static public Vector3 GetSpacarRight(this Component item)
+        {
+            return item.transform.GetSpacarRight();
+        }
+        static public Vector3 GetSpacarUp(this Component item)
+        {
+            return item.transform.GetSpacarUp();
+        }
+        static public Vector3 GetSpacarForward(this Component item)
+        {
+            return item.transform.GetSpacarForward();
+        }
 
 		static public Quaternion GetSpacarQuaternion(this Component item)
 		{

@@ -23,6 +23,19 @@ namespace Crunchy.Sandwich
         {
             item.transform.InterpolateSpacarForward(target, amount);
         }
+        static public void InterpolateSpacarUp(this GameObject item, Vector3 target, float amount)
+        {
+            item.transform.InterpolateSpacarUp(target, amount);
+        }
+        
+        static public void InterpolateSpacarQuaternion(this GameObject item, Quaternion target, float amount)
+        {
+            item.transform.InterpolateSpacarQuaternion(target, amount);
+        }
+        static public void InterpolateLocalSpacarQuaternion(this GameObject item, Quaternion target, float amount)
+        {
+            item.transform.InterpolateLocalSpacarQuaternion(target, amount);
+        }
 
         static public void InterpolateSpacarScale(this GameObject item, Vector3 target, float amount)
         {
@@ -54,6 +67,19 @@ namespace Crunchy.Sandwich
         static public void InterpolateSpacarForward(this Component item, Vector3 target, float amount)
         {
             item.transform.InterpolateSpacarForward(target, amount);
+        }
+        static public void InterpolateSpacarUp(this Component item, Vector3 target, float amount)
+        {
+            item.transform.InterpolateSpacarUp(target, amount);
+        }
+        
+        static public void InterpolateSpacarQuaternion(this Component item, Quaternion target, float amount)
+        {
+            item.transform.InterpolateSpacarQuaternion(target, amount);
+        }
+        static public void InterpolateLocalSpacarQuaternion(this Component item, Quaternion target, float amount)
+        {
+            item.transform.InterpolateLocalSpacarQuaternion(target, amount);
         }
 
         static public void InterpolateSpacarScale(this Component item, Vector3 target, float amount)

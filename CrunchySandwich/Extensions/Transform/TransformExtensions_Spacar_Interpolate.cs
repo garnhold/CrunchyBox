@@ -21,7 +21,20 @@ namespace Crunchy.Sandwich
 
         static public void InterpolateSpacarForward(this Transform item, Vector3 target, float amount)
         {
-            item.SetSpacarForward(item.GetSpacarForward().GetInterpolate(target, amount));
+            item.SetSpacarForward(item.GetSpacarForward().GetDirectionInterpolate(target, amount));
+        }
+        static public void InterpolateSpacarUp(this Transform item, Vector3 target, float amount)
+        {
+            item.SetSpacarUp(item.GetSpacarUp().GetDirectionInterpolate(target, amount));
+        }
+
+        static public void InterpolateSpacarQuaternion(this Transform item, Quaternion target, float amount)
+        {
+            item.SetSpacarQuaternion(item.GetSpacarQuaternion().GetInterpolate(target, amount));
+        }
+        static public void InterpolateLocalSpacarQuaternion(this Transform item, Quaternion target, float amount)
+        {
+            item.SetLocalSpacarQuaternion(item.GetLocalSpacarQuaternion().GetInterpolate(target, amount));
         }
 
         static public void InterpolateSpacarScale(this Transform item, Vector3 target, float amount)

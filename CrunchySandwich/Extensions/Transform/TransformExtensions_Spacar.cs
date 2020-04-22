@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class TransformExtensions_Spacar
     {
         static public void SetSpacarPosition(this Transform item, Vector3 position)
@@ -25,6 +26,33 @@ namespace Crunchy.Sandwich
         static public void SetLocalSpacarRotation(this Transform item, Vector3 angles)
         {
             item.localEulerAngles = angles;
+        }
+
+        static public void SetSpacarXRotation(this Transform item, float angle)
+        {
+            item.SetSpacarRotation(item.GetSpacarRotation().GetWithX(angle));
+        }
+        static public void SetLocalSpacarXRotation(this Transform item, float angle)
+        {
+            item.SetLocalSpacarRotation(item.GetLocalSpacarRotation().GetWithX(angle));
+        }
+
+        static public void SetSpacarYRotation(this Transform item, float angle)
+        {
+            item.SetSpacarRotation(item.GetSpacarRotation().GetWithY(angle));
+        }
+        static public void SetLocalSpacarYRotation(this Transform item, float angle)
+        {
+            item.SetLocalSpacarRotation(item.GetLocalSpacarRotation().GetWithY(angle));
+        }
+
+        static public void SetSpacarZRotation(this Transform item, float angle)
+        {
+            item.SetSpacarRotation(item.GetSpacarRotation().GetWithZ(angle));
+        }
+        static public void SetLocalSpacarZRotation(this Transform item, float angle)
+        {
+            item.SetLocalSpacarRotation(item.GetLocalSpacarRotation().GetWithZ(angle));
         }
 
         static public void SetSpacarAxis(this Transform item, Axis axis, Vector3 vector)
