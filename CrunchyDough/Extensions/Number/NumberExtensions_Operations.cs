@@ -31,6 +31,8 @@ namespace Crunchy.Dough
 
 		static public int GetTowards(this int item, int target, int amount)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -51,6 +53,8 @@ namespace Crunchy.Dough
 
 		static public bool GetMoveTowards(this int item, int target, int amount, out int output)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -100,6 +104,8 @@ namespace Crunchy.Dough
 
 		static public long GetTowards(this long item, long target, long amount)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -120,6 +126,8 @@ namespace Crunchy.Dough
 
 		static public bool GetMoveTowards(this long item, long target, long amount, out long output)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -169,6 +177,8 @@ namespace Crunchy.Dough
 
 		static public float GetTowards(this float item, float target, float amount)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -189,6 +199,8 @@ namespace Crunchy.Dough
 
 		static public bool GetMoveTowards(this float item, float target, float amount, out float output)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -238,6 +250,8 @@ namespace Crunchy.Dough
 
 		static public double GetTowards(this double item, double target, double amount)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -258,6 +272,8 @@ namespace Crunchy.Dough
 
 		static public bool GetMoveTowards(this double item, double target, double amount, out double output)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -307,6 +323,8 @@ namespace Crunchy.Dough
 
 		static public decimal GetTowards(this decimal item, decimal target, decimal amount)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
@@ -327,6 +345,8 @@ namespace Crunchy.Dough
 
 		static public bool GetMoveTowards(this decimal item, decimal target, decimal amount, out decimal output)
 		{
+            amount = amount.GetAbs();
+            
 			if(item < target)
 			{
 				item += amount;
