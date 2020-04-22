@@ -1166,6 +1166,7 @@
     <Compile Include="Extensions\GamepadEventHistory\GamepadEventHistoryExtensions_StickGesture.cs" />
     <Compile Include="Extensions\GamepadEventHistory\GamepadEventHistoryExtensions.cs" />
     <Compile Include="FrameSatellite\FrameSatellite.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_MousePoint.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Towards.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_MoveTowards.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Towards.cs" />
