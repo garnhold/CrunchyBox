@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEditor;
+using UnityEditor.EditorTools;
 
 namespace Crunchy.SandwichBag
 {
@@ -18,6 +19,9 @@ namespace Crunchy.SandwichBag
 
     [CustomEditor(typeof(ScriptableObject), true)]
     public class DefaultEditor_ScriptableObject : DefaultEditor<ScriptableObject> { }
+
+    [CustomEditor(typeof(EditorTool), true)]
+    public class DefaultEditor_EditorTool : DefaultEditor<EditorTool> { }
 
     public abstract class DefaultEditor<T> : EditorEX_Simple<T> where T : UnityEngine.Object
     {
