@@ -1494,7 +1494,7 @@
     <Compile Include="Conductor\ConductorOrderState\ConductorOrderState.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Sequence.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Nothing.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Continue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

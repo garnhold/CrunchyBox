@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class ConductorOrder_Nothing : ConductorOrder
+    public class ConductorOrder_Continue : ConductorOrder
     {
         protected override bool InitializeFulfill()
         {
