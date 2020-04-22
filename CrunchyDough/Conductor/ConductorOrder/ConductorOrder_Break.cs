@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class ConductorOrder_WaitForNextUpdate : ConductorOrder
+    public class ConductorOrder_Break : ConductorOrder
     {
         private bool is_ready;
 
@@ -21,10 +21,6 @@ namespace Crunchy.Dough
 
             is_ready = true;
             return false;
-        }
-
-        public ConductorOrder_WaitForNextUpdate()
-        {
         }
     }
 }

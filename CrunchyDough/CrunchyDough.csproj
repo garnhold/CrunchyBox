@@ -1486,8 +1486,8 @@
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_Value.cs" />
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_WaitFor.cs" />
     <Compile Include="Extensions\String\IEnumerable\StringExtensions_IEnumerable_Sort.cs" />
-    <Compile Include="Conductor\ConductorOrder\ConductorOrder_WaitForNextUpdate.cs" />
-    <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_WaitForNextUpdate.cs" />
+    <Compile Include="Conductor\ConductorOrder\ConductorOrder_Break.cs" />
+    <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_Order_Break.cs" />
     <Compile Include="Conductor\Conductor.cs" />
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_Sequential.cs" />
     <Compile Include="ConductedValue\Extensions\ConductedValueExtensions_SetOrder.cs" />
