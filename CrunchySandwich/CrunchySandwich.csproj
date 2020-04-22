@@ -227,13 +227,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_MoveTowards.cs">
-      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_MoveTowards.tt</DependentUpon>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_MoveTowards.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_MoveTowards.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Towards.cs">
-      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Towards.tt</DependentUpon>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Towards.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Towards.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1166,6 +1166,20 @@
     <Compile Include="Extensions\GamepadEventHistory\GamepadEventHistoryExtensions_StickGesture.cs" />
     <Compile Include="Extensions\GamepadEventHistory\GamepadEventHistoryExtensions.cs" />
     <Compile Include="FrameSatellite\FrameSatellite.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Towards.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_MoveTowards.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_Towards.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_MoveTowards.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_MoveTowards %28copy%29.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_MoveTowards.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Towards %28copy%29.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Towards.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1403,6 +1417,14 @@
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Interpolate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Interpolate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_MoveTowards.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_MoveTowards.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Towards.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Towards.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,58 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;    
+    static public class GameObjectComponentExtensions_Transform_Spacar_Towards
+    {
+<# foreach(string type_name in type_names){#>
+		static public void TowardsSpacarPosition(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            item.transform.TowardsSpacarPosition(target, amount);
+        }
+        static public void TowardsLocalSpacarPosition(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            item.transform.TowardsLocalSpacarPosition(target, amount);
+        }
+        
+        static public void TowardsSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            item.transform.TowardsSpacarPosition(target, amount);
+        }
+        static public void TowardsLocalSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            item.transform.TowardsLocalSpacarPosition(target, amount);
+        }
+
+        static public void TowardsSpacarScale(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            item.transform.TowardsSpacarScale(target, amount);
+        }
+        static public void TowardsLocalSpacarScale(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            item.transform.TowardsLocalSpacarScale(target, amount);
+        }
+
+		static public void TowardsSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.TowardsSpacarScale(target, amount);
+        }
+        static public void TowardsLocalSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            item.transform.TowardsLocalSpacarScale(target, amount);
+        }
+
+<# } #>
+	}
+}

@@ -1,0 +1,58 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;    
+    static public class GameObjectComponentExtensions_Transform_Spacar_MoveTowards
+    {
+<# foreach(string type_name in type_names){#>
+		static public bool MoveTowardsSpacarPosition(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            return item.transform.MoveTowardsSpacarPosition(target, amount);
+        }
+        static public bool MoveTowardsLocalSpacarPosition(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            return item.transform.MoveTowardsLocalSpacarPosition(target, amount);
+        }
+        
+        static public bool MoveTowardsSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveTowardsSpacarPosition(target, amount);
+        }
+        static public bool MoveTowardsLocalSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveTowardsLocalSpacarPosition(target, amount);
+        }
+
+        static public bool MoveTowardsSpacarScale(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            return item.transform.MoveTowardsSpacarScale(target, amount);
+        }
+        static public bool MoveTowardsLocalSpacarScale(this <#=type_name#> item, Vector3 target, Vector3 amount)
+        {
+            return item.transform.MoveTowardsLocalSpacarScale(target, amount);
+        }
+
+		static public bool MoveTowardsSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveTowardsSpacarScale(target, amount);
+        }
+        static public bool MoveTowardsLocalSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveTowardsLocalSpacarScale(target, amount);
+        }
+
+<# } #>
+	}
+}
