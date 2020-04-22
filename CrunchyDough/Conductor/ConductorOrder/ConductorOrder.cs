@@ -12,7 +12,31 @@ namespace Crunchy.Dough
         protected virtual void StartFulfill() { }
         protected virtual void PauseFulfill() { }
 
+        protected virtual void CancelFulfill() { }
+        protected virtual void FinishFulfill() { }
+        protected virtual void DoneFulfill() { }
+
         protected abstract bool UpdateFulfill();
+
+        private void OnDone(ConductorOrderState s)
+        {
+            switch (s)
+            {
+                case ConductorOrderState.Uninitialized:
+                    CancelFulfill();
+                    DoneFulfill();
+                    state = ConductorOrderState.Uninitialized;
+                    return;
+
+                case ConductorOrderState.Done:
+                    FinishFulfill();
+                    DoneFulfill();
+                    state = ConductorOrderState.Done;
+                    return;
+            }
+
+            throw new UnaccountedBranchException("s", s);
+        }
 
         public ConductorOrder()
         {
@@ -21,12 +45,48 @@ namespace Crunchy.Dough
 
         public void Reset()
         {
-            state = ConductorOrderState.Uninitialized;
+            switch (state)
+            {
+                case ConductorOrderState.Uninitialized:
+                    return;
+
+                case ConductorOrderState.Initialized:
+                    OnDone(ConductorOrderState.Uninitialized);
+                    return;
+
+                case ConductorOrderState.Started:
+                    OnDone(ConductorOrderState.Uninitialized);
+                    return;
+
+                case ConductorOrderState.Done:
+                    state = ConductorOrderState.Uninitialized;
+                    return;
+            }
+
+            throw new UnaccountedBranchException("state", state);
         }
 
         public void Prime()
         {
-            state = ConductorOrderState.Done;
+            switch (state)
+            {
+                case ConductorOrderState.Uninitialized:
+                    state = ConductorOrderState.Done;
+                    return;
+
+                case ConductorOrderState.Initialized:
+                    OnDone(ConductorOrderState.Done);
+                    return;
+
+                case ConductorOrderState.Started:
+                    OnDone(ConductorOrderState.Done);
+                    return;
+
+                case ConductorOrderState.Done:
+                    return;
+            }
+
+            throw new UnaccountedBranchException("state", state);
         }
 
         public bool ResumeFulfill()
@@ -41,7 +101,7 @@ namespace Crunchy.Dough
                         return true;
                     }
 
-                    state = ConductorOrderState.Done;
+                    OnDone(ConductorOrderState.Done);
                     return false;
 
                 case ConductorOrderState.Initialized:
@@ -83,7 +143,7 @@ namespace Crunchy.Dough
             if(ResumeFulfill())
             {
                 if (UpdateFulfill())
-                    state = ConductorOrderState.Done;
+                    OnDone(ConductorOrderState.Done);
             }
 
             return IsDone();

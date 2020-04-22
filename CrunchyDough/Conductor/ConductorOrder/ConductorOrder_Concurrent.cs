@@ -14,9 +14,24 @@ namespace Crunchy.Dough
             return true;
         }
 
+        protected override void StartFulfill()
+        {
+            orders.Process(o => o.ResumeFulfill());
+        }
+
         protected override void PauseFulfill()
         {
             orders.Process(o => o.SuspendFulfill());
+        }
+
+        protected override void CancelFulfill()
+        {
+            orders.Process(o => o.Reset());
+        }
+
+        protected override void FinishFulfill()
+        {
+            orders.Process(o => o.Prime());
         }
 
         protected override bool UpdateFulfill()

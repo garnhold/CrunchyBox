@@ -16,9 +16,24 @@ namespace Crunchy.Dough
             return iter.MoveNext();
         }
 
+        protected override void StartFulfill()
+        {
+            iter.Current.ResumeFulfill();
+        }
+
         protected override void PauseFulfill()
         {
             iter.Current.SuspendFulfill();
+        }
+
+        protected override void CancelFulfill()
+        {
+            iter.Current.Reset();
+        }
+
+        protected override void FinishFulfill()
+        {
+            iter.Current.Prime();
         }
 
         protected override bool UpdateFulfill()
