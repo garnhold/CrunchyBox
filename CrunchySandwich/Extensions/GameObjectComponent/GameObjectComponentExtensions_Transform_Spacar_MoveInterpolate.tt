@@ -1,0 +1,68 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{"GameObject", "Component"};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace Crunchy.Sandwich
+{
+    using Dough;
+    
+    static public class GameObjectComponentExtensions_Transform_Spacar_MoveInterpolate
+    {
+<# foreach(string type_name in type_names){#>
+		static public bool MoveInterpolateSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveInterpolateSpacarPosition(target, amount);
+        }
+        static public bool MoveInterpolateLocalSpacarPosition(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveInterpolateLocalSpacarPosition(target, amount);
+        }
+        
+        static public bool MoveInterpolateSpacarForward(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveInterpolateSpacarForward(target, amount);
+        }
+        static public bool MoveInterpolateSpacarUp(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveInterpolateSpacarUp(target, amount);
+        }
+        
+        static public bool MoveInterpolateSpacarQuaternion(this <#=type_name#> item, Quaternion target, float amount)
+        {
+            return item.transform.MoveInterpolateSpacarQuaternion(target, amount);
+        }
+        static public bool MoveInterpolateLocalSpacarQuaternion(this <#=type_name#> item, Quaternion target, float amount)
+        {
+            return item.transform.MoveInterpolateLocalSpacarQuaternion(target, amount);
+        }
+
+        static public bool MoveInterpolateSpacarScale(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveInterpolateSpacarScale(target, amount);
+        }
+        static public bool MoveInterpolateLocalSpacarScale(this <#=type_name#> item, Vector3 target, float amount)
+        {
+            return item.transform.MoveInterpolateLocalSpacarScale(target, amount);
+        }
+
+		static public bool MoveInterpolateSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveInterpolateSpacarScale(target, amount);
+        }
+        static public bool MoveInterpolateLocalSpacarScale(this <#=type_name#> item, float target, float amount)
+        {
+            return item.transform.MoveInterpolateLocalSpacarScale(target, amount);
+        }
+
+<# } #>
+	}
+}

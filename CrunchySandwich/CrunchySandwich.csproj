@@ -664,8 +664,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Interpolate.cs">
-      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Interpolate.tt</DependentUpon>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_MoveInterpolate.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_MoveInterpolate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1179,6 +1179,12 @@
     </Compile>
     <Compile Include="Extensions\Quaternion\QuaternionExtensions.cs" />
     <Compile Include="Extensions\Quaternion\QuaternionExtensions_Interpolate.cs" />
+    <Compile Include="Extensions\Vector3\Vector3Extensions_MoveInterpolate.cs" />
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_MoveInterpolate.cs" />
+    <Compile Include="Extensions\Quaternion\QuaternionExtensions_MoveInterpolate.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Interpolate.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Interpolate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1424,6 +1430,10 @@
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Towards.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Towards.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_MoveInterpolate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_MoveInterpolate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
