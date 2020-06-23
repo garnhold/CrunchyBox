@@ -21,6 +21,7 @@ namespace Crunchy.Recipe
         {
             type_handlers = t.Prepend(
                 TyonTypeHandler_Integer.INSTANCE,
+                TyonTypeHandler_Boolean.INSTANCE,
                 TyonTypeHandler_Real.INSTANCE,
                 TyonTypeHandler_String.INSTANCE,
                 TyonTypeHandler_Enum.INSTANCE,

@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: January 19 2020 23:12:16 -08:00
+//Date: June 23 2020 13:59:39 -07:00
 
 using System;
 using System.IO;
@@ -734,6 +734,70 @@ namespace Crunchy.Recipe
 		public decimal GetReal()
 		{
 			return real;
+		}
+		
+	}
+	
+	public partial class TyonValue_Boolean : TyonValue
+	{
+		private bool @bool;
+		static public TyonValue_Boolean DOMify(TyonParser.TyonValue_BooleanContext context)
+		{
+			if(context != null)
+			{
+				return new TyonValue_Boolean(context);
+			}
+			
+			return null;
+		}
+		
+		static new public TyonValue_Boolean DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as TyonParser.TyonValue_BooleanContext);
+		}
+		
+		static new public TyonValue_Boolean DOMify(Stream stream)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(stream).tyonValue());
+		}
+		
+		static new public TyonValue_Boolean DOMify(string text)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(text).tyonValue());
+		}
+		
+		static new public TyonValue_Boolean DOMifyFile(string filename)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateFileParser(filename).tyonValue());
+		}
+		
+		public TyonValue_Boolean()
+		{
+			@bool = false;
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public TyonValue_Boolean(TyonParser.TyonValue_BooleanContext context) : this()
+		{
+			SetBool(context.BOOL().GetTextEX().ParseBool());
+		}
+		
+		public override TyonValue Duplicate()
+		{
+			TyonValue_Boolean instance = new TyonValue_Boolean();
+			instance.SetBool(GetBool());
+			return instance;
+		}
+		
+		private void SetBool(bool input)
+		{
+			@bool = input;
+		}
+		
+		public bool GetBool()
+		{
+			return @bool;
 		}
 		
 	}
@@ -1662,6 +1726,11 @@ namespace Crunchy.Recipe
 		public override TyonElement VisitTyonValue_Real(TyonParser.TyonValue_RealContext context)
 		{
 			return TyonValue_Real.DOMify(context);
+		}
+		
+		public override TyonElement VisitTyonValue_Boolean(TyonParser.TyonValue_BooleanContext context)
+		{
+			return TyonValue_Boolean.DOMify(context);
 		}
 		
 		public override TyonElement VisitTyonValue_String(TyonParser.TyonValue_StringContext context)

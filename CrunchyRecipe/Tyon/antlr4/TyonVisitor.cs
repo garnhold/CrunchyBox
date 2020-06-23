@@ -85,6 +85,13 @@ public interface ITyonVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTyonValue_Real([NotNull] TyonParser.TyonValue_RealContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>tyonValue_Boolean</c>
+	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTyonValue_Boolean([NotNull] TyonParser.TyonValue_BooleanContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonValue_String</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
 	/// </summary>
