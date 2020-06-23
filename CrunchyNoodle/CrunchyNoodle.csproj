@@ -478,6 +478,8 @@
     <Compile Include="Member\Hook\Hook_Operation\Hook_Operation.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Member_Hook.cs" />
     <Compile Include="Member\Hook\Hook_Path.cs" />
+    <Compile Include="Extensions\ByteArray\ByteArrayExtensions_DataUrl.cs" />
+    <Compile Include="Extensions\ByteArray\ByteArrayExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -545,6 +547,7 @@
     <Folder Include="Member\Hook\" />
     <Folder Include="Member\Hook\Hook_Evt\" />
     <Folder Include="Member\Hook\Hook_Operation\" />
+    <Folder Include="Extensions\ByteArray\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
