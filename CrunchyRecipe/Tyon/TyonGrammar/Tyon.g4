@@ -43,7 +43,7 @@ tyonVariable : ID '=' tyonValue ';';
 REAL /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]+;
 INTEGER /*info: type=>long*/ : ('-'|'+')? [0-9]+;
 STRING : '"' ('\\"'|.)*? '"';
-BOOL /*info: type=>bool*/ : ('true' | 'false' | 'no' | 'yes' | 'on' | 'off');
+BOOL /*info: type=>bool*/ : ('true' | 'false');
 ID : [A-Za-z_][A-Za-z0-9_.]*;
 
 WHITESPACE : [ \r\n\t]+ -> skip;
