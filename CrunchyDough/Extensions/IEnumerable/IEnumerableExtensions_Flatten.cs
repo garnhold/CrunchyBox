@@ -12,8 +12,11 @@ namespace Crunchy.Dough
             {
                 foreach (IEnumerable<T> sub_item in item)
                 {
-                    foreach (T sub_sub_item in sub_item)
-                        yield return sub_sub_item;
+                    if (sub_item != null)
+                    {
+                        foreach (T sub_sub_item in sub_item)
+                            yield return sub_sub_item;
+                    }
                 }
             }
         }
