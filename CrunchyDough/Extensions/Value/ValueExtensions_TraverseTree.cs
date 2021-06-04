@@ -30,7 +30,7 @@ namespace Crunchy.Dough
             {
                 if (sub_item != null)
                 {
-                    foreach (T sub_sub_item in sub_item.TraverseTree(operation))
+                    foreach (T sub_sub_item in sub_item.TraverseTreeReverse(operation))
                         yield return sub_sub_item;
 
                     yield return sub_item;
