@@ -10,5 +10,10 @@ namespace Crunchy.Dough
         {
             return item.Calculate(input.ToArray());
         }
+
+        static public ByteSequence Calculate(this HashType item, IEnumerable<byte> input, string salt)
+        {
+            return item.Calculate(input.Append(salt.ToUnicodeBytes()));
+        }
     }
 }
