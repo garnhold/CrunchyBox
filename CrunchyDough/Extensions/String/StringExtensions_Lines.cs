@@ -10,7 +10,7 @@ namespace Crunchy.Dough
         static public int GetNumberLines(this string item)
         {
             if (item.IsVisible())
-                return item.RegexMatches("(\r\n|\n|\\p{Zl}|\\p{Zp})").Count + 1;
+                return item.RegexMatches("\r\n|\n|\\p{Zl}|\\p{Zp}").Count + 1;
 
             return 0;
         }
@@ -18,7 +18,7 @@ namespace Crunchy.Dough
         static public IEnumerable<string> GetLines(this string item)
         {
             if (item != null)
-                return item.RegexSplit("(\r\n|\n|\\p{Zl}|\\p{Zp})");
+                return item.RegexSplit("\r\n|\n|\\p{Zl}|\\p{Zp}");
 
             return Empty.IEnumerable<string>();
         }
