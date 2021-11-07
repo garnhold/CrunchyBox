@@ -6,9 +6,9 @@ namespace Crunchy.Dough
 {
     static public class StringExtensions_EscapeSequence
     {
-        static public string CompressEscapeSequences(this string item)
+        static public string CompressEscapeSequences(this string item, bool escape_double_quotes, bool escape_single_quotes)
         {
-            return item.RegexReplace("(\\p{C}|\'|\"|\\\\|\\?)", delegate(Match match) {
+            return item.RegexReplace("(\\p{C}|\'|\"|\\\\)", delegate(Match match) {
                 char character = match.Value[0];
 
                 switch (character)
@@ -21,10 +21,9 @@ namespace Crunchy.Dough
                     case '\t': return "\\t";
                     case '\v': return "\\v";
 
-                    case '\'': return "\\'";
-                    case '\"': return "\\\"";
+                    case '\'': return escape_single_quotes.ConvertBool("\\'", "'");
+                    case '\"': return escape_double_quotes.ConvertBool("\\\"", "\"");
                     case '\\': return "\\\\";
-                    case '?': return "\\?";
                 }
 
                 return "\\x" + character.GetValue().ToString("X4");

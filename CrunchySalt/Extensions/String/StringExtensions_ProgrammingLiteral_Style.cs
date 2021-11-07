@@ -78,12 +78,12 @@ namespace Crunchy.Salt
 
         static public string StyleAsDoubleQuoteLiteral(this string item)
         {
-            return item.CompressEscapeSequences().Surround("\"");
+            return item.CompressEscapeSequences(true, false).Surround("\"");
         }
 
         static public string StyleAsSingleQuoteLiteral(this string item)
         {
-            return item.CompressEscapeSequences().Surround("'");
+            return item.CompressEscapeSequences(false, true).Surround("'");
         }
     }
 }
