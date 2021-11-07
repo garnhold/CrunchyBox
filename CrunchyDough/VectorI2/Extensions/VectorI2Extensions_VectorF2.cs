@@ -20,10 +20,18 @@ namespace Crunchy.Dough
         {
             return item.GetVectorF2().GetComponentMultiply(unit);
         }
+        static public VectorF2 GetInflated(this VectorI2 item, float unit)
+        {
+            return item.GetInflated(new VectorF2(unit));
+        }
 
         static public VectorF2 GetCenterInflated(this VectorI2 item, VectorF2 unit)
         {
             return item.GetCenterVectorF2().GetComponentMultiply(unit);
+        }
+        static public VectorF2 GetCenterInflated(this VectorI2 item, float unit)
+        {
+            return item.GetCenterInflated(new VectorF2(unit));
         }
     }
 }
