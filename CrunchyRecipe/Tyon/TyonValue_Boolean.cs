@@ -23,7 +23,7 @@ namespace Crunchy.Recipe
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetBool().ToString());
+            canvas.AppendToLine(GetBool().StyleAsLiteral());
         }
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
