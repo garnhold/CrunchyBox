@@ -8,10 +8,15 @@ namespace Crunchy.Dough
     {
         static public T PopAt<T>(this IList<T> item, int index)
         {
-            T element = item.Get(index);
+            if (item.IsIndexValid(index))
+            {
+                T element = item.Get(index);
 
-            item.RemoveAt(index);
-            return element;
+                item.RemoveAt(index);
+                return element;
+            }
+
+            return default(T);
         }
 
         static public T PopFirst<T>(this IList<T> item)
