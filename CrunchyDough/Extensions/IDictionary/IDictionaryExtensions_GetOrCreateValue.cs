@@ -11,7 +11,7 @@ namespace Crunchy.Dough
             ELEMENT_TYPE value;
 
             if (item.TryGetValue(key, out value) == false)
-                value = item.AddAndGet(key, operation(key));
+                value = item.SetAndGet(key, operation(key));
 
             return value;
         }
