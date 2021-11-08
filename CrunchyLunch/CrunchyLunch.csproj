@@ -69,6 +69,10 @@
     <Compile Include="Terminal\Terminal_Console.cs" />
     <Compile Include="ThisAssembly.cs" />
     <Compile Include="CmdUtilities\CmdUtilities.cs" />
+    <Compile Include="Extension\String\StringExtensions.cs" />
+    <Compile Include="Extension\String\StringExtensions_Command.cs" />
+    <Compile Include="Extension\String\IEnumerable\StringExtensions_IEnumerable.cs" />
+    <Compile Include="Extension\String\IEnumerable\StringExtensions_IEnumerable_Command.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -86,6 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CmdUtilities\" />
+    <Folder Include="Extension\" />
+    <Folder Include="Extension\String\" />
+    <Folder Include="Extension\String\IEnumerable\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
