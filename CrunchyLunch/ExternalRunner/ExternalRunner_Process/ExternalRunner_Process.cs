@@ -15,7 +15,7 @@ namespace Crunchy.Lunch
 
         public ExternalRunner_Process(string f, string da) : base(da)
         {
-            filename = Filename.GetAbsolutePath(f);
+            filename = f;
 
             output_lock = new object();
             output_buffer = new List<string>();

@@ -13,7 +13,7 @@ namespace Crunchy.Lunch
 
         public ExternalRunner_Command(string f, string da) : base(da)
         {
-            filename = Filename.GetAbsolutePath(f);
+            filename = f;
         }
 
         public ExternalRunner_Command(string f) : this(f, "") { }
