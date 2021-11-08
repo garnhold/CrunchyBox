@@ -22,7 +22,7 @@ namespace Crunchy.Dough
         }
         static public VectorF2 GetInflated(this VectorI2 item, float unit)
         {
-            return item.GetInflated(new VectorF2(unit));
+            return item.GetInflated(new VectorF2(unit, unit));
         }
 
         static public VectorF2 GetCenterInflated(this VectorI2 item, VectorF2 unit)
@@ -31,7 +31,7 @@ namespace Crunchy.Dough
         }
         static public VectorF2 GetCenterInflated(this VectorI2 item, float unit)
         {
-            return item.GetCenterInflated(new VectorF2(unit));
+            return item.GetCenterInflated(new VectorF2(unit, unit));
         }
     }
 }

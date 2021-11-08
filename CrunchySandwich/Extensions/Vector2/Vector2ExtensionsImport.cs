@@ -1091,6 +1091,10 @@ using Crunchy.Dough;
         {
             return item.GetComponentDivide(unit).GetVectorI2();
         }
+        static public VectorI2 GetDeflated(this Vector2 item, float unit)
+        {
+            return item.GetDeflated(new Vector2(unit, unit));
+        }
     }
 }
     namespace Crunchy.Sandwich

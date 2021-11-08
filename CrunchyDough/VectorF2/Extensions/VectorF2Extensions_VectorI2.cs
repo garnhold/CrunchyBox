@@ -17,7 +17,7 @@ namespace Crunchy.Dough
         }
         static public VectorI2 GetDeflated(this VectorF2 item, float unit)
         {
-            return item.GetDeflated(new VectorF2(unit));
+            return item.GetDeflated(new VectorF2(unit, unit));
         }
     }
 }
