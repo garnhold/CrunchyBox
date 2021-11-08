@@ -1499,6 +1499,7 @@
     <Compile Include="Conductor\ConductorOrder\ConductorOrder_While.cs" />
     <Compile Include="HashType\Extensions\HashTypeExtensions_Array.cs" />
     <Compile Include="HashType\HashType_SHA256.cs" />
+    <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Set.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
