@@ -91,14 +91,7 @@ namespace Crunchy.Dough
             if (IsActive())
             {
                 if (parameter != null)
-                {
-                    T result;
-
-                    if (cached_results.TryGetValue(parameter, out result) == false)
-                        result = cached_results.AddAndGet(parameter, Calculate(parameter));
-
-                    return result;
-                }
+                    return cached_results.GetOrCreateValue(parameter, p => Calculate(p));
                 else
                 {
                     if (has_null_result == false)
