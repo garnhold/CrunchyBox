@@ -13,6 +13,10 @@ namespace Crunchy.Lunch
         {
             return item.ExecuteToReader(arguments).BaseStream;
         }
+        static public Stream ExecuteToStream(this ExternalRunner_Command item, IEnumerable<string> arguments)
+        {
+            return item.ExecuteToStream(arguments.MakeCommand());
+        }
         static public Stream ExecuteToStream(this ExternalRunner_Command item)
         {
             return item.ExecuteToStream(item.GetDefaultArguments());
@@ -22,6 +26,10 @@ namespace Crunchy.Lunch
         {
             return item.ExecuteToReader(arguments).ReadToEnd();
         }
+        static public string ExecuteToText(this ExternalRunner_Command item, IEnumerable<string> arguments)
+        {
+            return item.ExecuteToText(arguments.MakeCommand());
+        }
         static public string ExecuteToText(this ExternalRunner_Command item)
         {
             return item.ExecuteToText(item.GetDefaultArguments());
@@ -30,6 +38,10 @@ namespace Crunchy.Lunch
         static public void Execute(this ExternalRunner_Command item, string arguments)
         {
             item.ExecuteToReader(arguments);
+        }
+        static public void Execute(this ExternalRunner_Command item, IEnumerable<string> arguments)
+        {
+            item.Execute(arguments.MakeCommand());
         }
         static public void Execute(this ExternalRunner_Command item)
         {

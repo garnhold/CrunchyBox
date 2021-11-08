@@ -18,6 +18,10 @@ namespace Crunchy.Lunch
 
             return to_return;
         }
+        static public bool TryExecuteToText(this ExternalRunner_Process item, IEnumerable<string> arguments, out string text, int max_milliseconds)
+        {
+            return item.TryExecuteToText(arguments.MakeCommand(), out text, max_milliseconds);
+        }
         static public bool TryExecuteToText(this ExternalRunner_Process item, out string text, int max_milliseconds)
         {
             return item.TryExecuteToText(item.GetDefaultArguments(), out text, max_milliseconds);
@@ -30,6 +34,10 @@ namespace Crunchy.Lunch
             item.TryExecuteToText(arguments, out text, max_milliseconds);
             return text;
         }
+        static public string ExecuteToText(this ExternalRunner_Process item, IEnumerable<string> arguments, int max_milliseconds)
+        {
+            return item.ExecuteToText(arguments.MakeCommand(), max_milliseconds);
+        }
         static public string ExecuteToText(this ExternalRunner_Process item, int max_milliseconds)
         {
             return item.ExecuteToText(item.GetDefaultArguments(), max_milliseconds);
@@ -38,6 +46,10 @@ namespace Crunchy.Lunch
         static public string ExecuteToText(this ExternalRunner_Process item, string arguments)
         {
             return item.ExecuteToText(arguments, int.MaxValue);
+        }
+        static public string ExecuteToText(this ExternalRunner_Process item, IEnumerable<string> arguments)
+        {
+            return item.ExecuteToText(arguments.MakeCommand());
         }
         static public string ExecuteToText(this ExternalRunner_Process item)
         {
@@ -50,6 +62,10 @@ namespace Crunchy.Lunch
 
             return item.TryExecuteToText(arguments, out text, max_milliseconds);
         }
+        static public bool Execute(this ExternalRunner_Process item, IEnumerable<string> arguments, int max_milliseconds)
+        {
+            return item.Execute(arguments.MakeCommand(), max_milliseconds);
+        }
         static public bool Execute(this ExternalRunner_Process item, int max_milliseconds)
         {
             return item.Execute(item.GetDefaultArguments(), max_milliseconds);
@@ -58,6 +74,10 @@ namespace Crunchy.Lunch
         static public bool Execute(this ExternalRunner_Process item, string arguments)
         {
             return item.Execute(arguments, int.MaxValue);
+        }
+        static public bool Execute(this ExternalRunner_Process item, IEnumerable<string> arguments)
+        {
+            return item.Execute(arguments.MakeCommand());
         }
         static public bool Execute(this ExternalRunner_Process item)
         {

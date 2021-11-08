@@ -48,6 +48,10 @@ namespace Crunchy.Lunch
             process.Start();
             process.BeginOutputReadLine();
         }
+        public void Start(IEnumerable<string> arguments)
+        {
+            Start(arguments.MakeCommand());
+        }
         public void Start()
         {
             Start(GetDefaultArguments());

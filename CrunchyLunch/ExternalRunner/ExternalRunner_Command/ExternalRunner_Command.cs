@@ -37,6 +37,10 @@ namespace Crunchy.Lunch
 
             return process.StandardOutput;
         }
+        public StreamReader ExecuteToReader(IEnumerable<string> arguments)
+        {
+            return ExecuteToReader(arguments.MakeCommand());
+        }
         public StreamReader ExecuteToReader()
         {
             return ExecuteToReader(GetDefaultArguments());
