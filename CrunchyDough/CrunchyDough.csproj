@@ -697,8 +697,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\Number\NumberExtensions_Heavyside.cs">
-      <DependentUpon>NumberExtensions_Heavyside.tt</DependentUpon>
+    <Compile Include="Extensions\Number\NumberExtensions_Sign.cs">
+      <DependentUpon>NumberExtensions_Sign.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1669,6 +1669,10 @@
     <Content Include="NumericWeighted\NumericWeighted.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumericWeighted.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_Sign.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_Sign.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

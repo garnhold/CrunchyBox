@@ -1,0 +1,36 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] type_names = new string[]{
+	"short",
+	"int",
+	"long",
+	"float",
+	"double",
+	"decimal"
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+	static public class NumberExtensions_Heavyside
+    {
+<# foreach(string type_name in type_names){#>
+		static public <#=type_name#> GetSign(this <#=type_name#> item)
+        {
+            if(item > 0)
+                return 1;
+                
+            if(item < 0)
+                return -1;
+                
+            return 0;
+        }
+<# } #>
+	}
+}
