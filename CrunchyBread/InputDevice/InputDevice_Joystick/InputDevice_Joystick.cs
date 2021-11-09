@@ -31,6 +31,11 @@ namespace Crunchy.Bread
             int_sticks = new OperationCache<InputAtom_IntStick, int>("int_sticks", i => new InputAtom_IntStick_Native_JoystickHat(device_index, i));
         }
 
+        public string GetName()
+        {
+            return JoystickExtensions.GetName(device_index);
+        }
+
         public InputAtom_Axis GetAxis(int axis_index)
         {
             return axises.Fetch(axis_index);
