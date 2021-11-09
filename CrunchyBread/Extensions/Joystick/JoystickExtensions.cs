@@ -2,6 +2,9 @@ using System;
 
 using OpenTK.Input;
 
+using Crunchy.Dough;
+using Crunchy.Salt;
+
 namespace Crunchy.Bread
 {
     using Dough;
@@ -20,7 +23,13 @@ namespace Crunchy.Bread
 
         static public string GetName(int device_index)
         {
-            return JoystickExtensions.GetCapabilities(device_index).ToStringEX();
+            JoystickCapabilities capabilities = JoystickExtensions.GetCapabilities(device_index);
+
+            return "Buttons: {0}, Axises: {1}, Hats: {2}".Inject(
+                capabilities.ButtonCount,
+                capabilities.AxisCount,
+                capabilities.HatCount
+            );
         }
     }
 }
