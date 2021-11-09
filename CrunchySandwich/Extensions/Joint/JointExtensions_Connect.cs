@@ -87,5 +87,18 @@ namespace Crunchy.Sandwich
         {
             item.ConnectAtWorld((Rigidbody)null, world_position);
         }
+
+        static public void ConnectTo(this Joint item, Component target)
+        {
+            item.ConnectAtWorld(target, item.GetSpacarPosition());
+        }
+        static public void ConnectTo(this Joint item, GameObject target)
+        {
+            item.ConnectAtWorld(target, item.GetSpacarPosition());
+        }
+        static public void UpdateConnection(this Joint item)
+        {
+            item.ConnectTo(item.connectedBody);
+        }
     }
 }
