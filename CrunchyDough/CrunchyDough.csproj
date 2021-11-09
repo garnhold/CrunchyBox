@@ -1500,6 +1500,8 @@
     <Compile Include="HashType\Extensions\HashTypeExtensions_Array.cs" />
     <Compile Include="HashType\HashType_SHA256.cs" />
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Set.cs" />
+    <Compile Include="Wave\BasicWaveType.cs" />
+    <Compile Include="Wave\Extensions\BasicWaveTypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1727,6 +1729,7 @@
     <Folder Include="ConductedValue\" />
     <Folder Include="ConductedValue\Extensions\" />
     <Folder Include="Conductor\ConductorOrderState\" />
+    <Folder Include="Wave\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

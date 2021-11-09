@@ -56,5 +56,21 @@ namespace Crunchy.Dough
         {
             return SkewTriangle(x, 0.5f);
         }
+
+        static public float Basic(BasicWaveType type, float x)
+        {
+            switch (type)
+            {
+                case BasicWaveType.Sine: return Wave.Sine(x);
+                case BasicWaveType.Cosine: return Wave.Cosine(x);
+                case BasicWaveType.Ramp: return Wave.Ramp(x);
+                case BasicWaveType.Saw: return Wave.Saw(x);
+                case BasicWaveType.ReverseSaw: return Wave.ReverseSaw(x);
+                case BasicWaveType.Square: return Wave.Square(x);
+                case BasicWaveType.Triangle: return Wave.Triangle(x);
+            }
+
+            throw new UnaccountedBranchException("type", type);
+        }
     }
 }
