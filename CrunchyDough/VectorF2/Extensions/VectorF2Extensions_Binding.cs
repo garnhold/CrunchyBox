@@ -20,6 +20,14 @@ namespace Crunchy.Dough
         {
             return new VectorF2(item.x.BindBetween(value1.x, value2.x), item.y.BindBetween(value1.y, value2.y));
         }
+        static public VectorF2 BindBetween(this VectorF2 item, FloatRange x_range, FloatRange y_range)
+        {
+            return item.BindBetween(new VectorF2(x_range.x1, y_range.x1), new VectorF2(x_range.x2, y_range.x2));
+        }
+        static public VectorF2 BindBetween(this VectorF2 item, FloatRange range)
+        {
+            return item.BindBetween(range, range);
+        }
 
         static public VectorF2 BindWithin(this VectorF2 item, RectF2 rect)
         {
