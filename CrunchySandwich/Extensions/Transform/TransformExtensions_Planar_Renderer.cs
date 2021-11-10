@@ -11,7 +11,9 @@ namespace Crunchy.Sandwich
     {
         static public Rect GetPlanarRendererBounds(this Transform item)
         {
-            return item.GetComponent<Renderer>().bounds.GetPlanar();
+            return item.GetComponentsDownward<Renderer>()
+                .Convert(r => r.bounds.GetPlanar())
+                .GetEncompassing();
         }
     }
 }

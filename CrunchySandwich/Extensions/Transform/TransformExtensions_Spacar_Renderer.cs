@@ -11,7 +11,9 @@ namespace Crunchy.Sandwich
     {
         static public Bounds GetSpacarRendererBounds(this Transform item)
         {
-            return item.GetComponent<Renderer>().bounds;
+            return item.GetComponentsDownward<Renderer>()
+                .Convert(r => r.bounds)
+                .GetEncompassing();
         }
     }
 }
