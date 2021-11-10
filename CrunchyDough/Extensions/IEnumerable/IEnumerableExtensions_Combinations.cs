@@ -44,5 +44,48 @@ namespace Crunchy.Dough
         {
             return item.Repeat(number).Combinations();
         }
+
+        static public IEnumerable<Tuple<T, T>> TupleCombinations<T>(this IEnumerable<T> item, IEnumerable<T> other)
+        {
+            other = other.PrepareForMultipass();
+
+            foreach(T sub_item in item)
+            {
+                foreach (T sub_other in other)
+                    yield return Tuple.New(sub_item, sub_other);
+            }
+        }
+        static public IEnumerable<Tuple<T, T, T>> TupleCombinations<T>(this IEnumerable<T> item, IEnumerable<T> other1, IEnumerable<T> other2)
+        {
+            other1 = other1.PrepareForMultipass();
+            other2 = other2.PrepareForMultipass();
+
+            foreach (T sub_item in item)
+            {
+                foreach (T sub_other1 in other1)
+                {
+                    foreach(T sub_other2 in other2)
+                        yield return Tuple.New(sub_item, sub_other1, sub_other2);
+                }
+            }
+        }
+        static public IEnumerable<Tuple<T, T, T, T>> TupleCombinations<T>(this IEnumerable<T> item, IEnumerable<T> other1, IEnumerable<T> other2, IEnumerable<T> other3)
+        {
+            other1 = other1.PrepareForMultipass();
+            other2 = other2.PrepareForMultipass();
+            other3 = other3.PrepareForMultipass();
+
+            foreach (T sub_item in item)
+            {
+                foreach (T sub_other1 in other1)
+                {
+                    foreach (T sub_other2 in other2)
+                    {
+                        foreach (T sub_other3 in other3)
+                            yield return Tuple.New(sub_item, sub_other1, sub_other2, sub_other3);
+                    }
+                }
+            }
+        }
     }
 }
