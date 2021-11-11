@@ -11,25 +11,32 @@ namespace Crunchy.Sandwich
     public abstract class ComponentCache<T>
     {
         private T component;
-        private PeriodicWorkScheduler scheduler;
+
+        private Component parent;
+        private Stopwatch stopwatch;
 
         protected abstract T GetComponentInternal(Component parent);
 
-        public ComponentCache(Component parent)
+        private void Touch()
+        {
+            if (stopwatch.IsStopped() || stopwatch.GetElapsedTime() >= ComponentCacheManager.GetInstance().GetCacheLifetime())
+            {
+                component = GetComponentInternal(parent);
+                stopwatch.Restart();
+            }
+        }
+
+        public ComponentCache(Component p)
         {
             component = default(T);
-            scheduler = new PeriodicWorkScheduler(
-                parent,
-                () => ComponentCacheManager.GetInstance().GetCacheLifetime(),
-                () => component = GetComponentInternal(parent)
-            );
 
-            scheduler.Execute();
+            parent = p;
+            stopwatch = new Stopwatch();
         }
 
         public T GetComponent()
         {
-            scheduler.Update();
+            Touch();
 
             return component;
         }

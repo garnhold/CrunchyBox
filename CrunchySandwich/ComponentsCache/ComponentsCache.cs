@@ -7,38 +7,45 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
-    
+
     public abstract class ComponentsCache<T> : IEnumerable<T>
     {
         private List<T> components;
-        private PeriodicWorkScheduler scheduler;
+
+        private Component parent;
+        private Stopwatch stopwatch;
 
         protected abstract IEnumerable<T> GetComponentsInternal(Component parent);
 
-        public ComponentsCache(Component parent)
+        private void Touch()
+        {
+            if (stopwatch.IsStopped() || stopwatch.GetElapsedTime() >= ComponentCacheManager.GetInstance().GetCacheLifetime())
+            {
+                components.Set(GetComponentsInternal(parent));
+                stopwatch.Restart();
+            }
+        }
+
+        public ComponentsCache(Component p)
         {
             components = new List<T>();
-            scheduler = new PeriodicWorkScheduler(
-                parent,
-                () => ComponentCacheManager.GetInstance().GetCacheLifetime(),
-                () => components.Set(GetComponentsInternal(parent))
-            );
 
-            scheduler.Execute();
+            parent = p;
+            stopwatch = new Stopwatch();
         }
 
         public ComponentsCache() : this(null) { }
 
         public ICatalog<T> AsCatalog()
         {
-            scheduler.Update();
+            Touch();
 
             return components.AsCatalog();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            scheduler.Update();
+            Touch();
 
             return components.GetEnumerator();
         }
