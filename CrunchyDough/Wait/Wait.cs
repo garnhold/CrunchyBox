@@ -20,10 +20,34 @@ namespace Crunchy.Dough
             await Wait.ForDuration(Duration.Seconds(seconds));
         }
 
-        static public async Task Until(Predicate predicate, Duration check_interval)
+        static public Task<T> ForEvent<T>(TryOperation<T> operation, bool allow_instant)
         {
-            while (predicate() == false)
-                await Wait.ForDuration(check_interval);
+            T output;
+            TaskCompletionSource<T> source = new TaskCompletionSource<T>();
+
+            if (allow_instant && operation(out output))
+                source.SetResult(output);
+            else
+            {
+                WaitEventManager.GetInstance().RegisterWaitEvent(() => {
+                    if (operation(out output))
+                    {
+                        source.SetResult(output);
+                        return true;
+                    }
+
+                    return false;
+                });
+            }
+
+            return source.Task;
+        }
+        static public Task ForEvent(TryProcess process, bool allow_instant)
+        {
+            return Wait.ForEvent<bool>((out bool output) => {
+                output = true;
+                return process();
+            }, allow_instant);
         }
     }
 }

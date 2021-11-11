@@ -1504,6 +1504,7 @@
     <Compile Include="Wave\Extensions\BasicWaveTypeExtensions.cs" />
     <Compile Include="Wait\Wait.cs" />
     <Compile Include="Predicate\Predicate.cs" />
+    <Compile Include="WaitEventManager\WaitEventManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1734,6 +1735,7 @@
     <Folder Include="Wave\Extensions\" />
     <Folder Include="Wait\" />
     <Folder Include="Predicate\" />
+    <Folder Include="WaitEventManager\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
