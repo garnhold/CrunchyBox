@@ -87,5 +87,18 @@ namespace Crunchy.Dough
                 }
             }
         }
+
+        static public IEnumerable<Tuple<T, T>> TupleSelf2Combinations<T>(this IEnumerable<T> item)
+        {
+            return item.TupleCombinations(item);
+        }
+        static public IEnumerable<Tuple<T, T, T>> TupleSelf3Combinations<T>(this IEnumerable<T> item)
+        {
+            return item.TupleCombinations(item, item);
+        }
+        static public IEnumerable<Tuple<T, T, T, T>> TupleSelf4Combinations<T>(this IEnumerable<T> item)
+        {
+            return item.TupleCombinations(item, item, item);
+        }
     }
 }
