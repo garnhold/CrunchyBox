@@ -40,10 +40,10 @@
       <HintPath>..\packages\CairoSharp.3.22.25.56\lib\netstandard2.0\CairoSharp.dll</HintPath>
     </Reference>
     <Reference Include="GLibSharp">
-      <HintPath>..\packages\GLibSharp.3.22.25.56\lib\netstandard2.0\GLibSharp.dll</HintPath>
+      <HintPath>..\packages\GLibSharp.3.24.24.34\lib\netstandard2.0\GLibSharp.dll</HintPath>
     </Reference>
     <Reference Include="AtkSharp">
-      <HintPath>..\packages\AtkSharp.3.22.25.56\lib\netstandard2.0\AtkSharp.dll</HintPath>
+      <HintPath>..\packages\AtkSharp.3.24.24.34\lib\netstandard2.0\AtkSharp.dll</HintPath>
     </Reference>
     <Reference Include="GioSharp">
       <HintPath>..\packages\GioSharp.3.22.25.56\lib\netstandard2.0\GioSharp.dll</HintPath>
