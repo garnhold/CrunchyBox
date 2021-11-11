@@ -1504,7 +1504,6 @@
     <Compile Include="Wave\Extensions\BasicWaveTypeExtensions.cs" />
     <Compile Include="Wait\Wait.cs" />
     <Compile Include="Predicate\Predicate.cs" />
-    <Compile Include="Duration\Extensions\DurationExtensions_Wait.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
