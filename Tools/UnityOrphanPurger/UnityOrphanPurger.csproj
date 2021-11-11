@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>UnityOrphanPurger</RootNamespace>
     <AssemblyName>UnityOrphanPurger</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

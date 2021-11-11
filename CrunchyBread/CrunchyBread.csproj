@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>CrunchyBread</RootNamespace>
     <AssemblyName>CrunchyBread</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

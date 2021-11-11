@@ -101,7 +101,7 @@ namespace Crunchy.Dough
         }
         static public IEnumerable<T> GetEnumValues<T>(this Type item)
         {
-            return item.GetEnumValues().Convert<Enum, T>();
+            return TypeExtensions_Enum.GetEnumValues(item).Convert<Enum, T>();
         }
     }
 }
