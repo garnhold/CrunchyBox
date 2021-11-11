@@ -512,6 +512,14 @@ using Crunchy.Dough;
         {
             return new Vector2(item.x.BindBetween(value1.x, value2.x), item.y.BindBetween(value1.y, value2.y));
         }
+        static public Vector2 BindBetween(this Vector2 item, FloatRange x_range, FloatRange y_range)
+        {
+            return item.BindBetween(new Vector2(x_range.x1, y_range.x1), new Vector2(x_range.x2, y_range.x2));
+        }
+        static public Vector2 BindBetween(this Vector2 item, FloatRange range)
+        {
+            return item.BindBetween(range, range);
+        }
 
         static public Vector2 BindWithin(this Vector2 item, Rect rect)
         {
