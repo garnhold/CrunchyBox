@@ -20,6 +20,11 @@ namespace Crunchy.Dough
             await Wait.ForDuration(Duration.Seconds(seconds));
         }
 
+        static public async Task ForFrame()
+        {
+            await Wait.ForEvent(() => true, false);
+        }
+
         static public Task<T> ForEvent<T>(TryOperation<T> operation, bool allow_instant)
         {
             T output;
