@@ -1502,6 +1502,8 @@
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Set.cs" />
     <Compile Include="Wave\BasicWaveType.cs" />
     <Compile Include="Wave\Extensions\BasicWaveTypeExtensions.cs" />
+    <Compile Include="Wait\Wait.cs" />
+    <Compile Include="Predicate\Predicate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1730,6 +1732,8 @@
     <Folder Include="ConductedValue\Extensions\" />
     <Folder Include="Conductor\ConductorOrderState\" />
     <Folder Include="Wave\Extensions\" />
+    <Folder Include="Wait\" />
+    <Folder Include="Predicate\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
