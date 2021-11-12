@@ -15,6 +15,8 @@ namespace Crunchy.Dough
         public const float MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
         public const float MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
+        public static readonly Duration Nothing = Duration.Milliseconds(0);
+
         static public Duration Milliseconds(long m)
         {
             return new Duration(m);
