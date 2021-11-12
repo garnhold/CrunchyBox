@@ -20,12 +20,12 @@ namespace Crunchy.Dough
             await Wait.ForDuration(Duration.Seconds(seconds));
         }
 
-        static public async Task ForFrame()
+        static public async Task ForUpdate()
         {
-            await Wait.ForEvent(() => true, false);
+            await Wait.ForCondition(() => true, false);
         }
 
-        static public Task<T> ForEvent<T>(TryOperation<T> operation, bool allow_instant)
+        static public Task<T> ForCondition<T>(TryOperation<T> operation, bool allow_instant)
         {
             T output;
             TaskCompletionSource<T> source = new TaskCompletionSource<T>();
@@ -47,9 +47,9 @@ namespace Crunchy.Dough
 
             return source.Task;
         }
-        static public Task ForEvent(TryProcess process, bool allow_instant)
+        static public Task ForCondition(TryProcess process, bool allow_instant)
         {
-            return Wait.ForEvent<bool>((out bool output) => {
+            return Wait.ForCondition<bool>((out bool output) => {
                 output = true;
                 return process();
             }, allow_instant);
