@@ -27,10 +27,15 @@ namespace Crunchy.Dough
 
         public void Update()
         {
-            active_sources.Process(s => s.SetResult(true));
+            Use(() => active_sources.Process(s => s.SetResult(true)));
 
             Swap.Values(ref active_sources, ref incoming_sources);
             incoming_sources.Clear();
+        }
+
+        public void Use(Process process)
+        {
+            AsyncerManager.GetInstance().Use(this, process);
         }
 
         public Task ForUpdate()
