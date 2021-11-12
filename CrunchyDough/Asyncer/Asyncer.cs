@@ -25,17 +25,12 @@ namespace Crunchy.Dough
             active_sources.Clear();
         }
 
-        public bool Update()
+        public void Update()
         {
             active_sources.Process(s => s.SetResult(true));
 
             Swap.Values(ref active_sources, ref incoming_sources);
             incoming_sources.Clear();
-
-            if (active_sources.IsNotEmpty())
-                return true;
-
-            return false;
         }
 
         public Task ForUpdate()
