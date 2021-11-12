@@ -25,10 +25,13 @@ namespace Crunchy.Sandwich
 
         static public async Task ForDuration(Duration duration, TimeType time_type)
         {
-            GameTimer timer = new GameTimer(duration.GetSeconds(), time_type);
+            if (duration > Duration.Nothing)
+            {
+                GameTimer timer = new GameTimer(duration.GetSeconds(), time_type);
 
-            timer.Start();
-            await GameWait.Until(() => timer.IsTimeOver(), false);
+                timer.Start();
+                await GameWait.Until(() => timer.IsTimeOver(), false);
+            }
         }
         static public async Task ForMilliseconds(long milliseconds, TimeType time_type)
         {
