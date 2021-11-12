@@ -16,10 +16,13 @@ namespace Crunchy.Dough
             active_sources = new List<TaskCompletionSource<bool>>();
         }
 
-        public void Release()
+        public void Clear()
         {
             incoming_sources.Process(s => s.SetCanceled());
+            incoming_sources.Clear();
+
             active_sources.Process(s => s.SetCanceled());
+            active_sources.Clear();
         }
 
         public void Update()
