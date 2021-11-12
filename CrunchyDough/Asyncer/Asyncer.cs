@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class Choreography
+    public class Asyncer
     {
         private List<TaskCompletionSource<bool>> incoming_sources;
         private List<TaskCompletionSource<bool>> active_sources;
 
-        public Choreography()
+        public Asyncer()
         {
             incoming_sources = new List<TaskCompletionSource<bool>>();
             active_sources = new List<TaskCompletionSource<bool>>();
@@ -25,12 +25,17 @@ namespace Crunchy.Dough
             active_sources.Clear();
         }
 
-        public void Update()
+        public bool Update()
         {
             active_sources.Process(s => s.SetResult(true));
 
             Swap.Values(ref active_sources, ref incoming_sources);
             incoming_sources.Clear();
+
+            if (active_sources.IsNotEmpty())
+                return true;
+
+            return false;
         }
 
         public Task ForUpdate()

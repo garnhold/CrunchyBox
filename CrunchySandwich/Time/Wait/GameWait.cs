@@ -9,29 +9,12 @@ namespace Crunchy.Sandwich
 
     static public class GameWait
     {
-        static public async Task ForUpdate()
-        {
-            await Wait.ForUpdate();
-        }
-
-        static public async Task ForCondition(TryProcess process, bool allow_instant)
-        {
-            await Wait.ForCondition(process, allow_instant);
-        }
-        static public async Task<T> ForCondition<T>(TryOperation<T> operation, bool allow_instant)
-        {
-            return await Wait.ForCondition<T>(operation, allow_instant);
-        }
-
         static public async Task ForDuration(Duration duration, TimeType time_type)
         {
-            if (duration > Duration.Nothing)
-            {
-                GameTimer timer = new GameTimer(duration.GetSeconds(), time_type);
-
-                timer.Start();
-                await GameWait.ForCondition(() => timer.IsTimeOver(), false);
-            }
+            GameTimer timer = new GameTimer(duration.GetSeconds(), time_type)
+                .StartAndGet();
+                
+            await Wait.ForCondition(() => timer.IsTimeOver());
         }
         static public async Task ForMilliseconds(long milliseconds, TimeType time_type)
         {

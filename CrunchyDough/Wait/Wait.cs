@@ -25,7 +25,7 @@ namespace Crunchy.Dough
             await Wait.ForCondition(() => true, false);
         }
 
-        static public Task<T> ForCondition<T>(TryOperation<T> operation, bool allow_instant)
+        static public Task<T> ForCondition<T>(TryOperation<T> operation, bool allow_instant = true)
         {
             T output;
             TaskCompletionSource<T> source = new TaskCompletionSource<T>();
@@ -47,7 +47,7 @@ namespace Crunchy.Dough
 
             return source.Task;
         }
-        static public Task ForCondition(TryProcess process, bool allow_instant)
+        static public Task ForCondition(TryProcess process, bool allow_instant = true)
         {
             return Wait.ForCondition<bool>((out bool output) => {
                 output = true;
