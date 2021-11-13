@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     [Serializable]
     public class GameTimer : GameStopwatch, TemporalDuration
     {
@@ -18,6 +19,10 @@ namespace Crunchy.Sandwich
         }
 
         public GameTimer(float d) : this(d, TimeType.Active) { }
+
+        public GameTimer(Duration d, TimeType t) : this(d.GetSeconds(), t) { }
+        public GameTimer(Duration d) : this(d, TimeType.Active) { }
+
         public GameTimer() : this(1.0f) { }
 
         public void SetDurationInMilliseconds(long d)
