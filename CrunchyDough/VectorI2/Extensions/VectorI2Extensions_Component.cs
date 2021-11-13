@@ -34,14 +34,14 @@ namespace Crunchy.Dough
             return item.x.Min(item.y);
         }
 
-        static public float GetMagnitudeMaxComponent(this VectorI2 item)
+        static public int GetMagnitudeMaxComponent(this VectorI2 item)
         {
             if (item.x.GetAbs() > item.y.GetAbs())
                 return item.x;
 
             return item.y;
         }
-        static public float GetMagnitudeMinComponent(this VectorI2 item)
+        static public int GetMagnitudeMinComponent(this VectorI2 item)
         {
             if (item.x.GetAbs() < item.y.GetAbs())
                 return item.x;
