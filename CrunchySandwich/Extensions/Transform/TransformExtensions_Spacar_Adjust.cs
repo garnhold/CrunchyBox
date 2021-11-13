@@ -29,11 +29,11 @@ namespace Crunchy.Sandwich
 
         static public void AdjustSpacarQuaternion(this Transform item, Quaternion amount)
         {
-            item.SetSpacarQuaternion(item.GetSpacarQuaternion() * amount);
+            item.SetSpacarQuaternion(amount * item.GetSpacarQuaternion());
         }
         static public void AdjustLocalSpacarQuaternion(this Transform item, Quaternion amount)
         {
-            item.SetLocalSpacarQuaternion(item.GetLocalSpacarQuaternion() * amount);
+            item.SetLocalSpacarQuaternion(amount * item.GetLocalSpacarQuaternion());
         }
 
         static public void AdjustSpacarScale(this Transform item, Vector3 amount)
