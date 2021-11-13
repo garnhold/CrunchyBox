@@ -28,10 +28,24 @@ namespace Crunchy.Dough
         {
             return item.x.Max(item.y);
         }
-
         static public float GetMinComponent(this VectorF2 item)
         {
             return item.x.Min(item.y);
+        }
+
+        static public float GetMagnitudeMaxComponent(this VectorF2 item)
+        {
+            if (item.x.GetAbs() > item.y.GetAbs())
+                return item.x;
+
+            return item.y;
+        }
+        static public float GetMagnitudeMinComponent(this VectorF2 item)
+        {
+            if (item.x.GetAbs() < item.y.GetAbs())
+                return item.x;
+
+            return item.y;
         }
     }
 }
