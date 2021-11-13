@@ -1502,11 +1502,10 @@
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Set.cs" />
     <Compile Include="Wave\BasicWaveType.cs" />
     <Compile Include="Wave\Extensions\BasicWaveTypeExtensions.cs" />
-    <Compile Include="Wait\Wait.cs" />
     <Compile Include="Predicate\Predicate.cs" />
-    <Compile Include="WaitEventManager\WaitEventManager.cs" />
-    <Compile Include="Asyncer\Asyncer.cs" />
-    <Compile Include="Asyncer\AsyncerManager.cs" />
+    <Compile Include="Asy\Asyer.cs" />
+    <Compile Include="Asy\AsyerManager.cs" />
+    <Compile Include="Asy\Asy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1735,10 +1734,8 @@
     <Folder Include="ConductedValue\Extensions\" />
     <Folder Include="Conductor\ConductorOrderState\" />
     <Folder Include="Wave\Extensions\" />
-    <Folder Include="Wait\" />
     <Folder Include="Predicate\" />
-    <Folder Include="WaitEventManager\" />
-    <Folder Include="Asyncer\" />
+    <Folder Include="Asy\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

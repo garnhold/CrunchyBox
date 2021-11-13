@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -7,11 +9,11 @@ namespace Crunchy.Sandwich
     using Dough;
 
     [ApplicationEXSatellite]
-    static public class WaitEventManagerSatellite
+    static public class AsyerManagerSatellite
     {
         static private void Update()
         {
-            WaitEventManager.GetInstance().Update();
+            AsyerManager.GetInstance().Update();
         }
     }
 }

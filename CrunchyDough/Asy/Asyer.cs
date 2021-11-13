@@ -5,24 +5,29 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class Asyncer
+    public class Asyer
     {
-        private List<TaskCompletionSource<bool>> incoming_sources;
         private List<TaskCompletionSource<bool>> active_sources;
+        private List<TaskCompletionSource<bool>> incoming_sources;
 
-        public Asyncer()
+        public Asyer()
         {
-            incoming_sources = new List<TaskCompletionSource<bool>>();
             active_sources = new List<TaskCompletionSource<bool>>();
+            incoming_sources = new List<TaskCompletionSource<bool>>();
         }
 
         public void Clear()
         {
-            incoming_sources.Process(s => s.SetCanceled());
-            incoming_sources.Clear();
-
             active_sources.Process(s => s.SetCanceled());
             active_sources.Clear();
+
+            incoming_sources.Process(s => s.SetCanceled());
+            incoming_sources.Clear();
+        }
+
+        public void Use(Process process)
+        {
+            AsyerManager.GetInstance().Use(this, process);
         }
 
         public void Update()
@@ -31,11 +36,6 @@ namespace Crunchy.Dough
 
             Swap.Values(ref active_sources, ref incoming_sources);
             incoming_sources.Clear();
-        }
-
-        public void Use(Process process)
-        {
-            AsyncerManager.GetInstance().Use(this, process);
         }
 
         public Task ForUpdate()
@@ -52,19 +52,13 @@ namespace Crunchy.Dough
                 await ForUpdate();
         }
 
-        public async Task ForDuration(Duration duration)
+        public async Task ForTemporal(TemporalEvent temporal)
         {
-            Timer timer = new Timer(duration).StartAndGet();
-
-            await ForCondition(() => timer.IsTimeOver());
+            await ForCondition(() => temporal.IsTimeOver());
         }
-        public async Task ForMilliseconds(long milliseconds)
+        public async Task ForTemporal(TemporalDuration temporal)
         {
-            await ForDuration(Duration.Milliseconds(milliseconds));
-        }
-        public async Task ForSeconds(float seconds)
-        {
-            await ForDuration(Duration.Seconds(seconds));
+            await ForTemporal(temporal.GetAsTemporalEvent());
         }
     }
 }

@@ -1187,8 +1187,8 @@
     </Compile>
     <Compile Include="Extensions\LineRenderer\LineRendererExtensions.cs" />
     <Compile Include="Extensions\LineRenderer\LineRendererExtensions_SetPoint.cs" />
-    <Compile Include="Time\Wait\GameWait.cs" />
-    <Compile Include="Time\Wait\WaitEventManagerSatellite.cs" />
+    <Compile Include="Asy\AsyerManagerSatellite.cs" />
+    <Compile Include="Asy\GameAsy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1514,7 +1514,7 @@
     <Folder Include="FrameSatellite\" />
     <Folder Include="Extensions\Quaternion\" />
     <Folder Include="Extensions\LineRenderer\" />
-    <Folder Include="Time\Wait\" />
+    <Folder Include="Asy\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
