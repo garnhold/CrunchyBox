@@ -19,7 +19,7 @@ namespace Crunchy.Sandwich
 <# foreach(string type_name in type_names){#>
 		static public IEnumerable<Component> GetComponentsUpward(this <#=type_name#> item, Type type)
 		{
-			return item.GetComponentsInParent(type);
+			return item.GetComponentsInParent(type, true);
 		}
 		static public IEnumerable<T> GetComponentsUpward<T>(this <#=type_name#> item)
 		{
@@ -37,7 +37,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Component> GetComponentsDownward(this <#=type_name#> item, Type type)
 		{
-			return item.GetComponentsInChildren(type);
+			return item.GetComponentsInChildren(type, true);
 		}
 		static public IEnumerable<T> GetComponentsDownward<T>(this <#=type_name#> item)
 		{

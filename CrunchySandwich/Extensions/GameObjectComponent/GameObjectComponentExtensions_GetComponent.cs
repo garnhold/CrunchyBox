@@ -10,8 +10,11 @@ namespace Crunchy.Sandwich
     static public class GameObjectComponentExtensions_GetComponent
     {
 		static public Component GetComponentUpward(this GameObject item, Type type)
-		{
-			return item.GetComponentInParent(type);
+        {
+            return item.GetSelfAndParents()
+                .Convert(i => i.GetComponent(type))
+                .SkipNull()
+                .GetFirst();
 		}
 		static public T GetComponentUpward<T>(this GameObject item)
 		{
@@ -29,7 +32,10 @@ namespace Crunchy.Sandwich
 
 		static public Component GetComponentDownward(this GameObject item, Type type)
 		{
-			return item.GetComponentInChildren(type);
+            return item.GetSelfAndDescendants()
+                .Convert(i => i.GetComponent(type))
+                .SkipNull()
+                .GetFirst();
 		}
 		static public T GetComponentDownward<T>(this GameObject item)
 		{
@@ -75,8 +81,11 @@ namespace Crunchy.Sandwich
 		}
 
 		static public Component GetComponentUpward(this Component item, Type type)
-		{
-			return item.GetComponentInParent(type);
+        {
+            return item.GetSelfAndParents()
+                .Convert(i => i.GetComponent(type))
+                .SkipNull()
+                .GetFirst();
 		}
 		static public T GetComponentUpward<T>(this Component item)
 		{
@@ -94,7 +103,10 @@ namespace Crunchy.Sandwich
 
 		static public Component GetComponentDownward(this Component item, Type type)
 		{
-			return item.GetComponentInChildren(type);
+            return item.GetSelfAndDescendants()
+                .Convert(i => i.GetComponent(type))
+                .SkipNull()
+                .GetFirst();
 		}
 		static public T GetComponentDownward<T>(this Component item)
 		{

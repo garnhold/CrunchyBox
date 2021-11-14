@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     {
 		static public IEnumerable<Component> GetComponentsUpward(this GameObject item, Type type)
 		{
-			return item.GetComponentsInParent(type);
+			return item.GetComponentsInParent(type, true);
 		}
 		static public IEnumerable<T> GetComponentsUpward<T>(this GameObject item)
 		{
@@ -29,7 +29,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Component> GetComponentsDownward(this GameObject item, Type type)
 		{
-			return item.GetComponentsInChildren(type);
+			return item.GetComponentsInChildren(type, true);
 		}
 		static public IEnumerable<T> GetComponentsDownward<T>(this GameObject item)
 		{
@@ -68,7 +68,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Component> GetComponentsUpward(this Component item, Type type)
 		{
-			return item.GetComponentsInParent(type);
+			return item.GetComponentsInParent(type, true);
 		}
 		static public IEnumerable<T> GetComponentsUpward<T>(this Component item)
 		{
@@ -86,7 +86,7 @@ namespace Crunchy.Sandwich
 
 		static public IEnumerable<Component> GetComponentsDownward(this Component item, Type type)
 		{
-			return item.GetComponentsInChildren(type);
+			return item.GetComponentsInChildren(type, true);
 		}
 		static public IEnumerable<T> GetComponentsDownward<T>(this Component item)
 		{
