@@ -1189,6 +1189,8 @@
     <Compile Include="Extensions\LineRenderer\LineRendererExtensions_SetPoint.cs" />
     <Compile Include="Asy\AsyerManagerSatellite.cs" />
     <Compile Include="Asy\GameAsy.cs" />
+    <Compile Include="ComponentCache\Extensions\ComponentCacheExtensions.cs" />
+    <Compile Include="ComponentCache\Extensions\ComponentCacheExtensions_IfNotNull.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1515,6 +1517,7 @@
     <Folder Include="Extensions\Quaternion\" />
     <Folder Include="Extensions\LineRenderer\" />
     <Folder Include="Asy\" />
+    <Folder Include="ComponentCache\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
