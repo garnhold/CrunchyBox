@@ -28,6 +28,15 @@ namespace Crunchy.Sandwich
         {
             return item.GetChildren().Prepend(item.gameObject);
         }
+        
+        static public IEnumerable<GameObject> GetDescendants(this GameObject item)
+        {
+            return item.transform.GetDescendants().Convert(c => c.gameObject);
+        }
+        static public IEnumerable<GameObject> GetSelfAndDescendants(this GameObject item)
+        {
+            return item.GetDescendants().Prepend(item.gameObject);
+        }
 
 		static public bool HasChildren(this Component item)
 		{
@@ -47,6 +56,15 @@ namespace Crunchy.Sandwich
 		static public IEnumerable<GameObject> GetSelfAndChildren(this Component item)
         {
             return item.GetChildren().Prepend(item.gameObject);
+        }
+        
+        static public IEnumerable<GameObject> GetDescendants(this Component item)
+        {
+            return item.transform.GetDescendants().Convert(c => c.gameObject);
+        }
+        static public IEnumerable<GameObject> GetSelfAndDescendants(this Component item)
+        {
+            return item.GetDescendants().Prepend(item.gameObject);
         }
 
 	}

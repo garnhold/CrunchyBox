@@ -36,6 +36,15 @@ namespace Crunchy.Sandwich
         {
             return item.GetChildren().Prepend(item.gameObject);
         }
+        
+        static public IEnumerable<GameObject> GetDescendants(this <#=type_name#> item)
+        {
+            return item.transform.GetDescendants().Convert(c => c.gameObject);
+        }
+        static public IEnumerable<GameObject> GetSelfAndDescendants(this <#=type_name#> item)
+        {
+            return item.GetDescendants().Prepend(item.gameObject);
+        }
 
 <# } #>
 	}
