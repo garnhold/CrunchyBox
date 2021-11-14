@@ -23,7 +23,7 @@ namespace Crunchy.Sandwich
 
 		static public bool HasComponentUpward(this GameObject item, Type type)
 		{
-			if (item.GetComponentInParent(type).IsNotNull())
+			if (item.GetComponentUpward(type).IsNotNull())
 				return true;
 
 			return false;
@@ -47,7 +47,7 @@ namespace Crunchy.Sandwich
 
 		static public bool HasComponentUpward(this Component item, Type type)
 		{
-			if (item.GetComponentInParent(type).IsNotNull())
+			if (item.GetComponentUpward(type).IsNotNull())
 				return true;
 
 			return false;

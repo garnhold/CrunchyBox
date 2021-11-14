@@ -31,7 +31,7 @@ namespace Crunchy.Sandwich
 
 		static public bool HasComponentUpward(this <#=type_name#> item, Type type)
 		{
-			if (item.GetComponentInParent(type).IsNotNull())
+			if (item.GetComponentUpward(type).IsNotNull())
 				return true;
 
 			return false;
