@@ -50,5 +50,10 @@ namespace Crunchy.Sandwich
         {
             return item.Bridge<Transform>();
         }
+
+        static public IEnumerable<Transform> GetDescendants(this Transform item)
+        {
+            return item.TraverseTree(i => i.GetChildren());
+        }
     }
 }
