@@ -141,7 +141,6 @@
     <Compile Include="Extensions\Type\TypeExtensions_Finger_Create.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_Distance.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_PropInfo_Method.cs" />
-    <Compile Include="Extensions\Type\TypeExtensions_PropInfo_Property.cs" />
     <Compile Include="Filterer\Assembly\AssemblyFilters.cs" />
     <Compile Include="Filterer\Assembly\Filterer_Assembly_DoesReferenceAssembly.cs" />
     <Compile Include="Filterer\Assembly\Filterer_Assembly_IsAssemblyVisibleToType.cs" />
