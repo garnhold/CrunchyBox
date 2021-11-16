@@ -15,7 +15,7 @@ namespace Crunchy.SandwichBag
         private Dictionary<SerializedObject, EditorGUIView> gui_views;
         private Dictionary<SerializedObject, EditorSceneElement> scene_elements;
 
-        private const int MAXIMUM_NUMBER_INSTANCES = 32;
+        private const int MAXIMUM_NUMBER_INSTANCES = 128;
 
         protected virtual EditorGUIElement CreateRootEditorGUIElement(EditTarget target) { return null; }
         protected virtual EditorSceneElement CreateRootEditorSceneElement(EditTarget target) { return null; }
