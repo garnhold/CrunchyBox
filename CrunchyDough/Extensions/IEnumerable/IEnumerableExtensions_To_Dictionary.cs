@@ -14,12 +14,18 @@ namespace Crunchy.Dough
             dictionary.AddRange(item);
             return dictionary;
         }
+        static public Dictionary<KEY_TYPE, VALUE_TYPE> ToDictionarySkip<KEY_TYPE, VALUE_TYPE>(this IEnumerable<KeyValuePair<KEY_TYPE, VALUE_TYPE>> item)
+        {
+            Dictionary<KEY_TYPE, VALUE_TYPE> dictionary = new Dictionary<KEY_TYPE, VALUE_TYPE>();
 
+            dictionary.SetRangeSkip(item);
+            return dictionary;
+        }
         static public Dictionary<KEY_TYPE, VALUE_TYPE> ToDictionaryOverwrite<KEY_TYPE, VALUE_TYPE>(this IEnumerable<KeyValuePair<KEY_TYPE, VALUE_TYPE>> item)
         {
             Dictionary<KEY_TYPE, VALUE_TYPE> dictionary = new Dictionary<KEY_TYPE, VALUE_TYPE>();
 
-            dictionary.SetRange(item);
+            dictionary.SetRangeOverwrite(item);
             return dictionary;
         }
 
@@ -27,9 +33,26 @@ namespace Crunchy.Dough
         {
             return item.ConvertToValueOfPair(operation).ToDictionary();
         }
+        static public Dictionary<KEY_TYPE, VALUE_TYPE> ToDictionarySkipValues<KEY_TYPE, VALUE_TYPE>(this IEnumerable<VALUE_TYPE> item, Operation<KEY_TYPE, VALUE_TYPE> operation)
+        {
+            return item.ConvertToValueOfPair(operation).ToDictionarySkip();
+        }
+        static public Dictionary<KEY_TYPE, VALUE_TYPE> ToDictionaryOverwriteValues<KEY_TYPE, VALUE_TYPE>(this IEnumerable<VALUE_TYPE> item, Operation<KEY_TYPE, VALUE_TYPE> operation)
+        {
+            return item.ConvertToValueOfPair(operation).ToDictionaryOverwrite();
+        }
+
         static public Dictionary<KEY_TYPE, VALUE_TYPE> ToDictionaryKeys<KEY_TYPE, VALUE_TYPE>(this IEnumerable<KEY_TYPE> item, Operation<VALUE_TYPE, KEY_TYPE> operation)
         {
             return item.ConvertToKeyOfPair(operation).ToDictionary();
+        }
+        static public Dictionary<KEY_TYPE, VALUE_TYPE> ToDictionarySkipKeys<KEY_TYPE, VALUE_TYPE>(this IEnumerable<KEY_TYPE> item, Operation<VALUE_TYPE, KEY_TYPE> operation)
+        {
+            return item.ConvertToKeyOfPair(operation).ToDictionarySkip();
+        }
+        static public Dictionary<KEY_TYPE, VALUE_TYPE> ToDictionaryOverwriteKeys<KEY_TYPE, VALUE_TYPE>(this IEnumerable<KEY_TYPE> item, Operation<VALUE_TYPE, KEY_TYPE> operation)
+        {
+            return item.ConvertToKeyOfPair(operation).ToDictionaryOverwrite();
         }
 
         static public Dictionary<KEY_TYPE, List<VALUE_TYPE>> ToMultiDictionary<KEY_TYPE, VALUE_TYPE>(this IEnumerable<KeyValuePair<KEY_TYPE, VALUE_TYPE>> item)
