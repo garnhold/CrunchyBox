@@ -12,24 +12,41 @@ namespace Crunchy.Sandwich
     {
         static public void IfNotNull<T>(this ComponentCache<T> item, Process<T> process)
         {
-            item.GetComponent().IfNotNull(process);
+            if(item != null)
+                item.GetComponent().IfNotNull(process);
         }
         static public void IfNotNull<T>(this ComponentCache<T> item, Process<T> process, Process if_false)
         {
-            item.GetComponent().IfNotNull(process, if_false);
+            if (item != null)
+                item.GetComponent().IfNotNull(process, if_false);
+            else if (if_false != null)
+                if_false();
+
         }
 
         static public J IfNotNull<J, T>(this ComponentCache<T> item, Operation<J, T> operation)
         {
-            return item.GetComponent().IfNotNull(operation);
+            if(item != null)
+                return item.GetComponent().IfNotNull(operation);
+
+            return default(J);
         }
         static public J IfNotNull<J, T>(this ComponentCache<T> item, Operation<J, T> operation, Operation<J> if_false)
         {
-            return item.GetComponent().IfNotNull(operation, if_false);
+            if(item != null)
+                return item.GetComponent().IfNotNull(operation, if_false);
+
+            if (if_false != null)
+                return if_false();
+
+            return default(J);
         }
         static public J IfNotNull<J, T>(this ComponentCache<T> item, Operation<J, T> operation, J if_false)
         {
-            return item.GetComponent().IfNotNull(operation, if_false);
+            if(item != null)
+                return item.GetComponent().IfNotNull(operation, if_false);
+
+            return if_false;
         }
     }
 }
