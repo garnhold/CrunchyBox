@@ -9,25 +9,25 @@ namespace Crunchy.Noodle
     
     static public class TypeExtensions_PropInfo_Method
     {
-        static private OperationCache<List<MethodInfoEX>, Type> GET_ALL_INSTANCE_PROP_METHODS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSTANCE_PROP_METHODS", delegate (Type item) {
-            return item.GetFilteredInstanceMethods(Filterer_MethodInfo.IsPropCompatible())
+        static private OperationCache<List<MethodInfoEX>, Type> GET_ALL_INSTANCE_PROPISH_METHODS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSTANCE_PROP_METHODS", delegate (Type item) {
+            return item.GetFilteredInstanceMethods(Filterer_MethodInfo.IsPropish())
                 .ToList();
         });
 
-        static private OperationCache<Dictionary<string, MethodInfoEX>, Type> GET_INSTANCE_GET_METHOD_DICTIONARY = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_GET_METHOD_DICTIONARY", delegate (Type item) {
-            return GET_ALL_INSTANCE_PROP_METHODS.Fetch(item)
-                .Narrow(m => m.IsPropGetCompatible())
+        static private OperationCache<Dictionary<string, MethodInfoEX>, Type> GET_INSTANCE_PROPISH_GET_METHOD_DICTIONARY = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_GET_METHOD_DICTIONARY", delegate (Type item) {
+            return GET_ALL_INSTANCE_PROPISH_METHODS.Fetch(item)
+                .Narrow(m => m.IsPropGettish())
                 .ToDictionarySkipValues(m => m.Name);
         });
-        static private OperationCache<Dictionary<string, MethodInfoEX>, Type> GET_INSTANCE_SET_METHOD_DICTIONARY = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_SET_METHOD_DICTIONARY", delegate (Type item) {
-            return GET_ALL_INSTANCE_PROP_METHODS.Fetch(item)
-                .Narrow(m => m.IsPropSetCompatible())
+        static private OperationCache<Dictionary<string, MethodInfoEX>, Type> GET_INSTANCE_PROPISH_SET_METHOD_DICTIONARY = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_SET_METHOD_DICTIONARY", delegate (Type item) {
+            return GET_ALL_INSTANCE_PROPISH_METHODS.Fetch(item)
+                .Narrow(m => m.IsPropSettish())
                 .ToDictionarySkipValues(m => m.Name);
         });
 
         static private OperationCache<PropInfoEX, Type, string, string> GET_INSTANCE_METHOD_PROP_INTERNAL = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_METHOD_PROP_INTERNAL", delegate (Type item, string set_method, string get_method) {
-            MethodInfoEX set = GET_INSTANCE_SET_METHOD_DICTIONARY.Fetch(item).GetValue(set_method);
-            MethodInfoEX get = GET_INSTANCE_GET_METHOD_DICTIONARY.Fetch(item).GetValue(get_method);
+            MethodInfoEX set = GET_INSTANCE_PROPISH_SET_METHOD_DICTIONARY.Fetch(item).GetValue(set_method);
+            MethodInfoEX get = GET_INSTANCE_PROPISH_GET_METHOD_DICTIONARY.Fetch(item).GetValue(get_method);
 
             if (set != null || get != null)
                 return (PropInfoEX)new PropInfoEX_MethodPair(set, get);
@@ -55,7 +55,7 @@ namespace Crunchy.Noodle
         }
 
         static private OperationCache<List<PropInfoEX>, Type> GET_ALL_INSTANCE_METHOD_PROPS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSTANCE_METHOD_PROPS", delegate (Type type) {
-            return GET_ALL_INSTANCE_PROP_METHODS.Fetch(type)
+            return GET_ALL_INSTANCE_PROPISH_METHODS.Fetch(type)
                 .Convert(m => type.GetInstanceMethodProp(m.Name))
                 .SkipNull()
                 .Unique()
