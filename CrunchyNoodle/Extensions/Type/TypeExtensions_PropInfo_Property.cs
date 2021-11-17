@@ -11,13 +11,10 @@ namespace Crunchy.Noodle
     static public class TypeExtensions_PropInfo_Property
     {
         static private OperationCache<PropInfoEX, Type, string> GET_INSTANCE_PROPERTY_PROP = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_PROPERTY_PROP", delegate(Type item, string name) {
-            return item.GetInstanceMethodProp(name);
-            /*
             return item.GetInstanceMethodPropInternal(
                 name.GetEntityPropertySetMethodName(),
                 name.GetEntityPropertyGetMethodName()
             );
-            */
 		});
 		static public PropInfoEX GetInstancePropertyProp(this Type item, string name)
 		{
