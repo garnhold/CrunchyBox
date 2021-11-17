@@ -9,12 +9,19 @@ namespace Crunchy.Noodle
     
     static public class TypeExtensions_PropInfo_Method
     {
+        static private OperationCache<List<MethodInfoEX>, Type> GET_ALL_INSTANCE_PROP_METHODS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSTANCE_PROP_METHODS", delegate (Type item) {
+            return item.GetFilteredInstanceMethods(Filterer_MethodInfo.IsPropCompatible())
+                .ToList();
+        });
+
         static private OperationCache<Dictionary<string, MethodInfoEX>, Type> GET_INSTANCE_GET_METHOD_DICTIONARY = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_GET_METHOD_DICTIONARY", delegate (Type item) {
-            return item.GetFilteredInstanceMethods(Filterer_MethodInfo.IsPropGetCompatible())
+            return GET_ALL_INSTANCE_PROP_METHODS.Fetch(item)
+                .Narrow(m => m.IsPropGetCompatible())
                 .ToDictionarySkipValues(m => m.Name);
         });
         static private OperationCache<Dictionary<string, MethodInfoEX>, Type> GET_INSTANCE_SET_METHOD_DICTIONARY = ReflectionCache.Get().NewOperationCache("GET_INSTANCE_SET_METHOD_DICTIONARY", delegate (Type item) {
-            return item.GetFilteredInstanceMethods(Filterer_MethodInfo.IsPropSetCompatible())
+            return GET_ALL_INSTANCE_PROP_METHODS.Fetch(item)
+                .Narrow(m => m.IsPropSetCompatible())
                 .ToDictionarySkipValues(m => m.Name);
         });
 
@@ -48,12 +55,11 @@ namespace Crunchy.Noodle
         }
 
         static private OperationCache<List<PropInfoEX>, Type> GET_ALL_INSTANCE_METHOD_PROPS = ReflectionCache.Get().NewOperationCache("GET_ALL_INSTANCE_METHOD_PROPS", delegate (Type type) {
-            return type.GetFilteredInstanceMethods(
-                Filterer_MethodInfo.IsPropCompatible()
-            ).Convert(m => type.GetInstanceMethodProp(m.Name))
-            .SkipNull()
-            .Unique()
-            .ToList();
+            return GET_ALL_INSTANCE_PROP_METHODS.Fetch(type)
+                .Convert(m => type.GetInstanceMethodProp(m.Name))
+                .SkipNull()
+                .Unique()
+                .ToList();
         });
         static public IEnumerable<PropInfoEX> GetAllInstanceMethodProps(this Type item)
         {
