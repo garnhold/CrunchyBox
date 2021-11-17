@@ -1190,7 +1190,7 @@
     <Compile Include="Asy\AsyerManagerSatellite.cs" />
     <Compile Include="Asy\GameAsy.cs" />
     <Compile Include="ComponentCache\Extensions\ComponentCacheExtensions.cs" />
-    <Compile Include="ComponentCache\Extensions\ComponentCacheExtensions_IfNotNull.cs" />
+    <Compile Include="ComponentCache\Extensions\ComponentCacheExtensions_Use.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
