@@ -22,18 +22,6 @@ namespace Crunchy.Salt
             get_method = g;
         }
 
-        public PropInfoEX_MethodPair() : this(null, null) { }
-
-        public void SetSetMethod(MethodInfoEX method)
-        {
-            set_method = method;
-        }
-
-        public void SetGetMethod(MethodInfoEX method)
-        {
-            get_method = method;
-        }
-
         public override string GetName()
         {
             return set_method.IfNotNull(m => m.Name.DetectEntityPropName()) ??
