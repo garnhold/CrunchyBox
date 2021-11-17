@@ -13,7 +13,9 @@ namespace Crunchy.Noodle
             if (name.EndsWith("()"))
                 return item.GetInstanceMethodProp(name);
 
-            return item.GetInstanceFieldProp(name) ?? item.GetInstanceMethodProp(name);
+            return item.GetInstanceFieldProp(name) ??
+                item.GetInstancePropertyProp(name) ??
+                item.GetInstanceMethodProp(name);
         });
         static public PropInfoEX GetInstanceProp(this Type item, string name)
         {
