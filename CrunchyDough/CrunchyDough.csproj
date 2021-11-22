@@ -1507,6 +1507,7 @@
     <Compile Include="Asy\AsyerManager.cs" />
     <Compile Include="Asy\Asy.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Pad.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Pad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
