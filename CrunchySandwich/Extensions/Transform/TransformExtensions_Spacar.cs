@@ -105,7 +105,7 @@ namespace Crunchy.Sandwich
         }
         static public void SetLocalSpacarScale(this Transform item, float scale)
         {
-            item.SetLocalSpacarScale(new Vector3(scale, scale));
+            item.SetLocalSpacarScale(new Vector3(scale, scale, scale));
         }
 
         static public Vector3 GetSpacarPosition(this Transform item)
