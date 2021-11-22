@@ -27,5 +27,13 @@ namespace Crunchy.Dough
         {
             return item.PadTo(target_length, i => operation());
         }
+        static public IEnumerable<T> PadTo<T>(this IEnumerable<T> item, int target_length, T value)
+        {
+            return item.PadTo(target_length, () => value);
+        }
+        static public IEnumerable<T> PadTo<T>(this IEnumerable<T> item, int target_length)
+        {
+            return item.PadTo(target_length, default(T));
+        }
     }
 }
