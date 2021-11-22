@@ -23,5 +23,15 @@ namespace Crunchy.Dough
 
             return "";
         }
+
+        static public string RepeatToAtleastLength(this string item, int length)
+        {
+            return item.Repeat(length / item.GetLength());
+        }
+
+        static public string RepeatToExactLength(this string item, int length)
+        {
+            return item.RepeatToAtleastLength(length).Truncate(length);
+        }
     }
 }
