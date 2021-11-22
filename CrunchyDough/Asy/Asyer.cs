@@ -10,6 +10,14 @@ namespace Crunchy.Dough
         private List<TaskCompletionSource<bool>> active_sources;
         private List<TaskCompletionSource<bool>> incoming_sources;
 
+        static public Asyer Start(Process process)
+        {
+            Asyer asyer = new Asyer();
+
+            asyer.Use(process);
+            return asyer;
+        }
+
         public Asyer()
         {
             active_sources = new List<TaskCompletionSource<bool>>();
