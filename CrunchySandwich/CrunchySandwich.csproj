@@ -1191,6 +1191,8 @@
     <Compile Include="Asy\GameAsy.cs" />
     <Compile Include="ComponentCache\Extensions\ComponentCacheExtensions.cs" />
     <Compile Include="ComponentCache\Extensions\ComponentCacheExtensions_Use.cs" />
+    <Compile Include="Extensions\JointMotor\JointMotorExtensions.cs" />
+    <Compile Include="Extensions\JointMotor\JointMotorExtensions_With.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1518,6 +1520,7 @@
     <Folder Include="Extensions\LineRenderer\" />
     <Folder Include="Asy\" />
     <Folder Include="ComponentCache\Extensions\" />
+    <Folder Include="Extensions\JointMotor\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
