@@ -1508,6 +1508,7 @@
     <Compile Include="Asy\Asy.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Pad.cs" />
     <Compile Include="Extensions\String\StringExtensions_Pad.cs" />
+    <Compile Include="Extensions\Queue\QueueExtensions_PeekEX.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
