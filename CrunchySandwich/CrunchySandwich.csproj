@@ -1195,6 +1195,7 @@
     <Compile Include="Extensions\JointMotor\JointMotorExtensions_With.cs" />
     <Compile Include="Extensions\HingeJoint\HingeJointExtensions.cs" />
     <Compile Include="Extensions\HingeJoint\HingeJointExtensions_Motor.cs" />
+    <Compile Include="Parallax\Parallax.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1524,6 +1525,7 @@
     <Folder Include="ComponentCache\Extensions\" />
     <Folder Include="Extensions\JointMotor\" />
     <Folder Include="Extensions\HingeJoint\" />
+    <Folder Include="Parallax\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
