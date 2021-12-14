@@ -51,7 +51,7 @@ namespace Crunchy.SandwichBag
                 dragging = temp
                     .Narrow(i => i.CanObjectBeTreatedAs(type))
                     .ToArrayOfType(type);
-
+                    
                 return true;
             }
 
