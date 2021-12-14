@@ -32,6 +32,8 @@ using Crunchy.Noodle;
 [assembly: InspectedTypes(
     typeof(UnityEngine.Object),
     typeof(UnityEngine.GameObject),
+    typeof(UnityEngine.Sprite),
+    typeof(UnityEngine.Mesh),
     typeof(UnityEngine.Vector2),
     typeof(UnityEngine.Vector3),
     typeof(UnityEngine.LayerMask)
