@@ -8,7 +8,8 @@ using UnityEditor;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Noodle;    using Sandwich;
+    using Noodle;
+    using Sandwich;
     
     public class EditorGUIElement_Complex_EditPropertyArray_Generic : EditorGUIElement_Complex_EditPropertyArray<Tuple<bool, int>>
     {
@@ -54,7 +55,7 @@ namespace Crunchy.SandwichBag
                     if (array_type.CanBeTreatedAs<UnityEngine.Object>())
                     {
                         length_strip.AddWeightedChild(0.6f, new EditorGUIElement_DropZone("Drag + Drop",
-                            o => o.CanObjectBeTreatedAs(array_type),
+                            array_type,
                             l => property.ForceContentValues(l)
                         ));
                     }

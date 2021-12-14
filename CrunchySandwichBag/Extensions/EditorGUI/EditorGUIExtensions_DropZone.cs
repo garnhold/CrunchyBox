@@ -7,19 +7,19 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;    using Sandwich;
+    using Dough;
+    using Sandwich;
     
     static public partial class EditorGUIExtensions
     {
-        static public bool DropZone<T>(Rect rect, Predicate<T> predicate, out IList<T> dragging)
+        static public bool DropZoneUnityObjects(Rect rect, out IList<UnityEngine.Object> dragging)
         {
             GUIControlHandle handle = GUIExtensions.GetControlHandle(FocusType.Passive);
 
             if (rect.Contains(handle.GetEvent().mousePosition))
             {
-                dragging = DragAndDrop.objectReferences
-                    .Convert<UnityEngine.Object, T>()
-                    .Narrow(predicate)
+                dragging = DragAndDrop
+                    .objectReferences
                     .ToList();
 
                 if (dragging.IsNotEmpty())
@@ -38,30 +38,42 @@ namespace Crunchy.SandwichBag
                 }
             }
 
-            dragging = Empty.IList<T>();
+            dragging = Empty.IList<UnityEngine.Object>();
             return false;
         }
-        
-        static public T DropZone<T>(Rect rect, T value, Predicate<T> predicate)
+
+        static public bool DropZone(Rect rect, Type type, out Array dragging)
         {
-            IList<T> dragging;
+            IList<UnityEngine.Object> temp;
 
-            if (DropZone(rect, predicate, out dragging))
-                return dragging.GetFirst();
+            if (DropZoneUnityObjects(rect, out temp))
+            {
+                dragging = temp
+                    .Narrow(i => i.CanObjectBeTreatedAs(type))
+                    .ToArrayOfType(type);
 
-            return value;
+                return true;
+            }
+
+            dragging = Empty.Array<UnityEngine.Object>();
+            return false;
         }
 
-        static public T DropZone<T>(Rect rect, T value)
+        static public T DropZoneSingle<T>(Rect rect, T value)
         {
-            return DropZone<T>(rect, value, v => true);
+            IList<UnityEngine.Object> dragging;
+
+            if (DropZoneUnityObjects(rect, out dragging))
+                return dragging.FindFirstOfType<UnityEngine.Object, T>();
+
+            return value;
         }
 
         static public Sprite SpriteDropZone(Rect rect, Sprite value)
         {
             GUIExtensions.DrawSprite(rect, value);
 
-            return DropZone<Sprite>(rect, value);
+            return DropZoneSingle(rect, value);
         }
     }
 }
