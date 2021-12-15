@@ -1509,6 +1509,7 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Pad.cs" />
     <Compile Include="Extensions\String\StringExtensions_Pad.cs" />
     <Compile Include="Extensions\Queue\QueueExtensions_PeekEX.cs" />
+    <Compile Include="Extensions\Int\IntExtensions_AbsorbHash.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
