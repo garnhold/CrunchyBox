@@ -11,6 +11,7 @@ namespace Crunchy.Sandwich
     public class OctoTile : CustomTile_MultiSprite_NeighborRuled
     {
         [SerializeField]private OctoSubTile[] sub_tiles;
+        [SerializeField]private bool randomize_with_position;
 
         private OperationCache<List<OctoSubTile>, OctoMask> cache;
 
@@ -36,6 +37,9 @@ namespace Crunchy.Sandwich
         {
             int hash = position.GetHashCode();
             OctoMask mask = tilemap.GetOctoMask(position, t => t.EqualsEX(this));
+
+            if (randomize_with_position)
+                hash = hash.AbsorbObjectHash(tilemap.GetComponent<Transform>().GetSpacarPosition());
 
             return cache.Fetch(mask)
                 .PickACongruent(hash, t => t.GetWeight())
