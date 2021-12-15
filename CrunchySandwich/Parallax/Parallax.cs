@@ -8,12 +8,12 @@ namespace Crunchy.Sandwich
     [AddComponentMenu("Rendering/Parallax")]
     public class Parallax : MonoBehaviour
     {
-        [SerializeField]private Vector3 origin;
         [SerializeField]private Vector3 multiplier;
         [SerializeField]private bool use_main_camera;
 
         private void Touch(Camera camera)
         {
+            Vector3 origin = this.GetParentSpacarPosition();
             Vector3 difference = camera.GetSpacarPosition() - origin;
 
             this.SetPlanarPosition(origin + difference.GetComponentMultiply(multiplier));
