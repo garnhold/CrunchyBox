@@ -317,8 +317,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Parent.cs">
-      <DependentUpon>GameObjectComponentExtensions_Transform_Parent.tt</DependentUpon>
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Parent.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Parent.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1196,6 +1196,12 @@
     <Compile Include="Extensions\HingeJoint\HingeJointExtensions.cs" />
     <Compile Include="Extensions\HingeJoint\HingeJointExtensions_Motor.cs" />
     <Compile Include="Parallax\Parallax.cs" />
+    <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Parent.cs">
+      <DependentUpon>GameObjectComponentExtensions_Transform_Spacar_Parent.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Parent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1338,9 +1344,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Process.cs</LastGenOutput>
     </Content>
-    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Parent.tt">
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Parent.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GameObjectComponentExtensions_Transform_Parent.cs</LastGenOutput>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Planar_Parent.cs</LastGenOutput>
     </Content>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Radial_Adjust.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1445,6 +1451,10 @@
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_MoveInterpolate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_MoveInterpolate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Parent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GameObjectComponentExtensions_Transform_Spacar_Parent.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
