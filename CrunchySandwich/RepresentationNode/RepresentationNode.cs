@@ -27,7 +27,10 @@ namespace Crunchy.Sandwich
         public object GetTarget()
         {
             return path.Invoke(
-                game_object ?? parent.GetComponent().IfNotNull(p => p.GetTarget()) ?? this
+                game_object.Coalesce(
+                    () => parent.GetComponent().IfNotNull(p => p.GetTarget()),
+                    () => this
+                )
             );
         }
     }
