@@ -1202,6 +1202,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Parent.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_OrthographicWorldPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
