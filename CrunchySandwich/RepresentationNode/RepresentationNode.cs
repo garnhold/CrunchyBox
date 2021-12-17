@@ -16,22 +16,10 @@ namespace Crunchy.Sandwich
         [SerializeFieldEX]private GameObject game_object;
         [SerializeFieldEX]private Scriptlet path;
 
-        private ComponentCache_UpwardFromParent<RepresentationNode> parent;
-
-        private void Start()
-        {
-            parent = new ComponentCache_UpwardFromParent<RepresentationNode>(this);
-        }
-
         [InspectorDisplay]
         public object GetTarget()
         {
-            return path.Invoke(
-                game_object.Coalesce(
-                    () => parent.GetComponent().IfNotNull(p => p.GetTarget()),
-                    () => this
-                )
-            );
+            return path.Invoke(game_object.Coalesce(gameObject));
         }
     }
 }
