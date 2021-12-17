@@ -37,5 +37,34 @@ namespace Crunchy.Dough
             else
                 if_null();
         }
+
+        static public T Coalesce<T>(this T item, params T[] others)
+        {
+            if (item.IsNotNull())
+                return item;
+
+            foreach (T value in others)
+            {
+                if (value.IsNotNull())
+                    return value;
+            }
+
+            return default(T);
+        }
+        static public T Coalesce<T>(this T item, params Operation<T>[] others)
+        {
+            if (item.IsNotNull())
+                return item;
+
+            foreach (Operation<T> other in others)
+            {
+                T value = other();
+
+                if (value.IsNotNull())
+                    return value;
+            }
+
+            return default(T);
+        }
     }
 }
