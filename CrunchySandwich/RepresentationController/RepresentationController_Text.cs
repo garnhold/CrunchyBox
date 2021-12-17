@@ -24,12 +24,12 @@ namespace Crunchy.Sandwich
             {
                 object target = GetTarget();
 
-                if (this.IsEditing() && target == null)
+                if (this.IsEditing() && target.IsNull())
                     this.GetComponent<Text>().text = markup;
                 else
                 {
                     this.GetComponent<Text>().text = markup.RegexReplace("{([A-Za-z_\\.\\(\\)\\[\\]]+)}", delegate(Match match) {
-                        if (target != null)
+                        if (target.IsNotNull())
                             return target.GetVariableValueByPath<string>(match.Groups[1].Value);
 
                         return "";

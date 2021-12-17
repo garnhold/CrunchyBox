@@ -24,7 +24,7 @@ namespace Crunchy.Sandwich
         [InspectorDisplay]
         public object GetTarget()
         {
-            return representation_node.GetComponent().IfNotNull(n => n.GetTarget());
+            return representation_node.Use(n => n.GetTarget());
         }
     }
 }
