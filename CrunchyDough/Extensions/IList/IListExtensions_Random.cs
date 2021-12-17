@@ -40,5 +40,23 @@ namespace Crunchy.Dough
         {
             return item.GetMultipleRandom(count, RandInt.SOURCE);
         }
+
+        static public void RemoveBeginningRandom<T>(this IList<T> item, RandIntSource source)
+        {
+            item.RemoveBeginning(source.GetIndex(item.Count));
+        }
+        static public void RemoveBeginningRandom<T>(this IList<T> item)
+        {
+            item.RemoveBeginningRandom(RandInt.SOURCE);
+        }
+
+        static public void RemoveEndingRandom<T>(this IList<T> item, RandIntSource source)
+        {
+            item.RemoveEnding(source.GetIndex(item.Count));
+        }
+        static public void RemoveEndingRandom<T>(this IList<T> item)
+        {
+            item.RemoveEndingRandom(RandInt.SOURCE);
+        }
     }
 }
