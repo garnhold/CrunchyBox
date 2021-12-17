@@ -11,7 +11,7 @@ namespace Crunchy.Dough
         {
             List<T> list = item.ToList();
 
-            list.Shuffle();
+            list.Shuffle(source);
             return list;
         }
         static public IEnumerable<T> Randomize<T>(this IEnumerable<T> item)
