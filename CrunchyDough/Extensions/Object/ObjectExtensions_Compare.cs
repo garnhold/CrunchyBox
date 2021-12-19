@@ -35,7 +35,8 @@ namespace Crunchy.Dough
 
         static public int GetTimedHashCodeEX(this Object item, long milliseconds)
         {
-            return item.GetHashCodeEX().AbsorbObjectHash(DateTime.Now.Ticks / milliseconds);
+            return item.GetHashCodeEX()
+                .AbsorbObjectHash(TimeSource_System.INSTANCE.GetCurrentTimeInMilliseconds() / milliseconds);
         }
         static public int GetTimedHashCodeEX(this Object item, Duration duration)
         {
