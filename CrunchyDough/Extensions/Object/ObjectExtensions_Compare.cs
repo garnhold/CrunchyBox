@@ -32,5 +32,14 @@ namespace Crunchy.Dough
 
             return 0;
         }
+
+        static public int GetTimedHashCodeEX(this Object item, long milliseconds)
+        {
+            return item.GetHashCodeEX().AbsorbObjectHash(DateTime.Now.Ticks / milliseconds);
+        }
+        static public int GetTimedHashCodeEX(this Object item, Duration duration)
+        {
+            return item.GetTimedHashCodeEX(duration.GetWholeMilliseconds());
+        }
     }
 }
