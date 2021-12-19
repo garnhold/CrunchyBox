@@ -30,6 +30,10 @@ namespace Crunchy.Dough
 
             return item.GetElementForCost(source.GetBetween(0.0f, (float)total_cost), BoundType.Below, operation);
         }
+        static public T PickRandom<T>(this IList<T> item, Operation<double, T> operation)
+        {
+            return item.PickRandom(operation, RandFloat.SOURCE);
+        }
 
         static public IEnumerable<T> GetMultipleRandom<T>(this IList<T> item, int count, RandIntSource source)
         {
