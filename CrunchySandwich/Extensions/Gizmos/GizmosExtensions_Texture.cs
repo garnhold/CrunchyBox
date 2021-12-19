@@ -10,12 +10,18 @@ namespace Crunchy.Sandwich
     {
         static public void DrawTexture(Vector3 center, Vector2 size, Texture2D texture)
         {
-            Gizmos.DrawGUITexture(
-                RectExtensions.CreateCenterRect(
-                    Camera.current.WorldToScreenPoint(center),
-                    size
-                ), 
-                texture
+            Mesh mesh = MeshExtensions.CreateCenterQuad(size);
+            Material material = MaterialExtensions.CreateUnlitTransparentTextureMaterial(texture);
+
+            material.SetPass(0);
+
+            Graphics.DrawMeshNow(
+                mesh,
+                Matrix4x4.TRS(
+                    center,
+                    Quaternion.LookRotation(Camera.current.GetSpacarForward(), Vector3.up),
+                    Vector3.one
+                )
             );
         }
         static public void DrawTexture(Vector3 position, float size, Texture2D texture)
@@ -38,6 +44,10 @@ namespace Crunchy.Sandwich
                 new Vector2(size, sprite.GetTextureAspect() * size),
                 sprite
             );
+        }
+        static public void DrawSprite(Vector3 center, Sprite sprite)
+        {
+            GizmosExtensions.DrawSprite(center, sprite.GetWorldSize(), sprite);
         }
     }
 }
