@@ -7,7 +7,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     static public class SpriteExtensions_Size
     {
         static public Vector2 GetTextureSize(this Sprite item)
