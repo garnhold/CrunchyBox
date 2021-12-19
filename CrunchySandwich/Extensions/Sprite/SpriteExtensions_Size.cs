@@ -24,11 +24,6 @@ namespace Crunchy.Sandwich
             return item.GetTextureSize().y;
         }
 
-        static public float GetTextureAspect(this Sprite item)
-        {
-            return item.GetTextureHeight() / item.GetTextureWidth();
-        }
-
         static public Vector2 GetWorldSize(this Sprite item)
         {
             return item.bounds.GetPlanarSize();

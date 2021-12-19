@@ -41,7 +41,7 @@ namespace Crunchy.Sandwich
         {
             GizmosExtensions.DrawSprite(
                 center,
-                new Vector2(size, sprite.GetTextureAspect() * size),
+                new Vector2(size, sprite.GetAspect() * size),
                 sprite
             );
         }

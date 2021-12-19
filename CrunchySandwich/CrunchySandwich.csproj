@@ -1205,6 +1205,7 @@
     <Compile Include="Extensions\Camera\CameraExtensions_OrthographicWorldPosition.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Texture.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Aspect.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Aspect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
