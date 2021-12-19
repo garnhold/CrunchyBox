@@ -15,5 +15,10 @@ namespace Crunchy.Dough
         {
             return item.Rotate<T>(item.Count / 2);
         }
+
+        static public IEnumerable<T> RotateLooped<T>(this IList<T> item, int start)
+        {
+            return item.Rotate(start.GetLooped(item.Count()));
+        }
     }
 }
