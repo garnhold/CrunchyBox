@@ -1203,6 +1203,8 @@
     </Compile>
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Parent.cs" />
     <Compile Include="Extensions\Camera\CameraExtensions_OrthographicWorldPosition.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Texture.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Aspect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
