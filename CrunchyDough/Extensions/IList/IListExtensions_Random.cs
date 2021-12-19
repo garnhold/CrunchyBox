@@ -35,6 +35,15 @@ namespace Crunchy.Dough
             return item.PickRandom(operation, RandFloat.SOURCE);
         }
 
+        static public IEnumerable<T> RotateRandom<T>(this IList<T> item, RandIntSource source)
+        {
+            return item.RotateLooped(source.Get());
+        }
+        static public IEnumerable<T> RotateRandom<T>(this IList<T> item)
+        {
+            return item.RotateRandom(RandInt.SOURCE);
+        }
+
         static public IEnumerable<T> GetMultipleRandom<T>(this IList<T> item, int count, RandIntSource source)
         {
             for (int i = 0; i < count; i++)
