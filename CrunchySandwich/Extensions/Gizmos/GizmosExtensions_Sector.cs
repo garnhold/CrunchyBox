@@ -13,7 +13,7 @@ namespace Crunchy.Sandwich
             DrawLoop(
                 Floats.Line(start_angle, end_angle, 32, true)
                     .Convert(a => center + Vector2Extensions.CreateDirectionFromDegrees(a).GetSpacar() * radius)
-                    .Append(center)
+                    .AppendIf(start_angle.GetDegreeAngleDistance(end_angle) <= 0.0f, center)
             );
         }
 
