@@ -10,9 +10,24 @@ namespace Crunchy.Sandwich
     {
         [SerializeField]private float multiplier;
 
+        [AttachEditGadget(
+            "OffsetPoint", 
+            new string[] {
+            },
+            new string[] {
+                "parent_point", "GetPlanarPosition()"
+            }
+        )]
+        [SerializeField] private Vector2 offset;
+
         private void Update()
         {
-            GetComponent<Renderer>().SetSortingOrder((int)(this.GetPlanarPosition().y * multiplier));
+            GetComponent<Renderer>().SetSortingOrder((int)(this.GetOrderPoint().y * multiplier));
+        }
+
+        public Vector2 GetOrderPoint()
+        {
+            return this.GetPlanarPosition() + offset;
         }
     }
 }
