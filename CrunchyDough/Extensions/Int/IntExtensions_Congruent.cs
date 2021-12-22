@@ -5,7 +5,7 @@ namespace Crunchy.Dough
     static public class IntExtensions_Congruent
     {
         public const int CongruentLookupSeed = 0;
-        public const int CongruentLookupSize = 1024;
+        public const int CongruentLookupSize = 1024 * 64;
 
         static private int[] CONGRUENT_LOOKUP;
 
