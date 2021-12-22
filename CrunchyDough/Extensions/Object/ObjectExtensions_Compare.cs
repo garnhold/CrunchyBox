@@ -33,14 +33,27 @@ namespace Crunchy.Dough
             return 0;
         }
 
-        static public int GetTimedHashCodeEX(this Object item, long milliseconds)
+        static public int GetRotatingHashCodeEX(this Object item, long milliseconds)
         {
             return item.GetHashCodeEX()
                 .AbsorbObjectHash(TimeSource_System.INSTANCE.GetCurrentTimeInMilliseconds() / milliseconds);
         }
-        static public int GetTimedHashCodeEX(this Object item, Duration duration)
+        static public int GetRotatingHashCodeEX(this Object item, Duration duration)
         {
-            return item.GetTimedHashCodeEX(duration.GetWholeMilliseconds());
+            return item.GetRotatingHashCodeEX(duration.GetWholeMilliseconds());
+        }
+
+        static public int GetFastRotatingHashCodeEX(this Object item)
+        {
+            return item.GetRotatingHashCodeEX(Duration.Hertz(4.0f));
+        }
+        static public int GetNormalRotatingHashCodeEX(this Object item)
+        {
+            return item.GetRotatingHashCodeEX(Duration.Seconds(4.0f));
+        }
+        static public int GetSlowRotatingHashCodeEX(this Object item)
+        {
+            return item.GetRotatingHashCodeEX(Duration.Minutes(1.0f));
         }
     }
 }
