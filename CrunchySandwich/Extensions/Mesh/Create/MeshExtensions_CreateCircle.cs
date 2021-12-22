@@ -13,18 +13,7 @@ namespace Crunchy.Sandwich
     {
         static public Mesh CreateCircle(int number_vertexs)
         {
-            Mesh mesh = new Mesh();
-
-            mesh.vertices = Floats.Line(0.0f, 360.0f, number_vertexs - 1, true)
-                .Convert(a => Vector2Extensions.CreateDirectionFromDegrees(a).GetSpacar() * 0.5f)
-                .Prepend(new Vector3(0.0f, 0.0f, 0.0f))
-                .ToArray();
-                
-            mesh.CalculateTrianglesAsFan();
-
-            mesh.RecalculateNormals();
-            mesh.RecalculateBounds();
-            return mesh;
+            return CreateDegreeSector(0.0f, 360.0f, number_vertexs);
         }
     }
 }
