@@ -1206,7 +1206,9 @@
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Texture.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Aspect.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Aspect.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Circle.cs" />
     <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateSector.cs" />
+    <Compile Include="Extensions\Gizmos\GizmosExtensions_Sector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
