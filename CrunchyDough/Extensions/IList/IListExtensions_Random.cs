@@ -54,22 +54,22 @@ namespace Crunchy.Dough
             return item.GetMultipleRandom(count, RandInt.SOURCE);
         }
 
-        static public void RemoveBeginningRandom<T>(this IList<T> item, RandIntSource source)
+        static public void RemoveBeginningRandom<T>(this IList<T> item, RandIntSource source, int index_limit=int.MaxValue)
         {
-            item.RemoveBeginning(source.GetIndex(item.Count));
+            item.RemoveBeginning(source.GetIndex(item.Count).BindBelow(index_limit));
         }
-        static public void RemoveBeginningRandom<T>(this IList<T> item)
+        static public void RemoveBeginningRandom<T>(this IList<T> item, int index_limit=int.MaxValue)
         {
-            item.RemoveBeginningRandom(RandInt.SOURCE);
+            item.RemoveBeginningRandom(RandInt.SOURCE, index_limit);
         }
 
-        static public void RemoveEndingRandom<T>(this IList<T> item, RandIntSource source)
+        static public void RemoveEndingRandom<T>(this IList<T> item, RandIntSource source, int index_limit=0)
         {
-            item.RemoveEnding(source.GetIndex(item.Count));
+            item.RemoveEnding(source.GetIndex(item.Count).BindAbove(index_limit));
         }
-        static public void RemoveEndingRandom<T>(this IList<T> item)
+        static public void RemoveEndingRandom<T>(this IList<T> item, int index_limit=0)
         {
-            item.RemoveEndingRandom(RandInt.SOURCE);
+            item.RemoveEndingRandom(RandInt.SOURCE, index_limit);
         }
     }
 }

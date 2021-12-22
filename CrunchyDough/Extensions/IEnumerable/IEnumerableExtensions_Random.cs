@@ -19,28 +19,28 @@ namespace Crunchy.Dough
             return item.Randomize(RandInt.SOURCE);
         }
 
-        static public IEnumerable<T> OffsetRandom<T>(this IEnumerable<T> item, RandIntSource source)
+        static public IEnumerable<T> OffsetRandom<T>(this IEnumerable<T> item, RandIntSource source, int limit=int.MaxValue)
         {
             List<T> list = item.ToList();
 
-            list.RemoveBeginningRandom(source);
+            list.RemoveBeginningRandom(source, limit);
             return list;
         }
-        static public IEnumerable<T> OffsetRandom<T>(this IEnumerable<T> item)
+        static public IEnumerable<T> OffsetRandom<T>(this IEnumerable<T> item, int limit=int.MaxValue)
         {
-            return item.OffsetRandom(RandInt.SOURCE);
+            return item.OffsetRandom(RandInt.SOURCE, limit);
         }
 
-        static public IEnumerable<T> TruncateRandom<T>(this IEnumerable<T> item, RandIntSource source)
+        static public IEnumerable<T> TruncateRandom<T>(this IEnumerable<T> item, RandIntSource source, int limit=0)
         {
             List<T> list = item.ToList();
 
-            list.RemoveEndingRandom(source);
+            list.RemoveEndingRandom(source, limit);
             return list;
         }
-        static public IEnumerable<T> TruncateRandom<T>(this IEnumerable<T> item)
+        static public IEnumerable<T> TruncateRandom<T>(this IEnumerable<T> item, int limit=0)
         {
-            return item.TruncateRandom(RandInt.SOURCE);
+            return item.TruncateRandom(RandInt.SOURCE, limit);
         }
     }
 }
