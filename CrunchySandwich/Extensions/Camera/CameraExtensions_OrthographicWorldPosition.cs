@@ -44,5 +44,13 @@ namespace Crunchy.Sandwich
         {
             return new Vector2(item.GetOrthographicWorldRight(), item.GetOrthographicWorldBottom());
         }
+
+        static public Rect GetOrthographicWorldRect(this Camera item)
+        {
+            return RectExtensions.CreateMinMaxRect(
+                item.GetOrthographicWorldLeftBottom(),
+                item.GetOrthographicRightTop()
+            );
+        }
     }
 }
