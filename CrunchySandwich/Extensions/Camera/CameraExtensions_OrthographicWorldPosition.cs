@@ -49,7 +49,7 @@ namespace Crunchy.Sandwich
         {
             return RectExtensions.CreateMinMaxRect(
                 item.GetOrthographicWorldLeftBottom(),
-                item.GetOrthographicRightTop()
+                item.GetOrthographicWorldRightTop()
             );
         }
     }
