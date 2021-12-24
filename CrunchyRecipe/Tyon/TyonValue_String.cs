@@ -24,7 +24,7 @@ namespace Crunchy.Recipe
 
         public TyonValue_String(object value, TyonDehydrater dehydrater) : this()
         {
-            SetString(value.ToString());
+            SetString(value.ToStringEX());
         }
 
         public override void Render(TextDocumentCanvas canvas)
