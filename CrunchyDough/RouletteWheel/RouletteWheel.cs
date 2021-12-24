@@ -18,6 +18,7 @@ namespace Crunchy.Dough
         public RouletteWheel(RandFloatSource s, IEnumerable<KeyValuePair<T, float>> i) : this(s, new Roulette<T>(i)) { }
         public RouletteWheel(RandFloatSource s, params KeyValuePair<T, float>[] i) : this(s, (IEnumerable<KeyValuePair<T, float>>)i) { }
 
+        public RouletteWheel(Roulette<T> r) : this(RandFloat.SOURCE, r) { }
         public RouletteWheel(IEnumerable<KeyValuePair<T, float>> i) : this(RandFloat.SOURCE, i) { }
         public RouletteWheel(params KeyValuePair<T, float>[] i) : this(RandFloat.SOURCE, i) { }
 
