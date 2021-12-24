@@ -19,7 +19,7 @@ namespace Crunchy.Recipe
         public TyonSurrogate(object value, TyonDehydrater dehydrater) : this()
         {
             SetTyonType(TyonType.CreateTyonType(value.GetTypeEX()));
-            SetTyonValue(dehydrater.CreateTyonValue(typeof(string), value.ToStringEX()));
+            SetTyonValue(new TyonValue_String(value, dehydrater));
         }
 
         public object ResolveSystemObject(TyonHydrater hydrater)
