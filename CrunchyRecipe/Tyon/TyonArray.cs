@@ -34,7 +34,7 @@ namespace Crunchy.Recipe
 
         public void Render(TextDocumentCanvas canvas)
         {
-            GetTyonType().Render(canvas);
+            GetTyonType().IfNotNull(t => t.Render(canvas));
             canvas.AppendToLine(" [");
             canvas.Indent();
                 canvas.AppendNewline();
@@ -43,9 +43,32 @@ namespace Crunchy.Recipe
             canvas.AppendToNewline("]");
         }
 
+        public bool IsExplicitlyTyped()
+        {
+            if (GetTyonType() != null)
+                return true;
+
+            return false;
+        }
+        public bool IsImplicitlyTyped()
+        {
+            if (IsExplicitlyTyped() == false)
+                return true;
+
+            return false;
+        }
+
         public int GetNumberTyonValues()
         {
             return tyon_values.Count;
+        }
+
+        public Type GetLogSystemType(TyonHydrater hydrater)
+        {
+            if (IsExplicitlyTyped())
+                return GetTyonType().GetSystemType(hydrater);
+
+            return typeof(object);
         }
 
         public override string ToString()

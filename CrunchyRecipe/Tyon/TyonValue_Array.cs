@@ -30,28 +30,34 @@ namespace Crunchy.Recipe
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             int size = GetTyonArray().GetNumberTyonValues();
-            Type type = GetTyonArray().GetTyonType().GetSystemType(hydrater);
+            Type log_type = GetTyonArray().GetLogSystemType(hydrater);
 
-            if (type != null)
+            int index = 0;
+            Variable_IndexedLog log = Variable_IndexedLog.New(log_type);
+
+            if (variable.GetContents() != null)
             {
-                int index = 0;
-                Variable_IndexedLog log = Variable_IndexedLog.New(type);
-
-                if (variable.GetContents() != null)
-                {
-                    foreach (object old_element in variable.GetContents().Convert<IEnumerable>())
-                        log.CreateStrongInstance(index++).SetContents(old_element);
-                }
-
-                while (index < size)
-                    log.CreateStrongInstance(index++);
-
-                GetTyonArray().GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(log.CreateStrongInstance(i), hydrater));
-
-                hydrater.DeferProcess(delegate() {
-                    variable.SetContents(log.GetValues().Truncate(size).ToArrayOfType(type));
-                });
+                foreach (object old_element in variable.GetContents().Convert<IEnumerable>())
+                    log.CreateStrongInstance(index++).SetContents(old_element);
             }
+
+            while (index < size)
+                log.CreateStrongInstance(index++);
+
+            GetTyonArray().GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(log.CreateStrongInstance(i), hydrater));
+
+            hydrater.DeferProcess(delegate() {
+                List<object> values = log.GetValues()
+                    .Truncate(size)
+                    .ToList();
+
+                Type final_type = GetTyonArray().IsExplicitlyTyped().ConvertBool(
+                    () => log_type,
+                    () => values.Convert(v => v.GetTypeEX()).GetCommonAncestor()
+                );   
+
+                variable.SetContents(values.ToArrayOfType(final_type));
+            });
         }
     }
 

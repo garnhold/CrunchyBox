@@ -10,7 +10,7 @@ tyonType
 tyonObject : tyonType ('(' '&' tyonAddress ')')? '{' tyonVariable* '}';
 tyonSurrogate : '$' tyonType ':' tyonValue;
 
-tyonArray : tyonType '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
+tyonArray : tyonType? '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
 
 tyonValue
     : INTEGER # tyonValue_Integer
