@@ -11,5 +11,16 @@ namespace Crunchy.Dough
 
             return null_string;
         }
+
+        static public bool IsToStringOverridden(this Object item)
+        {
+            if (item != null)
+            {
+                if (item.ToString() != item.GetType().ToString())
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
