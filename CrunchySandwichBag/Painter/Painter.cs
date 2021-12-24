@@ -14,7 +14,7 @@ namespace Crunchy.SandwichBag
     using Sauce;
     using Sandwich;
     
-    public class Painter : Subsystem<Painter>, ISerializationCallbackReceiver
+    public class Painter : Subsystem<Painter>
     {
         [SerializeField]private PainterToolType tool_type;
 
@@ -25,9 +25,21 @@ namespace Crunchy.SandwichBag
         [SerializeFieldEX]private Color primary_color;
         [SerializeFieldEX]private Color secondary_color;
 
-        private Utensil<Color> utensil;
+        [InspectorAction]
+        public void SwapColors()
+        {
+            Color temp = primary_color;
 
-        private Utensil<Color> CreateUtensil()
+            primary_color = secondary_color;
+            secondary_color = temp;
+        }
+
+        public float GetBrushSize()
+        {
+            return brush_size;
+        }
+
+        public Utensil<Color> GetUtensil()
         {
             if (brush != null && mixer != null)
             {
@@ -48,31 +60,6 @@ namespace Crunchy.SandwichBag
             }
 
             return null;
-        }
-
-        public void OnBeforeSerialize() { }
-        public void OnAfterDeserialize()
-        {
-            utensil = CreateUtensil();
-        }
-
-        [InspectorAction]
-        public void SwapColors()
-        {
-            Color temp = primary_color;
-
-            primary_color = secondary_color;
-            secondary_color = temp;
-        }
-
-        public float GetBrushSize()
-        {
-            return brush_size;
-        }
-
-        public Utensil<Color> GetUtensil()
-        {
-            return utensil;
         }
     }
 }
