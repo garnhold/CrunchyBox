@@ -36,6 +36,7 @@ using Crunchy.Noodle;
     typeof(UnityEngine.Mesh),
     typeof(UnityEngine.Vector2),
     typeof(UnityEngine.Vector3),
+    typeof(UnityEngine.Color),
     typeof(UnityEngine.LayerMask)
 )]
 
