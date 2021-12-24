@@ -306,7 +306,9 @@ public partial class TyonParser : Parser {
 		public TyonTypeContext tyonType() {
 			return GetRuleContext<TyonTypeContext>(0);
 		}
-		public ITerminalNode STRING() { return GetToken(TyonParser.STRING, 0); }
+		public TyonValueContext tyonValue() {
+			return GetRuleContext<TyonValueContext>(0);
+		}
 		public TyonSurrogateContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -329,7 +331,7 @@ public partial class TyonParser : Parser {
 			State = 55; Match(T__10);
 			State = 56; tyonType(0);
 			State = 57; Match(T__11);
-			State = 58; Match(STRING);
+			State = 58; tyonValue();
 			}
 		}
 		catch (RecognitionException re) {
@@ -832,9 +834,9 @@ public partial class TyonParser : Parser {
 		'\x34', '\x3', '\x2', '\x2', '\x2', '\x37', '\x38', '\a', '\f', '\x2', 
 		'\x2', '\x38', '\x5', '\x3', '\x2', '\x2', '\x2', '\x39', ':', '\a', '\r', 
 		'\x2', '\x2', ':', ';', '\x5', '\x2', '\x2', '\x2', ';', '<', '\a', '\xE', 
-		'\x2', '\x2', '<', '=', '\a', '\x16', '\x2', '\x2', '=', '\a', '\x3', 
-		'\x2', '\x2', '\x2', '>', '?', '\x5', '\x2', '\x2', '\x2', '?', 'H', '\a', 
-		'\x6', '\x2', '\x2', '@', '\x45', '\x5', '\n', '\x6', '\x2', '\x41', '\x42', 
+		'\x2', '\x2', '<', '=', '\x5', '\n', '\x6', '\x2', '=', '\a', '\x3', '\x2', 
+		'\x2', '\x2', '>', '?', '\x5', '\x2', '\x2', '\x2', '?', 'H', '\a', '\x6', 
+		'\x2', '\x2', '@', '\x45', '\x5', '\n', '\x6', '\x2', '\x41', '\x42', 
 		'\a', '\x4', '\x2', '\x2', '\x42', '\x44', '\x5', '\n', '\x6', '\x2', 
 		'\x43', '\x41', '\x3', '\x2', '\x2', '\x2', '\x44', 'G', '\x3', '\x2', 
 		'\x2', '\x2', '\x45', '\x43', '\x3', '\x2', '\x2', '\x2', '\x45', '\x46', 

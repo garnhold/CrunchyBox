@@ -16,21 +16,18 @@ namespace Crunchy.Recipe
     
     public partial class TyonSurrogate : TyonElement
 	{
-        private void LoadContextIntermediateString(string input)
-        {
-            SetString(input.ExtractStringValueFromLiteralString());
-        }
-
         public TyonSurrogate(object value, TyonDehydrater dehydrater) : this()
         {
             SetTyonType(TyonType.CreateTyonType(value.GetTypeEX()));
-            SetString(value.ConvertEX<string>());
+            SetTyonValue(dehydrater.CreateTyonValue(typeof(string), value.ToStringEX()));
         }
 
         public object ResolveSystemObject(TyonHydrater hydrater)
         {
-            return GetString().ConvertEX(GetTyonType().GetSystemType(hydrater)) ??
-                GetTyonType().InstanceSystemType(hydrater);
+            return hydrater.HydrateValue(
+                GetTyonType().GetSystemType(hydrater), 
+                GetTyonValue()
+            );
         }
 
         public string Render()
@@ -46,7 +43,7 @@ namespace Crunchy.Recipe
             canvas.AppendToLine("$");
             GetTyonType().Render(canvas);
             canvas.AppendToLine(":");
-            canvas.AppendToLine(GetString().StyleAsDoubleQuoteLiteral());
+            GetTyonValue().Render(canvas);
         }
 
         public override string ToString()

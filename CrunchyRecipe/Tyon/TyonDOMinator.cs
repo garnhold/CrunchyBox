@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: July 09 2020 12:27:35 -07:00
+//Date: December 23 2021 23:58:46 -08:00
 
 using System;
 using System.IO;
@@ -401,7 +401,7 @@ namespace Crunchy.Recipe
 	public partial class TyonSurrogate : TyonElement
 	{
 		[RelatableChild]private TyonType tyon_type;
-		private string @string;
+		[RelatableChild]private TyonValue tyon_value;
 		static public TyonSurrogate DOMify(TyonParser.TyonSurrogateContext context)
 		{
 			if(context != null)
@@ -435,7 +435,7 @@ namespace Crunchy.Recipe
 		public TyonSurrogate()
 		{
 			tyon_type = null;
-			@string = "";
+			tyon_value = null;
 			OnConstructor();
 		}
 		
@@ -443,14 +443,14 @@ namespace Crunchy.Recipe
 		public TyonSurrogate(TyonParser.TyonSurrogateContext context) : this()
 		{
 			SetTyonType(TyonType.DOMify(context.tyonType()));
-			LoadContextIntermediateString(context.STRING().GetTextEX());
+			SetTyonValue(TyonValue.DOMify(context.tyonValue()));
 		}
 		
 		public TyonSurrogate Duplicate()
 		{
 			TyonSurrogate instance = new TyonSurrogate();
 			instance.SetTyonType(GetTyonType().IfNotNull(z => z.Duplicate()));
-			instance.SetString(GetString());
+			instance.SetTyonValue(GetTyonValue().IfNotNull(z => z.Duplicate()));
 			return instance;
 		}
 		
@@ -464,14 +464,14 @@ namespace Crunchy.Recipe
 			return tyon_type;
 		}
 		
-		private void SetString(string input)
+		private void SetTyonValue(TyonValue input)
 		{
-			@string = input;
+			tyon_value = input;
 		}
 		
-		public string GetString()
+		public TyonValue GetTyonValue()
 		{
-			return @string;
+			return tyon_value;
 		}
 		
 	}
