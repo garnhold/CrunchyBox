@@ -27,7 +27,7 @@ namespace Crunchy.Recipe
             return hydrater.HydrateValue(
                 GetTyonType().GetSystemType(hydrater), 
                 GetTyonValue()
-            );
+            ) ?? GetTyonType().InstanceSystemType(hydrater);
         }
 
         public string Render()
