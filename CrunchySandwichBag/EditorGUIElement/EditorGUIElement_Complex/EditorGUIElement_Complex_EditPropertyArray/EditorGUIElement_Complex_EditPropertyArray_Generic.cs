@@ -45,13 +45,12 @@ namespace Crunchy.SandwichBag
                     .LabelWithGUIContent("Length");
 
                 length_strip.AddWeightedChild(0.6f, new EditorGUIElement_EditPropertyArray_ArraySize(property));
+                length_strip.AddWeightedChild(0.4f, new EditorGUIElement_Button("+", delegate () {
+                    property.InsertElement(0);
+                }));
 
                 if (number_elements <= 0)
                 {
-                    length_strip.AddWeightedChild(0.4f, new EditorGUIElement_Button("+", delegate() {
-                        property.InsertElement(0);
-                    }));
-
                     if (array_type.CanBeTreatedAs<UnityEngine.Object>())
                     {
                         length_strip.AddWeightedChild(0.6f, new EditorGUIElement_DropZone("Drag + Drop",
