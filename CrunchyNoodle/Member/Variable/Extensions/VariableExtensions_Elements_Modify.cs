@@ -10,6 +10,21 @@ namespace Crunchy.Noodle
     
     static public class VariableExtensions_Elements_Modify
     {
+        static public bool AddElementToVariable(this Variable item, object target, object value)
+        {
+            if (item.IsVariableArray())
+                return item.SetContents(target, item.GetContents<Array>(target).CopyAppend(value));
+
+            if (item.IsVariableTypicalIEnumerable())
+                return item.GetContents<IEnumerable>(target).InspectAdd(value);
+
+            return false;
+        }
+        static public bool AddElementToVariable(this Variable item, object target)
+        {
+            return item.AddElementToVariable(target, null);
+        }
+
         static public bool InsertElementIntoVariableAt(this Variable item, object target, int index, object value)
         {
             if (item.IsVariableArray())

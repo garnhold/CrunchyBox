@@ -10,6 +10,15 @@ namespace Crunchy.Noodle
     
     static public class VariableInstanceExtensions_Elements_Modify
     {
+        static public bool AddElementToVariableInstance(this VariableInstance item, object value)
+        {
+            return item.GetVariable().AddElementToVariable(item.GetTarget(), value);
+        }
+        static public bool AddElementToVariableInstance(this VariableInstance item)
+        {
+            return item.GetVariable().AddElementToVariable(item.GetTarget());
+        }
+
         static public bool InsertElementIntoVariableInstanceAt(this VariableInstance item, int index, object value)
         {
             return item.GetVariable().InsertElementIntoVariableAt(item.GetTarget(), index, value);
