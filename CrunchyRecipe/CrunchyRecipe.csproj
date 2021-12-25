@@ -116,6 +116,7 @@
     <Compile Include="Tyon\Settings\Default\TyonFieldAttribute.cs" />
     <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Boolean.cs" />
     <Compile Include="Tyon\TyonValue_Boolean.cs" />
+    <Compile Include="Tyon\TypeHandler\Derivations\Internal\TyonTypeHandler_Deconstructable.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

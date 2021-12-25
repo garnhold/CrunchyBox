@@ -25,6 +25,7 @@ namespace Crunchy.Recipe
                 TyonTypeHandler_Real.INSTANCE,
                 TyonTypeHandler_String.INSTANCE,
                 TyonTypeHandler_Enum.INSTANCE,
+                TyonTypeHandler_Deconstructable.INSTANCE,
                 TyonTypeHandler_IEnumerable.INSTANCE,
                 TyonTypeHandler_Type.INSTANCE
             ).Append(

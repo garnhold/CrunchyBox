@@ -483,6 +483,9 @@
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropish.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropGetCompatible.cs" />
     <Compile Include="Filterer\MethodInfo\Filterer_MethodInfo_IsPropSetCompatible.cs" />
+    <Compile Include="DefinitionDeconstructionMethods\DefinitionDeconstructionAttribute.cs" />
+    <Compile Include="DefinitionDeconstructionMethods\Common\DefinitionDeconstructionMethods_RouletteWheel.cs" />
+    <Compile Include="DefinitionDeconstructionMethods\Common\DefinitionDeconstructionMethods_Roulette.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -551,6 +554,8 @@
     <Folder Include="Member\Hook\Hook_Evt\" />
     <Folder Include="Member\Hook\Hook_Operation\" />
     <Folder Include="Extensions\ByteArray\" />
+    <Folder Include="DefinitionDeconstructionMethods\" />
+    <Folder Include="DefinitionDeconstructionMethods\Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
