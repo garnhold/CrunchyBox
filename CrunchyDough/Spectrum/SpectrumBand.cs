@@ -31,5 +31,10 @@ namespace Crunchy.Dough
         {
             return end;
         }
+
+        public float GetWidth()
+        {
+            return end - start;
+        }
     }
 }
