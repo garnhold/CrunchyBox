@@ -86,5 +86,16 @@ namespace Crunchy.Dough
 
             return false;
         }
+
+        static public bool IsGenericTypedClassOf(this Type item, Type parent)
+        {
+            if (item.IsGenericTypedClass())
+            {
+                if (item.GetGenericTypeDefinition() == parent)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
