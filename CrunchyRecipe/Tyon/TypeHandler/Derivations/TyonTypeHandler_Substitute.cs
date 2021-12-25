@@ -15,7 +15,9 @@ namespace Crunchy.Recipe
 
         public override TyonValue Dehydrate(Type field_type, object value, TyonDehydrater dehydrater)
         {
-            return dehydrater.CreateTyonValue(field_type, Substitute(value));
+            value = Substitute(value);
+
+            return dehydrater.CreateTyonValue(value.GetTypeEX(), value);
         }
     }
 }
