@@ -59,5 +59,10 @@ namespace Crunchy.Dough
         {
             return total_weight;
         }
+
+        public IEnumerable<KeyValuePair<T, float>> Deconstruct()
+        {
+            return spectrum.Convert(b => KeyValuePair.New<T, float>(b.GetData(), b.GetWidth()));
+        }
     }
 }
