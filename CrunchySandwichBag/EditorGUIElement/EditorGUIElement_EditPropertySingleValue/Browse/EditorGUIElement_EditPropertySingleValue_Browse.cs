@@ -14,6 +14,7 @@ namespace Crunchy.SandwichBag
         private Predicate<AssetInfo> predicate;
 
         private Rect field_rect;
+        private Rect clear_rect;
         private Rect browse_rect;
 
         protected abstract EditorGUIElement CreateAssetInfoElement(AssetInfo info);
@@ -25,7 +26,8 @@ namespace Crunchy.SandwichBag
 
         protected override Rect LayoutElementInternal(Rect rect)
         {
-            rect.SplitByXRightOffset(60.0f, out field_rect, out browse_rect);
+            rect.SplitByXRightOffset(120.0f, out field_rect, out rect);
+            rect.SplitByXLeftOffset(35.0f, out clear_rect, out browse_rect);
 
             return rect;
         }
@@ -36,6 +38,9 @@ namespace Crunchy.SandwichBag
 
             if (new_value.NotEqualsEX(old_value))
                 GetProperty().SetContentValues(new_value);
+
+            if (GUI.Button(clear_rect, "Clear"))
+                GetProperty().SetContentValues(null);
 
             if (GUI.Button(browse_rect, "Browse"))
             {
