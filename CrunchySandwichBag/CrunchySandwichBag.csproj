@@ -412,10 +412,9 @@
     </Compile>
     <Compile Include="DuplicateMenu\DuplicateMenu.cs" />
     <Compile Include="PrefabMenu\PrefabMenu.cs" />
-    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_TyonDefinition.cs" />
-    <Compile Include="TextAssets\TextAssets_Create.cs" />
-    <Compile Include="TextAssets\TextAssets.cs" />
-    <Compile Include="Tyon\TyonImporter.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_TyonAsset.cs" />
+    <Compile Include="TyonAsset\TyonAssetImporter.cs" />
+    <Compile Include="Assets\Assets_CreateFile.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -511,8 +510,7 @@
     <Folder Include="GamepadActionsSettings\" />
     <Folder Include="DuplicateMenu\" />
     <Folder Include="PrefabMenu\" />
-    <Folder Include="TextAssets\" />
-    <Folder Include="Tyon\" />
+    <Folder Include="TyonAsset\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

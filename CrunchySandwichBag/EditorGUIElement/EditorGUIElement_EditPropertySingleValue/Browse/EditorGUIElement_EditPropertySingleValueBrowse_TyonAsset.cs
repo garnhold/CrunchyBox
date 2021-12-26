@@ -11,10 +11,10 @@ namespace Crunchy.SandwichBag
     using Salt;
     using Sandwich;
     
-    [EditorGUIElementForType(typeof(TyonDefinition), true)]
-    public class EditorGUIElement_EditPropertySingleValue_Browse_TyonDefinition : EditorGUIElement_EditPropertySingleValue_Browse<TextAsset>
+    [EditorGUIElementForType(typeof(TyonAsset), true)]
+    public class EditorGUIElement_EditPropertySingleValue_Browse_TyonDefinition : EditorGUIElement_EditPropertySingleValue_Browse<TyonAsset>
     {
-        protected override TextAsset DrawValueInternal(Rect rect, TextAsset value)
+        protected override TyonAsset DrawValueInternal(Rect rect, TyonAsset value)
         {
             Rect play_rect;
 
@@ -22,7 +22,7 @@ namespace Crunchy.SandwichBag
 
             if (GUI.Button(play_rect, "New"))
             {
-                return TextAssets.CreateTextAsset(
+                return Assets.CreateNewTextFile<TyonAsset>(
                     ("New_" + GetProperty().GetName()).StyleAsClassName(), 
                     "tyon"
                 );
@@ -36,13 +36,12 @@ namespace Crunchy.SandwichBag
             EditorGUIElement_Container_Flow_Line container = new EditorGUIElement_Container_Flow_Line();
 
             container.AddWeightedChild(1.0f, new EditorGUIElement_Button(info.GetName(), delegate() {
-                GetProperty().SetContentValues(info.Resolve<TextAsset>());
+                GetProperty().SetContentValues(info.Resolve<TyonAsset>());
             }));
 
             return container;
         }
 
-        public EditorGUIElement_EditPropertySingleValue_Browse_TyonDefinition(EditProperty_Single_Value p)
-            : base(p, a => a.GetExtension() == "tyon") { }
+        public EditorGUIElement_EditPropertySingleValue_Browse_TyonDefinition(EditProperty_Single_Value p) : base(p) { }
     }
 }
