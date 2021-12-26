@@ -59,7 +59,7 @@ namespace Crunchy.Dough
 
         static public float Bounce(float x)
         {
-            return Ramp(1.0f - 2.0f*x).GetSquared() + 1.0f;
+            return 1.0f - 2.0f*(1.0f - 2.0f*Ramp(x)).GetSquared();
         }
 
         static public float Basic(BasicWaveType type, float x)
