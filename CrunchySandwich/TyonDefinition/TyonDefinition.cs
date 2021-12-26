@@ -10,10 +10,27 @@ namespace Crunchy.Sandwich
     using Salt;
     using Noodle;
     using Recipe;
-    
+
+    [Serializable]
     public class TyonDefinition
     {
         [SerializeField] private TextAsset text;
+
+        static public implicit operator TextAsset(TyonDefinition item)
+        {
+            return item.text;
+        }
+        static public implicit operator TyonDefinition(TextAsset item)
+        {
+            return new TyonDefinition(item);
+        }
+
+        public TyonDefinition(TextAsset t)
+        {
+            text = t;
+        }
+
+        public TyonDefinition() : this(null) { }
 
         public object Instance()
         {
