@@ -414,6 +414,7 @@
     <Compile Include="PrefabMenu\PrefabMenu.cs" />
     <Compile Include="TextAssets\TextAssets_Create.cs" />
     <Compile Include="TextAssets\TextAssets.cs" />
+    <Compile Include="Tyon\TyonImporter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -510,6 +511,7 @@
     <Folder Include="DuplicateMenu\" />
     <Folder Include="PrefabMenu\" />
     <Folder Include="TextAssets\" />
+    <Folder Include="Tyon\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
