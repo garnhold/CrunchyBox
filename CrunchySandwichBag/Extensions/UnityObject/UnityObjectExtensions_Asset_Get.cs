@@ -8,7 +8,9 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;    
+    using Dough;
+    using Sandwich;
+
     static public class UnityObjectExtensions_Asset_Get
     {
         static public bool IsAssetSaved(this UnityEngine.Object item)
@@ -26,12 +28,20 @@ namespace Crunchy.SandwichBag
 
         static public string GetAssetPath(this UnityEngine.Object item)
         {
-            string path = AssetDatabase.GetAssetPath(item);
+            if (item.IsNotNull())
+            {
+                string path = AssetDatabase.GetAssetPath(item);
 
-            if (item.IsAssetFolder())
-                return path + "/";
+                if (path.IsBlank())
+                    path = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(item);
 
-            return path;
+                if (item.IsAssetFolder())
+                    return path + "/";
+
+                return path;
+            }
+
+            return null;
         }
 
         static public string GetAssetGUID(this UnityEngine.Object item)
