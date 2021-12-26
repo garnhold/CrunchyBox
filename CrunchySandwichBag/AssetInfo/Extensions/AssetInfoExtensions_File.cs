@@ -19,6 +19,11 @@ namespace Crunchy.SandwichBag
             return AssetDatabase.GUIDToAssetPath(item.GetGUID());
         }
 
+        static public string GetExtension(this AssetInfo item)
+        {
+            return Filename.GetExtension(item.GetPath());
+        }
+
         static public string GetDirectory(this AssetInfo item)
         {
             return Filename.GetDirectory(item.GetPath());
