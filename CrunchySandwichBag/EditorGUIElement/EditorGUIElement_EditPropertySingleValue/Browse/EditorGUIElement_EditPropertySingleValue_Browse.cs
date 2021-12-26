@@ -11,6 +11,8 @@ namespace Crunchy.SandwichBag
     
     public abstract class EditorGUIElement_EditPropertySingleValue_Browse<T> : EditorGUIElement_EditPropertySingleValue<T> where T : UnityEngine.Object
     {
+        private Predicate<AssetInfo> predicate;
+
         private Rect field_rect;
         private Rect browse_rect;
 
@@ -40,12 +42,18 @@ namespace Crunchy.SandwichBag
                 ModalEditorWindow.OpenWindow("Browse", delegate(EditorGUIElement_Container_Auto container) {
                     container.AddChildren(
                         Project.GetExternalAssetInfos<T>()
+                            .Narrow(predicate)
                             .Convert(a => CreateAssetInfoElement(a))
                     );
                 });
             }
         }
 
-        public EditorGUIElement_EditPropertySingleValue_Browse(EditProperty_Single_Value p) : base(p) { }
+        public EditorGUIElement_EditPropertySingleValue_Browse(EditProperty_Single_Value p, Predicate<AssetInfo> pre) : base(p)
+        {
+            predicate = pre;
+        }
+
+        public EditorGUIElement_EditPropertySingleValue_Browse(EditProperty_Single_Value p) : this(p, a => true) { }
     }
 }
