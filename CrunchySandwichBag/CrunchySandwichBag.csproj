@@ -63,7 +63,7 @@
     <Compile Include="AssetInfo\Extensions\AssetInfoExtensions_Data.cs" />
     <Compile Include="AssetInfo\Extensions\AssetInfoExtensions_Resolve.cs" />
     <Compile Include="AssetInfo\Extensions\AssetInfoExtensions.cs" />
-    <Compile Include="Assets\Assets_Create.cs" />
+    <Compile Include="Assets\Assets_CreateAsset.cs" />
     <Compile Include="Assets\Assets.cs" />
     <Compile Include="CodeGenerator\Extensions\GeneratedCodeTypeExtensions.cs" />
     <Compile Include="CodeGenerator\GeneratedCodeType.cs" />
