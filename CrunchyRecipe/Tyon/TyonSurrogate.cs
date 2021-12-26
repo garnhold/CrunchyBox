@@ -40,7 +40,6 @@ namespace Crunchy.Recipe
 
         public void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine("$");
             GetTyonType().Render(canvas);
             canvas.AppendToLine(":");
             GetTyonValue().Render(canvas);

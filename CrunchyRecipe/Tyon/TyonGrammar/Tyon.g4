@@ -8,7 +8,7 @@ tyonType
     ;
 
 tyonObject : tyonType ('(' '&' tyonAddress ')')? '{' tyonVariable* '}';
-tyonSurrogate : '$' tyonType ':' tyonValue;
+tyonSurrogate : tyonType ':' tyonValue;
 
 tyonArray : tyonType? '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
 
