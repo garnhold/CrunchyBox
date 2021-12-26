@@ -26,9 +26,10 @@ namespace Crunchy.SandwichBag
 
         protected override Rect LayoutElementInternal(Rect rect)
         {
-            rect.SplitByXRightOffset(120.0f, out field_rect, out rect);
-            rect.SplitByXLeftOffset(45.0f, out clear_rect, out browse_rect);
+            rect.SplitByXRightOffset(20.0f, out rect, out clear_rect);
+            rect.SplitByXRightOffset(60.0f, out rect, out browse_rect);
 
+            field_rect = rect;
             return rect;
         }
 
@@ -38,9 +39,6 @@ namespace Crunchy.SandwichBag
 
             if (new_value.NotEqualsEX(old_value))
                 GetProperty().SetContentValues(new_value);
-
-            if (GUI.Button(clear_rect, "Clear"))
-                GetProperty().SetContentValues(null);
 
             if (GUI.Button(browse_rect, "Browse"))
             {
@@ -52,6 +50,9 @@ namespace Crunchy.SandwichBag
                     );
                 });
             }
+
+            if (GUI.Button(clear_rect, "X"))
+                GetProperty().SetContentValues(null);
         }
 
         public EditorGUIElement_EditPropertySingleValue_Browse(EditProperty_Single_Value p, Predicate<AssetInfo> pre) : base(p)
