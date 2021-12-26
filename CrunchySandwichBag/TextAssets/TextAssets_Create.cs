@@ -1,8 +1,10 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
@@ -14,11 +16,12 @@ namespace Crunchy.SandwichBag
     {
         static public TextAsset CreateTextAssetWithFilenameAndContents(string filename, string contents)
         {
-            TextAsset asset = new TextAsset(contents);
+            File.WriteAllText(filename, contents);
 
-            asset.SaveNewAsset(filename);
-            asset.FocusAsset();
-            return asset;
+            AssetDatabase.ImportAsset(filename);
+            AssetDatabase.SaveAssets();
+
+            return AssetDatabase.LoadAssetAtPath<TextAsset>(filename);
         }
 
         static public TextAsset CreateTextAssetWithFilename(string filename)
