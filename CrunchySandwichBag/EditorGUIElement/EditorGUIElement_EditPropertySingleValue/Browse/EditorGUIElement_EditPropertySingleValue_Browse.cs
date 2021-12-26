@@ -27,7 +27,7 @@ namespace Crunchy.SandwichBag
         protected override Rect LayoutElementInternal(Rect rect)
         {
             rect.SplitByXRightOffset(120.0f, out field_rect, out rect);
-            rect.SplitByXLeftOffset(35.0f, out clear_rect, out browse_rect);
+            rect.SplitByXLeftOffset(45.0f, out clear_rect, out browse_rect);
 
             return rect;
         }
