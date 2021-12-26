@@ -23,7 +23,7 @@ namespace Crunchy.SandwichBag
             if (GUI.Button(play_rect, "New"))
             {
                 return TextAssets.CreateTextAsset(
-                    ("New" + GetProperty().GetName()).StyleAsClassName(), 
+                    ("New_" + GetProperty().GetName()).StyleAsClassName(), 
                     "tyon"
                 );
             }
