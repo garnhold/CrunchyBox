@@ -57,6 +57,11 @@ namespace Crunchy.Dough
             return SkewTriangle(x, 0.5f);
         }
 
+        static public float Bounce(float x)
+        {
+            return Ramp(1.0f - 2.0f*x).GetSquared() + 1.0f;
+        }
+
         static public float Basic(BasicWaveType type, float x)
         {
             switch (type)
@@ -68,6 +73,7 @@ namespace Crunchy.Dough
                 case BasicWaveType.ReverseSaw: return Wave.ReverseSaw(x);
                 case BasicWaveType.Square: return Wave.Square(x);
                 case BasicWaveType.Triangle: return Wave.Triangle(x);
+                case BasicWaveType.Bounce: return Wave.Bounce(x);
             }
 
             throw new UnaccountedBranchException("type", type);

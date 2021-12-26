@@ -12,6 +12,7 @@ namespace Crunchy.Dough
         Saw,
         ReverseSaw,
         Square,
-        Triangle
+        Triangle,
+        Bounce
     }
 }
