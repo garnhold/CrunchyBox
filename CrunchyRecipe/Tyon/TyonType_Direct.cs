@@ -18,11 +18,6 @@ namespace Crunchy.Recipe
 	{
         public abstract string GetId();
 
-        public override object InstanceSystemType(TyonHydrater hydrater, object[] arguments)
-        {
-            return GetSystemType(hydrater).IfNotNull(t => t.CreateInstance(arguments));
-        }
-
         public string GetName()
         {
             return GetId().Offset(GetId().FindLastIndexOf(".") + 1);

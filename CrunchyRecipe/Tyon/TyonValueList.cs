@@ -42,7 +42,7 @@ namespace Crunchy.Recipe
             );
         }
 
-        public void PushToVariable(Variable variable, TyonHydrater hydrater)
+        public void PushToLogVariable(Variable variable, TyonHydrater hydrater)
         {
             GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(variable.CreateStrongInstance(i), hydrater));
         }

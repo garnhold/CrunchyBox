@@ -42,11 +42,7 @@ namespace Crunchy.Recipe
                 }
             }
 
-            object value = GetTyonObject().InstanceSystemObject(hydrater);
-
-            hydrater.DeferProcess(delegate() {
-                variable.SetContents(value);
-            });
+            variable.SetContents(GetTyonObject().InstanceSystemObject(hydrater));
         }
 	}
 }

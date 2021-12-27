@@ -28,11 +28,7 @@ namespace Crunchy.Recipe
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            object value = GetTyonSurrogate().ResolveSystemObject(hydrater);
-
-            hydrater.DeferProcess(delegate() {
-                variable.SetContents(value);
-            });
+            variable.SetContents(GetTyonSurrogate().InstanceSystemObject(hydrater));
         }
 	}
 	

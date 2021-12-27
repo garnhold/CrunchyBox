@@ -22,12 +22,12 @@ namespace Crunchy.Recipe
             SetTyonValue(new TyonValue_String(value, dehydrater));
         }
 
-        public object ResolveSystemObject(TyonHydrater hydrater)
+        public object InstanceSystemObject(TyonHydrater hydrater)
         {
             return hydrater.HydrateValue(
                 GetTyonType().GetSystemType(hydrater), 
                 GetTyonValue()
-            ) ?? GetTyonType().InstanceSystemType(hydrater, Empty.Array<object>());
+            ) ?? GetTyonType().InstanceSystemObject(hydrater);
         }
 
         public string Render()

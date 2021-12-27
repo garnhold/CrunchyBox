@@ -27,12 +27,6 @@ namespace Crunchy.Recipe
             );
         }
 
-        public void PushToSystemObject(object obj, TyonHydrater hydrater)
-        {
-            hydrater.RegisterInternalObject(obj, GetTyonAddress());
-            GetTyonVariables().Process(v => v.PushToSystemObject(obj, hydrater));
-        }
-
         public object InstanceSystemObject(TyonHydrater hydrater)
         {
             object system_object = null;
@@ -41,16 +35,21 @@ namespace Crunchy.Recipe
             {
                 Variable_IndexedLog log = Variable_IndexedLog.New(typeof(object));
 
-                GetTyonValueList().PushToVariable(log, hydrater);
+                GetTyonValueList().PushToLogVariable(log, hydrater);
 
-                system_object = GetTyonType().InstanceSystemType(hydrater, log.GetValues().ToArray());
+                system_object = GetTyonType().InstanceSystemObject(hydrater, log.GetValues().ToArray());
             }
             else
             {
-                system_object = GetTyonType().InstanceSystemType(hydrater, Empty.Array<object>());
+                system_object = GetTyonType().InstanceSystemObject(hydrater);
             }
 
             return system_object.ChainIfNotNull(o => PushToSystemObject(o, hydrater));
+        }
+        public void PushToSystemObject(object obj, TyonHydrater hydrater)
+        {
+            hydrater.RegisterInternalObject(obj, GetTyonAddress());
+            GetTyonVariables().Process(v => v.PushToSystemObject(obj, hydrater));
         }
 
         public string Render()
@@ -78,11 +77,14 @@ namespace Crunchy.Recipe
                 canvas.AppendToLine(")");
             }
 
-            canvas.AppendToLine(" {");
-            canvas.Indent();
-                GetTyonVariables().Process(v => v.Render(canvas));
-            canvas.Dedent();
-            canvas.AppendToNewline("}");
+            if (tyon_variables.IsNotEmpty())
+            {
+                canvas.AppendToLine(" {");
+                canvas.Indent();
+                   GetTyonVariables().Process(v => v.Render(canvas));
+                canvas.Dedent();
+                canvas.AppendToNewline("}");
+            }
         }
 
         public TyonAddress RequestAddress(TyonDehydrater dehydrater)
