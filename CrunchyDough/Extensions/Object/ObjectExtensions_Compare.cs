@@ -16,6 +16,17 @@ namespace Crunchy.Dough
 
             return true;
         }
+        static public bool EqualsAnyEX(this Object item, IEnumerable<Object> others)
+        {
+            if (others.Has(item))
+                return true;
+
+            return false;
+        }
+        static public bool EqualsAnyEX(this Object item, params Object[] others)
+        {
+            return item.EqualsAnyEX((IEnumerable<Object>)others);
+        }
 
         static public bool NotEqualsEX(this Object item, Object obj)
         {
