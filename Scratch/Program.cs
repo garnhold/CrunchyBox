@@ -11,6 +11,7 @@ namespace Scratch
     {
         [TyonField] public RouletteWheel<string> wheel;
         [TyonField] public List<KeyValuePair<string, float>> stuff;
+        [TyonField] public VectorF2 vec;
 
         public Poop()
         {
@@ -28,9 +29,13 @@ namespace Scratch
                 KeyValuePair.New("hello hahaha", 1.0f)
             );
 
-            p.wheel.GetRoulette().Deconstruct().Process(r => Console.WriteLine(r.Key));
+            p.stuff = new List<KeyValuePair<string, float>>(new KeyValuePair<string, float>[] {
+                KeyValuePair.New<string, float>("eeee", 12),
+                KeyValuePair.New("helleeeeee", 321.0f)
+            });
 
             //string tyon = TyonSettings_General.INSTANCE.Serialize(p);
+
             string tyon = @"
 Scratch.Poop {
     wheel = [
@@ -38,6 +43,7 @@ Scratch.Poop {
             System.Collections.Generic.KeyValuePair<System.String,System.Single>(""hello h haha"", 1)
     ];
     stuff = null;
+    vec = VectorF2(10.03f, 4);
 }
 
             ";

@@ -14,8 +14,13 @@ tyonArray : tyonType? '[' tyonValueList? ']';
 tyonValueList : /*group:{*/ tyonValue (',' tyonValue)* /*group:}*/;
 
 tyonValue
-    : INTEGER # tyonValue_Integer
-    | REAL # tyonValue_Real
+    : INT # tyonValue_Int
+    | LONG # tyonValue_Long
+
+    | FLOAT # tyonValue_Float
+    | DOUBLE # tyonValue_Double
+    | DECIMAL # tyonValue_Decimal
+
     | BOOL # tyonValue_Boolean
     | STRING /*info: custom_load_context*/ # tyonValue_String
 
@@ -34,17 +39,22 @@ tyonValue
 tyonAddress
     : ID # tyonAddress_Identifier
 
-    | INTEGER # tyonAddress_Integer
+    | INT # tyonAddress_Int
     | STRING /*info: custom_load_context*/ # tyonAddress_String
     ;
 
 tyonVariable : ID '=' tyonValue ';';
 
+INT /*info: type=>int*/ : ('-'|'+')? [0-9]+;
+LONG /*info: type=>long*/ : ('-'|'+')? [0-9]+ ('L' | 'l');
 
-REAL /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ '.' [0-9]+;
-INTEGER /*info: type=>long*/ : ('-'|'+')? [0-9]+;
-STRING : '"' ('\\"'|.)*? '"';
+FLOAT /*info: type=>float*/ : ('-'|'+')? [0-9]+ ('.' [0-9]+)? ('F' | 'f');
+DOUBLE /*info: type=>double*/ : ('-'|'+')? [0-9]+ '.' [0-9]+;
+DECIMAL /*info: type=>decimal*/ : ('-'|'+')? [0-9]+ ('.' [0-9]+)? ('M' | 'm');
+
 BOOL /*info: type=>bool*/ : ('true' | 'false');
+STRING : '"' ('\\"'|.)*? '"';
+
 ID : [A-Za-z_][A-Za-z0-9_.]*;
 
 WHITESPACE : [ \r\n\t]+ -> skip;

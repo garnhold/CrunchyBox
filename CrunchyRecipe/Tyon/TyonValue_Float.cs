@@ -2,34 +2,34 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: August 31 2019 21:14:23 -07:00
+//Date: December 27 2021 1:49:43 -08:00
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using Crunchy.Dough;
+using Crunchy.Salt;
+using Crunchy.Noodle;
+
 namespace Crunchy.Recipe
 {
-    using Dough;
-    using Salt;
-    using Noodle;
-    
-    public partial class TyonValue_Real : TyonValue
+	public partial class TyonValue_Float : TyonValue
 	{
-        public TyonValue_Real(object value, TyonDehydrater dehydrater) : this()
+        public TyonValue_Float(object value, TyonDehydrater dehydrater) : this()
         {
-            SetReal(value.ConvertEX<decimal>());
+            SetFloat(value.ConvertEX<float>());
         }
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetReal().ToString());
+            canvas.AppendToLine(GetFloat().StyleAsLiteral());
         }
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            variable.SetContents(GetReal());
+            variable.SetContents(GetFloat());
         }
-	}
+    }
 	
 }

@@ -20,9 +20,16 @@ namespace Crunchy.Recipe
         public TyonSettings(IEnumerable<TyonTypeHandler> t, IEnumerable<TyonDesignatedVariableProvider> v)
         {
             type_handlers = t.Prepend(
-                TyonTypeHandler_Integer.INSTANCE,
+                TyonTypeHandler_Byte.INSTANCE,
+                TyonTypeHandler_Short.INSTANCE,
+                TyonTypeHandler_UShort.INSTANCE,
+                TyonTypeHandler_Int.INSTANCE,
+                TyonTypeHandler_UInt.INSTANCE,
+                TyonTypeHandler_Long.INSTANCE,
                 TyonTypeHandler_Boolean.INSTANCE,
-                TyonTypeHandler_Real.INSTANCE,
+                TyonTypeHandler_Float.INSTANCE,
+                TyonTypeHandler_Double.INSTANCE,
+                TyonTypeHandler_Decimal.INSTANCE,
                 TyonTypeHandler_String.INSTANCE,
                 TyonTypeHandler_Enum.INSTANCE,
                 TyonTypeHandler_Deconstructable.INSTANCE,

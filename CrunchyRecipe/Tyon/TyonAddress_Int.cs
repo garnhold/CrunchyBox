@@ -2,28 +2,28 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: February 28 2019 23:41:22 -08:00
+//Date: December 27 2021 1:49:43 -08:00
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using Crunchy.Dough;
+using Crunchy.Salt;
+using Crunchy.Noodle;
+
 namespace Crunchy.Recipe
 {
-    using Dough;
-    using Salt;
-    using Noodle;
-    
-    public partial class TyonAddress_Integer : TyonAddress
+	public partial class TyonAddress_Int : TyonAddress
 	{
-        public TyonAddress_Integer(long n) : this()
+        public TyonAddress_Int(int n) : this()
         {
-            SetInteger(n);
+            SetInt(n);
         }
 
         public override void Render(TextDocumentCanvas canvas)
         {
-            canvas.AppendToLine(GetInteger().ToString());
+            canvas.AppendToLine(GetInt().StyleAsLiteral());
         }
 
         public override int GetHashCode()
@@ -32,24 +32,24 @@ namespace Crunchy.Recipe
             {
                 int hash = 17;
 
-                hash = hash * 23 + GetInteger().GetHashCode();
-                hash = hash * 23 + typeof(TyonValue_Integer).GetHashCode();
+                hash = hash * 23 + GetInt().GetHashCode();
+                hash = hash * 23 + typeof(int).GetHashCode();
                 return hash;
             }
         }
 
         public override bool Equals(object obj)
         {
-            TyonAddress_Integer cast;
+            TyonAddress_Int cast;
 
-            if (obj.Convert<TyonAddress_Integer>(out cast))
+            if (obj.Convert<TyonAddress_Int>(out cast))
             {
-                if (cast.GetInteger().EqualsEX(GetInteger()))
+                if (cast.GetInt().EqualsEX(GetInt()))
                     return true;
             }
 
             return false;
         }
-	}
+    }
 	
 }

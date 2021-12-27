@@ -13,7 +13,7 @@ namespace Crunchy.Recipe
 	{
         private TyonSettings settings;
 
-        private long next_external_address;
+        private int next_external_address;
         private BidirectionalDictionary<TyonAddress, object> external_address_to_objects;
 
         public TyonContext(TyonSettings s)
@@ -71,7 +71,7 @@ namespace Crunchy.Recipe
 
             if (external_address_to_objects.TryGetValueByRight(obj, out address) == false)
             {
-                address = new TyonAddress_Integer(next_external_address++);
+                address = new TyonAddress_Int(next_external_address++);
                 external_address_to_objects.Add(address, obj);
             }
 

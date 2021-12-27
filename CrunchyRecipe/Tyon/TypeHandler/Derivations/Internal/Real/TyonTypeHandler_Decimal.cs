@@ -9,15 +9,15 @@ namespace Crunchy.Recipe
     using Salt;
     using Noodle;
     
-    public class TyonTypeHandler_Boolean : TyonTypeHandler_ExplicitType<bool>
+    public class TyonTypeHandler_Decimal : TyonTypeHandler_ExplicitType<decimal>
     {
-        static public readonly TyonTypeHandler_Boolean INSTANCE = new TyonTypeHandler_Boolean();
+        static public readonly TyonTypeHandler_Decimal INSTANCE = new TyonTypeHandler_Decimal();
 
-        private TyonTypeHandler_Boolean() { }
+        private TyonTypeHandler_Decimal() { }
 
         public override TyonValue Dehydrate(Type field_type, object value, TyonDehydrater dehydrater)
         {
-            return new TyonValue_Boolean(value, dehydrater);
+            return new TyonValue_Decimal(value, dehydrater);
         }
     }
 }

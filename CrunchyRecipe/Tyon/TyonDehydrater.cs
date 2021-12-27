@@ -11,7 +11,7 @@ namespace Crunchy.Recipe
     
     public class TyonDehydrater
 	{
-        private long next_internal_address;
+        private int next_internal_address;
         private Dictionary<object, TyonAddressable> object_to_tyon_addressable;
 
         private TyonContext context;
@@ -84,7 +84,7 @@ namespace Crunchy.Recipe
 
         public TyonAddress GetNewInternalAddress()
         {
-            return new TyonAddress_Integer(next_internal_address++);
+            return new TyonAddress_Int(next_internal_address++);
         }
 
         public IEnumerable<Variable> GetDesignatedVariables(Type type)

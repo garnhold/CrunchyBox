@@ -9,15 +9,15 @@ namespace Crunchy.Recipe
     using Salt;
     using Noodle;
     
-    public class TyonTypeHandler_Boolean : TyonTypeHandler_ExplicitType<bool>
+    public class TyonTypeHandler_UShort : TyonTypeHandler_ExplicitType<ushort>
     {
-        static public readonly TyonTypeHandler_Boolean INSTANCE = new TyonTypeHandler_Boolean();
+        static public readonly TyonTypeHandler_UShort INSTANCE = new TyonTypeHandler_UShort();
 
-        private TyonTypeHandler_Boolean() { }
+        private TyonTypeHandler_UShort() { }
 
         public override TyonValue Dehydrate(Type field_type, object value, TyonDehydrater dehydrater)
         {
-            return new TyonValue_Boolean(value, dehydrater);
+            return new TyonValue_Int(value, dehydrater);
         }
     }
 }

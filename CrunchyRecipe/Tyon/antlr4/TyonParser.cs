@@ -37,8 +37,8 @@ public partial class TyonParser : Parser {
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, REAL=17, 
-		INTEGER=18, STRING=19, BOOL=20, ID=21, WHITESPACE=22;
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, INT=17, 
+		LONG=18, FLOAT=19, DOUBLE=20, DECIMAL=21, BOOL=22, STRING=23, ID=24, WHITESPACE=25;
 	public const int
 		RULE_tyonType = 0, RULE_tyonObject = 1, RULE_tyonSurrogate = 2, RULE_tyonArray = 3, 
 		RULE_tyonValueList = 4, RULE_tyonValue = 5, RULE_tyonAddress = 6, RULE_tyonVariable = 7;
@@ -53,8 +53,8 @@ public partial class TyonParser : Parser {
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, "REAL", "INTEGER", "STRING", "BOOL", "ID", 
-		"WHITESPACE"
+		null, null, null, null, null, "INT", "LONG", "FLOAT", "DOUBLE", "DECIMAL", 
+		"BOOL", "STRING", "ID", "WHITESPACE"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -284,7 +284,7 @@ public partial class TyonParser : Parser {
 				State = 47;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__5) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << REAL) | (1L << INTEGER) | (1L << STRING) | (1L << BOOL) | (1L << ID))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__5) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << DECIMAL) | (1L << BOOL) | (1L << STRING) | (1L << ID))) != 0)) {
 					{
 					State = 46; tyonValueList();
 					}
@@ -412,7 +412,7 @@ public partial class TyonParser : Parser {
 			State = 71;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__5) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << REAL) | (1L << INTEGER) | (1L << STRING) | (1L << BOOL) | (1L << ID))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__5) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << DECIMAL) | (1L << BOOL) | (1L << STRING) | (1L << ID))) != 0)) {
 				{
 				State = 70; tyonValueList();
 				}
@@ -499,17 +499,6 @@ public partial class TyonParser : Parser {
 			base.CopyFrom(context);
 		}
 	}
-	public partial class TyonValue_InternalAddressContext : TyonValueContext {
-		public TyonAddressContext tyonAddress() {
-			return GetRuleContext<TyonAddressContext>(0);
-		}
-		public TyonValue_InternalAddressContext(TyonValueContext context) { CopyFrom(context); }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTyonValue_InternalAddress(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
 	public partial class TyonValue_ExternalAddressContext : TyonValueContext {
 		public TyonAddressContext tyonAddress() {
 			return GetRuleContext<TyonAddressContext>(0);
@@ -532,12 +521,52 @@ public partial class TyonParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class TyonValue_RealContext : TyonValueContext {
-		public ITerminalNode REAL() { return GetToken(TyonParser.REAL, 0); }
-		public TyonValue_RealContext(TyonValueContext context) { CopyFrom(context); }
+	public partial class TyonValue_BooleanContext : TyonValueContext {
+		public ITerminalNode BOOL() { return GetToken(TyonParser.BOOL, 0); }
+		public TyonValue_BooleanContext(TyonValueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Real(this);
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Boolean(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class TyonValue_TypeContext : TyonValueContext {
+		public TyonTypeContext tyonType() {
+			return GetRuleContext<TyonTypeContext>(0);
+		}
+		public TyonValue_TypeContext(TyonValueContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Type(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class TyonValue_LongContext : TyonValueContext {
+		public ITerminalNode LONG() { return GetToken(TyonParser.LONG, 0); }
+		public TyonValue_LongContext(TyonValueContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Long(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class TyonValue_DecimalContext : TyonValueContext {
+		public ITerminalNode DECIMAL() { return GetToken(TyonParser.DECIMAL, 0); }
+		public TyonValue_DecimalContext(TyonValueContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Decimal(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class TyonValue_InternalAddressContext : TyonValueContext {
+		public TyonAddressContext tyonAddress() {
+			return GetRuleContext<TyonAddressContext>(0);
+		}
+		public TyonValue_InternalAddressContext(TyonValueContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_InternalAddress(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -563,32 +592,21 @@ public partial class TyonParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class TyonValue_IntegerContext : TyonValueContext {
-		public ITerminalNode INTEGER() { return GetToken(TyonParser.INTEGER, 0); }
-		public TyonValue_IntegerContext(TyonValueContext context) { CopyFrom(context); }
+	public partial class TyonValue_IntContext : TyonValueContext {
+		public ITerminalNode INT() { return GetToken(TyonParser.INT, 0); }
+		public TyonValue_IntContext(TyonValueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Integer(this);
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Int(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class TyonValue_BooleanContext : TyonValueContext {
-		public ITerminalNode BOOL() { return GetToken(TyonParser.BOOL, 0); }
-		public TyonValue_BooleanContext(TyonValueContext context) { CopyFrom(context); }
+	public partial class TyonValue_DoubleContext : TyonValueContext {
+		public ITerminalNode DOUBLE() { return GetToken(TyonParser.DOUBLE, 0); }
+		public TyonValue_DoubleContext(TyonValueContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Boolean(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class TyonValue_TypeContext : TyonValueContext {
-		public TyonTypeContext tyonType() {
-			return GetRuleContext<TyonTypeContext>(0);
-		}
-		public TyonValue_TypeContext(TyonValueContext context) { CopyFrom(context); }
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Type(this);
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Double(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -597,6 +615,15 @@ public partial class TyonParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Null(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class TyonValue_FloatContext : TyonValueContext {
+		public ITerminalNode FLOAT() { return GetToken(TyonParser.FLOAT, 0); }
+		public TyonValue_FloatContext(TyonValueContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTyonValue_Float(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -615,89 +642,110 @@ public partial class TyonParser : Parser {
 		TyonValueContext _localctx = new TyonValueContext(Context, State);
 		EnterRule(_localctx, 10, RULE_tyonValue);
 		try {
-			State = 100;
+			State = 103;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
 			case 1:
-				_localctx = new TyonValue_IntegerContext(_localctx);
+				_localctx = new TyonValue_IntContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 83; Match(INTEGER);
+				State = 83; Match(INT);
 				}
 				break;
 			case 2:
-				_localctx = new TyonValue_RealContext(_localctx);
+				_localctx = new TyonValue_LongContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 84; Match(REAL);
+				State = 84; Match(LONG);
 				}
 				break;
 			case 3:
-				_localctx = new TyonValue_BooleanContext(_localctx);
+				_localctx = new TyonValue_FloatContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 85; Match(BOOL);
+				State = 85; Match(FLOAT);
 				}
 				break;
 			case 4:
-				_localctx = new TyonValue_StringContext(_localctx);
+				_localctx = new TyonValue_DoubleContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 86; Match(STRING);
+				State = 86; Match(DOUBLE);
 				}
 				break;
 			case 5:
-				_localctx = new TyonValue_NullContext(_localctx);
+				_localctx = new TyonValue_DecimalContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 87; Match(T__11);
+				State = 87; Match(DECIMAL);
 				}
 				break;
 			case 6:
-				_localctx = new TyonValue_TypeContext(_localctx);
+				_localctx = new TyonValue_BooleanContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 88; Match(T__12);
-				State = 89; Match(T__6);
-				State = 90; tyonType(0);
-				State = 91; Match(T__7);
+				State = 88; Match(BOOL);
 				}
 				break;
 			case 7:
-				_localctx = new TyonValue_InternalAddressContext(_localctx);
+				_localctx = new TyonValue_StringContext(_localctx);
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 93; Match(T__5);
-				State = 94; tyonAddress();
+				State = 89; Match(STRING);
 				}
 				break;
 			case 8:
-				_localctx = new TyonValue_ExternalAddressContext(_localctx);
+				_localctx = new TyonValue_NullContext(_localctx);
 				EnterOuterAlt(_localctx, 8);
 				{
-				State = 95; Match(T__13);
-				State = 96; tyonAddress();
+				State = 90; Match(T__11);
 				}
 				break;
 			case 9:
-				_localctx = new TyonValue_ObjectContext(_localctx);
+				_localctx = new TyonValue_TypeContext(_localctx);
 				EnterOuterAlt(_localctx, 9);
 				{
-				State = 97; tyonObject();
+				State = 91; Match(T__12);
+				State = 92; Match(T__6);
+				State = 93; tyonType(0);
+				State = 94; Match(T__7);
 				}
 				break;
 			case 10:
-				_localctx = new TyonValue_SurrogateContext(_localctx);
+				_localctx = new TyonValue_InternalAddressContext(_localctx);
 				EnterOuterAlt(_localctx, 10);
 				{
-				State = 98; tyonSurrogate();
+				State = 96; Match(T__5);
+				State = 97; tyonAddress();
 				}
 				break;
 			case 11:
-				_localctx = new TyonValue_ArrayContext(_localctx);
+				_localctx = new TyonValue_ExternalAddressContext(_localctx);
 				EnterOuterAlt(_localctx, 11);
 				{
-				State = 99; tyonArray();
+				State = 98; Match(T__13);
+				State = 99; tyonAddress();
+				}
+				break;
+			case 12:
+				_localctx = new TyonValue_ObjectContext(_localctx);
+				EnterOuterAlt(_localctx, 12);
+				{
+				State = 100; tyonObject();
+				}
+				break;
+			case 13:
+				_localctx = new TyonValue_SurrogateContext(_localctx);
+				EnterOuterAlt(_localctx, 13);
+				{
+				State = 101; tyonSurrogate();
+				}
+				break;
+			case 14:
+				_localctx = new TyonValue_ArrayContext(_localctx);
+				EnterOuterAlt(_localctx, 14);
+				{
+				State = 102; tyonArray();
 				}
 				break;
 			}
@@ -734,12 +782,12 @@ public partial class TyonParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class TyonAddress_IntegerContext : TyonAddressContext {
-		public ITerminalNode INTEGER() { return GetToken(TyonParser.INTEGER, 0); }
-		public TyonAddress_IntegerContext(TyonAddressContext context) { CopyFrom(context); }
+	public partial class TyonAddress_IntContext : TyonAddressContext {
+		public ITerminalNode INT() { return GetToken(TyonParser.INT, 0); }
+		public TyonAddress_IntContext(TyonAddressContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ITyonVisitor<TResult> typedVisitor = visitor as ITyonVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTyonAddress_Integer(this);
+			if (typedVisitor != null) return typedVisitor.VisitTyonAddress_Int(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -758,28 +806,28 @@ public partial class TyonParser : Parser {
 		TyonAddressContext _localctx = new TyonAddressContext(Context, State);
 		EnterRule(_localctx, 12, RULE_tyonAddress);
 		try {
-			State = 105;
+			State = 108;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case ID:
 				_localctx = new TyonAddress_IdentifierContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 102; Match(ID);
+				State = 105; Match(ID);
 				}
 				break;
-			case INTEGER:
-				_localctx = new TyonAddress_IntegerContext(_localctx);
+			case INT:
+				_localctx = new TyonAddress_IntContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 103; Match(INTEGER);
+				State = 106; Match(INT);
 				}
 				break;
 			case STRING:
 				_localctx = new TyonAddress_StringContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 104; Match(STRING);
+				State = 107; Match(STRING);
 				}
 				break;
 			default:
@@ -821,10 +869,10 @@ public partial class TyonParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 107; Match(ID);
-			State = 108; Match(T__14);
-			State = 109; tyonValue();
-			State = 110; Match(T__15);
+			State = 110; Match(ID);
+			State = 111; Match(T__14);
+			State = 112; tyonValue();
+			State = 113; Match(T__15);
 			}
 		}
 		catch (RecognitionException re) {
@@ -853,7 +901,7 @@ public partial class TyonParser : Parser {
 
 	private static char[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
-		'\x5964', '\x3', '\x18', 's', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
+		'\x5964', '\x3', '\x1B', 'v', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
 		'\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x4', 
 		'\x6', '\t', '\x6', '\x4', '\a', '\t', '\a', '\x4', '\b', '\t', '\b', 
 		'\x4', '\t', '\t', '\t', '\x3', '\x2', '\x3', '\x2', '\x3', '\x2', '\x3', 
@@ -873,81 +921,85 @@ public partial class TyonParser : Parser {
 		'T', '\v', '\x6', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', 
 		'\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', 
 		'\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', 
-		'\x3', '\a', '\x3', '\a', '\x5', '\a', 'g', '\n', '\a', '\x3', '\b', '\x3', 
-		'\b', '\x3', '\b', '\x5', '\b', 'l', '\n', '\b', '\x3', '\t', '\x3', '\t', 
-		'\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x2', '\x3', '\x2', 
-		'\n', '\x2', '\x4', '\x6', '\b', '\n', '\f', '\xE', '\x10', '\x2', '\x2', 
-		'\x2', '\x81', '\x2', ' ', '\x3', '\x2', '\x2', '\x2', '\x4', '*', '\x3', 
-		'\x2', '\x2', '\x2', '\x6', '@', '\x3', '\x2', '\x2', '\x2', '\b', '\x45', 
-		'\x3', '\x2', '\x2', '\x2', '\n', 'M', '\x3', '\x2', '\x2', '\x2', '\f', 
-		'\x66', '\x3', '\x2', '\x2', '\x2', '\xE', 'k', '\x3', '\x2', '\x2', '\x2', 
-		'\x10', 'm', '\x3', '\x2', '\x2', '\x2', '\x12', '\x13', '\b', '\x2', 
-		'\x1', '\x2', '\x13', '!', '\a', '\x17', '\x2', '\x2', '\x14', '\x15', 
-		'\a', '\x17', '\x2', '\x2', '\x15', '\x16', '\a', '\x3', '\x2', '\x2', 
-		'\x16', '\x1B', '\x5', '\x2', '\x2', '\x2', '\x17', '\x18', '\a', '\x4', 
-		'\x2', '\x2', '\x18', '\x1A', '\x5', '\x2', '\x2', '\x2', '\x19', '\x17', 
-		'\x3', '\x2', '\x2', '\x2', '\x1A', '\x1D', '\x3', '\x2', '\x2', '\x2', 
-		'\x1B', '\x19', '\x3', '\x2', '\x2', '\x2', '\x1B', '\x1C', '\x3', '\x2', 
-		'\x2', '\x2', '\x1C', '\x1E', '\x3', '\x2', '\x2', '\x2', '\x1D', '\x1B', 
-		'\x3', '\x2', '\x2', '\x2', '\x1E', '\x1F', '\a', '\x5', '\x2', '\x2', 
-		'\x1F', '!', '\x3', '\x2', '\x2', '\x2', ' ', '\x12', '\x3', '\x2', '\x2', 
-		'\x2', ' ', '\x14', '\x3', '\x2', '\x2', '\x2', '!', '\'', '\x3', '\x2', 
-		'\x2', '\x2', '\"', '#', '\f', '\x3', '\x2', '\x2', '#', '$', '\a', '\x6', 
-		'\x2', '\x2', '$', '&', '\a', '\a', '\x2', '\x2', '%', '\"', '\x3', '\x2', 
-		'\x2', '\x2', '&', ')', '\x3', '\x2', '\x2', '\x2', '\'', '%', '\x3', 
-		'\x2', '\x2', '\x2', '\'', '(', '\x3', '\x2', '\x2', '\x2', '(', '\x3', 
-		'\x3', '\x2', '\x2', '\x2', ')', '\'', '\x3', '\x2', '\x2', '\x2', '*', 
-		'-', '\x5', '\x2', '\x2', '\x2', '+', ',', '\a', '\b', '\x2', '\x2', ',', 
-		'.', '\x5', '\xE', '\b', '\x2', '-', '+', '\x3', '\x2', '\x2', '\x2', 
-		'-', '.', '\x3', '\x2', '\x2', '\x2', '.', '\x34', '\x3', '\x2', '\x2', 
-		'\x2', '/', '\x31', '\a', '\t', '\x2', '\x2', '\x30', '\x32', '\x5', '\n', 
-		'\x6', '\x2', '\x31', '\x30', '\x3', '\x2', '\x2', '\x2', '\x31', '\x32', 
-		'\x3', '\x2', '\x2', '\x2', '\x32', '\x33', '\x3', '\x2', '\x2', '\x2', 
-		'\x33', '\x35', '\a', '\n', '\x2', '\x2', '\x34', '/', '\x3', '\x2', '\x2', 
-		'\x2', '\x34', '\x35', '\x3', '\x2', '\x2', '\x2', '\x35', '>', '\x3', 
-		'\x2', '\x2', '\x2', '\x36', ':', '\a', '\v', '\x2', '\x2', '\x37', '\x39', 
-		'\x5', '\x10', '\t', '\x2', '\x38', '\x37', '\x3', '\x2', '\x2', '\x2', 
-		'\x39', '<', '\x3', '\x2', '\x2', '\x2', ':', '\x38', '\x3', '\x2', '\x2', 
-		'\x2', ':', ';', '\x3', '\x2', '\x2', '\x2', ';', '=', '\x3', '\x2', '\x2', 
-		'\x2', '<', ':', '\x3', '\x2', '\x2', '\x2', '=', '?', '\a', '\f', '\x2', 
-		'\x2', '>', '\x36', '\x3', '\x2', '\x2', '\x2', '>', '?', '\x3', '\x2', 
-		'\x2', '\x2', '?', '\x5', '\x3', '\x2', '\x2', '\x2', '@', '\x41', '\x5', 
-		'\x2', '\x2', '\x2', '\x41', '\x42', '\a', '\r', '\x2', '\x2', '\x42', 
-		'\x43', '\x5', '\f', '\a', '\x2', '\x43', '\a', '\x3', '\x2', '\x2', '\x2', 
-		'\x44', '\x46', '\x5', '\x2', '\x2', '\x2', '\x45', '\x44', '\x3', '\x2', 
-		'\x2', '\x2', '\x45', '\x46', '\x3', '\x2', '\x2', '\x2', '\x46', 'G', 
-		'\x3', '\x2', '\x2', '\x2', 'G', 'I', '\a', '\x6', '\x2', '\x2', 'H', 
-		'J', '\x5', '\n', '\x6', '\x2', 'I', 'H', '\x3', '\x2', '\x2', '\x2', 
-		'I', 'J', '\x3', '\x2', '\x2', '\x2', 'J', 'K', '\x3', '\x2', '\x2', '\x2', 
-		'K', 'L', '\a', '\a', '\x2', '\x2', 'L', '\t', '\x3', '\x2', '\x2', '\x2', 
-		'M', 'R', '\x5', '\f', '\a', '\x2', 'N', 'O', '\a', '\x4', '\x2', '\x2', 
-		'O', 'Q', '\x5', '\f', '\a', '\x2', 'P', 'N', '\x3', '\x2', '\x2', '\x2', 
-		'Q', 'T', '\x3', '\x2', '\x2', '\x2', 'R', 'P', '\x3', '\x2', '\x2', '\x2', 
-		'R', 'S', '\x3', '\x2', '\x2', '\x2', 'S', '\v', '\x3', '\x2', '\x2', 
-		'\x2', 'T', 'R', '\x3', '\x2', '\x2', '\x2', 'U', 'g', '\a', '\x14', '\x2', 
-		'\x2', 'V', 'g', '\a', '\x13', '\x2', '\x2', 'W', 'g', '\a', '\x16', '\x2', 
-		'\x2', 'X', 'g', '\a', '\x15', '\x2', '\x2', 'Y', 'g', '\a', '\xE', '\x2', 
-		'\x2', 'Z', '[', '\a', '\xF', '\x2', '\x2', '[', '\\', '\a', '\t', '\x2', 
-		'\x2', '\\', ']', '\x5', '\x2', '\x2', '\x2', ']', '^', '\a', '\n', '\x2', 
-		'\x2', '^', 'g', '\x3', '\x2', '\x2', '\x2', '_', '`', '\a', '\b', '\x2', 
-		'\x2', '`', 'g', '\x5', '\xE', '\b', '\x2', '\x61', '\x62', '\a', '\x10', 
-		'\x2', '\x2', '\x62', 'g', '\x5', '\xE', '\b', '\x2', '\x63', 'g', '\x5', 
-		'\x4', '\x3', '\x2', '\x64', 'g', '\x5', '\x6', '\x4', '\x2', '\x65', 
-		'g', '\x5', '\b', '\x5', '\x2', '\x66', 'U', '\x3', '\x2', '\x2', '\x2', 
-		'\x66', 'V', '\x3', '\x2', '\x2', '\x2', '\x66', 'W', '\x3', '\x2', '\x2', 
-		'\x2', '\x66', 'X', '\x3', '\x2', '\x2', '\x2', '\x66', 'Y', '\x3', '\x2', 
-		'\x2', '\x2', '\x66', 'Z', '\x3', '\x2', '\x2', '\x2', '\x66', '_', '\x3', 
-		'\x2', '\x2', '\x2', '\x66', '\x61', '\x3', '\x2', '\x2', '\x2', '\x66', 
-		'\x63', '\x3', '\x2', '\x2', '\x2', '\x66', '\x64', '\x3', '\x2', '\x2', 
-		'\x2', '\x66', '\x65', '\x3', '\x2', '\x2', '\x2', 'g', '\r', '\x3', '\x2', 
-		'\x2', '\x2', 'h', 'l', '\a', '\x17', '\x2', '\x2', 'i', 'l', '\a', '\x14', 
-		'\x2', '\x2', 'j', 'l', '\a', '\x15', '\x2', '\x2', 'k', 'h', '\x3', '\x2', 
-		'\x2', '\x2', 'k', 'i', '\x3', '\x2', '\x2', '\x2', 'k', 'j', '\x3', '\x2', 
-		'\x2', '\x2', 'l', '\xF', '\x3', '\x2', '\x2', '\x2', 'm', 'n', '\a', 
-		'\x17', '\x2', '\x2', 'n', 'o', '\a', '\x11', '\x2', '\x2', 'o', 'p', 
-		'\x5', '\f', '\a', '\x2', 'p', 'q', '\a', '\x12', '\x2', '\x2', 'q', '\x11', 
-		'\x3', '\x2', '\x2', '\x2', '\xF', '\x1B', ' ', '\'', '-', '\x31', '\x34', 
-		':', '>', '\x45', 'I', 'R', '\x66', 'k',
+		'\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x3', '\a', '\x5', 
+		'\a', 'j', '\n', '\a', '\x3', '\b', '\x3', '\b', '\x3', '\b', '\x5', '\b', 
+		'o', '\n', '\b', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', '\t', '\x3', 
+		'\t', '\x3', '\t', '\x2', '\x3', '\x2', '\n', '\x2', '\x4', '\x6', '\b', 
+		'\n', '\f', '\xE', '\x10', '\x2', '\x2', '\x2', '\x87', '\x2', ' ', '\x3', 
+		'\x2', '\x2', '\x2', '\x4', '*', '\x3', '\x2', '\x2', '\x2', '\x6', '@', 
+		'\x3', '\x2', '\x2', '\x2', '\b', '\x45', '\x3', '\x2', '\x2', '\x2', 
+		'\n', 'M', '\x3', '\x2', '\x2', '\x2', '\f', 'i', '\x3', '\x2', '\x2', 
+		'\x2', '\xE', 'n', '\x3', '\x2', '\x2', '\x2', '\x10', 'p', '\x3', '\x2', 
+		'\x2', '\x2', '\x12', '\x13', '\b', '\x2', '\x1', '\x2', '\x13', '!', 
+		'\a', '\x1A', '\x2', '\x2', '\x14', '\x15', '\a', '\x1A', '\x2', '\x2', 
+		'\x15', '\x16', '\a', '\x3', '\x2', '\x2', '\x16', '\x1B', '\x5', '\x2', 
+		'\x2', '\x2', '\x17', '\x18', '\a', '\x4', '\x2', '\x2', '\x18', '\x1A', 
+		'\x5', '\x2', '\x2', '\x2', '\x19', '\x17', '\x3', '\x2', '\x2', '\x2', 
+		'\x1A', '\x1D', '\x3', '\x2', '\x2', '\x2', '\x1B', '\x19', '\x3', '\x2', 
+		'\x2', '\x2', '\x1B', '\x1C', '\x3', '\x2', '\x2', '\x2', '\x1C', '\x1E', 
+		'\x3', '\x2', '\x2', '\x2', '\x1D', '\x1B', '\x3', '\x2', '\x2', '\x2', 
+		'\x1E', '\x1F', '\a', '\x5', '\x2', '\x2', '\x1F', '!', '\x3', '\x2', 
+		'\x2', '\x2', ' ', '\x12', '\x3', '\x2', '\x2', '\x2', ' ', '\x14', '\x3', 
+		'\x2', '\x2', '\x2', '!', '\'', '\x3', '\x2', '\x2', '\x2', '\"', '#', 
+		'\f', '\x3', '\x2', '\x2', '#', '$', '\a', '\x6', '\x2', '\x2', '$', '&', 
+		'\a', '\a', '\x2', '\x2', '%', '\"', '\x3', '\x2', '\x2', '\x2', '&', 
+		')', '\x3', '\x2', '\x2', '\x2', '\'', '%', '\x3', '\x2', '\x2', '\x2', 
+		'\'', '(', '\x3', '\x2', '\x2', '\x2', '(', '\x3', '\x3', '\x2', '\x2', 
+		'\x2', ')', '\'', '\x3', '\x2', '\x2', '\x2', '*', '-', '\x5', '\x2', 
+		'\x2', '\x2', '+', ',', '\a', '\b', '\x2', '\x2', ',', '.', '\x5', '\xE', 
+		'\b', '\x2', '-', '+', '\x3', '\x2', '\x2', '\x2', '-', '.', '\x3', '\x2', 
+		'\x2', '\x2', '.', '\x34', '\x3', '\x2', '\x2', '\x2', '/', '\x31', '\a', 
+		'\t', '\x2', '\x2', '\x30', '\x32', '\x5', '\n', '\x6', '\x2', '\x31', 
+		'\x30', '\x3', '\x2', '\x2', '\x2', '\x31', '\x32', '\x3', '\x2', '\x2', 
+		'\x2', '\x32', '\x33', '\x3', '\x2', '\x2', '\x2', '\x33', '\x35', '\a', 
+		'\n', '\x2', '\x2', '\x34', '/', '\x3', '\x2', '\x2', '\x2', '\x34', '\x35', 
+		'\x3', '\x2', '\x2', '\x2', '\x35', '>', '\x3', '\x2', '\x2', '\x2', '\x36', 
+		':', '\a', '\v', '\x2', '\x2', '\x37', '\x39', '\x5', '\x10', '\t', '\x2', 
+		'\x38', '\x37', '\x3', '\x2', '\x2', '\x2', '\x39', '<', '\x3', '\x2', 
+		'\x2', '\x2', ':', '\x38', '\x3', '\x2', '\x2', '\x2', ':', ';', '\x3', 
+		'\x2', '\x2', '\x2', ';', '=', '\x3', '\x2', '\x2', '\x2', '<', ':', '\x3', 
+		'\x2', '\x2', '\x2', '=', '?', '\a', '\f', '\x2', '\x2', '>', '\x36', 
+		'\x3', '\x2', '\x2', '\x2', '>', '?', '\x3', '\x2', '\x2', '\x2', '?', 
+		'\x5', '\x3', '\x2', '\x2', '\x2', '@', '\x41', '\x5', '\x2', '\x2', '\x2', 
+		'\x41', '\x42', '\a', '\r', '\x2', '\x2', '\x42', '\x43', '\x5', '\f', 
+		'\a', '\x2', '\x43', '\a', '\x3', '\x2', '\x2', '\x2', '\x44', '\x46', 
+		'\x5', '\x2', '\x2', '\x2', '\x45', '\x44', '\x3', '\x2', '\x2', '\x2', 
+		'\x45', '\x46', '\x3', '\x2', '\x2', '\x2', '\x46', 'G', '\x3', '\x2', 
+		'\x2', '\x2', 'G', 'I', '\a', '\x6', '\x2', '\x2', 'H', 'J', '\x5', '\n', 
+		'\x6', '\x2', 'I', 'H', '\x3', '\x2', '\x2', '\x2', 'I', 'J', '\x3', '\x2', 
+		'\x2', '\x2', 'J', 'K', '\x3', '\x2', '\x2', '\x2', 'K', 'L', '\a', '\a', 
+		'\x2', '\x2', 'L', '\t', '\x3', '\x2', '\x2', '\x2', 'M', 'R', '\x5', 
+		'\f', '\a', '\x2', 'N', 'O', '\a', '\x4', '\x2', '\x2', 'O', 'Q', '\x5', 
+		'\f', '\a', '\x2', 'P', 'N', '\x3', '\x2', '\x2', '\x2', 'Q', 'T', '\x3', 
+		'\x2', '\x2', '\x2', 'R', 'P', '\x3', '\x2', '\x2', '\x2', 'R', 'S', '\x3', 
+		'\x2', '\x2', '\x2', 'S', '\v', '\x3', '\x2', '\x2', '\x2', 'T', 'R', 
+		'\x3', '\x2', '\x2', '\x2', 'U', 'j', '\a', '\x13', '\x2', '\x2', 'V', 
+		'j', '\a', '\x14', '\x2', '\x2', 'W', 'j', '\a', '\x15', '\x2', '\x2', 
+		'X', 'j', '\a', '\x16', '\x2', '\x2', 'Y', 'j', '\a', '\x17', '\x2', '\x2', 
+		'Z', 'j', '\a', '\x18', '\x2', '\x2', '[', 'j', '\a', '\x19', '\x2', '\x2', 
+		'\\', 'j', '\a', '\xE', '\x2', '\x2', ']', '^', '\a', '\xF', '\x2', '\x2', 
+		'^', '_', '\a', '\t', '\x2', '\x2', '_', '`', '\x5', '\x2', '\x2', '\x2', 
+		'`', '\x61', '\a', '\n', '\x2', '\x2', '\x61', 'j', '\x3', '\x2', '\x2', 
+		'\x2', '\x62', '\x63', '\a', '\b', '\x2', '\x2', '\x63', 'j', '\x5', '\xE', 
+		'\b', '\x2', '\x64', '\x65', '\a', '\x10', '\x2', '\x2', '\x65', 'j', 
+		'\x5', '\xE', '\b', '\x2', '\x66', 'j', '\x5', '\x4', '\x3', '\x2', 'g', 
+		'j', '\x5', '\x6', '\x4', '\x2', 'h', 'j', '\x5', '\b', '\x5', '\x2', 
+		'i', 'U', '\x3', '\x2', '\x2', '\x2', 'i', 'V', '\x3', '\x2', '\x2', '\x2', 
+		'i', 'W', '\x3', '\x2', '\x2', '\x2', 'i', 'X', '\x3', '\x2', '\x2', '\x2', 
+		'i', 'Y', '\x3', '\x2', '\x2', '\x2', 'i', 'Z', '\x3', '\x2', '\x2', '\x2', 
+		'i', '[', '\x3', '\x2', '\x2', '\x2', 'i', '\\', '\x3', '\x2', '\x2', 
+		'\x2', 'i', ']', '\x3', '\x2', '\x2', '\x2', 'i', '\x62', '\x3', '\x2', 
+		'\x2', '\x2', 'i', '\x64', '\x3', '\x2', '\x2', '\x2', 'i', '\x66', '\x3', 
+		'\x2', '\x2', '\x2', 'i', 'g', '\x3', '\x2', '\x2', '\x2', 'i', 'h', '\x3', 
+		'\x2', '\x2', '\x2', 'j', '\r', '\x3', '\x2', '\x2', '\x2', 'k', 'o', 
+		'\a', '\x1A', '\x2', '\x2', 'l', 'o', '\a', '\x13', '\x2', '\x2', 'm', 
+		'o', '\a', '\x19', '\x2', '\x2', 'n', 'k', '\x3', '\x2', '\x2', '\x2', 
+		'n', 'l', '\x3', '\x2', '\x2', '\x2', 'n', 'm', '\x3', '\x2', '\x2', '\x2', 
+		'o', '\xF', '\x3', '\x2', '\x2', '\x2', 'p', 'q', '\a', '\x1A', '\x2', 
+		'\x2', 'q', 'r', '\a', '\x11', '\x2', '\x2', 'r', 's', '\x5', '\f', '\a', 
+		'\x2', 's', 't', '\a', '\x12', '\x2', '\x2', 't', '\x11', '\x3', '\x2', 
+		'\x2', '\x2', '\xF', '\x1B', ' ', '\'', '-', '\x31', '\x34', ':', '>', 
+		'\x45', 'I', 'R', 'i', 'n',
 	};
 
 	public static readonly ATN _ATN =

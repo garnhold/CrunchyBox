@@ -107,7 +107,7 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <return>The visitor result.</return>
 	public virtual Result VisitTyonValueList([NotNull] TyonParser.TyonValueListContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonValue_Integer</c>
+	/// Visit a parse tree produced by the <c>tyonValue_Int</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -116,9 +116,9 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTyonValue_Integer([NotNull] TyonParser.TyonValue_IntegerContext context) { return VisitChildren(context); }
+	public virtual Result VisitTyonValue_Int([NotNull] TyonParser.TyonValue_IntContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonValue_Real</c>
+	/// Visit a parse tree produced by the <c>tyonValue_Long</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -127,7 +127,40 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTyonValue_Real([NotNull] TyonParser.TyonValue_RealContext context) { return VisitChildren(context); }
+	public virtual Result VisitTyonValue_Long([NotNull] TyonParser.TyonValue_LongContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>tyonValue_Float</c>
+	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitTyonValue_Float([NotNull] TyonParser.TyonValue_FloatContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>tyonValue_Double</c>
+	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitTyonValue_Double([NotNull] TyonParser.TyonValue_DoubleContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>tyonValue_Decimal</c>
+	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitTyonValue_Decimal([NotNull] TyonParser.TyonValue_DecimalContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonValue_Boolean</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
@@ -239,7 +272,7 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <return>The visitor result.</return>
 	public virtual Result VisitTyonAddress_Identifier([NotNull] TyonParser.TyonAddress_IdentifierContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonAddress_Integer</c>
+	/// Visit a parse tree produced by the <c>tyonAddress_Int</c>
 	/// labeled alternative in <see cref="TyonParser.tyonAddress"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -248,7 +281,7 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTyonAddress_Integer([NotNull] TyonParser.TyonAddress_IntegerContext context) { return VisitChildren(context); }
+	public virtual Result VisitTyonAddress_Int([NotNull] TyonParser.TyonAddress_IntContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonAddress_String</c>
 	/// labeled alternative in <see cref="TyonParser.tyonAddress"/>.
