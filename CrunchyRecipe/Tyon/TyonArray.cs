@@ -35,6 +35,7 @@ namespace Crunchy.Recipe
             GetTyonType().IfNotNull(t => t.Render(canvas));
             canvas.AppendToLine(" [");
             canvas.Indent();
+                canvas.AppendNewline();
                 GetTyonValueList().IfNotNull(l => l.Render(canvas, true));
             canvas.Dedent();
             canvas.AppendToNewline("]");

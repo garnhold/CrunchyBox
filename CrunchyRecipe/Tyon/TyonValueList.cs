@@ -31,21 +31,15 @@ namespace Crunchy.Recipe
 
         public void Render(TextDocumentCanvas canvas, bool multiline)
         {
-            canvas.Indent();
-
-            if (multiline)
-                canvas.AppendNewline();
-
             GetTyonValues().ProcessWithInterleaving(
                 v => v.Render(canvas), 
                 () => {
-                    canvas.AppendToLine(",");
+                    canvas.AppendToLine(", ");
 
                     if (multiline)
                         canvas.AppendNewline();
                 }
             );
-            canvas.Dedent();
         }
 
         public void PushToVariable(Variable variable, TyonHydrater hydrater)
