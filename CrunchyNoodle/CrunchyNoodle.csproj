@@ -486,6 +486,10 @@
     <Compile Include="DefinitionDeconstructionMethods\DefinitionDeconstructionAttribute.cs" />
     <Compile Include="DefinitionDeconstructionMethods\Common\DefinitionDeconstructionMethods_RouletteWheel.cs" />
     <Compile Include="DefinitionDeconstructionMethods\Common\DefinitionDeconstructionMethods_Roulette.cs" />
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions_InvokeEX.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_InvokeEX.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions.cs" />
+    <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -556,6 +560,8 @@
     <Folder Include="Extensions\ByteArray\" />
     <Folder Include="DefinitionDeconstructionMethods\" />
     <Folder Include="DefinitionDeconstructionMethods\Common\" />
+    <Folder Include="Extensions\ConstructorInfo\" />
+    <Folder Include="Extensions\MethodBase\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
