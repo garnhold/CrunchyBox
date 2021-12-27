@@ -22,5 +22,20 @@ namespace Crunchy.Dough
 
             return false;
         }
+
+        static public string ToDebugString(this Object item)
+        {
+            if (item != null)
+            {
+                Type type = item.GetType();
+
+                if (type.IsString())
+                    return ((string)item).StyleAsDoubleQuoteLiteral();
+
+                return item.ToString();
+            }
+
+            return "null";
+        }
     }
 }
