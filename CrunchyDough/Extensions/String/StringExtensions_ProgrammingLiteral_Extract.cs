@@ -2,10 +2,8 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Crunchy.Salt
+namespace Crunchy.Dough
 {
-    using Dough;
-    
     static public class StringExtensions_ProgrammingLiteral_Extract
     {
         static public string ExtractStringValueFromLiteralString(this string item, string delimiter)

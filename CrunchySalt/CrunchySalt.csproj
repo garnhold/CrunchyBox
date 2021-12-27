@@ -132,9 +132,6 @@
     <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_StyleForDisplay.cs" />
     <Compile Include="Extensions\String\StringExtensions_ProgrammingEntityName_Style.cs" />
     <Compile Include="Extensions\String\StringExtensions_ProgrammingKeyword.cs" />
-    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral.cs" />
-    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Extract.cs" />
-    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Style.cs" />
     <Compile Include="Extensions\String\StringExtensions_Inject_Implicit.cs" />
     <Compile Include="Extensions\String\StringExtensions_Save.cs" />
     <Compile Include="Extensions\String\StringExtensions_Inject_Explicit.cs">

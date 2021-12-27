@@ -1516,6 +1516,9 @@
     <Compile Include="IntegerType\Extensions\IntegerTypeExtensions.cs" />
     <Compile Include="RealType\Extensions\RealTypeExtensions_Parse.cs" />
     <Compile Include="IntegerType\Extensions\IntegerTypeExtensions_Parse.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Extract.cs" />
+    <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Style.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
