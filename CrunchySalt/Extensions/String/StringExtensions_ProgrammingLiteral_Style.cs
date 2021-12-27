@@ -71,6 +71,15 @@ namespace Crunchy.Salt
             return item.ParseDouble().StyleAsLiteral();
         }
 
+        static public string StyleAsLiteral(this decimal item)
+        {
+            return item.ToString() + "m";
+        }
+        static public string StyleAsLiteralDecimal(this string item)
+        {
+            return item.ParseDecimal().StyleAsLiteral();
+        }
+
         static public string StyleAsLiteral(this Enum item)
         {
             return item.GetEnumValueInfo().IfNotNull(i => i.GetEnumType().Name + "." + i.GetName());
