@@ -43,8 +43,8 @@ namespace Crunchy.Recipe
 
             while (index < size)
                 log.CreateStrongInstance(index++);
-
-            GetTyonArray().GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(log.CreateStrongInstance(i), hydrater));
+                
+            GetTyonArray().GetTyonValueList().PushToVariable(log, hydrater);
 
             hydrater.DeferProcess(delegate() {
                 List<object> values = log.GetValues()

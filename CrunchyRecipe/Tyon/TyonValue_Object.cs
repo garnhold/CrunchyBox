@@ -28,7 +28,7 @@ namespace Crunchy.Recipe
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            if (variable.GetVariableType().IsTypicalReferenceType())
+            if (GetTyonObject().AllowsHotloading() && variable.GetVariableType().IsTypicalReferenceType())
             {
                 object current_value = variable.GetContents();
 

@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: December 26 2021 14:38:02 -08:00
+//Date: December 26 2021 19:34:08 -08:00
 
 using System;
 using System.IO;
@@ -284,6 +284,7 @@ namespace Crunchy.Recipe
 	{
 		[RelatableChild]private TyonType tyon_type;
 		[RelatableChild]private TyonAddress tyon_address;
+		[RelatableChild]private TyonValueList tyon_value_list;
 		[RelatableChild]private List<TyonVariable> tyon_variables;
 		static public TyonObject DOMify(TyonParser.TyonObjectContext context)
 		{
@@ -319,6 +320,7 @@ namespace Crunchy.Recipe
 		{
 			tyon_type = null;
 			tyon_address = null;
+			tyon_value_list = null;
 			tyon_variables = new List<TyonVariable>();
 			OnConstructor();
 		}
@@ -328,6 +330,7 @@ namespace Crunchy.Recipe
 		{
 			SetTyonType(TyonType.DOMify(context.tyonType()));
 			SetTyonAddress(TyonAddress.DOMify(context.tyonAddress()));
+			SetTyonValueList(TyonValueList.DOMify(context.tyonValueList()));
 			AddTyonVariables(context.tyonVariable().Convert(c => TyonVariable.DOMify(c)));
 		}
 		
@@ -336,6 +339,7 @@ namespace Crunchy.Recipe
 			TyonObject instance = new TyonObject();
 			instance.SetTyonType(GetTyonType().IfNotNull(z => z.Duplicate()));
 			instance.SetTyonAddress(GetTyonAddress().IfNotNull(z => z.Duplicate()));
+			instance.SetTyonValueList(GetTyonValueList().IfNotNull(z => z.Duplicate()));
 			instance.SetTyonVariables(GetTyonVariables().Convert(i => i.IfNotNull(z => z.Duplicate())));
 			return instance;
 		}
@@ -358,6 +362,16 @@ namespace Crunchy.Recipe
 		public TyonAddress GetTyonAddress()
 		{
 			return tyon_address;
+		}
+		
+		private void SetTyonValueList(TyonValueList input)
+		{
+			tyon_value_list = input;
+		}
+		
+		public TyonValueList GetTyonValueList()
+		{
+			return tyon_value_list;
 		}
 		
 		private void ClearTyonVariables()
@@ -479,7 +493,7 @@ namespace Crunchy.Recipe
 	public partial class TyonArray : TyonElement
 	{
 		[RelatableChild]private TyonType tyon_type;
-		[RelatableChild]private List<TyonValue> tyon_values;
+		[RelatableChild]private TyonValueList tyon_value_list;
 		static public TyonArray DOMify(TyonParser.TyonArrayContext context)
 		{
 			if(context != null)
@@ -513,7 +527,7 @@ namespace Crunchy.Recipe
 		public TyonArray()
 		{
 			tyon_type = null;
-			tyon_values = new List<TyonValue>();
+			tyon_value_list = null;
 			OnConstructor();
 		}
 		
@@ -521,14 +535,14 @@ namespace Crunchy.Recipe
 		public TyonArray(TyonParser.TyonArrayContext context) : this()
 		{
 			SetTyonType(TyonType.DOMify(context.tyonType()));
-			AddTyonValues(context.tyonValue().Convert(c => TyonValue.DOMify(c)));
+			SetTyonValueList(TyonValueList.DOMify(context.tyonValueList()));
 		}
 		
 		public TyonArray Duplicate()
 		{
 			TyonArray instance = new TyonArray();
 			instance.SetTyonType(GetTyonType().IfNotNull(z => z.Duplicate()));
-			instance.SetTyonValues(GetTyonValues().Convert(i => i.IfNotNull(z => z.Duplicate())));
+			instance.SetTyonValueList(GetTyonValueList().IfNotNull(z => z.Duplicate()));
 			return instance;
 		}
 		
@@ -540,6 +554,70 @@ namespace Crunchy.Recipe
 		public TyonType GetTyonType()
 		{
 			return tyon_type;
+		}
+		
+		private void SetTyonValueList(TyonValueList input)
+		{
+			tyon_value_list = input;
+		}
+		
+		public TyonValueList GetTyonValueList()
+		{
+			return tyon_value_list;
+		}
+		
+	}
+	
+	public partial class TyonValueList : TyonElement
+	{
+		[RelatableChild]private List<TyonValue> tyon_values;
+		static public TyonValueList DOMify(TyonParser.TyonValueListContext context)
+		{
+			if(context != null)
+			{
+				return new TyonValueList(context);
+			}
+			
+			return null;
+		}
+		
+		static public TyonValueList DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as TyonParser.TyonValueListContext);
+		}
+		
+		static public TyonValueList DOMify(Stream stream)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(stream).tyonValueList());
+		}
+		
+		static public TyonValueList DOMify(string text)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(text).tyonValueList());
+		}
+		
+		static public TyonValueList DOMifyFile(string filename)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateFileParser(filename).tyonValueList());
+		}
+		
+		public TyonValueList()
+		{
+			tyon_values = new List<TyonValue>();
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public TyonValueList(TyonParser.TyonValueListContext context) : this()
+		{
+			AddTyonValues(context.tyonValue().Convert(c => TyonValue.DOMify(c)));
+		}
+		
+		public TyonValueList Duplicate()
+		{
+			TyonValueList instance = new TyonValueList();
+			instance.SetTyonValues(GetTyonValues().Convert(i => i.IfNotNull(z => z.Duplicate())));
+			return instance;
 		}
 		
 		private void ClearTyonValues()
@@ -1716,6 +1794,11 @@ namespace Crunchy.Recipe
 		public override TyonElement VisitTyonArray(TyonParser.TyonArrayContext context)
 		{
 			return TyonArray.DOMify(context);
+		}
+		
+		public override TyonElement VisitTyonValueList(TyonParser.TyonValueListContext context)
+		{
+			return TyonValueList.DOMify(context);
 		}
 		
 		public override TyonElement VisitTyonValue_Integer(TyonParser.TyonValue_IntegerContext context)

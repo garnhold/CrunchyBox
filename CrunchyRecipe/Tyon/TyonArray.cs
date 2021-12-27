@@ -19,9 +19,7 @@ namespace Crunchy.Recipe
         public TyonArray(Type element_type, object value, TyonDehydrater dehydrater) : this()
         {
             SetTyonType(TyonType.CreateTyonType(element_type));
-            SetTyonValues(
-                value.ToEnumerable<object>().Convert(v => dehydrater.CreateTyonValue(element_type, v))
-            );
+            SetTyonValueList(new TyonValueList(element_type, value.ToEnumerable<object>(), dehydrater));
         }
 
         public string Render()
@@ -37,8 +35,7 @@ namespace Crunchy.Recipe
             GetTyonType().IfNotNull(t => t.Render(canvas));
             canvas.AppendToLine(" [");
             canvas.Indent();
-                canvas.AppendNewline();
-                GetTyonValues().ProcessWithInterleaving(v => v.Render(canvas), () => { canvas.AppendToLine(","); canvas.AppendNewline(); });
+                GetTyonValueList().IfNotNull(l => l.Render(canvas, true));
             canvas.Dedent();
             canvas.AppendToNewline("]");
         }
@@ -60,7 +57,7 @@ namespace Crunchy.Recipe
 
         public int GetNumberTyonValues()
         {
-            return tyon_values.Count;
+            return GetTyonValueList().IfNotNull(l => l.GetNumberTyonValues(), 0);
         }
 
         public Type GetLogSystemType(TyonHydrater hydrater)

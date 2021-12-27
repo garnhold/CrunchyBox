@@ -71,6 +71,12 @@ public interface ITyonVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTyonArray([NotNull] TyonParser.TyonArrayContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="TyonParser.tyonValueList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTyonValueList([NotNull] TyonParser.TyonValueListContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonValue_Integer</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
 	/// </summary>

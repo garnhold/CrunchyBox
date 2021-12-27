@@ -7,10 +7,11 @@ tyonType
     | tyonType '[' ']' # tyonType_Array
     ;
 
-tyonObject : tyonType ('&' tyonAddress)? '{' tyonVariable* '}';
+tyonObject : tyonType ('&' tyonAddress)? ('(' tyonValueList? ')')? ('{' tyonVariable* '}')?;
 tyonSurrogate : tyonType ':' tyonValue;
 
-tyonArray : tyonType? '[' (/*group:{*/ tyonValue (',' tyonValue)* /*group:}*/)? ']';
+tyonArray : tyonType? '[' tyonValueList? ']';
+tyonValueList : /*group:{*/ tyonValue (',' tyonValue)* /*group:}*/;
 
 tyonValue
     : INTEGER # tyonValue_Integer

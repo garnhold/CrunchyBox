@@ -28,7 +28,7 @@ namespace Crunchy.Recipe
         }
 
         public abstract Type GetSystemType(TyonHydrater hydrater);
-        public abstract object InstanceSystemType(TyonHydrater hydrater);
+        public abstract object InstanceSystemType(TyonHydrater hydrater, object[] arguments);
         public abstract void Render(TextDocumentCanvas canvas);
 
         public string Render()

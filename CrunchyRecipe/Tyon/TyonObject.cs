@@ -35,8 +35,22 @@ namespace Crunchy.Recipe
 
         public object InstanceSystemObject(TyonHydrater hydrater)
         {
-            return GetTyonType().InstanceSystemType(hydrater)
-                .ChainIfNotNull(o => PushToSystemObject(o, hydrater));
+            object system_object = null;
+
+            if (GetTyonValueList() != null)
+            {
+                Variable_IndexedLog log = Variable_IndexedLog.New(typeof(object));
+
+                GetTyonValueList().PushToVariable(log, hydrater);
+
+                system_object = GetTyonType().InstanceSystemType(hydrater, log.GetValues().ToArray());
+            }
+            else
+            {
+                system_object = GetTyonType().InstanceSystemType(hydrater, Empty.Array<object>());
+            }
+
+            return system_object.ChainIfNotNull(o => PushToSystemObject(o, hydrater));
         }
 
         public string Render()
@@ -53,8 +67,14 @@ namespace Crunchy.Recipe
 
             if (GetTyonAddress() != null)
             {
-                canvas.AppendToLine("(&");
+                canvas.AppendToLine("&");
                 GetTyonAddress().Render(canvas);
+            }
+
+            if (GetTyonValueList() != null)
+            {
+                canvas.AppendToLine("(");
+                GetTyonValueList().Render(canvas, false);
                 canvas.AppendToLine(")");
             }
 
@@ -71,6 +91,14 @@ namespace Crunchy.Recipe
                 SetTyonAddress(dehydrater.GetNewInternalAddress());
 
             return GetTyonAddress();
+        }
+
+        public bool AllowsHotloading()
+        {
+            if (GetTyonValueList() == null)
+                return true;
+
+            return false;
         }
 
         public Type GetSystemType(TyonHydrater hydrater)

@@ -18,9 +18,9 @@ namespace Crunchy.Recipe
 	{
         public abstract string GetId();
 
-        public override object InstanceSystemType(TyonHydrater hydrater)
+        public override object InstanceSystemType(TyonHydrater hydrater, object[] arguments)
         {
-            return GetSystemType(hydrater).IfNotNull(t => t.CreateInstance());
+            return GetSystemType(hydrater).IfNotNull(t => t.CreateInstance(arguments));
         }
 
         public string GetName()

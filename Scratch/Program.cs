@@ -30,7 +30,17 @@ namespace Scratch
 
             p.wheel.GetRoulette().Deconstruct().Process(r => Console.WriteLine(r.Key));
 
-            string tyon = TyonSettings_General.INSTANCE.Serialize(p);
+            //string tyon = TyonSettings_General.INSTANCE.Serialize(p);
+            string tyon = @"
+Scratch.Poop {
+    wheel = [
+            KeyValuePair<String,Single>(""hello"", 23),
+            System.Collections.Generic.KeyValuePair<System.String,System.Single>(""hello h haha"", 1)
+    ];
+    stuff = null;
+}
+
+            ";
 
             Console.WriteLine(tyon);
 
