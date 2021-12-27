@@ -45,6 +45,11 @@ namespace Crunchy.Recipe
             GetTyonValue().Render(canvas);
         }
 
+        public void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        {
+            variable.SetContents(InstanceSystemObject(hydrater));
+        }
+
         public override string ToString()
         {
             return Render();

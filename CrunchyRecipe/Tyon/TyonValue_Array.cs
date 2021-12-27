@@ -29,30 +29,7 @@ namespace Crunchy.Recipe
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            Type log_type = GetTyonArray().GetLogSystemType(hydrater);
-            Variable_IndexedLog log = Variable_IndexedLog.New(log_type);
-
-            if (variable.GetContents() != null)
-            {
-                int index = 0;
-                foreach (object old_element in variable.GetContents().Convert<IEnumerable>())
-                    log.CreateStrongInstance(index++).SetContents(old_element);
-            }
-                
-            GetTyonArray().GetTyonValueList().PushToLogVariable(log, hydrater);
-
-            hydrater.DeferProcess(delegate() {
-                List<object> values = log.GetValues()
-                    .Truncate(GetTyonArray().GetNumberTyonValues())
-                    .ToList();
-
-                Type final_type = GetTyonArray().IsExplicitlyTyped().ConvertBool(
-                    () => log_type,
-                    () => values.Convert(v => v.GetTypeEX()).GetCommonAncestor()
-                );   
-
-                variable.SetContents(values.ToArrayOfType(final_type));
-            });
+            GetTyonArray().PushToVariable(variable, hydrater);
         }
     }
 

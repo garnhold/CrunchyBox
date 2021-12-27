@@ -28,7 +28,7 @@ namespace Crunchy.Recipe
 
         public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            variable.SetContents(GetTyonSurrogate().InstanceSystemObject(hydrater));
+            GetTyonSurrogate().PushToVariable(variable, hydrater);
         }
 	}
 	

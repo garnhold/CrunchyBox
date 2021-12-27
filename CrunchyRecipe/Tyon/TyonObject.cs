@@ -87,6 +87,25 @@ namespace Crunchy.Recipe
             }
         }
 
+        public void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        {
+            if (AllowsHotloading() && variable.GetVariableType().IsTypicalReferenceType())
+            {
+                object current_value = variable.GetContents();
+
+                if (current_value != null)
+                {
+                    if (GetSystemType(hydrater) == current_value.GetType())
+                    {
+                        PushToSystemObject(current_value, hydrater);
+                        return;
+                    }
+                }
+            }
+
+            variable.SetContents(InstanceSystemObject(hydrater));
+        }
+
         public TyonAddress RequestAddress(TyonDehydrater dehydrater)
         {
             if (GetTyonAddress() == null)

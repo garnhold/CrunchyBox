@@ -41,6 +41,34 @@ namespace Crunchy.Recipe
             canvas.AppendToNewline("]");
         }
 
+        public void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        {
+            Type log_type = GetLogSystemType(hydrater);
+            Variable_IndexedLog log = Variable_IndexedLog.New(log_type);
+
+            if (variable.GetContents() != null)
+            {
+                int index = 0;
+                foreach (object old_element in variable.GetContents().Convert<IEnumerable>())
+                    log.CreateStrongInstance(index++).SetContents(old_element);
+            }
+
+            GetTyonValueList().PushToLogVariable(log, hydrater);
+
+            hydrater.DeferProcess(delegate () {
+                List<object> values = log.GetValues()
+                    .Truncate(GetNumberTyonValues())
+                    .ToList();
+
+                Type final_type = IsExplicitlyTyped().ConvertBool(
+                    () => log_type,
+                    () => values.Convert(v => v.GetTypeEX()).GetCommonAncestor()
+                );
+
+                variable.SetContents(values.ToArrayOfType(final_type));
+            });
+        }
+
         public bool IsExplicitlyTyped()
         {
             if (GetTyonType() != null)
