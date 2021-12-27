@@ -61,7 +61,7 @@ namespace Crunchy.Dough
             }
             catch (Exception exception)
             {
-                throw new Exception("An exception occured during a " + GetId() + " cache calculation for " + parameter, exception);
+                throw new Exception("An exception occured during a " + GetId().ToDebugString() + " cache calculation for " + parameter.ToDebugString(), exception);
             }
         }
 
