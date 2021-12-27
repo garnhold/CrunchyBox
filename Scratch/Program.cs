@@ -52,7 +52,15 @@ Scratch.Poop {
 
             Poop deserialized = (Poop)TyonSettings_General.INSTANCE.Deserialize(tyon, TyonHydrationMode.Strict);
 
-            Console.WriteLine(TyonSettings_General.INSTANCE.Serialize(deserialized));
+            string tyon2 = TyonSettings_General.INSTANCE.Serialize(deserialized);
+
+            Console.WriteLine(tyon2);
+
+            Poop deserialized2 = (Poop)TyonSettings_General.INSTANCE.Deserialize(tyon2, TyonHydrationMode.Strict);
+
+            string tyon3 = TyonSettings_General.INSTANCE.Serialize(deserialized2);
+
+            Console.WriteLine(tyon3);
             Console.ReadLine();
         }
 
