@@ -21,6 +21,11 @@ namespace Crunchy.Recipe
             SetTyonType(TyonType.CreateTyonType(type.GetElementType()));
         }
 
+        public override object InstanceSystemObject(TyonHydrater hydrater, object[] arguments)
+        {
+            return null;
+        }
+
         public override Type GetSystemType(TyonHydrater hydrater)
         {
             return GetTyonType().GetSystemType(hydrater).IfNotNull(t => t.MakeArrayType());
