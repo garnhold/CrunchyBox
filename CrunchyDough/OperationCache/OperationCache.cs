@@ -59,12 +59,9 @@ namespace Crunchy.Dough
             {
                 return operation(parameter);
             }
-            catch (NullReferenceException)
+            catch (Exception exception)
             {
-                if (parameter == null)
-                    return default(T);
-
-                throw;
+                throw new Exception("An exception occured during a " + GetId() + " cache calculation for " + parameter, exception);
             }
         }
 
