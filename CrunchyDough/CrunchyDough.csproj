@@ -1510,6 +1510,12 @@
     <Compile Include="Extensions\String\StringExtensions_Pad.cs" />
     <Compile Include="Extensions\Queue\QueueExtensions_PeekEX.cs" />
     <Compile Include="Extensions\Int\IntExtensions_AbsorbHash.cs" />
+    <Compile Include="RealType\RealType.cs" />
+    <Compile Include="RealType\Extensions\RealTypeExtensions.cs" />
+    <Compile Include="IntegerType\IntegerType.cs" />
+    <Compile Include="IntegerType\Extensions\IntegerTypeExtensions.cs" />
+    <Compile Include="RealType\Extensions\RealTypeExtensions_Parse.cs" />
+    <Compile Include="IntegerType\Extensions\IntegerTypeExtensions_Parse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1740,6 +1746,10 @@
     <Folder Include="Wave\Extensions\" />
     <Folder Include="Predicate\" />
     <Folder Include="Asy\" />
+    <Folder Include="RealType\" />
+    <Folder Include="RealType\Extensions\" />
+    <Folder Include="IntegerType\" />
+    <Folder Include="IntegerType\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
