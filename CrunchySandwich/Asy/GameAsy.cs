@@ -20,7 +20,7 @@ namespace Crunchy.Sandwich
         static public async Task ForAll(IEnumerable<Task> tasks) { await Asy.ForAll(tasks); }
 
         static public async Task<T> ForAny<T>(IEnumerable<Task<T>> tasks) { return await Asy.ForAny(tasks); }
-        static public async Task ForAny(IEnumerable<Task> tasks) { return await Asy.ForAny(tasks); }
+        static public async Task ForAny(IEnumerable<Task> tasks) { await Asy.ForAny(tasks); }
 
         static public async Task ForDuration(Duration duration, TimeType time_type)
         {
