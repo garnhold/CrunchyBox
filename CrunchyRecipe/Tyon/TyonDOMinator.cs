@@ -2,7 +2,7 @@
 //-------------------------------
 //--Generated Code File----------
 //-------------------------------
-//Date: December 27 2021 21:43:30 -08:00
+//Date: December 27 2021 22:01:42 -08:00
 
 using System;
 using System.IO;
@@ -1378,6 +1378,70 @@ namespace Crunchy.Recipe
 		
 	}
 	
+	public partial class TyonValue_Array : TyonValue
+	{
+		[RelatableChild]private TyonArray tyon_array;
+		static public TyonValue_Array DOMify(TyonParser.TyonValue_ArrayContext context)
+		{
+			if(context != null)
+			{
+				return new TyonValue_Array(context);
+			}
+			
+			return null;
+		}
+		
+		static new public TyonValue_Array DOMify(IParseTree parse_tree)
+		{
+			return DOMify(parse_tree as TyonParser.TyonValue_ArrayContext);
+		}
+		
+		static new public TyonValue_Array DOMify(Stream stream)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(stream).tyonValue());
+		}
+		
+		static new public TyonValue_Array DOMify(string text)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateParser(text).tyonValue());
+		}
+		
+		static new public TyonValue_Array DOMifyFile(string filename)
+		{
+			return DOMify(TyonDOMinatorUtilities.CreateFileParser(filename).tyonValue());
+		}
+		
+		public TyonValue_Array()
+		{
+			tyon_array = null;
+			OnConstructor();
+		}
+		
+		partial void OnConstructor();
+		public TyonValue_Array(TyonParser.TyonValue_ArrayContext context) : this()
+		{
+			SetTyonArray(TyonArray.DOMify(context.tyonArray()));
+		}
+		
+		public override TyonValue Duplicate()
+		{
+			TyonValue_Array instance = new TyonValue_Array();
+			instance.SetTyonArray(GetTyonArray().IfNotNull(z => z.Duplicate()));
+			return instance;
+		}
+		
+		private void SetTyonArray(TyonArray input)
+		{
+			tyon_array = input;
+		}
+		
+		public TyonArray GetTyonArray()
+		{
+			return tyon_array;
+		}
+		
+	}
+	
 	public partial class TyonValue_Object : TyonValue
 	{
 		[RelatableChild]private TyonObject tyon_object;
@@ -1502,70 +1566,6 @@ namespace Crunchy.Recipe
 		public TyonSurrogate GetTyonSurrogate()
 		{
 			return tyon_surrogate;
-		}
-		
-	}
-	
-	public partial class TyonValue_Array : TyonValue
-	{
-		[RelatableChild]private TyonArray tyon_array;
-		static public TyonValue_Array DOMify(TyonParser.TyonValue_ArrayContext context)
-		{
-			if(context != null)
-			{
-				return new TyonValue_Array(context);
-			}
-			
-			return null;
-		}
-		
-		static new public TyonValue_Array DOMify(IParseTree parse_tree)
-		{
-			return DOMify(parse_tree as TyonParser.TyonValue_ArrayContext);
-		}
-		
-		static new public TyonValue_Array DOMify(Stream stream)
-		{
-			return DOMify(TyonDOMinatorUtilities.CreateParser(stream).tyonValue());
-		}
-		
-		static new public TyonValue_Array DOMify(string text)
-		{
-			return DOMify(TyonDOMinatorUtilities.CreateParser(text).tyonValue());
-		}
-		
-		static new public TyonValue_Array DOMifyFile(string filename)
-		{
-			return DOMify(TyonDOMinatorUtilities.CreateFileParser(filename).tyonValue());
-		}
-		
-		public TyonValue_Array()
-		{
-			tyon_array = null;
-			OnConstructor();
-		}
-		
-		partial void OnConstructor();
-		public TyonValue_Array(TyonParser.TyonValue_ArrayContext context) : this()
-		{
-			SetTyonArray(TyonArray.DOMify(context.tyonArray()));
-		}
-		
-		public override TyonValue Duplicate()
-		{
-			TyonValue_Array instance = new TyonValue_Array();
-			instance.SetTyonArray(GetTyonArray().IfNotNull(z => z.Duplicate()));
-			return instance;
-		}
-		
-		private void SetTyonArray(TyonArray input)
-		{
-			tyon_array = input;
-		}
-		
-		public TyonArray GetTyonArray()
-		{
-			return tyon_array;
 		}
 		
 	}
@@ -2048,6 +2048,11 @@ namespace Crunchy.Recipe
 			return TyonValue_ExternalAddress.DOMify(context);
 		}
 		
+		public override TyonElement VisitTyonValue_Array(TyonParser.TyonValue_ArrayContext context)
+		{
+			return TyonValue_Array.DOMify(context);
+		}
+		
 		public override TyonElement VisitTyonValue_Object(TyonParser.TyonValue_ObjectContext context)
 		{
 			return TyonValue_Object.DOMify(context);
@@ -2056,11 +2061,6 @@ namespace Crunchy.Recipe
 		public override TyonElement VisitTyonValue_Surrogate(TyonParser.TyonValue_SurrogateContext context)
 		{
 			return TyonValue_Surrogate.DOMify(context);
-		}
-		
-		public override TyonElement VisitTyonValue_Array(TyonParser.TyonValue_ArrayContext context)
-		{
-			return TyonValue_Array.DOMify(context);
 		}
 		
 		public override TyonElement VisitTyonAddress_Identifier(TyonParser.TyonAddress_IdentifierContext context)

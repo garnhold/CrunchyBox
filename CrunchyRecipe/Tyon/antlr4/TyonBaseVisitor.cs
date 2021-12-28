@@ -228,6 +228,17 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <return>The visitor result.</return>
 	public virtual Result VisitTyonValue_ExternalAddress([NotNull] TyonParser.TyonValue_ExternalAddressContext context) { return VisitChildren(context); }
 	/// <summary>
+	/// Visit a parse tree produced by the <c>tyonValue_Array</c>
+	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitTyonValue_Array([NotNull] TyonParser.TyonValue_ArrayContext context) { return VisitChildren(context); }
+	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonValue_Object</c>
 	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
 	/// <para>
@@ -249,17 +260,6 @@ public partial class TyonBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitTyonValue_Surrogate([NotNull] TyonParser.TyonValue_SurrogateContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by the <c>tyonValue_Array</c>
-	/// labeled alternative in <see cref="TyonParser.tyonValue"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitTyonValue_Array([NotNull] TyonParser.TyonValue_ArrayContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>tyonAddress_Identifier</c>
 	/// labeled alternative in <see cref="TyonParser.tyonAddress"/>.
