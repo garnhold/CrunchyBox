@@ -17,29 +17,35 @@ namespace Crunchy.SandwichBag
         protected override Type PullState()
         {
             Type type;
+            EditTarget target = GetProperty().GetContents();
 
-            GetProperty()
-                .GetContents()
-                .ForcePropertyValue("type")
-                .TryGetContentValues<Type>(out type);
+            if (target.IsValid())
+            {
+                target.ForcePropertyValue("type")
+                    .TryGetContentValues<Type>(out type);
 
-            return type;
+                return type;
+            }
+
+            return null;
         }
 
         protected override EditorGUIElement PushState()
         {
             EditTarget target = GetProperty().GetContents();
-
             EditorGUIElement_Container_Flow_Multiline container = new EditorGUIElement_Container_Flow_Multiline();
 
-            container.AddWeightedChild(0.3f, target.ForceProperty("type").CreateEditorGUIElement());
-            container.AddWeightedChild(0.2f, target.ForceProperty("name").CreateEditorGUIElement());
-            container.AddWeightedChild(0.4f, 
-                new EditorGUIElement_Complex_EditPropertySingleValue_TypedObject(
-                    target.ForcePropertyValue("value"),
-                    target.ForcePropertyValue("type")
-                )
-            );
+            if (target.IsValid())
+            {
+                container.AddWeightedChild(0.3f, target.ForceProperty("type").CreateEditorGUIElement());
+                container.AddWeightedChild(0.2f, target.ForceProperty("name").CreateEditorGUIElement());
+                container.AddWeightedChild(0.4f,
+                    new EditorGUIElement_Complex_EditPropertySingleValue_TypedObject(
+                        target.ForcePropertyValue("value"),
+                        target.ForcePropertyValue("type")
+                    )
+                );
+            }
             
             return container;
         }
