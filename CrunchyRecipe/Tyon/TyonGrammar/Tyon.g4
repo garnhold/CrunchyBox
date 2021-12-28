@@ -7,7 +7,7 @@ tyonType
     | tyonType '[' ']' # tyonType_Array
     ;
 
-tyonObject : tyonType ('&' tyonAddress)? ('(' tyonValueList? ')')? '{' tyonVariable* '}';
+tyonObject : tyonType ('&' tyonAddress)? ('(' tyonValueList? ')')? ('{' tyonVariable* '}')?;
 tyonSurrogate : tyonType ':' tyonValue;
 
 tyonArray : tyonType? '[' tyonValueList? ']';

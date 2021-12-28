@@ -77,11 +77,14 @@ namespace Crunchy.Recipe
                 canvas.AppendToLine(")");
             }
 
-            canvas.AppendToLine(" {");
-            canvas.Indent();
-               GetTyonVariables().Process(v => v.Render(canvas));
-            canvas.Dedent();
-            canvas.AppendToNewline("}");
+            if (GetTyonVariables().IsNotEmpty())
+            {
+                canvas.AppendToLine(" {");
+                canvas.Indent();
+                    GetTyonVariables().Process(v => v.Render(canvas));
+                canvas.Dedent();
+                canvas.AppendToNewline("}");
+            }
         }
 
         public void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
