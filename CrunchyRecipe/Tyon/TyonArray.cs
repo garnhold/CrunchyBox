@@ -53,7 +53,7 @@ namespace Crunchy.Recipe
                     log.CreateStrongInstance(index++).SetContents(old_element);
             }
 
-            GetTyonValueList().PushToLogVariable(log, hydrater);
+            GetTyonValueList().IfNotNull(l => l.PushToLogVariable(log, hydrater));
 
             hydrater.DeferProcess(delegate () {
                 List<object> values = log.GetValues()
