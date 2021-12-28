@@ -53,6 +53,7 @@
     <Compile Include="CSTextDocument\TextDocumentNode\TextDocumentNode_Block_Section_Indented_CSBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisAssembly.cs" />
+    <Compile Include="CSHeader\CSHeader_SimpleStatement.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
