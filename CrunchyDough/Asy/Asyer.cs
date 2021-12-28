@@ -68,5 +68,13 @@ namespace Crunchy.Dough
         {
             await ForTemporal(temporal.GetAsTemporalEvent());
         }
+
+        public bool IsRunning()
+        {
+            if (active_sources.IsNotEmpty() || incoming_sources.IsNotEmpty())
+                return true;
+
+            return false;
+        }
     }
 }
