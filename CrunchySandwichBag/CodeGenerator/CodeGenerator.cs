@@ -38,7 +38,7 @@ namespace Crunchy.SandwichBag
 
         static public void GenerateCode(string base_filename, Process<CSTextDocumentBuilder> process, GeneratedCodeType type)
         {
-            CSTextDocument document = new CSTextDocument(new CSHeader_SimpleDated("MMMM dd, yyyy"));
+            CSTextDocument document = new CSTextDocument(new CSHeader_SimpleStatement());
 
             CSTextDocumentBuilder builder = document.CreateCSTextBuilder();
             CSTextDocumentWriter writer = builder.CreateWriterWithVariablePairs();
