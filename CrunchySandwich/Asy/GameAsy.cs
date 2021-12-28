@@ -16,6 +16,9 @@ namespace Crunchy.Sandwich
         static public async Task ForTemporal(TemporalEvent temporal) { await Asy.ForTemporal(temporal); }
         static public async Task ForTemporal(TemporalDuration temporal) { await Asy.ForTemporal(temporal); }
 
+        static public async Task<T[]> ForAll<T>(IEnumerable<Task<T>> tasks) { return await Asy.ForAll(tasks); }
+        static public async Task<T> ForAny<T>(IEnumerable<Task<T>> tasks) { return await Asy.ForAny(tasks); }
+
         static public async Task ForDuration(Duration duration, TimeType time_type)
         {
             await GameAsy.ForTemporal(new GameTimer(duration, time_type).StartAndGet());

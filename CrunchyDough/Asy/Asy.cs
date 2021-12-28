@@ -25,5 +25,14 @@ namespace Crunchy.Dough
         {
             await AsyerManager.GetInstance().GetActiveAsyncer().ForTemporal(temporal);
         }
+
+        static public async Task<T[]> ForAll<T>(IEnumerable<Task<T>> tasks)
+        {
+            return await AsyerManager.GetInstance().GetActiveAsyncer().ForAll(tasks);
+        }
+        static public async Task<T> ForAny<T>(IEnumerable<Task<T>> tasks)
+        {
+            return await AsyerManager.GetInstance().GetActiveAsyncer().ForAny(tasks);
+        }
     }
 }
