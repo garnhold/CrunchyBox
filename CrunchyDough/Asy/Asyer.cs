@@ -83,6 +83,15 @@ namespace Crunchy.Dough
 
             return results.ToArray();
         }
+        public async Task ForAll(IEnumerable<Task> tasks)
+        {
+            foreach (Task task in tasks)
+            {
+                while (task.Status.IsDone() == false)
+                    await ForUpdate();
+            }
+        }
+
         public async Task<T> ForAny<T>(IEnumerable<Task<T>> tasks)
         {
             tasks = tasks.PrepareForMultipass();
@@ -98,6 +107,18 @@ namespace Crunchy.Dough
             }
 
             return default(T);
+        }
+        public async Task ForAny(IEnumerable<Task> tasks)
+        {
+            tasks = tasks.PrepareForMultipass();
+
+            while (tasks.IsNotEmpty())
+            {
+                if (tasks.Has(t => t.Status.IsDone()))
+                    return;
+
+                await ForUpdate();
+            }
         }
 
         public bool IsRunning()
