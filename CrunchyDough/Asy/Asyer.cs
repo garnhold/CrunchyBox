@@ -69,6 +69,37 @@ namespace Crunchy.Dough
             await ForTemporal(temporal.GetAsTemporalEvent());
         }
 
+        public async Task<T[]> ForAll<T>(IEnumerable<Task<T>> tasks)
+        {
+            List<T> results = new List<T>();
+
+            foreach (Task<T> task in tasks)
+            {
+                while (task.Status.IsDone() == false)
+                    await ForUpdate();
+
+                results.Add(task.Result);
+            }
+
+            return results.ToArray();
+        }
+        public async Task<T> ForAny<T>(IEnumerable<Task<T>> tasks)
+        {
+            tasks = tasks.PrepareForMultipass();
+
+            while (tasks.IsNotEmpty())
+            {
+                Task<T> task = tasks.FindFirst(t => t.Status.IsDone());
+
+                if (task != null)
+                    return task.Result;
+
+                await ForUpdate();
+            }
+
+            return default(T);
+        }
+
         public bool IsRunning()
         {
             if (active_sources.IsNotEmpty() || incoming_sources.IsNotEmpty())
