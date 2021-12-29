@@ -23,7 +23,7 @@ namespace Crunchy.Sandwich
 
         static public Vector2 GetWorldPivot(this Sprite item)
         {
-            return item.GetNormalizedPivot().GetComponentMultiply(item.GetWorldSize());
+            return item.GetPixelPivot() * item.GetUnitsPerPixel();
         }
     }
 }
