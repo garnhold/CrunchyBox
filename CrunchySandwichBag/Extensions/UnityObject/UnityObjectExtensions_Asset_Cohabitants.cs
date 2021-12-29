@@ -8,7 +8,8 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;    
+    using Dough;
+
     static public class UnityObjectExtensions_Asset_Cohabitants
     {
         static public IEnumerable<UnityEngine.Object> GetAssetCohabitants(this UnityEngine.Object item)
