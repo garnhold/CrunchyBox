@@ -1212,6 +1212,7 @@
     <Compile Include="Extensions\Rect\RectExtensions_Area.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Bounce.cs" />
     <Compile Include="TyonAsset\TyonAsset.cs" />
+    <Compile Include="Extensions\GUI\GUIExtensions_Point.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
