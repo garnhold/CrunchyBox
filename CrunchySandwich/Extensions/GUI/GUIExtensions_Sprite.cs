@@ -10,16 +10,20 @@ namespace Crunchy.Sandwich
 {
     static public partial class GUIExtensions
     {
-        static public void DrawSprite(Rect rect, Sprite sprite)
+        static public Rect DrawSprite(Rect rect, Sprite sprite)
         {
             if (sprite != null)
             {
+                rect = RectExtensions.CreateCenterRect(rect.center, sprite.GetTextureSize().GetFilledDimension(rect.size));
+
                 GUI.DrawTextureWithTexCoords(
-                    RectExtensions.CreateCenterRect(rect.center, sprite.GetTextureSize().GetFilledDimension(rect.size)),
+                    rect,
                     sprite.texture,
                     sprite.GetNormalizedTextureRect()
                 );
             }
+
+            return rect;
         }
     }
 }
