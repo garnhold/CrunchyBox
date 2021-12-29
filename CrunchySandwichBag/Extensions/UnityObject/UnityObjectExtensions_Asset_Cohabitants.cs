@@ -15,5 +15,11 @@ namespace Crunchy.SandwichBag
         {
             return AssetDatabase.LoadAllAssetsAtPath(item.GetAssetPath());
         }
+
+        static public IEnumerable<T> GetAssetCohabitants<T>(this UnityEngine.Object item) where T : UnityEngine.Object
+        {
+            return item.GetAssetCohabitants()
+                .Convert<T>();
+        }
     }
 }
