@@ -49,6 +49,11 @@ namespace Crunchy.SandwichBag
             return "Assets/InternalAssets/";
         }
 
+        static public string GetAssetExtensionDirectory()
+        {
+            return "Assets/AssetExtensions/";
+        }
+
         static public string GetResourcesDirectory()
         {
             return "Assets/Resources/";
