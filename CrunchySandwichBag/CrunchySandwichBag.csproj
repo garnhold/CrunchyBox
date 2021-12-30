@@ -415,7 +415,9 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_TyonAsset.cs" />
     <Compile Include="TyonAsset\TyonAssetImporter.cs" />
     <Compile Include="Assets\Assets_CreateFile.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Annotation.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Extension.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_LabeledSpritePoint.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_XYControl.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -513,6 +515,7 @@
     <Folder Include="DuplicateMenu\" />
     <Folder Include="PrefabMenu\" />
     <Folder Include="TyonAsset\" />
+    <Folder Include="SpriteAnnotation\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

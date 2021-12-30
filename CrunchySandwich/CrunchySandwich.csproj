@@ -1212,6 +1212,10 @@
     <Compile Include="Extensions\Rect\RectExtensions_Area.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Bounce.cs" />
     <Compile Include="TyonAsset\TyonAsset.cs" />
+    <Compile Include="SpriteAnnotation\SpriteAnnotation.cs" />
+    <Compile Include="SpriteAnnotation\LabeledSpritePoint.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_Annotation.cs" />
+    <Compile Include="Extensions\SpriteRenderer\SpriteRendererExtensions_Annotation.cs" />
     <Compile Include="AssetExtension\AssetExtension.cs" />
     <Compile Include="AssetExtension\AssetExtensionManager.cs" />
     <Compile Include="Extensions\GUI\GUIExtensions_Point.cs" />
@@ -1552,6 +1556,7 @@
     <Folder Include="Extensions\HingeJoint\" />
     <Folder Include="Parallax\" />
     <Folder Include="TyonAsset\" />
+    <Folder Include="SpriteAnnotation\" />
     <Folder Include="AssetExtension\" />
   </ItemGroup>
   <ItemGroup>
