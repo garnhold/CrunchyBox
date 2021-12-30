@@ -16,7 +16,7 @@ namespace Crunchy.Sandwich
 
         static public FloatRange GetHorizontalRange(this Rect item)
         {
-            return new FloatRange(item.xMin, item.yMax);
+            return new FloatRange(item.xMin, item.xMax);
         }
 
         static public FloatRange GetVerticalRange(this Rect item)
