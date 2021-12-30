@@ -490,6 +490,7 @@
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_InvokeEX.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions.cs" />
     <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions.cs" />
+    <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsBackingFieldForPublic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
