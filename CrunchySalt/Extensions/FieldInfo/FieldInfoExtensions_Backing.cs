@@ -41,5 +41,13 @@ namespace Crunchy.Salt
 
             return false;
         }
+
+        static public bool IsBackedPropertyPublic(this FieldInfo item)
+        {
+            if (item.GetBackedProperty().IfNotNull(p => p.IsSetAndGetPublic()))
+                return true;
+
+            return false;
+        }
     }
 }
