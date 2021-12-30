@@ -17,8 +17,8 @@ namespace Crunchy.Salt
         {
             if (item.IsPublicField())
                 return true;
-
-            if (item.IsBackedPropertySetPublic())
+                
+            if (item.IsBackingFieldForPublicSet())
                 return true;
 
             return false;
@@ -29,7 +29,7 @@ namespace Crunchy.Salt
             if (item.IsPublicField())
                 return true;
 
-            if (item.IsBackedPropertyGetPublic())
+            if (item.IsBackingFieldForPublicGet())
                 return true;
 
             return false;

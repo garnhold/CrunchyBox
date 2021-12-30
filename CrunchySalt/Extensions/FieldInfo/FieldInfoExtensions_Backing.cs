@@ -26,7 +26,7 @@ namespace Crunchy.Salt
             return false;
         }
 
-        static public bool IsBackedPropertySetPublic(this FieldInfo item)
+        static public bool IsBackingFieldForPublicSet(this FieldInfo item)
         {
             if (item.GetBackedProperty().IfNotNull(p => p.IsSetPublic()))
                 return true;
@@ -34,7 +34,7 @@ namespace Crunchy.Salt
             return false;
         }
 
-        static public bool IsBackedPropertyGetPublic(this FieldInfo item)
+        static public bool IsBackingFieldForPublicGet(this FieldInfo item)
         {
             if (item.GetBackedProperty().IfNotNull(p => p.IsGetPublic()))
                 return true;
@@ -42,7 +42,7 @@ namespace Crunchy.Salt
             return false;
         }
 
-        static public bool IsBackedPropertyPublic(this FieldInfo item)
+        static public bool IsBackingFieldForPublicSetAndGet(this FieldInfo item)
         {
             if (item.GetBackedProperty().IfNotNull(p => p.IsSetAndGetPublic()))
                 return true;
