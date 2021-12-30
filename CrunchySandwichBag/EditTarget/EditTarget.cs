@@ -191,7 +191,8 @@ namespace Crunchy.SandwichBag
                 Filterer_Utility.Any(
                     Filterer_FieldInfo.HasCustomAttributeOfType<SerializeField>(),
                     Filterer_FieldInfo.HasCustomAttributeOfType<SerializeFieldEX>(),
-                    Filterer_FieldInfo.IsPublicField()
+                    Filterer_FieldInfo.IsPublicField(),
+                    Filterer_FieldInfo.IsBackingFieldForPublicSetAndGet()
                 )
             ).Convert(f => f.CreateVariable())
             .Convert(v => EditProperty.New(this, v));
