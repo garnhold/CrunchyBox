@@ -208,6 +208,11 @@ namespace Crunchy.Dough
 			return new <#=type.class_name#>Range(item.GetBoundA(), item.GetBoundB());
 		}
         
+        static public <#=type.class_name#>Range GetFlipped(this <#=type.class_name#>Range item)
+        {
+            return new <#=type.class_name#>Range(item.x2, item.x1);
+        }
+        
         static public <#=type.class_name#>Range GetExpanded(this <#=type.class_name#>Range item, <#=type.type_name#> value)
         {
             return new <#=type.class_name#>Range(

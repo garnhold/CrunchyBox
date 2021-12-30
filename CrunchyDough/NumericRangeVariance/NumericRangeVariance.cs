@@ -208,6 +208,11 @@ namespace Crunchy.Dough
 			return new ByteRange(item.GetBoundA(), item.GetBoundB());
 		}
         
+        static public ByteRange GetFlipped(this ByteRange item)
+        {
+            return new ByteRange(item.x2, item.x1);
+        }
+        
         static public ByteRange GetExpanded(this ByteRange item, byte value)
         {
             return new ByteRange(
@@ -427,6 +432,11 @@ namespace Crunchy.Dough
 		{
 			return new ShortRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public ShortRange GetFlipped(this ShortRange item)
+        {
+            return new ShortRange(item.x2, item.x1);
+        }
         
         static public ShortRange GetExpanded(this ShortRange item, short value)
         {
@@ -648,6 +658,11 @@ namespace Crunchy.Dough
 			return new IntRange(item.GetBoundA(), item.GetBoundB());
 		}
         
+        static public IntRange GetFlipped(this IntRange item)
+        {
+            return new IntRange(item.x2, item.x1);
+        }
+        
         static public IntRange GetExpanded(this IntRange item, int value)
         {
             return new IntRange(
@@ -867,6 +882,11 @@ namespace Crunchy.Dough
 		{
 			return new LongRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public LongRange GetFlipped(this LongRange item)
+        {
+            return new LongRange(item.x2, item.x1);
+        }
         
         static public LongRange GetExpanded(this LongRange item, long value)
         {
@@ -1088,6 +1108,11 @@ namespace Crunchy.Dough
 			return new FloatRange(item.GetBoundA(), item.GetBoundB());
 		}
         
+        static public FloatRange GetFlipped(this FloatRange item)
+        {
+            return new FloatRange(item.x2, item.x1);
+        }
+        
         static public FloatRange GetExpanded(this FloatRange item, float value)
         {
             return new FloatRange(
@@ -1308,6 +1333,11 @@ namespace Crunchy.Dough
 			return new DoubleRange(item.GetBoundA(), item.GetBoundB());
 		}
         
+        static public DoubleRange GetFlipped(this DoubleRange item)
+        {
+            return new DoubleRange(item.x2, item.x1);
+        }
+        
         static public DoubleRange GetExpanded(this DoubleRange item, double value)
         {
             return new DoubleRange(
@@ -1467,6 +1497,11 @@ namespace Crunchy.Dough
 		{
 			return new DecimalRange(item.GetBoundA(), item.GetBoundB());
 		}
+        
+        static public DecimalRange GetFlipped(this DecimalRange item)
+        {
+            return new DecimalRange(item.x2, item.x1);
+        }
         
         static public DecimalRange GetExpanded(this DecimalRange item, decimal value)
         {
