@@ -415,6 +415,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Browse\EditorGUIElement_EditPropertySingleValueBrowse_TyonAsset.cs" />
     <Compile Include="TyonAsset\TyonAssetImporter.cs" />
     <Compile Include="Assets\Assets_CreateFile.cs" />
+    <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_XYControl.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
