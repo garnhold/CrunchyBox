@@ -13,5 +13,9 @@ namespace Crunchy.SandwichBag
         {
             return EditorGUI.TextField(rect, label, value).RemoveNonPrintable();
         }
+        static public string TextField(Rect rect, string value)
+        {
+            return EditorGUI.TextField(rect, value).RemoveNonPrintable();
+        }
     }
 }
