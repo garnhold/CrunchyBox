@@ -18,7 +18,7 @@ namespace Crunchy.SandwichBag
 
             rect.SplitByXRightPercent(0.5f, out rect, out view_rect);
 
-            value = EditorGUI.TextField(rect, value.ToString()).ParseDuration();
+            value = EditorGUIExtensions.TextField(rect, value.ToString()).ParseDuration();
             EditorGUI.LabelField(view_rect, value.ToString());
 
             return value;

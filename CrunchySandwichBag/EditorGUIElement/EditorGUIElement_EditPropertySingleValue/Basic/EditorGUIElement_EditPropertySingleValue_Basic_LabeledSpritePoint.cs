@@ -27,14 +27,11 @@ namespace Crunchy.SandwichBag
 
             Rect label_rect;
             Rect position_rect;
-            Rect position_text_rect;
 
             rect.SplitByXLeftPercent(0.4f, out rect, out position_rect);
             rect.SplitByYBottomOffset(LINE_HEIGHT, out label_rect, out rect);
-            rect.SplitByYBottomOffset(LINE_HEIGHT, out position_text_rect, out rect);
 
-            label = EditorGUI.TextField(label_rect, label);
-            position = EditorGUI.Vector2Field(position_text_rect, "", position);
+            label = EditorGUIExtensions.TextField(label_rect, label);
 
             if (sprite_property != null)
             {
