@@ -1524,6 +1524,8 @@
     <Compile Include="Extensions\DirectoryInfo\DirectoryInfoExtensions_Get.cs" />
     <Compile Include="Extensions\FileInfo\FileInfoExtensions.cs" />
     <Compile Include="Extensions\FileInfo\FileInfoExtensions_Text.cs" />
+    <Compile Include="Extensions\FileInfo\FileInfoExtensions_Bytes.cs" />
+    <Compile Include="Extensions\FileInfo\FileInfoExtensions_Hash.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
