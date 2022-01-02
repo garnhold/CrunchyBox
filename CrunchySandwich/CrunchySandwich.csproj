@@ -1221,6 +1221,7 @@
     <Compile Include="Extensions\GUI\GUIExtensions_Point.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Pivot.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Transform.cs" />
+    <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Save.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

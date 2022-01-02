@@ -7,7 +7,8 @@ namespace Crunchy.SandwichBag
 {
     using Dough;
     using Sandwich;
-    
+
+    [SaveAssetEditDistinction]
     static public class UnityObjectExtensions_Asset_Save
     {
         static public void SaveNewAsset(this UnityEngine.Object item, string filename)
@@ -19,6 +20,7 @@ namespace Crunchy.SandwichBag
             AssetDatabase.SaveAssets();
         }
 
+        [SaveAssetEditDistinction]
         static public void SaveAsset(this UnityEngine.Object item)
         {
             EditorUtility.SetDirty(item);
