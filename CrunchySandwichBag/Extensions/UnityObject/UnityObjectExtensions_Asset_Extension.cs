@@ -18,6 +18,7 @@ namespace Crunchy.SandwichBag
             T extension = AssetExtensionManager.GetInstance().SoftCreateAssetExtension<T>(item);
 
             extension.SaveNewAsset(Project.GetAssetExtensionDirectory() + item.name + "_" + typeof(T).Name);
+            AssetExtensionManager.GetInstance().SaveAsset();
             return extension;
         }
 
