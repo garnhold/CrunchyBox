@@ -9,5 +9,13 @@ namespace Crunchy.Dough
         {
             return File.ReadAllBytes(item.FullName);
         }
+
+        static public bool AreBytesEqual(this FileInfo item, FileInfo other)
+        {
+            if (item.ReadAllBytes().AreElementsEqual(other.ReadAllBytes()))
+                return true;
+
+            return false;
+        }
     }
 }
