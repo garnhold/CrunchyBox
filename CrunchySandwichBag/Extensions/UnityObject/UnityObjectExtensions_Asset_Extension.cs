@@ -15,10 +15,9 @@ namespace Crunchy.SandwichBag
     {
         static public T CreateAssetExtension<T>(this UnityEngine.Object item) where T : AssetExtension
         {
-            T extension = AssetExtensionManager.GetInstance().SoftCreateAssetExtension<T>(item);
+            T extension = AssetExtensionManager.GetInstance().CreateAssetExtension<T>(item);
 
             extension.SaveNewAsset(Project.GetAssetExtensionDirectory() + item.name + "_" + typeof(T).Name);
-            AssetExtensionManager.GetInstance().SaveAsset();
             return extension;
         }
 

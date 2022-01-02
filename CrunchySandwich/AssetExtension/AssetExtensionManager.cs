@@ -12,27 +12,34 @@ namespace Crunchy.Sandwich
     {
         [SerializeField] private List<AssetExtension> asset_extensions;
 
-        private OperationCache<Dictionary<UnityEngine.Object, List<AssetExtension>>> sorted_asset_extensions;
+        private Dictionary<UnityEngine.Object, List<AssetExtension>> sorted_asset_extensions;
 
-        public AssetExtensionManager()
+        public override void StartInEditor()
         {
-            sorted_asset_extensions = new OperationCache<Dictionary<UnityEngine.Object, List<AssetExtension>>>("sorted_asset_extensions", delegate () {
-                return asset_extensions.ToMultiDictionary(e => e.GetTargetAsset());
-            });
+            asset_extensions = Resources.FindObjectsOfTypeAll<AssetExtension>().ToList();
+            sorted_asset_extensions = null;
+
+            this.SaveAssetAdvisory();
         }
 
-        public T SoftCreateAssetExtension<T>(UnityEngine.Object asset) where T : AssetExtension
+        public T CreateAssetExtension<T>(UnityEngine.Object asset) where T : AssetExtension
         {
             T extension = AssetExtension.CreateInstance<T>();
 
             extension.SetTargetAsset(asset);
             asset_extensions.Add(extension);
+            sorted_asset_extensions = null;
+
+            this.SaveAssetAdvisory();
             return extension;
         }
 
         public IEnumerable<AssetExtension> GetAssetExtensions(UnityEngine.Object asset)
         {
-            return sorted_asset_extensions.Fetch().GetValues(asset);
+            if (sorted_asset_extensions == null)
+                sorted_asset_extensions = asset_extensions.ToMultiDictionary(e => e.GetTargetAsset());
+
+            return sorted_asset_extensions.GetValues(asset);
         }
         public IEnumerable<T> GetAssetExtensions<T>(UnityEngine.Object asset) where T : AssetExtension
         {
