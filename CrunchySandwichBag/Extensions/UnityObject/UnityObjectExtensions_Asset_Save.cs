@@ -19,6 +19,12 @@ namespace Crunchy.SandwichBag
             AssetDatabase.SaveAssets();
         }
 
+        static public void SaveAsset(this UnityEngine.Object item)
+        {
+            EditorUtility.SetDirty(item);
+            AssetDatabase.SaveAssets();
+        }
+
         static public void FocusAsset(this UnityEngine.Object item)
         {
             EditorUtility.FocusProjectWindow();
