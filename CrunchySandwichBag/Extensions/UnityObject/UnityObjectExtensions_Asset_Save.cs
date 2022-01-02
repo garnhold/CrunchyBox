@@ -11,6 +11,12 @@ namespace Crunchy.SandwichBag
     [SaveAssetEditDistinction]
     static public class UnityObjectExtensions_Asset_Save
     {
+        [SaveAssetEditDistinction]
+        static public void SaveAssetDistinction(UnityEngine.Object item)
+        {
+            item.SaveAsset();
+        }
+
         static public void SaveNewAsset(this UnityEngine.Object item, string filename)
         {
             if (Filename.HasExtension(filename) == false)
@@ -20,7 +26,6 @@ namespace Crunchy.SandwichBag
             AssetDatabase.SaveAssets();
         }
 
-        [SaveAssetEditDistinction]
         static public void SaveAsset(this UnityEngine.Object item)
         {
             EditorUtility.SetDirty(item);
