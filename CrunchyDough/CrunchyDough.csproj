@@ -1520,6 +1520,10 @@
     <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Extract.cs" />
     <Compile Include="Extensions\String\StringExtensions_ProgrammingLiteral_Style.cs" />
     <Compile Include="Extensions\TaskStatus\TaskStatusExtensions.cs" />
+    <Compile Include="Extensions\DirectoryInfo\DirectoryInfoExtensions.cs" />
+    <Compile Include="Extensions\DirectoryInfo\DirectoryInfoExtensions_Get.cs" />
+    <Compile Include="Extensions\FileInfo\FileInfoExtensions.cs" />
+    <Compile Include="Extensions\FileInfo\FileInfoExtensions_Text.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1755,6 +1759,8 @@
     <Folder Include="IntegerType\" />
     <Folder Include="IntegerType\Extensions\" />
     <Folder Include="Extensions\TaskStatus\" />
+    <Folder Include="Extensions\DirectoryInfo\" />
+    <Folder Include="Extensions\FileInfo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
