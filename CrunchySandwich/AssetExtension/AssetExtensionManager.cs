@@ -25,8 +25,8 @@ namespace Crunchy.Sandwich
         public T CreateAssetExtension<T>(UnityEngine.Object asset) where T : AssetExtension
         {
             T extension = AssetExtension.CreateInstance<T>();
-
             extension.SetTargetAsset(asset);
+
             asset_extensions.Add(extension);
             sorted_asset_extensions = null;
 
