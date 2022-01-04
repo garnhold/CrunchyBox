@@ -48,5 +48,18 @@ namespace Crunchy.Sandwich
                 item.yMax + amount
             );
         }
+
+        static public Rect GetExtrusion(this Rect item, float amount, RectSide side)
+        {
+            switch (side)
+            {
+                case RectSide.Left: return item.GetLeftExtrusion(amount);
+                case RectSide.Right: return item.GetRightExtrusion(amount);
+                case RectSide.Bottom: return item.GetBottomExtrusion(amount);
+                case RectSide.Top: return item.GetTopExtrusion(amount);
+            }
+
+            throw new UnaccountedBranchException("side", side);
+        }
     }
 }
