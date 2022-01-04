@@ -1109,7 +1109,6 @@
     <Compile Include="Extensions\ConfigurableJoint\ConfigurableJointExtensions.cs" />
     <Compile Include="Extensions\ConfigurableJoint\ConfigurableJointExtensions_Setup.cs" />
     <Compile Include="Extensions\VectorI2\VectorI2Extensions_Vector2.cs" />
-    <Compile Include="Extensions\VectorI2\VectorI2Extensions.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_FaceLoop.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Spacar.cs" />
     <Compile Include="Extensions\Vector2\IEnumerable\Vector2Extensions_IEnumerable_Tesselate.cs" />
@@ -1227,6 +1226,9 @@
     <Compile Include="Extensions\RectF2\RectF2Extensions_Rect.cs" />
     <Compile Include="Extensions\RectI2\RectI2Extensions_RectInt.cs" />
     <Compile Include="Extensions\VectorI2\VectorI2Extensions_Vector2Int.cs" />
+    <Compile Include="Extensions\RectI2\RectI2Extensions_Rect.cs" />
+    <Compile Include="Extensions\RectF2\RectF2Extensions_RectInt.cs" />
+    <Compile Include="Extensions\VectorF2\VectorF2Extensions_Vector2Int.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

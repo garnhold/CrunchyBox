@@ -10,7 +10,7 @@ namespace Crunchy.Sandwich
 
     static public class RectF2Extensions_RectInt
     {
-        static public RectInt GetRectInt(this RectI2 item)
+        static public RectInt GetRectInt(this RectF2 item)
         {
             return new RectInt(
                 item.GetLowerLeftPoint().GetVector2Int(), 
