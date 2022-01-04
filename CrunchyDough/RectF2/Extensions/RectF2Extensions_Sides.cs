@@ -26,6 +26,19 @@ namespace Crunchy.Dough
             return item.max.y;
         }
 
+        static public float GetSide(this RectF2 item, RectSide side)
+        {
+            switch (side)
+            {
+                case RectSide.Left: return item.GetLeft();
+                case RectSide.Right: return item.GetRight();
+                case RectSide.Bottom: return item.GetBottom();
+                case RectSide.Top: return item.GetTop();
+            }
+
+            throw new UnaccountedBranchException("side", side);
+        }
+
         static public float GetHorizontalCenter(this RectF2 item)
         {
             return (item.min.x + item.max.x) * 0.5f;
