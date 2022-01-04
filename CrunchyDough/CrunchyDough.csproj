@@ -1529,6 +1529,7 @@
     <Compile Include="RectSide\RectSide.cs" />
     <Compile Include="RectI2\Extensions\RectI2Extensions_Slice.cs" />
     <Compile Include="RectSides\RectSides.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Convert.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

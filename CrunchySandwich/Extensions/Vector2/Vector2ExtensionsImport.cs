@@ -657,6 +657,35 @@ using Crunchy.Dough;
     }
 }
     namespace Crunchy.Sandwich
+{   
+    static public class Vector2Extensions_Convert
+    {
+        static public Vector2 ConvertFromPercentToRange(this Vector2 item, FloatRange x_range, FloatRange y_range)
+        {
+            return new Vector2(
+                item.x.ConvertFromPercentToRange(x_range),
+                item.y.ConvertFromPercentToRange(y_range)
+            );
+        }
+        static public Vector2 ConvertFromPercentToRange(this Vector2 item, FloatRange range)
+        {
+            return item.ConvertFromPercentToRange(range, range);
+        }
+
+        static public Vector2 ConvertFromRangeToPercent(this Vector2 item, FloatRange x_range, FloatRange y_range)
+        {
+            return new Vector2(
+                item.x.ConvertFromRangeToPercent(x_range),
+                item.y.ConvertFromRangeToPercent(y_range)
+            );
+        }
+        static public Vector2 ConvertFromRangeToPercent(this Vector2 item, FloatRange range)
+        {
+            return item.ConvertFromRangeToPercent(range, range);
+        }
+    }
+}
+    namespace Crunchy.Sandwich
 {
     static public class Vector2Extensions_Direction
     {
