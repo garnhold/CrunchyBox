@@ -1221,6 +1221,7 @@
     <Compile Include="Extensions\Sprite\SpriteExtensions_Pivot.cs" />
     <Compile Include="Extensions\Sprite\SpriteExtensions_Transform.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Save.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_Shrinkwrap.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Solid.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_RectI2.cs" />
     <Compile Include="Extensions\RectF2\RectF2Extensions_Rect.cs" />
