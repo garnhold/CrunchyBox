@@ -1531,6 +1531,8 @@
     <Compile Include="RectSides\RectSides.cs" />
     <Compile Include="RectI2\Extensions\RectI2Extensions_Convert.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Convert.cs" />
+    <Compile Include="RectF2\Extensions\RectF2Extensions_RectI2.cs" />
+    <Compile Include="RectI2\Extensions\RectI2Extensions_RectF2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
