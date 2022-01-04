@@ -1232,6 +1232,8 @@
     <Compile Include="Extensions\VectorF2\VectorF2Extensions_Vector2Int.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_RectI2.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_RectF2.cs" />
+    <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions.cs" />
+    <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions_Vector2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1571,6 +1573,7 @@
     <Folder Include="AssetExtension\" />
     <Folder Include="Extensions\RectF2\" />
     <Folder Include="Extensions\RectI2\" />
+    <Folder Include="Extensions\SpriteAlignment\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
