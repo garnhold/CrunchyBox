@@ -8,7 +8,7 @@ namespace Crunchy.Sandwich
 {
     using Dough;
 
-    static public class RectF2Extensions_Rect
+    static public class RectI2Extensions_Rect
     {
         static public Rect GetRect(this RectI2 item)
         {
