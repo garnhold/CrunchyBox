@@ -1226,6 +1226,8 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_RectI2.cs" />
     <Compile Include="Extensions\RectF2\RectF2Extensions.cs" />
     <Compile Include="Extensions\RectF2\RectF2Extensions_Rect.cs" />
+    <Compile Include="Extensions\RectI2\RectI2Extensions.cs" />
+    <Compile Include="Extensions\RectI2\RectI2Extensions_RectInt.cs" />
     <Compile Include="Extensions\VectorI2\VectorI2Extensions_Vector2Int.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1565,6 +1567,7 @@
     <Folder Include="SpriteAnnotation\" />
     <Folder Include="AssetExtension\" />
     <Folder Include="Extensions\RectF2\" />
+    <Folder Include="Extensions\RectI2\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
