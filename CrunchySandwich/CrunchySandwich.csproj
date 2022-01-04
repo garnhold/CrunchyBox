@@ -1224,6 +1224,8 @@
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Save.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Solid.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_RectI2.cs" />
+    <Compile Include="Extensions\RectF2\RectF2Extensions.cs" />
+    <Compile Include="Extensions\RectF2\RectF2Extensions_Rect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1561,6 +1563,7 @@
     <Folder Include="TyonAsset\" />
     <Folder Include="SpriteAnnotation\" />
     <Folder Include="AssetExtension\" />
+    <Folder Include="Extensions\RectF2\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
