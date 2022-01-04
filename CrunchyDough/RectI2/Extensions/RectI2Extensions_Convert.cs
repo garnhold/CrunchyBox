@@ -15,12 +15,5 @@ namespace Crunchy.Dough
         {
             return point.ConvertFromRangeToPercent(item.GetHorizontalRange(), item.GetVerticalRange());
         }
-
-        static public VectorF2 ConvertRangePointToRangePoint(this RectI2 item, VectorF2 point, RectI2 dst)
-        {
-            return dst.ConvertPercentPointToRangePoint(
-                item.ConvertRangePointToPercentPoint(point)
-            );
-        }
     }
 }
