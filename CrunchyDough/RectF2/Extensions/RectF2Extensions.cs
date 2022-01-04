@@ -33,6 +33,15 @@ namespace Crunchy.Dough
             return CreateStrictMinMaxRectF2(new VectorF2(left, bottom), new VectorF2(right, top));
         }
 
+        static public RectF2 CreateLowerLeftRectF2(VectorF2 position, VectorF2 size)
+        {
+            return new RectF2(position, position + size);
+        }
+        static public RectF2 CreateLowerLeftRectF2(float x, float y, float width, float height)
+        {
+            return CreateLowerLeftRectF2(new VectorF2(x, y), new VectorF2(width, height));
+        }
+
         static public RectF2 CreateCenterRectF2(VectorF2 position, VectorF2 size)
         {
             VectorF2 extents = size * 0.5f;

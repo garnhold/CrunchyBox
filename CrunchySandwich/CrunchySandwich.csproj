@@ -1230,6 +1230,8 @@
     <Compile Include="Extensions\RectI2\RectI2Extensions_Rect.cs" />
     <Compile Include="Extensions\RectF2\RectF2Extensions_RectInt.cs" />
     <Compile Include="Extensions\VectorF2\VectorF2Extensions_Vector2Int.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_RectI2.cs" />
+    <Compile Include="Extensions\Rect\RectExtensions_RectF2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
