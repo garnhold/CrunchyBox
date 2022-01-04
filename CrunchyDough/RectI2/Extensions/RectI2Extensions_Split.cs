@@ -38,5 +38,18 @@ namespace Crunchy.Dough
         {
             item.SplitByY(item.GetTop() - y_offset, out bottom, out top);
         }
+
+        static public void SplitBySideOffset(this RectI2 item, int offset, RectSide side, out RectI2 center, out RectI2 edge)
+        {
+            switch (side)
+            {
+                case RectSide.Left: item.SplitByXLeftOffset(offset, out edge, out center); break;
+                case RectSide.Right: item.SplitByXRightOffset(offset, out center, out edge); break;
+                case RectSide.Bottom: item.SplitByYBottomOffset(offset, out edge, out center); break;
+                case RectSide.Top: item.SplitByYTopOffset(offset, out center, out edge); break;
+            }
+
+            throw new UnaccountedBranchException("side", side);
+        }
     }
 }
