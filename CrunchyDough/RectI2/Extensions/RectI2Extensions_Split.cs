@@ -43,10 +43,10 @@ namespace Crunchy.Dough
         {
             switch (side)
             {
-                case RectSide.Left: item.SplitByXLeftOffset(offset, out edge, out center); break;
-                case RectSide.Right: item.SplitByXRightOffset(offset, out center, out edge); break;
-                case RectSide.Bottom: item.SplitByYBottomOffset(offset, out edge, out center); break;
-                case RectSide.Top: item.SplitByYTopOffset(offset, out center, out edge); break;
+                case RectSide.Left: item.SplitByXLeftOffset(offset, out edge, out center); return;
+                case RectSide.Right: item.SplitByXRightOffset(offset, out center, out edge); return;
+                case RectSide.Bottom: item.SplitByYBottomOffset(offset, out edge, out center); return;
+                case RectSide.Top: item.SplitByYTopOffset(offset, out center, out edge); return;
             }
 
             throw new UnaccountedBranchException("side", side);
