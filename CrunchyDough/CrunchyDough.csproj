@@ -1526,6 +1526,7 @@
     <Compile Include="Extensions\FileInfo\FileInfoExtensions_Text.cs" />
     <Compile Include="Extensions\FileInfo\FileInfoExtensions_Bytes.cs" />
     <Compile Include="Extensions\FileInfo\FileInfoExtensions_Hash.cs" />
+    <Compile Include="RectSide\RectSide.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1763,6 +1764,7 @@
     <Folder Include="Extensions\TaskStatus\" />
     <Folder Include="Extensions\DirectoryInfo\" />
     <Folder Include="Extensions\FileInfo\" />
+    <Folder Include="RectSide\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
