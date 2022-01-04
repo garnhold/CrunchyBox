@@ -15,8 +15,8 @@ namespace Crunchy.SandwichBag
     {
         static public void Shrinkwrap(this Sprite item)
         {
-            Texture2D texture = item.Sideload();
-            RectI2 original = texture.GetRectI2();
+            Texture2D texture = item.texture.Sideload();
+            RectI2 original = item.rect.GetRectI2();
             RectI2 shrunk = texture.ShrinkwrapRect(original);
 
             VectorF2 shrunk_pixel_pivot = shrunk.ConvertRangePointToPercentPoint(item.GetPixelPivot().GetVectorF2());
