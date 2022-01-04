@@ -1232,6 +1232,7 @@
     <Compile Include="Extensions\VectorF2\VectorF2Extensions_Vector2Int.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_RectI2.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_RectF2.cs" />
+    <Compile Include="Extensions\Vector2\Vector2Extensions_SpriteAlignment.cs" />
     <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions.cs" />
     <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions_Vector2.cs" />
   </ItemGroup>
