@@ -79,5 +79,18 @@ namespace Crunchy.Sandwich
         {
             item.SplitByY(item.center.y, out bottom, out top);
         }
+
+        static public void SplitBySideOffset(this Rect item, float offset, RectSide side, out Rect center, out Rect edge)
+        {
+            switch (side)
+            {
+                case RectSide.Left: item.SplitByXLeftOffset(offset, out edge, out center); break;
+                case RectSide.Right: item.SplitByXRightOffset(offset, out center, out edge); break;
+                case RectSide.Bottom: item.SplitByYBottomOffset(offset, out edge, out center); break;
+                case RectSide.Top: item.SplitByYTopOffset(offset, out center, out edge); break;
+            }
+
+            throw new UnaccountedBranchException("side", side);
+        }
     }
 }
