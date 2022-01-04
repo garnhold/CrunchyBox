@@ -419,6 +419,8 @@
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Extension.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_LabeledSpritePoint.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_XYControl.cs" />
+    <Compile Include="Extensions\Sprite\SpriteExtensions_ModifySprite.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_ModifySprites.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
