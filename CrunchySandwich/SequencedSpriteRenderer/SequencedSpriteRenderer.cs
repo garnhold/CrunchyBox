@@ -27,9 +27,18 @@ namespace Crunchy.Sandwich
         private void Update()
         {
             if (Application.isPlaying)
-                GetComponent<SpriteRenderer>().sprite = current_sequence.GetFrameByValue(sequence_value);
+            {
+                SpriteSequenceFrame frame = current_sequence.GetFrameByValue(sequence_value);
+
+                if (frame.IsSloped())
+                    sequence_value += frame.GetSlope() * ActiveGameTime.GetDelta();
+
+                GetComponent<SpriteRenderer>().sprite = frame.GetSprite();
+            }
             else
-                GetComponent<SpriteRenderer>().sprite = sequenced_sprite.GetDefaultFrame();
+            {
+                GetComponent<SpriteRenderer>().sprite = sequenced_sprite.GetDefaultSprite();
+            }
         }
 
         public void SetSequenceValue(float value)

@@ -22,9 +22,11 @@ namespace Crunchy.Sandwich
             Initialize((IEnumerable<SpriteSequence>)s);
         }
 
-        public Sprite GetDefaultFrame()
+        public Sprite GetDefaultSprite()
         {
-            return GetDefaultSequence().GetFirstFrame();
+            return GetDefaultSequence()
+                .GetFirstFrame()
+                .IfNotNull(f => f.GetSprite());
         }
 
         public SpriteSequence GetDefaultSequence()

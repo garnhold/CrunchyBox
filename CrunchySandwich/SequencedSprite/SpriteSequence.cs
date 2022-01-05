@@ -24,7 +24,7 @@ namespace Crunchy.Sandwich
             frames = f.ToArray();
         }
 
-        public SpriteSequence(string n, float v, IEnumerable<Sprite> s) : this(n, s.Convert(i => new SpriteSequenceFrame(v, i))) { }
+        public SpriteSequence(string n, float v, IEnumerable<Sprite> s) : this(n, s.Convert(i => new SpriteSequenceFrame(v, 0.0f, i))) { }
         public SpriteSequence(float v, IEnumerable<Sprite> s) : this("Sequence", v, s) { }
         public SpriteSequence(IEnumerable<Sprite> s) : this(1.0f, s) { }
 
@@ -38,17 +38,17 @@ namespace Crunchy.Sandwich
             return frames.Length;
         }
 
-        public Sprite GetFirstFrame()
+        public SpriteSequenceFrame GetFirstFrame()
         {
-            return frames.GetFirst().IfNotNull(f => f.GetSprite());
+            return frames.GetFirst();
         }
 
-        public Sprite GetFrameByIndex(int index)
+        public SpriteSequenceFrame GetFrameByIndex(int index)
         {
-            return frames.GetLooped(index).IfNotNull(f => f.GetSprite());
+            return frames.GetLooped(index);
         }
 
-        public Sprite GetFrameByValue(float value)
+        public SpriteSequenceFrame GetFrameByValue(float value)
         {
             float total_value = 0.0f;
 
@@ -57,7 +57,7 @@ namespace Crunchy.Sandwich
                 total_value += frame.GetValue();
 
                 if (value <= total_value)
-                    return frame.GetSprite();
+                    return frame;
             }
 
             if (total_value <= 0.0f)
@@ -66,9 +66,9 @@ namespace Crunchy.Sandwich
             return GetFrameByValue(value.GetLooped(total_value));
         }
 
-        public IEnumerable<Sprite> GetFrames()
+        public IEnumerable<SpriteSequenceFrame> GetFrames()
         {
-            return frames.Convert(f => f.GetSprite());
+            return frames;
         }
     }
 }

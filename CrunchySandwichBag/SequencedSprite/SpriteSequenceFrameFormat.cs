@@ -13,11 +13,12 @@ namespace Crunchy.SandwichBag
     public class SpriteSequenceFrameFormat
     {
         [SerializeField]private int index;
+        [SerializeField]private float slope;
         [SerializeField]private float value;
 
         public SpriteSequenceFrame CreateSpriteSequenceFrame(Texture2D texture)
         {
-            return new SpriteSequenceFrame(value, texture.GetSprites().Get(index));
+            return new SpriteSequenceFrame(value, slope, texture.GetSprites().Get(index));
         }
     }
 }
