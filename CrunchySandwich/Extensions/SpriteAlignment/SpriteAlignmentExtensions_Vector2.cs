@@ -28,7 +28,7 @@ namespace Crunchy.Sandwich
                 case SpriteAlignment.BottomCenter: return new Vector2(0.5f, 0.0f);
                 case SpriteAlignment.BottomRight: return new Vector2(1.0f, 0.0f);
 
-                case SpriteAlignment.Custom: return new Vector2(0.5f, 0.5f);
+                case SpriteAlignment.Custom: return new Vector2(-10.0f, -10.0f);
             }
 
             throw new UnaccountedBranchException("item", item);
