@@ -1235,6 +1235,7 @@
     <Compile Include="Extensions\Vector2\Vector2Extensions_SpriteAlignment.cs" />
     <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions.cs" />
     <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions_Vector2.cs" />
+    <Compile Include="SpriteRectCollider2D\SpriteRectCollider2D.cs" />
     <Compile Include="Positioner\Positioner.cs" />
     <Compile Include="Positioner\Positioner_RendererCenter.cs" />
   </ItemGroup>
