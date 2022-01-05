@@ -9,7 +9,18 @@ namespace Crunchy.Dough
         {
             if (item.IsSubValid(dst, length) && array.IsSubValid(src, length))
             {
-                Array.Copy(array, src, item, dst, length);
+                if (item.GetType() == array.GetType())
+                    Array.Copy(array, src, item, dst, length);
+                else
+                {
+                    for (int i = 0; i < length; i++)
+                    {
+                        item.SetValue(
+                            array.GetValue(src + i).ConvertToType(item.GetElementType()),
+                            dst + i
+                        );
+                    }
+                }
 
                 return dst + length;
             }
