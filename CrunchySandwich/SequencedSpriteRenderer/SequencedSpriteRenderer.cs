@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
+    using Bread;
     
     [ExecuteInEditMode]
     [AddComponentMenu("Rendering/SequencedSpriteRenderer")]
@@ -16,6 +17,7 @@ namespace Crunchy.Sandwich
         [SerializeField]private SequencedSprite sequenced_sprite;
 
         private float sequence_value;
+        private Frame value_set_frame;
         private SpriteSequence current_sequence;
 
         private void Start()
@@ -30,7 +32,7 @@ namespace Crunchy.Sandwich
             {
                 SpriteSequenceFrame frame = current_sequence.GetFrameByValue(sequence_value);
 
-                if (frame.IsSloped())
+                if (frame.IsSloped() && value_set_frame.IsNotRecent())
                     sequence_value += frame.GetSlope() * ActiveGameTime.GetDelta();
 
                 GetComponent<SpriteRenderer>().sprite = frame.GetSprite();
@@ -43,7 +45,11 @@ namespace Crunchy.Sandwich
 
         public void SetSequenceValue(float value)
         {
-            sequence_value = value;
+            if (value != sequence_value)
+            {
+                sequence_value = value;
+                value_set_frame = Frame.GetCurrentFrame();
+            }
         }
 
         public void SetSequence(string name)
