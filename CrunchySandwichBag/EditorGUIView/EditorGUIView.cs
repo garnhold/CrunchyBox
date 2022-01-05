@@ -16,7 +16,6 @@ namespace Crunchy.SandwichBag
         private EditorGUIElement element;
 
         private int next_draw_id;
-        private Rect previous_visible_rect;
 
         public EditorGUIView(EditorGUIElement e)
         {
@@ -42,10 +41,6 @@ namespace Crunchy.SandwichBag
             if (rect.width > 16.0f)
             {
                 int draw_id = next_draw_id++;
-
-                if (visible_rect != previous_visible_rect)
-                    GUIUtilityExtensions.Unfocus();
-                previous_visible_rect = visible_rect;
 
                 element.Plan(rect.width, state);
                 element.Layout(rect.min);

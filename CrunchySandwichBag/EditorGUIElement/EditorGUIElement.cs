@@ -20,6 +20,7 @@ namespace Crunchy.SandwichBag
         private EditorGUIElementPlan contents_plan;
 
         private int last_draw_id;
+        private bool did_draw_last;
 
         private float footprint_height;
 
@@ -136,13 +137,20 @@ namespace Crunchy.SandwichBag
         {
             EditorGUIUtilityExtensions.UseLabelWidth(layout_state.GetCurrentLabelWidth(), delegate() {
                 attachments.Process(a => a.PreDrawInternal());
-                    if (view.Overlaps(element_rect))
+                    bool did_draw = view.Overlaps(element_rect);
+
+                    if (did_draw != did_draw_last)
+                        GUIUtilityExtensions.Unfocus();
+
+                    if (did_draw)
                     {
                         DrawElementInternal(draw_id, view);
                         DrawContentsInternal(draw_id, view);
 
                         attachments.Process(a => a.DrawInternal(view));
                     }
+
+                    did_draw_last = did_draw;
                 attachments.Process(a => a.PostDrawInternal());
             });
 
