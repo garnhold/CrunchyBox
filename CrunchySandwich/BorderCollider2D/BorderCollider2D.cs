@@ -29,7 +29,7 @@ namespace Crunchy.Sandwich
             Rect inner_rect = RectExtensions.CreateCenterRect(offset, size);
             Rect outer_rect = inner_rect.GetEnlarged(thickness);
 
-            outer_rect.GetSubtraction(inner_rect).Process(r => this.AddComponent<BoxCollider2D>().SetRect(r));
+            outer_rect.GetSubtraction(inner_rect).Process(r => this.AddComponent<BoxCollider2D>().SetLocalRect(r));
         }
     }
 }
