@@ -10,7 +10,8 @@ namespace Crunchy.Sandwich
     using Salt;
     using Noodle;
     using Recipe;
-    
+
+    [ExecuteAlways]
     public abstract class Positioner : MonoBehaviourEX
     {
         [SerializeField] private GameObject target;
