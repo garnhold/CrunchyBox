@@ -8,7 +8,8 @@ using UnityEditor;
 namespace Crunchy.SandwichBag
 {
     using Dough;
-    using Noodle;    using Sandwich;
+    using Noodle;
+    using Sandwich;
     
     public class EditTarget
     {
@@ -16,39 +17,6 @@ namespace Crunchy.SandwichBag
         private List<object> objects;
 
         private EditTarget parent;
-
-        private void Touch(Process process)
-        {
-            if (target_type.CanBeTreatedAs<UnityEngine.Object>())
-            {
-                process();
-
-                objects
-                    .Convert<ISerializationCallbackReceiver>()
-                    .Process(r => r.OnBeforeSerialize());
-
-                objects
-                    .Convert<ISerializationCallbackReceiver>()
-                    .Process(r => r.OnAfterDeserialize());
-
-                objects
-                    .Convert<UnityEngine.Object>()
-                    .Narrow(o => o.IsPrefabInstance())
-                    .Process(o => PrefabUtility.RecordPrefabInstancePropertyModifications(o));
-
-                objects
-                    .Convert<UnityEngine.Object>()
-                    .Skip(o => o.IsSceneObject())
-                    .Process(o => EditorUtility.SetDirty(o));
-            }
-            else
-            {
-                if (parent != null)
-                    parent.Touch(process);
-                else
-                    process();
-            }
-        }
 
         public EditTarget(IEnumerable<object> o, EditTarget p)
         {
@@ -63,29 +31,53 @@ namespace Crunchy.SandwichBag
 
         public EditTarget(SerializedObject o) : this(o.targetObjects) { }
 
-        public void Touch()
+        public void Touch(string label, TryProcess process, bool create_undo_state)
         {
-            Touch(() => { });
-        }
-        public void TouchWithUndo(string label, Process process)
-        {
-            Touch(delegate () {
-                objects
-                    .Convert<UnityEngine.Object>()
-                    .Process(o => Undo.RecordObject(o, label));
+            if (target_type.CanBeTreatedAs<UnityEngine.Object>())
+            {
+                if (create_undo_state)
+                {
+                    Undo.RecordObjects(
+                        objects.Convert<UnityEngine.Object>().ToArray(),
+                        label
+                    );
+                }
 
-                process();
-            });
-        }
-        public void Touch(string label, bool create_undo_state, Operation<bool> process)
-        {
-            if (create_undo_state)
-                TouchWithUndo(label, () => process());
+                if (process())
+                {
+                    objects
+                        .Convert<ISerializationCallbackReceiver>()
+                        .Process(r => r.OnBeforeSerialize());
+
+                    objects
+                        .Convert<ISerializationCallbackReceiver>()
+                        .Process(r => r.OnAfterDeserialize());
+
+                    objects
+                        .Convert<UnityEngine.Object>()
+                        .Narrow(o => o.IsPrefabInstance())
+                        .Process(o => PrefabUtility.RecordPrefabInstancePropertyModifications(o));
+
+                    objects
+                        .Convert<UnityEngine.Object>()
+                        .Skip(o => o.IsSceneObject())
+                        .Process(o => EditorUtility.SetDirty(o));
+                }
+
+                if (create_undo_state)
+                    Undo.FlushUndoRecordObjects();
+            }
             else
             {
-                if (process())
-                    Touch();
+                if (parent != null)
+                    parent.Touch(label, process, create_undo_state);
+                else
+                    process();
             }
+        }
+        public void Touch(string label, Process process, bool create_undo_state)
+        {
+            Touch(label, () => { process(); return true; }, create_undo_state);
         }
 
         public Type GetTargetType()

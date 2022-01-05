@@ -67,23 +67,23 @@ namespace Crunchy.SandwichBag
 
         public void ClearContents(bool create_undo_state)
         {
-            target.Touch("Clearing " + GetName(), create_undo_state, delegate() {
+            target.Touch("Clearing " + GetName(), delegate() {
                 return GetVariables().ProcessOR(v => v.ClearContents().IsChange());
-            });
+            }, create_undo_state);
         }
 
         public void CreateContents(Type type, bool create_undo_state)
         {
-            target.Touch("Creating " + GetName(), create_undo_state, delegate() {
+            target.Touch("Creating " + GetName(), delegate() {
                 return GetVariables().ProcessOR(v => v.CreateContents(type).IsChange());
-            });
+            }, create_undo_state);
         }
 
         public void EnsureContents(Type type, bool create_undo_state)
         {
-            target.Touch("Creating " + GetName(), create_undo_state, delegate() {
+            target.Touch("Creating " + GetName(), delegate() {
                 return GetVariables().ProcessOR(v => v.EnsureContents(type).IsChange());
-            });
+            }, create_undo_state);
         }
         public void EnsureContents(bool create_undo_state)
         {
@@ -92,7 +92,7 @@ namespace Crunchy.SandwichBag
 
         public void ForceContentValues(object value)
         {
-            target.TouchWithUndo("Setting " + GetName(), delegate () {
+            target.Touch("Setting " + GetName(), delegate () {
                 if (GetPropertyType().IsReferenceFreeType())
                     GetVariables().Process(v => v.SetContents(value));
                 else
@@ -101,7 +101,7 @@ namespace Crunchy.SandwichBag
 
                     GetVariables().Process(v => v.SetContents(replayer.CreateInstance()));
                 }
-            });
+            }, true);
         }
 
         public string GetName()

@@ -33,9 +33,9 @@ namespace Crunchy.SandwichBag
 
         public void Execute()
         {
-            target.TouchWithUndo(GetName(), delegate () {
+            target.Touch(GetName(), delegate () {
                 target.GetObjects().Process(o => function.Execute(o, arguments.GetContents<object[]>()));
-            });
+            }, true);
         }
 
         public string GetName()

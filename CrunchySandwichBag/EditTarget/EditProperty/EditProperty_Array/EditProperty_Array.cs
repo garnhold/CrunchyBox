@@ -54,26 +54,26 @@ namespace Crunchy.SandwichBag
 
         public void InsertElement(int index)
         {
-            GetTarget().TouchWithUndo("Inserting Element Into " + GetName(), delegate () {
+            GetTarget().Touch("Inserting Element Into " + GetName(), delegate () {
                 GetVariables().Process(v => v.InsertElementIntoVariableInstanceAt(index));
 
                 ShiftIndexs(index, 1);
-            });
+            }, true);
         }
 
         public void RemoveElement(int index)
         {
-            GetTarget().TouchWithUndo("Removing Element From " + GetName(), delegate () {
+            GetTarget().Touch("Removing Element From " + GetName(), delegate () {
                 GetVariables().Process(v => v.RemoveElementInVariableInstanceAt(index));
 
                 elements_by_index.Remove(index);
                 ShiftIndexs(index, -1);
-            });
+            }, true);
         }
 
         public void MoveElement(int src, int dst)
         {
-            GetTarget().TouchWithUndo("Moving Element Within " + GetName() + " From " + src + " to " + dst, delegate () {
+            GetTarget().Touch("Moving Element Within " + GetName() + " From " + src + " to " + dst, delegate () {
                 GetVariables().Process(v => v.MoveElementInVariableInstance(src, dst));
 
                 EditPropertyArrayElement element = elements_by_index.RemoveAndGet(src);
@@ -82,7 +82,7 @@ namespace Crunchy.SandwichBag
 
                 element.SetIndex(dst);
                 elements_by_index.Add(element.GetIndex(), element);
-            });
+            }, true);
         }
 
         public EditProperty GetElement(int index)

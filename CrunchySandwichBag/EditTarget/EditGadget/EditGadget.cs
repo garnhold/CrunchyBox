@@ -40,23 +40,23 @@ namespace Crunchy.SandwichBag
 
         public void Execute(object gadget_target, string name)
         {
-            target.TouchWithUndo(name, delegate () {
+            target.Touch(name, delegate () {
                 aux_actions.GetValue(name).IfNotNull(a => a.Execute(gadget_target));
-            });
+            }, true);
         }
 
         public void SetContents(object gadget_target, object value)
         {
-            target.TouchWithUndo("Setting " + GetName(), delegate () {
+            target.Touch("Setting " + GetName(), delegate () {
                 variable.SetContents(gadget_target, value);
-            });
+            }, true);
         }
 
         public void SetAuxContents(object gadget_target, string name, object value)
         {
-            target.TouchWithUndo("Setting " + name, delegate () {
+            target.Touch("Setting " + name, delegate () {
                 aux_variables.GetValue(name).IfNotNull(v => v.SetContents(gadget_target, value));
-            });
+            }, true);
         }
 
         public object GetContents(object target)
