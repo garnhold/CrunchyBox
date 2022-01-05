@@ -32,7 +32,7 @@ namespace Crunchy.Sandwich
             {
                 SpriteSequenceFrame frame = current_sequence.GetFrameByValue(sequence_value);
 
-                if (frame.IsSloped() && value_set_frame.IsNotRecent())
+                if (frame.IsSloped())
                     sequence_value += frame.GetSlope() * ActiveGameTime.GetDelta();
 
                 GetComponent<SpriteRenderer>().sprite = frame.GetSprite();
@@ -45,11 +45,7 @@ namespace Crunchy.Sandwich
 
         public void SetSequenceValue(float value)
         {
-            if (value != sequence_value)
-            {
-                sequence_value = value;
-                value_set_frame = Frame.GetCurrentFrame();
-            }
+            sequence_value = value;
         }
 
         public void SetSequence(string name)
