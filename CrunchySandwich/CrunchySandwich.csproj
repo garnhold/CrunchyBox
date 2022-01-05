@@ -1235,6 +1235,8 @@
     <Compile Include="Extensions\Vector2\Vector2Extensions_SpriteAlignment.cs" />
     <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions.cs" />
     <Compile Include="Extensions\SpriteAlignment\SpriteAlignmentExtensions_Vector2.cs" />
+    <Compile Include="Positioner\Positioner.cs" />
+    <Compile Include="Positioner\Positioner_RendererCenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1575,6 +1577,8 @@
     <Folder Include="Extensions\RectF2\" />
     <Folder Include="Extensions\RectI2\" />
     <Folder Include="Extensions\SpriteAlignment\" />
+    <Folder Include="SpriteRectCollider2D\" />
+    <Folder Include="Positioner\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
