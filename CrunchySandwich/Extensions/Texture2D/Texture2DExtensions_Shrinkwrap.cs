@@ -31,7 +31,8 @@ namespace Crunchy.Sandwich
 
         static public RectI2 ShrinkwrapRect(this Texture2D item, RectI2 rect)
         {
-            return RectSides.VALUES.Apply(rect, (r, s) => item.ShrinkwrapSide(r, s));
+            return typeof(RectSide).GetEnumValues<RectSide>()
+                .Apply(rect, (r, s) => item.ShrinkwrapSide(r, s));
         }
 
         static public RectI2 Shrinkwrap(this Texture2D item)
