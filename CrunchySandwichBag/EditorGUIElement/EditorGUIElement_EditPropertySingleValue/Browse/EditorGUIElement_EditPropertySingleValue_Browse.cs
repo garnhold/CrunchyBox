@@ -21,7 +21,7 @@ namespace Crunchy.SandwichBag
 
         protected virtual T DrawValueInternal(Rect rect, T value)
         {
-            return (T)EditorGUI.ObjectField(rect, value, typeof(T), false);
+            return EditorGUIExtensions.ObjectField<T>(rect, value);
         }
 
         protected override Rect LayoutElementInternal(Rect rect)
