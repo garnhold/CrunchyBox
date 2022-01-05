@@ -15,7 +15,9 @@ namespace Crunchy.SandwichBag
     {
         static public IEnumerable<Sprite> GetSprites(this Texture2D item)
         {
-            return item.GetAssetCohabitants().Convert<UnityEngine.Object, Sprite>();
+            return item.GetAssetCohabitants()
+                .Convert<UnityEngine.Object, Sprite>()
+                .NaturalSort(s => s.name);
         }
 
         static public Sprite GetSpriteById(this Texture2D item, string id)
