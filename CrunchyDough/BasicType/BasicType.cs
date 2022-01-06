@@ -4,6 +4,8 @@ namespace Crunchy.Dough
 {
     public enum BasicType
     {
+        None,
+
         Void,
 
         Bool,

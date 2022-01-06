@@ -13,6 +13,8 @@ namespace Crunchy.Dough
 
             switch (type)
             {
+                case BasicType.None: return null;
+
                 case BasicType.Void: return null;
 
                 case BasicType.Bool: return (bool)false;
@@ -50,6 +52,8 @@ namespace Crunchy.Dough
 
             switch (type)
             {
+                case BasicType.None: return null;
+
                 case BasicType.Void: return null;
 
                 case BasicType.Bool: return (bool)false;

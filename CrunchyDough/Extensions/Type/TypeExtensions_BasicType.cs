@@ -9,6 +9,7 @@ namespace Crunchy.Dough
     static public class TypeExtensions_BasicType
     {
         static private OperationCache<BasicType, Type> GET_BASIC_TYPE = ReflectionCache.Get().NewOperationCache("GET_BASIC_TYPE", delegate(Type type) {
+            if (type == null) return BasicType.None;
             if (type == typeof(void)) return BasicType.Void;
 
             if (type == typeof(bool)) return BasicType.Bool;

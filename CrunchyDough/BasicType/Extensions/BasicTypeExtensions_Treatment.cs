@@ -8,6 +8,10 @@ namespace Crunchy.Dough
         {
             switch (item)
             {
+                case BasicType.None: return false;
+
+                case BasicType.Void: return false;
+
                 case BasicType.Bool: return false;
 
                 case BasicType.SByte: return true;
@@ -41,6 +45,10 @@ namespace Crunchy.Dough
         {
             switch (item)
             {
+                case BasicType.None: return false;
+
+                case BasicType.Void: return false;
+
                 case BasicType.Bool: return false;
 
                 case BasicType.SByte: return true;
@@ -74,6 +82,10 @@ namespace Crunchy.Dough
         {
             switch (item)
             {
+                case BasicType.None: return false;
+
+                case BasicType.Void: return false;
+
                 case BasicType.Bool: return false;
 
                 case BasicType.SByte: return true;
@@ -107,6 +119,10 @@ namespace Crunchy.Dough
         {
             switch (item)
             {
+                case BasicType.None: return false;
+
+                case BasicType.Void: return false;
+
                 case BasicType.Bool: return false;
 
                 case BasicType.SByte: return false;
@@ -140,6 +156,10 @@ namespace Crunchy.Dough
         {
             switch (item)
             {
+                case BasicType.None: return false;
+
+                case BasicType.Void: return false;
+
                 case BasicType.Bool: return false;
 
                 case BasicType.SByte: return false;
@@ -173,6 +193,10 @@ namespace Crunchy.Dough
         {
             switch (item)
             {
+                case BasicType.None: return false;
+
+                case BasicType.Void: return false;
+
                 case BasicType.Bool: return true;
 
                 case BasicType.SByte: return true;
