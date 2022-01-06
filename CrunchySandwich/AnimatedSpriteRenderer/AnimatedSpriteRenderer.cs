@@ -15,15 +15,20 @@ namespace Crunchy.Sandwich
     {
         [SerializeField]private AnimatedSprite animated_sprite;
         [SerializeField]private GameStopwatch animation_time;
+        [SerializeField]private bool use_random_offset;
 
         private SpriteAnimation current_animation;
+        private float random_offset;
 
         private void Update()
         {
             if (Application.isPlaying)
             {
                 GetComponent<SpriteRenderer>().sprite = current_animation
-                    .GetFrameByTime(animation_time.GetElapsedTimeInSeconds());
+                    .GetFrameByTime(
+                        animation_time.GetElapsedTimeInSeconds() +
+                        use_random_offset.ConvertBool(random_offset)
+                    );
             }
             else
             {
@@ -35,6 +40,8 @@ namespace Crunchy.Sandwich
         {
             animation_time.Start();
             current_animation = animated_sprite.GetDefaultAnimation();
+
+            random_offset = RandFloat.GetMagnitude(3600.0f);
         }
 
         public AnimatedSpriteRenderer()
