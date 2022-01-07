@@ -440,8 +440,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Components.cs">
-      <DependentUpon>NumberRealExtensions_Components.tt</DependentUpon>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Precision.cs">
+      <DependentUpon>NumberRealExtensions_Precision.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1705,6 +1705,10 @@
     <Content Include="Extensions\Number\NumberExtensions_Sign.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberExtensions_Sign.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number_Real\NumberRealExtensions_Precision.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_Precision.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
