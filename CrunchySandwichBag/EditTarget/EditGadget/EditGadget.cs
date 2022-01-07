@@ -47,16 +47,22 @@ namespace Crunchy.SandwichBag
 
         public void SetContents(object gadget_target, object value)
         {
-            target.Touch("Setting " + GetName(), delegate () {
-                variable.SetContents(gadget_target, value);
-            }, true);
+            if (value.NotEqualsEX(GetContents(gadget_target)))
+            {
+                target.Touch("Setting " + GetName(), delegate () {
+                    variable.SetContents(gadget_target, value);
+                }, true);
+            }
         }
 
         public void SetAuxContents(object gadget_target, string name, object value)
         {
-            target.Touch("Setting " + name, delegate () {
-                aux_variables.GetValue(name).IfNotNull(v => v.SetContents(gadget_target, value));
-            }, true);
+            if (value.NotEqualsEX(GetAuxContents(gadget_target, name)))
+            {
+                target.Touch("Setting " + name, delegate () {
+                    aux_variables.GetValue(name).IfNotNull(v => v.SetContents(gadget_target, value));
+                }, true);
+            }
         }
 
         public object GetContents(object target)
