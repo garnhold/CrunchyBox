@@ -425,6 +425,8 @@
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Shrinkwrap.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Basic\EditorGUIElement_EditPropertySingleValue_Basic_Sprite.cs" />
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_ObjectField.cs" />
+    <Compile Include="Extensions\Handles\HandlesExtensions.cs" />
+    <Compile Include="Extensions\Handles\HandlesExtensions_Position.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -522,6 +524,7 @@
     <Folder Include="PrefabMenu\" />
     <Folder Include="TyonAsset\" />
     <Folder Include="SpriteAnnotation\" />
+    <Folder Include="Extensions\Handles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
