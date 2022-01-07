@@ -15,8 +15,7 @@ namespace Crunchy.SandwichBag
     {
         static public Vector3 DoPositionHandle(Vector3 position, Quaternion rotation)
         {
-            return Handles.DoPositionHandle(position, rotation)
-                .GetAtPrecision(-4);
+            return Handles.DoPositionHandle(position, rotation);
         }
         static public Vector3 DoPositionHandle(Vector3 position)
         {
