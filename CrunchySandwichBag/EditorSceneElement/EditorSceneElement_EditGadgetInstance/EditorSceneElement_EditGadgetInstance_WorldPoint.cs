@@ -16,7 +16,7 @@ namespace Crunchy.SandwichBag
         protected override void DrawInternal()
         {
             this.SetContents(
-                Handles.DoPositionHandle(this.GetContents<Vector3>(), Quaternion.identity)
+                HandlesExtensions.DoPositionHandle(this.GetContents<Vector3>())
             );
         }
 

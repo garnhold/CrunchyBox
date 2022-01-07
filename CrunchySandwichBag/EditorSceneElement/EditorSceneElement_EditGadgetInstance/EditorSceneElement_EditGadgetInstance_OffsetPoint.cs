@@ -18,7 +18,7 @@ namespace Crunchy.SandwichBag
             Vector3 local_point = this.GetContents<Vector3>();
             Vector3 parent_point = this.GetAuxContents<Vector3>("parent_point");
 
-            Vector3 world_point = Handles.DoPositionHandle(local_point + parent_point, Quaternion.identity);
+            Vector3 world_point = HandlesExtensions.DoPositionHandle(local_point + parent_point);
 
             this.SetContents(world_point - parent_point);
         }

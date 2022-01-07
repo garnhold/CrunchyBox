@@ -22,7 +22,7 @@ namespace Crunchy.SandwichBag
 
             Vector3 local_point = local_direction * local_offset;
 
-            Vector3 world_point = Handles.DoPositionHandle(local_to_world_matrix.MultiplyPoint(local_point), Quaternion.identity);
+            Vector3 world_point = HandlesExtensions.DoPositionHandle(local_to_world_matrix.MultiplyPoint(local_point));
             Matrix4x4 world_to_local_matrix = local_to_world_matrix.inverse;
 
             this.SetContents(
