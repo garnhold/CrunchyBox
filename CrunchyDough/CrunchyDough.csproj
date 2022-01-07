@@ -1533,6 +1533,9 @@
     <Compile Include="RectF2\Extensions\RectF2Extensions_RectI2.cs" />
     <Compile Include="RectI2\Extensions\RectI2Extensions_RectF2.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Precision.cs" />
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Components.cs">
+      <DependentUpon>NumberRealExtensions_Components.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
