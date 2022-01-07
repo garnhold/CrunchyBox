@@ -1058,6 +1058,19 @@ using Crunchy.Dough;
     }
 }
     namespace Crunchy.Sandwich
+{   
+    static public class Vector2Extensions_Precision
+    {
+        static public Vector2 GetAtPrecision(this Vector2 item, int exponent)
+        {
+            return new Vector2(
+                item.x.GetAtPrecision(exponent),
+                item.y.GetAtPrecision(exponent)
+            );
+        }
+    }
+}
+    namespace Crunchy.Sandwich
 {    
     static public class Vector2Extensions_Rect
     {
