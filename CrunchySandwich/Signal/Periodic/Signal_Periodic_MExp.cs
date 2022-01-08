@@ -6,7 +6,7 @@ namespace Crunchy.Sandwich
 {
     using Dough;    using Cheese;
     
-    public class Signal_Periodic_MExp : Signal_Periodic_Typical
+    public class Signal_Periodic_MExp : Signal_Periodic
     {
         [SerializeFieldEX]private string equation;
 

@@ -246,8 +246,6 @@
     <Compile Include="Extensions\Rect\RectExtensions_Adjust_Side.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_MoveTowards.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_Towards.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Typical.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_RampEase.cs" />
     <Compile Include="Signal\Periodic\SignalPeriodicTransform.cs" />
     <Compile Include="SerializationCorruptable\SerializationCorruptable.cs" />
     <Compile Include="CustomAsset\CustomAssetGenerator.cs" />
@@ -471,22 +469,7 @@
     <Compile Include="OctoMask\Extensions\OctoMaskExtensions.cs" />
     <Compile Include="OctoMask\OctoMask.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_MExp.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Multiple.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Multiple_Max.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Multiple_Min.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Multiple_Average.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Multiple_Product.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Multiple_Sum.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Multiple_Composite.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Curve.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Pulse.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Ramp.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_ReverseSaw.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Square.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_SkewTriangle.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Saw.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Triangle.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Sine.cs" />
     <Compile Include="Signal\Signal.cs" />
     <Compile Include="Plane2\Extensions\Plane2Extensions_Intersect_Triangle.cs" />
     <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Intersect_Plane.cs" />
@@ -1209,7 +1192,6 @@
     <Compile Include="Extensions\Mesh\Create\MeshExtensions_CreateSector.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Sector.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Area.cs" />
-    <Compile Include="Signal\Periodic\Signal_Periodic_Bounce.cs" />
     <Compile Include="TyonAsset\TyonAsset.cs" />
     <Compile Include="SpriteAnnotation\SpriteAnnotation.cs" />
     <Compile Include="SpriteAnnotation\LabeledSpritePoint.cs" />
@@ -1242,6 +1224,9 @@
     <Compile Include="MotionController\MotionController_SequencedSpriteValue.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Precision.cs" />
     <Compile Include="OrderByOffset\OrderByOffset.cs" />
+    <Compile Include="Signal\Generator\Signal_Generator_Burst.cs" />
+    <Compile Include="Signal\Periodic\Signal_Periodic_Basic.cs" />
+    <Compile Include="Signal\Periodic\Signal_Periodic_Skew.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

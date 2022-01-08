@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;    
-    public class Signal_Periodic_Curve : Signal_Periodic_Typical
+    public class Signal_Periodic_Curve : Signal_Periodic
     {
         [SerializeFieldEX]private Curve curve;
 
