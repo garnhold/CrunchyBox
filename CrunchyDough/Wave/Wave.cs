@@ -78,5 +78,16 @@ namespace Crunchy.Dough
 
             throw new UnaccountedBranchException("type", type);
         }
+
+        static public float Skew(SkewWaveType type, float x, float skew)
+        {
+            switch (type)
+            {
+                case SkewWaveType.Triangle: return Wave.SkewTriangle(x, skew);
+                case SkewWaveType.Square: return Wave.Pulse(x, skew);
+            }
+
+            throw new UnaccountedBranchException("type", type);
+        }
     }
 }

@@ -1536,6 +1536,8 @@
     <Compile Include="Extensions\Number_Real\NumberRealExtensions_Components.cs">
       <DependentUpon>NumberRealExtensions_Components.tt</DependentUpon>
     </Compile>
+    <Compile Include="Wave\SkewWaveType.cs" />
+    <Compile Include="Wave\Extensions\SkewWaveTypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
