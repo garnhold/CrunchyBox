@@ -28,10 +28,13 @@ namespace Crunchy.SandwichBag
         {
             if (state.ShouldUseVisibility())
             {
-                Rect new_visible_rect = GUIUtilityExtensions.GetVisibleRect();
+                if (Event.current.type == EventType.Repaint)
+                {
+                    Rect new_visible_rect = GUIUtilityExtensions.GetVisibleRect();
 
-                if (new_visible_rect.height <= Screen.height && new_visible_rect.height >= 16.0f)
-                    visible_rect = new_visible_rect;
+                    if (new_visible_rect.height <= Screen.height && new_visible_rect.height >= 16.0f)
+                        visible_rect = new_visible_rect;
+                }
             }
             else
             {
