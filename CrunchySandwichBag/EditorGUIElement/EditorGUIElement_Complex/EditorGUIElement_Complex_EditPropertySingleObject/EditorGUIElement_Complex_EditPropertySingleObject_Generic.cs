@@ -36,7 +36,7 @@ namespace Crunchy.SandwichBag
                         Types.GetFilteredTypes(
                             Filterer_Type.CanBeTreatedAs(property.GetPropertyType()),
                             Filterer_Type.IsConcreteClass()
-                        ),
+                        ).NaturalSort(t => t.FullName),
                         t => property.CreateContents(t, true),
                         (out Type t) => property.TryGetContentsType(out t)
                     )
