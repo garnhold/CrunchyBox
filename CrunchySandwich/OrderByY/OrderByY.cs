@@ -20,8 +20,9 @@ namespace Crunchy.Sandwich
                 "parent_point", "GetParentPoint()"
             }
         )]
-        [SerializeField] private GameObject parent;
         [SerializeField] private Vector2 offset;
+
+        [SerializeField] private GameObject offset_origin;
 
         private void Update()
         {
@@ -30,7 +31,7 @@ namespace Crunchy.Sandwich
 
         public Vector2 GetParentPoint()
         {
-            return parent.IfNotNull(p => p.GetPlanarPosition(), () => this.GetPlanarPosition());
+            return offset_origin.IfNotNull(p => p.GetPlanarPosition(), () => this.GetPlanarPosition());
         }
 
         public Vector2 GetOrderPoint()
