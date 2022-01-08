@@ -37,6 +37,15 @@ namespace Crunchy.Sandwich
             return CreateStrictMinMaxRect(min.x, min.y, max.x, max.y);
         }
 
+        static public Rect CreateLowerLeftRect(Vector2 position, Vector2 size)
+        {
+            return new Rect(position, position + size);
+        }
+        static public Rect CreateLowerLeftRect(float x, float y, float width, float height)
+        {
+            return CreateLowerLeftRect(new Vector2(x, y), new Vector2(width, height));
+        }
+
         static public Rect CreateMinMaxRect(float x_min, float y_min, float x_max, float y_max)
         {
             x_min.Order(x_max, out x_min, out x_max);
