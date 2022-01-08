@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
+
     public class SignalEaseTransform
     {
         [SerializeFieldEX]private FloatRange domain = new FloatRange(0.0f, 1.0f);

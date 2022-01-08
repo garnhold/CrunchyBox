@@ -173,14 +173,7 @@
     <Compile Include="RepresentationController\RepresentationController_Button.cs" />
     <Compile Include="RepresentationController\RepresentationController_Text.cs" />
     <Compile Include="RepresentationNode\RepresentationNode.cs" />
-    <Compile Include="Signal\Ease\Signal_EaseShape_Sine.cs" />
-    <Compile Include="Signal\Ease\Signal_EaseShape_Cubic.cs" />
-    <Compile Include="Signal\Ease\Signal_EaseShape_Quint.cs" />
-    <Compile Include="Signal\Ease\Signal_EaseShape_Linear.cs" />
-    <Compile Include="Signal\Ease\Signal_EaseShape_Quad.cs" />
-    <Compile Include="Signal\Ease\Signal_EaseShape.cs" />
     <Compile Include="Signal\Operation\Signal_Transform.cs" />
-    <Compile Include="Signal\Ease\Signal_Ease_InOut.cs" />
     <Compile Include="Signal\Ease\Signal_Ease.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Time.cs" />
     <Compile Include="Signal\Generator\Signal_Generator.cs" />
@@ -216,7 +209,6 @@
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions_Add.cs" />
     <Compile Include="ConvexPolygon\Extensions\ConvexPolygonExtensions.cs" />
     <Compile Include="Signal\Ease\SignalEaseTransform.cs" />
-    <Compile Include="Signal\Ease\Signal_Ease_Typical.cs" />
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions_Volume.cs" />
     <Compile Include="Extensions\AudioSource\AudioSourceExtensions.cs" />
     <Compile Include="Extensions\CardinalOrdinalDirection\CardinalOrdinalDirectionExtensions.cs" />
@@ -255,8 +247,6 @@
     <Compile Include="CustomTile\CustomTile.cs" />
     <Compile Include="DeployablePrefab\DeployablePrefab.cs" />
     <Compile Include="Signal\Ease\Signal_Ease_Curve.cs" />
-    <Compile Include="Signal\Ease\Signal_Ease_InstantAtEnd.cs" />
-    <Compile Include="Signal\Ease\Signal_Ease_InstantAtStart.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Intersection_Bounds.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Intersection.cs" />
     <Compile Include="Extensions\Bounds\BoundsExtensions_Center.cs" />
@@ -1224,9 +1214,9 @@
     <Compile Include="MotionController\MotionController_SequencedSpriteValue.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Precision.cs" />
     <Compile Include="OrderByOffset\OrderByOffset.cs" />
-    <Compile Include="Signal\Generator\Signal_Generator_Burst.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Basic.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Skew.cs" />
+    <Compile Include="Signal\Ease\Signal_Ease_Basic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

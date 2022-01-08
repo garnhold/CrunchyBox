@@ -4,7 +4,7 @@ namespace Crunchy.Dough
 {    
     public delegate float EaseOperation(float x);
 
-    static public class EaseOperations
+    static public class Ease
     {
         static public float InstantAtStart(float x)
         {
@@ -113,6 +113,35 @@ namespace Crunchy.Dough
             return delegate(float x) {
                 return InOut(x, in_operation, out_operation);
             };
+        }
+
+        static public float Basic(BasicEaseType type, float x)
+        {
+            switch (type)
+            {
+                case BasicEaseType.InstantAtStart: return Ease.InstantAtStart(x);
+                case BasicEaseType.InstantAtEnd: return Ease.InstantAtEnd(x);
+
+                case BasicEaseType.Linear: return Ease.Linear(x);
+
+                case BasicEaseType.QuadIn: return Ease.QuadIn(x);
+                case BasicEaseType.QuadOut: return Ease.QuadOut(x);
+                case BasicEaseType.QuadInOut: return Ease.QuadInOut(x);
+
+                case BasicEaseType.CubicIn: return Ease.CubicIn(x);
+                case BasicEaseType.CubicOut: return Ease.CubicOut(x);
+                case BasicEaseType.CubicInOut: return Ease.CubicInOut(x);
+
+                case BasicEaseType.QuintIn: return Ease.QuintIn(x);
+                case BasicEaseType.QuintOut: return Ease.QuintOut(x);
+                case BasicEaseType.QuintInOut: return Ease.QuintInOut(x);
+
+                case BasicEaseType.SineIn: return Ease.SineIn(x);
+                case BasicEaseType.SineOut: return Ease.SineOut(x);
+                case BasicEaseType.SineInOut: return Ease.SineInOut(x);
+            }
+
+            throw new UnaccountedBranchException("type", type);
         }
     }
 }

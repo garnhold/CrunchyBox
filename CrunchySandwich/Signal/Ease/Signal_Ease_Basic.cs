@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
-    public class Signal_Ease_Curve : Signal_Ease
+    using Dough;
+
+    public class Signal_Ease_Basic : Signal_Ease
     {
-        [SerializeFieldEX]private Curve curve;
+        [SerializeField] private BasicEaseType type;
 
         protected override float ExecuteInternal(float input)
         {
-            return curve.GetValue(input);
+            return type.Calculate(input);
         }
     }
 }

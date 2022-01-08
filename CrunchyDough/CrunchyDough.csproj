@@ -1318,7 +1318,6 @@
     <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_Sequence.cs" />
     <Compile Include="CardinalOrdinalDirection\Extensions\CardinalOrdinalDirectionExtensions_VectorF2.cs" />
     <Compile Include="Easer\AutoEaser.cs" />
-    <Compile Include="Easer\EaseOperations.cs" />
     <Compile Include="Easer\Easer.cs" />
     <Compile Include="Easer\Extensions\EaseOperationExtensions.cs" />
     <Compile Include="Equation\Equation.cs" />
@@ -1538,6 +1537,9 @@
     </Compile>
     <Compile Include="Wave\SkewWaveType.cs" />
     <Compile Include="Wave\Extensions\SkewWaveTypeExtensions.cs" />
+    <Compile Include="Ease\Ease.cs" />
+    <Compile Include="Ease\BasicEaseType.cs" />
+    <Compile Include="Ease\Extensions\BasicEaseType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1780,6 +1782,8 @@
     <Folder Include="Extensions\DirectoryInfo\" />
     <Folder Include="Extensions\FileInfo\" />
     <Folder Include="RectSide\" />
+    <Folder Include="Ease\" />
+    <Folder Include="Ease\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
