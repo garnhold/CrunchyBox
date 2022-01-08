@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
+    using Dough;
     public class Signal_Ease_Curve : Signal_Ease
     {
         [SerializeFieldEX]private Curve curve;

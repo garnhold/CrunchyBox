@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;    
-    public class Signal_Clip : Signal
+    public class Signal_Operation_Clip : Signal_Operation
     {
         [SerializeFieldEX]private float max = 0.5f;
         [SerializeFieldEX]private float min = -0.5f;

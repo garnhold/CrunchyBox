@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;    
-    public class Signal_Quantize : Signal
+    public class Signal_Operation_Quantize : Signal_Operation
     {
         [SerializeFieldEX]private float interval = 0.25f;
 

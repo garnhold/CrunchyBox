@@ -173,7 +173,7 @@
     <Compile Include="RepresentationController\RepresentationController_Button.cs" />
     <Compile Include="RepresentationController\RepresentationController_Text.cs" />
     <Compile Include="RepresentationNode\RepresentationNode.cs" />
-    <Compile Include="Signal\Operation\Signal_Transform.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_Transform.cs" />
     <Compile Include="Signal\Ease\Signal_Ease.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Time.cs" />
     <Compile Include="Signal\Generator\Signal_Generator.cs" />
@@ -1010,9 +1010,9 @@
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Planar_Sprite.cs">
       <DependentUpon>GameObjectComponentExtensions_Transform_Planar_Sprite.tt</DependentUpon>
     </Compile>
-    <Compile Include="Signal\Operation\Signal_Smooth.cs" />
-    <Compile Include="Signal\Operation\Signal_Quantize.cs" />
-    <Compile Include="Signal\Operation\Signal_LimitSlew.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_Smooth.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_Quantize.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_LimitSlew.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Spacar_Renderer.cs" />
     <Compile Include="Extensions\Transform\TransformExtensions_Planar_Renderer.cs" />
     <Compile Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Transform_Spacar_Mesh.cs">
@@ -1024,7 +1024,7 @@
     <Compile Include="SaveState\SaveState.cs" />
     <Compile Include="SaveState\Tyon\SaveStateSolidObject.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Timer.cs" />
-    <Compile Include="Signal\Operation\Signal_Clip.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_Clip.cs" />
     <Compile Include="Easer\GameEaser.cs" />
     <Compile Include="SceneEX\Extensions\SceneEXExtensions_Info.cs" />
     <Compile Include="SceneEX\Extensions\SceneEXExtensions_Load.cs" />
@@ -1217,6 +1217,7 @@
     <Compile Include="Signal\Periodic\Signal_Periodic_Basic.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Skew.cs" />
     <Compile Include="Signal\Ease\Signal_Ease_Basic.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

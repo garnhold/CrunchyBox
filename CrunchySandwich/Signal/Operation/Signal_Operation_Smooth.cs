@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;    
-    public class Signal_Smooth : Signal
+    public class Signal_Operation_Smooth : Signal_Operation
     {
         [SerializeFieldEX]private float speed = 2.9f;
         [SerializeFieldEX]private TimeType time_type = TimeType.Active;

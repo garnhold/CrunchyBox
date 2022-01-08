@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
-    using Dough;    
-    public class Signal_LimitSlew : Signal
+    using Dough;
+
+    public class Signal_Operation_LimitSlew : Signal_Operation
     {
         [SerializeFieldEX]private float max_speed = 0.1f;
         [SerializeFieldEX]private TimeType time_type = TimeType.Active;
