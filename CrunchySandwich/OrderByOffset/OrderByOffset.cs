@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     public class OrderByOffset : MonoBehaviour
     {
         [SerializeField]private int offset;
-        [SerializeField] private GameObject parent;
+        [SerializeField] private GameObject offset_origin;
 
         private void Update()
         {
@@ -20,7 +20,10 @@ namespace Crunchy.Sandwich
 
         public int GetParentOrder()
         {
-            return parent.IfNotNull(p => p.GetComponent<Renderer>().GetSortingOrder(), 0);
+            return offset_origin.IfNotNull(
+                p => p.GetComponent<Renderer>().GetSortingOrder(),
+                () => this.GetComponentValueUpwardFromParent<Renderer, int>(r => r.GetSortingOrder())
+            );
         }
     }
 }

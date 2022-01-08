@@ -26,6 +26,15 @@ namespace Crunchy.Sandwich
 		{
 			return item.GetComponentUpward<T>().IfNotNull(operation, if_null);
 		}
+        
+        static public J GetComponentValueUpwardFromParent<T, J>(this GameObject item, Operation<J, T> operation)
+        {
+            return item.GetComponentUpwardFromParent<T>().IfNotNull(operation);
+        }
+        static public J GetComponentValueUpwardFromParent<T, J>(this GameObject item, Operation<J, T> operation, J if_null)
+        {
+            return item.GetComponentUpwardFromParent<T>().IfNotNull(operation, if_null);
+        }
 
 		static public J GetComponentValue<T, J>(this Component item, Operation<J, T> operation)
         {
@@ -44,6 +53,15 @@ namespace Crunchy.Sandwich
 		{
 			return item.GetComponentUpward<T>().IfNotNull(operation, if_null);
 		}
+        
+        static public J GetComponentValueUpwardFromParent<T, J>(this Component item, Operation<J, T> operation)
+        {
+            return item.GetComponentUpwardFromParent<T>().IfNotNull(operation);
+        }
+        static public J GetComponentValueUpwardFromParent<T, J>(this Component item, Operation<J, T> operation, J if_null)
+        {
+            return item.GetComponentUpwardFromParent<T>().IfNotNull(operation, if_null);
+        }
 
 	}
 }
