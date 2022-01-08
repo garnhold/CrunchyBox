@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Crunchy.Sandwich
 {
+    using Crunchy.Dough;
+
     [ExecuteInEditMode]
     [AddComponentMenu("Rendering/OrderByY")]
     public class OrderByY : MonoBehaviour
@@ -11,13 +13,14 @@ namespace Crunchy.Sandwich
         [SerializeField]private float multiplier;
 
         [AttachEditGadget(
-            "OffsetPoint", 
+            "OffsetPoint",
             new string[] {
             },
             new string[] {
-                "parent_point", "GetPlanarPosition()"
+                "parent_point", "GetParentPoint()"
             }
         )]
+        [SerializeField] private GameObject parent;
         [SerializeField] private Vector2 offset;
 
         private void Update()
@@ -25,9 +28,14 @@ namespace Crunchy.Sandwich
             GetComponent<Renderer>().SetSortingOrder((int)(this.GetOrderPoint().y * multiplier));
         }
 
+        public Vector2 GetParentPoint()
+        {
+            return parent.IfNotNull(p => p.GetPlanarPosition(), () => this.GetPlanarPosition());
+        }
+
         public Vector2 GetOrderPoint()
         {
-            return this.GetPlanarPosition() + offset;
+            return this.GetParentPoint() + offset;
         }
     }
 }
