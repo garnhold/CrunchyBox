@@ -10,7 +10,7 @@ namespace Crunchy.Sandwich
 
     public class MotionNode : MonoBehaviourEX, MotionValueProvider
     {
-        [SerializeFieldEX]private List<Signal> signals;
+        [SerializeFieldEX][PolymorphicField]private List<Signal> signals;
 
         private ComponentCache_UpwardFromParent<MotionValueProvider> parent;
 

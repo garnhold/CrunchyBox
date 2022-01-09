@@ -9,7 +9,7 @@ namespace Crunchy.Sandwich
     using Dough;    
     public abstract class MotionController : MonoBehaviourEX
     {
-        [SerializeFieldEX]private List<Signal> signals;
+        [SerializeFieldEX][PolymorphicField]private List<Signal> signals;
 
         private ComponentCache_Upward<MotionValueProvider> motion_node;
 
