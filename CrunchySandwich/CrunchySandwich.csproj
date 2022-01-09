@@ -1213,6 +1213,7 @@
     <Compile Include="MotionController\MotionController_SequencedSpriteValue.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Precision.cs" />
     <Compile Include="OrderByOffset\OrderByOffset.cs" />
+    <Compile Include="MotionController\MotionController_FollowPosition.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Basic.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic_Skew.cs" />
     <Compile Include="Signal\Ease\Signal_Ease_Basic.cs" />
