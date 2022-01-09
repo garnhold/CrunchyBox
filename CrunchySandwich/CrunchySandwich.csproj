@@ -1220,7 +1220,8 @@
     <Compile Include="Signal\Generator\Signal_Generator_Drifting_Time.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Drifting_Burst.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Drifting.cs" />
-    <Compile Include="Signal\SignalChain.cs" />
+    <Compile Include="Signal\Extensions\IEnumerable\SignalExtensions_IEnumerable.cs" />
+    <Compile Include="Signal\Extensions\IEnumerable\SignalExtensions_IEnumerable_Execute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1564,6 +1565,8 @@
     <Folder Include="SpriteRectCollider2D\" />
     <Folder Include="Positioner\" />
     <Folder Include="OrderByOffset\" />
+    <Folder Include="Signal\Extensions\" />
+    <Folder Include="Signal\Extensions\IEnumerable\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

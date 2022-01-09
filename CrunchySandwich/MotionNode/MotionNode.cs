@@ -10,7 +10,7 @@ namespace Crunchy.Sandwich
 
     public class MotionNode : MonoBehaviourEX, MotionValueProvider
     {
-        [SerializeFieldEX]private SignalChain signal_chain;
+        [SerializeFieldEX]private List<Signal> signals;
 
         private ComponentCache_UpwardFromParent<MotionValueProvider> parent;
 
@@ -23,7 +23,7 @@ namespace Crunchy.Sandwich
 
         private void Update()
         {
-            motion_value = signal_chain.Execute(parent.GetComponent().IfNotNull(p => p.GetMotionValue()));
+            motion_value = signals.Execute(parent.Use(p => p.GetMotionValue()));
         }
 
         public float GetMotionValue()

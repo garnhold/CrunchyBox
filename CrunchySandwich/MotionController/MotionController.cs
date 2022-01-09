@@ -9,7 +9,7 @@ namespace Crunchy.Sandwich
     using Dough;    
     public abstract class MotionController : MonoBehaviourEX
     {
-        [SerializeFieldEX]private SignalChain signal_chain;
+        [SerializeFieldEX]private List<Signal> signals;
 
         private ComponentCache_Upward<MotionValueProvider> motion_node;
 
@@ -22,8 +22,8 @@ namespace Crunchy.Sandwich
 
         private void Update()
         {
-            UpdateInternal(signal_chain.Execute(
-                motion_node.GetComponent().IfNotNull(n => n.GetMotionValue())
+            UpdateInternal(signals.Execute(
+                motion_node.Use(n => n.GetMotionValue())
             ));
         }
     }
