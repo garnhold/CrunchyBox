@@ -7,7 +7,8 @@ using UnityEditor;
 
 namespace Crunchy.SandwichBag
 {
-    using Dough;    using Sandwich;
+    using Dough;
+    using Sandwich;
     
     public class EditorGUIElement_EditPropertyArray_FloatSequence : EditorGUIElement_EditPropertyArray
     {
