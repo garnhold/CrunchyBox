@@ -175,7 +175,7 @@
     <Compile Include="RepresentationNode\RepresentationNode.cs" />
     <Compile Include="Signal\Operation\Signal_Operation_Transform.cs" />
     <Compile Include="Signal\Ease\Signal_Ease.cs" />
-    <Compile Include="Signal\Generator\Signal_Generator_Time.cs" />
+    <Compile Include="Signal\Generator\Signal_Generator_AbsoluteTime.cs" />
     <Compile Include="Signal\Generator\Signal_Generator.cs" />
     <Compile Include="Signal\Periodic\Signal_Periodic.cs" />
     <Compile Include="SaveState\SaveStateSystem.cs" />
@@ -1023,7 +1023,6 @@
     </Compile>
     <Compile Include="SaveState\SaveState.cs" />
     <Compile Include="SaveState\Tyon\SaveStateSolidObject.cs" />
-    <Compile Include="Signal\Generator\Signal_Generator_Timer.cs" />
     <Compile Include="Signal\Operation\Signal_Operation_Clip.cs" />
     <Compile Include="Easer\GameEaser.cs" />
     <Compile Include="SceneEX\Extensions\SceneEXExtensions_Info.cs" />
@@ -1218,6 +1217,7 @@
     <Compile Include="Signal\Periodic\Signal_Periodic_Skew.cs" />
     <Compile Include="Signal\Ease\Signal_Ease_Basic.cs" />
     <Compile Include="Signal\Operation\Signal_Operation.cs" />
+    <Compile Include="Signal\Generator\Signal_Generator_RelativeTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
