@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;    
-    static public class CameraExtensions_OrthographicLenth
+    static public class CameraExtensions_OrthographicLength
     {
         static public float ConvertOrthographicWorldToPixels(this Camera item, float length)
         {
