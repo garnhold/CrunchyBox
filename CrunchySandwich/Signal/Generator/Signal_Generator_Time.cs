@@ -6,13 +6,13 @@ namespace Crunchy.Sandwich
 {
     using Dough;
 
-    public class Signal_Generator_AbsoluteTime : Signal_Generator
+    public class Signal_Generator_Time : Signal_Generator
     {
         [SerializeFieldEX]private bool use_random_offset;
 
         private float random_offset;
 
-        public Signal_Generator_AbsoluteTime()
+        public Signal_Generator_Time()
         {
             random_offset = RandFloat.GetMagnitude(3600.0f);
         }

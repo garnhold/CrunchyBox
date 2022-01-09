@@ -9,7 +9,6 @@ namespace Crunchy.Sandwich
     public abstract class Signal_Generator : Signal
     {
         [SerializeFieldEX]private TimeType time_type;
-        [SerializeFieldEX][PolymorphicField]private Signal signal;
 
         private float previous_time;
 
@@ -23,13 +22,13 @@ namespace Crunchy.Sandwich
         public override float Execute(float input)
         {
             float current_time = time_type.GetTime();
-            float generated = Execute(current_time, current_time - previous_time);
+
+            float generated = Execute(
+                current_time, 
+                (current_time - previous_time).BindBelow(1.0f)
+            );
 
             previous_time = current_time;
-
-            if(signal != null)
-                return signal.Execute(generated);
-
             return generated;
         }
     }
