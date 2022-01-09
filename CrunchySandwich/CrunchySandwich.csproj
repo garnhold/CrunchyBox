@@ -1224,6 +1224,7 @@
     <Compile Include="Signal\Extensions\IEnumerable\SignalExtensions_IEnumerable.cs" />
     <Compile Include="Signal\Extensions\IEnumerable\SignalExtensions_IEnumerable_Execute.cs" />
     <Compile Include="Signal\Generator\Signal_Generator_Drifting_Random.cs" />
+    <Compile Include="Extensions\Camera\CameraExtensions_PerspectiveLength.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
