@@ -15,7 +15,7 @@ namespace Crunchy.Sandwich
             path.ProcessConnections((v1, v2) => Gizmos.DrawLine(v1, v2));
 
             if (point_size > 0.0f)
-                path.Process(v => Gizmos.DrawSphere(v, point_size));
+                path.Process(v => GizmosExtensions.DrawPoint(v, point_size));
         }
         static public void DrawPath(IEnumerable<Vector2> path, float point_size = 0.0f)
         {

@@ -18,8 +18,8 @@ namespace Crunchy.Sandwich
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red.GetWithAlpha(0.2f);
-            targets.Process(t => Gizmos.DrawSphere(t.GetSpacarPosition(), 0.02f));
+            Gizmos.color = Color.red;
+            targets.Process(t => GizmosExtensions.DrawPoint(t.GetSpacarPosition()));
         }
 
         protected override void UpdateInternal(float value)
