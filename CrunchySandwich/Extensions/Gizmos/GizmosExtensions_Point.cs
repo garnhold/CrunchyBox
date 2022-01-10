@@ -14,13 +14,20 @@ namespace Crunchy.Sandwich
 
             if (camera.orthographic)
             {
-                Gizmos.DrawSphere(center, camera.ConvertPixelsToOrthographicWorld(perceived_radius));
+                Gizmos.DrawSphere(
+                    center, 
+                    camera.ConvertPixelsToOrthographicWorld(perceived_radius)
+                );
             }
             else
             {
-                float distance = camera.GetSpacarDistanceBetween(center);
-
-                Gizmos.DrawSphere(center, camera.ConvertPixelsToPerspectiveWorld(distance, perceived_radius));
+                Gizmos.DrawSphere(
+                    center,
+                    camera.ConvertPixelsToPerspectiveWorld(
+                        camera.GetSpacarDistanceBetween(center),
+                        perceived_radius
+                    )
+                );
             }
         }
     }
