@@ -124,12 +124,17 @@ namespace Crunchy.Sandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
                     did_unpack_tyon_data = false;
-                    context.DeserializeInto(this, tyon_data, mode);
+                    
+                    context.CreateHydrater(mode)
+                        .HydrateInto(
+                            this,
+                            UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
+                        );
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
-
-					PackTyon();
+                    
+				    PackTyon();
 				}
 				catch(Exception ex)
 				{
@@ -140,12 +145,12 @@ namespace Crunchy.Sandwich
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-			PackTyon();
+		    PackTyon();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-			UnpackTyon();
+		    UnpackTyon();
             
             LateConstruct();
         }
@@ -302,12 +307,17 @@ namespace Crunchy.Sandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
                     did_unpack_tyon_data = false;
-                    context.DeserializeInto(this, tyon_data, mode);
+                    
+                    context.CreateHydrater(mode)
+                        .HydrateInto(
+                            this,
+                            UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
+                        );
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
-
-					PackTyon();
+                    
+				    PackTyon();
 				}
 				catch(Exception ex)
 				{
@@ -318,12 +328,12 @@ namespace Crunchy.Sandwich
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-			PackTyon();
+		    PackTyon();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-			UnpackTyon();
+		    UnpackTyon();
             
             LateConstruct();
         }
@@ -480,12 +490,17 @@ namespace Crunchy.Sandwich
 					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
 
                     did_unpack_tyon_data = false;
-                    context.DeserializeInto(this, tyon_data, mode);
+                    
+                    context.CreateHydrater(mode)
+                        .HydrateInto(
+                            this,
+                            UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
+                        );
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
-
-					PackTyon();
+                    
+				    PackTyon();
 				}
 				catch(Exception ex)
 				{
@@ -496,12 +511,12 @@ namespace Crunchy.Sandwich
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-			PackTyon();
+		    PackTyon();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-			UnpackTyon();
+		    UnpackTyon();
             
             LateConstruct();
         }

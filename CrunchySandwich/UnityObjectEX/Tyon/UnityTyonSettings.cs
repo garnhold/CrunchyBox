@@ -13,6 +13,8 @@ namespace Crunchy.Sandwich
     
     public class UnityTyonSettings : TyonSettings_Distributed<UnityTyonSettingComponentAttribute>
     {
+        private Dictionary<string, TyonObject> prefab_tyon_objects;
+
         static public readonly UnityTyonSettings INSTANCE = new UnityTyonSettings();
 
         private UnityTyonSettings() : base(
@@ -22,6 +24,12 @@ namespace Crunchy.Sandwich
             TyonTypeHandler_MethodInfo.INSTANCE
         )
         {
+            prefab_tyon_objects = new Dictionary<string, TyonObject>();
+        }
+
+        public TyonObject FetchPrefabTyonObject(string tyon_data)
+        {
+            return prefab_tyon_objects.GetOrCreateValue(tyon_data, () => TyonObject.DOMify(tyon_data));
         }
     }
 }
