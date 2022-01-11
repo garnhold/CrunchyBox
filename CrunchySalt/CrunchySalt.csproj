@@ -364,6 +364,7 @@
     <Compile Include="ConversionInvoker\ConversionInvoker.cs" />
     <Compile Include="IL\ILValue\Derivations\ILChain.cs" />
     <Compile Include="IL\ILStatement\Extensions\ILStatementExtensions_Value.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">

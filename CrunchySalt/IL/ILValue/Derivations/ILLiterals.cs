@@ -62,8 +62,8 @@ namespace Crunchy.Salt
 		
 			if(type == typeof(string))
 				return new ILString((string)value);
-		
-			throw new UnaccountedBranchException("type", type);
+		        
+            return new ILObject(type, value);
 		}
 		static public ILLiteral New(object value)
 		{
