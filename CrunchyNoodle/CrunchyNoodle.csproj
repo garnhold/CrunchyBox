@@ -499,6 +499,7 @@
     <Compile Include="Extensions\ILValue\ILValueExtensions_Props.cs" />
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL.cs" />
     <Compile Include="Extensions\Type\TypeExtensions_IL.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions_Convert.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
