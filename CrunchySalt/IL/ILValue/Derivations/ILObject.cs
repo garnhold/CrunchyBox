@@ -18,15 +18,25 @@ namespace Crunchy.Salt
 
         static private int NEXT_FIELD_ID = 1;
 
-        public ILObject(Type type, object obj)
+        static private OperationCache<ILObject, Type, object> GET_IL_OBJECT = ReflectionCache.Get().NewOperationCache("GET_IL_OBJECT", delegate (Type type, object obj) {
+            return new ILObject(type, obj);
+        });
+        static public ILObject GetILObject(Type type, object obj)
+        {
+            return GET_IL_OBJECT.Fetch(type, obj);
+        }
+        static public ILObject GetILObject(object obj)
+        {
+            return GetILObject(obj.GetTypeEX(), obj);
+        }
+
+        protected ILObject(Type type, object obj)
         {
             value = obj;
             field = TypeCreator.CreateField(type, "ILObject" + NEXT_FIELD_ID++);
 
             field.SetValue(null, value);
         }
-
-        public ILObject(object obj) : this(obj.GetTypeEX(), obj) { }
 
         public override void RenderIL_Load(ILCanvas canvas)
         {

@@ -62,7 +62,7 @@ namespace Crunchy.Salt
 				return new IL<#=constant_type.class_name#>((<#=constant_type.type_name#>)value);
 		<#}#>
         
-            return new ILObject(type, value);
+            return ILObject.GetILObject(type, value);
 		}
 		static public ILLiteral New(object value)
 		{

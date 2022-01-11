@@ -63,7 +63,7 @@ namespace Crunchy.Salt
 			if(type == typeof(string))
 				return new ILString((string)value);
 		        
-            return new ILObject(type, value);
+            return ILObject.GetILObject(type, value);
 		}
 		static public ILLiteral New(object value)
 		{
