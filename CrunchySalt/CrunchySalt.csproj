@@ -365,6 +365,8 @@
     <Compile Include="IL\ILValue\Derivations\ILChain.cs" />
     <Compile Include="IL\ILStatement\Extensions\ILStatementExtensions_Value.cs" />
     <Compile Include="IL\ILValue\Derivations\ILObject.cs" />
+    <Compile Include="Extensions\Delegate\DelegateExtensions.cs" />
+    <Compile Include="Extensions\Delegate\DelegateExtensions_IL.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_IL.cs" />
   </ItemGroup>
@@ -427,6 +429,7 @@
     <Folder Include="ForeignEventInfo\" />
     <Folder Include="Extensions\EventInfo\" />
     <Folder Include="ConversionInvoker\" />
+    <Folder Include="Extensions\Delegate\" />
     <Folder Include="Extensions\Object\" />
   </ItemGroup>
   <ItemGroup>
