@@ -26,5 +26,20 @@ namespace Crunchy.Salt
         {
             return GetModuleBuilder().CreateType(name, type_attributes, process);
         }
+
+        static public FieldInfo CreateField(Type type, string name)
+        {
+            FieldInfo field = null;
+
+            CreateType("SingleField<" + name + ">", TypeAttributes.NotPublic, delegate (TypeBuilder builder) {
+                field = builder.CreateFieldBuilder(type, name, FieldAttributes.Public | FieldAttributes.Static);
+            });
+
+            return field;
+        }
+        static public FieldInfo CreateField<T>(string name)
+        {
+            return CreateField(typeof(T), name);
+        }
     }
 }
