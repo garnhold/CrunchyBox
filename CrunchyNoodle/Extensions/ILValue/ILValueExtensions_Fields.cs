@@ -6,10 +6,9 @@ using System.Reflection.Emit;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Crunchy.Sodium
+namespace Crunchy.Noodle
 {
     using Dough;
-    using Noodle;
     using Salt;
     
     static public class ILValueExtensions_Fields

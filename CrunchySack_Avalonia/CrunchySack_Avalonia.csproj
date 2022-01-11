@@ -371,10 +371,6 @@
       <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
       <Name>CrunchySalt</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CrunchySodium\CrunchySodium.csproj">
-      <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
-      <Name>CrunchySodium</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CrunchyWinsys\CrunchyWinsys.csproj">
       <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
       <Name>CrunchyWinsys</Name>

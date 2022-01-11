@@ -194,10 +194,6 @@
       <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
       <Name>CrunchyDough</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CrunchySodium\CrunchySodium.csproj">
-      <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
-      <Name>CrunchySodium</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

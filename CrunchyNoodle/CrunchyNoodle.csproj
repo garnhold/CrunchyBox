@@ -491,6 +491,14 @@
     <Compile Include="Extensions\MethodBase\MethodBaseExtensions.cs" />
     <Compile Include="Extensions\ConstructorInfo\ConstructorInfoExtensions.cs" />
     <Compile Include="Filterer\FieldInfo\Filterer_FieldInfo_IsBackingFieldForPublic.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions_Common.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions_Fields.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions_MethodInvokation.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions_MethodInvokation_Generic.cs" />
+    <Compile Include="Extensions\ILValue\ILValueExtensions_Props.cs" />
+    <Compile Include="Extensions\MethodBase\MethodBaseExtensions_IL.cs" />
+    <Compile Include="Extensions\Type\TypeExtensions_IL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -563,6 +571,7 @@
     <Folder Include="DefinitionDeconstructionMethods\Common\" />
     <Folder Include="Extensions\ConstructorInfo\" />
     <Folder Include="Extensions\MethodBase\" />
+    <Folder Include="Extensions\ILValue\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

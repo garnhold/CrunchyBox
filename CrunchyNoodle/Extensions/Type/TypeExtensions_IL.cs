@@ -7,11 +7,10 @@ using System.Reflection.Emit;
 
 using System.Globalization;
 
-namespace Crunchy.Sodium
+namespace Crunchy.Noodle
 {
     using Dough;
     using Salt;
-    using Noodle;
     
     static public class TypeExtensions_IL
     {

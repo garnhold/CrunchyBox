@@ -61,10 +61,6 @@
       <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
       <Name>CrunchySalt</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CrunchySodium\CrunchySodium.csproj">
-      <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
-      <Name>CrunchySodium</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

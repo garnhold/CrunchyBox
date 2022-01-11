@@ -132,10 +132,6 @@
       <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
       <Name>CrunchyNoodle</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CrunchySodium\CrunchySodium.csproj">
-      <Project>{4995EF29-EE06-493C-999C-ABA7D9B4E884}</Project>
-      <Name>CrunchySodium</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
