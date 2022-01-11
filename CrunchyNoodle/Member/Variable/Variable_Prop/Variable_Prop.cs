@@ -27,11 +27,25 @@ namespace Crunchy.Noodle
 
             return false;
         }
+        protected override ILStatement CompileSetContentsInternal(ILValue target, ILValue value)
+        {
+            if (prop.CanSet())
+                return new ILAssign(target.GetILProp(prop), value);
+
+            return null;
+        }
 
         protected override object GetContentsInternal(object target)
         {
             if(prop.CanGet())
                 return prop.GetValue(target);
+
+            return null;
+        }
+        protected override ILValue CompileGetContentsInternal(ILValue target)
+        {
+            if (prop.CanGet())
+                return target.GetILProp(prop);
 
             return null;
         }

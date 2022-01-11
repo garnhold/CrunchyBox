@@ -13,7 +13,10 @@ namespace Crunchy.Noodle
         private Type variable_type;
 
         protected abstract bool SetContentsInternal(object target, object value);
+        protected virtual ILStatement CompileSetContentsInternal(ILValue target, ILValue value) { return null; }
+
         protected abstract object GetContentsInternal(object target);
+        protected virtual ILValue CompileGetContentsInternal(ILValue target) { return null; }
 
         protected abstract string GetVariableNameInternal();
         protected virtual IEnumerable<Attribute> GetAllCustomAttributesInternal(bool inherit) { return Empty.IEnumerable<Attribute>(); }
@@ -29,6 +32,13 @@ namespace Crunchy.Noodle
                 return SetContentsInternal(target, PrepareValue(value));
 
             return false;
+        }
+        public ILStatement CompileSetContents(ILValue target, ILValue value)
+        {
+            if (target.GetValueType().CanBeTreatedAs(GetDeclaringType()))
+                return CompileSetContentsInternal(target, CompilePrepareValue(value));
+
+            return null;
         }
 
         public ValueChangeResult ChangeContents(object target, object value)
@@ -58,10 +68,21 @@ namespace Crunchy.Noodle
 
             return value;
         }
+        public ILValue CompileGetContents(ILValue target)
+        {
+            if (target.GetValueType().CanBeTreatedAs(GetDeclaringType()))
+                return CompileGetContentsInternal(target);
+
+            return null;
+        }
 
         public object PrepareValue(object value)
         {
             return value.ConvertEX(variable_type);
+        }
+        public ILValue CompilePrepareValue(ILValue value)
+        {
+            return value.GetILConvertEX(variable_type);
         }
 
         public Type GetVariableType()

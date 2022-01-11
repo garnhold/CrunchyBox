@@ -3,7 +3,8 @@ using System;
 namespace Crunchy.Noodle
 {
     using Dough;
-    
+    using Salt;
+
     public class Variable_This : Variable
     {
         static public Variable_This New(Type d)
@@ -17,6 +18,10 @@ namespace Crunchy.Noodle
         }
 
         protected override object GetContentsInternal(object target)
+        {
+            return target;
+        }
+        protected override ILValue CompileGetContentsInternal(ILValue target)
         {
             return target;
         }

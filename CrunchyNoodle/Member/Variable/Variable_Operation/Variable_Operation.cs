@@ -23,11 +23,25 @@ namespace Crunchy.Noodle
 
             return false;
         }
+        protected override ILStatement CompileSetContentsInternal(ILValue target, ILValue value)
+        {
+            if (set != null)
+                return set.GetILDelegateInvokation(target, value);
+
+            return null;
+        }
 
         protected override object GetContentsInternal(object target)
         {
             if(get != null)
                 return get(target);
+
+            return null;
+        }
+        protected override ILValue CompileGetContentsInternal(ILValue target)
+        {
+            if (get != null)
+                return get.GetILDelegateInvokation(target);
 
             return null;
         }
