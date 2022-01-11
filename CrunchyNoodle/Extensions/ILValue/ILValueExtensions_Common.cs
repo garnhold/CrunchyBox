@@ -17,14 +17,5 @@ namespace Crunchy.Noodle
         {
             return item.GetILInvoke("GetTypeEX");
         }
-
-        static public ILValue GetILDelegateInvoke(this ILValue item, IEnumerable<ILValue> arguments)
-        {
-            return item.GetILInvoke("Invoke", arguments);
-        }
-        static public ILValue GetILDelegateInvoke(this ILValue item, params ILValue[] arguments)
-        {
-            return item.GetILDelegateInvoke((IEnumerable<ILValue>)arguments);
-        }
     }
 }
