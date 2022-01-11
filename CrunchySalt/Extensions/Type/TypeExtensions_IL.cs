@@ -13,6 +13,15 @@ namespace Crunchy.Salt
     
     static public class TypeExtensions_IL
     {
+        static public ILNew GetILNew(this Type item, IEnumerable<ILValue> arguments)
+        {
+            return new ILNew(item, arguments);
+        }
+        static public ILNew GetILNew(this Type item, params ILValue[] arguments)
+        {
+            return new ILNew(item, arguments);
+        }
+
         static public ILField GetStaticILField(this Type item, string name)
         {
             return item.GetStaticField(name)
