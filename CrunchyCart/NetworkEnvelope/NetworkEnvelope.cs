@@ -10,7 +10,6 @@ namespace Crunchy.Cart
     using Dough;
     using Salt;
     using Noodle;
-    using Sodium;
     
     public class NetworkEnvelope
     {

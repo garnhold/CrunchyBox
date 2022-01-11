@@ -11,7 +11,6 @@ namespace Crunchy.Sack
     using Dough;
     using Salt;
     using Noodle;
-    using Sodium;
     
     static public class FunctionSyncroExtensions_Delegate
     {

@@ -13,7 +13,6 @@ namespace Crunchy.Sack
     using Dough;
     using Salt;
     using Noodle;
-    using Sodium;
     
     public partial class CmlScriptFunctionCall : CmlElement, CmlScriptElement
 	{

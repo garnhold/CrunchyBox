@@ -13,7 +13,6 @@ namespace Crunchy.Ramen
     using Dough;
     using Salt;
     using Noodle;
-    using Sodium;
     
     public partial class CMinorExpression_IndirectIdentifier : CMinorExpression
 	{

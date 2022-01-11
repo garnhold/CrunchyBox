@@ -20,7 +20,6 @@ using Crunchy.Noodle;
 [assembly: InspectAssemblys_ByType(
     typeof(Crunchy.Dough.ThisAssembly),
     typeof(Crunchy.Salt.ThisAssembly),
-    typeof(Crunchy.Sodium.ThisAssembly),
     typeof(Crunchy.Noodle.ThisAssembly)
 )]
 

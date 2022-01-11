@@ -9,7 +9,6 @@ namespace Crunchy.Cart
     using Dough;
     using Salt;
     using Noodle;
-    using Sodium;
     
     public struct NetworkActor
     {

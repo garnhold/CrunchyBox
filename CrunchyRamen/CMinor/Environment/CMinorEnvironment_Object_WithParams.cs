@@ -7,7 +7,6 @@ namespace Crunchy.Ramen
     using Dough;
     using Salt;
     using Noodle;
-    using Sodium;
     
     public class CMinorEnvironment_Object_WithParams : CMinorEnvironment_Object
 	{

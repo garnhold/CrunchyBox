@@ -12,7 +12,6 @@ namespace Crunchy.Sack
 {
     using Dough;
     using Salt;
-    using Sodium;
     using Noodle;
     
     public class CmlScriptValue_IndirectGlobal : CmlScriptValue

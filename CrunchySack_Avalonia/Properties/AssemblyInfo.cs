@@ -21,7 +21,6 @@ using Crunchy.Noodle;
     typeof(Crunchy.Dough.ThisAssembly),
     typeof(Crunchy.Salt.ThisAssembly),
     typeof(Crunchy.Noodle.ThisAssembly),
-    typeof(Crunchy.Sodium.ThisAssembly),
     typeof(Crunchy.Winsys.ThisAssembly),
     typeof(Crunchy.Sack.ThisAssembly)
 )]
