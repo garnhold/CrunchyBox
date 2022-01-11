@@ -369,6 +369,8 @@
     <Compile Include="Extensions\Delegate\DelegateExtensions_IL.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions_IL.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILLogicalAND.cs" />
+    <Compile Include="IL\ILValue\Derivations\ILLogicalOR.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\Builder\BuilderExtensions_Attribute.tt">
