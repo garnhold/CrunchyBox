@@ -46,5 +46,14 @@ namespace Crunchy.Recipe
         {
             item.CreateContext().DeserializeInto(obj, text, mode);
         }
+
+        static public Operation<object, TyonContext> CompileInstanceSystemObject(this TyonSettings item, string text, TyonHydrationMode mode)
+        {
+            return item.CreateContext().CompileInstanceSystemObject(text, mode);
+        }
+        static public Process<object, TyonContext> CompilePushToSystemObject(this TyonSettings item, string text, TyonHydrationMode mode)
+        {
+            return item.CreateContext().CompilePushToSystemObject(text, mode);
+        }
     }
 }

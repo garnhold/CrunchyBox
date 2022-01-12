@@ -12,28 +12,47 @@ namespace Crunchy.Recipe
     public class TyonCompiler : TyonHydraterBase
 	{
         private ILBlock block;
+        private ILValue context;
 
         private Dictionary<TyonObject, ILLocal> object_to_local;
         private Dictionary<TyonAddress, ILLocal> internal_address_to_local;
-        private Dictionary<TyonAddress, ILVirtualParameter> external_address_to_virtual_parameter;
 
         public TyonCompiler(TyonHydrationMode m, TyonContext c) : base(m, c)
         {
-            block = new ILBlock();
-
             object_to_local = new Dictionary<TyonObject, ILLocal>();
             internal_address_to_local = new Dictionary<TyonAddress, ILLocal>();
-            external_address_to_virtual_parameter = new Dictionary<TyonAddress, ILVirtualParameter>();
         }
 
-        public Operation<object> CompilePushToSystemObject(TyonObject tyon_object)
+        public Operation<object, TyonContext> CompileInstanceSystemObject(TyonObject tyon_object)
         {
-            return this.GetType().CreateDynamicMethodDelegate<Operation<object>>(delegate (ILValue target) {
-                tyon_object.CompileInitialize(this);
-                tyon_object.CompilePushToSystemObject(target, this);
+            return this.GetType().CreateDynamicMethodDelegate<Operation<object, TyonContext>>(delegate (ILValue c) {
+                block = new ILBlock();
+                context = c;
 
+                tyon_object.CompileInitialize(this);
+                block.AddStatement(new ILReturn(tyon_object.CompileLocal(this)));
                 return block;
             });
+        }
+        public Operation<object, TyonContext> CompileInstanceSystemObject(string text)
+        {
+            return CompileInstanceSystemObject(TyonObject.DOMify(text));
+        }
+
+        public Process<object, TyonContext> CompilePushToSystemObject(TyonObject tyon_object)
+        {
+            return this.GetType().CreateDynamicMethodDelegate<Process<object, TyonContext>>(delegate (ILValue t, ILValue c) {
+                block = new ILBlock();
+                context = c;
+
+                tyon_object.CompileInitialize(this);
+                tyon_object.CompilePushToSystemObject(t, this);
+                return block;
+            });
+        }
+        public Process<object, TyonContext> CompilePushToSystemObject(string text)
+        {
+            return CompilePushToSystemObject(TyonObject.DOMify(text));
         }
 
         public ILLocal DefineLocal(TyonObject obj, ILValue value)
@@ -62,9 +81,9 @@ namespace Crunchy.Recipe
         {
             return internal_address_to_local.GetValue(address);
         }
-        public ILVirtualParameter ResolveExternalAddress(TyonAddress address)
+        public ILValue ResolveExternalAddress(TyonAddress address)
         {
-            return external_address_to_virtual_parameter.GetValue(address);
+            return context.GetInstanceILMethodInvokation("ResolveExternalAddress", address.CreateILLiteral());
         }
     }
 	

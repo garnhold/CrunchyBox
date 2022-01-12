@@ -32,6 +32,10 @@ namespace Crunchy.Recipe
         {
             return new TyonHydrater(mode, this);
         }
+        public TyonCompiler CreateCompiler(TyonHydrationMode mode)
+        {
+            return new TyonCompiler(mode, this);
+        }
 
         public string Serialize(object obj)
         {
@@ -63,6 +67,15 @@ namespace Crunchy.Recipe
         public void DeserializeInto(object obj, string text, TyonHydrationMode mode)
         {
             CreateHydrater(mode).HydrateInto(obj, text);
+        }
+
+        public Operation<object, TyonContext> CompileInstanceSystemObject(string text, TyonHydrationMode mode)
+        {
+            return CreateCompiler(mode).CompileInstanceSystemObject(text);
+        }
+        public Process<object, TyonContext> CompilePushToSystemObject(string text, TyonHydrationMode mode)
+        {
+            return CreateCompiler(mode).CompilePushToSystemObject(text);
         }
 
         public TyonAddress RegisterExternalObject(object obj)
