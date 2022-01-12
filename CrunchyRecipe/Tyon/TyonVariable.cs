@@ -33,6 +33,20 @@ namespace Crunchy.Recipe
                 hydrater.LogMissingField(obj.GetType(), GetId());
         }
 
+        public void CompileInitialize(TyonCompiler compiler)
+        {
+            GetTyonValue().CompileInitialize(compiler);
+        }
+        public void CompilePushToSystemObject(ILValue obj, TyonCompiler compiler)
+        {
+            Variable variable;
+
+            if (compiler.TryGetDesignatedVariable(obj.GetValueType(), GetId(), out variable))
+                compiler.AddStatement(variable.CompileSetContents(obj, GetTyonValue().CompileValue(compiler)));
+            else
+                compiler.LogMissingField(obj.GetValueType(), GetId());
+        }
+
         public string Render()
         {
             TextDocumentCanvas canvas = new TextDocumentCanvas();

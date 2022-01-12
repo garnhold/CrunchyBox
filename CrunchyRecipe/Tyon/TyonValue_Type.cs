@@ -32,6 +32,11 @@ namespace Crunchy.Recipe
         {
             variable.SetContents(GetTyonType().GetSystemType(hydrater));
         }
-	}
+
+        public override ILValue CompileValue(TyonCompiler compiler)
+        {
+            return GetTyonType().GetSystemType(compiler);
+        }
+    }
 	
 }

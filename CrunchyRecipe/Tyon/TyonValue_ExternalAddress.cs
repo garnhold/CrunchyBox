@@ -33,6 +33,11 @@ namespace Crunchy.Recipe
                 variable.SetContents(hydrater.ResolveExternalAddress(GetTyonAddress()));
             });
         }
-	}
+
+        public override ILValue CompileValue(TyonCompiler compiler)
+        {
+            return compiler.ResolveExternalAddress(GetTyonAddress());
+        }
+    }
 	
 }

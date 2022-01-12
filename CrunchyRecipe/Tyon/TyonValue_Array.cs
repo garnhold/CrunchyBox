@@ -31,6 +31,16 @@ namespace Crunchy.Recipe
         {
             GetTyonArray().PushToVariable(variable, hydrater);
         }
+
+        public override void CompileInitialize(TyonCompiler compiler)
+        {
+            GetTyonArray().CompileInitialize(compiler);
+        }
+
+        public override ILValue CompileValue(TyonCompiler compiler)
+        {
+            return GetTyonArray().CompileValue(compiler);
+        }
     }
 
 }

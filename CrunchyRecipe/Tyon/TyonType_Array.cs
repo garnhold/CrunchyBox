@@ -25,8 +25,12 @@ namespace Crunchy.Recipe
         {
             return null;
         }
+        public override ILValue CompileInstanceSystemObject(TyonCompiler compiler, IEnumerable<ILValue> arguments)
+        {
+            return ILNull.INSTANCE;
+        }
 
-        public override Type GetSystemType(TyonHydrater hydrater)
+        public override Type GetSystemType(TyonHydraterBase hydrater)
         {
             return GetTyonType().GetSystemType(hydrater).IfNotNull(t => t.MakeArrayType());
         }

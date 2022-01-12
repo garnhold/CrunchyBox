@@ -129,6 +129,8 @@
     <Compile Include="Tyon\TypeHandler\Derivations\Internal\Integer\TyonTypeHandler_Byte.cs" />
     <Compile Include="Tyon\TypeHandler\Derivations\Internal\Integer\TyonTypeHandler_UShort.cs" />
     <Compile Include="Tyon\TypeHandler\Derivations\Internal\Integer\TyonTypeHandler_UInt.cs" />
+    <Compile Include="Tyon\TyonHydraterBase.cs" />
+    <Compile Include="Tyon\TyonCompiler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

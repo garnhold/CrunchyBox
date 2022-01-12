@@ -22,6 +22,10 @@ namespace Crunchy.Recipe
         {
             return GetSystemType(hydrater).IfNotNull(t => t.CreateInstance(arguments));
         }
+        public override ILValue CompileInstanceSystemObject(TyonCompiler compiler, IEnumerable<ILValue> arguments)
+        {
+            return GetSystemType(compiler).IfNotNull(t => t.GetILNew(arguments));
+        }
 
         public string GetName()
         {

@@ -48,7 +48,7 @@ namespace Crunchy.Recipe
         }
         public void PushToSystemObject(object obj, TyonHydrater hydrater)
         {
-            hydrater.RegisterInternalObject(obj, GetTyonAddress());
+            hydrater.RegisterInternalAddress(obj, GetTyonAddress());
             GetTyonVariables().Process(v => v.PushToSystemObject(obj, hydrater));
         }
 
@@ -104,6 +104,39 @@ namespace Crunchy.Recipe
             }
 
             variable.SetContents(InstanceSystemObject(hydrater));
+        }
+
+        public void CompileInitialize(TyonCompiler compiler)
+        {
+            if (GetTyonValueList() == null)
+            {
+                compiler.DefineLocal(
+                    this, 
+                    GetTyonType().CompileInstanceSystemObject(compiler)
+                );
+            }
+
+            GetTyonValueList().IfNotNull(l => l.CompileInitialization(compiler));
+            GetTyonVariables().Process(v => v.CompileInitialize(compiler));
+        }
+        public ILLocal CompileLocal(TyonCompiler compiler)
+        {
+            ILLocal local = compiler.ResolveObject(this);
+
+            if (local == null)
+            {
+                local = compiler.DefineLocal(
+                    this, 
+                    GetTyonType().CompileInstanceSystemObject(compiler, GetTyonValueList().CompileValues(compiler))
+                );
+            }
+
+            CompilePushToSystemObject(local, compiler);
+            return local;
+        }
+        public void CompilePushToSystemObject(ILValue obj, TyonCompiler compiler)
+        {
+            GetTyonVariables().Process(v => v.CompilePushToSystemObject(obj, compiler));
         }
 
         public TyonAddress RequestAddress(TyonDehydrater dehydrater)

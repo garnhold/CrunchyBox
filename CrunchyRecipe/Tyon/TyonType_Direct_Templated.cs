@@ -22,7 +22,7 @@ namespace Crunchy.Recipe
             SetTyonTypes(type.GetGenericArguments().Convert(t => TyonType.CreateTyonType(t)));
         }
 
-        public override Type GetSystemType(TyonHydrater hydrater)
+        public override Type GetSystemType(TyonHydraterBase hydrater)
         {
             Type[] generic_arguments = GetTyonTypes()
                 .Convert(t => t.GetSystemType(hydrater))

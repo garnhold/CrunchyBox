@@ -21,7 +21,7 @@ namespace Crunchy.Recipe
             SetId(type.GetNamespace().AppendToVisible(".") + type.GetBasicName());
         }
 
-        public override Type GetSystemType(TyonHydrater hydrater)
+        public override Type GetSystemType(TyonHydraterBase hydrater)
         {
             IEnumerable<Filterer<Type>> filters = new Filterer<Type>[] {
                 Filterer_Type.IsNamed(GetName()),

@@ -47,6 +47,16 @@ namespace Crunchy.Recipe
             GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(variable.CreateStrongInstance(i), hydrater));
         }
 
+        public void CompileInitialization(TyonCompiler compiler)
+        {
+            GetTyonValues().Process(v => v.CompileInitialize(compiler));
+        }
+
+        public IEnumerable<ILValue> CompileValues(TyonCompiler compiler)
+        {
+            return GetTyonValues().Convert(v => v.CompileValue(compiler));
+        }
+
         public int GetNumberTyonValues()
         {
             return tyon_values.Count;

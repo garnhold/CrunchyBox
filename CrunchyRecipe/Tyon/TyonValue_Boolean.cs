@@ -30,6 +30,11 @@ namespace Crunchy.Recipe
         {
             variable.SetContents(GetBool());
         }
+
+        public override ILValue CompileValue(TyonCompiler compiler)
+        {
+            return GetBool();
+        }
     }
 	
 }

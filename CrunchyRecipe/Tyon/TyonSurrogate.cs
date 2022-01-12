@@ -15,7 +15,7 @@ namespace Crunchy.Recipe
     using Noodle;
     
     public partial class TyonSurrogate : TyonElement
-	{
+    {
         public TyonSurrogate(object value, TyonDehydrater dehydrater) : this()
         {
             SetTyonType(TyonType.CreateTyonType(value.GetTypeEX()));
@@ -48,6 +48,17 @@ namespace Crunchy.Recipe
         public void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             variable.SetContents(InstanceSystemObject(hydrater));
+        }
+
+        public void CompileInitialize(TyonCompiler compiler)
+        {
+            GetTyonValue().CompileInitialize(compiler);
+        }
+
+        public ILValue CompileValue(TyonCompiler compiler)
+        {
+            return GetTyonValue().CompileValue(compiler)
+                .GetILConvertEX(GetTyonType().GetSystemType(compiler));
         }
 
         public override string ToString()

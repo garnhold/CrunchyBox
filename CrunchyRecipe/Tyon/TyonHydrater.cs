@@ -9,40 +9,20 @@ namespace Crunchy.Recipe
     using Salt;
     using Noodle;
     
-    public class TyonHydrater
+    public class TyonHydrater : TyonHydraterBase
 	{
-        private TyonHydrationMode mode;
-
         private DeferredProcessList deferred_process_list;
         private Dictionary<TyonAddress, object> internal_address_to_object;
-
-        private TyonContext context;
 
         private void Finish()
         {
             deferred_process_list.ProcessDeferred();
-            Clear();
         }
 
-        public TyonHydrater(TyonHydrationMode m, TyonContext c)
+        public TyonHydrater(TyonHydrationMode m, TyonContext c) : base(m, c)
         {
-            mode = m;
-
             deferred_process_list = new DeferredProcessList();
             internal_address_to_object = new Dictionary<TyonAddress, object>();
-
-            context = c;
-        }
-
-        public TyonHydrater CreateHydrater()
-        {
-            return context.CreateHydrater(mode);
-        }
-
-        public void Clear()
-        {
-            deferred_process_list.Clear();
-            internal_address_to_object.Clear();
         }
 
         public object Hydrate(TyonObject tyon_object)
@@ -82,7 +62,12 @@ namespace Crunchy.Recipe
             return HydrateValue(type, TyonValue.DOMify(text));
         }
 
-        public void RegisterInternalObject(object obj, TyonAddress address)
+        public object ResolveExternalAddress(TyonAddress address)
+        {
+            return GetContext().ResolveExternalAddress(address);
+        }
+
+        public void RegisterInternalAddress(object obj, TyonAddress address)
         {
             if (address != null)
                 internal_address_to_object.Add(address, obj);
@@ -100,37 +85,10 @@ namespace Crunchy.Recipe
             return obj;
         }
 
-        public object ResolveExternalAddress(TyonAddress address)
-        {
-            return context.ResolveExternalAddress(address);
-        }
-
         public void DeferProcess(Process process)
         {
             deferred_process_list.Defer(process);
         }
-
-        public bool TryGetDesignatedVariable(Type type, string name, out Variable variable)
-        {
-            return context.GetSettings().TryGetDesignatedVariable(type, name, out variable);
-        }
-
-        public void LogMissingType(string id)
-        {
-            if (mode == TyonHydrationMode.Strict)
-                throw new TyonResolutionException("Unable to resolve type " + id);
-        }
-
-        public void LogMissingField(Type type, string id)
-        {
-            if (mode == TyonHydrationMode.Strict)
-                throw new TyonResolutionException("Unable to resolve field " + id + " of " + type);
-        }
-
-        public TyonContext GetContext()
-        {
-            return context;
-        }
-	}
+    }
 	
 }

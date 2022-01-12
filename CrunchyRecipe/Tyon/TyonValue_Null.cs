@@ -25,6 +25,11 @@ namespace Crunchy.Recipe
         {
             variable.SetContents(null);
         }
-	}
+
+        public override ILValue CompileValue(TyonCompiler compiler)
+        {
+            return ILNull.INSTANCE;
+        }
+    }
 	
 }

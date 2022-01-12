@@ -69,6 +69,25 @@ namespace Crunchy.Recipe
             });
         }
 
+        public void CompileInitialize(TyonCompiler compiler)
+        {
+            GetTyonValueList().IfNotNull(l => l.CompileInitialization(compiler));
+        }
+
+        public ILValue CompileValue(TyonCompiler compiler)
+        {
+            List<ILValue> values = GetTyonValueList()
+                .IfNotNull(l => l.CompileValues(compiler))
+                .ToList();
+
+            Type element_type = IsExplicitlyTyped().ConvertBool(
+                () => GetTyonType().GetSystemType(compiler),
+                () => values.Convert(v => v.GetValueType()).GetCommonAncestor()
+            );
+
+            return new ILNewPopulatedArray(element_type, values);
+        }
+
         public bool IsExplicitlyTyped()
         {
             if (GetTyonType() != null)

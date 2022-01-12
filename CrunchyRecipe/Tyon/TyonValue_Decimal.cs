@@ -30,6 +30,11 @@ namespace Crunchy.Recipe
         {
             variable.SetContents(GetDecimal());
         }
+
+        public override ILValue CompileValue(TyonCompiler compiler)
+        {
+            return GetDecimal().CreateILLiteral();
+        }
     }
 	
 }
