@@ -30,7 +30,9 @@ namespace Crunchy.Recipe
                 context = c;
 
                 tyon_object.CompileInitialize(this);
-                block.AddStatement(new ILReturn(tyon_object.CompileLocal(this)));
+                ILLocal local = tyon_object.CompileLocal(this);
+
+                block.AddStatement(new ILReturn(local));
                 return block;
             });
         }
@@ -47,6 +49,7 @@ namespace Crunchy.Recipe
 
                 tyon_object.CompileInitialize(this);
                 tyon_object.CompilePushToSystemObject(t, this);
+
                 return block;
             });
         }
