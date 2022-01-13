@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 using Crunchy.Dough;
+using Crunchy.Salt;
 using Crunchy.Recipe;
 
 namespace Scratch
@@ -48,9 +50,9 @@ Scratch.Poop {
 
             ";
 
-            Console.WriteLine(tyon);
+            Operation<object, TyonContext> operation = TyonSettings_General.INSTANCE.CompileInstanceSystemObject(tyon, TyonHydrationMode.Permissive);
 
-            Poop deserialized = (Poop)TyonSettings_General.INSTANCE.Deserialize(tyon, TyonHydrationMode.Strict);
+            object deserialized = operation(null);
 
             string tyon2 = TyonSettings_General.INSTANCE.Serialize(deserialized);
 
