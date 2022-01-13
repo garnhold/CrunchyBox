@@ -125,11 +125,14 @@ namespace Crunchy.Sandwich
 
                     did_unpack_tyon_data = false;
                     
+                    UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(this, context);
+                    /*
                     context.CreateHydrater(mode)
                         .HydrateInto(
                             this,
                             UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
                         );
+                    */
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
@@ -308,11 +311,14 @@ namespace Crunchy.Sandwich
 
                     did_unpack_tyon_data = false;
                     
+                    UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(this, context);
+                    /*
                     context.CreateHydrater(mode)
                         .HydrateInto(
                             this,
                             UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
                         );
+                    */
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;
@@ -491,11 +497,14 @@ namespace Crunchy.Sandwich
 
                     did_unpack_tyon_data = false;
                     
+                    UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(this, context);
+                    /*
                     context.CreateHydrater(mode)
                         .HydrateInto(
                             this,
                             UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
                         );
+                    */
 
 					did_unpack_tyon_data = true;
 					unpack_error = null;

@@ -14,6 +14,7 @@ namespace Crunchy.Sandwich
     public class UnityTyonSettings : TyonSettings_Distributed<UnityTyonSettingComponentAttribute>
     {
         private Dictionary<string, TyonObject> prefab_tyon_objects;
+        private Dictionary<string, Process<object, TyonContext>> prefab_pushers;
 
         static public readonly UnityTyonSettings INSTANCE = new UnityTyonSettings();
 
@@ -25,11 +26,16 @@ namespace Crunchy.Sandwich
         )
         {
             prefab_tyon_objects = new Dictionary<string, TyonObject>();
+            prefab_pushers = new Dictionary<string, Process<object, TyonContext>>();
         }
 
         public TyonObject FetchPrefabTyonObject(string tyon_data)
         {
             return prefab_tyon_objects.GetOrCreateValue(tyon_data, () => TyonObject.DOMify(tyon_data));
+        }
+        public Process<object, TyonContext> FetchPrefabPusher(string tyon_data)
+        {
+            return prefab_pushers.GetOrCreateValue(tyon_data, () => this.CompilePushToSystemObject(tyon_data, TyonHydrationMode.Permissive));
         }
     }
 }
