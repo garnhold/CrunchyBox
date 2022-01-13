@@ -44,7 +44,7 @@ namespace Crunchy.Salt
         {
             canvas.AppendToLine(".ctor");
             canvas.AppendToLine("(");
-                arguments.RenderText_Value(canvas, ", ");
+                arguments.RenderText_ValueEX(canvas, ", ");
             canvas.AppendToLine(")");
         }
 

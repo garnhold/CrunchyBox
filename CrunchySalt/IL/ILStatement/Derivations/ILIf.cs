@@ -59,12 +59,12 @@ namespace Crunchy.Salt
             canvas.AppendNewline();
 
             canvas.AppendToLine("if(");
-                condition.RenderText_Value(canvas);
+                condition.RenderText_ValueEX(canvas);
             canvas.AppendToLine(")");
 
             canvas.AppendToNewline("{");
             canvas.Indent();
-                if_true_statement.RenderText_Statement(canvas);
+                if_true_statement.RenderText_StatementEX(canvas);
             canvas.Dedent();
             canvas.AppendToNewline("}");
 
@@ -73,7 +73,7 @@ namespace Crunchy.Salt
                 canvas.AppendToNewline("else");
                 canvas.AppendToNewline("{");
                 canvas.Indent();
-                    if_false_statement.RenderText_Statement(canvas);
+                    if_false_statement.RenderText_StatementEX(canvas);
                 canvas.Dedent();
                 canvas.AppendToNewline("}");
             }

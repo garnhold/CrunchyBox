@@ -39,7 +39,7 @@ namespace Crunchy.Salt
             if (value != null)
             {
                 canvas.AppendToLine("return ");
-                value.RenderText_Value(canvas);
+                value.RenderText_ValueEX(canvas);
                 canvas.AppendToLine(";");
             }
             else

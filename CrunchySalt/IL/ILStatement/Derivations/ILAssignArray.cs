@@ -37,7 +37,7 @@ namespace Crunchy.Salt
 
             array.RenderText_Value(canvas);
             canvas.AppendToLine(" = [");
-                values.RenderText_Value(canvas, ", ");
+                values.RenderText_ValueEX(canvas, ", ");
             canvas.AppendToLine("];");
         }
 

@@ -97,7 +97,7 @@ namespace Crunchy.Salt
 
         public override void RenderText_Statement(ILTextCanvas canvas)
         {
-            statements.Process(s => s.RenderText_Statement(canvas));
+            statements.Process(s => s.RenderText_StatementEX(canvas));
         }
 
         public bool TryGetNamedLocal(string name, out ILLocal local)

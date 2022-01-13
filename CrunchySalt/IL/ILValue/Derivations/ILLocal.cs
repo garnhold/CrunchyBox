@@ -107,7 +107,7 @@ namespace Crunchy.Salt
             if (initial_value != null)
             {
                 canvas.AppendToLine(" = ");
-                initial_value.RenderText_Value(canvas);
+                initial_value.RenderText_ValueEX(canvas);
             }
 
             canvas.AppendToLine(";");

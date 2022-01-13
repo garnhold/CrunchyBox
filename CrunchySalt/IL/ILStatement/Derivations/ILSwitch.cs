@@ -58,7 +58,7 @@ namespace Crunchy.Salt
             canvas.AppendNewline();
 
             canvas.AppendToLine("switch(");
-                input.RenderText_Value(canvas);
+                input.RenderText_ValueEX(canvas);
             canvas.AppendToLine(")");
 
             canvas.AppendToNewline("{");
@@ -69,7 +69,7 @@ namespace Crunchy.Salt
                 {
                     canvas.AppendToNewline("default case:");
                     canvas.Indent();
-                        default_statement.RenderText_Statement(canvas);
+                        default_statement.RenderText_StatementEX(canvas);
                         canvas.AppendToNewline("break;");
                     canvas.Dedent();
                 }

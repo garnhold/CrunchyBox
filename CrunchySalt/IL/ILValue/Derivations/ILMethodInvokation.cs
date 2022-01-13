@@ -58,13 +58,13 @@ namespace Crunchy.Salt
         {
             if (method.IsEffectivelyInstanceMethod() && caller != null)
             {
-                caller.RenderText_Value(canvas);
+                caller.RenderText_ValueEX(canvas);
                 canvas.AppendToLine(".");
             }
 
             canvas.AppendToLine(method.Name);
             canvas.AppendToLine("(");
-                arguments.RenderText_Value(canvas, ", ");
+                arguments.RenderText_ValueEX(canvas, ", ");
             canvas.AppendToLine(")");
         }
 

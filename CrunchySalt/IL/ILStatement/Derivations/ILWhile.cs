@@ -43,12 +43,12 @@ namespace Crunchy.Salt
             canvas.AppendNewline();
 
             canvas.AppendToLine("while(");
-                condition.RenderText_Value(canvas);
+                condition.RenderText_ValueEX(canvas);
             canvas.AppendToLine(")");
 
             canvas.AppendToNewline("{");
             canvas.Indent();
-                while_statement.RenderText_Statement(canvas);
+                while_statement.RenderText_StatementEX(canvas);
             canvas.Dedent();
             canvas.AppendToNewline("}");
         }

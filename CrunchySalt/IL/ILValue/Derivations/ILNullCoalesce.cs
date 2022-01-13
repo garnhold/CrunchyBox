@@ -41,7 +41,7 @@ namespace Crunchy.Salt
 
         public override void RenderText_Value(ILTextCanvas canvas)
         {
-            values.RenderText_Value(canvas, " ?? ");
+            values.RenderText_ValueEX(canvas, " ?? ");
         }
 
         public override Type GetValueType()

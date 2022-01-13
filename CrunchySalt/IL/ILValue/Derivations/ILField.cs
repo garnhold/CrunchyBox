@@ -79,7 +79,7 @@ namespace Crunchy.Salt
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             if (field.IsInstanceField())
-                target.RenderText_Value(canvas);
+                target.RenderText_ValueEX(canvas);
             else
                 canvas.AppendToLine(field.DeclaringType.Name);
 

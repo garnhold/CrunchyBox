@@ -10,11 +10,11 @@ namespace Crunchy.Salt
 {
     using Dough;
     
-    static public class ILStatementExtensions_Value
+    static public class ILValueExtensions_Text
     {
-        static public ILValue CreateILChain(this ILStatement item, ILValue value)
+        static public void RenderText_ValueEX(this ILValue item, ILTextCanvas canvas)
         {
-            return item.IfNotNull(i => new ILChain(i, value));
+            item.IfNotNull(i => i.RenderText_Value(canvas), () => canvas.AppendToLine("?????"));
         }
     }
 }

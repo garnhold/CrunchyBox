@@ -35,13 +35,13 @@ namespace Crunchy.Salt
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             canvas.AppendToLine("(");
-                left.RenderText_Value(canvas);
+                left.RenderText_ValueEX(canvas);
 
                 canvas.AppendToLine(" ");
                 canvas.AppendToLine(operator_info.GetOperatorType().GetSymbol());
                 canvas.AppendToLine(" ");
 
-                right.RenderText_Value(canvas);
+                right.RenderText_ValueEX(canvas);
             canvas.AppendToLine(")");
         }
 

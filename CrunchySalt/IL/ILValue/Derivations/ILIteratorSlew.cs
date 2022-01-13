@@ -70,7 +70,7 @@ namespace Crunchy.Salt
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             canvas.AppendToLine("[");
-                targets.RenderText_Value(canvas, " + ");
+                targets.RenderText_ValueEX(canvas, " + ");
             canvas.AppendToLine("]");
         }
 

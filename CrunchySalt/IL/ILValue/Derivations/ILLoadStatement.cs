@@ -42,7 +42,7 @@ namespace Crunchy.Salt
             canvas.AppendToLine("{");
             canvas.AppendNewline();
             canvas.Indent();
-                statement.RenderText_Statement(canvas);
+                statement.RenderText_StatementEX(canvas);
             canvas.Dedent();
             canvas.AppendToNewline("}");
         }

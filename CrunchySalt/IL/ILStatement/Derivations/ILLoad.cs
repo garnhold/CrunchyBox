@@ -29,7 +29,7 @@ namespace Crunchy.Salt
             canvas.AppendNewline();
 
             canvas.AppendToLine("push ");
-            value.RenderText_Value(canvas);
+            value.RenderText_ValueEX(canvas);
             canvas.AppendToLine(";");
         }
     }

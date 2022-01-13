@@ -38,14 +38,14 @@ namespace Crunchy.Salt
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             canvas.AppendToLine("(");
-            condition.RenderText_Value(canvas);
+            condition.RenderText_ValueEX(canvas);
             canvas.AppendToLine(")");
 
             canvas.AppendToLine(" ? ");
 
-            true_value.RenderText_Value(canvas);
+            true_value.RenderText_ValueEX(canvas);
             canvas.AppendToLine(" : ");
-            false_value.RenderText_Value(canvas);
+            false_value.RenderText_ValueEX(canvas);
         }
 
         public override Type GetValueType()

@@ -34,7 +34,7 @@ namespace Crunchy.Salt
         public override void RenderText_Value(ILTextCanvas canvas)
         {
             canvas.AppendToLine("(");
-                value.RenderText_Value(canvas);
+                value.RenderText_ValueEX(canvas);
 
                 canvas.AppendToLine(" as ");
                 canvas.AppendToLine(destination_type.Name);
