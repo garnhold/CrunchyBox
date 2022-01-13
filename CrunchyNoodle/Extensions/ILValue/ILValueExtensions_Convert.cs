@@ -13,11 +13,19 @@ namespace Crunchy.Noodle
     
     static public class ILValueExtensions_Convert
     {
-        static public ILMethodInvokation GetILConvertEX(this ILValue item, Type type)
+        static public ILValue GetILConvertEX(this ILValue item, Type type)
         {
-            return item.GetValueType()
+            if (item.GetValueType().CanBeTreatedAs(type))
+                return item;
+
+            ILMethodInvokation invokation = item.GetValueType()
                 .GetConversionInvoker(type)
                 .GetILDelegateInvokation(item);
+
+            if (invokation != null)
+                return invokation;
+
+            return ILNull.INSTANCE;
         }
     }
 }
