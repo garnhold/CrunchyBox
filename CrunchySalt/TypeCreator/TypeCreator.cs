@@ -29,13 +29,11 @@ namespace Crunchy.Salt
 
         static public FieldInfo CreateField(Type type, string name)
         {
-            FieldInfo field = null;
-
-            CreateType("SingleField<" + name + ">", TypeAttributes.NotPublic, delegate (TypeBuilder builder) {
-                field = builder.CreateFieldBuilder(type, name, FieldAttributes.Public | FieldAttributes.Static);
+            Type single_field_type = CreateType("SingleField<" + name + ">", TypeAttributesExtensions.STATIC_PUBLIC_CLASS, delegate (TypeBuilder builder) {
+                builder.CreateFieldBuilder(type, name, FieldAttributesExtensions.PUBLIC | FieldAttributes.Static);
             });
 
-            return field;
+            return single_field_type.GetStaticField(name);
         }
         static public FieldInfo CreateField<T>(string name)
         {
