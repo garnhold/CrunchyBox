@@ -1230,6 +1230,9 @@
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Point.cs" />
     <Compile Include="Extensions\Camera\CameraExtensions_PerspectiveLength.cs" />
     <Compile Include="MaintainRotation\MaintainRotation.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_Physical_Gravity.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_Physical_Spring.cs" />
+    <Compile Include="Signal\Operation\Signal_Operation_Physical.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
