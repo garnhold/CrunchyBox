@@ -9,7 +9,7 @@ namespace Crunchy.Dough
             if (item != null)
                 return item.GetType();
 
-            return null;
+            return typeof(object);
         }
 
         static public bool IsObjectType(this object item, Type type)
