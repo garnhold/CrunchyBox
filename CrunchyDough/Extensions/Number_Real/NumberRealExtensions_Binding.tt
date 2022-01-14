@@ -17,7 +17,46 @@ namespace Crunchy.Dough
 {
 	static public class NumberRealExtensions_Binding
     {
-<# foreach(NumericInfo type in type_info){#>
+<# foreach(NumericInfo info in type_info){#>
+        static public <#=info.type_name#> BindMagnitudeBelow(this <#=info.type_name#> item, <#=info.type_name#> bound)
+        {
+            if(item > <#=info.zero#>)
+            {
+                <#=info.type_name#> positive = bound.GetPositive();
+                
+                if(item > positive)
+                    return positive;
+            }
+            else
+            {
+                <#=info.type_name#> negative = bound.GetNegative();
+                
+                if(item < negative)
+                    return negative;
+            }
+            
+            return item;
+        }
+        static public <#=info.type_name#> BindMagnitudeAbove(this <#=info.type_name#> item, <#=info.type_name#> bound)
+        {
+        
+            if(item > <#=info.zero#>)
+            {
+                <#=info.type_name#> positive = bound.GetPositive();
+                
+                if(item < positive)
+                    return positive;
+            }
+            else
+            {
+                <#=info.type_name#> negative = bound.GetNegative();
+                
+                if(item > negative)
+                    return negative;
+            }
+            
+            return item;
+        }
 <# } #>
 	}
 }
