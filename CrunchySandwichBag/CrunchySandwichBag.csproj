@@ -427,6 +427,7 @@
     <Compile Include="Extensions\EditorGUI\EditorGUIExtensions_ObjectField.cs" />
     <Compile Include="Extensions\Handles\HandlesExtensions.cs" />
     <Compile Include="Extensions\Handles\HandlesExtensions_Position.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_Curve.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
