@@ -1233,6 +1233,7 @@
     <Compile Include="Signal\Operation\Signal_Operation_Physical_Gravity.cs" />
     <Compile Include="Signal\Operation\Signal_Operation_Physical_Spring.cs" />
     <Compile Include="Signal\Operation\Signal_Operation_Physical.cs" />
+    <Compile Include="IEditSerializationCallbackReciever\IEditSerializationCallbackReciever.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1575,6 +1576,7 @@
     <Folder Include="Signal\Extensions\" />
     <Folder Include="Signal\Extensions\IEnumerable\" />
     <Folder Include="MaintainRotation\" />
+    <Folder Include="IEditSerializationCallbackReciever\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

@@ -46,6 +46,10 @@ namespace Crunchy.SandwichBag
                 if (process())
                 {
                     objects
+                        .Convert<IEditSerializationCallbackReciever>()
+                        .Process(r => r.OnBeforeEditSerialize());
+
+                    objects
                         .Convert<ISerializationCallbackReceiver>()
                         .Process(r => r.OnBeforeSerialize());
 
