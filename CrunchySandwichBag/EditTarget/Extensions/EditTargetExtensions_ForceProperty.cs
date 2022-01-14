@@ -31,5 +31,12 @@ namespace Crunchy.SandwichBag
                 .Convert<EditProperty_Single_Object>()
                 .AssertNotNull(() => new MissingFieldException("The property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as an object."));
         }
+
+        static public EditProperty_Array ForcePropertyArray(this EditTarget item, string path)
+        {
+            return item.ForceProperty(path)
+                .Convert<EditProperty_Array>()
+                .AssertNotNull(() => new MissingFieldException("The property for type " + item.GetTargetType() + " at path " + path + " cannot be treated as an arrary."));
+        }
     }
 }
