@@ -29,7 +29,7 @@ namespace Crunchy.SandwichBag
             {
                 EditProperty_Array property = target.ForcePropertyArray("percents");
 
-                container.AddWeightedChild(1.0f, new EditorGUIElement_EditPropertyArray_ArraySize(property));
+                container.AddFixedChild(32.0f, new EditorGUIElement_EditPropertyArray_ArraySize(property));
                 container.AddWeightedChild(1.0f, new EditorGUIElement_EditPropertyArray_FloatSequence(property));
             }
             
