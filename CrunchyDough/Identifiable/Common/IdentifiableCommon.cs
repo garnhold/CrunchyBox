@@ -45,6 +45,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableBoolExtensions
 	{
@@ -104,6 +109,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableByteExtensions
 	{
@@ -163,6 +173,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableShortExtensions
 	{
@@ -222,6 +237,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableIntExtensions
 	{
@@ -281,6 +301,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableLongExtensions
 	{
@@ -340,6 +365,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableFloatExtensions
 	{
@@ -399,6 +429,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableDoubleExtensions
 	{
@@ -458,6 +493,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableDecimalExtensions
 	{
@@ -517,6 +557,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableStringExtensions
 	{
@@ -576,6 +621,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableAssemblyExtensions
 	{
@@ -635,6 +685,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class IdentifiableTypeExtensions
 	{

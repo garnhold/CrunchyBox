@@ -69,6 +69,11 @@ namespace Crunchy.Dough
 		{
 			return value.GetHashCodeEX();
 		}
+        
+        public override string ToString()
+        {
+            return "Identifiable<" + GetIdentity() + ">";
+        }
 	}
 	static public class Identifiable<#=type.class_name#>Extensions
 	{
