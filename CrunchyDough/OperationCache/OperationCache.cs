@@ -53,18 +53,6 @@ namespace Crunchy.Dough
 
         private Dictionary<P, T> cached_results;
 
-        private T Calculate(P parameter)
-        {
-            try
-            {
-                return operation(parameter);
-            }
-            catch (Exception exception)
-            {
-                throw new Exception("An exception occured during a " + GetId().ToDebugString() + " cache calculation for " + parameter.ToDebugString(), exception);
-            }
-        }
-
         public OperationCache(string i, Operation<T, P> o) : base(i)
         {
             operation = o;
@@ -85,23 +73,30 @@ namespace Crunchy.Dough
 
         public T Fetch(P parameter)
         {
-            if (IsActive())
+            try
             {
-                if (parameter != null)
-                    return cached_results.GetOrCreateValue(parameter, p => Calculate(p));
-                else
+                if (IsActive())
                 {
-                    if (has_null_result == false)
+                    if (parameter != null)
+                        return cached_results.GetOrCreateValue(parameter, p => operation(p));
+                    else
                     {
-                        null_result = Calculate(parameter);
-                        has_null_result = true;
+                        if (has_null_result == false)
+                        {
+                            null_result = operation(parameter);
+                            has_null_result = true;
+                        }
+
+                        return null_result;
                     }
-
-                    return null_result;
                 }
-            }
 
-            return Calculate(parameter);
+                return operation(parameter);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("An exception occured during a " + GetId().ToDebugString() + " cache calculation for " + parameter.ToDebugString(), exception);
+            }
         }
     }
 
@@ -111,11 +106,6 @@ namespace Crunchy.Dough
 
         private T result;
         private bool has_result;
-
-        private T Calculate()
-        {
-            return operation();
-        }
 
         public OperationCache(string i, Operation<T> o) : base(i)
         {
@@ -133,18 +123,25 @@ namespace Crunchy.Dough
 
         public T Fetch()
         {
-            if (IsActive())
+            try
             {
-                if (has_result == false)
+                if (IsActive())
                 {
-                    result = Calculate();
-                    has_result = true;
+                    if (has_result == false)
+                    {
+                        result = operation();
+                        has_result = true;
+                    }
+
+                    return result;
                 }
 
-                return result;
+                return operation();
             }
-
-            return Calculate();
+            catch (Exception exception)
+            {
+                throw new Exception("An exception occured during a " + GetId().ToDebugString() + " cache calculation", exception);
+            }
         }
     }
 
