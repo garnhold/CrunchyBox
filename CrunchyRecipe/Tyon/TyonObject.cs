@@ -108,9 +108,11 @@ namespace Crunchy.Recipe
 
         public void CompileInitialize(TyonCompiler compiler)
         {
-            if (GetTyonValueList() == null)
+            ILLocal local = compiler.ResolveObject(this);
+
+            if (local == null && GetTyonValueList() == null)
             {
-                compiler.DefineLocal(
+                local = compiler.DefineLocal(
                     this, 
                     GetTyonType().CompileInstanceSystemObject(compiler)
                 );
@@ -134,7 +136,7 @@ namespace Crunchy.Recipe
             CompilePushToSystemObject(local, compiler);
             return local;
         }
-        public void CompilePushToSystemObject(ILValue obj, TyonCompiler compiler)
+        public void CompilePushToSystemObject(ILLocal obj, TyonCompiler compiler)
         {
             GetTyonVariables().Process(v => v.CompilePushToSystemObject(obj, compiler));
         }

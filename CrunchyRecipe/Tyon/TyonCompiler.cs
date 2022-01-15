@@ -43,12 +43,16 @@ namespace Crunchy.Recipe
 
         public Process<object, TyonContext> CompilePushToSystemObject(TyonObject tyon_object)
         {
+            Type type = tyon_object.GetTyonType().GetSystemType(this);
+
             return this.GetType().CreateDynamicMethodDelegate<Process<object, TyonContext>>(delegate (ILValue t, ILValue c) {
                 block = new ILBlock();
                 context = c;
 
+                ILLocal local = DefineLocal(tyon_object, t.GetILExplicitCast(type));
+
                 tyon_object.CompileInitialize(this);
-                tyon_object.CompilePushToSystemObject(t, this);
+                tyon_object.CompilePushToSystemObject(local, this);
 
                 return block;
             });
