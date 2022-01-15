@@ -76,85 +76,102 @@ namespace Crunchy.Sandwich
         }
     }
 
-	public class <#=info.type#> : <#=info.base_type#>, ISerializationCallbackReceiver, IEditSerializationCallbackReciever, SerializationCorruptable
+    public class <#=info.type#> : <#=info.base_type#>, ISerializationCallbackReceiver, IEditSerializationCallbackReciever, SerializationCorruptable
     {
-		[SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
-		[SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
+        [SerializeField][RecoveryField][AutoMultiline]private string tyon_data = "";
+        [SerializeField][RecoveryField]private List<UnityEngine.Object> tyon_unity_objects;
         
-		[SerializeField][RecoveryField][AutoMultiline]private string pack_error;
+        [SerializeField][RecoveryField][AutoMultiline]private string pack_error;
         [SerializeField][RecoveryField][AutoMultiline]private string unpack_error;
 
-		[SerializeField][HideInInspector]private bool did_unpack_tyon_data;
+        [SerializeField][HideInInspector]private bool did_unpack_tyon_data;
 
-		[SerializeField][HideInInspector]private string reference_id;
+        [SerializeField][HideInInspector]private string reference_id;
         
         protected virtual void LateConstruct() { }
         
-		[RecoveryFunction]
-		private void ForcePermissiveUnpackTyon()
-		{
-			UnpackTyon(true, TyonHydrationMode.Permissive);
-		}
+        [RecoveryFunction]
+        private void ForcePermissiveUnpackTyon()
+        {
+            UnpackTyon(true, TyonHydrationMode.Permissive);
+        }
 
-		private void PackTyon()
-		{
-			if (did_unpack_tyon_data || tyon_data.IsBlank())
-			{
-				string old_tyon_data = tyon_data;
-				List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
+        private void PackTyon()
+        {
+            if (did_unpack_tyon_data || tyon_data.IsBlank())
+            {
+                string old_tyon_data = tyon_data;
+                List<UnityEngine.Object> old_tyon_unity_objects = tyon_unity_objects.ToList();
 
-				try
-				{
-					TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
+                try
+                {
+                    TyonContext context = UnityTyonSettings.INSTANCE.CreateContext();
 
                     tyon_data = context.Serialize(this);
                     tyon_unity_objects = context.GetRegisteredExternalObjects()
-						.Convert<object, UnityEngine.Object>()
-						.ToList();
+                        .Convert<object, UnityEngine.Object>()
+                        .ToList();
 
-					pack_error = null;
+                    pack_error = null;
 
-					if (tyon_data != old_tyon_data)
-						UnpackTyon(true);
-				}
-				catch(Exception ex)
-				{
-					tyon_data = old_tyon_data;
-					tyon_unity_objects = old_tyon_unity_objects;
+                    if (tyon_data != old_tyon_data)
+                        UnpackTyon(true);
+                }
+                catch(Exception ex)
+                {
+                    tyon_data = old_tyon_data;
+                    tyon_unity_objects = old_tyon_unity_objects;
 
-					pack_error = ex.Message + "\n\n" + ex;
-				}
-			}
-		}
-
-		private void UnpackTyon(bool editing, TyonHydrationMode mode = TyonHydrationMode.Strict)
-		{
-			if (tyon_data.IsVisible())
-			{
-				try
-				{               
+                    pack_error = ex.Message + "\n\n" + ex;
+                }
+            }
+        }
+        
+        private void UnpackTyonRuntimeInternal()
+        {
+            UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(
+                this,
+                UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>())
+            );
+        }
+        private void UnpackTyonEditInternal(TyonHydrationMode mode = TyonHydrationMode.Strict)
+        {
+            TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
+                        
+            context.CreateHydrater(mode)
+                .HydrateInto(
+                    this,
+                    UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
+                );
+        }
+        private void UnpackTyon(bool editing, TyonHydrationMode mode = TyonHydrationMode.Strict)
+        {
+            if (tyon_data.IsVisible())
+            {
+                try
+                {               
                     did_unpack_tyon_data = false;
                     
-                    TyonContext context = UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>());
+                    if(editing)
+                        UnpackTyonEditInternal(mode);
+                    else
+                    {
+                        try { UnpackTyonRuntimeInternal(); }
+                        catch(Exception ex) { UnpackTyonEditInternal(mode); }
+                    }
                     
-                    context.CreateHydrater(mode)
-                        .HydrateInto(
-                            this,
-                            UnityTyonSettings.INSTANCE.FetchPrefabTyonObject(tyon_data)
-                        );
-                    
-					did_unpack_tyon_data = true;
-					unpack_error = null;
+                    did_unpack_tyon_data = true;
+                    unpack_error = null;
                     
                     if(editing)
-			            PackTyon();
-				}
-				catch(Exception ex)
-				{
-					unpack_error = ex.Message + "\n\n" + ex;
-				}
-			}
-		}
+                        PackTyon();
+                }
+                catch(Exception ex)
+                {
+                    unpack_error = ex.Message + "\n\n" + ex;
+                }
+            }
+        }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
@@ -162,7 +179,7 @@ namespace Crunchy.Sandwich
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-		    UnpackTyon(false);
+            UnpackTyon(false);
             
             LateConstruct();
         }
@@ -172,22 +189,22 @@ namespace Crunchy.Sandwich
             PackTyon();
         }
 
-		public bool IsSerializationCorrupt()
-		{
-			if (unpack_error.IsVisible())
-				return true;
+        public bool IsSerializationCorrupt()
+        {
+            if (unpack_error.IsVisible())
+                return true;
 
-			if (pack_error.IsVisible())
-				return true;
+            if (pack_error.IsVisible())
+                return true;
 
-			return false;
-		}
+            return false;
+        }
 
-		public string GetReferenceId()
-		{
-			return reference_id;
-		}
-	}
+        public string GetReferenceId()
+        {
+            return reference_id;
+        }
+    }
     
     static public class <#=info.type#>Extensions
     {
