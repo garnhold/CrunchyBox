@@ -144,7 +144,7 @@ namespace Crunchy.Sandwich
                         UnpackTyonEditInternal(mode);
                     else
                     {
-                        try { UnpackTyonRuntimeInternal();  Debug.Log("Unpacking " + tyon_data); }
+                        try { UnpackTyonRuntimeInternal(); }
                         catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
                     }
                     
@@ -349,7 +349,7 @@ namespace Crunchy.Sandwich
                         UnpackTyonEditInternal(mode);
                     else
                     {
-                        try { UnpackTyonRuntimeInternal();  Debug.Log("Unpacking " + tyon_data); }
+                        try { UnpackTyonRuntimeInternal(); }
                         catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
                     }
                     
@@ -554,7 +554,7 @@ namespace Crunchy.Sandwich
                         UnpackTyonEditInternal(mode);
                     else
                     {
-                        try { UnpackTyonRuntimeInternal();  Debug.Log("Unpacking " + tyon_data); }
+                        try { UnpackTyonRuntimeInternal(); }
                         catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
                     }
                     
