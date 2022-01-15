@@ -115,12 +115,20 @@ namespace Crunchy.Sandwich
             }
         }
         
-        private void UnpackTyonRuntimeInternal()
+        private void UnpackTyonRuntimeInternal(TyonHydrationMode mode)
         {
-            UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(
-                this,
-                UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>())
-            );
+            try
+            {
+                UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(
+                    this,
+                    UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>())
+                );
+            }
+            catch(Exception ex)
+            {
+                UnpackTyonEditInternal(mode);
+                Debug.Log(ex + "\n\n" + tyon_data);
+            }
         }
         private void UnpackTyonEditInternal(TyonHydrationMode mode = TyonHydrationMode.Strict)
         {
@@ -143,10 +151,7 @@ namespace Crunchy.Sandwich
                     if(editing)
                         UnpackTyonEditInternal(mode);
                     else
-                    {
-                        try { UnpackTyonRuntimeInternal(); }
-                        catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
-                    }
+                        UnpackTyonRuntimeInternal(mode);
                     
                     did_unpack_tyon_data = true;
                     unpack_error = null;
@@ -320,12 +325,20 @@ namespace Crunchy.Sandwich
             }
         }
         
-        private void UnpackTyonRuntimeInternal()
+        private void UnpackTyonRuntimeInternal(TyonHydrationMode mode)
         {
-            UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(
-                this,
-                UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>())
-            );
+            try
+            {
+                UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(
+                    this,
+                    UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>())
+                );
+            }
+            catch(Exception ex)
+            {
+                UnpackTyonEditInternal(mode);
+                Debug.Log(ex + "\n\n" + tyon_data);
+            }
         }
         private void UnpackTyonEditInternal(TyonHydrationMode mode = TyonHydrationMode.Strict)
         {
@@ -348,10 +361,7 @@ namespace Crunchy.Sandwich
                     if(editing)
                         UnpackTyonEditInternal(mode);
                     else
-                    {
-                        try { UnpackTyonRuntimeInternal(); }
-                        catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
-                    }
+                        UnpackTyonRuntimeInternal(mode);
                     
                     did_unpack_tyon_data = true;
                     unpack_error = null;
@@ -525,12 +535,20 @@ namespace Crunchy.Sandwich
             }
         }
         
-        private void UnpackTyonRuntimeInternal()
+        private void UnpackTyonRuntimeInternal(TyonHydrationMode mode)
         {
-            UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(
-                this,
-                UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>())
-            );
+            try
+            {
+                UnityTyonSettings.INSTANCE.FetchPrefabPusher(tyon_data)(
+                    this,
+                    UnityTyonSettings.INSTANCE.CreateContext(tyon_unity_objects.Convert<UnityEngine.Object, object>())
+                );
+            }
+            catch(Exception ex)
+            {
+                UnpackTyonEditInternal(mode);
+                Debug.Log(ex + "\n\n" + tyon_data);
+            }
         }
         private void UnpackTyonEditInternal(TyonHydrationMode mode = TyonHydrationMode.Strict)
         {
@@ -553,10 +571,7 @@ namespace Crunchy.Sandwich
                     if(editing)
                         UnpackTyonEditInternal(mode);
                     else
-                    {
-                        try { UnpackTyonRuntimeInternal(); }
-                        catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
-                    }
+                        UnpackTyonRuntimeInternal(mode);
                     
                     did_unpack_tyon_data = true;
                     unpack_error = null;
