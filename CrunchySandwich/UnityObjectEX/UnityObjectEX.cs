@@ -127,7 +127,7 @@ namespace Crunchy.Sandwich
             catch(Exception ex)
             {
                 UnpackTyonEditInternal(mode);
-                Debug.Log(ex + "\n\n" + tyon_data);
+                Debug.LogError(ex + "\n\n" + tyon_data);
             }
         }
         private void UnpackTyonEditInternal(TyonHydrationMode mode = TyonHydrationMode.Strict)
@@ -337,7 +337,7 @@ namespace Crunchy.Sandwich
             catch(Exception ex)
             {
                 UnpackTyonEditInternal(mode);
-                Debug.Log(ex + "\n\n" + tyon_data);
+                Debug.LogError(ex + "\n\n" + tyon_data);
             }
         }
         private void UnpackTyonEditInternal(TyonHydrationMode mode = TyonHydrationMode.Strict)
@@ -547,7 +547,7 @@ namespace Crunchy.Sandwich
             catch(Exception ex)
             {
                 UnpackTyonEditInternal(mode);
-                Debug.Log(ex + "\n\n" + tyon_data);
+                Debug.LogError(ex + "\n\n" + tyon_data);
             }
         }
         private void UnpackTyonEditInternal(TyonHydrationMode mode = TyonHydrationMode.Strict)
