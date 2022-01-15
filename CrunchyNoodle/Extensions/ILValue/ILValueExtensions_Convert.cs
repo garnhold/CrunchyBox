@@ -17,15 +17,11 @@ namespace Crunchy.Noodle
         {
             if (item.GetValueType().CanBeTreatedAs(type))
                 return item;
-
-            ILMethodInvokation invokation = item.GetValueType()
+                
+            return item.GetValueType()
                 .GetConversionInvoker(type)
-                .GetILDelegateInvokation(item);
-
-            if (invokation != null)
-                return invokation;
-
-            return item.GetILExplicitCast(type);
+                .GetILDelegateInvokation(item)
+                .Coalesce(() => item.GetILExplicitCast(type));
         }
     }
 }
