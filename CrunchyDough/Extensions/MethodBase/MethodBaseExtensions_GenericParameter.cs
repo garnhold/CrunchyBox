@@ -8,17 +8,36 @@ namespace Crunchy.Dough
 {
     static public class MethodBaseExtensions_GenericParameter
     {
-        static public IEnumerable<Type> GetGenericParameterTypes(this MethodBase item)
+        static public Type[] GetGenericParameterTypes(this MethodBase item)
         {
             if(item.IsGenericTypelessMethod())
                 return item.GetGenericArguments();
 
-            return Empty.IEnumerable<Type>();
+            return Empty.Array<Type>();
         }
 
         static public int GetNumberGenericParameters(this MethodBase item)
         {
             return item.GetGenericParameterTypes().Count();
+        }
+
+        static public bool TryGetGenericParameterType(this MethodBase item, int index, out Type parameter_type)
+        {
+            return item.GetGenericParameterTypes().TryGet(index, out parameter_type);
+        }
+        static public Type GetGenericParameterType(this MethodBase item, int index)
+        {
+            return item.GetGenericParameterTypes().Get(index);
+        }
+
+        static public bool CanGenericParameterHold(this MethodBase item, int index, Type type)
+        {
+            Type parameter_type;
+
+            if (item.TryGetGenericParameterType(index, out parameter_type))
+                return parameter_type.CanHold(type);
+
+            return false;
         }
 
         static public bool CanGenericParametersHold(this MethodBase item, IEnumerable<Type> parameter_types)
