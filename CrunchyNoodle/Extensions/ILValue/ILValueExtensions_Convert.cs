@@ -25,7 +25,7 @@ namespace Crunchy.Noodle
             if (invokation != null)
                 return invokation;
 
-            return ILNull.INSTANCE;
+            return item.GetILExplicitCast(type);
         }
     }
 }
