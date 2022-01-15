@@ -69,22 +69,29 @@ namespace Crunchy.Noodle
 
         public T Fetch(P parameter)
         {
-            if (IsActive())
+            try
             {
-                T item;
-
-                if (data.TryGetValue(parameter, out item) == false)
+                if (IsActive())
                 {
-                    item = data.AddAndGet(
-                        parameter,
-                        FetchInternal(GetFilename(parameter), () => operation(parameter))
-                    );
+                    T item;
+
+                    if (data.TryGetValue(parameter, out item) == false)
+                    {
+                        item = data.AddAndGet(
+                            parameter,
+                            FetchInternal(GetFilename(parameter), () => operation(parameter))
+                        );
+                    }
+
+                    return item;
                 }
 
-                return item;
+                return operation(parameter);
             }
-
-            return operation(parameter);
+            catch (Exception exception)
+            {
+                throw new Exception("An exception occured during a " + GetId().ToDebugString() + " cache calculation for " + parameter.ToDebugString(), exception);
+            }
         }
 
         public string GetFilename(P parameter)
@@ -112,18 +119,25 @@ namespace Crunchy.Noodle
 
         public T Fetch()
         {
-            if (IsActive())
+            try
             {
-                if (has_item == false)
+                if (IsActive())
                 {
-                    item = FetchInternal(GetFilename(), operation);
-                    has_item = true;
+                    if (has_item == false)
+                    {
+                        item = FetchInternal(GetFilename(), operation);
+                        has_item = true;
+                    }
+
+                    return item;
                 }
 
-                return item;
+                return operation();
             }
-
-            return operation();
+            catch (Exception exception)
+            {
+                throw new Exception("An exception occured during a " + GetId().ToDebugString() + " cache calculation", exception);
+            }
         }
 
         public string GetFilename()
