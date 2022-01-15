@@ -9,7 +9,7 @@ namespace Crunchy.Noodle
     
     static public class TypeExtensions_Convert_Generic_Internal<T>
     {
-        static private OperationCache<BasicConversionInvoker, Type> GET_CONVERSION_INVOKER = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_INVOKER", delegate(Type item) {
+        static private OperationCache<BasicConversionInvoker, Type> GET_CONVERSION_INVOKER = ReflectionCache.Get().NewOperationCache("GET_CONVERSION_INVOKER_" + typeof(T), delegate(Type item) {
             return item.GetConversionInvoker(typeof(T));
         });
         static public BasicConversionInvoker GetConversionInvoker(Type item)
