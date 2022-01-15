@@ -6,9 +6,10 @@ namespace Crunchy.Sandwich
 {
     using Dough;
 
-    public class Signal_Generator_Drifting_Random : Signal_Generator_Drifting
+    public class Signal_Generator_Random : Signal_Generator
     {
-        [SerializeFieldEX]private FloatRange interval_range;
+        [SerializeFieldEX]private FloatRange value_range = new FloatRange(-1.0f, 1.0f);
+        [SerializeFieldEX]private FloatRange interval_range = new FloatRange(0.4f, 1.2f);
 
         private float value;
 
@@ -17,13 +18,13 @@ namespace Crunchy.Sandwich
 
         private void Next()
         {
-            value = RandFloat.GetOffset(1.0f);
+            value = RandFloat.GetBetween(value_range);
 
             interval_position = 0.0f;
             interval_length = RandFloat.GetBetween(interval_range);
         }
 
-        protected override float ExecuteDrifted(float time, float delta)
+        protected override float Execute(float time, float delta)
         {
             interval_position += delta;
             if (interval_position >= interval_length)

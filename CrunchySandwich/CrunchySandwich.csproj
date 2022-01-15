@@ -1226,7 +1226,7 @@
     <Compile Include="Signal\Generator\Signal_Generator_Drifting.cs" />
     <Compile Include="Signal\Extensions\IEnumerable\SignalExtensions_IEnumerable.cs" />
     <Compile Include="Signal\Extensions\IEnumerable\SignalExtensions_IEnumerable_Execute.cs" />
-    <Compile Include="Signal\Generator\Signal_Generator_Drifting_Random.cs" />
+    <Compile Include="Signal\Generator\Signal_Generator_Random.cs" />
     <Compile Include="Extensions\Gizmos\GizmosExtensions_Point.cs" />
     <Compile Include="Extensions\Camera\CameraExtensions_PerspectiveLength.cs" />
     <Compile Include="MaintainRotation\MaintainRotation.cs" />
