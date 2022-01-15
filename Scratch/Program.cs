@@ -6,6 +6,7 @@ using System.Reflection;
 using Crunchy.Dough;
 using Crunchy.Salt;
 using Crunchy.Recipe;
+using Crunchy.Sandwich;
 
 namespace Scratch
 {
@@ -14,6 +15,7 @@ namespace Scratch
         [TyonField] public RouletteWheel<string> wheel;
         [TyonField] public List<KeyValuePair<string, float>> stuff;
         [TyonField] public VectorF2 vec;
+        [TyonField] public Poop outside;
 
         public Poop()
         {
@@ -24,41 +26,30 @@ namespace Scratch
     {
         public static void Main(string[] args)
         {
-            Poop p = new Poop();
-
-            p.wheel = new RouletteWheel<string>(
-                KeyValuePair.New("hello", 2.0f),
-                KeyValuePair.New("hello hahaha", 1.0f)
-            );
-
-            p.stuff = new List<KeyValuePair<string, float>>(new KeyValuePair<string, float>[] {
-                KeyValuePair.New<string, float>("eeee", 12),
-                KeyValuePair.New("helleeeeee", 321.0f)
-            });
-
-            //string tyon = TyonSettings_General.INSTANCE.Serialize(p);
-
             string tyon = @"
-Scratch.Poop {
-    wheel = [
-            KeyValuePair<String,Single>(""hello"", 23),
-            System.Collections.Generic.KeyValuePair<System.String,System.Single>(""hello h haha"", 1)
-    ];
-    stuff = null;
-    vec = VectorF2(10.03f, 4);
+Poop {
+    outside = @1;
 }
 
             ";
 
-            Operation<object, TyonContext> operation = TyonSettings_General.INSTANCE.CompileInstanceSystemObject(tyon, TyonHydrationMode.Permissive);
+            object p = new Poop();
 
-            object deserialized = operation(null);
+            Poop aa = new Poop();
 
-            string tyon2 = TyonSettings_General.INSTANCE.Serialize(deserialized);
+            Process<object, TyonContext> operation = TyonSettings_General.INSTANCE.CompilePushToSystemObject(tyon, TyonHydrationMode.Permissive);
+
+            TyonContext context = TyonSettings_General.INSTANCE.CreateContext(Enumerable.New<object>(aa));
+
+            Console.WriteLine(operation.GetDynamicMethodILBody());
+
+            operation(p, context);
+
+            string tyon2 = TyonSettings_General.INSTANCE.Serialize(p);
 
             Console.WriteLine(tyon2);
 
-            Poop deserialized2 = (Poop)TyonSettings_General.INSTANCE.Deserialize(tyon2, TyonHydrationMode.Strict);
+            object deserialized2 = TyonSettings_General.INSTANCE.Deserialize(tyon2, TyonHydrationMode.Strict);
 
             string tyon3 = TyonSettings_General.INSTANCE.Serialize(deserialized2);
 
