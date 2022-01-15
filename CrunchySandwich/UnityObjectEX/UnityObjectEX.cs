@@ -137,15 +137,15 @@ namespace Crunchy.Sandwich
             if (tyon_data.IsVisible())
             {
                 try
-                {               
+                {
                     did_unpack_tyon_data = false;
                     
                     if(editing)
                         UnpackTyonEditInternal(mode);
                     else
                     {
-                        try { UnpackTyonRuntimeInternal(); }
-                        catch(Exception ex) { UnpackTyonEditInternal(mode); }
+                        try { UnpackTyonRuntimeInternal();  Debug.Log("Unpacking " + tyon_data); }
+                        catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
                     }
                     
                     did_unpack_tyon_data = true;
@@ -160,7 +160,12 @@ namespace Crunchy.Sandwich
                 }
             }
         }
-
+        
+        void IEditSerializationCallbackReciever.OnBeforeEditSerialize()
+        {
+            PackTyon();
+        }
+        
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
         }
@@ -170,11 +175,6 @@ namespace Crunchy.Sandwich
             UnpackTyon(false);
             
             LateConstruct();
-        }
-        
-        void IEditSerializationCallbackReciever.OnBeforeEditSerialize()
-        {
-            PackTyon();
         }
 
         public bool IsSerializationCorrupt()
@@ -342,15 +342,15 @@ namespace Crunchy.Sandwich
             if (tyon_data.IsVisible())
             {
                 try
-                {               
+                {
                     did_unpack_tyon_data = false;
                     
                     if(editing)
                         UnpackTyonEditInternal(mode);
                     else
                     {
-                        try { UnpackTyonRuntimeInternal(); }
-                        catch(Exception ex) { UnpackTyonEditInternal(mode); }
+                        try { UnpackTyonRuntimeInternal();  Debug.Log("Unpacking " + tyon_data); }
+                        catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
                     }
                     
                     did_unpack_tyon_data = true;
@@ -365,7 +365,12 @@ namespace Crunchy.Sandwich
                 }
             }
         }
-
+        
+        void IEditSerializationCallbackReciever.OnBeforeEditSerialize()
+        {
+            PackTyon();
+        }
+        
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
         }
@@ -375,11 +380,6 @@ namespace Crunchy.Sandwich
             UnpackTyon(false);
             
             LateConstruct();
-        }
-        
-        void IEditSerializationCallbackReciever.OnBeforeEditSerialize()
-        {
-            PackTyon();
         }
 
         public bool IsSerializationCorrupt()
@@ -547,15 +547,15 @@ namespace Crunchy.Sandwich
             if (tyon_data.IsVisible())
             {
                 try
-                {               
+                {
                     did_unpack_tyon_data = false;
                     
                     if(editing)
                         UnpackTyonEditInternal(mode);
                     else
                     {
-                        try { UnpackTyonRuntimeInternal(); }
-                        catch(Exception ex) { UnpackTyonEditInternal(mode); }
+                        try { UnpackTyonRuntimeInternal();  Debug.Log("Unpacking " + tyon_data); }
+                        catch(Exception ex) { Debug.Log(ex); UnpackTyonEditInternal(mode); }
                     }
                     
                     did_unpack_tyon_data = true;
@@ -570,7 +570,12 @@ namespace Crunchy.Sandwich
                 }
             }
         }
-
+        
+        void IEditSerializationCallbackReciever.OnBeforeEditSerialize()
+        {
+            PackTyon();
+        }
+        
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
         }
@@ -580,11 +585,6 @@ namespace Crunchy.Sandwich
             UnpackTyon(false);
             
             LateConstruct();
-        }
-        
-        void IEditSerializationCallbackReciever.OnBeforeEditSerialize()
-        {
-            PackTyon();
         }
 
         public bool IsSerializationCorrupt()

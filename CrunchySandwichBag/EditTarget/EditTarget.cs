@@ -52,11 +52,7 @@ namespace Crunchy.SandwichBag
                     objects
                         .Convert<ISerializationCallbackReceiver>()
                         .Process(r => r.OnBeforeSerialize());
-
-                    objects
-                        .Convert<ISerializationCallbackReceiver>()
-                        .Process(r => r.OnAfterDeserialize());
-
+                        
                     objects
                         .Convert<UnityEngine.Object>()
                         .Narrow(o => o.IsPrefabInstance())
