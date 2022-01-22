@@ -48,11 +48,11 @@ namespace Crunchy.Sandwich
 
         static public void InterpolateSpacarScale(this Transform item, float target, float amount)
         {
-            item.InterpolateSpacarScale(new Vector3(target, target), amount);
+            item.InterpolateSpacarScale(new Vector3(target, target, target), amount);
         }
         static public void InterpolateLocalSpacarScale(this Transform item, float target, float amount)
         {
-            item.InterpolateLocalSpacarScale(new Vector3(target, target), amount);
+            item.InterpolateLocalSpacarScale(new Vector3(target, target, target), amount);
         }
     }
 }
