@@ -49,6 +49,7 @@
     <Reference Include="OpenTK">
       <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEX\ApplicationEXEditorInitilizer.cs" />
@@ -428,6 +429,7 @@
     <Compile Include="Extensions\Handles\HandlesExtensions.cs" />
     <Compile Include="Extensions\Handles\HandlesExtensions_Position.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_Curve.cs" />
+    <Compile Include="TiledAsset\TiledMapAssetImporter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -522,6 +524,7 @@
     <Folder Include="TyonAsset\" />
     <Folder Include="SpriteAnnotation\" />
     <Folder Include="Extensions\Handles\" />
+    <Folder Include="TiledAsset\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
