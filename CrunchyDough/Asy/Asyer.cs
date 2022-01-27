@@ -121,6 +121,23 @@ namespace Crunchy.Dough
             }
         }
 
+        public async Task WhileUpdate(Predicate predicate, Process process)
+        {
+            while (predicate())
+            {
+                process();
+                await ForUpdate();
+            }
+        }
+        public async Task WhileTemporal(TemporalEvent temporal, Process process)
+        {
+            await WhileUpdate(() => temporal.IsTimeUnder(), process);
+        }
+        public async Task WhileTemporal(TemporalDuration temporal, Process process)
+        {
+            await WhileTemporal(temporal.GetAsTemporalEvent(), process);
+        }
+
         public bool IsRunning()
         {
             if (active_sources.IsNotEmpty() || incoming_sources.IsNotEmpty())

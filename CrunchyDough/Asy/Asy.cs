@@ -43,5 +43,18 @@ namespace Crunchy.Dough
         {
             await AsyerManager.GetInstance().GetActiveAsyncer().ForAny(tasks);
         }
+
+        static public async Task WhileUpdate(Predicate predicate, Process process)
+        {
+            await AsyerManager.GetInstance().GetActiveAsyncer().WhileUpdate(predicate, process);
+        }
+        static public async Task WhileTemporal(TemporalEvent temporal, Process process)
+        {
+            await AsyerManager.GetInstance().GetActiveAsyncer().WhileTemporal(temporal, process);
+        }
+        static public async Task WhileTemporal(TemporalDuration temporal, Process process)
+        {
+            await AsyerManager.GetInstance().GetActiveAsyncer().WhileTemporal(temporal, process);
+        }
     }
 }

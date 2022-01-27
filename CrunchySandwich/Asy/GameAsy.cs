@@ -22,6 +22,10 @@ namespace Crunchy.Sandwich
         static public async Task<T> ForAny<T>(IEnumerable<Task<T>> tasks) { return await Asy.ForAny(tasks); }
         static public async Task ForAny(IEnumerable<Task> tasks) { await Asy.ForAny(tasks); }
 
+        static public async Task WhileUpdate(Predicate predicate, Process process) { await Asy.WhileUpdate(predicate, process); }
+        static public async Task WhileTemporal(TemporalEvent temporal, Process process) { await Asy.WhileTemporal(temporal, process); }
+        static public async Task WhileTemporal(TemporalDuration temporal, Process process) { await Asy.WhileTemporal(temporal, process); }
+
         static public async Task ForDuration(Duration duration, TimeType time_type)
         {
             await GameAsy.ForTemporal(new GameTimer(duration, time_type).StartAndGet());
@@ -29,6 +33,15 @@ namespace Crunchy.Sandwich
         static public async Task ForSeconds(float seconds, TimeType time_type)
         {
             await GameAsy.ForDuration(Duration.Seconds(seconds), time_type);
+        }
+
+        static public async Task WhileDuration(Duration duration, TimeType time_type, Process process)
+        {
+            await GameAsy.WhileTemporal(new GameTimer(duration, time_type).StartAndGet(), process);
+        }
+        static public async Task WhileSeconds(float seconds, TimeType time_type, Process process)
+        {
+            await GameAsy.WhileDuration(Duration.Seconds(seconds), time_type, process);
         }
     }
 }
