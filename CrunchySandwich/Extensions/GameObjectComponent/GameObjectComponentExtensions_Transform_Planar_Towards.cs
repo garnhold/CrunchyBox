@@ -26,6 +26,15 @@ namespace Crunchy.Sandwich
         {
             item.transform.TowardsLocalPlanarPosition(target, amount);
         }
+        static public void Towards2DPosition(this GameObject item, Vector2 target, float amount)
+        {
+            Rigidbody2D rigidbody = item.GetComponent<Rigidbody2D>();
+
+            if(rigidbody != null)
+                rigidbody.AdjustToPosition(target, amount);
+            else
+                item.TowardsPlanarPosition(target, amount);
+        }
 
         static public void TowardsPlanarRotation(this GameObject item, float target, float amount)
         {
@@ -70,6 +79,15 @@ namespace Crunchy.Sandwich
         static public void TowardsLocalPlanarPosition(this Component item, Vector2 target, float amount)
         {
             item.transform.TowardsLocalPlanarPosition(target, amount);
+        }
+        static public void Towards2DPosition(this Component item, Vector2 target, float amount)
+        {
+            Rigidbody2D rigidbody = item.GetComponent<Rigidbody2D>();
+
+            if(rigidbody != null)
+                rigidbody.AdjustToPosition(target, amount);
+            else
+                item.TowardsPlanarPosition(target, amount);
         }
 
         static public void TowardsPlanarRotation(this Component item, float target, float amount)
