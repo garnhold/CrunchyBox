@@ -1540,6 +1540,7 @@
     <Compile Include="Ease\Ease.cs" />
     <Compile Include="Ease\BasicEaseType.cs" />
     <Compile Include="Ease\Extensions\BasicEaseType.cs" />
+    <Compile Include="RectF2\Extensions\RectF2Extensions_Convert.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
