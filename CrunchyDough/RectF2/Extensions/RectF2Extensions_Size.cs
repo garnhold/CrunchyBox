@@ -20,5 +20,15 @@ namespace Crunchy.Dough
         {
             return new VectorF2(item.GetWidth(), item.GetHeight());
         }
+
+        static public FloatRange GetHorizontalRange(this RectF2 item)
+        {
+            return new FloatRange(item.GetLeft(), item.GetRight());
+        }
+
+        static public FloatRange GetVerticalRange(this RectF2 item)
+        {
+            return new FloatRange(item.GetBottom(), item.GetTop());
+        }
     }
 }
