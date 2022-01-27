@@ -129,13 +129,13 @@ namespace Crunchy.Dough
                 await ForUpdate();
             }
         }
-        public async Task WhileTemporal(TemporalEvent temporal, Process process)
+        public async Task WhileTemporal(TemporalEvent temporal, Process<TemporalEvent> process)
         {
-            await WhileUpdate(() => temporal.IsTimeUnder(), process);
+            await WhileUpdate(() => temporal.IsTimeUnder(), () => process(temporal));
         }
-        public async Task WhileTemporal(TemporalDuration temporal, Process process)
+        public async Task WhileTemporal(TemporalDuration temporal, Process<TemporalDuration> process)
         {
-            await WhileTemporal(temporal.GetAsTemporalEvent(), process);
+            await WhileTemporal(temporal.GetAsTemporalEvent(), e => process(temporal));
         }
 
         public bool IsRunning()
