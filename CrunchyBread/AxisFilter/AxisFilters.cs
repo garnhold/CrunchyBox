@@ -6,7 +6,7 @@ namespace Crunchy.Bread
     
     static public class AxisFilters
     {
-        static public AxisFilter General(float dead_zone, bool invert, bool adaptive_limit = true, bool center_calibrating = false)
+        static public AxisFilter General(float dead_zone, bool invert, bool adaptive_limit = false, bool center_calibrating = false)
         {
             return new AxisFilter_Series(
                 Enumerable.New<AxisFilter>(
