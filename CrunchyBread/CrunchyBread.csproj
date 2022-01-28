@@ -180,6 +180,8 @@
     <Compile Include="InputAtom\InputAtom_IntAxis\Composite\InputAtom_IntAxis_IntSliderPair.cs" />
     <Compile Include="InputAtom\InputAtom_Slider\Composite\InputAtom_Slider_IntSlider.cs" />
     <Compile Include="InputDevice\InputDevice_Joystick\InputDevice_Joystick.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_Filter.cs" />
+    <Compile Include="InputAtom\InputAtom_Axis\Extensions\InputAtomAxisExtensions_Filter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
