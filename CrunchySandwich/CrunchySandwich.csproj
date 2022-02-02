@@ -1236,6 +1236,7 @@
     <Compile Include="IEditSerializationCallbackReciever\IEditSerializationCallbackReciever.cs" />
     <Compile Include="TiledAsset\TiledMapAsset.cs" />
     <Compile Include="Extensions\Rect\RectExtensions_Convert.cs" />
+    <Compile Include="Gamepad\GamepadAction\Extensions\GamepadActionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1580,6 +1581,7 @@
     <Folder Include="MaintainRotation\" />
     <Folder Include="IEditSerializationCallbackReciever\" />
     <Folder Include="TiledAsset\" />
+    <Folder Include="Gamepad\GamepadAction\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
