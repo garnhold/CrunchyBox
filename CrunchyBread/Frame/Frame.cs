@@ -10,7 +10,7 @@ namespace Crunchy.Bread
     {
         private int frame_number;
 
-        static private int CURRENT_FRAME_NUMBER;
+        static private int CURRENT_FRAME_NUMBER = 100;
         static public Frame GetCurrentFrame()
         {
             return new Frame(CURRENT_FRAME_NUMBER);
