@@ -11,12 +11,11 @@ namespace Crunchy.Sandwich
 
     static public class GamepadActionExtensions
     {
-        static public Indicator DeployIndicator(this GamepadAction item, Vector2 position, float strength)
+        static public void DrawIndicator(this GamepadAction item, Vector2 position, float strength)
         {
-            Indicator indicator = item.GetIndicator().SpawnInstancePlanarAt(position);
-
-            indicator.Initialize(position, strength);
-            return indicator;
+            EphemeralSystem.GetInstance()
+                .NextEphemeral(item.GetIndicator())
+                .Initialize(position, strength);
         }
     }
 }
