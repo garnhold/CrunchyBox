@@ -42,7 +42,7 @@ namespace Crunchy.SandwichBag
 
             if (GUI.Button(browse_rect, "Browse"))
             {
-                ModalEditorWindow.OpenWindow("Browse", delegate(EditorGUIElement_Container_Auto container) {
+                ModalEditorWindows.General("Browse", delegate(EditorGUIElement_Container_Auto container) {
                     container.AddChildren(
                         Project.GetExternalAssetInfos<T>()
                             .Narrow(predicate)

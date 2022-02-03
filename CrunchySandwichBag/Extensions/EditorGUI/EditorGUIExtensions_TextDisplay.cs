@@ -20,11 +20,7 @@ namespace Crunchy.SandwichBag
                 rect.SplitByXRightOffset(32.0f, out rect, out button_rect);
 
                 if (GUI.Button(button_rect, ". . ."))
-                {
-                    ModalEditorWindow.OpenWindow("Text", delegate(EditorGUIElement_Container_Auto container) {
-                        container.AddChild(new EditorGUIElement_Text(value));
-                    });
-                }
+                    ModalEditorWindows.Alert("Text", value);
             }
 
             GUI.Box(rect, layout_value);

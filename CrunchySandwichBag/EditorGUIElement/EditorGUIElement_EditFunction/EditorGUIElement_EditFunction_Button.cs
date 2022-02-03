@@ -24,7 +24,7 @@ namespace Crunchy.SandwichBag
         {
             if (is_pressed)
             {
-                ModalEditorWindow.OpenWindow(GetEditFunction().GetName().StyleEntityForDisplay(), delegate(EditorGUIElement_Container_Auto container) {
+                ModalEditorWindows.General(GetEditFunction().GetName().StyleEntityForDisplay(), delegate(EditorGUIElement_Container_Auto container) {
                     container.AddChildren(
                         GetEditFunction().GetParameters().Convert(p => p.CreateLabeledEditorGUIElement())
                     );

@@ -430,6 +430,7 @@
     <Compile Include="Extensions\Handles\HandlesExtensions_Position.cs" />
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_Curve.cs" />
     <Compile Include="TiledAsset\TiledMapAssetImporter.cs" />
+    <Compile Include="ModalEditorWindow\ModalEditorWindows.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

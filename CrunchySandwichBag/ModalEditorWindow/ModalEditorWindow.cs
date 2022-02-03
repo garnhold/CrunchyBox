@@ -15,11 +15,6 @@ namespace Crunchy.SandwichBag
             return EditorWindow.GetWindow<ModalEditorWindow>();
         }
 
-        static public void OpenWindow(string title, Process<EditorGUIElement_Container_Auto> process)
-        {
-            GetInstance().Open(title, process);
-        }
-
         private void OnGUI()
         {
             if (element != null)
