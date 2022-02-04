@@ -6,6 +6,28 @@ namespace Crunchy.Dough
 {
     static public class IEnumerableExtensions_Search_Rating_Lowest
     {
+        static public bool TryFindLowestRated<T>(this IEnumerable<T> item, Operation<double, T> rater, out T lowest_rated)
+        {
+            int lowest_rated_index;
+            double lowest_rating;
+
+            return item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+        }
+        static public bool TryFindLowestRating<T>(this IEnumerable<T> item, Operation<double, T> rater, out double lowest_rating)
+        {
+            T lowest_rated;
+            int lowest_rated_index;
+
+            return item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+        }
+        static public bool TryFindLowestRatedIndex<T>(this IEnumerable<T> item, Operation<double, T> rater, out int lowest_rated_index)
+        {
+            T lowest_rated;
+            double lowest_rating;
+
+            return item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+        }
+
         static public T FindLowestRated<T>(this IEnumerable<T> item, Operation<double, T> rater, out double lowest_rating, out int lowest_rated_index)
         {
             T lowest_rated;
