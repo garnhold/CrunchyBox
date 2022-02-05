@@ -16,7 +16,7 @@ namespace Crunchy.Sandwich
                 if (Physics2D.OverlapCircle(position, maximum, layer_mask) == null)
                     return maximum;
 
-                return Mathq.FindEdge(0.0f, maximum, r => Physics2D.OverlapCircle(position, r, layer_mask) == null, margin, max_iterations) - margin;
+                return Mathq.FindAnEdge(0.0f, maximum, r => Physics2D.OverlapCircle(position, r, layer_mask) == null, margin, max_iterations) - margin;
             }
 
             return 0.0f;
@@ -29,7 +29,7 @@ namespace Crunchy.Sandwich
                 if (Physics2D.OverlapCircle(position + direction * maximum, maximum, layer_mask) == null)
                     return maximum;
 
-                return Mathq.FindEdge(0.0f, maximum, r => Physics2D.OverlapCircle(position + direction * r, r, layer_mask) == null, margin, max_iterations) - margin;
+                return Mathq.FindAnEdge(0.0f, maximum, r => Physics2D.OverlapCircle(position + direction * r, r, layer_mask) == null, margin, max_iterations) - margin;
             }
 
             return 0.0f;
@@ -42,7 +42,7 @@ namespace Crunchy.Sandwich
                 if (Physics2D.CircleCast(position, maximum, direction, distance, layer_mask).DidHit() == false)
                     return maximum;
 
-                return Mathq.FindEdge(0.0f, maximum, r => Physics2D.CircleCast(position, r, direction, distance, layer_mask).DidHit(), margin, max_iterations) - margin;
+                return Mathq.FindAnEdge(0.0f, maximum, r => Physics2D.CircleCast(position, r, direction, distance, layer_mask).DidHit(), margin, max_iterations) - margin;
             }
 
             return 0.0f;
@@ -55,7 +55,7 @@ namespace Crunchy.Sandwich
                 if (Physics2D.CircleCast(position, maximum, direction, distance, layer_mask).DidHit() == false)
                     return maximum;
 
-                return Mathq.FindEdge(0.0f, maximum, r => Physics2D.CircleCast(position, r, direction, distance - r, layer_mask).DidHit(), margin, max_iterations) - margin;
+                return Mathq.FindAnEdge(0.0f, maximum, r => Physics2D.CircleCast(position, r, direction, distance - r, layer_mask).DidHit(), margin, max_iterations) - margin;
             }
 
             return 0.0f;
