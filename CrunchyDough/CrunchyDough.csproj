@@ -1255,7 +1255,6 @@
     <Compile Include="Math\Mathq_Basic.cs" />
     <Compile Include="Math\Mathq_Basic_Int.cs" />
     <Compile Include="Math\Mathq_Derivative.cs" />
-    <Compile Include="Math\Mathq_FindEdge.cs" />
     <Compile Include="Math\Mathq_IntPow.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1542,7 +1541,7 @@
     <Compile Include="Ease\Extensions\BasicEaseType.cs" />
     <Compile Include="RectF2\Extensions\RectF2Extensions_Convert.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_Angle.cs" />
-    <Compile Include="Math\Mathq_FindLocalExtremes.cs" />
+    <Compile Include="Math\Mathq_Find.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

@@ -60,19 +60,10 @@ namespace Crunchy.Dough
 
             return false;
         }
-        static public float Solve(float target, float bound_a, float bound_b, Operation<float, float> operation, float margin = DEFAULT_SOLVE_MARGIN, int max_iterations = DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS)
-        {
-            float x;
 
-            TrySolve(target, bound_a, bound_b, operation, out x, margin, max_iterations);
-            return x;
-        }
-
-        static public IEnumerable<float> MultiSolve(float target, float bound_a, float bound_b, Operation<float, float> operation, int divisions = DEFAULT_MULTI_SOLVE_DIVISIONS, float margin = DEFAULT_SOLVE_MARGIN, int max_iterations = DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS)
+        static public bool TrySolveEdge(float bound_a, float bound_b, Predicate<float> predicate, out float x, float margin = DEFAULT_SOLVE_MARGIN, int max_iterations = DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS)
         {
-            return Floats.Line(bound_a, bound_b, divisions, true)
-                .ConvertConnections()
-                .TryConvert((Tuple<float, float> t, out float x) => Mathq.TrySolve(target, t.item1, t.item2, operation, out x, margin, max_iterations));
+            return Mathq.TrySolve(0.0f, bound_a, bound_b, z => predicate(z).ConvertBool(1.0f, -1.0f), out x, margin, max_iterations);
         }
     }
 }
