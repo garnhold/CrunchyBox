@@ -9,7 +9,7 @@ namespace Crunchy.Dough
         public const float DEFAULT_SOLVE_MARGIN = 1e-5f;
         public const int DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS = 1024;
 
-        public const int DEFAULT_SOLVE_ALL_MAX_DEPTH = 4;
+        public const int DEFAULT_MULTI_SOLVE_DIVISIONS = 100;
 
         static public bool TrySolve(float target, float bound_a, float bound_b, Operation<float, float> operation, out float x, float margin = DEFAULT_SOLVE_MARGIN, int max_iterations = DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS)
         {
@@ -68,23 +68,11 @@ namespace Crunchy.Dough
             return x;
         }
 
-        static public IEnumerable<float> SolveAll(float target, float bound_a, float bound_b, Operation<float, float> operation, float margin = DEFAULT_SOLVE_MARGIN, int max_iterations = DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS, int max_depth = DEFAULT_SOLVE_ALL_MAX_DEPTH)
+        static public IEnumerable<float> MultiSolve(float target, float bound_a, float bound_b, Operation<float, float> operation, int divisions = DEFAULT_MULTI_SOLVE_DIVISIONS, float margin = DEFAULT_SOLVE_MARGIN, int max_iterations = DEFAULT_SOLVE_MAX_NUMBER_ITERATIONS)
         {
-            float x;
-
-            if (Mathq.TrySolve(target, bound_a, bound_b, operation, out x, margin, max_iterations))
-            {
-                if (max_depth >= 1)
-                {
-                    foreach (float sx in Mathq.TrySolveAll(target, bound_a, x - margin, operation, margin, max_iterations, max_depth - 1))
-                        yield return sx;
-
-                    foreach (float sx in Mathq.TrySolveAll(target, x + margin, bound_b, operation, margin, max_iterations, max_depth - 1))
-                        yield return sx;
-                }
-
-                yield return x;
-            }
+            return Floats.Line(bound_a, bound_b, divisions, true)
+                .ConvertConnections()
+                .TryConvert((Tuple<float, float> t, out float x) => Mathq.TrySolve(target, t.item1, t.item2, operation, out x, margin, max_iterations);
         }
     }
 }
