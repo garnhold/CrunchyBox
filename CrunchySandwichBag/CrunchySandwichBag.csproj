@@ -287,7 +287,6 @@
     <Compile Include="Extensions\Subsystem\SubsystemExtensions.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Data.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_Sprites.cs" />
-    <Compile Include="Extensions\Texture2D\Texture2DExtensions.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Asset_Modify.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_ContentIdentity.cs" />
     <Compile Include="Extensions\UnityObject\UnityObjectExtensions_Prefab.cs" />
