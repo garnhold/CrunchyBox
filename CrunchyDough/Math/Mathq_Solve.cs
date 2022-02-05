@@ -72,7 +72,7 @@ namespace Crunchy.Dough
         {
             return Floats.Line(bound_a, bound_b, divisions, true)
                 .ConvertConnections()
-                .TryConvert((Tuple<float, float> t, out float x) => Mathq.TrySolve(target, t.item1, t.item2, operation, out x, margin, max_iterations);
+                .TryConvert((Tuple<float, float> t, out float x) => Mathq.TrySolve(target, t.item1, t.item2, operation, out x, margin, max_iterations));
         }
     }
 }
