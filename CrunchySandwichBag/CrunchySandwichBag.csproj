@@ -430,6 +430,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_Complex\EditorGUIElement_Complex_EditPropertySingleValue\EditorGUIElement_Complex_EditPropertySingleValue_Curve.cs" />
     <Compile Include="TiledAsset\TiledMapAssetImporter.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindows.cs" />
+    <Compile Include="SpriteGenerator\SpriteGenerator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -525,6 +526,7 @@
     <Folder Include="SpriteAnnotation\" />
     <Folder Include="Extensions\Handles\" />
     <Folder Include="TiledAsset\" />
+    <Folder Include="SpriteGenerator\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
