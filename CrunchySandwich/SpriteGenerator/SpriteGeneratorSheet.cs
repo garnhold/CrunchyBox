@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace Crunchy.SandwichBag
+namespace Crunchy.Sandwich
 {
     using Dough;
     using Sauce;
-    using Sandwich;
 
     public class SpriteGeneratorSheet
     {
