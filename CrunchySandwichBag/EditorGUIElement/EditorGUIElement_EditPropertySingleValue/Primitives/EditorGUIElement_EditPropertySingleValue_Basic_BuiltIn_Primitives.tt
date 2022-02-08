@@ -6,6 +6,7 @@
 TypeInfo[] types = new TypeInfo[]{
 	new TypeInfo("bool", "Bool", "Toggle", "LINE_HEIGHT"),
 	new TypeInfo("Color", "Color", "ColorField", "LINE_HEIGHT"),
+    new TypeInfo("Gradient", "Gradient", "GradientField", "LINE_HEIGHT"),
 
 	new TypeInfo("Bounds", "Bounds", "BoundsField", "LINE_HEIGHT * 3.0f"),
 	new TypeInfo("Rect", "Rect", "RectField", "LINE_HEIGHT"),

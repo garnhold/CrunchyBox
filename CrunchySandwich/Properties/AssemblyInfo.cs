@@ -36,7 +36,8 @@ using Crunchy.Noodle;
     typeof(UnityEngine.Vector2),
     typeof(UnityEngine.Vector3),
     typeof(UnityEngine.Color),
-    typeof(UnityEngine.LayerMask)
+    typeof(UnityEngine.LayerMask),
+    typeof(UnityEngine.Gradient)
 )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

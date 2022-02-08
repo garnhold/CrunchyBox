@@ -42,6 +42,22 @@ namespace Crunchy.SandwichBag
         public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Color(EditProperty_Single_Value p) : base(p) { }
     }
 
+	[EditorGUIElementForType(typeof(Gradient), true)]
+    public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Gradient : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<Gradient>
+    {
+		protected override float DoPlanInternal()
+		{
+			return LINE_HEIGHT;
+		}
+
+        protected override Gradient DrawBuiltInInternal(Rect rect, GUIContent label, Gradient value)
+        {
+            return (Gradient)EditorGUI.GradientField(rect, label, value);
+        }
+
+        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Gradient(EditProperty_Single_Value p) : base(p) { }
+    }
+
 	[EditorGUIElementForType(typeof(Bounds), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Bounds : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<Bounds>
     {
