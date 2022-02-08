@@ -14,6 +14,9 @@ namespace Crunchy.SandwichBag
     {
         private SpriteGenerator generator;
 
+        private Timer preview_timer;
+        private List<Sprite> preview_sprites;
+
         protected override float DoPlanInternal()
         {
             return LINE_HEIGHT * 10.0f;
@@ -21,35 +24,32 @@ namespace Crunchy.SandwichBag
 
         protected override void DrawElementInternal(int draw_id, Rect view)
         {
-            /*
             Rect rect = GetElementRect();
 
-            if (vectorizer != null)
+            Rect button_rect;
+
+            rect.SplitByYBottomOffset(LINE_HEIGHT, out button_rect, out rect);
+
+            if (generator != null)
             {
-                Sprite sprite = vectorizer.GetTestSprite();
-
-                if (sprite != null)
+                if (GUI.Button(button_rect, "Preview"))
                 {
-                    Rect info_rect;
+                    SpriteGeneratorSheet sheet = generator.GenerateSheet();
 
-                    rect.SplitByYTopOffset(LINE_HEIGHT, out rect, out info_rect);
-
-                    float line_thickness = vectorizer.GetTestLineThickness();
-                    float point_size = vectorizer.GetTestPointSize();
-
-                    Vector2 divisor = sprite.GetTextureSize() / rect.size.GetMinComponent();
-                    List<List<Vector2>> paths = vectorizer.VectorizeSprite(sprite)
-                        .Convert(l => l.Convert(p => p.GetWithFlippedY().GetComponentDivide(divisor) + rect.center).ToList())
+                    preview_timer = new Timer(sheet.GetDuration()).StartAndGet();
+                    preview_sprites = sheet
+                        .GenerateSprites()
                         .ToList();
-
-                    GUIExtensions.DrawSprite(rect, sprite);
-                    GUI.Label(info_rect, "Number Vertexs: " + paths.Convert(p => p.Count).Sum());
-
-                    GUI.color = Color.white;
-                    paths.Process(p => GUIExtensions.DrawLoop(p, line_thickness, point_size));
                 }
             }
-            */
+
+            if (preview_timer != null && preview_timer.IsTimeUnder() && preview_sprites.IsNotEmpty())
+            {
+                Sprite sprite = preview_sprites.GetPercentCapped(preview_timer.GetTimeElapsedInPercent());
+
+                GUIExtensions.DrawSprite(rect, sprite);
+                Event.current.Use();
+            }
         }
 
         public EditorGUIElement_SpriteGeneratorTest(SpriteGenerator v)

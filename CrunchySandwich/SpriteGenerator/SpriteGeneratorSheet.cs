@@ -45,6 +45,13 @@ namespace Crunchy.Sandwich
             return GenerateColorGrid().CreateTexture2D();
         }
 
+        public IEnumerable<Sprite> GenerateSprites()
+        {
+            return GenerateTexture().CreateCenterSprites(
+                CalculateSpriteRects().Convert(r => r.GetRect())
+            );
+        }
+
         public float GetTimeStep()
         {
             return time_step;
@@ -60,10 +67,15 @@ namespace Crunchy.Sandwich
             return sprite_datas.Count;
         }
 
+        public Duration GetDuration()
+        {
+            return Duration.Seconds(GetTimeStep() * GetNumberFrames());
+        }
+
         public VectorI2 CalculateGridSize()
         {
-            int width = (int)(Mathq.Sqrt(GetNumberFrames()) / GetFrameAspect());
-            int height = GetNumberFrames() / width;
+            int width = Mathq.CeilToInt((Mathq.Sqrt(GetNumberFrames()) / GetFrameAspect()));
+            int height = Mathq.CeilToInt(GetNumberFrames() / width);
 
             return new VectorI2(width, height);
         }
@@ -86,6 +98,11 @@ namespace Crunchy.Sandwich
         {
             return CalculateSpriteCoords()
                 .Convert(c => RectI2Extensions.CreateLowerLeftRectI2(c, frame_size));
+        }
+
+        public IEnumerable<IGrid<Color>> GetFrames()
+        {
+            return sprite_datas;
         }
     }
 }
