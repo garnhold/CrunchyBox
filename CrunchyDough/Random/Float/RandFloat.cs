@@ -30,12 +30,15 @@ namespace Crunchy.Dough
         {
             return SOURCE.GetVariance(x, radius);
         }
+        static public float GetVariance(FloatVariance variance)
+        {
+            return SOURCE.GetVariance(variance);
+        }
 
         static public float GetBetween(float a, float b)
         {
             return SOURCE.GetBetween(a, b);
         }
-
         static public float GetBetween(FloatRange range)
         {
             return SOURCE.GetBetween(range);
