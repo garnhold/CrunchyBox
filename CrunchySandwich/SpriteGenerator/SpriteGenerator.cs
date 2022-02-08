@@ -19,10 +19,9 @@ namespace Crunchy.Sandwich
 
         public SpriteGeneratorSheet GenerateSheet()
         {
-            return SpriteGeneratorSheet.CreateDuration(
-                new VectorI2(frame_width, frame_height),
-                duration.GetSeconds(),
-                frames_per_second
+            return new SpriteGeneratorSheet(
+                1.0f / frames_per_second,
+                new VectorI2(frame_width, frame_height)
             );
         }
     }
