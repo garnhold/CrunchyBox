@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Crunchy.Sandwich
 {
     using Dough;
+    using Salt;
     using Sauce;
 
     public class SpriteGeneratorSheet
@@ -74,8 +75,8 @@ namespace Crunchy.Sandwich
 
         public VectorI2 CalculateGridSize()
         {
-            int width = Mathq.CeilToInt((Mathq.Sqrt(GetNumberFrames()) / GetFrameAspect()));
-            int height = Mathq.CeilToInt(GetNumberFrames() / width);
+            int width = Mathq.CeilToInt(Mathq.Sqrt(GetNumberFrames()) / GetFrameAspect());
+            int height = Mathq.CeilToInt((float)GetNumberFrames() / (float)width);
 
             return new VectorI2(width, height);
         }
