@@ -742,7 +742,6 @@
     <Compile Include="Extensions\Vector3\Vector3Extensions_Interpolate.cs" />
     <Compile Include="Extensions\Vector3\Vector3Extensions_Area.cs" />
     <Compile Include="Extensions\VectorF2\VectorF2Extensions_Vector2.cs" />
-    <Compile Include="Extensions\VectorF2\VectorF2Extensions.cs" />
     <Compile Include="Face\Extensions\FaceExtensions_Intersect_Face.cs" />
     <Compile Include="Face\Extensions\FaceExtensions_Intersect_Plane.cs" />
     <Compile Include="Face\Extensions\FaceExtensions_Intersect_LineSegment.cs" />
