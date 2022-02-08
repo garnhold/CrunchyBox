@@ -13,9 +13,7 @@ namespace Crunchy.Sandwich
     {
         [SerializeField] private int frame_width;
         [SerializeField] private int frame_height;
-
         [SerializeField] private float frames_per_second;
-        [SerializeFieldEX] private Duration duration;
 
         public SpriteGeneratorSheet GenerateSheet()
         {
