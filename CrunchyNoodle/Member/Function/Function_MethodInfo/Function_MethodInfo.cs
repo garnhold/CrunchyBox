@@ -63,7 +63,7 @@ namespace Crunchy.Noodle
 
         public Function_MethodInfo(MethodInfoEX m)
             : base(
-                m.IfNotNull(z => z.DeclaringType),
+                m.IfNotNull(z => z.GetMethodEffectiveType()),
                 m.IfNotNull(z => z.ReturnType),
                 m.IfNotNull(z => z.GetEffectiveParameters().Convert(p => KeyValuePair.New(p.Name, p.ParameterType)))
             )
