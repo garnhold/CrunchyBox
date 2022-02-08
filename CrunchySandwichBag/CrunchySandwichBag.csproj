@@ -432,6 +432,8 @@
     <Compile Include="ModalEditorWindow\ModalEditorWindows.cs" />
     <Compile Include="Extensions\SpriteGeneratorSheet\SpriteGeneratorSheetExtensions.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_CreateSprites.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_SpriteGeneratorTest\EditorGUIElement_SpriteGeneratorTest.cs" />
+    <Compile Include="PropertyDrawersAndEditors\Editors\SpriteGeneratorEditor.cs" />
     <Compile Include="Extensions\SpriteGenerator\SpriteGeneratorExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -529,6 +531,7 @@
     <Folder Include="Extensions\Handles\" />
     <Folder Include="TiledAsset\" />
     <Folder Include="Extensions\SpriteGeneratorSheet\" />
+    <Folder Include="EditorGUIElement\EditorGUIElement_SpriteGeneratorTest\" />
     <Folder Include="Extensions\SpriteGenerator\" />
   </ItemGroup>
   <ItemGroup>
