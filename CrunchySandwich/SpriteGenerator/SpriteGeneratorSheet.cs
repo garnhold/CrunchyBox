@@ -78,7 +78,7 @@ namespace Crunchy.Sandwich
             VectorI2 grid_size = CalculateGridSize();
 
             return GetNumberFrames()
-                .RepeatOperationWithIndex(i => new VectorI2(i % grid_size.x, i / grid_size.y).GetComponentMultiply(frame_size))
+                .RepeatOperationWithIndex(i => new VectorI2(i % grid_size.x, i / grid_size.x).GetComponentMultiply(frame_size))
                 .ToList();
         }
     }
