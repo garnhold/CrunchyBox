@@ -432,6 +432,7 @@
     <Compile Include="ModalEditorWindow\ModalEditorWindows.cs" />
     <Compile Include="Extensions\SpriteGeneratorSheet\SpriteGeneratorSheetExtensions.cs" />
     <Compile Include="Extensions\Texture2D\Texture2DExtensions_CreateSprites.cs" />
+    <Compile Include="Extensions\SpriteGenerator\SpriteGeneratorExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -528,6 +529,7 @@
     <Folder Include="Extensions\Handles\" />
     <Folder Include="TiledAsset\" />
     <Folder Include="Extensions\SpriteGeneratorSheet\" />
+    <Folder Include="Extensions\SpriteGenerator\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

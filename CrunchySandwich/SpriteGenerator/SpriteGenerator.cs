@@ -15,12 +15,17 @@ namespace Crunchy.Sandwich
         [SerializeField] private int frame_height;
         [SerializeField] private float frames_per_second;
 
+        protected abstract void GenerateSheetInternal(SpriteGeneratorSheet sheet);
+
         public SpriteGeneratorSheet GenerateSheet()
         {
-            return new SpriteGeneratorSheet(
+            SpriteGeneratorSheet sheet = new SpriteGeneratorSheet(
                 1.0f / frames_per_second,
                 new VectorI2(frame_width, frame_height)
             );
+
+            GenerateSheetInternal(sheet);
+            return sheet;
         }
     }
 }
