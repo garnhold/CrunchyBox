@@ -431,6 +431,7 @@
     <Compile Include="TiledAsset\TiledMapAssetImporter.cs" />
     <Compile Include="ModalEditorWindow\ModalEditorWindows.cs" />
     <Compile Include="Extensions\SpriteGeneratorSheet\SpriteGeneratorSheetExtensions.cs" />
+    <Compile Include="Extensions\Texture2D\Texture2DExtensions_CreateSprites.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

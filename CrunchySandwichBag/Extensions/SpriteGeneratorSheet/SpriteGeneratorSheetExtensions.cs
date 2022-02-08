@@ -13,14 +13,18 @@ namespace Crunchy.SandwichBag
     
     static public class SpriteGeneratorSheetExtensions
     {
-        static public Texture2D SaveAsAsset(this SpriteGeneratorSheet item, string name)
+        static public void SaveAsAsset(this SpriteGeneratorSheet item, string name)
         {
             string filename = Project.MakeUnusedCurrentDirectoryFilename(name, "png");
 
             item.GenerateTexture().SaveAsPNG(filename);
 
             AssetDatabase.ImportAsset(filename);
-            return AssetDatabase.LoadAssetAtPath<Texture2D>(filename);
+            AssetDatabase.LoadAssetAtPath<Texture2D>(filename)
+                .CreateSprites(
+                    item.CalculateSpriteRects()
+                        .Convert(r => r.GetRect())
+                );
         }
     }
 }

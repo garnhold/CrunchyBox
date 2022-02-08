@@ -81,5 +81,11 @@ namespace Crunchy.Sandwich
                 .RepeatOperationWithIndex(i => new VectorI2(i % grid_size.x, i / grid_size.x).GetComponentMultiply(frame_size))
                 .ToList();
         }
+
+        public IEnumerable<RectI2> CalculateSpriteRects()
+        {
+            return CalculateSpriteCoords()
+                .Convert(c => RectI2Extensions.CreateLowerLeftRectI2(c, frame_size));
+        }
     }
 }
