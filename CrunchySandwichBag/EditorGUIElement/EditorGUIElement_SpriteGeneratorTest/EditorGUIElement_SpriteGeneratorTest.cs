@@ -36,10 +36,12 @@ namespace Crunchy.SandwichBag
                 {
                     SpriteGeneratorSheet sheet = generator.GenerateSheet();
 
-                    preview_timer = new Timer(sheet.GetDuration()).StartAndGet();
+                    preview_timer = new Timer(sheet.GetDuration());
                     preview_sprites = sheet
                         .GenerateSprites()
                         .ToList();
+
+                    preview_timer.Restart();
                 }
             }
 
