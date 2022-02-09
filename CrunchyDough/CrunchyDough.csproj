@@ -1543,6 +1543,8 @@
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_Angle.cs" />
     <Compile Include="Math\Mathq_Find.cs" />
     <Compile Include="Grid\IGridBoundLogging.cs" />
+    <Compile Include="RectF2Packer\RectF2Packer.cs" />
+    <Compile Include="RectF2Packer\RectF2ExpandingPacker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1787,6 +1789,7 @@
     <Folder Include="RectSide\" />
     <Folder Include="Ease\" />
     <Folder Include="Ease\Extensions\" />
+    <Folder Include="RectF2Packer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
