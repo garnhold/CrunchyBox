@@ -35,7 +35,7 @@ namespace Crunchy.SandwichBag
                     float line_thickness = vectorizer.GetTestLineThickness();
                     float point_size = vectorizer.GetTestPointSize();
 
-                    Vector2 divisor = sprite.GetTextureSize() / rect.size.GetMinComponent();
+                    Vector2 divisor = sprite.GetTextureSize() / rect.size.GetComponentsMin();
                     List<List<Vector2>> paths = vectorizer.VectorizeSprite(sprite)
                         .Convert(l => l.Convert(p => p.GetWithFlippedY().GetComponentDivide(divisor) + rect.center).ToList())
                         .ToList();

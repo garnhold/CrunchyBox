@@ -43,7 +43,7 @@ namespace Crunchy.Sandwich
                     .Convert(c => c.gameObject)
                     .FindRolling(
                         new RollingCriteria<GameObject>(RollingCriteriaTarget.Larger, g => g.GetSortingLayer().IfNotNull(l => l.GetValue())),
-                        new RollingCriteria<GameObject>(RollingCriteriaTarget.Smaller, g => g.GetPlanarSize().GetMinComponent())
+                        new RollingCriteria<GameObject>(RollingCriteriaTarget.Smaller, g => g.GetPlanarSize().GetComponentsMin())
                     )
                     .IfNotNull(z => z.GetComponentUpward<IWorldPressTarget>());
 

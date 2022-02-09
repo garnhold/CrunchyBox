@@ -24,23 +24,32 @@ namespace Crunchy.Dough
             return item.GetComponentDivide(other.x, other.y);
         }
 
-        static public float GetMaxComponent(this VectorF2 item)
+        static public float GetComponentsMax(this VectorF2 item)
         {
             return item.x.Max(item.y);
         }
-        static public float GetMinComponent(this VectorF2 item)
+        static public float GetComponentsMin(this VectorF2 item)
         {
             return item.x.Min(item.y);
         }
 
-        static public float GetMagnitudeMaxComponent(this VectorF2 item)
+        static public float GetComponentsSum(this VectorF2 item)
+        {
+            return item.x + item.y;
+        }
+        static public float GetComponentsProduct(this VectorF2 item)
+        {
+            return item.x * item.y;
+        }
+
+        static public float GetComponentsMagnitudeMax(this VectorF2 item)
         {
             if (item.x.GetAbs() > item.y.GetAbs())
                 return item.x;
 
             return item.y;
         }
-        static public float GetMagnitudeMinComponent(this VectorF2 item)
+        static public float GetComponentsMagnitudeMin(this VectorF2 item)
         {
             if (item.x.GetAbs() < item.y.GetAbs())
                 return item.x;

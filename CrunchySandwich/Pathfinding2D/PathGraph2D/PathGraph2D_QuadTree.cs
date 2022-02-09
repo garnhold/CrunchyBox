@@ -18,7 +18,7 @@ namespace Crunchy.Sandwich
         private void GenerateQuadTree(Rect rect, int depth)
         {
             Vector2 position = rect.GetCenterPoint();
-            float maximum_radius = rect.GetSize().GetMaxComponent();
+            float maximum_radius = rect.GetSize().GetComponentsMax();
 
             float acceptable_radius = maximum_radius * target_utilization;
             float radius = Pathfinding2D.GetInstance().GetPotentialClearingRadius(position).BindBelow(maximum_radius * 2.0f);
