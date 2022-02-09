@@ -1542,6 +1542,7 @@
     <Compile Include="RectF2\Extensions\RectF2Extensions_Convert.cs" />
     <Compile Include="CardinalDirection\Extensions\CardinalDirectionExtensions_Angle.cs" />
     <Compile Include="Math\Mathq_Find.cs" />
+    <Compile Include="Grid\IGridBoundLogging.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
