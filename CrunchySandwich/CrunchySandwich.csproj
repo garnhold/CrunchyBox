@@ -1238,6 +1238,7 @@
     <Compile Include="Gamepad\GamepadAction\Extensions\GamepadActionExtensions.cs" />
     <Compile Include="SpriteGenerator\SpriteGenerator.cs" />
     <Compile Include="SpriteGenerator\SpriteGeneratorSheet.cs" />
+    <Compile Include="Extensions\GUIUtility\GUIUtilityExtensions_Repaint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

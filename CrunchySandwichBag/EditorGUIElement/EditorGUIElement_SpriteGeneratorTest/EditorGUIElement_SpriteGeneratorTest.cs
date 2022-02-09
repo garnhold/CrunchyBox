@@ -50,7 +50,7 @@ namespace Crunchy.SandwichBag
                 Sprite sprite = preview_sprites.GetPercentCapped(preview_timer.GetTimeElapsedInPercent());
 
                 GUIExtensions.DrawSprite(rect, sprite);
-                Event.current.Use();
+                GUIUtilityExtensions.ForceRepaint();
             }
         }
 
