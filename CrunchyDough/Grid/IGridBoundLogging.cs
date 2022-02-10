@@ -55,11 +55,6 @@ namespace Crunchy.Dough
             highest_y = int.MinValue;
         }
 
-        public IGrid<T> GetBoundSubSection()
-        {
-            return this.BoundSubSection(lowest_x, lowest_y, highest_x, highest_y);
-        }
-
         public int GetWidth()
         {
             return grid.GetWidth();
