@@ -1545,6 +1545,7 @@
     <Compile Include="Grid\IGridBoundLogging.cs" />
     <Compile Include="RectF2Packer\RectF2Packer.cs" />
     <Compile Include="RectF2Packer\RectF2ExpandingPacker.cs" />
+    <Compile Include="VectorI2\Extensions\VectorI2s.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
