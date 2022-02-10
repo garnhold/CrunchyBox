@@ -12,15 +12,18 @@ namespace Crunchy.Sandwich
 
     public class SpriteGeneratorSheetFrame
     {
-        private VectorF2 origin;
         private IGrid<Color> data;
+        private RectI2 frame_rect;
+        private RectI2 sub_frame_rect;
 
-        private RectF2 rect;
+        private Rect rect;
 
-        public SpriteGeneratorSheetFrame(VectorF2 o, IGrid<Color> d)
+        public SpriteGeneratorSheetFrame(IGridBoundLogging<Color> d)
         {
-            origin = o;
-            data = d;
+            data = d.GetBoundSubSection();
+
+            frame_rect = d.GetRect();
+            sub_frame_rect = d.GetBoundRect();
         }
 
         public void Render(IGrid<Color> grid)
@@ -30,7 +33,12 @@ namespace Crunchy.Sandwich
 
         public void SetRect(RectF2 rect)
         {
-            this.rect = rect;
+            this.rect = rect.GetRect();
+        }
+
+        public Rect GetRect()
+        {
+            return rect;
         }
 
         public VectorI2 GetSize()
@@ -38,14 +46,11 @@ namespace Crunchy.Sandwich
             return data.GetSize();
         }
 
-        public VectorF2 GetOrigin()
+        public Vector2 GetPivot()
         {
-            return origin;
-        }
-
-        public RectF2 GetRect()
-        {
-            return rect;
+            return sub_frame_rect.ConvertRangePointToPercentPoint(
+                frame_rect.ConvertPercentPointToRangePoint(VectorF2.HALF)
+            ).GetVector2();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Crunchy.SandwichBag
             AssetDatabase.ImportAsset(filename);
             AssetDatabase.LoadAssetAtPath<Texture2D>(filename)
                 .CreateSprites(
-                    frames.Convert(f => Tuple.New(f.GetRect().GetRect(), f.GetOrigin().GetVector2()))
+                    frames.Convert(f => Tuple.New(f.GetRect(), f.GetPivot()))
                 );
         }
     }

@@ -33,7 +33,7 @@ namespace Crunchy.Sandwich
         public IEnumerable<SpriteGeneratorSheetFrame> Generate(out Texture2D texture, int quality = 1)
         {
             List<SpriteGeneratorSheetFrame> frames = sprite_datas
-                .Convert(d => new SpriteGeneratorSheetFrame(d.GetLowerLeftBound(), d.GetBoundSubSection()))
+                .Convert(d => new SpriteGeneratorSheetFrame(d))
                 .ToList();
 
             VectorF2 full_size;
