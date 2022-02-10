@@ -11,7 +11,7 @@ namespace Crunchy.Dough
             if (item != null)
             {
                 x1 = x1.BindBetween(0, item.GetWidth());
-                x2 = x2.BindBetween(0, item.GetHeight());
+                x2 = x2.BindBetween(0, item.GetWidth());
 
                 y1 = y1.BindBetween(0, item.GetHeight());
                 y2 = y2.BindBetween(0, item.GetHeight());
