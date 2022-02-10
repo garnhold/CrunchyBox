@@ -19,6 +19,44 @@ namespace Crunchy.Dough
             return item.Randomize(RandInt.SOURCE);
         }
 
+        static public IEnumerable<T> RandomizeNearSwaps<T>(this IEnumerable<T> item, int number_swaps, int swap_radius, RandIntSource source)
+        {
+            List<T> list = item.ToList();
+
+            for (int i = 0; i < number_swaps; i++)
+            {
+                int index1 = source.GetIndex(list.Count);
+                int index2 = (index1 + source.GetOffset(swap_radius)).BindIndex(list.Count);
+
+                list.SwapValues(index1, index2);
+            }
+
+            return list;
+        }
+        static public IEnumerable<T> RandomizeNearSwaps<T>(this IEnumerable<T> item, int number_swaps, int swap_radius)
+        {
+            return item.RandomizeNearSwaps(number_swaps, swap_radius, RandInt.SOURCE);
+        }
+
+        static public IEnumerable<T> RandomizeSwaps<T>(this IEnumerable<T> item, int number_swaps, RandIntSource source)
+        {
+            List<T> list = item.ToList();
+
+            for (int i = 0; i < number_swaps; i++)
+            {
+                int index1 = source.GetIndex(list.Count);
+                int index2 = source.GetIndex(list.Count);
+
+                list.SwapValues(index1, index2);
+            }
+
+            return list;
+        }
+        static public IEnumerable<T> RandomizeSwaps<T>(this IEnumerable<T> item, int number_swaps)
+        {
+            return item.RandomizeSwaps(number_swaps, RandInt.SOURCE);
+        }
+
         static public IEnumerable<T> OffsetRandom<T>(this IEnumerable<T> item, RandIntSource source, int limit=int.MaxValue)
         {
             List<T> list = item.ToList();
