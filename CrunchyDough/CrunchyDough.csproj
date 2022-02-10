@@ -1544,7 +1544,6 @@
     <Compile Include="Math\Mathq_Find.cs" />
     <Compile Include="Grid\IGridBoundLogging.cs" />
     <Compile Include="RectF2Packer\RectF2Packer.cs" />
-    <Compile Include="RectF2Packer\RectF2ExpandingPacker.cs" />
     <Compile Include="VectorI2\Extensions\VectorI2s.cs" />
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions.cs" />
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Points.cs" />

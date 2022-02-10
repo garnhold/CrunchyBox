@@ -13,6 +13,52 @@ namespace Crunchy.Dough
 
         private Operation<VectorF2, T> size_operation;
 
+        static public IEnumerable<KeyValuePair<T, RectF2>> ExpandPack(IEnumerable<T> items, IEnumerable<VectorF2> sizes, Operation<VectorF2, T> size_operation, out VectorF2 full_size, int quality = 1)
+        {
+            List<T> objects_to_pack = items.ToList();
+
+            double total_area = objects_to_pack
+                .Convert(o => size_operation(o).GetComponentsProduct())
+                .Sum();
+
+            List<T> fair_sorted = objects_to_pack
+                .Sort(o => -size_operation(o).GetComponentsProduct())
+                .ToList();
+
+            int number_swaps = (int)(fair_sorted.Count * 0.10f);
+
+            List<List<T>> sorted = (quality - 2)
+                .RepeatOperationWithIndex(i => fair_sorted.RandomizeNearSwaps(number_swaps * ((i / 5) + 1), 3).ToList())
+                .Prepend(fair_sorted)
+                .PrependIf(quality >= 2,
+                    () => objects_to_pack
+                        .Sort(o => -size_operation(o).GetComponentsMax())
+                        .ToList()
+                )
+                .ToList();
+
+            foreach (VectorF2 size in sizes)
+            {
+                if (size.GetComponentsProduct() >= total_area)
+                {
+                    for (int i = 0; i < quality; i++)
+                    {
+                        RectF2Packer<T> packer = new RectF2Packer<T>(size, size_operation);
+
+                        if (sorted[i].AreAll(o => packer.Pack(o)))
+                        {
+                            full_size = size;
+                            return objects_to_pack
+                                .ConvertToKeyOfPair(o => packer.GetPackedRect(o));
+                        }
+                    }
+                }
+            }
+
+            full_size = VectorF2.ZERO;
+            return null;
+        }
+
         public RectF2Packer(VectorF2 s, Operation<VectorF2, T> so)
         {
             size = s;
