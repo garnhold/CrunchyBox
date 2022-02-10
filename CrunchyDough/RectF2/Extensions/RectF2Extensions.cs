@@ -8,7 +8,7 @@ namespace Crunchy.Dough
     {
         static public bool TryCreateStrictMinMaxRectF2(VectorF2 min, VectorF2 max, out RectF2 rect)
         {
-            if (min.IsBoundBelow(max))
+            if (min.x < max.x && min.y < max.y)
             {
                 rect = new RectF2(min, max);
                 return true;
