@@ -10,5 +10,10 @@ namespace Crunchy.Dough
         {
             return new VectorI2(item.GetWidth(), item.GetHeight());
         }
+
+        static public RectI2 GetRect<T>(this IGrid<T> item)
+        {
+            return RectI2Extensions.CreateLowerLeftRectI2(VectorI2.ZERO, item.GetSize());
+        }
     }
 }

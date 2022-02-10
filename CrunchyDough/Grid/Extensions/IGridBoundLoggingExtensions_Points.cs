@@ -23,15 +23,6 @@ namespace Crunchy.Dough
             return item.GetHighestY();
         }
 
-        static public int GetBoundWidth<T>(this IGridBoundLogging<T> item)
-        {
-            return item.GetRightBound() - item.GetLeftBound();
-        }
-        static public int GetBoundHeight<T>(this IGridBoundLogging<T> item)
-        {
-            return item.GetTopBound() - item.GetBottomBound();
-        }
-
         static public VectorI2 GetLowerLeftBound<T>(this IGridBoundLogging<T> item)
         {
             return new VectorI2(item.GetLeftBound(), item.GetBottomBound());

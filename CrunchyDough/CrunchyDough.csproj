@@ -1548,6 +1548,7 @@
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions.cs" />
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Points.cs" />
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Section.cs" />
+    <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Size.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
