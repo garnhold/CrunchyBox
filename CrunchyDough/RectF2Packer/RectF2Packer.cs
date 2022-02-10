@@ -25,10 +25,10 @@ namespace Crunchy.Dough
                 .Sort(o => -size_operation(o).GetComponentsProduct())
                 .ToList();
 
-            int number_swaps = (int)(fair_sorted.Count * 0.10f);
+            int number_swaps = Mathq.CeilToInt(fair_sorted.Count / 20.0f);
 
             List<List<T>> sorted = (quality - 2)
-                .RepeatOperationWithIndex(i => fair_sorted.RandomizeNearSwaps(number_swaps * ((i / 5) + 1), 3).ToList())
+                .RepeatOperationWithIndex(i => fair_sorted.RandomizeNearSwaps(number_swaps * (i/10 + 1), 3).ToList())
                 .Prepend(fair_sorted)
                 .PrependIf(quality >= 2,
                     () => objects_to_pack
