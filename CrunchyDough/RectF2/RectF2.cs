@@ -43,7 +43,7 @@ namespace Crunchy.Dough
             {
                 if (cast.min == min)
                 {
-                    if (cast.max == min)
+                    if (cast.max == max)
                         return true;
                 }
             }
