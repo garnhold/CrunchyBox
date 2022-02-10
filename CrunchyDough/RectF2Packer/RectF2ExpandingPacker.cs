@@ -31,7 +31,7 @@ namespace Crunchy.Dough
                 .Sum();
 
             List<T> sorted = objects_to_pack
-                .Sort(o => -size_operation(o).GetComponentsMax())
+                .Sort(o => -size_operation(o).GetComponentsProduct())
                 .ToList();
 
             foreach (VectorF2 size in sizes)
