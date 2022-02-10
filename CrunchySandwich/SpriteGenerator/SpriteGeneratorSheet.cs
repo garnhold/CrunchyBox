@@ -15,52 +15,47 @@ namespace Crunchy.Sandwich
         private float time_step;
         private VectorI2 frame_size;
 
-        private List<IGrid<Color>> sprite_datas;
+        private List<IGridBoundLogging<Color>> sprite_datas;
 
         public SpriteGeneratorSheet(float time_step, VectorI2 frame_size)
         {
             this.time_step = time_step;
             this.frame_size = frame_size;
 
-            sprite_datas = new List<IGrid<Color>>();
+            sprite_datas = new List<IGridBoundLogging<Color>>();
         }
 
         public IGrid<Color> CreateNewFrame()
         {
-            return sprite_datas.AddAndGet(new Grid<Color>(frame_size));
+            return sprite_datas.AddAndGet(new IGridBoundLogging<Color>(new Grid<Color>(frame_size)));
         }
 
-        public IGrid<Color> GenerateColorGrid()
+        public IEnumerable<SpriteGeneratorSheetFrame> Generate(out Texture2D texture, int quality = 1)
         {
-            IGrid<Color> grid = new Grid<Color>(CalculateTotalSize());
+            List<SpriteGeneratorSheetFrame> frames = sprite_datas
+                .Convert(d => new SpriteGeneratorSheetFrame(d.GetLowerLeftBound(), d.GetBoundSubSection()))
+                .ToList();
 
-            CalculateSpriteCoords()
-                .PairStrict(sprite_datas)
-                .Process(p => grid.SetSection(p.item1, p.item2));
+            VectorF2 full_size;
+            RectF2Packer<SpriteGeneratorSheetFrame>.ExpandPack(
+                frames,
+                VectorI2s.POTDimensionSequence(13).Convert(v => v.GetVectorF2()),
+                f => f.GetSize(),
+                out full_size,
+                quality
+            ).Process(p => p.Key.SetRect(p.Value));
 
-            return grid;
-        }
+            IGrid<Color> grid = new Grid<Color>(full_size.GetVectorI2());
 
-        public Texture2D GenerateTexture()
-        {
-            return GenerateColorGrid().CreateTexture2D();
-        }
+            frames.Process(f => f.Render(grid));
 
-        public IEnumerable<Sprite> GenerateSprites()
-        {
-            return GenerateTexture().CreateCenterSprites(
-                CalculateSpriteRects().Convert(r => r.GetRect())
-            );
+            texture = grid.CreateTexture2D();
+            return frames;
         }
 
         public float GetTimeStep()
         {
             return time_step;
-        }
-
-        public float GetFrameAspect()
-        {
-            return (float)frame_size.x / (float)frame_size.y;
         }
 
         public int GetNumberFrames()
@@ -71,34 +66,6 @@ namespace Crunchy.Sandwich
         public Duration GetDuration()
         {
             return Duration.Seconds(GetTimeStep() * GetNumberFrames());
-        }
-
-        public VectorI2 CalculateGridSize()
-        {
-            int width = Mathq.CeilToInt(Mathq.Sqrt(GetNumberFrames()) / GetFrameAspect());
-            int height = Mathq.CeilToInt((float)GetNumberFrames() / (float)width);
-
-            return new VectorI2(width, height);
-        }
-
-        public VectorI2 CalculateTotalSize()
-        {
-            return CalculateGridSize().GetComponentMultiply(frame_size);
-        }
-
-        public IEnumerable<VectorI2> CalculateSpriteCoords()
-        {
-            VectorI2 grid_size = CalculateGridSize();
-
-            return GetNumberFrames()
-                .RepeatOperationWithIndex(i => new VectorI2(i % grid_size.x, i / grid_size.x).GetComponentMultiply(frame_size))
-                .ToList();
-        }
-
-        public IEnumerable<RectI2> CalculateSpriteRects()
-        {
-            return CalculateSpriteCoords()
-                .Convert(c => RectI2Extensions.CreateLowerLeftRectI2(c, frame_size));
         }
 
         public IEnumerable<IGrid<Color>> GetFrames()

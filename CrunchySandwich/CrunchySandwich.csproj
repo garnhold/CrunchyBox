@@ -1240,6 +1240,7 @@
     <Compile Include="SpriteGenerator\SpriteGeneratorSheet.cs" />
     <Compile Include="Extensions\GUIUtility\GUIUtilityExtensions_Repaint.cs" />
     <Compile Include="MotionController\MotionController_Destroy.cs" />
+    <Compile Include="SpriteGenerator\SpriteGeneratorSheetFrame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">

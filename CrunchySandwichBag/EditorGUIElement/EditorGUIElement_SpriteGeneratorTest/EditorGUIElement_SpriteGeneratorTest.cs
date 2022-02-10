@@ -37,8 +37,8 @@ namespace Crunchy.SandwichBag
                     SpriteGeneratorSheet sheet = generator.GenerateSheet();
 
                     preview_timer = new Timer(sheet.GetDuration());
-                    preview_sprites = sheet
-                        .GenerateSprites()
+                    preview_sprites = sheet.GetFrames()
+                        .Convert(f => f.CreateTexture2D().CreateCenterSprite())
                         .ToList();
 
                     preview_timer.Restart();

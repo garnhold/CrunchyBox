@@ -17,13 +17,16 @@ namespace Crunchy.SandwichBag
         {
             string filename = Project.MakeUnusedCurrentDirectoryFilename(name, "png");
 
-            item.GenerateTexture().SaveAsPNG(filename);
+            Texture2D temp;
+            List<SpriteGeneratorSheetFrame> frames = item.Generate(out temp, 1024)
+                .ToList();
+
+            temp.SaveAsPNG(filename);
 
             AssetDatabase.ImportAsset(filename);
             AssetDatabase.LoadAssetAtPath<Texture2D>(filename)
                 .CreateSprites(
-                    item.CalculateSpriteRects()
-                        .Convert(r => r.GetRect())
+                    frames.Convert(f => Tuple.New(f.GetRect().GetRect(), f.GetOrigin().GetVector2()))
                 );
         }
     }
