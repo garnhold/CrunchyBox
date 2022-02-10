@@ -24,27 +24,47 @@ namespace Crunchy.Dough
             objects_to_pack.Add(to_pack);
         }
 
-        public RectF2Packer<T> Pack()
+        public IEnumerable<KeyValuePair<T, RectF2>> Pack(out VectorF2 full_size, int quality=1)
         {
             double total_area = objects_to_pack
                 .Convert(o => size_operation(o).GetComponentsProduct())
                 .Sum();
 
-            List<T> sorted = objects_to_pack
+            List<T> fair_sorted = objects_to_pack
                 .Sort(o => -size_operation(o).GetComponentsProduct())
+                .ToList();
+
+            int number_swaps = (int)(fair_sorted.Count * 0.10f);
+
+            List<List<T>> sorted = (quality - 2)
+                .RepeatOperationWithIndex(i => fair_sorted.RandomizeNearSwaps(number_swaps * ((i / 5) + 1), 3).ToList())
+                .Prepend(fair_sorted)
+                .PrependIf(quality >= 2,
+                    () => objects_to_pack
+                        .Sort(o => -size_operation(o).GetComponentsMax())
+                        .ToList()
+                )
                 .ToList();
 
             foreach (VectorF2 size in sizes)
             {
                 if (size.GetComponentsProduct() >= total_area)
                 {
-                    RectF2Packer<T> packer = new RectF2Packer<T>(size, size_operation);
+                    for (int i = 0; i < quality; i++)
+                    {
+                        RectF2Packer<T> packer = new RectF2Packer<T>(size, size_operation);
 
-                    if (sorted.AreAll(o => packer.Pack(o)))
-                        return packer;
+                        if (sorted[i].AreAll(o => packer.Pack(o)))
+                        {
+                            full_size = size;
+                            return objects_to_pack
+                                .ConvertToKeyOfPair(o => packer.GetPackedRect(o));
+                        }
+                    }
                 }
             }
 
+            full_size = VectorF2.ZERO;
             return null;
         }
     }

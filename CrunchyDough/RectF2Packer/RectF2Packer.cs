@@ -39,21 +39,7 @@ namespace Crunchy.Dough
                 RectF2 pack_rect = RectF2Extensions.CreateLowerLeftRectF2(best_rect.GetLowerLeftPoint(), size);
 
                 remaining_rects.Remove(best_rect);
-
-                remaining_rects.Add(RectF2Extensions.CreateStrictMinMaxRectF2(
-                    best_rect.GetLeft(), pack_rect.GetTop(),
-                    pack_rect.GetRight(), best_rect.GetTop()
-                ));
-
-                remaining_rects.Add(RectF2Extensions.CreateStrictMinMaxRectF2(
-                    pack_rect.GetRight(), best_rect.GetBottom(),
-                    best_rect.GetRight(), pack_rect.GetTop()
-                ));
-
-                remaining_rects.Add(RectF2Extensions.CreateStrictMinMaxRectF2(
-                    pack_rect.GetRight(), pack_rect.GetTop(),
-                    best_rect.GetRight(), best_rect.GetTop()
-                ));
+                remaining_rects.AddRange(best_rect.GetSubtraction(pack_rect));
 
                 packed_objects.Add(to_pack, pack_rect);
                 return true;
@@ -65,6 +51,11 @@ namespace Crunchy.Dough
         public VectorF2 GetSize()
         {
             return size;
+        }
+
+        public RectF2 GetPackedRect(T obj)
+        {
+            return packed_objects.GetValue(obj);
         }
 
         public IEnumerable<KeyValuePair<T, RectF2>> GetPacked()
