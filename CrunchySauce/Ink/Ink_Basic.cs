@@ -23,29 +23,38 @@ namespace Crunchy.Sauce
 
         public override void Paint(Surface<T> surface, float weight, VectorF2 point)
         {
-            int left = (int)point.x;
-            int bottom = (int)point.y;
+            if (weight > 0.0f)
+            {
+                int left = (int)point.x;
+                int bottom = (int)point.y;
 
-            float right_width = point.x - left;
-            float left_width = 1.0f - right_width;
+                float right_width = point.x - left;
+                float left_width = 1.0f - right_width;
 
-            float top_height = point.y - bottom;
-            float bottom_height = 1.0f - top_height;
+                float top_height = point.y - bottom;
+                float bottom_height = 1.0f - top_height;
 
-            int right = left + 1;
-            int top = bottom + 1;
+                int right = left + 1;
+                int top = bottom + 1;
 
-            float left_bottom_area = left_width * bottom_height;
-            float right_bottom_area = right_width * bottom_height;
+                float left_bottom_area = left_width * bottom_height;
+                float right_bottom_area = right_width * bottom_height;
 
-            float left_top_area = left_width * top_height;
-            float right_top_area = right_width * top_height;
+                float left_top_area = left_width * top_height;
+                float right_top_area = right_width * top_height;
 
-            PaintInternal(surface, left, bottom, left_bottom_area * weight, pigment_mixer);
-            PaintInternal(surface, right, bottom, right_bottom_area * weight, pigment_mixer);
+                if(left_bottom_area > 0.0f)
+                    PaintInternal(surface, left, bottom, left_bottom_area * weight, pigment_mixer);
 
-            PaintInternal(surface, left, top, left_top_area * weight, pigment_mixer);
-            PaintInternal(surface, right, top, right_top_area * weight, pigment_mixer);
+                if(right_bottom_area > 0.0f)
+                    PaintInternal(surface, right, bottom, right_bottom_area * weight, pigment_mixer);
+
+                if(left_top_area > 0.0f)
+                    PaintInternal(surface, left, top, left_top_area * weight, pigment_mixer);
+
+                if(right_top_area > 0.0f)
+                    PaintInternal(surface, right, top, right_top_area * weight, pigment_mixer);
+            }
         }
     }
 }
