@@ -28,6 +28,14 @@ namespace Crunchy.Sandwich
         public SpriteSequence(float v, IEnumerable<Sprite> s) : this("Sequence", v, s) { }
         public SpriteSequence(IEnumerable<Sprite> s) : this(1.0f, s) { }
 
+        [InspectorFunction]
+        public void ReinitializeWithSprites(List<UnityEngine.Object> sprites)
+        {
+            frames = sprites.Convert<UnityEngine.Object, Sprite>()
+                .Convert(s => new SpriteSequenceFrame(s))
+                .ToArray();
+        }
+
         public string GetName()
         {
             return name;

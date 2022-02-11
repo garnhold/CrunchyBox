@@ -29,6 +29,12 @@ namespace Crunchy.Sandwich
         public SpriteAnimation(float d, IEnumerable<Sprite> f) : this("Animation", d, f) { }
         public SpriteAnimation(IEnumerable<Sprite> f) : this(1.0f, f) { }
 
+        [InspectorFunction]
+        public void ReinitializeWithSprites(List<UnityEngine.Object> sprites)
+        {
+            frames = sprites.Convert<UnityEngine.Object, Sprite>().ToArray();
+        }
+
         public string GetName()
         {
             return name;

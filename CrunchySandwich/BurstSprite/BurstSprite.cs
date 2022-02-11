@@ -21,6 +21,12 @@ namespace Crunchy.Sandwich
 
         [SerializeField]private Sprite[] frames;
 
+        [InspectorFunction]
+        public void ReinitializeWithSprites(List<UnityEngine.Object> sprites)
+        {
+            Initialize(duration, sprites.Convert<UnityEngine.Object, Sprite>());
+        }
+
         public void Initialize(float d, IEnumerable<Sprite> f)
         {
             duration = d;
