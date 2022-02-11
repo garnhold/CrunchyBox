@@ -27,5 +27,25 @@ namespace Crunchy.Sandwich
             GenerateSheetInternal(sheet);
             return sheet;
         }
+
+        public int GetFrameWidth()
+        {
+            return frame_width;
+        }
+
+        public int GetFrameHeight()
+        {
+            return frame_height;
+        }
+
+        public Vector2 GetFrameSize()
+        {
+            return new Vector2(GetFrameWidth(), GetFrameHeight());
+        }
+
+        public float GetFramesPerSecond()
+        {
+            return frames_per_second;
+        }
     }
 }
