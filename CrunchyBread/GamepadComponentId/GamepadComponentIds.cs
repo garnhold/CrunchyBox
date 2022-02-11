@@ -11,7 +11,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct GamepadComponentId
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(GamepadComponentId id1, GamepadComponentId id2)
         {
@@ -81,7 +81,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct GamepadAxisId
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(GamepadAxisId id1, GamepadAxisId id2)
         {
@@ -161,7 +161,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct GamepadMenuAxisId
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(GamepadMenuAxisId id1, GamepadMenuAxisId id2)
         {
@@ -241,7 +241,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct GamepadButtonId
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(GamepadButtonId id1, GamepadButtonId id2)
         {
@@ -321,7 +321,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct GamepadSliderId
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(GamepadSliderId id1, GamepadSliderId id2)
         {
@@ -401,7 +401,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct GamepadStickId
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(GamepadStickId id1, GamepadStickId id2)
         {
@@ -481,7 +481,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct GamepadMenuStickId
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(GamepadMenuStickId id1, GamepadMenuStickId id2)
         {

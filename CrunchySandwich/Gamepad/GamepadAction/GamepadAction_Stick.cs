@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     
     public abstract class GamepadAction_Stick : GamepadAction
     {
-        [SerializeField]private GamepadStickId stick;
+        [SerializeFieldEX]private GamepadStickId stick;
 
         protected abstract bool IsOccuringThisFrameInternal(GamepadComponent_Stick stick);
 

@@ -29,7 +29,7 @@ namespace Crunchy.Bread
 	[Serializable]
     public struct Gamepad<#=type#>Id
     {
-        private string id;
+        public string id { get; }
 
         static public bool operator==(Gamepad<#=type#>Id id1, Gamepad<#=type#>Id id2)
         {

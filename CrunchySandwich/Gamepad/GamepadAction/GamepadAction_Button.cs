@@ -11,7 +11,7 @@ namespace Crunchy.Sandwich
     
     public abstract class GamepadAction_Button : GamepadAction
     {
-        [SerializeField]private GamepadButtonId button;
+        [SerializeFieldEX]private GamepadButtonId button;
 
         protected abstract bool IsOccuringThisFrameInternal(GamepadComponent_Button button);
 
