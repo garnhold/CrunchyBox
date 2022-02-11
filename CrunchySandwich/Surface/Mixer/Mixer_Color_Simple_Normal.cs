@@ -10,9 +10,7 @@ namespace Crunchy.Sandwich
     {
         protected override Color MixSimple(Color src_pm, Color dst_pm, float weight)
         {
-            src_pm.a *= weight;
-
-            return src_pm + dst_pm * (1.0f - src_pm.a);
+            return dst_pm.GetInterpolate(src_pm, weight * src_pm.a);
         }
     }
 }
