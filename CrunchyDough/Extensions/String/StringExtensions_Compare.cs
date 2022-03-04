@@ -36,6 +36,30 @@ namespace Crunchy.Dough
             return false;
         }
 
+        static public T IfVisible<T>(this string item, Operation<T, string> if_visible, Operation<T, string> if_not_visible)
+        {
+            if (item.IsVisible())
+                return if_visible(item);
+
+            return if_not_visible(item);
+        }
+        static public T IfVisible<T>(this string item, Operation<T, string> if_visible, T if_not_visible)
+        {
+            return item.IfVisible<T>(if_visible, s => if_not_visible);
+        }
+        static public T IfVisible<T>(this string item, Operation<T, string> if_visible)
+        {
+            return item.IfVisible<T>(if_visible, default(T));
+        }
+        static public T IfVisible<T>(this string item, T if_visible, T if_not_visible)
+        {
+            return item.IfVisible<T>(s => if_visible, s => if_not_visible);
+        }
+        static public T IfVisible<T>(this string item, T if_visible)
+        {
+            return item.IfVisible<T>(s => if_visible, default(T));
+        }
+
         static public bool IsBlank(this string item)
         {
             if (item == null || item.RegexIsMatch("^[\\s\\p{C}]*$"))
