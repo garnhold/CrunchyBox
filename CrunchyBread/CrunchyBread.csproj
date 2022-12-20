@@ -182,6 +182,8 @@
     <Compile Include="InputDevice\InputDevice_Joystick\InputDevice_Joystick.cs" />
     <Compile Include="InputAtom\InputAtom_Axis\Composite\InputAtom_Axis_Filter.cs" />
     <Compile Include="InputAtom\InputAtom_Axis\Extensions\InputAtomAxisExtensions_Filter.cs" />
+    <Compile Include="FrameProcess\FrameProcess.cs" />
+    <Compile Include="FrameOperation\FrameOperation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -252,6 +254,8 @@
     <Folder Include="InputAtom\InputAtom_IntSlider\" />
     <Folder Include="InputAtom\InputAtom_IntSlider\Composite\" />
     <Folder Include="InputAtom\InputAtom_IntSlider\Extensions\" />
+    <Folder Include="FrameProcess\" />
+    <Folder Include="FrameOperation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
