@@ -10,7 +10,7 @@ namespace Crunchy.Sandwich
 {
     static public class MeshExtensions_CalculateUV
     {
-        static public void CalculateUVs(this Mesh item)
+        static public void CalculateUVs(this Mesh item, float scale)
         {
             Vector2[] uvs = new Vector2[item.vertexCount];
 
@@ -21,7 +21,7 @@ namespace Crunchy.Sandwich
 
                 PlaneSpace place = new PlaneSpace(PlaneExtensions.CreateNormalAndDistance(normal, 0.0f));
 
-                uvs[i] = place.ProjectPoint(position);
+                uvs[i] = place.ProjectPoint(position) * scale;
             }
 
             item.uv = uvs;
