@@ -33,7 +33,9 @@ namespace Crunchy.Sandwich
 
         static public Vector2 GetMouseLookDelta()
         {
-            return InputExtensions.GetMouseDelta().GetComponentsSwapped();
+            return InputExtensions.GetMouseDelta()
+                .GetWithFlippedY()
+                .GetComponentsSwapped();
         }
     }
 }
