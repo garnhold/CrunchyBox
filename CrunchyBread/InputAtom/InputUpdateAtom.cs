@@ -6,12 +6,14 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public abstract class InputUpdateAtom : InputAtom
+    public abstract class InputUpdateAtom<T> : InputAtom<T>
     {
         private Frame frame;
 
         protected virtual void StartAtomInternal() { }
         protected abstract void UpdateAtomInternal();
+
+        protected abstract T GetRawValueInternal();
 
         public abstract bool IsNominallyLocked();
         public abstract bool IsEffectivelyLocked();
@@ -29,6 +31,13 @@ namespace Crunchy.Bread
                 UpdateAtomInternal();
                 frame = Frame.GetCurrentFrame();
             }
+        }
+
+        public T GetRawValue()
+        {
+            Touch();
+
+            return GetRawValueInternal();
         }
     }
 }

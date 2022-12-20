@@ -6,7 +6,7 @@ namespace Crunchy.Bread
 {
     using Dough;
 
-    public class InputAtom_Axis_PositionDelta : InputUpdateAtom, InputAtom_Axis
+    public class InputAtom_Axis_PositionDelta : InputUpdateAtom<float>, InputAtom_Axis
     {
         private InputAtom_Position position;
 
@@ -20,6 +20,11 @@ namespace Crunchy.Bread
         protected override void UpdateAtomInternal()
         {
             delta.UpdateDelta(position.GetRawValue());
+        }
+
+        protected override float GetRawValueInternal()
+        {
+            return delta.GetDelta();
         }
 
         public InputAtom_Axis_PositionDelta(InputAtom_Position p)
@@ -47,11 +52,6 @@ namespace Crunchy.Bread
         public override bool IsEffectivelyLocked()
         {
             return position.IsEffectivelyLocked();
-        }
-
-        public float GetRawValue()
-        {
-            return delta.GetDelta();
         }
     }
 }
