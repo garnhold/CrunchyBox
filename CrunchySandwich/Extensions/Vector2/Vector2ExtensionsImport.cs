@@ -631,6 +631,11 @@ using Crunchy.Dough;
             return item.GetComponentDivide(other.x, other.y);
         }
 
+        static public Vector2 GetComponentsSwapped(this Vector2 item)
+        {
+            return new Vector2(item.y, item.x);
+        }
+
         static public float GetComponentsMax(this Vector2 item)
         {
             return item.x.Max(item.y);

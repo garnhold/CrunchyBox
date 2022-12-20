@@ -24,6 +24,11 @@ namespace Crunchy.Dough
             return item.GetComponentDivide(other.x, other.y);
         }
 
+        static public VectorF2 GetComponentsSwapped(this VectorF2 item)
+        {
+            return new VectorF2(item.y, item.x);
+        }
+
         static public float GetComponentsMax(this VectorF2 item)
         {
             return item.x.Max(item.y);
