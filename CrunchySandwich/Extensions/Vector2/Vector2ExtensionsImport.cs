@@ -1199,6 +1199,15 @@ using Crunchy.Dough;
             return item.GetWithX(item.x * scale);
         }
 
+        static public Vector2 GetWithBoundX(this Vector2 item, float a, float b)
+        {
+            return item.GetWithX(item.x.BindBetween(a, b));
+        }
+        static public Vector2 GetWithBoundX(this Vector2 item, FloatRange range)
+        {
+            return item.GetWithBoundX(range.x1, range.x2);
+        }
+
         static public Vector2 GetWithY(this Vector2 item, float y)
         {
             return new Vector2(item.x, y);
@@ -1217,6 +1226,15 @@ using Crunchy.Dough;
         static public Vector2 GetWithScaledY(this Vector2 item, float scale)
         {
             return item.GetWithY(item.y * scale);
+        }
+
+        static public Vector2 GetWithBoundY(this Vector2 item, float a, float b)
+        {
+            return item.GetWithY(item.y.BindBetween(a, b));
+        }
+        static public Vector2 GetWithBoundY(this Vector2 item, FloatRange range)
+        {
+            return item.GetWithBoundY(range.x1, range.x2);
         }
     }
 }
