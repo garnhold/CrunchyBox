@@ -8,7 +8,7 @@ namespace Crunchy.Bread
 
     public abstract class InputUpdateAtom<T> : InputAtom<T>
     {
-        private Frame frame;
+        private FrameProcess frame_process;
 
         protected virtual void StartAtomInternal() { }
         protected abstract void UpdateAtomInternal();
@@ -21,21 +21,14 @@ namespace Crunchy.Bread
         public abstract void EnterLockSection(InputAtomLock @lock);
         public abstract void ExitLockSection(InputAtomLock @lock);
 
-        protected void Touch()
+        public InputUpdateAtom()
         {
-            if (frame.IsNotCurrent())
-            {
-                if (frame.IsNotRecent())
-                    StartAtomInternal();
-
-                UpdateAtomInternal();
-                frame = Frame.GetCurrentFrame();
-            }
+            frame_process = new FrameProcess(() => StartAtomInternal(), () => UpdateAtomInternal());
         }
 
         public T GetRawValue()
         {
-            Touch();
+            frame_process.Touch();
 
             return GetRawValueInternal();
         }
