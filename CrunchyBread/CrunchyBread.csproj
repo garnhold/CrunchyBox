@@ -190,6 +190,8 @@
     <Compile Include="InputDevice\InputDevice_Keyboard\Extensions\InputDeviceKeyboardExtensions_Stick.cs" />
     <Compile Include="InputDevice\InputDevice_Mouse\Extensions\InputDeviceMouseExtensions.cs" />
     <Compile Include="InputDevice\InputDevice_Mouse\Extensions\InputDeviceMouseExtensions_Stick.cs" />
+    <Compile Include="GamepadComponent\Extensions\GamepadComponentExtensions.cs" />
+    <Compile Include="GamepadComponent\Extensions\GamepadComponentExtensions_Lock.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -265,6 +267,7 @@
     <Folder Include="InputDevice\InputDevice_Mouse\" />
     <Folder Include="InputDevice\InputDevice_Keyboard\Extensions\" />
     <Folder Include="InputDevice\InputDevice_Mouse\Extensions\" />
+    <Folder Include="GamepadComponent\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">

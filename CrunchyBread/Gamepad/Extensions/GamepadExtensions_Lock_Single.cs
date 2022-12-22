@@ -19,19 +19,11 @@ namespace Crunchy.Bread
 
         static public void ProcessLockSection(this GamepadBase item, GamepadComponentId component, InputAtomLock @lock, Process process)
         {
-            item.EnterLockSection(component, @lock);
-                process();
-            item.ExitLockSection(component, @lock);
+            item.GetComponent(component).ProcessLockSection(@lock, process);
         }
         static public T ProcessLockSection<T>(this GamepadBase item, GamepadComponentId component, InputAtomLock @lock, Operation<T> operation)
         {
-            T to_return = default(T);
-
-            item.ProcessLockSection(component, @lock, delegate() {
-                to_return = operation();
-            });
-
-            return to_return;
+            return item.GetComponent(component).ProcessLockSection<T>(@lock, operation);
         }
     }
 }
