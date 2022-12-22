@@ -1245,6 +1245,8 @@
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Shift.cs" />
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Shift.cs" />
     <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_Hit.cs" />
+    <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_Plane.cs" />
+    <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_PlaneSpace.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
