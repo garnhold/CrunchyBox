@@ -33,5 +33,14 @@ namespace Crunchy.Bread
 
             return to_return;
         }
+
+        static public void ProcessLockSection(this GamepadBase item, InputAtomLock @lock, Process process, params GamepadComponentId[] components)
+        {
+            item.ProcessLockSection(components, @lock, process);
+        }
+        static public T ProcessLockSection<T>(this GamepadBase item, InputAtomLock @lock, Operation<T> operation, params GamepadComponentId[] components)
+        {
+            return item.ProcessLockSection<T>(components, @lock, operation);
+        }
     }
 }
