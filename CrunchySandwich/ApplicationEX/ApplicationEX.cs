@@ -138,6 +138,13 @@ namespace Crunchy.Sandwich
         {
             return is_playing;
         }
+        public bool IsNotPlaying()
+        {
+            if (IsPlaying() == false)
+                return true;
+
+            return false;
+        }
 
         public bool IsUnityMainThread()
         {
