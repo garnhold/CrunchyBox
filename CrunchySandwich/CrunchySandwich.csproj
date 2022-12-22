@@ -1244,6 +1244,7 @@
     <Compile Include="Extensions\Input\InputExtensions_Mouse.cs" />
     <Compile Include="Triangle2\Extensions\Triangle2Extensions_Shift.cs" />
     <Compile Include="Triangle3\Extensions\Triangle3Extensions_Shift.cs" />
+    <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_Hit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
