@@ -188,6 +188,8 @@
     <Compile Include="InputDevice\InputDevice_Keyboard\Extensions\InputDeviceKeyboardExtensions.cs" />
     <Compile Include="InputDevice\InputDevice_Keyboard\Extensions\InputDeviceKeyboardExtensions_Axis.cs" />
     <Compile Include="InputDevice\InputDevice_Keyboard\Extensions\InputDeviceKeyboardExtensions_Stick.cs" />
+    <Compile Include="InputDevice\InputDevice_Mouse\Extensions\InputDeviceMouseExtensions.cs" />
+    <Compile Include="InputDevice\InputDevice_Mouse\Extensions\InputDeviceMouseExtensions_Stick.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -262,6 +264,7 @@
     <Folder Include="FrameOperation\" />
     <Folder Include="InputDevice\InputDevice_Mouse\" />
     <Folder Include="InputDevice\InputDevice_Keyboard\Extensions\" />
+    <Folder Include="InputDevice\InputDevice_Mouse\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
