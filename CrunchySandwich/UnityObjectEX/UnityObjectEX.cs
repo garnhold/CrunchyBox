@@ -148,7 +148,7 @@ namespace Crunchy.Sandwich
                 {
                     did_unpack_tyon_data = false;
                     
-                    if(editing)
+                    if(editing || ApplicationEX.GetInstance().IsNotPlaying())
                         UnpackTyonEditInternal(mode);
                     else
                         UnpackTyonRuntimeInternal(mode);
@@ -358,7 +358,7 @@ namespace Crunchy.Sandwich
                 {
                     did_unpack_tyon_data = false;
                     
-                    if(editing)
+                    if(editing || ApplicationEX.GetInstance().IsNotPlaying())
                         UnpackTyonEditInternal(mode);
                     else
                         UnpackTyonRuntimeInternal(mode);
@@ -568,7 +568,7 @@ namespace Crunchy.Sandwich
                 {
                     did_unpack_tyon_data = false;
                     
-                    if(editing)
+                    if(editing || ApplicationEX.GetInstance().IsNotPlaying())
                         UnpackTyonEditInternal(mode);
                     else
                         UnpackTyonRuntimeInternal(mode);
