@@ -184,6 +184,7 @@
     <Compile Include="InputAtom\InputAtom_Axis\Extensions\InputAtomAxisExtensions_Filter.cs" />
     <Compile Include="FrameProcess\FrameProcess.cs" />
     <Compile Include="FrameOperation\FrameOperation.cs" />
+    <Compile Include="InputDevice\InputDevice_Mouse\InputDevice_Mouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
@@ -256,6 +257,7 @@
     <Folder Include="InputAtom\InputAtom_IntSlider\Extensions\" />
     <Folder Include="FrameProcess\" />
     <Folder Include="FrameOperation\" />
+    <Folder Include="InputDevice\InputDevice_Mouse\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GamepadComponentId\GamepadComponentIds.tt">
