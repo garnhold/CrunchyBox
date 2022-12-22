@@ -14,6 +14,7 @@ namespace Crunchy.Sandwich
 
     public class ApplicationEX
     {
+        private bool is_playing;
         private Thread unity_main_thread;
 
         private List<Process> start_processes;
@@ -58,19 +59,31 @@ namespace Crunchy.Sandwich
                 .Convert<MethodInfoEX, Process>(m => delegate() { m.Invoke(null, Empty.Array<object>()); });
         }
 
+        private void StartUpdateGeneral()
+        {
+            is_playing = Application.isPlaying;
+        }
+
         private void StartGeneral()
         {
+            StartUpdateGeneral();
+
             unity_main_thread = System.Threading.Thread.CurrentThread;
         }
 
         private void UpdateGeneral()
         {
+            StartUpdateGeneral();
+
             deferred_processes.ProcessSandboxed(p => p(), e => Debug.LogException(e));
             deferred_processes.Clear();
         }
 
         private ApplicationEX()
         {
+            is_playing = false;
+            unity_main_thread = null;
+
             start_processes = GetApplicationEXMarkedTypeMethodProcesses("Start").ToList();
             start_in_editor_processes = GetApplicationEXMarkedTypeMethodProcesses("StartInEditor").ToList();
 
@@ -119,6 +132,11 @@ namespace Crunchy.Sandwich
         public void RegisterDrawGizmos(Process process)
         {
             draw_gizmos_processes.Add(process);
+        }
+
+        public bool IsPlaying()
+        {
+            return is_playing;
         }
 
         public bool IsUnityMainThread()
