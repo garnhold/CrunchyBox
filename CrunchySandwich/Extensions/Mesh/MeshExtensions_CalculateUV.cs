@@ -10,7 +10,7 @@ namespace Crunchy.Sandwich
 {
     static public class MeshExtensions_CalculateUV
     {
-        static public void CalculateUVs(this Mesh item, float scale)
+        static public void CalculateUVs(this Mesh item, float scale=1.0f)
         {
             Vector2[] uvs = new Vector2[item.vertexCount];
 
