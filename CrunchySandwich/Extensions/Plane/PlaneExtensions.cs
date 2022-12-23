@@ -26,6 +26,15 @@ namespace Crunchy.Sandwich
         {
             return CreateNormalAndPoint(v0.GetNormal(v1, v2), v0);
         }
+        static public Plane CreatePoints(IEnumerable<Vector3> points)
+        {
+            Vector3 v0;
+            Vector3 v1;
+            Vector3 v2;
+
+            points.PartOut(out v0, out v1, out v2);
+            return CreatePoints(v0, v1, v2);
+        }
 
         static public Plane CreatePointsAndInsidePoint(Vector3 v0, Vector3 v1, Vector3 v2, Vector3 inside)
         {
