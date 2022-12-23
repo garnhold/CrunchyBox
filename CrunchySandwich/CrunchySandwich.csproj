@@ -1247,6 +1247,7 @@
     <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_Hit.cs" />
     <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_Plane.cs" />
     <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_PlaneSpace.cs" />
+    <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PlanePad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
