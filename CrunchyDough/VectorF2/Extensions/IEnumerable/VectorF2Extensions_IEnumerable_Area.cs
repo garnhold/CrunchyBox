@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
-{    
+{
     static public class VectorF2Extensions_IEnumerable_Area
     {
         static public float GetLoopShoelaceArea(this IEnumerable<VectorF2> item)
