@@ -17,6 +17,7 @@ using Crunchy.Noodle;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Drive.v3.Data;
+using Google.Apis.Sheets.v4;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 
@@ -24,17 +25,21 @@ namespace Crunchy.Google
 {
     public class GoogleAccount
     {
+        private string profile;
         private List<string> scopes;
 
         private UserCredential user_credential;
         private BaseClientService.Initializer initializer;
 
         private DriveService drive_service;
+        private SheetsService sheets_service;
 
-        public GoogleAccount(IEnumerable<string> s)
+        public GoogleAccount(string p, IEnumerable<string> s)
         {
+            profile = p;
             scopes = s.ToList();
         }
+        public GoogleAccount(string p, params string[] s) : this(p, (IEnumerable<string>)s) { }
 
         public async Task<UserCredential> GetUserCredential()
         {
@@ -45,7 +50,7 @@ namespace Crunchy.Google
                     scopes,
                     "user",
                     CancellationToken.None,
-                    new FileDataStore("token.json", true)
+                    new FileDataStore(Filename.MakeDataFilename("Google", profile), true)
                 );
             }
 
@@ -71,6 +76,14 @@ namespace Crunchy.Google
                 drive_service = new DriveService(await GetInitializer());
 
             return drive_service;
+        }
+
+        public async Task<SheetsService> GetSheetsService()
+        {
+            if (sheets_service == null)
+                sheets_service = new SheetsService(await GetInitializer());
+
+            return sheets_service;
         }
     }
 }

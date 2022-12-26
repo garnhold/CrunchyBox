@@ -50,6 +50,9 @@
     <Reference Include="Google.Apis.Drive.v3">
       <HintPath>..\packages\Google.Apis.Drive.v3.1.58.0.2859\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis.Sheets.v4">
+      <HintPath>..\packages\Google.Apis.Sheets.v4.1.58.0.2826\lib\net45\Google.Apis.Sheets.v4.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
