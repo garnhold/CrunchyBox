@@ -144,6 +144,10 @@
       <Project>{2D0CDAB5-DD7E-41B1-B681-318D44B19252}</Project>
       <Name>CrunchyWinsys</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CrunchyDinner\CrunchyDinner.csproj">
+      <Project>{6C237139-CD9A-489E-9081-8F39E32B7854}</Project>
+      <Name>CrunchyDinner</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
