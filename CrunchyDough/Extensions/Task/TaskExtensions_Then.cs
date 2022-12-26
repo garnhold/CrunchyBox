@@ -11,6 +11,10 @@ namespace Crunchy.Dough
         {
             return operation(await item);
         }
+        static public async Task<J> Then<T, J>(this Task<T> item, Operation<Task<J>, T> operation)
+        {
+            return await operation(await item);
+        }
         static public async Task Then<T>(this Task<T> item, Process<T> process)
         {
             process(await item);
@@ -20,6 +24,11 @@ namespace Crunchy.Dough
         {
             await item;
             return operation();
+        }
+        static public async Task<J> Then<J>(this Task item, Operation<Task<J>> operation)
+        {
+            await item;
+            return await operation();
         }
         static public async Task Then(this Task item, Process process)
         {
