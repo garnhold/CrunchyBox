@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C237139-CD9A-489E-9081-8F39E32B7854}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrunchyDinner</RootNamespace>
+    <AssemblyName>CrunchyDinner</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThisAssembly.cs" />
+    <Compile Include="Extensions\String\StringExtensions.cs" />
+    <Compile Include="Extensions\String\StringExtensions_UrlEntities.cs" />
+    <Compile Include="Extensions\HttpListener\HttpListenerExtensions.cs" />
+    <Compile Include="Extensions\HttpListener\HttpListenerExtensions_Form.cs" />
+    <Compile Include="Extensions\String\StringExtensions_HtmlEntities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyLunch\CrunchyLunch.csproj">
+      <Project>{25C7126F-8124-47E2-B570-C960BCE31DB3}</Project>
+      <Name>CrunchyLunch</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Extensions\String\" />
+    <Folder Include="Extensions\HttpListener\" />
+    <Folder Include="SystemBrowser\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
