@@ -26,13 +26,9 @@ namespace Crunchy.Google
 {
     static public class UserCredentialExtensions_Picker
     {
-        static public async Task<string> PickFile(this UserCredential item)
+        static public async Task<string> PickFile(this UserCredential item, short port)
         {
-            HttpListener listener = new HttpListener();
-
-            listener.Prefixes.Add("http://localhost:8001/");
-
-            await listener.ServeAndProcessForm(writer => {
+            IDictionary<string, string> results = await SystemBrowser.ServeAndProcessForm(port, writer => {
                 string script = @"
                     function onApiLoad()
                     {
@@ -73,6 +69,8 @@ namespace Crunchy.Google
                     </html>
                 ");
             });
+
+            return results.GetValue("the_value");
         }
     }
 }
