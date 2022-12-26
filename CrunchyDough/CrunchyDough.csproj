@@ -1549,6 +1549,8 @@
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Points.cs" />
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Section.cs" />
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Size.cs" />
+    <Compile Include="Extensions\Task\TaskExtensions.cs" />
+    <Compile Include="Extensions\Task\TaskExtensions_Then.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1794,6 +1796,7 @@
     <Folder Include="Ease\" />
     <Folder Include="Ease\Extensions\" />
     <Folder Include="RectF2Packer\" />
+    <Folder Include="Extensions\Task\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
