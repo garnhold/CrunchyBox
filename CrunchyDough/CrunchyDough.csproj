@@ -1551,6 +1551,7 @@
     <Compile Include="Grid\Extensions\IGridBoundLoggingExtensions_Size.cs" />
     <Compile Include="Extensions\Task\TaskExtensions.cs" />
     <Compile Include="Extensions\Task\TaskExtensions_Then.cs" />
+    <Compile Include="Extensions\Value\ValueExtensions_IList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
