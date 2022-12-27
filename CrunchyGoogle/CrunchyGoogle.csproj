@@ -63,6 +63,8 @@
     <Compile Include="GoogleApp\GoogleApp.cs" />
     <Compile Include="GoogleAccount\Extensions\GoogleAccountExtensions.cs" />
     <Compile Include="GoogleAccount\Extensions\GoogleAccountExtensions_Picker.cs" />
+    <Compile Include="Extensions\SheetsService\SheetsServiceExtensions.cs" />
+    <Compile Include="Extensions\SheetsService\SheetsServiceExtensions_Append.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -95,6 +97,7 @@
     <Folder Include="Extensions\UserCredential\" />
     <Folder Include="GoogleApp\" />
     <Folder Include="GoogleAccount\Extensions\" />
+    <Folder Include="Extensions\SheetsService\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
