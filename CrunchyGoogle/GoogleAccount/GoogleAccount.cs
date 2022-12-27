@@ -25,8 +25,8 @@ namespace Crunchy.Google
 {
     public class GoogleAccount
     {
+        private GoogleApp app;
         private string profile;
-        private List<string> scopes;
 
         private UserCredential user_credential;
         private BaseClientService.Initializer initializer;
@@ -34,12 +34,18 @@ namespace Crunchy.Google
         private DriveService drive_service;
         private SheetsService sheets_service;
 
-        public GoogleAccount(string p, IEnumerable<string> s)
+        public GoogleAccount(GoogleApp a, string p)
         {
+            app = a;
             profile = p;
-            scopes = s.ToList();
         }
-        public GoogleAccount(string p, params string[] s) : this(p, (IEnumerable<string>)s) { }
+
+        public GoogleAccount(GoogleApp a) : this(a, "default") { }
+
+        public GoogleApp GetApp()
+        {
+            return app;
+        }
 
         public async Task<UserCredential> GetUserCredential()
         {
@@ -47,7 +53,7 @@ namespace Crunchy.Google
             {
                 user_credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.FromFile("google_credentials.json").Secrets,
-                    scopes,
+                    app.GetScopes(),
                     "user",
                     CancellationToken.None,
                     new FileDataStore(Filename.MakeDataFilename("Google", profile), true)
