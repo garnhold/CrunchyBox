@@ -48,8 +48,16 @@ namespace Crunchy.Dinner
                                 break;
 
                             case "POST":
-                                return context.Request.InputStream.ReadText()
+                                IDictionary<string, string> values = context.Request.InputStream
+                                    .ReadText()
                                     .DecodeUrlDictionary();
+
+                                using (StreamWriter writer = new StreamWriter(response.OutputStream))
+                                {
+                                    context.Response.Headers.Set("Content-Type", "text/plain");
+                                    writer.Write("Done");
+                                }
+                                return values;
                         }
                     }
                 }
