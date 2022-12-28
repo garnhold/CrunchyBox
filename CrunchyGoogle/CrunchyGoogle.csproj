@@ -65,6 +65,7 @@
     <Compile Include="GoogleAccount\Extensions\GoogleAccountExtensions_Picker.cs" />
     <Compile Include="Extensions\SheetsService\SheetsServiceExtensions.cs" />
     <Compile Include="Extensions\SheetsService\SheetsServiceExtensions_Append.cs" />
+    <Compile Include="Extensions\SheetsService\SheetsServiceExtensions_Get.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
