@@ -31,6 +31,7 @@ namespace Crunchy.Google
             SpreadsheetsResource.ValuesResource.AppendRequest request = item
                 .Spreadsheets.Values.Append(value_range, id, range);
 
+            request.InsertDataOption = SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum.INSERTROWS;
             request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
             return await request.ExecuteAsync();
         }
