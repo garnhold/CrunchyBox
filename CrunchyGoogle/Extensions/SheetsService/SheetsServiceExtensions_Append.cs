@@ -35,6 +35,10 @@ namespace Crunchy.Google
             request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
             return await request.ExecuteAsync();
         }
+        static public async Task<AppendValuesResponse> AppendRawValueRange(this SheetsService item, string id, ValueRange value_range, R1C1 range)
+        {
+            return await item.AppendRawValueRange(id, value_range, range.FormatCompact());
+        }
 
         static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<object> values, string range = "A1")
         {
@@ -47,10 +51,18 @@ namespace Crunchy.Google
                 range
             );
         }
+        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<object> values, R1C1 range)
+        {
+            return await item.AppendRawValueRow(id, values, range.FormatCompact());
+        }
 
         static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, object value, string range = "A1")
         {
             return await item.AppendRawValueRow(id, value.WrapAsIList(), range);
+        }
+        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, object value, R1C1 range)
+        {
+            return await item.AppendRawValueCell(id, value, range.FormatCompact());
         }
     }
 }
