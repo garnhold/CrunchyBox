@@ -368,11 +368,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_GetValue.cs">
-      <DependentUpon>ICustomAttributeProviderExtensions_GetValue.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Extensions\IDictionary\IDictionaryExtensions_Composite.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_CopyTo.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ConvertCombinations.cs" />
@@ -1737,10 +1732,6 @@
     <Content Include="Extensions\Number_Real\NumberRealExtensions_Precision.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberRealExtensions_Precision.cs</LastGenOutput>
-    </Content>
-    <Content Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_GetValue.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICustomAttributeProviderExtensions_GetValue.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
