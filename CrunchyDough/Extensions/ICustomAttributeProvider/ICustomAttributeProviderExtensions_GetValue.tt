@@ -1,0 +1,35 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+string[] flavors = new string[]{
+	"",
+	"Dynamic"
+};
+#>
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+<# foreach(string flavor in flavors){#>
+	static public class I<#=flavor#>CustomAttributeProviderExtensions_GetValue
+    {
+        static public J GetCustomAttributeOfTypeValue<J, T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit, Operation<J, T> operation) where T : Attribute
+        {
+            return item.GetCustomAttributeOfType<T>(inherit).IfNotNull(operation);
+        }
+        static public J GetCustomAttributeOfTypeValue<J, T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit, Operation<J, T> operation, J if_null) where T : Attribute
+        {
+            return item.GetCustomAttributeOfType<T>(inherit).IfNotNull(operation, if_null);
+        }
+        static public J GetCustomAttributeOfTypeValue<J, T>(this I<#=flavor#>CustomAttributeProvider item, bool inherit, Operation<J, T> operation, Operation<J> if_null) where T : Attribute
+        {
+            return item.GetCustomAttributeOfType<T>(inherit).IfNotNull(operation, if_null);
+        }
+	}
+<# } #>
+}

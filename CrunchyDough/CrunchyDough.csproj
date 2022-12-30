@@ -368,8 +368,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Get.cs">
-      <DependentUpon>ICustomAttributeProviderExtensions_Get.tt</DependentUpon>
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_GetValue.cs">
+      <DependentUpon>ICustomAttributeProviderExtensions_GetValue.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1557,6 +1557,9 @@
     <Compile Include="R1C1\Extensions\R1C1Extensions_Shape.cs" />
     <Compile Include="R1C1\Extensions\R1C1Extensions_Sheet.cs" />
     <Compile Include="R1C1\Extensions\R1C1Extensions_Format.cs" />
+    <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Get.cs">
+      <DependentUpon>ICustomAttributeProviderExtensions_Get.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1734,6 +1737,10 @@
     <Content Include="Extensions\Number_Real\NumberRealExtensions_Precision.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberRealExtensions_Precision.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_GetValue.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ICustomAttributeProviderExtensions_GetValue.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
