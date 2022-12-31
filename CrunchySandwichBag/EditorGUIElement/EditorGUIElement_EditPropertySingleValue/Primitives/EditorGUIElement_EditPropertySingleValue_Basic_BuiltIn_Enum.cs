@@ -13,8 +13,6 @@ namespace Crunchy.SandwichBag
     [EditorGUIElementForType(typeof(Enum), true)]
     public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Enum : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<Enum>
     {
-        private bool is_flags;
-
         protected override float DoPlanInternal()
         {
             return LINE_HEIGHT;
@@ -22,15 +20,17 @@ namespace Crunchy.SandwichBag
 
         protected override Enum DrawBuiltInInternal(Rect rect, GUIContent label, Enum value)
         {
-            if (is_flags)
+            if (IsFlagType())
                 return (Enum)EditorGUI.EnumFlagsField(rect, label, value);
 
             return (Enum)EditorGUI.EnumPopup(rect, label, value);
         }
 
-        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Enum(EditProperty_Single_Value p) : base(p)
+        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Enum(EditProperty_Single_Value p) : base(p) { }
+
+        public bool IsFlagType()
         {
-            is_flags = p.HasCustomAttributeOfType<FlagsAttribute>(true);
+            return GetProperty().GetPropertyType().IsEnumFlagType();
         }
     }
 }
