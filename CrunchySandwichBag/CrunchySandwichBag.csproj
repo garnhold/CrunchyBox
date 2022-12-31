@@ -435,6 +435,7 @@
     <Compile Include="EditorGUIElement\EditorGUIElement_SpriteGeneratorTest\EditorGUIElement_SpriteGeneratorTest.cs" />
     <Compile Include="PropertyDrawersAndEditors\Editors\SpriteGeneratorEditor.cs" />
     <Compile Include="Extensions\SpriteGenerator\SpriteGeneratorExtensions.cs" />
+    <Compile Include="EditorGUIElement\EditorGUIElement_EditPropertySingleValue\Primitives\EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Enum.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

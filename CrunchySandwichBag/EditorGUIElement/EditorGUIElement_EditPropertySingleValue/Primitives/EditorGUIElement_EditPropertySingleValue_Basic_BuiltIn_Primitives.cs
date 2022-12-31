@@ -122,21 +122,5 @@ namespace Crunchy.SandwichBag
         public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Vector3(EditProperty_Single_Value p) : base(p) { }
     }
 
-	[EditorGUIElementForType(typeof(Enum), true)]
-    public class EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Enum : EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn<Enum>
-    {
-		protected override float DoPlanInternal()
-		{
-			return LINE_HEIGHT;
-		}
-
-        protected override Enum DrawBuiltInInternal(Rect rect, GUIContent label, Enum value)
-        {
-            return (Enum)EditorGUI.EnumPopup(rect, label, value);
-        }
-
-        public EditorGUIElement_EditPropertySingleValue_Basic_BuiltIn_Enum(EditProperty_Single_Value p) : base(p) { }
-    }
-
 }
 

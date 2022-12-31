@@ -11,9 +11,7 @@ TypeInfo[] types = new TypeInfo[]{
 	new TypeInfo("Bounds", "Bounds", "BoundsField", "LINE_HEIGHT * 3.0f"),
 	new TypeInfo("Rect", "Rect", "RectField", "LINE_HEIGHT"),
 	new TypeInfo("Vector2", "Vector2", "Vector2Field", "LINE_HEIGHT"),
-	new TypeInfo("Vector3", "Vector3", "Vector3Field", "LINE_HEIGHT"),
-
-	new TypeInfo("Enum", "Enum", "EnumPopup", "LINE_HEIGHT")
+	new TypeInfo("Vector3", "Vector3", "Vector3Field", "LINE_HEIGHT")
 };
 #>
 using System;
