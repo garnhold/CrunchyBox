@@ -1249,6 +1249,16 @@
     <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_Plane.cs" />
     <Compile Include="Extensions\RaycastHit\RaycastHitExtensions_PlaneSpace.cs" />
     <Compile Include="MeshBuilder\Extensions\MeshBuilderExtensions_PlanePad.cs" />
+    <Compile Include="Quad2\Quad2.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Area.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Bounds.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Edge.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Points.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Rect.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Shift.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Winding.cs" />
+    <Compile Include="Quad2\Extensions\Quad2Extensions_Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Extensions\GameObjectComponent\GameObjectComponentExtensions_Child_Set.tt">
@@ -1596,6 +1606,8 @@
     <Folder Include="Gamepad\GamepadAction\Extensions\" />
     <Folder Include="SpriteGenerator\" />
     <Folder Include="BitmapSpriteShapeController\" />
+    <Folder Include="Quad2\" />
+    <Folder Include="Quad2\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
