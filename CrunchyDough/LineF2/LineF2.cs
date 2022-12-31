@@ -10,7 +10,7 @@ namespace Crunchy.Dough
         public LineF2(VectorF2 p, VectorF2 d)
         {
             point = p;
-            direction = d;
+            direction = d.GetNormalized();
         }
 
         public override string ToString()
