@@ -25,6 +25,24 @@ namespace Crunchy.Sandwich
         {
             return item.transform.GetParentLocalSpacarPosition();
         }
+        
+        static public Vector3 GetParentSpacarRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetParentSpacarRotation();
+        }
+        static public Vector3 GetParentLocalSpacarRotation(this <#=type_name#> item)
+        {
+            return item.transform.GetParentLocalSpacarRotation();
+        }
+
+        static public Quaternion GetParentSpacarQuaternion(this <#=type_name#> item)
+        {
+            return item.transform.GetParentSpacarQuaternion();
+        }
+        static public Quaternion GetParentLocalSpacarQuaternion(this <#=type_name#> item)
+        {
+            return item.transform.GetParentLocalSpacarQuaternion();
+        }
 <# } #>
 	}
 }
