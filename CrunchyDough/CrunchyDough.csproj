@@ -1555,6 +1555,7 @@
     <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Get.cs">
       <DependentUpon>ICustomAttributeProviderExtensions_Get.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To_BidirectionalDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
