@@ -29,6 +29,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -39,6 +42,10 @@
     <Compile Include="SystemBrowser\SystemBrowser.cs" />
     <Compile Include="SystemBrowser\SystemBrowser_Open.cs" />
     <Compile Include="SystemBrowser\SystemBrowser_Form.cs" />
+    <Compile Include="Extensions\JObject\JObjectExtensions.cs" />
+    <Compile Include="Extensions\JObject\JObjectExtensions_Get.cs" />
+    <Compile Include="Extensions\JArray\JArrayExtensions.cs" />
+    <Compile Include="Extensions\JArray\JArrayExtensions_Get.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -62,6 +69,11 @@
     <Folder Include="Extensions\" />
     <Folder Include="Extensions\String\" />
     <Folder Include="SystemBrowser\" />
+    <Folder Include="Extensions\JObject\" />
+    <Folder Include="Extensions\JArray\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
