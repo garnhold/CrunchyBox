@@ -90,6 +90,11 @@ namespace Crunchy.Dough
             return is_flag_type;
         }
 
+        public int GetNumberEnumValueInfos()
+        {
+            return enum_value_infos.Count;
+        }
+
         public IEnumerable<EnumValueInfo> GetEnumValueInfos()
         {
             return enum_value_infos;
