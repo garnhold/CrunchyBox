@@ -46,6 +46,7 @@
     <Compile Include="Extensions\JObject\JObjectExtensions_Get.cs" />
     <Compile Include="Extensions\JArray\JArrayExtensions.cs" />
     <Compile Include="Extensions\JArray\JArrayExtensions_Get.cs" />
+    <Compile Include="Extensions\JArray\JArrayExtensions_As.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
