@@ -39,7 +39,10 @@ namespace Crunchy.Dough
             is_flag_type = enum_type.IsEnumFlagType();
 
             enum_value_infos = Enum.GetNames(enum_type)
-                .PairStrictWithIndex(Enum.GetValues(enum_type).Bridge<Enum>(), (i, n, v) => new EnumValueInfo(i, n, v, this))
+                .PairStrictWithIndex(
+                    Enum.GetValues(enum_type).Bridge<Enum>(), 
+                    (i, n, v) => new EnumValueInfo(i, n, v, enum_type.GetField(n), this)
+                )
                 .ToList();
 
             enum_value_infos_by_name = enum_value_infos.ConvertToValueOfPair(i => i.GetName()).ToDictionaryOverwrite();

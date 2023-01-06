@@ -1,22 +1,25 @@
 using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public class EnumValueInfo
+    public class EnumValueInfo : IDynamicCustomAttributeProvider
     {
         private int index;
         private string name;
         private Enum value;
+        private FieldInfo field;
 
         private EnumInfo enum_info;
 
-        public EnumValueInfo(int i, string n, Enum v, EnumInfo ei)
+        public EnumValueInfo(int i, string n, Enum v, FieldInfo f, EnumInfo ei)
         {
             index = i;
             name = n;
             value = v;
+            field = f;
 
             enum_info = ei;
         }
@@ -36,6 +39,11 @@ namespace Crunchy.Dough
             return value;
         }
 
+        public FieldInfo GetField()
+        {
+            return field;
+        }
+
         public EnumInfo GetEnumInfo()
         {
             return enum_info;
@@ -44,6 +52,11 @@ namespace Crunchy.Dough
         public Type GetEnumType()
         {
             return enum_info.GetEnumType();
+        }
+
+        public IEnumerable<Attribute> GetAllCustomAttributes(bool inherit)
+        {
+            return field.GetAllCustomAttributes(inherit);
         }
     }
 }
