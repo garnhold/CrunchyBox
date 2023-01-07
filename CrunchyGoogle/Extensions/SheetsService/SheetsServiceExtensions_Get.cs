@@ -35,22 +35,22 @@ namespace Crunchy.Google
             return await item.GetRawValueRange(id, range.FormatCompact());
         }
 
-        static public async Task<IList<object>> GetRawValueRow(this SheetsService item, string id, string range)
+        static public async Task<IList<string>> GetRawValueRow(this SheetsService item, string id, string range)
         {
             return await item.GetRawValueRange(id, range)
-                .Then(r => r.Values.GetFirst());
+                .Then(r => r.Values.GetFirst().Convert(v => v.ToStringEX()));
         }
-        static public async Task<IList<object>> GetRawValueRow(this SheetsService item, string id, R1C1 range)
+        static public async Task<IList<string>> GetRawValueRow(this SheetsService item, string id, R1C1 range)
         {
             return await item.GetRawValueRow(id, range.FormatCompact());
         }
 
-        static public async Task<object> GetRawValueCell(this SheetsService item, string id, string range)
+        static public async Task<string> GetRawValueCell(this SheetsService item, string id, string range)
         {
             return await item.GetRawValueRow(id, range)
                 .Then(r => r.GetFirst());
         }
-        static public async Task<object> GetRawValueCell(this SheetsService item, string id, R1C1 range)
+        static public async Task<string> GetRawValueCell(this SheetsService item, string id, R1C1 range)
         {
             return await item.GetRawValueCell(id, range.FormatCompact());
         }

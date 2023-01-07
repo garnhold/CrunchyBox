@@ -38,27 +38,27 @@ namespace Crunchy.Google
             return await item.SetRawValueRange(id, value_range, range.FormatCompact());
         }
 
-        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<object> row, string range)
+        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<string> row, string range)
         {
             return await item.SetRawValueRange(
                 id,
                 new ValueRange() {
-                    Values = row.WrapAsIList(),
+                    Values = ((IList<object>)row).WrapAsIList(),
                     MajorDimension = "ROWS"
                 },
                 range
             );
         }
-        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<object> row, R1C1 range)
+        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<string> row, R1C1 range)
         {
             return await item.SetRawValueRow(id, row, range.FormatCompact());
         }
 
-        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, object value, string range)
+        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, string value, string range)
         {
             return await item.SetRawValueRow(id, value.WrapAsIList(), range);
         }
-        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, object value, R1C1 range)
+        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, string value, R1C1 range)
         {
             return await item.SetRawValueCell(id, value, range.FormatCompact());
         }

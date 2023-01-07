@@ -40,27 +40,27 @@ namespace Crunchy.Google
             return await item.AppendRawValueRange(id, value_range, range.FormatCompact());
         }
 
-        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<object> values, string range = "A1")
+        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, string range = "A1")
         {
             return await item.AppendRawValueRange(
                 id,
                 new ValueRange() {
-                    Values = values.WrapAsIList(),
+                    Values = ((IList<object>)values).WrapAsIList(),
                     MajorDimension = "ROWS"
                 },
                 range
             );
         }
-        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<object> values, R1C1 range)
+        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, R1C1 range)
         {
             return await item.AppendRawValueRow(id, values, range.FormatCompact());
         }
 
-        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, object value, string range = "A1")
+        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, string range = "A1")
         {
             return await item.AppendRawValueRow(id, value.WrapAsIList(), range);
         }
-        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, object value, R1C1 range)
+        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, R1C1 range)
         {
             return await item.AppendRawValueCell(id, value, range.FormatCompact());
         }
