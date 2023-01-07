@@ -35,8 +35,8 @@ namespace Crunchy.Google
 
             public ColumnInfo(string i, string l)
             {
-                a1_id = i;
-                label = l;
+                a1_id = i.Remove("`");
+                label = l.Remove("`");
 
                 enum_value_info = Schema.GetInstance()
                     .GetEnumValueInfoForColumnLabel(label);

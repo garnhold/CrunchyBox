@@ -77,6 +77,9 @@
     <Compile Include="GoogleSheet\GoogleSheet.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionColumnInfo.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionRow.cs" />
+    <Compile Include="GoogleSelection\GoogleSelectionQuery.cs" />
+    <Compile Include="GoogleSelection\GoogleSelectionQueryExpression.cs" />
+    <Compile Include="GoogleSelection\GoogleSelectionSheet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
