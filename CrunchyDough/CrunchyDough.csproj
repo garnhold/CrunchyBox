@@ -1556,6 +1556,7 @@
       <DependentUpon>ICustomAttributeProviderExtensions_Get.tt</DependentUpon>
     </Compile>
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To_BidirectionalDictionary.cs" />
+    <Compile Include="Extensions\Task\TaskExtensions_ThenIfNotNull.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
