@@ -55,7 +55,12 @@ namespace Crunchy.Google
                 native_id_to_column_info = null;
             }
 
-            public string[] CreateRowData(IEnumerable<string> values)
+            public Row CreateEmptyRow()
+            {
+                return new Row(Schema.GetInstance().CreateRowArray());
+            }
+
+            public Row CreateRow(IEnumerable<string> values)
             {
                 string[] output = Schema.GetInstance()
                     .CreateRowArray();
@@ -69,13 +74,13 @@ namespace Crunchy.Google
                         output[index] = value;
                 }
 
-                return output;
+                return new Row(output);
             }
-            public string[] CreateRowData(JArray array)
+            public Row CreateRow(JArray array)
             {
                 if (array != null)
                 {
-                    return CreateRowData(
+                    return CreateRow(
                         array.AsJObjects()
                             .Convert(o => o.GetStringValue("v"))
                     );
@@ -83,10 +88,10 @@ namespace Crunchy.Google
 
                 return null;
             }
-            public string[] CreateRowData(JObject obj)
+            public Row CreateRow(JObject obj)
             {
                 if (obj != null)
-                    return CreateRowData(obj.GetJArrayValue("c"));
+                    return CreateRow(obj.GetJArrayValue("c"));
 
                 return null;
             }

@@ -58,8 +58,7 @@ namespace Crunchy.Google
                         HeaderInfo header = HeaderInfo.FromJArray(cols);
 
                         return new GoogleSelection<ID_ENUM>(
-                            rows.AsJObjects()
-                                .Convert(o => new Row(header.CreateRowData(o))),
+                            rows.AsJObjects().Convert(o => header.CreateRow(o)),
                             header
                         );
                     }

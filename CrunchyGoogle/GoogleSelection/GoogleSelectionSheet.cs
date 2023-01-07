@@ -19,6 +19,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Drive.v3.Data;
 using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 
@@ -39,7 +40,13 @@ namespace Crunchy.Google
                 account = a;
             }
 
-            public async Task<GoogleSelection<ID_ENUM>> DoQuery(Query query)
+            public async Task<Row> CreateEmptyRow()
+            {
+                return await GetHeaderInfo()
+                    .Then(i => i.CreateEmptyRow());
+            }
+
+            public async Task<GoogleSelection<ID_ENUM>> Select(Query query)
             {
                 return await account.QuerySheet<ID_ENUM>(id, query.Render(await GetHeaderInfo()));
             }

@@ -35,9 +35,19 @@ namespace Crunchy.Google
                 values = vs;
             }
 
+            public void SetValue(ID_ENUM id, string value)
+            {
+                values.SetDropped((int)id.GetLongValue(), value);
+            }
+
             public string GetValue(ID_ENUM id)
             {
                 return values.GetDropped((int)id.GetLongValue());
+            }
+
+            public IList<string> GetValues()
+            {
+                return values;
             }
         }
     }
