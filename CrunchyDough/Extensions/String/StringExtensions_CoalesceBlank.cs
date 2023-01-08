@@ -15,5 +15,13 @@ namespace Crunchy.Dough
         {
             return item.CoalesceBlank(() => if_blank);
         }
+
+        static public string CoalesceBlankToNull(this string item)
+        {
+            if (item.IsBlank())
+                return null;
+
+            return item;
+        }
     }
 }
