@@ -1558,6 +1558,7 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To_BidirectionalDictionary.cs" />
     <Compile Include="Extensions\Task\TaskExtensions_ThenIfNotNull.cs" />
     <Compile Include="Extensions\Char\CharExtensions_Alphabet.cs" />
+    <Compile Include="Extensions\String\StringExtensions_Reverse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
