@@ -74,7 +74,6 @@
     <Compile Include="GoogleSelection\GoogleSelectionHeaderInfo.cs" />
     <Compile Include="GoogleAccount\Extensions\GoogleAccountExtensions_QuerySheet.cs" />
     <Compile Include="Extensions\UserCredential\UserCredentialExtensions_QuerySheet.cs" />
-    <Compile Include="GoogleSheet\GoogleSheet.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionColumnInfo.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionRow.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionQuery.cs" />
@@ -114,7 +113,6 @@
     <Folder Include="GoogleAccount\Extensions\" />
     <Folder Include="Extensions\SheetsService\" />
     <Folder Include="GoogleSelection\" />
-    <Folder Include="GoogleSheet\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
