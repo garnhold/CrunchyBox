@@ -74,7 +74,7 @@ namespace Crunchy.Dough
             index = total - 1;
             return true;
         }
-        static public bool TryConvertIndexToAAA(int index, out string aaa)
+        static public string ConvertIndexToAAA(int index)
         {
             StringBuilder builder = new StringBuilder();
 
@@ -86,8 +86,21 @@ namespace Crunchy.Dough
                 index /= 26;
             }
 
-            aaa = builder.ToString().Reverse();
-            return true;
+            return builder.ToString().Reverse();
+        }
+
+        public string ToA1()
+        {
+            if (column_index != null && row_index != null)
+                return ConvertIndexToAAA(column_index.Solidify()) + ConvertIndexToR1(row_index.Solidify());
+
+            if (column_index != null)
+                return ConvertIndexToAAA(column_index.Solidify());
+
+            if (row_index != null)
+                return ConvertIndexToR1(row_index.Solidify());
+
+            return null;
         }
     }
 }

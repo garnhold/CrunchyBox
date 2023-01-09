@@ -48,6 +48,27 @@ namespace Crunchy.Dough
             return false;
         }
 
+        static public bool operator ==(SheetRange left, SheetRange right)
+        {
+            if (left.sheet_name == right.sheet_name)
+            {
+                if (left.first == right.first)
+                {
+                    if (left.last == right.last)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+        static public bool operator !=(SheetRange left, SheetRange right)
+        {
+            if (left == right)
+                return false;
+
+            return true;
+        }
+
         public SheetRange(string sn, SheetBound f, SheetBound l)
         {
             sheet_name = sn.CoalesceBlankToNull();
@@ -66,5 +87,52 @@ namespace Crunchy.Dough
 
         public SheetRange(string sn, int c1, int r1) : this(sn, c1, r1, c1, r1) { }
         public SheetRange(int c1, int r1) : this(null, c1, r1) { }
+
+        public bool HasExplicitSheetName()
+        {
+            if (sheet_name != null)
+                return true;
+
+            return false;
+        }
+
+        public bool IsCell()
+        {
+            if (first == last)
+                return true;
+
+            return false;
+        }
+
+        public bool IsRange()
+        {
+            if (first != last)
+                return true;
+
+            return false;
+        }
+
+        public override bool Equals(object obj)
+        {
+            SheetRange range;
+
+            if (obj.Convert<SheetRange>(out range))
+                return this == range;
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+
+                hash = hash * 23 + sheet_name.GetHashCodeEX();
+                hash = hash * 23 + first.GetHashCodeEX();
+                hash = hash * 23 + last.GetHashCodeEX();
+                return hash;
+            }
+        }
     }
 }

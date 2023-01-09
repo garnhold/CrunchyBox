@@ -14,5 +14,16 @@ namespace Crunchy.Dough
                 out sheet_range
             );
         }
+
+        public string ToR1C1()
+        {
+            string prefix = HasExplicitSheetName()
+                .ConvertBool(sheet_name + "!", "");
+                
+            if (IsCell())
+                return prefix + first.ToR1();
+
+            return prefix + first.ToR1() + ":" + last.ToR1();
+        }
     }
 }

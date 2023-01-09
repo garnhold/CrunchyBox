@@ -30,9 +30,9 @@ namespace Crunchy.Google
         {
             return await item.Spreadsheets.Values.Get(id, range).ExecuteAsync();
         }
-        static public async Task<ValueRange> GetRawValueRange(this SheetsService item, string id, R1C1 range)
+        static public async Task<ValueRange> GetRawValueRange(this SheetsService item, string id, SheetRange range)
         {
-            return await item.GetRawValueRange(id, range.FormatCompact());
+            return await item.GetRawValueRange(id, range.ToA1());
         }
 
         static public async Task<IList<string>> GetRawValueRow(this SheetsService item, string id, string range)
@@ -40,9 +40,9 @@ namespace Crunchy.Google
             return await item.GetRawValueRange(id, range)
                 .Then(r => r.Values.GetFirst().Convert(v => v.ToStringEX()));
         }
-        static public async Task<IList<string>> GetRawValueRow(this SheetsService item, string id, R1C1 range)
+        static public async Task<IList<string>> GetRawValueRow(this SheetsService item, string id, SheetRange range)
         {
-            return await item.GetRawValueRow(id, range.FormatCompact());
+            return await item.GetRawValueRow(id, range.ToA1());
         }
 
         static public async Task<string> GetRawValueCell(this SheetsService item, string id, string range)
@@ -50,9 +50,9 @@ namespace Crunchy.Google
             return await item.GetRawValueRow(id, range)
                 .Then(r => r.GetFirst());
         }
-        static public async Task<string> GetRawValueCell(this SheetsService item, string id, R1C1 range)
+        static public async Task<string> GetRawValueCell(this SheetsService item, string id, SheetRange range)
         {
-            return await item.GetRawValueCell(id, range.FormatCompact());
+            return await item.GetRawValueCell(id, range.ToA1());
         }
     }
 }

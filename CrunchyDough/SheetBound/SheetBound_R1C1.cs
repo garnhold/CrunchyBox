@@ -42,10 +42,23 @@ namespace Crunchy.Dough
             return false;
 
         }
-        static public bool TryConvertIndexToR1(int index, out string r1)
+        static public string ConvertIndexToR1(int index)
         {
-            r1 = (index + 1).ToString();
-            return true;
+            return (index + 1).ToString();
+        }
+
+        public string ToR1()
+        {
+            if (column_index != null && row_index != null)
+                return "R" + ConvertIndexToR1(row_index.Solidify()) + "C" + ConvertIndexToR1(column_index.Solidify());
+
+            if (column_index != null)
+                return "C" + ConvertIndexToR1(column_index.Solidify());
+
+            if (row_index != null)
+                return "R" + ConvertIndexToR1(row_index.Solidify());
+
+            return null;
         }
     }
 }

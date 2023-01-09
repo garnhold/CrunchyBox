@@ -33,9 +33,9 @@ namespace Crunchy.Google
             request.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
             return await request.ExecuteAsync();
         }
-        static public async Task<UpdateValuesResponse> SetRawValueRange(this SheetsService item, string id, ValueRange value_range, R1C1 range)
+        static public async Task<UpdateValuesResponse> SetRawValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range)
         {
-            return await item.SetRawValueRange(id, value_range, range.FormatCompact());
+            return await item.SetRawValueRange(id, value_range, range.ToA1());
         }
 
         static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<string> row, string range)
@@ -49,18 +49,18 @@ namespace Crunchy.Google
                 range
             );
         }
-        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<string> row, R1C1 range)
+        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<string> row, SheetRange range)
         {
-            return await item.SetRawValueRow(id, row, range.FormatCompact());
+            return await item.SetRawValueRow(id, row, range.ToA1());
         }
 
         static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, string value, string range)
         {
             return await item.SetRawValueRow(id, value.WrapAsIList(), range);
         }
-        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, string value, R1C1 range)
+        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, string value, SheetRange range)
         {
-            return await item.SetRawValueCell(id, value, range.FormatCompact());
+            return await item.SetRawValueCell(id, value, range.ToA1());
         }
     }
 }

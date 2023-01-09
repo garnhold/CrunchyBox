@@ -35,9 +35,9 @@ namespace Crunchy.Google
             request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
             return await request.ExecuteAsync();
         }
-        static public async Task<AppendValuesResponse> AppendRawValueRange(this SheetsService item, string id, ValueRange value_range, R1C1 range)
+        static public async Task<AppendValuesResponse> AppendRawValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range)
         {
-            return await item.AppendRawValueRange(id, value_range, range.FormatCompact());
+            return await item.AppendRawValueRange(id, value_range, range.ToA1());
         }
 
         static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, string range = "A1")
@@ -51,18 +51,18 @@ namespace Crunchy.Google
                 range
             );
         }
-        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, R1C1 range)
+        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, SheetRange range)
         {
-            return await item.AppendRawValueRow(id, values, range.FormatCompact());
+            return await item.AppendRawValueRow(id, values, range.ToA1());
         }
 
         static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, string range = "A1")
         {
             return await item.AppendRawValueRow(id, value.WrapAsIList(), range);
         }
-        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, R1C1 range)
+        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, SheetRange range)
         {
-            return await item.AppendRawValueCell(id, value, range.FormatCompact());
+            return await item.AppendRawValueCell(id, value, range.ToA1());
         }
     }
 }

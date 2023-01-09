@@ -1547,11 +1547,6 @@
     <Compile Include="Extensions\Task\TaskExtensions.cs" />
     <Compile Include="Extensions\Task\TaskExtensions_Then.cs" />
     <Compile Include="Extensions\Value\ValueExtensions_IList.cs" />
-    <Compile Include="R1C1\R1C1.cs" />
-    <Compile Include="R1C1\Extensions\R1C1Extensions.cs" />
-    <Compile Include="R1C1\Extensions\R1C1Extensions_Shape.cs" />
-    <Compile Include="R1C1\Extensions\R1C1Extensions_Sheet.cs" />
-    <Compile Include="R1C1\Extensions\R1C1Extensions_Format.cs" />
     <Compile Include="Extensions\ICustomAttributeProvider\ICustomAttributeProviderExtensions_Get.cs">
       <DependentUpon>ICustomAttributeProviderExtensions_Get.tt</DependentUpon>
     </Compile>
@@ -1819,8 +1814,6 @@
     <Folder Include="Ease\Extensions\" />
     <Folder Include="RectF2Packer\" />
     <Folder Include="Extensions\Task\" />
-    <Folder Include="R1C1\" />
-    <Folder Include="R1C1\Extensions\" />
     <Folder Include="SheetRange\" />
     <Folder Include="SheetBound\" />
   </ItemGroup>
