@@ -46,6 +46,21 @@ namespace Crunchy.Google
                     .Then(i => i.CreateEmptyRow());
             }
 
+            public async Task<int> Insert(Row row)
+            {
+                AppendValuesResponse response = await account.GetSheetsService()
+                    .Then(s => s.AppendRawValueRow(id, row.GetValues()));
+
+                if (response != null)
+                {
+                    SheetRange sheet_range;
+                    if (SheetRange.TryParseA1(response.Updates.UpdatedRange, out sheet_range))
+                        return sheet_range.first.row_index.Solidify();
+                }
+
+                return -1;
+            }
+
             public async Task<GoogleSelection<ID_ENUM>> Select(Query query)
             {
                 return await account.QuerySheet<ID_ENUM>(id, query.Render(await GetHeaderInfo()));
