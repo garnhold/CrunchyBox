@@ -13,7 +13,7 @@ using Crunchy.Dough;
     }
 }
     namespace Crunchy.Sandwich
-{    
+{
     static public class Vector2Extensions_IEnumerable_Area
     {
         static public float GetLoopShoelaceArea(this IEnumerable<Vector2> item)
@@ -1080,6 +1080,23 @@ using Crunchy.Dough;
             return new Vector2(
                 item.x.GetAtPrecision(exponent),
                 item.y.GetAtPrecision(exponent)
+            );
+        }
+    }
+}
+    namespace Crunchy.Sandwich
+{    
+    static public class Vector2Extensions_Quantized
+    {
+        static public Vector2 GetQuantizedMin(this Vector2 item, float interval)
+        {
+            return item.GetQuantizedMin(new Vector2(interval, interval));
+        }
+        static public Vector2 GetQuantizedMin(this Vector2 item, Vector2 interval)
+        {
+            return new Vector2(
+                item.x.GetQuantizedMin(interval.x),
+                item.y.GetQuantizedMin(interval.y)
             );
         }
     }

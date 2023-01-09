@@ -1559,6 +1559,7 @@
     <Compile Include="Extensions\Task\TaskExtensions_ThenIfNotNull.cs" />
     <Compile Include="Extensions\Char\CharExtensions_Alphabet.cs" />
     <Compile Include="Extensions\String\StringExtensions_Reverse.cs" />
+    <Compile Include="VectorF2\Extensions\VectorF2Extensions_Quantized.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
