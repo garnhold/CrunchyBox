@@ -1,0 +1,47 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] type_info = new NumericInfo[]{
+	new NumericInfo("float", "Float", "1.0f", "0.0f"),
+	new NumericInfo("double", "Double", "1.0", "0.0"),
+	new NumericInfo("decimal", "Decimal", "1.0m", "0.0m")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+	static public class NumberRealExtensions_Quantized
+    {
+<# foreach(NumericInfo info in type_info){#>
+        static public <#=info.type_name#> GetQuantizedRound(this <#=info.type_name#> item, <#=info.type_name#> interval)
+        {
+            return (<#=info.type_name#>)(Math.Round(item / interval) * interval);
+        }
+<# } #>
+	}
+}
+
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+	public readonly string class_name;
+
+	public readonly string one;
+	public readonly string zero;
+
+	public NumericInfo(string t, string c, string o, string z)
+	{
+		type_name = t;
+		class_name = c;
+
+		one = o;
+		zero = z;
+	}
+}
+#>

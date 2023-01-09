@@ -286,8 +286,8 @@
     <Compile Include="Extensions\Assembly\AssemblyExtensions_StreamSystem.cs" />
     <Compile Include="Extensions\Char\CharExtensions_Number.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Skip_Extended.cs" />
-    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Binding.cs">
-      <DependentUpon>NumberRealExtensions_Binding.tt</DependentUpon>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Quantized.cs">
+      <DependentUpon>NumberRealExtensions_Quantized.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1566,6 +1566,9 @@
     <Compile Include="SheetBound\SheetBound.cs" />
     <Compile Include="SheetBound\SheetBound_R1C1.cs" />
     <Compile Include="SheetBound\SheetBound_A1.cs" />
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_Binding.cs">
+      <DependentUpon>NumberRealExtensions_Binding.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1743,6 +1746,10 @@
     <Content Include="Extensions\Number_Real\NumberRealExtensions_Precision.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberRealExtensions_Precision.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number_Real\NumberRealExtensions_Quantized.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_Quantized.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

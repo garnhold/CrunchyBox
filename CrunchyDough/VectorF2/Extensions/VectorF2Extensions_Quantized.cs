@@ -17,5 +17,17 @@ namespace Crunchy.Dough
                 item.y.GetQuantizedMin(interval.y)
             );
         }
+
+        static public VectorF2 GetQuantizedRound(this VectorF2 item, float interval)
+        {
+            return item.GetQuantizedRound(new VectorF2(interval, interval));
+        }
+        static public VectorF2 GetQuantizedRound(this VectorF2 item, VectorF2 interval)
+        {
+            return new VectorF2(
+                item.x.GetQuantizedRound(interval.x),
+                item.y.GetQuantizedRound(interval.y)
+            );
+        }
     }
 }

@@ -1099,6 +1099,18 @@ using Crunchy.Dough;
                 item.y.GetQuantizedMin(interval.y)
             );
         }
+
+        static public Vector2 GetQuantizedRound(this Vector2 item, float interval)
+        {
+            return item.GetQuantizedRound(new Vector2(interval, interval));
+        }
+        static public Vector2 GetQuantizedRound(this Vector2 item, Vector2 interval)
+        {
+            return new Vector2(
+                item.x.GetQuantizedRound(interval.x),
+                item.y.GetQuantizedRound(interval.y)
+            );
+        }
     }
 }
     namespace Crunchy.Sandwich
