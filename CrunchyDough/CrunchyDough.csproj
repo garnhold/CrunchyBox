@@ -1557,9 +1557,15 @@
     </Compile>
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_To_BidirectionalDictionary.cs" />
     <Compile Include="Extensions\Task\TaskExtensions_ThenIfNotNull.cs" />
+    <Compile Include="SheetRange\SheetRange.cs" />
     <Compile Include="Extensions\Char\CharExtensions_Alphabet.cs" />
+    <Compile Include="SheetRange\SheetRange_R1C1.cs" />
+    <Compile Include="SheetRange\SheetRange_A1.cs" />
     <Compile Include="Extensions\String\StringExtensions_Reverse.cs" />
     <Compile Include="VectorF2\Extensions\VectorF2Extensions_Quantized.cs" />
+    <Compile Include="SheetBound\SheetBound.cs" />
+    <Compile Include="SheetBound\SheetBound_R1C1.cs" />
+    <Compile Include="SheetBound\SheetBound_A1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1808,6 +1814,8 @@
     <Folder Include="Extensions\Task\" />
     <Folder Include="R1C1\" />
     <Folder Include="R1C1\Extensions\" />
+    <Folder Include="SheetRange\" />
+    <Folder Include="SheetBound\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
