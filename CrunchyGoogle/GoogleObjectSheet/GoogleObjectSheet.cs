@@ -31,7 +31,7 @@ namespace Crunchy.Google
         public GoogleObjectSheet(GoogleSelection<ID_ENUM>.Sheet s)
         {
             index_id = GoogleSelection<ID_ENUM>.Schema.GetInstance()
-                .GetIdWithCustomAttributeOfType<GoogleObjectSheet.IdColumnAttribute>();
+                .GetIdWithCustomAttributeOfType<GoogleObjectSheet.IndexColumnAttribute>();
 
             sheet = s;
         }

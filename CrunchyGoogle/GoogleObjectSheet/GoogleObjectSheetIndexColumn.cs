@@ -25,7 +25,7 @@ namespace Crunchy.Google
 {
     public partial class GoogleObjectSheet
     {
-        public class IdColumnAttribute : Attribute
+        public class IndexColumnAttribute : Attribute
         {
         }
     }

@@ -80,7 +80,7 @@
     <Compile Include="GoogleSelection\GoogleSelectionQueryExpression.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionSheet.cs" />
     <Compile Include="GoogleObjectSheet\GoogleObjectSheet.cs" />
-    <Compile Include="GoogleObjectSheet\GoogleObjectSheetIdColumn.cs" />
+    <Compile Include="GoogleObjectSheet\GoogleObjectSheetIndexColumn.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
