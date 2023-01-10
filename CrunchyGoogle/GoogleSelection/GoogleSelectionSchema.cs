@@ -56,6 +56,13 @@ namespace Crunchy.Google
                 return new string[enum_info.GetMaxEnumValueInfo().GetLongValue() + 1];
             }
 
+            public ID_ENUM GetIdWithCustomAttributeOfType<T>() where T : Attribute
+            {
+                return enum_info.GetEnumValueInfos()
+                    .FindFirst(i => i.HasCustomAttributeOfType<T>(true))
+                    .IfNotNull(i => i.GetValue<ID_ENUM>());
+            }
+
             public EnumValueInfo GetEnumValueInfoForColumnLabel(string label)
             {
                 return column_label_to_value.GetValue(label);
