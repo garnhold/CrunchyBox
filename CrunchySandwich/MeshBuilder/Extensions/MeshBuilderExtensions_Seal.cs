@@ -18,7 +18,7 @@ namespace Crunchy.Sandwich
             foreach (LineSegment3 edge in item.GetTriangles().Convert(t => t.GetEdges()).Flatten().Unique())
             {
                 if(plane.IsCoplanar(edge, plane_tolerance))
-                    faces.AddFace(plane_space.ProjectLineSegment(edge).GetFace());
+                    faces.AddFace(plane_space.DeflateLineSegment(edge).GetFace());
             }
 
             item.AddTriangles(

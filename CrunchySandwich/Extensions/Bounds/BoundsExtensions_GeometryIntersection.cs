@@ -35,11 +35,11 @@ namespace Crunchy.Sandwich
                     PlaneSpace plane_space = plane.GetPlaneSpace();
 
                     ConvexPolygon plane_polygon = new ConvexPolygon(
-                        plane_space.ProjectPoints(item.GetPlaneIntersection(plane))
+                        plane_space.DeflatePoints(item.GetPlaneIntersection(plane))
                     );
 
                     ConvexPolygon triangle_polygon = new ConvexPolygon(
-                        plane_space.ProjectPoints(triangle.GetPoints())
+                        plane_space.DeflatePoints(triangle.GetPoints())
                     );
 
                     return plane_space.InflatePoints(

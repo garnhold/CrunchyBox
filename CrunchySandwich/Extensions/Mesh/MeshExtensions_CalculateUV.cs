@@ -21,7 +21,7 @@ namespace Crunchy.Sandwich
 
                 PlaneSpace place = new PlaneSpace(PlaneExtensions.CreateNormalAndDistance(normal, 0.0f));
 
-                uvs[i] = place.ProjectPoint(position) * scale;
+                uvs[i] = place.DeflatePoint(position) * scale;
             }
 
             item.uv = uvs;

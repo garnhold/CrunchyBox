@@ -810,7 +810,7 @@
     <Compile Include="Extensions\Plane\PlaneExtensions_Origin.cs" />
     <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions.cs" />
     <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Inflate.cs" />
-    <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Project.cs" />
+    <Compile Include="PlaneSpace\Extensions\PlaneSpaceExtensions_Deflate.cs" />
     <Compile Include="Extensions\Plane\PlaneExtensions_Point.cs" />
     <Compile Include="Extensions\Plane\PlaneExtensions_PlaneSpace.cs" />
     <Compile Include="Extensions\Plane\PlaneExtensions_Intersect_Ray.cs" />

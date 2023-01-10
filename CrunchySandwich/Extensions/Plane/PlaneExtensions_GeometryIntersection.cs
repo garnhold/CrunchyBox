@@ -24,7 +24,7 @@ namespace Crunchy.Sandwich
                     PlaneSpace plane_space = plane.GetPlaneSpace();
 
                     ConvexPolygon triangle_polygon = new ConvexPolygon(
-                        plane_space.ProjectPoints(triangle.GetPoints())
+                        plane_space.DeflatePoints(triangle.GetPoints())
                     );
 
                     Plane2 plane_polygon;

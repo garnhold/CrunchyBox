@@ -17,9 +17,9 @@ namespace Crunchy.Sandwich
             if (item.plane.IsIntersecting(plane, out ray))
             {
                 output = Plane2Extensions.CreatePointsAndInsidePoint(
-                    item.ProjectPoint(ray.origin),
-                    item.ProjectPoint(ray.origin + ray.direction),
-                    item.ProjectPoint(ray.origin - plane.normal)
+                    item.DeflatePoint(ray.origin),
+                    item.DeflatePoint(ray.origin + ray.direction),
+                    item.DeflatePoint(ray.origin - plane.normal)
                 );
                 return true;
             }
