@@ -11,6 +11,55 @@ namespace Crunchy.Dough
         public readonly SheetBound first;
         public readonly SheetBound last;
 
+        static public SheetRange CreateCell(int column_index, int row_index, string sheet_name=null)
+        {
+            return new SheetRange(
+                sheet_name,
+                new SheetBound(column_index, row_index)
+            );
+        }
+
+        static public SheetRange CreateRange(int first_column_index, int first_row_index, int last_column_index, int last_row_index, string sheet_name = null)
+        {
+            return new SheetRange(
+                sheet_name,
+                new SheetBound(first_column_index, first_row_index),
+                new SheetBound(last_column_index, last_row_index)
+            );
+        }
+
+        static public SheetRange CreateRow(int row_index, string sheet_name=null)
+        {
+            return new SheetRange(
+                sheet_name,
+                new SheetBound(null, row_index)
+            );
+        }
+        static public SheetRange CreateRowRange(int first_row_index, int last_row_index, string sheet_name=null)
+        {
+            return new SheetRange(
+                sheet_name,
+                new SheetBound(null, first_row_index),
+                new SheetBound(null, last_row_index)
+            );
+        }
+
+        static public SheetRange CreateColumn(int column_index, string sheet_name=null)
+        {
+            return new SheetRange(
+                sheet_name,
+                new SheetBound(column_index, null)
+            );
+        }
+        static public SheetRange CreateColumnRange(int first_column_index, int last_column_index, string sheet_name=null)
+        {
+            return new SheetRange(
+                sheet_name,
+                new SheetBound(first_column_index, null),
+                new SheetBound(last_column_index, null)
+            );
+        }
+
         static public bool TryParseGeneral(string input, TryOperation<SheetBound, string> operation, out SheetRange sheet_range)
         {
             string sheet_name;
@@ -77,36 +126,11 @@ namespace Crunchy.Dough
             last = l;
         }
 
-        public SheetRange(SheetBound s, SheetBound e) : this(null, s, e) { }
-        public SheetRange(SheetBound s) : this(s, s) { }
-
         public SheetRange(string sn, SheetBound s) : this(sn, s, s) { }
-
-        public SheetRange(string sn, int c1, int r1, int c2, int r2) : this(sn, new SheetBound(c1, r1), new SheetBound(c2, r2)) { }
-        public SheetRange(int c1, int r1, int c2, int r2) : this(null, c1, r1, c2, r2) { }
-
-        public SheetRange(string sn, int c1, int r1) : this(sn, c1, r1, c1, r1) { }
-        public SheetRange(int c1, int r1) : this(null, c1, r1) { }
 
         public bool HasExplicitSheetName()
         {
             if (sheet_name != null)
-                return true;
-
-            return false;
-        }
-
-        public bool IsCell()
-        {
-            if (first == last)
-                return true;
-
-            return false;
-        }
-
-        public bool IsRange()
-        {
-            if (first != last)
                 return true;
 
             return false;

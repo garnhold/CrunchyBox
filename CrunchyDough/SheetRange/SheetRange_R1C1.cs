@@ -20,7 +20,7 @@ namespace Crunchy.Dough
             string prefix = HasExplicitSheetName()
                 .ConvertBool(sheet_name + "!", "");
                 
-            if (IsCell())
+            if (first == last)
                 return prefix + first.ToR1();
 
             return prefix + first.ToR1() + ":" + last.ToR1();
