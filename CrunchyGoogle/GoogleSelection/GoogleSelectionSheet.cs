@@ -61,6 +61,12 @@ namespace Crunchy.Google
                 return -1;
             }
 
+            public async Task Update(int index, Row row, bool raw=true)
+            {
+                await account.GetSheetsService()
+                    .Then(s => s.SetValueRow(id, row.GetValues(), SheetRange.CreateRow(index), raw));
+            }
+
             public async Task<GoogleSelection<ID_ENUM>> Select(Query query)
             {
                 return await account.QuerySheet<ID_ENUM>(id, query.Render(await GetHeaderInfo()));
