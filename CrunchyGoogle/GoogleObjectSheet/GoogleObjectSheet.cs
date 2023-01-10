@@ -45,15 +45,11 @@ namespace Crunchy.Google
         {
             string index = row.GetValue(index_id);
 
+            row.SetValue(index_id, "=ROW()-1");
             if (index.IsBlank())
-            {
-                row.SetValue(index_id, "=ROW()-1");
-                await sheet.Insert(row);
-            }
+                await sheet.Insert(row, false);
             else
-            {
                 await sheet.Update(index.ParseInt(), row, false);
-            }
         }
 
         public async Task<GoogleSelection<ID_ENUM>> Select(GoogleSelection<ID_ENUM>.Query query)
