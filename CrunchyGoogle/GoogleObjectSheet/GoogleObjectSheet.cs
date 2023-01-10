@@ -50,9 +50,9 @@ namespace Crunchy.Google
             row.SetValue(index_id, "=ROW()-1");
 
             if (index.IsBlank())
-                await sheet.Insert(row, false);
+                await sheet.Insert(row, true);
             else
-                await sheet.Update(index.ParseInt(), row, false);
+                await sheet.Update(index.ParseInt(), row, true);
         }
 
         public async Task<GoogleSelection<ID_ENUM>> Select(GoogleSelection<ID_ENUM>.Query query)

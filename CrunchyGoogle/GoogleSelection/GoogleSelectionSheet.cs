@@ -46,10 +46,10 @@ namespace Crunchy.Google
                     .Then(i => i.CreateEmptyRow());
             }
 
-            public async Task<int> Insert(Row row, bool raw=true)
+            public async Task<int> Insert(Row row, bool interpret=false)
             {
                 AppendValuesResponse response = await account.GetSheetsService()
-                    .Then(s => s.AppendValueRow(id, row.GetValues(), "A1", raw));
+                    .Then(s => s.AppendValueRow(id, row.GetValues(), "A1", interpret));
 
                 if (response != null)
                 {
@@ -61,10 +61,10 @@ namespace Crunchy.Google
                 return -1;
             }
 
-            public async Task Update(int index, Row row, bool raw=true)
+            public async Task Update(int index, Row row, bool interpret=false)
             {
                 await account.GetSheetsService()
-                    .Then(s => s.SetValueRow(id, row.GetValues(), SheetRange.CreateRow(index), raw));
+                    .Then(s => s.SetValueRow(id, row.GetValues(), SheetRange.CreateRow(index), interpret));
             }
 
             public async Task<GoogleSelection<ID_ENUM>> Select(Query query)

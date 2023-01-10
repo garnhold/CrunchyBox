@@ -26,22 +26,22 @@ namespace Crunchy.Google
 {
     static public class SheetsServiceExtensions_Set
     {
-        static public async Task<UpdateValuesResponse> SetValueRange(this SheetsService item, string id, ValueRange value_range, string range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRange(this SheetsService item, string id, ValueRange value_range, string range, bool interpret=false)
         {
             SpreadsheetsResource.ValuesResource.UpdateRequest request = item.Spreadsheets.Values.Update(value_range, id, range);
 
-            request.ValueInputOption = raw.ConvertBool(
-                SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW,
-                SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED
+            request.ValueInputOption = interpret.ConvertBool(
+                SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED,
+                SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW
             );
             return await request.ExecuteAsync();
         }
-        static public async Task<UpdateValuesResponse> SetValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range, bool interpret=false)
         {
-            return await item.SetValueRange(id, value_range, range.ToA1(), raw);
+            return await item.SetValueRange(id, value_range, range.ToA1(), interpret);
         }
 
-        static public async Task<UpdateValuesResponse> SetValueRow(this SheetsService item, string id, IList<string> row, string range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRow(this SheetsService item, string id, IList<string> row, string range, bool interpret=false)
         {
             return await item.SetValueRange(
                 id,
@@ -50,21 +50,21 @@ namespace Crunchy.Google
                     MajorDimension = "ROWS"
                 },
                 range,
-                raw
+                interpret
             );
         }
-        static public async Task<UpdateValuesResponse> SetValueRow(this SheetsService item, string id, IList<string> row, SheetRange range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRow(this SheetsService item, string id, IList<string> row, SheetRange range, bool interpret=false)
         {
-            return await item.SetValueRow(id, row, range.ToA1(), raw);
+            return await item.SetValueRow(id, row, range.ToA1(), interpret);
         }
 
-        static public async Task<UpdateValuesResponse> SetValueCell(this SheetsService item, string id, string value, string range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueCell(this SheetsService item, string id, string value, string range, bool interpret=false)
         {
-            return await item.SetValueRow(id, value.WrapAsIList(), range, raw);
+            return await item.SetValueRow(id, value.WrapAsIList(), range, interpret);
         }
-        static public async Task<UpdateValuesResponse> SetValueCell(this SheetsService item, string id, string value, SheetRange range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueCell(this SheetsService item, string id, string value, SheetRange range, bool interpret=false)
         {
-            return await item.SetValueCell(id, value, range.ToA1(), raw);
+            return await item.SetValueCell(id, value, range.ToA1(), interpret);
         }
     }
 }
