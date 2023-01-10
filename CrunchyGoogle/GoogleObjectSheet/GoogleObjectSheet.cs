@@ -36,6 +36,8 @@ namespace Crunchy.Google
             sheet = s;
         }
 
+        public GoogleObjectSheet(string i, GoogleAccount a) : this(new GoogleSelection<ID_ENUM>.Sheet(i, a)) { }
+
         public async Task<GoogleSelection<ID_ENUM>.Row> CreateEmptyRow()
         {
             return await sheet.CreateEmptyRow();
@@ -46,6 +48,7 @@ namespace Crunchy.Google
             string index = row.GetValue(index_id);
 
             row.SetValue(index_id, "=ROW()-1");
+
             if (index.IsBlank())
                 await sheet.Insert(row, false);
             else
