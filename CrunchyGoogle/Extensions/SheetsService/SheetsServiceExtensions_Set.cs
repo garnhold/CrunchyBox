@@ -26,7 +26,7 @@ namespace Crunchy.Google
 {
     static public class SheetsServiceExtensions_Set
     {
-        static public async Task<UpdateValuesResponse> SetRawValueRange(this SheetsService item, string id, ValueRange value_range, string range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRange(this SheetsService item, string id, ValueRange value_range, string range, bool raw=true)
         {
             SpreadsheetsResource.ValuesResource.UpdateRequest request = item.Spreadsheets.Values.Update(value_range, id, range);
 
@@ -36,14 +36,14 @@ namespace Crunchy.Google
             );
             return await request.ExecuteAsync();
         }
-        static public async Task<UpdateValuesResponse> SetRawValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range, bool raw=true)
         {
-            return await item.SetRawValueRange(id, value_range, range.ToA1(), raw);
+            return await item.SetValueRange(id, value_range, range.ToA1(), raw);
         }
 
-        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<string> row, string range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRow(this SheetsService item, string id, IList<string> row, string range, bool raw=true)
         {
-            return await item.SetRawValueRange(
+            return await item.SetValueRange(
                 id,
                 new ValueRange() {
                     Values = ((IList<object>)row).WrapAsIList(),
@@ -53,18 +53,18 @@ namespace Crunchy.Google
                 raw
             );
         }
-        static public async Task<UpdateValuesResponse> SetRawValueRow(this SheetsService item, string id, IList<string> row, SheetRange range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueRow(this SheetsService item, string id, IList<string> row, SheetRange range, bool raw=true)
         {
-            return await item.SetRawValueRow(id, row, range.ToA1(), raw);
+            return await item.SetValueRow(id, row, range.ToA1(), raw);
         }
 
-        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, string value, string range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueCell(this SheetsService item, string id, string value, string range, bool raw=true)
         {
-            return await item.SetRawValueRow(id, value.WrapAsIList(), range, raw);
+            return await item.SetValueRow(id, value.WrapAsIList(), range, raw);
         }
-        static public async Task<UpdateValuesResponse> SetRawValueCell(this SheetsService item, string id, string value, SheetRange range, bool raw=true)
+        static public async Task<UpdateValuesResponse> SetValueCell(this SheetsService item, string id, string value, SheetRange range, bool raw=true)
         {
-            return await item.SetRawValueCell(id, value, range.ToA1(), raw);
+            return await item.SetValueCell(id, value, range.ToA1(), raw);
         }
     }
 }

@@ -46,10 +46,10 @@ namespace Crunchy.Google
                     .Then(i => i.CreateEmptyRow());
             }
 
-            public async Task<int> Insert(Row row)
+            public async Task<int> Insert(Row row, bool raw=true)
             {
                 AppendValuesResponse response = await account.GetSheetsService()
-                    .Then(s => s.AppendRawValueRow(id, row.GetValues()));
+                    .Then(s => s.AppendValueRow(id, row.GetValues(), "A1", raw));
 
                 if (response != null)
                 {
