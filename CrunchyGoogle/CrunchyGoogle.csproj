@@ -79,6 +79,8 @@
     <Compile Include="GoogleSelection\GoogleSelectionQuery.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionQueryExpression.cs" />
     <Compile Include="GoogleSelection\GoogleSelectionSheet.cs" />
+    <Compile Include="GoogleObjectSheet\GoogleObjectSheet.cs" />
+    <Compile Include="GoogleObjectSheet\GoogleObjectSheetIdColumn.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -113,6 +115,7 @@
     <Folder Include="GoogleAccount\Extensions\" />
     <Folder Include="Extensions\SheetsService\" />
     <Folder Include="GoogleSelection\" />
+    <Folder Include="GoogleObjectSheet\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
