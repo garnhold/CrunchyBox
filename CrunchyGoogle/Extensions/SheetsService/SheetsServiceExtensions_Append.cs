@@ -26,21 +26,24 @@ namespace Crunchy.Google
 {
     static public class SheetsServiceExtensions_Append
     {
-        static public async Task<AppendValuesResponse> AppendRawValueRange(this SheetsService item, string id, ValueRange value_range, string range = "A1")
+        static public async Task<AppendValuesResponse> AppendRawValueRange(this SheetsService item, string id, ValueRange value_range, string range = "A1", bool raw=true)
         {
             SpreadsheetsResource.ValuesResource.AppendRequest request = item
                 .Spreadsheets.Values.Append(value_range, id, range);
 
             request.InsertDataOption = SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum.INSERTROWS;
-            request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
+            request.ValueInputOption = raw.ConvertBool(
+                SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW,
+                SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED
+            );
             return await request.ExecuteAsync();
         }
-        static public async Task<AppendValuesResponse> AppendRawValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range)
+        static public async Task<AppendValuesResponse> AppendRawValueRange(this SheetsService item, string id, ValueRange value_range, SheetRange range, bool raw=true)
         {
-            return await item.AppendRawValueRange(id, value_range, range.ToA1());
+            return await item.AppendRawValueRange(id, value_range, range.ToA1(), raw);
         }
 
-        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, string range = "A1")
+        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, string range = "A1", bool raw=true)
         {
             return await item.AppendRawValueRange(
                 id,
@@ -48,21 +51,22 @@ namespace Crunchy.Google
                     Values = ((IList<object>)values).WrapAsIList(),
                     MajorDimension = "ROWS"
                 },
-                range
+                range,
+                raw
             );
         }
-        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, SheetRange range)
+        static public async Task<AppendValuesResponse> AppendRawValueRow(this SheetsService item, string id, IList<string> values, SheetRange range, bool raw=true)
         {
-            return await item.AppendRawValueRow(id, values, range.ToA1());
+            return await item.AppendRawValueRow(id, values, range.ToA1(), raw);
         }
 
-        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, string range = "A1")
+        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, string range = "A1", bool raw=true)
         {
-            return await item.AppendRawValueRow(id, value.WrapAsIList(), range);
+            return await item.AppendRawValueRow(id, value.WrapAsIList(), range, raw);
         }
-        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, SheetRange range)
+        static public async Task<AppendValuesResponse> AppendRawValueCell(this SheetsService item, string id, string value, SheetRange range, bool raw=true)
         {
-            return await item.AppendRawValueCell(id, value, range.ToA1());
+            return await item.AppendRawValueCell(id, value, range.ToA1(), raw);
         }
     }
 }
