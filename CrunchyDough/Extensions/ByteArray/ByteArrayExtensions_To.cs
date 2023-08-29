@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace Crunchy.Dough
 {
@@ -29,6 +30,21 @@ namespace Crunchy.Dough
             }
 
             throw new UnaccountedBranchException("type", type);
+        }
+
+        static public string ToUnicodeString(this byte[] item)
+        {
+            return Encoding.Unicode.GetString(item);
+        }
+
+        static public string ToUTF8String(this byte[] item)
+        {
+            return Encoding.UTF8.GetString(item);
+        }
+
+        static public string ToAsciiString(this byte[] item)
+        {
+            return Encoding.ASCII.GetString(item);
         }
     }
 }
