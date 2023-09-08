@@ -24,6 +24,15 @@ namespace Crunchy.Sandwich
             return p.plane;
         }
 
+        public PlaneSpace(Plane p, Vector3 nx, Vector3 ny, Vector3 o)
+        {
+            plane = p;
+
+            x = nx;
+            y = ny;
+            origin = o;
+        }
+
         public PlaneSpace(Plane p)
         {
             plane = p;
