@@ -94,6 +94,10 @@ namespace Crunchy.Dough
 
             return false;
         }
+        static public bool IsSubstring(this string item, int index, string substring)
+        {
+            return item.IsSubstring(index, 0, substring.GetLength(), substring);
+        }
 
         static public bool HasTrailingWhitespace(this string item)
         {
