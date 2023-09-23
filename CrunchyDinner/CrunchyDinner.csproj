@@ -55,6 +55,8 @@
     <Compile Include="Extensions\JArray\JArrayExtensions.cs" />
     <Compile Include="Extensions\JArray\JArrayExtensions_Get.cs" />
     <Compile Include="Extensions\JArray\JArrayExtensions_As.cs" />
+    <Compile Include="Extensions\JToken\JTokenExtensions.cs" />
+    <Compile Include="Extensions\JToken\IEnumerable\JTokenExtensions_IEnumerable.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -80,6 +82,8 @@
     <Folder Include="SystemBrowser\" />
     <Folder Include="Extensions\JObject\" />
     <Folder Include="Extensions\JArray\" />
+    <Folder Include="Extensions\JToken\" />
+    <Folder Include="Extensions\JToken\IEnumerable\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
