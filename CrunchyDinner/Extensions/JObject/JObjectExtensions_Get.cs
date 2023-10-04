@@ -49,5 +49,10 @@ namespace Crunchy.Dinner
             return item.GetNativeValue(property_name)
                 .ToStringEX();
         }
+
+        static public int GetIntValue(this JObject item, string property_name)
+        {
+            return item.GetStringValue(property_name).ParseInt();
+        }
     }
 }
