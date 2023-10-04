@@ -927,9 +927,6 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Combinations.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_End.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_End_Extended.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating_Highest.cs" />
-    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating_Lowest.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Start.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_ToString.cs" />
     <Compile Include="Extensions\IEnumerator\IEnumeratorExtensions_Bridge.cs" />
@@ -1564,6 +1561,9 @@
     <Compile Include="Extensions\Number_Real\NumberRealExtensions_Binding.cs">
       <DependentUpon>NumberRealExtensions_Binding.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating.cs">
+      <DependentUpon>IEnumerableExtensions_Search_Rating.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1745,6 +1745,10 @@
     <Content Include="Extensions\Number_Real\NumberRealExtensions_Quantized.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NumberRealExtensions_Quantized.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IEnumerableExtensions_Search_Rating.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

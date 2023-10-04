@@ -1,0 +1,274 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] infos = new NumericInfo[]{
+	new NumericInfo("int", "int.MinValue"),
+	new NumericInfo("long", "long.MinValue"),
+	new NumericInfo("float", "float.MinValue"),
+	new NumericInfo("double", "double.MinValue"),
+	new NumericInfo("decimal", "decimal.MinValue")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+    static public class IEnumerableExtensions_Search_Rating
+    {
+<# foreach(NumericInfo info in infos){#>
+        //Generic
+        static public bool TryFindHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T highest_rated, out <#=info.type_name#> highest_rating, out int highest_rated_index)
+        {
+            int index = 0;
+            bool found = false;
+
+            highest_rated = default(T);
+            highest_rating = <#=info.min#>;
+            highest_rated_index = -1;
+
+            foreach (T sub_item in item)
+            {
+                <#=info.type_name#> current_rating = rater(sub_item);
+
+                if (current_rating >= highest_rating)
+                {
+                    found = true;
+
+                    highest_rated = sub_item;
+                    highest_rating = current_rating;
+                    highest_rated_index = index;
+                }
+
+                index++;
+            }
+
+            return found;
+        }
+        static public bool TryFindLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T lowest_rated, out <#=info.type_name#> lowest_rating, out int lowest_rated_index)
+        {
+            bool found = item.TryFindHighestRated<T>(delegate(T sub_item) {
+                return -rater(sub_item);
+            }, out lowest_rated, out lowest_rating, out lowest_rated_index);
+
+            lowest_rating = -lowest_rating;
+            return found;
+        }
+        
+        //Highest
+        static public bool TryFindHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T highest_rated)
+        {
+            int highest_rated_index;
+            <#=info.type_name#> highest_rating;
+
+            return item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+        }
+        static public bool TryFindHighestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> highest_rating)
+        {
+            T highest_rated;
+            int highest_rated_index;
+
+            return item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+        }
+        static public bool TryFindHighestRatedIndex<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out int highest_rated_index)
+        {
+            T highest_rated;
+            <#=info.type_name#> highest_rating;
+
+            return item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+        }
+
+        static public T FindHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> highest_rating, out int highest_rated_index)
+        {
+            T highest_rated;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rated;
+        }
+        static public T FindHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> highest_rating)
+        {
+            T highest_rated;
+            int highest_rated_index;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rated;
+        }
+        static public T FindHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater)
+        {
+            T highest_rated;
+            int highest_rated_index;
+            <#=info.type_name#> highest_rating;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rated;
+        }
+
+        static public <#=info.type_name#> FindHighestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T highest_rated, out int highest_rated_index)
+        {
+            <#=info.type_name#> highest_rating;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rating;
+        }
+        static public <#=info.type_name#> FindHighestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T highest_rated)
+        {
+            <#=info.type_name#> highest_rating;
+            int highest_rated_index;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rating;
+        }
+        static public <#=info.type_name#> FindHighestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater)
+        {
+            <#=info.type_name#> highest_rating;
+            int highest_rated_index;
+            T highest_rated;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rating;
+        }
+
+        static public int FindIndexOfHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> highest_rating, out T highest_rated)
+        {
+            int highest_rated_index;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rated_index;
+        }
+        static public int FindIndexOfHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> highest_rating)
+        {
+            int highest_rated_index;
+            T highest_rated;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rated_index;
+        }
+        static public int FindIndexOfHighestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater)
+        {
+            int highest_rated_index;
+            T highest_rated;
+            <#=info.type_name#> highest_rating;
+
+            item.TryFindHighestRated(rater, out highest_rated, out highest_rating, out highest_rated_index);
+            return highest_rated_index;
+        }
+        
+        //Lowest
+        static public bool TryFindLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T lowest_rated)
+        {
+            int lowest_rated_index;
+            <#=info.type_name#> lowest_rating;
+
+            return item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+        }
+        static public bool TryFindLowestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> lowest_rating)
+        {
+            T lowest_rated;
+            int lowest_rated_index;
+
+            return item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+        }
+        static public bool TryFindLowestRatedIndex<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out int lowest_rated_index)
+        {
+            T lowest_rated;
+            <#=info.type_name#> lowest_rating;
+
+            return item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+        }
+
+        static public T FindLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> lowest_rating, out int lowest_rated_index)
+        {
+            T lowest_rated;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rated;
+        }
+        static public T FindLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> lowest_rating)
+        {
+            T lowest_rated;
+            int lowest_rated_index;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rated;
+        }
+        static public T FindLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater)
+        {
+            T lowest_rated;
+            int lowest_rated_index;
+            <#=info.type_name#> lowest_rating;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rated;
+        }
+
+        static public <#=info.type_name#> FindLowestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T lowest_rated, out int lowest_rated_index)
+        {
+            <#=info.type_name#> lowest_rating;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rating;
+        }
+        static public <#=info.type_name#> FindLowestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out T lowest_rated)
+        {
+            <#=info.type_name#> lowest_rating;
+            int lowest_rated_index;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rating;
+        }
+        static public <#=info.type_name#> FindLowestRating<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater)
+        {
+            <#=info.type_name#> lowest_rating;
+            int lowest_rated_index;
+            T lowest_rated;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rating;
+        }
+
+        static public int FindIndexOfLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> lowest_rating, out T lowest_rated)
+        {
+            int lowest_rated_index;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rated_index;
+        }
+        static public int FindIndexOfLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater, out <#=info.type_name#> lowest_rating)
+        {
+            int lowest_rated_index;
+            T lowest_rated;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rated_index;
+        }
+        static public int FindIndexOfLowestRated<T>(this IEnumerable<T> item, Operation<<#=info.type_name#>, T> rater)
+        {
+            int lowest_rated_index;
+            T lowest_rated;
+            <#=info.type_name#> lowest_rating;
+
+            item.TryFindLowestRated(rater, out lowest_rated, out lowest_rating, out lowest_rated_index);
+            return lowest_rated_index;
+        }
+<#}#>
+    }
+}
+
+<#+
+public class NumericInfo
+{
+	public readonly string type_name;
+    
+    public readonly string min;
+
+	public NumericInfo(string t, string m)
+	{
+		type_name = t;
+        
+        min = m;
+	}
+}
+#>
