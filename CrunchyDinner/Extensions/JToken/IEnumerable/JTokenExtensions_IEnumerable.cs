@@ -17,12 +17,6 @@ namespace Crunchy.Dinner
         static public JArray ToJArray(this IEnumerable<JToken> item)
         {
             return new JArray(item);
-            JArray array = new JArray();
-
-            foreach (JToken token in item)
-                array.Add(token);
-
-            return array;
         }
     }
 }
