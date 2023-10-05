@@ -21,7 +21,7 @@ namespace Crunchy.Menu
         {
             return new TokenPattern_Multiple(patterns);
         }
-        static public TokenPattern Mutliple(params TokenPattern[] patterns)
+        static public TokenPattern Multiple(params TokenPattern[] patterns)
         {
             return Multiple((IEnumerable<TokenPattern>)patterns);
         }
