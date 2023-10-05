@@ -58,6 +58,7 @@
     <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions.cs" />
     <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions_Repeated.cs" />
     <Compile Include="Lexer\Token\Tokenizer.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_String.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

@@ -33,7 +33,7 @@ namespace Crunchy.Menu
 
         static public TokenPattern String(string s)
         {
-            return Sequence(s.Convert(c => Character(c)));
+            return new TokenPattern_String(s);
         }
 
         static public TokenPattern CharacterRange(char first_character, char last_character)
