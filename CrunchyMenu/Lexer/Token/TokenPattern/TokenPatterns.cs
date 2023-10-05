@@ -17,13 +17,13 @@ namespace Crunchy.Menu
             return Sequence((IEnumerable<TokenPattern>)patterns);
         }
 
-        static public TokenPattern Multiple(IEnumerable<TokenPattern> patterns)
+        static public TokenPattern Any(IEnumerable<TokenPattern> patterns)
         {
-            return new TokenPattern_Multiple(patterns);
+            return new TokenPattern_Any(patterns);
         }
-        static public TokenPattern Multiple(params TokenPattern[] patterns)
+        static public TokenPattern Any(params TokenPattern[] patterns)
         {
-            return Multiple((IEnumerable<TokenPattern>)patterns);
+            return Any((IEnumerable<TokenPattern>)patterns);
         }
 
         static public TokenPattern Character(char character)
@@ -63,25 +63,25 @@ namespace Crunchy.Menu
             return UPPERCASE;
         }
 
-        static private TokenPattern ALPHABETICAL = Multiple(LOWERCASE, UPPERCASE);
+        static private TokenPattern ALPHABETICAL = Any(LOWERCASE, UPPERCASE);
         static public TokenPattern Alphabetical()
         {
             return ALPHABETICAL;
         }
 
-        static private TokenPattern ALPHANUMERIC = Multiple(ALPHABETICAL, NUMBER);
+        static private TokenPattern ALPHANUMERIC = Any(ALPHABETICAL, NUMBER);
         static public TokenPattern AlphaNumeric()
         {
             return ALPHANUMERIC;
         }
 
-        static private TokenPattern ALPHABETICAL_AND_UNDERSCORE = Multiple(ALPHABETICAL, Character('_'));
+        static private TokenPattern ALPHABETICAL_AND_UNDERSCORE = Any(ALPHABETICAL, Character('_'));
         static public TokenPattern AlphabeticalAndUnderscore()
         {
             return ALPHABETICAL_AND_UNDERSCORE;
         }
 
-        static private TokenPattern ALPHANUMERIC_AND_UNDERSCORE = Multiple(ALPHANUMERIC, Character('_'));
+        static private TokenPattern ALPHANUMERIC_AND_UNDERSCORE = Any(ALPHANUMERIC, Character('_'));
         static public TokenPattern AlphaNumericAndUnderscore()
         {
             return ALPHANUMERIC_AND_UNDERSCORE;

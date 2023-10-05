@@ -50,7 +50,7 @@
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Range.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Repeated.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Multiple.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Any.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Set.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Single.cs" />

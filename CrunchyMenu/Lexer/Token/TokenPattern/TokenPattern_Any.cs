@@ -6,11 +6,11 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class TokenPattern_Multiple : TokenPattern
+    public class TokenPattern_Any : TokenPattern
     {
         private List<TokenPattern> patterns;
 
-        public TokenPattern_Multiple(IEnumerable<TokenPattern> p)
+        public TokenPattern_Any(IEnumerable<TokenPattern> p)
         {
             patterns = p.ToList();
         }

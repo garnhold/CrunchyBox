@@ -22,12 +22,12 @@ namespace Scratch
             TokenDefinition token = new TokenDefinition(
                 TokenDefinitionDetectors.Pattern(
                     TokenPatterns.Sequence(
-                        TokenPatterns.Multiple(
+                        TokenPatterns.Any(
                             TokenPatterns.CharacterRange('a', 'z'),
                             TokenPatterns.CharacterRange('A', 'Z'),
                             TokenPatterns.Character('_')
                         ).MakeAtleastOne(),
-                        TokenPatterns.Multiple(
+                        TokenPatterns.Any(
                             TokenPatterns.CharacterRange('a', 'z'),
                             TokenPatterns.CharacterRange('A', 'Z'),
                             TokenPatterns.CharacterRange('0', '9'),
