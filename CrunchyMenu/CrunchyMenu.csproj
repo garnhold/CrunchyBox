@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31FBA5DB-D135-491A-973D-6D346520BBA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrunchyMenu</RootNamespace>
+    <AssemblyName>CrunchyMenu</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Lexer\Lexer.cs" />
+    <Compile Include="Lexer\LexerError.cs" />
+    <Compile Include="Lexer\Tokenizer.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Ignore.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Normal.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector_String.cs" />
+    <Compile Include="Lexer\Token\TokenDefinition.cs" />
+    <Compile Include="Lexer\Token\TokenInstance.cs" />
+    <Compile Include="Lexer\Token\TokenModeDefinition.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_ModePusher.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_ModePopper.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumers.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetectors.cs" />
+    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector_Pattern.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_String.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Range.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPatternCharacter.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPatternCharacter_Static.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPatternCharacter_Range.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
+      <Project>{5E57FC56-BBED-4723-B74D-E99C5FF3764E}</Project>
+      <Name>CrunchyDough</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchySalt\CrunchySalt.csproj">
+      <Project>{14716796-281F-4F48-9D47-B392EE94CB5D}</Project>
+      <Name>CrunchySalt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrunchyNoodle\CrunchyNoodle.csproj">
+      <Project>{3BABED19-B5BC-4120-8015-39793473BA87}</Project>
+      <Name>CrunchyNoodle</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Lexer\" />
+    <Folder Include="Lexer\Token\" />
+    <Folder Include="Lexer\Token\TokenDefinitionConsumer\" />
+    <Folder Include="Lexer\Token\TokenDefinitionDetector\" />
+    <Folder Include="Lexer\Token\TokenPattern\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
