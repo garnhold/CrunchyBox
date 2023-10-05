@@ -33,7 +33,7 @@ namespace Crunchy.Menu
                 {
                     pattern_count++;
 
-                    if (pattern_count >= maximum_count)
+                    if (pattern_count > maximum_count)
                         return -1;
 
                     index = new_index;
