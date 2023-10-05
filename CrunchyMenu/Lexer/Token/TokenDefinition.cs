@@ -8,16 +8,16 @@ namespace Crunchy.Menu
 {
     public class TokenDefinition
     {
-        private TokenDefinitionDetector detector;
+        private TokenPattern pattern;
         private TokenDefinitionConsumer consumer;
 
-        public TokenDefinition(TokenDefinitionDetector d, TokenDefinitionConsumer c)
+        public TokenDefinition(TokenPattern p, TokenDefinitionConsumer c)
         {
-            detector = d;
+            pattern = p;
             consumer = c;
         }
 
-        public TokenDefinition(TokenDefinitionDetector d) : this(d, TokenDefinitionConsumer_Normal.INSTANCE) { }
+        public TokenDefinition(TokenPattern p) : this(p, TokenDefinitionConsumer_Normal.INSTANCE) { }
 
         public bool OnConsume(Tokenizer tokenizer)
         {
@@ -26,12 +26,12 @@ namespace Crunchy.Menu
 
         public int Detect(string text, int index)
         {
-            return detector.Detect(text, index);
+            return pattern.Detect(text, index);
         }
 
         public IEnumerable<char> GetEntrys()
         {
-            return detector.GetEntrys();
+            return pattern.GetEntrys();
         }
     }
 }

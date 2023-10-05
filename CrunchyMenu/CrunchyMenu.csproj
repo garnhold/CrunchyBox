@@ -36,16 +36,12 @@
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Ignore.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Normal.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector_String.cs" />
     <Compile Include="Lexer\Token\TokenDefinition.cs" />
     <Compile Include="Lexer\Token\TokenInstance.cs" />
     <Compile Include="Lexer\Token\TokenModeDefinition.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_ModePusher.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_ModePopper.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumers.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetectors.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector_Pattern.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Range.cs" />
@@ -78,7 +74,6 @@
     <Folder Include="Lexer\" />
     <Folder Include="Lexer\Token\" />
     <Folder Include="Lexer\Token\TokenDefinitionConsumer\" />
-    <Folder Include="Lexer\Token\TokenDefinitionDetector\" />
     <Folder Include="Lexer\Token\TokenPattern\" />
     <Folder Include="Lexer\Token\TokenPattern\Extensions\" />
   </ItemGroup>
