@@ -6,18 +6,18 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class TokenDefinitionConsumer_ModePusher : TokenDefinitionConsumer
+    public class TokenConsumer_ModePopper : TokenConsumer
     {
         private TokenModeDefinition token_mode_definition;
 
-        public TokenDefinitionConsumer_ModePusher(TokenModeDefinition d)
+        public TokenConsumer_ModePopper(TokenModeDefinition d)
         {
             token_mode_definition = d;
         }
 
         public override bool OnConsume(Tokenizer tokenizer)
         {
-            tokenizer.PushTokenMode(token_mode_definition);
+            tokenizer.PopTokenMode(token_mode_definition);
 
             return true;
         }

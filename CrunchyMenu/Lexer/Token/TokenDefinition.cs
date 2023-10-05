@@ -9,15 +9,15 @@ namespace Crunchy.Menu
     public class TokenDefinition
     {
         private TokenPattern pattern;
-        private TokenDefinitionConsumer consumer;
+        private TokenConsumer consumer;
 
-        public TokenDefinition(TokenPattern p, TokenDefinitionConsumer c)
+        public TokenDefinition(TokenPattern p, TokenConsumer c)
         {
             pattern = p;
             consumer = c;
         }
 
-        public TokenDefinition(TokenPattern p) : this(p, TokenDefinitionConsumer_Normal.INSTANCE) { }
+        public TokenDefinition(TokenPattern p) : this(p, TokenConsumers.Normal()) { }
 
         public bool OnConsume(Tokenizer tokenizer)
         {

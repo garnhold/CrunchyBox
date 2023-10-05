@@ -6,7 +6,7 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public abstract class TokenDefinitionConsumer
+    public abstract class TokenConsumer
     {
         public abstract bool OnConsume(Tokenizer tokenizer);
     }

@@ -33,15 +33,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Lexer\Lexer.cs" />
     <Compile Include="Lexer\LexerError.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Ignore.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Normal.cs" />
+    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer.cs" />
+    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_Ignore.cs" />
+    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_Normal.cs" />
     <Compile Include="Lexer\Token\TokenDefinition.cs" />
     <Compile Include="Lexer\Token\TokenInstance.cs" />
     <Compile Include="Lexer\Token\TokenModeDefinition.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_ModePusher.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_ModePopper.cs" />
-    <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumers.cs" />
+    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_ModePusher.cs" />
+    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_ModePopper.cs" />
+    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumers.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Range.cs" />
@@ -73,7 +73,7 @@
   <ItemGroup>
     <Folder Include="Lexer\" />
     <Folder Include="Lexer\Token\" />
-    <Folder Include="Lexer\Token\TokenDefinitionConsumer\" />
+    <Folder Include="Lexer\Token\TokenConsumer\" />
     <Folder Include="Lexer\Token\TokenPattern\" />
     <Folder Include="Lexer\Token\TokenPattern\Extensions\" />
   </ItemGroup>

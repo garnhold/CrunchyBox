@@ -6,11 +6,11 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class TokenDefinitionConsumer_Normal : TokenDefinitionConsumer
+    public class TokenConsumer_Normal : TokenConsumer
     {
-        static public readonly TokenDefinitionConsumer_Normal INSTANCE = new TokenDefinitionConsumer_Normal();
+        static public readonly TokenConsumer_Normal INSTANCE = new TokenConsumer_Normal();
 
-        private TokenDefinitionConsumer_Normal()
+        private TokenConsumer_Normal()
         {
         }
 
