@@ -22,7 +22,15 @@ namespace Scratch
             string needle = "public";
 
             TokenDefinition via_pattern = new TokenDefinition(
-                TokenPatterns.AlphaNumericAndUnderscore()
+                new TokenPattern_CharacterCluster(
+                    new TokenCharacter_Combine(
+                        new TokenCharacter_Range('A', 'Z'),
+                        new TokenCharacter_Range('a', 'z'),
+                        new TokenCharacter_Range('0', '9'),
+                        new TokenCharacter_Single('_')
+                    ),
+                    1, int.MaxValue
+                )
             );
 
             for (int j = 0; j < 6; j++)
@@ -48,7 +56,7 @@ namespace Scratch
                 }
                 Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Native");
 
-                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z0-9_]");
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z0-9_]+");
 
                 timer.Restart();
                 for (int i = 0; i < cost; i++)
