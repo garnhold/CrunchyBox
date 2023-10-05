@@ -20,7 +20,7 @@ namespace Crunchy.Menu
             if (text.IsSubstring(index, value))
                 return index + value.Length;
 
-            return index;
+            return -1;
         }
 
         public override IEnumerable<char> GetEntrys()

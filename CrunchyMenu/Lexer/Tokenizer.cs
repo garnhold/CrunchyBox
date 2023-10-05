@@ -28,7 +28,7 @@ namespace Crunchy.Menu
         {
             token_mode_stack.Push(token_mode);
         }
-        public void PopTokenMode()
+        public void PopTokenMode(TokenModeDefinition token_mode)
         {
             token_mode_stack.Pop();
         }

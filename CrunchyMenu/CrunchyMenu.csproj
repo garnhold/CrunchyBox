@@ -47,13 +47,9 @@
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumers.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetectors.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector_Pattern.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_String.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Range.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPatternCharacter.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPatternCharacter_Static.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPatternCharacter_Range.cs" />
+    <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter.cs" />
+    <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter_Static.cs" />
+    <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter_Range.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -74,7 +70,7 @@
     <Folder Include="Lexer\Token\" />
     <Folder Include="Lexer\Token\TokenDefinitionConsumer\" />
     <Folder Include="Lexer\Token\TokenDefinitionDetector\" />
-    <Folder Include="Lexer\Token\TokenPattern\" />
+    <Folder Include="Lexer\Token\TokenPatternCharacter\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

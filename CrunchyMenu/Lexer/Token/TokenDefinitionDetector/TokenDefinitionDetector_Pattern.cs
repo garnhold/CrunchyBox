@@ -8,24 +8,52 @@ namespace Crunchy.Menu
 {
     public class TokenDefinitionDetector_Pattern : TokenDefinitionDetector
     {
-        private string value;
+        private List<TokenPatternCharacter> characters;
 
-        public TokenDefinitionDetector_Pattern(string v)
+        public TokenDefinitionDetector_Pattern(IEnumerable<TokenPatternCharacter> c)
         {
-            value = v;
+            characters = c.ToList();
         }
 
         public override int Detect(string text, int index)
         {
-            if (text.IsSubstring(index, value))
-                return index + value.Length;
+            int character_count = 0;
+            IEnumerator<TokenPatternCharacter> iterator = characters.GetEnumerator();
 
-            return index;
+            while (index < text.Length)
+            {
+                if (iterator.Current.Is(text[index]))
+                {
+                    character_count++;
+
+                    if (character_count >= iterator.Current.GetMaximumCount())
+                        return -1;
+
+                    index++;
+                }
+                else
+                {
+                    if (character_count < iterator.Current.GetMinimumCount())
+                        return -1;
+
+                    if (iterator.MoveNext() == false)
+                        return index;
+                }
+            }
+
+            return -1;
         }
 
         public override IEnumerable<char> GetEntrys()
         {
-            yield return value[0];
+            foreach (TokenPatternCharacter character in characters)
+            {
+                foreach(char entry in character.GetEntrys())
+                    yield return entry;
+
+                if (character.GetMinimumCount() >= 1)
+                    yield break;
+            }
         }
     }
 }
