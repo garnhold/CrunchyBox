@@ -48,8 +48,10 @@
     <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetectors.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionDetector\TokenDefinitionDetector_Pattern.cs" />
     <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter.cs" />
-    <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter_Static.cs" />
+    <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter_Single.cs" />
     <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter_Range.cs" />
+    <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacter_Multiple.cs" />
+    <Compile Include="Lexer\Token\TokenPatternCharacter\TokenPatternCharacters.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
