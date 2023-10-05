@@ -33,7 +33,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Lexer\Lexer.cs" />
     <Compile Include="Lexer\LexerError.cs" />
-    <Compile Include="Lexer\Tokenizer.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Ignore.cs" />
     <Compile Include="Lexer\Token\TokenDefinitionConsumer\TokenDefinitionConsumer_Normal.cs" />
@@ -58,6 +57,7 @@
     <Compile Include="Lexer\Token\TokenPattern\TokenPatterns.cs" />
     <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions.cs" />
     <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions_Repeated.cs" />
+    <Compile Include="Lexer\Token\Tokenizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
