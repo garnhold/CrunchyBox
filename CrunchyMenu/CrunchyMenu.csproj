@@ -44,12 +44,11 @@
     <Compile Include="Lexer\Token\TokenConsumer\TokenConsumers.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Range.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_CharacterRange.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Repeated.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Any.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Set.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_CharacterSet.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Character_Single.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPatterns.cs" />
     <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions.cs" />
     <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions_Repeated.cs" />

@@ -6,20 +6,20 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class TokenPattern_Character : TokenPattern
+    public class TokenPattern_CharacterSet : TokenPattern
     {
-        private char character;
+        private HashSet<char> characters;
 
-        public TokenPattern_Character(char c)
+        public TokenPattern_CharacterSet(IEnumerable<char> c)
         {
-            character = c;
+            characters = c.ToHashSet();
         }
 
         public override int Detect(string text, int index)
         {
             if (index < text.Length)
             {
-                if (character == text[index])
+                if (characters.Contains(text[index]))
                     return index + 1;
             }
 
@@ -28,7 +28,7 @@ namespace Crunchy.Menu
 
         public override IEnumerable<char> GetEntrys()
         {
-            yield return character;
+            return characters;
         }
     }
 }

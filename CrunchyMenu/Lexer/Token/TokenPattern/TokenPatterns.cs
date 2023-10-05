@@ -28,7 +28,7 @@ namespace Crunchy.Menu
 
         static public TokenPattern Character(char character)
         {
-            return new TokenPattern_Character_Single(character);
+            return new TokenPattern_Character(character);
         }
 
         static public TokenPattern String(string s)
@@ -38,12 +38,12 @@ namespace Crunchy.Menu
 
         static public TokenPattern CharacterRange(char first_character, char last_character)
         {
-            return new TokenPattern_Character_Range(first_character, last_character);
+            return new TokenPattern_CharacterRange(first_character, last_character);
         }
 
         static public TokenPattern CharacterSet(IEnumerable<char> characters)
         {
-            return new TokenPattern_Character_Set(characters);
+            return new TokenPattern_CharacterSet(characters);
         }
         static public TokenPattern CharacterSet(params char[] characters)
         {
