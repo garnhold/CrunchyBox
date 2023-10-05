@@ -86,5 +86,11 @@ namespace Crunchy.Menu
         {
             return ALPHANUMERIC_AND_UNDERSCORE;
         }
+
+        static private TokenPattern WHITESPACE = CharacterSet(' ', '\t', '\n', '\r');
+        static public TokenPattern Whitespace()
+        {
+            return WHITESPACE;
+        }
     }
 }
