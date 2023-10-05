@@ -6,11 +6,11 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public abstract class TokenModeDefinition
+    public abstract class TokenMode
     {
         private List<TokenDefinition> token_definitions;
 
-        public TokenModeDefinition()
+        public TokenMode()
         {
             token_definitions = new List<TokenDefinition>();
         }

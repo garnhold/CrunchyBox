@@ -38,7 +38,7 @@
     <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_Normal.cs" />
     <Compile Include="Lexer\Token\TokenDefinition.cs" />
     <Compile Include="Lexer\Token\TokenInstance.cs" />
-    <Compile Include="Lexer\Token\TokenModeDefinition.cs" />
+    <Compile Include="Lexer\Token\TokenMode.cs" />
     <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_ModePusher.cs" />
     <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_ModePopper.cs" />
     <Compile Include="Lexer\Token\TokenConsumer\TokenConsumers.cs" />
