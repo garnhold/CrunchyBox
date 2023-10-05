@@ -19,33 +19,54 @@ namespace Scratch
     {
         public static void Main(string[] args)
         {
-            TokenDefinition token = new TokenDefinition(
+            string needle = "public";
+
+            TokenDefinition via_pattern = new TokenDefinition(
                 TokenDefinitionDetectors.Pattern(
                     TokenPatterns.Sequence(
-                        TokenPatterns.Any(
-                            TokenPatterns.CharacterRange('a', 'z'),
-                            TokenPatterns.CharacterRange('A', 'Z'),
-                            TokenPatterns.Character('_')
-                        ).MakeAtleastOne(),
-                        TokenPatterns.Any(
-                            TokenPatterns.CharacterRange('a', 'z'),
-                            TokenPatterns.CharacterRange('A', 'Z'),
-                            TokenPatterns.CharacterRange('0', '9'),
-                            TokenPatterns.Character('_')
-                        ).MakeAnyAmount()
+                        TokenPatterns.String(needle)
                     )
                 )
             );
 
-            token = new TokenDefinition(
-                TokenDefinitionDetectors.Pattern(
-                    TokenPatterns.Sequence(
-                        TokenPatterns.AlphabeticalAndUnderscore().MakeAtleastOne(),
-                        TokenPatterns.AlphaNumericAndUnderscore().MakeAnyAmount()
-                    )
-                )
+            TokenDefinition via_string = new TokenDefinition(
+                TokenDefinitionDetectors.String(needle)
             );
 
+            for (int j = 0; j < 6; j++)
+            {
+                int cost = 1024 * 1024;
+
+                Crunchy.Dough.Timer timer = new Crunchy.Dough.Timer();
+
+                timer.Restart();
+                for (int i = 0; i < cost; i++)
+                {
+                    via_pattern.Detect(needle, 0);
+                }
+                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Pattern");
+
+                timer.Restart();
+                for (int i = 0; i < cost; i++)
+                {
+                    via_string.Detect(needle, 0);
+                }
+                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for String");
+
+                timer.Restart();
+                for (int i = 0; i < cost; i++)
+                {
+                    if (needle.IsSubstring(0, needle))
+                    {
+                        int oup = 0 + needle.Length;
+                    }
+                }
+                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Native");
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Done");
             Console.ReadLine();
         }
 
