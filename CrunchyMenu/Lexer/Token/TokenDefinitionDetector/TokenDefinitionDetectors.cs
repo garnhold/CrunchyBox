@@ -13,13 +13,9 @@ namespace Crunchy.Menu
             return new TokenDefinitionDetector_String(value);
         }
 
-        static public TokenDefinitionDetector Pattern(IEnumerable<TokenPatternCharacter> characters)
+        static public TokenDefinitionDetector Pattern(TokenPattern pattern)
         {
-            return new TokenDefinitionDetector_Pattern(characters);
-        }
-        static public TokenDefinitionDetector Pattern(params TokenPatternCharacter[] characters)
-        {
-            return Pattern((IEnumerable<TokenPatternCharacter>)characters);
+            return new TokenDefinitionDetector_Pattern(pattern);
         }
     }
 }

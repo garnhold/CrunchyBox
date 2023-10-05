@@ -6,21 +6,21 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class TokenPatternCharacter_Single : TokenPatternCharacter
+    public class TokenPattern_Character_Single : TokenPattern_Character
     {
         private char character;
 
-        public TokenPatternCharacter_Single(char c, int min, int max) : base(min, max)
-        {
-            character = c;
-        }
-
-        public override bool Is(char c)
+        protected override bool IsCharacter(char c)
         {
             if (character == c)
                 return true;
 
             return false;
+        }
+
+        public TokenPattern_Character_Single(char c)
+        {
+            character = c;
         }
 
         public override IEnumerable<char> GetEntrys()

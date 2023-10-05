@@ -6,23 +6,23 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class TokenPatternCharacter_Range : TokenPatternCharacter
+    public class TokenPattern_Character_Range : TokenPattern_Character
     {
         private char first_character;
         private char last_character;
 
-        public TokenPatternCharacter_Range(char f, char l, int min, int max) : base(min, max)
+        protected override bool IsCharacter(char character)
         {
-            first_character = f;
-            last_character = l;
-        }
-
-        public override bool Is(char c)
-        {
-            if (first_character <= c && last_character >= c)
+            if (first_character <= character && character <= last_character)
                 return true;
 
             return false;
+        }
+
+        public TokenPattern_Character_Range(char f, char l)
+        {
+            first_character = f;
+            last_character = l;
         }
 
         public override IEnumerable<char> GetEntrys()
