@@ -18,6 +18,11 @@ namespace Crunchy.Menu
             return item.MakeRepeated(0, 1);
         }
 
+        static public TokenPattern MakeAnyAmount(this TokenPattern item)
+        {
+            return item.MakeRepeated(0, int.MaxValue);
+        }
+
         static public TokenPattern MakeAtleastOne(this TokenPattern item)
         {
             return item.MakeRepeated(1, int.MaxValue);
