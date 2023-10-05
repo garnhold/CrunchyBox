@@ -35,5 +35,15 @@ namespace Crunchy.Menu
             for (char character = first_character; character <= last_character; character++)
                 yield return character;
         }
+
+        public char GetFirstCharacter()
+        {
+            return first_character;
+        }
+
+        public char GetLastCharacter()
+        {
+            return last_character;
+        }
     }
 }

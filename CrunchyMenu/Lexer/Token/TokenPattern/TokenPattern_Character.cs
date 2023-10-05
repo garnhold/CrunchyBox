@@ -30,5 +30,10 @@ namespace Crunchy.Menu
         {
             yield return character;
         }
+
+        public char GetCharacter()
+        {
+            return character;
+        }
     }
 }

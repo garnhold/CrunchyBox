@@ -30,5 +30,10 @@ namespace Crunchy.Menu
         {
             return characters;
         }
+
+        public IEnumerable<char> GetCharacters()
+        {
+            return characters;
+        }
     }
 }
