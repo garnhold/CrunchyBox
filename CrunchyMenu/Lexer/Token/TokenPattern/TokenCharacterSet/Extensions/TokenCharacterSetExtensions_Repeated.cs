@@ -18,12 +18,12 @@ namespace Crunchy.Menu
             return TokenPatterns.OptionalCharacter(item);
         }
 
-        static public TokenPattern ZeroOrMore(this TokenCharacterSet item)
+        static public TokenPattern MakeZeroOrMore(this TokenCharacterSet item)
         {
             return TokenPatterns.ZeroOrMoreCharacters(item);
         }
 
-        static public TokenPattern OneOrMore(this TokenCharacterSet item)
+        static public TokenPattern MakeOneOrMore(this TokenCharacterSet item)
         {
             return TokenPatterns.OneOrMoreCharacters(item);
         }
