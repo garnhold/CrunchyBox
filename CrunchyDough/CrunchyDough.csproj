@@ -1564,6 +1564,10 @@
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions_Search_Rating.cs">
       <DependentUpon>IEnumerableExtensions_Search_Rating.tt</DependentUpon>
     </Compile>
+    <Compile Include="Numeric\Chars.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
