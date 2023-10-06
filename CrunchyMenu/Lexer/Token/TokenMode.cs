@@ -22,15 +22,15 @@ namespace Crunchy.Menu
             token_definitions = new List<TokenDefinition>();
         }
 
-        public void SetJunkTokenDefinition(TokenDefinition token_definition)
-        {
-            junk_token_definition = token_definition;
-        }
-
         public void AddTokenDefinition(TokenDefinition token_definition)
         {
-            token_definitions.Add(token_definition);
-            is_map_built = false;
+            if (token_definition.IsJunk())
+                junk_token_definition = token_definition;
+            else
+            {
+                token_definitions.Add(token_definition);
+                is_map_built = false;
+            }
         }
 
         public void AddTokenDefinitions(IEnumerable<TokenDefinition> token_definitions)
