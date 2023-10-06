@@ -19,9 +19,11 @@ namespace Scratch
     {
         public static void Main(string[] args)
         {
-            string needle = "publica";
+            string needle = "publica what";
 
             TokenMode mode = new TokenMode();
+
+            Lexer lexer = new Lexer(mode);
 
             TokenDefinition whitespace = new TokenDefinition(
                 TokenCharacterSets.Whitespace().MakeOneOrMore(),
@@ -43,48 +45,19 @@ namespace Scratch
                 TokenPatterns.String("public")
             );
 
+            TokenDefinition new_keyword = new TokenDefinition(
+                TokenPatterns.String("new")
+            );
+
             mode.AddTokenDefinitions(
                 whitespace,
                 id,
-                public_keyword
+                public_keyword,
+                new_keyword
             );
 
-            for (int j = 0; j < 6; j++)
-            {
-                int cost = 1024 * 1024;
-
-                Crunchy.Dough.Timer timer = new Crunchy.Dough.Timer();
-
-                timer.Restart();
-                for (int i = 0; i < cost; i++)
-                {
-                    mode.Detect(needle, 0, out int new_index, out TokenDefinition token_definition);
-
-                    Console.WriteLine(token_definition.GetPsuedoRegEx());
-                }
-                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Detect");
-
-                timer.Restart();
-                for (int i = 0; i < cost; i++)
-                {
-                    mode.Detect2(needle, 0, out int new_index, out TokenDefinition token_definition);
-                }
-                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Detect2");
-
-                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z0-9_]+");
-
-                timer.Restart();
-                for (int i = 0; i < cost; i++)
-                {
-                    if(needle.RegexIsMatch(regex))
-                    {
-                        int oup = 0 + needle.Length;
-                    }
-                }
-                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Regex");
-
-                Console.WriteLine();
-            }
+            lexer.Tokenize("what is newa publics going public new  \t on today in public")
+                .Process(t => Console.WriteLine(t));
 
             Console.WriteLine("Done");
             Console.ReadLine();
