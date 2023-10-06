@@ -38,5 +38,17 @@ namespace Crunchy.Dough
 
             return false;
         }
+
+        static public string GetLineAt(this string item, int index)
+        {
+            return item.GetLines()
+                .Get(item.GetLineNumberAt(index) - 1);
+        }
+
+        static public int GetLineNumberAt(this string item, int index)
+        {
+            return item.Truncate(index)
+                .GetNumberLines();
+        }
     }
 }
