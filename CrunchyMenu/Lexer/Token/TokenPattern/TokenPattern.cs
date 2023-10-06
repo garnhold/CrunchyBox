@@ -12,6 +12,8 @@ namespace Crunchy.Menu
 
         public abstract IEnumerable<char> GetEntrys();
 
+        public abstract string GetPsuedoRegEx();
+
         protected TokenPattern()
         {
         }
@@ -19,6 +21,11 @@ namespace Crunchy.Menu
         public virtual bool IsRequired()
         {
             return true;
+        }
+
+        public override string ToString()
+        {
+            return GetPsuedoRegEx();
         }
     }
 }

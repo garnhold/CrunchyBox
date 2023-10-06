@@ -41,5 +41,12 @@ namespace Crunchy.Menu
                     yield break;
             }
         }
+
+        public override string GetPsuedoRegEx()
+        {
+            return patterns
+                .Convert(p => p.GetPsuedoRegEx())
+                .Join("");
+        }
     }
 }

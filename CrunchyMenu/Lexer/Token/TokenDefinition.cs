@@ -33,5 +33,10 @@ namespace Crunchy.Menu
         {
             return pattern.GetEntrys();
         }
+
+        public string GetPsuedoRegEx()
+        {
+            return pattern.GetPsuedoRegEx();
+        }
     }
 }

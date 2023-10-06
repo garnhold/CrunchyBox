@@ -62,5 +62,21 @@ namespace Crunchy.Menu
         {
             return pattern.GetEntrys();
         }
+
+        public override string GetPsuedoRegEx()
+        {
+            string contained = "(" + pattern.GetPsuedoRegEx() + ")";
+
+            if (minimum_count == 0 && maximum_count == 1)
+                return contained + "?";
+
+            if (minimum_count == 1 && maximum_count >= int.MaxValue)
+                return contained + "+";
+
+            if (minimum_count == 0 && maximum_count >= int.MaxValue)
+                return contained + "*";
+
+            return contained + "{" + minimum_count + "," + maximum_count + "}";
+        }
     }
 }

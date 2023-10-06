@@ -27,5 +27,10 @@ namespace Crunchy.Menu
         {
             yield return value.GetFirst();
         }
+
+        public override string GetPsuedoRegEx()
+        {
+            return value.RegexEscape();
+        }
     }
 }

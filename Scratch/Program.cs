@@ -31,16 +31,21 @@ namespace Scratch
             );
 
             TokenDefinition via_pattern = new TokenDefinition(
-                TokenPatterns.Sequence(
-                    needle.Convert(c => TokenPatterns.SingleCharacter(c))
-                )
+                TokenPatterns.String(needle)
             );
 
             TokenDefinition via_pattern2 = new TokenDefinition(
-                TokenPatterns.OneOrMoreCharacters(
-                    TokenCharacterSets.AlphaNumeric(), '_'
+                TokenPatterns.Sequence(
+                    TokenPatterns.OneOrMoreCharacters(
+                        TokenCharacterSets.Alphabetic(), '_'
+                    ),
+                    TokenPatterns.ZeroOrMoreCharacters(
+                        TokenCharacterSets.AlphaNumeric(), '_'
+                    )
                 )
             );
+
+            Console.WriteLine(via_pattern2.GetPsuedoRegEx());
 
             for (int j = 0; j < 6; j++)
             {
