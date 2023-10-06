@@ -11,6 +11,7 @@ namespace Crunchy.Menu
         private bool is_map_built;
         private HashSet<TokenDefinition>[] token_definition_map;
 
+        private TokenDefinition junk_token_definition;
         private List<TokenDefinition> token_definitions;
 
         public TokenMode()
@@ -19,6 +20,11 @@ namespace Crunchy.Menu
             token_definition_map = new HashSet<TokenDefinition>[char.MaxValue];
 
             token_definitions = new List<TokenDefinition>();
+        }
+
+        public void SetJunkTokenDefinition(TokenDefinition token_definition)
+        {
+            junk_token_definition = token_definition;
         }
 
         public void AddTokenDefinition(TokenDefinition token_definition)
@@ -71,6 +77,11 @@ namespace Crunchy.Menu
             new_index = index;
             token_definition = null;
             return false;
+        }
+
+        public TokenDefinition GetJunkTokenDefinition()
+        {
+            return junk_token_definition;
         }
     }
 }

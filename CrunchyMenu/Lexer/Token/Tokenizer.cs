@@ -10,18 +10,35 @@ namespace Crunchy.Menu
     {
         private Stack<TokenMode> token_mode_stack;
 
+        private bool StepTokenizeInner(string text, ref int index, out TokenInstance token)
+        {
+            if (GetCurrentTokenMode().Detect(text, index, out int end_index, out TokenDefinition token_definition))
+            {
+                if (token_definition.OnConsume(this))
+                {
+                    token = new TokenInstance(
+                        text.SubSection(index, end_index),
+                        token_definition
+                    );
+                }
+                else
+                {
+                    token = null;
+                }
+
+                index = end_index;
+                return true;
+            }
+
+            token = null;
+            return false;
+        }
+
         public Tokenizer(TokenMode initial_token_mode)
         {
             token_mode_stack = new Stack<TokenMode>();
 
             PushTokenMode(initial_token_mode);
-        }
-
-        public bool Detect(string text, int index, out int new_index, out TokenDefinition token_definition)
-        {
-            return token_mode_stack
-                .Peek()
-                .Detect(text, index, out new_index, out token_definition);
         }
 
         public void PushTokenMode(TokenMode token_mode)
@@ -31,6 +48,59 @@ namespace Crunchy.Menu
         public void PopTokenMode(TokenMode token_mode)
         {
             token_mode_stack.Pop();
+        }
+
+        public IEnumerable<TokenInstance> Tokenize(string text)
+        {
+            if (text != null)
+            {
+                int index = 0;
+
+                while (index < text.Length)
+                {
+                    if (StepTokenizeInner(text, ref index, out TokenInstance token))
+                    {
+                        if(token != null)
+                            yield return token;
+                    }
+                    else
+                    {
+                        TokenDefinition junk_token_definition = GetCurrentTokenMode()
+                            .GetJunkTokenDefinition();
+
+                        if (junk_token_definition != null)
+                        {
+                            int junk_start = index;
+                            int junk_end = index;
+
+                            while (++index < text.Length)
+                            {
+                                if (StepTokenizeInner(text, ref index, out token))
+                                    break;
+
+                                junk_end = index;
+                            }
+
+                            yield return new TokenInstance(
+                                text.SubSection(junk_start, junk_end + 1),
+                                junk_token_definition
+                            );
+
+                            if (token != null)
+                                yield return token;
+                        }
+                        else
+                        {
+                            throw new LexerError(text, index);
+                        }
+                    }
+                }
+            }
+        }
+
+        public TokenMode GetCurrentTokenMode()
+        {
+            return token_mode_stack.Peek();
         }
     }
 }

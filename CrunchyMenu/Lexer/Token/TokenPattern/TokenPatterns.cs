@@ -75,5 +75,10 @@ namespace Crunchy.Menu
         {
             return ZeroOrMoreCharacters((IEnumerable<TokenCharacterSet>)sets);
         }
+
+        static public TokenPattern Junk()
+        {
+            return TokenPattern_Junk.INSTANCE;
+        }
     }
 }

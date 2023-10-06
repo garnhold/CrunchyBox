@@ -62,8 +62,12 @@ namespace Scratch
                 TokenConsumers.ModePusher(string_mode)
             );
 
-            TokenDefinition string_fragment = new TokenDefinition(
+            TokenDefinition old_string_fragment = new TokenDefinition(
                 TokenCharacterSets.List('\\', '"').MakeInverse().MakeOneOrMore()
+            );
+
+            TokenDefinition string_fragment = new TokenDefinition(
+                TokenPatterns.Junk()
             );
 
             TokenDefinition string_escaped = new TokenDefinition(
@@ -81,8 +85,8 @@ namespace Scratch
             TokenDefinition public_keyword = new TokenDefinition("public");
             TokenDefinition new_keyword = new TokenDefinition("new");
 
+            string_mode.SetJunkTokenDefinition(string_fragment);
             string_mode.AddTokenDefinitions(
-                string_fragment,
                 string_escaped,
                 string_closing
             );
