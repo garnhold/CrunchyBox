@@ -23,7 +23,7 @@ namespace Scratch
 
             TokenDefinition via_pattern = new TokenDefinition(
                 TokenPatterns.Sequence(
-                    needle.Convert(c => TokenPatterns.Characters(c, 1, 1))
+                    needle.Convert(c => TokenPatterns.SingleCharacter(c))
                 )
             );
 
