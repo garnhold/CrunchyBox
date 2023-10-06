@@ -19,8 +19,6 @@ namespace Scratch
     {
         public static void Main(string[] args)
         {
-            string needle = "publica what";
-
             TokenMode mode = new TokenMode();
 
             Lexer lexer = new Lexer(mode);
@@ -41,22 +39,65 @@ namespace Scratch
                 )
             );
 
-            TokenDefinition public_keyword = new TokenDefinition(
-                TokenPatterns.String("public")
+            TokenDefinition whole_number = new TokenDefinition(
+                TokenPatterns.Sequence(
+                    TokenCharacterSets.Single('-').MakeOptional(),
+                    TokenCharacterSets.Numeric().MakeOneOrMore()
+                )
             );
 
-            TokenDefinition new_keyword = new TokenDefinition(
-                TokenPatterns.String("new")
+            TokenDefinition decimal_number = new TokenDefinition(
+                TokenPatterns.Sequence(
+                    TokenCharacterSets.Single('-').MakeOptional(),
+                    TokenCharacterSets.Numeric().MakeZeroOrMore(),
+                    TokenCharacterSets.Single('.').MakeSingle(),
+                    TokenCharacterSets.Numeric().MakeZeroOrMore()
+                )
+            );
+
+            TokenMode string_mode = new TokenMode();
+
+            TokenDefinition string_opening = new TokenDefinition(
+                TokenCharacterSets.Single('"').MakeSingle(),
+                TokenConsumers.ModePusher(string_mode)
+            );
+
+            TokenDefinition string_fragment = new TokenDefinition(
+                TokenCharacterSets.List('\\', '"').MakeInverse().MakeOneOrMore()
+            );
+
+            TokenDefinition string_escaped = new TokenDefinition(
+                TokenPatterns.Sequence(
+                    TokenCharacterSets.Single('\\').MakeSingle(),
+                    TokenCharacterSets.All().MakeSingle()
+                )
+            );
+
+            TokenDefinition string_closing = new TokenDefinition(
+                TokenCharacterSets.Single('"').MakeSingle(),
+                TokenConsumers.ModePopper(string_mode)
+            );
+
+            TokenDefinition public_keyword = new TokenDefinition("public");
+            TokenDefinition new_keyword = new TokenDefinition("new");
+
+            string_mode.AddTokenDefinitions(
+                string_fragment,
+                string_escaped,
+                string_closing
             );
 
             mode.AddTokenDefinitions(
                 whitespace,
                 id,
+                whole_number,
+                decimal_number,
                 public_keyword,
-                new_keyword
+                new_keyword,
+                string_opening
             );
 
-            lexer.Tokenize("what is newa publics going public new  \t on today in public")
+            lexer.Tokenize("what is -.3 newa -145 \"public \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
                 .Process(t => Console.WriteLine(t));
 
             Console.WriteLine("Done");
