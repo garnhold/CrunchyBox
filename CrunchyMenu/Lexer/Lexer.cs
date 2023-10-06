@@ -57,7 +57,7 @@ namespace Crunchy.Menu
                         }
                         else
                         {
-                            throw new LexerError(text, index);
+                            throw new UnknownSymbolException(text, index);
                         }
                     }
                 }
