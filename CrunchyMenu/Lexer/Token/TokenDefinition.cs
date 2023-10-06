@@ -38,5 +38,10 @@ namespace Crunchy.Menu
         {
             return pattern.GetPsuedoRegEx();
         }
+
+        public override string ToString()
+        {
+            return GetPsuedoRegEx();
+        }
     }
 }

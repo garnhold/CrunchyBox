@@ -28,5 +28,10 @@ namespace Crunchy.Menu
         {
             return token_definition;
         }
+
+        public override string ToString()
+        {
+            return value + "(" + token_definition + ")";
+        }
     }
 }
