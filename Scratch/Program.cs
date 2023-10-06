@@ -101,7 +101,7 @@ namespace Scratch
                 string_opening
             );
 
-            lexer.Tokenize("what is -.3 newa -145 \"public crap?on all &*#(#))$ haha \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
+            lexer.Tokenize("what $is -.3 newa -145 \"public crap?on all &*#(#))$ haha \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
                 .Process(t => Console.WriteLine(t));
 
             Console.WriteLine("Done");
