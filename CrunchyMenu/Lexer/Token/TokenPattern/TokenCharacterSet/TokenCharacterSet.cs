@@ -36,6 +36,19 @@ namespace Crunchy.Menu
             return false;
         }
 
+        public TokenCharacterSet MakeInverse()
+        {
+            List<char> inverse_characters = new List<char>();
+
+            for (char i = '\0'; i < char.MaxValue; i++)
+            {
+                if (character_map[i] == false)
+                    inverse_characters.Add(i);
+            }
+
+            return new TokenCharacterSet(inverse_characters);
+        }
+
         public IEnumerable<char> GetCharacters()
         {
             return characters;
