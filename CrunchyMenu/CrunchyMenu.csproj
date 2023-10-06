@@ -54,6 +54,8 @@
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Characters.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\TokenCharacterSet.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\TokenCharacterSets.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions.cs" />
+    <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions_Repeated.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -76,6 +78,7 @@
     <Folder Include="Lexer\Token\TokenPattern\" />
     <Folder Include="Lexer\Token\TokenPattern\Extensions\" />
     <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\" />
+    <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
