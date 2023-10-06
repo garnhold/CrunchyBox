@@ -39,6 +39,16 @@ namespace Crunchy.Menu
             return pattern.GetPsuedoRegEx();
         }
 
+        public TokenPattern GetTokenPattern()
+        {
+            return pattern;
+        }
+
+        public TokenConsumer GetTokenConsumer()
+        {
+            return consumer;
+        }
+
         public override string ToString()
         {
             return GetPsuedoRegEx();
