@@ -21,6 +21,15 @@ namespace Scratch
         {
             string needle = "public";
 
+            TokenMode mode = new TokenMode();
+
+            mode.AddTokenDefinitions(
+                new TokenDefinition(
+                    TokenCharacterSets.Whitespace().MakeOneOrMore(),
+                    TokenConsumers.Ignore()
+                )
+            );
+
             TokenDefinition via_pattern = new TokenDefinition(
                 TokenPatterns.Sequence(
                     needle.Convert(c => TokenPatterns.SingleCharacter(c))
