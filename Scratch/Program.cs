@@ -19,24 +19,18 @@ namespace Scratch
     {
         public static void Main(string[] args)
         {
-            string needle = "public";
+            string needle = "publica";
 
             TokenMode mode = new TokenMode();
 
-            mode.AddTokenDefinitions(
-                new TokenDefinition(
-                    TokenCharacterSets.Whitespace().MakeOneOrMore(),
-                    TokenConsumers.Ignore()
-                )
+            TokenDefinition whitespace = new TokenDefinition(
+                TokenCharacterSets.Whitespace().MakeOneOrMore(),
+                TokenConsumers.Ignore()
             );
 
-            TokenDefinition via_pattern = new TokenDefinition(
-                TokenPatterns.String(needle)
-            );
-
-            TokenDefinition via_pattern2 = new TokenDefinition(
+            TokenDefinition id = new TokenDefinition(
                 TokenPatterns.Sequence(
-                    TokenPatterns.OneOrMoreCharacters(
+                    TokenPatterns.SingleCharacter(
                         TokenCharacterSets.Alphabetic(), '_'
                     ),
                     TokenPatterns.ZeroOrMoreCharacters(
@@ -45,7 +39,15 @@ namespace Scratch
                 )
             );
 
-            Console.WriteLine(via_pattern2.GetPsuedoRegEx());
+            TokenDefinition public_keyword = new TokenDefinition(
+                TokenPatterns.String("public")
+            );
+
+            mode.AddTokenDefinitions(
+                whitespace,
+                id,
+                public_keyword
+            );
 
             for (int j = 0; j < 6; j++)
             {
@@ -56,26 +58,18 @@ namespace Scratch
                 timer.Restart();
                 for (int i = 0; i < cost; i++)
                 {
-                    via_pattern.Detect(needle, 0);
+                    mode.Detect(needle, 0, out int new_index, out TokenDefinition token_definition);
+
+                    Console.WriteLine(token_definition.GetPsuedoRegEx());
                 }
-                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Pattern");
+                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Detect");
 
                 timer.Restart();
                 for (int i = 0; i < cost; i++)
                 {
-                    via_pattern2.Detect(needle, 0);
+                    mode.Detect2(needle, 0, out int new_index, out TokenDefinition token_definition);
                 }
-                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Pattern2");
-
-                timer.Restart();
-                for (int i = 0; i < cost; i++)
-                {
-                    if (needle.IsSubstring(0, needle))
-                    {
-                        int oup = 0 + needle.Length;
-                    }
-                }
-                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Native");
+                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Detect2");
 
                 System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z0-9_]+");
 
