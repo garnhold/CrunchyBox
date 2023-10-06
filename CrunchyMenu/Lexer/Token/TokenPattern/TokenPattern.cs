@@ -9,10 +9,14 @@ namespace Crunchy.Menu
     public abstract class TokenPattern
     {
         public abstract int Detect(string text, int index);
-
         public abstract IEnumerable<char> GetEntrys();
 
         public abstract string GetPsuedoRegEx();
+
+        static public implicit operator TokenPattern(string s)
+        {
+            return new TokenPattern_String(s);
+        }
 
         protected TokenPattern()
         {
