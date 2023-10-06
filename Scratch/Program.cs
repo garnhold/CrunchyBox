@@ -22,12 +22,18 @@ namespace Scratch
             string needle = "public";
 
             TokenDefinition via_pattern = new TokenDefinition(
-                new TokenPattern_CharacterCluster(
-                    new TokenCharacter_Combine(
-                        new TokenCharacter_Range('A', 'Z'),
-                        new TokenCharacter_Range('a', 'z'),
-                        new TokenCharacter_Range('0', '9'),
-                        new TokenCharacter_Single('_')
+                new TokenPattern_Characters(
+                    TokenCharacterSets.Range('a', 'z'),
+                    1,
+                    int.MaxValue
+                )
+            );
+
+            TokenDefinition via_pattern2 = new TokenDefinition(
+                new TokenPattern_Characters(
+                    TokenCharacterSets.Combine(
+                        TokenCharacterSets.AlphaNumeric(),
+                        '_'
                     ),
                     1, int.MaxValue
                 )
@@ -45,6 +51,13 @@ namespace Scratch
                     via_pattern.Detect(needle, 0);
                 }
                 Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Pattern");
+
+                timer.Restart();
+                for (int i = 0; i < cost; i++)
+                {
+                    via_pattern2.Detect(needle, 0);
+                }
+                Console.WriteLine(timer.GetElapsedTimeInSeconds() + "s for Pattern2");
 
                 timer.Restart();
                 for (int i = 0; i < cost; i++)

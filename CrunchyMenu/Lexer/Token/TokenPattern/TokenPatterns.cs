@@ -26,76 +26,14 @@ namespace Crunchy.Menu
             return Any((IEnumerable<TokenPattern>)patterns);
         }
 
-        static public TokenPattern Character(char character)
-        {
-            return new TokenPattern_Character(character);
-        }
-
         static public TokenPattern String(string s)
         {
             return new TokenPattern_String(s);
         }
 
-        static public TokenPattern CharacterRange(char first_character, char last_character)
+        static public TokenPattern Characters(TokenCharacterSet set, int min, int max)
         {
-            return new TokenPattern_CharacterRange(first_character, last_character);
-        }
-
-        static public TokenPattern CharacterSet(IEnumerable<char> characters)
-        {
-            return new TokenPattern_CharacterSet(characters);
-        }
-        static public TokenPattern CharacterSet(params char[] characters)
-        {
-            return CharacterSet((IEnumerable<char>)characters);
-        }
-
-        static private TokenPattern NUMBER = CharacterRange('0', '9');
-        static public TokenPattern Number()
-        {
-            return NUMBER;
-        }
-
-        static private TokenPattern LOWERCASE = CharacterRange('a', 'z');
-        static public TokenPattern Lowercase()
-        {
-            return LOWERCASE;
-        }
-
-        static private TokenPattern UPPERCASE = CharacterRange('A', 'Z');
-        static public TokenPattern Uppercase()
-        {
-            return UPPERCASE;
-        }
-
-        static private TokenPattern ALPHABETICAL = Any(LOWERCASE, UPPERCASE);
-        static public TokenPattern Alphabetical()
-        {
-            return ALPHABETICAL;
-        }
-
-        static private TokenPattern ALPHANUMERIC = Any(ALPHABETICAL, NUMBER);
-        static public TokenPattern AlphaNumeric()
-        {
-            return ALPHANUMERIC;
-        }
-
-        static private TokenPattern ALPHABETICAL_AND_UNDERSCORE = Any(ALPHABETICAL, Character('_'));
-        static public TokenPattern AlphabeticalAndUnderscore()
-        {
-            return ALPHABETICAL_AND_UNDERSCORE;
-        }
-
-        static private TokenPattern ALPHANUMERIC_AND_UNDERSCORE = Any(ALPHANUMERIC, Character('_'));
-        static public TokenPattern AlphaNumericAndUnderscore()
-        {
-            return ALPHANUMERIC_AND_UNDERSCORE;
-        }
-
-        static private TokenPattern WHITESPACE = CharacterSet(' ', '\t', '\n', '\r');
-        static public TokenPattern Whitespace()
-        {
-            return WHITESPACE;
+            return new TokenPattern_Characters(set, min, max);
         }
     }
 }

@@ -6,16 +6,16 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class TokenPattern_CharacterCluster : TokenPattern
+    public class TokenPattern_Characters : TokenPattern
     {
-        private TokenCharacter character;
+        private TokenCharacterSet character_set;
 
         private int minimum_count;
         private int maximum_count;
 
-        public TokenPattern_CharacterCluster(TokenCharacter c, int min, int max)
+        public TokenPattern_Characters(TokenCharacterSet s, int min, int max)
         {
-            character = c;
+            character_set = s;
 
             minimum_count = min;
             maximum_count = max;
@@ -28,7 +28,7 @@ namespace Crunchy.Menu
 
             for(i = index; i < text.Length; i++)
             {
-                if(character.Is(text[i]) == false)
+                if(character_set.Is(text[i]) == false)
                     break;
 
                 count++;
@@ -53,7 +53,7 @@ namespace Crunchy.Menu
 
         public override IEnumerable<char> GetEntrys()
         {
-            return character.GetEntrys();
+            return character_set.GetCharacters();
         }
     }
 }
