@@ -85,8 +85,8 @@ namespace Scratch
             TokenDefinition public_keyword = new TokenDefinition("public");
             TokenDefinition new_keyword = new TokenDefinition("new");
 
-            string_mode.SetJunkTokenDefinition(string_fragment);
             string_mode.AddTokenDefinitions(
+                string_fragment,
                 string_escaped,
                 string_closing
             );
@@ -101,7 +101,7 @@ namespace Scratch
                 string_opening
             );
 
-            lexer.Tokenize("what is -.3 newa -145 \"public \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
+            lexer.Tokenize("what is -.3 newa -145 \"public crap?on all &*#(#))$ haha \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
                 .Process(t => Console.WriteLine(t));
 
             Console.WriteLine("Done");
