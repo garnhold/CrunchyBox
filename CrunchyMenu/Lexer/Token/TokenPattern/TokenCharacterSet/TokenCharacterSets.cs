@@ -36,6 +36,12 @@ namespace Crunchy.Menu
             return Combine((IEnumerable<TokenCharacterSet>)sets);
         }
 
+        static private readonly TokenCharacterSet WHITESPACE = List(' ', '\t', '\n', '\r');
+        static public TokenCharacterSet Whitespace()
+        {
+            return WHITESPACE;
+        }
+
         static private readonly TokenCharacterSet LOWERCASE = Range('a', 'z');
         static public TokenCharacterSet Lowercase()
         {
