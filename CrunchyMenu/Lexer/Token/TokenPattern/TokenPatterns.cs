@@ -31,14 +31,18 @@ namespace Crunchy.Menu
             return new TokenPattern_String(s);
         }
 
-        static public TokenPattern Characters(TokenCharacterSet set, int min, int max)
+        static public TokenPattern Characters(IEnumerable<TokenCharacterSet> sets, int min, int max)
         {
-            return new TokenPattern_Characters(set, min, max);
+            return new TokenPattern_Characters(TokenCharacterSets.Combine(sets), min, max);
+        }
+        static public TokenPattern Characters(int min, int max, params TokenCharacterSet[] sets)
+        {
+            return Characters((IEnumerable<TokenCharacterSet>)sets, min, max);
         }
 
         static public TokenPattern OptionalCharacter(IEnumerable<TokenCharacterSet> sets)
         {
-            return Characters(TokenCharacterSets.Combine(sets), 0, 1);
+            return Characters(sets, 0, 1);
         }
         static public TokenPattern OptionalCharacter(params TokenCharacterSet[] sets)
         {
@@ -47,7 +51,7 @@ namespace Crunchy.Menu
 
         static public TokenPattern OneOrMoreCharacters(IEnumerable<TokenCharacterSet> sets)
         {
-            return Characters(TokenCharacterSets.Combine(sets), 1, int.MaxValue);
+            return Characters(sets, 1, int.MaxValue);
         }
         static public TokenPattern OneOrMoreCharacters(params TokenCharacterSet[] sets)
         {
@@ -56,7 +60,7 @@ namespace Crunchy.Menu
 
         static public TokenPattern ZeroOrMoreCharacters(IEnumerable<TokenCharacterSet> sets)
         {
-            return Characters(TokenCharacterSets.Combine(sets), 0, int.MaxValue);
+            return Characters(sets, 0, int.MaxValue);
         }
         static public TokenPattern ZeroOrMoreCharacters(params TokenCharacterSet[] sets)
         {
