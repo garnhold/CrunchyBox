@@ -22,20 +22,14 @@ namespace Scratch
             string needle = "public";
 
             TokenDefinition via_pattern = new TokenDefinition(
-                new TokenPattern_Characters(
-                    TokenCharacterSets.Range('a', 'z'),
-                    1,
-                    int.MaxValue
+                TokenPatterns.OneOrMoreCharacters(
+                    TokenCharacterSets.Range('a', 'z')
                 )
             );
 
             TokenDefinition via_pattern2 = new TokenDefinition(
-                new TokenPattern_Characters(
-                    TokenCharacterSets.Combine(
-                        TokenCharacterSets.AlphaNumeric(),
-                        '_'
-                    ),
-                    1, int.MaxValue
+                TokenPatterns.OneOrMoreCharacters(
+                    TokenCharacterSets.AlphaNumeric(), '_'
                 )
             );
 

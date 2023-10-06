@@ -35,5 +35,32 @@ namespace Crunchy.Menu
         {
             return new TokenPattern_Characters(set, min, max);
         }
+
+        static public TokenPattern OptionalCharacter(IEnumerable<TokenCharacterSet> sets)
+        {
+            return Characters(TokenCharacterSets.Combine(sets), 0, 1);
+        }
+        static public TokenPattern OptionalCharacter(params TokenCharacterSet[] sets)
+        {
+            return OptionalCharacter((IEnumerable<TokenCharacterSet>)sets);
+        }
+
+        static public TokenPattern OneOrMoreCharacters(IEnumerable<TokenCharacterSet> sets)
+        {
+            return Characters(TokenCharacterSets.Combine(sets), 1, int.MaxValue);
+        }
+        static public TokenPattern OneOrMoreCharacters(params TokenCharacterSet[] sets)
+        {
+            return OneOrMoreCharacters((IEnumerable<TokenCharacterSet>)sets);
+        }
+
+        static public TokenPattern ZeroOrMoreCharacters(IEnumerable<TokenCharacterSet> sets)
+        {
+            return Characters(TokenCharacterSets.Combine(sets), 0, int.MaxValue);
+        }
+        static public TokenPattern ZeroOrMoreCharacters(params TokenCharacterSet[] sets)
+        {
+            return ZeroOrMoreCharacters((IEnumerable<TokenCharacterSet>)sets);
+        }
     }
 }
