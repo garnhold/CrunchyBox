@@ -8,15 +8,22 @@ namespace Crunchy.Menu
 {
     public class TokenDefinition
     {
+        private string name;
+
         private TokenPattern pattern;
         private TokenConsumer consumer;
 
-        public TokenDefinition(TokenPattern p, TokenConsumer c)
+        public TokenDefinition(string n, TokenPattern p, TokenConsumer c)
         {
+            name = n;
+
             pattern = p;
             consumer = c;
         }
 
+        public TokenDefinition(TokenPattern p, TokenConsumer c) : this(null, p, c) { }
+
+        public TokenDefinition(string n, TokenPattern p) : this(n, p, TokenConsumers.Normal()) { }
         public TokenDefinition(TokenPattern p) : this(p, TokenConsumers.Normal()) { }
 
         public bool OnConsume(Tokenizer tokenizer)
@@ -59,6 +66,9 @@ namespace Crunchy.Menu
 
         public override string ToString()
         {
+            if (name != null)
+                return name;
+
             return GetPsuedoRegEx();
         }
     }

@@ -23,12 +23,12 @@ namespace Scratch
 
             Lexer lexer = new Lexer(mode);
 
-            TokenDefinition whitespace = new TokenDefinition(
+            TokenDefinition whitespace = new TokenDefinition("whitespace",
                 TokenCharacterSets.Whitespace().MakeOneOrMore(),
                 TokenConsumers.Ignore()
             );
 
-            TokenDefinition id = new TokenDefinition(
+            TokenDefinition id = new TokenDefinition("id",
                 TokenPatterns.Sequence(
                     TokenPatterns.SingleCharacter(
                         TokenCharacterSets.Alphabetic(), '_'
@@ -39,14 +39,14 @@ namespace Scratch
                 )
             );
 
-            TokenDefinition whole_number = new TokenDefinition(
+            TokenDefinition whole_number = new TokenDefinition("whole_number",
                 TokenPatterns.Sequence(
                     TokenCharacterSets.Single('-').MakeOptional(),
                     TokenCharacterSets.Numeric().MakeOneOrMore()
                 )
             );
 
-            TokenDefinition decimal_number = new TokenDefinition(
+            TokenDefinition decimal_number = new TokenDefinition("decimal_number",
                 TokenPatterns.Sequence(
                     TokenCharacterSets.Single('-').MakeOptional(),
                     TokenCharacterSets.Numeric().MakeZeroOrMore(),
@@ -57,27 +57,23 @@ namespace Scratch
 
             TokenMode string_mode = new TokenMode();
 
-            TokenDefinition string_opening = new TokenDefinition(
+            TokenDefinition string_opening = new TokenDefinition("string_opening",
                 TokenCharacterSets.Single('"').MakeSingle(),
                 TokenConsumers.ModePusher(string_mode)
             );
 
-            TokenDefinition old_string_fragment = new TokenDefinition(
-                TokenCharacterSets.List('\\', '"').MakeInverse().MakeOneOrMore()
-            );
-
-            TokenDefinition string_fragment = new TokenDefinition(
+            TokenDefinition string_fragment = new TokenDefinition("string_fragment",
                 TokenPatterns.Junk()
             );
 
-            TokenDefinition string_escaped = new TokenDefinition(
+            TokenDefinition string_escaped = new TokenDefinition("escaped_character",
                 TokenPatterns.Sequence(
                     TokenCharacterSets.Single('\\').MakeSingle(),
                     TokenCharacterSets.All().MakeSingle()
                 )
             );
 
-            TokenDefinition string_closing = new TokenDefinition(
+            TokenDefinition string_closing = new TokenDefinition("string_closing",
                 TokenCharacterSets.Single('"').MakeSingle(),
                 TokenConsumers.ModePopper(string_mode)
             );
@@ -101,7 +97,7 @@ namespace Scratch
                 string_opening
             );
 
-            lexer.Tokenize("what $is -.3 newa -145 \"public crap?on all &*#(#))$ haha \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
+            lexer.Tokenize("what is -.3 newa -145 \"public crap?on all &*#(#))$ haha \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
                 .Process(t => Console.WriteLine(t));
 
             Console.WriteLine("Done");
