@@ -63,6 +63,9 @@ namespace Crunchy.Menu
             if (minimum_count == 0 && maximum_count == 1)
                 return contained + "?";
 
+            if (minimum_count == 1 && maximum_count == 1)
+                return contained;
+
             if (minimum_count == 1 && maximum_count >= int.MaxValue)
                 return contained + "+";
 
