@@ -20,7 +20,6 @@ namespace Crunchy.Menu
             if (text != null)
             {
                 int index = 0;
-
                 Tokenizer tokenizer = new Tokenizer(default_token_mode);
 
                 while (index < text.Length)
