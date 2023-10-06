@@ -13,24 +13,6 @@ namespace Crunchy.Menu
 
         private List<TokenDefinition> token_definitions;
 
-        private void Ready()
-        {
-            if (is_map_built == false)
-            {
-                is_map_built = true;
-
-                for (int i = 0; i < token_definition_map.Length; i++)
-                    token_definition_map[i] = new HashSet<TokenDefinition>();
-
-                foreach (TokenDefinition token_definition in token_definitions)
-                {
-                    token_definition
-                        .GetEntrys()
-                        .Process(c => token_definition_map[c].Add(token_definition));
-                }
-            }
-        }
-
         public TokenMode()
         {
             is_map_built = false;
@@ -54,26 +36,27 @@ namespace Crunchy.Menu
             AddTokenDefinitions((IEnumerable<TokenDefinition>)token_definitions);
         }
 
-        public bool Detect(string text, int index, out int new_index, out TokenDefinition token_definition)
+        public void Build()
         {
-            TokenDefinition best_definition = token_definitions
-                .FindHighestRated(d => d.Detect(text, index), out int best_index);
-
-            if (best_index > index)
+            if (is_map_built == false)
             {
-                new_index = best_index;
-                token_definition = best_definition;
-                return true;
-            }
+                is_map_built = true;
 
-            new_index = index;
-            token_definition = null;
-            return false;
+                for (int i = 0; i < token_definition_map.Length; i++)
+                    token_definition_map[i] = new HashSet<TokenDefinition>();
+
+                foreach (TokenDefinition token_definition in token_definitions)
+                {
+                    token_definition
+                        .GetEntrys()
+                        .Process(c => token_definition_map[c].Add(token_definition));
+                }
+            }
         }
 
-        public bool Detect2(string text, int index, out int new_index, out TokenDefinition token_definition)
+        public bool Detect(string text, int index, out int new_index, out TokenDefinition token_definition)
         {
-            Ready();
+            Build();
 
             TokenDefinition best_definition = token_definition_map[text[index]]
                 .FindHighestRated(d => d.Detect(text, index), out int best_index);
