@@ -6,9 +6,9 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public abstract class FragmentDefinitionBase
+    public abstract class FragmentDefinition
     {
-        public FragmentDefinitionBase()
+        public FragmentDefinition()
         {
         }
 
@@ -18,40 +18,7 @@ namespace Crunchy.Menu
         }
     }
 
-    public abstract class FragmentDefinitionVoid : FragmentDefinitionBase
-    {
-        private Stack<int> consume_index_stack;
-
-        protected abstract bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index);
-
-        public FragmentDefinitionVoid()
-        {
-            consume_index_stack = new Stack<int>();
-            consume_index_stack.Push(-1);
-        }
-
-        public bool Consume(IList<TokenInstance> tokens, int index, out int new_index)
-        {
-            if (index > consume_index_stack.Peek())
-            {
-                try
-                {
-                    consume_index_stack.Push(index);
-
-                    return ConsumeInternal(tokens, index, out new_index);
-                }
-                finally
-                {
-                    consume_index_stack.Pop();
-                }
-            }
-
-            new_index = -1;
-            return false;
-        }
-    }
-
-    public abstract class FragmentDefinition<T> : FragmentDefinitionBase
+    public abstract class FragmentDefinition<T> : FragmentDefinition
     {
         private Stack<int> consume_index_stack;
 
