@@ -57,6 +57,11 @@
     <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions_Repeated.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Junk.cs" />
+    <Compile Include="Parser\FragmentDefinition.cs" />
+    <Compile Include="Parser\FragmentDefinition_Token.cs" />
+    <Compile Include="Parser\FragmentDefinition_Sequence.cs">
+      <DependentUpon>FragmentDefinition_Sequence.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -80,6 +85,13 @@
     <Folder Include="Lexer\Token\TokenPattern\Extensions\" />
     <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\" />
     <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\" />
+    <Folder Include="Parser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Parser\FragmentDefinition_Sequence.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FragmentDefinition_Sequence.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

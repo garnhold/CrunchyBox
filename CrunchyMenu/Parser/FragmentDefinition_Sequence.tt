@@ -1,0 +1,121 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="$(SolutionDir)/bin/CrunchyDough.dll" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Crunchy.Dough" #>
+<#@ output extension=".cs" #>
+<#
+int max_number_fragments = 10;
+
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using Crunchy.Dough;
+
+namespace Crunchy.Menu
+{
+<# foreach(bool has_product in new bool[]{false, true}){#> 
+<# for(int number_fragments = 1; number_fragments <= max_number_fragments; number_fragments++){#>
+<#
+    string base_basic_class_name = "FragmentDefinition" +
+        has_product.ConvertBool("", "Void");
+        
+    string basic_class_name = base_basic_class_name + "_Sequence";
+        
+    string class_name = basic_class_name +
+        TTCS.ArgumentsForGeneric("P#", number_fragments, has_product.ConvertBool("T"));
+        
+    string base_class_name = base_basic_class_name +
+        TTCS.ArgumentsForGeneric("T", has_product);
+        
+    string operation_type = "Operation" +
+        TTCS.ArgumentsForGeneric("P#", number_fragments, "T");
+        
+    FragmentEntry[] fragments = Ints.Range(1, number_fragments, 1, true)
+        .Convert(i => new FragmentEntry(i))
+        .ToArray();
+#>
+    
+    public class <#=class_name#> : <#=base_class_name#>
+    {
+<# if(has_product){#>
+        private <#=operation_type#> producer_operation;            
+<#}#>
+    
+<# foreach(FragmentEntry fragment in fragments){#>
+        private <#=fragment.type_name#> <#=fragment.variable_name#>;
+<#}#>
+
+        public <#=basic_class_name#>()
+        {
+        }
+        
+<# if(has_product){#>
+        public <#=basic_class_name#>(<#=operation_type#> o) : this()
+        {
+            producer_operation = o;
+        }
+<#}#>
+        
+        public <#=basic_class_name#>(<#=TTCS.Parameters(fragments.Convert(f => f.type_name), "f#", null, has_product.ConvertBool(operation_type + " o"))#>) : this()
+        {
+            Initialize(<#=TTCS.Arguments("f#", number_fragments, null, has_product.ConvertBool("o"))#>);
+        }
+        
+        public void Initialize(<#=TTCS.Parameters(fragments.Convert(f => f.type_name), "f#", null, has_product.ConvertBool(operation_type + " o"))#>)
+        {
+<# foreach(FragmentEntry fragment in fragments){#>
+            <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
+<#}#>
+    
+<# if(has_product){#>
+            producer_operation = o;
+<#}#>
+        }
+
+        public override bool Consume(IList<TokenInstance> tokens, int index, out int new_index<#=has_product.ConvertBool(", out Operation<T> producer", "")#>)
+        {
+            new_index = index;
+            <#=has_product.ConvertBool("producer = null;", "")#>
+            
+<# for(int f = 1; f <= number_fragments; f++){#>
+            
+            if(fragment<#=f#>.Consume(tokens, new_index, out new_index, out Operation<P<#=f#>> sub_producer<#=f#>) == false)
+                return false;                        
+<#}#>
+            
+<# if(has_product){#>            
+            producer = () => producer_operation(<#=TTCS.Arguments("sub_producer#()", number_fragments)#>);
+<#}#>            
+            return true;
+        }
+    }
+<# } #>
+<# } #>
+}
+
+<#+
+class FragmentEntry
+{
+    public readonly string type_name;
+    public readonly string variable_name;
+    public readonly string parameter_name;
+    
+    public FragmentEntry(string t, string v, string p)
+    {
+        type_name = t;
+        variable_name = v;
+        parameter_name = p;
+    }
+    
+    public FragmentEntry(int i) : this(
+        "FragmentDefinition" + TTCS.ArgumentsForGeneric("P" + i, true),
+        "fragment" + i,
+        "f" + i
+    )
+    {
+    }
+}
+#>
