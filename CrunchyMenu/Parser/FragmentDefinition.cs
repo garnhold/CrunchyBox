@@ -8,6 +8,14 @@ namespace Crunchy.Menu
 {
     public abstract class FragmentDefinitionBase
     {
+        public FragmentDefinitionBase()
+        {
+        }
+
+        public virtual bool IsRequired()
+        {
+            return true;
+        }
     }
 
     public abstract class FragmentDefinitionVoid : FragmentDefinitionBase
