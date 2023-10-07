@@ -5,7 +5,7 @@
 <#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
-int max_number_fragments = 10;
+int max_number_fragments = 3;
 
 #>
 using System;
@@ -23,9 +23,9 @@ namespace Crunchy.Menu
             string base_class_arguments = TTCS.ArgumentsForGeneric("T", has_product);
             string base_class_name = base_basic_class_name + base_class_arguments;
         
-            string raw_basic_class_name = base_basic_class_name + "_SubSequence";
-            string raw_class_arguments = TTCS.ArgumentsForGeneric("P#", number_fragments, has_product.ConvertBool("T"));
-            string raw_class_name = raw_basic_class_name + raw_class_arguments;
+            string sub_basic_class_name = base_basic_class_name + "_SubSequence";
+            string sub_class_arguments = TTCS.ArgumentsForGeneric("P#", number_fragments, has_product.ConvertBool("T"));
+            string sub_class_name = sub_basic_class_name + sub_class_arguments;
         
             string basic_class_name = base_basic_class_name + "_Sequence";
             string class_arguments = TTCS.ArgumentsForGeneric("P#", number_fragments, has_product.ConvertBool("T"));
@@ -41,7 +41,7 @@ namespace Crunchy.Menu
             string initialize_arguments = TTCS.Arguments("f#", number_fragments, null, has_product.ConvertBool("o"));
 #>
 
-            public class <#=raw_class_name#> : <#=base_class_name#>
+            public class <#=sub_class_name#> : <#=base_class_name#>
             {
 <#              if(has_product){#>
                     private <#=operation_type#> producer_operation;            
@@ -67,18 +67,18 @@ namespace Crunchy.Menu
                     return true;
                 }
 
-                public <#=raw_basic_class_name#>()
+                public <#=sub_basic_class_name#>()
                 {
                 }
                 
 <#              if(has_product){#>
-                    public <#=raw_basic_class_name#>(<#=operation_type#> o) : this()
+                    public <#=sub_basic_class_name#>(<#=operation_type#> o) : this()
                     {
                         producer_operation = o;
                     }
 <#              }#>
                 
-                public <#=raw_basic_class_name#>(<#=initialize_parameters#>) : this()
+                public <#=sub_basic_class_name#>(<#=initialize_parameters#>) : this()
                 {
                     Initialize(<#=initialize_arguments#>);
                 }
@@ -96,16 +96,8 @@ namespace Crunchy.Menu
             }
             public class <#=class_name#> : <#=base_class_name#>
             {
-<#              if(has_product){#>
-                    private <#=operation_type#> producer_operation;            
-<#              }#>
-            
                 private List<<#=base_class_name#>> sub_sequences;
-            
-<#              foreach(FragmentEntry fragment in fragments){#>
-                    private <#=fragment.type_name#> <#=fragment.variable_name#>;
-<#              }#>
-
+                
                 protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index<#=has_product.ConvertBool(", out Operation<T> producer", "")#>)
                 {
                     int best_index = -1;
@@ -146,6 +138,7 @@ namespace Crunchy.Menu
 
                 public <#=basic_class_name#>()
                 {
+                    sub_sequences = new List<<#=base_class_name#>>();
                 }
                 
 <#              if(has_product){#>
@@ -162,13 +155,7 @@ namespace Crunchy.Menu
                 
                 public void Initialize(<#=initialize_parameters#>)
                 {
-<#                  foreach(FragmentEntry fragment in fragments){#>
-                        <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
-<#                  }#>
-            
-<#                  if(has_product){#>
-                        producer_operation = o;
-<#                  }#>
+                    <#=sub_class_name#> full = new <#=sub_class_name#>(<#=initialize_arguments#>);
                 }
             }
             static public partial class FragmentDefinitions
