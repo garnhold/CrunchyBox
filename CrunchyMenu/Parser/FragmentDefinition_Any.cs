@@ -10,27 +10,7 @@ namespace Crunchy.Menu
     {
         private List<FragmentDefinition<T>> fragment_definitions;
 
-        public FragmentDefinition_Any()
-        {
-            fragment_definitions = new List<FragmentDefinition<T>>();
-        }
-
-        public FragmentDefinition_Any(IEnumerable<FragmentDefinition<T>> f) : this()
-        {
-            Initialize(f);
-        }
-        public FragmentDefinition_Any(params FragmentDefinition<T>[] f) : this((IEnumerable<FragmentDefinition<T>>)f) { }
-
-        public void Initialize(IEnumerable<FragmentDefinition<T>> f)
-        {
-            fragment_definitions.Set(f);
-        }
-        public void Initialize(params FragmentDefinition<T>[] f)
-        {
-            Initialize((IEnumerable<FragmentDefinition<T>>)f);
-        }
-
-        public override bool Consume(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
+        protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
         {
             int best_index = int.MinValue;
             Operation<T> best_producer = null;
@@ -57,6 +37,26 @@ namespace Crunchy.Menu
             new_index = -1;
             producer = null;
             return false;
+        }
+
+        public FragmentDefinition_Any()
+        {
+            fragment_definitions = new List<FragmentDefinition<T>>();
+        }
+
+        public FragmentDefinition_Any(IEnumerable<FragmentDefinition<T>> f) : this()
+        {
+            Initialize(f);
+        }
+        public FragmentDefinition_Any(params FragmentDefinition<T>[] f) : this((IEnumerable<FragmentDefinition<T>>)f) { }
+
+        public void Initialize(IEnumerable<FragmentDefinition<T>> f)
+        {
+            fragment_definitions.Set(f);
+        }
+        public void Initialize(params FragmentDefinition<T>[] f)
+        {
+            Initialize((IEnumerable<FragmentDefinition<T>>)f);
         }
     }
 }

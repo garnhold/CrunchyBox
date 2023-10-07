@@ -48,6 +48,23 @@ namespace Crunchy.Menu
         private <#=fragment.type_name#> <#=fragment.variable_name#>;
 <#}#>
 
+        protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index<#=has_product.ConvertBool(", out Operation<T> producer", "")#>)
+        {
+            new_index = index;
+            <#=has_product.ConvertBool("producer = null;", "")#>
+            
+<# for(int f = 1; f <= number_fragments; f++){#>
+            
+            if(fragment<#=f#>.Consume(tokens, new_index, out new_index, out Operation<P<#=f#>> sub_producer<#=f#>) == false)
+                return false;                        
+<#}#>
+            
+<# if(has_product){#>            
+            producer = () => producer_operation(<#=TTCS.Arguments("sub_producer#()", number_fragments)#>);
+<#}#>            
+            return true;
+        }
+
         public <#=basic_class_name#>()
         {
         }
@@ -73,23 +90,6 @@ namespace Crunchy.Menu
 <# if(has_product){#>
             producer_operation = o;
 <#}#>
-        }
-
-        public override bool Consume(IList<TokenInstance> tokens, int index, out int new_index<#=has_product.ConvertBool(", out Operation<T> producer", "")#>)
-        {
-            new_index = index;
-            <#=has_product.ConvertBool("producer = null;", "")#>
-            
-<# for(int f = 1; f <= number_fragments; f++){#>
-            
-            if(fragment<#=f#>.Consume(tokens, new_index, out new_index, out Operation<P<#=f#>> sub_producer<#=f#>) == false)
-                return false;                        
-<#}#>
-            
-<# if(has_product){#>            
-            producer = () => producer_operation(<#=TTCS.Arguments("sub_producer#()", number_fragments)#>);
-<#}#>            
-            return true;
         }
     }
 <# } #>

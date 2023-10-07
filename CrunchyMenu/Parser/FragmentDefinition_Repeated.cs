@@ -13,24 +13,7 @@ namespace Crunchy.Menu
         private int minimum_count;
         private int maximum_count;
 
-        public FragmentDefinition_Repeated()
-        {
-        }
-
-        public FragmentDefinition_Repeated(FragmentDefinition<T> f, int min, int max) : this()
-        {
-            Initialize(f, min, max);
-        }
-
-        public void Initialize(FragmentDefinition<T> f, int min, int max)
-        {
-            fragment_definition = f;
-
-            minimum_count = min;
-            maximum_count = max;
-        }
-
-        public override bool Consume(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T[]> producer)
+        protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T[]> producer)
         {
             new_index = index;
             producer = null;
@@ -50,6 +33,23 @@ namespace Crunchy.Menu
 
             producer = () => sub_producers.Convert(p => p()).ToArray();
             return true;
+        }
+
+        public FragmentDefinition_Repeated()
+        {
+        }
+
+        public FragmentDefinition_Repeated(FragmentDefinition<T> f, int min, int max) : this()
+        {
+            Initialize(f, min, max);
+        }
+
+        public void Initialize(FragmentDefinition<T> f, int min, int max)
+        {
+            fragment_definition = f;
+
+            minimum_count = min;
+            maximum_count = max;
         }
     }
 }

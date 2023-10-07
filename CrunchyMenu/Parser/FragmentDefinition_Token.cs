@@ -10,6 +10,20 @@ namespace Crunchy.Menu
     {
         private TokenDefinition token_definition;
 
+        protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index)
+        {
+            TokenInstance current_token = tokens[index];
+
+            if (current_token.GetTokenDefinition() == token_definition)
+            {
+                new_index = index + 1;
+                return true;
+            }
+
+            new_index = -1;
+            return false;
+        }
+
         public FragmentDefinitionVoid_Token()
         {
         }
@@ -23,20 +37,6 @@ namespace Crunchy.Menu
         {
             token_definition = t;
         }
-
-        public override bool Consume(IList<TokenInstance> tokens, int index, out int new_index)
-        {
-            TokenInstance current_token = tokens[index];
-
-            if (current_token.GetTokenDefinition() == token_definition)
-            {
-                new_index = index + 1;
-                return true;
-            }
-
-            new_index = -1;
-            return false;
-        }
     }
 
     public class FragmentDefinition_Token<T> : FragmentDefinition<T>
@@ -44,6 +44,22 @@ namespace Crunchy.Menu
         private Operation<T, string> producer_operation;
 
         private TokenDefinition token_definition;
+
+        protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
+        {
+            TokenInstance current_token = tokens[index];
+
+            if (current_token.GetTokenDefinition() == token_definition)
+            {
+                new_index = index + 1;
+                producer = () => producer_operation(current_token.GetValue());
+                return true;
+            }
+
+            new_index = -1;
+            producer = null;
+            return false;
+        }
 
         public FragmentDefinition_Token()
         {
@@ -59,22 +75,6 @@ namespace Crunchy.Menu
             token_definition = t;
 
             producer_operation = o;
-        }
-
-        public override bool Consume(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
-        {
-            TokenInstance current_token = tokens[index];
-
-            if (current_token.GetTokenDefinition() == token_definition)
-            {
-                new_index = index + 1;
-                producer = () => producer_operation(current_token.GetValue());
-                return true;
-            }
-
-            new_index = -1;
-            producer = null;
-            return false;
         }
     }
 }
