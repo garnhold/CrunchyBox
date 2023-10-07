@@ -16,84 +16,170 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-<# foreach(bool has_product in new bool[]{false, true}){#> 
-<# for(int number_fragments = 1; number_fragments <= max_number_fragments; number_fragments++){#>
+<#  foreach(bool has_product in new bool[]{false, true}){#> 
+<#      for(int number_fragments = 1; number_fragments <= max_number_fragments; number_fragments++){#>
 <#
-    string base_basic_class_name = "FragmentDefinition" +
-        has_product.ConvertBool("", "Void");
+            string base_basic_class_name = "FragmentDefinition" + has_product.ConvertBool("", "Void");
+            string base_class_arguments = TTCS.ArgumentsForGeneric("T", has_product);
+            string base_class_name = base_basic_class_name + base_class_arguments;
         
-    string basic_class_name = base_basic_class_name + "_Sequence";
+            string raw_basic_class_name = base_basic_class_name + "_SubSequence";
+            string raw_class_arguments = TTCS.ArgumentsForGeneric("P#", number_fragments, has_product.ConvertBool("T"));
+            string raw_class_name = raw_basic_class_name + raw_class_arguments;
         
-    string class_name = basic_class_name +
-        TTCS.ArgumentsForGeneric("P#", number_fragments, has_product.ConvertBool("T"));
+            string basic_class_name = base_basic_class_name + "_Sequence";
+            string class_arguments = TTCS.ArgumentsForGeneric("P#", number_fragments, has_product.ConvertBool("T"));
+            string class_name = basic_class_name + class_arguments;
         
-    string base_class_name = base_basic_class_name +
-        TTCS.ArgumentsForGeneric("T", has_product);
+            string operation_type = "Operation" + class_arguments;
         
-    string operation_type = "Operation" +
-        TTCS.ArgumentsForGeneric("P#", number_fragments, "T");
+            FragmentEntry[] fragments = Ints.Range(1, number_fragments, 1, true)
+                .Convert(i => new FragmentEntry(i))
+                .ToArray();
         
-    FragmentEntry[] fragments = Ints.Range(1, number_fragments, 1, true)
-        .Convert(i => new FragmentEntry(i))
-        .ToArray();
+            string initialize_parameters = TTCS.Parameters(fragments.Convert(f => f.type_name), "f#", null, has_product.ConvertBool(operation_type + " o"));
+            string initialize_arguments = TTCS.Arguments("f#", number_fragments, null, has_product.ConvertBool("o"));
 #>
-    
-    public class <#=class_name#> : <#=base_class_name#>
-    {
-<# if(has_product){#>
-        private <#=operation_type#> producer_operation;            
-<#}#>
-    
-<# foreach(FragmentEntry fragment in fragments){#>
-        private <#=fragment.type_name#> <#=fragment.variable_name#>;
-<#}#>
 
-        protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index<#=has_product.ConvertBool(", out Operation<T> producer", "")#>)
-        {
-            new_index = index;
-            <#=has_product.ConvertBool("producer = null;", "")#>
-            
-<# for(int f = 1; f <= number_fragments; f++){#>
-            
-            if(fragment<#=f#>.Consume(tokens, new_index, out new_index, out Operation<P<#=f#>> sub_producer<#=f#>) == false)
-                return false;                        
-<#}#>
-            
-<# if(has_product){#>            
-            producer = () => producer_operation(<#=TTCS.Arguments("sub_producer#()", number_fragments)#>);
-<#}#>            
-            return true;
-        }
-
-        public <#=basic_class_name#>()
-        {
-        }
-        
-<# if(has_product){#>
-        public <#=basic_class_name#>(<#=operation_type#> o) : this()
-        {
-            producer_operation = o;
-        }
-<#}#>
-        
-        public <#=basic_class_name#>(<#=TTCS.Parameters(fragments.Convert(f => f.type_name), "f#", null, has_product.ConvertBool(operation_type + " o"))#>) : this()
-        {
-            Initialize(<#=TTCS.Arguments("f#", number_fragments, null, has_product.ConvertBool("o"))#>);
-        }
-        
-        public void Initialize(<#=TTCS.Parameters(fragments.Convert(f => f.type_name), "f#", null, has_product.ConvertBool(operation_type + " o"))#>)
-        {
-<# foreach(FragmentEntry fragment in fragments){#>
-            <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
-<#}#>
+            public class <#=raw_class_name#> : <#=base_class_name#>
+            {
+<#              if(has_product){#>
+                    private <#=operation_type#> producer_operation;            
+<#              }#>
     
-<# if(has_product){#>
-            producer_operation = o;
-<#}#>
-        }
-    }
-<# } #>
-<# } #>
+<#              foreach(FragmentEntry fragment in fragments){#>
+                    private <#=fragment.type_name#> <#=fragment.variable_name#>;
+<#              }#>
+
+                protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index<#=has_product.ConvertBool(", out Operation<T> producer", "")#>)
+                {
+                    new_index = index;
+                    <#=has_product.ConvertBool("producer = null;", "")#>
+                    
+<#                   for(int f = 1; f <= number_fragments; f++){#>
+                        if(fragment<#=f#>.Consume(tokens, new_index, out new_index, out Operation<P<#=f#>> sub_producer<#=f#>) == false)
+                            return false;                        
+<#                   }#>
+                    
+<#                   if(has_product){#>            
+                        producer = () => producer_operation(<#=TTCS.Arguments("sub_producer#()", number_fragments)#>);
+<#                  }#>            
+                    return true;
+                }
+
+                public <#=raw_basic_class_name#>()
+                {
+                }
+                
+<#              if(has_product){#>
+                    public <#=raw_basic_class_name#>(<#=operation_type#> o) : this()
+                    {
+                        producer_operation = o;
+                    }
+<#              }#>
+                
+                public <#=raw_basic_class_name#>(<#=initialize_parameters#>) : this()
+                {
+                    Initialize(<#=initialize_arguments#>);
+                }
+                
+                public void Initialize(<#=initialize_parameters#>)
+                {
+<#                  foreach(FragmentEntry fragment in fragments){#>
+                        <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
+<#                  }#>
+            
+<#                  if(has_product){#>
+                        producer_operation = o;
+<#                  }#>
+                }
+            }
+            public class <#=class_name#> : <#=base_class_name#>
+            {
+<#              if(has_product){#>
+                    private <#=operation_type#> producer_operation;            
+<#              }#>
+            
+                private List<<#=base_class_name#>> sub_sequences;
+            
+<#              foreach(FragmentEntry fragment in fragments){#>
+                    private <#=fragment.type_name#> <#=fragment.variable_name#>;
+<#              }#>
+
+                protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index<#=has_product.ConvertBool(", out Operation<T> producer", "")#>)
+                {
+                    int best_index = -1;
+                    
+<#                  if(has_product){#>
+                        Operation<T> best_producer = null;
+<#                  }#>
+
+                    foreach (<#=base_class_name#> sub_sequence in sub_sequences)
+                    {
+                        if (sub_sequence.Consume(tokens, index, out new_index<#=has_product.ConvertBool(", out producer", "")#>))
+                        {
+                            if (new_index >= best_index)
+                            {
+                                best_index = new_index;
+<#                              if(has_product){#>
+                                    best_producer = producer;
+<#                              }#>
+                            }
+                        }
+                    }
+
+                    if (best_index != -1)
+                    {
+                        new_index = best_index;
+<#                      if(has_product){#>
+                            producer = best_producer;
+<#                      }#>
+                        return true;
+                    }
+
+                    new_index = -1;
+<#                  if(has_product){#>
+                        producer = null;
+<#                  }#>
+                    return false;
+                }
+
+                public <#=basic_class_name#>()
+                {
+                }
+                
+<#              if(has_product){#>
+                    public <#=basic_class_name#>(<#=operation_type#> o) : this()
+                    {
+                        producer_operation = o;
+                    }
+<#              }#>
+                
+                public <#=basic_class_name#>(<#=initialize_parameters#>) : this()
+                {
+                    Initialize(<#=initialize_arguments#>);
+                }
+                
+                public void Initialize(<#=initialize_parameters#>)
+                {
+<#                  foreach(FragmentEntry fragment in fragments){#>
+                        <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
+<#                  }#>
+            
+<#                  if(has_product){#>
+                        producer_operation = o;
+<#                  }#>
+                }
+            }
+            static public partial class FragmentDefinitions
+            {
+                static public <#=base_class_name#> Sequence<#=class_arguments#>(<#=initialize_parameters#>)
+                {
+                    return new <#=class_name#>(<#=initialize_arguments#>);
+                }
+            }
+<#      }#>
+<#  }#>
 }
 
 <#+

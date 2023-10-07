@@ -65,6 +65,7 @@
     <Compile Include="Parser\FragmentDefinition_Any.cs" />
     <Compile Include="Parser\FragmentDefinition_Repeated.cs" />
     <Compile Include="Parser\FragmentDefinition_Optional.cs" />
+    <Compile Include="Parser\FragmentDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
