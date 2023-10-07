@@ -62,6 +62,8 @@
     <Compile Include="Parser\FragmentDefinition_Sequence.cs">
       <DependentUpon>FragmentDefinition_Sequence.tt</DependentUpon>
     </Compile>
+    <Compile Include="Parser\FragmentDefinition_Any.cs" />
+    <Compile Include="Parser\FragmentDefinition_Repeated.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

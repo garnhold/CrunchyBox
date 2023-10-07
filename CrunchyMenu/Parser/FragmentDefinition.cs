@@ -17,6 +17,6 @@ namespace Crunchy.Menu
 
     public abstract class FragmentDefinition<T> : FragmentDefinitionBase
     {
-        public abstract bool Consume(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> product);
+        public abstract bool Consume(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer);
     }
 }
