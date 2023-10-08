@@ -57,19 +57,19 @@
     <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions_Repeated.cs" />
     <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Junk.cs" />
-    <Compile Include="Parser\FragmentDefinition.cs" />
-    <Compile Include="Parser\FragmentDefinition_Token.cs" />
-    <Compile Include="Parser\FragmentDefinition_Sequence.cs">
+    <Compile Include="Parser\Fragment\Extensions\FragmentDefinitionExtensions.cs" />
+    <Compile Include="Parser\Fragment\Extensions\FragmentDefinitionExtensions_Optional.cs" />
+    <Compile Include="Parser\Fragment\Extensions\FragmentDefinitionExtensions_Repeated.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinition.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinition_Any.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinition_Optional.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinition_Repeated.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinition_Sequence.cs">
       <DependentUpon>FragmentDefinition_Sequence.tt</DependentUpon>
     </Compile>
-    <Compile Include="Parser\FragmentDefinition_Any.cs" />
-    <Compile Include="Parser\FragmentDefinition_Repeated.cs" />
-    <Compile Include="Parser\FragmentDefinition_Optional.cs" />
-    <Compile Include="Parser\FragmentDefinitions.cs" />
-    <Compile Include="Parser\FragmentDefinition_Skip.cs" />
-    <Compile Include="Parser\Extensions\FragmentDefinitionExtensions.cs" />
-    <Compile Include="Parser\Extensions\FragmentDefinitionExtensions_Optional.cs" />
-    <Compile Include="Parser\Extensions\FragmentDefinitionExtensions_Repeated.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinition_Skip.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinition_Token.cs" />
+    <Compile Include="Parser\Fragment\FragmentDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -94,10 +94,11 @@
     <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\" />
     <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\" />
     <Folder Include="Parser\" />
-    <Folder Include="Parser\Extensions\" />
+    <Folder Include="Parser\Fragment\" />
+    <Folder Include="Parser\Fragment\Extensions\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Parser\FragmentDefinition_Sequence.tt">
+    <Content Include="Parser\Fragment\FragmentDefinition_Sequence.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FragmentDefinition_Sequence.cs</LastGenOutput>
     </Content>
