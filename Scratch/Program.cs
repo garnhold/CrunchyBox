@@ -23,12 +23,11 @@ namespace Scratch
 
             Lexer lexer = new Lexer(mode);
 
-            TokenDefinition whitespace = new TokenDefinition("whitespace",
-                TokenCharacterSets.Whitespace().MakeOneOrMore(),
-                TokenConsumers.Ignore()
+            TokenDefinition whitespace = TokenDefinitions.Ignore("whitespace",
+                TokenCharacterSets.Whitespace().MakeOneOrMore()
             );
 
-            TokenDefinition id = new TokenDefinition("id",
+            TokenDefinition id = TokenDefinitions.Normal("id",
                 TokenPatterns.Sequence(
                     TokenPatterns.SingleCharacter(
                         TokenCharacterSets.Alphabetic(), '_'
@@ -39,14 +38,14 @@ namespace Scratch
                 )
             );
 
-            TokenDefinition whole_number = new TokenDefinition("whole_number",
+            TokenDefinition whole_number = TokenDefinitions.Normal("whole_number",
                 TokenPatterns.Sequence(
                     TokenCharacterSets.Single('-').MakeOptional(),
                     TokenCharacterSets.Numeric().MakeOneOrMore()
                 )
             );
 
-            TokenDefinition decimal_number = new TokenDefinition("decimal_number",
+            TokenDefinition decimal_number = TokenDefinitions.Normal("decimal_number",
                 TokenPatterns.Sequence(
                     TokenCharacterSets.Single('-').MakeOptional(),
                     TokenCharacterSets.Numeric().MakeZeroOrMore(),
@@ -57,29 +56,29 @@ namespace Scratch
 
             TokenMode string_mode = new TokenMode();
 
-            TokenDefinition string_opening = new TokenDefinition("string_opening",
+            TokenDefinition string_opening = TokenDefinitions.ModePusher("string_opening",
                 TokenCharacterSets.Single('"').MakeSingle(),
-                TokenConsumers.ModePusher(string_mode)
+                string_mode
             );
 
-            TokenDefinition string_fragment = new TokenDefinition("string_fragment",
+            TokenDefinition string_fragment = TokenDefinitions.Normal("string_fragment",
                 TokenPatterns.Junk()
             );
 
-            TokenDefinition string_escaped = new TokenDefinition("escaped_character",
+            TokenDefinition string_escaped = TokenDefinitions.Normal("escaped_character",
                 TokenPatterns.Sequence(
                     TokenCharacterSets.Single('\\').MakeSingle(),
                     TokenCharacterSets.All().MakeSingle()
                 )
             );
 
-            TokenDefinition string_closing = new TokenDefinition("string_closing",
+            TokenDefinition string_closing = TokenDefinitions.ModePopper("string_closing",
                 TokenCharacterSets.Single('"').MakeSingle(),
-                TokenConsumers.ModePopper(string_mode)
+                string_mode
             );
 
-            TokenDefinition public_keyword = new TokenDefinition("public");
-            TokenDefinition new_keyword = new TokenDefinition("new");
+            TokenDefinition public_keyword = TokenDefinitions.Normal("public");
+            TokenDefinition new_keyword = TokenDefinitions.Normal("new");
 
             string_mode.AddTokenDefinitions(
                 string_fragment,

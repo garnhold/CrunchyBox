@@ -72,6 +72,7 @@
     <Compile Include="Language\Parser\Fragment\FragmentDefinitions.cs" />
     <Compile Include="Language\Lexer\Token\Extensions\TokenDefinitionExtensions.cs" />
     <Compile Include="Language\Lexer\Token\Extensions\TokenDefinitionExtensions_FragmentDefinition.cs" />
+    <Compile Include="Language\Lexer\Token\TokenDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
