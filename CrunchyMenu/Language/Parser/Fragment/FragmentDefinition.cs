@@ -47,6 +47,26 @@ namespace Crunchy.Menu
             producer = null;
             return false;
         }
+        public T Consume(IList<TokenInstance> tokens, int index, out int new_index)
+        {
+            if (Consume(tokens, index, out new_index, out Operation<T> producer))
+                return producer();
+
+            return default(T);
+        }
+        public T Consume(IList<TokenInstance> tokens, int index)
+        {
+            return Consume(tokens, index, out int new_index);
+        }
+        public T Consume(IList<TokenInstance> tokens)
+        {
+            return Consume(tokens, 0);
+        }
+
+        public T Parse(Lexer lexer, string text)
+        {
+            return Consume(lexer.Tokenize(text).ToArray());
+        }
 
         public IEnumerable<FragmentDefinition<T>> GetSubAlternatives()
         {
