@@ -30,7 +30,7 @@ namespace Crunchy.Menu
 
         protected override string GetMaybeLabel()
         {
-            return token_definition.GetName();
+            return token_definition.GetLabel();
         }
 
         public FragmentDefinition_Token(string n) : base(n)
