@@ -52,12 +52,12 @@ namespace Crunchy.Menu
             maximum_count = max;
         }
 
-        public override bool IsRequired()
+        public override bool IsOptional()
         {
             if (minimum_count <= 0)
-                return false;
+                return true;
 
-            return true;
+            return false;
         }
     }
     static public partial class FragmentDefinitions

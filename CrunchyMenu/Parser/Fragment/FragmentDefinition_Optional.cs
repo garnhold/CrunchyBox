@@ -29,9 +29,9 @@ namespace Crunchy.Menu
             fragment_definition = f;
         }
 
-        public override bool IsRequired()
+        public override bool IsOptional()
         {
-            return false;
+            return true;
         }
     }
     static public partial class FragmentDefinitions

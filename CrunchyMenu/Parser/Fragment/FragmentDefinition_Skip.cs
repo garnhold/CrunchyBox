@@ -23,10 +23,5 @@ namespace Crunchy.Menu
         {
             operation = () => default(T);
         }
-
-        public override bool IsRequired()
-        {
-            return true;
-        }
     }
 }

@@ -12,9 +12,9 @@ namespace Crunchy.Menu
         {
         }
 
-        public virtual bool IsRequired()
+        public virtual bool IsOptional()
         {
-            return true;
+            return false;
         }
     }
 
@@ -53,10 +53,10 @@ namespace Crunchy.Menu
 
         public IEnumerable<FragmentDefinition<T>> GetSubAlternatives()
         {
-            if (IsRequired() == false)
-                yield return FragmentDefinition_Skip<T>.INSTANCE;
-
             yield return this;
+
+            if (IsOptional())
+                yield return FragmentDefinition_Skip<T>.INSTANCE;
         }
     }
 }
