@@ -97,6 +97,14 @@ namespace Crunchy.Menu
 <#                  }#>
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class <#=sub_class_name#> : <#=base_class_name#>
                 {
                     private <#=operation_type#> producer_operation;            
@@ -126,6 +134,15 @@ namespace Crunchy.Menu
 <#                      }#>
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+<#                      foreach(FragmentEntry fragment in fragments){#>
+                            if(<#=fragment.variable_name#>.IsOptional() == false)
+                                return false;
+<#                      }#>                 
+                        return true;
                     }
                 }
             }

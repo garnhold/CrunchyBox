@@ -57,7 +57,7 @@ namespace Crunchy.Menu
             if (minimum_count <= 0)
                 return true;
 
-            return false;
+            return fragment_definition.IsOptional();
         }
     }
     static public partial class FragmentDefinitions

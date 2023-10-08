@@ -58,6 +58,14 @@ namespace Crunchy.Menu
         {
             Initialize((IEnumerable<FragmentDefinition<T>>)f);
         }
+
+        public override bool IsOptional()
+        {
+            if (fragment_definitions.Has(f => f.IsOptional()))
+                return true;
+
+            return false;
+        }
     }
     static public partial class FragmentDefinitions
     {

@@ -62,6 +62,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1> producer_operation;            
@@ -85,6 +93,14 @@ namespace Crunchy.Menu
                             fragment1 = f1;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -154,6 +170,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2> producer_operation;            
@@ -181,6 +205,16 @@ namespace Crunchy.Menu
                             fragment2 = f2;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -253,6 +287,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3> producer_operation;            
@@ -284,6 +326,18 @@ namespace Crunchy.Menu
                             fragment3 = f3;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -359,6 +413,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4> producer_operation;            
@@ -394,6 +456,20 @@ namespace Crunchy.Menu
                             fragment4 = f4;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                            if(fragment4.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -472,6 +548,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5> producer_operation;            
@@ -511,6 +595,22 @@ namespace Crunchy.Menu
                             fragment5 = f5;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                            if(fragment4.IsOptional() == false)
+                                return false;
+                            if(fragment5.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -592,6 +692,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6> producer_operation;            
@@ -635,6 +743,24 @@ namespace Crunchy.Menu
                             fragment6 = f6;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                            if(fragment4.IsOptional() == false)
+                                return false;
+                            if(fragment5.IsOptional() == false)
+                                return false;
+                            if(fragment6.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -719,6 +845,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7> producer_operation;            
@@ -766,6 +900,26 @@ namespace Crunchy.Menu
                             fragment7 = f7;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                            if(fragment4.IsOptional() == false)
+                                return false;
+                            if(fragment5.IsOptional() == false)
+                                return false;
+                            if(fragment6.IsOptional() == false)
+                                return false;
+                            if(fragment7.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -853,6 +1007,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> producer_operation;            
@@ -904,6 +1066,28 @@ namespace Crunchy.Menu
                             fragment8 = f8;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                            if(fragment4.IsOptional() == false)
+                                return false;
+                            if(fragment5.IsOptional() == false)
+                                return false;
+                            if(fragment6.IsOptional() == false)
+                                return false;
+                            if(fragment7.IsOptional() == false)
+                                return false;
+                            if(fragment8.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -994,6 +1178,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> producer_operation;            
@@ -1049,6 +1241,30 @@ namespace Crunchy.Menu
                             fragment9 = f9;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                            if(fragment4.IsOptional() == false)
+                                return false;
+                            if(fragment5.IsOptional() == false)
+                                return false;
+                            if(fragment6.IsOptional() == false)
+                                return false;
+                            if(fragment7.IsOptional() == false)
+                                return false;
+                            if(fragment8.IsOptional() == false)
+                                return false;
+                            if(fragment9.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
@@ -1142,6 +1358,14 @@ namespace Crunchy.Menu
                         }
                 }
                 
+                public override bool IsOptional()
+                {
+                    if(sub_sequences.Has(s => s.IsOptional()))
+                        return true;
+                        
+                    return false;
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> producer_operation;            
@@ -1201,6 +1425,32 @@ namespace Crunchy.Menu
                             fragment10 = f10;
                 
                         producer_operation = o;
+                    }
+                    
+                    public override bool IsOptional()
+                    {
+                            if(fragment1.IsOptional() == false)
+                                return false;
+                            if(fragment2.IsOptional() == false)
+                                return false;
+                            if(fragment3.IsOptional() == false)
+                                return false;
+                            if(fragment4.IsOptional() == false)
+                                return false;
+                            if(fragment5.IsOptional() == false)
+                                return false;
+                            if(fragment6.IsOptional() == false)
+                                return false;
+                            if(fragment7.IsOptional() == false)
+                                return false;
+                            if(fragment8.IsOptional() == false)
+                                return false;
+                            if(fragment9.IsOptional() == false)
+                                return false;
+                            if(fragment10.IsOptional() == false)
+                                return false;
+                 
+                        return true;
                     }
                 }
             }
