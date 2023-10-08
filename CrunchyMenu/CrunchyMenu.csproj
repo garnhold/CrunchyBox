@@ -67,6 +67,9 @@
     <Compile Include="Parser\FragmentDefinition_Optional.cs" />
     <Compile Include="Parser\FragmentDefinitions.cs" />
     <Compile Include="Parser\FragmentDefinition_Skip.cs" />
+    <Compile Include="Parser\Extensions\FragmentDefinitionExtensions.cs" />
+    <Compile Include="Parser\Extensions\FragmentDefinitionExtensions_Optional.cs" />
+    <Compile Include="Parser\Extensions\FragmentDefinitionExtensions_Repeated.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -91,6 +94,7 @@
     <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\" />
     <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\" />
     <Folder Include="Parser\" />
+    <Folder Include="Parser\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Parser\FragmentDefinition_Sequence.tt">

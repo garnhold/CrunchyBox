@@ -44,4 +44,11 @@ namespace Crunchy.Menu
             producer_operation = o;
         }
     }
+    static public partial class FragmentDefinitions
+    {
+        static public FragmentDefinition<T> Token<T>(TokenDefinition t, Operation<T, string> o)
+        {
+            return new FragmentDefinition_Token<T>(t, o);
+        }
+    }
 }

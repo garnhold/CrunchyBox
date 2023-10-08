@@ -60,4 +60,11 @@ namespace Crunchy.Menu
             return true;
         }
     }
+    static public partial class FragmentDefinitions
+    {
+        static public FragmentDefinition<T[]> Repeated<T>(FragmentDefinition<T> f, int min, int max)
+        {
+            return new FragmentDefinition_Repeated<T>(f, min, max);
+        }
+    }
 }

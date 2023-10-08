@@ -59,4 +59,15 @@ namespace Crunchy.Menu
             Initialize((IEnumerable<FragmentDefinition<T>>)f);
         }
     }
+    static public partial class FragmentDefinitions
+    {
+        static public FragmentDefinition<T> Any<T>(IEnumerable<FragmentDefinition<T>> f)
+        {
+            return new FragmentDefinition_Any<T>(f);
+        }
+        static public FragmentDefinition<T> Any<T>(params FragmentDefinition<T>[] f)
+        {
+            return Any((IEnumerable<FragmentDefinition<T>>)f);
+        }
+    }
 }

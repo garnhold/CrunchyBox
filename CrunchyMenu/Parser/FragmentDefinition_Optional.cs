@@ -34,4 +34,11 @@ namespace Crunchy.Menu
             return false;
         }
     }
+    static public partial class FragmentDefinitions
+    {
+        static public FragmentDefinition<T> Optional<T>(FragmentDefinition<T> f)
+        {
+            return new FragmentDefinition_Optional<T>(f);
+        }
+    }
 }
