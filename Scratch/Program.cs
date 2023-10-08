@@ -107,6 +107,8 @@ namespace Scratch
                 you should allow for auto token fragments i.e. conversions from
 
 ???? maybe not?
+
+                I did auto lexer tokens in llamaish fyi
                 */
 
             FragmentDefinitions.Sequence("string",
