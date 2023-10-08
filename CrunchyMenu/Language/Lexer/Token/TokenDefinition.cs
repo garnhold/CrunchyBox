@@ -21,11 +21,6 @@ namespace Crunchy.Menu
             consumer = c;
         }
 
-        public TokenDefinition(TokenPattern p, TokenConsumer c) : this(null, p, c) { }
-
-        public TokenDefinition(string n, TokenPattern p) : this(n, p, TokenConsumers.Normal()) { }
-        public TokenDefinition(TokenPattern p) : this(p, TokenConsumers.Normal()) { }
-
         public bool OnConsume(Tokenizer tokenizer)
         {
             return consumer.OnConsume(tokenizer);
