@@ -83,5 +83,23 @@ namespace Crunchy.Menu
         {
             return Repeated(null, f, min, max);
         }
+
+        static public FragmentDefinition<T[]> ZeroOrMore<T>(string n, FragmentDefinition<T> f)
+        {
+            return Repeated(n, f, 0, int.MaxValue);
+        }
+        static public FragmentDefinition<T[]> ZeroOrMore<T>(FragmentDefinition<T> f)
+        {
+            return ZeroOrMore(null, f);
+        }
+
+        static public FragmentDefinition<T[]> OneOrMore<T>(string n, FragmentDefinition<T> f)
+        {
+            return Repeated(n, f, 1, int.MaxValue);
+        }
+        static public FragmentDefinition<T[]> OneOrMore<T>(FragmentDefinition<T> f)
+        {
+            return OneOrMore(null, f);
+        }
     }
 }
