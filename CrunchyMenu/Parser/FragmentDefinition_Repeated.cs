@@ -28,7 +28,7 @@ namespace Crunchy.Menu
                     return false;
             }
 
-            if (sub_producers.Count < minimum_count)
+            if (sub_producers.Count < minimum_count || sub_producers.Count < 1)
                 return false;
 
             producer = () => sub_producers.Convert(p => p()).ToArray();
@@ -50,6 +50,14 @@ namespace Crunchy.Menu
 
             minimum_count = min;
             maximum_count = max;
+        }
+
+        public override bool IsRequired()
+        {
+            if (minimum_count <= 0)
+                return false;
+
+            return true;
         }
     }
 }

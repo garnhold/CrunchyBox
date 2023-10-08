@@ -5,7 +5,7 @@
 <#@ import namespace="Crunchy.Dough" #>
 <#@ output extension=".cs" #>
 <#
-int max_number_fragments = 3;
+int max_number_fragments = 10;
 
 #>
 using System;
@@ -22,9 +22,7 @@ namespace Crunchy.Menu
             string base_class_arguments = "<T>";
             string base_class_name = base_basic_class_name + base_class_arguments;
         
-            string sub_basic_class_name = base_basic_class_name + "_SubSequence";
-            string sub_class_arguments = TTCS.ArgumentsForGeneric("P#", number_fragments, "T");
-            string sub_class_name = sub_basic_class_name + sub_class_arguments;
+            string sub_class_name = base_basic_class_name + "_SubSequence";
         
             string basic_class_name = base_basic_class_name + "_Sequence";
             string class_arguments = TTCS.ArgumentsForGeneric("P#", number_fragments, "T");
@@ -40,51 +38,6 @@ namespace Crunchy.Menu
             string initialize_arguments = TTCS.Arguments("f#", number_fragments, null, "o");
 #>
 
-            public class <#=sub_class_name#> : <#=base_class_name#>
-            {
-                private <#=operation_type#> producer_operation;            
-    
-<#              foreach(FragmentEntry fragment in fragments){#>
-                    private <#=fragment.type_name#> <#=fragment.variable_name#>;
-<#              }#>
-
-                protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
-                {
-                    new_index = index;
-                    producer = null;
-                    
-<#                   for(int f = 1; f <= number_fragments; f++){#>
-                        if(fragment<#=f#>.Consume(tokens, new_index, out new_index, out Operation<P<#=f#>> sub_producer<#=f#>) == false)
-                            return false;                        
-<#                   }#>
-                    
-                    producer = () => producer_operation(<#=TTCS.Arguments("sub_producer#()", number_fragments)#>);
-                    return true;
-                }
-
-                public <#=sub_basic_class_name#>()
-                {
-                }
-                
-                public <#=sub_basic_class_name#>(<#=operation_type#> o) : this()
-                {
-                    producer_operation = o;
-                }
-                
-                public <#=sub_basic_class_name#>(<#=initialize_parameters#>) : this()
-                {
-                    Initialize(<#=initialize_arguments#>);
-                }
-                
-                public void Initialize(<#=initialize_parameters#>)
-                {
-<#                  foreach(FragmentEntry fragment in fragments){#>
-                        <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
-<#                  }#>
-            
-                    producer_operation = o;
-                }
-            }
             public class <#=class_name#> : <#=base_class_name#>
             {
                 private List<<#=base_class_name#>> sub_sequences;
@@ -123,11 +76,6 @@ namespace Crunchy.Menu
                     sub_sequences = new List<<#=base_class_name#>>();
                 }
                 
-                public <#=basic_class_name#>(<#=operation_type#> o) : this()
-                {
-                    producer_operation = o;
-                }
-                
                 public <#=basic_class_name#>(<#=initialize_parameters#>) : this()
                 {
                     Initialize(<#=initialize_arguments#>);
@@ -135,8 +83,50 @@ namespace Crunchy.Menu
                 
                 public void Initialize(<#=initialize_parameters#>)
                 {
+                    sub_sequences.Clear();
                     
-                    <#=sub_class_name#> full = new <#=sub_class_name#>(<#=initialize_arguments#>);
+<#                  foreach(FragmentEntry fragment in fragments){#>
+                        foreach(<#=fragment.type_name#> <#=fragment.iter_name#> in <#=fragment.parameter_name#>.GetSubAlternatives())
+                        {
+<#                  }#>
+
+                            sub_sequences.Add(new <#=sub_class_name#>(<#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
+
+<#                  foreach(FragmentEntry fragment in fragments){#>
+                        }
+<#                  }#>
+                }
+                
+                private class <#=sub_class_name#> : <#=base_class_name#>
+                {
+                    private <#=operation_type#> producer_operation;            
+        
+<#                  foreach(FragmentEntry fragment in fragments){#>
+                        private <#=fragment.type_name#> <#=fragment.variable_name#>;
+<#                  }#>
+
+                    protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
+                    {
+                        new_index = index;
+                        producer = null;
+                        
+<#                      for(int f = 1; f <= number_fragments; f++){#>
+                            if(fragment<#=f#>.Consume(tokens, new_index, out new_index, out Operation<P<#=f#>> sub_producer<#=f#>) == false)
+                                return false;                        
+<#                      }#>
+                        
+                        producer = () => producer_operation(<#=TTCS.Arguments("sub_producer#()", number_fragments)#>);
+                        return true;
+                    }
+                    
+                    public <#=sub_class_name#>(<#=initialize_parameters#>) : this()
+                    {
+<#                      foreach(FragmentEntry fragment in fragments){#>
+                            <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
+<#                      }#>
+                
+                        producer_operation = o;
+                    }
                 }
             }
             static public partial class FragmentDefinitions
@@ -155,18 +145,21 @@ class FragmentEntry
     public readonly string type_name;
     public readonly string variable_name;
     public readonly string parameter_name;
+    public readonly string iter_name;
     
-    public FragmentEntry(string t, string v, string p)
+    public FragmentEntry(string t, string v, string p, string i)
     {
         type_name = t;
         variable_name = v;
         parameter_name = p;
+        iter_name = i;
     }
     
     public FragmentEntry(int i) : this(
         "FragmentDefinition" + TTCS.ArgumentsForGeneric("P" + i, true),
         "fragment" + i,
-        "f" + i
+        "f" + i,
+        "i" + i
     )
     {
     }

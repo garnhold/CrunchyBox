@@ -50,5 +50,13 @@ namespace Crunchy.Menu
             producer = null;
             return false;
         }
+
+        public IEnumerable<FragmentDefinition<T>> GetSubAlternatives()
+        {
+            if (IsRequired() == false)
+                yield return FragmentDefinition_Skip<T>.INSTANCE;
+
+            yield return this;
+        }
     }
 }

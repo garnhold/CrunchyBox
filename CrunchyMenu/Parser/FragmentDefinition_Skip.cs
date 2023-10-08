@@ -6,19 +6,22 @@ using Crunchy.Dough;
 
 namespace Crunchy.Menu
 {
-    public class FragmentDefinition_Never<T> : FragmentDefinition<T>
+    public class FragmentDefinition_Skip<T> : FragmentDefinition<T>
     {
-        public static readonly FragmentDefinition_Never<T> INSTANCE = new FragmentDefinition_Never<T>();
+        private Operation<T> operation;
+
+        public static readonly FragmentDefinition_Skip<T> INSTANCE = new FragmentDefinition_Skip<T>();
 
         protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
         {
-            new_index = -1;
-            producer = null;
-            return false;
+            new_index = index;
+            producer = operation;
+            return true;
         }
 
-        private FragmentDefinition_Never()
+        private FragmentDefinition_Skip()
         {
+            operation = () => default(T);
         }
 
         public override bool IsRequired()
