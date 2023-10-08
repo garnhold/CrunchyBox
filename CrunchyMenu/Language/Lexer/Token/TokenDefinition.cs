@@ -41,6 +41,11 @@ namespace Crunchy.Menu
             return pattern.GetEntrys();
         }
 
+        public string GetName()
+        {
+            return name.Coalesce(() => GetPsuedoRegEx());
+        }
+
         public string GetPsuedoRegEx()
         {
             return pattern.GetPsuedoRegEx();
@@ -66,10 +71,7 @@ namespace Crunchy.Menu
 
         public override string ToString()
         {
-            if (name != null)
-                return name;
-
-            return GetPsuedoRegEx();
+            return GetName();
         }
     }
 }
