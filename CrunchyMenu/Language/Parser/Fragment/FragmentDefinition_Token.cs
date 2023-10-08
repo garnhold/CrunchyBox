@@ -28,6 +28,11 @@ namespace Crunchy.Menu
             return false;
         }
 
+        protected override string GetMaybeName()
+        {
+            return token_definition.GetName();
+        }
+
         public FragmentDefinition_Token(string n) : base(n)
         {
         }

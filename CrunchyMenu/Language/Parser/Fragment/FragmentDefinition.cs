@@ -13,6 +13,8 @@ namespace Crunchy.Menu
         public abstract bool CanConsumeNone();
         public abstract string GetPsuedoRegEx();
 
+        protected virtual string GetMaybeName() { return null; }
+
         public FragmentDefinition(string n)
         {
             name = n;
@@ -20,15 +22,15 @@ namespace Crunchy.Menu
 
         public string GetName()
         {
-            return name;
+            return name.Coalesce(
+                () => GetMaybeName(),
+                () => GetPsuedoRegEx()
+            );
         }
 
         public override string ToString()
         {
-            if (name != null)
-                return name;
-
-            return GetPsuedoRegEx();
+            return GetName();
         }
     }
 

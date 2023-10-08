@@ -35,6 +35,19 @@ namespace Crunchy.Menu
             return true;
         }
 
+        protected override string GetMaybeName()
+        {
+            string inner = fragment_definition.GetName();
+
+            if (minimum_count == 0 && maximum_count == int.MaxValue)
+                return inner + "*";
+
+            if (minimum_count == 1 && maximum_count == int.MaxValue)
+                return inner + "+";
+
+            return inner + "{" + minimum_count + "," + maximum_count + "}";
+        }
+
         public FragmentDefinition_Repeated(string n) : base(n)
         {
         }
