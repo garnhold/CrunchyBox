@@ -28,11 +28,11 @@ namespace Crunchy.Menu
             return false;
         }
 
-        public FragmentDefinition_Token()
+        public FragmentDefinition_Token(string n) : base(n)
         {
         }
 
-        public FragmentDefinition_Token(TokenDefinition t, Operation<T, string> o) : this()
+        public FragmentDefinition_Token(string n, TokenDefinition t, Operation<T, string> o) : this(n)
         {
             Initialize(t, o);
         }
@@ -56,9 +56,13 @@ namespace Crunchy.Menu
     }
     static public partial class FragmentDefinitions
     {
+        static public FragmentDefinition<T> Token<T>(string n, TokenDefinition t, Operation<T, string> o)
+        {
+            return new FragmentDefinition_Token<T>(n, t, o);
+        }
         static public FragmentDefinition<T> Token<T>(TokenDefinition t, Operation<T, string> o)
         {
-            return new FragmentDefinition_Token<T>(t, o);
+            return Token(null, t, o);
         }
     }
 }

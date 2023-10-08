@@ -10,7 +10,7 @@ namespace Crunchy.Menu
     {
         private Operation<T> operation;
 
-        public static readonly FragmentDefinition_Skip<T> INSTANCE = new FragmentDefinition_Skip<T>();
+        public static readonly FragmentDefinition_Skip<T> INSTANCE = new FragmentDefinition_Skip<T>("<!SKIP!>");
 
         protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
         {
@@ -19,7 +19,7 @@ namespace Crunchy.Menu
             return true;
         }
 
-        private FragmentDefinition_Skip()
+        private FragmentDefinition_Skip(string n) : base(n)
         {
             operation = () => default(T);
         }

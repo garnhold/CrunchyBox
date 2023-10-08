@@ -35,11 +35,11 @@ namespace Crunchy.Menu
             return true;
         }
 
-        public FragmentDefinition_Repeated()
+        public FragmentDefinition_Repeated(string n) : base(n)
         {
         }
 
-        public FragmentDefinition_Repeated(FragmentDefinition<T> f, int min, int max) : this()
+        public FragmentDefinition_Repeated(string n, FragmentDefinition<T> f, int min, int max) : this(n)
         {
             Initialize(f, min, max);
         }
@@ -75,9 +75,13 @@ namespace Crunchy.Menu
     }
     static public partial class FragmentDefinitions
     {
+        static public FragmentDefinition<T[]> Repeated<T>(string n, FragmentDefinition<T> f, int min, int max)
+        {
+            return new FragmentDefinition_Repeated<T>(n, f, min, max);
+        }
         static public FragmentDefinition<T[]> Repeated<T>(FragmentDefinition<T> f, int min, int max)
         {
-            return new FragmentDefinition_Repeated<T>(f, min, max);
+            return Repeated(null, f, min, max);
         }
     }
 }

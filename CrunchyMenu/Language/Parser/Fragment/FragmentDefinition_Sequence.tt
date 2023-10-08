@@ -71,18 +71,19 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public <#=basic_class_name#>()
+                public <#=basic_class_name#>(string n) : base(n)
                 {
                     sub_sequences = new List<<#=base_class_name#>>();
                 }
                 
-                public <#=basic_class_name#>(<#=initialize_parameters#>) : this()
+                public <#=basic_class_name#>(string n, <#=initialize_parameters#>) : this(n)
                 {
                     Initialize(<#=initialize_arguments#>);
                 }
                 
                 public void Initialize(<#=initialize_parameters#>)
                 {
+                    int count = 0;
                     sub_sequences.Clear();
                     
 <#                  foreach(FragmentEntry fragment in fragments){#>
@@ -90,7 +91,7 @@ namespace Crunchy.Menu
                         {
 <#                  }#>
 
-                            sub_sequences.Add(new <#=sub_class_name#>(<#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
+                            sub_sequences.Add(new <#=sub_class_name#>(GetName() + "_Sub" + count++, <#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
 
 <#                  foreach(FragmentEntry fragment in fragments){#>
                         }
@@ -132,7 +133,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public <#=sub_class_name#>(<#=initialize_parameters#>)
+                    public <#=sub_class_name#>(string n, <#=initialize_parameters#>) : base(n)
                     {
 <#                      foreach(FragmentEntry fragment in fragments){#>
                             <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
@@ -159,9 +160,13 @@ namespace Crunchy.Menu
             }
             static public partial class FragmentDefinitions
             {
+                static public <#=base_class_name#> Sequence<#=class_arguments#>(string n, <#=initialize_parameters#>)
+                {
+                    return new <#=class_name#>(n, <#=initialize_arguments#>);
+                }
                 static public <#=base_class_name#> Sequence<#=class_arguments#>(<#=initialize_parameters#>)
                 {
-                    return new <#=class_name#>(<#=initialize_arguments#>);
+                    return Sequence(null, <#=initialize_arguments#>);
                 }
             }
 <#      }#>

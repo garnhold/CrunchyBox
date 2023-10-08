@@ -15,11 +15,11 @@ namespace Crunchy.Menu
             return fragment_definition.Consume(tokens, index, out new_index, out producer);
         }
 
-        public FragmentDefinition_Optional()
+        public FragmentDefinition_Optional(string n) : base(n)
         {
         }
 
-        public FragmentDefinition_Optional(FragmentDefinition<T> f) : this()
+        public FragmentDefinition_Optional(string n, FragmentDefinition<T> f) : this(n)
         {
             Initialize(f);
         }
@@ -41,9 +41,13 @@ namespace Crunchy.Menu
     }
     static public partial class FragmentDefinitions
     {
+        static public FragmentDefinition<T> Optional<T>(string n, FragmentDefinition<T> f)
+        {
+            return new FragmentDefinition_Optional<T>(n, f);
+        }
         static public FragmentDefinition<T> Optional<T>(FragmentDefinition<T> f)
         {
-            return new FragmentDefinition_Optional<T>(f);
+            return Optional(null, f);
         }
     }
 }

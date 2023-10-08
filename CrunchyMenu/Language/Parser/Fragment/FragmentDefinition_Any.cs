@@ -39,16 +39,16 @@ namespace Crunchy.Menu
             return false;
         }
 
-        public FragmentDefinition_Any()
+        public FragmentDefinition_Any(string n) : base(n)
         {
             fragment_definitions = new List<FragmentDefinition<T>>();
         }
 
-        public FragmentDefinition_Any(IEnumerable<FragmentDefinition<T>> f) : this()
+        public FragmentDefinition_Any(string n, IEnumerable<FragmentDefinition<T>> f) : this(n)
         {
             Initialize(f);
         }
-        public FragmentDefinition_Any(params FragmentDefinition<T>[] f) : this((IEnumerable<FragmentDefinition<T>>)f) { }
+        public FragmentDefinition_Any(string n, params FragmentDefinition<T>[] f) : this(n, (IEnumerable<FragmentDefinition<T>>)f) { }
 
         public void Initialize(IEnumerable<FragmentDefinition<T>> f)
         {
@@ -76,13 +76,22 @@ namespace Crunchy.Menu
     }
     static public partial class FragmentDefinitions
     {
+        static public FragmentDefinition<T> Any<T>(string n, IEnumerable<FragmentDefinition<T>> f)
+        {
+            return new FragmentDefinition_Any<T>(n, f);
+        }
+        static public FragmentDefinition<T> Any<T>(string n, params FragmentDefinition<T>[] f)
+        {
+            return Any(n, (IEnumerable<FragmentDefinition<T>>)f);
+        }
+
         static public FragmentDefinition<T> Any<T>(IEnumerable<FragmentDefinition<T>> f)
         {
-            return new FragmentDefinition_Any<T>(f);
+            return Any(null, f);
         }
         static public FragmentDefinition<T> Any<T>(params FragmentDefinition<T>[] f)
         {
-            return Any((IEnumerable<FragmentDefinition<T>>)f);
+            return Any(null, f);
         }
     }
 }

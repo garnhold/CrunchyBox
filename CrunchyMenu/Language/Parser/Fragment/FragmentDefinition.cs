@@ -8,15 +8,26 @@ namespace Crunchy.Menu
 {
     public abstract class FragmentDefinition
     {
+        private string name;
+
         public abstract bool CanConsumeNone();
         public abstract string GetPsuedoRegEx();
 
-        public FragmentDefinition()
+        public FragmentDefinition(string n)
         {
+            name = n;
+        }
+
+        public string GetName()
+        {
+            return name;
         }
 
         public override string ToString()
         {
+            if (name != null)
+                return name;
+
             return GetPsuedoRegEx();
         }
     }
@@ -27,7 +38,7 @@ namespace Crunchy.Menu
 
         protected abstract bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer);
 
-        public FragmentDefinition()
+        public FragmentDefinition(string n) : base(n)
         {
             consume_index_stack = new Stack<int>();
             consume_index_stack.Push(-1);
