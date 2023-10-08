@@ -69,7 +69,8 @@
     </Compile>
     <Compile Include="Language\Parser\Fragment\FragmentDefinition_Skip.cs" />
     <Compile Include="Language\Parser\Fragment\FragmentDefinition_Token.cs" />
-    <Compile Include="Language\Parser\Fragment\FragmentDefinitions.cs" />
+    <Compile Include="Language\Language.cs" />
+    <Compile Include="Language\Parser\Parser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

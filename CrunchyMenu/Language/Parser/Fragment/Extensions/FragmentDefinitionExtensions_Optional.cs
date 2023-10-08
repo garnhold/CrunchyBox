@@ -10,7 +10,7 @@ namespace Crunchy.Menu
     {
         static public FragmentDefinition<T> MakeOptional<T>(this FragmentDefinition<T> item)
         {
-            return FragmentDefinitions.Optional(item);
+            return item.GetLanguage().Optional(item);
         }
     }
 }

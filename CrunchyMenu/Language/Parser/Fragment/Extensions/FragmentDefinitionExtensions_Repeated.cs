@@ -10,7 +10,7 @@ namespace Crunchy.Menu
     {
         static public FragmentDefinition<T[]> MakeRepeated<T>(this FragmentDefinition<T> item, int min, int max)
         {
-            return FragmentDefinitions.Repeated(item, min, max);
+            return item.GetLanguage().Repeated(item, min, max);
         }
     }
 }

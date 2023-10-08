@@ -19,7 +19,7 @@ namespace Crunchy.Menu
             return true;
         }
 
-        private FragmentDefinition_Skip()
+        private FragmentDefinition_Skip() : base(null)
         {
             operation = () => default(T);
         }

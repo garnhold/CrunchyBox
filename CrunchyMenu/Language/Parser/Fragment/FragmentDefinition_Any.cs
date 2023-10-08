@@ -39,16 +39,16 @@ namespace Crunchy.Menu
             return false;
         }
 
-        public FragmentDefinition_Any()
+        public FragmentDefinition_Any(Language l) : base(l)
         {
             fragment_definitions = new List<FragmentDefinition<T>>();
         }
 
-        public FragmentDefinition_Any(IEnumerable<FragmentDefinition<T>> f) : this()
+        public FragmentDefinition_Any(Language l, IEnumerable<FragmentDefinition<T>> f) : this(l)
         {
             Initialize(f);
         }
-        public FragmentDefinition_Any(params FragmentDefinition<T>[] f) : this((IEnumerable<FragmentDefinition<T>>)f) { }
+        public FragmentDefinition_Any(Language l, params FragmentDefinition<T>[] f) : this(l, (IEnumerable<FragmentDefinition<T>>)f) { }
 
         public void Initialize(IEnumerable<FragmentDefinition<T>> f)
         {
@@ -67,15 +67,15 @@ namespace Crunchy.Menu
             return false;
         }
     }
-    static public partial class FragmentDefinitions
+    static public partial class LanguageExtensions
     {
-        static public FragmentDefinition<T> Any<T>(IEnumerable<FragmentDefinition<T>> f)
+        static public FragmentDefinition<T> Any<T>(this Language item, IEnumerable<FragmentDefinition<T>> f)
         {
-            return new FragmentDefinition_Any<T>(f);
+            return new FragmentDefinition_Any<T>(item, f);
         }
-        static public FragmentDefinition<T> Any<T>(params FragmentDefinition<T>[] f)
+        static public FragmentDefinition<T> Any<T>(this Language item, params FragmentDefinition<T>[] f)
         {
-            return Any((IEnumerable<FragmentDefinition<T>>)f);
+            return item.Any((IEnumerable<FragmentDefinition<T>>)f);
         }
     }
 }

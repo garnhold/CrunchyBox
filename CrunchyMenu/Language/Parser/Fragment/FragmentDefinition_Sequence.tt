@@ -71,12 +71,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public <#=basic_class_name#>()
+                public <#=basic_class_name#>(Language l) : base(l)
                 {
                     sub_sequences = new List<<#=base_class_name#>>();
                 }
                 
-                public <#=basic_class_name#>(<#=initialize_parameters#>) : this()
+                public <#=basic_class_name#>(Language l, <#=initialize_parameters#>) : this(l)
                 {
                     Initialize(<#=initialize_arguments#>);
                 }
@@ -90,7 +90,7 @@ namespace Crunchy.Menu
                         {
 <#                  }#>
 
-                            sub_sequences.Add(new <#=sub_class_name#>(<#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
+                            sub_sequences.Add(new <#=sub_class_name#>(GetLanguage(), <#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
 
 <#                  foreach(FragmentEntry fragment in fragments){#>
                         }
@@ -127,7 +127,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public <#=sub_class_name#>(<#=initialize_parameters#>)
+                    public <#=sub_class_name#>(Language l, <#=initialize_parameters#>) : base(l)
                     {
 <#                      foreach(FragmentEntry fragment in fragments){#>
                             <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
@@ -147,11 +147,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public <#=base_class_name#> Sequence<#=class_arguments#>(<#=initialize_parameters#>)
+                static public <#=base_class_name#> Sequence<#=class_arguments#>(this Language item, <#=initialize_parameters#>)
                 {
-                    return new <#=class_name#>(<#=initialize_arguments#>);
+                    return new <#=class_name#>(item, <#=initialize_arguments#>);
                 }
             }
 <#      }#>

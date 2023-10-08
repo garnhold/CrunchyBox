@@ -40,12 +40,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, Operation<T, P1> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, Operation<T, P1> o) : this(l)
                 {
                     Initialize(f1, o);
                 }
@@ -57,7 +57,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, o));
 
                         }
                 }
@@ -88,7 +88,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, Operation<T, P1> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, Operation<T, P1> o) : base(l)
                     {
                             fragment1 = f1;
                 
@@ -104,11 +104,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1>(FragmentDefinition<P1> f1, Operation<T, P1> o)
+                static public FragmentDefinition<T> Sequence<T, P1>(this Language item, FragmentDefinition<P1> f1, Operation<T, P1> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1>(f1, o);
+                    return new FragmentDefinition_Sequence<T, P1>(item, f1, o);
                 }
             }
 
@@ -145,12 +145,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o) : this(l)
                 {
                     Initialize(f1, f2, o);
                 }
@@ -164,7 +164,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P2> i2 in f2.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, o));
 
                         }
                         }
@@ -199,7 +199,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -217,11 +217,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2>(f1, f2, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2>(item, f1, f2, o);
                 }
             }
 
@@ -258,12 +258,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o) : this(l)
                 {
                     Initialize(f1, f2, f3, o);
                 }
@@ -279,7 +279,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P3> i3 in f3.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, o));
 
                         }
                         }
@@ -318,7 +318,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -338,11 +338,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3>(f1, f2, f3, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3>(item, f1, f2, f3, o);
                 }
             }
 
@@ -379,12 +379,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o) : this(l)
                 {
                     Initialize(f1, f2, f3, f4, o);
                 }
@@ -402,7 +402,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P4> i4 in f4.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, i4, o));
 
                         }
                         }
@@ -445,7 +445,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -467,11 +467,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4>(f1, f2, f3, f4, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4>(item, f1, f2, f3, f4, o);
                 }
             }
 
@@ -508,12 +508,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o) : this(l)
                 {
                     Initialize(f1, f2, f3, f4, f5, o);
                 }
@@ -533,7 +533,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P5> i5 in f5.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, i4, i5, o));
 
                         }
                         }
@@ -580,7 +580,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -604,11 +604,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5>(f1, f2, f3, f4, f5, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5>(item, f1, f2, f3, f4, f5, o);
                 }
             }
 
@@ -645,12 +645,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o) : this(l)
                 {
                     Initialize(f1, f2, f3, f4, f5, f6, o);
                 }
@@ -672,7 +672,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P6> i6 in f6.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, i4, i5, i6, o));
 
                         }
                         }
@@ -723,7 +723,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -749,11 +749,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6>(f1, f2, f3, f4, f5, f6, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6>(item, f1, f2, f3, f4, f5, f6, o);
                 }
             }
 
@@ -790,12 +790,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : this(l)
                 {
                     Initialize(f1, f2, f3, f4, f5, f6, f7, o);
                 }
@@ -819,7 +819,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P7> i7 in f7.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, i4, i5, i6, i7, o));
 
                         }
                         }
@@ -874,7 +874,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -902,11 +902,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7>(f1, f2, f3, f4, f5, f6, f7, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7>(item, f1, f2, f3, f4, f5, f6, f7, o);
                 }
             }
 
@@ -943,12 +943,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : this(l)
                 {
                     Initialize(f1, f2, f3, f4, f5, f6, f7, f8, o);
                 }
@@ -974,7 +974,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P8> i8 in f8.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, i8, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, i4, i5, i6, i7, i8, o));
 
                         }
                         }
@@ -1033,7 +1033,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1063,11 +1063,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8>(f1, f2, f3, f4, f5, f6, f7, f8, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8>(item, f1, f2, f3, f4, f5, f6, f7, f8, o);
                 }
             }
 
@@ -1104,12 +1104,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : this(l)
                 {
                     Initialize(f1, f2, f3, f4, f5, f6, f7, f8, f9, o);
                 }
@@ -1137,7 +1137,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P9> i9 in f9.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, i8, i9, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, i4, i5, i6, i7, i8, i9, o));
 
                         }
                         }
@@ -1200,7 +1200,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1232,11 +1232,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(f1, f2, f3, f4, f5, f6, f7, f8, f9, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9>(item, f1, f2, f3, f4, f5, f6, f7, f8, f9, o);
                 }
             }
 
@@ -1273,12 +1273,12 @@ namespace Crunchy.Menu
                     return false;
                 }
 
-                public FragmentDefinition_Sequence()
+                public FragmentDefinition_Sequence(Language l) : base(l)
                 {
                     sub_sequences = new List<FragmentDefinition<T>>();
                 }
                 
-                public FragmentDefinition_Sequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : this()
+                public FragmentDefinition_Sequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : this(l)
                 {
                     Initialize(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, o);
                 }
@@ -1308,7 +1308,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P10> i10 in f10.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLanguage(), i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, o));
 
                         }
                         }
@@ -1375,7 +1375,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
+                    public FragmentDefinition_SubSequence(Language l, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : base(l)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1409,11 +1409,11 @@ namespace Crunchy.Menu
                     }
                 }
             }
-            static public partial class FragmentDefinitions
+            static public partial class LanguageExtensions
             {
-                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
+                static public FragmentDefinition<T> Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(this Language item, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
                 {
-                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, o);
+                    return new FragmentDefinition_Sequence<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(item, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, o);
                 }
             }
 }

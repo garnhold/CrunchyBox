@@ -35,11 +35,11 @@ namespace Crunchy.Menu
             return true;
         }
 
-        public FragmentDefinition_Repeated()
+        public FragmentDefinition_Repeated(Language l) : base(l)
         {
         }
 
-        public FragmentDefinition_Repeated(FragmentDefinition<T> f, int min, int max) : this()
+        public FragmentDefinition_Repeated(Language l, FragmentDefinition<T> f, int min, int max) : this(l)
         {
             Initialize(f, min, max);
         }
@@ -60,11 +60,11 @@ namespace Crunchy.Menu
             return fragment_definition.CanConsumeNone();
         }
     }
-    static public partial class FragmentDefinitions
+    static public partial class LanguageExtensions
     {
-        static public FragmentDefinition<T[]> Repeated<T>(FragmentDefinition<T> f, int min, int max)
+        static public FragmentDefinition<T[]> Repeated<T>(this Language item, FragmentDefinition<T> f, int min, int max)
         {
-            return new FragmentDefinition_Repeated<T>(f, min, max);
+            return new FragmentDefinition_Repeated<T>(item, f, min, max);
         }
     }
 }
