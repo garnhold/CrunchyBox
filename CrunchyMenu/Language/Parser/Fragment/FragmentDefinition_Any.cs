@@ -66,6 +66,13 @@ namespace Crunchy.Menu
 
             return false;
         }
+
+        public override string GetPsuedoRegEx()
+        {
+            return "(" + fragment_definitions
+                .Convert(f => f.GetPsuedoRegEx())
+                .Join("|") + ")";
+        }
     }
     static public partial class FragmentDefinitions
     {

@@ -70,6 +70,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1> producer_operation;            
@@ -101,6 +106,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -178,6 +188,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2> producer_operation;            
@@ -214,6 +229,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -294,6 +314,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3> producer_operation;            
@@ -335,6 +360,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -418,6 +448,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4> producer_operation;            
@@ -464,6 +499,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + fragment4.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -550,6 +590,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5> producer_operation;            
@@ -601,6 +646,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + fragment4.GetPsuedoRegEx() + fragment5.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -690,6 +740,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6> producer_operation;            
@@ -746,6 +801,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + fragment4.GetPsuedoRegEx() + fragment5.GetPsuedoRegEx() + fragment6.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -838,6 +898,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7> producer_operation;            
@@ -899,6 +964,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + fragment4.GetPsuedoRegEx() + fragment5.GetPsuedoRegEx() + fragment6.GetPsuedoRegEx() + fragment7.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -994,6 +1064,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> producer_operation;            
@@ -1060,6 +1135,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + fragment4.GetPsuedoRegEx() + fragment5.GetPsuedoRegEx() + fragment6.GetPsuedoRegEx() + fragment7.GetPsuedoRegEx() + fragment8.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -1158,6 +1238,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> producer_operation;            
@@ -1229,6 +1314,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + fragment4.GetPsuedoRegEx() + fragment5.GetPsuedoRegEx() + fragment6.GetPsuedoRegEx() + fragment7.GetPsuedoRegEx() + fragment8.GetPsuedoRegEx() + fragment9.GetPsuedoRegEx() + ")";
                     }
                 }
             }
@@ -1330,6 +1420,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class FragmentDefinition_SubSequence : FragmentDefinition<T>
                 {
                     private Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> producer_operation;            
@@ -1406,6 +1501,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + fragment1.GetPsuedoRegEx() + fragment2.GetPsuedoRegEx() + fragment3.GetPsuedoRegEx() + fragment4.GetPsuedoRegEx() + fragment5.GetPsuedoRegEx() + fragment6.GetPsuedoRegEx() + fragment7.GetPsuedoRegEx() + fragment8.GetPsuedoRegEx() + fragment9.GetPsuedoRegEx() + fragment10.GetPsuedoRegEx() + ")";
                     }
                 }
             }

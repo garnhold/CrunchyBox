@@ -59,6 +59,19 @@ namespace Crunchy.Menu
 
             return fragment_definition.CanConsumeNone();
         }
+
+        public override string GetPsuedoRegEx()
+        {
+            string inner = fragment_definition.GetPsuedoRegEx();
+
+            if (minimum_count == 0 && maximum_count == int.MaxValue)
+                return inner + "*";
+
+            if (minimum_count == 1 && maximum_count == int.MaxValue)
+                return inner + "+";
+
+            return inner + "{" + minimum_count + "," + maximum_count + "}";
+        }
     }
     static public partial class FragmentDefinitions
     {

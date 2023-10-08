@@ -105,6 +105,11 @@ namespace Crunchy.Menu
                     return false;
                 }
                 
+                public override string GetPsuedoRegEx()
+                {
+                    return sub_sequences.GetFirst().GetPsuedoRegEx();
+                }
+                
                 private class <#=sub_class_name#> : <#=base_class_name#>
                 {
                     private <#=operation_type#> producer_operation;            
@@ -144,6 +149,11 @@ namespace Crunchy.Menu
                                 return true;
                                 
                         return false;
+                    }
+                    
+                    public override string GetPsuedoRegEx()
+                    {
+                        return "(" + <#=fragments.Convert(f => f.variable_name + ".GetPsuedoRegEx()").Join(" + ")#> + ")";
                     }
                 }
             }

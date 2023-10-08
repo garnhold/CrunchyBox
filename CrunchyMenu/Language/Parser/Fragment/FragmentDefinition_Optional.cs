@@ -33,6 +33,11 @@ namespace Crunchy.Menu
         {
             return true;
         }
+
+        public override string GetPsuedoRegEx()
+        {
+            return fragment_definition.GetPsuedoRegEx() + "?";
+        }
     }
     static public partial class FragmentDefinitions
     {

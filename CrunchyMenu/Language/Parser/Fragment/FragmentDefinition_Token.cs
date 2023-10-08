@@ -48,6 +48,11 @@ namespace Crunchy.Menu
         {
             return false;
         }
+
+        public override string GetPsuedoRegEx()
+        {
+            return "<" + token_definition.ToString() + ">";
+        }
     }
     static public partial class FragmentDefinitions
     {

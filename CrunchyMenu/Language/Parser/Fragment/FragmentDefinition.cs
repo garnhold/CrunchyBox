@@ -9,9 +9,15 @@ namespace Crunchy.Menu
     public abstract class FragmentDefinition
     {
         public abstract bool CanConsumeNone();
+        public abstract string GetPsuedoRegEx();
 
         public FragmentDefinition()
         {
+        }
+
+        public override string ToString()
+        {
+            return GetPsuedoRegEx();
         }
     }
 
