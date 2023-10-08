@@ -28,7 +28,7 @@ namespace Crunchy.Menu
             return false;
         }
 
-        protected override string GetMaybeName()
+        protected override string GetMaybeLabel()
         {
             return token_definition.GetName();
         }

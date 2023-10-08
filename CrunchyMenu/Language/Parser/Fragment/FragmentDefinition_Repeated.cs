@@ -35,9 +35,9 @@ namespace Crunchy.Menu
             return true;
         }
 
-        protected override string GetMaybeName()
+        protected override string GetMaybeLabel()
         {
-            string inner = fragment_definition.GetName();
+            string inner = fragment_definition.GetLabel();
 
             if (minimum_count == 0 && maximum_count == int.MaxValue)
                 return inner + "*";

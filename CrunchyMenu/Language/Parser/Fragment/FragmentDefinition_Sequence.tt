@@ -91,7 +91,7 @@ namespace Crunchy.Menu
                         {
 <#                  }#>
 
-                            sub_sequences.Add(new <#=sub_class_name#>(GetName() + "_Sub" + count++, <#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
+                            sub_sequences.Add(new <#=sub_class_name#>(GetLabel() + "_Sub" + count++, <#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
 
 <#                  foreach(FragmentEntry fragment in fragments){#>
                         }

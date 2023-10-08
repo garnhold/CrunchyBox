@@ -15,9 +15,9 @@ namespace Crunchy.Menu
             return fragment_definition.Consume(tokens, index, out new_index, out producer);
         }
 
-        protected override string GetMaybeName()
+        protected override string GetMaybeLabel()
         {
-            return fragment_definition.GetName() + "?";
+            return fragment_definition.GetLabel() + "?";
         }
 
         public FragmentDefinition_Optional(string n) : base(n)

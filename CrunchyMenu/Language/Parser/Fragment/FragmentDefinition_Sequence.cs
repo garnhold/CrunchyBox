@@ -58,7 +58,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, o));
 
                         }
                 }
@@ -180,7 +180,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P2> i2 in f2.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, o));
 
                         }
                         }
@@ -310,7 +310,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P3> i3 in f3.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, o));
 
                         }
                         }
@@ -448,7 +448,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P4> i4 in f4.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, i4, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, o));
 
                         }
                         }
@@ -594,7 +594,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P5> i5 in f5.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, i4, i5, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, o));
 
                         }
                         }
@@ -748,7 +748,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P6> i6 in f6.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, o));
 
                         }
                         }
@@ -910,7 +910,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P7> i7 in f7.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, o));
 
                         }
                         }
@@ -1080,7 +1080,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P8> i8 in f8.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, o));
 
                         }
                         }
@@ -1258,7 +1258,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P9> i9 in f9.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, i9, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, i9, o));
 
                         }
                         }
@@ -1444,7 +1444,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P10> i10 in f10.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetName() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, o));
 
                         }
                         }
