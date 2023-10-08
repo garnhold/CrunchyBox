@@ -31,45 +31,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Lexer\Lexer.cs" />
-    <Compile Include="Lexer\UnknownSymbolException.cs" />
-    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer.cs" />
-    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_Ignore.cs" />
-    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_Normal.cs" />
-    <Compile Include="Lexer\Token\TokenDefinition.cs" />
-    <Compile Include="Lexer\Token\TokenInstance.cs" />
-    <Compile Include="Lexer\Token\TokenMode.cs" />
-    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_ModePusher.cs" />
-    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumer_ModePopper.cs" />
-    <Compile Include="Lexer\Token\TokenConsumer\TokenConsumers.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Repeated.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Any.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPatterns.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions_Repeated.cs" />
-    <Compile Include="Lexer\Token\Tokenizer.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_String.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Characters.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\TokenCharacterSet.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\TokenCharacterSets.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions_Repeated.cs" />
-    <Compile Include="Lexer\Token\TokenPattern\TokenPattern_Junk.cs" />
-    <Compile Include="Parser\Fragment\Extensions\FragmentDefinitionExtensions.cs" />
-    <Compile Include="Parser\Fragment\Extensions\FragmentDefinitionExtensions_Optional.cs" />
-    <Compile Include="Parser\Fragment\Extensions\FragmentDefinitionExtensions_Repeated.cs" />
-    <Compile Include="Parser\Fragment\FragmentDefinition.cs" />
-    <Compile Include="Parser\Fragment\FragmentDefinition_Any.cs" />
-    <Compile Include="Parser\Fragment\FragmentDefinition_Optional.cs" />
-    <Compile Include="Parser\Fragment\FragmentDefinition_Repeated.cs" />
-    <Compile Include="Parser\Fragment\FragmentDefinition_Sequence.cs">
+    <Compile Include="Language\Lexer\Lexer.cs" />
+    <Compile Include="Language\Lexer\Token\TokenConsumer\TokenConsumer.cs" />
+    <Compile Include="Language\Lexer\Token\TokenConsumer\TokenConsumer_Ignore.cs" />
+    <Compile Include="Language\Lexer\Token\TokenConsumer\TokenConsumer_ModePopper.cs" />
+    <Compile Include="Language\Lexer\Token\TokenConsumer\TokenConsumer_ModePusher.cs" />
+    <Compile Include="Language\Lexer\Token\TokenConsumer\TokenConsumer_Normal.cs" />
+    <Compile Include="Language\Lexer\Token\TokenConsumer\TokenConsumers.cs" />
+    <Compile Include="Language\Lexer\Token\TokenDefinition.cs" />
+    <Compile Include="Language\Lexer\Token\TokenInstance.cs" />
+    <Compile Include="Language\Lexer\Token\Tokenizer.cs" />
+    <Compile Include="Language\Lexer\Token\TokenMode.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\Extensions\TokenPatternExtensions_Repeated.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\TokenCharacterSetExtensions_Repeated.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenCharacterSet\TokenCharacterSet.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenCharacterSet\TokenCharacterSets.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPattern.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPattern_Any.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPattern_Characters.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPattern_Junk.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPattern_Repeated.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPattern_Sequence.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPattern_String.cs" />
+    <Compile Include="Language\Lexer\Token\TokenPattern\TokenPatterns.cs" />
+    <Compile Include="Language\Lexer\UnknownSymbolException.cs" />
+    <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions.cs" />
+    <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Optional.cs" />
+    <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Repeated.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinition.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinition_Any.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinition_Optional.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinition_Repeated.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinition_Sequence.cs">
       <DependentUpon>FragmentDefinition_Sequence.tt</DependentUpon>
     </Compile>
-    <Compile Include="Parser\Fragment\FragmentDefinition_Skip.cs" />
-    <Compile Include="Parser\Fragment\FragmentDefinition_Token.cs" />
-    <Compile Include="Parser\Fragment\FragmentDefinitions.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinition_Skip.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinition_Token.cs" />
+    <Compile Include="Language\Parser\Fragment\FragmentDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -86,19 +86,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Lexer\" />
-    <Folder Include="Lexer\Token\" />
-    <Folder Include="Lexer\Token\TokenConsumer\" />
-    <Folder Include="Lexer\Token\TokenPattern\" />
-    <Folder Include="Lexer\Token\TokenPattern\Extensions\" />
-    <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\" />
-    <Folder Include="Lexer\Token\TokenPattern\TokenCharacterSet\Extensions\" />
-    <Folder Include="Parser\" />
-    <Folder Include="Parser\Fragment\" />
-    <Folder Include="Parser\Fragment\Extensions\" />
+    <Folder Include="Language\" />
+    <Folder Include="Language\Lexer\" />
+    <Folder Include="Language\Parser\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Parser\Fragment\FragmentDefinition_Sequence.tt">
+    <Content Include="Language\Parser\Fragment\FragmentDefinition_Sequence.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FragmentDefinition_Sequence.cs</LastGenOutput>
     </Content>
