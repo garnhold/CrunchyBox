@@ -62,9 +62,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -88,19 +88,19 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, Operation<T, P1> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, Operation<T, P1> o)
                     {
                             fragment1 = f1;
                 
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -170,9 +170,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -199,7 +199,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -207,14 +207,13 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -287,9 +286,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -319,7 +318,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -328,16 +327,14 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -413,9 +410,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -448,7 +445,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -458,18 +455,15 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                            if(fragment4.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                            if(fragment4.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -548,9 +542,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -586,7 +580,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -597,20 +591,16 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                            if(fragment4.IsOptional() == false)
-                                return false;
-                            if(fragment5.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                            if(fragment4.CanConsumeNone())
+                            if(fragment5.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -692,9 +682,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -733,7 +723,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -745,22 +735,17 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                            if(fragment4.IsOptional() == false)
-                                return false;
-                            if(fragment5.IsOptional() == false)
-                                return false;
-                            if(fragment6.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                            if(fragment4.CanConsumeNone())
+                            if(fragment5.CanConsumeNone())
+                            if(fragment6.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -845,9 +830,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -889,7 +874,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -902,24 +887,18 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                            if(fragment4.IsOptional() == false)
-                                return false;
-                            if(fragment5.IsOptional() == false)
-                                return false;
-                            if(fragment6.IsOptional() == false)
-                                return false;
-                            if(fragment7.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                            if(fragment4.CanConsumeNone())
+                            if(fragment5.CanConsumeNone())
+                            if(fragment6.CanConsumeNone())
+                            if(fragment7.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -1007,9 +986,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -1054,7 +1033,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1068,26 +1047,19 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                            if(fragment4.IsOptional() == false)
-                                return false;
-                            if(fragment5.IsOptional() == false)
-                                return false;
-                            if(fragment6.IsOptional() == false)
-                                return false;
-                            if(fragment7.IsOptional() == false)
-                                return false;
-                            if(fragment8.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                            if(fragment4.CanConsumeNone())
+                            if(fragment5.CanConsumeNone())
+                            if(fragment6.CanConsumeNone())
+                            if(fragment7.CanConsumeNone())
+                            if(fragment8.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -1178,9 +1150,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -1228,7 +1200,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1243,28 +1215,20 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                            if(fragment4.IsOptional() == false)
-                                return false;
-                            if(fragment5.IsOptional() == false)
-                                return false;
-                            if(fragment6.IsOptional() == false)
-                                return false;
-                            if(fragment7.IsOptional() == false)
-                                return false;
-                            if(fragment8.IsOptional() == false)
-                                return false;
-                            if(fragment9.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                            if(fragment4.CanConsumeNone())
+                            if(fragment5.CanConsumeNone())
+                            if(fragment6.CanConsumeNone())
+                            if(fragment7.CanConsumeNone())
+                            if(fragment8.CanConsumeNone())
+                            if(fragment9.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }
@@ -1358,9 +1322,9 @@ namespace Crunchy.Menu
                         }
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -1411,7 +1375,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : this()
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1427,30 +1391,21 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
-                            if(fragment1.IsOptional() == false)
-                                return false;
-                            if(fragment2.IsOptional() == false)
-                                return false;
-                            if(fragment3.IsOptional() == false)
-                                return false;
-                            if(fragment4.IsOptional() == false)
-                                return false;
-                            if(fragment5.IsOptional() == false)
-                                return false;
-                            if(fragment6.IsOptional() == false)
-                                return false;
-                            if(fragment7.IsOptional() == false)
-                                return false;
-                            if(fragment8.IsOptional() == false)
-                                return false;
-                            if(fragment9.IsOptional() == false)
-                                return false;
-                            if(fragment10.IsOptional() == false)
-                                return false;
-                 
-                        return true;
+                            if(fragment1.CanConsumeNone())
+                            if(fragment2.CanConsumeNone())
+                            if(fragment3.CanConsumeNone())
+                            if(fragment4.CanConsumeNone())
+                            if(fragment5.CanConsumeNone())
+                            if(fragment6.CanConsumeNone())
+                            if(fragment7.CanConsumeNone())
+                            if(fragment8.CanConsumeNone())
+                            if(fragment9.CanConsumeNone())
+                            if(fragment10.CanConsumeNone())
+                                return true;
+                                
+                        return false;
                     }
                 }
             }

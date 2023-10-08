@@ -97,9 +97,9 @@ namespace Crunchy.Menu
 <#                  }#>
                 }
                 
-                public override bool IsOptional()
+                public override bool CanConsumeNone()
                 {
-                    if(sub_sequences.Has(s => s.IsOptional()))
+                    if(sub_sequences.Has(s => s.CanConsumeNone()))
                         return true;
                         
                     return false;
@@ -127,7 +127,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public <#=sub_class_name#>(<#=initialize_parameters#>) : this()
+                    public <#=sub_class_name#>(<#=initialize_parameters#>)
                     {
 <#                      foreach(FragmentEntry fragment in fragments){#>
                             <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
@@ -136,13 +136,14 @@ namespace Crunchy.Menu
                         producer_operation = o;
                     }
                     
-                    public override bool IsOptional()
+                    public override bool CanConsumeNone()
                     {
 <#                      foreach(FragmentEntry fragment in fragments){#>
-                            if(<#=fragment.variable_name#>.IsOptional() == false)
-                                return false;
-<#                      }#>                 
-                        return true;
+                            if(<#=fragment.variable_name#>.CanConsumeNone())
+<#                      }#>
+                                return true;
+                                
+                        return false;
                     }
                 }
             }

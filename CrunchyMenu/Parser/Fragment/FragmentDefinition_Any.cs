@@ -59,9 +59,9 @@ namespace Crunchy.Menu
             Initialize((IEnumerable<FragmentDefinition<T>>)f);
         }
 
-        public override bool IsOptional()
+        public override bool CanConsumeNone()
         {
-            if (fragment_definitions.Has(f => f.IsOptional()))
+            if (fragment_definitions.Has(f => f.CanConsumeNone()))
                 return true;
 
             return false;

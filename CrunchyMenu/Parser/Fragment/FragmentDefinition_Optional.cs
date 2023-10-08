@@ -29,7 +29,7 @@ namespace Crunchy.Menu
             fragment_definition = f;
         }
 
-        public override bool IsOptional()
+        public override bool CanConsumeNone()
         {
             return true;
         }

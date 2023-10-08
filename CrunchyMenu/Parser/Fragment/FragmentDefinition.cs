@@ -8,13 +8,10 @@ namespace Crunchy.Menu
 {
     public abstract class FragmentDefinition
     {
+        public abstract bool CanConsumeNone();
+
         public FragmentDefinition()
         {
-        }
-
-        public virtual bool IsOptional()
-        {
-            return false;
         }
     }
 
@@ -55,7 +52,7 @@ namespace Crunchy.Menu
         {
             yield return this;
 
-            if (IsOptional())
+            if (CanConsumeNone())
                 yield return FragmentDefinition_Skip<T>.INSTANCE;
         }
     }

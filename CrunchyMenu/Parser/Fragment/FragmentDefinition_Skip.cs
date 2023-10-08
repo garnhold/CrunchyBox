@@ -23,5 +23,10 @@ namespace Crunchy.Menu
         {
             operation = () => default(T);
         }
+
+        public override bool CanConsumeNone()
+        {
+            return true;
+        }
     }
 }

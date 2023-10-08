@@ -43,6 +43,11 @@ namespace Crunchy.Menu
 
             producer_operation = o;
         }
+
+        public override bool CanConsumeNone()
+        {
+            return false;
+        }
     }
     static public partial class FragmentDefinitions
     {
