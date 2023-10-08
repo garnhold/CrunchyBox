@@ -13,9 +13,9 @@ namespace Crunchy.Menu
             return TokenPatterns.Characters(min, max, item);
         }
 
-        static public TokenPattern MakeSingle(this TokenCharacterSet item)
+        static public TokenPattern MakeOne(this TokenCharacterSet item)
         {
-            return TokenPatterns.SingleCharacter(item);
+            return TokenPatterns.OneCharacter(item);
         }
 
         static public TokenPattern MakeOptional(this TokenCharacterSet item)

@@ -29,7 +29,7 @@ namespace Scratch
 
             TokenDefinition id = TokenDefinitions.Normal("id",
                 TokenPatterns.Sequence(
-                    TokenPatterns.SingleCharacter(
+                    TokenPatterns.OneCharacter(
                         TokenCharacterSets.Alphabetic(), '_'
                     ),
                     TokenPatterns.ZeroOrMoreCharacters(
@@ -49,7 +49,7 @@ namespace Scratch
                 TokenPatterns.Sequence(
                     TokenCharacterSets.Single('-').MakeOptional(),
                     TokenCharacterSets.Numeric().MakeZeroOrMore(),
-                    TokenCharacterSets.Single('.').MakeSingle(),
+                    TokenCharacterSets.Single('.').MakeOne(),
                     TokenCharacterSets.Numeric().MakeZeroOrMore()
                 )
             );
@@ -57,7 +57,7 @@ namespace Scratch
             TokenMode string_mode = new TokenMode();
 
             TokenDefinition string_opening = TokenDefinitions.ModePusher("string_opening",
-                TokenCharacterSets.Single('"').MakeSingle(),
+                TokenCharacterSets.Single('"').MakeOne(),
                 string_mode
             );
 
@@ -67,13 +67,13 @@ namespace Scratch
 
             TokenDefinition string_escaped = TokenDefinitions.Normal("escaped_character",
                 TokenPatterns.Sequence(
-                    TokenCharacterSets.Single('\\').MakeSingle(),
-                    TokenCharacterSets.All().MakeSingle()
+                    TokenCharacterSets.Single('\\').MakeOne(),
+                    TokenCharacterSets.All().MakeOne()
                 )
             );
 
             TokenDefinition string_closing = TokenDefinitions.ModePopper("string_closing",
-                TokenCharacterSets.Single('"').MakeSingle(),
+                TokenCharacterSets.Single('"').MakeOne(),
                 string_mode
             );
 
