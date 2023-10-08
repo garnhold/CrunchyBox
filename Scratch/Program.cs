@@ -100,6 +100,22 @@ namespace Scratch
             lexer.Tokenize("what is -.3 newa -145 \"public crap?on all &*#(#))$ haha \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
                 .Process(t => Console.WriteLine(t));
 
+            FragmentDefinitions.Token(string_opening, s => "");
+
+            /*
+            ThisAssembly is why you probably need to pass around Language because
+                you should allow for auto token fragments i.e. conversions from
+
+???? maybe not?
+                */
+
+            FragmentDefinitions.Sequence("string",
+                string_opening.MakeFragment(),
+                FragmentDefinitions.Any(string_fragment.MakeFragment(), string_escaped.MakeFragment()).MakeZeroOrMore(),
+                string_closing.MakeFragment(),
+                (j1, b, j2) => "poop"
+            );
+
             Console.WriteLine("Done");
             Console.ReadLine();
         }
