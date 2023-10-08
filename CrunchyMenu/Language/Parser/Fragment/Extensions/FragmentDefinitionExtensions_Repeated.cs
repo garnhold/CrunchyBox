@@ -12,5 +12,15 @@ namespace Crunchy.Menu
         {
             return FragmentDefinitions.Repeated(item, min, max);
         }
+
+        static public FragmentDefinition<T[]> MakeZeroOrMore<T>(this FragmentDefinition<T> item)
+        {
+            return FragmentDefinitions.ZeroOrMore(item);
+        }
+
+        static public FragmentDefinition<T[]> MakeOneOrMore<T>(this FragmentDefinition<T> item)
+        {
+            return FragmentDefinitions.OneOrMore(item);
+        }
     }
 }
