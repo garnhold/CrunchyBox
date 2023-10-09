@@ -96,10 +96,10 @@ namespace Scratch
                 string_opening
             );
 
-            lexer.Tokenize("what is -.3 newa -145 \"public crap?on all &*#(#))$ haha \\\"what\\\"\" 7 going public 3.1 new  \t on today in public")
-                .Process(t => Console.WriteLine(t));
+            string input = "\"what is going \\nOn here?\"";
 
-            FragmentDefinitions.Token(string_opening, s => "");
+            lexer.Tokenize(input)
+                .Process(t => Console.WriteLine(t));
 
             /*
             ThisAssembly is why you probably need to pass around Language because
@@ -110,12 +110,17 @@ namespace Scratch
                 I did auto lexer tokens in llamaish fyi
                 */
 
-            FragmentDefinitions.Sequence("string",
+            FragmentDefinition<string> sf = FragmentDefinitions.Sequence("string",
                 string_opening.MakeFragment(),
-                FragmentDefinitions.Any(string_fragment.MakeFragment(), string_escaped.MakeFragment()).MakeZeroOrMore(),
+                FragmentDefinitions.Any(
+                    string_fragment.MakeFragment(s => s), 
+                    string_escaped.MakeFragment(s => s.ExpandEscapeSequences())
+                ).MakeZeroOrMore(),
                 string_closing.MakeFragment(),
-                (j1, b, j2) => "poop"
+                (j1, b, j2) => b.Join("")
             );
+
+            Console.WriteLine("Result: " + sf.Parse(lexer, input));
 
             Console.WriteLine("Done");
             Console.ReadLine();
