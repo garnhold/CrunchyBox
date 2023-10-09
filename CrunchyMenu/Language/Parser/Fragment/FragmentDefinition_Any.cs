@@ -12,7 +12,7 @@ namespace Crunchy.Menu
 
         protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
         {
-            int best_index = int.MinValue;
+            int best_index = -1;
             Operation<T> best_producer = null;
 
             foreach (FragmentDefinition<T> fragment_definition in fragment_definitions)
