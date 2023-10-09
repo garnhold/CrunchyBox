@@ -58,7 +58,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, o));
 
                         }
                 }
@@ -94,7 +94,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, Operation<T, P1> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, Operation<T, P1> o) : base(null)
                     {
                             fragment1 = f1;
                 
@@ -180,7 +180,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P2> i2 in f2.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, o));
 
                         }
                         }
@@ -220,7 +220,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -310,7 +310,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P3> i3 in f3.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, o));
 
                         }
                         }
@@ -354,7 +354,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -448,7 +448,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P4> i4 in f4.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, o));
 
                         }
                         }
@@ -496,7 +496,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -594,7 +594,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P5> i5 in f5.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, o));
 
                         }
                         }
@@ -646,7 +646,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -748,7 +748,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P6> i6 in f6.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, o));
 
                         }
                         }
@@ -804,7 +804,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -910,7 +910,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P7> i7 in f7.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, o));
 
                         }
                         }
@@ -970,7 +970,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1080,7 +1080,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P8> i8 in f8.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, i8, o));
 
                         }
                         }
@@ -1144,7 +1144,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1258,7 +1258,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P9> i9 in f9.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, i9, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, i8, i9, o));
 
                         }
                         }
@@ -1326,7 +1326,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;
@@ -1444,7 +1444,7 @@ namespace Crunchy.Menu
                         foreach(FragmentDefinition<P10> i10 in f10.GetSubAlternatives())
                         {
 
-                            sub_sequences.Add(new FragmentDefinition_SubSequence(GetLabel() + "_Sub" + count++, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, o));
+                            sub_sequences.Add(new FragmentDefinition_SubSequence(i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, o));
 
                         }
                         }
@@ -1516,7 +1516,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public FragmentDefinition_SubSequence(string n, FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : base(n)
+                    public FragmentDefinition_SubSequence(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o) : base(null)
                     {
                             fragment1 = f1;
                             fragment2 = f2;

@@ -91,7 +91,7 @@ namespace Crunchy.Menu
                         {
 <#                  }#>
 
-                            sub_sequences.Add(new <#=sub_class_name#>(GetLabel() + "_Sub" + count++, <#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
+                            sub_sequences.Add(new <#=sub_class_name#>(<#=fragments.Convert(f => f.iter_name).Append("o").Join(", ")#>));
 
 <#                  foreach(FragmentEntry fragment in fragments){#>
                         }
@@ -133,7 +133,7 @@ namespace Crunchy.Menu
                         return true;
                     }
                     
-                    public <#=sub_class_name#>(string n, <#=initialize_parameters#>) : base(n)
+                    public <#=sub_class_name#>(<#=initialize_parameters#>) : base(null)
                     {
 <#                      foreach(FragmentEntry fragment in fragments){#>
                             <#=fragment.variable_name#> = <#=fragment.parameter_name#>;
