@@ -73,8 +73,7 @@ namespace Scratch
             );
 
             TokenDefinition string_closing = TokenDefinitions.ModePopper("string_closing",
-                TokenCharacterSets.Single('"').MakeOne(),
-                string_mode
+                TokenCharacterSets.Single('"').MakeOne()
             );
 
             TokenDefinition public_keyword = TokenDefinitions.Normal("public");

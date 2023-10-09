@@ -22,9 +22,9 @@ namespace Crunchy.Menu
         {
             return new TokenConsumer_ModePusher(token_mode_definition);
         }
-        static public TokenConsumer ModePopper(TokenMode token_mode_definition)
+        static public TokenConsumer ModePopper()
         {
-            return new TokenConsumer_ModePopper(token_mode_definition);
+            return new TokenConsumer_ModePopper();
         }
     }
 }

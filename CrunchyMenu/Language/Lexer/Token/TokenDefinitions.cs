@@ -35,13 +35,13 @@ namespace Crunchy.Menu
             return ModePusher(null, t, m);
         }
 
-        static public TokenDefinition ModePopper(string n, TokenPattern t, TokenMode m)
+        static public TokenDefinition ModePopper(string n, TokenPattern t)
         {
-            return new TokenDefinition(n, t, TokenConsumers.ModePopper(m));
+            return new TokenDefinition(n, t, TokenConsumers.ModePopper());
         }
-        static public TokenDefinition ModePopper(TokenPattern t, TokenMode m)
+        static public TokenDefinition ModePopper(TokenPattern t)
         {
-            return ModePopper(null, t, m);
+            return ModePopper(null, t);
         }
     }
 }

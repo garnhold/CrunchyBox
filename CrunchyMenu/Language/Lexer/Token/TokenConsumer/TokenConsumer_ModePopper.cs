@@ -8,16 +8,13 @@ namespace Crunchy.Menu
 {
     public class TokenConsumer_ModePopper : TokenConsumer
     {
-        private TokenMode token_mode_definition;
-
-        public TokenConsumer_ModePopper(TokenMode d)
+        public TokenConsumer_ModePopper()
         {
-            token_mode_definition = d;
         }
 
         public override bool OnConsume(Tokenizer tokenizer)
         {
-            tokenizer.PopTokenMode(token_mode_definition);
+            tokenizer.PopTokenMode();
 
             return true;
         }
