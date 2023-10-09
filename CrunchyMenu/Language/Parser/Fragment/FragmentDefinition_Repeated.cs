@@ -16,14 +16,13 @@ namespace Crunchy.Menu
         protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T[]> producer)
         {
             int best_index = -1;
+            int current_index = index;
             List<Operation<T>> sub_producers = new List<Operation<T>>();
 
-            new_index = index;
-
-            while (fragment_definition.Consume(tokens, new_index, out new_index, out Operation<T> sub_producer))
+            while (fragment_definition.Consume(tokens, current_index, out current_index, out Operation<T> sub_producer))
             {
                 sub_producers.Add(sub_producer);
-                best_index = new_index;
+                best_index = current_index;
 
                 if (sub_producers.Count > maximum_count)
                 {
