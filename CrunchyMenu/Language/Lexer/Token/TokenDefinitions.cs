@@ -43,5 +43,41 @@ namespace Crunchy.Menu
         {
             return ModePopper(null, t);
         }
+
+        static public TokenDefinition Normal(string n, string sit)
+        {
+            return Normal(n, TokenPatterns.Parse(sit));
+        }
+        static public TokenDefinition Normal(string sit)
+        {
+            return Normal(null, sit);
+        }
+
+        static public TokenDefinition Ignore(string n, string sit)
+        {
+            return Ignore(n, TokenPatterns.Parse(sit));
+        }
+        static public TokenDefinition Ignore(string sit)
+        {
+            return Ignore(null, sit);
+        }
+
+        static public TokenDefinition ModePusher(string n, string sit, TokenMode m)
+        {
+            return ModePusher(n, TokenPatterns.Parse(sit), m);
+        }
+        static public TokenDefinition ModePusher(string sit, TokenMode m)
+        {
+            return ModePusher(null, sit, m);
+        }
+
+        static public TokenDefinition ModePopper(string n, string sit)
+        {
+            return ModePopper(n, TokenPatterns.Parse(sit));
+        }
+        static public TokenDefinition ModePopper(string sit)
+        {
+            return ModePopper(null, sit);
+        }
     }
 }
