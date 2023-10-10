@@ -46,14 +46,6 @@ namespace Crunchy.Menu
             return pattern.GetPsuedoRegEx();
         }
 
-        public bool IsJunk()
-        {
-            if (pattern == TokenPattern_Junk.INSTANCE)
-                return true;
-
-            return false;
-        }
-
         public TokenPattern GetTokenPattern()
         {
             return pattern;

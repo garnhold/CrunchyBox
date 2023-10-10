@@ -55,6 +55,11 @@ namespace Crunchy.Menu
             return token_mode_stack.Peek();
         }
 
+        public JunkTokenBehaviour GetCurrentJunkTokenBehaviour()
+        {
+            return GetCurrentTokenMode().GetJunkTokenBehaviour();
+        }
+
         public TokenDefinition GetCurrentJunkTokenDefinition()
         {
             return GetCurrentTokenMode().GetJunkTokenDefinition();

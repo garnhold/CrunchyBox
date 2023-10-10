@@ -8,10 +8,11 @@ namespace Crunchy.Menu
 {
     public class TokenPattern_Junk : TokenPattern
     {
-        static public readonly TokenPattern INSTANCE = new TokenPattern_Junk();
+        private JunkTokenBehaviour behaviour;
 
-        private TokenPattern_Junk()
+        public TokenPattern_Junk(JunkTokenBehaviour b)
         {
+            behaviour = b;
         }
 
         public override int Detect(string text, int index)
@@ -26,7 +27,12 @@ namespace Crunchy.Menu
 
         public override string GetPsuedoRegEx()
         {
-            return "????";
+            return behaviour.GetPsuedoRegEx();
+        }
+
+        public JunkTokenBehaviour GetBehaviour()
+        {
+            return behaviour;
         }
     }
 }

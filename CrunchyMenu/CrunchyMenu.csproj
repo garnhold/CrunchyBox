@@ -78,6 +78,7 @@
     <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Convert.cs" />
     <Compile Include="Language\Parser\Fragment\FragmentDefinition_Joined.cs" />
     <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Joined.cs" />
+    <Compile Include="Language\Lexer\Token\JunkTokenBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

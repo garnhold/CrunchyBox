@@ -47,7 +47,7 @@ namespace Crunchy.Menu
             TokenDefinition t_optional = TokenDefinitions.Normal("optional", "?");
 
             TokenDefinition t_normal_character = TokenDefinitions.Normal("character",
-                TokenPatterns.Junk()
+                TokenPatterns.JunkCharacter()
             );
 
             TokenDefinition t_escaped_character = TokenDefinitions.Normal("escaped_character",

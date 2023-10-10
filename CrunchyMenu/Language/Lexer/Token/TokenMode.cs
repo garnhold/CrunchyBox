@@ -12,6 +12,8 @@ namespace Crunchy.Menu
         private HashSet<TokenDefinition>[] token_definition_map;
 
         private TokenDefinition junk_token_definition;
+        private JunkTokenBehaviour junk_token_behaviour;
+
         private List<TokenDefinition> token_definitions;
 
         public TokenMode()
@@ -24,8 +26,13 @@ namespace Crunchy.Menu
 
         public void AddTokenDefinition(TokenDefinition token_definition)
         {
-            if (token_definition.IsJunk())
+            TokenPattern pattern = token_definition.GetTokenPattern();
+
+            if (pattern.Convert<TokenPattern_Junk>(out TokenPattern_Junk junk))
+            {
+                junk_token_behaviour = junk.GetBehaviour();
                 junk_token_definition = token_definition;
+            }
             else
             {
                 token_definitions.Add(token_definition);
@@ -77,6 +84,11 @@ namespace Crunchy.Menu
             new_index = index;
             token_definition = null;
             return false;
+        }
+
+        public JunkTokenBehaviour GetJunkTokenBehaviour()
+        {
+            return junk_token_behaviour;
         }
 
         public TokenDefinition GetJunkTokenDefinition()

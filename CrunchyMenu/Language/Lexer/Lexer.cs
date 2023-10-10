@@ -36,24 +36,44 @@ namespace Crunchy.Menu
 
                         if (junk_token_definition != null)
                         {
-                            int junk_start = index;
-                            int junk_end = index;
+                            JunkTokenBehaviour behaviour = tokenizer.GetCurrentJunkTokenBehaviour();
 
-                            while (++index < text.Length)
+                            switch (behaviour)
                             {
-                                if (tokenizer.StepTokenizeInner(text, ref index, out token))
+                                case JunkTokenBehaviour.Character:
+                                    yield return new TokenInstance(
+                                        text.SubSection(index, index + 1),
+                                        junk_token_definition
+                                    );
+
+                                    index++;
                                     break;
 
-                                junk_end = index;
+                                case JunkTokenBehaviour.String:
+                                    int junk_start = index;
+                                    int junk_end = index;
+
+                                    while (++index < text.Length)
+                                    {
+                                        if (tokenizer.StepTokenizeInner(text, ref index, out token))
+                                            break;
+
+                                        junk_end = index;
+                                    }
+
+                                    yield return new TokenInstance(
+                                        text.SubSection(junk_start, junk_end + 1),
+                                        junk_token_definition
+                                    );
+
+                                    if (token != null)
+                                        yield return token;
+
+                                    break;
+
+                                default:
+                                    throw new UnaccountedBranchException("behaviour", behaviour);
                             }
-
-                            yield return new TokenInstance(
-                                text.SubSection(junk_start, junk_end + 1),
-                                junk_token_definition
-                            );
-
-                            if (token != null)
-                                yield return token;
                         }
                         else
                         {
