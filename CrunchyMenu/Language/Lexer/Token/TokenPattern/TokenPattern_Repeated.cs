@@ -87,6 +87,12 @@ namespace Crunchy.Menu
                 return true;
             }
 
+            if (minimum_count == 1 && maximum_count == 1)
+            {
+                output = pattern;
+                return true;
+            }
+
             output = null;
             return false;
         }

@@ -45,6 +45,18 @@ namespace Crunchy.Menu
             return false;
         }
 
+        public override bool TrySimplify(out TokenPattern output)
+        {
+            if (value.Length == 0)
+            {
+                output = null;
+                return true;
+            }
+
+            output = null;
+            return false;
+        }
+
         public string GetValue()
         {
             return value;

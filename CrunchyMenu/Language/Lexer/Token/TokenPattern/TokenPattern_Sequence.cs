@@ -51,6 +51,18 @@ namespace Crunchy.Menu
 
         public override bool TrySimplify(out TokenPattern output)
         {
+            if (patterns.Count == 0)
+            {
+                output = null;
+                return true;
+            }
+
+            if (patterns.Count == 1)
+            {
+                output = patterns.GetFirst();
+                return true;
+            }
+
             List<TokenPattern> simplified_patterns = new List<TokenPattern>();
 
             foreach (TokenPattern pattern in patterns)
