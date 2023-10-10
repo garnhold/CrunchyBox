@@ -27,6 +27,8 @@ namespace Scratch
                 TokenCharacterSets.Whitespace().MakeOneOrMore()
             );
 
+            TokenDefinition whitespace2 = TokenDefinitions.Ignore("whitespace2", "[\r\t\n ]+");
+
             TokenDefinition id = TokenDefinitions.Normal("id",
                 TokenPatterns.Sequence(
                     TokenPatterns.OneCharacter(
