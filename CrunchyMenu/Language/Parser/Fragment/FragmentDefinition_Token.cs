@@ -14,13 +14,16 @@ namespace Crunchy.Menu
 
         protected override bool ConsumeInternal(IList<TokenInstance> tokens, int index, out int new_index, out Operation<T> producer)
         {
-            TokenInstance current_token = tokens[index];
-
-            if (current_token.GetTokenDefinition() == token_definition)
+            if (index < tokens.Count)
             {
-                new_index = index + 1;
-                producer = () => producer_operation(current_token.GetValue());
-                return true;
+                TokenInstance current_token = tokens[index];
+
+                if (current_token.GetTokenDefinition() == token_definition)
+                {
+                    new_index = index + 1;
+                    producer = () => producer_operation(current_token.GetValue());
+                    return true;
+                }
             }
 
             new_index = -1;
