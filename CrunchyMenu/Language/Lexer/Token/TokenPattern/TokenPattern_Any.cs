@@ -50,8 +50,24 @@ namespace Crunchy.Menu
                 return true;
             }
 
-            output = null;
-            return false;
+            List<TokenPattern> simplified_patterns = new List<TokenPattern>();
+
+            foreach (TokenPattern pattern in patterns)
+            {
+                TokenPattern current = pattern.Simplify();
+
+                if (current != null)
+                    simplified_patterns.Add(current);
+            }
+
+            if (simplified_patterns.AreElementsEqual(patterns))
+            {
+                output = null;
+                return false;
+            }
+
+            output = new TokenPattern_Any(simplified_patterns);
+            return true;
         }
     }
 }
