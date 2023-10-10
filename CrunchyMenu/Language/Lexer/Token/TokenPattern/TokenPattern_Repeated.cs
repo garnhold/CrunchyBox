@@ -78,5 +78,17 @@ namespace Crunchy.Menu
 
             return contained + "{" + minimum_count + "," + maximum_count + "}";
         }
+
+        public override bool TrySimplify(out TokenPattern output)
+        {
+            if (pattern.TrySimplify(out TokenPattern sub_output))
+            {
+                output = new TokenPattern_Repeated(sub_output, minimum_count, maximum_count);
+                return true;
+            }
+
+            output = null;
+            return false;
+        }
     }
 }

@@ -13,6 +13,9 @@ namespace Crunchy.Menu
 
         public abstract string GetPsuedoRegEx();
 
+        public virtual bool TrySimplify(out TokenPattern output) { output = null; return false; }
+        public virtual bool TryAppend(TokenPattern to_append, out TokenPattern output) { output = null; return false; }
+
         static public implicit operator TokenPattern(string s)
         {
             return new TokenPattern_String(s);
@@ -20,6 +23,19 @@ namespace Crunchy.Menu
 
         protected TokenPattern()
         {
+        }
+
+        public TokenPattern Simplify()
+        {
+            TokenPattern pattern = this;
+
+            while (true)
+            {
+                if (pattern.TrySimplify(out TokenPattern simpler) == false)
+                    return pattern;
+
+                pattern = simpler;
+            }
         }
 
         public virtual bool IsRequired()

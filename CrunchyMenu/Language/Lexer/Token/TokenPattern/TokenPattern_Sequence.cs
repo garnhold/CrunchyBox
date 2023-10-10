@@ -48,5 +48,30 @@ namespace Crunchy.Menu
                 .Convert(p => p.GetPsuedoRegEx())
                 .Join("");
         }
+
+        public override bool TrySimplify(out TokenPattern output)
+        {
+            List<TokenPattern> simplified_patterns = new List<TokenPattern>();
+
+            foreach (TokenPattern pattern in patterns)
+            {
+                TokenPattern current = pattern.Simplify();
+                TokenPattern last = simplified_patterns.GetLast();
+
+                if (last != null && last.TryAppend(pattern, out TokenPattern combined))
+                    simplified_patterns.SetLast(combined.Simplify());
+                else
+                    simplified_patterns.Add(current);
+            }
+
+            if (simplified_patterns.AreElementsEqual(patterns))
+            {
+                output = null;
+                return false;
+            }
+
+            output = new TokenPattern_Sequence(simplified_patterns);
+            return true;
+        }
     }
 }

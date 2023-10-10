@@ -35,5 +35,17 @@ namespace Crunchy.Menu
                 .Convert(p => "(" + p.GetPsuedoRegEx() + ")")
                 .Join("|");
         }
+
+        public override bool TrySimplify(out TokenPattern output)
+        {
+            if (patterns.Count == 1)
+            {
+                output = patterns.GetFirst();
+                return true;
+            }
+
+            output = null;
+            return false;
+        }
     }
 }

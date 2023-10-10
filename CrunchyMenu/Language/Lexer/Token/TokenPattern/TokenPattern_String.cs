@@ -32,5 +32,22 @@ namespace Crunchy.Menu
         {
             return value.RegexEscape();
         }
+
+        public override bool TryAppend(TokenPattern to_append, out TokenPattern output)
+        {
+            if (to_append.Convert<TokenPattern_String>(out TokenPattern_String as_string))
+            {
+                output = new TokenPattern_String(GetValue() + as_string.GetValue());
+                return true;
+            }
+
+            output = null;
+            return false;
+        }
+
+        public string GetValue()
+        {
+            return value;
+        }
     }
 }
