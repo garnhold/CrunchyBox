@@ -128,5 +128,14 @@ namespace Crunchy.Menu
         {
             return OneOrMoreJoined(null, f, j);
         }
+
+        static public FragmentDefinition<T[]> TwoOrMoreJoined<T>(string n, FragmentDefinition<T> f, FragmentDefinition j)
+        {
+            return Joined(n, f, j, 2, int.MaxValue);
+        }
+        static public FragmentDefinition<T[]> TwoOrMoreJoined<T>(FragmentDefinition<T> f, FragmentDefinition j)
+        {
+            return TwoOrMoreJoined(null, f, j);
+        }
     }
 }

@@ -22,5 +22,10 @@ namespace Crunchy.Menu
         {
             return FragmentDefinitions.OneOrMoreJoined(item, j);
         }
+
+        static public FragmentDefinition<T[]> MakeTwoOrMoreJoined<T>(this FragmentDefinition<T> item, FragmentDefinition j)
+        {
+            return FragmentDefinitions.TwoOrMoreJoined(item, j);
+        }
     }
 }
