@@ -68,7 +68,7 @@ namespace Scratch
             );
 
             TokenDefinition string_fragment = TokenDefinitions.Normal("string_fragment",
-                TokenPatterns.Junk()
+                TokenPatterns.JunkString()
             );
 
             TokenDefinition string_escaped = TokenDefinitions.Normal("escaped_character",
