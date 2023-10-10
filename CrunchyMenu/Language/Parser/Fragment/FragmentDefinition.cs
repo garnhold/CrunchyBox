@@ -10,6 +10,8 @@ namespace Crunchy.Menu
     {
         private string name;
 
+        public abstract bool ConsumeWithoutProduct(IList<TokenInstance> tokens, int index, out int new_index);
+
         public abstract bool CanConsumeNone();
         public abstract string GetPsuedoRegEx();
 
@@ -93,6 +95,11 @@ namespace Crunchy.Menu
 
             if (CanConsumeNone())
                 yield return FragmentDefinition_Skip<T>.INSTANCE;
+        }
+
+        public override bool ConsumeWithoutProduct(IList<TokenInstance> tokens, int index, out int new_index)
+        {
+            return Consume(tokens, index, out new_index, out Operation<T> producer);
         }
     }
 }
