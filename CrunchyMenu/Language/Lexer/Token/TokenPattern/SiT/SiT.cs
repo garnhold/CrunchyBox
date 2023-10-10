@@ -42,6 +42,8 @@ namespace Crunchy.Menu
                 TokenCharacterSets.Whitespace().MakeOneOrMore()
             );
 
+            TokenDefinition t_any_character = TokenDefinitions.Normal("any_character", ".");
+
             TokenDefinition t_one_or_more = TokenDefinitions.Normal("one_or_more", "+");
             TokenDefinition t_zero_or_more = TokenDefinitions.Normal("zero_or_more", "*");
             TokenDefinition t_optional = TokenDefinitions.Normal("optional", "?");
@@ -75,6 +77,7 @@ namespace Crunchy.Menu
             TokenDefinition t_repeat_comma = TokenDefinitions.Normal("repeat_comma", ",");
 
             default_mode.AddTokenDefinitions(
+                t_any_character,
                 t_one_or_more,
                 t_zero_or_more,
                 t_optional,
@@ -132,6 +135,17 @@ namespace Crunchy.Menu
                 ),
                 f_character.MakeConvert(c => TokenCharacterSets.Single(c))
             ).MakeOneOrMore().MakeConvert(cs => TokenCharacterSets.Combine(cs));
+
+            FragmentDefinition<TokenCharacterSet> f_class = FragmentDefinitions.Any(
+                t_any_character.MakeFragment(s => TokenCharacterSets.All()),
+
+                FragmentDefinitions.Sequence(
+                    t_set_start.MakeFragment(),
+                    f_character_set,
+                    t_set_end.MakeFragment(),
+                    (d1, c, d2) => c
+                )
+            );
                 
             FragmentDefinition_Any<TokenPattern> atom = new FragmentDefinition_Any<TokenPattern>("atom");
 
@@ -184,11 +198,9 @@ namespace Crunchy.Menu
                 ),
 
                 FragmentDefinitions.Sequence(
-                    t_set_start.MakeFragment(),
-                    f_character_set,
-                    t_set_end.MakeFragment(),
+                    f_class,
                     f_count.MakeOptional(),
-                    (d1, c, d2, n) => {
+                    (c, n) => {
                         if (n == null)
                             return TokenPatterns.OneCharacter(c);
 
