@@ -8,9 +8,9 @@ namespace Crunchy.Menu
 {
     static public class TokenPatterns
     {
-        static public TokenPattern Parse(string input)
+        static public TokenPattern SiT(string input)
         {
-            return SiT.GetInstance().Parse(input);
+            return Menu.SiT.GetInstance().Parse(input);
         }
 
         static public TokenPattern Sequence(IEnumerable<TokenPattern> patterns)

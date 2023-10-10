@@ -44,40 +44,40 @@ namespace Crunchy.Menu
             return ModePopper(null, t);
         }
 
-        static public TokenDefinition Normal(string n, string sit)
+        static public TokenDefinition NormalSiT(string n, string sit)
         {
-            return Normal(n, TokenPatterns.Parse(sit));
+            return Normal(n, TokenPatterns.SiT(sit));
         }
-        static public TokenDefinition Normal(string sit)
+        static public TokenDefinition NormalSiT(string sit)
         {
-            return Normal(null, sit);
-        }
-
-        static public TokenDefinition Ignore(string n, string sit)
-        {
-            return Ignore(n, TokenPatterns.Parse(sit));
-        }
-        static public TokenDefinition Ignore(string sit)
-        {
-            return Ignore(null, sit);
+            return NormalSiT(null, sit);
         }
 
-        static public TokenDefinition ModePusher(string n, string sit, TokenMode m)
+        static public TokenDefinition IgnoreSiT(string n, string sit)
         {
-            return ModePusher(n, TokenPatterns.Parse(sit), m);
+            return Ignore(n, TokenPatterns.SiT(sit));
         }
-        static public TokenDefinition ModePusher(string sit, TokenMode m)
+        static public TokenDefinition IgnoreSiT(string sit)
         {
-            return ModePusher(null, sit, m);
+            return IgnoreSiT(null, sit);
         }
 
-        static public TokenDefinition ModePopper(string n, string sit)
+        static public TokenDefinition ModePusherSiT(string n, string sit, TokenMode m)
         {
-            return ModePopper(n, TokenPatterns.Parse(sit));
+            return ModePusher(n, TokenPatterns.SiT(sit), m);
         }
-        static public TokenDefinition ModePopper(string sit)
+        static public TokenDefinition ModePusherSiT(string sit, TokenMode m)
         {
-            return ModePopper(null, sit);
+            return ModePusherSiT(null, sit, m);
+        }
+
+        static public TokenDefinition ModePopperSiT(string n, string sit)
+        {
+            return ModePopper(n, TokenPatterns.SiT(sit));
+        }
+        static public TokenDefinition ModePopperSiT(string sit)
+        {
+            return ModePopperSiT(null, sit);
         }
     }
 }
