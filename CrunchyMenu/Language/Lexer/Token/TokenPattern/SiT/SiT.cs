@@ -20,6 +20,18 @@ namespace Crunchy.Menu
             return INSTANCE;
         }
 
+        private class Count
+        {
+            public readonly int min;
+            public readonly int max;
+
+            public Count(int mi, int ma)
+            {
+                min = mi;
+                max = ma;
+            }
+        }
+
         private SiT()
         {
             TokenMode default_mode = new TokenMode();
@@ -96,10 +108,10 @@ namespace Crunchy.Menu
                     t_escaped_character.MakeFragment(s => s[1])
                 );
 
-            FragmentDefinition<IntRange> f_count = FragmentDefinitions.Any(
-                t_zero_or_more.MakeFragment(s => new IntRange(0, int.MaxValue)),
-                t_one_or_more.MakeFragment(s => new IntRange(1, int.MaxValue)),
-                t_optional.MakeFragment(s => new IntRange(0, 1)),
+            FragmentDefinition<Count> f_count = FragmentDefinitions.Any(
+                t_zero_or_more.MakeFragment(s => new Count(0, int.MaxValue)),
+                t_one_or_more.MakeFragment(s => new Count(1, int.MaxValue)),
+                t_optional.MakeFragment(s => new Count(0, 1)),
 
                 FragmentDefinitions.Sequence(
                     t_repeat_start.MakeFragment(),
@@ -107,7 +119,7 @@ namespace Crunchy.Menu
                     t_repeat_comma.MakeFragment(),
                     t_repeat_number.MakeFragment(s => s.ParseInt()),
                     t_repeat_end.MakeFragment(),
-                    (d1, n1, d2, n2, d3) => new IntRange(n1, n2)
+                    (d1, n1, d2, n2, d3) => new Count(n1, n2)
                 )
             );
                 
@@ -139,7 +151,12 @@ namespace Crunchy.Menu
                 FragmentDefinitions.Sequence(
                     sub_expression,
                     f_count,
-                    (e, c) => e.MakeRepeated(c.x1, c.x2)
+                    (e, c) => {
+                        if (c == null)
+                            return e;
+
+                        return e.MakeRepeated(c.min, c.max);
+                    }
                 ),
 
                 FragmentDefinitions.Sequence(
@@ -158,7 +175,12 @@ namespace Crunchy.Menu
                 FragmentDefinitions.Sequence(
                     f_character,
                     f_count,
-                    (c, n) => TokenPatterns.Characters(n.x1, n.x2, c)
+                    (c, n) => {
+                        if (n == null)
+                            return TokenPatterns.OneCharacter(c);
+
+                        return TokenPatterns.Characters(n.min, n.max, c);
+                    }
                 ),
 
                 FragmentDefinitions.Sequence(
@@ -167,10 +189,10 @@ namespace Crunchy.Menu
                     t_set_end.MakeFragment(),
                     f_count.MakeOptional(),
                     (d1, c, d2, n) => {
-                        if (n.x1 == 0 && n.x2 == 0)
+                        if (n == null)
                             return TokenPatterns.OneCharacter(c);
 
-                        return TokenPatterns.Characters(n.x1, n.x2, c);
+                        return TokenPatterns.Characters(n.min, n.max, c);
                     }
                 )
             );
