@@ -58,10 +58,13 @@ namespace Crunchy.Menu
                 TokenPattern current = pattern.Simplify();
                 TokenPattern last = simplified_patterns.GetLast();
 
-                if (last != null && last.TryAppend(pattern, out TokenPattern combined))
-                    simplified_patterns.SetLast(combined.Simplify());
-                else
-                    simplified_patterns.Add(current);
+                if (current != null)
+                {
+                    if (last != null && last.TryAppend(pattern, out TokenPattern combined))
+                        simplified_patterns.SetLast(combined.Simplify());
+                    else
+                        simplified_patterns.Add(current);
+                }
             }
 
             if (simplified_patterns.AreElementsEqual(patterns))
