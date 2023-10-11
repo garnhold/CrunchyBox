@@ -20,6 +20,7 @@ namespace Scratch
         public static void Main(string[] args)
         {
             TokenMode mode = new TokenMode();
+            Operation<TokenDefinition, string> TOK = mode.GetTOK();
 
             Lexer lexer = new Lexer(mode);
 
@@ -36,8 +37,10 @@ namespace Scratch
             TokenDefinition string_escaped = SiTTokens.Normal("escaped_character", "\\\\.");
             TokenDefinition string_closing = SiTTokens.ModePopper("string_closing", "\"");
 
-            TokenDefinition public_keyword = SiTTokens.Normal("public");
-            TokenDefinition new_keyword = SiTTokens.Normal("new");
+            TokenDefinition public_keyword = TOK("public");
+            //TokenDefinition new_keyword = TOK("new");
+
+            //TOK("public");
 
             string_mode.AddTokenDefinitions(
                 string_fragment,
@@ -50,8 +53,6 @@ namespace Scratch
                 id,
                 whole_number,
                 decimal_number,
-                public_keyword,
-                new_keyword,
                 string_opening
             );
 
