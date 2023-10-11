@@ -82,12 +82,12 @@
     <Compile Include="Language\Lexer\Token\Extensions\TokenDefinitionExtensions_FragmentDefinition.cs" />
     <Compile Include="Language\Lexer\Token\TokenDefinitions.cs" />
     <Compile Include="Language\Parser\Fragment\FragmentDefinition_Convert.cs" />
-    <Compile Include="Language\Lexer\Token\TokenPattern\SiT\SiT.cs" />
     <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Convert.cs" />
     <Compile Include="Language\Parser\Fragment\FragmentDefinition_Joined.cs" />
     <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Joined.cs" />
     <Compile Include="Language\Lexer\Token\JunkTokenBehaviour.cs" />
-    <Compile Include="Language\Lexer\Token\SiTTokens.cs" />
+    <Compile Include="Language\Lexer\SiT\SiT.cs" />
+    <Compile Include="Language\Lexer\SiT\SiTTokens.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -108,7 +108,7 @@
     <Folder Include="Language\Lexer\" />
     <Folder Include="Language\Parser\" />
     <Folder Include="Language\Lexer\Token\Extensions\" />
-    <Folder Include="Language\Lexer\Token\TokenPattern\SiT\" />
+    <Folder Include="Language\Lexer\SiT\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Language\Parser\Fragment\FragmentDefinition_Sequence.tt">
