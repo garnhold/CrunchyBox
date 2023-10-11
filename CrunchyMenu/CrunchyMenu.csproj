@@ -88,6 +88,8 @@
     <Compile Include="Language\Lexer\Token\JunkTokenBehaviour.cs" />
     <Compile Include="Language\Lexer\SiT\SiT.cs" />
     <Compile Include="Language\Lexer\SiT\SiTTokens.cs" />
+    <Compile Include="Language\Lexer\AutoToken\AutoToken.cs" />
+    <Compile Include="Language\Lexer\AutoToken\Extensions\TokenModeExtensions_AutoToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -109,6 +111,8 @@
     <Folder Include="Language\Parser\" />
     <Folder Include="Language\Lexer\Token\Extensions\" />
     <Folder Include="Language\Lexer\SiT\" />
+    <Folder Include="Language\Lexer\AutoToken\" />
+    <Folder Include="Language\Lexer\AutoToken\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Language\Parser\Fragment\FragmentDefinition_Sequence.tt">
