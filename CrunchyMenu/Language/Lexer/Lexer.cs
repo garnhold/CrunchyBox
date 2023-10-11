@@ -8,11 +8,11 @@ namespace Crunchy.Menu
 {
     public class Lexer
     {
-        private TokenMode default_token_mode;
+        private TokenModeInstance default_token_mode_instance;
 
-        public Lexer(TokenMode d)
+        public Lexer(TokenModeInstance d)
         {
-            default_token_mode = d;
+            default_token_mode_instance = d;
         }
 
         public IEnumerable<TokenInstance> Tokenize(string text)
@@ -20,7 +20,7 @@ namespace Crunchy.Menu
             if (text != null)
             {
                 int index = 0;
-                Tokenizer tokenizer = new Tokenizer(default_token_mode);
+                Tokenizer tokenizer = new Tokenizer(default_token_mode_instance);
 
                 while (index < text.Length)
                 {

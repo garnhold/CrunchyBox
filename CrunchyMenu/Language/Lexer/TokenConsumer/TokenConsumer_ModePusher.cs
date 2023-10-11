@@ -8,9 +8,9 @@ namespace Crunchy.Menu
 {
     public class TokenConsumer_ModePusher : TokenConsumer
     {
-        private TokenMode token_mode_definition;
+        private TokenModeInstance token_mode_definition;
 
-        public TokenConsumer_ModePusher(TokenMode d)
+        public TokenConsumer_ModePusher(TokenModeInstance d)
         {
             token_mode_definition = d;
         }

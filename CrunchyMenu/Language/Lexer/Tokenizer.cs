@@ -8,11 +8,11 @@ namespace Crunchy.Menu
 {
     public class Tokenizer
     {
-        private Stack<TokenMode> token_mode_stack;
+        private Stack<TokenModeInstance> token_mode_instance_stack;
 
-        public Tokenizer(TokenMode initial_token_mode)
+        public Tokenizer(TokenModeInstance initial_token_mode)
         {
-            token_mode_stack = new Stack<TokenMode>();
+            token_mode_instance_stack = new Stack<TokenModeInstance>();
 
             PushTokenMode(initial_token_mode);
         }
@@ -41,18 +41,18 @@ namespace Crunchy.Menu
             return false;
         }
 
-        public void PushTokenMode(TokenMode token_mode)
+        public void PushTokenMode(TokenModeInstance token_mode)
         {
-            token_mode_stack.Push(token_mode);
+            token_mode_instance_stack.Push(token_mode);
         }
         public void PopTokenMode()
         {
-            token_mode_stack.Pop();
+            token_mode_instance_stack.Pop();
         }
 
-        public TokenMode GetCurrentTokenMode()
+        public TokenModeInstance GetCurrentTokenMode()
         {
-            return token_mode_stack.Peek();
+            return token_mode_instance_stack.Peek();
         }
 
         public JunkTokenBehaviour GetCurrentJunkTokenBehaviour()

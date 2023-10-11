@@ -18,7 +18,7 @@ namespace Crunchy.Menu
             return TokenConsumer_Ignore.INSTANCE;
         }
 
-        static public TokenConsumer ModePusher(TokenMode token_mode_definition)
+        static public TokenConsumer ModePusher(TokenModeInstance token_mode_definition)
         {
             return new TokenConsumer_ModePusher(token_mode_definition);
         }

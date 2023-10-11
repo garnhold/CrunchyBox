@@ -26,13 +26,31 @@ namespace Crunchy.Menu
             return Ignore(null, t);
         }
 
-        static public TokenDefinition ModePusher(string n, TokenPattern t, TokenMode m)
+        static public TokenDefinition ModePusher(string n, TokenPattern t, TokenModeInstance m)
         {
             return new TokenDefinition(n, t, TokenConsumers.ModePusher(m));
         }
-        static public TokenDefinition ModePusher(TokenPattern t, TokenMode m)
+        static public TokenDefinition ModePusher(TokenPattern t, TokenModeInstance m)
         {
             return ModePusher(null, t, m);
+        }
+
+        static public TokenDefinition ModePusher(string n, TokenPattern t, TokenMode s, IEnumerable<TokenDefinition> a)
+        {
+            return ModePusher(n, t, s.Instance(a));
+        }
+        static public TokenDefinition ModePusher(TokenPattern t, TokenMode s, IEnumerable<TokenDefinition> a)
+        {
+            return ModePusher(null, t, s, a);
+        }
+
+        static public TokenDefinition ModePusher(string n, TokenPattern t, TokenMode s, params TokenDefinition[] a)
+        {
+            return ModePusher(n, t, s, (IEnumerable<TokenDefinition>)a);
+        }
+        static public TokenDefinition ModePusher(TokenPattern t, TokenMode s, params TokenDefinition[] a)
+        {
+            return ModePusher(null, t, s, a);
         }
 
         static public TokenDefinition ModePopper(string n, TokenPattern t)
