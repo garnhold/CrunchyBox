@@ -9,7 +9,7 @@ namespace Crunchy.Menu
     public class SiT
     {
         private Lexer lexer;
-        private FragmentDefinition<TokenPattern> parser;
+        private FragmentDefinition_Any<TokenPattern> full_expression;
 
         static private SiT INSTANCE;
         static public SiT GetInstance()
@@ -163,7 +163,7 @@ namespace Crunchy.Menu
                 .MakeOneOrMore()
                 .MakeConvert(t => TokenPatterns.Sequence(t));
 
-            FragmentDefinition_Any<TokenPattern> full_expression = new FragmentDefinition_Any<TokenPattern>("full_expression");
+            full_expression = new FragmentDefinition_Any<TokenPattern>("full_expression");
 
             full_expression.Initialize(
                 sub_expression,
@@ -218,13 +218,11 @@ namespace Crunchy.Menu
                     }
                 )
             );
-
-            parser = full_expression;
         }
 
         public TokenPattern Parse(string text)
         {
-            return parser.Parse(lexer, text)
+            return full_expression.Parse(lexer, text)
                 .Simplify();
         }
     }
