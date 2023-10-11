@@ -60,7 +60,6 @@
     <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Joined.cs" />
     <Compile Include="Language\Lexer\SiT\SiT.cs" />
     <Compile Include="Language\Lexer\SiT\SiTTokens.cs" />
-    <Compile Include="Language\Lexer\AutoToken\AutoToken.cs" />
     <Compile Include="Language\Lexer\TokenConsumer\TokenConsumer.cs" />
     <Compile Include="Language\Lexer\TokenConsumer\TokenConsumer_Ignore.cs" />
     <Compile Include="Language\Lexer\TokenConsumer\TokenConsumer_ModePopper.cs" />
@@ -73,7 +72,7 @@
     <Compile Include="Language\Lexer\TokenDefinition\TokenDefinitions.cs" />
     <Compile Include="Language\Lexer\TokenInstance\TokenInstance.cs" />
     <Compile Include="Language\Lexer\TokenMode\Extensions\TokenModeExtensions.cs" />
-    <Compile Include="Language\Lexer\TokenMode\Extensions\TokenModeExtensions_AutoToken.cs" />
+    <Compile Include="Language\Lexer\TokenMode\Extensions\TokenModeExtensions_TOK.cs" />
     <Compile Include="Language\Lexer\TokenMode\TokenMode.cs" />
     <Compile Include="Language\Lexer\TokenPattern\Extensions\TokenPatternExtensions.cs" />
     <Compile Include="Language\Lexer\TokenPattern\Extensions\TokenPatternExtensions_Repeated.cs" />
@@ -111,7 +110,6 @@
     <Folder Include="Language\Lexer\" />
     <Folder Include="Language\Parser\" />
     <Folder Include="Language\Lexer\SiT\" />
-    <Folder Include="Language\Lexer\AutoToken\" />
     <Folder Include="Language\Lexer\TokenConsumer\" />
     <Folder Include="Language\Lexer\TokenDefinition\" />
     <Folder Include="Language\Lexer\TokenInstance\" />

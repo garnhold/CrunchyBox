@@ -15,6 +15,7 @@ namespace Crunchy.Menu
         private JunkTokenBehaviour junk_token_behaviour;
 
         private List<TokenDefinition> token_definitions;
+        private Dictionary<string, TokenDefinition> auto_token_definitions;
 
         public TokenMode()
         {
@@ -22,6 +23,7 @@ namespace Crunchy.Menu
             token_definition_map = new HashSet<TokenDefinition>[char.MaxValue];
 
             token_definitions = new List<TokenDefinition>();
+            auto_token_definitions = new Dictionary<string, TokenDefinition>();
         }
 
         public void AddTokenDefinition(TokenDefinition token_definition)
@@ -49,6 +51,15 @@ namespace Crunchy.Menu
             AddTokenDefinitions((IEnumerable<TokenDefinition>)token_definitions);
         }
 
+        public TokenDefinition GetAutoTokenDefinition(string text)
+        {
+            return auto_token_definitions.GetOrCreateValue(text, t => {
+                is_map_built = false;
+
+                return TokenDefinitions.Normal(t);
+            });
+        }
+
         public void Build()
         {
             if (is_map_built == false)
@@ -58,7 +69,7 @@ namespace Crunchy.Menu
                 for (int i = 0; i < token_definition_map.Length; i++)
                     token_definition_map[i] = new HashSet<TokenDefinition>();
 
-                foreach (TokenDefinition token_definition in token_definitions)
+                foreach (TokenDefinition token_definition in token_definitions.Append(auto_token_definitions.Values))
                 {
                     token_definition
                         .GetEntrys()
