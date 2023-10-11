@@ -67,6 +67,7 @@ namespace Crunchy.Menu
             TokenDefinition t_set_end = TokenDefinitions.ModePopper("set_end", "]");
 
             TokenDefinition t_set_dash = TokenDefinitions.Normal("set_dash", "-");
+            TokenDefinition t_set_invert = TokenDefinitions.Normal("set_invert", "^");
 
             TokenDefinition t_repeat_start = TokenDefinitions.ModePusher("repeat_start", "{", repeat_mode);
             TokenDefinition t_repeat_end = TokenDefinitions.ModePopper("repeat_end", "}");
@@ -94,6 +95,7 @@ namespace Crunchy.Menu
                 t_normal_character,
                 t_escaped_character,
                 t_set_dash,
+                t_set_invert,
                 t_set_end
             );
 
@@ -144,6 +146,14 @@ namespace Crunchy.Menu
                     f_character_set,
                     t_set_end.MakeFragment(),
                     (d1, c, d2) => c
+                ),
+
+                FragmentDefinitions.Sequence(
+                    t_set_start.MakeFragment(),
+                    t_set_invert.MakeFragment(),
+                    f_character_set,
+                    t_set_end.MakeFragment(),
+                    (d1, d2, c, d3) => c.MakeInverse()
                 )
             );
                 
