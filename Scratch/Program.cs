@@ -23,58 +23,18 @@ namespace Scratch
 
             Lexer lexer = new Lexer(mode);
 
-            TokenDefinition whitespace = TokenDefinitions.Ignore("whitespace",
-                TokenCharacterSets.Whitespace().MakeOneOrMore()
-            );
+            TokenDefinition whitespace = TokenDefinitions.IgnoreSiT("whitespace", "[\t\r\n ]+");
 
-            TokenDefinition id = TokenDefinitions.Normal("id",
-                TokenPatterns.Sequence(
-                    TokenPatterns.OneCharacter(
-                        TokenCharacterSets.Alphabetic(), '_'
-                    ),
-                    TokenPatterns.ZeroOrMoreCharacters(
-                        TokenCharacterSets.AlphaNumeric(), '_'
-                    )
-                )
-            );
-
-            TokenDefinition whole_number = TokenDefinitions.Normal("whole_number",
-                TokenPatterns.Sequence(
-                    TokenCharacterSets.Single('-').MakeOptional(),
-                    TokenCharacterSets.Numeric().MakeOneOrMore()
-                )
-            );
-
-            TokenDefinition decimal_number = TokenDefinitions.Normal("decimal_number",
-                TokenPatterns.Sequence(
-                    TokenCharacterSets.Single('-').MakeOptional(),
-                    TokenCharacterSets.Numeric().MakeZeroOrMore(),
-                    TokenCharacterSets.Single('.').MakeOne(),
-                    TokenCharacterSets.Numeric().MakeZeroOrMore()
-                )
-            );
+            TokenDefinition id = TokenDefinitions.NormalSiT("id", "[A-Za-z_][A-Za-z0-9_]*");
+            TokenDefinition whole_number = TokenDefinitions.NormalSiT("whole_number", "-?[0-9]+");
+            TokenDefinition decimal_number = TokenDefinitions.NormalSiT("decimal_number", "-?[0-9]*\\.[0-9]*");
 
             TokenMode string_mode = new TokenMode();
 
-            TokenDefinition string_opening = TokenDefinitions.ModePusher("string_opening",
-                TokenCharacterSets.Single('"').MakeOne(),
-                string_mode
-            );
-
-            TokenDefinition string_fragment = TokenDefinitions.Normal("string_fragment",
-                TokenPatterns.JunkString()
-            );
-
-            TokenDefinition string_escaped = TokenDefinitions.Normal("escaped_character",
-                TokenPatterns.Sequence(
-                    TokenCharacterSets.Single('\\').MakeOne(),
-                    TokenCharacterSets.All().MakeOne()
-                )
-            );
-
-            TokenDefinition string_closing = TokenDefinitions.ModePopper("string_closing",
-                TokenCharacterSets.Single('"').MakeOne()
-            );
+            TokenDefinition string_opening = TokenDefinitions.ModePusherSiT("string_opening", "\"", string_mode);
+            TokenDefinition string_fragment = TokenDefinitions.Normal("string_fragment", TokenPatterns.JunkString());
+            TokenDefinition string_escaped = TokenDefinitions.NormalSiT("escaped_character", "\\\\.");
+            TokenDefinition string_closing = TokenDefinitions.ModePopperSiT("string_closing", "\"");
 
             TokenDefinition public_keyword = TokenDefinitions.Normal("public");
             TokenDefinition new_keyword = TokenDefinitions.Normal("new");
@@ -95,19 +55,13 @@ namespace Scratch
                 string_opening
             );
 
+            lexer.Tokenize("what is hahaha public 4.34 -1 43 wha23")
+                .Process(t => Console.WriteLine(t));
+
             string input = "\"what is going \\nOn here?\"";
 
             lexer.Tokenize(input)
                 .Process(t => Console.WriteLine(t));
-
-            /*
-            ThisAssembly is why you probably need to pass around Language because
-                you should allow for auto token fragments i.e. conversions from
-
-???? maybe not?
-
-                I did auto lexer tokens in llamaish fyi
-                */
 
             FragmentDefinition<string> sf = FragmentDefinitions.Sequence("string",
                 string_opening.MakeFragment(),
