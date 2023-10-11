@@ -37,10 +37,8 @@ namespace Scratch
             TokenDefinition string_escaped = SiTTokens.Normal("escaped_character", "\\\\.");
             TokenDefinition string_closing = SiTTokens.ModePopper("string_closing", "\"");
 
-            TokenDefinition public_keyword = TOK("public");
-            //TokenDefinition new_keyword = TOK("new");
-
-            //TOK("public");
+            TOK("public");
+            TOK("new");
 
             string_mode.AddTokenDefinitions(
                 string_fragment,
