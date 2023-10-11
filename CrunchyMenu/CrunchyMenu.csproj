@@ -87,6 +87,7 @@
     <Compile Include="Language\Parser\Fragment\FragmentDefinition_Joined.cs" />
     <Compile Include="Language\Parser\Fragment\Extensions\FragmentDefinitionExtensions_Joined.cs" />
     <Compile Include="Language\Lexer\Token\JunkTokenBehaviour.cs" />
+    <Compile Include="Language\Lexer\Token\SiTTokens.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

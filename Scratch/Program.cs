@@ -23,21 +23,21 @@ namespace Scratch
 
             Lexer lexer = new Lexer(mode);
 
-            TokenDefinition whitespace = TokenDefinitions.IgnoreSiT("whitespace", "[\t\r\n ]+");
+            TokenDefinition whitespace = SiTTokens.Ignore("whitespace", "[\t\r\n ]+");
 
-            TokenDefinition id = TokenDefinitions.NormalSiT("id", "[A-Za-z_][A-Za-z0-9_]*");
-            TokenDefinition whole_number = TokenDefinitions.NormalSiT("whole_number", "-?[0-9]+");
-            TokenDefinition decimal_number = TokenDefinitions.NormalSiT("decimal_number", "-?[0-9]*\\.[0-9]*");
+            TokenDefinition id = SiTTokens.Normal("id", "[A-Za-z_][A-Za-z0-9_]*");
+            TokenDefinition whole_number = SiTTokens.Normal("whole_number", "-?[0-9]+");
+            TokenDefinition decimal_number = SiTTokens.Normal("decimal_number", "-?[0-9]*\\.[0-9]*");
 
             TokenMode string_mode = new TokenMode();
 
-            TokenDefinition string_opening = TokenDefinitions.ModePusherSiT("string_opening", "\"", string_mode);
-            TokenDefinition string_fragment = TokenDefinitions.Normal("string_fragment", TokenPatterns.JunkString());
-            TokenDefinition string_escaped = TokenDefinitions.NormalSiT("escaped_character", "\\\\.");
-            TokenDefinition string_closing = TokenDefinitions.ModePopperSiT("string_closing", "\"");
+            TokenDefinition string_opening = SiTTokens.ModePusher("string_opening", "\"", string_mode);
+            TokenDefinition string_fragment = SiTTokens.JunkString("string_fragment");
+            TokenDefinition string_escaped = SiTTokens.Normal("escaped_character", "\\\\.");
+            TokenDefinition string_closing = SiTTokens.ModePopper("string_closing", "\"");
 
-            TokenDefinition public_keyword = TokenDefinitions.Normal("public");
-            TokenDefinition new_keyword = TokenDefinitions.Normal("new");
+            TokenDefinition public_keyword = SiTTokens.Normal("public");
+            TokenDefinition new_keyword = SiTTokens.Normal("new");
 
             string_mode.AddTokenDefinitions(
                 string_fragment,
