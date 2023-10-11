@@ -52,7 +52,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, Operation<T, P1> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -172,7 +171,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, Operation<T, P1, P2> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -300,7 +298,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, Operation<T, P1, P2, P3> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -436,7 +433,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, Operation<T, P1, P2, P3, P4> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -580,7 +576,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, Operation<T, P1, P2, P3, P4, P5> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -732,7 +727,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, Operation<T, P1, P2, P3, P4, P5, P6> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -892,7 +886,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, Operation<T, P1, P2, P3, P4, P5, P6, P7> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -1060,7 +1053,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -1236,7 +1228,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())
@@ -1420,7 +1411,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(FragmentDefinition<P1> f1, FragmentDefinition<P2> f2, FragmentDefinition<P3> f3, FragmentDefinition<P4> f4, FragmentDefinition<P5> f5, FragmentDefinition<P6> f6, FragmentDefinition<P7> f7, FragmentDefinition<P8> f8, FragmentDefinition<P9> f9, FragmentDefinition<P10> f10, Operation<T, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10> o)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
                         foreach(FragmentDefinition<P1> i1 in f1.GetSubAlternatives())

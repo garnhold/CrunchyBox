@@ -83,7 +83,6 @@ namespace Crunchy.Menu
                 
                 public void Initialize(<#=initialize_parameters#>)
                 {
-                    int count = 0;
                     sub_sequences.Clear();
                     
 <#                  foreach(FragmentEntry fragment in fragments){#>
