@@ -34,9 +34,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, <#=info.zero#>) <#=operation.symbol#> value;
 		}
 
-		static public void <#=operation.name#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, KEY_TYPE key, <#=info.type#> value)
+		static public <#=info.type#> <#=operation.name#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, KEY_TYPE key, <#=info.type#> value)
 		{
-			item[key] = item.Get<#=operation.name_past#>NumericValues(key, value);
+            <#=info.type#> new_value = item.Get<#=operation.name_past#>NumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void <#=operation.name#>NumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, <#=info.type#>> item, IDictionary<KEY_TYPE, <#=info.type#>> other)

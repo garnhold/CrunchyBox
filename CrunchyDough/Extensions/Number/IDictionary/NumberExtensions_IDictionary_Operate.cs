@@ -12,9 +12,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0) + value;
 		}
 
-		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, int> item, KEY_TYPE key, int value)
+		static public int AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, int> item, KEY_TYPE key, int value)
 		{
-			item[key] = item.GetAddedNumericValues(key, value);
+            int new_value = item.GetAddedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, int> item, IDictionary<KEY_TYPE, int> other)
@@ -35,9 +38,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0) - value;
 		}
 
-		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, int> item, KEY_TYPE key, int value)
+		static public int SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, int> item, KEY_TYPE key, int value)
 		{
-			item[key] = item.GetSubtractedNumericValues(key, value);
+            int new_value = item.GetSubtractedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, int> item, IDictionary<KEY_TYPE, int> other)
@@ -96,9 +102,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0) + value;
 		}
 
-		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, long> item, KEY_TYPE key, long value)
+		static public long AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, long> item, KEY_TYPE key, long value)
 		{
-			item[key] = item.GetAddedNumericValues(key, value);
+            long new_value = item.GetAddedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, long> item, IDictionary<KEY_TYPE, long> other)
@@ -119,9 +128,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0) - value;
 		}
 
-		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, long> item, KEY_TYPE key, long value)
+		static public long SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, long> item, KEY_TYPE key, long value)
 		{
-			item[key] = item.GetSubtractedNumericValues(key, value);
+            long new_value = item.GetSubtractedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, long> item, IDictionary<KEY_TYPE, long> other)
@@ -180,9 +192,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0.0f) + value;
 		}
 
-		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, float> item, KEY_TYPE key, float value)
+		static public float AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, float> item, KEY_TYPE key, float value)
 		{
-			item[key] = item.GetAddedNumericValues(key, value);
+            float new_value = item.GetAddedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, float> item, IDictionary<KEY_TYPE, float> other)
@@ -203,9 +218,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0.0f) - value;
 		}
 
-		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, float> item, KEY_TYPE key, float value)
+		static public float SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, float> item, KEY_TYPE key, float value)
 		{
-			item[key] = item.GetSubtractedNumericValues(key, value);
+            float new_value = item.GetSubtractedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, float> item, IDictionary<KEY_TYPE, float> other)
@@ -264,9 +282,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0.0) + value;
 		}
 
-		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, double> item, KEY_TYPE key, double value)
+		static public double AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, double> item, KEY_TYPE key, double value)
 		{
-			item[key] = item.GetAddedNumericValues(key, value);
+            double new_value = item.GetAddedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, double> item, IDictionary<KEY_TYPE, double> other)
@@ -287,9 +308,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0.0) - value;
 		}
 
-		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, double> item, KEY_TYPE key, double value)
+		static public double SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, double> item, KEY_TYPE key, double value)
 		{
-			item[key] = item.GetSubtractedNumericValues(key, value);
+            double new_value = item.GetSubtractedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, double> item, IDictionary<KEY_TYPE, double> other)
@@ -348,9 +372,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0.0m) + value;
 		}
 
-		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, decimal> item, KEY_TYPE key, decimal value)
+		static public decimal AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, decimal> item, KEY_TYPE key, decimal value)
 		{
-			item[key] = item.GetAddedNumericValues(key, value);
+            decimal new_value = item.GetAddedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void AddNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, decimal> item, IDictionary<KEY_TYPE, decimal> other)
@@ -371,9 +398,12 @@ namespace Crunchy.Dough
 			return item.GetValue(key, 0.0m) - value;
 		}
 
-		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, decimal> item, KEY_TYPE key, decimal value)
+		static public decimal SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, decimal> item, KEY_TYPE key, decimal value)
 		{
-			item[key] = item.GetSubtractedNumericValues(key, value);
+            decimal new_value = item.GetSubtractedNumericValues(key, value);
+            
+			item[key] = new_value;
+            return new_value;
 		}
 
 		static public void SubtractNumericValues<KEY_TYPE>(this IDictionary<KEY_TYPE, decimal> item, IDictionary<KEY_TYPE, decimal> other)
