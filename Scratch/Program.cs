@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -13,66 +14,41 @@ using Crunchy.Sandwich;
 using Crunchy.Dinner;
 using Crunchy.Menu;
 
+using Newtonsoft.Json.Linq;
+
 namespace Scratch
 {
     class MainClass
     {
         public static void Main(string[] args)
         {
-            TokenMode mode = new TokenMode();
-            Operation<TokenDefinition, string> TOK = mode.GetTOK();
+            JArray array = new JArray();
 
-            Lexer lexer = new Lexer(mode);
+            List<string> lines = File.ReadAllLines("/home/garrett/Documents/Programming/SliderPuzzleGenerator/6x6SliderPuzzles.txt")
+                .ToList();
 
-            TokenDefinition whitespace = SiTTokens.Ignore("whitespace", "[\t\r\n ]+");
+            Dictionary<int, List<string>> puzzles = new Dictionary<int, List<string>>();
 
-            TokenDefinition id = SiTTokens.Normal("id", "[A-Za-z_][A-Za-z0-9_]*");
-            TokenDefinition whole_number = SiTTokens.Normal("whole_number", "-?[0-9]+");
-            TokenDefinition decimal_number = SiTTokens.Normal("decimal_number", "-?[0-9]*\\.[0-9]*");
+            foreach (string line in lines)
+            {
+                line.SplitOn("-").PartOut(out string difficulty, out string remainder);
 
-            TokenMode string_mode = new TokenMode();
+                if (puzzles.GetValue(difficulty.ParseInt()).Count() < 100)
+                    puzzles.Add(difficulty.ParseInt(), remainder);
+            }
 
-            TokenDefinition string_opening = SiTTokens.ModePusher("string_opening", "\"", string_mode);
-            TokenDefinition string_fragment = SiTTokens.JunkString("string_fragment");
-            TokenDefinition string_escaped = SiTTokens.Normal("escaped_character", "\\\\.");
-            TokenDefinition string_closing = SiTTokens.ModePopper("string_closing", "\"");
+            foreach (KeyValuePair<int, List<string>> pair in puzzles.Sort(p => p.Key))
+            {
+                array.Add(new JObject(
+                    new JProperty("rating", pair.Key),
+                    new JProperty("puzzles", pair.Value.Convert(s => new JValue(s)).ToJArray())
+                ));
+            }
 
-            TOK("public");
-            TOK("new");
+            string filename = Filename.GetAbsolutePath("output.json");
 
-            string_mode.AddTokenDefinitions(
-                string_fragment,
-                string_escaped,
-                string_closing
-            );
-
-            mode.AddTokenDefinitions(
-                whitespace,
-                id,
-                whole_number,
-                decimal_number,
-                string_opening
-            );
-
-            lexer.Tokenize("what is hahaha public 4.34 -1 43 wha23")
-                .Process(t => Console.WriteLine(t));
-
-            string input = "\"what is going \\nOn here?\"";
-
-            lexer.Tokenize(input)
-                .Process(t => Console.WriteLine(t));
-
-            FragmentDefinition<string> sf = FragmentDefinitions.Sequence("string",
-                string_opening.MakeFragment(),
-                FragmentDefinitions.Any(
-                    string_fragment.MakeFragment(s => s), 
-                    string_escaped.MakeFragment(s => s.ExpandEscapeSequences())
-                ).MakeZeroOrMore(),
-                string_closing.MakeFragment(),
-                (j1, b, j2) => b.Join("")
-            );
-
-            Console.WriteLine("Result: " + sf.Parse(lexer, input));
+            Console.WriteLine(filename);
+            File.WriteAllText(filename, array.ToString());
 
             Console.WriteLine("Done");
             Console.ReadLine();
