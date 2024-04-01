@@ -54,5 +54,10 @@ namespace Crunchy.Dinner
         {
             return item.GetStringValue(property_name).ParseInt();
         }
+
+        static public bool GetBoolValue(this JObject item, string property_name)
+        {
+            return item.GetStringValue(property_name).ParseBool();
+        }
     }
 }
