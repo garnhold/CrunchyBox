@@ -24,5 +24,24 @@ namespace Crunchy.Dough
                 index += count;
             }
         }
+
+        static public IEnumerable<IEnumerable<T>> DivvyEvenly<T>(this IEnumerable<T> item, int number)
+        {
+            IList<T> item_list = item.PrepareForIndexing();
+
+            int index = 0;
+            int total_count = item_list.Count;
+            int count_per = total_count / number;
+
+            int number_minus_one = number - 1;
+
+            for(int i = 0; i < number_minus_one; i++)
+            {
+                yield return item_list.Sub(index, count_per);
+                index += count_per;
+            }
+
+            yield return item_list.Offset(index);
+        }
     }
 }
