@@ -57,6 +57,7 @@
     <Compile Include="Extensions\JArray\JArrayExtensions_As.cs" />
     <Compile Include="Extensions\JToken\JTokenExtensions.cs" />
     <Compile Include="Extensions\JToken\IEnumerable\JTokenExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\Uri\UriExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -84,6 +85,7 @@
     <Folder Include="Extensions\JArray\" />
     <Folder Include="Extensions\JToken\" />
     <Folder Include="Extensions\JToken\IEnumerable\" />
+    <Folder Include="Extensions\Uri\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
