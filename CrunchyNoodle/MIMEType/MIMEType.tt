@@ -54,6 +54,11 @@ namespace Crunchy.Noodle
         
         <#=infos.Convert(i => "static public readonly MIMEType " + i.type.StyleAsEnumName() + " = new MIMEType(MIMEGeneralType." + i.general_type.StyleAsEnumName() + ", \"" + i.sub_type + "\", Enumerable.New(" + i.extensions.Convert(e => e.StyleAsDoubleQuoteLiteral()).Join(", ") + "), Enumerable.New<string>(" + i.unofficial_sub_types.Convert(e => e.StyleAsDoubleQuoteLiteral()).Join(", ") + "));").Join("\n")#>
         
+        static public explicit operator MIMEType(string input)
+        {
+            return ParseFromTypeStrict(input);
+        }
+        
         static private Dictionary<string, MIMEType> TYPE_LOOKUP_TABLE = Enumerable.New(
             <#=infos
                 .Convert(i => "new KeyValuePair<string, MIMEType>(\"" + i.type + "\", " + i.type.StyleAsEnumName() + ")")

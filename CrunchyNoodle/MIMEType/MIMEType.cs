@@ -805,6 +805,11 @@ static public readonly MIMEType VideoXSgiMovie = new MIMEType(MIMEGeneralType.Vi
 static public readonly MIMEType VideoXSmv = new MIMEType(MIMEGeneralType.Video, "x-smv", Enumerable.New("smv"), Enumerable.New<string>());
 static public readonly MIMEType XConferenceXCooltalk = new MIMEType(MIMEGeneralType.XConference, "x-cooltalk", Enumerable.New("ice"), Enumerable.New<string>());
         
+        static public explicit operator MIMEType(string input)
+        {
+            return ParseFromTypeStrict(input);
+        }
+        
         static private Dictionary<string, MIMEType> TYPE_LOOKUP_TABLE = Enumerable.New(
             new KeyValuePair<string, MIMEType>("application/andrew-inset", ApplicationAndrewInset),
 new KeyValuePair<string, MIMEType>("application/applixware", ApplicationApplixware),
