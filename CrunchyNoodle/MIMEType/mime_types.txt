@@ -1316,7 +1316,7 @@ image/g3fax                 g3
 image/gif                   gif
 image/ief                   ief
 # image/jp2
-image/jpeg                  jpeg jpg jpe
+image/jpeg                  jpeg jpg jpe        ! image/jpg
 # image/jpm
 # image/jpx
 image/ktx                   ktx
