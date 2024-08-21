@@ -14,8 +14,8 @@ List<MIMETypeInfo> infos = file_text
 	.GetLines()
     .Skip(s => s.StartsWith("#"))
 	.Skip(s => s.IsBlank())
-	.Convert(l => l.RegexMatch("(\\S+)\\s+(.*)"))
-	.Convert(m => new MIMETypeInfo(m.Groups[1].Value, m.Groups[2].Value.SplitOn(" ")))
+	.Convert(l => l.RegexMatch("(\\S+)\\s+([^!]*)(!\\s+(.*))?"))
+	.Convert(m => new MIMETypeInfo(m.Groups[1].Value, m.Groups[2].Value.SplitOn(" "), m.Groups[4].Value.SplitOn(" ")))
     .ToList();
     
 #>
@@ -50,14 +50,29 @@ namespace Crunchy.Noodle
         private string sub_value;
         
         private List<string> extensions;
+        private List<string> unofficial_sub_values;
         
-        <#=infos.Convert(i => "static public readonly MIMEType " + i.type.StyleAsEnumName() + " = new MIMEType(MIMEGeneralType." + i.general_type.StyleAsEnumName() + ", \"" + i.sub_type + "\", Enumerable.New(" + i.extensions.Convert(e => e.StyleAsDoubleQuoteLiteral()).Join(", ") + "));").Join("\n")#>
+        <#=infos.Convert(i => "static public readonly MIMEType " + i.type.StyleAsEnumName() + " = new MIMEType(MIMEGeneralType." + i.general_type.StyleAsEnumName() + ", \"" + i.sub_type + "\", Enumerable.New(" + i.extensions.Convert(e => e.StyleAsDoubleQuoteLiteral()).Join(", ") + "), Enumerable.New<string>(" + i.unofficial_sub_types.Convert(e => e.StyleAsDoubleQuoteLiteral()).Join(", ") + "));").Join("\n")#>
         
         static private Dictionary<string, MIMEType> TYPE_LOOKUP_TABLE = Enumerable.New(
-            <#=infos.Convert(i => "new KeyValuePair<string, MIMEType>(\"" + i.type + "\", " + i.type.StyleAsEnumName() + ")").Join(",\n")#>
+            <#=infos
+                .Convert(i => "new KeyValuePair<string, MIMEType>(\"" + i.type + "\", " + i.type.StyleAsEnumName() + ")")
+                .Join(",\n")
+            #>
         ).ToDictionary();
         
-        static public bool TryParseFromType(string input, out MIMEType type)
+        static private Dictionary<string, MIMEType> UNOFFICIAL_TYPE_LOOKUP_TABLE = Enumerable.New(
+            <#=infos
+                .Convert(
+                    i => i.unofficial_sub_types.Convert(
+                        t => "new KeyValuePair<string, MIMEType>(\"" + t + "\", " + i.type.StyleAsEnumName() + ")"
+                    )
+                ).Flatten()
+                .Join(",\n")
+            #>
+        ).ToDictionary();
+        
+        static public bool TryParseFromTypeStrict(string input, out MIMEType type)
         {
             if(TYPE_LOOKUP_TABLE.TryGetValue(input.ToLower(), out type))
                 return true;
@@ -65,11 +80,30 @@ namespace Crunchy.Noodle
             type = ApplicationOctetStream;
             return false;
         }
-        static public MIMEType ParseFromType(string input)
+        static public MIMEType ParseFromTypeStrict(string input)
         {
             MIMEType type;
             
-            TryParseFromType(input, out type);
+            TryParseFromTypeStrict(input, out type);
+            return type;
+        }
+        
+        static public bool TryParseFromTypePermissive(string input, out MIMEType type)
+        {
+            if(TYPE_LOOKUP_TABLE.TryGetValue(input.ToLower(), out type))
+                return true;
+                
+            if(UNOFFICIAL_TYPE_LOOKUP_TABLE.TryGetValue(input.ToLower(), out type))
+                return true;
+                
+            type = ApplicationOctetStream;
+            return false;
+        }
+        static public MIMEType ParseFromTypePermissive(string input)
+        {
+            MIMEType type;
+            
+            TryParseFromTypePermissive(input, out type);
             return type;
         }
         
@@ -105,12 +139,13 @@ namespace Crunchy.Noodle
             return type;
         }
         
-        private MIMEType(MIMEGeneralType g, string v, IEnumerable<string> e)
+        private MIMEType(MIMEGeneralType g, string v, IEnumerable<string> e, IEnumerable<string> uv)
         {
             general_type = g;
             sub_value = v;
             
             extensions = e.ToList();
+            unofficial_sub_values = uv.ToList();
         }
         
         public MIMEGeneralType GetGeneralType()
@@ -137,14 +172,16 @@ public class MIMETypeInfo
     public readonly string sub_type;
     
     public readonly List<string> extensions;
+    public readonly List<string> unofficial_sub_types;
     
-    public MIMETypeInfo(string v, IEnumerable<string> e)
+    public MIMETypeInfo(string v, IEnumerable<string> e, IEnumerable<string> uv)
     {
         type = v;
         general_type = v.TruncateBefore("/");
         sub_type = v.OffsetAfter("/");
         
-        extensions = e.ToList();
+        extensions = e.Narrow(z => z.IsVisible()).ToList();
+        unofficial_sub_types = uv.Narrow(z => z.IsVisible()).ToList();
     }
 }
 #>
