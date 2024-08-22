@@ -36,6 +36,18 @@ namespace Crunchy.Dough
             
             return result;
         }
+        static public R Layer<R, <#=P.CSV(i, z => "P"+z)#>>(Operation<R> operation, <#=P.CSV(i, z => "Operation<R, P"+z+"> operation_p"+z)#>) <#=P.CSV(i, z => "where P"+z+" : Problem", " ")#>
+        {
+            <#=P.CSV(i, z => "P"+z+" problem"+z+" = null;", "\n\t\t\t")#>
+
+            R result = ProblemManager.GetInstance().Layer(operation, (type, creator) => {
+                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">())\n\t\t\t\t\tproblem"+z+" = creator() as P"+z+";", "\n\t\t\t\telse ")#>
+            });
+               
+            <#=P.CSV(i, z => "if(problem"+z+" != null)\n\t\t\t\treturn operation_p"+z+"(problem"+z+");", "\n\t\t\telse ")#>
+            
+            return result;
+        }
 
 <# } #>
     }
