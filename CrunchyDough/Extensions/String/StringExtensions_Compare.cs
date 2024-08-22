@@ -106,5 +106,20 @@ namespace Crunchy.Dough
 
             return false;
         }
+
+        static public bool HasPrefix(this string item, string prefix)
+        {
+            if (item.IsSubstring(0, prefix))
+                return true;
+
+            return false;
+        }
+        static public bool HasSuffix(this string item, string suffix)
+        {
+            if (item.IsSubstring(item.GetLength() - suffix.GetLength(), suffix))
+                return true;
+
+            return false;
+        }
     }
 }
