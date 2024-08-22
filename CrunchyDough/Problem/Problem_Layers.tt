@@ -16,41 +16,53 @@ namespace Crunchy.Dough
 <# for(int i = 1; i <= 10; i++){#>
         static public void Layer<<#=P.CSV(i, z => "P"+z)#>>(Process process, <#=P.CSV(i, z => "Process<P"+z+"> process_p"+z)#>) <#=P.CSV(i, z => "where P"+z+" : Problem", " ")#>
         {
+            bool has_problem = false;
             <#=P.CSV(i, z => "P"+z+" problem"+z+" = null;", "\n\t\t\t")#>
 
             ProblemManager.GetInstance().Layer(process, (type, creator) => {
-                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">()){ problem"+z+" = creator() as P"+z+"; return true; }", "\n\t\t\t\telse ")#>
+                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">()){ problem"+z+" = creator() as P"+z+"; has_problem = true; return true; }", "\n\t\t\t\telse ")#>
                 
                 return false;
             });
-               
-            <#=P.CSV(i, z => "if(problem"+z+" != null){process_p"+z+"(problem"+z+");}", "\n\t\t\telse ")#>
+            
+            if(has_problem)
+            {
+                <#=P.CSV(i, z => "if(problem"+z+" != null){process_p"+z+"(problem"+z+");}", "\n\t\t\t\telse ")#>
+            }
         }
         static public R Layer<R, <#=P.CSV(i, z => "P"+z)#>>(Operation<R> operation, <#=P.CSV(i, z => "Process<P"+z+"> process_p"+z)#>) <#=P.CSV(i, z => "where P"+z+" : Problem", " ")#>
         {
+            bool has_problem = false;
             <#=P.CSV(i, z => "P"+z+" problem"+z+" = null;", "\n\t\t\t")#>
 
             R result = ProblemManager.GetInstance().Layer(operation, (type, creator) => {
-                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">()){ problem"+z+" = creator() as P"+z+"; return true; }", "\n\t\t\t\telse ")#>
+                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">()){ problem"+z+" = creator() as P"+z+"; has_problem = true; return true; }", "\n\t\t\t\telse ")#>
                 
                 return false;
             });
-               
-            <#=P.CSV(i, z => "if(problem"+z+" != null){process_p"+z+"(problem"+z+");}", "\n\t\t\telse ")#>
             
-            return result;
+           if(has_problem)
+           {   
+                <#=P.CSV(i, z => "if(problem"+z+" != null){process_p"+z+"(problem"+z+");}", "\n\t\t\t\telse ")#>
+           }
+            
+           return result;
         }
         static public R Layer<R, <#=P.CSV(i, z => "P"+z)#>>(Operation<R> operation, <#=P.CSV(i, z => "Operation<R, P"+z+"> operation_p"+z)#>) <#=P.CSV(i, z => "where P"+z+" : Problem", " ")#>
         {
+            bool has_problem = false;
             <#=P.CSV(i, z => "P"+z+" problem"+z+" = null;", "\n\t\t\t")#>
 
             R result = ProblemManager.GetInstance().Layer(operation, (type, creator) => {
-                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">()){ problem"+z+" = creator() as P"+z+"; return true; }", "\n\t\t\t\telse ")#>
+                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">()){ problem"+z+" = creator() as P"+z+"; has_problem = true; return true; }", "\n\t\t\t\telse ")#>
                 
                 return false;
             });
-               
-            <#=P.CSV(i, z => "if(problem"+z+" != null){return operation_p"+z+"(problem"+z+");}", "\n\t\t\telse ")#>
+            
+            if(has_problem)
+            {
+                <#=P.CSV(i, z => "if(problem"+z+" != null){return operation_p"+z+"(problem"+z+");}", "\n\t\t\t\telse ")#>
+            }
             
             return result;
         }
