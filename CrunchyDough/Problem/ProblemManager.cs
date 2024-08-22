@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-    public delegate void ProblemRaiser(Type type, Operation<Problem> creator);
+    public delegate bool ProblemRaiser(Type type, Operation<Problem> creator);
 
     public class ProblemManager
     {
@@ -51,8 +51,8 @@ namespace Crunchy.Dough
         {
             if (current_problem_raiser != null)
             {
-                current_problem_raiser(type, creator);
-                current_problem_raiser = null;
+                if(current_problem_raiser(type, creator))
+                    current_problem_raiser = null;
             }
         }
     }
