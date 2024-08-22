@@ -1572,6 +1572,11 @@
     <Compile Include="Issue\Issue.cs" />
     <Compile Include="Issue\IssueManager.cs" />
     <Compile Include="Issue\IssueLayer.cs" />
+    <Compile Include="Problem\Problem.cs" />
+    <Compile Include="Problem\ProblemManager.cs" />
+    <Compile Include="Problem\Problem_Layers.cs">
+      <DependentUpon>Problem_Layers.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1758,6 +1763,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IEnumerableExtensions_Search_Rating.cs</LastGenOutput>
     </Content>
+    <Content Include="Problem\Problem_Layers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Problem_Layers.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -1829,6 +1838,7 @@
     <Folder Include="SheetRange\" />
     <Folder Include="SheetBound\" />
     <Folder Include="Issue\" />
+    <Folder Include="Problem\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

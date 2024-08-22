@@ -1,0 +1,64 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{	
+    public abstract partial class Problem
+	{
+<# for(int i = 1; i <= 10; i++){#>
+        static public void Layer<<#=P.CSV(i, z => "P"+z)#>>(Process process, <#=P.CSV(i, z => "Process<P"+z+"> process_p"+z)#>) <#=P.CSV(i, z => "where P"+z+" : Problem", " ")#>
+        {
+            <#=P.CSV(i, z => "P"+z+" problem"+z+" = null;", "\n\t\t\t")#>
+
+            ProblemManager.GetInstance().Layer(process, (type, creator) => {
+                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">())\n\t\t\t\t\tproblem"+z+" = creator() as P"+z+";", "\n\t\t\t\telse ")#>
+            });
+               
+            <#=P.CSV(i, z => "if(problem"+z+" != null)\n\t\t\t\tprocess_p"+z+"(problem"+z+");", "\n\t\t\telse ")#>
+        }
+        static public R Layer<R, <#=P.CSV(i, z => "P"+z)#>>(Operation<R> operation, <#=P.CSV(i, z => "Process<P"+z+"> process_p"+z)#>) <#=P.CSV(i, z => "where P"+z+" : Problem", " ")#>
+        {
+            <#=P.CSV(i, z => "P"+z+" problem"+z+" = null;", "\n\t\t\t")#>
+
+            R result = ProblemManager.GetInstance().Layer(operation, (type, creator) => {
+                <#=P.CSV(i, z => "if(type.CanBeTreatedAs<P"+z+">())\n\t\t\t\t\tproblem"+z+" = creator() as P"+z+";", "\n\t\t\t\telse ")#>
+            });
+               
+            <#=P.CSV(i, z => "if(problem"+z+" != null)\n\t\t\t\tprocess_p"+z+"(problem"+z+");", "\n\t\t\telse ")#>
+            
+            return result;
+        }
+
+<# } #>
+    }
+}
+
+<#+
+public delegate string Operation(int number);
+
+static public class P
+{
+    static public string CSV(int count, Operation operation, string seperator=", ")
+    {
+        string output = "";
+        
+        for(int i = 0; i < count; i++)
+        {
+            if(output != "")
+                output += seperator;
+                
+            output += operation(i + 1);
+        }
+        
+        return output;
+    }
+}
+#>
