@@ -43,7 +43,7 @@ namespace Crunchy.Dough
         {
             T result = default(T);
 
-            Layer(() => result = operation(), problem_raiser);
+            Layer(() => { result = operation(); }, problem_raiser);
             return result;
         }
 
