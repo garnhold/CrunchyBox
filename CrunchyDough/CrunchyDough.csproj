@@ -1569,6 +1569,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Extensions\IList\IListExtensions_Special.cs" />
+    <Compile Include="Issue\Issue.cs" />
+    <Compile Include="Issue\IssueManager.cs" />
+    <Compile Include="Issue\IssueLayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1825,6 +1828,7 @@
     <Folder Include="Extensions\Task\" />
     <Folder Include="SheetRange\" />
     <Folder Include="SheetBound\" />
+    <Folder Include="Issue\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
