@@ -22,13 +22,6 @@ namespace Scratch
     {
         public static void Main(string[] args)
         {
-            Issue.Layer<Issue>(() => {
-            
-
-
-                Issue.GetIssues<Issue>();
-            });
-
             JArray array = new JArray();
 
             List<string> lines = File.ReadAllLines("/home/garrett/Documents/Programming/SliderPuzzleGenerator/6x6SliderPuzzles.txt")
