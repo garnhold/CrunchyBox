@@ -59,6 +59,7 @@
     <Compile Include="Extensions\JToken\IEnumerable\JTokenExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\Uri\UriExtensions.cs" />
     <Compile Include="Extensions\JObject\JObjectExtensions_GetByPath.cs" />
+    <Compile Include="Extensions\JObject\JObjectExtensions_Set.cs" />
     <Compile Include="Extensions\JToken\JTokenExtensions_GetByPath.cs" />
   </ItemGroup>
   <ItemGroup>
