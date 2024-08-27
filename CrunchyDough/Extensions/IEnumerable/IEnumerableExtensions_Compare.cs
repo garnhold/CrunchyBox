@@ -14,10 +14,22 @@ namespace Crunchy.Dough
 
             return false;
         }
-
         static public bool AreElementsEqual<T>(this IEnumerable<T> item, IEnumerable<T> to_check)
         {
             return item.AreElements(to_check, (e1, e2) => e1.EqualsEX(e2));
+        }
+
+        static public int FindIndexOfFirstElement<T, J>(this IEnumerable<T> item, IEnumerable<J> to_check, Relation<T, J> relation)
+        {
+            return item.PairPermissive<T, J>(to_check).FindIndexOf(t => relation(t.item1, t.item2));
+        }
+        static public int FindIndexOfFirstElementEqual<T>(this IEnumerable<T> item, IEnumerable<T> to_check)
+        {
+            return item.FindIndexOfFirstElement(to_check, (e1, e2) => e1.EqualsEX(e2));
+        }
+        static public int FindIndexOfFirstElementNotEqual<T>(this IEnumerable<T> item, IEnumerable<T> to_check)
+        {
+            return item.FindIndexOfFirstElement(to_check, (e1, e2) => e1.NotEqualsEX(e2));
         }
 
         static public int GetElementsHashCode<T>(this IEnumerable<T> item)
