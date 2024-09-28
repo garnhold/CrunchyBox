@@ -1574,6 +1574,8 @@
     <Compile Include="Problem\Problem_Layers.cs">
       <DependentUpon>Problem_Layers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Float\FloatExtensions_IEEE754.cs" />
+    <Compile Include="Extensions\Double\DoubleExtensions_IEEE754.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1839,6 +1841,7 @@
     <Folder Include="SheetRange\" />
     <Folder Include="SheetBound\" />
     <Folder Include="Problem\" />
+    <Folder Include="Extensions\Double\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
