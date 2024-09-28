@@ -110,8 +110,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Extensions\Number\NumberExtensions_Approximate.cs">
-      <DependentUpon>NumberExtensions_Approximate.tt</DependentUpon>
+    <Compile Include="Extensions\Number\NumberExtensions_LEB128.cs">
+      <DependentUpon>NumberExtensions_LEB128.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1763,6 +1763,10 @@
     <Content Include="Problem\Problem_Layers.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Problem_Layers.cs</LastGenOutput>
+    </Content>
+    <Content Include="Extensions\Number\NumberExtensions_LEB128.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberExtensions_LEB128.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
