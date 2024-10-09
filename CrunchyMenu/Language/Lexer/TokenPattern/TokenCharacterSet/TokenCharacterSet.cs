@@ -65,6 +65,19 @@ namespace Crunchy.Menu
                 char last = start;
                 bool is_started = false;
 
+                void terminate_range()
+                {
+                    if (is_started)
+                    {
+                        if (start == last)
+                            singles.Add(start);
+                        else
+                            ranges.Add(Dough.Tuple.New(start, last));
+
+                        is_started = false;
+                    }
+                }
+
                 for (char i = '\0'; i < character_map.Length; i++)
                 {
                     if (character_map[i])
@@ -79,17 +92,11 @@ namespace Crunchy.Menu
                     }
                     else
                     {
-                        if (is_started)
-                        {
-                            if (start == last)
-                                singles.Add(start);
-                            else
-                                ranges.Add(Dough.Tuple.New(start, last));
-
-                            is_started = false;
-                        }
+                        terminate_range();
                     }
                 }
+
+                terminate_range();
 
                 psuedo_regex = "[" +
                     singles.BuildString().RegexEscape() +
