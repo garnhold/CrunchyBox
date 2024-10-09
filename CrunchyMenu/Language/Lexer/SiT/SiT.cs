@@ -38,10 +38,6 @@ namespace Crunchy.Menu
             TokenMode set_mode = new TokenMode();
             TokenMode repeat_mode = new TokenMode();
 
-            TokenDefinition t_whitespace = TokenDefinitions.Ignore(
-                TokenCharacterSets.Whitespace().MakeOneOrMore()
-            );
-
             TokenDefinition t_any_character = TokenDefinitions.Normal("any_character", ".");
 
             TokenDefinition t_one_or_more = TokenDefinitions.Normal("one_or_more", "+");
