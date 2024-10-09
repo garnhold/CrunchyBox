@@ -65,6 +65,17 @@ namespace Crunchy.Menu
                 char last = start;
                 bool is_started = false;
 
+                void continue_range(char i)
+                {
+                    if (is_started == false)
+                    {
+                        start = i;
+                        is_started = true;
+                    }
+
+                    last = i;
+                }
+
                 void terminate_range()
                 {
                     if (is_started)
@@ -81,21 +92,10 @@ namespace Crunchy.Menu
                 for (char i = '\0'; i < character_map.Length; i++)
                 {
                     if (character_map[i])
-                    {
-                        if (is_started == false)
-                        {
-                            start = i;
-                            is_started = true;
-                        }
-
-                        last = i;
-                    }
+                        continue_range(i);
                     else
-                    {
                         terminate_range();
-                    }
                 }
-
                 terminate_range();
 
                 psuedo_regex = "[" +
