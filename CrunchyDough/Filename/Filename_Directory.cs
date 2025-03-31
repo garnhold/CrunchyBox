@@ -7,10 +7,16 @@ namespace Crunchy.Dough
     {
         static public string GetDirectory(string path)
         {
-            path = CleanPath(Path.GetDirectoryName(path));
+            try
+            {
+                path = CleanPath(Path.GetDirectoryName(path));
 
-            if (path.IsVisible())
-                return path.EnsuredSuffix("/");
+                if (path.IsVisible())
+                    return path.EnsuredSuffix("/");
+            }
+            catch (Exception e)
+            {
+            }
 
             return "";
         }
