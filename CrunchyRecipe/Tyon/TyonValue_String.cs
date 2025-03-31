@@ -32,9 +32,11 @@ namespace Crunchy.Recipe
             canvas.AppendToLine(GetString().StyleAsDoubleQuoteLiteral());
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        public override TyonPushResult PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             variable.SetContents(GetString());
+
+            return TyonPushResult.Done;
         }
 
         public override ILValue CompileValue(TyonCompiler compiler)

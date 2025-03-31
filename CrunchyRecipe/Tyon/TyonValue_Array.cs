@@ -27,9 +27,9 @@ namespace Crunchy.Recipe
             GetTyonArray().Render(canvas);
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        public override TyonPushResult PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
-            GetTyonArray().PushToVariable(variable, hydrater);
+            return GetTyonArray().PushToVariable(variable, hydrater);
         }
 
         public override void CompileInitialize(TyonCompiler compiler)

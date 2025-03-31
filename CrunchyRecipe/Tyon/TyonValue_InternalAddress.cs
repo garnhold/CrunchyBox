@@ -27,11 +27,19 @@ namespace Crunchy.Recipe
             GetTyonAddress().Render(canvas);
         }
 
-        public override void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        public override TyonPushResult PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
+            if (hydrater.TryResolveInternalAddress(GetTyonAddress(), out object obj))
+            {
+                variable.SetContents(obj);
+                return TyonPushResult.Done;
+            }
+
             hydrater.DeferProcess(delegate() {
                 variable.SetContents(hydrater.ResolveInternalAddress(GetTyonAddress()));
             });
+
+            return TyonPushResult.Deferred;
         }
 
         public override ILValue CompileValue(TyonCompiler compiler)

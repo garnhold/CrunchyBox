@@ -41,7 +41,7 @@ namespace Crunchy.Recipe
             canvas.AppendToNewline("]");
         }
 
-        public void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        public TyonPushResult PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             Type log_type = GetLogSystemType(hydrater);
             Variable_IndexedLog log = Variable_IndexedLog.New(log_type);
@@ -53,9 +53,9 @@ namespace Crunchy.Recipe
                     log.CreateStrongInstance(index++).SetContents(old_element);
             }
 
-            GetTyonValueList().IfNotNull(l => l.PushToLogVariable(log, hydrater));
+            TyonPushResult push_result = GetTyonValueList().IfNotNull(l => l.PushToLogVariable(log, hydrater));
 
-            hydrater.DeferProcess(delegate () {
+            Process process = delegate () {
                 List<object> values = log.GetValues()
                     .Truncate(GetNumberTyonValues())
                     .ToList();
@@ -66,7 +66,15 @@ namespace Crunchy.Recipe
                 );
 
                 variable.SetContents(values.ToArrayOfType(final_type));
-            });
+            };
+
+            switch (push_result)
+            {
+                case TyonPushResult.Done: process(); return TyonPushResult.Done;
+                case TyonPushResult.Deferred: hydrater.DeferProcess(process); return TyonPushResult.Deferred;
+            }
+
+            throw new UnaccountedBranchException("push_result", push_result);
         }
 
         public void CompileInitialize(TyonCompiler compiler)

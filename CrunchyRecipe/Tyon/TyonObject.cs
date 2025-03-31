@@ -35,7 +35,8 @@ namespace Crunchy.Recipe
             {
                 Variable_IndexedLog log = Variable_IndexedLog.New(typeof(object));
 
-                GetTyonValueList().PushToLogVariable(log, hydrater);
+                if (GetTyonValueList().PushToLogVariable(log, hydrater) != TyonPushResult.Done)
+                    throw new TyonResolutionException("A constructor cannot depend on a deferred value.");
 
                 system_object = GetTyonType().InstanceSystemObject(hydrater, log.GetValues().ToArray());
             }
@@ -87,7 +88,7 @@ namespace Crunchy.Recipe
             }
         }
 
-        public void PushToVariable(VariableInstance variable, TyonHydrater hydrater)
+        public TyonPushResult PushToVariable(VariableInstance variable, TyonHydrater hydrater)
         {
             if (AllowsHotloading() && variable.GetVariableType().IsTypicalReferenceType())
             {
@@ -98,12 +99,13 @@ namespace Crunchy.Recipe
                     if (GetSystemType(hydrater) == current_value.GetType())
                     {
                         PushToSystemObject(current_value, hydrater);
-                        return;
+                        return TyonPushResult.Done;
                     }
                 }
             }
 
             variable.SetContents(InstanceSystemObject(hydrater));
+            return TyonPushResult.Done;
         }
 
         public void CompileInitialize(TyonCompiler compiler)

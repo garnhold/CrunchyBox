@@ -42,9 +42,21 @@ namespace Crunchy.Recipe
             );
         }
 
-        public void PushToLogVariable(Variable variable, TyonHydrater hydrater)
+        public TyonPushResult PushToLogVariable(Variable variable, TyonHydrater hydrater)
         {
-            GetTyonValues().ProcessWithIndex((i, v) => v.PushToVariable(variable.CreateStrongInstance(i), hydrater));
+            int i = 0;
+            TyonPushResult result = TyonPushResult.Done;
+
+            foreach (TyonValue value in GetTyonValues())
+            {
+                result = result.Absorb(
+                    value.PushToVariable(variable.CreateStrongInstance(i), hydrater)
+                );
+
+                i++;
+            }
+
+            return result;
         }
 
         public void CompileInitialization(TyonCompiler compiler)

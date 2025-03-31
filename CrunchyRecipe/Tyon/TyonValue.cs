@@ -18,7 +18,7 @@ namespace Crunchy.Recipe
     public abstract partial class TyonValue : TyonElement
 	{
         public abstract void Render(TextDocumentCanvas canvas);
-        public abstract void PushToVariable(VariableInstance variable, TyonHydrater hydrater);
+        public abstract TyonPushResult PushToVariable(VariableInstance variable, TyonHydrater hydrater);
 
         public virtual void CompileInitialize(TyonCompiler compiler) { }
         public abstract ILValue CompileValue(TyonCompiler compiler);
