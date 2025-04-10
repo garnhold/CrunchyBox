@@ -50,11 +50,27 @@ namespace Crunchy.Dinner
                 .ToStringEX();
         }
 
+        static public bool TryGetIntValueByPath(this JObject item, string path, out int value)
+        {
+            return item.GetStringValueByPath(path).TryParseInt(out value);
+        }
+        static public int GetIntValueByPath(this JObject item, string path, int default_value)
+        {
+            return item.GetStringValueByPath(path).ParseInt(default_value);
+        }
         static public int GetIntValueByPath(this JObject item, string path)
         {
             return item.GetStringValueByPath(path).ParseInt();
         }
 
+        static public bool TryGetBoolValueByPath(this JObject item, string path, out bool value)
+        {
+            return item.GetStringValueByPath(path).TryParseBool(out value);
+        }
+        static public bool GetBoolValueByPath(this JObject item, string path, bool default_value)
+        {
+            return item.GetStringValueByPath(path).ParseBool(default_value);
+        }
         static public bool GetBoolValueByPath(this JObject item, string path)
         {
             return item.GetStringValueByPath(path).ParseBool();
