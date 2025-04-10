@@ -5,24 +5,19 @@ namespace Crunchy.Dough
 {
     static public partial class Filename
     {
-        static private Uri GetUri(string filename)
-        {
-            Uri uri;
-
-            if (Uri.TryCreate(filename, UriKind.RelativeOrAbsolute, out uri))
-                return uri;
-
-            return null;
-        }
-
-        static public bool IsPathRelative(string path)
-        {
-            return GetUri(path).IfNotNull(u => u.IsAbsoluteUri == false && u.IsFile, false);
-        }
-
         static public bool IsPathAbsolute(string path)
         {
-            return GetUri(path).IfNotNull(u => u.IsAbsoluteUri == true && u.IsFile, false);
+            if (Filename.GetAbsolutePath(path) == path)
+                return true;
+
+            return false;
+        }
+        static public bool IsPathRelative(string path)
+        {
+            if (Filename.IsPathAbsolute(path) == false)
+                return true;
+
+            return false;
         }
     }
 }
