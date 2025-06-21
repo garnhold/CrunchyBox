@@ -18,25 +18,32 @@ namespace Crunchy.Dough
                 T right_item = item.GetLast();
                 IList<T> inner = item.SubSection(1, item.Count - 1);
 
-                T most_disruptive;
-                int most_disruptive_index;
-
                 yield return left_item;
 
-                    if (inner.FindHighestRating(i => operation(left_item, right_item, i), out most_disruptive, out most_disruptive_index) >= threshold)
-                    {
-                        foreach (T sub_item in inner.Truncate(most_disruptive_index).BisectApproximatePath(threshold, operation))
-                            yield return sub_item;
-
-                        foreach (T sub_item in inner.Offset(most_disruptive_index).BisectApproximatePath(threshold, operation))
-                            yield return sub_item;
-                    }
+                    foreach (T sub_item in inner.BisectApproximateInnerPath(left_item, right_item, threshold, operation))
+                        yield return sub_item;
 
                 yield return right_item;
             }
             else
             {
                 foreach (T sub_item in item)
+                    yield return sub_item;
+            }
+        }
+        static public IEnumerable<T> BisectApproximateInnerPath<T>(this IList<T> item, T left_item, T right_item, double threshold, Operation<double, T, T, T> operation)
+        {
+            T most_disruptive;
+            int most_disruptive_index;
+
+            if (item.FindHighestRating(i => operation(left_item, right_item, i), out most_disruptive, out most_disruptive_index) >= threshold)
+            {
+                foreach (T sub_item in item.SubSection(1, most_disruptive_index).BisectApproximateInnerPath(left_item, most_disruptive, threshold, operation))
+                    yield return sub_item;
+
+                yield return most_disruptive;
+
+                foreach (T sub_item in item.SubSection(most_disruptive_index + 1, item.Count - 1).BisectApproximateInnerPath(most_disruptive, right_item, threshold, operation))
                     yield return sub_item;
             }
         }
