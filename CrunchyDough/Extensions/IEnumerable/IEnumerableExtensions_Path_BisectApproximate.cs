@@ -38,12 +38,12 @@ namespace Crunchy.Dough
 
             if (item.FindHighestRating(i => operation(left_item, right_item, i), out most_disruptive, out most_disruptive_index) >= threshold)
             {
-                foreach (T sub_item in item.SubSection(1, most_disruptive_index).BisectApproximateInnerPath(left_item, most_disruptive, threshold, operation))
+                foreach (T sub_item in item.SubSection(0, most_disruptive_index).BisectApproximateInnerPath(left_item, most_disruptive, threshold, operation))
                     yield return sub_item;
 
                 yield return most_disruptive;
 
-                foreach (T sub_item in item.SubSection(most_disruptive_index + 1, item.Count - 1).BisectApproximateInnerPath(most_disruptive, right_item, threshold, operation))
+                foreach (T sub_item in item.SubSection(most_disruptive_index + 1, item.Count).BisectApproximateInnerPath(most_disruptive, right_item, threshold, operation))
                     yield return sub_item;
             }
         }
