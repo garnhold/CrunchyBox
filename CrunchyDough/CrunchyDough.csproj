@@ -1343,11 +1343,7 @@
     <Compile Include="Extensions\Float\FloatExtensions_Angle_Towards.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Approximate.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_ConvertFromDensity.cs" />
-    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromOffset.cs" />
-    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromPercent.cs" />
-    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromRange.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_ConvertFromRate.cs" />
-    <Compile Include="Extensions\Float\FloatExtensions_ConvertFromVariance.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_Fill.cs" />
     <Compile Include="Extensions\Float\FloatExtensions_FloorCeil.cs" />
     <Compile Include="Extensions\IList\IListExtensions_Curve.cs" />
@@ -1576,6 +1572,18 @@
     </Compile>
     <Compile Include="Extensions\Float\FloatExtensions_IEEE754.cs" />
     <Compile Include="Extensions\Double\DoubleExtensions_IEEE754.cs" />
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromPercent.cs">
+      <DependentUpon>NumberRealExtensions_ConvertFromPercent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromRange.cs">
+      <DependentUpon>NumberRealExtensions_ConvertFromRange.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromVariance.cs">
+      <DependentUpon>NumberRealExtensions_ConvertFromVariance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromOffset.cs">
+      <DependentUpon>NumberRealExtensions_ConvertFromOffset.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">
@@ -1842,6 +1850,24 @@
     <Folder Include="SheetBound\" />
     <Folder Include="Problem\" />
     <Folder Include="Extensions\Double\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromOffset.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_ConvertFromOffset.cs</LastGenOutput>
+    </None>
+    <None Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromPercent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_ConvertFromPercent.cs</LastGenOutput>
+    </None>
+    <None Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromRange.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_ConvertFromRange.cs</LastGenOutput>
+    </None>
+    <None Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromVariance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumberRealExtensions_ConvertFromVariance.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

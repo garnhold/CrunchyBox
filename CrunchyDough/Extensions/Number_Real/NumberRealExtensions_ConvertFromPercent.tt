@@ -1,0 +1,70 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+NumericInfo[] type_info = new NumericInfo[]{
+    new NumericInfo("float", "Float", "1.0f", "0.0f", "2.0f", "0.5f"),
+    new NumericInfo("double", "Double", "1.0", "0.0", "2.0", "0.5"),
+    new NumericInfo("decimal", "Decimal", "1.0m", "0.0m", "2.0m", "0.5m")
+};
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Crunchy.Dough
+{
+    static public class NumberRealExtensions_ConvertFromPercent
+    {
+<# foreach(NumericInfo type in type_info){#>
+        static public <#=type.type_name#> ConvertFromPercentToOffset(this <#=type.type_name#> item)
+        {
+            return (item * <#=type.two#>) - <#=type.one#>;
+        }
+
+        static public <#=type.type_name#> ConvertFromPercentToRange(this <#=type.type_name#> item, <#=type.type_name#> lower, <#=type.type_name#> upper)
+        {
+            return item * (upper - lower) + lower;
+        }
+        static public <#=type.type_name#> ConvertFromPercentToRange(this <#=type.type_name#> item, <#=type.class_name#>Range range)
+        {
+            return item.ConvertFromPercentToRange(range.x1, range.x2);
+        }
+
+        static public <#=type.type_name#> ConvertFromPercentToVariance(this <#=type.type_name#> item, <#=type.type_name#> value, <#=type.type_name#> radius)
+        {
+            return item.ConvertFromPercentToOffset().ConvertFromOffsetToVariance(value, radius);
+        }
+        static public <#=type.type_name#> ConvertFromPercentToVariance(this <#=type.type_name#> item, <#=type.class_name#>Variance variance)
+        {
+            return item.ConvertFromPercentToVariance(variance.value, variance.radius);
+        }
+        
+<# } #>
+    }
+}
+
+<#+
+public class NumericInfo
+{
+    public readonly string type_name;
+    public readonly string class_name;
+
+    public readonly string one;
+    public readonly string zero;
+    public readonly string two;
+    public readonly string half;
+
+    public NumericInfo(string t, string c, string o, string z, string to, string h)
+    {
+        type_name = t;
+        class_name = c;
+
+        one = o;
+        zero = z;
+        two = to;
+        half = h;
+    }
+}
+#>
