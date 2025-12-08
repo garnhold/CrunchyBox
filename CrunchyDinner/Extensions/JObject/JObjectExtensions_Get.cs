@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using Crunchy.Dough;
+using Crunchy.Noodle;
 
 namespace Crunchy.Dinner
 {
@@ -42,6 +43,11 @@ namespace Crunchy.Dinner
         {
             return item.GetJValueValue(property_name)
                 .IfNotNull(v => v.Value);
+        }
+
+        static public object GetValueAs(this JObject item, Type type, string property_name)
+        {
+            return item.GetNativeValue(property_name).ConvertEX(type);
         }
 
         static public string GetStringValue(this JObject item, string property_name)
