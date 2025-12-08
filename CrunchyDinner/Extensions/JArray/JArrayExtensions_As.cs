@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using Crunchy.Dough;
+using Crunchy.Noodle;
 
 namespace Crunchy.Dinner
 {
@@ -32,6 +33,11 @@ namespace Crunchy.Dinner
         static public IEnumerable<object> AsNatives(this JArray item)
         {
             return item.AsJValues().Convert(v => v.Value);
+        }
+
+        static public IEnumerable<object> AsNativesOfType(this JArray item, Type type)
+        {
+            return item.AsJValues().Convert(v => v.Value.ConvertEX(type));
         }
 
         static public IEnumerable<string> AsStrings(this JArray item)
