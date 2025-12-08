@@ -28,12 +28,13 @@ namespace Crunchy.Google
     {
         static public async Task<string> PickFile(this UserCredential item, string app_id, ushort port)
         {
-            IDictionary<string, string> results = await SystemBrowser.ServeAndProcessForm(port, writer => {
+            IDictionary<string, string> results = await SystemBrowser.ServeAndProcessForm(port, (writer, crsf_input) => {
                 writer.Write(@"
                     <html>
                         <body>
                             <form id=""the_form"" method=""POST"">
                                 <input type=""hidden"" id=""the_value"" name=""the_value""/>
+                                "+crsf_input+@"
                             </form>
                             <script>
                                 function onApiLoad()

@@ -20,8 +20,11 @@ namespace Crunchy.Dinner
 {
     static public partial class SystemBrowser
     {
-        static public async Task<IDictionary<string, string>> ServeAndProcessForm(string url, Process<StreamWriter> process)
+        static public async Task<IDictionary<string, string>> ServeAndProcessForm(string url, Process<StreamWriter, string> process)
         {
+            string csrf_token = ByteSequence.GenerateCryptographic(32)
+                .ToBase64String();
+
             HttpListener listener = new HttpListener();
 
             listener.Prefixes.Add(url);
@@ -47,7 +50,7 @@ namespace Crunchy.Dinner
                                         using (StreamWriter writer = new StreamWriter(response.OutputStream))
                                         {
                                             context.Response.Headers.Set("Content-Type", "text/html");
-                                            process(writer);
+                                            process(writer, "<input type=\"hidden\" name=\"csrf_token\" value=\""+ csrf_token.EncodeHtmlEntities() + "\"/>");
                                         }
                                         break;
 
@@ -55,13 +58,17 @@ namespace Crunchy.Dinner
                                         IDictionary<string, string> values = context.Request.InputStream
                                             .ReadText()
                                             .DecodeUrlDictionary();
-
-                                        using (StreamWriter writer = new StreamWriter(response.OutputStream))
+                                            
+                                        if (values.GetValue("csrf_token") == csrf_token)
                                         {
-                                            context.Response.Headers.Set("Content-Type", "text/plain");
-                                            writer.Write("Done");
+                                            using (StreamWriter writer = new StreamWriter(response.OutputStream))
+                                            {
+                                                context.Response.Headers.Set("Content-Type", "text/plain");
+                                                writer.Write("Done");
+                                            }
+                                            return values;
                                         }
-                                        return values;
+                                        break;
                                 }
                             }
                         }
@@ -73,7 +80,7 @@ namespace Crunchy.Dinner
                 listener.Stop();
             }
         }
-        static public async Task<IDictionary<string, string>> ServeAndProcessForm(ushort port, Process<StreamWriter> process)
+        static public async Task<IDictionary<string, string>> ServeAndProcessForm(ushort port, Process<StreamWriter, string> process)
         {
             return await ServeAndProcessForm("http://localhost:" + port + "/", process);
         }
