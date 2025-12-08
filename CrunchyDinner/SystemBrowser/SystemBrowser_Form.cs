@@ -37,29 +37,32 @@ namespace Crunchy.Dinner
 
                     if (context.Request.IsLocal)
                     {
-                        using (HttpListenerResponse response = context.Response)
+                        if (context.Request.Headers.Get("Origin") == new Uri(url).GetOrigin())
                         {
-                            switch (context.Request.HttpMethod)
+                            using (HttpListenerResponse response = context.Response)
                             {
-                                case "GET":
-                                    using (StreamWriter writer = new StreamWriter(response.OutputStream))
-                                    {
-                                        context.Response.Headers.Set("Content-Type", "text/html");
-                                        process(writer);
-                                    }
-                                    break;
+                                switch (context.Request.HttpMethod)
+                                {
+                                    case "GET":
+                                        using (StreamWriter writer = new StreamWriter(response.OutputStream))
+                                        {
+                                            context.Response.Headers.Set("Content-Type", "text/html");
+                                            process(writer);
+                                        }
+                                        break;
 
-                                case "POST":
-                                    IDictionary<string, string> values = context.Request.InputStream
-                                        .ReadText()
-                                        .DecodeUrlDictionary();
+                                    case "POST":
+                                        IDictionary<string, string> values = context.Request.InputStream
+                                            .ReadText()
+                                            .DecodeUrlDictionary();
 
-                                    using (StreamWriter writer = new StreamWriter(response.OutputStream))
-                                    {
-                                        context.Response.Headers.Set("Content-Type", "text/plain");
-                                        writer.Write("Done");
-                                    }
-                                    return values;
+                                        using (StreamWriter writer = new StreamWriter(response.OutputStream))
+                                        {
+                                            context.Response.Headers.Set("Content-Type", "text/plain");
+                                            writer.Write("Done");
+                                        }
+                                        return values;
+                                }
                             }
                         }
                     }
