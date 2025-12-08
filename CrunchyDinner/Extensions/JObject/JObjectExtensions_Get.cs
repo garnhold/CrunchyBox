@@ -47,6 +47,11 @@ namespace Crunchy.Dinner
 
         static public object GetValueAs(this JObject item, Type type, string property_name, object default_value=null)
         {
+            JArray as_array = item.GetJArrayValue(property_name);
+
+            if (as_array != null && type.IsTypicalIEnumerable())
+                return as_array.AsNativesOfType(type.GetIEnumerableType()).ConvertEX(type);
+
             return item.GetNativeValue(property_name, default_value).ConvertEX(type);
         }
 
