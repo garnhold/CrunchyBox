@@ -45,9 +45,9 @@ namespace Crunchy.Dinner
                 .IfNotNull(v => v.Value, default_value);
         }
 
-        static public object GetValueAs(this JObject item, Type type, string property_name)
+        static public object GetValueAs(this JObject item, Type type, string property_name, object default_value=null)
         {
-            return item.GetNativeValue(property_name).ConvertEX(type);
+            return item.GetNativeValue(property_name, default_value).ConvertEX(type);
         }
 
         static public string GetStringValue(this JObject item, string property_name)
