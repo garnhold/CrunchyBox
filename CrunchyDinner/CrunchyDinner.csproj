@@ -61,6 +61,7 @@
     <Compile Include="Extensions\JObject\JObjectExtensions_GetByPath.cs" />
     <Compile Include="Extensions\JObject\JObjectExtensions_Set.cs" />
     <Compile Include="Extensions\JToken\JTokenExtensions_GetByPath.cs" />
+    <Compile Include="Extensions\JObject\JObjectExtensions_Has.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
