@@ -70,7 +70,7 @@ namespace Crunchy.Dinner
                 listener.Stop();
             }
         }
-        static public async Task<IDictionary<string, string>> ServeAndProcessForm(short port, Process<StreamWriter> process)
+        static public async Task<IDictionary<string, string>> ServeAndProcessForm(ushort port, Process<StreamWriter> process)
         {
             return await ServeAndProcessForm("http://localhost:" + port + "/", process);
         }

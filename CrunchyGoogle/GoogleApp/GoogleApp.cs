@@ -26,25 +26,25 @@ namespace Crunchy.Google
     public class GoogleApp
     {
         private string app_id;
-        private short loopback_port;
+        private ushort loopback_port;
 
         private List<string> scopes;
 
-        public GoogleApp(string ai, short lp, IEnumerable<string> s)
+        public GoogleApp(string ai, ushort lp, IEnumerable<string> s)
         {
             app_id = ai;
             loopback_port = lp;
 
             scopes = s.ToList();
         }
-        public GoogleApp(string ai, short lp, params string[] s) : this(ai, lp, (IEnumerable<string>)s) { }
+        public GoogleApp(string ai, ushort lp, params string[] s) : this(ai, lp, (IEnumerable<string>)s) { }
 
         public string GetAppId()
         {
             return app_id;
         }
 
-        public short GetLoopbackPort()
+        public ushort GetLoopbackPort()
         {
             return loopback_port;
         }
