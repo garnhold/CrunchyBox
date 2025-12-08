@@ -39,10 +39,10 @@ namespace Crunchy.Dinner
             return value;
         }
 
-        static public object GetNativeValue(this JObject item, string property_name)
+        static public object GetNativeValue(this JObject item, string property_name, object default_value=null)
         {
             return item.GetJValueValue(property_name)
-                .IfNotNull(v => v.Value);
+                .IfNotNull(v => v.Value, default_value);
         }
 
         static public object GetValueAs(this JObject item, Type type, string property_name)
