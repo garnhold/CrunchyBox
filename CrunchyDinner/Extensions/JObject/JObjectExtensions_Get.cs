@@ -32,20 +32,21 @@ namespace Crunchy.Dinner
             return item.GetValue(property_name)
                 .IfNotNull(v => v.AsJArray());
         }
+
         static public IEnumerable<string> GetValueAsStrings(this JObject item, string property_name)
         {
-            return item.GetValueAsJArray(property_name)
-                .IfNotNull(a => a.AsStrings());
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsStrings());
         }
         static public IEnumerable<int> GetValueAsInts(this JObject item, string property_name)
         {
-            return item.GetValueAsJArray(property_name)
-                .IfNotNull(a => a.AsInts());
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsInts());
         }
         static public IEnumerable<bool> GetValueAsBools(this JObject item, string property_name)
         {
-            return item.GetValueAsJArray(property_name)
-                .IfNotNull(a => a.AsBools());
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsBools());
         }
 
         static public object GetValueAsNative(this JObject item, Type type, string property_name, object default_value=null)

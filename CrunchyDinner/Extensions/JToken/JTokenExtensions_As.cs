@@ -31,6 +31,19 @@ namespace Crunchy.Dinner
             return array;
         }
 
+        static public IEnumerable<string> AsStrings(this JToken item)
+        {
+            return item.AsJArray().IfNotNull(a => a.AsStrings());
+        }
+        static public IEnumerable<int> AsInts(this JToken item)
+        {
+            return item.AsJArray().IfNotNull(a => a.AsInts());
+        }
+        static public IEnumerable<bool> AsBools(this JToken item)
+        {
+            return item.AsJArray().IfNotNull(a => a.AsBools());
+        }
+
         static public object AsNative(this JToken item, Type type)
         {
             if (item.Convert<JArray>(out JArray array))
@@ -38,6 +51,7 @@ namespace Crunchy.Dinner
                 if (type.IsTypicalIEnumerable())
                 {
                     return array.AsNatives(type.GetIEnumerableType())
+                        .ToList()
                         .ConvertEX(type);
                 }
             }
