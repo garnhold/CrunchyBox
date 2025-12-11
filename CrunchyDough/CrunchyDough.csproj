@@ -1584,6 +1584,12 @@
     <Compile Include="Extensions\Number_Real\NumberRealExtensions_ConvertFromOffset.cs">
       <DependentUpon>NumberRealExtensions_ConvertFromOffset.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Approximate.cs">
+      <DependentUpon>NumberExtensions_Approximate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Number\NumberExtensions_Heavyside.cs">
+      <DependentUpon>NumberExtensions_Heavyside.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bits\Bits.tt">

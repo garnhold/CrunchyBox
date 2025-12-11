@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Crunchy.Dough
 {
-	static public class NumberExtensions_Heavyside
+	static public class NumberExtensions_Sign
     {
 		static public short GetSign(this short item)
         {
