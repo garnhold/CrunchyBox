@@ -76,6 +76,14 @@ namespace Crunchy.Dough
             return false;
         }
 
+        static public bool IsGenericTypelessArray(this Type item)
+        {
+            if (item.IsArray() && item.ContainsGenericParameters)
+                return true;
+
+            return false;
+        }
+
         static public bool IsGenericTypedClass(this Type item)
         {
             if (item.IsGenericClass())
