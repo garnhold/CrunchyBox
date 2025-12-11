@@ -26,10 +26,20 @@ namespace Crunchy.Dough
         {
             item.RemoveSubSection(0, start);
         }
+        static public void RemoveBeginningToSize<T>(this IList<T> item, int size)
+        {
+            if (item.Count > size)
+                item.RemoveBeginning(item.Count - size);
+        }
 
         static public void RemoveEnding<T>(this IList<T> item, int end)
         {
             item.RemoveSubSection(end, item.Count);
+        }
+        static public void RemoveEndingToSize<T>(this IList<T> item, int size)
+        {
+            if (item.Count > size)
+                item.RemoveEnding(size);
         }
 
         static public void RemoveTrim<T>(this IList<T> item, int amount)
