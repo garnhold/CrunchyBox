@@ -62,6 +62,7 @@
     <Compile Include="Extensions\JObject\JObjectExtensions_Set.cs" />
     <Compile Include="Extensions\JToken\JTokenExtensions_GetByPath.cs" />
     <Compile Include="Extensions\JObject\JObjectExtensions_Has.cs" />
+    <Compile Include="Extensions\JObject\JObjectExtensions_KeyValue.cs" />
     <Compile Include="Extensions\JProperty\JPropertyExtensions.cs" />
     <Compile Include="Extensions\JProperty\IEnumerable\JPropertyExtensions_IEnumerable.cs" />
   </ItemGroup>
