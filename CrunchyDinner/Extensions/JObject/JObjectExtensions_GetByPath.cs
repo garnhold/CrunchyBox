@@ -14,66 +14,74 @@ namespace Crunchy.Dinner
 {
     static public class JObjectExtensions_GetByPath
     {
-        static public JObject GetJObjectByPath(this JObject item, string path)
+        static public JObject GetValueByPathAsJObject(this JObject item, string path)
         {
-            JObject obj;
-
-            item.GetValueByPath(path).Convert<JObject>(out obj);
-            return obj;
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsJObject());
         }
 
-        static public JArray GetJArrayValueByPath(this JObject item, string path)
+        static public JArray GetValueByPathAsJArray(this JObject item, string path)
         {
-            JArray array;
-
-            item.GetValueByPath(path).Convert<JArray>(out array);
-            return array;
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsJArray());
         }
 
-        static public JValue GetJValueValueByPath(this JObject item, string path)
+        static public JValue GetValueByPathAsJValue(this JObject item, string path)
         {
-            JValue value;
-
-            item.GetValueByPath(path).Convert<JValue>(out value);
-            return value;
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsJValue());
         }
 
-        static public object GetNativeValueByPath(this JObject item, string path)
+        static public object GetValueByPathAsNative(this JObject item, string path, Type type)
         {
-            return item.GetJValueValueByPath(path)
-                .IfNotNull(v => v.Value);
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsNative(type));
         }
 
-        static public string GetStringValueByPath(this JObject item, string path)
+        static public string GetValueByPathAsString(this JObject item, string path)
         {
-            return item.GetNativeValueByPath(path)
-                .ToStringEX();
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsString());
         }
 
-        static public bool TryGetIntValueByPath(this JObject item, string path, out int value)
+        static public bool TryGetValueByPathAsInt(this JObject item, string path, out int value)
         {
-            return item.GetStringValueByPath(path).TryParseInt(out value);
+            int inner_value = 0;
+            bool return_value = item.GetValueByPath(path)
+                .IfNotNull(v => v.TryAsInt(out inner_value));
+
+            value = inner_value;
+            return return_value;
         }
-        static public int GetIntValueByPath(this JObject item, string path, int default_value)
+        static public int GetValueByPathAsInt(this JObject item, string path, int default_value)
         {
-            return item.GetStringValueByPath(path).ParseInt(default_value);
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsInt(default_value), default_value);
         }
-        static public int GetIntValueByPath(this JObject item, string path)
+        static public int GetValueByPathAsInt(this JObject item, string path)
         {
-            return item.GetStringValueByPath(path).ParseInt();
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsInt());
         }
 
         static public bool TryGetBoolValueByPath(this JObject item, string path, out bool value)
         {
-            return item.GetStringValueByPath(path).TryParseBool(out value);
+            bool inner_value = false;
+            bool return_value = item.GetValueByPath(path)
+                .IfNotNull(v => v.TryAsBool(out inner_value));
+
+            value = inner_value;
+            return return_value;
         }
-        static public bool GetBoolValueByPath(this JObject item, string path, bool default_value)
+        static public bool GetValueByPathAsBool(this JObject item, string path, bool default_value)
         {
-            return item.GetStringValueByPath(path).ParseBool(default_value);
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsBool(default_value), default_value);
         }
-        static public bool GetBoolValueByPath(this JObject item, string path)
+        static public bool GetValueByPathAsBool(this JObject item, string path)
         {
-            return item.GetStringValueByPath(path).ParseBool();
+            return item.GetValueByPath(path)
+                .IfNotNull(v => v.AsBool());
         }
     }
 }

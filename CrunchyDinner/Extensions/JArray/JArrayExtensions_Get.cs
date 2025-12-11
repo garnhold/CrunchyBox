@@ -19,40 +19,46 @@ namespace Crunchy.Dinner
             return item[index];
         }
 
-        static public JObject GetJObjectValue(this JArray item, int index)
+        static public JObject GetValueAsJObject(this JArray item, int index)
         {
-            JObject obj;
-
-            item.GetValue(index).Convert<JObject>(out obj);
-            return obj;
+            return item.GetValue(index)
+                .IfNotNull(v => v.AsJObject());
         }
 
-        static public JArray GetJArrayValue(this JArray item, int index)
+        static public JArray GetValueAsJArray(this JArray item, int index)
         {
-            JArray array;
-
-            item.GetValue(index).Convert<JArray>(out array);
-            return array;
+            return item.GetValue(index)
+                .IfNotNull(v => v.AsJArray());
         }
 
-        static public JValue GetJValueValue(this JArray item, int index)
+        static public JValue GetValueAsJValue(this JArray item, int index)
         {
-            JValue value;
-
-            item.GetValue(index).Convert<JValue>(out value);
-            return value;
+            return item.GetValue(index)
+                .IfNotNull(v => v.AsJValue());
         }
 
-        static public object GetNativeValue(this JArray item, int index)
+        static public object GetValueAsNative(this JArray item, int index, Type type)
         {
-            return item.GetJValueValue(index)
-                .IfNotNull(v => v.Value);
+            return item.GetValue(index)
+                .IfNotNull(v => v.AsNative(type));
         }
 
-        static public string GetStringValue(this JArray item, int index)
+        static public string GetValueAsString(this JArray item, int index)
         {
-            return item.GetNativeValue(index)
-                .ToStringEX();
+            return item.GetValue(index)
+                .IfNotNull(v => v.AsString());
+        }
+
+        static public int GetValueAsInt(this JArray item, int index)
+        {
+            return item.GetValue(index)
+                .IfNotNull(v => v.AsInt());
+        }
+
+        static public bool GetValueAsBool(this JArray item, int index)
+        {
+            return item.GetValue(index)
+                .IfNotNull(v => v.AsBool());
         }
     }
 }

@@ -39,8 +39,8 @@ namespace Crunchy.Google
                     return new HeaderInfo(
                         array.AsJObjects()
                             .Convert(o => new ColumnInfo(
-                                o.GetStringValue("id"),
-                                o.GetStringValue("label")
+                                o.GetValueAsString("id"),
+                                o.GetValueAsString("label")
                             ))
                     );
                 }
@@ -82,7 +82,7 @@ namespace Crunchy.Google
                 {
                     return CreateRow(
                         array.AsJObjects()
-                            .Convert(o => o.GetStringValue("v"))
+                            .Convert(o => o.GetValueAsString("v"))
                     );
                 }
 
@@ -91,7 +91,7 @@ namespace Crunchy.Google
             public Row CreateRow(JObject obj)
             {
                 if (obj != null)
-                    return CreateRow(obj.GetJArrayValue("c"));
+                    return CreateRow(obj.GetValueAsJArray("c"));
 
                 return null;
             }

@@ -65,6 +65,7 @@
     <Compile Include="Extensions\JObject\JObjectExtensions_KeyValue.cs" />
     <Compile Include="Extensions\JProperty\JPropertyExtensions.cs" />
     <Compile Include="Extensions\JProperty\IEnumerable\JPropertyExtensions_IEnumerable.cs" />
+    <Compile Include="Extensions\JToken\JTokenExtensions_As.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">

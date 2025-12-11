@@ -46,12 +46,12 @@ namespace Crunchy.Google
         {
             if (obj != null)
             {
-                JObject table = obj.GetJObjectValue("table");
+                JObject table = obj.GetValueAsJObject("table");
 
                 if (table != null)
                 {
-                    JArray cols = table.GetJArrayValue("cols");
-                    JArray rows = table.GetJArrayValue("rows");
+                    JArray cols = table.GetValueAsJArray("cols");
+                    JArray rows = table.GetValueAsJArray("rows");
 
                     if (cols != null && rows != null)
                     {

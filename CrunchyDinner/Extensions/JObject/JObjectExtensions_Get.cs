@@ -15,76 +15,74 @@ namespace Crunchy.Dinner
 {
     static public class JObjectExtensions_Get
     {
-        static public JObject GetJObjectValue(this JObject item, string property_name)
+        static public JObject GetValueAsJObject(this JObject item, string property_name)
         {
-            JObject obj;
-
-            item.GetValue(property_name).Convert<JObject>(out obj);
-            return obj;
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsJObject());
         }
 
-        static public JArray GetJArrayValue(this JObject item, string property_name)
+        static public JValue GetValueAsJValue(this JObject item, string property_name)
         {
-            JArray array;
-
-            item.GetValue(property_name).Convert<JArray>(out array);
-            return array;
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsJValue());
         }
 
-        static public JValue GetJValueValue(this JObject item, string property_name)
+        static public JArray GetValueAsJArray(this JObject item, string property_name)
         {
-            JValue value;
-
-            item.GetValue(property_name).Convert<JValue>(out value);
-            return value;
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsJArray());
         }
 
-        static public object GetNativeValue(this JObject item, string property_name, object default_value=null)
+        static public object GetValueAsNative(this JObject item, Type type, string property_name, object default_value=null)
         {
-            return item.GetJValueValue(property_name)
-                .IfNotNull(v => v.Value, default_value);
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsNative(type), default_value);
         }
 
-        static public object GetValueAs(this JObject item, Type type, string property_name, object default_value=null)
+        static public string GetValueAsString(this JObject item, string property_name, string default_value=null)
         {
-            JArray as_array = item.GetJArrayValue(property_name);
-
-            if (as_array != null && type.IsTypicalIEnumerable())
-                return as_array.AsNativesOfType(type.GetIEnumerableType()).ConvertEX(type);
-
-            return item.GetNativeValue(property_name, default_value).ConvertEX(type);
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsString(), default_value);
         }
 
-        static public string GetStringValue(this JObject item, string property_name)
+        static public bool TryGetValueAsInt(this JObject item, string property_name, out int value)
         {
-            return item.GetNativeValue(property_name)
-                .ToStringEX();
+            int inner_value = 0;
+            bool return_value = item.GetValue(property_name)
+                .IfNotNull(v => v.TryAsInt(out inner_value));
+
+            value = inner_value;
+            return return_value;
+        }
+        static public int GetValueAsInt(this JObject item, string property_name, int default_value)
+        {
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsInt(default_value), default_value);
+        }
+        static public int GetValueAsInt(this JObject item, string property_name)
+        {
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsInt());
         }
 
-        static public bool TryGetIntValue(this JObject item, string property_name, out int value)
+        static public bool TryGetValueAsBool(this JObject item, string property_name, out bool value)
         {
-            return item.GetStringValue(property_name).TryParseInt(out value);
-        }
-        static public int GetIntValue(this JObject item, string property_name, int default_value)
-        {
-            return item.GetStringValue(property_name).ParseInt(default_value);
-        }
-        static public int GetIntValue(this JObject item, string property_name)
-        {
-            return item.GetStringValue(property_name).ParseInt();
-        }
+            bool inner_value = false;
+            bool return_value = item.GetValue(property_name)
+                .IfNotNull(v => v.TryAsBool(out inner_value));
 
-        static public bool TryGetBoolValue(this JObject item, string property_name, out bool value)
-        {
-            return item.GetStringValue(property_name).TryParseBool(out value);
+            value = inner_value;
+            return return_value;
         }
-        static public bool GetBoolValue(this JObject item, string property_name, bool default_value)
+        static public bool GetValueAsBool(this JObject item, string property_name, bool default_value)
         {
-            return item.GetStringValue(property_name).ParseBool(default_value);
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsBool(default_value), default_value);
         }
-        static public bool GetBoolValue(this JObject item, string property_name)
+        static public bool GetValueAsBool(this JObject item, string property_name)
         {
-            return item.GetStringValue(property_name).ParseBool();
+            return item.GetValue(property_name)
+                .IfNotNull(v => v.AsBool());
         }
     }
 }
