@@ -39,6 +39,11 @@ namespace Crunchy.Noodle
             return item.CanReturnInto(GetId());
         }
 
+        public override bool Filter(MethodInfo item, out MethodInfo adjusted)
+        {
+            return item.CanReturnInto(out adjusted, GetId());
+        }
+
         public override IEnumerable<Filterer<Assembly>> GetAssemblyFilters()
         {
             return Enumerable.New(
