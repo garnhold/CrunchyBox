@@ -68,6 +68,7 @@
     <Compile Include="Extensions\JToken\JTokenExtensions_As.cs" />
     <Compile Include="ConversionMethods\ConversionMethods_JValue.cs" />
     <Compile Include="ConversionMethods\ConversionMethods_JArray.cs" />
+    <Compile Include="Extensions\JToken\JTokenExtensions_ToTabbedJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
