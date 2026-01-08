@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using Crunchy.Dough;
+using Crunchy.Noodle;
 
 namespace Crunchy.Dinner
 {
@@ -37,10 +38,10 @@ namespace Crunchy.Dinner
                 .IfNotNull(v => v.AsJValue());
         }
 
-        static public object GetValueAsNative(this JArray item, int index, Type type)
+        static public object GetValueAs(this JArray item, int index, Type type, object default_value=null)
         {
             return item.GetValue(index)
-                .IfNotNull(v => v.AsNative(type));
+                .IfNotNull(v => v.ConvertEX(type), default_value);
         }
 
         static public string GetValueAsString(this JArray item, int index)

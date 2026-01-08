@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using Crunchy.Dough;
+using Crunchy.Noodle;
 
 namespace Crunchy.Dinner
 {
@@ -32,10 +33,10 @@ namespace Crunchy.Dinner
                 .IfNotNull(v => v.AsJValue());
         }
 
-        static public object GetValueByPathAsNative(this JObject item, string path, Type type)
+        static public object GetValueByPathAs(this JObject item, string path, Type type, object default_value=null)
         {
             return item.GetValueByPath(path)
-                .IfNotNull(v => v.AsNative(type));
+                .IfNotNull(v => v.ConvertEX(type), default_value);
         }
 
         static public string GetValueByPathAsString(this JObject item, string path)

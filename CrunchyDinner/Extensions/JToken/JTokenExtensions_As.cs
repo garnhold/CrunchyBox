@@ -44,25 +44,6 @@ namespace Crunchy.Dinner
             return item.AsJArray().IfNotNull(a => a.AsBools());
         }
 
-        static public object AsNative(this JToken item, Type type)
-        {
-            if (item.Convert<JArray>(out JArray array))
-            {
-                if (type.IsTypicalIEnumerable())
-                {
-                    return array.AsNatives(type.GetIEnumerableType())
-                        .ToList()
-                        .ConvertEX(type);
-                }
-            }
-            else if (item.Convert<JValue>(out JValue value))
-            {
-                return value.Value.ConvertEX(type);
-            }
-
-            return type.GetDefaultValue();
-        }
-
         static public string AsString(this JToken item)
         {
             return item.AsJValue().IfNotNull(v => v.Value.ToStringEX());

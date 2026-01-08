@@ -49,10 +49,10 @@ namespace Crunchy.Dinner
                 .IfNotNull(v => v.AsBools());
         }
 
-        static public object GetValueAsNative(this JObject item, Type type, string property_name, object default_value=null)
+        static public object GetValueAs(this JObject item, Type type, string property_name, object default_value=null)
         {
             return item.GetValue(property_name)
-                .IfNotNull(v => v.AsNative(type), default_value);
+                .IfNotNull(v => v.ConvertEX(type), default_value);
         }
 
         static public string GetValueAsString(this JObject item, string property_name, string default_value=null)

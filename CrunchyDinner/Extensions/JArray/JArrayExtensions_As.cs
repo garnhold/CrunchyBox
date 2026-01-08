@@ -30,11 +30,6 @@ namespace Crunchy.Dinner
             return item.Convert<JToken, JValue>();
         }
 
-        static public IEnumerable<object> AsNatives(this JArray item, Type type)
-        {
-            return item.Convert(v => v.AsNative(type));
-        }
-
         static public IEnumerable<string> AsStrings(this JArray item)
         {
             return item.Convert(v => v.AsString());
