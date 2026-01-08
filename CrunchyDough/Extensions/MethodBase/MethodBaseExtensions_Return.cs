@@ -43,6 +43,23 @@ namespace Crunchy.Dough
             return item.CanReturnInto(typeof(T));
         }
 
+        static public bool CanReturnInto(this MethodInfo item, out MethodInfo output, Type type)
+        {
+            if (item.IsGenericTypelessMethod())
+            {
+                Type[] generic_arguments = new Type[item.GetNumberGenericParameters()];
+
+                if (item.ReturnType.FillGenericArgumentsToHold(type, generic_arguments))
+                {
+                    if (generic_arguments.AreAllNotNull() && item.CanGenericParametersHold(generic_arguments))
+                        item = item.MakeGenericMethod(generic_arguments);
+                }
+            }
+
+            output = item;
+            return item.CanReturnInto(type);
+        }
+
         static public bool CouldMaybeReturnInto(this MethodBase item, Type type)
         {
             if (type.CouldMaybeHold(item.GetReturnType()))
