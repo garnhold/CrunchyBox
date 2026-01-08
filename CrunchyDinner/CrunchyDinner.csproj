@@ -66,6 +66,8 @@
     <Compile Include="Extensions\JProperty\JPropertyExtensions.cs" />
     <Compile Include="Extensions\JProperty\IEnumerable\JPropertyExtensions_IEnumerable.cs" />
     <Compile Include="Extensions\JToken\JTokenExtensions_As.cs" />
+    <Compile Include="ConversionMethods\ConversionMethods_JValue.cs" />
+    <Compile Include="ConversionMethods\ConversionMethods_JArray.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrunchyDough\CrunchyDough.csproj">
@@ -96,6 +98,7 @@
     <Folder Include="Extensions\Uri\" />
     <Folder Include="Extensions\JProperty\" />
     <Folder Include="Extensions\JProperty\IEnumerable\" />
+    <Folder Include="ConversionMethods\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
