@@ -26,6 +26,15 @@ namespace Crunchy.Dough
                 return true;
             }
 
+            if (item.IsGenericTypelessArray() && to_hold.IsArray())
+            {
+                if (generic_arguments.Length != 1)
+                    throw new SanityCheckException("I assume the number of generic arguments would always be 1 in the case of generic arrays in Type.FillGenericArgumentsToHold.");
+
+                generic_arguments.SetDropped(0, to_hold.GetElementType());
+                return true;
+            }
+
             if (item.IsGenericTypelessClass())
             {
                 to_hold = to_hold.GetTypeAndAllBaseTypesAndInterfaces(DetailDirection.SpecificToBasic)
