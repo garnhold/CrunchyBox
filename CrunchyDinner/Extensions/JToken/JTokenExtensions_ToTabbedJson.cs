@@ -22,6 +22,7 @@ namespace Crunchy.Dinner
             {
                 json_writer.IndentChar = '\t';
                 json_writer.Indentation = 1;
+                json_writer.Formatting = Formatting.Indented;
 
                 item.WriteTo(json_writer);
                 return string_writer.ToString();
