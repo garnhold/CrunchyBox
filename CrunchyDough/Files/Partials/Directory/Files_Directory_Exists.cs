@@ -14,5 +14,18 @@ namespace Crunchy.Dough
 
             return false;
         }
+
+        static public string GetTopExistingDirectory(string filename)
+        {
+            while (filename.IsVisible())
+            {
+                if (DoesDirectoryExist(filename))
+                    return filename;
+
+                filename = Filename.GetParentDirectory(filename);
+            }
+
+            return null;
+        }
     }
 }
