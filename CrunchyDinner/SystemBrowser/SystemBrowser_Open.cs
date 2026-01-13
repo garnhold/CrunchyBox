@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Net;
 
 using Crunchy.Dough;
+using Crunchy.Salt;
 
 namespace Crunchy.Dinner
 {
@@ -26,7 +27,8 @@ namespace Crunchy.Dinner
             {
                 if (uri.Scheme == "https" || uri.Scheme == "http")
                 {
-                    string url = uri.ToString();
+                    string url = uri.ToString()
+                        .StyleAsDoubleQuoteLiteral();
 
                     try
                     {
