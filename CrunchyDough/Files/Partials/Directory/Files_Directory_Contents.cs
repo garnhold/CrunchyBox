@@ -9,9 +9,16 @@ namespace Crunchy.Dough
     {
         static public IEnumerable<string> GetDirectorysInDirectory(string directory)
         {
-            return Directory.GetDirectories(Filename.GetDirectory(directory), "*", SearchOption.TopDirectoryOnly)
-                .Skip(s => s == "." || s == "..")
-                .Convert(s => Filename.CleanPath(s + "/"));
+            directory = Filename.GetDirectory(directory);
+
+            if (Directory.Exists(directory))
+            {
+                return Directory.GetDirectories(directory, "*", SearchOption.TopDirectoryOnly)
+                    .Skip(s => s == "." || s == "..")
+                    .Convert(s => Filename.CleanPath(s + "/"));
+            }
+
+            return Empty.IEnumerable<string>();
         }
         static public IEnumerable<string> GetRelativeDirectorysInDirectory(string directory)
         {
@@ -21,8 +28,15 @@ namespace Crunchy.Dough
 
         static public IEnumerable<string> GetFilenamesInDirectory(string directory)
         {
-            return Directory.GetFiles(Filename.GetDirectory(directory), "*", SearchOption.TopDirectoryOnly)
-                .Convert(s => Filename.CleanPath(s));
+            directory = Filename.GetDirectory(directory);
+
+            if (Directory.Exists(directory))
+            {
+                return Directory.GetFiles(directory, "*", SearchOption.TopDirectoryOnly)
+                    .Convert(s => Filename.CleanPath(s));
+            }
+
+            return Empty.IEnumerable<string>();
         }
         static public IEnumerable<string> GetRelativeFilenamesInDirectory(string directory)
         {
