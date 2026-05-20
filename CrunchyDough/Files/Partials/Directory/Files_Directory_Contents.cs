@@ -43,5 +43,22 @@ namespace Crunchy.Dough
             return GetFilenamesInDirectory(directory)
                 .Convert(f => Filename.GetRelativePath(f, directory));
         }
+
+        static public IEnumerable<string> GetFilenamesInDirectoryRecursive(string directory)
+        {
+            foreach (string filename in GetFilenamesInDirectory(directory))
+                yield return filename;
+
+            foreach (string sub_directory in GetDirectorysInDirectory(directory))
+            {
+                foreach (string filename in GetFilenamesInDirectoryRecursive(sub_directory))
+                    yield return filename;
+            }
+        }
+        static public IEnumerable<string> GetRelativeFilenamesInDirectoryRecursive(string directory)
+        {
+            return GetFilenamesInDirectoryRecursive(directory)
+                .Convert(f => Filename.GetRelativePath(f, directory));
+        }
     }
 }
